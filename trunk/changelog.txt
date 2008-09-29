@@ -4,7 +4,7 @@ Donate link: http://wp.gdragon.info/donate/
 Version: 0.9.6
 Tags: vote, ratings, post, page, widget, rating, star, gdragon
 Requires at least: 2.5
-Tested up to: 2.6.2
+Tested up to: 2.7.0
 Stable tag: trunk
 
 == Change Log ==
@@ -15,9 +15,14 @@ Stable tag: trunk
 * new: templates for rating stars text
 * new: updated styles to fit wp 2.7
 * new: post review box for wp 2.7
+* new: grouping options for widget
+* new: enable/disable widgets options
 * edit: small changes to rendering
+* edit: changes to widget settings layout
 * edit: main class numerous improvements
 * fix: various small bugs
+* fix: multi byte langauge encoding problems
+* fix: manual function for adding widget content
 
 = Version: 0.9.5 Beta #1 / september 15 2008 =
 * new: fully redesigned widget

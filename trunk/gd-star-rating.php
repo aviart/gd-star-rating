@@ -155,7 +155,8 @@ if (!class_exists('GDStarRating')) {
             "publish_range_from" => "YYYYMMDD",
             "publish_range_to" => "YYYYMMDD",
             "div_template" => '0',
-            "div_filter" => '1'
+            "div_filter" => '1',
+            "grouping" => 'post'
         );
         
         var $default_shortcode = array(
@@ -832,13 +833,14 @@ if (!class_exists('GDStarRating')) {
                     $options = array();
                     
                     $options['title'] = strip_tags(stripslashes($posted['title']));
-                    $options['tpl_header'] = stripslashes(htmlentities($posted['tpl_header'], ENT_QUOTES));
-                    $options['tpl_item'] = stripslashes(htmlentities($posted['tpl_item'], ENT_QUOTES));
-                    $options['tpl_footer'] = stripslashes(htmlentities($posted['tpl_footer'], ENT_QUOTES));
+                    $options['tpl_header'] = stripslashes(htmlentities($posted['tpl_header'], ENT_QUOTES, 'UTF-8'));
+                    $options['tpl_item'] = stripslashes(htmlentities($posted['tpl_item'], ENT_QUOTES, 'UTF-8'));
+                    $options['tpl_footer'] = stripslashes(htmlentities($posted['tpl_footer'], ENT_QUOTES, 'UTF-8'));
                     
                     $options['tpl_title_length'] = $posted['title_max'];
                     $options['rows'] = $posted['rows'];
                     $options['select'] = $posted['select'];
+                    $options['grouping'] = $posted['grouping'];
                     $options['column'] = $posted['column'];
                     $options['order'] = $posted['order'];
                     $options['category'] = $posted['category'];
@@ -922,6 +924,9 @@ if (!class_exists('GDStarRating')) {
                 if ($widget["tpl_title_length"] > 0)
                     $title = substr($title, 0, $widget["tpl_title_length"])."...";
                 
+                if ($voters > 1) $tense = $this->x["word_votes_plural"];
+                else $tense = $this->x["word_votes_singular"];
+                
                 $item = html_entity_decode($widget["tpl_item"]);
                 $item = str_replace('%RATING%', $rating, $item);
                 $item = str_replace('%MAX_RATING%', $this->o["stars"], $item);
@@ -930,6 +935,8 @@ if (!class_exists('GDStarRating')) {
                 $item = str_replace('%MAX_REVIEW%', $this->o["review_stars"], $item);
                 $item = str_replace('%TITLE%', $title, $item);
                 $item = str_replace('%PERMALINK%', get_permalink($row->post_id), $item);
+                $item = str_replace('%ID%', $title, $item->post_id);
+                $item = str_replace('%WORD_VOTES%', $title, $tense);
 
                 echo $item;
             }
@@ -1156,7 +1163,7 @@ if (!class_exists('GDStarRating')) {
 
     function wp_gdsr_render_widget($widget = array()) {
         global $gdsr;
-        $gdsr->render_widget($widget);
+        $gdsr->render_articles_widget($widget);
     }
     
     function wp_gdsr_render_article() {

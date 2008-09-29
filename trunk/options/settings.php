@@ -29,7 +29,7 @@
         $gdsr_options["text"] = $_POST['gdsr_text'];
         $gdsr_options["align"] = $_POST['gdsr_align'];
         $gdsr_options["header"] = isset($_POST['gdsr_header']) ? 1 : 0;
-        $gdsr_options["header_text"] = stripslashes(htmlentities($_POST['gdsr_header_text'], ENT_QUOTES));
+        $gdsr_options["header_text"] = stripslashes(htmlentities($_POST['gdsr_header_text'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["class_block"] = $_POST['gdsr_classblock'];
         $gdsr_options["class_text"] = $_POST['gdsr_classtext'];
         
@@ -38,7 +38,7 @@
         $gdsr_options["cmm_text"] = $_POST['gdsr_cmm_text'];
         $gdsr_options["cmm_align"] = $_POST['gdsr_cmm_align'];
         $gdsr_options["cmm_header"] = isset($_POST['gdsr_cmm_header']) ? 1 : 0;
-        $gdsr_options["cmm_header_text"] = stripslashes(htmlentities($_POST['gdsr_cmm_header_text'], ENT_QUOTES));
+        $gdsr_options["cmm_header_text"] = stripslashes(htmlentities($_POST['gdsr_cmm_header_text'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["cmm_class_block"] = $_POST['gdsr_cmm_classblock'];
         $gdsr_options["cmm_class_text"] = $_POST['gdsr_cmm_classtext'];
         
@@ -48,7 +48,7 @@
         $gdsr_options["review_align"] = $_POST['gdsr_review_align'];
         $gdsr_options["review_header"] = isset($_POST['gdsr_review_header']) ? 1 : 0;
 
-        $gdsr_options["review_header_text"] = stripslashes(htmlentities($_POST['gdsr_review_header_text'], ENT_QUOTES));
+        $gdsr_options["review_header_text"] = stripslashes(htmlentities($_POST['gdsr_review_header_text'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["review_class_block"] = $_POST['gdsr_review_classblock'];
                            
         $gdsr_options["cmm_review_style"] = $_POST['gdsr_cmm_review_style'];
@@ -56,7 +56,7 @@
         $gdsr_options["cmm_review_text"] = $_POST['gdsr_cmm_review_text'];
         $gdsr_options["cmm_review_align"] = $_POST['gdsr_cmm_review_align'];
         $gdsr_options["cmm_review_header"] = isset($_POST['gdsr_cmm_review_header']) ? 1 : 0;
-        $gdsr_options["cmm_review_header_text"] = stripslashes(htmlentities(gd_addslashes($_POST['gdsr_cmm_review_header_text'], ENT_QUOTES)));
+        $gdsr_options["cmm_review_header_text"] = stripslashes(htmlentities(gd_addslashes($_POST['gdsr_cmm_review_header_text'], ENT_QUOTES, 'UTF-8')));
         $gdsr_options["cmm_review_class_block"] = $_POST['gdsr_cmm_review_classblock'];
                            
         $gdsr_options["default_voterules_articles"] = $_POST['gdsr_default_vote_articles'];
