@@ -45,42 +45,6 @@ function gdsrShowHidePreview(gdid, index) {
 </table>
 <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
   <tr>
-    <td nowrap="nowrap" width="140"><?php _e("Number Of Posts", "gd-star-rating"); ?>:</td>
-    <td align="right"><input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[rows]" id="gdstarr-rows" value="<?php echo $wpno["rows"]; ?>" /></td>
-    <td width="45"></td>
-    <td nowrap="nowrap"><?php _e("Display", "gd-star-rating"); ?>:</td>
-    <td align="right">
-        <label><select class="widefat" name="<?php echo $wpfn; ?>[select]" id="gdstarr-select" style="width: 110px">
-            <option value="postpage"<?php echo $wpno['select'] == 'postpage' ? ' selected="selected"' : ''; ?>><?php _e("Posts & Pages", "gd-star-rating"); ?></option>
-            <option value="post"<?php echo $wpno['select'] == 'post' ? ' selected="selected"' : ''; ?>><?php _e("Posts Only", "gd-star-rating"); ?></option>
-            <option value="page"<?php echo $wpno['select'] == 'page' ? ' selected="selected"' : ''; ?>><?php _e("Pages Only", "gd-star-rating"); ?></option>
-        </select></label>
-    </td>
-  </tr>
-</table>
-<table border="0" cellpadding="2" cellspacing="0" width="100%"> 
-  <tr>
-    <td nowrap="nowrap" width="140"><?php _e("Sorting", "gd-star-rating"); ?>:</td>
-    <td align="right">
-        <label><select name="<?php echo $wpfn; ?>[column]" id="gdstarr-column" style="width: 110px">
-            <option value="rating"<?php echo $wpno['column'] == 'rating' ? ' selected="selected"' : ''; ?>><?php _e("Rating", "gd-star-rating"); ?></option>
-            <option value="votes"<?php echo $wpno['column'] == 'votes' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
-            <option value="id"<?php echo $wpno['column'] == 'id' ? ' selected="selected"' : ''; ?>><?php _e("Post ID", "gd-star-rating"); ?></option>
-            <option value="post_title"<?php echo $wpno['column'] == 'post_title' ? ' selected="selected"' : ''; ?>><?php _e("Post Title", "gd-star-rating"); ?></option>
-            <option value="review"<?php echo $wpno['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Review", "gd-star-rating"); ?></option>
-        </select></label>
-    </td>
-    <td width="45"></td>
-    <td align="right">
-        <label><select name="<?php echo $wpfn; ?>[order]" id="gdstarr-order" style="width: 110px">
-            <option value="desc"<?php echo $wpno['order'] == 'desc' ? ' selected="selected"' : ''; ?>><?php _e("Descending", "gd-star-rating"); ?></option>
-            <option value="asc"<?php echo $wpno['order'] == 'asc' ? ' selected="selected"' : ''; ?>><?php _e("Ascending", "gd-star-rating"); ?></option>
-        </select></label>
-    </td>
-  </tr>
-</table>
-<table border="0" cellpadding="2" cellspacing="0" width="100%"> 
-  <tr>
     <td width="140" nowrap="nowrap"><?php _e("Show Widget To", "gd-star-rating"); ?>:</td>
     <td align="right">
         <label><select name="<?php echo $wpfn; ?>[display]" id="gdstarr-display" style="width: 110px">
@@ -88,6 +52,16 @@ function gdsrShowHidePreview(gdid, index) {
             <option value="visitors"<?php echo $wpno['display'] == 'visitors' ? ' selected="selected"' : ''; ?>><?php _e("Visitors Only", "gd-star-rating"); ?></option>
             <option value="users"<?php echo $wpno['display'] == 'users' ? ' selected="selected"' : ''; ?>><?php _e("Users Only", "gd-star-rating"); ?></option>
             <option value="hide"<?php echo $wpno['display'] == 'hide' ? ' selected="selected"' : ''; ?>><?php _e("Hide Widget", "gd-star-rating"); ?></option>
+        </select></label>
+    </td>
+  </tr>
+  <tr>
+    <td width="140" nowrap="nowrap"><?php _e("Items Grouping", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <label><select name="<?php echo $wpfn; ?>[grouping]" id="gdstarr-grouping" style="width: 110px">
+            <option value="post"<?php echo $wpno['grouping'] == 'post' ? ' selected="selected"' : ''; ?>><?php _e("No grouping", "gd-star-rating"); ?></option>
+            <option value="user"<?php echo $wpno['grouping'] == 'user' ? ' selected="selected"' : ''; ?>><?php _e("User based", "gd-star-rating"); ?></option>
+            <option value="category"<?php echo $wpno['grouping'] == 'category' ? ' selected="selected"' : ''; ?>><?php _e("Category based", "gd-star-rating"); ?></option>
         </select></label>
     </td>
   </tr>
@@ -106,6 +80,17 @@ function gdsrShowHidePreview(gdid, index) {
 <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
   <tr>
     <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divfilter', '<?php echo $wpnm; ?>')"><?php _e("Filter", "gd-star-rating"); ?></a></strong></td>
+    <td width="150" nowrap="nowrap"><?php _e("Display", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <label><select class="widefat" name="<?php echo $wpfn; ?>[select]" id="gdstarr-select" style="width: 110px">
+            <option value="postpage"<?php echo $wpno['select'] == 'postpage' ? ' selected="selected"' : ''; ?>><?php _e("Posts & Pages", "gd-star-rating"); ?></option>
+            <option value="post"<?php echo $wpno['select'] == 'post' ? ' selected="selected"' : ''; ?>><?php _e("Posts Only", "gd-star-rating"); ?></option>
+            <option value="page"<?php echo $wpno['select'] == 'page' ? ' selected="selected"' : ''; ?>><?php _e("Pages Only", "gd-star-rating"); ?></option>
+        </select></label>
+    </td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Display Votes From", "gd-star-rating"); ?>:</td>
     <td align="right">
         <label><select name="<?php echo $wpfn; ?>[show]" id="gdstarr-show" style="width: 110px">
@@ -113,6 +98,37 @@ function gdsrShowHidePreview(gdid, index) {
             <option value="visitors"<?php echo $wpno['show'] == 'visitors' ? ' selected="selected"' : ''; ?>><?php _e("Visitors Only", "gd-star-rating"); ?></option>
             <option value="users"<?php echo $wpno['show'] == 'users' ? ' selected="selected"' : ''; ?>><?php _e("Users Only", "gd-star-rating"); ?></option>
         </select></label>
+    </td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td width="150" nowrap="nowrap"><?php _e("Number Of Posts", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[rows]" id="gdstarr-rows" value="<?php echo $wpno["rows"]; ?>" />
+    </td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td width="150" nowrap="nowrap"><?php _e("Sorting Column", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <select name="<?php echo $wpfn; ?>[column]" id="gdstarr-column" style="width: 110px">
+            <option value="rating"<?php echo $wpno['column'] == 'rating' ? ' selected="selected"' : ''; ?>><?php _e("Rating", "gd-star-rating"); ?></option>
+            <option value="votes"<?php echo $wpno['column'] == 'votes' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
+            <option value="id"<?php echo $wpno['column'] == 'id' ? ' selected="selected"' : ''; ?>><?php _e("ID", "gd-star-rating"); ?></option>
+            <option value="post_title"<?php echo $wpno['column'] == 'post_title' ? ' selected="selected"' : ''; ?>><?php _e("Title", "gd-star-rating"); ?></option>
+            <option value="review"<?php echo $wpno['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Review", "gd-star-rating"); ?></option>
+            <option value="count"<?php echo $wpno['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td width="150" nowrap="nowrap"><?php _e("Sorting Order", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <select name="<?php echo $wpfn; ?>[order]" id="gdstarr-order" style="width: 110px">
+            <option value="desc"<?php echo $wpno['order'] == 'desc' ? ' selected="selected"' : ''; ?>><?php _e("Descending", "gd-star-rating"); ?></option>
+            <option value="asc"<?php echo $wpno['order'] == 'asc' ? ' selected="selected"' : ''; ?>><?php _e("Ascending", "gd-star-rating"); ?></option>
+        </select>
     </td>
   </tr>
   <tr>
@@ -239,11 +255,19 @@ function gdsrShowHidePreview(gdid, index) {
   </tr>
   <tr>
     <td width="100"></td>
-    <td><strong>%TITLE%</strong></td><td> : <?php _e("post/page title", "gd-star-rating"); ?></td>
+    <td><strong>%TITLE%</strong></td><td> : <?php _e("item title", "gd-star-rating"); ?></td>
   </tr>
   <tr>
     <td width="100"></td>
-    <td><strong>%PERMALINK%</strong></td><td> : <?php _e("url to post/page", "gd-star-rating"); ?></td>
+    <td><strong>%PERMALINK%</strong></td><td> : <?php _e("item url", "gd-star-rating"); ?></td>
+  </tr>
+  <tr>
+    <td width="100"></td>
+    <td><strong>%ID%</strong></td><td> : <?php _e("item id", "gd-star-rating"); ?></td>
+  </tr>
+  <tr>
+    <td width="100"></td>
+    <td><strong>%COUNT%</strong></td><td> : <?php _e("number of posts/pages", "gd-star-rating"); ?></td>
   </tr>
   <tr>
     <td width="100"></td>
