@@ -935,8 +935,8 @@ if (!class_exists('GDStarRating')) {
                 $item = str_replace('%MAX_REVIEW%', $this->o["review_stars"], $item);
                 $item = str_replace('%TITLE%', $title, $item);
                 $item = str_replace('%PERMALINK%', get_permalink($row->post_id), $item);
-                $item = str_replace('%ID%', $title, $item->post_id);
-                $item = str_replace('%WORD_VOTES%', $title, $tense);
+                $item = str_replace('%ID%', $item->post_id, $item);
+                $item = str_replace('%WORD_VOTES%', $tense, $item);
 
                 echo $item;
             }
