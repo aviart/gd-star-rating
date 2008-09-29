@@ -2,21 +2,21 @@ This is the list of star styles built in the plugin.
 
 = Star Shapes =
 
-* Crystal
-* Oxygen
-* Shiny
-* Quiet
-* Aero
-* Inspire
-* Nuvola
-* Starscape
-* Milky
-* Ruby
-* Fatty
-* Aeon
-* Soft
+  * Crystal
+  * Oxygen
+  * Shiny
+  * Quiet
+  * Aero
+  * Inspire
+  * Nuvola
+  * Starscape
+  * Milky
+  * Ruby
+  * Fatty
+  * Aeon
+  * Soft
 
 = Heart Shapes =
 
-* Crystal Hearts
-* Pine Hearts
+  * Crystal Hearts
+  * Pine Hearts
