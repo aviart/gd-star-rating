@@ -1,0 +1,29 @@
+=== GD Star Rating ===
+Contributors: gdragon
+Donate link: http://wp.gdragon.info/donate/
+Version: 0.9.5
+Tags: vote, ratings, post, page, widget, rating, star, gdragon
+Requires at least: 2.5
+Tested up to: 2.6.2
+Stable tag: trunk
+
+== Roadmap ==
+
+= 0.9.7 =
+* trend display
+* front page
+
+= 1.0.0 =
+* updated user guide
+* control panel improvements
+
+= 1.0.5 =
+* amazon-like rating categories widget
+* customization of bot filter
+
+= 1.1.0 =
+* multi rating support (more details to follow)
+* reccomendation ratings (more details to follow)
+
+= 1.2.0 =
+* changing vote (like wordpress extend website)
