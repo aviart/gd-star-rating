@@ -271,6 +271,10 @@ function gdsrShowHidePreview(gdid, index) {
   </tr>
   <tr>
     <td width="100"></td>
+    <td><strong>%WORD_VOTES%</strong></td><td> : <?php _e("singular/plural word vote", "gd-star-rating"); ?></td>
+  </tr>
+  <tr>
+    <td width="100"></td>
     <td colspan="2"><div class="gdsr-table-split-filter"></div></td>
   </tr>
 </table>
