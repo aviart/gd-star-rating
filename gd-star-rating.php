@@ -735,7 +735,7 @@ if (!class_exists('GDStarRating')) {
         
         function star_menu_templates() {
             $gdsr_options = $this->x;
-            include($this->plugin_path.'/options/templates.php');
+            include($this->plugin_path.'/templates/templates.php');
         }
 
         function star_menu_setup() {
