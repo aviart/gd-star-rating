@@ -1,0 +1,9 @@
+.gdsr-title {
+	background-color: #2683AE;
+	-moz-border-radius-topleft:3px;
+	-moz-border-radius-topright:3px;
+	padding: 10px 10px;
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+}
