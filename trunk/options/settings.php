@@ -101,8 +101,8 @@ function gdsrStyleSelection() {
     var gdsrAllTypes = [ <?php GDSRHelper::render_styles_types_js($gdsr_styles); ?> ];
     var gdsrStyle = document.getElementById("gdsr_style_preview");
     var gdsrSize = document.getElementById("gdsr_size_preview");
-    var gdsrStyle = gdsrStyle.options[gdsrStyle.selectedIndex].value;
-    var gdsrSize = gdsrSize.options[gdsrSize.selectedIndex].value;
+    gdsrStyle = gdsrStyle.options[gdsrStyle.selectedIndex].value;
+    gdsrSize = gdsrSize.options[gdsrSize.selectedIndex].value;
 
     var gdsrImage_Black = document.getElementById("gdsr_preview_black");
     var gdsrImage_Red = document.getElementById("gdsr_preview_red");
