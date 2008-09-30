@@ -7,8 +7,8 @@ msgid "All users and visitors"
 msgstr ""
 
 #: code/gd-star-dbone.php:684
-#: options/widget.php:87
-#: options/widget.php:112
+#: options/widget.php:51
+#: options/widget.php:97
 #: tinymce3/window.php:61
 msgid "Visitors Only"
 msgstr ""
@@ -129,7 +129,7 @@ msgstr ""
 
 #: options/articles.php:94
 #: options/articles.php:202
-#: options/templates.php:36
+#: templates/templates.php:36
 msgid "Articles"
 msgstr ""
 
@@ -141,14 +141,15 @@ msgstr ""
 
 #: options/articles.php:112
 #: options/articles.php:24
-#: options/widget.php:99
-#: options/widget.php:107
+#: options/widget.php:73
+#: options/widget.php:81
 #: tinymce3/window.php:28
 msgid "Filter"
 msgstr ""
 
 #: options/articles.php:129
 #: options/widget.php:41
+#: options/widget.php:117
 msgid "Title"
 msgstr ""
 
@@ -187,7 +188,7 @@ msgstr ""
 #: options/edit27.php:22
 #: options/settings.php:369
 #: options/settings.php:521
-#: options/widget.php:69
+#: options/widget.php:118
 #: tinymce3/window.php:83
 msgid "Review"
 msgstr ""
@@ -227,14 +228,14 @@ msgstr ""
 #: options/articles.php:232
 #: options/comments.php:43
 #: options/settings.php:150
-#: options/templates.php:25
-#: options/templates.php:41
+#: templates/templates.php:25
+#: templates/templates.php:41
 msgid "Comments"
 msgstr ""
 
 #: options/batch.php:0
-#: gd-star-rating.php:381
-#: gd-star-rating.php:381
+#: gd-star-rating.php:382
+#: gd-star-rating.php:382
 msgid "Batch Options"
 msgstr ""
 
@@ -321,7 +322,7 @@ msgid "General"
 msgstr ""
 
 #: options/settings.php:149
-#: options/templates.php:24
+#: templates/templates.php:24
 msgid "Articles (Posts And Pages)"
 msgstr ""
 
@@ -410,7 +411,7 @@ msgstr ""
 
 #: options/settings.php:268
 #: options/settings.php:428
-#: options/widget.php:65
+#: options/widget.php:114
 #: tinymce3/window.php:82
 msgid "Rating"
 msgstr ""
@@ -521,13 +522,13 @@ msgid "Prevent comment author to vote."
 msgstr ""
 
 #: options/settings.php:580
-#: options/templates.php:72
+#: templates/templates.php:58
 msgid "Save Settings"
 msgstr ""
 
 #: options/setup.php:19
-#: gd-star-rating.php:382
-#: gd-star-rating.php:382
+#: gd-star-rating.php:383
+#: gd-star-rating.php:383
 msgid "Setup"
 msgstr ""
 
@@ -562,251 +563,286 @@ msgstr ""
 msgid "REMOVE SETTINGS"
 msgstr ""
 
-#: options/templates.php:18
-#: gd-star-rating.php:379
-#: gd-star-rating.php:379
-msgid "Templates"
-msgstr ""
-
-#: options/templates.php:23
-msgid "Template Elements"
-msgstr ""
-
-#: options/templates.php:31
-msgid "Custom Elements"
-msgstr ""
-
-#: options/templates.php:51
-#: options/templates.php:62
-msgid "Rating Text"
-msgstr ""
-
-#: options/templates_elements_articles.php:3
-#: options/widget.php:221
-msgid "article rating"
-msgstr ""
-
-#: options/templates_elements_articles.php:6
-#: options/widget.php:225
-msgid "maximum rating value"
-msgstr ""
-
-#: options/templates_elements_articles.php:10
-#: options/widget.php:233
-msgid "article review"
-msgstr ""
-
-#: options/templates_elements_articles.php:13
-#: options/widget.php:237
-msgid "maximum review value"
-msgstr ""
-
-#: options/templates_elements_articles.php:17
-#: options/widget.php:229
-msgid "total votes for article"
-msgstr ""
-
-#: options/templates_elements_articles.php:20
-#: options/widget.php:241
-msgid "post/page title"
-msgstr ""
-
-#: options/templates_elements_articles.php:24
-#: options/widget.php:245
-msgid "url to post/page"
-msgstr ""
-
-#: options/templates_elements_articles.php:27
-#: options/templates_elements_comments.php:13
-msgid "rating stars"
-msgstr ""
-
-#: options/templates_elements_articles.php:31
-#: options/templates_elements_comments.php:17
-msgid "bayesian estimate mean rating"
-msgstr ""
-
-#: options/templates_elements_articles.php:34
-msgid "article rating trend"
-msgstr ""
-
-#: options/templates_elements_comments.php:3
-msgid "comment rating"
-msgstr ""
-
-#: options/templates_elements_comments.php:6
-msgid "maximum comment rating value"
-msgstr ""
-
-#: options/templates_elements_comments.php:10
-msgid "total votes for comment"
-msgstr ""
-
-#: options/templates_elements_comments.php:20
-msgid "comment rating trend"
-msgstr ""
-
-#: options/templates_elements_custom.php:3
-msgid "singlular"
-msgstr ""
-
-#: options/templates_elements_custom.php:6
-msgid "plural"
-msgstr ""
-
-#: options/templates_elements_custom.php:12
-msgid "this can be used to replace word 'votes', and you need to set both singular and plural form of this word"
-msgstr ""
-
 #: options/voters.php:0
 msgid "Voters Log"
 msgstr ""
 
 #: options/widget.php:47
-#: tinymce3/window.php:99
-msgid "Number Of Posts"
+msgid "Show Widget To"
 msgstr ""
 
 #: options/widget.php:50
+#: options/widget.php:96
+#: tinymce3/window.php:60
+msgid "Everyone"
+msgstr ""
+
+#: options/widget.php:52
+#: options/widget.php:98
+#: tinymce3/window.php:62
+msgid "Users Only"
+msgstr ""
+
+#: options/widget.php:53
+msgid "Hide Widget"
+msgstr ""
+
+#: options/widget.php:58
+msgid "Items Grouping"
+msgstr ""
+
+#: options/widget.php:61
+msgid "No grouping"
+msgstr ""
+
+#: options/widget.php:62
+msgid "User based"
+msgstr ""
+
+#: options/widget.php:63
+msgid "Category based"
+msgstr ""
+
+#: options/widget.php:74
+#: options/widget.php:212
+msgid "Click on the header title to display the options."
+msgstr ""
+
+#: options/widget.php:82
 #: tinymce3/window.php:29
 #: tinymce3/window.php:69
 msgid "Display"
 msgstr ""
 
-#: options/widget.php:53
+#: options/widget.php:85
 msgid "Posts & Pages"
 msgstr ""
 
-#: options/widget.php:54
+#: options/widget.php:86
 #: tinymce3/window.php:73
 msgid "Posts Only"
 msgstr ""
 
-#: options/widget.php:55
+#: options/widget.php:87
 #: tinymce3/window.php:74
 msgid "Pages Only"
 msgstr ""
 
-#: options/widget.php:62
-#: tinymce3/window.php:79
-msgid "Sorting"
+#: options/widget.php:93
+msgid "Display Votes From"
 msgstr ""
 
-#: options/widget.php:66
+#: options/widget.php:104
+#: tinymce3/window.php:99
+msgid "Number Of Posts"
+msgstr ""
+
+#: options/widget.php:111
+msgid "Sorting Column"
+msgstr ""
+
+#: options/widget.php:115
 #: tinymce3/window.php:84
 msgid "Total Votes"
 msgstr ""
 
-#: options/widget.php:67
-#: tinymce3/window.php:85
-msgid "Post ID"
+#: options/widget.php:116
+msgid "ID"
 msgstr ""
 
-#: options/widget.php:68
-#: tinymce3/window.php:86
-msgid "Post Title"
+#: options/widget.php:119
+msgid "Count"
 msgstr ""
 
-#: options/widget.php:75
+#: options/widget.php:125
+msgid "Sorting Order"
+msgstr ""
+
+#: options/widget.php:128
 #: tinymce3/window.php:89
 msgid "Descending"
 msgstr ""
 
-#: options/widget.php:76
+#: options/widget.php:129
 #: tinymce3/window.php:90
 msgid "Ascending"
 msgstr ""
 
-#: options/widget.php:83
-msgid "Show Widget To"
-msgstr ""
-
-#: options/widget.php:86
-#: options/widget.php:111
-#: tinymce3/window.php:60
-msgid "Everyone"
-msgstr ""
-
-#: options/widget.php:88
-#: options/widget.php:113
-#: tinymce3/window.php:62
-msgid "Users Only"
-msgstr ""
-
-#: options/widget.php:89
-msgid "Hide Widget"
-msgstr ""
-
-#: options/widget.php:100
-#: options/widget.php:196
-msgid "Click on the header title to display the options."
-msgstr ""
-
-#: options/widget.php:108
-msgid "Display Votes From"
-msgstr ""
-
-#: options/widget.php:120
+#: options/widget.php:136
 #: tinymce3/window.php:66
 msgid "Hide articles with no recorded votes."
 msgstr ""
 
-#: options/widget.php:122
+#: options/widget.php:138
 msgid "Hide articles with no review values."
 msgstr ""
 
-#: options/widget.php:133
+#: options/widget.php:149
 #: tinymce3/window.php:54
 msgid "Category"
 msgstr ""
 
-#: options/widget.php:146
+#: options/widget.php:162
 msgid "Publish Date"
 msgstr ""
 
-#: options/widget.php:149
+#: options/widget.php:165
 msgid "Last # days"
 msgstr ""
 
-#: options/widget.php:150
+#: options/widget.php:166
 msgid "Exact month"
 msgstr ""
 
-#: options/widget.php:151
+#: options/widget.php:167
 msgid "Date range"
 msgstr ""
 
-#: options/widget.php:160
+#: options/widget.php:176
 msgid "Number Of Days"
 msgstr ""
 
-#: options/widget.php:171
+#: options/widget.php:187
 msgid "Month"
 msgstr ""
 
-#: options/widget.php:182
+#: options/widget.php:198
 msgid "Range"
 msgstr ""
 
-#: options/widget.php:195
-#: options/widget.php:203
+#: options/widget.php:211
+#: options/widget.php:219
 msgid "Template"
 msgstr ""
 
-#: options/widget.php:204
+#: options/widget.php:220
 msgid "Header"
 msgstr ""
 
-#: options/widget.php:209
+#: options/widget.php:225
 msgid "Item"
 msgstr ""
 
-#: options/widget.php:214
+#: options/widget.php:230
 msgid "Footer"
 msgstr ""
 
-#: options/widget.php:255
+#: options/widget.php:237
+#: templates/templates_elements_articles.php:3
+msgid "article rating"
+msgstr ""
+
+#: options/widget.php:241
+#: templates/templates_elements_articles.php:6
+msgid "maximum rating value"
+msgstr ""
+
+#: options/widget.php:245
+#: templates/templates_elements_articles.php:17
+msgid "total votes for article"
+msgstr ""
+
+#: options/widget.php:249
+#: templates/templates_elements_articles.php:10
+msgid "article review"
+msgstr ""
+
+#: options/widget.php:253
+#: templates/templates_elements_articles.php:13
+msgid "maximum review value"
+msgstr ""
+
+#: options/widget.php:257
+msgid "item title"
+msgstr ""
+
+#: options/widget.php:261
+msgid "item url"
+msgstr ""
+
+#: options/widget.php:265
+msgid "item id"
+msgstr ""
+
+#: options/widget.php:269
+msgid "number of posts/pages"
+msgstr ""
+
+#: options/widget.php:273
+msgid "singular/plural word vote"
+msgstr ""
+
+#: options/widget.php:283
 msgid "Maximal character length for title"
+msgstr ""
+
+#: templates/templates.php:18
+#: gd-star-rating.php:380
+#: gd-star-rating.php:380
+msgid "Templates"
+msgstr ""
+
+#: templates/templates.php:23
+msgid "Template Elements"
+msgstr ""
+
+#: templates/templates.php:31
+msgid "Custom Elements"
+msgstr ""
+
+#: templates/templates_articles.php:1
+#: templates/templates_comments.php:1
+msgid "Rating Text"
+msgstr ""
+
+#: templates/templates_elements_articles.php:20
+msgid "post/page title"
+msgstr ""
+
+#: templates/templates_elements_articles.php:24
+msgid "url to post/page"
+msgstr ""
+
+#: templates/templates_elements_articles.php:27
+#: templates/templates_elements_comments.php:13
+msgid "rating stars"
+msgstr ""
+
+#: templates/templates_elements_articles.php:31
+#: templates/templates_elements_comments.php:17
+msgid "bayesian estimate mean rating"
+msgstr ""
+
+#: templates/templates_elements_articles.php:34
+msgid "article rating trend"
+msgstr ""
+
+#: templates/templates_elements_comments.php:3
+msgid "comment rating"
+msgstr ""
+
+#: templates/templates_elements_comments.php:6
+msgid "maximum comment rating value"
+msgstr ""
+
+#: templates/templates_elements_comments.php:10
+msgid "total votes for comment"
+msgstr ""
+
+#: templates/templates_elements_comments.php:20
+msgid "comment rating trend"
+msgstr ""
+
+#: templates/templates_elements_custom.php:3
+msgid "singlular"
+msgstr ""
+
+#: templates/templates_elements_custom.php:6
+msgid "plural"
+msgstr ""
+
+#: templates/templates_elements_custom.php:12
+msgid "this can be used to replace word 'votes', and you need to set both singular and plural form of this word"
 msgstr ""
 
 #: tinymce3/window.php:27
@@ -827,6 +863,18 @@ msgstr ""
 
 #: tinymce3/window.php:72
 msgid "Posts And Pages"
+msgstr ""
+
+#: tinymce3/window.php:79
+msgid "Sorting"
+msgstr ""
+
+#: tinymce3/window.php:85
+msgid "Post ID"
+msgstr ""
+
+#: tinymce3/window.php:86
+msgid "Post Title"
 msgstr ""
 
 #: tinymce3/window.php:105
@@ -906,18 +954,18 @@ msgstr ""
 msgid "Insert"
 msgstr ""
 
-#: gd-star-rating.php:377
-#: gd-star-rating.php:377
+#: gd-star-rating.php:378
+#: gd-star-rating.php:378
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:378
-#: gd-star-rating.php:378
+#: gd-star-rating.php:379
+#: gd-star-rating.php:379
 msgid "Plugin Settings"
 msgstr ""
 
-#: gd-star-rating.php:380
-#: gd-star-rating.php:380
+#: gd-star-rating.php:381
+#: gd-star-rating.php:381
 msgid "Votes Stats"
 msgstr ""
 
