@@ -9,26 +9,26 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: code/gd-star-dbone.php:655
+#: code/gd-star-dbone.php:589
 msgid "Show all dates"
 msgstr "Прикажи све датуме"
 
-#: code/gd-star-dbone.php:683
+#: code/gd-star-dbone.php:617
 msgid "All users and visitors"
 msgstr "Сви корисници и посетиоци"
 
-#: code/gd-star-dbone.php:684
+#: code/gd-star-dbone.php:618
 #: options/widget.php:51
 #: options/widget.php:97
 #: tinymce3/window.php:61
 msgid "Visitors Only"
 msgstr "Само Посетици"
 
-#: code/gd-star-dbone.php:685
+#: code/gd-star-dbone.php:619
 msgid "All Users"
 msgstr "Сви корисници"
 
-#: code/gd-star-dbone.php:701
+#: code/gd-star-dbone.php:635
 msgid "All categories"
 msgstr "Све категорије"
 
@@ -245,7 +245,7 @@ msgid "Comments"
 msgstr "Коментари"
 
 #: options/batch.php:0
-#: gd-star-rating.php:382
+#: gd-star-rating.php:383
 msgid "Batch Options"
 msgstr "Групне Опције"
 
@@ -537,7 +537,7 @@ msgid "Save Settings"
 msgstr "Сними подешавања"
 
 #: options/setup.php:19
-#: gd-star-rating.php:383
+#: gd-star-rating.php:384
 msgid "Setup"
 msgstr "Организација"
 
@@ -660,7 +660,7 @@ msgstr "Укупно Гласова"
 
 #: options/widget.php:116
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: options/widget.php:119
 #, fuzzy
@@ -793,7 +793,7 @@ msgid "Maximal character length for title"
 msgstr ""
 
 #: templates/templates.php:18
-#: gd-star-rating.php:380
+#: gd-star-rating.php:381
 msgid "Templates"
 msgstr "Шаблони"
 
@@ -969,15 +969,15 @@ msgstr "Откажи"
 msgid "Insert"
 msgstr "Убаци"
 
-#: gd-star-rating.php:378
+#: gd-star-rating.php:379
 msgid "Front Page"
 msgstr "Главна Страна"
 
-#: gd-star-rating.php:379
+#: gd-star-rating.php:380
 msgid "Plugin Settings"
 msgstr "Подешавања"
 
-#: gd-star-rating.php:381
+#: gd-star-rating.php:382
 msgid "Votes Stats"
 msgstr "Статистика Гласова"
 

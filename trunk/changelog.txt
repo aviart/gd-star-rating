@@ -13,6 +13,7 @@ Stable tag: trunk
 * new: introducing templates
 * new: ajax voting support
 * new: templates for rating stars text
+* new: widget supports grouping of votes
 * new: updated styles to fit wp 2.7
 * new: post review box for wp 2.7
 * new: grouping options for widget
