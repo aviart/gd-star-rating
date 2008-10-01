@@ -36,6 +36,7 @@ require_once(dirname(__FILE__)."/code/gd-star-functions.php");
 require_once(dirname(__FILE__)."/code/gd-star-render.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbone.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbtwo.php");
+require_once(dirname(__FILE__)."/code/gd-star-dbx.php");
 
 if (!class_exists('GDStarRating')) {
     class GDStarRating {
@@ -901,7 +902,7 @@ if (!class_exists('GDStarRating')) {
             global $wpdb;
             echo html_entity_decode($widget["tpl_header"]);
             
-            $sql = GDSRDatabase::get_widget($widget);
+            $sql = GDSRX::get_widget_article($widget);
             $all_rows = $wpdb->get_results($sql);
             foreach ($all_rows as $row) {
                 if ($widget['show'] == "total") {
