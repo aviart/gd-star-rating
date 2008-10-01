@@ -9,7 +9,7 @@ Stable tag: trunk
 
 == Change Log ==
 
-= Version: 0.9.6 Beta #2 / september 30 2008 =
+= Version: 0.9.6 Beta #2 / october 2 2008 =
 * new: introducing templates
 * new: ajax voting support
 * new: templates for rating stars text
@@ -20,6 +20,7 @@ Stable tag: trunk
 * edit: small changes to rendering
 * edit: changes to widget settings layout
 * edit: main class numerous improvements
+* edit: optimization of widget db code
 * fix: various small bugs
 * fix: multi byte langauge encoding problems
 * fix: manual function for adding widget content
