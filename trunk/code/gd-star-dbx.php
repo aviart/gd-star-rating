@@ -2,22 +2,39 @@
 
 class GDSRX
 {
-    function get_widget_article($widget) {
+    function get_widget($widget) {
         global $table_prefix;
-        $where = array();
-        $sql = "";
-
+        $grouping = $widget["grouping"];
         $cats = $widget["category"];
+        $where = array();
+        $select = "";
+
         $where[] = "p.id = d.post_id";
         $where[] = "p.post_status = 'publish'";
         
-        if ($cats != "" && $cats != "0"){
+        if (($cats != "" && $cats != "0") || $grouping == 'category'){
             $from = sprintf("%sterm_taxonomy t, %sterm_relationships r, ", $table_prefix, $table_prefix);
             $where[] = "t.term_taxonomy_id = r.term_taxonomy_id";
             $where[] = "r.object_id = p.id";
-            $where[] = "t.term_id = ".$cats;
         }
-        else $from = "";
+        if ($cats != "" && $cats != "0")
+            $where[] = "t.term_id = ".$cats;
+        if ($grouping == 'category') {
+            $from.= sprintf("%sterms x, ", $table_prefix);
+            $where[] = "t.taxonomy = 'category'";
+            $where[] = "t.term_id = x.term_id";
+            $select = "x.name as title, t.term_id, count(*) as counter, sum(d.user_votes) as user_votes, sum(d.visitor_votes) as visitor_votes, sum(d.user_voters) as user_voters, sum(d.visitor_voters) as visitor_voters";
+            $group = "group by t.term_id";
+        }
+        else if ($grouping == 'user') {
+            $from.= sprintf("%susers u, ", $table_prefix);
+            $where[] = "u.id = p.post_author";
+            $select = "u.display_name as title, u.id, count(*) as counter, sum(d.user_votes) as user_votes, sum(d.visitor_votes) as visitor_votes, sum(d.user_voters) as user_voters, sum(d.visitor_voters) as visitor_voters";
+            $group = "group by u.id";
+        }
+        else {
+            $select = "p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter";
+        }
 
         if ($widget["select"] != "" && $widget["select"] != "postpage") 
             $where[] = "post_type = '".$widget["select"]."'";
@@ -67,15 +84,10 @@ class GDSRX
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
         
-        $sql = sprintf("select p.id as post_id, p.post_title, p.post_type, p.post_date, d.* from %s%sposts p, %sgdsr_data_article d where %s order by %s %s limit 0, %s",
-                $from, $table_prefix, $table_prefix, join(" and ", $where), $col, $sort, $widget["rows"]
+        $sql = sprintf("select %s from %s%sposts p, %sgdsr_data_article d where %s %s order by %s %s limit 0, %s",
+                $select, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]
             );
+//        echo $sql;
         return $sql;
-    }
-    
-    function get_widget_user($widget) {
-    }
-    
-    function get_widget_category($widget) {
     }
 }

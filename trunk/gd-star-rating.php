@@ -902,7 +902,7 @@ if (!class_exists('GDStarRating')) {
             global $wpdb;
             echo html_entity_decode($widget["tpl_header"]);
             
-            $sql = GDSRX::get_widget_article($widget);
+            $sql = GDSRX::get_widget($widget);
             $all_rows = $wpdb->get_results($sql);
             foreach ($all_rows as $row) {
                 if ($widget['show'] == "total") {
@@ -916,27 +916,42 @@ if (!class_exists('GDStarRating')) {
                 if ($widget['show'] == "users") {
                     $votes = $row->user_votes ;
                     $voters = $row->user_voters;
-                }                
+                }
 
                 if ($voters == 0) $rating = 0;
                 else $rating = @number_format($votes / $voters, 1);
                 
-                $title = $row->post_title;
+                $title = $row->title;
                 if ($widget["tpl_title_length"] > 0)
                     $title = substr($title, 0, $widget["tpl_title_length"])."...";
+                
+                switch ($widget["grouping"])
+                {
+                    case "post":
+                        $permalink = get_permalink($row->post_id);
+                        break;
+                    case "category":
+                        $permalink = get_category_link($row->term_id);
+                        break;
+                    case "user":
+                        $permalink = get_bloginfo('url')."/index.php?author=".$row->id;
+                        break;
+                }
                 
                 if ($voters > 1) $tense = $this->x["word_votes_plural"];
                 else $tense = $this->x["word_votes_singular"];
                 
                 $item = html_entity_decode($widget["tpl_item"]);
+                
                 $item = str_replace('%RATING%', $rating, $item);
                 $item = str_replace('%MAX_RATING%', $this->o["stars"], $item);
                 $item = str_replace('%VOTES%', $voters, $item);
                 $item = str_replace('%REVIEW%', $row->review, $item);
                 $item = str_replace('%MAX_REVIEW%', $this->o["review_stars"], $item);
                 $item = str_replace('%TITLE%', $title, $item);
-                $item = str_replace('%PERMALINK%', get_permalink($row->post_id), $item);
-                $item = str_replace('%ID%', $item->post_id, $item);
+                $item = str_replace('%PERMALINK%', $permalink, $item);
+                $item = str_replace('%ID%', $row->post_id, $item);
+                $item = str_replace('%COUNT%', $row->counter, $item);
                 $item = str_replace('%WORD_VOTES%', $tense, $item);
 
                 echo $item;
