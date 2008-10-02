@@ -1,32 +1,25 @@
-=== GD Star Rating ===
-Contributors: gdragon
-Donate link: http://wp.gdragon.info/donate/
-Version: 0.9.6
-Tags: vote, ratings, post, page, widget, rating, star, gdragon
-Requires at least: 2.5
-Tested up to: 2.7.0
-Stable tag: trunk
+= GD Star Rating =
 
 == Languages ==
 
-= English =
+=== English ===
 * version: 0.9.6
 * author: Milan Petrovic
 * email: milan@gdragon.info
 * web: http://www.gdragon.info/
 
-= Serbian =
+=== Serbian ===
 * version: 0.9.6
 * author: Milan Petrovic
 * email: milan@gdragon.info
 * web: http://www.gdragon.info/
 
-= Spanish =
+=== Spanish ===
 * version: 0.9.5
 * author: Ángel Guzmán Maeso
 * email: shakaran@gmail.com
 
-= French =
+=== French ===
 * version: 0.9.2
 * author: k|torz
 * email: vlag@free.fr
