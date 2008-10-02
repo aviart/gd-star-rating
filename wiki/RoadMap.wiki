@@ -1,0 +1,26 @@
+#summary Development Roadmap
+
+= Introduction =
+
+Roadmap is only here for orientation, and is a subject of changes.
+
+== Roadmap ==
+
+=== 0.9.7 ===
+  * trend display
+  * front page
+
+=== 1.0.0 ===
+  * updated user guide
+  * control panel improvements
+
+=== 1.0.5 ===
+  * amazon-like rating categories widget
+  * customization of bot filter
+
+=== 1.1.0 ===
+  * multi rating support (more details to follow)
+  * reccomendation ratings (more details to follow)
+
+=== 1.2.0 ===
+  * changing vote (like wordpress extend website)
