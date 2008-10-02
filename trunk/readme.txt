@@ -2,7 +2,7 @@
 Contributors: gdragon
 Donate link: http://wp.gdragon.info/donate/
 Version: 0.9.6
-Tags: vote, ratings, post, page, widget, rating, star, gdragon
+Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates
 Requires at least: 2.5
 Tested up to: 2.7.0
 Stable tag: trunk
