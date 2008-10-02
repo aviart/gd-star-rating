@@ -342,7 +342,7 @@ msgstr "Статистика"
 
 #: options/settings.php:156
 msgid "Bayesian Estimate Mean"
-msgstr ""
+msgstr "Бајесова Процењена Средина"
 
 #: options/settings.php:160
 msgid "Trend Calculations"
@@ -370,7 +370,7 @@ msgstr "Опције плугина"
 
 #: options/settings.php:202
 msgid "AJAX enabled rating."
-msgstr ""
+msgstr "AJAX гласање."
 
 #: options/settings.php:204
 msgid "Moderation options and handling."
@@ -394,7 +394,7 @@ msgstr "Виџети"
 
 #: options/settings.php:215
 msgid "GD Star Rating: Post/Page rating widget."
-msgstr ""
+msgstr "GD Star Rating: Post/Page rating widget."
 
 #: options/settings.php:220
 msgid "Stars Preview"
@@ -598,19 +598,17 @@ msgstr "Сакриј виџет"
 
 #: options/widget.php:58
 msgid "Items Grouping"
-msgstr ""
+msgstr "Груписање"
 
 #: options/widget.php:61
 msgid "No grouping"
-msgstr ""
+msgstr "Без груписања"
 
 #: options/widget.php:62
-#, fuzzy
 msgid "User based"
 msgstr "Корисници"
 
 #: options/widget.php:63
-#, fuzzy
 msgid "Category based"
 msgstr "Категорија"
 
@@ -649,7 +647,6 @@ msgid "Number Of Posts"
 msgstr "Број Чланака"
 
 #: options/widget.php:111
-#, fuzzy
 msgid "Sorting Column"
 msgstr "Колона За Сортирање"
 
@@ -663,12 +660,10 @@ msgid "ID"
 msgstr "ID"
 
 #: options/widget.php:119
-#, fuzzy
 msgid "Count"
-msgstr "Коментар"
+msgstr "Збир"
 
 #: options/widget.php:125
-#, fuzzy
 msgid "Sorting Order"
 msgstr "Редослед Сортирања"
 
@@ -744,17 +739,17 @@ msgstr "Футер"
 #: options/widget.php:237
 #: templates/templates_elements_articles.php:3
 msgid "article rating"
-msgstr ""
+msgstr "рејтинг чланка"
 
 #: options/widget.php:241
 #: templates/templates_elements_articles.php:6
 msgid "maximum rating value"
-msgstr ""
+msgstr "максимална вредност рејтинга"
 
 #: options/widget.php:245
 #: templates/templates_elements_articles.php:17
 msgid "total votes for article"
-msgstr ""
+msgstr "укупно гласова за чланак"
 
 #: options/widget.php:249
 #: templates/templates_elements_articles.php:10
@@ -764,33 +759,31 @@ msgstr "критика чланка"
 #: options/widget.php:253
 #: templates/templates_elements_articles.php:13
 msgid "maximum review value"
-msgstr ""
+msgstr "максимална вреност криткике"
 
 #: options/widget.php:257
-#, fuzzy
 msgid "item title"
 msgstr "назив чланка"
 
 #: options/widget.php:261
 msgid "item url"
-msgstr ""
+msgstr "url чланка"
 
 #: options/widget.php:265
 msgid "item id"
-msgstr ""
+msgstr "ид чланка"
 
 #: options/widget.php:269
-#, fuzzy
 msgid "number of posts/pages"
-msgstr "Број Чланака"
+msgstr "број чланака"
 
 #: options/widget.php:273
 msgid "singular/plural word vote"
-msgstr ""
+msgstr "једнина/множина речи глас"
 
 #: options/widget.php:283
 msgid "Maximal character length for title"
-msgstr ""
+msgstr "Максимална дужина назива чланка"
 
 #: templates/templates.php:18
 #: gd-star-rating.php:381
@@ -816,7 +809,7 @@ msgstr "назив чланка"
 
 #: templates/templates_elements_articles.php:24
 msgid "url to post/page"
-msgstr ""
+msgstr "url до чланка"
 
 #: templates/templates_elements_articles.php:27
 #: templates/templates_elements_comments.php:13
@@ -826,7 +819,7 @@ msgstr "рејтинг звезде"
 #: templates/templates_elements_articles.php:31
 #: templates/templates_elements_comments.php:17
 msgid "bayesian estimate mean rating"
-msgstr ""
+msgstr "рејтинг бајесова броцењена средина"
 
 #: templates/templates_elements_articles.php:34
 msgid "article rating trend"
@@ -838,7 +831,7 @@ msgstr "рејтинг коментара"
 
 #: templates/templates_elements_comments.php:6
 msgid "maximum comment rating value"
-msgstr ""
+msgstr "максимална вредност коментара"
 
 #: templates/templates_elements_comments.php:10
 msgid "total votes for comment"
@@ -858,7 +851,7 @@ msgstr "множина"
 
 #: templates/templates_elements_custom.php:12
 msgid "this can be used to replace word 'votes', and you need to set both singular and plural form of this word"
-msgstr ""
+msgstr "ово се може користити да замени реч 'глас', и потребно је да се подеси и једнина и множина ове речи"
 
 #: tinymce3/window.php:27
 msgid "Shortcode"
