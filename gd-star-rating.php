@@ -71,7 +71,7 @@ if (!class_exists('GDStarRating')) {
         
         var $default_options = array(
             "version" => "0.9.6",
-            "date" => "2008.10.01.",
+            "date" => "2008.10.02.",
             "status" => "Beta",
             "ie_png_fix" => 1,
             "ajax" => 1,

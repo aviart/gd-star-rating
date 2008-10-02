@@ -39,49 +39,6 @@ class GDSRDB
         $wpdb->query("DROP TABLE $dbt_moderate");
     }
     
-    function upgrade_database_092() {
-        global $wpdb, $table_prefix;
-
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment ADD review DECIMAL(3,1) DEFAULT -1 AFTER visitor_votes");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment ADD review_text VARCHAR(255) DEFAULT NULL AFTER review");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article ADD review_text VARCHAR(255) DEFAULT NULL AFTER review");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article CHANGE user_votes user_votes DECIMAL(11,1) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article CHANGE visitor_votes visitor_votes DECIMAL(11,1) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment CHANGE user_votes user_votes DECIMAL(11,1) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment CHANGE visitor_votes visitor_votes DECIMAL(11,1) DEFAULT 0");
-    }
-    
-    function upgrade_database_088() {
-        global $wpdb, $table_prefix;
-
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment CHANGE comment_id comment_id INTEGER(11) UNSIGNED NOT NULL");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment CHANGE user_votes user_votes DECIMAL(11,1) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment CHANGE visitor_votes visitor_votes DECIMAL(11,1) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article CHANGE post_id post_id INTEGER(11) UNSIGNED NOT NULL");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article CHANGE review review DECIMAL(3,1) DEFAULT -1");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article CHANGE user_votes user_votes DECIMAL(11,1) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article CHANGE visitor_votes visitor_votes DECIMAL(11,1) DEFAULT 0");
-
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article ADD views INTEGER(11) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article ADD user_recc_plus INTEGER(11) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article ADD user_recc_minus INTEGER(11) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article ADD visitor_recc_plus INTEGER(11) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article ADD visitor_recc_minus INTEGER(11) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article ADD review_text VARCHAR(255) DEFAULT NULL AFTER review");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment ADD post_id INTEGER(11) DEFAULT -1 AFTER comment_id");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment ADD user_recc_plus INTEGER(11) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment ADD user_recc_minus INTEGER(11) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment ADD visitor_recc_plus INTEGER(11) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment ADD visitor_recc_minus INTEGER(11) DEFAULT 0");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment ADD review DECIMAL(3,1) DEFAULT -1 AFTER visitor_votes");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_comment ADD review_text VARCHAR(255) DEFAULT NULL AFTER review");
-
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_moderate ADD record_id INTEGER(11) PRIMARY KEY AUTO_INCREMENT NOT NULL FIRST");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_votes_log ADD record_id INTEGER(11) PRIMARY KEY AUTO_INCREMENT NOT NULL FIRST");
-        
-        $wpdb->query("UPDATE ".$table_prefix."gdsr_data_comment d inner join $wpdb->comments c on c.comment_id = d.comment_id SET d.post_id = c.comment_post_id");
-    }
-    
     function install_database() {
         global $wpdb, $table_prefix;
 
