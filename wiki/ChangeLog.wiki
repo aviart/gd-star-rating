@@ -1,10 +1,11 @@
 #summary Detailed list of changes
+#labels Featured
 
 = Introduction =
 
 This is the list of changes for each release of the plugin.
 
-== ChangeLog ==
+== Change log ==
 
 === Version: 0.9.6 Beta #2 / october 2 2008 ===
   * new: introducing templates
