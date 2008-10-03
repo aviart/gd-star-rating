@@ -3,7 +3,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 0.9.6
+Version: 0.9.7
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -70,8 +70,8 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "version" => "0.9.6",
-            "date" => "2008.10.02.",
+            "version" => "0.9.7",
+            "date" => "2008.10.03.",
             "status" => "Beta",
             "ie_png_fix" => 1,
             "ajax" => 1,
@@ -544,7 +544,10 @@ if (!class_exists('GDStarRating')) {
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_article.css.php?stars='.$article.'" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment.css.php?stars='.$comment.'" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/rating.css" type="text/css" media="screen" />');
-            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating.js.php"></script>');
+            echo('<script>');
+            echo('function gdsrWait(rater, loader) { jQuery("#"+rater).css("display", "none"); jQuery("#"+loader).css("display", "block"); }');
+            if ($this->o["ajax"] == 1) include (dirname(__FILE__)."/code/gd-star-js.php");
+            echo('</script>');
             
             if ($this->o["ie_png_fix"] == 1) $this->ie_png_fix();
         }
