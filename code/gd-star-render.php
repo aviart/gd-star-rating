@@ -6,7 +6,7 @@ class GDSRRender
         $rater = '<div id="'.$rater_id.'" class="'.$class.'"><div class="starsbar">';
         $rater.= '<div class="outer" align="left"><div id="gdr_vote_'.$id.'" style="width: '.$rating_width.'px;" class="inner"></div>';
         if ($allow_vote) {
-            $rater.= '<div id="gdr_stars_'.$id.'">';
+            $rater.= '<div id="gdr_stars_'.$id.'" class="gdsr_rating_as">';
             for ($ic = 0; $ic < $unit_count; $ic++) {
                 $ncount = $unit_count - $ic;
                 $url = $_SERVER['REQUEST_URI'];
@@ -20,7 +20,8 @@ class GDSRRender
                     $rater.='<a href="'.$vote_get.'" title="'.$ncount.' out of '.$unit_count.'" class="s'.$ncount.'" rel="nofollow" onclick="gdsrWait(\''.$rater_id.'\', \''.$loader_id.'\')"></a>';
                 }
                 else {
-                    $rater.='<a title="'.$ncount.' out of '.$unit_count.'" class="s'.$ncount.'" rel="nofollow" onclick="gdsrVote(\''.$id.'\', \''.$ncount.'\', \''.$user_id.'\', \''.$type.'\', \''.$rater_id.'\', \''.$loader_id.'\')"></a>';
+                    $ajax_id = sprintf("%s|%s|%s|%s|%s|%s", $id, $ncount, $user_id, $type, $rater_id, $loader_id);
+                    $rater.='<a id="'.$ajax_id.'" title="'.$ncount.' out of '.$unit_count.'" class="s'.$ncount.'" rel="nofollow"></a>';
                 }
             }
             $rater.= '</div>';
