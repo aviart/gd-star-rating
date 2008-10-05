@@ -67,6 +67,34 @@ function gdsrShowHidePreview(gdid, index) {
   </tr>
 </table>
 <div class="gdsr-table-split"></div>
+
+<input type="hidden" id="gdstarr-divtrend[<?php echo $wpnm; ?>]" name="<?php echo $wpfn; ?>[div_trend]" value="<?php echo $wpno['div_trend'] ?>" />
+<div id="gdstarr-divtrend-off[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_trend'] == '1' ? 'none' : 'block' ?>">
+<table border="0" cellpadding="2" cellspacing="0" width="100%"> 
+  <tr>
+    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divtrend', '<?php echo $wpnm; ?>')"><?php _e("Trend", "gd-star-rating"); ?></a></strong></td>
+    <td align="right"><?php _e("Click on the header title to display the options.", "gd-star-rating"); ?></td>
+  </tr>
+</table>
+</div>
+<div id="gdstarr-divtrend-on[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_trend'] == '1' ? 'block' : 'none' ?>">
+<table border="0" cellpadding="2" cellspacing="0" width="100%"> 
+  <tr>
+    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divtrend', '<?php echo $wpnm; ?>')"><?php _e("Trend", "gd-star-rating"); ?></a></strong></td>
+    <td nowrap="nowrap" colspan="2" height="25">
+        <label for="gdstarr-trendrating" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['trends_rating'] ? 'checked="checked"' : ''; ?> id="gdstarr-trendrating" name="<?php echo $wpfn; ?>[trends_rating]" /> <?php _e("Calculate rating trends.", "gd-star-rating"); ?></label>
+    </td>
+  </tr>
+  <tr>
+    <td width="100"></td>
+    <td nowrap="nowrap" colspan="2" height="25">
+        <label for="gdstarr-trendvoting" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['trends_voting'] ? 'checked="checked"' : ''; ?> id="gdstarr-trendvoting" name="<?php echo $wpfn; ?>[trends_voting]" /> <?php _e("Calculate voting trends.", "gd-star-rating"); ?></label>
+    </td>
+  </tr>
+</table>
+</div>
+<div class="gdsr-table-split"></div>
+
 <input type="hidden" id="gdstarr-divfilter[<?php echo $wpnm; ?>]" name="<?php echo $wpfn; ?>[div_filter]" value="<?php echo $wpno['div_filter'] ?>" />
 <div id="gdstarr-divfilter-off[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_filter'] == '1' ? 'none' : 'block' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
@@ -133,10 +161,14 @@ function gdsrShowHidePreview(gdid, index) {
   </tr>
   <tr>
     <td width="100"></td>
-    <td nowrap="nowrap" colspan="2">
-        <label for="gdpnav-fhIdent" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_empty'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidempty" name="<?php echo $wpfn; ?>[hidempty]" /> <?php _e("Hide articles with no recorded votes.", "gd-star-rating"); ?></label>
-        <br />
-        <label for="gdpnav-fhIdent" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_noreview'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidenoreview" name="<?php echo $wpfn; ?>[hidenoreview]" /> <?php _e("Hide articles with no review values.", "gd-star-rating"); ?></label>
+    <td nowrap="nowrap" colspan="2" height="25">
+        <label for="gdstarr-hidempty" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_empty'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidempty" name="<?php echo $wpfn; ?>[hidempty]" /> <?php _e("Hide articles with no recorded votes.", "gd-star-rating"); ?></label>
+    </td>
+  </tr>
+  <tr>
+    <td width="100"></td>
+    <td nowrap="nowrap" colspan="2" height="25">
+        <label for="gdstarr-hidenoreview" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_noreview'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidenoreview" name="<?php echo $wpfn; ?>[hidenoreview]" /> <?php _e("Hide articles with no review values.", "gd-star-rating"); ?></label>
     </td>
   </tr>
   <tr>
@@ -205,6 +237,7 @@ function gdsrShowHidePreview(gdid, index) {
 </div>
 </div>
 <div class="gdsr-table-split"></div>
+
 <input type="hidden" id="gdstarr-divtemplate[<?php echo $wpnm; ?>]" name="<?php echo $wpfn; ?>[div_template]" value="<?php echo $wpno['div_template'] ?>" />
 <div id="gdstarr-divtemplate-off[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_template'] == '1' ? 'none' : 'block' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%" style="margin-bottom: 10px"> 
@@ -215,9 +248,22 @@ function gdsrShowHidePreview(gdid, index) {
 </table>
 </div>
 <div id="gdstarr-divtemplate-on[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_template'] == '1' ? 'block' : 'none' ?>">
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="100"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divtemplate', '<?php echo $wpnm; ?>')"><?php _e("Template", "gd-star-rating"); ?></a></strong></td>
+    <td nowrap="nowrap"><?php _e("Maximal character length for title", "gd-star-rating"); ?>:</td>
+    <td align="right"><input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[title_max]" id="gdstarr-titlemax" value="<?php echo $wpno["tpl_title_length"]; ?>" /></td>
+  </tr>
+</table>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="100"></td>
+    <td colspan="2"><div class="gdsr-table-split-filter"></div></td>
+  </tr>
+</table>
 <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
   <tr>
-    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divtemplate', '<?php echo $wpnm; ?>')"><?php _e("Template", "gd-star-rating"); ?></a></strong></td>
+    <td width="100" valign="top"></td>
     <td width="80" nowrap="nowrap"><?php _e("Header", "gd-star-rating"); ?>:</td>
     <td align="right"><input class="widefat" style="width: 200px" type="text" name="<?php echo $wpfn; ?>[tpl_header]" id="gdstarr-tplheader" value="<?php echo wp_specialchars($wpno["tpl_header"]); ?>" /></td>
   </tr>
@@ -235,6 +281,22 @@ function gdsrShowHidePreview(gdid, index) {
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100"></td>
+    <td colspan="2"><div class="gdsr-table-split-filter"></div></td>
+  </tr>
+</table>
+<input type="hidden" id="gdstarr-divelemets[<?php echo $wpnm; ?>]" name="<?php echo $wpfn; ?>[div_elements]" value="<?php echo $wpno['div_elements'] ?>" />
+<div id="gdstarr-divelemets-off[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_elements'] == '1' ? 'none' : 'block' ?>">
+<table border="0" cellpadding="2" cellspacing="0" width="100%" style="margin-bottom: 10px"> 
+  <tr>
+    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divelemets', '<?php echo $wpnm; ?>')"><?php _e("Elements", "gd-star-rating"); ?></a></strong></td>
+    <td align="right"><?php _e("Click on the header title to display the options.", "gd-star-rating"); ?></td>
+  </tr>
+</table>
+</div>
+<div id="gdstarr-divelemets-on[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_elements'] == '1' ? 'block' : 'none' ?>">
+<table border="0" cellpadding="2" cellspacing="0" width="100%" style="margin-bottom: 10px">
+  <tr>
+    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divelemets', '<?php echo $wpnm; ?>')"><?php _e("Elements", "gd-star-rating"); ?></a></strong></td>
     <td><strong>%RATING%</strong></td><td> : <?php _e("article rating", "gd-star-rating"); ?></td>
   </tr>
   <tr>
@@ -259,6 +321,14 @@ function gdsrShowHidePreview(gdid, index) {
   </tr>
   <tr>
     <td width="100"></td>
+    <td><strong>%RATE_TREND%</strong></td><td> : <?php _e("rating trend", "gd-star-rating"); ?></td>
+  </tr>
+  <tr>
+    <td width="100"></td>
+    <td><strong>%VOTE_TREND%</strong></td><td> : <?php _e("voting trend", "gd-star-rating"); ?></td>
+  </tr>
+  <tr>
+    <td width="100"></td>
     <td><strong>%PERMALINK%</strong></td><td> : <?php _e("item url", "gd-star-rating"); ?></td>
   </tr>
   <tr>
@@ -273,17 +343,7 @@ function gdsrShowHidePreview(gdid, index) {
     <td width="100"></td>
     <td><strong>%WORD_VOTES%</strong></td><td> : <?php _e("singular/plural word vote", "gd-star-rating"); ?></td>
   </tr>
-  <tr>
-    <td width="100"></td>
-    <td colspan="2"><div class="gdsr-table-split-filter"></div></td>
-  </tr>
 </table>
-<table border="0" cellpadding="2" cellspacing="0" width="100%" style="margin-bottom: 10px">
-  <tr>
-    <td width="100"></td>
-    <td nowrap="nowrap"><?php _e("Maximal character length for title", "gd-star-rating"); ?>:</td>
-    <td align="right"><input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[title_max]" id="gdstarr-titlemax" value="<?php echo $wpno["tpl_title_length"]; ?>" /></td>
-  </tr>
-</table>
+</div>
 </div>
 <input type="hidden" id="gdstarr-submit" name="<?php echo $wpfn; ?>[submit]" value="1" />
