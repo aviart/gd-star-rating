@@ -48,6 +48,7 @@ if (!class_exists('GDStarRating')) {
         var $plugin_url;
         var $plugin_path;
         var $styles;
+        var $trends;
         
         var $o;
         var $w;
@@ -131,7 +132,9 @@ if (!class_exists('GDStarRating')) {
             "default_voterules_articles" => 'A',
             "default_voterules_comments" => 'A',
             "stats_trend_history" => 30,
-            "stats_trend_current" => 3
+            "stats_trend_current" => 3,
+            "trend_last" => 1,
+            "trend_over" => 30
         );
         
         var $default_widget = array(
@@ -156,8 +159,12 @@ if (!class_exists('GDStarRating')) {
             "publish_range_from" => "YYYYMMDD",
             "publish_range_to" => "YYYYMMDD",
             "div_template" => '0',
-            "div_filter" => '1',
-            "grouping" => 'post'
+            "div_filter" => '0',
+            "div_trend" => '0',
+            "div_elements" => '0',
+            "grouping" => 'post',
+            "trends_rating" => '0',
+            "trends_voting" => '0'
         );
         
         var $default_shortcode = array(
@@ -184,7 +191,10 @@ if (!class_exists('GDStarRating')) {
         
         function GDStarRating() {
             include(dirname(__FILE__)."/stars/stars.php");
+            include(dirname(__FILE__)."/trends/trends.php");
             $this->styles = $gdsr_styles;
+            $this->trends = $gdsr_trends;
+            
             $this->tabpage = "front";
 
             $this->active_wp_page();
@@ -857,6 +867,9 @@ if (!class_exists('GDStarRating')) {
                     $options['publish_range_to'] = $posted['publish_range_to'];
                     $options['div_template'] = $posted['div_template'];
                     $options['div_filter'] = $posted['div_filter'];
+                    $options['div_trend'] = $posted['div_trend'];
+                    $options['div_elements'] = $posted['div_elements'];
+                    $options['calculate_trends'] = $posted['calculate_trends'];
                     
                     $options['hide_empty'] = isset($posted['hidempty']) ? 1 : 0;
                     $options['hide_noreview'] = isset($posted['hidenoreview']) ? 1 : 0;

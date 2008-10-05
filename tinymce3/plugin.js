@@ -18,8 +18,8 @@
 			ed.addCommand('mceStarRating', function() {
 				ed.windowManager.open({
 					file : url + '/window.php',
-					width : 320 + ed.getLang('StarRating.delta_width', 0),
-					height : 200 + ed.getLang('StarRating.delta_height', 0),
+					width : 480 + ed.getLang('StarRating.delta_width', 0),
+					height : 320 + ed.getLang('StarRating.delta_height', 0),
 					inline : 1
 				}, {
 					plugin_url : url // Plugin absolute URL
@@ -65,7 +65,7 @@
 					author 	  : 'Milan Petrovic',
 					authorurl : 'http://wp.gdragon.info/',
 					infourl   : 'http://wp.gdragon.info/',
-					version   : "1.0"
+					version   : "2.0"
 			};
 		}
 	});
