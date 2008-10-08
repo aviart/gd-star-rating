@@ -2,7 +2,10 @@
 
 == Change Log ==
 
-=== Version: 0.9.6.1 / october 3 2008 ===
+=== Version: 0.9.7 / october 10 2008 ===
+  * new: famfamfam trend icons
+  * new: trend calculations
+  * edit: more widget redesign
   * edit: rewriten ajax code and moved to document ready
   * fix: missing overlay stars on ie browsers
   * fix: unneeded loading of ajax code if ajax is disabled
