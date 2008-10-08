@@ -2,8 +2,8 @@
 
 == Roadmap ==
 
-=== 0.9.7 ===
-  * trend display
+=== 0.9.9 ===
+  * more template improvements
   * front page
 
 === 1.0.0 ===

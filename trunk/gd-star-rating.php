@@ -72,7 +72,7 @@ if (!class_exists('GDStarRating')) {
         
         var $default_options = array(
             "version" => "0.9.7",
-            "date" => "2008.10.03.",
+            "date" => "2008.10.11.",
             "status" => "Beta",
             "ie_png_fix" => 1,
             "ajax" => 1,
@@ -869,7 +869,6 @@ if (!class_exists('GDStarRating')) {
                     $options['div_filter'] = $posted['div_filter'];
                     $options['div_trend'] = $posted['div_trend'];
                     $options['div_elements'] = $posted['div_elements'];
-                    $options['calculate_trends'] = $posted['calculate_trends'];
                     
                     $options['hide_empty'] = isset($posted['hidempty']) ? 1 : 0;
                     $options['hide_noreview'] = isset($posted['hidenoreview']) ? 1 : 0;
@@ -891,7 +890,7 @@ if (!class_exists('GDStarRating')) {
             
             $wpfn = 'gdstarr['.$wpnm.']';
                 
-            include("options/widget.php");
+            include("widgets/widget.php");
         }
         
         function widget_articles_display($args, $widget_args = 1) {
