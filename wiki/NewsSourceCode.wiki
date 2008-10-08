@@ -1,0 +1,8 @@
+#summary News about changes to the sources
+
+= Introduction =
+
+All source code related news will be announced here.
+
+=== october 9 2008 ==
+  * docs folder added to svn with documentation
