@@ -1,4 +1,5 @@
 #summary News about changes to the sources
+#labels News,Documentation
 
 = Introduction =
 
