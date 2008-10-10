@@ -20,6 +20,11 @@ function gdsrChangeDate(el, index) {
     document.getElementById("gdsr-pd-range["+index+"]").style.display = el == "range" ? "block" : "none";
 }
 
+function gdsrChangeTrend(trend, el, index) {
+    document.getElementById("gdsr-"+trend+"-txt["+index+"]").style.display = el == "txt" ? "block" : "none";
+    document.getElementById("gdsr-"+trend+"-img["+index+"]").style.display = el == "img" ? "block" : "none";
+}
+
 function gdsrShowHidePreview(gdid, index) {
     var preview = document.getElementById(gdid+'-on['+index+']');
     var message = document.getElementById(gdid+'-off['+index+']');
@@ -81,14 +86,30 @@ function gdsrShowHidePreview(gdid, index) {
 <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
   <tr>
     <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divtrend', '<?php echo $wpnm; ?>')"><?php _e("Trend", "gd-star-rating"); ?></a></strong></td>
-    <td nowrap="nowrap" colspan="2" height="25">
-        <label for="gdstarr-trendrating" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['trends_rating'] ? 'checked="checked"' : ''; ?> id="gdstarr-trendrating" name="<?php echo $wpfn; ?>[trends_rating]" /> <?php _e("Calculate rating trends.", "gd-star-rating"); ?></label>
+    <td width="150" nowrap="nowrap"><?php _e("Rating trend display as", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <select name="<?php echo $wpfn; ?>[trend_rating]" style="width: 110px" id="gdstarr-trend-rating" onchange="gdsrChangeTrend('tr', this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
+            <option value="txt"<?php echo $wpno['trend_rating'] == 'txt' ? ' selected="selected"' : ''; ?>><?php _e("Text", "gd-star-rating"); ?></option>
+            <option value="img"<?php echo $wpno['trend_rating'] == 'img' ? ' selected="selected"' : ''; ?>><?php _e("Image", "gd-star-rating"); ?></option>
+        </select>
     </td>
   </tr>
+</table>  
+<div id="gdsr-tr-txt[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_rating'] == 'txt' ? 'block' : 'none' ?>">
+
+</div>
+<div id="gdsr-tr-img[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_rating'] == 'img' ? 'block' : 'none' ?>">
+
+</div>
+<table border="0" cellpadding="2" cellspacing="0" width="100%"> 
   <tr>
     <td width="100"></td>
-    <td nowrap="nowrap" colspan="2" height="25">
-        <label for="gdstarr-trendvoting" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['trends_voting'] ? 'checked="checked"' : ''; ?> id="gdstarr-trendvoting" name="<?php echo $wpfn; ?>[trends_voting]" /> <?php _e("Calculate voting trends.", "gd-star-rating"); ?></label>
+    <td width="150" nowrap="nowrap"><?php _e("Voting trend display as", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <select name="<?php echo $wpfn; ?>[trend_voting]" style="width: 110px" id="gdstarr-trend-voting" onchange="gdsrChangeTrend('tv', this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
+            <option value="txt"<?php echo $wpno['trend_voting'] == 'txt' ? ' selected="selected"' : ''; ?>><?php _e("Text", "gd-star-rating"); ?></option>
+            <option value="img"<?php echo $wpno['trend_voting'] == 'img' ? ' selected="selected"' : ''; ?>><?php _e("Image", "gd-star-rating"); ?></option>
+        </select>
     </td>
   </tr>
 </table>
