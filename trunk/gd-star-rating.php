@@ -59,8 +59,7 @@ if (!class_exists('GDStarRating')) {
         var $shortcodes = array(
             "starrating",
 			"starreview",
-			"starrater",
-            "starratercomment"
+			"starrater"
         );
         
         var $default_templates = array(
@@ -163,8 +162,16 @@ if (!class_exists('GDStarRating')) {
             "div_trend" => '0',
             "div_elements" => '0',
             "grouping" => 'post',
-            "trends_rating" => '0',
-            "trends_voting" => '0'
+            "trends_rating" => 'txt',
+            "trends_rating_rise" => '+',
+            "trends_rating_same" => '+',
+            "trends_rating_fall" => '+',
+            "trends_rating_set" => 'famfamfam',
+            "trends_voting" => 'txt',
+            "trends_voting_rise" => '+',
+            "trends_voting_same" => '+',
+            "trends_voting_fall" => '+',
+            "trends_voting_set" => 'famfamfam'
         );
         
         var $default_shortcode = array(
@@ -233,11 +240,6 @@ if (!class_exists('GDStarRating')) {
             echo $this->render_article($post, $userdata);
 		}
         
-        function shortcode_starratercomment($atts) {
-            global $comment, $post, $userdata;
-            echo $this->render_comment($post, $comment, $userdata);
-        }
-
 		function shortcode_starreview($atts) {
             global $post;
             $rating = GDSRDatabase::get_review($post->ID);
