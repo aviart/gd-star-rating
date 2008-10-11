@@ -134,5 +134,6 @@
 </form>
 
 <script>
-    gdsrStyleSelection(0);
+    gdsrStyleSelection('stars');
+    gdsrStyleSelection('trends');
 </script>

@@ -90,13 +90,13 @@ function gdsrShowHidePreview(gdid, index) {
     <td width="150" nowrap="nowrap"><?php _e("Rating trend display as", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select name="<?php echo $wpfn; ?>[trend_rating]" style="width: 110px" id="gdstarr-trend-rating" onchange="gdsrChangeTrend('tr', this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
-            <option value="txt"<?php echo $wpno['trend_rating'] == 'txt' ? ' selected="selected"' : ''; ?>><?php _e("Text", "gd-star-rating"); ?></option>
-            <option value="img"<?php echo $wpno['trend_rating'] == 'img' ? ' selected="selected"' : ''; ?>><?php _e("Image", "gd-star-rating"); ?></option>
+            <option value="txt"<?php echo $wpno['trends_rating'] == 'txt' ? ' selected="selected"' : ''; ?>><?php _e("Text", "gd-star-rating"); ?></option>
+            <option value="img"<?php echo $wpno['trends_rating'] == 'img' ? ' selected="selected"' : ''; ?>><?php _e("Image", "gd-star-rating"); ?></option>
         </select>
     </td>
   </tr>
 </table>  
-<div id="gdsr-tr-txt[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_rating'] == 'txt' ? 'block' : 'none' ?>">
+<div id="gdsr-tr-txt[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trends_rating'] == 'txt' ? 'block' : 'none' ?>">
     <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
       <tr>
         <td width="100"></td>
@@ -109,7 +109,7 @@ function gdsrShowHidePreview(gdid, index) {
       </tr>
     </table>  
 </div>
-<div id="gdsr-tr-img[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_rating'] == 'img' ? 'block' : 'none' ?>">
+<div id="gdsr-tr-img[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trends_rating'] == 'img' ? 'block' : 'none' ?>">
     <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
       <tr>
         <td width="100"></td>
@@ -128,13 +128,13 @@ function gdsrShowHidePreview(gdid, index) {
     <td width="150" nowrap="nowrap"><?php _e("Voting trend display as", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select name="<?php echo $wpfn; ?>[trend_voting]" style="width: 110px" id="gdstarr-trend-voting" onchange="gdsrChangeTrend('tv', this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
-            <option value="txt"<?php echo $wpno['trend_voting'] == 'txt' ? ' selected="selected"' : ''; ?>><?php _e("Text", "gd-star-rating"); ?></option>
-            <option value="img"<?php echo $wpno['trend_voting'] == 'img' ? ' selected="selected"' : ''; ?>><?php _e("Image", "gd-star-rating"); ?></option>
+            <option value="txt"<?php echo $wpno['trends_voting'] == 'txt' ? ' selected="selected"' : ''; ?>><?php _e("Text", "gd-star-rating"); ?></option>
+            <option value="img"<?php echo $wpno['trends_voting'] == 'img' ? ' selected="selected"' : ''; ?>><?php _e("Image", "gd-star-rating"); ?></option>
         </select>
     </td>
   </tr>
 </table>
-<div id="gdsr-tv-txt[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_voting'] == 'txt' ? 'block' : 'none' ?>">
+<div id="gdsr-tv-txt[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trends_voting'] == 'txt' ? 'block' : 'none' ?>">
     <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
       <tr>
         <td width="100"></td>
@@ -147,7 +147,7 @@ function gdsrShowHidePreview(gdid, index) {
       </tr>
     </table>  
 </div>
-<div id="gdsr-tv-img[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_voting'] == 'img' ? 'block' : 'none' ?>">
+<div id="gdsr-tv-img[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trends_voting'] == 'img' ? 'block' : 'none' ?>">
     <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
       <tr>
         <td width="100"></td>
