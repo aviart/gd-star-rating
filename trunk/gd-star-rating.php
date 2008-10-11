@@ -164,13 +164,13 @@ if (!class_exists('GDStarRating')) {
             "grouping" => 'post',
             "trends_rating" => 'txt',
             "trends_rating_rise" => '+',
-            "trends_rating_same" => '+',
-            "trends_rating_fall" => '+',
+            "trends_rating_same" => '=',
+            "trends_rating_fall" => '-',
             "trends_rating_set" => 'famfamfam',
             "trends_voting" => 'txt',
             "trends_voting_rise" => '+',
-            "trends_voting_same" => '+',
-            "trends_voting_fall" => '+',
+            "trends_voting_same" => '=',
+            "trends_voting_fall" => '-',
             "trends_voting_set" => 'famfamfam'
         );
         
@@ -871,6 +871,8 @@ if (!class_exists('GDStarRating')) {
                     $options['div_filter'] = $posted['div_filter'];
                     $options['div_trend'] = $posted['div_trend'];
                     $options['div_elements'] = $posted['div_elements'];
+                    $options['trend_rating'] = $posted['trend_rating'];
+                    $options['trend_voting'] = $posted['trend_voting'];
                     
                     $options['hide_empty'] = isset($posted['hidempty']) ? 1 : 0;
                     $options['hide_noreview'] = isset($posted['hidenoreview']) ? 1 : 0;

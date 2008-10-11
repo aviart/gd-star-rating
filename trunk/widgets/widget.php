@@ -42,6 +42,7 @@ function gdsrShowHidePreview(gdid, index) {
     }
 }
 </script>
+
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td nowrap="nowrap" width="140"><?php _e("Title", "gd-star-rating"); ?>:</td>
@@ -96,10 +97,27 @@ function gdsrShowHidePreview(gdid, index) {
   </tr>
 </table>  
 <div id="gdsr-tr-txt[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_rating'] == 'txt' ? 'block' : 'none' ?>">
-
+<table border="0" cellpadding="2" cellspacing="0" width="100%"> 
+  <tr>
+    <td width="100"></td>
+    <td><?php _e("Up", "gd-star-rating"); ?>:</td>
+    <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_rating_rise]" id="gdstarr-trendsratingrise" value="<?php echo $wpno["trends_rating_rise"]; ?>" /></td>
+    <td><?php _e("Equal", "gd-star-rating"); ?>:</td>
+    <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_rating_same]" id="gdstarr-trendsratingsame" value="<?php echo $wpno["trends_rating_same"]; ?>" /></td>
+    <td><?php _e("Down", "gd-star-rating"); ?>:</td>
+    <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_rating_fall]" id="gdstarr-trendsratingfall" value="<?php echo $wpno["trends_rating_fall"]; ?>" /></td>
+  </tr>
+</table>  
 </div>
 <div id="gdsr-tr-img[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_rating'] == 'img' ? 'block' : 'none' ?>">
-
+<table border="0" cellpadding="2" cellspacing="0" width="100%"> 
+  <tr>
+    <td width="100"></td>
+    <td><?php _e("Image set", "gd-star-rating"); ?>:</td>
+    <td align="right">
+    </td>
+  </tr>
+</table>  
 </div>
 <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
   <tr>
