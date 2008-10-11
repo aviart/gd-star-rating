@@ -854,8 +854,8 @@ if (!class_exists('GDStarRating')) {
                     $options['tpl_header'] = stripslashes(htmlentities($posted['tpl_header'], ENT_QUOTES, 'UTF-8'));
                     $options['tpl_item'] = stripslashes(htmlentities($posted['tpl_item'], ENT_QUOTES, 'UTF-8'));
                     $options['tpl_footer'] = stripslashes(htmlentities($posted['tpl_footer'], ENT_QUOTES, 'UTF-8'));
-                    
                     $options['tpl_title_length'] = $posted['title_max'];
+                    
                     $options['rows'] = $posted['rows'];
                     $options['select'] = $posted['select'];
                     $options['grouping'] = $posted['grouping'];
@@ -864,17 +864,28 @@ if (!class_exists('GDStarRating')) {
                     $options['category'] = $posted['category'];
                     $options['show'] = $posted['show'];
                     $options['display'] = $posted['display'];
+                    
                     $options['publish_date'] = $posted['publish_date'];
                     $options['publish_month'] = $posted['publish_month'];
                     $options['publish_days'] = $posted['publish_days'];
                     $options['publish_range_from'] = $posted['publish_range_from'];
                     $options['publish_range_to'] = $posted['publish_range_to'];
+                    
                     $options['div_template'] = $posted['div_template'];
                     $options['div_filter'] = $posted['div_filter'];
                     $options['div_trend'] = $posted['div_trend'];
                     $options['div_elements'] = $posted['div_elements'];
-                    $options['trend_rating'] = $posted['trend_rating'];
-                    $options['trend_voting'] = $posted['trend_voting'];
+                    
+                    $options['trends_rating'] = $posted['trends_rating'];
+                    $options['trends_rating_set'] = $posted['trends_rating_set'];
+                    $options['trends_rating_rise'] = strip_tags(stripslashes($posted['trends_rating_rise']));
+                    $options['trends_rating_same'] = strip_tags(stripslashes($posted['trends_rating_same']));
+                    $options['trends_rating_fall'] = strip_tags(stripslashes($posted['trends_rating_fall']));
+                    $options['trends_voting'] = $posted['trends_voting'];
+                    $options['trends_voting_set'] = $posted['trends_voting_set'];
+                    $options['trends_voting_rise'] = strip_tags(stripslashes($posted['trends_voting_rise']));
+                    $options['trends_voting_same'] = strip_tags(stripslashes($posted['trends_voting_same']));
+                    $options['trends_voting_fall'] = strip_tags(stripslashes($posted['trends_voting_fall']));
                     
                     $options['hide_empty'] = isset($posted['hidempty']) ? 1 : 0;
                     $options['hide_noreview'] = isset($posted['hidenoreview']) ? 1 : 0;
