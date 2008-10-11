@@ -178,12 +178,17 @@ form#gdsr-articles {
 	width: 46px;
 }
 
+.gdsr td.gdsr-preview-trends {
+	border: 1px solid black; text-align:center;
+	height: 54px;
+	width: 46px;
+}
+
 .gdsr td.gdsr-preview-pic {
 	background: url(../gfx/preview.png);
 }
 
 .gdsr td.gdsr-preview-space {
-	height: 142px;
 	width: 2px;
 }
 

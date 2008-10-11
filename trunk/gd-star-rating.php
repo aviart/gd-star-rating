@@ -71,12 +71,13 @@ if (!class_exists('GDStarRating')) {
         
         var $default_options = array(
             "version" => "0.9.7",
-            "date" => "2008.10.11.",
+            "date" => "2008.10.12.",
             "status" => "Beta",
             "ie_png_fix" => 1,
             "ajax" => 1,
             "widget_articles" => 1,
-            "preview_active" => 0,
+            "preview_active" => 1,
+            "preview_trends_active" => 1,
             "moderation_active" => 1,
             "review_active" => 1,
             "comments_active" => 1,
@@ -166,12 +167,12 @@ if (!class_exists('GDStarRating')) {
             "trends_rating_rise" => '+',
             "trends_rating_same" => '=',
             "trends_rating_fall" => '-',
-            "trends_rating_set" => 'famfamfam',
+            "trends_rating_set" => 0,
             "trends_voting" => 'txt',
             "trends_voting_rise" => '+',
             "trends_voting_same" => '=',
             "trends_voting_fall" => '-',
-            "trends_voting_set" => 'famfamfam'
+            "trends_voting_set" => 0
         );
         
         var $default_shortcode = array(
@@ -732,6 +733,7 @@ if (!class_exists('GDStarRating')) {
 
         function star_menu_settings() {
             $gdsr_styles = $this->styles;
+            $gdsr_trends = $this->trends;
             $gdsr_options = $this->o;
             $gdsr_root_url = $this->plugin_url;
             
@@ -893,7 +895,8 @@ if (!class_exists('GDStarRating')) {
             }
             
             $wpfn = 'gdstarr['.$wpnm.']';
-                
+            $wptr = $this->trends;
+            
             include("widgets/widget.php");
         }
         
