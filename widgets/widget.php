@@ -97,27 +97,30 @@ function gdsrShowHidePreview(gdid, index) {
   </tr>
 </table>  
 <div id="gdsr-tr-txt[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_rating'] == 'txt' ? 'block' : 'none' ?>">
-<table border="0" cellpadding="2" cellspacing="0" width="100%"> 
-  <tr>
-    <td width="100"></td>
-    <td><?php _e("Up", "gd-star-rating"); ?>:</td>
-    <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_rating_rise]" id="gdstarr-trendsratingrise" value="<?php echo $wpno["trends_rating_rise"]; ?>" /></td>
-    <td><?php _e("Equal", "gd-star-rating"); ?>:</td>
-    <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_rating_same]" id="gdstarr-trendsratingsame" value="<?php echo $wpno["trends_rating_same"]; ?>" /></td>
-    <td><?php _e("Down", "gd-star-rating"); ?>:</td>
-    <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_rating_fall]" id="gdstarr-trendsratingfall" value="<?php echo $wpno["trends_rating_fall"]; ?>" /></td>
-  </tr>
-</table>  
+    <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
+      <tr>
+        <td width="100"></td>
+        <td><?php _e("Up", "gd-star-rating"); ?>:</td>
+        <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_rating_rise]" id="gdstarr-trendsratingrise" value="<?php echo $wpno["trends_rating_rise"]; ?>" /></td>
+        <td><?php _e("Equal", "gd-star-rating"); ?>:</td>
+        <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_rating_same]" id="gdstarr-trendsratingsame" value="<?php echo $wpno["trends_rating_same"]; ?>" /></td>
+        <td><?php _e("Down", "gd-star-rating"); ?>:</td>
+        <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_rating_fall]" id="gdstarr-trendsratingfall" value="<?php echo $wpno["trends_rating_fall"]; ?>" /></td>
+      </tr>
+    </table>  
 </div>
 <div id="gdsr-tr-img[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_rating'] == 'img' ? 'block' : 'none' ?>">
-<table border="0" cellpadding="2" cellspacing="0" width="100%"> 
-  <tr>
-    <td width="100"></td>
-    <td><?php _e("Image set", "gd-star-rating"); ?>:</td>
-    <td align="right">
-    </td>
-  </tr>
-</table>  
+    <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
+      <tr>
+        <td width="100"></td>
+        <td><?php _e("Image set", "gd-star-rating"); ?>:</td>
+        <td align="right">
+            <select style="width: 180px;" name="<?php echo $wpfn; ?>[trends_rating_set]"id="gdstarr-trendsratingset">
+                <?php GDSRHelper::render_styles_select($wptr, $wpno["trends_rating_set"]); ?>
+            </select>
+        </td>
+      </tr>
+    </table>  
 </div>
 <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
   <tr>
@@ -131,6 +134,32 @@ function gdsrShowHidePreview(gdid, index) {
     </td>
   </tr>
 </table>
+<div id="gdsr-tv-txt[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_voting'] == 'txt' ? 'block' : 'none' ?>">
+    <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
+      <tr>
+        <td width="100"></td>
+        <td><?php _e("Up", "gd-star-rating"); ?>:</td>
+        <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_voting_rise]" id="gdstarr-trendsvotingrise" value="<?php echo $wpno["trends_voting_rise"]; ?>" /></td>
+        <td><?php _e("Equal", "gd-star-rating"); ?>:</td>
+        <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_voting_same]" id="gdstarr-trendsvotingsame" value="<?php echo $wpno["trends_voting_same"]; ?>" /></td>
+        <td><?php _e("Down", "gd-star-rating"); ?>:</td>
+        <td width="50" align="right"><input class="widefat" style="width: 35px" type="text" name="<?php echo $wpfn; ?>[trends_voting_fall]" id="gdstarr-trendsvotingfall" value="<?php echo $wpno["trends_voting_fall"]; ?>" /></td>
+      </tr>
+    </table>  
+</div>
+<div id="gdsr-tv-img[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['trend_voting'] == 'img' ? 'block' : 'none' ?>">
+    <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
+      <tr>
+        <td width="100"></td>
+        <td><?php _e("Image set", "gd-star-rating"); ?>:</td>
+        <td align="right">
+            <select style="width: 180px;" name="<?php echo $wpfn; ?>[trends_voting_set]"id="gdstarr-trendsvotingset">
+                <?php GDSRHelper::render_styles_select($wptr, $wpno["trends_voting_set"]); ?>
+            </select>
+        </td>
+      </tr>
+    </table>  
+</div>
 </div>
 <div class="gdsr-table-split"></div>
 
