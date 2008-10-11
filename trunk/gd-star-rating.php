@@ -951,7 +951,20 @@ if (!class_exists('GDStarRating')) {
             
             if (!($t_rate || $t_vote)) {
                 $idx = array();
-                foreach ($all_rows as $row) $idx[] = $row->post_id;
+                foreach ($all_rows as $row) {
+                    switch ($widget["grouping"]) {
+                        case "post":
+                            $id = $row->post_id;
+                            break;
+                        case "category":
+                            $id = $row->term_id;
+                            break;
+                        case "user":
+                            $id = $row->id;
+                            break;
+                    }
+                    $idx[] = $id;
+                }
                 $trends = GDSRX::get_trend_calculation(join(", ", $idx), $widget["grouping"], $widget['show'], $this->o["trend_last"], $this->o["trend_over"]);
                 $trends_calculated = true;
             }
@@ -959,6 +972,7 @@ if (!class_exists('GDStarRating')) {
                 $trends = array();
                 $trends_calculated = false;
             }
+            
             foreach ($all_rows as $row) {
                 if ($widget['show'] == "total") {
                     $votes = $row->user_votes + $row->visitor_votes;
@@ -981,7 +995,18 @@ if (!class_exists('GDStarRating')) {
                     $title = substr($title, 0, $widget["tpl_title_length"])."...";
                 
                 if ($trends_calculated) {
-                    $t = $trends[$row->post_id];
+                    switch ($widget["grouping"]) {
+                        case "post":
+                            $id = $row->post_id;
+                            break;
+                        case "category":
+                            $id = $row->term_id;
+                            break;
+                        case "user":
+                            $id = $row->id;
+                            break;
+                    }
+                    $t = $trends[$id];
                     switch ($widget["trends_rating"]) {
                         case "img":
                             break;

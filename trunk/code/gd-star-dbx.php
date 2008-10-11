@@ -2,22 +2,34 @@
 
 class GDSRX
 {
-    function get_trend_data_post($ids, $type = "article", $period = "over", $last = 1, $over = 30) {
+    function get_trend_data($ids, $grouping = "post", $type = "article", $period = "over", $last = 1, $over = 30) {
         global $wpdb, $table_prefix;
         
-        if ($period == "over") $where = sprintf("str_to_date(vote_date, '%s') BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND DATE_SUB(NOW(), INTERVAL %s DAY)", "%Y-%m-%d", $last + $over, $last);
-        else $where = sprintf("str_to_date(vote_date, '%s') BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND NOW()", "%Y-%m-%d", $last);
+        if ($period == "over") $where = sprintf("str_to_date(d.vote_date, '%s') BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND DATE_SUB(NOW(), INTERVAL %s DAY)", "%Y-%m-%d", $last + $over, $last);
+        else $where = sprintf("str_to_date(d.vote_date, '%s') BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND NOW()", "%Y-%m-%d", $last);
         
-        $sql = sprintf("SELECT id, sum(user_voters) as user_voters, sum(user_votes) as user_votes, sum(visitor_voters) as visitor_voters, sum(visitor_votes) as visitor_votes FROM %sgdsr_votes_trend WHERE %s and vote_type = '%s' and id in (%s) group by id order by id asc",
-            $table_prefix, $where, $type, $ids
+        switch ($grouping) {
+            case "post":
+                $select = "d.id";
+                $from = sprintf("%sgdsr_votes_trend d", $table_prefix);
+                $join = "";
+                break;
+            case "user":
+                $select = "u.id";
+                $from = sprintf("%susers u, %sposts p, %sgdsr_votes_trend d", $table_prefix, $table_prefix, $table_prefix);
+                $join = "p.id = d.id and p.post_status = 'publish' and u.id = p.post_author and ";
+                break;
+            case "category":
+                $select = "t.term_id";
+                $from = sprintf("%sterm_taxonomy t, %sterm_relationships r, %sterms x, %sposts p, %sgdsr_votes_trend d", $table_prefix, $table_prefix, $table_prefix, $table_prefix, $table_prefix);
+                $join = "p.id = d.id and p.post_status = 'publish' and t.term_taxonomy_id = r.term_taxonomy_id and r.object_id = p.id and t.taxonomy = 'category' and t.term_id = x.term_id and ";
+                break;
+        }
+        
+        $sql = sprintf("SELECT %s as id, sum(d.user_voters) as user_voters, sum(d.user_votes) as user_votes, sum(d.visitor_voters) as visitor_voters, sum(d.visitor_votes) as visitor_votes FROM %s WHERE %s%s and d.vote_type = '%s' and %s in (%s) group by %s order by %s asc",
+            $select, $from, $join, $where, $type, $select, $ids, $select, $select
             );
         return $wpdb->get_results($sql);
-    }
-    
-    function get_trend_data_user($ids, $type = "article", $period = "over", $last = 1, $over = 30) {
-    }
-
-    function get_trend_data_category($ids, $type = "article", $period = "over", $last = 1, $over = 30) {
     }
     
     function get_trend_calculation($ids, $grouping = "post", $show = "total", $last = 1, $over = 30) {
@@ -25,16 +37,16 @@ class GDSRX
 
         switch ($grouping) {
             case "post":
-                $data_last = GDSRX::get_trend_data_post($ids, "article", "last", $last, $over);
-                $data_over = GDSRX::get_trend_data_post($ids, "article", "over", $last);
+                $data_last = GDSRX::get_trend_data($ids, $grouping, "article", "last", $last, $over);
+                $data_over = GDSRX::get_trend_data($ids, $grouping, "article", "over", $last);
                 break;
             case "category":
-                $data_last = GDSRX::get_trend_data_user($ids, "article", "last", $last, $over);
-                $data_over = GDSRX::get_trend_data_user($ids, "article", "over", $last);
+                $data_last = GDSRX::get_trend_data($ids, $grouping, "article", "last", $last, $over);
+                $data_over = GDSRX::get_trend_data($ids, $grouping, "article", "over", $last);
                 break;
             case "user":
-                $data_last = GDSRX::get_trend_data_category($ids, "article", "last", $last, $over);
-                $data_over = GDSRX::get_trend_data_category($ids, "article", "over", $last);
+                $data_last = GDSRX::get_trend_data($ids, $grouping, "article", "last", $last, $over);
+                $data_over = GDSRX::get_trend_data($ids, $grouping, "article", "over", $last);
                 break;
         }
        
