@@ -1,19 +1,35 @@
 <script>
-function gdsrStyleSelection() {
+function gdsrStyleSelection(preview) {
     var gdsrAllImages = [ <?php GDSRHelper::render_styles_js($gdsr_styles); ?> ];
     var gdsrAllTypes = [ <?php GDSRHelper::render_styles_types_js($gdsr_styles); ?> ];
+
+    var gdsrAllTrendsImages = [ <?php GDSRHelper::render_styles_js($gdsr_trends); ?> ];
+    var gdsrAllTrendsTypes = [ <?php GDSRHelper::render_styles_types_js($gdsr_trends); ?> ];
     
-    var gdsrStyle = jQuery("#gdsr_style_preview").val();
-    var gdsrSize = jQuery("#gdsr_size_preview").val();
+    var gdsrBase = "#gdsr_preview";
+    var gdsrStyle = "";
+    var gdsrSize = "";
+    var gdsrImage = "";
     
-    jQuery("#gdsr_preview_black").attr("src", "<?php echo $gdsr_root_url ?>stars/" + gdsrAllImages[gdsrStyle] + "/stars" + gdsrSize + "." + gdsrAllTypes[gdsrStyle]);
-    jQuery("#gdsr_preview_red").attr("src", "<?php echo $gdsr_root_url ?>stars/" + gdsrAllImages[gdsrStyle] + "/stars" + gdsrSize + "." + gdsrAllTypes[gdsrStyle]);
-    jQuery("#gdsr_preview_green").attr("src", "<?php echo $gdsr_root_url ?>stars/" + gdsrAllImages[gdsrStyle] + "/stars" + gdsrSize + "." + gdsrAllTypes[gdsrStyle]);
-    jQuery("#gdsr_preview_white").attr("src", "<?php echo $gdsr_root_url ?>stars/" + gdsrAllImages[gdsrStyle] + "/stars" + gdsrSize + "." + gdsrAllTypes[gdsrStyle]);
-    jQuery("#gdsr_preview_blue").attr("src", "<?php echo $gdsr_root_url ?>stars/" + gdsrAllImages[gdsrStyle] + "/stars" + gdsrSize + "." + gdsrAllTypes[gdsrStyle]);
-    jQuery("#gdsr_preview_yellow").attr("src", "<?php echo $gdsr_root_url ?>stars/" + gdsrAllImages[gdsrStyle] + "/stars" + gdsrSize + "." + gdsrAllTypes[gdsrStyle]);
-    jQuery("#gdsr_preview_gray").attr("src", "<?php echo $gdsr_root_url ?>stars/" + gdsrAllImages[gdsrStyle] + "/stars" + gdsrSize + "." + gdsrAllTypes[gdsrStyle]);
-    jQuery("#gdsr_preview_picture").attr("src", "<?php echo $gdsr_root_url ?>stars/" + gdsrAllImages[gdsrStyle] + "/stars" + gdsrSize + "." + gdsrAllTypes[gdsrStyle]);
+    if (preview == "trends") {
+        gdsrBase = gdsrBase + "_trends";
+        gdsrStyle = jQuery("#gdsr_style_preview_trends").val();
+        gdsrImage = "<?php echo $gdsr_root_url ?>trends/" + gdsrAllTrendsImages[gdsrStyle] + "/trend" + "." + gdsrAllTrendsTypes[gdsrStyle];;
+    }
+    else {
+        gdsrStyle = jQuery("#gdsr_style_preview").val();
+        gdsrSize = jQuery("#gdsr_size_preview").val();
+        gdsrImage = "<?php echo $gdsr_root_url ?>stars/" + gdsrAllImages[gdsrStyle] + "/stars" + gdsrSize + "." + gdsrAllTypes[gdsrStyle];
+    }
+    
+    jQuery(gdsrBase+"_black").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_red").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_green").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_white").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_blue").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_yellow").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_gray").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_picture").attr("src", gdsrImage);
 }
 
 function gdsrShowHidePreview(what) {
@@ -43,7 +59,7 @@ function gdsrShowHidePreview(what) {
             <tr>
                 <td width="150" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Stars", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
-                    <select style="width: 180px;" name="gdsr_style_preview" id="gdsr_style_preview" onchange="gdsrStyleSelection()">
+                    <select style="width: 180px;" name="gdsr_style_preview" id="gdsr_style_preview" onchange="gdsrStyleSelection('stars')">
                         <?php GDSRHelper::render_styles_select($gdsr_styles); ?>
                     </select>
                 </td>
@@ -93,7 +109,7 @@ function gdsrShowHidePreview(what) {
             <tr>
                 <td width="150" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Trends", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
-                    <select style="width: 180px;" name="gdsr_style_preview" id="gdsr_style_preview" onchange="gdsrStyleSelection()">
+                    <select style="width: 180px;" name="gdsr_style_preview_trends" id="gdsr_style_preview_trends" onchange="gdsrStyleSelection('trends')">
                         <?php GDSRHelper::render_styles_select($gdsr_trends); ?>
                     </select>
                 </td>
@@ -101,21 +117,21 @@ function gdsrShowHidePreview(what) {
                 <td style="padding: 0; border: 0; vertical-align: top;">
                     <table cellpadding="0" width="400" cellspacing="0" class="previewtable">
                         <tr>
-                            <td class="gdsr-preview-trends" style="background-color: black;"><img src="#" id="gdsr_preview_black" /></td>
+                            <td class="gdsr-preview-trends" style="background-color: black;"><img src="#" id="gdsr_preview_trends_black" /></td>
                             <td class="gdsr-preview-space"></td>
-                            <td class="gdsr-preview-trends" style="background-color: red;"><img src="#" id="gdsr_preview_red" /></td>
+                            <td class="gdsr-preview-trends" style="background-color: red;"><img src="#" id="gdsr_preview_trends_red" /></td>
                             <td class="gdsr-preview-space"></td>
-                            <td class="gdsr-preview-trends" style="background-color: green;"><img src="#" id="gdsr_preview_green" /></td>
+                            <td class="gdsr-preview-trends" style="background-color: green;"><img src="#" id="gdsr_preview_trends_green" /></td>
                             <td class="gdsr-preview-space"></td>
-                            <td class="gdsr-preview-trends" style="background-color: white;"><img src="#" id="gdsr_preview_white" /></td>
+                            <td class="gdsr-preview-trends" style="background-color: white;"><img src="#" id="gdsr_preview_trends_white" /></td>
                             <td class="gdsr-preview-space"></td>
-                            <td class="gdsr-preview-trends" style="background-color: blue;"><img src="#" id="gdsr_preview_blue" /></td>
+                            <td class="gdsr-preview-trends" style="background-color: blue;"><img src="#" id="gdsr_preview_trends_blue" /></td>
                             <td class="gdsr-preview-space"></td>
-                            <td class="gdsr-preview-trends" style="background-color: yellow;"><img src="#" id="gdsr_preview_yellow" /></td>
+                            <td class="gdsr-preview-trends" style="background-color: yellow;"><img src="#" id="gdsr_preview_trends_yellow" /></td>
                             <td class="gdsr-preview-space"></td>
-                            <td class="gdsr-preview-trends" style="background-color: gray;"><img src="#" id="gdsr_preview_gray" /></td>
+                            <td class="gdsr-preview-trends" style="background-color: gray;"><img src="#" id="gdsr_preview_trends_gray" /></td>
                             <td class="gdsr-preview-space" ></td>
-                            <td class="gdsr-preview-trends gdsr-preview-pic"><img src="#" id="gdsr_preview_picture" /></td>
+                            <td class="gdsr-preview-trends gdsr-preview-pic"><img src="#" id="gdsr_preview_trends_picture" /></td>
                         </tr>
                     </table>
                 </td>
