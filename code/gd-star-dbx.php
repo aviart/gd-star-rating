@@ -2,6 +2,107 @@
 
 class GDSRX
 {
+    function get_trend_data_post($ids, $type = "article", $period = "over", $last = 1, $over = 30) {
+        global $wpdb, $table_prefix;
+        
+        if ($period == "over") $where = sprintf("str_to_date(vote_date, '%s') BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND DATE_SUB(NOW(), INTERVAL %s DAY)", "%Y-%m-%d", $last + $over, $last);
+        else $where = sprintf("str_to_date(vote_date, '%s') BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND NOW()", "%Y-%m-%d", $last);
+        
+        $sql = sprintf("SELECT id, sum(user_voters) as user_voters, sum(user_votes) as user_votes, sum(visitor_voters) as visitor_voters, sum(visitor_votes) as visitor_votes FROM %sgdsr_votes_trend WHERE %s and vote_type = '%s' and id in (%s) group by id order by id asc",
+            $table_prefix, $where, $type, $ids
+            );
+        return $wpdb->get_results($sql);
+    }
+    
+    function get_trend_data_user($ids, $type = "article", $period = "over", $last = 1, $over = 30) {
+    }
+
+    function get_trend_data_category($ids, $type = "article", $period = "over", $last = 1, $over = 30) {
+    }
+    
+    function get_trend_calculation($ids, $grouping = "post", $show = "total", $last = 1, $over = 30) {
+        global $wpdb, $table_prefix;
+
+        switch ($grouping) {
+            case "post":
+                $data_last = GDSRX::get_trend_data_post($ids, "article", "last", $last, $over);
+                $data_over = GDSRX::get_trend_data_post($ids, "article", "over", $last);
+                break;
+            case "category":
+                $data_last = GDSRX::get_trend_data_user($ids, "article", "last", $last, $over);
+                $data_over = GDSRX::get_trend_data_user($ids, "article", "over", $last);
+                break;
+            case "user":
+                $data_last = GDSRX::get_trend_data_category($ids, "article", "last", $last, $over);
+                $data_over = GDSRX::get_trend_data_category($ids, "article", "over", $last);
+                break;
+        }
+       
+        for ($i = 0; $i < count($data_over); $i++) {
+            $row_over = $data_over[$i];
+
+            if ($show == "total") {
+                $votes_over[$row_over->id] = $row_over->user_votes + $row_over->visitor_votes;
+                $voters_over[$row_over->id] = $row_over->user_voters + $row_over->visitor_voters;
+            }                
+            if ($show == "visitors") {
+                $votes_over[$row_over->id] = $row_over->visitor_votes;
+                $voters_over[$row_over->id] = $row_over->visitor_voters;
+            }                
+            if ($show == "users") {
+                $votes_over[$row_over->id] = $row_over->user_votes ;
+                $voters_over[$row_over->id] = $row_over->user_voters;
+            }
+        }
+        
+        if (count($data_last) == 0) {
+            $votes_last = array();
+            $voters_last = array();
+        }
+
+        if (count($data_over) == 0) {
+            $votes_over = array();
+            $voters_over = array();
+        }
+        
+        for ($i = 0; $i < count($data_last); $i++) {
+            $row_last = $data_last[$i];
+            
+            if ($show == "total") {
+                $votes_last[$row_last->id] = $row_last->user_votes + $row_last->visitor_votes;
+                $voters_last[$row_last->id] = $row_last->user_voters + $row_last->visitor_voters;
+            }                
+            if ($show == "visitors") {
+                $votes_last[$row_last->id] = $row_last->visitor_votes;
+                $voters_last[$row_last->id] = $row_last->visitor_voters;
+            }                
+            if ($show == "users") {
+                $votes_last[$row_last->id] = $row_last->user_votes ;
+                $voters_last[$row_last->id] = $row_last->user_voters;
+            }
+        }
+
+        foreach ($votes_last as $key => $value) {
+            if (!isset($votes_over[$key])) {
+                $votes_over[$key] = 0;
+                $voters_over[$key] = 0;
+            }
+        }
+        
+        foreach ($votes_over as $key => $value) {
+            if (!isset($votes_last[$key])) {
+                $votes_last[$key] = 0;
+                $voters_last[$key] = 0;
+            }
+        }
+        
+        foreach ($votes_last as $key => $value) {
+            $trends[$key] = new TrendValue($votes_last[$key], $voters_last[$key], $votes_over[$key], $voters_over[$key]);
+        }
+        
+        return $trends;
+    }
+    
     function get_widget($widget) {
         global $table_prefix;
         $grouping = $widget["grouping"];
@@ -87,7 +188,41 @@ class GDSRX
         $sql = sprintf("select %s from %s%sposts p, %sgdsr_data_article d where %s %s order by %s %s limit 0, %s",
                 $select, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]
             );
-//        echo $sql;
         return $sql;
     }
 }
+
+class TrendValue
+{
+    var $votes_last = 0;
+    var $voters_last = 0;
+    var $rating_last = 0;
+    var $votes_over = 0;
+    var $voters_over = 0;
+    var $rating_over = 0;
+    
+    var $trend_rating = 0;
+    var $trend_voting = 0;
+    
+    function TrendValue($v_last, $r_last, $v_over, $r_over) {
+        $this->votes_last = $v_last;
+        $this->voters_last = $r_last;
+        $this->votes_over = $v_over;
+        $this->voters_over = $r_over;
+        
+        $this->Calculate();
+    }
+    
+    function Calculate() {
+        if ($this->voters_last > 0) $this->rating_last = @number_format($this->votes_last / $this->voters_last, 1);
+        if ($this->voters_over > 0) $this->rating_over = @number_format($this->votes_over / $this->voters_over, 1);
+        
+        if ($this->rating_last > $this->rating_over) $this->trend_rating = 1;
+        else if ($this->rating_last < $this->rating_over) $this->trend_rating = -1;
+
+        if ($this->voters_last > $this->voters_over) $this->trend_voting = 1;
+        else if ($this->voters_last < $this->voters_over) $this->trend_voting = -1;
+    }
+}
+
+?>

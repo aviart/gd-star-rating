@@ -11,6 +11,7 @@
   * edit: rewriten ajax code and moved to document ready
   * fix: missing overlay stars on ie browsers
   * fix: unneeded loading of ajax code if ajax is disabled
+  * fix: few extra lines of debug code
 
 === Version: 0.9.6 Beta #2 / october 2 2008 ===
   * new: introducing templates

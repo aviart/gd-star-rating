@@ -89,7 +89,7 @@ function gdsrShowHidePreview(what) {
             <tr valign="top">
                 <td width="150" style="padding: 0; border: 0; vertical-align: top;"><?php _e("Size", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
-                    <?php GDSRHelper::render_star_sizes("gdsr_size_preview", 30, 180, ' onchange="gdsrStyleSelection()"'); ?>
+                    <?php GDSRHelper::render_star_sizes("gdsr_size_preview", 30, 180, ' onchange="gdsrStyleSelection(\'stars\')"'); ?>
                 </td>
             </tr>
         </table>

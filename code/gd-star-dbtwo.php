@@ -113,7 +113,6 @@ class GDSRDB
             $install_sql.= "visitor_voters INTEGER(11) DEFAULT 0,";
             $install_sql.= "visitor_votes INTEGER(11) DEFAULT 0,";
             $install_sql.= "vote_date VARCHAR(10) DEFAULT NULL)";
-            GDSRDB::dump('sql_trend', $install_sql);
             $wpdb->query($install_sql);
         }
 
@@ -341,7 +340,6 @@ class GDSRDB
         global $wpdb, $table_prefix;
         $rate = $gdsr_newstars / $gdsr_oldstars;
         $sql = "UPDATE ".$table_prefix."gdsr_data_article SET user_votes = user_votes * ".$rate.", visitor_votes = visitor_votes * ".$rate;
-        GDSRDB::dump('sq', $sql);
         $wpdb->query($sql);
     }
 

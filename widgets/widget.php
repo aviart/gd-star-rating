@@ -89,7 +89,7 @@ function gdsrShowHidePreview(gdid, index) {
     <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divtrend', '<?php echo $wpnm; ?>')"><?php _e("Trend", "gd-star-rating"); ?></a></strong></td>
     <td width="150" nowrap="nowrap"><?php _e("Rating trend display as", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <select name="<?php echo $wpfn; ?>[trend_rating]" style="width: 110px" id="gdstarr-trend-rating" onchange="gdsrChangeTrend('tr', this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
+        <select name="<?php echo $wpfn; ?>[trends_rating]" style="width: 110px" id="gdstarr-trend-rating" onchange="gdsrChangeTrend('tr', this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
             <option value="txt"<?php echo $wpno['trends_rating'] == 'txt' ? ' selected="selected"' : ''; ?>><?php _e("Text", "gd-star-rating"); ?></option>
             <option value="img"<?php echo $wpno['trends_rating'] == 'img' ? ' selected="selected"' : ''; ?>><?php _e("Image", "gd-star-rating"); ?></option>
         </select>
@@ -127,7 +127,7 @@ function gdsrShowHidePreview(gdid, index) {
     <td width="100"></td>
     <td width="150" nowrap="nowrap"><?php _e("Voting trend display as", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <select name="<?php echo $wpfn; ?>[trend_voting]" style="width: 110px" id="gdstarr-trend-voting" onchange="gdsrChangeTrend('tv', this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
+        <select name="<?php echo $wpfn; ?>[trends_voting]" style="width: 110px" id="gdstarr-trend-voting" onchange="gdsrChangeTrend('tv', this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
             <option value="txt"<?php echo $wpno['trends_voting'] == 'txt' ? ' selected="selected"' : ''; ?>><?php _e("Text", "gd-star-rating"); ?></option>
             <option value="img"<?php echo $wpno['trends_voting'] == 'img' ? ' selected="selected"' : ''; ?>><?php _e("Image", "gd-star-rating"); ?></option>
         </select>
