@@ -109,7 +109,7 @@ class GDSRX
         }
         
         foreach ($votes_last as $key => $value) {
-            $trends[$key] = new TrendValue($votes_last[$key], $voters_last[$key], $votes_over[$key], $voters_over[$key]);
+            $trends[$key] = new TrendValue($votes_last[$key], $voters_last[$key], $votes_over[$key], $voters_over[$key], $last, $over);
         }
         
         return $trends;
@@ -215,12 +215,15 @@ class TrendValue
     
     var $trend_rating = 0;
     var $trend_voting = 0;
+    var $day_rate = 0;
     
-    function TrendValue($v_last, $r_last, $v_over, $r_over) {
+    function TrendValue($v_last, $r_last, $v_over, $r_over, $last = 1, $over = 30) {
         $this->votes_last = $v_last;
         $this->voters_last = $r_last;
         $this->votes_over = $v_over;
         $this->voters_over = $r_over;
+        
+        $day_rate = $last / $over;
         
         $this->Calculate();
     }
@@ -232,8 +235,8 @@ class TrendValue
         if ($this->rating_last > $this->rating_over) $this->trend_rating = 1;
         else if ($this->rating_last < $this->rating_over) $this->trend_rating = -1;
 
-        if ($this->voters_last > $this->voters_over) $this->trend_voting = 1;
-        else if ($this->voters_last < $this->voters_over) $this->trend_voting = -1;
+        if ($this->voters_last > ($this->voters_over * $this->day_rate)) $this->trend_voting = 1;
+        else if ($this->voters_last < ($this->voters_over * $this->day_rate)) $this->trend_voting = -1;
     }
 }
 
