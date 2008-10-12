@@ -50,21 +50,6 @@ This plugin is under a lot of development, and bugs are to be expected. Not all 
 * Spanish
 * French
 
-=== Version: 0.9.7 Beta #3 / october 12 2008 ===
-  * new: famfamfam trend icons
-  * new: trend calculations
-  * new: widget trend display
-  * new: trend images preview
-  * edit: more widget redesign
-  * edit: partialy removed old and unused code
-  * edit: more changes to settings panel
-  * edit: old javascript replaced by jquery
-  * edit: rewriten ajax code and moved to document ready
-  * fix: missing overlay stars on ie browsers
-  * fix: unneeded loading of ajax code if ajax is disabled
-  * fix: few extra lines of debug code
-  * fix: various smaller bugs
-
 == Configuration ==
 
 Options page for this plugin consist of 5 tabs:
