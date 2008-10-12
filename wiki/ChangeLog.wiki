@@ -1,0 +1,7 @@
+#summary Detailed list of changes for releases from 1.0.0
+
+= Introduction =
+
+This is the list of changes for each release of the plugin.
+
+== Change log ==
