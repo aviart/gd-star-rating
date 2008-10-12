@@ -3,19 +3,19 @@
 == Languages ==
 
 === English ===
-* version: 0.9.6
+* version: 0.9.7
 * author: Milan Petrovic
 * email: milan@gdragon.info
 * web: http://www.gdragon.info/
 
 === Serbian ===
-* version: 0.9.6
+* version: 0.9.7
 * author: Milan Petrovic
 * email: milan@gdragon.info
 * web: http://www.gdragon.info/
 
 === Spanish ===
-* version: 0.9.5
+* version: 0.9.7
 * author: Ángel Guzmán Maeso
 * email: shakaran@gmail.com
 
