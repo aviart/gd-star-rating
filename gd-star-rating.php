@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
@@ -55,6 +56,7 @@ if (!class_exists('GDStarRating')) {
         var $t;
         var $p;
         var $x;
+        var $e;
 
         var $shortcodes = array(
             "starrating",
@@ -502,6 +504,7 @@ if (!class_exists('GDStarRating')) {
             else
                 $this->plugin_url = WP_PLUGIN_URL.'/gd-star-rating/';
             $this->plugin_path = dirname(__FILE__);
+            $this->e = $this->plugin_url."gfx/blank.gif";
         }
 
         function init() {
@@ -972,7 +975,6 @@ if (!class_exists('GDStarRating')) {
                 $trends = array();
                 $trends_calculated = false;
             }
-            
             foreach ($all_rows as $row) {
                 if ($widget['show'] == "total") {
                     $votes = $row->user_votes + $row->visitor_votes;
@@ -992,9 +994,13 @@ if (!class_exists('GDStarRating')) {
                 
                 $title = $row->title;
                 if ($widget["tpl_title_length"] > 0)
-                    $title = substr($title, 0, $widget["tpl_title_length"])."...";
+                    $title = substr($title, 0, $widget["tpl_title_length"])." ...";
                 
                 if ($trends_calculated) {
+                    $empty = $this->e;
+                    $set_rating = $this->trends[$widget["trends_rating_set"]];
+                    $set_voting = $this->trends[$widget["trends_voting_set"]];
+                    
                     switch ($widget["grouping"]) {
                         case "post":
                             $id = $row->post_id;
@@ -1009,6 +1015,20 @@ if (!class_exists('GDStarRating')) {
                     $t = $trends[$id];
                     switch ($widget["trends_rating"]) {
                         case "img":
+                            $rate_url = $this->plugin_url.sprintf("trends/%s/trend.%s", $set_rating["folder"], $set_rating["type"]);
+                            switch ($t->trend_rating) {
+                                case -1:
+                                    $image_loc = "bottom";
+                                    break;
+                                case 0:
+                                    $image_loc = "center";
+                                    break;
+                                case 1:
+                                    $image_loc = "top";
+                                    break;
+                            }
+                            $image_bg = sprintf('background: url(%s) %s no-repeat; height: %spx; width: %spx;', $rate_url, $image_loc, $set_rating["size"], $set_rating["size"]);
+                            $item_trend_rating = sprintf('<img src="%s" style="%s" width="%s" height="%s"></img>', $this->e, $image_bg, $set_rating["size"], $set_rating["size"]);
                             break;
                         case "txt":
                             switch ($t->trend_rating) {
@@ -1026,6 +1046,20 @@ if (!class_exists('GDStarRating')) {
                     }
                     switch ($widget["trends_voting"]) {
                         case "img":
+                            $vote_url = $this->plugin_url.sprintf("trends/%s/trend.%s", $set_voting["folder"], $set_voting["type"]);
+                            switch ($t->trend_voting) {
+                                case -1:
+                                    $image_loc = "bottom";
+                                    break;
+                                case 0:
+                                    $image_loc = "center";
+                                    break;
+                                case 1:
+                                    $image_loc = "top";
+                                    break;
+                            }
+                            $image_bg = sprintf('background: url(%s) %s no-repeat; height: %spx; width: %spx;', $vote_url, $image_loc, $set_voting["size"], $set_voting["size"]);
+                            $item_trend_voting = sprintf('<img src="%s" style="%s" width="%s" height="%s"></img>', $this->e, $image_bg, $set_voting["size"], $set_voting["size"]);
                             break;
                         case "txt":
                             switch ($t->trend_voting) {
