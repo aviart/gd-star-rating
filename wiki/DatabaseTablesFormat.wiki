@@ -1,0 +1,98 @@
+#summary SQL for creating database tables for the plugin
+#labels Phase-Design
+
+= Introduction =
+
+Here is the list of SQL expressions for creating tables for plugin. Since WordPress uses table prefix, all queries here use prefix *wp_*, so if you use something else, you need to change this.
+
+== Table structure for table gdsr_data_article ==
+
+{{{
+CREATE TABLE `wp_gdsr_data_article` (
+  `post_id` int(11) unsigned NOT NULL,
+  `rules_articles` varchar(1) default '0',
+  `rules_comments` varchar(1) default '0',
+  `moderate_articles` varchar(1) default '0',
+  `moderate_comments` varchar(1) default '0',
+  `is_page` varchar(1) default '0',
+  `user_voters` int(11) default '0',
+  `user_votes` decimal(11,1) default '0.0',
+  `visitor_voters` int(11) default '0',
+  `visitor_votes` decimal(11,1) default '0.0',
+  `review` decimal(3,1) default '-1.0',
+  `review_text` varchar(255) default NULL,
+  `views` int(11) default '-1',
+  `user_recc_plus` int(11) default '0',
+  `user_recc_minus` int(11) default '0',
+  `visitor_recc_plus` int(11) default '0',
+  `visitor_recc_minus` int(11) default '0',
+  PRIMARY KEY  (`post_id`)
+) TYPE=MyISAM;
+}}}
+
+== Table structure for table gdsr_data_comment ==
+
+{{{
+CREATE TABLE `wp_gdsr_data_comment` (
+  `comment_id` int(11) unsigned NOT NULL,
+  `post_id` int(11) default '-1',
+  `is_locked` varchar(1) default '0',
+  `user_voters` int(11) default '0',
+  `user_votes` decimal(11,1) default '0.0',
+  `visitor_voters` int(11) default '0',
+  `visitor_votes` decimal(11,1) default '0.0',
+  `review` decimal(3,1) default '-1.0',
+  `review_text` varchar(255) default NULL,
+  `user_recc_plus` int(11) default '0',
+  `user_recc_minus` int(11) default '0',
+  `visitor_recc_plus` int(11) default '0',
+  `visitor_recc_minus` int(11) default '0',
+  PRIMARY KEY  (`comment_id`)
+) TYPE=MyISAM;
+}}}
+
+== Table structure for table wp_test_gdsr_moderate ==
+
+{{{
+CREATE TABLE `wp_gdsr_moderate` (
+  `record_id` int(11) unsigned NOT NULL auto_increment,
+  `id` int(11) default NULL,
+  `vote_type` varchar(10) default 'article',
+  `user_id` int(11) default '0',
+  `vote` int(11) default '0',
+  `voted` datetime default NULL,
+  `ip` varchar(32) default NULL,
+  `user_agent` varchar(255) default NULL,
+  PRIMARY KEY  (`record_id`)
+) TYPE=MyISAM;
+}}}
+
+== Table structure for table gdsr_votes_log ==
+
+{{{
+CREATE TABLE `wp_gdsr_votes_log` (
+  `record_id` int(11) unsigned NOT NULL auto_increment,
+  `id` int(11) default NULL,
+  `vote_type` varchar(10) default 'article',
+  `user_id` int(11) default '0',
+  `vote` int(11) default '0',
+  `voted` datetime default NULL,
+  `ip` varchar(32) default NULL,
+  `user_agent` varchar(255) default NULL,
+  PRIMARY KEY  (`record_id`)
+) TYPE=MyISAM ;
+}}}
+
+== Table structure for table gdsr_votes_trend ==
+
+{{{
+CREATE TABLE `wp_gdsr_votes_trend` (
+  `id` int(11) default '0',
+  `vote_type` varchar(10) default 'article',
+  `user_voters` int(11) default '0',
+  `user_votes` int(11) default '0',
+  `visitor_voters` int(11) default '0',
+  `visitor_votes` int(11) default '0',
+  `vote_date` varchar(10) default NULL
+) TYPE=MyISAM;
+}}}
