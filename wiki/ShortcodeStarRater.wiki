@@ -1,0 +1,4 @@
+#summary StarRater is a shortcode for rendering rating statistics in the post or page
+#labels Phase-Implementation
+
+= Introduction =
