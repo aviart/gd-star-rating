@@ -11,6 +11,12 @@ class GDSRDatabase
         fclose($f);
     }
 
+    function truncate_table($table_name) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("TRUNCATE TABLE %s%s", $table_prefix, $table_name);
+        $wpdb->query($sql);
+    }
+
     // check vote
     function check_vote_table($table, $id, $user, $type, $ip) {
         global $wpdb, $table_prefix;
