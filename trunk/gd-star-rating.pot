@@ -1,23 +1,23 @@
-#: code/gd-star-dbone.php:589
+#: code/gd-star-dbone.php:595
 msgid "Show all dates"
 msgstr ""
 
-#: code/gd-star-dbone.php:617
+#: code/gd-star-dbone.php:623
 msgid "All users and visitors"
 msgstr ""
 
-#: code/gd-star-dbone.php:618
+#: code/gd-star-dbone.php:624
 #: tinymce3/window.php:61
 #: widgets/widget.php:57
 #: widgets/widget.php:193
 msgid "Visitors Only"
 msgstr ""
 
-#: code/gd-star-dbone.php:619
+#: code/gd-star-dbone.php:625
 msgid "All Users"
 msgstr ""
 
-#: code/gd-star-dbone.php:635
+#: code/gd-star-dbone.php:641
 msgid "All categories"
 msgstr ""
 
@@ -234,8 +234,8 @@ msgid "Comments"
 msgstr ""
 
 #: options/batch.php:0
-#: gd-star-rating.php:396
-#: gd-star-rating.php:396
+#: gd-star-rating.php:404
+#: gd-star-rating.php:404
 msgid "Batch Options"
 msgstr ""
 
@@ -274,6 +274,7 @@ msgid "Version"
 msgstr ""
 
 #: options/front.php:98
+#: options/import.php:34
 msgid "Status"
 msgstr ""
 
@@ -291,6 +292,32 @@ msgstr ""
 
 #: options/front.php:80
 msgid "An error occured while loading newsfeed. Go to the %sfront page%s to check for updates."
+msgstr ""
+
+#: options/import.php:11
+#: options/import.php:46
+#: options/import.php:2
+#: gd-star-rating.php:405
+#: gd-star-rating.php:405
+msgid "Import Data"
+msgstr ""
+
+#: options/import.php:24
+#: options/import.php:53
+msgid "Plugin URL"
+msgstr ""
+
+#: options/import.php:29
+#: options/import.php:58
+msgid "Author URL"
+msgstr ""
+
+#: options/import.php:38
+msgid "Data not imported."
+msgstr ""
+
+#: options/import.php:40
+msgid "Data imported."
 msgstr ""
 
 #: options/moderation.php:115
@@ -541,41 +568,87 @@ msgstr ""
 msgid "Bayesian Estimate Mean"
 msgstr ""
 
-#: options/setup.php:19
-#: gd-star-rating.php:397
-#: gd-star-rating.php:397
+#: options/setup.php:27
+#: gd-star-rating.php:406
+#: gd-star-rating.php:406
 msgid "Setup"
 msgstr ""
 
-#: options/setup.php:22
+#: options/setup.php:30
 msgid "Database Maintenance"
 msgstr ""
 
-#: options/setup.php:23
+#: options/setup.php:31
 msgid "Use this options to reinstall or uninstall the plugin. This will remove all existing data recorded by the plugin."
 msgstr ""
 
-#: options/setup.php:25
+#: options/setup.php:34
 #: options/setup.php:6
 msgid "REINSTALL"
 msgstr ""
 
-#: options/setup.php:26
+#: options/setup.php:35
+msgid "All database tables will be deleted, and installed again."
+msgstr ""
+
+#: options/setup.php:38
 #: options/setup.php:2
 msgid "UNINSTALL"
 msgstr ""
 
-#: options/setup.php:31
+#: options/setup.php:39
+msgid "All database tables will be deleted."
+msgstr ""
+
+#: options/setup.php:45
 msgid "Global Maintenance"
 msgstr ""
 
-#: options/setup.php:32
+#: options/setup.php:46
 msgid "These are various maintenace options."
 msgstr ""
 
-#: options/setup.php:34
+#: options/setup.php:49
 #: options/setup.php:11
 msgid "REMOVE SETTINGS"
+msgstr ""
+
+#: options/setup.php:50
+msgid "This will remove all plugin settings and all the saved widgets."
+msgstr ""
+
+#: options/setup.php:53
+#: options/setup.php:16
+msgid "REMOVE TEMPLATES"
+msgstr ""
+
+#: options/setup.php:54
+msgid "This will remove all saved templates for the plugin. Templates will be reseted to their default values."
+msgstr ""
+
+#: options/setup.php:57
+#: options/setup.php:20
+msgid "RESET IMPORTS"
+msgstr ""
+
+#: options/setup.php:58
+msgid "This will reset all import flags for import data modules and will allow you to import again allready imported data."
+msgstr ""
+
+#: options/setup.php:64
+msgid "Full Uninstall"
+msgstr ""
+
+#: options/setup.php:65
+msgid "This will remove all database tables created by plugin, all settings, templates and import settings."
+msgstr ""
+
+#: options/setup.php:68
+msgid "FULL UNISTALL"
+msgstr ""
+
+#: options/setup.php:69
+msgid "After removal, plugin will be disabled."
 msgstr ""
 
 #: options/voters.php:0
@@ -583,8 +656,8 @@ msgid "Voters Log"
 msgstr ""
 
 #: templates/templates.php:18
-#: gd-star-rating.php:394
-#: gd-star-rating.php:394
+#: gd-star-rating.php:402
+#: gd-star-rating.php:402
 msgid "Templates"
 msgstr ""
 
@@ -1027,18 +1100,18 @@ msgstr ""
 msgid "singular/plural word vote"
 msgstr ""
 
-#: gd-star-rating.php:392
-#: gd-star-rating.php:392
+#: gd-star-rating.php:400
+#: gd-star-rating.php:400
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:393
-#: gd-star-rating.php:393
+#: gd-star-rating.php:401
+#: gd-star-rating.php:401
 msgid "Plugin Settings"
 msgstr ""
 
-#: gd-star-rating.php:395
-#: gd-star-rating.php:395
+#: gd-star-rating.php:403
+#: gd-star-rating.php:403
 msgid "Votes Stats"
 msgstr ""
 
