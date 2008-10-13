@@ -1,0 +1,1109 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GD Star Rating 0.9.7\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2008-10-11 18:36+0100\n"
+"Last-Translator: Ángel Guzmán Maeso <shakaran@gmail.com>\n"
+"Language-Team: Milan Petrovic <milan@gdragon.info>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: code/gd-star-dbone.php:589
+msgid "Show all dates"
+msgstr "Mostrar todas las fechas"
+
+#: code/gd-star-dbone.php:617
+msgid "All users and visitors"
+msgstr "Todos los usuarios y visitantes"
+
+#: code/gd-star-dbone.php:618
+#: tinymce3/window.php:61
+#: widgets/widget.php:57
+#: widgets/widget.php:193
+msgid "Visitors Only"
+msgstr "Visitantes sólo"
+
+#: code/gd-star-dbone.php:619
+msgid "All Users"
+msgstr "Todos los usuarios"
+
+#: code/gd-star-dbone.php:635
+msgid "All categories"
+msgstr "Todas las categorías"
+
+#: code/gd-star-functions.php:63
+msgid "No moderation"
+msgstr "Sin moderación"
+
+#: code/gd-star-functions.php:64
+msgid "Moderate visitors"
+msgstr "Moderar visitantes"
+
+#: code/gd-star-functions.php:65
+msgid "Moderate users"
+msgstr "Moderar usuarios"
+
+#: code/gd-star-functions.php:66
+msgid "Moderate all"
+msgstr "Moderar todo"
+
+#: code/gd-star-functions.php:75
+msgid "Everyone can vote"
+msgstr "Todo el mundo puede votar"
+
+#: code/gd-star-functions.php:76
+msgid "Only visitors"
+msgstr "Sólo visitantes"
+
+#: code/gd-star-functions.php:77
+msgid "Only users"
+msgstr "Sólo usuarios"
+
+#: code/gd-star-functions.php:78
+msgid "Locked"
+msgstr "Cerrado"
+
+#: code/gd-star-functions.php:79
+msgid "Locked and hidden"
+msgstr "Cerrada y oculta"
+
+#: code/gd-star-functions.php:87
+#: tinymce3/window.php:144
+#: tinymce3/window.php:172
+msgid "Mini"
+msgstr "Mini"
+
+#: code/gd-star-functions.php:88
+#: tinymce3/window.php:145
+#: tinymce3/window.php:173
+msgid "Small"
+msgstr "Pequeño"
+
+#: code/gd-star-functions.php:89
+#: tinymce3/window.php:146
+#: tinymce3/window.php:174
+msgid "Medium"
+msgstr "Mediano"
+
+#: code/gd-star-functions.php:90
+#: tinymce3/window.php:147
+#: tinymce3/window.php:175
+msgid "Big"
+msgstr "Grande"
+
+#: code/gd-star-functions.php:98
+msgid "No alignment"
+msgstr "Sin alineamiento"
+
+#: code/gd-star-functions.php:99
+#: code/gd-star-functions.php:114
+msgid "Left"
+msgstr "Izquierda"
+
+#: code/gd-star-functions.php:100
+msgid "Center"
+msgstr "Centrado"
+
+#: code/gd-star-functions.php:101
+#: code/gd-star-functions.php:116
+msgid "Right"
+msgstr "Derecha"
+
+#: code/gd-star-functions.php:109
+msgid "Always hide"
+msgstr "Esconder siempre"
+
+#: code/gd-star-functions.php:110
+msgid "Top"
+msgstr "Superior"
+
+#: code/gd-star-functions.php:111
+msgid "Top (hide if empty)"
+msgstr "Superior (Ocultar si es vacío)"
+
+#: code/gd-star-functions.php:112
+msgid "Bottom"
+msgstr "Inferior"
+
+#: code/gd-star-functions.php:113
+msgid "Bottom (hide if empty)"
+msgstr "Inferior (Ocultar si es vacío)"
+
+#: code/gd-star-functions.php:115
+msgid "Left (hide if empty)"
+msgstr "Izquierda (Ocultar si es vacío)"
+
+#: code/gd-star-functions.php:117
+msgid "Right (hide if empty)"
+msgstr "Derecha (Ocultar si es vacío)"
+
+#: options/articles.php:94
+#: options/articles.php:202
+#: templates/templates.php:36
+msgid "Articles"
+msgstr "Artículos"
+
+#: options/articles.php:104
+#: options/articles.php:106
+#: options/articles.php:29
+msgid "Search Posts"
+msgstr "Buscar entradas"
+
+#: options/articles.php:112
+#: options/articles.php:24
+#: tinymce3/window.php:28
+#: widgets/widget.php:169
+#: widgets/widget.php:177
+msgid "Filter"
+msgstr "Filtro"
+
+#: options/articles.php:129
+#: widgets/widget.php:47
+#: widgets/widget.php:213
+msgid "Title"
+msgstr "Título"
+
+#: options/articles.php:132
+#: options/articles.php:213
+#: options/articles.php:243
+#: options/moderation.php:33
+msgid "Moderation"
+msgstr "Moderación"
+
+#: options/articles.php:134
+#: options/articles.php:216
+#: options/articles.php:246
+msgid "Vote Rules"
+msgstr "Reglas de voto"
+
+#: options/articles.php:135
+msgid "Categories"
+msgstr "Categorías"
+
+#: options/articles.php:136
+#: options/comments.php:92
+msgid "Votes"
+msgstr "Votos"
+
+#: options/articles.php:137
+#: options/comments.php:93
+msgid "Total"
+msgstr "Total"
+
+#: options/articles.php:139
+#: options/articles.php:219
+#: options/comments.php:94
+#: options/comments.php:138
+#: options/edit.php:20
+#: options/edit27.php:22
+#: options/settings_articles.php:102
+#: options/settings_comments.php:94
+#: tinymce3/window.php:83
+#: widgets/widget.php:214
+msgid "Review"
+msgstr "Resumen"
+
+#: options/articles.php:205
+#: options/articles.php:235
+#: options/comments.php:130
+#: options/moderation.php:150
+msgid "Delete"
+msgstr "Borrar"
+
+#: options/articles.php:208
+#: options/articles.php:238
+#: options/comments.php:133
+msgid "Visitors"
+msgstr "Visitantes"
+
+#: options/articles.php:209
+#: options/articles.php:239
+#: options/comments.php:134
+msgid "Users"
+msgstr "Usuarios"
+
+#: options/articles.php:210
+#: options/articles.php:240
+#: options/comments.php:135
+msgid "All"
+msgstr "Todo"
+
+#: options/articles.php:229
+#: options/articles.php:33
+#: options/comments.php:150
+#: options/comments.php:17
+msgid "Update"
+msgstr "Actualizar"
+
+#: options/articles.php:232
+#: options/comments.php:43
+#: options/settings.php:108
+#: templates/templates.php:25
+#: templates/templates.php:41
+msgid "Comments"
+msgstr "Comentarios"
+
+#: options/batch.php:0
+#: gd-star-rating.php:396
+msgid "Batch Options"
+msgstr "Opciones de lote (Batch)"
+
+#: options/comments.php:45
+msgid "Comments For post"
+msgstr "Comentarios por entrada"
+
+#: options/comments.php:89
+msgid "Comment"
+msgstr "Comentario"
+
+#: options/comments.php:90
+#: options/moderation.php:114
+msgid "User"
+msgstr "Usuario"
+
+#: options/comments.php:91
+#: options/moderation.php:113
+msgid "Date And Time"
+msgstr "Fecha y tiempo"
+
+#: options/comments.php:127
+msgid "With selected"
+msgstr "Con selección"
+
+#: options/front.php:54
+msgid "Latest News"
+msgstr "Últimas noticias"
+
+#: options/front.php:89
+msgid "Important Links"
+msgstr "Enlaces importantes"
+
+#: options/front.php:97
+msgid "Version"
+msgstr "Versión"
+
+#: options/front.php:98
+msgid "Status"
+msgstr "Estado"
+
+#: options/front.php:99
+msgid "Release Date"
+msgstr "Fecha de liberación"
+
+#: options/front.php:29
+msgid "Registered users rated %s articles with average rating of %s and %s comments with average rating of %s. Visitors rated %s articles with average rating of %s and %s comments with average rating of %s."
+msgstr "Los usuarios registrados votaron %s artículos con una media de votación de %s y %s comentarios con una media de votación de %s. Los votos visitantes votaron %s artículos con una media de votación de %s y %s comentarios con una media de votación de %s."
+
+#: options/front.php:40
+msgid " There are %s article and %s comments ratings waiting in moderation queue."
+msgstr " Hay %s artículos y %s comentarios votados esperando en la cola de moderación."
+
+#: options/front.php:80
+msgid "An error occured while loading newsfeed. Go to the %sfront page%s to check for updates."
+msgstr "Ocurrio un error mientras se cargaba el feed de noticias. Diríjase a la %sportada%s para comprobar actualizaciones."
+
+#: options/moderation.php:115
+msgid "Vote"
+msgstr "Voto"
+
+#: options/moderation.php:116
+msgid "IP"
+msgstr "IP"
+
+#: options/moderation.php:117
+msgid "User Agent"
+msgstr "User Agent"
+
+#: options/moderation.php:146
+msgid "With Selected"
+msgstr "Con selección"
+
+#: options/moderation.php:149
+msgid "Approve"
+msgstr "Aprobar"
+
+#: options/settings.php:101
+msgid "Settings"
+msgstr "Configuraciones"
+
+#: options/settings.php:106
+msgid "General"
+msgstr "General"
+
+#: options/settings.php:107
+#: templates/templates.php:24
+msgid "Articles (Posts And Pages)"
+msgstr "Artículos (Entradas y Páginas)"
+
+#: options/settings.php:109
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#: options/settings.php:110
+msgid "Preview"
+msgstr "Vista previa"
+
+#: options/settings.php:131
+#: templates/templates.php:58
+msgid "Save Settings"
+msgstr "Guardar configuraciones"
+
+#: options/settings_articles.php:1
+#: options/settings_comments.php:1
+#: tinymce3/window.php:82
+#: widgets/widget.php:210
+msgid "Rating"
+msgstr "Votación"
+
+#: options/settings_articles.php:5
+#: options/settings_articles.php:106
+#: options/settings_comments.php:5
+#: options/settings_comments.php:98
+#: options/settings_preview.php:55
+#: options/settings_preview.php:59
+#: tinymce3/window.php:30
+#: tinymce3/window.php:128
+#: tinymce3/window.php:156
+msgid "Stars"
+msgstr "Estrellas"
+
+#: options/settings_articles.php:16
+#: options/settings_articles.php:117
+#: options/settings_comments.php:16
+#: options/settings_comments.php:109
+msgid "Number Of Stars"
+msgstr "Número de estrellas"
+
+#: options/settings_articles.php:27
+#: options/settings_articles.php:128
+#: options/settings_comments.php:27
+#: options/settings_comments.php:120
+msgid "Rating Alignment"
+msgstr "Alineamiento  de la votación"
+
+#: options/settings_articles.php:32
+#: options/settings_comments.php:32
+msgid "Rating Text Placement"
+msgstr "Lugar del texto de votación"
+
+#: options/settings_articles.php:38
+#: options/settings_articles.php:134
+#: options/settings_comments.php:38
+#: options/settings_comments.php:126
+msgid "Rating Header"
+msgstr "Encabezado de votación"
+
+#: options/settings_articles.php:40
+#: options/settings_articles.php:136
+#: options/settings_comments.php:40
+#: options/settings_comments.php:128
+msgid "Display header text."
+msgstr "Mostrar texto de cabecera."
+
+#: options/settings_articles.php:43
+#: options/settings_articles.php:139
+#: options/settings_comments.php:43
+#: options/settings_comments.php:131
+msgid "Text to display"
+msgstr "Texto para mostrar"
+
+#: options/settings_articles.php:50
+#: options/settings_articles.php:145
+#: options/settings_comments.php:50
+#: options/settings_comments.php:137
+msgid "Rating Block CSS Class"
+msgstr "Clase CSS Bloque para votación"
+
+#: options/settings_articles.php:55
+#: options/settings_comments.php:55
+msgid "Rating Text CSS Class"
+msgstr "Clase CSS para el texto de votación"
+
+#: options/settings_articles.php:65
+#: options/settings_comments.php:65
+msgid "Default Vote Rule"
+msgstr "Modo de votación por defecto"
+
+#: options/settings_articles.php:71
+#: options/settings_comments.php:71
+msgid "Default Moderation Rule"
+msgstr "Modo de moderación por defecto"
+
+#: options/settings_articles.php:81
+#: options/settings_comments.php:81
+msgid "Auto Insert Rating Code"
+msgstr "Auto insertar código de votación"
+
+#: options/settings_articles.php:83
+msgid "For individual posts."
+msgstr "Para entradas individuales."
+
+#: options/settings_articles.php:85
+msgid "For individual pages."
+msgstr "Para páginas individuales."
+
+#: options/settings_articles.php:89
+msgid "For posts displayed in Archives."
+msgstr "Para entradas mostradas en Archivos."
+
+#: options/settings_articles.php:91
+msgid "For posts displayed on Front Page."
+msgstr "Para entradas mostradas en portada."
+
+#: options/settings_articles.php:96
+#: options/settings_comments.php:88
+msgid "Save cookies to prevent duplicate voting."
+msgstr "Guardar cookies para prevenir el voto duplicado."
+
+#: options/settings_articles.php:98
+msgid "Prevent article author to vote."
+msgstr "Prevenir el voto del autor del artículo."
+
+#: options/settings_articles.php:98
+#: options/settings_comments.php:90
+msgid "This is only for registered users."
+msgstr "Esto es solo para usuarios registrados."
+
+#: options/settings_comments.php:83
+msgid "For comments."
+msgstr "Para comentarios."
+
+#: options/settings_comments.php:90
+msgid "Prevent comment author to vote."
+msgstr "Prevenir voto del autor del comentario."
+
+#: options/settings_general.php:1
+msgid "Administration Settings"
+msgstr "Configuraciones de Administración"
+
+#: options/settings_general.php:5
+msgid "Maximum screen width"
+msgstr "Máximo ancho de pantalla"
+
+#: options/settings_general.php:16
+msgid "Rows for display"
+msgstr "Filas para mostrar"
+
+#: options/settings_general.php:29
+msgid "Display Advanced Settings."
+msgstr "Mostrar configuraciones avanzadas."
+
+#: options/settings_general.php:32
+msgid "Plugin Features"
+msgstr "Características del plugin"
+
+#: options/settings_general.php:34
+msgid "AJAX enabled rating."
+msgstr "Votación AJAX activada."
+
+#: options/settings_general.php:36
+msgid "Moderation options and handling."
+msgstr "Opciones de moderación y controles."
+
+#: options/settings_general.php:38
+msgid "Review Rating."
+msgstr "Resumen de votación."
+
+#: options/settings_general.php:40
+msgid "Comments Rating."
+msgstr "Votación de comentarios."
+
+#: options/settings_general.php:42
+msgid "Use IE6 PNG Transparency Fix."
+msgstr "Usar arreglo de transparencia PNG para IE6"
+
+#: options/settings_general.php:45
+msgid "Widgets"
+msgstr "Widgets"
+
+#: options/settings_general.php:47
+msgid "GD Star Rating: Post/Page rating widget."
+msgstr "GD Star Rating: widget de votación de Entrada/Página."
+
+#: options/settings_preview.php:89
+msgid "Size"
+msgstr "Tamaño"
+
+#: options/settings_preview.php:97
+#: options/settings_preview.php:142
+msgid "Click on this section header title to show preview panel."
+msgstr "Click en este título de encabezado de sección para mostrar el anterior panel."
+
+#: options/settings_preview.php:104
+#: options/settings_preview.php:109
+msgid "Trends"
+msgstr "Tendencias"
+
+#: options/settings_statistics.php:1
+msgid "Trend Calculations"
+msgstr "Tendencia de cálculos"
+
+#: options/settings_statistics.php:5
+msgid "Calculate for last number of days"
+msgstr "Calcular para el último número de días"
+
+#: options/settings_statistics.php:9
+msgid "Calculate over how many days before"
+msgstr "Calcular sobre cuantos días antes"
+
+#: options/settings_statistics.php:15
+msgid "Bayesian Estimate Mean"
+msgstr "Estimación de media Bayesiana"
+
+#: options/setup.php:19
+#: gd-star-rating.php:397
+msgid "Setup"
+msgstr "Instalación"
+
+#: options/setup.php:22
+msgid "Database Maintenance"
+msgstr "Mantenimiento de base de datos"
+
+#: options/setup.php:23
+msgid "Use this options to reinstall or uninstall the plugin. This will remove all existing data recorded by the plugin."
+msgstr "Usa esta opción para reinstalar o desinstalar el plugin. Esto removerá todo los datos grabados existentes por el plugin."
+
+#: options/setup.php:25
+#: options/setup.php:6
+msgid "REINSTALL"
+msgstr "REINSTALAR"
+
+#: options/setup.php:26
+#: options/setup.php:2
+msgid "UNINSTALL"
+msgstr "DESINSTALAR"
+
+#: options/setup.php:31
+msgid "Global Maintenance"
+msgstr "Mantenimiento global"
+
+#: options/setup.php:32
+msgid "These are various maintenace options."
+msgstr "Hay varias opciones de mantenimiento."
+
+#: options/setup.php:34
+#: options/setup.php:11
+msgid "REMOVE SETTINGS"
+msgstr "ELIMINAR CONFIGURACIONES"
+
+#: options/voters.php:0
+msgid "Voters Log"
+msgstr "Registro de votantes"
+
+#: templates/templates.php:18
+#: gd-star-rating.php:394
+msgid "Templates"
+msgstr "Plantillas"
+
+#: templates/templates.php:23
+msgid "Template Elements"
+msgstr "Elementos de plantillas"
+
+#: templates/templates.php:31
+msgid "Custom Elements"
+msgstr "Elementos personalizados"
+
+#: templates/templates_articles.php:1
+#: templates/templates_comments.php:1
+msgid "Rating Text"
+msgstr "Texto de votación"
+
+#: templates/templates_elements_articles.php:3
+#: widgets/widget.php:367
+msgid "article rating"
+msgstr "votación de artículo"
+
+#: templates/templates_elements_articles.php:6
+#: widgets/widget.php:371
+msgid "maximum rating value"
+msgstr "valor máximo de votación"
+
+#: templates/templates_elements_articles.php:10
+#: widgets/widget.php:379
+msgid "article review"
+msgstr "artículo resumen"
+
+#: templates/templates_elements_articles.php:13
+#: widgets/widget.php:383
+msgid "maximum review value"
+msgstr "valor resumen máximo"
+
+#: templates/templates_elements_articles.php:17
+#: widgets/widget.php:375
+msgid "total votes for article"
+msgstr "total de votos por artículo"
+
+#: templates/templates_elements_articles.php:20
+msgid "post/page title"
+msgstr "Título de entrada/página"
+
+#: templates/templates_elements_articles.php:24
+msgid "url to post/page"
+msgstr "url a la entrada/página"
+
+#: templates/templates_elements_articles.php:27
+#: templates/templates_elements_comments.php:13
+msgid "rating stars"
+msgstr "Estrellas votadas"
+
+#: templates/templates_elements_articles.php:31
+#: templates/templates_elements_comments.php:17
+msgid "bayesian estimate mean rating"
+msgstr "votación de la estimación de la media bayesiana"
+
+#: templates/templates_elements_articles.php:34
+msgid "article rating trend"
+msgstr "Tendencia de la votación del artículo"
+
+#: templates/templates_elements_comments.php:3
+msgid "comment rating"
+msgstr "Votación de comentarios"
+
+#: templates/templates_elements_comments.php:6
+msgid "maximum comment rating value"
+msgstr "valor máximo del comentario de votación"
+
+#: templates/templates_elements_comments.php:10
+msgid "total votes for comment"
+msgstr "total de votos por comentario"
+
+#: templates/templates_elements_comments.php:20
+msgid "comment rating trend"
+msgstr "Tendencia de la votación de comentarios"
+
+#: templates/templates_elements_custom.php:3
+msgid "singlular"
+msgstr "singular"
+
+#: templates/templates_elements_custom.php:6
+msgid "plural"
+msgstr "plural"
+
+#: templates/templates_elements_custom.php:12
+msgid "this can be used to replace word 'votes', and you need to set both singular and plural form of this word"
+msgstr "esto puede ser usado para reemplazar la palabra 'votos' y necesitas establecer ambas formas singular y plural de esta palabra"
+
+#: tinymce3/window.php:27
+msgid "Shortcode"
+msgstr "Código abreviado"
+
+#: tinymce3/window.php:29
+#: tinymce3/window.php:69
+#: widgets/widget.php:178
+msgid "Display"
+msgstr "Mostrar"
+
+#: tinymce3/window.php:31
+msgid "Styles"
+msgstr "Estilos"
+
+#: tinymce3/window.php:38
+msgid "Insert Shortcode"
+msgstr "Insertar código abreviado"
+
+#: tinymce3/window.php:54
+#: widgets/widget.php:249
+msgid "Category"
+msgstr "Categoría"
+
+#: tinymce3/window.php:58
+msgid "Votes From"
+msgstr "Votos desde"
+
+#: tinymce3/window.php:60
+#: widgets/widget.php:56
+#: widgets/widget.php:192
+msgid "Everyone"
+msgstr "Todo el mundo"
+
+#: tinymce3/window.php:62
+#: widgets/widget.php:58
+#: widgets/widget.php:194
+msgid "Users Only"
+msgstr "Usuarios sólo"
+
+#: tinymce3/window.php:66
+#: widgets/widget.php:232
+msgid "Hide articles with no recorded votes."
+msgstr "Esconder artículos sin votos registrados."
+
+#: tinymce3/window.php:72
+msgid "Posts And Pages"
+msgstr "Entradas y páginas"
+
+#: tinymce3/window.php:73
+#: widgets/widget.php:182
+msgid "Posts Only"
+msgstr "Sólo entradas"
+
+#: tinymce3/window.php:74
+#: widgets/widget.php:183
+msgid "Pages Only"
+msgstr "Sólo páginas"
+
+#: tinymce3/window.php:79
+msgid "Sorting"
+msgstr "Ordenación"
+
+#: tinymce3/window.php:84
+#: widgets/widget.php:211
+msgid "Total Votes"
+msgstr "Votos totales"
+
+#: tinymce3/window.php:85
+msgid "Post ID"
+msgstr "ID de entrada"
+
+#: tinymce3/window.php:86
+msgid "Post Title"
+msgstr "Título de entrada"
+
+#: tinymce3/window.php:89
+#: widgets/widget.php:224
+msgid "Descending"
+msgstr "Descendiente"
+
+#: tinymce3/window.php:90
+#: widgets/widget.php:225
+msgid "Ascending"
+msgstr "Ascendente"
+
+#: tinymce3/window.php:99
+#: widgets/widget.php:200
+msgid "Number Of Posts"
+msgstr "Número de entradas"
+
+#: tinymce3/window.php:105
+msgid "Show Table Header"
+msgstr "Mostrar encabezado de tabla"
+
+#: tinymce3/window.php:108
+msgid "Show Column with Votes"
+msgstr "Mostrar columna con votos"
+
+#: tinymce3/window.php:111
+msgid "Show Column with Review"
+msgstr "Mostrar columna con resumen"
+
+#: tinymce3/window.php:114
+msgid "Show Column with Rating"
+msgstr "Mostrar columna con votación"
+
+#: tinymce3/window.php:117
+msgid "Post names link to actual posts"
+msgstr "Publicar los nombres enlazados a la entrada actual"
+
+#: tinymce3/window.php:124
+msgid "Rating as"
+msgstr "Votando como"
+
+#: tinymce3/window.php:127
+#: tinymce3/window.php:155
+msgid "Number"
+msgstr "Número"
+
+#: tinymce3/window.php:133
+msgid "Rating Stars"
+msgstr "Estrellas votadas"
+
+#: tinymce3/window.php:141
+msgid "Rating Size"
+msgstr "Tamaño de votado"
+
+#: tinymce3/window.php:152
+msgid "Review as"
+msgstr "Resumir como"
+
+#: tinymce3/window.php:161
+msgid "Review Stars"
+msgstr "Resumen de estrellas"
+
+#: tinymce3/window.php:169
+msgid "Review Size"
+msgstr "Resumen de tamaño"
+
+#: tinymce3/window.php:184
+msgid "Style Class"
+msgstr "Estilo de clase"
+
+#: tinymce3/window.php:187
+msgid "Built In"
+msgstr "Integrada"
+
+#: tinymce3/window.php:188
+msgid "External"
+msgstr "Externa"
+
+#: tinymce3/window.php:193
+msgid "Built In Class"
+msgstr "Integrar en la clase"
+
+#: tinymce3/window.php:201
+msgid "External Class"
+msgstr "Clase externa"
+
+#: tinymce3/window.php:210
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: tinymce3/window.php:214
+msgid "Insert"
+msgstr "Insertar"
+
+#: widgets/widget.php:53
+msgid "Show Widget To"
+msgstr "Mostrar Widget para"
+
+#: widgets/widget.php:59
+msgid "Hide Widget"
+msgstr "Esconder Widget"
+
+#: widgets/widget.php:64
+msgid "Items Grouping"
+msgstr "Agrupación de los artículos"
+
+#: widgets/widget.php:67
+msgid "No grouping"
+msgstr "Sin agrupación"
+
+#: widgets/widget.php:68
+msgid "User based"
+msgstr "Usuario basado"
+
+#: widgets/widget.php:69
+msgid "Category based"
+msgstr "Categoría basada"
+
+#: widgets/widget.php:80
+#: widgets/widget.php:88
+msgid "Trend"
+msgstr "Tendencia"
+
+#: widgets/widget.php:81
+#: widgets/widget.php:170
+#: widgets/widget.php:313
+#: widgets/widget.php:359
+msgid "Click on the header title to display the options."
+msgstr "Click en este título de encabezado para mostrar las opciones."
+
+#: widgets/widget.php:89
+msgid "Rating trend display as"
+msgstr "Tendencia de votación mostrada como"
+
+#: widgets/widget.php:92
+#: widgets/widget.php:130
+msgid "Text"
+msgstr "Texto"
+
+#: widgets/widget.php:93
+#: widgets/widget.php:131
+msgid "Image"
+msgstr "Imagen"
+
+#: widgets/widget.php:102
+#: widgets/widget.php:140
+msgid "Up"
+msgstr "Arriba"
+
+#: widgets/widget.php:104
+#: widgets/widget.php:142
+msgid "Equal"
+msgstr "Igual"
+
+#: widgets/widget.php:106
+#: widgets/widget.php:144
+msgid "Down"
+msgstr "Abajo"
+
+#: widgets/widget.php:115
+#: widgets/widget.php:153
+msgid "Image set"
+msgstr "Establecer imagen"
+
+#: widgets/widget.php:127
+msgid "Voting trend display as"
+msgstr "Tendencia de la votación mostrada como"
+
+#: widgets/widget.php:181
+msgid "Posts & Pages"
+msgstr "Entradas y páginas"
+
+#: widgets/widget.php:189
+msgid "Display Votes From"
+msgstr "Mostrar votos desde"
+
+#: widgets/widget.php:207
+msgid "Sorting Column"
+msgstr "Ordenación de columna"
+
+#: widgets/widget.php:212
+msgid "ID"
+msgstr "ID"
+
+#: widgets/widget.php:215
+msgid "Count"
+msgstr "Contador"
+
+#: widgets/widget.php:221
+msgid "Sorting Order"
+msgstr "Ordenar serie"
+
+#: widgets/widget.php:238
+msgid "Hide articles with no review values."
+msgstr "Esconder artículos sin valores resumen."
+
+#: widgets/widget.php:262
+msgid "Publish Date"
+msgstr "Fecha de publicación"
+
+#: widgets/widget.php:265
+msgid "Last # days"
+msgstr "Ultimos # días"
+
+#: widgets/widget.php:266
+msgid "Exact month"
+msgstr "Mes exacto"
+
+#: widgets/widget.php:267
+msgid "Date range"
+msgstr "Rango de fecha"
+
+#: widgets/widget.php:276
+msgid "Number Of Days"
+msgstr "Número de días"
+
+#: widgets/widget.php:287
+msgid "Month"
+msgstr "Mes"
+
+#: widgets/widget.php:298
+msgid "Range"
+msgstr "Rango"
+
+#: widgets/widget.php:312
+#: widgets/widget.php:320
+msgid "Template"
+msgstr "Plantilla"
+
+#: widgets/widget.php:321
+msgid "Maximal character length for title"
+msgstr "Máxima longitud de caracteres para el título"
+
+#: widgets/widget.php:334
+msgid "Header"
+msgstr "Encabezado"
+
+#: widgets/widget.php:339
+msgid "Item"
+msgstr "Elemento"
+
+#: widgets/widget.php:344
+msgid "Footer"
+msgstr "Pie"
+
+#: widgets/widget.php:358
+#: widgets/widget.php:366
+msgid "Elements"
+msgstr "Elementos"
+
+#: widgets/widget.php:387
+msgid "item title"
+msgstr "Título de elemento"
+
+#: widgets/widget.php:391
+msgid "rating trend"
+msgstr "Tendencia de la tasa de votación"
+
+#: widgets/widget.php:395
+msgid "voting trend"
+msgstr "Tendencia de la votación"
+
+#: widgets/widget.php:399
+msgid "item url"
+msgstr "url del elemento"
+
+#: widgets/widget.php:403
+msgid "item id"
+msgstr "id del elemento"
+
+#: widgets/widget.php:407
+msgid "number of posts/pages"
+msgstr "número de entradas/páginas"
+
+#: widgets/widget.php:411
+msgid "singular/plural word vote"
+msgstr "palabra singular/plural de voto"
+
+#: gd-star-rating.php:392
+msgid "Front Page"
+msgstr "Portada"
+
+#: gd-star-rating.php:393
+msgid "Plugin Settings"
+msgstr "Configuración del plugin"
+
+#: gd-star-rating.php:395
+msgid "Votes Stats"
+msgstr "Estadísticas de votos"
+
+#~ msgid "Stars Preview"
+#~ msgstr "Estrellas anteriores"
+#~ msgid "cast"
+#~ msgstr "cast"
+#~ msgid "vote"
+#~ msgstr "voto"
+#~ msgid "votes"
+#~ msgstr "votos"
+#~ msgid ""
+#~ "To see comments, please go to Article page, and choose specific article "
+#~ "comments."
+#~ msgstr ""
+#~ "Para ver comentarios, por favor ves a la página de Artículo y elige un "
+#~ "comentario de artículo específico."
+#~ msgid ""
+#~ "To see articles under moderation, please go to Article or Comments page, "
+#~ "and choose item for rating moderation."
+#~ msgstr ""
+#~ "Para ver artículos bajo moderación, por favor diríjase a Artículos o la "
+#~ "página de Comentarios y elija un elemento para moderar la votación."
+#~ msgid ""
+#~ "To see voters log, please go to Article or Comments page, and choose item "
+#~ "to display log."
+#~ msgstr ""
+#~ "Para ver el registro de votantes, por favor diríjase a Artículos o la "
+#~ "página de Comentarios y elija un elemento para mostrar en el registro."
+#~ msgid "Article Votes"
+#~ msgstr "Artículos votados"
+#~ msgid "Comments Votes"
+#~ msgstr "Comentarios votados"
+#~ msgid "Review Rating"
+#~ msgstr "Resumen de votación"
+#~ msgid "All Votes"
+#~ msgstr "Todos los votos"
+#~ msgid "Only Visitor Votes"
+#~ msgstr "Sólo votos de visitantes"
+#~ msgid "Only User Votes"
+#~ msgstr "Sólo votos de usuarios"
+#~ msgid "No Moderation"
+#~ msgstr "Sin moderación"
+#~ msgid "Only Visitors"
+#~ msgstr "Sólo visitantes"
+#~ msgid "Only Users"
+#~ msgstr "Sólo usuarios"
+#~ msgid "Locked Voting"
+#~ msgstr "Votación cerrada"
+#~ msgid "For trackbacks."
+#~ msgstr "Para trackbacks."
+#~ msgid "StarRating"
+#~ msgstr "Votación de estrellas"
+#~ msgid "StarReview"
+#~ msgstr "Resumen de estrellas"
+#~ msgid "StarRater"
+#~ msgstr "Votante de estrellas"
+#~ msgid "StarRater Comment"
+#~ msgstr "Votación de estrellas de comentarios"
+
