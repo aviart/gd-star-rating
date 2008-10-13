@@ -57,6 +57,7 @@ if (!class_exists('GDStarRating')) {
         var $p;
         var $x;
         var $e;
+        var $i;
 
         var $shortcodes = array(
             "starrating",
@@ -137,6 +138,10 @@ if (!class_exists('GDStarRating')) {
             "stats_trend_current" => 3,
             "trend_last" => 1,
             "trend_over" => 30
+        );
+        
+        var $default_import = array(
+            "post_star_rating" => 0
         );
         
         var $default_widget = array(
@@ -466,6 +471,7 @@ if (!class_exists('GDStarRating')) {
         function install_plugin() {
             $this->o = get_option('gd-star-rating');
             $this->x = get_option('gd-star-rating-templates');
+            $this->i = get_option('gd-star-rating-import');
 
             if (!is_array($this->o)) {
                 update_option('gd-star-rating', $this->default_options);
@@ -483,8 +489,17 @@ if (!class_exists('GDStarRating')) {
 
             if (!is_array($this->o))
                 update_option('gd-star-rating-templates', $this->default_templates);
-            else
+            else {
                 $this->x = $this->upgrade_settings($this->x, $this->default_templates);
+                update_option('gd-star-rating-templates', $this->x);
+            }
+
+            if (!is_array($this->i))
+                update_option('gd-star-rating-import', $this->default_import);
+            else {
+                $this->i = $this->upgrade_settings($this->i, $this->default_import);
+                update_option('gd-star-rating-import', $this->i);
+            }
 
             $this->t = GDSRDB::get_database_tables();
         }
@@ -949,10 +964,10 @@ if (!class_exists('GDStarRating')) {
             $all_rows = $wpdb->get_results($sql);
             $template = html_entity_decode($widget["tpl_item"]);
 
-            $t_rate = strpos($template, "%RATE_TREND%") === false;
-            $t_vote = strpos($template, "%VOTE_TREND%") === false;
+            $t_rate = !(strpos($template, "%RATE_TREND%") === false);
+            $t_vote = !(strpos($template, "%VOTE_TREND%") === false);
             
-            if (!($t_rate || $t_vote)) {
+            if ($t_rate || $t_vote) {
                 $idx = array();
                 foreach ($all_rows as $row) {
                     switch ($widget["grouping"]) {
@@ -975,6 +990,7 @@ if (!class_exists('GDStarRating')) {
                 $trends = array();
                 $trends_calculated = false;
             }
+            
             foreach ($all_rows as $row) {
                 if ($widget['show'] == "total") {
                     $votes = $row->user_votes + $row->visitor_votes;

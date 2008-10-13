@@ -351,3 +351,9 @@ div.ui-tabs-panel {
 #rightnow h3, #rightnow p {
 	padding:0pt 5px;
 }
+
+.gdsr .notice {
+	background-color: #F0F6FB;
+	font-size: 13px;
+	padding: 7px;
+}
