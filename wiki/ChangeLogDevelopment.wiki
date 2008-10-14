@@ -7,6 +7,14 @@ This is the list of changes for each release of the plugin.
 
 == Change log ==
 
+=== Version: 0.9.8 Beta #4 / october 13 2008 ===
+  * new: trend icon sets
+  * new: import data from 'post star rating' plugin
+  * new: additional setup options
+  * edit: improved setup page
+  * fix: widget trend display
+  * fix: settings update problem
+
 === Version: 0.9.7 Beta #3 / october 12 2008 ===
   * new: famfamfam trend icons
   * new: trend calculations
