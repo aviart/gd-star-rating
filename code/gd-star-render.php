@@ -20,7 +20,7 @@ class GDSRRender
                     $rater.='<a href="'.$vote_get.'" title="'.$ncount.' out of '.$unit_count.'" class="s'.$ncount.'" rel="nofollow" onclick="gdsrWait(\''.$rater_id.'\', \''.$loader_id.'\')"></a>';
                 }
                 else {
-                    $ajax_id = sprintf("%s|%s|%s|%s|%s|%s", $id, $ncount, $user_id, $type, $rater_id, $loader_id);
+                    $ajax_id = sprintf("gdsrX%sX%sX%sX%sX%sX%s", $id, $ncount, $user_id, $type, $rater_id, $loader_id);
                     $rater.='<a id="'.$ajax_id.'" title="'.$ncount.' out of '.$unit_count.'" class="s'.$ncount.'" rel="nofollow"></a>';
                 }
             }
