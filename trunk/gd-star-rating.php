@@ -577,7 +577,7 @@ if (!class_exists('GDStarRating')) {
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_article.css.php?stars='.$article.'" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment.css.php?stars='.$comment.'" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/rating.css" type="text/css" media="screen" />');
-            echo('<script>');
+            echo('<script type="text/javascript">');
             echo('function gdsrWait(rater, loader) { jQuery("#"+rater).css("display", "none"); jQuery("#"+loader).css("display", "block"); }');
             if ($this->o["ajax"] == 1) include (dirname(__FILE__)."/code/gd-star-js.php");
             echo('</script>');

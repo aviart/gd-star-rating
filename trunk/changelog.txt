@@ -2,6 +2,9 @@
 
 == Change Log ==
 
+=== Version: 0.9.9 DEV / october 14 2008 ===
+  * fix: xhtml valid problems
+
 === Version: 0.9.8 Beta #4 / october 13 2008 ===
   * new: trend icon sets
   * new: import data from 'post star rating' plugin
