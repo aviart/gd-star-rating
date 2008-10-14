@@ -17,6 +17,11 @@ class GDSRDatabase
         $wpdb->query($sql);
     }
 
+    function table_exists($table_name) {
+        global $wpdb, $table_prefix;
+        return $wpdb->get_var(sprintf("SHOW TABLES LIKE '%s%s'", $table_prefix, $table_name)) == $table_prefix.$table_name;
+    }
+    
     // check vote
     function check_vote_table($table, $id, $user, $type, $ip) {
         global $wpdb, $table_prefix;

@@ -2,13 +2,34 @@
 
 class GDSRImport
 {
+    function import_check($import_exists) {
+        if ($import_exists) {
+            _e("Data not imported.", "gd-star-rating");
+            return true;
+        }
+        else {
+            _e("Plugin not available for import.", "gd-star-rating");
+            return false;
+        }
+    }
+
     // import post star rating
     function import_psr() {
         GDSRImport::import_psr_article();
         GDSRImport::import_psr_log();
         GDSRImport::import_psr_trend();
     }
-    
+
+    function import_psr_check($import_status) {
+        if ($import_status == 0) {
+            return GDSRImport::import_check(GDSRDatabase::table_exists("psr_post") && GDSRDatabase::table_exists("psr_user"));
+        }
+        else {
+            _e("Data imported.", "gd-star-rating");
+            return false;
+        }
+    }
+
     function import_psr_article() {
         global $wpdb, $table_prefix;
         
@@ -40,19 +61,34 @@ class GDSRImport
             $wpdb->query($sql);
         }
     }
-    
+
     function import_psr_log() {
         global $wpdb, $table_prefix;
         $sql = sprintf("INSERT INTO %sgdsr_votes_log SELECT null, post, 'article', 0, points, vote_date, ip, '' FROM %spsr_user ORDER BY vote_date", $table_prefix, $table_prefix);
         $wpdb->query($sql);
     }
-    
+
     function import_psr_trend() {
         global $wpdb, $table_prefix;
         $sql = sprintf("INSERT INTO %sgdsr_votes_trend SELECT post, 'article', 0, 0, count(points), sum(points), DATE_FORMAT(vote_date, '%s') FROM %spsr_user GROUP BY post, DATE_FORMAT(vote_date, '%s') ORDER BY DATE_FORMAT(vote_date, '%s') asc, post asc", $table_prefix, '%Y-%m-%d', $table_prefix, '%Y-%m-%d', '%Y-%m-%d');
         $wpdb->query($sql);
     }
     // import post star rating
+    
+    // improt wp post rating
+    function import_wpr() {
+    }
+    
+    function import_wpr_check($import_status) {
+        if ($import_status == 0) {
+            return GDSRImport::import_check(GDSRDatabase::table_exists("ratings"));
+        }
+        else {
+            _e("Data imported.", "gd-star-rating");
+            return false;
+        }
+    }
+    // improt wp post rating
 }
 
 ?>
