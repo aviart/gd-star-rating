@@ -16,6 +16,7 @@
 <ul>
     <li><a href="#fragment-1"><span>Post Star Rating</span></a></li>
     <li><a href="#fragment-2"><span>WP Post Ratings</span></a></li>
+    <li><a href="#fragment-3"><span>Vote The Post </span></a></li>
 </ul>
 <div style="clear: both"></div>
 
@@ -34,16 +35,11 @@
 </tr>
 <tr><th scope="row"><?php _e("Status", "gd-star-rating"); ?>:</th>
     <td>
-        <?php
-            if ($imports["post_star_rating"] == 0)
-                _e("Data not imported.", "gd-star-rating");
-            else
-                _e("Data imported.", "gd-star-rating");
-        ?>
+        <?php $import_available = GDSRImport::import_psr_check($imports["post_star_rating"]); ?>
     </td>
 </tr>
 </tbody></table>
-<?php if ($imports["post_star_rating"] == 0) { ?>
+<?php if ($import_available) { ?>
 <p class="submit"><input type="submit" value="<?php _e("Import Data", "gd-star-rating"); ?>" name="gdsr_import_psr"/></p>
 <?php } ?>
 </form>
@@ -59,6 +55,30 @@
 <tr><th scope="row"><?php _e("Author URL", "gd-star-rating"); ?>:</th>
     <td>
         <a target="_blank" href="http://lesterchan.net/">Lester Chan</a>
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("Status", "gd-star-rating"); ?>:</th>
+    <td>
+        <?php $import_available = GDSRImport::import_wpr_check($imports["post_wp_post_ratings"]); ?>
+    </td>
+</tr>
+</tbody></table>
+<?php if ($import_available) { ?>
+<p class="submit"><input type="submit" value="<?php _e("Import Data", "gd-star-rating"); ?>" name="gdsr_import_wpr"/></p>
+<?php } ?>
+</form>
+</div>
+
+<div id="fragment-3">
+<table class="form-table"><tbody>
+<tr><th scope="row"><?php _e("Plugin URL", "gd-star-rating"); ?>:</th>
+    <td>
+        <a target="_blank" href="http://www.1800blogger.com/word-press-voting-plugin/">http://www.1800blogger.com/word-press-voting-plugin/</a>
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("Author URL", "gd-star-rating"); ?>:</th>
+    <td>
+        <a target="_blank" href="http://crowdfavorite.com/">Crowd Favorite</a>
     </td>
 </tr>
 </tbody></table>
