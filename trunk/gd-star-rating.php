@@ -250,7 +250,7 @@ if (!class_exists('GDStarRating')) {
             echo $this->render_article($post, $userdata);
 		}
         
-		function shortcode_starreview($atts) {
+		function shortcode_starreview($atts = array()) {
             global $post;
             $rating = GDSRDatabase::get_review($post->ID);
             if ($rating > -1) {
@@ -405,6 +405,7 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Votes Stats", "gd-star-rating"), __("Votes Stats", "gd-star-rating"), 10, "gdsr-stats", array(&$this,"star_menu_stats"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Batch Options", "gd-star-rating"), __("Batch Options", "gd-star-rating"), 10, "gdsr-batch", array(&$this,"star_menu_batch"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import Data", "gd-star-rating"), __("Import Data", "gd-star-rating"), 10, "gdsr-import", array(&$this,"star_menu_import"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export Data", "gd-star-rating"), __("Export Data", "gd-star-rating"), 10, "gdsr-export", array(&$this,"star_menu_export"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), 10, "gdsr-setup", array(&$this,"star_menu_setup"));
         }                                                                
 
@@ -791,6 +792,11 @@ if (!class_exists('GDStarRating')) {
             $options = $this->o;
             $imports = $this->i;
             include($this->plugin_path.'/options/import.php');
+        }
+        
+        function star_menu_export() {
+            $options = $this->o;
+            include($this->plugin_path.'/options/export.php');
         }
 
         function star_menu_stats() {
@@ -1367,6 +1373,15 @@ if (!class_exists('GDStarRating')) {
     }
     
 	function wp_gdsr_render_review() {
-        global $post, $userdata, $gdsr;
+        global $gdsr;
+        echo $gdsr->shortcode_starreview();
 	}
+    
+    function wp_gdsr_user_votes($user_id) {
+        global $gdsr;
+    }
+    
+    function wp_gdsr_all_users_votes() {
+        global $gdsr;
+    }
 }
