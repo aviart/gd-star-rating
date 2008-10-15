@@ -218,8 +218,6 @@ if (!class_exists('GDStarRating')) {
             $this->plugin_path_url();
             $this->install_plugin();
             $this->actions_filters();
-            
-            define('SAVEQUERIES', true);
         }
         
         // shortcode
@@ -403,7 +401,7 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Plugin Settings", "gd-star-rating"), __("Plugin Settings", "gd-star-rating"), 10, "gdsr-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gdsr-templates", array(&$this,"star_menu_templates"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Votes Stats", "gd-star-rating"), __("Votes Stats", "gd-star-rating"), 10, "gdsr-stats", array(&$this,"star_menu_stats"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Batch Options", "gd-star-rating"), __("Batch Options", "gd-star-rating"), 10, "gdsr-batch", array(&$this,"star_menu_batch"));
+            // add_submenu_page(__FILE__, 'GD Star Rating: '.__("Batch Options", "gd-star-rating"), __("Batch Options", "gd-star-rating"), 10, "gdsr-batch", array(&$this,"star_menu_batch"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import Data", "gd-star-rating"), __("Import Data", "gd-star-rating"), 10, "gdsr-import", array(&$this,"star_menu_import"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export Data", "gd-star-rating"), __("Export Data", "gd-star-rating"), 10, "gdsr-export", array(&$this,"star_menu_export"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), 10, "gdsr-setup", array(&$this,"star_menu_setup"));
