@@ -21,6 +21,25 @@ msgstr ""
 msgid "All categories"
 msgstr ""
 
+#: code/gd-star-dbtwo.php:233
+#: code/gd-star-dbtwo.php:284
+msgid "votes"
+msgstr ""
+
+#: code/gd-star-dbtwo.php:233
+msgid "views"
+msgstr ""
+
+#: code/gd-star-dbtwo.php:234
+#: code/gd-star-dbtwo.php:285
+msgid "visitors"
+msgstr ""
+
+#: code/gd-star-dbtwo.php:234
+#: code/gd-star-dbtwo.php:285
+msgid "users"
+msgstr ""
+
 #: code/gd-star-functions.php:63
 msgid "No moderation"
 msgstr ""

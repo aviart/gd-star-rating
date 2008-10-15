@@ -231,8 +231,8 @@ class GDSRDB
             $count_t = sprintf('[ <a href="./admin.php?page=gdsr-stats&gdsr=log&pid=%s&vt=article&vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $total_voters);
         }
         
-        $row->total = $count_t.'votes: <strong>'.$votes_t.'</strong><br />[ '.$row->views.' ] views';
-        $row->votes = $count_v.'vistiors: <strong>'.$votes_v.'</strong><br />'.$count_u.'users: <strong>'.$votes_u.'</strong>';
+        $row->total = $count_t.__("votes", "gd-star-rating").': <strong>'.$votes_t.'</strong><br />[ '.$row->views.' ] '.__("views", "gd-star-rating");
+        $row->votes = $count_v.__("visitors", "gd-star-rating").': <strong>'.$votes_v.'</strong><br />'.$count_u.__("users", "gd-star-rating").': <strong>'.$votes_u.'</strong>';
         
         $row->title = sprintf('<a href="./post.php?action=edit&post=%s">%s</a>', $row->pid, $row->post_title);
         
@@ -282,8 +282,8 @@ class GDSRDB
             $count_t = sprintf('[ <a href="./admin.php?page=gdsr-stats&gdsr=log&pid=%s&vt=comment&vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $total_voters);
         }
 
-        $row->total = $count_t.'votes: <strong>'.$votes_t.'</strong>';
-        $row->votes = $count_v.'vistiors: <strong>'.$votes_v.'</strong><br />'.$count_u.'users: <strong>'.$votes_u.'</strong>';
+        $row->total = $count_t.__("votes", "gd-star-rating").': <strong>'.$votes_t.'</strong>';
+        $row->votes = $count_v.__("visitors", "gd-star-rating").': <strong>'.$votes_v.'</strong><br />'.$count_u.__("users", "gd-star-rating").': <strong>'.$votes_u.'</strong>';
 
         if ($row->review == -1) $row->review = "/";
         $row->review = '<strong><span style="color: blue">'.$row->review.'</span></strong>';

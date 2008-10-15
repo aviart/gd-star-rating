@@ -32,6 +32,25 @@ msgstr "Сви корисници"
 msgid "All categories"
 msgstr "Све категорије"
 
+#: code/gd-star-dbtwo.php:233
+#: code/gd-star-dbtwo.php:284
+msgid "votes"
+msgstr "гласови"
+
+#: code/gd-star-dbtwo.php:233
+msgid "views"
+msgstr "посета"
+
+#: code/gd-star-dbtwo.php:234
+#: code/gd-star-dbtwo.php:285
+msgid "visitors"
+msgstr "посетиоци"
+
+#: code/gd-star-dbtwo.php:234
+#: code/gd-star-dbtwo.php:285
+msgid "users"
+msgstr "корисници"
+
 #: code/gd-star-functions.php:63
 msgid "No moderation"
 msgstr "Без модерације"
@@ -1198,8 +1217,6 @@ msgstr "Статистика Гласова"
 #~ msgstr "дато"
 #~ msgid "vote"
 #~ msgstr "глас"
-#~ msgid "votes"
-#~ msgstr "гласови"
 #~ msgid ""
 #~ "To see comments, please go to Article page, and choose specific article "
 #~ "comments."

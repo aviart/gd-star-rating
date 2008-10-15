@@ -6,8 +6,10 @@
   * new: export user voting data
   * new: export data panel
   * new: import checks for available plugins
+  * edit: added some missed strings for translation
   * fix: xhtml valid problems
   * fix: removed parts of unused and uneeded code
+  * fix: few typos
 
 === Version: 0.9.8 Beta #4 / october 13 2008 ===
   * new: trend icon sets
