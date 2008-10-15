@@ -3,8 +3,11 @@
 == Change Log ==
 
 === Version: 0.9.9 DEV / october 14 2008 ===
+  * new: export user voting data
+  * new: export data panel
   * new: import checks for available plugins
   * fix: xhtml valid problems
+  * fix: removed parts of unused and uneeded code
 
 === Version: 0.9.8 Beta #4 / october 13 2008 ===
   * new: trend icon sets
