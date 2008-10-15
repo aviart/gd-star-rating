@@ -1,23 +1,23 @@
-#: code/gd-star-dbone.php:595
+#: code/gd-star-dbone.php:600
 msgid "Show all dates"
 msgstr ""
 
-#: code/gd-star-dbone.php:623
+#: code/gd-star-dbone.php:628
 msgid "All users and visitors"
 msgstr ""
 
-#: code/gd-star-dbone.php:624
+#: code/gd-star-dbone.php:629
 #: tinymce3/window.php:61
 #: widgets/widget.php:57
 #: widgets/widget.php:193
 msgid "Visitors Only"
 msgstr ""
 
-#: code/gd-star-dbone.php:625
+#: code/gd-star-dbone.php:630
 msgid "All Users"
 msgstr ""
 
-#: code/gd-star-dbone.php:641
+#: code/gd-star-dbone.php:646
 msgid "All categories"
 msgstr ""
 
@@ -127,6 +127,19 @@ msgstr ""
 msgid "Right (hide if empty)"
 msgstr ""
 
+#: code/gd-star-import.php:6
+msgid "Data not imported."
+msgstr ""
+
+#: code/gd-star-import.php:10
+msgid "Plugin not available for import."
+msgstr ""
+
+#: code/gd-star-import.php:27
+#: code/gd-star-import.php:86
+msgid "Data imported."
+msgstr ""
+
 #: options/articles.php:94
 #: options/articles.php:202
 #: templates/templates.php:36
@@ -234,8 +247,8 @@ msgid "Comments"
 msgstr ""
 
 #: options/batch.php:0
-#: gd-star-rating.php:404
-#: gd-star-rating.php:404
+#: gd-star-rating.php:403
+#: gd-star-rating.php:403
 msgid "Batch Options"
 msgstr ""
 
@@ -261,6 +274,79 @@ msgstr ""
 msgid "With selected"
 msgstr ""
 
+#: options/export.php:17
+#: options/export.php:55
+#: gd-star-rating.php:405
+#: gd-star-rating.php:405
+msgid "Export Data"
+msgstr ""
+
+#: options/export.php:22
+msgid "Users Data"
+msgstr ""
+
+#: options/export.php:23
+msgid "Posts Data"
+msgstr ""
+
+#: options/export.php:24
+msgid "Comments Data"
+msgstr ""
+
+#: options/export.php:30
+msgid "User Info"
+msgstr ""
+
+#: options/export.php:32
+msgid "Minimal: only user id is exported"
+msgstr ""
+
+#: options/export.php:33
+msgid "Normal: user id, name and email are exported"
+msgstr ""
+
+#: options/export.php:36
+msgid "Data"
+msgstr ""
+
+#: options/export.php:38
+msgid "Post / Page votes"
+msgstr ""
+
+#: options/export.php:39
+msgid "Comments votes"
+msgstr ""
+
+#: options/export.php:42
+msgid "Additional Columns"
+msgstr ""
+
+#: options/export.php:44
+#: options/moderation.php:116
+msgid "IP"
+msgstr ""
+
+#: options/export.php:45
+#: options/moderation.php:117
+msgid "User Agent"
+msgstr ""
+
+#: options/export.php:47
+msgid "Post/Page title"
+msgstr ""
+
+#: options/export.php:48
+msgid "Post/Page date"
+msgstr ""
+
+#: options/export.php:50
+msgid "Comment author"
+msgstr ""
+
+#: options/export.php:51
+msgid "Comment date"
+msgstr ""
+
 #: options/front.php:54
 msgid "Latest News"
 msgstr ""
@@ -274,7 +360,8 @@ msgid "Version"
 msgstr ""
 
 #: options/front.php:98
-#: options/import.php:34
+#: options/import.php:35
+#: options/import.php:59
 msgid "Status"
 msgstr ""
 
@@ -295,41 +382,28 @@ msgid "An error occured while loading newsfeed. Go to the %sfront page%s to chec
 msgstr ""
 
 #: options/import.php:11
-#: options/import.php:46
+#: options/import.php:42
+#: options/import.php:66
 #: options/import.php:2
-#: gd-star-rating.php:405
-#: gd-star-rating.php:405
+#: gd-star-rating.php:404
+#: gd-star-rating.php:404
 msgid "Import Data"
 msgstr ""
 
-#: options/import.php:24
-#: options/import.php:53
+#: options/import.php:25
+#: options/import.php:49
+#: options/import.php:73
 msgid "Plugin URL"
 msgstr ""
 
-#: options/import.php:29
-#: options/import.php:58
+#: options/import.php:30
+#: options/import.php:54
+#: options/import.php:78
 msgid "Author URL"
-msgstr ""
-
-#: options/import.php:38
-msgid "Data not imported."
-msgstr ""
-
-#: options/import.php:40
-msgid "Data imported."
 msgstr ""
 
 #: options/moderation.php:115
 msgid "Vote"
-msgstr ""
-
-#: options/moderation.php:116
-msgid "IP"
-msgstr ""
-
-#: options/moderation.php:117
-msgid "User Agent"
 msgstr ""
 
 #: options/moderation.php:146
@@ -656,8 +730,8 @@ msgid "Voters Log"
 msgstr ""
 
 #: templates/templates.php:18
-#: gd-star-rating.php:402
-#: gd-star-rating.php:402
+#: gd-star-rating.php:401
+#: gd-star-rating.php:401
 msgid "Templates"
 msgstr ""
 
@@ -1100,18 +1174,18 @@ msgstr ""
 msgid "singular/plural word vote"
 msgstr ""
 
-#: gd-star-rating.php:400
-#: gd-star-rating.php:400
+#: gd-star-rating.php:399
+#: gd-star-rating.php:399
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:401
-#: gd-star-rating.php:401
+#: gd-star-rating.php:400
+#: gd-star-rating.php:400
 msgid "Plugin Settings"
 msgstr ""
 
-#: gd-star-rating.php:403
-#: gd-star-rating.php:403
+#: gd-star-rating.php:402
+#: gd-star-rating.php:402
 msgid "Votes Stats"
 msgstr ""
 
