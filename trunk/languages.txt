@@ -3,24 +3,24 @@
 == Languages ==
 
 === English ===
-* version: 0.9.8
-* author: Milan Petrovic
-* email: milan@gdragon.info
-* web: http://www.gdragon.info/
+  * version: 0.9.8
+  * author: Milan Petrovic
+  * email: milan@gdragon.info
+  * web: http://www.gdragon.info/
 
 === Serbian ===
-* version: 0.9.7
-* author: Milan Petrovic
-* email: milan@gdragon.info
-* web: http://www.gdragon.info/
+  * version: 0.9.7
+  * author: Milan Petrovic
+  * email: milan@gdragon.info
+  * web: http://www.gdragon.info/
 
 === Spanish ===
-* version: 0.9.7
-* author: Ángel Guzmán Maeso
-* email: shakaran@gmail.com
+  * version: 0.9.7
+  * author: Ángel Guzmán Maeso
+  * email: shakaran@gmail.com
 
 === French ===
-* version: 0.9.2
-* author: k|torz
-* email: vlag@free.fr
-* web: http://blog.lagrandmaison.fr/yop/
+  * version: 0.9.2
+  * author: k|torz
+  * email: vlag@free.fr
+  * web: http://blog.lagrandmaison.fr/yop/
