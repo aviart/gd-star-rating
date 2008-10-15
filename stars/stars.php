@@ -16,7 +16,8 @@
         array("name" => "Aeon", "folder" => "aeon", "type" => "png"),
         array("name" => "Soft", "folder" => "soft", "type" => "png"),
         array("name" => "Crystal Hearts", "folder" => "crystal_hearts", "type" => "png"),
-		array("name" => "Pine Hearts", "folder" => "pine_hearts", "type" => "png")
+		array("name" => "Pine Hearts", "folder" => "pine_hearts", "type" => "png"),
+		array("name" => "Darkness", "folder" => "darkness", "type" => "png")
     );
     
     $gdsr_classes = array(
