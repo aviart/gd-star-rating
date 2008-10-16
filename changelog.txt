@@ -9,6 +9,7 @@
   * new: export data panel
   * new: import checks for available plugins
   * edit: added some missed strings for translation
+  * edit: changes to internal path and url variables
   * fix: xhtml valid problems
   * fix: removed parts of unused and uneeded code
   * fix: few typos

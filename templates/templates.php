@@ -31,28 +31,28 @@
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Custom Elements", "gd-star-rating"); ?></th>
     <td>
-        <?php include(STARRATING_PATH."/templates/templates_elements_custom.php"); ?>
+        <?php include(STARRATING_PATH."templates/templates_elements_custom.php"); ?>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Articles", "gd-star-rating"); ?></th>
     <td>
-        <?php include(STARRATING_PATH."/templates/templates_elements_articles.php"); ?>
+        <?php include(STARRATING_PATH."templates/templates_elements_articles.php"); ?>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Comments", "gd-star-rating"); ?></th>
     <td>
-        <?php include(STARRATING_PATH."/templates/templates_elements_comments.php"); ?>
+        <?php include(STARRATING_PATH."templates/templates_elements_comments.php"); ?>
     </td>
 </tr>
 </tbody></table>
 </div>
 
 <div id="fragment-2">
-    <?php include(STARRATING_PATH."/templates/templates_articles.php"); ?>
+    <?php include(STARRATING_PATH."templates/templates_articles.php"); ?>
 </div>
 
 <div id="fragment-3">
-    <?php include(STARRATING_PATH."/templates/templates_comments.php"); ?>
+    <?php include(STARRATING_PATH."templates/templates_comments.php"); ?>
 </div>
 
 </div>
