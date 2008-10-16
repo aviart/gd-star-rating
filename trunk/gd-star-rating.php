@@ -49,6 +49,8 @@ if (!class_exists('GDStarRating')) {
         var $vote_status;
         var $plugin_url;
         var $plugin_path;
+        var $plugin_xtra_url;
+        var $plugin_xtra_path;
         var $styles;
         var $trends;
         
@@ -515,11 +517,17 @@ if (!class_exists('GDStarRating')) {
         function plugin_path_url() {
             global $wp_version;
             $this->wp_version = substr(str_replace('.', '', $wp_version), 0, 2);
-            if ($this->wp_version < 26)
+            if ($this->wp_version < 26) {
                 $this->plugin_url = get_option('home').'/'.PLUGINDIR.'/gd-star-rating/';
-            else
+                $this->plugin_xtra_url = get_option('home').'/wp-content/gd-star-rating/';
+                $this->plugin_xtra_path = ABSPATH.'/wp-content/gd-star-rating/';
+            }
+            else {
                 $this->plugin_url = WP_PLUGIN_URL.'/gd-star-rating/';
-            $this->plugin_path = dirname(__FILE__);
+                $this->plugin_xtra_url = WP_CONTENT_URL.'/gd-star-rating/';
+                $this->plugin_xtra_path = WP_CONTENT_DIR.'/gd-star-rating/';
+            }
+            $this->plugin_path = dirname(__FILE__)."/";
             $this->e = $this->plugin_url."gfx/blank.gif";
         }
 
@@ -741,14 +749,14 @@ if (!class_exists('GDStarRating')) {
             $post_id = $post->ID;
 
             if ($this->wp_version < 27)
-                include($this->plugin_path.'/options/edit.php');
+                include($this->plugin_path.'options/edit.php');
             else 
-                include($this->plugin_path.'/options/edit27.php');
+                include($this->plugin_path.'options/edit27.php');
         }                  
 
         function star_menu_front() {
             $options = $this->o;
-            include($this->plugin_path.'/options/front.php');
+            include($this->plugin_path.'options/front.php');
         }
 
         function star_menu_settings() {
@@ -757,7 +765,7 @@ if (!class_exists('GDStarRating')) {
             $gdsr_options = $this->o;
             $gdsr_root_url = $this->plugin_url;
             
-            include($this->plugin_path.'/options/settings.php');
+            include($this->plugin_path.'options/settings.php');
 
             if ($recalculate_articles)
                 GDSRDB::recalculate_articles($gdsr_oldstars, $gdsr_newstars);
@@ -774,27 +782,27 @@ if (!class_exists('GDStarRating')) {
 
         function star_menu_templates() {
             $gdsr_options = $this->x;
-            include($this->plugin_path.'/templates/templates.php');
+            include($this->plugin_path.'templates/templates.php');
         }
 
         function star_menu_setup() {
-            include($this->plugin_path.'/options/setup.php');
+            include($this->plugin_path.'options/setup.php');
         }
 
         function star_menu_batch() {
             $options = $this->o;
-            include($this->plugin_path.'/options/batch.php');
+            include($this->plugin_path.'options/batch.php');
         }
 
         function star_menu_import() {
             $options = $this->o;
             $imports = $this->i;
-            include($this->plugin_path.'/options/import.php');
+            include($this->plugin_path.'options/import.php');
         }
         
         function star_menu_export() {
             $options = $this->o;
-            include($this->plugin_path.'/options/export.php');
+            include($this->plugin_path.'options/export.php');
         }
 
         function star_menu_stats() {
@@ -804,16 +812,16 @@ if (!class_exists('GDStarRating')) {
             switch ($gdsr_page) {
                 case "articles":
                 default:
-                    include($this->plugin_path.'/options/articles.php');
+                    include($this->plugin_path.'options/articles.php');
                     break;
                 case "moderation":
-                    include($this->plugin_path.'/options/moderation.php');
+                    include($this->plugin_path.'options/moderation.php');
                     break;
                 case "comments":
-                    include($this->plugin_path.'/options/comments.php');
+                    include($this->plugin_path.'options/comments.php');
                     break;
                 case "log":
-                    include($this->plugin_path.'/options/voters.php');
+                    include($this->plugin_path.'options/voters.php');
                     break;
             }
         }
@@ -1354,6 +1362,8 @@ if (!class_exists('GDStarRating')) {
 
     define('STARRATING_URL', $gdsr->plugin_url);
     define('STARRATING_PATH', $gdsr->plugin_path);
+    define('STARRATING_XTRA_URL', $gdsr->plugin_xtra_url);
+    define('STARRATING_XTRA_PATH', $gdsr->plugin_xtra_path);
 
     function wp_gdsr_render_widget($widget = array()) {
         global $gdsr;
