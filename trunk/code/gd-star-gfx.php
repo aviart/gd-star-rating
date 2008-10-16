@@ -8,6 +8,9 @@ class GDgfxStar
     var $author = "Milan Petrovic";
     var $email = "milan@gdragon.info";
     var $url = "http://www.gdragon.info/";
+
+    var $gfx_path = "";
+    var $gfx_url = "";
     
     var $valid = false;
     
@@ -25,6 +28,9 @@ class GDgfxTrend
     var $author = "Milan Petrovic";
     var $email = "milan@gdragon.info";
     var $url = "http://www.gdragon.info/";
+
+    var $gfx_path = "";
+    var $gfx_url = "";
     
     var $valid = false;
     
