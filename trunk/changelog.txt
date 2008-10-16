@@ -4,6 +4,7 @@
 
 === Version: 0.9.9 DEV / october 14 2008 ===
   * new: all icons sets with description files
+  * new: trends and stars sets classes and import
   * new: darkness style stars
   * new: export user voting data
   * new: export data panel
@@ -12,6 +13,8 @@
   * edit: changes to internal path and url variables
   * fix: xhtml valid problems
   * fix: removed parts of unused and uneeded code
+  * fix: incorrect init of default templates settings
+  * fix: invalid global constants
   * fix: few typos
 
 === Version: 0.9.8 Beta #4 / october 13 2008 ===
