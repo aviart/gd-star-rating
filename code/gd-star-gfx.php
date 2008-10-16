@@ -1,5 +1,21 @@
 <?php
 
+class GDgfxLib
+{
+    var $stars = array();
+    var $trend = array();
+    
+    function GDgfxLib() { }
+    
+    function add_stars($star) {
+        $this->stars[] = $star;
+    }
+    
+    function add_trends($tr) {
+        $this->trend[] = $tr;
+    }
+}
+
 class GDgfxBase
 {
     var $name = "";
@@ -11,18 +27,19 @@ class GDgfxBase
     var $design = "";
 
     var $info_file = "stars";
+    var $info_folder = "stars";
     var $gfx_path = "";
     var $gfx_url = "";
 
     function GDgfxBase($folder, $primary = true) {
         $this->folder = $folder;
         if ($primary) {
-            $this->gfx_path = STARRATING_PATH.$folder."/";
-            $this->gfx_url = STARRATING_URL.$folder."/";
+            $this->gfx_path = STARRATING_PATH.$this->info_folder."/".$folder."/";
+            $this->gfx_url = STARRATING_URL.$this->info_folder."/".$folder."/";
         }
         else {
-            $this->gfx_path = STARRATING_XTRA_PATH.$folder."/";
-            $this->gfx_url = STARRATING_XTRA_URL.$folder."/";
+            $this->gfx_path = STARRATING_XTRA_PATH.$this->info_folder."/".$folder."/";
+            $this->gfx_url = STARRATING_XTRA_URL.$this->info_folder."/".$folder."/";
         }
         $this->import();
     }
@@ -64,8 +81,9 @@ class GDgfxTrend extends GDgfxBase
     var $size = 16;
     
     function GDgfxTrend($folder, $primary = true) {
-        parent::GDgfxBase($folder, $primary);
         $this->info_file = "trend";
+        $this->info_folder = "trends";
+        parent::GDgfxBase($folder, $primary);
     }
     
     function import() {

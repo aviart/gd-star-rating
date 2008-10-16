@@ -38,6 +38,7 @@ require_once(dirname(__FILE__)."/code/gd-star-render.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbone.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbtwo.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbx.php");
+require_once(dirname(__FILE__)."/code/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gd-star-import.php");
 
 if (!class_exists('GDStarRating')) {
@@ -61,6 +62,7 @@ if (!class_exists('GDStarRating')) {
         var $x;
         var $e;
         var $i;
+        var $g;
 
         var $shortcodes = array(
             "starrating",
@@ -475,6 +477,7 @@ if (!class_exists('GDStarRating')) {
             $this->o = get_option('gd-star-rating');
             $this->x = get_option('gd-star-rating-templates');
             $this->i = get_option('gd-star-rating-import');
+            $this->g = get_option('gd-star-rating-gfx');
 
             if (!is_array($this->o)) {
                 update_option('gd-star-rating', $this->default_options);
@@ -490,7 +493,7 @@ if (!class_exists('GDStarRating')) {
                 update_option('gd-star-rating', $this->o);
             }
 
-            if (!is_array($this->o))
+            if (!is_array($this->x))
                 update_option('gd-star-rating-templates', $this->default_templates);
             else {
                 $this->x = $this->upgrade_settings($this->x, $this->default_templates);
@@ -503,10 +506,49 @@ if (!class_exists('GDStarRating')) {
                 $this->i = $this->upgrade_settings($this->i, $this->default_import);
                 update_option('gd-star-rating-import', $this->i);
             }
+            
+            if (!is_object($this->g)) {
+                $gfx = $this->gfx_scan();
+                update_option('gd-star-rating-gfx', $gfx);
+            }
 
             $this->t = GDSRDB::get_database_tables();
         }
 
+        function gfx_scan() {
+            $data = new GDgfxLib();
+            
+            $stars_folders = $this->scan_folder($this->plugin_path."stars/");
+            foreach ($stars_folders as $f)
+                $data->stars[] = new GDgfxStar($f);
+            if (is_dir($this->plugin_xtra_path."stars/")) {
+                $stars_folders = $this->scan_folder($this->plugin_xtra_path."stars/");
+                foreach ($stars_folders as $f)
+                    $data->stars[] = new GDgfxStar($f, false);
+            }
+            $trend_folders = $this->scan_folder($this->plugin_path."trends/");
+            foreach ($trend_folders as $f)
+                $data->trend[] = new GDgfxTrend($f);
+            if (is_dir($this->plugin_xtra_path."trends/")) {
+                $trend_folders = $this->scan_folder($this->plugin_xtra_path."trends/");
+                foreach ($trend_folders as $f)
+                    $data->trend[] = new GDgfxTrend($f);
+            }            
+            return $data;
+        }
+        
+        function scan_folder($path) {
+            $folders = scandir($path);
+            $import = array();
+            foreach ($folders as $folder) {
+                if (substr($folder, 0, 1) != ".") {
+                    if (is_dir($path.$folder."/"))
+                        $import[] = $folder;
+                }
+            }
+            return $import;
+        }
+        
         function active_wp_page() {
             if (stripos($_GET["page"], "gd-star-rating") === false)
                 $this->active_wp_page = false;
@@ -529,6 +571,11 @@ if (!class_exists('GDStarRating')) {
             }
             $this->plugin_path = dirname(__FILE__)."/";
             $this->e = $this->plugin_url."gfx/blank.gif";
+            
+            define('STARRATING_URL', $this->plugin_url);
+            define('STARRATING_PATH', $this->plugin_path);
+            define('STARRATING_XTRA_URL', $this->plugin_xtra_url);
+            define('STARRATING_XTRA_PATH', $this->plugin_xtra_path);
         }
 
         function init() {
@@ -1359,11 +1406,6 @@ if (!class_exists('GDStarRating')) {
     }
 
     $gdsr = new GDStarRating();
-
-    define('STARRATING_URL', $gdsr->plugin_url);
-    define('STARRATING_PATH', $gdsr->plugin_path);
-    define('STARRATING_XTRA_URL', $gdsr->plugin_xtra_url);
-    define('STARRATING_XTRA_PATH', $gdsr->plugin_xtra_path);
 
     function wp_gdsr_render_widget($widget = array()) {
         global $gdsr;
