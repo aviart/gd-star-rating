@@ -4,8 +4,11 @@ class GDgfxLib
 {
     var $stars = array();
     var $trend = array();
+    var $last_scan = "";
     
-    function GDgfxLib() { }
+    function GDgfxLib() {
+        $this->last_scan = date("r");
+    }
     
     function add_stars($star) {
         $this->stars[] = $star;

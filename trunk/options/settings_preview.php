@@ -53,10 +53,6 @@ function gdsrShowHidePreview(what) {
 <input type="hidden" id="gdsr_preview_trends" name="gdsr_preview_trends" value="<?php echo $gdsr_options["preview_trends_active"]; ?>" />
 
 <table class="form-table"><tbody>
-<tr><th scope="row"><?php _e("Update Sets", "gd-star-rating"); ?></th>
-    <td>
-    </td>
-</tr>
 <tr><th scope="row"><a href="javascript:gdsrShowHidePreview('stars')"><?php _e("Stars", "gd-star-rating"); ?></a></th>
     <td><div id="gdsr-preview-stars" style="display: <?php echo $gdsr_options["preview_active"] == 1 ? "block" : "none" ?>;">
         <table cellpadding="0" cellspacing="0">

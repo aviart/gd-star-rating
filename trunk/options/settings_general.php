@@ -48,4 +48,11 @@
         <input type="checkbox" name="gdsr_widget_articles" id="gdsr_widget_articles"<?php if ($gdsr_options["widget_articles"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ajax"><?php _e("GD Star Rating: Post/Page rating widget.", "gd-star-rating"); ?></label>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Stars and Trends Graphics", "gd-star-rating"); ?></th>
+    <td>
+        <input type="checkbox" name="gdsr_preview_scan" id="gdsr_preview_scan" /><label style="margin-left: 5px;" for="gdsr_preview_scan"><?php _e("Rescan graphics folders for new stars and trends images.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
+        Last scan was executed on: <strong><?php echo $gdsr_gfx->last_scan; ?></strong>
+    </td>
+</tr>
 </tbody></table>
