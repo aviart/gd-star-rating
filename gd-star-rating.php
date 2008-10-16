@@ -508,8 +508,8 @@ if (!class_exists('GDStarRating')) {
             }
             
             if (!is_object($this->g)) {
-                $gfx = $this->gfx_scan();
-                update_option('gd-star-rating-gfx', $gfx);
+                $this->g = $this->gfx_scan();
+                update_option('gd-star-rating-gfx', $this->g);
             }
 
             $this->t = GDSRDB::get_database_tables();
@@ -811,6 +811,7 @@ if (!class_exists('GDStarRating')) {
             $gdsr_trends = $this->trends;
             $gdsr_options = $this->o;
             $gdsr_root_url = $this->plugin_url;
+            $gdsr_gfx = $this->g;
             
             include($this->plugin_path.'options/settings.php');
 
