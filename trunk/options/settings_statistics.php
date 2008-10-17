@@ -15,6 +15,16 @@
 </tr>
 <tr><th scope="row"><?php _e("Bayesian Estimate Mean", "gd-star-rating"); ?></th>
     <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="360"><?php _e("Minimum votes required", "gd-star-rating"); ?>:</td>
+                <td><input type="text" name="gdsr_bayesian_minimal" id="gdsr_bayesian_minimal" value="<?php echo $gdsr_options["bayesian_minimal"]; ?>" style="width: 70px; text-align: right;" /></td>
+            </tr>
+            <tr>
+                <td width="360"><?php _e("Mean vote rating across the whole report", "gd-star-rating"); ?>:</td>
+                <td><input type="text" name="gdsr_bayesian_mean" id="gdsr_bayesian_mean" value="<?php echo $gdsr_options["bayesian_mean"]; ?>" style="width: 70px; text-align: right;" /> [%]</td>
+            </tr>
+        </table>
     </td>
 </tr>
 </tbody></table>

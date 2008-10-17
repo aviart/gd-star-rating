@@ -17,6 +17,11 @@
         
         $gdsr_options["preview_active"] = $_POST['gdsr_preview_stars'];
         $gdsr_options["preview_trends_active"] = $_POST['gdsr_preview_trends'];
+
+        $gdsr_options["trend_last"] = $_POST['gdsr_trend_last'];
+        $gdsr_options["trend_over"] = $_POST['gdsr_trend_over'];
+        $gdsr_options["bayesian_minimal"] = $_POST['gdsr_bayesian_minimal'];
+        $gdsr_options["bayesian_mean"] = $_POST['gdsr_bayesian_mean'];
         
         $gdsr_options["review_active"] = isset($_POST['gdsr_reviewactive']) ? 1 : 0;
         $gdsr_options["comments_active"] = isset($_POST['gdsr_commentsactive']) ? 1 : 0;

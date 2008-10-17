@@ -3,13 +3,16 @@
 == Change Log ==
 
 === Version: 0.9.9 DEV / october 20 2008 ===
+  * new: bayesian mean estimate rating calculation
   * new: all icons sets with description files
   * new: trends and stars sets classes and import
   * new: darkness style stars
   * new: export user voting data
   * new: export data panel
   * new: import checks for available plugins
-  * edit: code updated to work with new graphics format
+  * new: additional location for stars and trends graphics sets
+  * edit: updated translations
+  * edit: code updated to work with new graphics description format
   * edit: added some missed strings for translation
   * edit: changes to internal path and url variables
   * edit: partialy removed uneeded code
@@ -17,6 +20,7 @@
   * fix: xhtml valid problems
   * fix: removed parts of unused and uneeded code
   * fix: incorrect init of default templates settings
+  * fix: saving trend settings
   * fix: invalid global constants
   * fix: few typos
 
