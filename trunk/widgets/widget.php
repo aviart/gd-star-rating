@@ -214,6 +214,7 @@ function gdsrShowHidePreview(gdid, index) {
             <option value="post_title"<?php echo $wpno['column'] == 'post_title' ? ' selected="selected"' : ''; ?>><?php _e("Title", "gd-star-rating"); ?></option>
             <option value="review"<?php echo $wpno['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Review", "gd-star-rating"); ?></option>
             <option value="count"<?php echo $wpno['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
+            <option value="bayes"<?php echo $wpno['column'] == 'bayes' ? ' selected="selected"' : ''; ?>><?php _e("Bayesian Rating", "gd-star-rating"); ?></option>
         </select>
     </td>
   </tr>
@@ -376,6 +377,10 @@ function gdsrShowHidePreview(gdid, index) {
   <tr>
     <td width="100"></td>
     <td><strong>%MAX_RATING%</strong></td><td> : <?php _e("maximum rating value", "gd-star-rating"); ?></td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td><strong>%BAYES_RATING%</strong></td><td> : <?php _e("bayesian article rating", "gd-star-rating"); ?></td>
   </tr>
   <tr>
     <td width="100"></td>
