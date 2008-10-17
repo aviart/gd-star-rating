@@ -12,7 +12,10 @@ $text = $size - 3;
 if ($text > 14)
     $text = 14;
 
-$url = "../stars/".$style."/stars".$size.".".$type;
+if ($loc == 1)
+    $url = "../stars/".$style."/stars".$size.".".$type;
+else
+    $url = "../../../gd-star-rating/stars/".$style."/stars".$size.".".$type;
 
 header('Content-Type: text/css');
 
