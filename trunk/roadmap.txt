@@ -4,6 +4,7 @@
 
 === 1.0.0 ===
   * updated user guide
+  * support for feedwordpress plugin
   * control panel improvements
 
 === 1.0.5 ===
