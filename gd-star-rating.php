@@ -185,8 +185,8 @@ if (!class_exists('GDStarRating')) {
             "trends_voting_rise" => '+',
             "trends_voting_same" => '=',
             "trends_voting_fall" => '-',
-            "trends_voting_set" => 0,
-            "bayesian_calculation" => 0
+            "trends_voting_set" => 'famfamfam',
+            "bayesian_calculation" => '0'
         );
         
         var $default_shortcode = array(
@@ -637,8 +637,8 @@ if (!class_exists('GDStarRating')) {
             $gfx_a = $this->g->find_stars($this->o["style"]);
             $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
             
-            $article = urlencode($this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx->primary);
-            $comment = urlencode($this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx->primary);
+            $article = urlencode($this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary);
+            $comment = urlencode($this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_a->primary);
 
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_article.css.php?stars='.$article.'" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment.css.php?stars='.$comment.'" type="text/css" media="screen" />');
@@ -788,6 +788,16 @@ if (!class_exists('GDStarRating')) {
             return "{ value: ".$rating_width.", rater: '".$rt."' }";
         }
         // vote
+        
+        // calculation
+        function bayesian_estimate($v, $R) {
+            $m = $this->o["bayesian_minimal"];
+            $C = ($this->o["bayesian_mean"] / 100) * $this->o["stars"];
+            
+            $WR = ($v / ($v + $m)) * $R + ($m / ($v + $m)) * $C;
+            return @number_format($WR, 1);
+        }
+        // calculation
 
         // log
         function dump($msg, $object, $mode = "a+") {
@@ -1040,7 +1050,7 @@ if (!class_exists('GDStarRating')) {
             global $wpdb;
             echo html_entity_decode($widget["tpl_header"]);
 
-            $sql = GDSRX::get_widget($widget);
+            $sql = GDSRX::get_widget($widget, $this->o["bayesian_mean"]);
             $all_rows = $wpdb->get_results($sql);
             $template = html_entity_decode($widget["tpl_item"]);
 
