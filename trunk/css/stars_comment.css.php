@@ -7,11 +7,15 @@ $style = $query[0];
 $stars = $query[2];
 $size = $query[1];
 $type = $query[3];
+$loc = $query[4];
 $text = $size - 3;
 if ($text > 15)
     $text = 15;
 
-$url = "../stars/".$style."/stars".$size.".".$type;
+if ($loc == 1)
+    $url = "../stars/".$style."/stars".$size.".".$type;
+else
+    $url = "../../../gd-star-rating/stars/".$style."/stars".$size.".".$type;
 
 header('Content-Type: text/css');
 
