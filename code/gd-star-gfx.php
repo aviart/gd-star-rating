@@ -33,6 +33,8 @@ class GDgfxBase
     var $info_folder = "stars";
     var $gfx_path = "";
     var $gfx_url = "";
+    
+    var $imported = false;
 
     function GDgfxBase($folder, $primary = true) {
         $this->folder = $folder;
@@ -49,26 +51,34 @@ class GDgfxBase
     
     function import() {
         $data = $this->load_info_file();
-        $this->name = $data["name"];
-        if (isset($data["type"])) $this->type = $data["type"];
-        if (isset($data["author"])) $this->author = $data["author"];
-        if (isset($data["email"])) $this->email = $data["email"];
-        if (isset($data["url"])) $this->url = $data["url"];
-        if (isset($data["design"])) $this->design = $data["design"];
-        return $data;
+        if ($data != null) {
+            $this->name = $data["name"];
+            if (isset($data["type"])) $this->type = $data["type"];
+            if (isset($data["author"])) $this->author = $data["author"];
+            if (isset($data["email"])) $this->email = $data["email"];
+            if (isset($data["url"])) $this->url = $data["url"];
+            if (isset($data["design"])) $this->design = $data["design"];
+            $this->imported = true;
+            return $data;
+        }
+        return null;
     }
     
     function load_info_file() {
         $path = $this->gfx_path.$this->info_file.".gdsr";
-        $contents = file($path);
-        $data = array();
-        foreach ($contents as $line) {
-            $key = trim(substr($line, 0, 8));
-            $key = substr($key, 0, strlen($key) - 1);
-            $value = trim(substr($line, 8));
-            $data[$key] = $value;
+        if (file_exists($path)) {
+            $contents = file($path);
+            $data = array();
+            foreach ($contents as $line) {
+                $key = trim(substr($line, 0, 8));
+                $key = substr($key, 0, strlen($key) - 1);
+                $value = trim(substr($line, 8));
+                $data[$key] = $value;
+            }
+            return $data;
         }
-        return $data;
+        else 
+            return null;
     }
 }
 
@@ -91,7 +101,9 @@ class GDgfxTrend extends GDgfxBase
     
     function import() {
         $data = parent::import();
-        if (isset($data["size"])) $this->size = $data["size"];
+        if ($date != null) {
+            if (isset($data["size"])) $this->size = $data["size"];
+        }
     }
 }
 

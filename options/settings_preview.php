@@ -1,10 +1,10 @@
 <script>
 function gdsrStyleSelection(preview) {
-    var gdsrAllImages = [ <?php GDSRHelper::render_styles_js($gdsr_styles); ?> ];
-    var gdsrAllTypes = [ <?php GDSRHelper::render_styles_types_js($gdsr_styles); ?> ];
+    var gdsrImages = { <?php GDSRHelper::render_gfx_js($gdsr_gfx->stars); ?> };
+    var gdsrTrends = { <?php GDSRHelper::render_gfx_js($gdsr_gfx->trend); ?> };
 
-    var gdsrAllTrendsImages = [ <?php GDSRHelper::render_styles_js($gdsr_trends); ?> ];
-    var gdsrAllTrendsTypes = [ <?php GDSRHelper::render_styles_types_js($gdsr_trends); ?> ];
+    var gdsrImagesExt = { <?php GDSRHelper::render_ext_gfx_js($gdsr_gfx->stars); ?> };
+    var gdsrTrendsExt = { <?php GDSRHelper::render_ext_gfx_js($gdsr_gfx->trend); ?> };
     
     var gdsrBase = "#gdsr_preview";
     var gdsrStyle = "";
@@ -14,12 +14,12 @@ function gdsrStyleSelection(preview) {
     if (preview == "trends") {
         gdsrBase = gdsrBase + "_trends";
         gdsrStyle = jQuery("#gdsr_style_preview_trends").val();
-        gdsrImage = "<?php echo $gdsr_root_url ?>trends/" + gdsrAllTrendsImages[gdsrStyle] + "/trend" + "." + gdsrAllTrendsTypes[gdsrStyle];;
+        gdsrImage = gdsrTrends[gdsrStyle] + "trend." + gdsrTrendsExt[gdsrStyle];
     }
     else {
         gdsrStyle = jQuery("#gdsr_style_preview").val();
         gdsrSize = jQuery("#gdsr_size_preview").val();
-        gdsrImage = "<?php echo $gdsr_root_url ?>stars/" + gdsrAllImages[gdsrStyle] + "/stars" + gdsrSize + "." + gdsrAllTypes[gdsrStyle];
+        gdsrImage = gdsrImages[gdsrStyle] + "stars" + gdsrSize + "." + gdsrImagesExt[gdsrStyle];
     }
     
     jQuery(gdsrBase+"_black").attr("src", gdsrImage);
@@ -60,7 +60,7 @@ function gdsrShowHidePreview(what) {
                 <td width="150" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Stars", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
                     <select style="width: 180px;" name="gdsr_style_preview" id="gdsr_style_preview" onchange="gdsrStyleSelection('stars')">
-                        <?php GDSRHelper::render_styles_select($gdsr_styles); ?>
+                        <?php GDSRHelper::render_styles_select($gdsr_gfx->stars); ?>
                     </select>
                 </td>
                 <td width="20" style="padding: 0; border: 0; vertical-align: top;" rowspan="2"></td>
@@ -107,7 +107,7 @@ function gdsrShowHidePreview(what) {
                 <td width="150" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Trends", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
                     <select style="width: 180px;" name="gdsr_style_preview_trends" id="gdsr_style_preview_trends" onchange="gdsrStyleSelection('trends')">
-                        <?php GDSRHelper::render_styles_select($gdsr_trends); ?>
+                        <?php GDSRHelper::render_styles_select($gdsr_gfx->trend); ?>
                     </select>
                 </td>
                 <td width="20" style="padding: 0; border: 0; vertical-align: top;" rowspan="2"></td>
