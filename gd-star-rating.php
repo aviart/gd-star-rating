@@ -52,8 +52,6 @@ if (!class_exists('GDStarRating')) {
         var $plugin_path;
         var $plugin_xtra_url;
         var $plugin_xtra_path;
-        var $styles;
-        var $trends;
         
         var $o;
         var $w;
@@ -89,7 +87,7 @@ if (!class_exists('GDStarRating')) {
             "moderation_active" => 1,
             "review_active" => 1,
             "comments_active" => 1,
-            "style" => 0,
+            "style" => 'oxygen',
             "size" => 30,
             "stars" => 10,
             "text" => 'bottom',
@@ -98,7 +96,7 @@ if (!class_exists('GDStarRating')) {
             "header_text" => '',
             "class_block" => '',
             "class_text" => '',
-            "cmm_style" => 0,
+            "cmm_style" => 'oxygen',
             "cmm_size" => 12,
             "cmm_stars" => 5,
             "cmm_text" => 'bottom',
@@ -107,7 +105,7 @@ if (!class_exists('GDStarRating')) {
             "cmm_header_text" => '',
             "cmm_class_block" => '',
             "cmm_class_text" => '',
-            "review_style" => 0,
+            "review_style" => 'oxygen',
             "review_size" => 20,
             "review_stars" => 5,
             "review_align" => 'none',
@@ -211,13 +209,7 @@ if (!class_exists('GDStarRating')) {
         );
         
         function GDStarRating() {
-            include(dirname(__FILE__)."/stars/stars.php");
-            include(dirname(__FILE__)."/trends/trends.php");
-            $this->styles = $gdsr_styles;
-            $this->trends = $gdsr_trends;
-            
             $this->tabpage = "front";
-
             $this->active_wp_page();
             $this->plugin_path_url();
             $this->install_plugin();
@@ -249,7 +241,7 @@ if (!class_exists('GDStarRating')) {
         
 		function shortcode_starrater($atts) {
             global $post, $userdata;
-            echo $this->render_article($post, $userdata);
+            return $this->render_article($post, $userdata);
 		}
         
 		function shortcode_starreview($atts = array()) {
@@ -311,7 +303,6 @@ if (!class_exists('GDStarRating')) {
             
             $sql = GDSRDatabase::get_stats($sett['select'], 0, $sett['rows'], '0', $sett['category'], '', $orderc, $sett['order'], $addt);
             $all_rows = $wpdb->get_results($sql);
-            
             $rating = '<table class="'.$sett['class'].'">';
             if ($sett['header'] == 1) {
                 $rating.= '<thead>';
@@ -360,8 +351,9 @@ if (!class_exists('GDStarRating')) {
                         else {
                             $full_width = $sett['rating_size'] * $this->o["stars"];
                             $rate_width = floor($sett['rating_size'] * $rates);
+                            $gfx = $this->g->find_stars($sett['rating_stars']);
                             
-                            $star_path = $this->plugin_url."stars/".$this->styles[$sett['rating_stars']]['folder']."/stars".$sett['rating_size'].".".$this->styles[$sett['rating_stars']]['type'];
+                            $star_path = $gfx->get_url($sett['rating_size']);
                             $rating.= sprintf('<td class="rating" style="width: %spx"><div style="%s" class="ratertbl"><div style="%s" class="ratertbl"></div></div></td>',
                                             $full_width,
                                             sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $sett['rating_size'], $full_width),
@@ -376,8 +368,9 @@ if (!class_exists('GDStarRating')) {
                             $full_width = $sett['review_size'] * $this->o["review_stars"];
                             if ($review > -1) {
                                 $rate_width = $sett['review_size'] * $review;
+                                $gfx = $this->g->find_stars($sett['review_stars']);
                                 
-                                $star_path = $this->plugin_url."stars/".$this->styles[$sett['review_stars']]['folder']."/stars".$sett['review_size'].".".$this->styles[$sett['review_stars']]['type'];
+                                $star_path = $gfx->get_url($sett['review_size']);
                                 $rating.= sprintf('<td class="rating" style="width: %spx"><div style="%s" class="ratertbl"><div style="%s" class="ratertbl"></div></div></td>',
                                                 $full_width,
                                                 sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $sett['review_size'], $full_width),
@@ -638,8 +631,11 @@ if (!class_exists('GDStarRating')) {
         function wp_head() {
             if (is_feed()) return;
             
-            $article = urlencode($this->styles[$this->o["style"]]["folder"]."|".$this->o["size"]."|".$this->o["stars"]."|".$this->styles[$this->o["style"]]["type"]);
-            $comment = urlencode($this->styles[$this->o["cmm_style"]]["folder"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$this->styles[$this->o["cmm_style"]]["type"]);
+            $gfx_a = $this->g->find_stars($this->o["style"]);
+            $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
+            
+            $article = urlencode($this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx->primary);
+            $comment = urlencode($this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx->primary);
 
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_article.css.php?stars='.$article.'" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment.css.php?stars='.$comment.'" type="text/css" media="screen" />');
@@ -1011,7 +1007,7 @@ if (!class_exists('GDStarRating')) {
             }
             
             $wpfn = 'gdstarr['.$wpnm.']';
-            $wptr = $this->trends;
+            $wptr = $this->g->trend;
             
             include("widgets/widget.php");
         }
@@ -1420,7 +1416,6 @@ if (!class_exists('GDStarRating')) {
             
             return GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"]);
         }
-        // render
     }
 
     $gdsr = new GDStarRating();

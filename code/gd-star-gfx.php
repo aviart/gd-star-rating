@@ -17,6 +17,25 @@ class GDgfxLib
     function add_trends($tr) {
         $this->trend[] = $tr;
     }
+    
+    function find_gfx($gfx, $folder) {
+        $result = null;
+        foreach ($gfx as $s) {
+            if ($s->folder == $folder) {
+                $result = $s;
+                break;
+            }
+        }
+        return $result;
+    }
+    
+    function find_stars($folder) {
+        return $this->find_gfx($this->stars, $folder);
+    }
+
+    function find_trend($folder) {
+        return $this->find_gfx($this->trend, $folder);
+    }
 }
 
 class GDgfxBase
@@ -33,6 +52,7 @@ class GDgfxBase
     var $info_folder = "stars";
     var $gfx_path = "";
     var $gfx_url = "";
+    var $primary = 1;
     
     var $imported = false;
 
@@ -43,6 +63,7 @@ class GDgfxBase
             $this->gfx_url = STARRATING_URL.$this->info_folder."/".$folder."/";
         }
         else {
+            $this->primary = 0;
             $this->gfx_path = STARRATING_XTRA_PATH.$this->info_folder."/".$folder."/";
             $this->gfx_url = STARRATING_XTRA_URL.$this->info_folder."/".$folder."/";
         }
@@ -87,6 +108,10 @@ class GDgfxStar extends GDgfxBase
     function GDgfxStar($folder, $primary = true) {
         parent::GDgfxBase($folder, $primary);
     }
+
+    function get_url($size = '30') {
+        return $this->gfx_url."stars".$size.".".$this->type;
+    }
 }
 
 class GDgfxTrend extends GDgfxBase
@@ -104,6 +129,10 @@ class GDgfxTrend extends GDgfxBase
         if ($date != null) {
             if (isset($data["size"])) $this->size = $data["size"];
         }
+    }
+
+    function get_url() {
+        return $this->gfx_url."trends.".$this->type;
     }
 }
 

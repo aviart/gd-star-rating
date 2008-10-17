@@ -7,6 +7,7 @@ $style = $query[0];
 $stars = $query[2];
 $size = $query[1];
 $type = $query[3];
+$loc = $query[4];
 $text = $size - 3;
 if ($text > 14)
     $text = 14;
