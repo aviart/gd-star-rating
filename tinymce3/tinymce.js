@@ -39,12 +39,12 @@ function insertStarRatingCode() {
         if (style == 'stars') {
             stars = document.getElementById('srStarsStyle').value;
             ssize = document.getElementById('srStarsSize').value;
-            tagtext = tagtext + " rating_stars=" + stars + " rating_size=" + ssize;
+            tagtext = tagtext + " rating_stars='" + stars + "' rating_size=" + ssize;
         }
         if (reviewStyle == 'stars') {
             stars = document.getElementById('srReviewStarsStyle').value;
             ssize = document.getElementById('srReviewStarsSize').value;
-            tagtext = tagtext + " review_stars=" + stars + " review_size=" + ssize;
+            tagtext = tagtext + " review_stars='" + stars + "' review_size=" + ssize;
         }
         tagtext = tagtext + "]";
 	}

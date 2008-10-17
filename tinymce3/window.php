@@ -2,12 +2,11 @@
 
     require_once("../gd-star-config.php");
     $wpconfig = get_wpconfig();
-
     require($wpconfig);
-    
     require_once("../code/gd-star-functions.php");
-
     include("../stars/stars.php");
+    global $gdsr;
+    $gdsr_styles = $gdsr->g->stars;
 
 ?>
 
