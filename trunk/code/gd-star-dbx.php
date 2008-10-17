@@ -115,12 +115,13 @@ class GDSRX
         return $trends;
     }
     
-    function get_widget($widget) {
+    function get_widget($widget, $min = 0) {
         global $table_prefix;
         $grouping = $widget["grouping"];
         $cats = $widget["category"];
         $where = array();
         $select = "";
+        if ($widget["bayesian_calculation"] == "0") $min = 0;
 
         $where[] = "p.id = d.post_id";
         $where[] = "p.post_status = 'publish'";
@@ -152,10 +153,10 @@ class GDSRX
         if ($widget["select"] != "" && $widget["select"] != "postpage") 
             $where[] = "post_type = '".$widget["select"]."'";
         
-        if ($widget["hide_empty"] == "1") {
-            if ($widget["show"] == "total") $where[] = "(d.user_votes + d.visitor_votes) > 0";
-            if ($widget["show"] == "visitors") $where[] = "d.visitor_votes > 0";
-            if ($widget["show"] == "users") $where[] = "d.user_votes > 0";
+        if ($widget["hide_empty"] == "1" || $widget["bayesian_calculation"] == "1") {
+            if ($widget["show"] == "total") $where[] = "(d.user_votes + d.visitor_votes) > ".$min;
+            if ($widget["show"] == "visitors") $where[] = "d.visitor_votes > ".$min;
+            if ($widget["show"] == "users") $where[] = "d.user_votes > ".$min;
         }
         if ($widget["hide_noreview"] == "1") $where[] = "d.review > -1";
         

@@ -59,6 +59,7 @@ class GDgfxBase
     function GDgfxBase($folder, $primary = true) {
         $this->folder = $folder;
         if ($primary) {
+            $this->primary = 1;
             $this->gfx_path = STARRATING_PATH.$this->info_folder."/".$folder."/";
             $this->gfx_url = STARRATING_URL.$this->info_folder."/".$folder."/";
         }

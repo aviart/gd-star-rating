@@ -2,10 +2,6 @@
 
 == Roadmap ==
 
-=== 0.9.9 ===
-  * more template improvements
-  * front page
-
 === 1.0.0 ===
   * updated user guide
   * control panel improvements
