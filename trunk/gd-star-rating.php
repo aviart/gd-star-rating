@@ -519,21 +519,33 @@ if (!class_exists('GDStarRating')) {
             $data = new GDgfxLib();
             
             $stars_folders = $this->scan_folder($this->plugin_path."stars/");
-            foreach ($stars_folders as $f)
-                $data->stars[] = new GDgfxStar($f);
+            foreach ($stars_folders as $f) {
+                $gfx = new GDgfxStar($f);
+                if ($gfx->imported)
+                    $data->stars[] = $gfx;
+            }
             if (is_dir($this->plugin_xtra_path."stars/")) {
                 $stars_folders = $this->scan_folder($this->plugin_xtra_path."stars/");
-                foreach ($stars_folders as $f)
-                    $data->stars[] = new GDgfxStar($f, false);
+                foreach ($stars_folders as $f) {
+                    $gfx = new GDgfxStar($f, false);
+                    if ($gfx->imported)
+                        $data->stars[] = $gfx;
+                }
             }
             $trend_folders = $this->scan_folder($this->plugin_path."trends/");
-            foreach ($trend_folders as $f)
-                $data->trend[] = new GDgfxTrend($f);
+            foreach ($trend_folders as $f) {
+                $gfx = new GDgfxTrend($f);
+                if ($gfx->imported)
+                    $data->trend[] = $gfx;
+            }
             if (is_dir($this->plugin_xtra_path."trends/")) {
                 $trend_folders = $this->scan_folder($this->plugin_xtra_path."trends/");
-                foreach ($trend_folders as $f)
-                    $data->trend[] = new GDgfxTrend($f);
-            }            
+                foreach ($trend_folders as $f) {
+                    $gfx = new GDgfxTrend($f, false);
+                    if ($gfx->imported)
+                        $data->trend[] = $gfx;
+                }
+            }
             return $data;
         }
         
@@ -807,6 +819,11 @@ if (!class_exists('GDStarRating')) {
         }
 
         function star_menu_settings() {
+            if (isset($_POST['gdsr_preview_scan'])) {
+                $this->g = $this->gfx_scan();
+                update_option('gd-star-rating-gfx', $this->g);
+            }
+            
             $gdsr_styles = $this->styles;
             $gdsr_trends = $this->trends;
             $gdsr_options = $this->o;

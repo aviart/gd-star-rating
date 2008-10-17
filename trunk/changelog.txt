@@ -9,6 +9,7 @@
   * new: export user voting data
   * new: export data panel
   * new: import checks for available plugins
+  * edit: code updated to work with new graphics format
   * edit: added some missed strings for translation
   * edit: changes to internal path and url variables
   * fix: xhtml valid problems

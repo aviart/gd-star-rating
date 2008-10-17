@@ -11,12 +11,11 @@ class GDSRHelper
         return false;
     }
     
-    function render_styles_select($styles, $selected = 0) {
-        for ($i = 0; $i < count($styles); $i++) {
-            $style = $styles[$i];
-            if ($selected == $i) $current = ' selected="selected"';
+    function render_styles_select($styles, $selected = '') { 
+        foreach ($styles as $style) {
+            if ($selected == $style->folder) $current = ' selected="selected"';
             else $current = '';
-            echo "\t<option value='".$i."'".$current.">".$style["name"]."</option>\r\n";
+            echo "\t<option value='".$style->folder."'".$current.">".$style->name."</option>\r\n";
         }
     }
 
@@ -39,22 +38,18 @@ class GDSRHelper
         }
     }
     
-    function render_styles_js($styles) {
-        $js = "";
-        for ($i = 0; $i < count($styles); $i++) {
-            $js.="'".$styles[$i]["folder"]."'";
-            if ($i < count($styles)-1) $js.=",";
-        }
-        echo $js;
+    function render_gfx_js($styles) {
+        $js = array();
+        foreach ($styles as $style)
+            $js[] = '"'.$style->folder.'": "'.$style->gfx_url.'"';
+        echo join(", ", $js);
     }
 
-    function render_styles_types_js($styles) {
-        $js = "";
-        for ($i = 0; $i < count($styles); $i++) {
-            $js.="'".$styles[$i]["type"]."'";
-            if ($i < count($styles)-1) $js.=",";
-        }
-        echo $js;
+    function render_ext_gfx_js($styles) {
+        $js = array();
+        foreach ($styles as $style)
+            $js[] = '"'.$style->folder.'": "'.$style->type.'"';
+        echo join(", ", $js);
     }
 
     function render_moderation_combo($name, $selected = "N", $width = 180, $style = '', $row_zero = false) {
