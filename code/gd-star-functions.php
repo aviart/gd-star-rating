@@ -227,3 +227,13 @@ function gd_addslashes($input) {
     if (get_magic_quotes_gpc()) return $input;
     else return addslashes($input);
 }
+
+function gd_sort_bayesian_asc($a, $b) {
+    if ($a->bayesian == $b->bayesian) return 0;
+    return ($a->bayesian < $b->bayesian) ? -1 : 1;
+}
+
+function gd_sort_bayesian_desc($a, $b) {
+    if ($a->bayesian == $b->bayesian) return 0;
+    return ($a->bayesian > $b->bayesian) ? -1 : 1;
+}

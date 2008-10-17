@@ -11,11 +11,13 @@
   * new: export data panel
   * new: import checks for available plugins
   * new: additional location for stars and trends graphics sets
+  * edit: more widget improvements
   * edit: updated translations
   * edit: code updated to work with new graphics description format
   * edit: added some missed strings for translation
   * edit: changes to internal path and url variables
   * edit: partialy removed uneeded code
+  * fix: minor widget calculation bug
   * fix: invalid position for StarRater shortcode
   * fix: xhtml valid problems
   * fix: removed parts of unused and uneeded code

@@ -1049,13 +1049,15 @@ if (!class_exists('GDStarRating')) {
         function render_articles_widget($widget) {
             global $wpdb;
             echo html_entity_decode($widget["tpl_header"]);
-
-            $sql = GDSRX::get_widget($widget, $this->o["bayesian_mean"]);
-            $all_rows = $wpdb->get_results($sql);
             $template = html_entity_decode($widget["tpl_item"]);
-
+            $bayesian_calculated = !(strpos($template, "%BAYES_RATING%") === false);
             $t_rate = !(strpos($template, "%RATE_TREND%") === false);
             $t_vote = !(strpos($template, "%VOTE_TREND%") === false);
+
+            if ($widget["column"] == "bayes" && !$bayesian_calculated) $widget["column"] == "rating";
+            
+            $sql = GDSRX::get_widget($widget, $this->o["bayesian_minimal"]);
+            $all_rows = $wpdb->get_results($sql);
             
             if ($t_rate || $t_vote) {
                 $idx = array();
@@ -1083,21 +1085,29 @@ if (!class_exists('GDStarRating')) {
             
             foreach ($all_rows as $row) {
                 if ($widget['show'] == "total") {
-                    $votes = $row->user_votes + $row->visitor_votes;
-                    $voters = $row->user_voters + $row->visitor_voters;
+                    $row->votes = $row->user_votes + $row->visitor_votes;
+                    $row->voters = $row->user_voters + $row->visitor_voters;
                 }                
                 if ($widget['show'] == "visitors") {
-                    $votes = $row->visitor_votes;
-                    $voters = $row->visitor_voters;
+                    $row->votes = $row->visitor_votes;
+                    $row->voters = $row->visitor_voters;
                 }                
                 if ($widget['show'] == "users") {
-                    $votes = $row->user_votes ;
-                    $voters = $row->user_voters;
+                    $row->votes = $row->user_votes ;
+                    $row->voters = $row->user_voters;
                 }
 
-                if ($voters == 0) $rating = 0;
-                else $rating = @number_format($votes / $voters, 1);
-                
+                if ($row->voters == 0) $row->rating = 0;
+                else $row->rating = @number_format($row->votes / $row->voters, 1);
+
+                if ($bayesian_calculated)
+                    $row->bayesian = $this->bayesian_estimate($row->voters, $row->rating);
+            }
+            
+            if ($widget["column"] == "bayes" && $bayesian_calculated)
+                usort($all_rows, "gd_sort_bayesian_".$widget["order"]);
+            
+            foreach ($all_rows as $row) {
                 $title = $row->title;
                 if ($widget["tpl_title_length"] > 0)
                     $title = substr($title, 0, $widget["tpl_title_length"])." ...";
@@ -1199,10 +1209,10 @@ if (!class_exists('GDStarRating')) {
                 else $tense = $this->x["word_votes_singular"];
                 
                 $item = $template;
-                
-                $item = str_replace('%RATING%', $rating, $item);
+                                
+                $item = str_replace('%RATING%', $row->rating, $item);
                 $item = str_replace('%MAX_RATING%', $this->o["stars"], $item);
-                $item = str_replace('%VOTES%', $voters, $item);
+                $item = str_replace('%VOTES%', $row->voters, $item);
                 $item = str_replace('%REVIEW%', $row->review, $item);
                 $item = str_replace('%MAX_REVIEW%', $this->o["review_stars"], $item);
                 $item = str_replace('%TITLE%', $title, $item);
@@ -1210,6 +1220,7 @@ if (!class_exists('GDStarRating')) {
                 $item = str_replace('%ID%', $row->post_id, $item);
                 $item = str_replace('%COUNT%', $row->counter, $item);
                 $item = str_replace('%WORD_VOTES%', $tense, $item);
+                $item = str_replace('%BAYES_RATING%', $row->bayesian, $item);
                 if ($trends_calculated) {
                     $item = str_replace('%RATE_TREND%', $item_trend_rating, $item);
                     $item = str_replace('%VOTE_TREND%', $item_trend_voting, $item);
