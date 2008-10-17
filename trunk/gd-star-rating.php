@@ -638,7 +638,7 @@ if (!class_exists('GDStarRating')) {
             $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
             
             $article = urlencode($this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary);
-            $comment = urlencode($this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_a->primary);
+            $comment = urlencode($this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary);
 
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_article.css.php?stars='.$article.'" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment.css.php?stars='.$comment.'" type="text/css" media="screen" />');
