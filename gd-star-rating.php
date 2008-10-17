@@ -140,7 +140,9 @@ if (!class_exists('GDStarRating')) {
             "stats_trend_history" => 30,
             "stats_trend_current" => 3,
             "trend_last" => 1,
-            "trend_over" => 30
+            "trend_over" => 30,
+            "bayesian_minimal" => 10,
+            "bayesian_mean" => 70
         );
         
         var $default_import = array(
@@ -183,7 +185,8 @@ if (!class_exists('GDStarRating')) {
             "trends_voting_rise" => '+',
             "trends_voting_same" => '=',
             "trends_voting_fall" => '-',
-            "trends_voting_set" => 0
+            "trends_voting_set" => 0,
+            "bayesian_calculation" => 0
         );
         
         var $default_shortcode = array(
@@ -990,6 +993,7 @@ if (!class_exists('GDStarRating')) {
                     
                     $options['hide_empty'] = isset($posted['hidempty']) ? 1 : 0;
                     $options['hide_noreview'] = isset($posted['hidenoreview']) ? 1 : 0;
+                    $options['bayesian_calculation'] = isset($posted['bayesian_calculation']) ? 1 : 0;
                     
                     $options_all[$widget_number] = $options;
                 }

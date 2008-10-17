@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://wp.gdragon.info/donate/
-Version: 0.9.8
+Version: 0.9.9
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends
 Requires at least: 2.5
 Tested up to: 2.7.0
@@ -61,36 +61,14 @@ Options page for this plugin consist of 5 tabs:
   All options for this plugin are here
 * Templates
   Rating text templates
-* Article Votes
+* Votes Stats
   Votes and ratings for each post and page
-* Comments Votes
-  Votes and ratings for each comments
-* Voters Log
-  Log of votes based on users
-* Moderation
-  Status of moderation votes
+* Import Data
+  Import voting data from other rating plugins
+* Export Data
+  Export rating data to CSV format
 * Setup
   Upgrade and setup options
-  
-= Current Styles =
-
-Plugin contains different stars styles and sizes. 
-
-* Crystal
-* Oxygen
-* Shiny
-* Quiet
-* Aero
-* Inspire
-* Nuvola
-* Starscape
-* Milky
-* Ruby
-* Fatty
-* Aeon
-* Soft
-* Crystal Hearts
-* Pine Hearts
 
 == Installation ==
 
@@ -118,6 +96,11 @@ My Wordpress blog has this widget installed, so you can see it in action there.
 5. Addition to sidebar for edit post
 6. TinyMCE3 plugin
 
+== Source SVN ==
+
+Check out a read-only working copy anonymously over HTTP:
+`svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only`
+
 == Web ==
 
 = Website =
@@ -128,6 +111,7 @@ My Wordpress blog has this widget installed, so you can see it in action there.
 
 = Support =
 
+* Google Code: http://code.google.com/p/gd-star-rating/
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
 * User Guide: http://wp.gdragon.info/plugins/gd-star-rating/userguide/
 * Email: wordpress@gdragon.info

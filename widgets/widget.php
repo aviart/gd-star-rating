@@ -230,6 +230,12 @@ function gdsrShowHidePreview(gdid, index) {
   <tr>
     <td width="100"></td>
     <td nowrap="nowrap" colspan="2" height="25">
+        <label for="gdstarr-bayesiancalculation" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['bayesian_calculation'] ? 'checked="checked"' : ''; ?> id="gdstarr-bayesiancalculation" name="<?php echo $wpfn; ?>[bayesian_calculation]" /> <?php _e("Bayesian minumum votes required.", "gd-star-rating"); ?></label>
+    </td>
+  </tr>
+  <tr>
+    <td width="100"></td>
+    <td nowrap="nowrap" colspan="2" height="25">
         <label for="gdstarr-hidempty" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_empty'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidempty" name="<?php echo $wpfn; ?>[hidempty]" /> <?php _e("Hide articles with no recorded votes.", "gd-star-rating"); ?></label>
     </td>
   </tr>
