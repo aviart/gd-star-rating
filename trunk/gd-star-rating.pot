@@ -40,109 +40,109 @@ msgstr ""
 msgid "users"
 msgstr ""
 
-#: code/gd-star-functions.php:63
+#: code/gd-star-functions.php:58
 msgid "No moderation"
 msgstr ""
 
-#: code/gd-star-functions.php:64
+#: code/gd-star-functions.php:59
 msgid "Moderate visitors"
 msgstr ""
 
-#: code/gd-star-functions.php:65
+#: code/gd-star-functions.php:60
 msgid "Moderate users"
 msgstr ""
 
-#: code/gd-star-functions.php:66
+#: code/gd-star-functions.php:61
 msgid "Moderate all"
 msgstr ""
 
-#: code/gd-star-functions.php:75
+#: code/gd-star-functions.php:70
 msgid "Everyone can vote"
 msgstr ""
 
-#: code/gd-star-functions.php:76
+#: code/gd-star-functions.php:71
 msgid "Only visitors"
 msgstr ""
 
-#: code/gd-star-functions.php:77
+#: code/gd-star-functions.php:72
 msgid "Only users"
 msgstr ""
 
-#: code/gd-star-functions.php:78
+#: code/gd-star-functions.php:73
 msgid "Locked"
 msgstr ""
 
-#: code/gd-star-functions.php:79
+#: code/gd-star-functions.php:74
 msgid "Locked and hidden"
 msgstr ""
 
-#: code/gd-star-functions.php:87
+#: code/gd-star-functions.php:82
 #: tinymce3/window.php:144
 #: tinymce3/window.php:172
 msgid "Mini"
 msgstr ""
 
-#: code/gd-star-functions.php:88
+#: code/gd-star-functions.php:83
 #: tinymce3/window.php:145
 #: tinymce3/window.php:173
 msgid "Small"
 msgstr ""
 
-#: code/gd-star-functions.php:89
+#: code/gd-star-functions.php:84
 #: tinymce3/window.php:146
 #: tinymce3/window.php:174
 msgid "Medium"
 msgstr ""
 
-#: code/gd-star-functions.php:90
+#: code/gd-star-functions.php:85
 #: tinymce3/window.php:147
 #: tinymce3/window.php:175
 msgid "Big"
 msgstr ""
 
-#: code/gd-star-functions.php:98
+#: code/gd-star-functions.php:93
 msgid "No alignment"
 msgstr ""
 
-#: code/gd-star-functions.php:99
-#: code/gd-star-functions.php:114
+#: code/gd-star-functions.php:94
+#: code/gd-star-functions.php:109
 msgid "Left"
 msgstr ""
 
-#: code/gd-star-functions.php:100
+#: code/gd-star-functions.php:95
 msgid "Center"
 msgstr ""
 
-#: code/gd-star-functions.php:101
-#: code/gd-star-functions.php:116
+#: code/gd-star-functions.php:96
+#: code/gd-star-functions.php:111
 msgid "Right"
 msgstr ""
 
-#: code/gd-star-functions.php:109
+#: code/gd-star-functions.php:104
 msgid "Always hide"
 msgstr ""
 
-#: code/gd-star-functions.php:110
+#: code/gd-star-functions.php:105
 msgid "Top"
 msgstr ""
 
-#: code/gd-star-functions.php:111
+#: code/gd-star-functions.php:106
 msgid "Top (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:112
+#: code/gd-star-functions.php:107
 msgid "Bottom"
 msgstr ""
 
-#: code/gd-star-functions.php:113
+#: code/gd-star-functions.php:108
 msgid "Bottom (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:115
+#: code/gd-star-functions.php:110
 msgid "Left (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:117
+#: code/gd-star-functions.php:112
 msgid "Right (hide if empty)"
 msgstr ""
 
@@ -266,8 +266,8 @@ msgid "Comments"
 msgstr ""
 
 #: options/batch.php:0
-#: gd-star-rating.php:403
-#: gd-star-rating.php:403
+#: gd-star-rating.php:399
+#: gd-star-rating.php:399
 msgid "Batch Options"
 msgstr ""
 
@@ -295,8 +295,8 @@ msgstr ""
 
 #: options/export.php:17
 #: options/export.php:55
-#: gd-star-rating.php:405
-#: gd-star-rating.php:405
+#: gd-star-rating.php:401
+#: gd-star-rating.php:401
 msgid "Export Data"
 msgstr ""
 
@@ -404,8 +404,8 @@ msgstr ""
 #: options/import.php:42
 #: options/import.php:66
 #: options/import.php:2
-#: gd-star-rating.php:404
-#: gd-star-rating.php:404
+#: gd-star-rating.php:400
+#: gd-star-rating.php:400
 msgid "Import Data"
 msgstr ""
 
@@ -631,17 +631,25 @@ msgstr ""
 msgid "GD Star Rating: Post/Page rating widget."
 msgstr ""
 
+#: options/settings_general.php:50
+msgid "Stars and Trends Graphics"
+msgstr ""
+
+#: options/settings_general.php:52
+msgid "Rescan graphics folders for new stars and trends images."
+msgstr ""
+
 #: options/settings_preview.php:89
 msgid "Size"
 msgstr ""
 
 #: options/settings_preview.php:97
-#: options/settings_preview.php:142
+#: options/settings_preview.php:139
 msgid "Click on this section header title to show preview panel."
 msgstr ""
 
-#: options/settings_preview.php:104
-#: options/settings_preview.php:109
+#: options/settings_preview.php:101
+#: options/settings_preview.php:106
 msgid "Trends"
 msgstr ""
 
@@ -662,8 +670,8 @@ msgid "Bayesian Estimate Mean"
 msgstr ""
 
 #: options/setup.php:27
-#: gd-star-rating.php:406
-#: gd-star-rating.php:406
+#: gd-star-rating.php:402
+#: gd-star-rating.php:402
 msgid "Setup"
 msgstr ""
 
@@ -749,8 +757,8 @@ msgid "Voters Log"
 msgstr ""
 
 #: templates/templates.php:18
-#: gd-star-rating.php:401
-#: gd-star-rating.php:401
+#: gd-star-rating.php:397
+#: gd-star-rating.php:397
 msgid "Templates"
 msgstr ""
 
@@ -1193,18 +1201,18 @@ msgstr ""
 msgid "singular/plural word vote"
 msgstr ""
 
-#: gd-star-rating.php:399
-#: gd-star-rating.php:399
+#: gd-star-rating.php:395
+#: gd-star-rating.php:395
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:400
-#: gd-star-rating.php:400
+#: gd-star-rating.php:396
+#: gd-star-rating.php:396
 msgid "Plugin Settings"
 msgstr ""
 
-#: gd-star-rating.php:402
-#: gd-star-rating.php:402
+#: gd-star-rating.php:398
+#: gd-star-rating.php:398
 msgid "Votes Stats"
 msgstr ""
 

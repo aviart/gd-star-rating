@@ -6,7 +6,7 @@
                 <td width="150"><?php _e("Stars", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
                 <select style="width: 180px;" name="gdsr_cmm_style" id="gdsr_cmm_style">
-                <?php GDSRHelper::render_styles_select($gdsr_styles, $gdsr_options["cmm_style"]); ?>
+                <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["cmm_style"]); ?>
                 </select>
                 </td>
                 <td width="10"></td>

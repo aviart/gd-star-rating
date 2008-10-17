@@ -51,109 +51,109 @@ msgstr "посетиоци"
 msgid "users"
 msgstr "корисници"
 
-#: code/gd-star-functions.php:63
+#: code/gd-star-functions.php:58
 msgid "No moderation"
 msgstr "Без модерације"
 
-#: code/gd-star-functions.php:64
+#: code/gd-star-functions.php:59
 msgid "Moderate visitors"
 msgstr "Модерација посетиоца"
 
-#: code/gd-star-functions.php:65
+#: code/gd-star-functions.php:60
 msgid "Moderate users"
 msgstr "Модерација корисника"
 
-#: code/gd-star-functions.php:66
+#: code/gd-star-functions.php:61
 msgid "Moderate all"
 msgstr "Модерација за све"
 
-#: code/gd-star-functions.php:75
+#: code/gd-star-functions.php:70
 msgid "Everyone can vote"
 msgstr "Свако може да гласа"
 
-#: code/gd-star-functions.php:76
+#: code/gd-star-functions.php:71
 msgid "Only visitors"
 msgstr "Само посетиоци"
 
-#: code/gd-star-functions.php:77
+#: code/gd-star-functions.php:72
 msgid "Only users"
 msgstr "Само корисници"
 
-#: code/gd-star-functions.php:78
+#: code/gd-star-functions.php:73
 msgid "Locked"
 msgstr "Закључан"
 
-#: code/gd-star-functions.php:79
+#: code/gd-star-functions.php:74
 msgid "Locked and hidden"
 msgstr "Закључано и сакривено"
 
-#: code/gd-star-functions.php:87
+#: code/gd-star-functions.php:82
 #: tinymce3/window.php:144
 #: tinymce3/window.php:172
 msgid "Mini"
 msgstr "Мини"
 
-#: code/gd-star-functions.php:88
+#: code/gd-star-functions.php:83
 #: tinymce3/window.php:145
 #: tinymce3/window.php:173
 msgid "Small"
 msgstr "Мала"
 
-#: code/gd-star-functions.php:89
+#: code/gd-star-functions.php:84
 #: tinymce3/window.php:146
 #: tinymce3/window.php:174
 msgid "Medium"
 msgstr "Средња"
 
-#: code/gd-star-functions.php:90
+#: code/gd-star-functions.php:85
 #: tinymce3/window.php:147
 #: tinymce3/window.php:175
 msgid "Big"
 msgstr "Велика"
 
-#: code/gd-star-functions.php:98
+#: code/gd-star-functions.php:93
 msgid "No alignment"
 msgstr "Без поравнања"
 
-#: code/gd-star-functions.php:99
-#: code/gd-star-functions.php:114
+#: code/gd-star-functions.php:94
+#: code/gd-star-functions.php:109
 msgid "Left"
 msgstr "Лево"
 
-#: code/gd-star-functions.php:100
+#: code/gd-star-functions.php:95
 msgid "Center"
 msgstr "Центар"
 
-#: code/gd-star-functions.php:101
-#: code/gd-star-functions.php:116
+#: code/gd-star-functions.php:96
+#: code/gd-star-functions.php:111
 msgid "Right"
 msgstr "Десно"
 
-#: code/gd-star-functions.php:109
+#: code/gd-star-functions.php:104
 msgid "Always hide"
 msgstr "Увек Сакриј"
 
-#: code/gd-star-functions.php:110
+#: code/gd-star-functions.php:105
 msgid "Top"
 msgstr "Врх"
 
-#: code/gd-star-functions.php:111
+#: code/gd-star-functions.php:106
 msgid "Top (hide if empty)"
 msgstr "Врх (сакриј ако је празан)"
 
-#: code/gd-star-functions.php:112
+#: code/gd-star-functions.php:107
 msgid "Bottom"
 msgstr "Дно"
 
-#: code/gd-star-functions.php:113
+#: code/gd-star-functions.php:108
 msgid "Bottom (hide if empty)"
 msgstr "Дно (сакриј ако је празан)"
 
-#: code/gd-star-functions.php:115
+#: code/gd-star-functions.php:110
 msgid "Left (hide if empty)"
 msgstr "Лево (сакриј ако је празан)"
 
-#: code/gd-star-functions.php:117
+#: code/gd-star-functions.php:112
 msgid "Right (hide if empty)"
 msgstr "Десно (сакриј ако је празан)"
 
@@ -277,7 +277,7 @@ msgid "Comments"
 msgstr "Коментари"
 
 #: options/batch.php:0
-#: gd-star-rating.php:403
+#: gd-star-rating.php:399
 msgid "Batch Options"
 msgstr "Групне Опције"
 
@@ -305,7 +305,7 @@ msgstr "Са Селектованим"
 
 #: options/export.php:17
 #: options/export.php:55
-#: gd-star-rating.php:405
+#: gd-star-rating.php:401
 msgid "Export Data"
 msgstr "Увоз Података"
 
@@ -413,7 +413,7 @@ msgstr "Дошло је до грешке приликом учитавања в
 #: options/import.php:42
 #: options/import.php:66
 #: options/import.php:2
-#: gd-star-rating.php:404
+#: gd-star-rating.php:400
 msgid "Import Data"
 msgstr "Увоз Података"
 
@@ -639,17 +639,25 @@ msgstr "Виџети"
 msgid "GD Star Rating: Post/Page rating widget."
 msgstr "GD Star Rating: Post/Page rating widget."
 
+#: options/settings_general.php:50
+msgid "Stars and Trends Graphics"
+msgstr ""
+
+#: options/settings_general.php:52
+msgid "Rescan graphics folders for new stars and trends images."
+msgstr ""
+
 #: options/settings_preview.php:89
 msgid "Size"
 msgstr "Величина"
 
 #: options/settings_preview.php:97
-#: options/settings_preview.php:142
+#: options/settings_preview.php:139
 msgid "Click on this section header title to show preview panel."
 msgstr "Клик на наслов да би видели панел са звездицама."
 
-#: options/settings_preview.php:104
-#: options/settings_preview.php:109
+#: options/settings_preview.php:101
+#: options/settings_preview.php:106
 msgid "Trends"
 msgstr "Трендови"
 
@@ -670,7 +678,7 @@ msgid "Bayesian Estimate Mean"
 msgstr "Бајесова Процењена Средина"
 
 #: options/setup.php:27
-#: gd-star-rating.php:406
+#: gd-star-rating.php:402
 msgid "Setup"
 msgstr "Организација"
 
@@ -756,7 +764,7 @@ msgid "Voters Log"
 msgstr "Листа гласова"
 
 #: templates/templates.php:18
-#: gd-star-rating.php:401
+#: gd-star-rating.php:397
 msgid "Templates"
 msgstr "Шаблони"
 
@@ -1199,15 +1207,15 @@ msgstr "број чланака"
 msgid "singular/plural word vote"
 msgstr "једнина/множина речи глас"
 
-#: gd-star-rating.php:399
+#: gd-star-rating.php:395
 msgid "Front Page"
 msgstr "Главна Страна"
 
-#: gd-star-rating.php:400
+#: gd-star-rating.php:396
 msgid "Plugin Settings"
 msgstr "Подешавања"
 
-#: gd-star-rating.php:402
+#: gd-star-rating.php:398
 msgid "Votes Stats"
 msgstr "Статистика Гласова"
 

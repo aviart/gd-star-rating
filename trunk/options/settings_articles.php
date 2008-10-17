@@ -6,7 +6,7 @@
                 <td width="150"><?php _e("Stars", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
                 <select style="width: 180px;" name="gdsr_style" id="gdsr_style">
-                <?php GDSRHelper::render_styles_select($gdsr_styles, $gdsr_options["style"]); ?>
+                <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["style"]); ?>
                 </select>
                 </td>
                 <td width="10"></td>
@@ -107,7 +107,7 @@
                 <td width="150"><?php _e("Stars", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
                 <select style="width: 180px;" name="gdsr_review_style" id="gdsr_review_style">
-                <?php GDSRHelper::render_styles_select($gdsr_styles, $gdsr_options["review_style"]); ?>
+                <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["review_style"]); ?>
                 </select>
                 </td>
                 <td width="10"></td>
