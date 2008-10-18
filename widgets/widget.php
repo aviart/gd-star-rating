@@ -100,7 +100,7 @@ function gdsrShowHidePreview(gdid, index) {
         <td width="100"></td>
         <td><?php _e("Image set", "gd-star-rating"); ?>:</td>
         <td align="right">
-            <select style="width: 180px;" name="<?php echo $wpfn; ?>[trends_rating_set]"id="gdstarr-trendsratingset">
+            <select style="width: 180px;" name="<?php echo $wpfn; ?>[trends_rating_set]" id="gdstarr-trendsratingset">
                 <?php GDSRHelper::render_styles_select($wptr, $wpno["trends_rating_set"]); ?>
             </select>
         </td>
@@ -138,7 +138,7 @@ function gdsrShowHidePreview(gdid, index) {
         <td width="100"></td>
         <td><?php _e("Image set", "gd-star-rating"); ?>:</td>
         <td align="right">
-            <select style="width: 180px;" name="<?php echo $wpfn; ?>[trends_voting_set]"id="gdstarr-trendsvotingset">
+            <select style="width: 180px;" name="<?php echo $wpfn; ?>[trends_voting_set]" id="gdstarr-trendsvotingset">
                 <?php GDSRHelper::render_styles_select($wptr, $wpno["trends_voting_set"]); ?>
             </select>
         </td>
@@ -161,7 +161,7 @@ function gdsrShowHidePreview(gdid, index) {
 <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
   <tr>
     <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divfilter', '<?php echo $wpnm; ?>')"><?php _e("Filter", "gd-star-rating"); ?></a></strong></td>
-    <td width="150" nowrap="nowrap"><?php _e("Display", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Include Articles", "gd-star-rating"); ?>:</td>
     <td align="right">
         <label><select class="widefat" name="<?php echo $wpfn; ?>[select]" id="gdstarr-select" style="width: 110px">
             <option value="postpage"<?php echo $wpno['select'] == 'postpage' ? ' selected="selected"' : ''; ?>><?php _e("Posts & Pages", "gd-star-rating"); ?></option>

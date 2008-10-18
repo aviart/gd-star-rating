@@ -18,8 +18,8 @@
 			ed.addCommand('mceStarRating', function() {
 				ed.windowManager.open({
 					file : url + '/window.php',
-					width : 400 + ed.getLang('StarRating.delta_width', 0),
-					height : 230 + ed.getLang('StarRating.delta_height', 0),
+					width : 330 + ed.getLang('StarRating.delta_width', 0),
+					height : 380 + ed.getLang('StarRating.delta_height', 0),
 					inline : 1
 				}, {
 					plugin_url : url // Plugin absolute URL
