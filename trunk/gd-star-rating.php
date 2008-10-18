@@ -195,16 +195,43 @@ if (!class_exists('GDStarRating')) {
             "bayesian_calculation" => '0'
         );
         
+        var $default_shortcode_new = array(
+            'rows' => 10, 
+            'select' => 'postpage', 
+            'links' => 0, 
+            'sort' => 'rating', 
+            'order' => 'desc', 
+            'category' => 0,
+            'show' => 'total',
+            'hide_empty' => 1,
+            'hide_noreview' => 0,
+            'publish_date' => 'lastd',
+            'publish_days' => 30,
+            'publish_month' => '200808',
+            'publish_range_from' => 'YYYYMMDD',
+            'publish_range_to' => 'YYYYMMDD',
+            "grouping" => 'post',
+            "bayesian_calculation" => '0',
+            'rating_style' => 'stars',
+            'rating_stars' => 0,
+            'rating_size' => 20,
+            'review_style' => 'stars',
+            'review_stars' => 0,
+            'review_size' => 20
+        );
+        
         var $default_shortcode = array(
             'rows' => 10, 
+            'select' => 'postpage', 
             'header' => 1, 
             'links' => 0, 
-            'select' => 'postpage', 
             'votes' => 1, 
             'review' => 1, 
             'rating' => 1, 
             'sort' => 'rating', 
             'order' => 'desc', 
+            'show' => 'total',
+            'hide_empty' => 1,
             'class' => 'starrating',
             'rating_style' => 'stars',
             'rating_stars' => 0,
@@ -212,9 +239,7 @@ if (!class_exists('GDStarRating')) {
             'review_style' => 'stars',
             'review_stars' => 0,
             'review_size' => 20,
-            'category' => 0,
-            'show' => 'total',
-            'hide_empty' => 1
+            'category' => 0
         );
         
         function GDStarRating() {

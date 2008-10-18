@@ -4,6 +4,7 @@
 
 === Version: 0.9.9 DEV / october 20 2008 ===
   * new: blog total top rating widget
+  * new: redesigned starrating shortcode
   * new: bayesian mean estimate rating calculation
   * new: all icons sets with description files
   * new: trends and stars sets classes and import
@@ -19,6 +20,7 @@
   * edit: changes to internal path and url variables
   * edit: partialy removed uneeded code
   * fix: tinymce plugin not working on some servers
+  * fix: rare widget rendering problems
   * fix: minor widget calculation bug
   * fix: invalid position for StarRater shortcode
   * fix: xhtml valid problems
