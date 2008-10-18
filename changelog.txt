@@ -17,6 +17,7 @@
   * edit: added some missed strings for translation
   * edit: changes to internal path and url variables
   * edit: partialy removed uneeded code
+  * fix: tinymce plugin not working on some servers
   * fix: minor widget calculation bug
   * fix: invalid position for StarRater shortcode
   * fix: xhtml valid problems
