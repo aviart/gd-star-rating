@@ -1,18 +1,3 @@
-<style>
-.gdsr-table-split {
-    border-top: 2px solid lightBlue; 
-    width: 100%; 
-    margin-top: 10px; 
-    padding-top: 10px;
-}
-.gdsr-table-split-filter {
-    border-top: 1px solid lightBlue; 
-    width: 100%; 
-    margin-top: 4px; 
-    padding-top: 4px;
-}
-</style>
-
 <script>
 function gdsrChangeDate(el, index) {
     document.getElementById("gdsr-pd-lastd["+index+"]").style.display = el == "lastd" ? "block" : "none";
