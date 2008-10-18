@@ -28,10 +28,17 @@
                 <td width="220"> : <?php _e("rating stars", "gd-star-rating"); ?></td>
             </tr>
             <tr>
-                <td width="150"><strong>%BAYESIAN%</strong></td>
+                <td width="150"><strong>%BAYES_RATING%</strong></td>
                 <td width="220"> : <?php _e("bayesian estimate mean rating", "gd-star-rating"); ?></td>
                 <td width="10"></td>
-                <td width="150"><strong>%TREND%</strong></td>
+                <td width="150"><strong>%BAYES_STARS%</strong></td>
+                <td width="220"> : <?php _e("bayesian estimate mean rating stars", "gd-star-rating"); ?></td>
+            </tr>
+            <tr>
+                <td width="150"><strong>%RATE_TREND%</strong></td>
                 <td width="220"> : <?php _e("article rating trend", "gd-star-rating"); ?></td>
+                <td width="10"></td>
+                <td width="150"><strong>%VOTE_TREND%</strong></td>
+                <td width="220"> : <?php _e("article voting trend", "gd-star-rating"); ?></td>
             </tr>
         </table>
