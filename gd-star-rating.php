@@ -873,9 +873,22 @@ if (!class_exists('GDStarRating')) {
             $gdsr_options = $this->o;
             $post_id = $post->ID;
 
+            if ($post_id == 0) {
+                $rating_decimal = -1;
+                $rating = -1;
+            }
+            else {
+                $rating = GDSRDatabase::get_review($post_id);
+                if ($rating != -1) {
+                    $rating = explode(".", strval($rating));
+                    $rating_decimal = intval($rating[1]);
+                    $rating = intval($rating[0]);
+                }
+            }
+            
             if ($this->wp_version < 27)
-                include($this->plugin_path.'options/edit.php');
-            else 
+                include($this->plugin_path.'options/edit26.php');
+            else
                 include($this->plugin_path.'options/edit27.php');
         }                  
 
