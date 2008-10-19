@@ -6,7 +6,7 @@
                 <td width="150"><input type="text" name="gdsr_word_votessingular" id="gdsr_word_votessingular" value="<?php echo wp_specialchars($gdsr_options["word_votes_singular"]); ?>" style="width: 120px" /></td>
                 <td width="70"><?php _e("plural", "gd-star-rating"); ?>:</td>
                 <td width="10"></td>
-                <td width="150"><input type="text" name="gdsr_word_votesplural" id="gdsr_word_votesplural" value="<?php echo wp_specialchars($gdsr_options["word_votes_plural"]); ?>" style="width: 120px" /></td>
+                <td><input type="text" name="gdsr_word_votesplural" id="gdsr_word_votesplural" value="<?php echo wp_specialchars($gdsr_options["word_votes_plural"]); ?>" style="width: 120px" /></td>
             </tr>
             <tr>
                 <td width="150"></td>
@@ -22,7 +22,7 @@
                 <td width="150"><input type="text" name="gdsr_tablerow_even" id="gdsr_tablerow_even" value="<?php echo wp_specialchars($gdsr_options["table_row_even"]); ?>" style="width: 120px" /></td>
                 <td width="70"><?php _e("odd row", "gd-star-rating"); ?>:</td>
                 <td width="10"></td>
-                <td width="150"><input type="text" name="gdsr_tablerow_odd" id="gdsr_tablerow_odd" value="<?php echo wp_specialchars($gdsr_options["table_row_od"]); ?>" style="width: 120px" /></td>
+                <td><input type="text" name="gdsr_tablerow_odd" id="gdsr_tablerow_odd" value="<?php echo wp_specialchars($gdsr_options["table_row_od"]); ?>" style="width: 120px" /></td>
             </tr>
             <tr>
                 <td width="150"></td>
