@@ -6,6 +6,10 @@
         $gdsr_options["word_votes_singular"] = stripslashes(htmlentities($_POST['gdsr_word_votessingular'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["word_votes_plural"] = stripslashes(htmlentities($_POST['gdsr_word_votesplural'], ENT_QUOTES, 'UTF-8'));
 
+        $gdsr_options["shortcode_starrating_header"] = stripslashes(htmlentities($_POST['gdsr_tpl_srheader'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["shortcode_starrating_item"] = stripslashes(htmlentities($_POST['gdsr_tpl_sritem'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["shortcode_starrating_footer"] = stripslashes(htmlentities($_POST['gdsr_tpl_srfooter'], ENT_QUOTES, 'UTF-8'));
+        
         update_option("gd-star-rating-templates", $gdsr_options);
 
 ?>

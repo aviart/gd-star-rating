@@ -158,15 +158,13 @@
 
 <fieldset>
 <legend><?php _e("Hiding", "gd-star-rating"); ?></legend>
-    <input type="checkbox" size="5" id="srHidemptyBayes" name="srHidemptyBayes" checked /><label for="srHidemptyBayes"> <?php _e("Bayesian minumum votes required.", "gd-star-rating"); ?></label><br />
-    <input type="checkbox" size="5" id="srHidempty" name="srHidempty" checked /><label for="srHidempty"> <?php _e("Hide articles with no recorded votes.", "gd-star-rating"); ?></label><br />
-    <input type="checkbox" size="5" id="srHidemptyReview" name="srHidemptyReview" checked /><label for="srHidemptyReview"> <?php _e("Hide articles with no review values.", "gd-star-rating"); ?></label>
+    <input type="checkbox" size="5" id="srHidemptyBayes" name="srHidemptyBayes" value="on" /><label for="srHidemptyBayes"> <?php _e("Bayesian minumum votes required.", "gd-star-rating"); ?></label><br />
+    <input type="checkbox" size="5" id="srHidempty" name="srHidempty" checked value="on" /><label for="srHidempty"> <?php _e("Hide articles with no recorded votes.", "gd-star-rating"); ?></label><br />
+    <input type="checkbox" size="5" id="srHidemptyReview" name="srHidemptyReview" value="on" /><label for="srHidemptyReview"> <?php _e("Hide articles with no review values.", "gd-star-rating"); ?></label>
 </fieldset>
-
 </div>
 
 <div id="filter_panel" class="panel">
-
 <fieldset>
 <legend><?php _e("Basic", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="3" cellspacing="0" width="100%">
@@ -269,7 +267,6 @@
     </table>
 </div>
 </fieldset>
-
 </div>
 
 <div id="styles_panel" class="panel">
@@ -310,6 +307,7 @@
     </table>
 </div>
 </fieldset>
+
 <fieldset>
 <legend><?php _e("Review Stars", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
@@ -355,6 +353,7 @@
         <td class="gdsrleft"><?php _e("Style Class", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
             <label><select id="srSType" name="srSType" style="width: 130px" onchange="gdsrChangeStyles(this.options[this.selectedIndex].value, 'tinymce')">
+                <option value="none"><?php _e("Don't Add", "gd-star-rating"); ?></option>
                 <option value="built"><?php _e("Built In", "gd-star-rating"); ?></option>
                 <option value="external"><?php _e("External", "gd-star-rating"); ?></option>
             </select></label>
