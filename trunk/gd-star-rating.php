@@ -45,13 +45,18 @@ if (!class_exists('GDStarRating')) {
     class GDStarRating {
         var $log_file = "c:/gd_star_rating_log.txt";
         
+        var $charting = false;
+
         var $active_wp_page;
         var $wp_version;
         var $vote_status;
+
         var $plugin_url;
         var $plugin_path;
         var $plugin_xtra_url;
         var $plugin_xtra_path;
+        var $plugin_chart_url;
+        var $plugin_chart_path;
         
         var $o;
         var $w;
@@ -76,7 +81,7 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "version" => "0.9.8",
+            "version" => "0.9.9",
             "date" => "2008.10.13.",
             "status" => "Beta",
             "ie_png_fix" => 1,
@@ -87,6 +92,7 @@ if (!class_exists('GDStarRating')) {
             "preview_trends_active" => 1,
             "moderation_active" => 1,
             "review_active" => 1,
+            "timer_active" => 1,
             "comments_active" => 1,
             "style" => 'oxygen',
             "size" => 30,
@@ -138,6 +144,8 @@ if (!class_exists('GDStarRating')) {
             "default_moderation_comments" => 'N',
             "default_voterules_articles" => 'A',
             "default_voterules_comments" => 'A',
+            "default_timer_type" => 'N',
+            "default_timer_value" => '',
             "stats_trend_history" => 30,
             "stats_trend_current" => 3,
             "trend_last" => 1,
@@ -431,6 +439,7 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 10, __FILE__, array(&$this,"star_menu_front"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Plugin Settings", "gd-star-rating"), __("Plugin Settings", "gd-star-rating"), 10, "gdsr-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gdsr-templates", array(&$this,"star_menu_templates"));
+            if ($this->charting) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Charts", "gd-star-rating"), __("Charts", "gd-star-rating"), 10, "gdsr-charts", array(&$this,"star_menu_charts"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Votes Stats", "gd-star-rating"), __("Votes Stats", "gd-star-rating"), 10, "gdsr-stats", array(&$this,"star_menu_stats"));
             // add_submenu_page(__FILE__, 'GD Star Rating: '.__("Batch Options", "gd-star-rating"), __("Batch Options", "gd-star-rating"), 10, "gdsr-batch", array(&$this,"star_menu_batch"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import Data", "gd-star-rating"), __("Import Data", "gd-star-rating"), 10, "gdsr-import", array(&$this,"star_menu_import"));
@@ -446,6 +455,11 @@ if (!class_exists('GDStarRating')) {
                     wp_print_scripts('jquery-ui-tabs');
                     echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin.css" type="text/css" media="screen" />');
                     echo '<script>jQuery(document).ready(function() { jQuery("#gdsr_tabs > ul").tabs(); });</script>';
+                }
+                if ($_GET["page"] == "gdsr-charts" && $this->charting) {
+                    echo '<script type="text/javascript" src="'.$this->plugin_url.'ofc2/js/swfobject.js"></script>';
+                    echo '<script type="text/javascript">';
+                    echo '</script>';
                 }
             }
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_post.css" type="text/css" media="screen" />');
@@ -507,6 +521,9 @@ if (!class_exists('GDStarRating')) {
             $this->i = get_option('gd-star-rating-import');
             $this->g = get_option('gd-star-rating-gfx');
 
+            if (intval(str_replace(".", "", $this->o["version"]) < 99))
+                GDSRDB::upgrade_database();
+            
             if (!is_array($this->o)) {
                 update_option('gd-star-rating', $this->default_options);
                 GDSRDB::install_database();
@@ -612,10 +629,18 @@ if (!class_exists('GDStarRating')) {
             $this->plugin_path = dirname(__FILE__)."/";
             $this->e = $this->plugin_url."gfx/blank.gif";
             
+            $this->plugin_chart_path = $this->plugin_path."ofc2/";
+            $this->plugin_chart_url = $this->plugin_url."ofc2/";
+            
+            if (is_dir($this->plugin_chart_path))
+                $this->charting = true;
+            
             define('STARRATING_URL', $this->plugin_url);
             define('STARRATING_PATH', $this->plugin_path);
             define('STARRATING_XTRA_URL', $this->plugin_xtra_url);
             define('STARRATING_XTRA_PATH', $this->plugin_xtra_path);
+            define('STARRATING_CHART_URL', $this->plugin_chart_url);
+            define('STARRATING_CHART_PATH', $this->plugin_chart_path);
         }
 
         function init() {
@@ -893,6 +918,10 @@ if (!class_exists('GDStarRating')) {
 
         function star_menu_setup() {
             include($this->plugin_path.'options/setup.php');
+        }
+
+        function star_menu_charts() {
+            include($this->plugin_path.'options/charts.php');
         }
 
         function star_menu_batch() {
@@ -1590,6 +1619,14 @@ if (!class_exists('GDStarRating')) {
     function wp_gdsr_render_article() {
         global $post, $userdata, $gdsr;
         echo $gdsr->render_article($post, $userdata);
+    }
+    
+    function wp_gdsr_rating_text_article() {
+        global $post, $userdata, $gdsr;
+    }
+
+    function wp_gdsr_rating_text_comment() {
+        global $comment, $userdata, $gdsr, $post;
     }
 
     function wp_gdsr_render_comment() {

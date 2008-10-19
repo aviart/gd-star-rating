@@ -76,6 +76,18 @@
             <?php } ?>
             </tr>
         </table>
+        <?php if ($gdsr_options["timer_active"] == 1) { ?>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Default time restriction", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <?php GDSRHelper::render_timer_combo("gdsr_default_timer_type", $gdsr_options["default_timer_type"]); ?>
+                </td>
+                <td width="10"></td>
+            </tr>
+        </table>
+        <?php } ?>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>

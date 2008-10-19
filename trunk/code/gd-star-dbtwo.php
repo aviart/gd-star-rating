@@ -23,6 +23,13 @@ class GDSRDB
         return $tables;
     }
     
+    function upgrade_database() {
+        global $wpdb, $table_prefix;
+        
+        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article ADD expiry_type VARCHAR(1) NOT NULL DEFAULT 'N'");
+        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article ADD expiry_value VARCHAR(32) NOT NULL");
+    }
+    
     function uninstall_database() {
         global $wpdb, $table_prefix;
 
@@ -67,6 +74,8 @@ class GDSRDB
             $install_sql.= "user_recc_minus INTEGER(11) DEFAULT 0,";
             $install_sql.= "visitor_recc_plus INTEGER(11) DEFAULT 0,";
             $install_sql.= "visitor_recc_minus INTEGER(11) DEFAULT 0,";
+            $install_sql.= "expiry_type VARCHAR(1) NOT NULL DEFAULT 'N',";
+            $install_sql.= "expiry_value VARCHAR(32) NOT NULL,";
             $install_sql.= "PRIMARY KEY (post_id))";
             $wpdb->query($install_sql);
         }

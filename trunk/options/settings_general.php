@@ -34,6 +34,8 @@
     <td>
         <input type="checkbox" name="gdsr_ajax" id="gdsr_ajax"<?php if ($gdsr_options["ajax"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ajax"><?php _e("AJAX enabled rating.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_timer" id="gdsr_timer"<?php if ($gdsr_options["timer_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_timer"><?php _e("Time restriction for rating.", "gd-star-rating"); ?></label>
+        <br />
         <input type="checkbox" name="gdsr_modactive" id="gdsr_modactive"<?php if ($gdsr_options["moderation_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_modactive"><?php _e("Moderation options and handling.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_reviewactive" id="gdsr_reviewactive"<?php if ($gdsr_options["review_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_modactive"><?php _e("Review Rating.", "gd-star-rating"); ?></label>
