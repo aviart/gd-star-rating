@@ -76,10 +76,12 @@ if (!class_exists('GDStarRating')) {
         var $default_templates = array(
             "word_votes_singular" => "vote",
             "word_votes_plural" => "votes",
+            "table_row_even" => "even",
+            "table_row_od" => "odd",
             "article_rating_text" => "Rating: %RATING%/&lt;strong&gt;%MAX_RATING%&lt;/strong&gt; (%VOTES% %WORD_VOTES% cast)",
             "cmm_rating_text" => "Rating: %CMM_RATING%/&lt;strong&gt;%MAX_CMM_RATING%&lt;/strong&gt; (%CMM_VOTES% %WORD_VOTES% cast)",
             "shortcode_starrating_header" => "&lt;table&gt;&lt;thead&gt;&lt;td class=&quot;title&quot;&gt;Title&lt;/td&gt;&lt;td class=&quot;votes&quot;&gt;Votes&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;Rating&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;Review&lt;/td&gt;&lt;/thead&gt;&lt;tbody&gt;",
-            "shortcode_starrating_item" => "&lt;td class=&quot;title&quot;&gt;&lt;a href=&quot;%PERMALINK%&quot;&gt;%TITLE%&lt;/a&gt;&lt;/td&gt;&lt;td class=&quot;votes&quot;&gt;%VOTES%&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;%RATING%&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;%REVIEW%&lt;/td&gt;",
+            "shortcode_starrating_item" => "&lt;tr class=&quot;%TABLE_ROW_CLASS%&quot;&gt;&lt;td class=&quot;title&quot;&gt;%RATE_TREND%&lt;a href=&quot;%PERMALINK%&quot;&gt;%TITLE%&lt;/a&gt;&lt;/td&gt;&lt;td class=&quot;votes&quot;&gt;%VOTES%&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;%RATING%&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;%REVIEW%&lt;/td&gt;&lt;/tr&gt;",
             "shortcode_starrating_footer" => "&lt;/tbody&gt;&lt;/table&gt;"
         );
         
@@ -193,8 +195,6 @@ if (!class_exists('GDStarRating')) {
             "div_trend" => '0',
             "div_elements" => '0',
             "grouping" => 'post',
-            "rating_style" => "number",
-            "review_style" => "number",
             "trends_rating" => 'txt',
             "trends_rating_rise" => '+',
             "trends_rating_same" => '=',
@@ -223,7 +223,7 @@ if (!class_exists('GDStarRating')) {
             'publish_month' => '200808',
             'publish_range_from' => 'YYYYMMDD',
             'publish_range_to' => 'YYYYMMDD',
-            'class' => '',
+            'div_class' => '',
             'grouping' => 'post',
             'trends_rating' => 'txt',
             'trends_rating_rise' => '+',
@@ -235,10 +235,8 @@ if (!class_exists('GDStarRating')) {
             'trends_voting_same' => '=',
             'trends_voting_fall' => '-',
             'trends_voting_set' => 'famfamfam',
-            'rating_style' => 'number',
             'rating_stars' => 'oxygen',
             'rating_size' => 20,
-            'review_style' => 'number',
             'review_stars' => 'oxygen',
             'review_size' => 20
         );
@@ -316,141 +314,17 @@ if (!class_exists('GDStarRating')) {
         function shortcode_starrating($atts) {
             $sett = shortcode_atts($this->default_shortcode_starrating, $atts);
             $rating = "";
+            if ($sett["div_class"] != "") $rating.= '<div class="'.$sett["div_class"].'">';
+            else $rating.= "<div>";
             $rating.= html_entity_decode($this->x["shortcode_starrating_header"]);
             $template = html_entity_decode($this->x["shortcode_starrating_item"]);
             
             $all_rows = $this->prepare_data($sett, $template);
             foreach ($all_rows as $row) {
-                $item = $template;
-                $item = str_replace('%RATING%', $row->rating, $item);
-                $item = str_replace('%MAX_RATING%', $this->o["stars"], $item);
-                $item = str_replace('%VOTES%', $row->voters, $item);
-                $item = str_replace('%REVIEW%', $row->review, $item);
-                $item = str_replace('%MAX_REVIEW%', $this->o["review_stars"], $item);
-                $item = str_replace('%TITLE%', $row->title, $item);
-                $item = str_replace('%PERMALINK%', $row->permalink, $item);
-                $item = str_replace('%ID%', $row->post_id, $item);
-                $item = str_replace('%COUNT%', $row->counter, $item);
-                $item = str_replace('%WORD_VOTES%', $row->tense, $item);
-                $item = str_replace('%BAYES_RATING%', $row->bayesian, $item);
-                $item = str_replace('%RATE_TREND%', $row->item_trend_rating, $item);
-                $item = str_replace('%VOTE_TREND%', $row->item_trend_voting, $item);
-                $rating.= $item;
+                $rating.= $this->prepare_row($row, $template);
             }
             
-            $rating.= html_entity_decode($this->x["shortcode_starrating_footer"]);
-            return $rating;
-        }
-                
-        function shortcode_starrating_old($atts) {
-            global $wpdb;
-            $sett = shortcode_atts($this->default_shortcode_starrating, $atts);
-            
-            if ($sett['show'] == "total") {
-                if ($sett['sort'] == "rating") $orderc = "(d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters)";
-                else if ($sett['sort'] == "votes") $orderc = "d.user_votes + d.visitor_votes";
-                else $orderc = $sett['sort'];
-                if ($sett['hide_empty'] == 1) $addt =" and d.user_votes + d.visitor_votes > 0";
-            }
-            if ($sett['show'] == "visitors") {
-                if ($sett['sort'] == "rating") $orderc = "d.visitor_votes/d.visitor_voters";
-                else if ($sett['sort'] == "votes") $orderc = "d.visitor_votes";
-                else $orderc = $sett['sort'];
-                if ($sett['hide_empty'] == 1) $addt =" and d.visitor_votes > 0";
-            }
-            if ($sett['show'] == "users") {
-                if ($sett['sort'] == "rating") $orderc = "d.user_votes/d.user_voters";
-                else if ($sett['sort'] == "votes") $orderc = "d.user_votes";
-                else $orderc = $sett['sort'];
-                if ($sett['hide_empty'] == 1) $addt =" and d.user_votes > 0";
-            }
-            
-            $sql = GDSRDatabase::get_stats($sett['select'], 0, $sett['rows'], '0', $sett['category'], '', $orderc, $sett['order'], $addt);
-            $all_rows = $wpdb->get_results($sql);
-            $rating = '<table class="'.$sett['class'].'">';
-            if ($sett['header'] == 1) {
-                $rating.= '<thead>';
-                $rating.= '<td class="title">Title</td>';
-                if ($sett['votes'] == 1) $rating.= '<td class="votes">Votes</td>';
-                if ($sett['rating'] == 1) $rating.= '<td class="rating">Rating</td>';
-                if ($sett['review'] == 1) $rating.= '<td class="rating">Review</td>';
-                $rating.= '</thead>';
-            }
-
-            $rating.= '<tbody>';
-            $tr_class = "odd";
-            foreach ($all_rows as $row) {
-                if ($row != null) {
-                    $rating.= '<tr class="row '.$tr_class.'">';
-                    $rating.= '<td class="title">';
-                    if ($sett['links'] == 1)
-                        $rating.= '<a href="'.get_permalink($row->pid).'">'.$row->post_title.'</a>';
-                    else
-                        $rating.= $row->post_title;
-                    $rating.= '</td>';
-
-                    if ($sett['show'] == "total") {
-                        $votes = $row->user_votes + $row->visitor_votes;
-                        $voters = $row->user_voters + $row->visitor_voters;
-                    }                
-                    if ($sett['show'] == "visitors") {
-                        $votes = $row->visitor_votes;
-                        $voters = $row->visitor_voters;
-                    }                
-                    if ($sett['show'] == "users") {
-                        $votes = $row->user_votes ;
-                        $voters = $row->user_voters;
-                    }                
-                    $review = $row->review;
-
-                    if ($voters == 0) 
-                        $rates = 0;
-                    else 
-                        $rates = @number_format($votes / $voters, 1);
-
-                    if ($sett['votes'] == 1) $rating.= '<td class="votes">'.$voters.'</td>';
-                    if ($sett['rating'] == 1) {
-                        if ($sett['rating_style'] == 'number')
-                            $rating.= '<td class="rating">'.$rates.'</td>';
-                        else {
-                            $full_width = $sett['rating_size'] * $this->o["stars"];
-                            $rate_width = floor($sett['rating_size'] * $rates);
-                            $gfx = $this->g->find_stars($sett['rating_stars']);
-                            
-                            $star_path = $gfx->get_url($sett['rating_size']);
-                            $rating.= sprintf('<td class="rating" style="width: %spx"><div style="%s" class="ratertbl"><div style="%s" class="ratertbl"></div></div></td>',
-                                            $full_width,
-                                            sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $sett['rating_size'], $full_width),
-                                            sprintf('background: url(%s) bottom left; height: %spx; width: %spx;', $star_path, $sett['rating_size'], $rate_width)
-                                        );
-                        }
-                    }
-                    if ($sett['review'] == 1) {
-                        if ($sett['review_style'] == 'number')
-                            $rating.= '<td class="rating">'.$review == -1 ? "/" : $review.'</td>';
-                        else {
-                            $full_width = $sett['review_size'] * $this->o["review_stars"];
-                            if ($review > -1) {
-                                $rate_width = $sett['review_size'] * $review;
-                                $gfx = $this->g->find_stars($sett['review_stars']);
-                                
-                                $star_path = $gfx->get_url($sett['review_size']);
-                                $rating.= sprintf('<td class="rating" style="width: %spx"><div style="%s" class="ratertbl"><div style="%s" class="ratertbl"></div></div></td>',
-                                                $full_width,
-                                                sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $sett['review_size'], $full_width),
-                                                sprintf('background: url(%s) bottom left; height: %spx; width: %spx;', $star_path, $sett['review_size'], $rate_width)
-                                            );
-                            }
-                            else $rating.= sprintf('<td class="rating" style="width: %spx">No Rating</td>', $full_width);
-                        }
-                    }
-                }                
-
-                if ($tr_class == "odd") $tr_class = "even";
-                else $tr_class = "odd";
-            }
-            $rating.= '</tbody>';
-            $rating.= '</table>';
+            $rating.= html_entity_decode($this->x["shortcode_starrating_footer"])."</div>";
             return $rating;
         }
         // shortcode
@@ -938,7 +812,9 @@ if (!class_exists('GDStarRating')) {
             if ($widget["column"] == "bayes" && $bayesian_calculated)
                 usort($all_rows, "gd_sort_bayesian_".$widget["order"]);
 
+            $tr_class = $this->x["table_row_even"];
             foreach ($all_rows as $row) {
+                $row->table_row_class = $tr_class;
                 if ($widget["tpl_title_length"] > 0)
                     $row->title = substr($row->title, 0, $widget["tpl_title_length"])." ...";
 
@@ -1041,6 +917,11 @@ if (!class_exists('GDStarRating')) {
                 if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = $this->prepare_stars($widget['rating_size'], $this->o["stars"], $widget['rating_stars'], $row->rating);
                 if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = $this->prepare_stars($widget['rating_size'], $this->o["stars"], $widget['rating_stars'], $row->bayesian);
                 if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = $this->prepare_stars($widget['review_size'], $this->o["review_stars"], $widget['review_stars'], $row->review);
+                
+                if ($tr_class == $this->x["table_row_even"])
+                    $tr_class = $this->x["table_row_odd"];
+                else
+                    $tr_class = $this->x["table_row_even"];
             }
                         
             return $all_rows;
@@ -1056,6 +937,24 @@ if (!class_exists('GDStarRating')) {
                         sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $rating_size, $full_width),
                         sprintf('background: url(%s) bottom left; height: %spx; width: %spx;', $star_path, $rating_size, $rate_width)
                    );
+        }
+        
+        function prepare_row($row, $template) {
+            $template = str_replace('%RATING%', $row->rating, $template);
+            $template = str_replace('%MAX_RATING%', $this->o["stars"], $template);
+            $template = str_replace('%VOTES%', $row->voters, $template);
+            $template = str_replace('%REVIEW%', $row->review, $template);
+            $template = str_replace('%MAX_REVIEW%', $this->o["review_stars"], $template);
+            $template = str_replace('%TITLE%', $row->title, $template);
+            $template = str_replace('%PERMALINK%', $row->permalink, $template);
+            $template = str_replace('%ID%', $row->post_id, $template);
+            $template = str_replace('%COUNT%', $row->counter, $template);
+            $template = str_replace('%WORD_VOTES%', $row->tense, $template);
+            $template = str_replace('%BAYES_RATING%', $row->bayesian, $template);
+            $template = str_replace('%RATE_TREND%', $row->item_trend_rating, $template);
+            $template = str_replace('%VOTE_TREND%', $row->item_trend_voting, $template);
+            $template = str_replace('%TABLE_ROW_CLASS%', $row->table_row_class, $template);
+            return $template;
         }
         // calculation
 
@@ -1436,21 +1335,7 @@ if (!class_exists('GDStarRating')) {
             $all_rows = $this->prepare_data($widget, $template);
             
             foreach ($all_rows as $row) {
-                $item = $template;
-                $item = str_replace('%RATING%', $row->rating, $item);
-                $item = str_replace('%MAX_RATING%', $this->o["stars"], $item);
-                $item = str_replace('%VOTES%', $row->voters, $item);
-                $item = str_replace('%REVIEW%', $row->review, $item);
-                $item = str_replace('%MAX_REVIEW%', $this->o["review_stars"], $item);
-                $item = str_replace('%TITLE%', $row->title, $item);
-                $item = str_replace('%PERMALINK%', $row->permalink, $item);
-                $item = str_replace('%ID%', $row->post_id, $item);
-                $item = str_replace('%COUNT%', $row->counter, $item);
-                $item = str_replace('%WORD_VOTES%', $row->tense, $item);
-                $item = str_replace('%BAYES_RATING%', $row->bayesian, $item);
-                $item = str_replace('%RATE_TREND%', $row->item_trend_rating, $item);
-                $item = str_replace('%VOTE_TREND%', $row->item_trend_voting, $item);
-                echo $item;
+                echo $this->prepare_row($row, $template);
             }
 
             echo html_entity_decode($widget["tpl_footer"]);

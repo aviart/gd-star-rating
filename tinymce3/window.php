@@ -274,18 +274,6 @@
 <legend><?php _e("Rating Stars", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
-        <td class="gdsrleft"><?php _e("Display as", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright">
-            <label><select id="srRType" name="srRType" style="width: 130px" onchange="gdsrChangeStars(this.options[this.selectedIndex].value, 'rating', 'tinymce')">
-                <option value="number"><?php _e("Number", "gd-star-rating"); ?></option>
-                <option value="stars"><?php _e("Stars", "gd-star-rating"); ?></option>
-            </select></label>
-        </td>
-      </tr>
-    </table>
-<div id="gdsr-stars-rating[tinymce]" style="display: none">
-    <table border="0" cellpadding="2" cellspacing="0" width="100%">
-      <tr>
         <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
             <label><select id="srStarsStyle" name="srStarsStyle">
@@ -305,23 +293,10 @@
         </td>
       </tr>
     </table>
-</div>
 </fieldset>
 
 <fieldset>
 <legend><?php _e("Review Stars", "gd-star-rating"); ?></legend>
-    <table border="0" cellpadding="2" cellspacing="0" width="100%">
-      <tr>
-        <td class="gdsrleft"><?php _e("Display as", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright">
-            <label><select id="srVType" name="srVType" style="width: 130px" onchange="gdsrChangeStars(this.options[this.selectedIndex].value, 'review', 'tinymce')">
-                <option value="number"><?php _e("Number", "gd-star-rating"); ?></option>
-                <option value="stars"><?php _e("Stars", "gd-star-rating"); ?></option>
-            </select></label>
-        </td>
-      </tr>
-    </table>
-<div id="gdsr-stars-review[tinymce]" style="display: none">
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
@@ -343,7 +318,6 @@
         </td>
       </tr>
     </table>
-</div>
 </fieldset>
 
 <fieldset>
