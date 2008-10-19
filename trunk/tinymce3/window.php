@@ -189,8 +189,8 @@
         </select></label></td>
       </tr>
       <tr>
-        <td nowrap="nowrap"><?php _e("Category", "gd-star-rating"); ?>:</td>
-        <td><?php GDSRDatabase::get_combo_categories('', 'srCategory'); ?></td>
+        <td class="gdsrleft"><?php _e("Category", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright"><?php GDSRDatabase::get_combo_categories('', 'srCategory'); ?></td>
       </tr>
     </table>
 </fieldset>
@@ -274,29 +274,29 @@
 
 <div id="styles_panel" class="panel">
 <fieldset>
-<legend><?php _e("Stars", "gd-star-rating"); ?></legend>
+<legend><?php _e("Rating Stars", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
-        <td nowrap="nowrap"><?php _e("Rating as", "gd-star-rating"); ?>:</td>
-        <td>
-            <label><select id="srRType" name="srRType">
+        <td class="gdsrleft"><?php _e("Display as", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <label><select id="srRType" name="srRType" style="width: 130px">
                 <option value="number"><?php _e("Number", "gd-star-rating"); ?></option>
                 <option value="stars"><?php _e("Stars", "gd-star-rating"); ?></option>
             </select></label>
         </td>
       </tr>
       <tr>
-        <td nowrap="nowrap"><?php _e("Rating Stars", "gd-star-rating"); ?>:</td>
-        <td>
+        <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
             <label><select id="srStarsStyle" name="srStarsStyle">
                 <?php GDSRHelper::render_styles_select($gdsr_styles); ?>
             </select></label>
         </td>
       </tr>
       <tr>
-        <td nowrap="nowrap"><?php _e("Rating Size", "gd-star-rating"); ?>:</td>
-        <td>
-            <label><select id="srStarsSize" name="srStarsSize">
+        <td class="gdsrleft"><?php _e("Size", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <label><select id="srStarsSize" name="srStarsSize" style="width: 130px">
                 <option value="12"><?php _e("Mini", "gd-star-rating"); ?></option>
                 <option value="20"><?php _e("Small", "gd-star-rating"); ?></option>
                 <option value="30"><?php _e("Medium", "gd-star-rating"); ?></option>
@@ -304,26 +304,31 @@
             </select></label>
         </td>
       </tr>
+    </table>
+</fieldset>
+<fieldset>
+<legend><?php _e("Review Stars", "gd-star-rating"); ?></legend>
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
-        <td nowrap="nowrap"><?php _e("Review as", "gd-star-rating"); ?>:</td>
-        <td>
-            <label><select id="srVType" name="srVType">
+        <td class="gdsrleft"><?php _e("Display as", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <label><select id="srVType" name="srVType" style="width: 130px">
                 <option value="number"><?php _e("Number", "gd-star-rating"); ?></option>
                 <option value="stars"><?php _e("Stars", "gd-star-rating"); ?></option>
             </select></label>
         </td>
       </tr>
       <tr>
-        <td nowrap="nowrap"><?php _e("Review Stars", "gd-star-rating"); ?>:</td>
-        <td>
+        <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
             <label><select id="srReviewStarsStyle" name="srReviewStarsStyle">
                 <?php GDSRHelper::render_styles_select($gdsr_styles); ?>
             </select></label>
         </td>
       </tr>
       <tr>
-        <td nowrap="nowrap"><?php _e("Review Size", "gd-star-rating"); ?>:</td>
-        <td>
+        <td class="gdsrleft"><?php _e("Size", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
             <label><select id="srReviewStarsSize" name="srReviewStarsSize">
                 <option value="12"><?php _e("Mini", "gd-star-rating"); ?></option>
                 <option value="20"><?php _e("Small", "gd-star-rating"); ?></option>
@@ -335,30 +340,32 @@
     </table>
 </fieldset>
 
-
+<fieldset>
+<legend><?php _e("Additional Style", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="4" cellspacing="0" width="100%">
       <tr>
-        <td nowrap="nowrap"><?php _e("Style Class", "gd-star-rating"); ?>:</td>
-        <td>
-            <label><select id="srSType" name="srSType">
+        <td class="gdsrleft"><?php _e("Style Class", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <label><select id="srSType" name="srSType" style="width: 130px">
                 <option value="built"><?php _e("Built In", "gd-star-rating"); ?></option>
                 <option value="external"><?php _e("External", "gd-star-rating"); ?></option>
             </select></label>
         </td>
       </tr>
       <tr>
-        <td nowrap="nowrap"><?php _e("Built In Class", "gd-star-rating"); ?>:</td>
-        <td>
-            <label><select id="srClassBuild" name="srClassBuild">
+        <td class="gdsrleft"><?php _e("Built In Class", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <label><select id="srClassBuild" name="srClassBuild" style="width: 130px">
                 <?php GDSRHelper::render_class_select($gdsr_classes); ?>
             </select></label>
         </td>
       </tr>
       <tr>
-        <td nowrap="nowrap"><?php _e("External Class", "gd-star-rating"); ?>:</td>
-        <td><input type="text" size="15" id="srClass" name="srClass" value="starrating" /></td>
+        <td class="gdsrleft"><?php _e("External Class", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright"><input type="text" style="width: 130px" size="15" id="srClass" name="srClass" value="starrating" /></td>
       </tr>
     </table>
+</fieldset>
 </div>
 
 </div>
