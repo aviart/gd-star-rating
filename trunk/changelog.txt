@@ -2,7 +2,7 @@
 
 == Change Log ==
 
-=== Version: 0.9.9 DEV / october 21 2008 ===
+=== Version: 0.9.9 RC / october 21 2008 ===
   * new: blog total top rating widget
   * new: redesigned starrating shortcode
   * new: open flash chart 2 charting control
@@ -16,6 +16,8 @@
   * new: import checks for available plugins
   * new: additional location for stars and trends graphics sets
   * new: expanded articles table for new expiry voting restrictions
+  * new: more template elements
+  * edit: merged widget and starrater rendering code
   * edit: few more wordpress 2.7 improvements
   * edit: more widget improvements
   * edit: updated translations

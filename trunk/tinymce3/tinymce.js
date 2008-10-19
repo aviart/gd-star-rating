@@ -80,23 +80,21 @@ function insertStarRatingCode() {
         }
         
         if (document.getElementById('srSType').value == 'built') {
-            tagtext = tagtext + " class='" + document.getElementById('srClassBuild').value + "'";
+            tagtext = tagtext + " div_class='" + document.getElementById('srClassBuild').value + "'";
         }
         else if (document.getElementById('srSType').value == 'external') {
-            tagtext = tagtext + " class='" + document.getElementById('srClass').value + "'";
+            tagtext = tagtext + " div_class='" + document.getElementById('srClass').value + "'";
         }
 
-        if (document.getElementById('srRType').value != 'number') {
-            tagtext = tagtext + " rating_style='" + document.getElementById('srRType').value + "'";
+        if (document.getElementById('srStarsStyle').value != 'oxygen')
             tagtext = tagtext + " rating_stars='" + document.getElementById('srStarsStyle').value + "'";
+        if (document.getElementById('srStarsSize').value != '20')
             tagtext = tagtext + " rating_size='" + document.getElementById('srStarsSize').value + "'";
-        }
         
-        if (document.getElementById('srVType').value != 'number') {
-            tagtext = tagtext + " review_style='" + document.getElementById('srVType').value + "'";
+        if (document.getElementById('srReviewStarsStyle').value != 'oxygen')
             tagtext = tagtext + " review_stars='" + document.getElementById('srReviewStarsStyle').value + "'";
+        if (document.getElementById('srReviewStarsSize').value != '20')
             tagtext = tagtext + " review_size='" + document.getElementById('srReviewStarsSize').value + "'";
-        }
 
         tagtext = tagtext + "]";
 	}

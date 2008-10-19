@@ -5,6 +5,8 @@
         $gdsr_options["cmm_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_cmm_ratingtext'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["word_votes_singular"] = stripslashes(htmlentities($_POST['gdsr_word_votessingular'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["word_votes_plural"] = stripslashes(htmlentities($_POST['gdsr_word_votesplural'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["table_row_even"] = stripslashes(htmlentities($_POST['gdsr_tablerow_even'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["table_row_odd"] = stripslashes(htmlentities($_POST['gdsr_tablerow_odd'], ENT_QUOTES, 'UTF-8'));
 
         $gdsr_options["shortcode_starrating_header"] = stripslashes(htmlentities($_POST['gdsr_tpl_srheader'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["shortcode_starrating_item"] = stripslashes(htmlentities($_POST['gdsr_tpl_sritem'], ENT_QUOTES, 'UTF-8'));
