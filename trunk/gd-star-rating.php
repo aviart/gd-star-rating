@@ -194,7 +194,7 @@ if (!class_exists('GDStarRating')) {
             "trends_rating_rise" => '+',
             "trends_rating_same" => '=',
             "trends_rating_fall" => '-',
-            "trends_rating_set" => 0,
+            "trends_rating_set" => 'famfamfam',
             "trends_voting" => 'txt',
             "trends_voting_rise" => '+',
             "trends_voting_same" => '=',
@@ -203,7 +203,7 @@ if (!class_exists('GDStarRating')) {
             "bayesian_calculation" => '0'
         );
         
-        var $default_shortcode_new = array(
+        var $default_shortcode_starrating = array(
             'rows' => 10, 
             'select' => 'postpage', 
             'links' => 0, 
@@ -220,34 +220,22 @@ if (!class_exists('GDStarRating')) {
             'publish_range_to' => 'YYYYMMDD',
             "grouping" => 'post',
             "bayesian_calculation" => '0',
+            "trends_rating" => 'txt',
+            "trends_rating_rise" => '+',
+            "trends_rating_same" => '=',
+            "trends_rating_fall" => '-',
+            "trends_rating_set" => 'famfamfam',
+            "trends_voting" => 'txt',
+            "trends_voting_rise" => '+',
+            "trends_voting_same" => '=',
+            "trends_voting_fall" => '-',
+            "trends_voting_set" => 'famfamfam',
             'rating_style' => 'stars',
             'rating_stars' => 0,
             'rating_size' => 20,
             'review_style' => 'stars',
             'review_stars' => 0,
             'review_size' => 20
-        );
-        
-        var $default_shortcode = array(
-            'rows' => 10, 
-            'select' => 'postpage', 
-            'header' => 1, 
-            'links' => 0, 
-            'votes' => 1, 
-            'review' => 1, 
-            'rating' => 1, 
-            'sort' => 'rating', 
-            'order' => 'desc', 
-            'show' => 'total',
-            'hide_empty' => 1,
-            'class' => 'starrating',
-            'rating_style' => 'stars',
-            'rating_stars' => 0,
-            'rating_size' => 20,
-            'review_style' => 'stars',
-            'review_stars' => 0,
-            'review_size' => 20,
-            'category' => 0
         );
         
         function GDStarRating() {
@@ -1620,6 +1608,13 @@ if (!class_exists('GDStarRating')) {
             
             return GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"]);
         }
+        
+        function render_rating_text_article($post, $user) {
+        }
+
+        function render_rating_text_comment($post, $comment, $user) {
+        }
+        // render
     }
 
     $gdsr = new GDStarRating();
@@ -1636,10 +1631,12 @@ if (!class_exists('GDStarRating')) {
     
     function wp_gdsr_rating_text_article() {
         global $post, $userdata, $gdsr;
+        echo $gdsr->render_rating_text_article($post, $userdata);
     }
 
     function wp_gdsr_rating_text_comment() {
         global $comment, $userdata, $gdsr, $post;
+        echo $gdsr->render_rating_text_comment($post, $comment, $userdata);
     }
 
     function wp_gdsr_render_comment() {

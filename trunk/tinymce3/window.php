@@ -230,7 +230,7 @@
       <tr>
         <td class="gdsrleft"><?php _e("Publish Date", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <select name="publishDate" style="width: 130px" id="class="gdsrleft"" onchange="gdsrChangeDate(this.options[this.selectedIndex].value, 'tinymce')">
+            <select name="publishDate" style="width: 130px" id="publishDate" class="gdsrleft" onchange="gdsrChangeDate(this.options[this.selectedIndex].value, 'tinymce')">
                 <option value="lastd"><?php _e("Last # days", "gd-star-rating"); ?></option>
                 <option value="month"><?php _e("Exact month", "gd-star-rating"); ?></option>
                 <option value="range"><?php _e("Date range", "gd-star-rating"); ?></option>
@@ -262,9 +262,9 @@
     <table border="0" cellpadding="2" cellspacing="0" width="100%"> 
       <tr>
         <td class="gdsrleft"><?php _e("Range", "gd-star-rating"); ?>:</td>
-        <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="publishRangeFrom" id="publishRangeFrom" value="YYYY-MM-DD" /></td>
+        <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="publishRangeFrom" id="publishRangeFrom" value="YYYYMMDD" /></td>
         <td align="center" width="10">-</td>
-        <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="publishRangeTo" id="publishRangeTo" value="YYYY-MM-DD" /></td>
+        <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="publishRangeTo" id="publishRangeTo" value="YYYYMMDD" /></td>
       </tr>
     </table>
 </div>
@@ -279,12 +279,15 @@
       <tr>
         <td class="gdsrleft"><?php _e("Display as", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <label><select id="srRType" name="srRType" style="width: 130px">
+            <label><select id="srRType" name="srRType" style="width: 130px" onchange="gdsrChangeStars(this.options[this.selectedIndex].value, 'rating', 'tinymce')">
                 <option value="number"><?php _e("Number", "gd-star-rating"); ?></option>
                 <option value="stars"><?php _e("Stars", "gd-star-rating"); ?></option>
             </select></label>
         </td>
       </tr>
+    </table>
+<div id="gdsr-stars-rating[tinymce]" style="display: none">
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
@@ -305,6 +308,7 @@
         </td>
       </tr>
     </table>
+</div>
 </fieldset>
 <fieldset>
 <legend><?php _e("Review Stars", "gd-star-rating"); ?></legend>
@@ -312,12 +316,15 @@
       <tr>
         <td class="gdsrleft"><?php _e("Display as", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <label><select id="srVType" name="srVType" style="width: 130px">
+            <label><select id="srVType" name="srVType" style="width: 130px" onchange="gdsrChangeStars(this.options[this.selectedIndex].value, 'review', 'tinymce')">
                 <option value="number"><?php _e("Number", "gd-star-rating"); ?></option>
                 <option value="stars"><?php _e("Stars", "gd-star-rating"); ?></option>
             </select></label>
         </td>
       </tr>
+    </table>
+<div id="gdsr-stars-review[tinymce]" style="display: none">
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
@@ -329,7 +336,7 @@
       <tr>
         <td class="gdsrleft"><?php _e("Size", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <label><select id="srReviewStarsSize" name="srReviewStarsSize">
+            <label><select id="srReviewStarsSize" name="srReviewStarsSize" style="width: 130px">
                 <option value="12"><?php _e("Mini", "gd-star-rating"); ?></option>
                 <option value="20"><?php _e("Small", "gd-star-rating"); ?></option>
                 <option value="30"><?php _e("Medium", "gd-star-rating"); ?></option>
@@ -338,20 +345,24 @@
         </td>
       </tr>
     </table>
+</div>
 </fieldset>
 
 <fieldset>
 <legend><?php _e("Additional Style", "gd-star-rating"); ?></legend>
-    <table border="0" cellpadding="4" cellspacing="0" width="100%">
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrleft"><?php _e("Style Class", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <label><select id="srSType" name="srSType" style="width: 130px">
+            <label><select id="srSType" name="srSType" style="width: 130px" onchange="gdsrChangeStyles(this.options[this.selectedIndex].value, 'tinymce')">
                 <option value="built"><?php _e("Built In", "gd-star-rating"); ?></option>
                 <option value="external"><?php _e("External", "gd-star-rating"); ?></option>
             </select></label>
         </td>
       </tr>
+    </table>
+<div id="gdsr-styles-built[tinymce]" style="display: block">
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrleft"><?php _e("Built In Class", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
@@ -360,11 +371,16 @@
             </select></label>
         </td>
       </tr>
+    </table>
+</div>
+<div id="gdsr-styles-external[tinymce]" style="display: none">
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrleft"><?php _e("External Class", "gd-star-rating"); ?>:</td>
         <td class="gdsrright"><input type="text" style="width: 130px" size="15" id="srClass" name="srClass" value="starrating" /></td>
       </tr>
     </table>
+</div>
 </fieldset>
 </div>
 
