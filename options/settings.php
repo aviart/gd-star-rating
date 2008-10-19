@@ -13,6 +13,7 @@
         $gdsr_options["display_home"] = isset($_POST['gdsr_home']) ? 1 : 0;
         $gdsr_options["display_comment"] = isset($_POST['gdsr_dispcomment']) ? 1 : 0;
         $gdsr_options["moderation_active"] = isset($_POST['gdsr_modactive']) ? 1 : 0;
+        $gdsr_options["timer_active"] = isset($_POST['gdsr_timer']) ? 1 : 0;
         $gdsr_options["ie_png_fix"] = isset($_POST['gdsr_iepngfix']) ? 1 : 0;
         
         $gdsr_options["preview_active"] = $_POST['gdsr_preview_stars'];

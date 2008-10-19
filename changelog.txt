@@ -2,17 +2,21 @@
 
 == Change Log ==
 
-=== Version: 0.9.9 DEV / october 20 2008 ===
+=== Version: 0.9.9 DEV / october 21 2008 ===
   * new: blog total top rating widget
   * new: redesigned starrating shortcode
+  * new: open flash chart 2 charting control
   * new: bayesian mean estimate rating calculation
   * new: all icons sets with description files
   * new: trends and stars sets classes and import
   * new: darkness style stars
   * new: export user voting data
   * new: export data panel
+  * new: additional functions to use in themes
   * new: import checks for available plugins
   * new: additional location for stars and trends graphics sets
+  * new: expanded articles table for new expiry voting restrictions
+  * edit: few more wordpress 2.7 improvements
   * edit: more widget improvements
   * edit: updated translations
   * edit: code updated to work with new graphics description format

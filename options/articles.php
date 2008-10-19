@@ -132,6 +132,9 @@ function checkAll(form) {
             <?php if ($options["moderation_active"] == 1) { ?>
                 <th scope="col"><?php _e("Moderation", "gd-star-rating"); ?></th>
             <?php } ?>
+            <?php if ($options["timer_active"] == 1) { ?>
+                <th scope="col"><?php _e("Time Restrictions", "gd-star-rating"); ?></th>
+            <?php } ?>
             <th scope="col"><?php _e("Vote Rules", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Categories", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Votes", "gd-star-rating"); ?></th>
@@ -177,6 +180,8 @@ function checkAll(form) {
         echo '<td class="num"><div class="post-com-count-wrapper">'.$comment_count.'</div></td>';
         if ($options["moderation_active"] == 1) 
             echo '<td>'.$moderate_articles.$row->moderate_articles.'<br />'.$moderate_comments.$row->moderate_comments.'</td>';
+        if ($options["timer_active"] == 1) 
+            echo '<td></td>';
         echo '<td>'.$row->rules_articles.'<br />'.$row->rules_comments.'</td>';
         echo '<td>'.GDSRDatabase::get_categories($row->pid).'</td>';
         echo '<td>'.$row->votes.'</td>';
