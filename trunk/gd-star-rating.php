@@ -67,6 +67,11 @@ if (!class_exists('GDStarRating')) {
         var $i;
         var $g;
 
+        var $shortcode_builtin_classes = array(
+            array("name" => "Standard", "class" => "starrating"),
+            array("name" => "Simple", "class" => "starsimple")
+        );
+
         var $shortcodes = array(
             "starrating",
 			"starreview",
