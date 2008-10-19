@@ -26,6 +26,8 @@ function insertStarRatingCode() {
             tagtext = tagtext + " category=" + document.getElementById('srCategory').value;
         if (document.getElementById('srGrouping').value != 'post')
             tagtext = tagtext + " grouping='" + document.getElementById('srGrouping').value + "'";
+        if (document.getElementById('srShow').value != 'total')
+            tagtext = tagtext + " show='" + document.getElementById('srShow').value + "'";
         
         if (document.getElementById('trendRating').value != 'txt') {
             tagtext = tagtext + " trends_rating='" + document.getElementById('trendRating').value + "'";
@@ -55,28 +57,47 @@ function insertStarRatingCode() {
                 tagtext = tagtext + " trends_voting_fall='" + document.getElementById('trendVotingFall').value + "'";
         }
         
-        var hidempty = document.getElementById('srHidempty').value == "on" ? 1 : 0;
+        if (!document.getElementById('srHidempty').checked)
+           tagtext = tagtext + " hide_empty=0";
+        if (document.getElementById('srHidemptyReview').checked)
+           tagtext = tagtext + " hide_noreview=1";
+        if (document.getElementById('srHidemptyBayes').checked)
+           tagtext = tagtext + " bayesian_calculation=1";
 
-        var clss = document.getElementById('srSType').value;
-        if (clss == 'built') clss = document.getElementById('srClassBuild').value
-        else clss = document.getElementById('srClass').value;
+        if (document.getElementById('publishDate').value == 'lastd') {
+            if (document.getElementById('publishDays').value > 0) {
+                tagtext = tagtext + " publish_days=" + document.getElementById('publishDays').value;
+            }
+        }
+        else if (document.getElementById('publishDate').value == 'month') {
+            tagtext = tagtext + " publish_date='month'";
+            tagtext = tagtext + " publish_month='" + document.getElementById('publishMonth').value + "'";
+        }
+        else {
+            tagtext = tagtext + " publish_date='range'";
+            tagtext = tagtext + " publish_range_from='" + document.getElementById('publishRangeFrom').value + "'";
+            tagtext = tagtext + " publish_range_to='" + document.getElementById('publishRangeTo').value + "'";
+        }
         
-        var style = document.getElementById('srRType').value;
-        var reviewStyle = document.getElementById('srVType').value;
-        var show = document.getElementById('srShow').value;
+        if (document.getElementById('srSType').value == 'built') {
+            tagtext = tagtext + " class='" + document.getElementById('srClassBuild').value + "'";
+        }
+        else if (document.getElementById('srSType').value == 'external') {
+            tagtext = tagtext + " class='" + document.getElementById('srClass').value + "'";
+        }
 
-	    tagtext = tagtext + " class='" + clss + "'";
-        tagtext = tagtext + " hidempty=" + hidempty + " rating_style='" + style + "' show='" + show + "'";
-        if (style == 'stars') {
-            stars = document.getElementById('srStarsStyle').value;
-            ssize = document.getElementById('srStarsSize').value;
-            tagtext = tagtext + " rating_stars='" + stars + "' rating_size=" + ssize;
+        if (document.getElementById('srRType').value != 'number') {
+            tagtext = tagtext + " rating_style='" + document.getElementById('srRType').value + "'";
+            tagtext = tagtext + " rating_stars='" + document.getElementById('srStarsStyle').value + "'";
+            tagtext = tagtext + " rating_size='" + document.getElementById('srStarsSize').value + "'";
         }
-        if (reviewStyle == 'stars') {
-            stars = document.getElementById('srReviewStarsStyle').value;
-            ssize = document.getElementById('srReviewStarsSize').value;
-            tagtext = tagtext + " review_stars='" + stars + "' review_size=" + ssize;
+        
+        if (document.getElementById('srVType').value != 'number') {
+            tagtext = tagtext + " review_style='" + document.getElementById('srVType').value + "'";
+            tagtext = tagtext + " review_stars='" + document.getElementById('srReviewStarsStyle').value + "'";
+            tagtext = tagtext + " review_size='" + document.getElementById('srReviewStarsSize').value + "'";
         }
+
         tagtext = tagtext + "]";
 	}
     
