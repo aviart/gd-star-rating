@@ -24,6 +24,7 @@
   * edit: changes to internal path and url variables
   * edit: partialy removed uneeded code
   * edit: improved translation and added new strings
+  * edit: improved tinymce3 plugin javascript code
   * fix: tinymce plugin not working on some servers
   * fix: rare widget rendering problems
   * fix: minor widget calculation bug
