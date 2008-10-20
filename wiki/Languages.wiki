@@ -2,19 +2,19 @@
 #labels Featured
 
 === English ===
-  * version: 0.9.9 DEV
+  * version: 0.9.9 RC
   * author: Milan Petrovic
   * email: milan@gdragon.info
   * web: http://www.gdragon.info/
 
 === Serbian ===
-  * version: 0.9.9 DEV
+  * version: 0.9.9 RC
   * author: Milan Petrovic
   * email: milan@gdragon.info
   * web: http://www.gdragon.info/
 
 === Spanish ===
-  * version: 0.9.8
+  * version: 0.9.9 RC
   * author: Ángel Guzmán Maeso
   * email: shakaran at gmail dot com
 
