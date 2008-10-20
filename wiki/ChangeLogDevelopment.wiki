@@ -7,6 +7,41 @@ This is the list of changes for each release of the plugin.
 
 == Change log ==
 
+=== Version: 0.9.9 RC / october 21 2008 ===
+  * new: redesigned starrating shortcode
+  * new: bayesian mean estimate rating calculation
+  * new: all icons sets with description files
+  * new: trends and stars sets classes and import
+  * new: darkness style stars
+  * new: export user voting data
+  * new: export data panel
+  * new: additional functions to use in themes
+  * new: import checks for available plugins
+  * new: additional location for stars and trends graphics sets
+  * new: expanded articles table for new expiry voting restrictions
+  * new: more template elements
+  * edit: trend images rendering
+  * edit: merged widget and starrater rendering code
+  * edit: few more wordpress 2.7 improvements
+  * edit: more widget improvements
+  * edit: updated translations
+  * edit: code updated to work with new graphics description format
+  * edit: added some missed strings for translation
+  * edit: changes to internal path and url variables
+  * edit: partialy removed uneeded code
+  * edit: improved translation and added new strings
+  * edit: improved tinymce3 plugin javascript code
+  * fix: tinymce plugin not working on some servers
+  * fix: rare widget rendering problems
+  * fix: minor widget calculation bug
+  * fix: invalid position for StarRater shortcode
+  * fix: xhtml valid problems
+  * fix: removed parts of unused and uneeded code
+  * fix: incorrect init of default templates settings
+  * fix: saving trend settings
+  * fix: invalid global constants
+  * fix: few typos
+
 === Version: 0.9.8 Beta #4 / october 13 2008 ===
   * new: trend icon sets
   * new: import data from 'post star rating' plugin
