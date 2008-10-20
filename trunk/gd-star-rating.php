@@ -143,6 +143,7 @@ if (!class_exists('GDStarRating')) {
             "display_pages" => 1,
             "display_home" => 1,
             "display_archive" => 1,
+            "display_syndicated" => 1,
             "cookies" => 1,
             "cmm_cookies" => 1,
             "admin_width" => 1200,
@@ -817,6 +818,10 @@ if (!class_exists('GDStarRating')) {
                 usort($all_rows, "gd_sort_bayesian_".$widget["order"]);
 
             $tr_class = $this->x["table_row_even"];
+            if ($trends_calculated) {
+                $set_rating = $this->g->find_trend($widget["trends_rating_set"]);
+                $set_voting = $this->g->find_trend($widget["trends_voting_set"]);
+            }
             foreach ($all_rows as $row) {
                 $row->table_row_class = $tr_class;
                 if ($widget["tpl_title_length"] > 0)
@@ -824,8 +829,6 @@ if (!class_exists('GDStarRating')) {
 
                 if ($trends_calculated) {
                     $empty = $this->e;
-                    $set_rating = $this->g->find_trend($widget["trends_rating_set"]);
-                    $set_voting = $this->g->find_trend($widget["trends_voting_set"]);
 
                     switch ($widget["grouping"]) {
                         case "post":
@@ -1555,8 +1558,8 @@ if (!class_exists('GDStarRating')) {
                 $votes = $post_data->user_voters;
                 $score = $post_data->user_votes;
             }
-            
-            return GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"]);
+            $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"]);
+            return $rating_block;
         }
         
         function render_rating_text_article($post, $user) {
