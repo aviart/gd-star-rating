@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 0.9.8
+Version: 0.9.9
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -82,7 +82,7 @@ if (!class_exists('GDStarRating')) {
             "word_votes_singular" => "vote",
             "word_votes_plural" => "votes",
             "table_row_even" => "even",
-            "table_row_od" => "odd",
+            "table_row_odd" => "odd",
             "article_rating_text" => "Rating: %RATING%/&lt;strong&gt;%MAX_RATING%&lt;/strong&gt; (%VOTES% %WORD_VOTES% cast)",
             "cmm_rating_text" => "Rating: %CMM_RATING%/&lt;strong&gt;%MAX_CMM_RATING%&lt;/strong&gt; (%CMM_VOTES% %WORD_VOTES% cast)",
             "shortcode_starrating_header" => "&lt;table&gt;&lt;thead&gt;&lt;td class=&quot;title&quot;&gt;Title&lt;/td&gt;&lt;td class=&quot;votes&quot;&gt;Votes&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;Rating&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;Review&lt;/td&gt;&lt;/thead&gt;&lt;tbody&gt;",
@@ -92,8 +92,8 @@ if (!class_exists('GDStarRating')) {
         
         var $default_options = array(
             "version" => "0.9.9",
-            "date" => "2008.10.13.",
-            "status" => "Beta",
+            "date" => "2008.10.20.",
+            "status" => "RC",
             "ie_png_fix" => 1,
             "ajax" => 1,
             "widget_articles" => 1,
@@ -224,7 +224,7 @@ if (!class_exists('GDStarRating')) {
             'hide_noreview' => 0,
             'bayesian_calculation' => '0',
             'publish_date' => 'lastd',
-            'publish_days' => 30,
+            'publish_days' => 0,
             'publish_month' => '200808',
             'publish_range_from' => 'YYYYMMDD',
             'publish_range_to' => 'YYYYMMDD',
@@ -277,7 +277,7 @@ if (!class_exists('GDStarRating')) {
             add_shortcode($sc_name, array(&$this, $sc_method));
         }
         
-		function shortcode_starrater($atts) {
+		function shortcode_starrater($atts = array()) {
             global $post, $userdata;
             return $this->render_article($post, $userdata);
 		}
@@ -318,7 +318,6 @@ if (!class_exists('GDStarRating')) {
 		
         function shortcode_starrating($atts) {
             $sett = shortcode_atts($this->default_shortcode_starrating, $atts);
-            $rating = "";
             if ($sett["div_class"] != "") $rating.= '<div class="'.$sett["div_class"].'">';
             else $rating.= "<div>";
             $rating.= html_entity_decode($this->x["shortcode_starrating_header"]);
@@ -825,8 +824,8 @@ if (!class_exists('GDStarRating')) {
 
                 if ($trends_calculated) {
                     $empty = $this->e;
-                    $set_rating = $this->trends[$widget["trends_rating_set"]];
-                    $set_voting = $this->trends[$widget["trends_voting_set"]];
+                    $set_rating = $this->g->find_trend($widget["trends_rating_set"]);
+                    $set_voting = $this->g->find_trend($widget["trends_voting_set"]);
 
                     switch ($widget["grouping"]) {
                         case "post":
@@ -842,7 +841,7 @@ if (!class_exists('GDStarRating')) {
                     $t = $trends[$id];
                     switch ($widget["trends_rating"]) {
                         case "img":
-                            $rate_url = $this->plugin_url.sprintf("trends/%s/trend.%s", $set_rating["folder"], $set_rating["type"]);
+                            $rate_url = $set_rating->get_url();
                             switch ($t->trend_rating) {
                                 case -1:
                                     $image_loc = "bottom";
@@ -854,8 +853,8 @@ if (!class_exists('GDStarRating')) {
                                     $image_loc = "top";
                                     break;
                             }
-                            $image_bg = sprintf('background: url(%s) %s no-repeat; height: %spx; width: %spx;', $rate_url, $image_loc, $set_rating["size"], $set_rating["size"]);
-                            $row->item_trend_rating = sprintf('<img src="%s" style="%s" width="%s" height="%s"></img>', $this->e, $image_bg, $set_rating["size"], $set_rating["size"]);
+                            $image_bg = sprintf('background: url(%s) %s no-repeat; height: %spx; width: %spx;', $rate_url, $image_loc, $set_rating->size, $set_rating->size);
+                            $row->item_trend_rating = sprintf('<img class="trend" src="%s" style="%s" width="%s" height="%s"></img>', $this->e, $image_bg, $set_rating->size, $set_rating->size);
                             break;
                         case "txt":
                             switch ($t->trend_rating) {
@@ -873,7 +872,7 @@ if (!class_exists('GDStarRating')) {
                     }
                     switch ($widget["trends_voting"]) {
                         case "img":
-                            $vote_url = $this->plugin_url.sprintf("trends/%s/trend.%s", $set_voting["folder"], $set_voting["type"]);
+                            $vote_url = $set_voting->get_url();
                             switch ($t->trend_voting) {
                                 case -1:
                                     $image_loc = "bottom";
@@ -885,8 +884,8 @@ if (!class_exists('GDStarRating')) {
                                     $image_loc = "top";
                                     break;
                             }
-                            $image_bg = sprintf('background: url(%s) %s no-repeat; height: %spx; width: %spx;', $vote_url, $image_loc, $set_voting["size"], $set_voting["size"]);
-                            $row->item_trend_voting = sprintf('<img src="%s" style="%s" width="%s" height="%s"></img>', $this->e, $image_bg, $set_voting["size"], $set_voting["size"]);
+                            $image_bg = sprintf('background: url(%s) %s no-repeat; height: %spx; width: %spx;', $vote_url, $image_loc, $set_voting->size, $set_voting->size);
+                            $row->item_trend_voting = sprintf('<img class="trend" src="%s" style="%s" width="%s" height="%s"></img>', $this->e, $image_bg, $set_voting->size, $set_voting->size);
                             break;
                         case "txt":
                             switch ($t->trend_voting) {
@@ -956,6 +955,9 @@ if (!class_exists('GDStarRating')) {
             $template = str_replace('%COUNT%', $row->counter, $template);
             $template = str_replace('%WORD_VOTES%', $row->tense, $template);
             $template = str_replace('%BAYES_RATING%', $row->bayesian, $template);
+            $template = str_replace('%BAYES_STARS%', $row->bayesian_stars, $template);
+            $template = str_replace('%STARS%', $row->rating_stars, $template);
+            $template = str_replace('%REVIEW_STARS%', $row->review_stars, $template);
             $template = str_replace('%RATE_TREND%', $row->item_trend_rating, $template);
             $template = str_replace('%VOTE_TREND%', $row->item_trend_voting, $template);
             $template = str_replace('%TABLE_ROW_CLASS%', $row->table_row_class, $template);

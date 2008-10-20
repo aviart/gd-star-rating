@@ -45,6 +45,13 @@
                 <td width="150"><strong>%REVIEW_STARS%</strong></td>
                 <td width="220"> : <?php _e("article review stars", "gd-star-rating"); ?></td>
                 <td width="10"></td>
+                <td width="150"><strong>%COUNT%</strong></td>
+                <td width="220"> : <?php _e("number of posts/pages", "gd-star-rating"); ?></td>
+            </tr>
+            <tr>
+                <td width="150"><strong>%ID%</strong></td>
+                <td width="220"> : <?php _e("item id", "gd-star-rating"); ?></td>
+                <td width="10"></td>
                 <td width="150"></td>
                 <td width="220"></td>
             </tr>
