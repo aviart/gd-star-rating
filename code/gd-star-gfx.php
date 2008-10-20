@@ -133,7 +133,7 @@ class GDgfxTrend extends GDgfxBase
     }
 
     function get_url() {
-        return $this->gfx_url."trends.".$this->type;
+        return $this->gfx_url."trend.".$this->type;
     }
 }
 

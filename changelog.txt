@@ -17,6 +17,7 @@
   * new: additional location for stars and trends graphics sets
   * new: expanded articles table for new expiry voting restrictions
   * new: more template elements
+  * edit: trend images rendering
   * edit: merged widget and starrater rendering code
   * edit: few more wordpress 2.7 improvements
   * edit: more widget improvements
