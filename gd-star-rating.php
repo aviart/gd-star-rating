@@ -1417,14 +1417,39 @@ if (!class_exists('GDStarRating')) {
                     $content .= $this->render_article($post, $userdata);
                 }
             }
-            else {
-            }
             
             return $content;
         }
 
+        function render_rating_text_article($post) {
+            $rd_post_id = intval($post->ID);
+            $rd_is_page = $post->post_type == "page" ? "1" : "0";
+            $post_data = GDSRDatabase::get_post_data($rd_post_id);
+            if (count($post_data) == 0) {
+                GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
+                $post_data = GDSRDatabase::get_post_data($rd_post_id);
+            }
+
+            $votes = 0;
+            $score = 0;
+            
+            if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
+                $votes = $post_data->user_voters + $post_data->visitor_voters;
+                $score = $post_data->user_votes + $post_data->visitor_votes;
+            }
+            else if ($post_data->rules_articles == "V") {
+                $votes = $post_data->visitor_voters;
+                $score = $post_data->visitor_votes;
+            }
+            else {
+                $votes = $post_data->user_voters;
+                $score = $post_data->user_votes;
+            }
+            
+            echo GDSRRender::rating_text($rd_post_id, "a", $votes, $score, $this->o["stars"], "article", $this->o["class_text"]);
+        }
+        
         function render_comment($post, $comment, $user) {
-            global $wpdb;
             if ($this->o["comments_active"] != 1) 
                 return "";
 
@@ -1558,14 +1583,9 @@ if (!class_exists('GDStarRating')) {
                 $votes = $post_data->user_voters;
                 $score = $post_data->user_votes;
             }
+            
             $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"]);
             return $rating_block;
-        }
-        
-        function render_rating_text_article($post, $user) {
-        }
-
-        function render_rating_text_comment($post, $comment, $user) {
         }
         // render
     }
@@ -1583,13 +1603,8 @@ if (!class_exists('GDStarRating')) {
     }
     
     function wp_gdsr_rating_text_article() {
-        global $post, $userdata, $gdsr;
-        echo $gdsr->render_rating_text_article($post, $userdata);
-    }
-
-    function wp_gdsr_rating_text_comment() {
-        global $comment, $userdata, $gdsr, $post;
-        echo $gdsr->render_rating_text_comment($post, $comment, $userdata);
+        global $post, $gdsr;
+        echo $gdsr->render_rating_text_article($post);
     }
 
     function wp_gdsr_render_comment() {

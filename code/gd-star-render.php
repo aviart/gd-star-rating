@@ -95,7 +95,7 @@ class GDSRRender
         $rating1 = @number_format($rating2, 1);
         if ($custom_css_text != "") $custom_css_text = $custom_css_text.' ';
 
-        $rater_text = '<div id="gdr_text_'.$id.'" class="'.$custom_css_text.$typecls.'>';
+        $rater_text = '<div id="gdr_text_'.$id.'" class="'.$custom_css_text.$typecls.'">';
         switch ($type)
         {
             case 'a':
