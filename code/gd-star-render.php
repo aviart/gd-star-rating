@@ -85,6 +85,42 @@ class GDSRRender
             return '';
     }
     
+    function rating_text($id, $type, $votes, $score, $unit_count, $typecls, $custom_css_text = "") {
+        $template = get_option('gd-star-rating-templates');
+        if ($votes == 1) $tense = $template["word_votes_singular"];
+        else $tense = $template["word_votes_plural"];
+        
+        if ($votes > 0) $rating2 = $score / $votes;
+        else $rating2 = 0;
+        $rating1 = @number_format($rating2, 1);
+        if ($custom_css_text != "") $custom_css_text = $custom_css_text.' ';
+
+        $rater_text = '<div id="gdr_text_'.$id.'" class="'.$custom_css_text.$typecls.'>';
+        switch ($type)
+        {
+            case 'a':
+                $tpl = $template["article_rating_text"];
+                $rt = html_entity_decode($tpl);
+                $rt = str_replace('%RATING%', $rating1, $rt);
+                $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
+                $rt = str_replace('%VOTES%', $votes, $rt);
+                $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                $rater_text.= $rt;
+                break;
+            case 'c':
+                $tpl = $template["cmm_rating_text"];
+                $rt = html_entity_decode($tpl);
+                $rt = str_replace('%CMM_RATING%', $rating1, $rt);
+                $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
+                $rt = str_replace('%CMM_VOTES%', $votes, $rt);
+                $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                $rater_text.= $rt;
+                break;
+        }
+        $rater_text.= '</div>';
+        return $rater_text;
+    }
+    
     function rating_block($id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $align, $text, $header, $header_text, $custom_css_block = "", $custom_css_text = "", $ajax = false) {
         $template = get_option('gd-star-rating-templates');
         if ($votes == 1) $tense = $template["word_votes_singular"];

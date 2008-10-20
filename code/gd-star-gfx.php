@@ -127,7 +127,7 @@ class GDgfxTrend extends GDgfxBase
     
     function import() {
         $data = parent::import();
-        if ($date != null) {
+        if ($data != null) {
             if (isset($data["size"])) $this->size = $data["size"];
         }
     }
