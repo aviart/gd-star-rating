@@ -250,7 +250,7 @@ function gd_sort_bayesian_desc($a, $b) {
 }
 
 function gd_scandir($path) {
-	if (function_exists(scandir) {
+	if (function_exists(scandir)) {
 		return scandir($path);
 	}
 	else {
