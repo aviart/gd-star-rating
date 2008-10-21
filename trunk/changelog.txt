@@ -4,6 +4,9 @@
 
 === Version: 0.9.9.2 RC2 / october 21 2008 ===
   * edit: scandir function replaced with new one that works in php4/php5
+  * edit: removed user guide from the package
+  * edit: updated readme file
+  * fix: limiting the length of post title for widget
 
 === Version: 0.9.9 RC / october 21 2008 ===
   * new: redesigned starrating shortcode

@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 0.9.9
+Version: 0.9.9.2
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -75,7 +75,8 @@ if (!class_exists('GDStarRating')) {
         var $shortcodes = array(
             "starrating",
 			"starreview",
-			"starrater"
+			"starrater",
+            "starratingblock"
         );
         
         var $default_templates = array(
@@ -91,8 +92,8 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "version" => "0.9.9",
-            "date" => "2008.10.20.",
+            "version" => "0.9.9.2",
+            "date" => "2008.10.21.",
             "status" => "RC",
             "ie_png_fix" => 1,
             "ajax" => 1,
@@ -282,6 +283,11 @@ if (!class_exists('GDStarRating')) {
             global $post, $userdata;
             return $this->render_article($post, $userdata);
 		}
+
+        function shortcode_starratingblock($atts = array()) {
+            global $post, $userdata;
+            return $this->render_article($post, $userdata);
+        }
         
 		function shortcode_starreview($atts = array()) {
             global $post;
@@ -824,8 +830,8 @@ if (!class_exists('GDStarRating')) {
             }
             foreach ($all_rows as $row) {
                 $row->table_row_class = $tr_class;
-                if ($widget["tpl_title_length"] > 0)
-                    $row->title = substr($row->title, 0, $widget["tpl_title_length"])." ...";
+                if (strlen($row->title) > $widget["tpl_title_length"] - 3 && $widget["tpl_title_length"] > 0)
+                    $row->title = substr($row->title, 0, $widget["tpl_title_length"] - 3)." ...";
 
                 if ($trends_calculated) {
                     $empty = $this->e;
