@@ -248,3 +248,16 @@ function gd_sort_bayesian_desc($a, $b) {
     if ($a->bayesian == $b->bayesian) return 0;
     return ($a->bayesian > $b->bayesian) ? -1 : 1;
 }
+
+function gd_scandir($path) {
+	if (function_exists(scandir) {
+		return scandir($path);
+	}
+	else {
+		$dh  = opendir($path);
+		while (false !== ($filename = readdir($dh))) {
+			$files[] = $filename;
+		}
+		return $files;
+	}
+}

@@ -496,7 +496,7 @@ if (!class_exists('GDStarRating')) {
         }
         
         function scan_folder($path) {
-            $folders = scandir($path);
+            $folders = gd_scandir($path);
             $import = array();
             foreach ($folders as $folder) {
                 if (substr($folder, 0, 1) != ".") {
