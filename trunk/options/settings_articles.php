@@ -84,7 +84,9 @@
                 <td width="200" align="left">
                 <?php GDSRHelper::render_timer_combo("gdsr_default_timer_type", $gdsr_options["default_timer_type"]); ?>
                 </td>
-                <td width="10"></td>
+                <td width="10">
+                <input type="text" size="10" value="" id="anim"/>
+                </td>
             </tr>
         </table>
         <?php } ?>
