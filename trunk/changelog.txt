@@ -8,6 +8,7 @@
   * edit: removed user guide from the package
   * edit: updated readme file
   * fix: limiting the length of post title for widget
+  * fix: rendering review stars
 
 === Version: 0.9.9 RC / october 21 2008 ===
   * new: redesigned starrating shortcode

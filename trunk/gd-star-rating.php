@@ -312,11 +312,13 @@ if (!class_exists('GDStarRating')) {
                 else
                     $rater_header = '';
                 
-                $star_path = $this->plugin_url."stars/".$this->styles[$this->o['review_style']]['folder']."/stars".$this->o['review_size'].".".$this->styles[$this->o['review_style']]['type'];
+                $gfx = $this->g->find_stars($this->o['review_style']);
+                $star_path = $gfx->get_url($this->o['review_size']);
+
                 $review = sprintf('<div%s%s>%s<div style="%s"><div style="%s"></div></div></div>',
                     $css_class, $rater_align, $rater_header,
-                    sprintf('text-align:left; background: url(%s) left bottom; height: %spx; width: %spx;', $star_path, $this->o['review_size'], $full_width),
-                    sprintf('background: url(%s) left center; height: %spx; width: %spx;', $star_path, $this->o['review_size'], $rate_width)
+                    sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $this->o['review_size'], $full_width),
+                    sprintf('background: url(%s) bottom left; height: %spx; width: %spx;', $star_path, $this->o['review_size'], $rate_width)
                 );
                 return $review;
             }
