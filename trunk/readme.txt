@@ -109,8 +109,8 @@ Check out a read-only working copy anonymously over HTTP:
 
 * Google Code: http://code.google.com/p/gd-star-rating/
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
-* User Guide: http://wp.gdragon.info/plugins/gd-star-rating/userguide/
-* Email: wordpress@gdragon.info
+* PDF User Guide: http://wp.gdragon.info/download/12/
+* Email: starrating@gdragon.info
 
 = WordPress Extend =
 

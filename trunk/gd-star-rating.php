@@ -1478,8 +1478,10 @@ if (!class_exists('GDStarRating')) {
 
             if ($this->p)
                 $post_data = $this->p;
-            else if (is_single())
+            else if (is_single()) {
                 $this->init_post();
+                $post_data = $this->p;
+            }
             else {
                 $post_data = GDSRDatabase::get_post_data($rd_post_id);
                 if (count($post_data) == 0) {
