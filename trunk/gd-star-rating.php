@@ -58,6 +58,7 @@ if (!class_exists('GDStarRating')) {
         var $plugin_chart_url;
         var $plugin_chart_path;
         
+        var $l;
         var $o;
         var $w;
         var $t;
@@ -360,8 +361,14 @@ if (!class_exists('GDStarRating')) {
                 if ($gdsr == "gdsr" || substr($_GET["page"], 0, 7) == "gd-star") {
                     wp_admin_css('css/dashboard');
                     wp_print_scripts('jquery-ui-tabs');
+                    echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>';
+                    if(!empty($this->l)) {
+                        $jsFile = $this->plugin_path.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js';
+                        if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js"></script>';
+                    }
                     echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin.css" type="text/css" media="screen" />');
-                    echo '<script>jQuery(document).ready(function() { jQuery("#gdsr_tabs > ul").tabs(); });</script>';
+                    echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery.css" type="text/css" media="screen" />');
+                    echo '<script type="text/javascript">jQuery(document).ready(function() { jQuery("#gdsr_tabs > ul").tabs(); });</script>';
                 }
                 if ($_GET["page"] == "gdsr-charts" && $this->charting) {
                     echo '<script type="text/javascript" src="'.$this->plugin_url.'ofc2/js/swfobject.js"></script>';
@@ -552,9 +559,9 @@ if (!class_exists('GDStarRating')) {
 
         function init() {
             wp_enqueue_script('jquery');
-            $currentLocale = get_locale();
-            if(!empty($currentLocale)) {
-                $moFile = dirname(__FILE__) . "/languages/gd-star-rating-" . $currentLocale . ".mo";
+            $this->l = get_locale();
+            if(!empty($this->l)) {
+                $moFile = dirname(__FILE__) . "/languages/gd-star-rating-" . $this->l . ".mo";
                 if (@file_exists($moFile) && is_readable($moFile)) load_textdomain('gd-star-rating', $moFile);
             }
             
