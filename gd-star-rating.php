@@ -368,7 +368,9 @@ if (!class_exists('GDStarRating')) {
                     }
                     echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin.css" type="text/css" media="screen" />');
                     echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery.css" type="text/css" media="screen" />');
-                    echo '<script type="text/javascript">jQuery(document).ready(function() { jQuery("#gdsr_tabs > ul").tabs(); });</script>';
+                    echo('<script type="text/javascript">jQuery(document).ready(function() { jQuery("#gdsr_tabs > ul").tabs();');
+                    echo('jQuery("#anim").datepicker({duration: "fast"});');
+                    echo('});</script>');
                 }
                 if ($_GET["page"] == "gdsr-charts" && $this->charting) {
                     echo '<script type="text/javascript" src="'.$this->plugin_url.'ofc2/js/swfobject.js"></script>';
