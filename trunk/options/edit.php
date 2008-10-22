@@ -1,6 +1,6 @@
     <script>
     function gdsrTimerChange() {
-        var timer = jQuery("#gdsr_default_timer_type").val();
+        var timer = jQuery("#gdsr_timer_type").val();
         jQuery("#gdsr_timer_date").css("display", "none");
         jQuery("#gdsr_timer_countdown").css("display", "none");
         if (timer == "D") jQuery("#gdsr_timer_date").css("display", "block");
@@ -24,13 +24,13 @@
     <table width="100%"><tr>
     <td style="height: 25px;"><label style="font-size: 12px;" for="gdsr_review"><?php _e("Vote Rule", "gd-star-rating"); ?>:</label></td>
     <td align="right" style="height: 25px;" valign="baseline">
-    <?php GDSRHelper::render_rules_combo("gdsr_default_vote_articles", $vote_rules, 110); ?>
+    <?php GDSRHelper::render_rules_combo("gdsr_vote_articles", $vote_rules, 110); ?>
     </td>
     <?php if ($gdsr_options["moderation_active"] == 1) { ?>
     </tr><tr>
     <td style="height: 25px;"><label style="font-size: 12px;" for="gdsr_review"><?php _e("Moderate", "gd-star-rating"); ?>:</label></td>
     <td align="right" style="height: 25px;" valign="baseline">
-    <?php GDSRHelper::render_moderation_combo("gdsr_default_mod_articles", $moderation_rules, 110); ?>
+    <?php GDSRHelper::render_moderation_combo("gdsr_mod_articles", $moderation_rules, 110); ?>
     </td>
     <?php } ?>
     </tr></table>
@@ -39,7 +39,7 @@
     <table width="100%"><tr>
     <td style="height: 25px;"><label style="font-size: 12px;" for="gdsr_review"><?php _e("Restriction", "gd-star-rating"); ?>:</label></td>
     <td align="right" style="height: 25px;" valign="baseline">
-    <?php GDSRHelper::render_timer_combo("gdsr_default_timer_type", $timer_restrictions, 110, '', false, 'gdsrTimerChange()'); ?>
+    <?php GDSRHelper::render_timer_combo("gdsr_timer_type", $timer_restrictions, 110, '', false, 'gdsrTimerChange()'); ?>
     </td>
     </tr></table>
     <div id="gdsr_timer_date" style="display: <?php echo $timer_restrictions == "D" ? "block" : "none" ?>">

@@ -195,16 +195,37 @@ class GDSRDatabase
         $comments = $table_prefix.'gdsr_data_comment';
     }
     
-    function save_review($post_id, $rating) {
+    function save_review($post_id, $rating, $old = true) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
-        
-        $sql = "select review from ".$articles." WHERE post_id = ".$post_id;
-        $results = $wpdb->get_row($sql, OBJECT);
-        if (count($results) == 0) 
+        if (!$old) 
             GDSRDatabase::add_default_vote($post_id, '', $rating);
         else 
             $wpdb->query("update ".$articles." set review = ".$rating." where post_id = ".$post_id);
+    }
+    
+    function save_article_rules($post_id, $article_vote, $article_moderation, $old = true) {
+        global $wpdb, $table_prefix;
+        $articles = $table_prefix.'gdsr_data_article';
+        if (!$old) 
+            GDSRDatabase::add_default_vote($post_id);
+        $wpdb->query("update ".$articles." set rules_articles = '".$article_vote."', moderate_articles = '".$article_moderation."' where post_id = ".$post_id);
+    }
+    
+    function save_timer_rules($post_id, $timer_type, $timer_value, $old = true) {
+        global $wpdb, $table_prefix;
+        $articles = $table_prefix.'gdsr_data_article';
+        if (!$old) 
+            GDSRDatabase::add_default_vote($post_id);
+        $wpdb->query("update ".$articles." set expiry_type = '".$timer_type."', expiry_value = '".$timer_value."' where post_id = ".$post_id);
+    }
+    
+    function check_post($post_id) {
+        global $wpdb, $table_prefix;
+        $articles = $table_prefix.'gdsr_data_article';
+        $sql = "select review from ".$articles." WHERE post_id = ".$post_id;
+        $results = $wpdb->get_row($sql, OBJECT);
+        return count($results) > 0;
     }
     
     function add_vote_comment($id, $user, $ip, $ua, $vote) {
