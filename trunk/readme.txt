@@ -89,8 +89,7 @@ My Wordpress blog has this plugin installed, so you can see it in action there.
 2. Post And Pages Voting And Rating statistics
 3. Example rating stars
 4. Post that uses shortcode with rating stars
-5. Addition to sidebar for edit post
-6. TinyMCE3 plugin
+5. TinyMCE3 plugin
 
 == Source SVN ==
 
