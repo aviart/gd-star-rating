@@ -410,11 +410,14 @@ if (!class_exists('GDStarRating')) {
         }
 
         function saveedit_post($post_id) {
-            if ($_POST['gdsr_review'] != "-1") {
-                $review = $_POST['gdsr_review'];
-                if ($_POST['gdsr_review_decimal'] != "-1")
-                    $review.= ".".$_POST['gdsr_review_decimal'];
-                GDSRDatabase::save_review($post_id, $review);
+            if ($_POST['gdsr_post_edit'] == "edit") {
+                if ($_POST['gdsr_review'] != "-1") {
+                    $review = $_POST['gdsr_review'];
+                    if ($_POST['gdsr_review_decimal'] != "-1")
+                        $review.= ".".$_POST['gdsr_review_decimal'];
+                    GDSRDatabase::save_review($post_id, $review);
+                }
+                
             }
         }
 
@@ -1005,6 +1008,8 @@ if (!class_exists('GDStarRating')) {
             $post_id = $post->ID;
             $default = false;
             
+            $countdown_value = $gdsr_options["default_timer_countdown_value"];
+            $countdown_type = $gdsr_options["default_timer_countdown_type"];
             if ($post_id == 0)
                 $default = true;
             else {
@@ -1016,6 +1021,13 @@ if (!class_exists('GDStarRating')) {
                     $vote_rules = $post_data->rules_articles;
                     $moderation_rules = $post_data->moderate_articles;
                     $timer_restrictions = $post_data->expiry_type;
+                    if ($timer_restrictions == "C") {
+                        $countdown_type = substr($post_data->expiry_value, 0, 1);
+                        $countdown_value = substr($post_data->expiry_value, 1);
+                    }
+                    else if ($timer_restrictions == "D") {
+                        $timer_date_value = $post_data->expiry_value;
+                    }
                 }
                 else
                     $default = true;

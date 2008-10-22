@@ -4,6 +4,7 @@
 
 === Version: 0.9.9.3 RC3 / october 25 2008 ===
   * new: expanded editor widget with additional post options
+  * new: default timer restriction options
 
 === Version: 0.9.9.2 RC2 / october 22 2008 ===
   * new: included jquery.ui.datepicker with translations

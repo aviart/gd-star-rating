@@ -80,8 +80,8 @@ Options page for this plugin consist of 5 tabs:
 
 == Frequently Asked Questions ==
 
-= Where can I see an example of the widget? =
-My Wordpress blog has this widget installed, so you can see it in action there.
+= Where can I see an example of the plugin? =
+My Wordpress blog has this plugin installed, so you can see it in action there.
 
 == Screenshots ==
 
@@ -95,24 +95,25 @@ My Wordpress blog has this widget installed, so you can see it in action there.
 == Source SVN ==
 
 Check out a read-only working copy anonymously over HTTP:
-`svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only`
+
+* svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only
 
 == Web ==
 
-= Website =
+== Website ==
 
 * Homepage: http://wp.gdragon.info/
 * Plugin: http://wp.gdragon.info/plugins/gd-star-rating/
 * Changelog: http://wp.gdragon.info/plugins/gd-star-rating/changelog/
 
-= Support =
+== Support ==
 
 * Google Code: http://code.google.com/p/gd-star-rating/
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
 * PDF User Guide: http://wp.gdragon.info/download/12/
 * Email: starrating@gdragon.info
 
-= WordPress Extend =
+== WordPress Extend ==
 
 * Plugin: http://wordpress.org/extend/plugins/gd-star-rating/
 

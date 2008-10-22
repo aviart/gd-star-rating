@@ -7,6 +7,7 @@
         if (timer == "T") jQuery("#gdsr_timer_countdown").css("display", "block");
     }
     </script>
+    <input type="hidden" id="gdsr_post_edit" name="gdsr_post_edit" value="edit" />
     <table width="100%"><tr>
     <td style="height: 25px;"><label style="font-size: 12px;" for="gdsr_review"><?php _e("Review", "gd-star-rating"); ?>:</label></td>
     <td align="right" style="height: 25px;" valign="baseline">
@@ -45,7 +46,7 @@
         <table width="100%"><tr>
         <td style="height: 25px;"><label style="font-size: 12px;" for="gdsr_review"><?php _e("Date", "gd-star-rating"); ?>:</label></td>
         <td align="right" style="height: 25px;" valign="baseline">
-            <input type="text" value="" id="gdsr_timer_date_value" name="gdsr_timer_date_value" style="width: 100px; padding: 2px;" />
+            <input type="text" value="<?php echo $timer_date_value; ?>" id="gdsr_timer_date_value" name="gdsr_timer_date_value" style="width: 100px; padding: 2px;" />
         </td>
         </tr></table>
     </div>
@@ -53,8 +54,8 @@
         <table width="100%"><tr>
         <td style="height: 25px;"><label style="font-size: 12px;" for="gdsr_review"><?php _e("Countdown", "gd-star-rating"); ?>:</label></td>
         <td align="right" style="height: 25px;" valign="baseline">
-            <input type="text" value="" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 35px; text-align: right; padding: 2px;" />
-            <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $gdsr_options["default_timer_countdown_type"], 60); ?>
+            <input type="text" value="<?php echo $countdown_value; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 35px; text-align: right; padding: 2px;" />
+            <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $countdown_type, 60); ?>
         </td>
         </tr></table>
     </div>
