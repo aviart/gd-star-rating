@@ -23,6 +23,10 @@
         $gdsr_options["trend_over"] = $_POST['gdsr_trend_over'];
         $gdsr_options["bayesian_minimal"] = $_POST['gdsr_bayesian_minimal'];
         $gdsr_options["bayesian_mean"] = $_POST['gdsr_bayesian_mean'];
+
+        $gdsr_options["default_timer_type"] = $_POST['gdsr_default_timer_type'];
+        $gdsr_options["default_timer_countdown_value"] = $_POST['default_timer_countdown_value'];
+        $gdsr_options["default_timer_countdown_type"] = $_POST['default_timer_countdown_type'];
         
         $gdsr_options["review_active"] = isset($_POST['gdsr_reviewactive']) ? 1 : 0;
         $gdsr_options["comments_active"] = isset($_POST['gdsr_commentsactive']) ? 1 : 0;

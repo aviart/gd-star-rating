@@ -411,7 +411,7 @@ class GDSRDatabase
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
         
-        $sql = "select review, rules_articles, moderate_articles, expiry_type, rules_comments, moderate_comments from ".$articles." WHERE post_id = ".$post_id;
+        $sql = "select review, rules_articles, moderate_articles, expiry_type, expiry_value, rules_comments, moderate_comments from ".$articles." WHERE post_id = ".$post_id;
         $results = $wpdb->get_row($sql, OBJECT);
         return $results;
     }
