@@ -7,6 +7,15 @@ This is the list of changes for each release of the plugin.
 
 == Change log ==
 
+=== Version: 0.9.9.2 RC2 / october 22 2008 ===
+  * new: included jquery.ui.datepicker with translations
+  * edit: scandir function replaced with new one that works in php4/php5
+  * edit: removed user guide from the package
+  * edit: updated readme file
+  * fix: rating problem with first comment on page
+  * fix: limiting the length of post title for widget
+  * fix: rendering review stars
+
 === Version: 0.9.9 RC / october 21 2008 ===
   * new: redesigned starrating shortcode
   * new: bayesian mean estimate rating calculation
