@@ -158,7 +158,8 @@ if (!class_exists('GDStarRating')) {
             "default_voterules_articles" => 'A',
             "default_voterules_comments" => 'A',
             "default_timer_type" => 'N',
-            "default_timer_value" => '',
+            "default_timer_countdown_value" => 30,
+            "default_timer_countdown_type" => 'D',
             "stats_trend_history" => 30,
             "stats_trend_current" => 3,
             "trend_last" => 1,
@@ -358,21 +359,21 @@ if (!class_exists('GDStarRating')) {
         }                                                                
 
         function admin_head() {
+            echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>';
+            $datepicker_date = date("Y, n, j");
+            if(!empty($this->l)) {
+                $jsFile = $this->plugin_path.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js';
+                if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js"></script>';
+            }
+            echo('<script type="text/javascript">jQuery(document).ready(function() { jQuery("#gdsr_tabs > ul").tabs();');
+            echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
+            echo('});</script>');
             if (isset($_GET["page"])) {
                 $gdsr = substr($_GET["page"], 0, 4);
                 if ($gdsr == "gdsr" || substr($_GET["page"], 0, 7) == "gd-star") {
                     wp_admin_css('css/dashboard');
                     wp_print_scripts('jquery-ui-tabs');
-                    echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>';
-                    if(!empty($this->l)) {
-                        $jsFile = $this->plugin_path.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js';
-                        if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js"></script>';
-                    }
                     echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin.css" type="text/css" media="screen" />');
-                    echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery.css" type="text/css" media="screen" />');
-                    echo('<script type="text/javascript">jQuery(document).ready(function() { jQuery("#gdsr_tabs > ul").tabs();');
-                    echo('jQuery("#anim").datepicker({duration: "fast"});');
-                    echo('});</script>');
                 }
                 if ($_GET["page"] == "gdsr-charts" && $this->charting) {
                     echo '<script type="text/javascript" src="'.$this->plugin_url.'ofc2/js/swfobject.js"></script>';
@@ -380,6 +381,7 @@ if (!class_exists('GDStarRating')) {
                     echo '</script>';
                 }
             }
+            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery.css" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_post.css" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/widgets.css" type="text/css" media="screen" />');
         }
@@ -395,7 +397,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->o["review_active"] == 1) {
                 add_action('submitpost_box', array(&$this, 'editbox_post'));
                 add_action('submitpage_box', array(&$this, 'editbox_post'));
-                add_action('save_post', array(&$this, 'savereview_post'));
+                add_action('save_post', array(&$this, 'saveedit_post'));
             }
             add_filter('comment_text', array(&$this, 'display_comment'));
             add_filter('the_content', array(&$this, 'display_article'));
@@ -407,7 +409,7 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
-        function savereview_post($post_id) {
+        function saveedit_post($post_id) {
             if ($_POST['gdsr_review'] != "-1") {
                 $review = $_POST['gdsr_review'];
                 if ($_POST['gdsr_review_decimal'] != "-1")
@@ -1001,18 +1003,30 @@ if (!class_exists('GDStarRating')) {
             global $post;
             $gdsr_options = $this->o;
             $post_id = $post->ID;
-
-            if ($post_id == 0) {
-                $rating_decimal = -1;
-                $rating = -1;
-            }
+            $default = false;
+            
+            if ($post_id == 0)
+                $default = true;
             else {
-                $rating = GDSRDatabase::get_review($post_id);
-                if ($rating != -1) {
-                    $rating = explode(".", strval($rating));
+                $post_data = GDSRDatabase::get_post_edit($post_id);
+                if (count($post_data) > 0) {
+                    $rating = explode(".", strval($post_data->review));
                     $rating_decimal = intval($rating[1]);
                     $rating = intval($rating[0]);
+                    $vote_rules = $post_data->rules_articles;
+                    $moderation_rules = $post_data->moderate_articles;
+                    $timer_restrictions = $post_data->expiry_type;
                 }
+                else
+                    $default = true;
+            }
+
+            if ($default) {
+                $rating_decimal = -1;
+                $rating = -1;
+                $vote_rules = $gdsr_options["default_voterules_articles"];
+                $moderation_rules = $gdsr_options["default_moderation_articles"];
+                $timer_restrictions = $gdsr_options["default_timer_type"];
             }
             
             if ($this->wp_version < 27)

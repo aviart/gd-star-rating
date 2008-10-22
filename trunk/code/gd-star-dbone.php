@@ -406,6 +406,15 @@ class GDSRDatabase
         if (count($results) == 0) return -1;
         else return $results->review;
     }
+
+    function get_post_edit($post_id) {
+        global $wpdb, $table_prefix;
+        $articles = $table_prefix.'gdsr_data_article';
+        
+        $sql = "select review, rules_articles, moderate_articles, expiry_type, rules_comments, moderate_comments from ".$articles." WHERE post_id = ".$post_id;
+        $results = $wpdb->get_row($sql, OBJECT);
+        return $results;
+    }
     
     function get_moderation_count($id, $vote_type = 'article', $user = 'all') {
         global $wpdb, $table_prefix;

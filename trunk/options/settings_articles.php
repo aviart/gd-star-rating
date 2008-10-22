@@ -84,8 +84,11 @@
                 <td width="200" align="left">
                 <?php GDSRHelper::render_timer_combo("gdsr_default_timer_type", $gdsr_options["default_timer_type"]); ?>
                 </td>
-                <td width="10">
-                <input type="text" size="10" value="" id="anim"/>
+                <td width="10"></td>
+                <td width="150"><?php _e("Default countdown value", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <input type="text" value="<?php echo $gdsr_options["default_timer_countdown_value"]; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 80px; text-align: right;" />
+                <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $gdsr_options["default_timer_countdown_type"], 85); ?>
                 </td>
             </tr>
         </table>
