@@ -248,8 +248,8 @@ class TrendValue
         if ($this->voters_last > 0) $this->rating_last = @number_format($this->votes_last / $this->voters_last, 1);
         if ($this->voters_over > 0) $this->rating_over = @number_format($this->votes_over / $this->voters_over, 1);
         
-        if ($this->rating_last > $this->rating_over) $this->trend_rating = 1;
-        else if ($this->rating_last < $this->rating_over) $this->trend_rating = -1;
+        if ($this->rating_last > ($this->rating_over * $this->day_rate)) $this->trend_rating = 1;
+        else if ($this->rating_last < ($this->rating_over * $this->day_rate)) $this->trend_rating = -1;
 
         if ($this->voters_last > ($this->voters_over * $this->day_rate)) $this->trend_voting = 1;
         else if ($this->voters_last < ($this->voters_over * $this->day_rate)) $this->trend_voting = -1;

@@ -13,6 +13,7 @@
   * edit: changes to admin pages names
   * edit: various small changes
   * fix: numerous visual bugs
+  * fix: trend rating calculation
   * fix: mysql4 str_to_date sql function problems
 
 === Version: 0.9.9.2 RC2 / october 22 2008 ===
