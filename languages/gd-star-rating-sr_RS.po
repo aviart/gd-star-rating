@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Milan Petrovic <milan@gdragon.info>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -194,14 +194,14 @@ msgid "Plugin not available for import."
 msgstr "Плугин није доступан за увоз."
 
 #: code/gd-star-import.php:27
-#: code/gd-star-import.php:86
+#: code/gd-star-import.php:88
 msgid "Data imported."
 msgstr "Подаци увезени."
 
 #: options/articles.php:94
 #: options/articles.php:230
 #: templates/templates.php:42
-#: gd-star-rating.php:350
+#: gd-star-rating.php:342
 msgid "Articles"
 msgstr "Чланци"
 
@@ -263,7 +263,7 @@ msgstr "Укупно"
 #: options/comments.php:94
 #: options/comments.php:138
 #: options/edit.php:11
-#: options/settings_articles.php:119
+#: options/settings_articles.php:121
 #: options/settings_comments.php:94
 #: tinymce3/window.php:207
 #: widgets/widget.php:199
@@ -305,7 +305,7 @@ msgstr "Обновити"
 #: options/articles.php:260
 #: options/charts.php:6
 #: options/comments.php:43
-#: options/settings.php:118
+#: options/settings.php:119
 #: templates/templates.php:31
 #: templates/templates.php:47
 msgid "Comments"
@@ -316,12 +316,12 @@ msgid "Batch Options"
 msgstr "Групне Опције"
 
 #: options/charts.php:0
-#: gd-star-rating.php:351
+#: gd-star-rating.php:343
 msgid "Charts"
 msgstr "Графикони"
 
 #: options/charts.php:5
-#: options/settings.php:117
+#: options/settings.php:118
 #: templates/templates.php:30
 msgid "Articles (Posts And Pages)"
 msgstr "Чланци (Постови и Стране)"
@@ -358,7 +358,7 @@ msgstr "Модерација"
 
 #: options/edit.php:39
 msgid "Restriction"
-msgstr ""
+msgstr "Ограничења"
 
 #: options/edit.php:46
 #: tinymce3/window.php:226
@@ -453,8 +453,8 @@ msgid "Version"
 msgstr "Верзија"
 
 #: options/front.php:98
-#: options/import.php:35
-#: options/import.php:59
+#: options/import.php:42
+#: options/import.php:67
 msgid "Status"
 msgstr "Статус"
 
@@ -474,24 +474,29 @@ msgstr " Укупно је %s чланака и %s коментара рејти
 msgid "An error occured while loading newsfeed. Go to the %sfront page%s to check for updates."
 msgstr "Дошло је до грешке приликом учитавања вести. Идите на %сглавну страну%с и проверите статус."
 
-#: options/import.php:11
-#: options/import.php:42
-#: options/import.php:66
+#: options/import.php:18
+#: options/import.php:49
+#: options/import.php:74
 #: options/import.php:2
+#: options/import.php:9
 msgid "Import Data"
 msgstr "Увоз Података"
 
-#: options/import.php:25
-#: options/import.php:49
-#: options/import.php:73
+#: options/import.php:32
+#: options/import.php:57
+#: options/import.php:81
 msgid "Plugin URL"
 msgstr "Сајт Плугина"
 
-#: options/import.php:30
-#: options/import.php:54
-#: options/import.php:78
+#: options/import.php:37
+#: options/import.php:62
+#: options/import.php:86
 msgid "Author URL"
 msgstr "Сајт Аутора"
+
+#: options/import.php:96
+msgid "To avoid rating data import problems, please don't use GD Star Rating in the same time as the plugins above, to avoid potential import problems and false data. I can't guarantee that data will be transfered without problems."
+msgstr ""
 
 #: options/moderation.php:115
 msgid "Vote"
@@ -505,25 +510,25 @@ msgstr "Са Селектованим"
 msgid "Approve"
 msgstr "Одобри"
 
-#: options/settings.php:111
-#: gd-star-rating.php:352
+#: options/settings.php:112
+#: gd-star-rating.php:344
 msgid "Settings"
 msgstr "Подешавања"
 
-#: options/settings.php:116
+#: options/settings.php:117
 #: tinymce3/window.php:31
 msgid "General"
 msgstr "Општа подешавања"
 
-#: options/settings.php:119
+#: options/settings.php:120
 msgid "Statistics"
 msgstr "Статистика"
 
-#: options/settings.php:120
+#: options/settings.php:121
 msgid "Preview"
 msgstr "Преглед"
 
-#: options/settings.php:141
+#: options/settings.php:142
 #: templates/templates.php:64
 msgid "Save Settings"
 msgstr "Сними подешавања"
@@ -536,7 +541,7 @@ msgid "Rating"
 msgstr "Оцена"
 
 #: options/settings_articles.php:5
-#: options/settings_articles.php:123
+#: options/settings_articles.php:125
 #: options/settings_comments.php:5
 #: options/settings_comments.php:98
 #: options/settings_preview.php:55
@@ -545,14 +550,14 @@ msgid "Stars"
 msgstr "Звезде"
 
 #: options/settings_articles.php:16
-#: options/settings_articles.php:134
+#: options/settings_articles.php:136
 #: options/settings_comments.php:16
 #: options/settings_comments.php:109
 msgid "Number Of Stars"
 msgstr "Број звездица"
 
 #: options/settings_articles.php:27
-#: options/settings_articles.php:145
+#: options/settings_articles.php:147
 #: options/settings_comments.php:27
 #: options/settings_comments.php:120
 msgid "Rating Alignment"
@@ -564,28 +569,28 @@ msgid "Rating Text Placement"
 msgstr "Позиција Рејтинг текста"
 
 #: options/settings_articles.php:38
-#: options/settings_articles.php:151
+#: options/settings_articles.php:153
 #: options/settings_comments.php:38
 #: options/settings_comments.php:126
 msgid "Rating Header"
 msgstr "Заглавље"
 
 #: options/settings_articles.php:40
-#: options/settings_articles.php:153
+#: options/settings_articles.php:155
 #: options/settings_comments.php:40
 #: options/settings_comments.php:128
 msgid "Display header text."
 msgstr "Прикажи текст заглавља."
 
 #: options/settings_articles.php:43
-#: options/settings_articles.php:156
+#: options/settings_articles.php:158
 #: options/settings_comments.php:43
 #: options/settings_comments.php:131
 msgid "Text to display"
 msgstr "Текст за приказ"
 
 #: options/settings_articles.php:50
-#: options/settings_articles.php:162
+#: options/settings_articles.php:164
 #: options/settings_comments.php:50
 #: options/settings_comments.php:137
 msgid "Rating Block CSS Class"
@@ -635,16 +640,20 @@ msgstr "За чланке приказане у Архиви."
 msgid "For posts displayed on Front Page."
 msgstr "За чланке приказане на Главној страни."
 
-#: options/settings_articles.php:113
+#: options/settings_articles.php:110
+msgid "For posts displayed on Search results."
+msgstr "За чланке приказане на страни са Резултатима."
+
+#: options/settings_articles.php:115
 #: options/settings_comments.php:88
 msgid "Save cookies to prevent duplicate voting."
 msgstr "Сними колачић као превенцију дуплог гласања."
 
-#: options/settings_articles.php:115
+#: options/settings_articles.php:117
 msgid "Prevent article author to vote."
 msgstr "Спречи аутора да гласа."
 
-#: options/settings_articles.php:115
+#: options/settings_articles.php:117
 #: options/settings_comments.php:90
 msgid "This is only for registered users."
 msgstr "Само за регистроване кориснике."
@@ -762,7 +771,7 @@ msgid "Mean vote rating across the whole report"
 msgstr ""
 
 #: options/setup.php:27
-#: gd-star-rating.php:357
+#: gd-star-rating.php:349
 msgid "Setup"
 msgstr "Организација"
 
@@ -848,7 +857,7 @@ msgid "Voters Log"
 msgstr "Листа гласова"
 
 #: templates/templates.php:24
-#: gd-star-rating.php:353
+#: gd-star-rating.php:345
 msgid "Templates"
 msgstr "Шаблони"
 
@@ -1382,19 +1391,19 @@ msgstr "url чланка"
 msgid "singular/plural word vote"
 msgstr "једнина/множина речи глас"
 
-#: gd-star-rating.php:349
+#: gd-star-rating.php:341
 msgid "Front Page"
 msgstr "Главна Страна"
 
-#: gd-star-rating.php:354
+#: gd-star-rating.php:346
 msgid "Import"
 msgstr "Увоз"
 
-#: gd-star-rating.php:355
+#: gd-star-rating.php:347
 msgid "Export"
 msgstr "Увоз"
 
-#: gd-star-rating.php:356
+#: gd-star-rating.php:348
 msgid "Batch"
 msgstr "Група"
 
