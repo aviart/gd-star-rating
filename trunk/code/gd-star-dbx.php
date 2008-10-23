@@ -215,7 +215,7 @@ class GDSRX
         $sql = sprintf("select %s from %s%sposts p, %sgdsr_data_article d where %s %s order by %s %s limit 0, %s",
                 $select, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]
             );
-        print_r($sql);
+        
         return $sql;
     }
 }
