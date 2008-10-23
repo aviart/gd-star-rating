@@ -231,7 +231,7 @@ class TrendValue
     
     var $trend_rating = 0;
     var $trend_voting = 0;
-    var $day_rate = 0;
+    var $day_rate_voters = 0;
     
     function TrendValue($v_last, $r_last, $v_over, $r_over, $last = 1, $over = 30) {
         $this->votes_last = $v_last;
@@ -239,7 +239,7 @@ class TrendValue
         $this->votes_over = $v_over;
         $this->voters_over = $r_over;
         
-        $day_rate = $last / $over;
+        $this->day_rate_voters = $last / $over;
         
         $this->Calculate();
     }
@@ -248,11 +248,11 @@ class TrendValue
         if ($this->voters_last > 0) $this->rating_last = @number_format($this->votes_last / $this->voters_last, 1);
         if ($this->voters_over > 0) $this->rating_over = @number_format($this->votes_over / $this->voters_over, 1);
         
-        if ($this->rating_last > ($this->rating_over * $this->day_rate)) $this->trend_rating = 1;
-        else if ($this->rating_last < ($this->rating_over * $this->day_rate)) $this->trend_rating = -1;
+        if ($this->rating_last > $this->rating_over ) $this->trend_rating = 1;
+        else if ($this->rating_last < $this->rating_over ) $this->trend_rating = -1;
 
-        if ($this->voters_last > ($this->voters_over * $this->day_rate)) $this->trend_voting = 1;
-        else if ($this->voters_last < ($this->voters_over * $this->day_rate)) $this->trend_voting = -1;
+        if ($this->voters_last > ($this->voters_over * $this->day_rate_voters)) $this->trend_voting = 1;
+        else if ($this->voters_last < ($this->voters_over * $this->day_rate_voters)) $this->trend_voting = -1;
     }
 }
 
