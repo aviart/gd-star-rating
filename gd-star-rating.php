@@ -132,20 +132,12 @@ if (!class_exists('GDStarRating')) {
             "review_header_text" => '',
             "review_class_block" => '',
             "review_class_text" => '',
-            "cmm_review_style" => 0,
-            "cmm_review_size" => 12,
-            "cmm_review_stars" => 5,
-            "cmm_review_align" => 'none',
-            "cmm_review_header" => 0,
-            "cmm_review_header_text" => '',
-            "cmm_review_class_block" => '',
-            "cmm_review_class_text" => '',
             "display_comment" => 1,
             "display_posts" => 1,
             "display_pages" => 1,
             "display_home" => 1,
             "display_archive" => 1,
-            "display_syndicated" => 1,
+            "display_search" => 1,
             "cookies" => 1,
             "cmm_cookies" => 1,
             "admin_width" => 1200,
@@ -670,8 +662,7 @@ if (!class_exists('GDStarRating')) {
             
             $allow_vote = $this->check_cookie($id);
 
-            if ($allow_vote) 
-                $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip);
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip);
             
             if ($allow_vote) {
                 GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
@@ -685,44 +676,55 @@ if (!class_exists('GDStarRating')) {
             $ua = $_SERVER["HTTP_USER_AGENT"];
             if ($user == '') $user = 0;
 
-            GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
-            $this->save_cookie($id);
-            $data = GDSRDatabase::get_post_data($id);
-
-            if ($votes == 1) $tense = $this->x["word_votes_singular"];
-            else $tense = $this->x["word_votes_plural"];
-            $unit_width = $this->o["size"];
-            $unit_count = $this->o["stars"];
-
-            $votes = 0;
-            $score = 0;
+            $allow_vote = intval($votes) <= $this->o["stars"];
             
-            if ($data->rules_articles == "A" || $data->rules_articles == "N") {
-                $votes = $data->user_voters + $data->visitor_voters;
-                $score = $data->user_votes + $data->visitor_votes;
-            }
-            else if ($data->rules_articles == "V") {
-                $votes = $data->visitor_voters;
-                $score = $data->visitor_votes;
+            if ($allow_vote) $allow_vote = $this->check_cookie($id);
+            
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip);
+
+            if ($allow_vote) {
+                GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
+                $this->save_cookie($id);
+                $data = GDSRDatabase::get_post_data($id);
+
+                if ($votes == 1) $tense = $this->x["word_votes_singular"];
+                else $tense = $this->x["word_votes_plural"];
+                $unit_width = $this->o["size"];
+                $unit_count = $this->o["stars"];
+
+                $votes = 0;
+                $score = 0;
+                
+                if ($data->rules_articles == "A" || $data->rules_articles == "N") {
+                    $votes = $data->user_voters + $data->visitor_voters;
+                    $score = $data->user_votes + $data->visitor_votes;
+                }
+                else if ($data->rules_articles == "V") {
+                    $votes = $data->visitor_voters;
+                    $score = $data->visitor_votes;
+                }
+                else {
+                    $votes = $data->user_voters;
+                    $score = $data->user_votes;
+                }
+                
+                if ($votes > 0) $rating2 = $score / $votes;
+                else $rating2 = 0;
+                $rating1 = @number_format($rating2, 1);
+                $rating_width = $rating2 * $unit_width;
+                
+                $tpl = $this->x["article_rating_text"];
+                $rt = html_entity_decode($tpl);
+                $rt = str_replace('%RATING%', $rating1, $rt);
+                $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
+                $rt = str_replace('%VOTES%', $votes, $rt);
+                $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                
+                return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
             }
             else {
-                $votes = $data->user_voters;
-                $score = $data->user_votes;
+                return "{ status: 'error' }";
             }
-            
-            if ($votes > 0) $rating2 = $score / $votes;
-            else $rating2 = 0;
-            $rating1 = @number_format($rating2, 1);
-            $rating_width = $rating2 * $unit_width;
-            
-            $tpl = $this->x["article_rating_text"];
-            $rt = html_entity_decode($tpl);
-            $rt = str_replace('%RATING%', $rating1, $rt);
-            $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-            $rt = str_replace('%VOTES%', $votes, $rt);
-            $rt = str_replace('%WORD_VOTES%', $tense, $rt);
-            
-            return "{ value: ".$rating_width.", rater: '".$rt."' }";
         }
 
         function vote_comment($votes, $id, $user) {
@@ -732,8 +734,7 @@ if (!class_exists('GDStarRating')) {
             
             $allow_vote = $this->check_cookie($id, 'comment');
 
-            if ($allow_vote) 
-                $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip);
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip);
                 
             if ($allow_vote) {
                 GDSRDatabase::save_vote_comment($id, $user, $ip, $ua, $votes);
@@ -747,46 +748,57 @@ if (!class_exists('GDStarRating')) {
             $ua = $_SERVER["HTTP_USER_AGENT"];
             if ($user == '') $user = 0;
 
-            GDSRDatabase::save_vote_comment($id, $user, $ip, $ua, $votes);
-            $this->save_cookie($id, 'comment');
-            $data = GDSRDatabase::get_comment_data($id);
-            $post_data = GDSRDatabase::get_post_data($data->post_id);
+            $allow_vote = intval($votes) <= $this->o["cmm_stars"];
 
-            if ($votes == 1) $tense = $this->o["word_votes_singular"];
-            else $tense = $this->o["word_votes_plural"];
+            if ($allow_vote) $allow_vote = $this->check_cookie($id, 'comment');
 
-            $unit_width = $this->o["cmm_size"];
-            $unit_count = $this->o["cmm_stars"];
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip);
             
-            $votes = 0;
-            $score = 0;
-            
-            if ($post_data->rules_comments == "A" || $post_data->rules_comments == "N") {
-                $votes = $data->user_voters + $data->visitor_voters;
-                $score = $data->user_votes + $data->visitor_votes;
-            }
-            else if ($post_data->rules_comments == "V") {
-                $votes = $data->visitor_voters;
-                $score = $data->visitor_votes;
+            if ($allow_vote) {
+                GDSRDatabase::save_vote_comment($id, $user, $ip, $ua, $votes);
+                $this->save_cookie($id, 'comment');
+                $data = GDSRDatabase::get_comment_data($id);
+                $post_data = GDSRDatabase::get_post_data($data->post_id);
+
+                if ($votes == 1) $tense = $this->o["word_votes_singular"];
+                else $tense = $this->o["word_votes_plural"];
+
+                $unit_width = $this->o["cmm_size"];
+                $unit_count = $this->o["cmm_stars"];
+                
+                $votes = 0;
+                $score = 0;
+                
+                if ($post_data->rules_comments == "A" || $post_data->rules_comments == "N") {
+                    $votes = $data->user_voters + $data->visitor_voters;
+                    $score = $data->user_votes + $data->visitor_votes;
+                }
+                else if ($post_data->rules_comments == "V") {
+                    $votes = $data->visitor_voters;
+                    $score = $data->visitor_votes;
+                }
+                else {
+                    $votes = $data->user_voters;
+                    $score = $data->user_votes;
+                }
+
+                if ($votes > 0) $rating2 = $score / $votes;
+                else $rating2 = 0;
+                $rating1 = @number_format($rating2, 1);
+                $rating_width = $rating2 * $unit_width;
+                
+                $tpl = $this->x["cmm_rating_text"];
+                $rt = html_entity_decode($tpl);
+                $rt = str_replace('%CMM_RATING%', $rating1, $rt);
+                $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
+                $rt = str_replace('%CMM_VOTES%', $votes, $rt);
+                $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                
+                return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
             }
             else {
-                $votes = $data->user_voters;
-                $score = $data->user_votes;
+                return "{ status: 'error' }";
             }
-
-            if ($votes > 0) $rating2 = $score / $votes;
-            else $rating2 = 0;
-            $rating1 = @number_format($rating2, 1);
-            $rating_width = $rating2 * $unit_width;
-            
-            $tpl = $this->x["cmm_rating_text"];
-            $rt = html_entity_decode($tpl);
-            $rt = str_replace('%CMM_RATING%', $rating1, $rt);
-            $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
-            $rt = str_replace('%CMM_VOTES%', $votes, $rt);
-            $rt = str_replace('%WORD_VOTES%', $tense, $rt);
-            
-            return "{ value: ".$rating_width.", rater: '".$rt."' }";
         }
         // vote
         
@@ -1476,7 +1488,8 @@ if (!class_exists('GDStarRating')) {
                 if ((is_single() && $this->o["display_posts"] == 1) || 
                     (is_page() && $this->o["display_pages"] == 1) ||
                     (is_home() && $this->o["display_home"] == 1) ||
-                    (is_archive() && $this->o["display_archive"] == 1)
+                    (is_archive() && $this->o["display_archive"] == 1) ||
+                    (is_search() && $this->o["display_search"] == 1)
                 ) {
                     $content .= $this->render_article($post, $userdata);
                 }

@@ -8,6 +8,8 @@
   * new: time restrictions data in articles table
   * new: functions for getting php and mysql versions
   * new: import from 'wp post rating' plugin data
+  * new: automatic rendering of stars on search results pages
+  * new: additional check to verify received vote
   * edit: changes to admin pages names
   * edit: various small changes
   * fix: numerous visual bugs
