@@ -7,6 +7,7 @@
   * new: default timer restriction options
   * new: time restrictions data in articles table
   * new: functions for getting php and mysql versions
+  * new: import from 'wp post rating' plugin data
   * edit: changes to admin pages names
   * edit: various small changes
   * fix: numerous visual bugs

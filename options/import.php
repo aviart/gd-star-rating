@@ -7,6 +7,13 @@
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>Data import completed.</strong></p></div> <?php
     }
 
+    if ($_POST["gdsr_import_wpr"] == __("Import Data", "gd-star-rating")) {
+        GDSRImport::import_wpr();
+        $imports["wp_post_ratings"] = $imports["wp_post_ratings"] + 1;
+        update_option('gd-star-rating-import', $imports);
+        ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>Data import completed.</div> <?php
+    }
+
 ?>
 
 <div class="wrap"><h2>GD Star Rating: <?php _e("Import Data", "gd-star-rating"); ?></h2>
@@ -46,6 +53,7 @@
 </div>
 
 <div id="fragment-2">
+<form method="post">
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Plugin URL", "gd-star-rating"); ?>:</th>
     <td>
@@ -59,7 +67,7 @@
 </tr>
 <tr><th scope="row"><?php _e("Status", "gd-star-rating"); ?>:</th>
     <td>
-        <?php $import_available = GDSRImport::import_wpr_check($imports["post_wp_post_ratings"]); ?>
+        <?php $import_available = GDSRImport::import_wpr_check($imports["wp_post_ratings"]); ?>
     </td>
 </tr>
 </tbody></table>
@@ -84,6 +92,10 @@
 </tbody></table>
 <p>Work in progress...</p>
 </div>
+
+<br /><div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>
+<?php _e("To avoid rating data import problems, please don't use GD Star Rating in the same time as the plugins above, to avoid potential import problems and false data. I can't guarantee that data will be transfered without problems.", "gd-star-rating"); ?>
+</strong></p></div>
 
 </div>
 </div>
