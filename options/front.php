@@ -97,7 +97,9 @@
             <h3 class="dashboard-widget-title">
                 <?php _e("Version", "gd-star-rating"); ?>: <font style="color: red;"><?php echo $options["version"]; ?></font> | 
                 <?php _e("Status", "gd-star-rating"); ?>: <font style="color: red;"><?php echo $options["status"]; ?></font> | 
-                <?php _e("Release Date", "gd-star-rating"); ?>: <font style="color: red;"><?php echo $options["date"]; ?></font>
+                <?php _e("Release Date", "gd-star-rating"); ?>: <font style="color: red;"><?php echo $options["date"]; ?></font> | 
+                PHP: <font style="color: red;"><?php echo gd_php_version(true); ?></font> | 
+                mySQL: <font style="color: red;"><?php echo gd_mysql_version(true); ?></font>
             </h3>
         </div>
     </div>

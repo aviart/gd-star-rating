@@ -273,3 +273,17 @@ function gd_scandir($path) {
 		return $files;
 	}
 }
+
+function gd_mysql_version($full = false) {
+    if ($full)
+        return mysql_get_server_info();
+    else
+        return substr(mysql_get_server_info(), 0, 1); 
+}
+
+function gd_php_version($full = false) {
+    if ($full)
+        return phpversion();
+    else
+        return substr(phpversion(), 0, 1); 
+}

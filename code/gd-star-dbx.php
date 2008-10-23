@@ -4,9 +4,22 @@ class GDSRX
 {
     function get_trend_data($ids, $grouping = "post", $type = "article", $period = "over", $last = 1, $over = 30) {
         global $wpdb, $table_prefix;
+        $mysql4_strtodate = "date_add(d.vote_date, interval 0 day)";
+        $mysql5_strtodate = "str_to_date(d.vote_date, '%Y-%m-%d')";
         
-        if ($period == "over") $where = sprintf("str_to_date(d.vote_date, '%s') BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND DATE_SUB(NOW(), INTERVAL %s DAY)", "%Y-%m-%d", $last + $over, $last);
-        else $where = sprintf("str_to_date(d.vote_date, '%s') BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND NOW()", "%Y-%m-%d", $last);
+        switch(gd_mysql_version()) 
+        {
+            case "4":
+                $strtodate = $mysql4_strtodate;
+                break;
+            case "5":
+            default:
+                $strtodate = $mysql4_strtodate;
+                break;
+        }
+        
+        if ($period == "over") $where = sprintf("%s BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND DATE_SUB(NOW(), INTERVAL %s DAY)", $strtodate, $last + $over, $last);
+        else $where = sprintf("%s BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND NOW()", $strtodate, $last);
         
         switch ($grouping) {
             case "post":
@@ -202,7 +215,7 @@ class GDSRX
         $sql = sprintf("select %s from %s%sposts p, %sgdsr_data_article d where %s %s order by %s %s limit 0, %s",
                 $select, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]
             );
-
+        print_r($sql);
         return $sql;
     }
 }
