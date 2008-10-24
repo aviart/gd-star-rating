@@ -140,6 +140,8 @@ class GDSRX
         $where[] = "p.id = d.post_id";
         $where[] = "p.post_status = 'publish'";
         
+        $extras = ", 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars";
+        
         if (($cats != "" && $cats != "0") || $grouping == 'category'){
             $from = sprintf("%sterm_taxonomy t, %sterm_relationships r, ", $table_prefix, $table_prefix);
             $where[] = "t.term_taxonomy_id = r.term_taxonomy_id";
@@ -212,8 +214,8 @@ class GDSRX
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
         
-        $sql = sprintf("select %s from %s%sposts p, %sgdsr_data_article d where %s %s order by %s %s limit 0, %s",
-                $select, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]
+        $sql = sprintf("select %s%s from %s%sposts p, %sgdsr_data_article d where %s %s order by %s %s limit 0, %s",
+                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]
             );
         
         return $sql;

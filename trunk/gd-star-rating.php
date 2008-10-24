@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 0.9.9.3
+Version: 0.9.9.4
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -93,7 +93,7 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "version" => "0.9.9.3",
+            "version" => "0.9.9.4",
             "date" => "2008.10.24.",
             "status" => "RC",
             "ie_png_fix" => 1,
@@ -846,6 +846,7 @@ if (!class_exists('GDStarRating')) {
                 $trends_calculated = false;
             }
 
+            $new_rows = array();
             foreach ($all_rows as $row) {
                 if ($widget['show'] == "total") {
                     $row->votes = $row->user_votes + $row->visitor_votes;
@@ -867,17 +868,20 @@ if (!class_exists('GDStarRating')) {
                     $row->bayesian = $this->bayesian_estimate($row->voters, $row->rating);
                 else
                     $row->bayesian = -1;
+                $new_rows[] = $row;
             }
 
             if ($widget["column"] == "bayes" && $bayesian_calculated)
-                usort($all_rows, "gd_sort_bayesian_".$widget["order"]);
+                usort($new_rows, "gd_sort_bayesian_".$widget["order"]);
 
             $tr_class = $this->x["table_row_even"];
             if ($trends_calculated) {
                 $set_rating = $this->g->find_trend($widget["trends_rating_set"]);
                 $set_voting = $this->g->find_trend($widget["trends_voting_set"]);
             }
-            foreach ($all_rows as $row) {
+            
+            $all_rows = array();
+            foreach ($new_rows as $row) {
                 $row->table_row_class = $tr_class;
                 if (strlen($row->title) > $widget["tpl_title_length"] - 3 && $widget["tpl_title_length"] > 0)
                     $row->title = substr($row->title, 0, $widget["tpl_title_length"] - 3)." ...";
@@ -984,8 +988,10 @@ if (!class_exists('GDStarRating')) {
                     $tr_class = $this->x["table_row_odd"];
                 else
                     $tr_class = $this->x["table_row_even"];
+                
+                $all_rows[] = $row;
             }
-                        
+
             return $all_rows;
         }
         
