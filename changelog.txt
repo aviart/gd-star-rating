@@ -2,6 +2,9 @@
 
 == Change Log ==
 
+=== Version: 0.9.9.4 DEV / october 24 2008 ===
+  * fix: php4 preparing data for widget and shortcode
+
 === Version: 0.9.9.3 RC3 / october 24 2008 ===
   * new: expanded editor widget with additional post options
   * new: default timer restriction options
