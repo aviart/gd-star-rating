@@ -594,6 +594,8 @@ class GDSRDatabase
     function get_stats($select = "", $start = 0, $limit = 20, $dates = "0", $cats = "0", $search = "", $sort_column = 'id', $sort_order = 'desc', $additional = '') {
         global $table_prefix;
         $where = "";
+        
+        $extras = ", '' as total, '' as votes, '' as title";
 
         if ($dates != "" && $dates != "0") {
             $where.= " and year(p.post_date) = ".substr($dates, 0, 4);
@@ -611,12 +613,12 @@ class GDSRDatabase
             $order = " ORDER BY ".$sort_column." ".$sort_order;
 
         if ($cats != "" && $cats != "0")
-            $sql = sprintf("SELECT p.id as pid, p.post_title, p.post_type, d.* FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p, %sgdsr_data_article d WHERE d.post_id = p.id and t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.id AND t.term_id = %s AND p.post_status = 'publish'%s%s%s LIMIT %s, %s",
-                $table_prefix, $table_prefix, $table_prefix, $table_prefix, $cats, $where, $additional, $order, $start, $limit
+            $sql = sprintf("SELECT p.id as pid, p.post_title, p.post_type, d.*%s FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p, %sgdsr_data_article d WHERE d.post_id = p.id and t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.id AND t.term_id = %s AND p.post_status = 'publish'%s%s%s LIMIT %s, %s",
+                $extras, $table_prefix, $table_prefix, $table_prefix, $table_prefix, $cats, $where, $additional, $order, $start, $limit
             );
         else
-            $sql = sprintf("select p.id as pid, p.post_title, p.post_type, d.* from %sposts p left join %sgdsr_data_article d on p.id = d.post_id WHERE p.post_status = 'publish'%s%s%s limit %s, %s",
-                $table_prefix, $table_prefix, $where, $additional, $order, $start, $limit
+            $sql = sprintf("select p.id as pid, p.post_title, p.post_type, d.*%s from %sposts p left join %sgdsr_data_article d on p.id = d.post_id WHERE p.post_status = 'publish'%s%s%s limit %s, %s",
+                $extras, $table_prefix, $table_prefix, $where, $additional, $order, $start, $limit
             );
         return $sql;
     }

@@ -210,7 +210,7 @@ function checkAll(form) {
         echo '<td>'.$row->votes.'</td>';
         echo '<td>'.$row->total.'</td>';
         if ($options["review_active"] == 1) 
-            echo '<td>'.$row->review.'</td>';
+            echo '<td align="right">'.$row->review.'</td>';
         echo '</tr>';
         
         if ($tr_class == "")
