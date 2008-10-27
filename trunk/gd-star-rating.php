@@ -46,6 +46,8 @@ if (!class_exists('GDStarRating')) {
         var $log_file = "c:/gd_star_rating_log.txt";
         
         var $charting = false;
+        var $admin_plugin = false;
+        var $admin_plugin_page = '';
 
         var $active_wp_page;
         var $wp_version;
@@ -342,39 +344,45 @@ if (!class_exists('GDStarRating')) {
         function admin_menu() {
             add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 10, __FILE__, array(&$this,"star_menu_front"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), 10, "gdsr-stats", array(&$this,"star_menu_stats"));
-            if ($this->charting) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Charts", "gd-star-rating"), __("Charts", "gd-star-rating"), 10, "gdsr-charts", array(&$this,"star_menu_charts"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gdsr-settings-page", array(&$this,"star_menu_settings"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gdsr-templates", array(&$this,"star_menu_templates"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), 10, "gdsr-import", array(&$this,"star_menu_import"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), 10, "gdsr-export", array(&$this,"star_menu_export"));
-            // add_submenu_page(__FILE__, 'GD Star Rating: '.__("Batch", "gd-star-rating"), __("Batch", "gd-star-rating"), 10, "gdsr-batch", array(&$this,"star_menu_batch"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), 10, "gdsr-setup", array(&$this,"star_menu_setup"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), 10, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
+            if ($this->charting) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Charts", "gd-star-rating"), __("Charts", "gd-star-rating"), 10, "gd-star-rating-charts", array(&$this,"star_menu_charts"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gd-star-rating-templates", array(&$this,"star_menu_templates"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), 10, "gd-star-rating-import", array(&$this,"star_menu_import"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), 10, "gd-star-rating-export", array(&$this,"star_menu_export"));
+            // add_submenu_page(__FILE__, 'GD Star Rating: '.__("Batch", "gd-star-rating"), __("Batch", "gd-star-rating"), 10, "gd-star-rating-batch", array(&$this,"star_menu_batch"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), 10, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
         }                                                                
-
+        
         function admin_head() {
-            echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>';
+            if (isset($_GET["page"])) {
+                if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
+                    $this->admin_plugin = true;
+                    $this->admin_plugin_page = substr($_GET["page"], 14);
+                }
+            }
+            
+            if ($this->admin_plugin) {
+                wp_print_scripts('jquery-ui-tabs');
+                wp_admin_css('css/dashboard');
+                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin.css" type="text/css" media="screen" />');
+            }
+            
+            if ($this->admin_plugin_page == "charts" && $this->charting && $this->admin_plugin) {
+                echo '<script type="text/javascript" src="'.$this->plugin_url.'ofc2/js/swfobject.js"></script>';
+            }
+                                    
             $datepicker_date = date("Y, n, j");
+            echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>';
             if(!empty($this->l)) {
                 $jsFile = $this->plugin_path.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js';
                 if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js"></script>';
             }
-            echo('<script type="text/javascript">jQuery(document).ready(function() { jQuery("#gdsr_tabs > ul").tabs();');
+            echo('<script type="text/javascript">jQuery(document).ready(function() {');
+            if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs();');
             echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
             echo('});</script>');
-            if (isset($_GET["page"])) {
-                $gdsr = substr($_GET["page"], 0, 4);
-                if ($gdsr == "gdsr" || substr($_GET["page"], 0, 7) == "gd-star") {
-                    wp_admin_css('css/dashboard');
-                    wp_print_scripts('jquery-ui-tabs');
-                    echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin.css" type="text/css" media="screen" />');
-                }
-                if ($_GET["page"] == "gdsr-charts" && $this->charting) {
-                    echo '<script type="text/javascript" src="'.$this->plugin_url.'ofc2/js/swfobject.js"></script>';
-                    echo '<script type="text/javascript">';
-                    echo '</script>';
-                }
-            }
+
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery.css" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_post.css" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/widgets.css" type="text/css" media="screen" />');
@@ -585,7 +593,7 @@ if (!class_exists('GDStarRating')) {
             wp_enqueue_script('jquery');
             $this->l = get_locale();
             if(!empty($this->l)) {
-                $moFile = dirname(__FILE__) . "/languages/gd-star-rating-" . $this->l . ".mo";
+                $moFile = dirname(__FILE__)."/languages/gd-star-rating-".$this->l.".mo";
                 if (@file_exists($moFile) && is_readable($moFile)) load_textdomain('gd-star-rating', $moFile);
             }
             
@@ -1028,6 +1036,28 @@ if (!class_exists('GDStarRating')) {
             $template = str_replace('%VOTE_TREND%', $row->item_trend_voting, $template);
             $template = str_replace('%TABLE_ROW_CLASS%', $row->table_row_class, $template);
             return $template;
+        }
+        
+        function expiration_countdown($post_date, $value) {
+            $period = substr($value, 0, 1);
+            $value = substr($value, 1);
+            $pdate = strtotime($post_date);
+            switch ($period) {
+                case 'H':
+                    $expiry = mktime(date("H", $pdate) + $value, date("i", $pdate), date("s", $pdate), date("m", $pdate), date("d", $pdate), date("Y", $pdate));
+                    break;
+                case 'D':
+                    $expiry = mktime(date("H", $pdate), date("i", $pdate), date("s", $pdate), date("m", $pdate), date("d", $pdate) + $value, date("Y", $pdate));
+                    break;
+                case 'M':
+                    $expiry = mktime(date("H", $pdate), date("i", $pdate), date("s", $pdate), date("m", $pdate) + $value, date("d", $pdate), date("Y", $pdate));
+                    break;
+            }
+            return $expiry > mktime();
+        }
+
+        function expiration_date($value) {
+            return strtotime($value) > mktime();
         }
         // calculation
 
@@ -1647,6 +1677,18 @@ if (!class_exists('GDStarRating')) {
                 ) $allow_vote = true;
                 else
                     $allow_vote = false;
+            }
+            
+            if ($allow_vote && $post_data->expiry_type != 'N') {
+                switch($post_data->expiry_type) {
+                    case "D":
+                        $status = $this->expiration_date($post_data->expiry_value);
+                        break;
+                    case "T":
+                        $status = $this->expiration_countdown($post->post_date, $post_data->expiry_value);
+                        break; 
+                }
+                var_dump($status);
             }
 
             if ($allow_vote) 
