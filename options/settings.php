@@ -100,7 +100,7 @@
         $gdsr_options["review_stars"] = $gdsr_review_newstars;
         $gdsr_options["cmm_review_stars"] = $gdsr_cmm_review_newstars;
         
-        update_option("agencies-settings", $options);
+        update_option("gd-star-rating", $gdsr_options);
 
 ?>
 
