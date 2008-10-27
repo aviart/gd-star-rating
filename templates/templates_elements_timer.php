@@ -24,7 +24,14 @@
                 <td width="150"><strong>%TR_DATE%</strong></td>
                 <td width="220"> : <?php _e("end voting date", "gd-star-rating"); ?></td>
                 <td width="10"></td>
-                <td width="150"></td>
-                <td width="220"></td>
+                <td width="150"><strong>%TOT_DAYS%</strong></td>
+                <td width="220"> : <?php _e("total remaining days", "gd-star-rating"); ?><td>
+            </tr>
+            <tr>
+                <td width="150"><strong>%TOT_HOURS%</strong></td>
+                <td width="220"> : <?php _e("total remaining hours", "gd-star-rating"); ?></td>
+                <td width="10"></td>
+                <td width="150"><strong>%TOT_MINUTES%</strong></td>
+                <td width="220"> : <?php _e("total remaining minutes", "gd-star-rating"); ?><td>
             </tr>
         </table>
