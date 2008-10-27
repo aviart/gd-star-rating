@@ -5,9 +5,11 @@
 === Version: 0.9.9.6 RC4 / october 28 2008 ===
   * new: now template elements for time restricted rating
   * new: expiry date and countdown calculations
-  * fix: flash uploader disappearing
+  * edit: default time restriction templates updated
+  * fix: wordpress flash uploader disappearing
   * fix: javascript related bugs
   * fix: php4 preparing data for widget and shortcode
+  * fix: few more php4 related bugs
 
 === Version: 0.9.9.3 RC3 / october 24 2008 ===
   * new: expanded editor widget with additional post options
