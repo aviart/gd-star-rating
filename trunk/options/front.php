@@ -92,30 +92,30 @@
                 <span style="float: right; margin-top: 2px;"></span>
                 <div class="ssclear"></div>
             </div>
-            <div class="ssiconurl"><a href="http://wp.gdragon.info/gd-star-rating/" target="_blank">GD Star Rating</a>: Official Page</div>
-            <div class="ssiconurl"><a href="http://code.google.com/p/gd-star-rating/" target="_blank">Google Code</a>: Development Home with SVN</div>
-            <div class="ssiconurl"><a href="http://groups.google.com/group/gd-star-rating/" target="_blank">Google Groups</a>: Discussions Group</div>
-            <div class="ssiconurl"><a href="http://wordpress.org/extend/plugins/gd-star-rating/" target="_blank">WordPress Extend</a>: WordPress plugin page</div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/gd-star-rating/" target="_blank">GD Star Rating</a>: <?php _e("official page", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://code.google.com/p/gd-star-rating/" target="_blank">Google Code</a>: <?php _e("development home with svn", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://groups.google.com/group/gd-star-rating/" target="_blank">Google Groups</a>: <?php _e("discussions group", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wordpress.org/extend/plugins/gd-star-rating/" target="_blank">WordPress Extend</a>: <?php _e("wordpress plugin page", "gd-star-rating") ?></div>
             <div style="padding: 6px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Golden Dragon:</span>
                 <span style="float: right; margin-top: 2px;"><img class="rss-icon ssrssicon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/><a href="http://wp.gdragon.info/feed/" class="rssurl">RSS</a></span>
                 <div class="ssclear"></div>
             </div>
-            <div class="ssiconurl"><a href="http://www.gdragon.info/" target="_blank">Home Page</a>: Main development portal</div>
-            <div class="ssiconurl"><a href="http://wp.gdragon.info/" target="_blank">Wordpress Blog</a>: WordPress plugins development</div>
-            <div class="ssiconurl"><a href="http://forum.gdragon.info/" target="_blank">Forum</a>: Development discussion forum</div>
-            <div class="ssiconurl"><a href="http://wp.gdragon.info/download/" target="_blank">Downloads</a>: plugins, user guides and more</div>
-            <div class="ssiconurl"><a href="http://wp.gdragon.info/donate/" target="_blank"><span style="color: red">Donate</span></a>: help further development</div>
+            <div class="ssiconurl"><a href="http://www.gdragon.info/" target="_blank">Home Page</a>: <?php _e("main development portal", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/" target="_blank">Wordpress Blog</a>: <?php _e("wordpress plugins development", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://forum.gdragon.info/" target="_blank">Forum</a>: <?php _e("development discussion forum", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/download/" target="_blank">Downloads</a>: <?php _e("plugins, user guides and more", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/donate/" target="_blank"><span style="color: red">Donate</span></a>: <?php _e("help further development", "gd-star-rating") ?></div>
             <div style="padding: 6px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Starscape Themes:</span>
                 <span style="float: right; margin-top: 2px;"><img class="rss-icon ssrssicon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/><a href="http://blog.starscapetheme.com/feed/" class="rssurl">RSS</a></span>
                 <div class="ssclear"></div>
             </div>
-            <div class="ssiconurl"><a href="http://www.starscapetheme.com/" target="_blank">Home Page</a>: Starscape themes home page</div>
-            <div class="ssiconurl"><a href="http://blog.starscapetheme.com/" target="_blank">Official Blog</a>: Announcements and theme demo</div>
-            <div class="ssiconurl"><a href="http://blog.starscapetheme.com/download/" target="_blank">Downloads</a>: different versions and user guide</div>
+            <div class="ssiconurl"><a href="http://www.starscapetheme.com/" target="_blank">Home Page</a>: <?php _e("official page", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://blog.starscapetheme.com/" target="_blank">Official Blog</a>: <?php _e("announcements and theme demo", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://blog.starscapetheme.com/download/" target="_blank">Downloads</a>: <?php _e("different versions and user guide", "gd-star-rating") ?></div>
         </div>
         </div>
     </div>
