@@ -41,136 +41,136 @@ msgstr ""
 msgid "users"
 msgstr ""
 
-#: code/gd-star-functions.php:101
+#: code/gd-star-functions.php:126
 msgid "No moderation"
 msgstr ""
 
-#: code/gd-star-functions.php:102
+#: code/gd-star-functions.php:127
 msgid "Moderate visitors"
 msgstr ""
 
-#: code/gd-star-functions.php:103
+#: code/gd-star-functions.php:128
 msgid "Moderate users"
 msgstr ""
 
-#: code/gd-star-functions.php:104
+#: code/gd-star-functions.php:129
 msgid "Moderate all"
 msgstr ""
 
-#: code/gd-star-functions.php:113
+#: code/gd-star-functions.php:138
 msgid "Everyone can vote"
 msgstr ""
 
-#: code/gd-star-functions.php:114
+#: code/gd-star-functions.php:139
 msgid "Only visitors"
 msgstr ""
 
-#: code/gd-star-functions.php:115
+#: code/gd-star-functions.php:140
 msgid "Only users"
 msgstr ""
 
-#: code/gd-star-functions.php:116
+#: code/gd-star-functions.php:141
 msgid "Locked"
 msgstr ""
 
-#: code/gd-star-functions.php:117
+#: code/gd-star-functions.php:142
 msgid "Locked and hidden"
 msgstr ""
 
-#: code/gd-star-functions.php:127
+#: code/gd-star-functions.php:152
 msgid "No timer"
 msgstr ""
 
-#: code/gd-star-functions.php:128
+#: code/gd-star-functions.php:153
 msgid "Countdown timer"
 msgstr ""
 
-#: code/gd-star-functions.php:129
+#: code/gd-star-functions.php:154
 msgid "Date limited"
 msgstr ""
 
-#: code/gd-star-functions.php:138
+#: code/gd-star-functions.php:163
 #: options/articles.php:187
 msgid "Hours"
 msgstr ""
 
-#: code/gd-star-functions.php:139
+#: code/gd-star-functions.php:164
 #: options/articles.php:190
 msgid "Days"
 msgstr ""
 
-#: code/gd-star-functions.php:140
+#: code/gd-star-functions.php:165
 #: options/articles.php:193
 msgid "Months"
 msgstr ""
 
-#: code/gd-star-functions.php:148
+#: code/gd-star-functions.php:173
 #: tinymce3/window.php:288
 #: tinymce3/window.php:313
 msgid "Mini"
 msgstr ""
 
-#: code/gd-star-functions.php:149
+#: code/gd-star-functions.php:174
 #: tinymce3/window.php:289
 #: tinymce3/window.php:314
 msgid "Small"
 msgstr ""
 
-#: code/gd-star-functions.php:150
+#: code/gd-star-functions.php:175
 #: tinymce3/window.php:290
 #: tinymce3/window.php:315
 msgid "Medium"
 msgstr ""
 
-#: code/gd-star-functions.php:151
+#: code/gd-star-functions.php:176
 #: tinymce3/window.php:291
 #: tinymce3/window.php:316
 msgid "Big"
 msgstr ""
 
-#: code/gd-star-functions.php:159
+#: code/gd-star-functions.php:184
 msgid "No alignment"
 msgstr ""
 
-#: code/gd-star-functions.php:160
-#: code/gd-star-functions.php:175
+#: code/gd-star-functions.php:185
+#: code/gd-star-functions.php:200
 msgid "Left"
 msgstr ""
 
-#: code/gd-star-functions.php:161
+#: code/gd-star-functions.php:186
 msgid "Center"
 msgstr ""
 
-#: code/gd-star-functions.php:162
-#: code/gd-star-functions.php:177
+#: code/gd-star-functions.php:187
+#: code/gd-star-functions.php:202
 msgid "Right"
 msgstr ""
 
-#: code/gd-star-functions.php:170
+#: code/gd-star-functions.php:195
 msgid "Always hide"
 msgstr ""
 
-#: code/gd-star-functions.php:171
+#: code/gd-star-functions.php:196
 msgid "Top"
 msgstr ""
 
-#: code/gd-star-functions.php:172
+#: code/gd-star-functions.php:197
 msgid "Top (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:173
+#: code/gd-star-functions.php:198
 msgid "Bottom"
 msgstr ""
 
-#: code/gd-star-functions.php:174
+#: code/gd-star-functions.php:199
 msgid "Bottom (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:176
+#: code/gd-star-functions.php:201
 msgid "Left (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:178
+#: code/gd-star-functions.php:203
 msgid "Right (hide if empty)"
 msgstr ""
 
@@ -431,25 +431,70 @@ msgstr ""
 msgid "Comment date"
 msgstr ""
 
-#: options/front.php:54
+#: options/front.php:52
 msgid "Latest News"
 msgstr ""
 
-#: options/front.php:89
+#: options/front.php:87
 msgid "Important Links"
 msgstr ""
 
+#: options/front.php:94
+#: options/front.php:115
+msgid "official page"
+msgstr ""
+
+#: options/front.php:95
+msgid "development home with svn"
+msgstr ""
+
+#: options/front.php:96
+msgid "discussions group"
+msgstr ""
+
 #: options/front.php:97
+msgid "wordpress plugin page"
+msgstr ""
+
+#: options/front.php:104
+msgid "main development portal"
+msgstr ""
+
+#: options/front.php:105
+msgid "wordpress plugins development"
+msgstr ""
+
+#: options/front.php:106
+msgid "development discussion forum"
+msgstr ""
+
+#: options/front.php:107
+msgid "plugins, user guides and more"
+msgstr ""
+
+#: options/front.php:108
+msgid "help further development"
+msgstr ""
+
+#: options/front.php:116
+msgid "announcements and theme demo"
+msgstr ""
+
+#: options/front.php:117
+msgid "different versions and user guide"
+msgstr ""
+
+#: options/front.php:124
 msgid "Version"
 msgstr ""
 
-#: options/front.php:98
+#: options/front.php:125
 #: options/import.php:42
 #: options/import.php:67
 msgid "Status"
 msgstr ""
 
-#: options/front.php:99
+#: options/front.php:126
 msgid "Release Date"
 msgstr ""
 
@@ -461,7 +506,7 @@ msgstr ""
 msgid " There are %s article and %s comments ratings waiting in moderation queue."
 msgstr ""
 
-#: options/front.php:80
+#: options/front.php:78
 msgid "An error occured while loading newsfeed. Go to the %sfront page%s to check for updates."
 msgstr ""
 
@@ -838,7 +883,8 @@ msgid "This will remove all database tables created by plugin, all settings, tem
 msgstr ""
 
 #: options/setup.php:68
-msgid "FULL UNISTALL"
+#: gd-star-rating.php:592
+msgid "FULL UNINSTALL"
 msgstr ""
 
 #: options/setup.php:69
