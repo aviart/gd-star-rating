@@ -1037,28 +1037,6 @@ if (!class_exists('GDStarRating')) {
             $template = str_replace('%TABLE_ROW_CLASS%', $row->table_row_class, $template);
             return $template;
         }
-        
-        function expiration_countdown($post_date, $value) {
-            $period = substr($value, 0, 1);
-            $value = substr($value, 1);
-            $pdate = strtotime($post_date);
-            switch ($period) {
-                case 'H':
-                    $expiry = mktime(date("H", $pdate) + $value, date("i", $pdate), date("s", $pdate), date("m", $pdate), date("d", $pdate), date("Y", $pdate));
-                    break;
-                case 'D':
-                    $expiry = mktime(date("H", $pdate), date("i", $pdate), date("s", $pdate), date("m", $pdate), date("d", $pdate) + $value, date("Y", $pdate));
-                    break;
-                case 'M':
-                    $expiry = mktime(date("H", $pdate), date("i", $pdate), date("s", $pdate), date("m", $pdate) + $value, date("d", $pdate), date("Y", $pdate));
-                    break;
-            }
-            return $expiry - mktime();
-        }
-
-        function expiration_date($value) {
-            return strtotime($value) - mktime();
-        }
         // calculation
 
         // log
@@ -1683,12 +1661,12 @@ if (!class_exists('GDStarRating')) {
             if ($allow_vote && $post_data->expiry_type != 'N') {
                 switch($post_data->expiry_type) {
                     case "D":
-                        $remaining = $this->expiration_date($post_data->expiry_value);
+                        $remaining = GDSRHelper::expiration_date($post_data->expiry_value);
                         $deadline = $post_data->expiry_value;
                         break;
                     case "T":
-                        $remaining = $this->expiration_countdown($post->post_date, $post_data->expiry_value);
-                        $deadline = $post_data->expiry_value;
+                        $remaining = GDSRHelper::expiration_countdown($post->post_date, $post_data->expiry_value);
+                        $deadline = GDSRHelper::calculate_deadline($remaining);
                         break; 
                 }
                 if ($remaining < 1) {

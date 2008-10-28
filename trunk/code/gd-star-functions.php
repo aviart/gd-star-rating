@@ -10,12 +10,38 @@ class GDSRHelper
         }
         return false;
     }
+
+    function expiration_countdown($post_date, $value) {
+        $period = substr($value, 0, 1);
+        $value = substr($value, 1);
+        $pdate = strtotime($post_date);
+        switch ($period) {
+            case 'H':
+                $expiry = mktime(date("H", $pdate) + $value, date("i", $pdate), date("s", $pdate), date("m", $pdate), date("d", $pdate), date("Y", $pdate));
+                break;
+            case 'D':
+                $expiry = mktime(date("H", $pdate), date("i", $pdate), date("s", $pdate), date("m", $pdate), date("d", $pdate) + $value, date("Y", $pdate));
+                break;
+            case 'M':
+                $expiry = mktime(date("H", $pdate), date("i", $pdate), date("s", $pdate), date("m", $pdate) + $value, date("d", $pdate), date("Y", $pdate));
+                break;
+        }
+        return $expiry - mktime();
+    }
+
+    function expiration_date($value) {
+        return strtotime($value) - mktime();
+    }
+    
+    function calculate_deadline($timestamp) {
+        $deadline_ts = $timestamp + mktime();
+        return date("Y-m-d", $deadline_ts);
+    }
     
     function remaining_time_parts($timestamp) {
         $times = array(
                 31536000 => 'year', 
                 2592000 => 'month',  
-                604800 => 'week', 
                 86400 => 'day', 
                 3600 => 'hour', 
                 60 => 'minute', 
@@ -39,7 +65,6 @@ class GDSRHelper
         $times = array(
                 31536000 => 'year', 
                 2592000 => 'month',  
-                604800 => 'week', 
                 86400 => 'day', 
                 3600 => 'hour', 
                 60 => 'minute', 
