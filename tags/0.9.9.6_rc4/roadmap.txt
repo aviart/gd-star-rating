@@ -1,0 +1,20 @@
+= GD Star Rating =
+
+== Roadmap ==
+
+=== 1.0.0: 2008.10.31 ===
+  * updated user guide
+  * control panel improvements
+  * time voting restrictions
+  * top rating widget
+
+=== 1.0.5 ===
+  * amazon-like rating categories widget
+  * customization of bot filter
+
+=== 1.1.0 ===
+  * multi rating support (more details to follow)
+  * reccomendation ratings (more details to follow)
+
+=== 1.2.0 ===
+  * changing vote (like wordpress extend website)
