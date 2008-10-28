@@ -21,8 +21,8 @@ function gdsrGetExportUser() {
 <div id="gdsr_tabs" class="gdsrtabs">
 <ul>
     <li><a href="#fragment-1"><span><?php _e("Users Data", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-2"><span><?php _e("Posts Data", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-3"><span><?php _e("Comments Data", "gd-star-rating"); ?></span></a></li>
+    <!--<li><a href="#fragment-2"><span><?php _e("Posts Data", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-3"><span><?php _e("Comments Data", "gd-star-rating"); ?></span></a></li>-->
 </ul>
 <div style="clear: both"></div>
 
@@ -56,10 +56,10 @@ function gdsrGetExportUser() {
 <p class="submit"><input onclick="gdsrGetExportUser()" type="button" value="<?php _e("Export Data", "gd-star-rating"); ?>" name="gdsr_export_user"/></p>
 </div>
 
-<div id="fragment-2">
+<!--<div id="fragment-2">
 </div>
 
-<div id="fragment-3">
+<div id="fragment-3">-->
 </div>
 
 </div>

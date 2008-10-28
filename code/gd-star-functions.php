@@ -312,6 +312,13 @@ class GDSRHelper
         
         return $render;
     }
+
+    function deactivate_plugin() {
+        $current = get_option('active_plugins');
+        if(in_array("gd-star-rating/gd-star-rating.php", $current))
+            array_splice($current, array_search("gd-star-rating/gd-star-rating.php", $current), 1);
+        update_option('active_plugins', $current);
+    }
 }
 
 function gd_addslashes($input) {

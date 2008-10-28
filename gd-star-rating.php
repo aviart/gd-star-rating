@@ -590,6 +590,19 @@ if (!class_exists('GDStarRating')) {
         }
 
         function init() {
+            if ($_POST["gdsr_full_uninstall"] == __("FULL UNINSTALL", "gd-star-rating")) {
+                delete_option('gd-star-rating');
+                delete_option('widget_gdstarrating');
+                delete_option('gd-star-rating-templates');
+                delete_option('gd-star-rating-import');
+                delete_option('gd-star-rating-gfx');
+                
+                GDSRDB::uninstall_database();
+                GDSRHelper::deactivate_plugin();
+                update_option('recently_activated', array("gd-star-rating/gd-star-rating.php" => time()) + (array)get_option('recently_activated'));
+                wp_redirect('index.php');
+            }
+
             wp_enqueue_script('jquery');
             $this->l = get_locale();
             if(!empty($this->l)) {

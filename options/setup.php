@@ -66,7 +66,7 @@
         <p class="youhave"><?php _e("This will remove all database tables created by plugin, all settings, templates and import settings.", "gd-star-rating"); ?></p>
         <table>
             <tr>
-                <td><p class="submit" style="border: 0; margin: 0;"><input disabled="disabled" type="submit" value="<?php _e("FULL UNISTALL", "gd-star-rating"); ?>" name="gdsr_reset_imports" style="width: 150px;" /></p></td>
+                <td><p class="submit" style="border: 0; margin: 0;"><input type="submit" value="<?php _e("FULL UNINSTALL", "gd-star-rating"); ?>" name="gdsr_full_uninstall" style="width: 150px;" /></p></td>
                 <td><?php _e("After removal, plugin will be disabled.", "gd-star-rating"); ?></td>
             </tr>
         </table>
