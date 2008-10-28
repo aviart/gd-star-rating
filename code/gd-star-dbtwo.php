@@ -224,7 +224,7 @@ class GDSRDB
             $count_u = sprintf('[ <a href="./admin.php?page=gdsr-stats&gdsr=log&pid=%s&vt=article&vg=users"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $row->user_voters);
         }
         
-        if ($row->review == -1 || $row->review == '') $row->review = "/";
+        if ($row->review == -1) $row->review = "/";
         $row->review = '<strong><span style="color: blue">'.$row->review.'</span></strong>';
         
         $total_votes = $row->visitor_votes + $row->user_votes;

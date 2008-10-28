@@ -195,37 +195,16 @@ class GDSRDatabase
         $comments = $table_prefix.'gdsr_data_comment';
     }
     
-    function save_review($post_id, $rating, $old = true) {
+    function save_review($post_id, $rating) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
-        if (!$old) 
+        
+        $sql = "select review from ".$articles." WHERE post_id = ".$post_id;
+        $results = $wpdb->get_row($sql, OBJECT);
+        if (count($results) == 0) 
             GDSRDatabase::add_default_vote($post_id, '', $rating);
         else 
             $wpdb->query("update ".$articles." set review = ".$rating." where post_id = ".$post_id);
-    }
-    
-    function save_article_rules($post_id, $article_vote, $article_moderation, $old = true) {
-        global $wpdb, $table_prefix;
-        $articles = $table_prefix.'gdsr_data_article';
-        if (!$old) 
-            GDSRDatabase::add_default_vote($post_id);
-        $wpdb->query("update ".$articles." set rules_articles = '".$article_vote."', moderate_articles = '".$article_moderation."' where post_id = ".$post_id);
-    }
-    
-    function save_timer_rules($post_id, $timer_type, $timer_value, $old = true) {
-        global $wpdb, $table_prefix;
-        $articles = $table_prefix.'gdsr_data_article';
-        if (!$old) 
-            GDSRDatabase::add_default_vote($post_id);
-        $wpdb->query("update ".$articles." set expiry_type = '".$timer_type."', expiry_value = '".$timer_value."' where post_id = ".$post_id);
-    }
-    
-    function check_post($post_id) {
-        global $wpdb, $table_prefix;
-        $articles = $table_prefix.'gdsr_data_article';
-        $sql = "select review from ".$articles." WHERE post_id = ".$post_id;
-        $results = $wpdb->get_row($sql, OBJECT);
-        return count($results) > 0;
     }
     
     function add_vote_comment($id, $user, $ip, $ua, $vote) {
@@ -427,15 +406,6 @@ class GDSRDatabase
         if (count($results) == 0) return -1;
         else return $results->review;
     }
-
-    function get_post_edit($post_id) {
-        global $wpdb, $table_prefix;
-        $articles = $table_prefix.'gdsr_data_article';
-        
-        $sql = "select review, rules_articles, moderate_articles, expiry_type, expiry_value, rules_comments, moderate_comments from ".$articles." WHERE post_id = ".$post_id;
-        $results = $wpdb->get_row($sql, OBJECT);
-        return $results;
-    }
     
     function get_moderation_count($id, $vote_type = 'article', $user = 'all') {
         global $wpdb, $table_prefix;
@@ -594,8 +564,6 @@ class GDSRDatabase
     function get_stats($select = "", $start = 0, $limit = 20, $dates = "0", $cats = "0", $search = "", $sort_column = 'id', $sort_order = 'desc', $additional = '') {
         global $table_prefix;
         $where = "";
-        
-        $extras = ", '' as total, '' as votes, '' as title";
 
         if ($dates != "" && $dates != "0") {
             $where.= " and year(p.post_date) = ".substr($dates, 0, 4);
@@ -613,12 +581,12 @@ class GDSRDatabase
             $order = " ORDER BY ".$sort_column." ".$sort_order;
 
         if ($cats != "" && $cats != "0")
-            $sql = sprintf("SELECT p.id as pid, p.post_title, p.post_type, d.*%s FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p, %sgdsr_data_article d WHERE d.post_id = p.id and t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.id AND t.term_id = %s AND p.post_status = 'publish'%s%s%s LIMIT %s, %s",
-                $extras, $table_prefix, $table_prefix, $table_prefix, $table_prefix, $cats, $where, $additional, $order, $start, $limit
+            $sql = sprintf("SELECT p.id as pid, p.post_title, p.post_type, d.* FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p, %sgdsr_data_article d WHERE d.post_id = p.id and t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.id AND t.term_id = %s AND p.post_status = 'publish'%s%s%s LIMIT %s, %s",
+                $table_prefix, $table_prefix, $table_prefix, $table_prefix, $cats, $where, $additional, $order, $start, $limit
             );
         else
-            $sql = sprintf("select p.id as pid, p.post_title, p.post_type, d.*%s from %sposts p left join %sgdsr_data_article d on p.id = d.post_id WHERE p.post_status = 'publish'%s%s%s limit %s, %s",
-                $extras, $table_prefix, $table_prefix, $where, $additional, $order, $start, $limit
+            $sql = sprintf("select p.id as pid, p.post_title, p.post_type, d.* from %sposts p left join %sgdsr_data_article d on p.id = d.post_id WHERE p.post_status = 'publish'%s%s%s limit %s, %s",
+                $table_prefix, $table_prefix, $where, $additional, $order, $start, $limit
             );
         return $sql;
     }

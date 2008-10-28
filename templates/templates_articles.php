@@ -5,25 +5,6 @@
         <strong><?php _e("Allowed elements", "gd-star-rating"); ?>:</strong> %RATING%, %MAX_RATING%, %VOTES%, %WORD_VOTES%
     </td>
 </tr>
-<tr><th scope="row"><?php _e("Rating Text For Time Restricted Voting", "gd-star-rating"); ?></th>
-    <td>
-        <table cellpadding="0" cellspacing="0" class="previewtable">
-            <tr>
-                <td width="100" valign="top"><?php _e("Voting Active", "gd-star-rating"); ?>:</td>
-                <td><input type="text" name="gdsr_tpl_srheader" id="gdsr_tpl_srheader" value="<?php echo wp_specialchars($gdsr_options["shortcode_starrating_header"]); ?>" style="width: 570px" /><br />
-                    <strong><?php _e("Allowed elements", "gd-star-rating"); ?>:</strong> <?php _e("all articles, custom and time restriction templates elements", "gd-star-rating"); ?></td>
-            <tr>
-        </table>
-        <div class="gdsr-table-split"></div>
-        <table cellpadding="0" cellspacing="0" class="previewtable">
-            <tr>
-                <td width="100" valign="top"><?php _e("Voting Closed", "gd-star-rating"); ?>:</td>
-                <td><input type="text" name="gdsr_tpl_sritem" id="gdsr_tpl_sritem" value="<?php echo wp_specialchars($gdsr_options["shortcode_starrating_item"]); ?>" style="width: 570px" /><br />
-                    <strong><?php _e("Allowed elements", "gd-star-rating"); ?>:</strong> <?php _e("all articles and customtemplates elements", "gd-star-rating"); ?></td>
-            <tr>
-        </table>
-    </td>
-</tr>
 <tr><th scope="row"><?php _e("Shortcode StarRating", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">

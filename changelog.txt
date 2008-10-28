@@ -2,38 +2,6 @@
 
 == Change Log ==
 
-=== Version: 0.9.9.6 RC4 / october 28 2008 ===
-  * new: now template elements for time restricted rating
-  * new: expiry date and countdown calculations
-  * edit: default time restriction templates updated
-  * fix: wordpress flash uploader disappearing
-  * fix: javascript related bugs
-  * fix: php4 preparing data for widget and shortcode
-  * fix: few more php4 related bugs
-
-=== Version: 0.9.9.3 RC3 / october 24 2008 ===
-  * new: expanded editor widget with additional post options
-  * new: default timer restriction options
-  * new: time restrictions data in articles table
-  * new: functions for getting php and mysql versions
-  * new: import from 'wp post rating' plugin data
-  * new: automatic rendering of stars on search results pages
-  * new: additional check to verify received vote
-  * edit: changes to admin pages names
-  * edit: various small changes
-  * fix: numerous visual bugs
-  * fix: trend rating calculation
-  * fix: mysql4 str_to_date sql function problems
-
-=== Version: 0.9.9.2 RC2 / october 22 2008 ===
-  * new: included jquery.ui.datepicker with translations
-  * edit: scandir function replaced with new one that works in php4/php5
-  * edit: removed user guide from the package
-  * edit: updated readme file
-  * fix: rating problem with first comment on page
-  * fix: limiting the length of post title for widget
-  * fix: rendering review stars
-
 === Version: 0.9.9 RC / october 21 2008 ===
   * new: redesigned starrating shortcode
   * new: bayesian mean estimate rating calculation

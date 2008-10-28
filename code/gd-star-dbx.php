@@ -4,22 +4,9 @@ class GDSRX
 {
     function get_trend_data($ids, $grouping = "post", $type = "article", $period = "over", $last = 1, $over = 30) {
         global $wpdb, $table_prefix;
-        $mysql4_strtodate = "date_add(d.vote_date, interval 0 day)";
-        $mysql5_strtodate = "str_to_date(d.vote_date, '%Y-%m-%d')";
         
-        switch(gd_mysql_version()) 
-        {
-            case "4":
-                $strtodate = $mysql4_strtodate;
-                break;
-            case "5":
-            default:
-                $strtodate = $mysql4_strtodate;
-                break;
-        }
-        
-        if ($period == "over") $where = sprintf("%s BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND DATE_SUB(NOW(), INTERVAL %s DAY)", $strtodate, $last + $over, $last);
-        else $where = sprintf("%s BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND NOW()", $strtodate, $last);
+        if ($period == "over") $where = sprintf("str_to_date(d.vote_date, '%s') BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND DATE_SUB(NOW(), INTERVAL %s DAY)", "%Y-%m-%d", $last + $over, $last);
+        else $where = sprintf("str_to_date(d.vote_date, '%s') BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND NOW()", "%Y-%m-%d", $last);
         
         switch ($grouping) {
             case "post":
@@ -140,8 +127,6 @@ class GDSRX
         $where[] = "p.id = d.post_id";
         $where[] = "p.post_status = 'publish'";
         
-        $extras = ", 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars";
-        
         if (($cats != "" && $cats != "0") || $grouping == 'category'){
             $from = sprintf("%sterm_taxonomy t, %sterm_relationships r, ", $table_prefix, $table_prefix);
             $where[] = "t.term_taxonomy_id = r.term_taxonomy_id";
@@ -214,10 +199,10 @@ class GDSRX
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
         
-        $sql = sprintf("select %s%s from %s%sposts p, %sgdsr_data_article d where %s %s order by %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]
+        $sql = sprintf("select %s from %s%sposts p, %sgdsr_data_article d where %s %s order by %s %s limit 0, %s",
+                $select, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]
             );
-        
+
         return $sql;
     }
 }
@@ -233,7 +218,7 @@ class TrendValue
     
     var $trend_rating = 0;
     var $trend_voting = 0;
-    var $day_rate_voters = 0;
+    var $day_rate = 0;
     
     function TrendValue($v_last, $r_last, $v_over, $r_over, $last = 1, $over = 30) {
         $this->votes_last = $v_last;
@@ -241,7 +226,7 @@ class TrendValue
         $this->votes_over = $v_over;
         $this->voters_over = $r_over;
         
-        $this->day_rate_voters = $last / $over;
+        $day_rate = $last / $over;
         
         $this->Calculate();
     }
@@ -250,11 +235,11 @@ class TrendValue
         if ($this->voters_last > 0) $this->rating_last = @number_format($this->votes_last / $this->voters_last, 1);
         if ($this->voters_over > 0) $this->rating_over = @number_format($this->votes_over / $this->voters_over, 1);
         
-        if ($this->rating_last > $this->rating_over ) $this->trend_rating = 1;
-        else if ($this->rating_last < $this->rating_over ) $this->trend_rating = -1;
+        if ($this->rating_last > $this->rating_over) $this->trend_rating = 1;
+        else if ($this->rating_last < $this->rating_over) $this->trend_rating = -1;
 
-        if ($this->voters_last > ($this->voters_over * $this->day_rate_voters)) $this->trend_voting = 1;
-        else if ($this->voters_last < ($this->voters_over * $this->day_rate_voters)) $this->trend_voting = -1;
+        if ($this->voters_last > ($this->voters_over * $this->day_rate)) $this->trend_voting = 1;
+        else if ($this->voters_last < ($this->voters_over * $this->day_rate)) $this->trend_voting = -1;
     }
 }
 

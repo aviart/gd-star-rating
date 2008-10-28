@@ -77,10 +77,9 @@ class GDSRHelper
         <?php
     } 
     
-    function render_timer_combo($name, $selected = "N", $width = 180, $style = '', $row_zero = false, $onchange = '') {
-        if ($onchange != '') $onchange = ' onchange="'.$onchange.'"';
+    function render_timer_combo($name, $selected = "N", $width = 180, $style = '', $row_zero = false) {
         ?>
-<select<?php echo $onchange; ?> style="width: <?php echo $width ?>px; <?php echo $style; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
+<select style="width: <?php echo $width ?>px; <?php echo $style; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
     <?php if ($row_zero) { ?> <option value=""<?php echo $selected == '/' ? ' selected="selected"' : ''; ?>>/</option> <?php } ?>
     <option value="N"<?php echo $selected == 'N' ? ' selected="selected"' : ''; ?>><?php _e("No timer", "gd-star-rating"); ?></option>
     <option value="T"<?php echo $selected == 'T' ? ' selected="selected"' : ''; ?>><?php _e("Countdown timer", "gd-star-rating"); ?></option>
@@ -89,17 +88,6 @@ class GDSRHelper
         <?php
     } 
 
-    function render_countdown_combo($name, $selected = "H", $width = 180, $style = '', $row_zero = false) {
-        ?>
-<select style="width: <?php echo $width ?>px; <?php echo $style; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
-    <?php if ($row_zero) { ?> <option value=""<?php echo $selected == '/' ? ' selected="selected"' : ''; ?>>/</option> <?php } ?>
-    <option value="H"<?php echo $selected == 'H' ? ' selected="selected"' : ''; ?>><?php _e("Hours", "gd-star-rating"); ?></option>
-    <option value="D"<?php echo $selected == 'D' ? ' selected="selected"' : ''; ?>><?php _e("Days", "gd-star-rating"); ?></option>
-    <option value="M"<?php echo $selected == 'M' ? ' selected="selected"' : ''; ?>><?php _e("Months", "gd-star-rating"); ?></option>
-</select>
-        <?php
-    } 
-    
     function render_star_sizes($name, $selected = 20, $width = 120, $extraSel = "") {
         ?>
 <select style="width: <?php echo $width ?>px;" name="<?php echo $name; ?>" id="<?php echo $name; ?>" <?php echo $extraSel; ?>>
@@ -259,31 +247,4 @@ function gd_sort_bayesian_asc($a, $b) {
 function gd_sort_bayesian_desc($a, $b) {
     if ($a->bayesian == $b->bayesian) return 0;
     return ($a->bayesian > $b->bayesian) ? -1 : 1;
-}
-
-function gd_scandir($path) {
-	if (function_exists(scandir)) {
-		return scandir($path);
-	}
-	else {
-		$dh  = opendir($path);
-		while (false !== ($filename = readdir($dh))) {
-			$files[] = $filename;
-		}
-		return $files;
-	}
-}
-
-function gd_mysql_version($full = false) {
-    if ($full)
-        return mysql_get_server_info();
-    else
-        return substr(mysql_get_server_info(), 0, 1); 
-}
-
-function gd_php_version($full = false) {
-    if ($full)
-        return phpversion();
-    else
-        return substr(phpversion(), 0, 1); 
 }

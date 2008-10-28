@@ -85,11 +85,6 @@
                 <?php GDSRHelper::render_timer_combo("gdsr_default_timer_type", $gdsr_options["default_timer_type"]); ?>
                 </td>
                 <td width="10"></td>
-                <td width="150"><?php _e("Default countdown value", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left">
-                <input type="text" value="<?php echo $gdsr_options["default_timer_countdown_value"]; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 80px; text-align: right;" />
-                <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $gdsr_options["default_timer_countdown_type"], 85); ?>
-                </td>
             </tr>
         </table>
         <?php } ?>
@@ -107,8 +102,6 @@
                     <input type="checkbox" name="gdsr_archive" id="gdsr_archive"<?php if ($gdsr_options["display_archive"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_archive"><?php _e("For posts displayed in Archives.", "gd-star-rating"); ?></label>
                     <br />
                     <input type="checkbox" name="gdsr_home" id="gdsr_home"<?php if ($gdsr_options["display_home"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_home"><?php _e("For posts displayed on Front Page.", "gd-star-rating"); ?></label>
-                    <br />
-                    <input type="checkbox" name="gdsr_search" id="gdsr_search"<?php if ($gdsr_options["display_search"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_search"><?php _e("For posts displayed on Search results.", "gd-star-rating"); ?></label>
                 </td>
             </tr>
         </table>

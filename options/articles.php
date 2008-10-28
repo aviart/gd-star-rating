@@ -173,29 +173,6 @@ function checkAll(form) {
                 $row->pid,
                 $comment_count
             );
-        $timer_info = "";
-        if ($options["timer_active"] == 1) {
-            if ($row->expiry_type == "N") $timer_info = "no limit";
-            if ($row->expiry_type == "D") {
-                $timer_info = '<strong><span style="color: red">date limit</span></strong><br />';
-                $timer_info.= "".$row->expiry_value."";
-            }
-            if ($row->expiry_type == "T") {
-                $timer_info = '<strong><span style="color: red">countdown</span></strong><br />';
-                $timer_info.= "".substr($row->expiry_value, 1)." ";
-                switch (substr($row->expiry_value, 0, 1)) {
-                    case "H":
-                        $timer_info.= __("Hours", "gd-star-rating");
-                        break;
-                    case "D":
-                        $timer_info.= __("Days", "gd-star-rating");
-                        break;
-                    case "M":
-                        $timer_info.= __("Months", "gd-star-rating");
-                        break;
-                }
-            }
-        }
         
         echo '<tr id="post-'.$row->pid.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->pid.'" type="checkbox"></th>';
@@ -203,14 +180,14 @@ function checkAll(form) {
         echo '<td class="num"><div class="post-com-count-wrapper">'.$comment_count.'</div></td>';
         if ($options["moderation_active"] == 1) 
             echo '<td>'.$moderate_articles.$row->moderate_articles.'<br />'.$moderate_comments.$row->moderate_comments.'</td>';
-        if ($options["timer_active"] == 1)
-            echo '<td>'.$timer_info.'</td>';
+        if ($options["timer_active"] == 1) 
+            echo '<td></td>';
         echo '<td>'.$row->rules_articles.'<br />'.$row->rules_comments.'</td>';
         echo '<td>'.GDSRDatabase::get_categories($row->pid).'</td>';
         echo '<td>'.$row->votes.'</td>';
         echo '<td>'.$row->total.'</td>';
         if ($options["review_active"] == 1) 
-            echo '<td align="right">'.$row->review.'</td>';
+            echo '<td>'.$row->review.'</td>';
         echo '</tr>';
         
         if ($tr_class == "")

@@ -50,11 +50,6 @@
         <?php include(STARRATING_PATH."templates/templates_elements_comments.php"); ?>
     </td>
 </tr>
-<tr><th scope="row"><?php _e("Time Restriction", "gd-star-rating"); ?></th>
-    <td>
-        <?php include(STARRATING_PATH."templates/templates_elements_timer.php"); ?>
-    </td>
-</tr>
 </tbody></table>
 </div>
 

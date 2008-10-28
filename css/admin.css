@@ -1,16 +1,8 @@
-.gdsr-table-split, .gdsr-table-split-edit {
+.gdsr-table-split {
 	border-top: 2px solid lightBlue; 
 	width: 100%; 
-}
-
-.gdsr-table-split {
 	margin-top: 10px; 
 	padding-top: 10px;
-}
-
-.gdsr-table-split-edit {
-	margin-top: 3px; 
-	padding-top: 3px;
 }
 
 form#gdsr-articles {
