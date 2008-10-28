@@ -329,9 +329,7 @@ div.ui-tabs-panel {
 	 padding: 10px;
 }
 
-.form-table {
-	margin: 5px 0 0 0;
-}
+.form-table { margin: 5px 0 0 0; }
 
 #rightnow {
 	border-style:solid;
@@ -356,9 +354,7 @@ div.ui-tabs-panel {
 	background-color:#F0F6FB;
 }
 
-#rightnow h3, #rightnow p {
-	padding:0pt 5px;
-}
+#rightnow h3, #rightnow p { padding: 0pt 5px; }
 
 .gdsr .notice {
 	background-color: #F0F6FB;
@@ -392,9 +388,7 @@ a.rssurl {
     font-size: 13px;
 }
 
-a.rssurl:hover {
-    color: white;
-}
+a.rssurl:hover { color: white; }
 
 .ssiconurl {
     font-size: 13px;
@@ -403,6 +397,10 @@ a.rssurl:hover {
     padding-left: 8px;
 }
 
-#dashboard-widgets {
-    padding-top: 20px;
+#dashboard-widgets { padding-top: 20px; }
+
+.gdsr-vertical-line {
+	border-left: 2px solid lightBlue;
+	padding-left: 10px;
+	vertical-align: top;
 }
