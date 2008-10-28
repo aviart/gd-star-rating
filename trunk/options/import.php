@@ -23,7 +23,7 @@
 <ul>
     <li><a href="#fragment-1"><span>Post Star Rating</span></a></li>
     <li><a href="#fragment-2"><span>WP Post Ratings</span></a></li>
-    <li><a href="#fragment-3"><span>Vote The Post </span></a></li>
+    <!--<li><a href="#fragment-3"><span>Vote The Post </span></a></li>-->
 </ul>
 <div style="clear: both"></div>
 
@@ -77,7 +77,7 @@
 </form>
 </div>
 
-<div id="fragment-3">
+<!--<div id="fragment-3">
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Plugin URL", "gd-star-rating"); ?>:</th>
     <td>
@@ -91,7 +91,7 @@
 </tr>
 </tbody></table>
 <p>Work in progress...</p>
-</div>
+</div>-->
 
 <br /><div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>
 <?php _e("To avoid rating data import problems, please don't use GD Star Rating in the same time as the plugins above, to avoid potential import problems and false data. I can't guarantee that data will be transfered without problems.", "gd-star-rating"); ?>
