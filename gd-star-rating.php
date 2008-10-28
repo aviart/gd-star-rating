@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 0.9.9.6
+Version: 1.0.0
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -91,15 +91,15 @@ if (!class_exists('GDStarRating')) {
             "cmm_rating_text" => "Rating: %CMM_RATING%/&lt;strong&gt;%MAX_CMM_RATING%&lt;/strong&gt; (%CMM_VOTES% %WORD_VOTES% cast)",
             "shortcode_starrating_header" => "&lt;table&gt;&lt;thead&gt;&lt;td class=&quot;title&quot;&gt;Title&lt;/td&gt;&lt;td class=&quot;votes&quot;&gt;Votes&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;Rating&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;Review&lt;/td&gt;&lt;/thead&gt;&lt;tbody&gt;",
             "shortcode_starrating_item" => "&lt;tr class=&quot;%TABLE_ROW_CLASS%&quot;&gt;&lt;td class=&quot;title&quot;&gt;%RATE_TREND%&lt;a href=&quot;%PERMALINK%&quot;&gt;%TITLE%&lt;/a&gt;&lt;/td&gt;&lt;td class=&quot;votes&quot;&gt;%VOTES%&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;%RATING%&lt;/td&gt;&lt;td class=&quot;rating&quot;&gt;%REVIEW%&lt;/td&gt;&lt;/tr&gt;",
-            "shortcode_starrating_footer" => "&lt;/tbody&gt;&lt;/table&gt;",
+            "shortcode_starrating_footer" => "&lt;/tbody&gt;&lt;/g phptable&gt;",
             "time_restricted_active" => "Rating: %RATING%/&lt;strong&gt;%MAX_RATING%&lt;/strong&gt; (%VOTES% %WORD_VOTES% cast)<br />%TR_DAYS% days, %TR_HOURS% hours, %TR_MINUTES% minutes remaining.",
             "time_restricted_closed" => "&lt;strong&gt;Voting Closed.&lt;/strong&gt; Rating: %RATING%/&lt;strong&gt;%MAX_RATING%&lt;/strong&gt; (%VOTES% %WORD_VOTES% cast)"
         );
         
         var $default_options = array(
-            "version" => "0.9.9.6",
-            "date" => "2008.10.29.",
-            "status" => "RC",
+            "version" => "1.0.0",
+            "date" => "2008.10.31.",
+            "status" => "Stable",
             "ie_png_fix" => 1,
             "ajax" => 1,
             "widget_articles" => 1,

@@ -157,18 +157,18 @@ function checkAll(form) {
         if ($moderate_articles == 0)
             $moderate_articles = "[ <strong>0</strong> ] ";
         else
-            $moderate_articles = sprintf('[<a href="./admin.php?page=gdsr-stats&gdsr=moderation&pid=%s&vt=article"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_articles);
+            $moderate_articles = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&gdsr=moderation&pid=%s&vt=article"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_articles);
 
         if ($moderate_comments == 0)
             $moderate_comments = "[ <strong>0</strong> ] ";
         else
-            $moderate_comments = sprintf('[<a href="./admin.php?page=gdsr-stats&gdsr=moderation&pid=%s&vt=post"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_comments);
+            $moderate_comments = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&gdsr=moderation&pid=%s&vt=post"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_comments);
             
         $comment_count = GDSRDatabase::get_comments_count($row->pid);
         if ($comment_count == 0)
             $comment_count = '<a class="post-com-count" title="0"><span class="comment-count">0</span></a>';
         else
-            $comment_count = sprintf('<a class="post-com-count" title="%s" href="./admin.php?page=gdsr-stats&gdsr=comments&postid=%s"><span class="comment-count">%s</span></a>',
+            $comment_count = sprintf('<a class="post-com-count" title="%s" href="./admin.php?page=gd-star-rating-stats&gdsr=comments&postid=%s"><span class="comment-count">%s</span></a>',
                 $comment_count,
                 $row->pid,
                 $comment_count
