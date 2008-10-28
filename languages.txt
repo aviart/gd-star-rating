@@ -9,7 +9,7 @@
   * web: http://www.gdragon.info/
 
 === Serbian ===
-  * version: 0.9.9 RC
+  * version: 1.0.0
   * author: Milan Petrovic
   * email: milan@gdragon.info
   * web: http://www.gdragon.info/

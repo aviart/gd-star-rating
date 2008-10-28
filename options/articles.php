@@ -88,6 +88,21 @@ function checkAll(form) {
         }
     }
 }
+function gdsrTimerChange() {
+    var timer = jQuery("#gdsr_timer_type").val();
+    jQuery("#gdsr_timer_date").css("display", "none");
+    jQuery("#gdsr_timer_countdown").css("display", "none");
+    jQuery("#gdsr_timer_date_text").css("display", "none");
+    jQuery("#gdsr_timer_countdown_text").css("display", "none");
+    if (timer == "D") {
+        jQuery("#gdsr_timer_date").css("display", "block");
+        jQuery("#gdsr_timer_date_text").css("display", "block");
+    }
+    if (timer == "T") {
+        jQuery("#gdsr_timer_countdown").css("display", "block");
+        jQuery("#gdsr_timer_countdown_text").css("display", "block");
+    }
+}
 </script>
 
 <div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
@@ -223,59 +238,120 @@ function checkAll(form) {
 
     </tbody>
 </table>
-<div class="tablenav" style="height: 5em">
+<div class="tablenav" style="height: 7.5em">
     <div class="alignleft">
         <div class="panel">
-            <table width="100%"><tr>
-            <td style="width: 120px; height: 29px;">
-                <span class="paneltext"><strong><?php _e("Articles", "gd-star-rating"); ?>:</strong></span>
-            </td>
-            <td style="height: 29px;">
-                <span class="paneltext"><?php _e("Delete", "gd-star-rating"); ?>:</span>
-                <select id="gdsr_delete_articles" name="gdsr_delete_articles" style="margin-top: -4px; width: 80px;">
-                    <option value="">/</option>
-                    <option value="AV"><?php _e("Visitors", "gd-star-rating"); ?></option>
-                    <option value="AU"><?php _e("Users", "gd-star-rating"); ?></option>
-                    <option value="AA"><?php _e("All", "gd-star-rating"); ?></option>
-                </select>
+        <table cellpadding="0" cellspacing="0">
+        <tr>
+        <td>
+            <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 120px; height: 29px;">
+                    <span class="paneltext"><strong><?php _e("Articles", "gd-star-rating"); ?>:</strong></span>
+                </td>
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Delete", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 29px;" align="right">
+                    <select id="gdsr_delete_articles" name="gdsr_delete_articles" style="width: 120px;">
+                        <option value="">/</option>
+                        <option value="AV"><?php _e("Visitors", "gd-star-rating"); ?></option>
+                        <option value="AU"><?php _e("Users", "gd-star-rating"); ?></option>
+                        <option value="AA"><?php _e("All", "gd-star-rating"); ?></option>
+                    </select>
+                </td><td style="width: 10px"></td>
                 <?php if ($options["moderation_active"] == 1) { ?>
-                <span class="paneltext"><?php _e("Moderation", "gd-star-rating"); ?>:</span>
-                <?php GDSRHelper::render_moderation_combo("gdsr_article_moderation", "/", 120, "margin-top: -4px;", true); ?>
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Moderation", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 29px;" align="right">
+                <?php GDSRHelper::render_moderation_combo("gdsr_article_moderation", "/", 120, "", true); ?>
+                </td><td style="width: 10px"></td>
                 <?php } ?>
-                <span class="paneltext"><?php _e("Vote Rules", "gd-star-rating"); ?>:</span>
-                <?php GDSRHelper::render_rules_combo("gdsr_article_voterules", "/", 120, "margin-top: -4px;", true); ?>
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Vote Rules", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 29px;" align="right">
+                <?php GDSRHelper::render_rules_combo("gdsr_article_voterules", "/", 120, "", true); ?>
+                </td>
+            </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 120px; height: 29px;">
+                </td>
                 <?php if ($options["review_active"] == 1) { ?>
-                <span class="paneltext"><?php _e("Review", "gd-star-rating"); ?>:</span>
-                <select id="gdsr_review_rating" name="gdsr_review_rating" style="margin-top: -4px; width: 50px; text-align: right;">
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Review", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 29px;" align="right">
+                <select id="gdsr_review_rating" name="gdsr_review_rating" style="width: 50px; text-align: right;">
                     <option value="">/</option>
                     <?php GDSRHelper::render_stars_select_full(-1, $options["review_stars"], 0); ?>
                 </select>.
-                <select id="gdsr_review_rating_decimal" name="gdsr_review_rating_decimal" style="margin-top: -4px; width: 50px; text-align: right;">
+                <select id="gdsr_review_rating_decimal" name="gdsr_review_rating_decimal" style="width: 50px; text-align: right;">
                     <option value="">/</option>
                     <?php GDSRHelper::render_stars_select_full(-1, 9, 0); ?>
                 </select>
+                </td><td style="width: 10px"></td>
                 <?php } ?>
-            </td><td align="right" style="width: 80px; height: 29px;"><input class="button-secondary delete" type="submit" name="gdsr_update" value="<?php _e("Update", "gd-star-rating"); ?>" style="margin-top: -3px" /></td></tr>
-            <tr><td style="width: 120px; height: 29px;">
-            <?php if ($options["comments_active"] == 1) { ?>
-                <span class="paneltext"><strong><?php _e("Comments", "gd-star-rating"); ?>:</strong></span>
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Restriction", "gd-star-rating"); ?>:</span>
                 </td>
-                <td style="height: 29px;">
+                <td style="width: 140px; height: 29px;" align="right">
+                <?php GDSRHelper::render_timer_combo("gdsr_timer_type", $timer_restrictions, 120, '', false, 'gdsrTimerChange()'); ?>
+                </td><td style="width: 10px"></td>
+                <td style="width: 80px; height: 29px;">
+                    <div id="gdsr_timer_countdown_text" style="display: none"><span class="paneltext"><?php _e("Countdown", "gd-star-rating"); ?>:</span></div>
+                    <div id="gdsr_timer_date_text" style="display: none"><span class="paneltext"><?php _e("Date", "gd-star-rating"); ?>:</span></div>
+                </td>
+                <td style="width: 140px; height: 29px;" align="right">
+                    <div id="gdsr_timer_countdown" style="display: none"><input type="text" value="<?php echo $countdown_value; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 35px; text-align: right; padding: 2px;" />
+                    <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $countdown_type, 70); ?></div>
+                    <div id="gdsr_timer_date" style="display: none"><input type="text" value="<?php echo $timer_date_value; ?>" id="gdsr_timer_date_value" name="gdsr_timer_date_value" style="width: 110px; padding: 2px;" /></div>
+                </td>
+            </tr>
+            </table>
+            
+            <?php if ($options["comments_active"] == 1) { ?>
+            <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 120px; height: 29px;">
+                    <span class="paneltext"><strong><?php _e("Comments", "gd-star-rating"); ?>:</strong></span>
+                </td>
+                <td style="width: 80px; height: 29px;">
                     <span class="paneltext"><?php _e("Delete", "gd-star-rating"); ?>:</span>
-                    <select id="gdsr_delete_articles" name="gdsr_delete_comments" style="margin-top: -4px; width: 80px;">
+                </td>
+                <td style="width: 140px; height: 29px;" align="right">
+                    <select id="gdsr_delete_articles" name="gdsr_delete_comments" style="margin-top: -4px; width: 120px;">
                         <option value="">/</option>
                         <option value="CV"><?php _e("Visitors", "gd-star-rating"); ?></option>
                         <option value="CU"><?php _e("Users", "gd-star-rating"); ?></option>
                         <option value="CA"><?php _e("All", "gd-star-rating"); ?></option>
                     </select>
+                </td><td style="width: 10px"></td>
                 <?php if ($options["moderation_active"] == 1) { ?>
-                <span class="paneltext"><?php _e("Moderation", "gd-star-rating"); ?>:</span>
-                <?php GDSRHelper::render_moderation_combo("gdsr_comments_moderation", "/", 120, "margin-top: -4px;", true); ?>
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Moderation", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 29px;" align="right">
+                <?php GDSRHelper::render_moderation_combo("gdsr_comments_moderation", "/", 120, "", true); ?>
+                </td><td style="width: 10px"></td>
                 <?php } ?>
-                <span class="paneltext"><?php _e("Vote Rules", "gd-star-rating"); ?>:</span>
-                <?php GDSRHelper::render_rules_combo("gdsr_comments_voterules", "/", 120, "margin-top: -4px;", true); ?>
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Vote Rules", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 29px;" align="right">
+                <?php GDSRHelper::render_rules_combo("gdsr_comments_voterules", "/", 120, "", true); ?>
+                </td>
+            </tr>
+            </table>
             <?php } ?>
-            </td><td></td></tr></table>
+        </td>
+        <td style="width: 10px;"></td>
+        <td class="gdsr-vertical-line"><input class="button-secondary delete" type="submit" name="gdsr_update" value="<?php _e("Update", "gd-star-rating"); ?>" /></td>
+        </tr>
+        </table>
         </div>
     </div>
 <br class="clear"/>
