@@ -4,5 +4,6 @@
 
 === Version: 1.0.0 / october 31 2008 ===
   * new: rendering time testrictions
+  * new: front page completed
   * edit: expanded rating text template
   * fix: page loading renaming regressions
