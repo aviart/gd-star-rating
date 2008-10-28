@@ -131,6 +131,13 @@ class GDSRDatabase
         }
     }
     
+    function lock_post($post_id, $rules_articles = "N") {
+        global $wpdb, $table_prefix;
+        
+        $wpdb->query(sprintf("update %sgdsr_data_article set rules_articles = '%s' where post_id = %s",
+            $table_prefix, $rules_articles, $post_id));
+    }
+    
     function update_reviews($ids, $review, $ids_array) {
         global $wpdb, $table_prefix;
         GDSRDatabase::add_defaults($ids, $ids_array);
