@@ -1,13 +1,13 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://wp.gdragon.info/donate/
-Version: 0.9.9.6
-Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends
+Version: 1.0.0
+Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review
 Requires at least: 2.5
 Tested up to: 2.7.0
 Stable tag: trunk
 
-Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
+Star Rating plugin allows you to set up rating system for pages, posts and comments in your blog.
 
 == Description ==
 
@@ -17,6 +17,7 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 
 * Rating of posts and pages and comments
 * Review Rating for posts
+* Ajax rating support
 * Voting rules on post/page base
 * Moderation of votes on post/page base
 * Different trend and star styles and sizes
@@ -27,14 +28,12 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 * WordPress shortcode support
 * WordPress editor button and tinyMCE3 plugin for shortcode
 * Multi language support
-* Control Panel
 * Manual placement functions of the rating code
 * Category support for posts
 * Advanced Rating Widget
 * Rating and Voting trend calculations
 * Import data from other rating plugins
 * PDF User Guide
-* Ajax rating support
 
 = Warning =
 
@@ -53,15 +52,15 @@ Options page for this plugin consist of 5 tabs:
 
 * Front Page:
   General info about the plugin and links
-* Plugin Settings
+* Articles
+  Votes and ratings for each post and page
+* Settings
   All options for this plugin are here
 * Templates
   Rating text templates
-* Votes Stats
-  Votes and ratings for each post and page
-* Import Data
+* Import
   Import voting data from other rating plugins
-* Export Data
+* Export
   Export rating data to CSV format
 * Setup
   Upgrade and setup options
