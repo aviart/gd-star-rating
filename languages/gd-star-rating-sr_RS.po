@@ -3,21 +3,21 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Milan Petrovic <milan@gdragon.info>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: code/gd-star-dbone.php:632
+#: code/gd-star-dbone.php:639
 msgid "Show all dates"
 msgstr "Прикажи све датуме"
 
-#: code/gd-star-dbone.php:660
+#: code/gd-star-dbone.php:667
 msgid "All users and visitors"
 msgstr "Сви корисници и посетиоци"
 
-#: code/gd-star-dbone.php:661
+#: code/gd-star-dbone.php:668
 #: tinymce3/window.php:185
 #: widgets/widget.php:42
 #: widgets/widget.php:178
@@ -25,11 +25,11 @@ msgstr "Сви корисници и посетиоци"
 msgid "Visitors Only"
 msgstr "Само Посетици"
 
-#: code/gd-star-dbone.php:662
+#: code/gd-star-dbone.php:669
 msgid "All Users"
 msgstr "Сви корисници"
 
-#: code/gd-star-dbone.php:678
+#: code/gd-star-dbone.php:685
 msgid "All categories"
 msgstr "Све категорије"
 
@@ -52,136 +52,136 @@ msgstr "посетиоци"
 msgid "users"
 msgstr "корисници"
 
-#: code/gd-star-functions.php:58
+#: code/gd-star-functions.php:101
 msgid "No moderation"
 msgstr "Без модерације"
 
-#: code/gd-star-functions.php:59
+#: code/gd-star-functions.php:102
 msgid "Moderate visitors"
 msgstr "Модерација посетиоца"
 
-#: code/gd-star-functions.php:60
+#: code/gd-star-functions.php:103
 msgid "Moderate users"
 msgstr "Модерација корисника"
 
-#: code/gd-star-functions.php:61
+#: code/gd-star-functions.php:104
 msgid "Moderate all"
 msgstr "Модерација за све"
 
-#: code/gd-star-functions.php:70
+#: code/gd-star-functions.php:113
 msgid "Everyone can vote"
 msgstr "Свако може да гласа"
 
-#: code/gd-star-functions.php:71
+#: code/gd-star-functions.php:114
 msgid "Only visitors"
 msgstr "Само посетиоци"
 
-#: code/gd-star-functions.php:72
+#: code/gd-star-functions.php:115
 msgid "Only users"
 msgstr "Само корисници"
 
-#: code/gd-star-functions.php:73
+#: code/gd-star-functions.php:116
 msgid "Locked"
 msgstr "Закључан"
 
-#: code/gd-star-functions.php:74
+#: code/gd-star-functions.php:117
 msgid "Locked and hidden"
 msgstr "Закључано и сакривено"
 
-#: code/gd-star-functions.php:84
+#: code/gd-star-functions.php:127
 msgid "No timer"
 msgstr "Без лимитирања"
 
-#: code/gd-star-functions.php:85
+#: code/gd-star-functions.php:128
 msgid "Countdown timer"
 msgstr ""
 
-#: code/gd-star-functions.php:86
+#: code/gd-star-functions.php:129
 msgid "Date limited"
 msgstr "Временски лимитиран"
 
-#: code/gd-star-functions.php:95
+#: code/gd-star-functions.php:138
 #: options/articles.php:187
 msgid "Hours"
 msgstr "Сати"
 
-#: code/gd-star-functions.php:96
+#: code/gd-star-functions.php:139
 #: options/articles.php:190
 msgid "Days"
 msgstr "Дани"
 
-#: code/gd-star-functions.php:97
+#: code/gd-star-functions.php:140
 #: options/articles.php:193
 msgid "Months"
 msgstr "Месеци"
 
-#: code/gd-star-functions.php:105
+#: code/gd-star-functions.php:148
 #: tinymce3/window.php:288
 #: tinymce3/window.php:313
 msgid "Mini"
 msgstr "Мини"
 
-#: code/gd-star-functions.php:106
+#: code/gd-star-functions.php:149
 #: tinymce3/window.php:289
 #: tinymce3/window.php:314
 msgid "Small"
 msgstr "Мала"
 
-#: code/gd-star-functions.php:107
+#: code/gd-star-functions.php:150
 #: tinymce3/window.php:290
 #: tinymce3/window.php:315
 msgid "Medium"
 msgstr "Средња"
 
-#: code/gd-star-functions.php:108
+#: code/gd-star-functions.php:151
 #: tinymce3/window.php:291
 #: tinymce3/window.php:316
 msgid "Big"
 msgstr "Велика"
 
-#: code/gd-star-functions.php:116
+#: code/gd-star-functions.php:159
 msgid "No alignment"
 msgstr "Без поравнања"
 
-#: code/gd-star-functions.php:117
-#: code/gd-star-functions.php:132
+#: code/gd-star-functions.php:160
+#: code/gd-star-functions.php:175
 msgid "Left"
 msgstr "Лево"
 
-#: code/gd-star-functions.php:118
+#: code/gd-star-functions.php:161
 msgid "Center"
 msgstr "Центар"
 
-#: code/gd-star-functions.php:119
-#: code/gd-star-functions.php:134
+#: code/gd-star-functions.php:162
+#: code/gd-star-functions.php:177
 msgid "Right"
 msgstr "Десно"
 
-#: code/gd-star-functions.php:127
+#: code/gd-star-functions.php:170
 msgid "Always hide"
 msgstr "Увек Сакриј"
 
-#: code/gd-star-functions.php:128
+#: code/gd-star-functions.php:171
 msgid "Top"
 msgstr "Врх"
 
-#: code/gd-star-functions.php:129
+#: code/gd-star-functions.php:172
 msgid "Top (hide if empty)"
 msgstr "Врх (сакриј ако је празан)"
 
-#: code/gd-star-functions.php:130
+#: code/gd-star-functions.php:173
 msgid "Bottom"
 msgstr "Дно"
 
-#: code/gd-star-functions.php:131
+#: code/gd-star-functions.php:174
 msgid "Bottom (hide if empty)"
 msgstr "Дно (сакриј ако је празан)"
 
-#: code/gd-star-functions.php:133
+#: code/gd-star-functions.php:176
 msgid "Left (hide if empty)"
 msgstr "Лево (сакриј ако је празан)"
 
-#: code/gd-star-functions.php:135
+#: code/gd-star-functions.php:178
 msgid "Right (hide if empty)"
 msgstr "Десно (сакриј ако је празан)"
 
@@ -881,7 +881,9 @@ msgstr "Рејтинг Текст"
 #: templates/templates_articles.php:4
 #: templates/templates_articles.php:13
 #: templates/templates_articles.php:21
-#: templates/templates_articles.php:36
+#: templates/templates_articles.php:32
+#: templates/templates_articles.php:37
+#: templates/templates_articles.php:42
 #: templates/templates_comments.php:4
 msgid "Allowed elements"
 msgstr "Дозвољени елементи"
@@ -895,16 +897,12 @@ msgid "Voting Active"
 msgstr "Гласање Активно"
 
 #: templates/templates_articles.php:13
-msgid "all articles, custom and time restriction templates elements"
-msgstr ""
+msgid "and time restriction elements"
+msgstr "сви елемнети за временско ограничење"
 
 #: templates/templates_articles.php:19
 msgid "Voting Closed"
 msgstr "Гласање Затворено"
-
-#: templates/templates_articles.php:21
-msgid "all articles and customtemplates elements"
-msgstr ""
 
 #: templates/templates_articles.php:26
 msgid "Shortcode StarRating"
@@ -915,16 +913,21 @@ msgstr "Shortcode StarRating"
 msgid "Header"
 msgstr "Заглавље"
 
-#: templates/templates_articles.php:34
+#: templates/templates_articles.php:32
+#: templates/templates_articles.php:42
+msgid "no template elements allowed"
+msgstr "нису дозвољени елементи шаблона"
+
+#: templates/templates_articles.php:35
 #: widgets/widget.php:331
 msgid "Item"
 msgstr "Ставка"
 
-#: templates/templates_articles.php:36
+#: templates/templates_articles.php:37
 msgid "all articles and custom templates elements"
 msgstr ""
 
-#: templates/templates_articles.php:39
+#: templates/templates_articles.php:40
 #: widgets/widget.php:336
 msgid "Footer"
 msgstr "Футер"

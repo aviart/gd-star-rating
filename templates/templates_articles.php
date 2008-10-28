@@ -11,7 +11,7 @@
             <tr>
                 <td width="100" valign="top"><?php _e("Voting Active", "gd-star-rating"); ?>:</td>
                 <td><input type="text" name="gdsr_tpl_srheader" id="gdsr_tpl_srheader" value="<?php echo wp_specialchars($gdsr_options["shortcode_starrating_header"]); ?>" style="width: 570px" /><br />
-                    <strong><?php _e("Allowed elements", "gd-star-rating"); ?>:</strong> %RATING%, %MAX_RATING%, %VOTES%, %WORD_VOTES%, %ID% <?php _e("and time restriction templates elements", "gd-star-rating"); ?></td>
+                    <strong><?php _e("Allowed elements", "gd-star-rating"); ?>:</strong> %RATING%, %MAX_RATING%, %VOTES%, %WORD_VOTES%, %ID% <?php _e("and time restriction elements", "gd-star-rating"); ?></td>
             <tr>
         </table>
         <div class="gdsr-table-split"></div>

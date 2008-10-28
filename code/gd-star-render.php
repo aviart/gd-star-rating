@@ -151,7 +151,16 @@ class GDSRRender
                         $time_total = GDSRHelper::remaining_time_total($time_remaining);
                         $tpl = $template["time_restricted_active"];
                         $rt = html_entity_decode($tpl);
-                        
+                        $rt = str_replace('%TR_DATE%', $time_date, $rt);
+                        $rt = str_replace('%TR_YEARS%', $time_parts["year"], $rt);
+                        $rt = str_replace('%TR_MONTHS%', $time_parts["month"], $rt);
+                        $rt = str_replace('%TR_DAYS%', $time_parts["day"], $rt);
+                        $rt = str_replace('%TR_HOURS%', $time_parts["hour"], $rt);
+                        $rt = str_replace('%TR_MINUTES%', $time_parts["minute"], $rt);
+                        $rt = str_replace('%TR_SECONDS%', $time_parts["second"], $rt);
+                        $rt = str_replace('%TOT_DAYS%', $time_total["day"], $rt);
+                        $rt = str_replace('%TOT_HOURS%', $time_total["hour"], $rt);
+                        $rt = str_replace('%TOT_MINUTES%', $time_total["minute"], $rt);
                     }
                     else {
                         if ($time_restirctions != 'N')
