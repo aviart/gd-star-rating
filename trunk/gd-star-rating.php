@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 0.9.9.5
+Version: 0.9.9.6
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -97,8 +97,8 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "version" => "0.9.9.5",
-            "date" => "2008.10.28.",
+            "version" => "0.9.9.6",
+            "date" => "2008.10.29.",
             "status" => "RC",
             "ie_png_fix" => 1,
             "ajax" => 1,
