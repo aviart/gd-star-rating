@@ -11,6 +11,49 @@ class GDSRHelper
         return false;
     }
     
+    function remaining_time_parts($timestamp) {
+        $times = array(
+                31536000 => 'year', 
+                2592000 => 'month',  
+                604800 => 'week', 
+                86400 => 'day', 
+                3600 => 'hour', 
+                60 => 'minute', 
+                1 => 'second'
+            );
+        $secs = $timestamp;
+        $parts = array();
+        
+        foreach ($times AS $key => $value) {
+            if ($secs >= $key) {
+                $count = floor($secs / $key);
+                $parts[$value] = $count;
+                $secs = $secs - $count * $key;
+            }
+        }
+        
+        return $parts;
+    }
+    
+    function remaining_time_total($timestamp) {
+        $times = array(
+                31536000 => 'year', 
+                2592000 => 'month',  
+                604800 => 'week', 
+                86400 => 'day', 
+                3600 => 'hour', 
+                60 => 'minute', 
+                1 => 'second'
+            );
+        $parts = array();
+
+        foreach ($times AS $key => $value) {
+            $parts[$value] = floor($secs / $key);
+        }
+        
+        return $parts;
+    }
+    
     function render_styles_select($styles, $selected = '') { 
         foreach ($styles as $style) {
             if ($selected == $style->folder) $current = ' selected="selected"';

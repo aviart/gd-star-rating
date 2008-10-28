@@ -1679,14 +1679,21 @@ if (!class_exists('GDStarRating')) {
                     $allow_vote = false;
             }
             
+            $remaining = 0;
             if ($allow_vote && $post_data->expiry_type != 'N') {
                 switch($post_data->expiry_type) {
                     case "D":
                         $remaining = $this->expiration_date($post_data->expiry_value);
+                        $deadline = $post_data->expiry_value;
                         break;
                     case "T":
                         $remaining = $this->expiration_countdown($post->post_date, $post_data->expiry_value);
+                        $deadline = $post_data->expiry_value;
                         break; 
+                }
+                if ($remaining < 1) {
+                    GDSRDatabase::lock_post($rd_post_id);
+                    $allow_vote = false;
                 }
             }
 
@@ -1712,7 +1719,7 @@ if (!class_exists('GDStarRating')) {
                 $score = $post_data->user_votes;
             }
             
-            $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"]);
+            $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"], $post_data->expiry_type, $remaining, $deadline);
             return $rating_block;
         }
         // render

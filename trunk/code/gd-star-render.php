@@ -105,6 +105,7 @@ class GDSRRender
                 $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
                 $rt = str_replace('%VOTES%', $votes, $rt);
                 $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                $rt = str_replace('%ID%', $id, $rt);
                 $rater_text.= $rt;
                 break;
             case 'c':
@@ -114,6 +115,7 @@ class GDSRRender
                 $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
                 $rt = str_replace('%CMM_VOTES%', $votes, $rt);
                 $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                $rt = str_replace('%ID%', $id, $rt);
                 $rater_text.= $rt;
                 break;
         }
@@ -121,7 +123,7 @@ class GDSRRender
         return $rater_text;
     }
     
-    function rating_block($id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $align, $text, $header, $header_text, $custom_css_block = "", $custom_css_text = "", $ajax = false) {
+    function rating_block($id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $align, $text, $header, $header_text, $custom_css_block = "", $custom_css_text = "", $ajax = false, $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
         $template = get_option('gd-star-rating-templates');
         if ($votes == 1) $tense = $template["word_votes_singular"];
         else $tense = $template["word_votes_plural"];
@@ -144,12 +146,25 @@ class GDSRRender
             switch ($type)
             {
                 case 'a':
-                    $tpl = $template["article_rating_text"];
-                    $rt = html_entity_decode($tpl);
+                    if ($time_restirctions != 'N' && $time_remaining > 0) {
+                        $time_parts = GDSRHelper::remaining_time_parts($time_remaining);
+                        $time_total = GDSRHelper::remaining_time_total($time_remaining);
+                        $tpl = $template["time_restricted_active"];
+                        $rt = html_entity_decode($tpl);
+                        
+                    }
+                    else {
+                        if ($time_restirctions != 'N')
+                            $tpl = $template["time_restricted_closed"];
+                        else
+                            $tpl = $template["article_rating_text"];
+                        $rt = html_entity_decode($tpl);
+                    }
                     $rt = str_replace('%RATING%', $rating1, $rt);
                     $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
                     $rt = str_replace('%VOTES%', $votes, $rt);
                     $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                    $rt = str_replace('%ID%', $id, $rt);
                     $rater_text.= $rt;
                     break;
                 case 'c':
@@ -159,6 +174,7 @@ class GDSRRender
                     $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
                     $rt = str_replace('%CMM_VOTES%', $votes, $rt);
                     $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                    $rt = str_replace('%ID%', $id, $rt);
                     $rater_text.= $rt;
                     break;
             }
