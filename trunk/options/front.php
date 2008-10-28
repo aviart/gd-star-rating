@@ -94,6 +94,7 @@
             </div>
             <div class="ssiconurl"><a href="http://wp.gdragon.info/gd-star-rating/" target="_blank">GD Star Rating</a>: Official Page</div>
             <div class="ssiconurl"><a href="http://code.google.com/p/gd-star-rating/" target="_blank">Google Code</a>: Development Home with SVN</div>
+            <div class="ssiconurl"><a href="http://groups.google.com/group/gd-star-rating/" target="_blank">Google Groups</a>: Discussions Group</div>
             <div class="ssiconurl"><a href="http://wordpress.org/extend/plugins/gd-star-rating/" target="_blank">WordPress Extend</a>: WordPress plugin page</div>
             <div style="padding: 6px"></div>
             <div class="ssurlstitle">
@@ -105,6 +106,7 @@
             <div class="ssiconurl"><a href="http://wp.gdragon.info/" target="_blank">Wordpress Blog</a>: WordPress plugins development</div>
             <div class="ssiconurl"><a href="http://forum.gdragon.info/" target="_blank">Forum</a>: Development discussion forum</div>
             <div class="ssiconurl"><a href="http://wp.gdragon.info/download/" target="_blank">Downloads</a>: plugins, user guides and more</div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/donate/" target="_blank"><span style="color: red">Donate</span></a>: help further development</div>
             <div style="padding: 6px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Starscape Themes:</span>
