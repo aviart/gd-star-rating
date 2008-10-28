@@ -131,6 +131,12 @@ class GDSRDatabase
         }
     }
     
+    function update_restrictions($ids, $timer_type, $timer_value) {
+        global $wpdb, $table_prefix;
+        $wpdb->query(sprintf("update %sgdsr_data_article set expiry_type = '%s', expiry_value = '%s' where post_id in %s", 
+            $table_prefix, $timer_type, $timer_value, $ids));
+    }
+    
     function lock_post($post_id, $rules_articles = "N") {
         global $wpdb, $table_prefix;
         

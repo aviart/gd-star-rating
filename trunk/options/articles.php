@@ -46,6 +46,9 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
             GDSRDatabase::update_reviews($ids, $review, $gdsr_items);
         }
         GDSRDatabase::update_settings($ids, $_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"], $gdsr_items);
+        if ($_POST["gdsr_timer_type"] != "") {
+            GDSRDatabase::update_restrictions($ids, $_POST["gdsr_timer_type"], GDSRHelper::timer_value($_POST["gdsr_timer_type"], $_POST['gdsr_timer_date_value'], $_POST['gdsr_timer_countdown_value'], $_POST['gdsr_timer_countdown_type']));
+        }
     }
 }
 
@@ -238,7 +241,7 @@ function gdsrTimerChange() {
 
     </tbody>
 </table>
-<div class="tablenav" style="height: 7.5em">
+<div class="tablenav" style="height: 9em">
     <div class="alignleft">
         <div class="panel">
         <table cellpadding="0" cellspacing="0">
@@ -299,7 +302,7 @@ function gdsrTimerChange() {
                     <span class="paneltext"><?php _e("Restriction", "gd-star-rating"); ?>:</span>
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                <?php GDSRHelper::render_timer_combo("gdsr_timer_type", $timer_restrictions, 120, '', false, 'gdsrTimerChange()'); ?>
+                <?php GDSRHelper::render_timer_combo("gdsr_timer_type", $timer_restrictions, 120, '', true, 'gdsrTimerChange()'); ?>
                 </td><td style="width: 10px"></td>
                 <td style="width: 80px; height: 29px;">
                     <div id="gdsr_timer_countdown_text" style="display: none"><span class="paneltext"><?php _e("Countdown", "gd-star-rating"); ?>:</span></div>
@@ -312,7 +315,7 @@ function gdsrTimerChange() {
                 </td>
             </tr>
             </table>
-            
+            <div class="gdsr-table-split"></div>
             <?php if ($options["comments_active"] == 1) { ?>
             <table cellpadding="0" cellspacing="0">
             <tr>
