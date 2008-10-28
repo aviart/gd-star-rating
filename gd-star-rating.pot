@@ -1,12 +1,12 @@
-#: code/gd-star-dbone.php:630
+#: code/gd-star-dbone.php:632
 msgid "Show all dates"
 msgstr ""
 
-#: code/gd-star-dbone.php:658
+#: code/gd-star-dbone.php:660
 msgid "All users and visitors"
 msgstr ""
 
-#: code/gd-star-dbone.php:659
+#: code/gd-star-dbone.php:661
 #: tinymce3/window.php:185
 #: widgets/widget.php:42
 #: widgets/widget.php:178
@@ -14,11 +14,11 @@ msgstr ""
 msgid "Visitors Only"
 msgstr ""
 
-#: code/gd-star-dbone.php:660
+#: code/gd-star-dbone.php:662
 msgid "All Users"
 msgstr ""
 
-#: code/gd-star-dbone.php:676
+#: code/gd-star-dbone.php:678
 msgid "All categories"
 msgstr ""
 
@@ -190,8 +190,8 @@ msgstr ""
 #: options/articles.php:94
 #: options/articles.php:230
 #: templates/templates.php:42
-#: gd-star-rating.php:342
-#: gd-star-rating.php:342
+#: gd-star-rating.php:346
+#: gd-star-rating.php:346
 msgid "Articles"
 msgstr ""
 
@@ -306,8 +306,8 @@ msgid "Batch Options"
 msgstr ""
 
 #: options/charts.php:0
-#: gd-star-rating.php:343
-#: gd-star-rating.php:343
+#: gd-star-rating.php:347
+#: gd-star-rating.php:347
 msgid "Charts"
 msgstr ""
 
@@ -502,8 +502,8 @@ msgid "Approve"
 msgstr ""
 
 #: options/settings.php:112
-#: gd-star-rating.php:344
-#: gd-star-rating.php:344
+#: gd-star-rating.php:348
+#: gd-star-rating.php:348
 msgid "Settings"
 msgstr ""
 
@@ -521,7 +521,7 @@ msgid "Preview"
 msgstr ""
 
 #: options/settings.php:142
-#: templates/templates.php:64
+#: templates/templates.php:69
 msgid "Save Settings"
 msgstr ""
 
@@ -750,21 +750,21 @@ msgstr ""
 msgid "Calculate over how many days before"
 msgstr ""
 
-#: options/settings_statistics.php:15
+#: options/settings_statistics.php:14
 msgid "Bayesian Estimate Mean"
 msgstr ""
 
-#: options/settings_statistics.php:19
+#: options/settings_statistics.php:18
 msgid "Minimum votes required"
 msgstr ""
 
-#: options/settings_statistics.php:23
+#: options/settings_statistics.php:22
 msgid "Mean vote rating across the whole report"
 msgstr ""
 
 #: options/setup.php:27
-#: gd-star-rating.php:349
-#: gd-star-rating.php:349
+#: gd-star-rating.php:353
+#: gd-star-rating.php:353
 msgid "Setup"
 msgstr ""
 
@@ -850,8 +850,8 @@ msgid "Voters Log"
 msgstr ""
 
 #: templates/templates.php:24
-#: gd-star-rating.php:345
-#: gd-star-rating.php:345
+#: gd-star-rating.php:349
+#: gd-star-rating.php:349
 msgid "Templates"
 msgstr ""
 
@@ -863,36 +863,62 @@ msgstr ""
 msgid "Custom Elements"
 msgstr ""
 
+#: templates/templates.php:52
+msgid "Time Restriction"
+msgstr ""
+
 #: templates/templates_articles.php:1
 #: templates/templates_comments.php:1
 msgid "Rating Text"
 msgstr ""
 
 #: templates/templates_articles.php:4
-#: templates/templates_articles.php:17
+#: templates/templates_articles.php:13
+#: templates/templates_articles.php:21
+#: templates/templates_articles.php:36
 #: templates/templates_comments.php:4
 msgid "Allowed elements"
 msgstr ""
 
 #: templates/templates_articles.php:7
-msgid "Shortcode StarRating"
+msgid "Rating Text For Time Restricted Voting"
 msgstr ""
 
 #: templates/templates_articles.php:11
+msgid "Voting Active"
+msgstr ""
+
+#: templates/templates_articles.php:13
+msgid "all articles, custom and time restriction templates elements"
+msgstr ""
+
+#: templates/templates_articles.php:19
+msgid "Voting Closed"
+msgstr ""
+
+#: templates/templates_articles.php:21
+msgid "all articles and customtemplates elements"
+msgstr ""
+
+#: templates/templates_articles.php:26
+msgid "Shortcode StarRating"
+msgstr ""
+
+#: templates/templates_articles.php:30
 #: widgets/widget.php:326
 msgid "Header"
 msgstr ""
 
-#: templates/templates_articles.php:15
+#: templates/templates_articles.php:34
 #: widgets/widget.php:331
 msgid "Item"
 msgstr ""
 
-#: templates/templates_articles.php:17
+#: templates/templates_articles.php:36
 msgid "all articles and custom templates elements"
 msgstr ""
 
-#: templates/templates_articles.php:20
+#: templates/templates_articles.php:39
 #: widgets/widget.php:336
 msgid "Footer"
 msgstr ""
@@ -1009,6 +1035,46 @@ msgstr ""
 
 #: templates/templates_elements_custom.php:28
 msgid "this can be used to render table rows used in templates with different classes"
+msgstr ""
+
+#: templates/templates_elements_timer.php:3
+msgid "remaining years"
+msgstr ""
+
+#: templates/templates_elements_timer.php:6
+msgid "remaining months"
+msgstr ""
+
+#: templates/templates_elements_timer.php:10
+msgid "remaining days"
+msgstr ""
+
+#: templates/templates_elements_timer.php:13
+msgid "remaining hours"
+msgstr ""
+
+#: templates/templates_elements_timer.php:17
+msgid "remaining minutes"
+msgstr ""
+
+#: templates/templates_elements_timer.php:20
+msgid "remaining seconds"
+msgstr ""
+
+#: templates/templates_elements_timer.php:24
+msgid "end voting date"
+msgstr ""
+
+#: templates/templates_elements_timer.php:27
+msgid "total remaining days"
+msgstr ""
+
+#: templates/templates_elements_timer.php:31
+msgid "total remaining hours"
+msgstr ""
+
+#: templates/templates_elements_timer.php:34
+msgid "total remaining minutes"
 msgstr ""
 
 #: tinymce3/window.php:30
@@ -1385,23 +1451,23 @@ msgstr ""
 msgid "singular/plural word vote"
 msgstr ""
 
-#: gd-star-rating.php:341
-#: gd-star-rating.php:341
+#: gd-star-rating.php:345
+#: gd-star-rating.php:345
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:346
-#: gd-star-rating.php:346
+#: gd-star-rating.php:350
+#: gd-star-rating.php:350
 msgid "Import"
 msgstr ""
 
-#: gd-star-rating.php:347
-#: gd-star-rating.php:347
+#: gd-star-rating.php:351
+#: gd-star-rating.php:351
 msgid "Export"
 msgstr ""
 
-#: gd-star-rating.php:348
-#: gd-star-rating.php:348
+#: gd-star-rating.php:352
+#: gd-star-rating.php:352
 msgid "Batch"
 msgstr ""
 

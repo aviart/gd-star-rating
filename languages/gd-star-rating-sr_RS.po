@@ -9,15 +9,15 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: code/gd-star-dbone.php:630
+#: code/gd-star-dbone.php:632
 msgid "Show all dates"
 msgstr "Прикажи све датуме"
 
-#: code/gd-star-dbone.php:658
+#: code/gd-star-dbone.php:660
 msgid "All users and visitors"
 msgstr "Сви корисници и посетиоци"
 
-#: code/gd-star-dbone.php:659
+#: code/gd-star-dbone.php:661
 #: tinymce3/window.php:185
 #: widgets/widget.php:42
 #: widgets/widget.php:178
@@ -25,11 +25,11 @@ msgstr "Сви корисници и посетиоци"
 msgid "Visitors Only"
 msgstr "Само Посетици"
 
-#: code/gd-star-dbone.php:660
+#: code/gd-star-dbone.php:662
 msgid "All Users"
 msgstr "Сви корисници"
 
-#: code/gd-star-dbone.php:676
+#: code/gd-star-dbone.php:678
 msgid "All categories"
 msgstr "Све категорије"
 
@@ -201,7 +201,7 @@ msgstr "Подаци увезени."
 #: options/articles.php:94
 #: options/articles.php:230
 #: templates/templates.php:42
-#: gd-star-rating.php:342
+#: gd-star-rating.php:346
 msgid "Articles"
 msgstr "Чланци"
 
@@ -316,7 +316,7 @@ msgid "Batch Options"
 msgstr "Групне Опције"
 
 #: options/charts.php:0
-#: gd-star-rating.php:343
+#: gd-star-rating.php:347
 msgid "Charts"
 msgstr "Графикони"
 
@@ -511,7 +511,7 @@ msgid "Approve"
 msgstr "Одобри"
 
 #: options/settings.php:112
-#: gd-star-rating.php:344
+#: gd-star-rating.php:348
 msgid "Settings"
 msgstr "Подешавања"
 
@@ -529,7 +529,7 @@ msgid "Preview"
 msgstr "Преглед"
 
 #: options/settings.php:142
-#: templates/templates.php:64
+#: templates/templates.php:69
 msgid "Save Settings"
 msgstr "Сними подешавања"
 
@@ -758,20 +758,20 @@ msgstr "Израчунај за последњих дана"
 msgid "Calculate over how many days before"
 msgstr "Израчунај у односу на колико дана пре"
 
-#: options/settings_statistics.php:15
+#: options/settings_statistics.php:14
 msgid "Bayesian Estimate Mean"
 msgstr "Бајесова Процењена Средина"
 
-#: options/settings_statistics.php:19
+#: options/settings_statistics.php:18
 msgid "Minimum votes required"
 msgstr "Минимум потребних гласова"
 
-#: options/settings_statistics.php:23
+#: options/settings_statistics.php:22
 msgid "Mean vote rating across the whole report"
 msgstr ""
 
 #: options/setup.php:27
-#: gd-star-rating.php:349
+#: gd-star-rating.php:353
 msgid "Setup"
 msgstr "Организација"
 
@@ -857,7 +857,7 @@ msgid "Voters Log"
 msgstr "Листа гласова"
 
 #: templates/templates.php:24
-#: gd-star-rating.php:345
+#: gd-star-rating.php:349
 msgid "Templates"
 msgstr "Шаблони"
 
@@ -869,36 +869,62 @@ msgstr "Елементи Шаблона"
 msgid "Custom Elements"
 msgstr "Елементи"
 
+#: templates/templates.php:52
+msgid "Time Restriction"
+msgstr "Временско Ограничење"
+
 #: templates/templates_articles.php:1
 #: templates/templates_comments.php:1
 msgid "Rating Text"
 msgstr "Рејтинг Текст"
 
 #: templates/templates_articles.php:4
-#: templates/templates_articles.php:17
+#: templates/templates_articles.php:13
+#: templates/templates_articles.php:21
+#: templates/templates_articles.php:36
 #: templates/templates_comments.php:4
 msgid "Allowed elements"
 msgstr "Дозвољени елементи"
 
 #: templates/templates_articles.php:7
+msgid "Rating Text For Time Restricted Voting"
+msgstr ""
+
+#: templates/templates_articles.php:11
+msgid "Voting Active"
+msgstr "Гласање Активно"
+
+#: templates/templates_articles.php:13
+msgid "all articles, custom and time restriction templates elements"
+msgstr ""
+
+#: templates/templates_articles.php:19
+msgid "Voting Closed"
+msgstr "Гласање Затворено"
+
+#: templates/templates_articles.php:21
+msgid "all articles and customtemplates elements"
+msgstr ""
+
+#: templates/templates_articles.php:26
 msgid "Shortcode StarRating"
 msgstr "Shortcode StarRating"
 
-#: templates/templates_articles.php:11
+#: templates/templates_articles.php:30
 #: widgets/widget.php:326
 msgid "Header"
 msgstr "Заглавље"
 
-#: templates/templates_articles.php:15
+#: templates/templates_articles.php:34
 #: widgets/widget.php:331
 msgid "Item"
 msgstr "Ставка"
 
-#: templates/templates_articles.php:17
+#: templates/templates_articles.php:36
 msgid "all articles and custom templates elements"
 msgstr ""
 
-#: templates/templates_articles.php:20
+#: templates/templates_articles.php:39
 #: widgets/widget.php:336
 msgid "Footer"
 msgstr "Футер"
@@ -1016,6 +1042,46 @@ msgstr "непарни ред"
 #: templates/templates_elements_custom.php:28
 msgid "this can be used to render table rows used in templates with different classes"
 msgstr ""
+
+#: templates/templates_elements_timer.php:3
+msgid "remaining years"
+msgstr "преостало година"
+
+#: templates/templates_elements_timer.php:6
+msgid "remaining months"
+msgstr "преостало месеци"
+
+#: templates/templates_elements_timer.php:10
+msgid "remaining days"
+msgstr "преостало дана"
+
+#: templates/templates_elements_timer.php:13
+msgid "remaining hours"
+msgstr "преостало сати"
+
+#: templates/templates_elements_timer.php:17
+msgid "remaining minutes"
+msgstr "преостало минута"
+
+#: templates/templates_elements_timer.php:20
+msgid "remaining seconds"
+msgstr "преостало секунди"
+
+#: templates/templates_elements_timer.php:24
+msgid "end voting date"
+msgstr "крај гласања"
+
+#: templates/templates_elements_timer.php:27
+msgid "total remaining days"
+msgstr "укупно преосталих дана"
+
+#: templates/templates_elements_timer.php:31
+msgid "total remaining hours"
+msgstr "укупно преосталих сати"
+
+#: templates/templates_elements_timer.php:34
+msgid "total remaining minutes"
+msgstr "укупно преосталих минута"
 
 #: tinymce3/window.php:30
 msgid "Shortcode"
@@ -1391,19 +1457,19 @@ msgstr "url чланка"
 msgid "singular/plural word vote"
 msgstr "једнина/множина речи глас"
 
-#: gd-star-rating.php:341
+#: gd-star-rating.php:345
 msgid "Front Page"
 msgstr "Главна Страна"
 
-#: gd-star-rating.php:346
+#: gd-star-rating.php:350
 msgid "Import"
 msgstr "Увоз"
 
-#: gd-star-rating.php:347
+#: gd-star-rating.php:351
 msgid "Export"
 msgstr "Увоз"
 
-#: gd-star-rating.php:348
+#: gd-star-rating.php:352
 msgid "Batch"
 msgstr "Група"
 
