@@ -49,7 +49,7 @@
 <div id="dashboard-widgets-wrap">
 <div id="dashboard-widgets">
     <div id="dashboard_primary" class="dashboard-widget-holder widget_rss wp_dashboard_empty">
-        <div class="dashboard-widget" style="height:35em">
+        <div class="dashboard-widget" style="height:37em">
         <h3 class="dashboard-widget-title"><span><?php _e("Latest News", "gd-star-rating") ?></span>
         <small>
             <a target="_blank" href="http://wp.gdragon.info/">See All</a> | <img class="rss-icon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/>
@@ -84,7 +84,7 @@
         </div>
     </div>
     <div id="dashboard_plugins" class="dashboard-widget-holder wp_dashboard_empty">
-        <div class="dashboard-widget" style="height:35em">
+        <div class="dashboard-widget" style="height:37em">
         <h3 class="dashboard-widget-title"><?php _e("Important Links", "gd-star-rating") ?></h3>
         <div class="dashboard-widget-content">
             <div class="ssurlstitle">
@@ -96,7 +96,7 @@
             <div class="ssiconurl"><a href="http://code.google.com/p/gd-star-rating/" target="_blank">Google Code</a>: <?php _e("development home with svn", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://groups.google.com/group/gd-star-rating/" target="_blank">Google Groups</a>: <?php _e("discussions group", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://wordpress.org/extend/plugins/gd-star-rating/" target="_blank">WordPress Extend</a>: <?php _e("wordpress plugin page", "gd-star-rating") ?></div>
-            <div style="padding: 6px"></div>
+            <div style="padding: 10px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Golden Dragon:</span>
                 <span style="float: right; margin-top: 2px;"><img class="rss-icon ssrssicon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/><a href="http://wp.gdragon.info/feed/" class="rssurl">RSS</a></span>
@@ -107,7 +107,7 @@
             <div class="ssiconurl"><a href="http://forum.gdragon.info/" target="_blank">Forum</a>: <?php _e("development discussion forum", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://wp.gdragon.info/download/" target="_blank">Downloads</a>: <?php _e("plugins, user guides and more", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://wp.gdragon.info/donate/" target="_blank"><span style="color: red">Donate</span></a>: <?php _e("help further development", "gd-star-rating") ?></div>
-            <div style="padding: 6px"></div>
+            <div style="padding: 10px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Starscape Themes:</span>
                 <span style="float: right; margin-top: 2px;"><img class="rss-icon ssrssicon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/><a href="http://blog.starscapetheme.com/feed/" class="rssurl">RSS</a></span>

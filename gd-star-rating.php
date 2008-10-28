@@ -426,24 +426,15 @@ if (!class_exists('GDStarRating')) {
                 GDSRDatabase::save_article_rules($post_id, $_POST['gdsr_vote_articles'], $_POST['gdsr_mod_articles']);
                 $timer = $_POST['gdsr_timer_type'];
                 if ($timer != 'N') {
-                    GDSRDatabase::save_timer_rules($post_id, $timer, $this->timer_value($timer, $_POST['gdsr_timer_date_value'], $_POST['gdsr_timer_countdown_value'], $_POST['gdsr_timer_countdown_type']));
+                    GDSRDatabase::save_timer_rules(
+                        $post_id, 
+                        $timer, 
+                        GDSRHelper::timer_value($timer, $_POST['gdsr_timer_date_value'], $_POST['gdsr_timer_countdown_value'], $_POST['gdsr_timer_countdown_type'])
+                    );
                 }
             }
         }
         
-        function timer_value($t_type, $t_date = '', $t_count_value = 0, $t_count_type = 'D') {
-            $value = '';
-            switch ($t_type) {
-                case 'D':
-                    $value = $t_date;
-                    break;
-                case 'T':
-                    $value = $t_count_type.$t_count_value;
-                    break;
-            }
-            return $value;
-        }
-
         function upgrade_settings($old, $new) {
             foreach ($new as $key => $value) {
                 if (!isset($old[$key])) $old[$key] = $value;

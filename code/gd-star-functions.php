@@ -313,6 +313,19 @@ class GDSRHelper
         return $render;
     }
 
+    function timer_value($t_type, $t_date = '', $t_count_value = 0, $t_count_type = 'D') {
+        $value = '';
+        switch ($t_type) {
+            case 'D':
+                $value = $t_date;
+                break;
+            case 'T':
+                $value = $t_count_type.$t_count_value;
+                break;
+        }
+        return $value;
+    }
+    
     function deactivate_plugin() {
         $current = get_option('active_plugins');
         if(in_array("gd-star-rating/gd-star-rating.php", $current))
