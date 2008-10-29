@@ -12,3 +12,4 @@
   * fix: default shortcode settings
   * fix: page loading renaming regressions
   * fix: few more typo errors
+  * fix: default starrating template
