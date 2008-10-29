@@ -325,8 +325,8 @@ if (!class_exists('GDStarRating')) {
 		
         function shortcode_starrating($atts) {
             $sett = shortcode_atts($this->default_shortcode_starrating, $atts);
-            if ($sett["div_class"] != "") $rating.= '<div class="'.$sett["div_class"].'">';
-            else $rating.= "<div>";
+            if ($sett["div_class"] != "") $rating = '<div class="'.$sett["div_class"].'">';
+            else $rating = "<div>";
             $rating.= html_entity_decode($this->x["shortcode_starrating_header"]);
             $template = html_entity_decode($this->x["shortcode_starrating_item"]);
             
@@ -335,7 +335,8 @@ if (!class_exists('GDStarRating')) {
                 $rating.= $this->prepare_row($row, $template);
             }
             
-            $rating.= html_entity_decode($this->x["shortcode_starrating_footer"])."</div>";
+            $rating.= html_entity_decode($this->x["shortcode_starrating_footer"]);
+            $rating.= "</div>";
             return $rating;
         }
         // shortcode

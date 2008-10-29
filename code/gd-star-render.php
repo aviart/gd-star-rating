@@ -80,7 +80,7 @@ class GDSRRender
     
     function rating_header($header, $header_text = '') {
         if ($header == 1)
-            return '<div class="ratingheader">'.$header_text.'</div>';
+            return '<div class="ratingheader">'.html_entity_decode($header_text).'</div>';
         else
             return '';
     }
