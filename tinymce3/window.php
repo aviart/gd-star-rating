@@ -278,7 +278,7 @@
         <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
             <label><select id="srStarsStyle" name="srStarsStyle">
-                <?php GDSRHelper::render_styles_select($gdsr_styles); ?>
+                <?php GDSRHelper::render_styles_select($gdsr_styles, 'oxygen'); ?>
             </select></label>
         </td>
       </tr>
@@ -287,7 +287,7 @@
         <td class="gdsrright">
             <label><select id="srStarsSize" name="srStarsSize" style="width: 130px">
                 <option value="12"><?php _e("Mini", "gd-star-rating"); ?></option>
-                <option value="20"><?php _e("Small", "gd-star-rating"); ?></option>
+                <option value="20" selected="selected"><?php _e("Small", "gd-star-rating"); ?></option>
                 <option value="30"><?php _e("Medium", "gd-star-rating"); ?></option>
                 <option value="46"><?php _e("Big", "gd-star-rating"); ?></option>
             </select></label>
@@ -303,7 +303,7 @@
         <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
             <label><select id="srReviewStarsStyle" name="srReviewStarsStyle">
-                <?php GDSRHelper::render_styles_select($gdsr_styles); ?>
+                <?php GDSRHelper::render_styles_select($gdsr_styles, 'oxygen'); ?>
             </select></label>
         </td>
       </tr>
@@ -312,7 +312,7 @@
         <td class="gdsrright">
             <label><select id="srReviewStarsSize" name="srReviewStarsSize" style="width: 130px">
                 <option value="12"><?php _e("Mini", "gd-star-rating"); ?></option>
-                <option value="20"><?php _e("Small", "gd-star-rating"); ?></option>
+                <option value="20" selected="selected"><?php _e("Small", "gd-star-rating"); ?></option>
                 <option value="30"><?php _e("Medium", "gd-star-rating"); ?></option>
                 <option value="46"><?php _e("Big", "gd-star-rating"); ?></option>
             </select></label>
