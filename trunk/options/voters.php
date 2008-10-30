@@ -34,6 +34,7 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     }
 }
 
+$url.= "&pid=".$post_id;
 if ($filter_date != '' || $filter_date != '0') $url.= "&date=".$filter_date;
 if ($select != '') $url.= "&vg=".$select;
 
