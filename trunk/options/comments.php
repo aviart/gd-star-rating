@@ -92,7 +92,6 @@ if (isset($id)) {
             <th scope="col"><?php _e("Date And Time", "gd-star-rating"); ?></th>
             <th scope="col" width="120"><?php _e("Votes", "gd-star-rating"); ?></th>
             <th scope="col" width="120"><?php _e("Total", "gd-star-rating"); ?></th>
-            <th scope="col" width="80"><?php _e("Review", "gd-star-rating"); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -108,7 +107,6 @@ if (isset($id)) {
         echo '<td>'.$row->comment_date.'</td>';
         echo '<td>'.$row->votes.'</td>';
         echo '<td>'.$row->total.'</td>';
-        echo '<td>'.$row->review.'</td>';
         echo '</tr>';
 
         if ($tr_class == "")
@@ -135,17 +133,6 @@ if (isset($id)) {
                         <option value="KU"><?php _e("Users", "gd-star-rating"); ?></option>
                         <option value="KA"><?php _e("All", "gd-star-rating"); ?></option>
                     </select>
-                    <?php if ($options["review_active"] == 1) { ?>
-                    <span class="paneltext"><?php _e("Review", "gd-star-rating"); ?>:</span>
-                    <select id="gdsr_review_rating" name="gdsr_review_rating" style="margin-top: -4px; width: 50px; text-align: right;">
-                        <option value="">/</option>
-                        <?php GDSRHelper::render_stars_select_full(-1, $options["review_stars"], 0); ?>
-                    </select>.
-                    <select id="gdsr_review_rating_decimal" name="gdsr_review_rating_decimal" style="margin-top: -4px; width: 50px; text-align: right;">
-                        <option value="">/</option>
-                        <?php GDSRHelper::render_stars_select_full(-1, 9, 0); ?>
-                    </select>
-                    <?php } ?>
                 </td>
                 <td align="right" style="width: 80px; height: 29px;">
                     <input class="button-secondary delete" type="submit" name="gdsr_update" value="<?php _e("Update", "gd-star-rating"); ?>" style="margin-top: -3px" />

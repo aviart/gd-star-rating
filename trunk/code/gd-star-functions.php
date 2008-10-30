@@ -56,6 +56,7 @@ class GDSRHelper
                 $parts[$value] = $count;
                 $secs = $secs - $count * $key;
             }
+            else $parts[$value] = 0;
         }
         
         return $parts;

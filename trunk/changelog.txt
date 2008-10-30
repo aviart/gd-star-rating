@@ -6,8 +6,10 @@
   * new: full plugin uninstall
   * new: rendering time testrictions
   * new: front page completed
+  * edit: more code cleanup
   * edit: expanded rating text template
   * edit: translation files updated
+  * fix: time restriction recalculations
   * fix: rendering rating header html
   * fix: default shortcode settings
   * fix: page loading renaming regressions
