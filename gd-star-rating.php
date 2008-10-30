@@ -1177,7 +1177,7 @@ if (!class_exists('GDStarRating')) {
                 case "comments":
                     include($this->plugin_path.'options/comments.php');
                     break;
-                case "log":
+                case "voters":
                     include($this->plugin_path.'options/voters.php');
                     break;
             }
