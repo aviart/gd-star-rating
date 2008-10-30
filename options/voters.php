@@ -31,6 +31,8 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
 if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
+        $delact = $_POST["gdsr_delete_voters"];
+        
     }
 }
 
@@ -44,7 +46,7 @@ $number_posts_users = 0;
 $number_posts_visitors = 0;
 if (count($np) > 0) {
     foreach ($np as $n) {
-        if ($n->user == "0") $number_posts_visitors = $n->count;
+        if ($n->user == "1") $number_posts_visitors = $n->count;
         else $number_posts_users = $n->count;
     }
 }
@@ -75,8 +77,9 @@ function checkAll(form) {
 </script>
 
 <div class="wrap"><h2>GD Star Rating: <?php _e("Voters Log", "gd-star-rating"); ?></h2>
+<form id="gdsr-comments" method="post" action="">
 <ul class="subsubsub">
-    <li><a<?php echo $select == "total" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>">All Votes (<?php echo $number_posts_all; ?>)</a> |</li>
+    <li><a<?php echo $select == "total" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&vg=total">All Votes (<?php echo $number_posts_all; ?>)</a> |</li>
     <li><a<?php echo $select == "users" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&vg=users">Users (<?php echo $number_posts_users; ?>)</a> |</li>
     <li><a<?php echo $select == "visitors" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&vg=visitors">Visitors (<?php echo $number_posts_visitors; ?>)</a></li>
 </ul>
@@ -95,7 +98,7 @@ function checkAll(form) {
 <br class="clear"/>
 <?php
 
-    $sql = GDSRDatabase::get_visitors($post_id, $select, ($page_id - 1) * $posts_per_page, $posts_per_page, $filter_date);
+    $sql = GDSRDatabase::get_visitors($post_id, $vote_type, $filter_date, $select, ($page_id - 1) * $posts_per_page, $posts_per_page);
     $rows = $wpdb->get_results($sql, OBJECT);
     
 ?>
@@ -104,14 +107,62 @@ function checkAll(form) {
     <thead>
         <tr>
             <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>
-            <th scope="col"><?php _e("User / Visitor", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("User ID", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Name", "gd-star-rating"); ?></th>
+            <th scope="col" nowrap="nowrap"><?php _e("User ID", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Vote", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Vote Date", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("IP", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("User Agent", "gd-star-rating"); ?></th>
         </tr>
     </thead>
-</table>
+    <tbody>
+<?php
+       
+    $tr_class = "";
+    foreach ($rows as $row) {
+        echo '<tr id="post-'.$row->pid.'" class="'.$tr_class.' author-self status-publish" valign="top">';
+        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->pid.'" type="checkbox"></th>';
+        echo '<td><strong>';
+        echo $row->user_id == 0 ? "Visitor" : $row->user_nicename;
+        echo '</strong></td>';
+        echo '<td>'.$row->user_id.'</td>';
+        echo '<td>'.$row->vote.'</td>';
+        echo '<td>'.$row->voted.'</td>';
+        echo '<td>'.$row->ip.'</td>';
+        echo '<td>'.$row->user_agent.'</td>';
 
+        echo '</tr>';
+        if ($tr_class == "")
+            $tr_class = "alternate ";
+        else
+            $tr_class = "";
+    }
+    
+?>
+    </tbody>
+</table>
+<div class="tablenav" style="height: 3em">
+    <div class="alignleft">
+        <div class="panel">
+            <table width="100%"><tr>
+                <td style="width: 120px; height: 29px;">
+                    <span class="paneltext"><strong><?php _e("With selected", "gd-star-rating"); ?>:</strong></span>
+                </td>
+                <td style="height: 29px;">
+                    <span class="paneltext"><?php _e("Delete", "gd-star-rating"); ?>:</span>
+                    <select id="gdsr_delete_voters" name="gdsr_delete_voters" style="margin-top: -4px; width: 150px;">
+                        <option value="">/</option>
+                        <option value="D"><?php _e("Full Delete", "gd-star-rating"); ?></option>
+                        <option value="L"><?php _e("From Log Only", "gd-star-rating"); ?></option>
+                    </select>
+                </td>
+                <td align="right" style="width: 80px; height: 29px;">
+                    <input class="button-secondary delete" type="submit" name="gdsr_update" value="<?php _e("Update", "gd-star-rating"); ?>" style="margin-top: -4px;" />
+                </td>
+            </tr></table>
+        </div>
+    </div>
+<br class="clear"/>
+</div>
+</form>
 </div>
