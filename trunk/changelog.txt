@@ -6,6 +6,7 @@
   * new: full plugin uninstall
   * new: rendering time testrictions
   * new: front page completed
+  * new: voters log panel
   * edit: more code cleanup
   * edit: expanded rating text template
   * edit: translation files updated
@@ -15,3 +16,4 @@
   * fix: page loading renaming regressions
   * fix: few more typo errors
   * fix: default starrating template
+  * fix: some small errors

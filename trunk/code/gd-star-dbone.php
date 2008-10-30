@@ -583,20 +583,41 @@ class GDSRDatabase
         return $output;
     }
 
-    function get_voters_count($post_id, $dates = "0", $vote_type = "article") {
+    function get_voters_count($post_id, $dates = "", $vote_type = "article") {
         global $table_prefix;
         $where = " where vote_type = '".$vote_type."'";
         $where.= " and id = ".$post_id;
-        if ($dates != "total") {
-            $where = " and year(p.voted) = ".substr($dates, 0, 4);
-            $where.= " and month(p.voted) = ".substr($dates, 4, 2);
+        if ($dates != "" && $dates != "0") {
+            $where.= " and year(voted) = ".substr($dates, 0, 4);
+            $where.= " and month(voted) = ".substr($dates, 4, 2);
         }
         
-        $sql = sprintf("SELECT count(*) as count, user_id = 0 as user FROM %sgdsr_votes_log%s group by (user_id = 0)", $table_prefix, $where);
+        $sql = sprintf("SELECT count(*) as count, user_id = 0 as user FROM %sgdsr_votes_log%s group by (user_id = 0)", 
+            $table_prefix, $where
+            );
+
         return $sql;
     }
     
-    function get_visitors($post_id, $select = "", $start = 0, $limit = 20, $dates = "0", $sort_column = 'id', $sort_order = 'desc') {
+    function get_visitors($post_id, $vote_type = "article", $dates = "", $select = "total", $start = 0, $limit = 20) {
+        global $table_prefix;
+
+        $where = " where vote_type = '".$vote_type."'";
+        $where.= " and p.id = ".$post_id;
+        if ($dates != "" && $dates != "0") {
+            $where.= " and year(p.voted) = ".substr($dates, 0, 4);
+            $where.= " and month(p.voted) = ".substr($dates, 4, 2);
+        }
+        if ($select == "users")
+            $where.= " and user_id > 0";
+        if ($select == "visitors")
+            $where.= " and user_id = 0";
+        
+        $sql = sprintf("SELECT p.*, u.user_nicename FROM %sgdsr_votes_log p LEFT JOIN %susers u ON u.ID = p.user_id%s LIMIT %s, %s",
+            $table_prefix, $table_prefix, $where, $start, $limit
+            );
+        
+        return $sql;
     }
     
     function get_stats_count($dates = "0", $cats = "0", $search = "") {
