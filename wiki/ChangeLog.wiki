@@ -7,3 +7,19 @@ This is the list of changes for each release of the plugin.
 
 == Change log ==
 
+=== Version: 1.0.0 / october 31 2008 ===
+  * new: pumpkin stars set
+  * new: full plugin uninstall
+  * new: rendering time testrictions
+  * new: front page completed
+  * new: voters log panel
+  * edit: more code cleanup
+  * edit: expanded rating text template
+  * edit: translation files updated
+  * fix: time restriction recalculations
+  * fix: rendering rating header html
+  * fix: default shortcode settings
+  * fix: page loading renaming regressions
+  * fix: few more typo errors
+  * fix: default starrating template
+  * fix: some small errors
