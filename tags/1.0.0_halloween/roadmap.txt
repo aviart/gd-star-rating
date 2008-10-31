@@ -1,0 +1,18 @@
+= GD Star Rating =
+
+== Roadmap ==
+
+=== 1.0.5 ===
+  * top rating widget
+  * customization of bot filter
+  * ip filter
+  * categories and user based votes managment
+
+=== 1.1.0 ===
+  * multi rating support (more details to follow)
+  * reccomendation ratings (more details to follow)
+  * amazon-like rating categories widget
+  * more export data options
+
+=== 1.2.0 ===
+  * changing vote (like wordpress extend website)
