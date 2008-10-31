@@ -115,6 +115,35 @@ class GDSRDatabase
         }
     }
     
+    function delete_voters_log($ids) {
+        global $wpdb, $table_prefix;
+        
+        $sql = sprintf("delete from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
+        $wpdb->query($sql);
+    }
+    
+    function delete_voters_full($ids, $vote_type) {
+        global $wpdb, $table_prefix;
+        $delfrom = $table_prefix."gdsr_data_".$vote_type;
+
+        $sql = sprintf("select id, user_id = 0 as user, count(*) as count, sum(vote) as votes from %sgdsr_votes_log where record_id in %s group by id, (user_id = 0)", $table_prefix, $ids);
+        $del = $wpdb->get_results($sql);
+        
+        if (count($del) > 0) {
+            foreach ($del as $d) {
+                if ($d->user == "1")
+                    $update = sprintf("user_voters = user_voters - %s, user_votes = user_votes - %s", $d->votes, $d->count);
+                else 
+                    $update = sprintf("visitor_voters = visitor_voters - %s, visitor_votes = visitor_votes - %s", $d->votes, $d->count);
+                
+                $sql = sprintf("update %s set %s where post_id = %s", $table_prefix, $update, $d->id);
+            }
+        }
+        
+        $sql = sprintf("delete from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
+        $wpdb->query($sql);
+    }
+    
     function update_settings($ids, $upd_am, $upd_ar, $upd_cm, $upd_cr, $ids_array) {
         global $wpdb, $table_prefix;
         GDSRDatabase::add_defaults($ids, $ids_array);

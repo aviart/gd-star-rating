@@ -96,8 +96,6 @@ Check out a read-only working copy anonymously over HTTP:
 
 * svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only
 
-== Web ==
-
 == Website ==
 
 * Homepage: http://wp.gdragon.info/

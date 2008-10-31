@@ -31,8 +31,10 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
 if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
+        $ids = "(".join(", ", $gdsr_items).")";
         $delact = $_POST["gdsr_delete_voters"];
-        
+        if ($delact == "L") GDSRDatabase::delete_voters_log($ids);
+        if ($delact = "D") GDSRDatabase::delete_voters_full($ids, $vote_type);
     }
 }
 
@@ -120,8 +122,8 @@ function checkAll(form) {
        
     $tr_class = "";
     foreach ($rows as $row) {
-        echo '<tr id="post-'.$row->pid.'" class="'.$tr_class.' author-self status-publish" valign="top">';
-        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->pid.'" type="checkbox"></th>';
+        echo '<tr id="post-'.$row->record_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
+        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->record_id.'" type="checkbox"></th>';
         echo '<td><strong>';
         echo $row->user_id == 0 ? "Visitor" : $row->user_nicename;
         echo '</strong></td>';
