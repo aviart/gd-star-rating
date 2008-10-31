@@ -17,3 +17,5 @@
   * fix: few more typo errors
   * fix: default starrating template
   * fix: some small errors
+
+=== Version: 0.9.9.6 RC4 / october 28 2008 ===
