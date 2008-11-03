@@ -26,8 +26,20 @@ class GDSRDB
     function upgrade_database() {
         global $wpdb, $table_prefix;
         
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article ADD expiry_type VARCHAR(1) NOT NULL DEFAULT 'N'");
-        $wpdb->query("ALTER TABLE ".$table_prefix."gdsr_data_article ADD expiry_value VARCHAR(32) NOT NULL");
+        $dbt_data_category = $table_prefix.'gdsr_data_category';
+
+        if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_category'") != $dbt_data_category) {
+            $install_sql = "CREATE TABLE $dbt_data_category (";
+            $install_sql.= "category_id INTEGER(11) UNSIGNED NOT NULL,";
+            $install_sql.= "rules_articles VARCHAR(1) DEFAULT '0',";
+            $install_sql.= "rules_comments VARCHAR(1) DEFAULT '0',";
+            $install_sql.= "moderate_articles VARCHAR(1) DEFAULT '0',";
+            $install_sql.= "moderate_comments VARCHAR(1) DEFAULT '0',";
+            $install_sql.= "expiry_type VARCHAR(1) NOT NULL DEFAULT 'N',";
+            $install_sql.= "expiry_value VARCHAR(32) NOT NULL,";
+            $install_sql.= "PRIMARY KEY (category_id))";
+            $wpdb->query($install_sql);
+        }
     }
     
     function uninstall_database() {
@@ -52,8 +64,22 @@ class GDSRDB
         $dbt_votes_log = $table_prefix.'gdsr_votes_log';
         $dbt_data_article = $table_prefix.'gdsr_data_article';
         $dbt_data_comment = $table_prefix.'gdsr_data_comment';
+        $dbt_data_category = $table_prefix.'gdsr_data_category';
         $dbt_votes_trend = $table_prefix.'gdsr_votes_trend';
         $dbt_moderate = $table_prefix.'gdsr_moderate';
+        
+        if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_category'") != $dbt_data_category) {
+            $install_sql = "CREATE TABLE $dbt_data_category (";
+            $install_sql.= "category_id INTEGER(11) UNSIGNED NOT NULL,";
+            $install_sql.= "rules_articles VARCHAR(1) DEFAULT '0',";
+            $install_sql.= "rules_comments VARCHAR(1) DEFAULT '0',";
+            $install_sql.= "moderate_articles VARCHAR(1) DEFAULT '0',";
+            $install_sql.= "moderate_comments VARCHAR(1) DEFAULT '0',";
+            $install_sql.= "expiry_type VARCHAR(1) NOT NULL DEFAULT 'N',";
+            $install_sql.= "expiry_value VARCHAR(32) NOT NULL,";
+            $install_sql.= "PRIMARY KEY (category_id))";
+            $wpdb->query($install_sql);
+        }
         
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_article'") != $dbt_data_article) {
             $install_sql = "CREATE TABLE $dbt_data_article (";
@@ -142,6 +168,9 @@ class GDSRDB
     
     function convert_row($row) {
         switch ($row->moderate_articles) {
+            case 'I':
+                $row->moderate_articles = 'articles: <strong><span style="color: blue">inherited</span></strong>';
+                break;
             case 'A':
                 $row->moderate_articles = 'articles: <strong><span style="color: red">all</span></strong>';
                 break;
@@ -156,6 +185,9 @@ class GDSRDB
                 break;
         }
         switch ($row->moderate_comments) {
+            case 'I':
+                $row->moderate_comments = 'articles: <strong><span style="color: blue">inherited</span></strong>';
+                break;
             case 'A':
                 $row->moderate_comments = 'comments: <strong><span style="color: red">all</span></strong>';
                 break;
@@ -170,6 +202,9 @@ class GDSRDB
                 break;
         }
         switch ($row->rules_articles) {
+            case 'I':
+                $row->rules_articles = 'articles: <strong><span style="color: blue">inherited</span></strong>';
+                break;
             case 'H':
                 $row->rules_articles = 'articles: <strong><span style="color: red">hidden</span></strong>';
                 break;
@@ -187,6 +222,9 @@ class GDSRDB
                 break;
         }
         switch ($row->rules_comments) {
+            case 'I':
+                $row->rules_comments = 'articles: <strong><span style="color: blue">inherited</span></strong>';
+                break;
             case 'H':
                 $row->rules_comments = 'articles: <strong><span style="color: red">hidden</span></strong>';
                 break;
@@ -373,6 +411,13 @@ class GDSRDB
         $wpdb->query($sql);
     }
     // recalculate
+    
+    // categories
+    function get_all_categories() {
+        global $wpdb, $table_prefix;
+        return $wpdb->get_results(sprintf("SELECT 0 as depth, x.term_id, t.name, t.slug, x.parent, x.count FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id where taxonomy = 'category' order by x.parent, t.name asc", $table_prefix, $table_prefix));
+    }
+    // categories
 }
 
 ?>

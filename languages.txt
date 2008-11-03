@@ -16,7 +16,7 @@
 
 === Spanish ===
   * version: 1.0.0
-  * author: ¡ngel Guzm·n Maeso
+  * author: √Ångel Guzm√°n Maeso
   * email: shakaran@gmail.com
 
 === French ===
