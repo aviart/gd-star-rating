@@ -100,9 +100,10 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.0",
             "date" => "2008.10.31.",
             "status" => "Stable",
-            "build" => 179,
+            "build" => 185,
             "ie_png_fix" => 1,
             "ajax" => 1,
+            "save_user_agent" => 1,
             "widget_articles" => 1,
             "widget_top" => 1,
             "preview_active" => 1,
@@ -148,6 +149,8 @@ if (!class_exists('GDStarRating')) {
             "admin_width" => 1200,
             "admin_rows" => 20,
             "admin_advanced" => 0,
+            "admin_placement" => 0,
+            "admin_defaults" => 0,
             "author_vote" => 1,
             "cmm_author_vote" => 1,
             "default_moderation_articles" => 'N',
@@ -676,7 +679,8 @@ if (!class_exists('GDStarRating')) {
         // vote
         function vote_article($votes, $id, $user) {
             $ip = $_SERVER["REMOTE_ADDR"];
-            $ua = $_SERVER["HTTP_USER_AGENT"];
+            if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
+            else $ua = "";
             if ($user == '') $user = 0;
             
             $allow_vote = $this->check_cookie($id);
@@ -692,7 +696,8 @@ if (!class_exists('GDStarRating')) {
 
         function vote_article_ajax($votes, $id, $user) {
             $ip = $_SERVER["REMOTE_ADDR"];
-            $ua = $_SERVER["HTTP_USER_AGENT"];
+            if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
+            else $ua = "";
             if ($user == '') $user = 0;
 
             $allow_vote = intval($votes) <= $this->o["stars"];
@@ -748,7 +753,8 @@ if (!class_exists('GDStarRating')) {
 
         function vote_comment($votes, $id, $user) {
             $ip = $_SERVER["REMOTE_ADDR"];
-            $ua = $_SERVER["HTTP_USER_AGENT"];
+            if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
+            else $ua = "";
             if ($user == '') $user = 0;
             
             $allow_vote = $this->check_cookie($id, 'comment');
@@ -764,7 +770,8 @@ if (!class_exists('GDStarRating')) {
 
         function vote_comment_ajax($votes, $id, $user) {
             $ip = $_SERVER["REMOTE_ADDR"];
-            $ua = $_SERVER["HTTP_USER_AGENT"];
+            if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
+            else $ua = "";
             if ($user == '') $user = 0;
 
             $allow_vote = intval($votes) <= $this->o["cmm_stars"];

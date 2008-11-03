@@ -22,6 +22,7 @@
                 </td>
             </tr>
         </table>
+        <?php if ($gdsr_options["admin_placement"] == 1) { ?>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -46,7 +47,11 @@
                     <input type="text" name="gdsr_header_text" id="gdsr_header_text" value="<?php echo wp_specialchars($gdsr_options["header_text"]); ?>" style="width: 170px" />
                 </td>
             </tr>
-            <?php if ($gdsr_options["admin_advanced"] == 1) { ?>
+        </table>
+        <?php } ?>
+        <?php if ($gdsr_options["admin_advanced"] == 1) { ?>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="150"><?php _e("Rating Block CSS Class", "gd-star-rating"); ?>:</td>
                 <td width="200">
@@ -58,40 +63,41 @@
                     <input type="text" name="gdsr_classtext" id="gdsr_classtext" value="<?php echo wp_specialchars($gdsr_options["class_text"]); ?>" style="width: 170px" />
                 </td>
             </tr>
+        </table>
+        <?php } ?>
+        <?php if ($gdsr_options["admin_defaults"] == 1) { ?>
+            <div class="gdsr-table-split"></div>
+            <table cellpadding="0" cellspacing="0" class="previewtable">
+                <tr>
+                    <td width="150"><?php _e("Default Vote Rule", "gd-star-rating"); ?>:</td>
+                    <td width="200" align="left">
+                    <?php GDSRHelper::render_rules_combo("gdsr_default_vote_articles", $gdsr_options["default_voterules_articles"]); ?>
+                    </td>
+                    <td width="10"></td>
+                <?php if ($gdsr_options["moderation_active"] == 1) { ?>
+                    <td width="150"><?php _e("Default Moderation Rule", "gd-star-rating"); ?>:</td>
+                    <td width="200" align="left">
+                    <?php GDSRHelper::render_moderation_combo("gdsr_default_mod_articles", $gdsr_options["default_moderation_articles"]); ?>
+                    </td>
+                <?php } ?>
+                </tr>
+            </table>
+            <?php if ($gdsr_options["timer_active"] == 1) { ?>
+            <table cellpadding="0" cellspacing="0" class="previewtable">
+                <tr>
+                    <td width="150"><?php _e("Default time restriction", "gd-star-rating"); ?>:</td>
+                    <td width="200" align="left">
+                    <?php GDSRHelper::render_timer_combo("gdsr_default_timer_type", $gdsr_options["default_timer_type"]); ?>
+                    </td>
+                    <td width="10"></td>
+                    <td width="150"><?php _e("Default countdown value", "gd-star-rating"); ?>:</td>
+                    <td width="200" align="left">
+                    <input type="text" value="<?php echo $gdsr_options["default_timer_countdown_value"]; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 80px; text-align: right;" />
+                    <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $gdsr_options["default_timer_countdown_type"], 85); ?>
+                    </td>
+                </tr>
+            </table>
             <?php } ?>
-        </table>
-        <div class="gdsr-table-split"></div>
-        <table cellpadding="0" cellspacing="0" class="previewtable">
-            <tr>
-                <td width="150"><?php _e("Default Vote Rule", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left">
-                <?php GDSRHelper::render_rules_combo("gdsr_default_vote_articles", $gdsr_options["default_voterules_articles"]); ?>
-                </td>
-                <td width="10"></td>
-            <?php if ($gdsr_options["moderation_active"] == 1) { ?>
-                <td width="150"><?php _e("Default Moderation Rule", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left">
-                <?php GDSRHelper::render_moderation_combo("gdsr_default_mod_articles", $gdsr_options["default_moderation_articles"]); ?>
-                </td>
-            <?php } ?>
-            </tr>
-        </table>
-        <?php if ($gdsr_options["timer_active"] == 1) { ?>
-        <div class="gdsr-table-split"></div>
-        <table cellpadding="0" cellspacing="0" class="previewtable">
-            <tr>
-                <td width="150"><?php _e("Default time restriction", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left">
-                <?php GDSRHelper::render_timer_combo("gdsr_default_timer_type", $gdsr_options["default_timer_type"]); ?>
-                </td>
-                <td width="10"></td>
-                <td width="150"><?php _e("Default countdown value", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left">
-                <input type="text" value="<?php echo $gdsr_options["default_timer_countdown_value"]; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 80px; text-align: right;" />
-                <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $gdsr_options["default_timer_countdown_type"], 85); ?>
-                </td>
-            </tr>
-        </table>
         <?php } ?>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
@@ -142,6 +148,7 @@
                 </td>
             </tr>
         </table>
+        <?php if ($gdsr_options["admin_placement"] == 1) { ?>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -161,6 +168,11 @@
                     <input type="text" name="gdsr_review_header_text" id="gdsr_review_header_text" value="<?php echo wp_specialchars($gdsr_options["review_header_text"]); ?>" style="width: 170px" />
                 </td>
             </tr>
+        </table>
+        <?php } ?>
+        <?php if ($gdsr_options["admin_advanced"] == 1) { ?>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="150"><?php _e("Rating Block CSS Class", "gd-star-rating"); ?>:</td>
                 <td width="200">
@@ -168,6 +180,7 @@
                 </td>
             </tr>
         </table>
+        <?php } ?>
     </td>
 </tr>
 <?php } ?>
