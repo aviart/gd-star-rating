@@ -5,6 +5,7 @@
 === Version: 1.0.1 / october 7 2008 ===
   * new: option to control saving user agent data
   * new: options to hide even more options on settings pages
+  * new: top ratings blog summary widget
   * edit: all files encoding changed to utf8
   * edit: all files changed to windows ending
 
