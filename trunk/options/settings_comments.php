@@ -22,6 +22,7 @@
                 </td>
             </tr>
         </table>
+        <?php if ($gdsr_options["admin_placement"] == 1) { ?>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -46,7 +47,11 @@
                     <input type="text" name="gdsr_cmm_header_text" id="gdsr_cmm_header_text" value="<?php echo wp_specialchars($gdsr_options["cmm_header_text"]); ?>" style="width: 170px" />
                 </td>
             </tr>
-            <?php if ($gdsr_options["admin_advanced"] == 1) { ?>
+        </table>
+        <?php } ?>
+        <?php if ($gdsr_options["admin_advanced"] == 1) { ?>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="150"><?php _e("Rating Block CSS Class", "gd-star-rating"); ?>:</td>
                 <td width="200">
@@ -58,8 +63,9 @@
                     <input type="text" name="gdsr_cmm_classtext" id="gdsr_cmm_classtext" value="<?php echo wp_specialchars($gdsr_options["cmm_class_text"]); ?>" style="width: 170px" />
                 </td>
             </tr>
-            <?php } ?>
         </table>
+        <?php } ?>
+        <?php if ($gdsr_options["admin_defaults"] == 1) { ?>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -76,6 +82,7 @@
             <?php } ?>
             </tr>
         </table>
+        <?php } ?>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>

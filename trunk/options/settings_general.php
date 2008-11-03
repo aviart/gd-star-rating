@@ -27,7 +27,11 @@
             </tr>
         </table>
         <div class="gdsr-table-split"></div>
-        <input type="checkbox" name="gdsr_admin_advanced" id="gdsr_admin_advanced"<?php if ($gdsr_options["admin_advanced"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_advanced"><?php _e("Display Advanced Settings.", "gd-star-rating"); ?></label>
+        <input type="checkbox" name="gdsr_admin_advanced" id="gdsr_admin_advanced"<?php if ($gdsr_options["admin_advanced"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_advanced"><?php _e("Display Rating Custom CSS Settings.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_admin_placement" id="gdsr_admin_placement"<?php if ($gdsr_options["admin_placement"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_placement"><?php _e("Display Rating Placement Settings.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_admin_defaults" id="gdsr_admin_defaults"<?php if ($gdsr_options["admin_defaults"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_defaults"><?php _e("Display Rating Defaults Settings.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Plugin Features", "gd-star-rating"); ?></th>
@@ -41,6 +45,8 @@
         <input type="checkbox" name="gdsr_reviewactive" id="gdsr_reviewactive"<?php if ($gdsr_options["review_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_modactive"><?php _e("Review Rating.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_commentsactive" id="gdsr_commentsactive"<?php if ($gdsr_options["comments_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_commentsactive"><?php _e("Comments Rating.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_save_user_agent" id="gdsr_save_user_agent"<?php if ($gdsr_options["save_user_agent"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_save_user_agent"><?php _e("Log user agent (browser) information.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
         <input type="checkbox" name="gdsr_iepngfix" id="gdsr_iepngfix"<?php if ($gdsr_options["ie_png_fix"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_commentsactive"><?php _e("Use IE6 PNG Transparency Fix.", "gd-star-rating"); ?></label>
     </td>
