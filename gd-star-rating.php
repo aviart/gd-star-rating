@@ -1061,6 +1061,24 @@ if (!class_exists('GDStarRating')) {
             $template = str_replace('%TABLE_ROW_CLASS%', $row->table_row_class, $template);
             return $template;
         }
+        
+        function prepare_blog_rating($widget) {
+            global $wpdb;
+
+            $sql = GDSRX::get_totals($widget);
+            $data = $wpdb->get_row($sql);
+            
+            $data->max_rating = $this->o["stars"];
+            if ($data->votes > 0) {
+                $data->rating = $data->votes / $data->voters;
+                $data->bayes_rating = $this->bayesian_estimate($data->voters, $data->rating);
+            }
+            
+            if ($data->votes == 1) $tense = $this->x["word_votes_singular"];
+            else $tense = $this->x["word_votes_plural"];
+            
+            return $data;
+        }
         // calculation
 
         // log
@@ -1343,20 +1361,7 @@ if (!class_exists('GDStarRating')) {
         }
         
         function render_top_widget($widget) {
-            global $wpdb;
-
-            $sql = GDSRX::get_totals($widget);
-            $data = $wpdb->get_row($sql);
-            
-            $data->max_rating = $this->o["stars"];
-            if ($data->votes > 0) {
-                $data->rating = $data->votes / $data->voters;
-                $data->bayes_rating = $this->bayesian_estimate($data->voters, $data->rating);
-            }
-            
-            if ($data->votes == 1) $tense = $this->x["word_votes_singular"];
-            else $tense = $this->x["word_votes_plural"];
-
+            $data = $this->prepare_blog_rating($widget);
             $template = html_entity_decode($widget["template"]);
             $rt = str_replace('%RATING%', $data->rating, $template);
             $rt = str_replace('%MAX_RATING%', $data->max_rating, $rt);
@@ -1365,6 +1370,12 @@ if (!class_exists('GDStarRating')) {
             $rt = str_replace('%BAYES_RATING%', $data->bayes_rating, $rt);
             $rt = str_replace('%WORD_VOTES%', $tense, $rt);
             echo $rt;
+        }
+        
+        function get_blog_rating($select = "postpage", $show = "total") {
+            $widget["select"] = $select;
+            $widget["show"] = $show;
+            return $this->prepare_blog_rating($widget);
         }
 
         function widget_articles_init() {
@@ -1564,7 +1575,7 @@ if (!class_exists('GDStarRating')) {
             if ($comment->comment_type == "pingback" && $this->o["display_trackback"] == 0)
                 return $content;
 
-            if (is_single() && !is_admin())
+            if (is_single() && !is_admin() && $this->o["display_comment"] == 1)
                 $content .= $this->render_comment($post, $comment, $userdata);
             return $content;
         }
@@ -1786,6 +1797,11 @@ if (!class_exists('GDStarRating')) {
     function wp_gdsr_render_widget($widget = array()) {
         global $gdsr;
         $gdsr->render_articles_widget($widget);
+    }
+    
+    function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
+        global $gdsr;
+        return $gdsr->get_blog_rating($select, $show);
     }
     
     function wp_gdsr_render_article() {
