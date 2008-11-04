@@ -160,6 +160,7 @@ if (!class_exists('GDStarRating')) {
             "default_timer_type" => 'N',
             "default_timer_countdown_value" => 30,
             "default_timer_countdown_type" => 'D',
+            "default_timer_value" => 'D30',
             "stats_trend_history" => 30,
             "stats_trend_current" => 3,
             "trend_last" => 1,
@@ -360,10 +361,10 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), 10, "gd-star-rating-users", array(&$this,"star_menu_users"));
             if ($this->charting) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Charts", "gd-star-rating"), __("Charts", "gd-star-rating"), 10, "gd-star-rating-charts", array(&$this,"star_menu_charts"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gd-star-rating-templates", array(&$this,"star_menu_templates"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), 10, "gd-star-rating-import", array(&$this,"star_menu_import"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), 10, "gd-star-rating-export", array(&$this,"star_menu_export"));
-            // add_submenu_page(__FILE__, 'GD Star Rating: '.__("Batch", "gd-star-rating"), __("Batch", "gd-star-rating"), 10, "gd-star-rating-batch", array(&$this,"star_menu_batch"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), 10, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
         }                                                                
         
@@ -1159,6 +1160,15 @@ if (!class_exists('GDStarRating')) {
             include($this->plugin_path.'options/setup.php');
         }
 
+        function star_menu_tools() {
+            $gdsr_options = $this->o;
+            $gdsr_styles = $this->styles;
+            $gdsr_trends = $this->trends;
+            $gdsr_gfx = $this->g;
+
+            include($this->plugin_path.'options/tools.php');
+        }
+        
         function star_menu_charts() {
             include($this->plugin_path.'options/charts.php');
         }
@@ -1690,7 +1700,7 @@ if (!class_exists('GDStarRating')) {
             }
             
             $remaining = 0;
-            if ($allow_vote && $post_data->expiry_type != 'N') {
+            if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T')) {
                 switch($post_data->expiry_type) {
                     case "D":
                         $remaining = GDSRHelper::expiration_date($post_data->expiry_value);

@@ -8,6 +8,7 @@
   * new: top ratings blog summary widget
   * edit: all files encoding changed to utf8
   * edit: all files changed to windows ending
+  * fix: invalid default rating for new posts
 
 === Version: 1.0.0 / october 31 2008 ===
   * new: pumpkin stars set
