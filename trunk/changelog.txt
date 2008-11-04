@@ -11,6 +11,7 @@
   * edit: all files changed to windows ending
   * fix: invalid default rating for new posts
   * fix: full deletion of votes
+  * fix: auto insert comments rating
 
 === Version: 1.0.0 / october 31 2008 ===
   * new: pumpkin stars set
