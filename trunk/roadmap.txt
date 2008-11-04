@@ -3,10 +3,9 @@
 == Roadmap ==
 
 === 1.0.5 ===
-  * top rating widget
   * customization of bot filter
+  * user based votes managment
   * ip filter
-  * categories and user based votes managment
 
 === 1.1.0 ===
   * multi rating support (more details to follow)
