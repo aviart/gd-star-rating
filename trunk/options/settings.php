@@ -31,6 +31,7 @@
         $gdsr_options["default_timer_type"] = $_POST['gdsr_default_timer_type'];
         $gdsr_options["default_timer_countdown_value"] = $_POST['default_timer_countdown_value'];
         $gdsr_options["default_timer_countdown_type"] = $_POST['default_timer_countdown_type'];
+        $gdsr_options["default_timer_value"] = $_POST['default_timer_countdown_type'].$_POST['default_timer_countdown_value'];
         
         $gdsr_options["review_active"] = isset($_POST['gdsr_reviewactive']) ? 1 : 0;
         $gdsr_options["comments_active"] = isset($_POST['gdsr_commentsactive']) ? 1 : 0;
@@ -111,10 +112,10 @@
 
 <?php endif; ?>
 
+<div class="gdsr">
 <form method="post">
 <input type="hidden" id="gdsr_action" name="gdsr_action" value="save" />
 <div class="wrap"><h2>GD Star Rating: <?php _e("Settings", "gd-star-rating"); ?></h2>
-<div class="gdsr">
 
 <div id="gdsr_tabs" class="gdsrtabs">
 <ul>
@@ -142,10 +143,10 @@
 </div>
 </div>
 
-</div>
 <p class="submit"><input type="submit" value="<?php _e("Save Settings", "gd-star-rating"); ?>" name="gdsr_saving"/></p>
 </div>
 </form>
+</div>
 
 <script>
     gdsrStyleSelection('stars');
