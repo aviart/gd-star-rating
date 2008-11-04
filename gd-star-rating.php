@@ -8,11 +8,6 @@ Version: 1.0.1
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
-== Info ==
-
-* change log is available in readme.txt
-* roadmap list is available in readme.txt
-  
 == Copyright ==
 
 Copyright 2008 Milan Petrovic (email : milan@gdragon.info)
