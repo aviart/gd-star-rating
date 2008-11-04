@@ -175,9 +175,9 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_widget_top = array(
-            "title" => "Top Rating",
+            "title" => "Blog Rating",
             "display" => "all",
-            "template" => "%RATING%",
+            "template" => "&lt;p class=&quot;trw-rating&quot;&gt;%RATING%&lt;/p&gt;",
             "div_template" => '0',
             "div_filter" => '0',
             "div_elements" => '0',
@@ -358,7 +358,7 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 10, __FILE__, array(&$this,"star_menu_front"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), 10, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), 10, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), 10, "gd-star-rating-users", array(&$this,"star_menu_users"));
+            // add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), 10, "gd-star-rating-users", array(&$this,"star_menu_users"));
             if ($this->charting) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Charts", "gd-star-rating"), __("Charts", "gd-star-rating"), 10, "gd-star-rating-charts", array(&$this,"star_menu_charts"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
@@ -836,6 +836,7 @@ if (!class_exists('GDStarRating')) {
         // vote
         
         // calculation
+        // $v: votes, $R: rating
         function bayesian_estimate($v, $R) {
             $m = $this->o["bayesian_minimal"];
             $C = ($this->o["bayesian_mean"] / 100) * $this->o["stars"];
@@ -1161,6 +1162,11 @@ if (!class_exists('GDStarRating')) {
         }
 
         function star_menu_tools() {
+            if (isset($_POST['gdsr_preview_scan'])) {
+                $this->g = $this->gfx_scan();
+                update_option('gd-star-rating-gfx', $this->g);
+            }
+
             $gdsr_options = $this->o;
             $gdsr_styles = $this->styles;
             $gdsr_trends = $this->trends;
@@ -1231,9 +1237,9 @@ if (!class_exists('GDStarRating')) {
             if (!$options = get_option('widget_gdstarrating_top'))
                 $options = array();
                 
-            $widget_ops = array('classname' => 'widget_gdstarrating_top', 'description' => 'GD Star Rating Top');
+            $widget_ops = array('classname' => 'widget_gdstarrating_top', 'description' => 'GD Blog Rating');
             $control_ops = array('width' => $this->wp_old ? 580 : 420, 'height' => 420, 'id_base' => 'gdstartop');
-            $name = 'GD Star Rating Top';
+            $name = 'GD Blog Rating';
             
             $registered = false;
             foreach (array_keys($options) as $o) {
@@ -1287,6 +1293,14 @@ if (!class_exists('GDStarRating')) {
                     
                     $options['title'] = strip_tags(stripslashes($posted['title']));
                     $options['display'] = $posted['display'];
+                    $options['select'] = $posted['select'];
+                    $options['show'] = $posted['show'];
+
+                    $options['div_template'] = $posted['div_template'];
+                    $options['div_filter'] = $posted['div_filter'];
+                    $options['div_elements'] = $posted['div_elements'];
+
+                    $options['template'] = stripslashes(htmlentities($posted['template'], ENT_QUOTES, 'UTF-8'));
                     
                     $options_all[$widget_number] = $options;
                 }
@@ -1329,6 +1343,28 @@ if (!class_exists('GDStarRating')) {
         }
         
         function render_top_widget($widget) {
+            global $wpdb;
+
+            $sql = GDSRX::get_totals($widget);
+            $data = $wpdb->get_row($sql);
+            
+            $data->max_rating = $this->o["stars"];
+            if ($data->votes > 0) {
+                $data->rating = $data->votes / $data->voters;
+                $data->bayes_rating = $this->bayesian_estimate($data->voters, $data->rating);
+            }
+            
+            if ($data->votes == 1) $tense = $this->x["word_votes_singular"];
+            else $tense = $this->x["word_votes_plural"];
+
+            $template = html_entity_decode($widget["template"]);
+            $rt = str_replace('%RATING%', $data->rating, $template);
+            $rt = str_replace('%MAX_RATING%', $data->max_rating, $rt);
+            $rt = str_replace('%VOTES%', $data->votes, $rt);
+            $rt = str_replace('%COUNT%', $data->count, $rt);
+            $rt = str_replace('%BAYES_RATING%', $data->bayes_rating, $rt);
+            $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+            echo $rt;
         }
 
         function widget_articles_init() {

@@ -88,7 +88,7 @@ function gdsrShowHidePreview(gdid, index) {
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divtemplate', '<?php echo $wpnm; ?>')"><?php _e("Template", "gd-star-rating"); ?></a></strong></td>
-    <td align="right"><input class="widefat" style="width: 295px" type="text" name="<?php echo $wpfn; ?>[tpl_item]" id="gdstarr-tplitem" value="<?php echo wp_specialchars($wpno["tpl_item"]); ?>" /></td>
+    <td align="right"><input class="widefat" style="width: 295px" type="text" name="<?php echo $wpfn; ?>[template]" id="gdstarr-tplitem" value="<?php echo wp_specialchars($wpno["template"]); ?>" /></td>
   </tr>
 </table>
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
