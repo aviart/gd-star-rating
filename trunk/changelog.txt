@@ -2,13 +2,15 @@
 
 == Change Log ==
 
-=== Version: 1.0.1 / october 7 2008 ===
+=== Version: 1.0.1 / november 5 2008 ===
+  * new: top ratings blog summary widget
+  * new: tools panel
   * new: option to control saving user agent data
   * new: options to hide even more options on settings pages
-  * new: top ratings blog summary widget
   * edit: all files encoding changed to utf8
   * edit: all files changed to windows ending
   * fix: invalid default rating for new posts
+  * fix: full deletion of votes
 
 === Version: 1.0.0 / october 31 2008 ===
   * new: pumpkin stars set

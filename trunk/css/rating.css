@@ -1,3 +1,11 @@
+﻿/* top rating widget */
+.trw-rating {
+	font-size: 50px;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	text-align: center;
+}
+
 /* rating stars */
 .ratingblock td { vertical-align: middle; }
 

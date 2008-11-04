@@ -128,6 +128,37 @@ class GDSRX
         return $trends;
     }
     
+    function get_totals($widget, $min = 0) {
+        global $table_prefix;
+        $where = array();
+
+        $where[] = "p.id = d.post_id";
+        $where[] = "p.post_status = 'publish'";
+        
+        if ($widget["show"] == "total") {
+            $select = "sum(d.user_voters) + sum(d.visitor_voters) as voters, sum(d.user_votes) + sum(d.visitor_votes) as votes";
+            $where[] = "(d.user_voters + d.visitor_voters) > ".$min;
+        }
+        if ($widget["show"] == "visitors") {
+            $select = "sum(d.visitor_voters) as voters, sum(d.visitor_votes) as votes";
+            $where[] = "d.visitor_voters > ".$min;
+        }
+        if ($widget["show"] == "users") {
+            $select = "sum(d.user_voters) as voters, sum(d.user_votes) as votes";
+            $where[] = "d.user_voters > ".$min;
+        }
+        
+        $select.= ", count(*) as count, 0 as rating, 0 as bayes_rating, 0 as max_rating";
+        
+        if ($widget["select"] != "" && $widget["select"] != "postpage") 
+            $where[] = "p.post_type = '".$widget["select"]."'";
+            
+        $sql = sprintf("select %s from %sposts p, %sgdsr_data_article d where %s", 
+                $select, $table_prefix, $table_prefix, join(" and ", $where)
+            );
+        return $sql;
+    }
+    
     function get_widget($widget, $min = 0) {
         global $table_prefix;
         $grouping = $widget["grouping"];
@@ -167,7 +198,7 @@ class GDSRX
         }
 
         if ($widget["select"] != "" && $widget["select"] != "postpage") 
-            $where[] = "post_type = '".$widget["select"]."'";
+            $where[] = "p.post_type = '".$widget["select"]."'";
         
         if ($widget["hide_empty"] == "1" || $widget["bayesian_calculation"] == "1") {
             if ($widget["show"] == "total") $where[] = "(d.user_voters + d.visitor_voters) > ".$min;
