@@ -92,63 +92,15 @@
                 </td>
             </tr>
         </table>
-        <div class="gdsr-table-split"></div>
-        <input type="checkbox" name="gdsr_cmm_cookies" id="gdsr_cmm_cookies"<?php if ($gdsr_options["cmm_cookies"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_cookies"><?php _e("Save cookies to prevent duplicate voting.", "gd-star-rating"); ?></label>
-        <br />
-        <input type="checkbox" name="gdsr_cmm_authorvote" id="gdsr_cmm_authorvote"<?php if ($gdsr_options["cmm_author_vote"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_authorvote"><?php _e("Prevent comment author to vote.", "gd-star-rating"); ?> <?php _e("This is only for registered users.", "gd-star-rating"); ?></label>
     </td>
 </tr>
-<?php if ($gdsr_options["review_active"] == 1 && 1 == 2) { ?>
-<tr><th scope="row"><?php _e("Review", "gd-star-rating"); ?></th>
+<tr><th scope="row"><?php _e("Restrict", "gd-star-rating"); ?></th>
     <td>
-        <table cellpadding="0" cellspacing="0" class="previewtable">
-            <tr>
-                <td width="150"><?php _e("Stars", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left">
-                <select style="width: 180px;" name="gdsr_cmm_review_style" id="gdsr_cmm_review_style">
-                <?php GDSRHelper::render_styles_select($gdsr_styles, $gdsr_options["cmm_review_style"]); ?>
-                </select>
-                </td>
-                <td width="10"></td>
-                <td width="150" align="left">
-                <?php GDSRHelper::render_star_sizes("gdsr_cmm_review_size", $gdsr_options["cmm_review_size"]); ?>
-                </td>
-                <td width="10"></td>
-                <td width="100"><?php _e("Number Of Stars", "gd-star-rating"); ?>:</td>
-                <td width="80" align="left">
-                <select style="width: 70px;" name="gdsr_cmm_review_stars" id="gdsr_cmm_review_stars">
-                <?php GDSRHelper::render_stars_select($gdsr_options["cmm_review_stars"]); ?>
-                </select>
-                </td>
-            </tr>
-        </table>
+        <input type="checkbox" name="gdsr_cmm_authorvote" id="gdsr_cmm_authorvote"<?php if ($gdsr_options["cmm_author_vote"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_authorvote"><?php _e("Prevent comment author to vote.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
-        <table cellpadding="0" cellspacing="0" class="previewtable">
-            <tr>
-                <td width="150"><?php _e("Rating Alignment", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left">
-                <?php GDSRHelper::render_alignment("gdsr_cmm_review_align", $gdsr_options["cmm_review_align"]); ?>
-                </td>
-            </tr>
-            <tr>
-                <td width="150"><?php _e("Rating Header", "gd-star-rating"); ?>:</td>
-                <td width="200">
-                    <input type="checkbox" name="gdsr_cmm_review_header" id="gdsr_cmm_review_header"<?php if ($gdsr_options["cmm_review_header"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_review_header"><?php _e("Display header text.", "gd-star-rating"); ?></label>
-                </td>
-                <td width="10"></td>
-                <td width="150"><?php _e("Text to display", "gd-star-rating"); ?>:</td>
-                <td>
-                    <input type="text" name="gdsr_cmm_review_header_text" id="gdsr_cmm_review_header_text" value="<?php echo wp_specialchars($gdsr_options["cmm_review_header_text"]); ?>" style="width: 170px" />
-                </td>
-            </tr>
-            <tr>
-                <td width="150"><?php _e("Rating Block CSS Class", "gd-star-rating"); ?>:</td>
-                <td width="200">
-                    <input type="text" name="gdsr_cmm_review_classblock" id="gdsr_cmm_review_classblock" value="<?php echo wp_specialchars($gdsr_options["cmm_review_class_block"]); ?>" style="width: 170px" />
-                </td>
-            </tr>
-        </table>
+        <input type="checkbox" name="gdsr_cmm_logged" id="gdsr_cmm_logged"<?php if ($gdsr_options["cmm_logged"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_logged"><?php _e("Use logged data (IP) to prevent duplicate voting.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_cmm_cookies" id="gdsr_cmm_cookies"<?php if ($gdsr_options["cmm_cookies"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_cookies"><?php _e("Use cookies to prevent duplicate voting.", "gd-star-rating"); ?></label>
     </td>
 </tr>
-<?php } ?>
 </tbody></table>

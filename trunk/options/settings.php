@@ -17,7 +17,8 @@
         $gdsr_options["display_comment"] = isset($_POST['gdsr_dispcomment']) ? 1 : 0;
         $gdsr_options["moderation_active"] = isset($_POST['gdsr_modactive']) ? 1 : 0;
         $gdsr_options["timer_active"] = isset($_POST['gdsr_timer']) ? 1 : 0;
-        $gdsr_options["save_user_agent"] = isset($_POST['save_user_agent']) ? 1 : 0;
+        $gdsr_options["save_user_agent"] = isset($_POST['gdsr_save_user_agent']) ? 1 : 0;
+        $gdsr_options["save_cookies"] = isset($_POST['gdsr_save_cookies']) ? 1 : 0;
         $gdsr_options["ie_png_fix"] = isset($_POST['gdsr_iepngfix']) ? 1 : 0;
         
         $gdsr_options["preview_active"] = $_POST['gdsr_preview_stars'];
@@ -40,6 +41,8 @@
         $gdsr_options["cmm_cookies"] = isset($_POST['gdsr_cmm_cookies']) ? 1 : 0;
         $gdsr_options["author_vote"] = isset($_POST['gdsr_authorvote']) ? 1 : 0;
         $gdsr_options["cmm_author_vote"] = isset($_POST['gdsr_cmm_authorvote']) ? 1 : 0;
+        $gdsr_options["logged"] = isset($_POST['gdsr_logged']) ? 1 : 0;
+        $gdsr_options["cmm_logged"] = isset($_POST['gdsr_cmm_logged']) ? 1 : 0;
         
         $gdsr_options["style"] = $_POST['gdsr_style'];
         $gdsr_options["size"] = $_POST['gdsr_size'];
