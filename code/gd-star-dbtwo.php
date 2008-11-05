@@ -278,7 +278,7 @@ class GDSRDB
             $count_t = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=article&vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $total_voters);
         }
         
-        $row->total = $count_t.__("votes", "gd-star-rating").': <strong>'.$votes_t.'</strong><br />[ '.$row->views.' ] '.__("views", "gd-star-rating");
+        $row->total = $count_t.__("rating", "gd-star-rating").': <strong>'.$votes_t.'</strong><br />[ '.$row->views.' ] '.__("views", "gd-star-rating");
         $row->votes = $count_v.__("visitors", "gd-star-rating").': <strong>'.$votes_v.'</strong><br />'.$count_u.__("users", "gd-star-rating").': <strong>'.$votes_u.'</strong>';
         
         $row->title = sprintf('<a href="./post.php?action=edit&post=%s">%s</a>', $row->pid, $row->post_title);

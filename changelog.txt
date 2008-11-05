@@ -7,11 +7,13 @@
   * new: tools panel
   * new: option to control saving user agent data
   * new: options to hide even more options on settings pages
+  * edit: improved voting restrictions with ip and cookie
   * edit: all files encoding changed to utf8
   * edit: all files changed to windows ending
   * fix: invalid default rating for new posts
   * fix: full deletion of votes
   * fix: auto insert comments rating
+  * fix: various small bugs
 
 === Version: 1.0.0 / october 31 2008 ===
   * new: pumpkin stars set
