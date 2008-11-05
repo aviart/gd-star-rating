@@ -1,12 +1,12 @@
-#: code/gd-star-dbone.php:711
+#: code/gd-star-dbone.php:713
 msgid "Show all dates"
 msgstr ""
 
-#: code/gd-star-dbone.php:739
+#: code/gd-star-dbone.php:741
 msgid "All users and visitors"
 msgstr ""
 
-#: code/gd-star-dbone.php:740
+#: code/gd-star-dbone.php:742
 #: tinymce3/window.php:185
 #: widgets/widget.php:42
 #: widgets/widget.php:178
@@ -15,17 +15,16 @@ msgstr ""
 msgid "Visitors Only"
 msgstr ""
 
-#: code/gd-star-dbone.php:741
+#: code/gd-star-dbone.php:743
 msgid "All Users"
 msgstr ""
 
-#: code/gd-star-dbone.php:757
+#: code/gd-star-dbone.php:759
 msgid "All categories"
 msgstr ""
 
 #: code/gd-star-dbtwo.php:280
-#: code/gd-star-dbtwo.php:331
-msgid "votes"
+msgid "rating"
 msgstr ""
 
 #: code/gd-star-dbtwo.php:280
@@ -40,6 +39,10 @@ msgstr ""
 #: code/gd-star-dbtwo.php:281
 #: code/gd-star-dbtwo.php:332
 msgid "users"
+msgstr ""
+
+#: code/gd-star-dbtwo.php:331
+msgid "votes"
 msgstr ""
 
 #: code/gd-star-functions.php:127
@@ -212,7 +215,7 @@ msgstr ""
 
 #: options/articles.php:130
 #: options/articles.php:24
-#: options/voters.php:93
+#: options/voters.php:96
 #: options/voters.php:26
 #: tinymce3/window.php:32
 #: widgets/widget.php:154
@@ -262,8 +265,7 @@ msgid "Categories"
 msgstr ""
 
 #: options/articles.php:157
-#: options/comments.php:92
-msgid "Votes"
+msgid "Ratings"
 msgstr ""
 
 #: options/articles.php:158
@@ -286,7 +288,7 @@ msgstr ""
 #: options/categories.php:184
 #: options/comments.php:128
 #: options/moderation.php:150
-#: options/voters.php:153
+#: options/voters.php:156
 msgid "Delete"
 msgstr ""
 
@@ -350,7 +352,7 @@ msgstr ""
 #: options/categories.php:213
 #: options/comments.php:137
 #: options/comments.php:17
-#: options/voters.php:161
+#: options/voters.php:164
 #: options/voters.php:30
 msgid "Update"
 msgstr ""
@@ -382,7 +384,7 @@ msgid "Articles (Posts And Pages)"
 msgstr ""
 
 #: options/comments.php:45
-msgid "Comments For post"
+msgid "Comments for post"
 msgstr ""
 
 #: options/comments.php:89
@@ -399,8 +401,12 @@ msgstr ""
 msgid "Date And Time"
 msgstr ""
 
+#: options/comments.php:92
+msgid "Votes"
+msgstr ""
+
 #: options/comments.php:125
-#: options/voters.php:150
+#: options/voters.php:153
 msgid "With selected"
 msgstr ""
 
@@ -459,13 +465,13 @@ msgstr ""
 
 #: options/export.php:44
 #: options/moderation.php:116
-#: options/voters.php:115
+#: options/voters.php:118
 msgid "IP"
 msgstr ""
 
 #: options/export.php:45
 #: options/moderation.php:117
-#: options/voters.php:116
+#: options/voters.php:119
 msgid "User Agent"
 msgstr ""
 
@@ -589,7 +595,7 @@ msgid "To avoid rating data import problems, please don't use GD Star Rating in 
 msgstr ""
 
 #: options/moderation.php:115
-#: options/voters.php:113
+#: options/voters.php:116
 msgid "Vote"
 msgstr ""
 
@@ -982,23 +988,27 @@ msgstr ""
 msgid "Voters Log"
 msgstr ""
 
-#: options/voters.php:111
-msgid "Name"
-msgstr ""
-
-#: options/voters.php:112
-msgid "User ID"
+#: options/voters.php:82
+msgid "Vote log for post"
 msgstr ""
 
 #: options/voters.php:114
+msgid "Name"
+msgstr ""
+
+#: options/voters.php:115
+msgid "User ID"
+msgstr ""
+
+#: options/voters.php:117
 msgid "Vote Date"
 msgstr ""
 
-#: options/voters.php:156
+#: options/voters.php:159
 msgid "Full Delete"
 msgstr ""
 
-#: options/voters.php:157
+#: options/voters.php:160
 msgid "From Log Only"
 msgstr ""
 
