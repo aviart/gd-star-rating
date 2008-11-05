@@ -1,21 +1,21 @@
-= GD Star Rating =
+﻿= GD Star Rating =
 
 == Languages ==
 
 === English ===
-  * version: 1.0.0
+  * version: 1.0.1
   * author: Milan Petrovic
   * email: milan@gdragon.info
   * web: http://www.gdragon.info/
 
 === Serbian ===
-  * version: 1.0.0
+  * version: 1.0.1
   * author: Milan Petrovic
   * email: milan@gdragon.info
   * web: http://www.gdragon.info/
 
 === Spanish ===
-  * version: 1.0.0
+  * version: 1.0.1
   * author: Ángel Guzmán Maeso
   * email: shakaran@gmail.com
 
