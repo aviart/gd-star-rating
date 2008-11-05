@@ -93,9 +93,9 @@ if (!class_exists('GDStarRating')) {
         
         var $default_options = array(
             "version" => "1.0.1",
-            "date" => "2008.10.31.",
+            "date" => "2008.11.05.",
             "status" => "Stable",
-            "build" => 186,
+            "build" => 193,
             "ie_png_fix" => 1,
             "ajax" => 1,
             "save_user_agent" => 0,
@@ -144,7 +144,7 @@ if (!class_exists('GDStarRating')) {
             "logged" => 1,
             "cmm_cookies" => 1,
             "cmm_logged" => 1,
-            "admin_width" => 1200,
+            "admin_width" => 1240,
             "admin_rows" => 20,
             "admin_advanced" => 0,
             "admin_placement" => 0,
@@ -1533,19 +1533,14 @@ if (!class_exists('GDStarRating')) {
 
         // ccookies
         function check_cookie($post_id, $type = "article") {
-            if (isset($_COOKIE["wp_gdsr"])) {
-                $cookie = $_COOKIE["wp_gdsr"];
-                $cookie = substr($cookie, 6, strlen($cookie) - 6);
-                $cookie_ids = explode('|', $cookie);
-                if (in_array($post_id, $cookie_ids))
-                    return false;
-            }
-            if (isset($_COOKIE["wp_gdsr_".$type])) {
-                $cookie = $_COOKIE["wp_gdsr_".$type];
-                $cookie = substr($cookie, 6, strlen($cookie) - 6);
-                $cookie_ids = explode('|', $cookie);
-                if (in_array($post_id, $cookie_ids))
-                    return false;
+            if (($type == "article" && $this->o["cookies"]) || ($type == "comment" && $this->o["cmm_cookies"])) {
+                if (isset($_COOKIE["wp_gdsr_".$type])) {
+                    $cookie = $_COOKIE["wp_gdsr_".$type];
+                    $cookie = substr($cookie, 6, strlen($cookie) - 6);
+                    $cookie_ids = explode('|', $cookie);
+                    if (in_array($post_id, $cookie_ids))
+                        return false;
+                }
             }
             return true;
         }
@@ -1680,7 +1675,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             if ($allow_vote) 
-                $allow_vote = GDSRDatabase::check_vote($rd_comment_id, $rd_user_id, 'comment', $_SERVER["REMOTE_ADDR"]);
+                $allow_vote = GDSRDatabase::check_vote($rd_comment_id, $rd_user_id, 'comment', $_SERVER["REMOTE_ADDR"], $this->o["logged"] == 1);
 
             if ($allow_vote)
                 $allow_vote = $this->check_cookie($rd_post_id, "comment");
@@ -1763,7 +1758,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             if ($allow_vote) 
-                $allow_vote = GDSRDatabase::check_vote($rd_post_id, $rd_user_id, 'article', $_SERVER["REMOTE_ADDR"]);
+                $allow_vote = GDSRDatabase::check_vote($rd_post_id, $rd_user_id, 'article', $_SERVER["REMOTE_ADDR"], $this->o["logged"] == 1);
 
             if ($allow_vote)
                 $allow_vote = $this->check_cookie($rd_post_id);

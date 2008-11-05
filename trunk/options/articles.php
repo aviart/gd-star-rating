@@ -155,7 +155,7 @@ function gdsrTimerChange() {
             <?php } ?>
             <th scope="col"><?php _e("Vote Rules", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Categories", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Votes", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Ratings", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Total", "gd-star-rating"); ?></th>
             <?php if ($options["review_active"] == 1) { ?>
                 <th scope="col"><?php _e("Review", "gd-star-rating"); ?></th>
@@ -225,8 +225,8 @@ function gdsrTimerChange() {
             echo '<td>'.$timer_info.'</td>';
         echo '<td>'.$row->rules_articles.'<br />'.$row->rules_comments.'</td>';
         echo '<td>'.GDSRDatabase::get_categories($row->pid).'</td>';
-        echo '<td>'.$row->votes.'</td>';
-        echo '<td>'.$row->total.'</td>';
+        echo '<td nowrap="nowrap">'.$row->votes.'</td>';
+        echo '<td nowrap="nowrap">'.$row->total.'</td>';
         if ($options["review_active"] == 1) 
             echo '<td align="right">'.$row->review.'</td>';
         echo '</tr>';

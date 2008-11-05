@@ -80,6 +80,9 @@ function checkAll(form) {
 
 <div class="wrap"><h2>GD Star Rating: <?php _e("Voters Log", "gd-star-rating"); ?></h2>
 <form id="gdsr-comments" method="post" action="">
+<p><strong><?php _e("Vote log for post", "gd-star-rating"); ?>: 
+    <?php echo sprintf('<a href="./post.php?action=edit&post=%s">%s</a>', $post_id, GDSRDB::get_post_title($post_id)); ?>
+</strong></p>
 <ul class="subsubsub">
     <li><a<?php echo $select == "total" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&vg=total">All Votes (<?php echo $number_posts_all; ?>)</a> |</li>
     <li><a<?php echo $select == "users" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&vg=users">Users (<?php echo $number_posts_users; ?>)</a> |</li>

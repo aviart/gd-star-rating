@@ -50,8 +50,10 @@ class GDSRDatabase
             return false;
     }
     
-    function check_vote($id, $user, $type, $ip) {
-        $result = GDSRDatabase::check_vote_logged($id, $user, $type, $ip);
+    function check_vote($id, $user, $type, $ip, $mod_only = false) {
+        $result = true;
+        if (!$mod_only)
+            $result = GDSRDatabase::check_vote_logged($id, $user, $type, $ip);
         if ($result) 
             $result = GDSRDatabase::check_vote_moderated($id, $user, $type, $ip);
         return $result;
@@ -131,12 +133,13 @@ class GDSRDatabase
         
         if (count($del) > 0) {
             foreach ($del as $d) {
-                if ($d->user == "1")
-                    $update = sprintf("user_voters = user_voters - %s, user_votes = user_votes - %s", $d->votes, $d->count);
+                if ($d->user == 0)
+                    $update = sprintf("user_voters = user_voters - %s, user_votes = user_votes - %s", $d->count, $d->votes);
                 else 
-                    $update = sprintf("visitor_voters = visitor_voters - %s, visitor_votes = visitor_votes - %s", $d->votes, $d->count);
+                    $update = sprintf("visitor_voters = visitor_voters - %s, visitor_votes = visitor_votes - %s", $d->count, $d->votes);
                 
-                $sql = sprintf("update %s set %s where post_id = %s", $table_prefix, $update, $d->id);
+                $sql = sprintf("update %s set %s where post_id = %s", $delfrom, $update, $d->id);
+                $wpdb->query($sql);
             }
         }
         
