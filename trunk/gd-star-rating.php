@@ -175,7 +175,7 @@ if (!class_exists('GDStarRating')) {
         var $default_widget_top = array(
             "title" => "Blog Rating",
             "display" => "all",
-            "template" => "&lt;p class=&quot;trw-rating&quot;&gt;%RATING%&lt;/p&gt;",
+            "template" => "&lt;p class=&quot;trw-title&quot;&gt;Average blog rating:&lt;/p&gt;&lt;p class=&quot;trw-rating&quot;&gt;%RATING%&lt;/p&gt;&lt;p class=&quot;trw-footer&quot;&gt;&lt;strong&gt;%VOTES%&lt;/strong&gt; %WORD_VOTES% cast for &lt;strong&gt;%COUNT%&lt;/strong&gt; posts&lt;/p&gt;",
             "div_template" => '0',
             "div_filter" => '0',
             "div_elements" => '0',
@@ -690,7 +690,7 @@ if (!class_exists('GDStarRating')) {
             
             $allow_vote = $this->check_cookie($id);
 
-            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip);
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, $this->o["logged"] != 1);
             
             if ($allow_vote) {
                 GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
@@ -709,7 +709,7 @@ if (!class_exists('GDStarRating')) {
             
             if ($allow_vote) $allow_vote = $this->check_cookie($id);
             
-            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip);
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, $this->o["logged"] != 1);
 
             if ($allow_vote) {
                 GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
@@ -764,7 +764,7 @@ if (!class_exists('GDStarRating')) {
             
             $allow_vote = $this->check_cookie($id, 'comment');
 
-            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip);
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip, $this->o["cmm_logged"] != 1);
                 
             if ($allow_vote) {
                 GDSRDatabase::save_vote_comment($id, $user, $ip, $ua, $votes);
@@ -783,7 +783,7 @@ if (!class_exists('GDStarRating')) {
 
             if ($allow_vote) $allow_vote = $this->check_cookie($id, 'comment');
 
-            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip);
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip, $this->o["cmm_logged"] != 1);
             
             if ($allow_vote) {
                 GDSRDatabase::save_vote_comment($id, $user, $ip, $ua, $votes);
@@ -1072,9 +1072,6 @@ if (!class_exists('GDStarRating')) {
                 $data->bayes_rating = $this->bayesian_estimate($data->voters, $data->rating);
             }
             
-            if ($data->votes == 1) $tense = $this->x["word_votes_singular"];
-            else $tense = $this->x["word_votes_plural"];
-            
             return $data;
         }
         // calculation
@@ -1360,10 +1357,12 @@ if (!class_exists('GDStarRating')) {
         
         function render_top_widget($widget) {
             $data = $this->prepare_blog_rating($widget);
+            if ($data->voters == 1) $tense = $this->x["word_votes_singular"];
+            else $tense = $this->x["word_votes_plural"];
             $template = html_entity_decode($widget["template"]);
             $rt = str_replace('%RATING%', $data->rating, $template);
             $rt = str_replace('%MAX_RATING%', $data->max_rating, $rt);
-            $rt = str_replace('%VOTES%', $data->votes, $rt);
+            $rt = str_replace('%VOTES%', $data->voters, $rt);
             $rt = str_replace('%COUNT%', $data->count, $rt);
             $rt = str_replace('%BAYES_RATING%', $data->bayes_rating, $rt);
             $rt = str_replace('%WORD_VOTES%', $tense, $rt);
@@ -1675,7 +1674,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             if ($allow_vote) 
-                $allow_vote = GDSRDatabase::check_vote($rd_comment_id, $rd_user_id, 'comment', $_SERVER["REMOTE_ADDR"], $this->o["logged"] == 1);
+                $allow_vote = GDSRDatabase::check_vote($rd_comment_id, $rd_user_id, 'comment', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1);
 
             if ($allow_vote)
                 $allow_vote = $this->check_cookie($rd_post_id, "comment");
@@ -1758,8 +1757,8 @@ if (!class_exists('GDStarRating')) {
             }
 
             if ($allow_vote) 
-                $allow_vote = GDSRDatabase::check_vote($rd_post_id, $rd_user_id, 'article', $_SERVER["REMOTE_ADDR"], $this->o["logged"] == 1);
-
+                $allow_vote = GDSRDatabase::check_vote($rd_post_id, $rd_user_id, 'article', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1);
+                
             if ($allow_vote)
                 $allow_vote = $this->check_cookie($rd_post_id);
             
