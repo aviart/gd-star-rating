@@ -118,10 +118,15 @@
                 </td>
             </tr>
         </table>
-        <div class="gdsr-table-split"></div>
-        <input type="checkbox" name="gdsr_cookies" id="gdsr_cookies"<?php if ($gdsr_options["cookies"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cookies"><?php _e("Save cookies to prevent duplicate voting.", "gd-star-rating"); ?></label>
-        <br />
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("Restrict", "gd-star-rating"); ?></th>
+    <td>
         <input type="checkbox" name="gdsr_authorvote" id="gdsr_authorvote"<?php if ($gdsr_options["author_vote"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_authorvote"><?php _e("Prevent article author to vote.", "gd-star-rating"); ?> <?php _e("This is only for registered users.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_logged" id="gdsr_logged"<?php if ($gdsr_options["logged"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_logged"><?php _e("Use logged data (IP) to prevent duplicate voting.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_cookies" id="gdsr_cookies"<?php if ($gdsr_options["cookies"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cookies"><?php _e("Use cookies to prevent duplicate voting.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <?php if ($gdsr_options["review_active"] == 1) { ?>

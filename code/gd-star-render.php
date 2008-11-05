@@ -146,7 +146,7 @@ class GDSRRender
             switch ($type)
             {
                 case 'a':
-                    if ($time_restirctions != 'N' && $time_remaining > 0) {
+                    if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
                         $time_parts = GDSRHelper::remaining_time_parts($time_remaining);
                         $time_total = GDSRHelper::remaining_time_total($time_remaining);
                         $tpl = $template["time_restricted_active"];
@@ -163,7 +163,7 @@ class GDSRRender
                         $rt = str_replace('%TOT_MINUTES%', $time_total["minute"], $rt);
                     }
                     else {
-                        if ($time_restirctions != 'N')
+                        if ($time_restirctions == 'D' || $time_restirctions == 'T')
                             $tpl = $template["time_restricted_closed"];
                         else
                             $tpl = $template["article_rating_text"];

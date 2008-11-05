@@ -98,7 +98,8 @@ if (!class_exists('GDStarRating')) {
             "build" => 186,
             "ie_png_fix" => 1,
             "ajax" => 1,
-            "save_user_agent" => 1,
+            "save_user_agent" => 0,
+            "save_cookies" => 1,
             "widget_articles" => 1,
             "widget_top" => 1,
             "preview_active" => 1,
@@ -140,7 +141,9 @@ if (!class_exists('GDStarRating')) {
             "display_archive" => 1,
             "display_search" => 1,
             "cookies" => 1,
+            "logged" => 1,
             "cmm_cookies" => 1,
+            "cmm_logged" => 1,
             "admin_width" => 1200,
             "admin_rows" => 20,
             "admin_advanced" => 0,
@@ -352,9 +355,9 @@ if (!class_exists('GDStarRating')) {
             add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 10, __FILE__, array(&$this,"star_menu_front"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), 10, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), 10, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
+            // add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), 10, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
             // add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), 10, "gd-star-rating-users", array(&$this,"star_menu_users"));
-            if ($this->charting) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Charts", "gd-star-rating"), __("Charts", "gd-star-rating"), 10, "gd-star-rating-charts", array(&$this,"star_menu_charts"));
+            // if ($this->charting) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Charts", "gd-star-rating"), __("Charts", "gd-star-rating"), 10, "gd-star-rating-charts", array(&$this,"star_menu_charts"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gd-star-rating-templates", array(&$this,"star_menu_templates"));
@@ -1065,7 +1068,7 @@ if (!class_exists('GDStarRating')) {
             
             $data->max_rating = $this->o["stars"];
             if ($data->votes > 0) {
-                $data->rating = $data->votes / $data->voters;
+                $data->rating = @number_format($data->votes / $data->voters, 1);
                 $data->bayes_rating = $this->bayesian_estimate($data->voters, $data->rating);
             }
             
