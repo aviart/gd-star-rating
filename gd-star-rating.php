@@ -406,10 +406,10 @@ if (!class_exists('GDStarRating')) {
         
         function display_article_rating($post_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
             if ($use_default) {
-                $style = $this->o["review_style"];
-                $size = $this->o["review_size"];
+                $style = $this->o["style"];
+                $size = $this->o["size"];
             }
-            $stars = $this->o["review_stars"];
+            $stars = $this->o["stars"];
             list($votes, $score) = $this->get_article_rating($post_id);
             if ($votes > 0) $rating = $score / $votes;
             else $rating = 0;
