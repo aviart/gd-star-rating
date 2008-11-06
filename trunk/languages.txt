@@ -20,7 +20,7 @@
   * email: shakaran@gmail.com
 
 === French ===
-  * version: 1.0.0
+  * version: 1.0.1
   * author: k|torz
   * email: vlag@free.fr
   * web: http://blog.lagrandmaison.fr/yop/

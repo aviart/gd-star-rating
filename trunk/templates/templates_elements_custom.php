@@ -1,7 +1,7 @@
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="150"><strong>%WORD_VOTES%</strong></td>
-                <td width="70">: <?php _e("singlular", "gd-star-rating"); ?>:</td>
+                <td width="70">: <?php _e("singular", "gd-star-rating"); ?>:</td>
                 <td width="10"></td>
                 <td width="150"><input type="text" name="gdsr_word_votessingular" id="gdsr_word_votessingular" value="<?php echo wp_specialchars($gdsr_options["word_votes_singular"]); ?>" style="width: 120px" /></td>
                 <td width="70"><?php _e("plural", "gd-star-rating"); ?>:</td>
