@@ -3,6 +3,8 @@
 == Change Log ==
 === Version: 1.0.2 / november 10 2008 ===
   * new: comment review rating
+  * new: more functions to use in the theme
+  * edit: improvement of all standalone functions
   * fix: few more typo errors
 
 === Version: 1.0.1 / november 5 2008 ===

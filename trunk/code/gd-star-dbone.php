@@ -463,7 +463,7 @@ class GDSRDatabase
         
         $sql = "select review from ".$comments." WHERE comment_id = ".$comment_id;
         $results = $wpdb->get_row($sql, OBJECT);
-        if (count($results) == 0) return -1;
+        if (count($results) == 0) return 0;
         else return $results->review;
     }
 
@@ -476,7 +476,7 @@ class GDSRDatabase
         if (count($results) == 0) return -1;
         else return $results->review;
     }
-
+    
     function get_post_edit($post_id) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
