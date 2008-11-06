@@ -118,6 +118,7 @@
 <div id="gdsr_tabs" class="gdsrtabs">
 <ul>
     <li><a href="#fragment-1"><span><?php _e("General", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-6"><span><?php _e("Integration", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-2"><span><?php _e("Articles (Posts And Pages)", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-3"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-4"><span><?php _e("Statistics", "gd-star-rating"); ?></span></a></li>
@@ -126,6 +127,9 @@
 <div style="clear: both"></div>
 <div id="fragment-1">
 <?php include "settings_general.php"; ?>
+</div>
+<div id="fragment-6">
+<?php include "settings_integration.php"; ?>
 </div>
 <div id="fragment-2">
 <?php include "settings_articles.php"; ?>

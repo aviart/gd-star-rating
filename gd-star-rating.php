@@ -355,6 +355,70 @@ if (!class_exists('GDStarRating')) {
         }
         // shortcode
         
+        // various rendering
+        function comment_review($allow_vote = true, $value = 0) {
+            $stars = $this->o["cmm_review_stars"];
+            $size = $this->o["cmm_review_size"];
+            $width = $stars * $size;
+            return GDSRRender::rating_stars_local($width, $size, $stars, $allow_vote, $value);
+        }
+        
+        function get_rating_stars($style, $stars, $size, $zero_render, $value) {
+            if ($value <= 0) {
+                if ($zero_render) $value = 0;
+                else return '';
+            }
+
+            $full_width = $size * $stars;
+            $rate_width = $size * $value;
+            
+            $gfx = $this->g->find_stars($style);
+            $star_path = $gfx->get_url($size);
+
+            $render = sprintf('<div style="%s"><div style="%s"></div></div>',
+                sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $size, $full_width),
+                sprintf('background: url(%s) bottom left; height: %spx; width: %spx;', $star_path, $size, $rate_width)
+            );
+            return $render;
+        }
+        
+        function display_comment_review($comment_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
+            if ($use_default) {
+                $style = $this->o["cmm_review_style"];
+                $size = $this->o["cmm_review_size"];
+            }
+            $stars = $this->o["cmm_review_stars"];
+            $review = GDSRDatabase::get_comment_review($comment_id);
+            
+            return $this->get_rating_stars($style, $stars, $size, $zero_render, $review);
+        }
+        
+        function display_article_review($post_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
+            if ($use_default) {
+                $style = $this->o["review_style"];
+                $size = $this->o["review_size"];
+            }
+            $stars = $this->o["review_stars"];
+            $review = GDSRDatabase::get_review($post_id);
+            
+            return $this->get_rating_stars($style, $stars, $size, $zero_render, $review);
+        }
+        
+        function display_article_rating($post_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
+            if ($use_default) {
+                $style = $this->o["review_style"];
+                $size = $this->o["review_size"];
+            }
+            $stars = $this->o["review_stars"];
+            list($votes, $score) = $this->get_article_rating($post_id);
+            if ($votes > 0) $rating = $score / $votes;
+            else $rating = 0;
+            $rating = @number_format($rating, 1);
+            
+            return $this->get_rating_stars($style, $stars, $size, $zero_render, $rating);
+        }
+        // various rendering
+
         // install
         function admin_menu() {
             add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"));
@@ -433,6 +497,7 @@ if (!class_exists('GDStarRating')) {
         function comment_read_post($comment) {
             $this->post_comment["review"] = $_POST["gdsr_cmm_review"];
             $this->post_comment["post_id"] = $_POST["comment_post_ID"];
+            return $comment;
         }
         
         function comment_save_review($comment_id) {
@@ -1535,7 +1600,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->w["display"] == "hide" || ($this->w["display"] == "users" && $userdata->ID == 0) || ($this->w["display"] == "visitors" && $userdata->ID > 0)) return;
            
             echo $before_widget.$before_title.$this->w['title'].$after_title;
-            $this->render_articles_widget($this->w);
+            echo $this->render_articles_widget($this->w);
             echo $after_widget;
         }
 
@@ -1550,7 +1615,7 @@ if (!class_exists('GDStarRating')) {
                 echo $this->prepare_row($row, $template);
             }
 
-            echo html_entity_decode($widget["tpl_footer"]);
+            return html_entity_decode($widget["tpl_footer"]);
         }
         // widgets
 
@@ -1619,13 +1684,11 @@ if (!class_exists('GDStarRating')) {
             return $content;
         }
 
-        function render_rating_text_article($post, $cls = "") {
-            $rd_post_id = intval($post->ID);
-            $rd_is_page = $post->post_type == "page" ? "1" : "0";
-            $post_data = GDSRDatabase::get_post_data($rd_post_id);
+        function get_article_rating($post_id, $is_page = '') {
+            $post_data = GDSRDatabase::get_post_data($post_id);
             if (count($post_data) == 0) {
-                GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
-                $post_data = GDSRDatabase::get_post_data($rd_post_id);
+                GDSRDatabase::add_default_vote($post_id, $is_page);
+                $post_data = GDSRDatabase::get_post_data($post_id);
             }
 
             $votes = 0;
@@ -1643,6 +1706,17 @@ if (!class_exists('GDStarRating')) {
                 $votes = $post_data->user_voters;
                 $score = $post_data->user_votes;
             }
+            $out[] = $votes;
+            $out[] = $score;
+
+            return $out;
+        }
+        
+        function render_rating_text_article($post, $cls = "") {
+            $rd_post_id = intval($post->ID);
+            $rd_is_page = $post->post_type == "page" ? "1" : "0";
+
+            list($votes, $score) = $this->get_article_rating($rd_post_id, $rd_is_page);
             
             echo GDSRRender::rating_text($rd_post_id, "a", $votes, $score, $this->o["stars"], "article", $cls == "" ? $this->o["class_text"] : $cls);
         }
@@ -1806,50 +1880,14 @@ if (!class_exists('GDStarRating')) {
             return $rating_block;
         }
         // render
-        
-        function comment_review($allow_vote = true, $value = 0) {
-            $stars = $this->o["cmm_review_stars"];
-            $size = $this->o["cmm_review_size"];
-            $width = $stars * $size;
-            return GDSRRender::rating_stars_local($width, $size, $stars, $allow_vote, $value);
-        }
-        
-        function display_comment_review($comment, $use_default = true, $style = "oxygen", $size = 20) {
-        
-        }
     }
 
     $gdsr = new GDStarRating();
 
-    function wp_gdsr_render_widget($widget = array()) {
-        global $gdsr;
-        $gdsr->render_articles_widget($widget);
-    }
-    
     function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
         global $gdsr;
         return $gdsr->get_blog_rating($select, $show);
     }
-    
-    function wp_gdsr_render_article() {
-        global $post, $userdata, $gdsr;
-        echo $gdsr->render_article($post, $userdata);
-    }
-    
-    function wp_gdsr_rating_text_article($cls = "") {
-        global $post, $gdsr;
-        echo $gdsr->render_rating_text_article($post, $cls);
-    }
-
-    function wp_gdsr_render_comment() {
-        global $comment, $userdata, $gdsr, $post;
-        echo $gdsr->render_comment($post, $comment, $userdata);
-    }
-    
-	function wp_gdsr_render_review() {
-        global $gdsr;
-        echo $gdsr->shortcode_starreview();
-	}
     
     function wp_gdsr_user_votes($user_id) {
         global $gdsr;
@@ -1859,13 +1897,62 @@ if (!class_exists('GDStarRating')) {
         global $gdsr;
     }
     
-    function wp_gdsr_new_comment_review() {
+    function wp_gdsr_render_widget($widget = array(), $echo = true) {
         global $gdsr;
-        return $gdsr->comment_review();
+
+        if ($echo) echo $gdsr->render_articles_widget($widget);
+        else return $gdsr->render_articles_widget($widget);
+    }
+    
+    function wp_gdsr_render_article($echo = true) {
+        global $post, $userdata, $gdsr;
+        
+        if ($echo) echo $gdsr->render_article($post, $userdata);
+        else return $gdsr->render_article($post, $userdata);
+    }
+    
+    function wp_gdsr_rating_text_article($cls = "", $echo = true) {
+        global $post, $gdsr;
+        if ($echo) echo $gdsr->render_rating_text_article($post, $cls);
+        else return $gdsr->render_rating_text_article($post, $cls);
     }
 
-    function wp_gdsr_show_comment_review($use_default = true, $style = "oxygen", $size = 20) {
+    function wp_gdsr_render_comment($echo = true) {
+        global $comment, $userdata, $gdsr, $post;
+        if ($echo) echo $gdsr->render_comment($post, $comment, $userdata);
+        else return $gdsr->render_comment($post, $comment, $userdata);
+    }
+    
+	function wp_gdsr_render_review($echo = true) {
+        global $gdsr;
+        if ($echo) echo $gdsr->shortcode_starreview();
+        else return $gdsr->shortcode_starreview();
+	}
+    
+    function wp_gdsr_new_comment_review($echo = true) {
+        global $gdsr;
+        if ($echo) echo $gdsr->comment_review();
+        else return $gdsr->comment_review();
+    }
+
+    function wp_gdsr_show_comment_review($comment_id = 0, $zero_render = true, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
         global $comment, $gdsr;
-        $gdsr->display_comment_review($comment, $use_default, $style, $size);
+        if ($comment_id < 1) $comment_id = $comment->comment_ID;
+        if ($echo) echo $gdsr->display_comment_review($comment_id, $zero_render, $use_default, $style, $size);
+        else return $gdsr->display_comment_review($comment, $zero_render, $use_default, $style, $size);
+    }
+    
+    function wp_gdsr_show_article_review($post_id = 0, $zero_render = true, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
+        global $post, $gdsr;
+        if ($post_id < 1) $post_id = $post->ID;
+        if ($echo) echo $gdsr->display_article_review($post_id, $zero_render, $use_default, $style, $size);
+        else return $gdsr->display_article_review($post_id, $zero_render, $use_default, $style, $size);
+    }
+
+    function wp_gdsr_show_article_rating($post_id = 0, $zero_render = true, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
+        global $post, $gdsr;
+        if ($post_id < 1) $post_id = $post->ID;
+        if ($echo) echo $gdsr->display_article_rating($post_id, $zero_render, $use_default, $style, $size);
+        else return $gdsr->display_article_rating($post_id, $zero_render, $use_default, $style, $size);
     }
 }
