@@ -1,6 +1,9 @@
 = GD Star Rating =
 
 == Change Log ==
+=== Version: 1.0.2 / november 10 2008 ===
+  * new: comment review rating
+  * fix: few more typo errors
 
 === Version: 1.0.1 / november 5 2008 ===
   * new: top ratings blog summary widget

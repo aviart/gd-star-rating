@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.0.1
+Version: 1.0.2
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -64,6 +64,8 @@ if (!class_exists('GDStarRating')) {
         var $e;
         var $i;
         var $g;
+        
+        var $post_comment;
 
         var $shortcode_builtin_classes = array(
             array("name" => "Standard", "class" => "starrating"),
@@ -93,9 +95,9 @@ if (!class_exists('GDStarRating')) {
         
         var $default_options = array(
             "version" => "1.0.1",
-            "date" => "2008.11.05.",
+            "date" => "2008.11.10.",
             "status" => "Stable",
-            "build" => 195,
+            "build" => 197,
             "ie_png_fix" => 1,
             "ajax" => 1,
             "save_user_agent" => 0,
@@ -126,6 +128,9 @@ if (!class_exists('GDStarRating')) {
             "cmm_header_text" => '',
             "cmm_class_block" => '',
             "cmm_class_text" => '',
+            "cmm_review_style" => 'oxygen',
+            "cmm_review_size" => 20,
+            "cmm_review_stars" => 5,
             "review_style" => 'oxygen',
             "review_size" => 20,
             "review_stars" => 5,
@@ -417,10 +422,25 @@ if (!class_exists('GDStarRating')) {
             add_filter('the_content', array(&$this, 'display_article'));
             add_filter("mce_external_plugins", array(&$this, 'add_tinymce_plugin'), 5);
             add_filter('mce_buttons', array(&$this, 'add_tinymce_button'), 5);
+            add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
+            add_filter('comment_post', array(&$this, 'comment_save_review'));
 
             foreach ($this->shortcodes as $code) {
                 $this->shortcode_action($code);
             }
+        }
+        
+        function comment_read_post($comment) {
+            $this->post_comment["review"] = $_POST["gdsr_cmm_review"];
+            $this->post_comment["post_id"] = $_POST["comment_post_ID"];
+        }
+        
+        function comment_save_review($comment_id) {
+            $comment_data = GDSRDatabase::get_comment_data($comment_id);
+            if (count($comment_data) == 0)
+                GDSRDatabase::add_empty_comment($comment_id, $this->post_comment["post_id"], $this->post_comment["review"]);
+            else
+                GDSRDatabase::save_comment_review($comment_id, $this->post_comment["review"]);
         }
 
         function saveedit_post($post_id) {
@@ -653,15 +673,19 @@ if (!class_exists('GDStarRating')) {
 
         function wp_head() {
             if (is_feed()) return;
-            
+           
             $gfx_a = $this->g->find_stars($this->o["style"]);
-            $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
-            
             $article = urlencode($this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary);
-            $comment = urlencode($this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary);
-
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_article.css.php?stars='.$article.'" type="text/css" media="screen" />');
+
+            $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
+            $comment = urlencode($this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary);
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment.css.php?stars='.$comment.'" type="text/css" media="screen" />');
+
+            $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
+            $comment_review = urlencode($this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary);
+            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment_review.css.php?stars='.$comment_review.'" type="text/css" media="screen" />');
+            
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/rating.css" type="text/css" media="screen" />');
             echo('<script type="text/javascript">');
             echo('function gdsrWait(rater, loader) { jQuery("#"+rater).css("display", "none"); jQuery("#"+loader).css("display", "block"); }');
@@ -1782,6 +1806,17 @@ if (!class_exists('GDStarRating')) {
             return $rating_block;
         }
         // render
+        
+        function comment_review($allow_vote = true, $value = 0) {
+            $stars = $this->o["cmm_review_stars"];
+            $size = $this->o["cmm_review_size"];
+            $width = $stars * $size;
+            return GDSRRender::rating_stars_local($width, $size, $stars, $allow_vote, $value);
+        }
+        
+        function display_comment_review($comment, $use_default = true, $style = "oxygen", $size = 20) {
+        
+        }
     }
 
     $gdsr = new GDStarRating();
@@ -1822,5 +1857,15 @@ if (!class_exists('GDStarRating')) {
     
     function wp_gdsr_all_users_votes() {
         global $gdsr;
+    }
+    
+    function wp_gdsr_new_comment_review() {
+        global $gdsr;
+        return $gdsr->comment_review();
+    }
+
+    function wp_gdsr_show_comment_review($use_default = true, $style = "oxygen", $size = 20) {
+        global $comment, $gdsr;
+        $gdsr->display_comment_review($comment, $use_default, $style, $size);
     }
 }

@@ -92,6 +92,7 @@ if (isset($id)) {
             <th scope="col"><?php _e("Date And Time", "gd-star-rating"); ?></th>
             <th scope="col" width="120"><?php _e("Votes", "gd-star-rating"); ?></th>
             <th scope="col" width="120"><?php _e("Total", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Review", "gd-star-rating"); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -107,6 +108,7 @@ if (isset($id)) {
         echo '<td>'.$row->comment_date.'</td>';
         echo '<td>'.$row->votes.'</td>';
         echo '<td>'.$row->total.'</td>';
+        echo '<td>'.$row->review.'</td>';
         echo '</tr>';
 
         if ($tr_class == "")

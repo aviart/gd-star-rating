@@ -235,9 +235,12 @@ class GDSRDatabase
         }
     }
     
-    function save_comment_review($comment_id, $rating, $post_id) {
+    function save_comment_review($comment_id, $review) {
         global $wpdb, $table_prefix;
         $comments = $table_prefix.'gdsr_data_comment';
+        $sql = sprintf("update %s set review = %s where comment_id = %", 
+            $comments, $review, $comment_id);
+        $wpdb->query($sql);
     }
     
     function save_review($post_id, $rating, $old = true) {
@@ -396,14 +399,15 @@ class GDSRDatabase
         $wpdb->query($sql);
     }
     
-    function add_empty_comment($comment_id, $post_id) {
+    function add_empty_comment($comment_id, $post_id, $review = -1) {
         global $wpdb, $table_prefix;
         $dbt_data_comment = $table_prefix.'gdsr_data_comment';
         $sql = sprintf(
-                "INSERT INTO %s (comment_id, post_id, is_locked, user_voters, user_votes, visitor_voters, visitor_votes) VALUES (%s, %s, '0', '0', '0', '0', '0')",
+                "INSERT INTO %s (comment_id, post_id, is_locked, user_voters, user_votes, visitor_voters, visitor_votes, review) VALUES (%s, %s, '0', '0', '0', '0', '0', %s)",
                     $dbt_data_comment, 
                     $comment_id, 
-                    $post_id
+                    $post_id,
+                    $review
                 );
         $wpdb->query($sql);
     }

@@ -73,11 +73,6 @@
                            
         $gdsr_options["cmm_review_style"] = $_POST['gdsr_cmm_review_style'];
         $gdsr_options["cmm_review_size"] = $_POST['gdsr_cmm_review_size'];
-        $gdsr_options["cmm_review_text"] = $_POST['gdsr_cmm_review_text'];
-        $gdsr_options["cmm_review_align"] = $_POST['gdsr_cmm_review_align'];
-        $gdsr_options["cmm_review_header"] = isset($_POST['gdsr_cmm_review_header']) ? 1 : 0;
-        $gdsr_options["cmm_review_header_text"] = stripslashes(htmlentities(gd_addslashes($_POST['gdsr_cmm_review_header_text'], ENT_QUOTES, 'UTF-8')));
-        $gdsr_options["cmm_review_class_block"] = $_POST['gdsr_cmm_review_classblock'];
                            
         $gdsr_options["default_voterules_articles"] = $_POST['gdsr_default_vote_articles'];
         $gdsr_options["default_voterules_comments"] = $_POST['gdsr_default_vote_comments'];

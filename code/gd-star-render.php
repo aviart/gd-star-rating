@@ -2,6 +2,22 @@
 
 class GDSRRender
 {
+    function rating_stars_local($width, $height, $unit_count, $allow_vote = true, $value = 0) {
+        $rater = '<input type="hidden" id="gdsr_cmm_review" name="gdsr_cmm_review" value="0" />';
+        $rater.= '<div id="gdsr_cmm_stars" class="reviewcmm"><div class="starsbar">';
+        $rater.= '<div class="outer" align="left"><div id="gdsr_cmm_stars_rated" style="width: '.$value.'px;" class="inner"></div>';
+        if ($allow_vote) {
+            $rater.= '<div id="gdr_stars_cmm_review" class="gdsr_review_as">';
+            for ($ic = 0; $ic < $unit_count; $ic++) {
+                $ncount = $unit_count - $ic;
+                $rater.='<a id="gdsrX'.$ncount.'X'.$height.'" title="'.$ncount.' out of '.$unit_count.'" class="s'.$ncount.'" rel="nofollow"></a>';
+            }
+            $rater.= '</div>';
+        }
+        $rater.= '</div></div></div>';
+        return $rater;
+    }
+    
     function rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $id, $user_id, $loader_id, $rater_length, $typecls, $ajax = false) {
         $rater = '<div id="'.$rater_id.'" class="'.$class.'"><div class="starsbar">';
         $rater.= '<div class="outer" align="left"><div id="gdr_vote_'.$id.'" style="width: '.$rating_width.'px;" class="inner"></div>';
