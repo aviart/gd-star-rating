@@ -20,7 +20,7 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     }
 }
 
-$all_cats = GDSRDB::get_all_categories();
+$all_cats = GDSRDatabase::get_all_categories();
 $categories = GDSRHelper::get_categories_hierarchy($all_cats);
 
 $number_posts = count($categories);
@@ -97,7 +97,8 @@ function gdsrTimerChange() {
        
     $tr_class = "";
     for ($i = $cat_from; $i < $cat_to; $i++) {
-        $row = GDSRDB::convert_category_row($categories[$i]);
+        $row = $categories[$i];
+        $row = GDSRDB::convert_category_row($row);
         if ($options["timer_active"] == 1) {
             if ($row->expiry_type == "D") {
                 $timer_info = '<strong><span style="color: red">'.__('date limit').'</span></strong><br />';

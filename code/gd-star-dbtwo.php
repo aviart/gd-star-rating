@@ -477,13 +477,6 @@ class GDSRDB
         $wpdb->query($sql);
     }
     // recalculate
-    
-    // categories
-    function get_all_categories() {
-        global $wpdb, $table_prefix;
-        return $wpdb->get_results(sprintf("SELECT 0 as depth, x.term_id, t.name, t.slug, x.parent, x.count FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id where taxonomy = 'category' order by x.parent, t.name asc", $table_prefix, $table_prefix));
-    }
-    // categories
 }
 
 ?>
