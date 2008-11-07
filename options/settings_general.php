@@ -33,7 +33,9 @@
         <br />
         <input type="checkbox" name="gdsr_admin_defaults" id="gdsr_admin_defaults"<?php if ($gdsr_options["admin_defaults"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_defaults"><?php _e("Display Rating Defaults Settings.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
-        <input type="checkbox" name="gdsr_admin_category" id="gdsr_admin_category"<?php if ($gdsr_options["admin_category"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_category"><?php _e("Enable managment for default settings for categories .", "gd-star-rating"); ?></label>
+        <input type="checkbox" name="gdsr_admin_category" id="gdsr_admin_category"<?php if ($gdsr_options["admin_category"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_category"><?php _e("Enable managment for default settings for categories.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_admin_users" id="gdsr_admin_users"<?php if ($gdsr_options["admin_users"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_users"><?php _e("Enable users rating managment.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Plugin Features", "gd-star-rating"); ?></th>
@@ -43,7 +45,7 @@
         <input type="checkbox" name="gdsr_timer" id="gdsr_timer"<?php if ($gdsr_options["timer_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_timer"><?php _e("Time restriction for rating.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_modactive" id="gdsr_modactive"<?php if ($gdsr_options["moderation_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_modactive"><?php _e("Moderation options and handling.", "gd-star-rating"); ?></label>
-        <br />
+        <div class="gdsr-table-split"></div>
         <input type="checkbox" name="gdsr_reviewactive" id="gdsr_reviewactive"<?php if ($gdsr_options["review_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_reviewactive"><?php _e("Post And Page Review Rating.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_commentsactive" id="gdsr_commentsactive"<?php if ($gdsr_options["comments_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_commentsactive"><?php _e("Comments Rating.", "gd-star-rating"); ?></label>

@@ -68,6 +68,22 @@ class GDSRDatabase
     }
     // check vote
     
+    //users
+    function get_valid_users() {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("SELECT l.user_id, l.vote_type, count(*) as voters, sum(l.vote) as votes, u.display_name, u.user_email, u.user_url FROM %sgdsr_votes_log l left join %susers u on u.id = l.user_id group by user_id, vote_type order by user_id, vote_type",
+                $table_prefix, $table_prefix
+            );
+        return $wpdb->get_results($sql);
+    }
+    
+    function get_valid_users_count() {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("SELECT count(distinct user_id) from %sgdsr_votes_log", $table_prefix);
+        return $wpdb->get_var($sql);
+    }
+    //users
+
     // categories
     function update_category_settings($ids, $upd_am, $upd_ar, $upd_cm, $upd_cr, $ids_array) {
         global $wpdb, $table_prefix;
