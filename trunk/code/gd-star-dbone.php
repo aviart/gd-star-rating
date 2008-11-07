@@ -68,6 +68,49 @@ class GDSRDatabase
     }
     // check vote
     
+    // categories
+    function update_category_settings($ids, $upd_am, $upd_ar, $upd_cm, $upd_cr, $ids_array) {
+        global $wpdb, $table_prefix;
+        GDSRDatabase::add_category_defaults($ids, $ids_array);
+        $dbt_data_cats = $table_prefix.'gdsr_data_category';
+        
+        $update = array();
+        if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
+        if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
+        if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
+        if ($upd_cr != '') $update[] = "rules_comments = '".$upd_cr."'";
+        if (count($update) > 0) {
+            $updstring = join(", ", $update);
+            $sql = sprintf("update %s set %s where category_id in %s", $dbt_data_cats, $updstring, $ids);
+            $wpdb->query($sql);
+        }
+    }
+
+    function add_category_defaults($ids, $ids_array) {
+        global $wpdb, $table_prefix;
+        $rows = $wpdb->get_results(sprintf("select category_id from %sgdsr_data_category where category_id in %s", $table_prefix, $ids), ARRAY_N);
+        if (count($rows) == 0) $rows = array();
+        foreach ($ids_array as $id)
+            if (!in_array($id, $rows)) GDSRDatabase::add_category_default($id);
+    }
+
+    function add_category_default($id) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf(
+                "INSERT INTO %sgdsr_data_category (category_id, rules_articles, rules_comments, moderate_articles, moderate_comments, expiry_type, expiry_value) VALUES (%s, '%s', '%s', '%s', '%s', '%s', '%s')",
+                $table_prefix, $id, 'A', 'A', 'N', 'N', 'N', ''
+                );
+        $wpdb->query($sql);
+    }
+
+    function get_all_categories() {
+        global $wpdb, $table_prefix;
+        return $wpdb->get_results(sprintf("SELECT 0 as depth, x.term_id, t.name, t.slug, x.parent, x.count, d.* FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id left join %sgdsr_data_category d on d.category_id = x.term_id where taxonomy = 'category' order by x.parent, t.name asc", 
+                $table_prefix, $table_prefix, $table_prefix
+            ));
+    }
+    // categories
+
     // save & update
     function delete_votes($ids, $delete, $ids_array) {
         global $wpdb, $table_prefix;
@@ -163,22 +206,6 @@ class GDSRDatabase
         }
     }
     
-    function update_category_settings($ids, $upd_am, $upd_ar, $upd_cm, $upd_cr, $ids_array) {
-        global $wpdb, $table_prefix;
-        GDSRDatabase::add_category_defaults($ids, $ids_array);
-        $dbt_data_cats = $table_prefix.'gdsr_data_category';
-        
-        $update = array();
-        if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
-        if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
-        if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
-        if ($upd_cr != '') $update[] = "rules_comments = '".$upd_cr."'";
-        if (count($update) > 0) {
-            $updstring = join(", ", $update);
-            $wpdb->query(sprintf("update %s set %s where category_id in %s", $dbt_data_cats, $updstring, $ids));
-        }
-    }
-    
     function update_restrictions($ids, $timer_type, $timer_value) {
         global $wpdb, $table_prefix;
         $wpdb->query(sprintf("update %sgdsr_data_article set expiry_type = '%s', expiry_value = '%s' where post_id in %s", 
@@ -207,15 +234,7 @@ class GDSRDatabase
         foreach ($ids_array as $id)
             if (!in_array($id, $rows)) GDSRDatabase::add_default_vote($id);
     }
-    
-    function add_category_defaults($ids, $ids_array) {
-        global $wpdb, $table_prefix;
-        $rows = $wpdb->get_results(sprintf("select post_id from %sgdsr_data_category where post_id in %s", $table_prefix, $ids), ARRAY_N);
-        if (count($rows) == 0) $rows = array();
-        foreach ($ids_array as $id)
-            if (!in_array($id, $rows)) GDSRDatabase::add_category_default($id);
-    }
-    
+        
     function save_vote($id, $user, $ip, $ua, $vote) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
@@ -419,15 +438,6 @@ class GDSRDatabase
         $sql = sprintf(
                 "INSERT INTO %s (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (%s, '%s', '%s', '%s', '%s', '%s', 0, 0, 0, 0, %s, '%s', '%s')",
                 $dbt_data_article, $post_id, $options["default_voterules_articles"], $options["default_voterules_comments"], $options["default_moderation_articles"], $options["default_moderation_comments"], $is_page, $review, $options["default_timer_type"], $options["default_timer_value"]
-                );
-        $wpdb->query($sql);
-    }
-    
-    function add_category_default($id) {
-        global $wpdb, $table_prefix;
-        $sql = sprintf(
-                "INSERT INTO %s (category_id, rules_articles, rules_comments, moderate_articles, moderate_comments, expiry_type, expiry_value) VALUES (%s, '%s', '%s', '%s', '%s', '%s', '%s')",
-                $table_prefix.'gdsr_data_category', $post_id, 'A', 'A', 'N', 'N', 'N', ''
                 );
         $wpdb->query($sql);
     }
