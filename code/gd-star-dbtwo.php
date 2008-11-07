@@ -286,6 +286,8 @@ class GDSRDB
         return $row;
     }
     
+    function convert_category_row($row);
+    
     function convert_moderation_row($row) {
         if ($row->user_id == 0)
             $row->username = '<span style="color: red">visitor</span>';
