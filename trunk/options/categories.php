@@ -12,6 +12,14 @@ $url.= "&gdsr=categories";
 $page_id = 1;
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 
+if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
+    $gdsr_items = $_POST["gdsr_item"];
+    if (count($gdsr_items) > 0) {
+        $ids = "(".join(", ", $gdsr_items).")";
+        GDSRDatabase::update_category_settings($ids, $_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"], $gdsr_items);
+    }
+}
+
 $all_cats = GDSRDB::get_all_categories();
 $categories = GDSRHelper::get_categories_hierarchy($all_cats);
 
