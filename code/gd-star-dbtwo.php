@@ -286,7 +286,9 @@ class GDSRDB
         return $row;
     }
     
-    function convert_category_row($row);
+    function convert_category_row($row) {
+        return $row;
+    }
     
     function convert_moderation_row($row) {
         if ($row->user_id == 0)

@@ -36,6 +36,7 @@
         
         $gdsr_options["review_active"] = isset($_POST['gdsr_reviewactive']) ? 1 : 0;
         $gdsr_options["comments_active"] = isset($_POST['gdsr_commentsactive']) ? 1 : 0;
+        $gdsr_options["comments_review_active"] = isset($_POST['gdsr_cmmreviewactive']) ? 1 : 0;
         $gdsr_options["hide_empty_rating"] = isset($_POST['gdsr_haderating']) ? 1 : 0;
         $gdsr_options["cookies"] = isset($_POST['gdsr_cookies']) ? 1 : 0;
         $gdsr_options["cmm_cookies"] = isset($_POST['gdsr_cmm_cookies']) ? 1 : 0;

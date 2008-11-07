@@ -1,0 +1,1 @@
+<?php include(STARRATING_PATH.'options/editcomment.php'); ?>
