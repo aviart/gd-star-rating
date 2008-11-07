@@ -6,6 +6,7 @@
   * new: comment review rating
   * new: edit comment review rating
   * new: managment for settings for categories
+  * new: users and visitors based rating info
   * new: more functions to use in the theme
   * edit: improved loading of css and js needed
   * edit: improvement of all standalone functions

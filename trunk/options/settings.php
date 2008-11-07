@@ -7,6 +7,7 @@
         $gdsr_options["admin_placement"] = isset($_POST['gdsr_admin_placement']) ? 1 : 0;
         $gdsr_options["admin_defaults"] = isset($_POST['gdsr_admin_defaults']) ? 1 : 0;
         $gdsr_options["admin_category"] = isset($_POST['gdsr_admin_category']) ? 1 : 0;
+        $gdsr_options["admin_users"] = isset($_POST['gdsr_admin_users']) ? 1 : 0;
 
         $gdsr_options["ajax"] = isset($_POST['gdsr_ajax']) ? 1 : 0;
         $gdsr_options["widget_articles"] = isset($_POST['gdsr_widget_articles']) ? 1 : 0;
