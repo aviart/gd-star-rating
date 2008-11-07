@@ -32,6 +32,8 @@
         <input type="checkbox" name="gdsr_admin_placement" id="gdsr_admin_placement"<?php if ($gdsr_options["admin_placement"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_placement"><?php _e("Display Rating Placement Settings.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_admin_defaults" id="gdsr_admin_defaults"<?php if ($gdsr_options["admin_defaults"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_defaults"><?php _e("Display Rating Defaults Settings.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_admin_category" id="gdsr_admin_category"<?php if ($gdsr_options["admin_category"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_category"><?php _e("Enable managment for default settings for categories .", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Plugin Features", "gd-star-rating"); ?></th>
