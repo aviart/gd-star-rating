@@ -89,7 +89,7 @@ function gdsrTimerChange() {
        
     $tr_class = "";
     for ($i = $cat_from; $i < $cat_to; $i++) {
-        $row = $categories[$i];
+        $row = GDSRDB::convert_category_row($categories[$i]);
         echo '<tr id="post-'.$row->term_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->term_id.'" type="checkbox"></th>';
         echo '<td><strong><a href="./admin.php?page=gd-star-rating-stats&gdsr=articles&cat='.$row->term_id.'">';
