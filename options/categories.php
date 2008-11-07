@@ -90,16 +90,39 @@ function gdsrTimerChange() {
     $tr_class = "";
     for ($i = $cat_from; $i < $cat_to; $i++) {
         $row = GDSRDB::convert_category_row($categories[$i]);
+        if ($options["timer_active"] == 1) {
+            if ($row->expiry_type == "D") {
+                $timer_info = '<strong><span style="color: red">'.__('date limit').'</span></strong><br />';
+                $timer_info.= $row->expiry_value;
+            }
+            else if ($row->expiry_type == "T") {
+                $timer_info = '<strong><span style="color: red">'.__('countdown').'</span></strong><br />';
+                $timer_info.= substr($row->expiry_value, 1)." ";
+                switch (substr($row->expiry_value, 0, 1)) {
+                    case "H":
+                        $timer_info.= __("Hours", "gd-star-rating");
+                        break;
+                    case "D":
+                        $timer_info.= __("Days", "gd-star-rating");
+                        break;
+                    case "M":
+                        $timer_info.= __("Months", "gd-star-rating");
+                        break;
+                }
+            }
+            else $timer_info = __("no limit");
+        }
+
         echo '<tr id="post-'.$row->term_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->term_id.'" type="checkbox"></th>';
         echo '<td><strong><a href="./admin.php?page=gd-star-rating-stats&gdsr=articles&cat='.$row->term_id.'">';
         echo str_repeat("― ", $row->depth).$row->name;
         echo '</a></strong></td>';
         if ($options["moderation_active"] == 1) 
-            echo '<td></td>';
+            echo '<td>'.$row->moderate_articles.'<br />'.$row->moderate_comments.'</td>';
         if ($options["timer_active"] == 1)
-            echo '<td></td>';
-        echo '<td></td>';
+            echo '<td>'.$timer_info.'</td>';
+        echo '<td>'.$row->rules_articles.'<br />'.$row->rules_comments.'</td>';
         echo '<td>'.$row->count.'</td>';
         echo '</tr>';
         

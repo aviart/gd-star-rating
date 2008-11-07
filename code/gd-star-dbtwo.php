@@ -169,76 +169,76 @@ class GDSRDB
     function convert_row($row) {
         switch ($row->moderate_articles) {
             case 'I':
-                $row->moderate_articles = 'articles: <strong><span style="color: blue">inherited</span></strong>';
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
                 break;
             case 'A':
-                $row->moderate_articles = 'articles: <strong><span style="color: red">all</span></strong>';
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("all", "gd-star-rating").'</span></strong>';
                 break;
             case 'V':
-                $row->moderate_articles = 'articles: <strong><span style="color: red">visitors</span></strong>';
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("visitors", "gd-star-rating").'</span></strong>';
                 break;
             case 'U':
-                $row->moderate_articles = 'articles: <strong><span style="color: red">users</span></strong>';
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
                 break;
             default:
-                $row->moderate_articles = 'articles: <strong>free</strong>';
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong>free</strong>';
                 break;
         }
         switch ($row->moderate_comments) {
             case 'I':
-                $row->moderate_comments = 'articles: <strong><span style="color: blue">inherited</span></strong>';
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
                 break;
             case 'A':
-                $row->moderate_comments = 'comments: <strong><span style="color: red">all</span></strong>';
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("all", "gd-star-rating").'</span></strong>';
                 break;
             case 'V':
-                $row->moderate_comments = 'comments: <strong><span style="color: red">visitors</span></strong>';
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("visitors", "gd-star-rating").'</span></strong>';
                 break;
             case 'U':
-                $row->moderate_comments = 'comments: <strong><span style="color: red">users</span></strong>';
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
                 break;
             default:
-                $row->moderate_comments = 'comments: <strong>free</strong>';
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong>free</strong>';
                 break;
         }
         switch ($row->rules_articles) {
             case 'I':
-                $row->rules_articles = 'articles: <strong><span style="color: blue">inherited</span></strong>';
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
                 break;
             case 'H':
-                $row->rules_articles = 'articles: <strong><span style="color: red">hidden</span></strong>';
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("hidden", "gd-star-rating").'</span></strong>';
                 break;
             case 'N':
-                $row->rules_articles = 'articles: <strong><span style="color: red">locked</span></strong>';
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("locked", "gd-star-rating").'</span></strong>';
                 break;
             case 'V':
-                $row->rules_articles = 'articles: <strong>visitors</strong>';
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong>'.__("visitors", "gd-star-rating").'</strong>';
                 break;
             case 'U':
-                $row->rules_articles = 'articles: <strong>users</strong>';
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong>'.__("users", "gd-star-rating").'</strong>';
                 break;
             default:
-                $row->rules_articles = 'articles: <strong>everyone</strong>';
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
                 break;
         }
         switch ($row->rules_comments) {
             case 'I':
-                $row->rules_comments = 'articles: <strong><span style="color: blue">inherited</span></strong>';
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
                 break;
             case 'H':
-                $row->rules_comments = 'articles: <strong><span style="color: red">hidden</span></strong>';
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("hidden", "gd-star-rating").'</span></strong>';
                 break;
             case 'N':
-                $row->rules_comments = 'comments: <strong><span style="color: red">locked</span></strong>';
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("locked", "gd-star-rating").'</span></strong>';
                 break;
             case 'V':
-                $row->rules_comments = 'comments: <strong>visitors</strong>';
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("visitors", "gd-star-rating").'</strong>';
                 break;
             case 'U':
-                $row->rules_comments = 'comments: <strong>users</strong>';
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("users", "gd-star-rating").'</strong>';
                 break;
             default:
-                $row->rules_comments = 'comments: <strong>everyone</strong>';
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
                 break;
         }
         
@@ -287,6 +287,68 @@ class GDSRDB
     }
     
     function convert_category_row($row) {
+        switch ($row->moderate_articles) {
+            case 'A':
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("all", "gd-star-rating").'</span></strong>';
+                break;
+            case 'V':
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("visitors", "gd-star-rating").'</span></strong>';
+                break;
+            case 'U':
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
+                break;
+            default:
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong>free</strong>';
+                break;
+        }
+        switch ($row->moderate_comments) {
+            case 'A':
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("all", "gd-star-rating").'</span></strong>';
+                break;
+            case 'V':
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("visitors", "gd-star-rating").'</span></strong>';
+                break;
+            case 'U':
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
+                break;
+            default:
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong>free</strong>';
+                break;
+        }
+        switch ($row->rules_articles) {
+            case 'H':
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("hidden", "gd-star-rating").'</span></strong>';
+                break;
+            case 'N':
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("locked", "gd-star-rating").'</span></strong>';
+                break;
+            case 'V':
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong>'.__("visitors", "gd-star-rating").'</strong>';
+                break;
+            case 'U':
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong>'.__("users", "gd-star-rating").'</strong>';
+                break;
+            default:
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
+                break;
+        }
+        switch ($row->rules_comments) {
+            case 'H':
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("hidden", "gd-star-rating").'</span></strong>';
+                break;
+            case 'N':
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("locked", "gd-star-rating").'</span></strong>';
+                break;
+            case 'V':
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("visitors", "gd-star-rating").'</strong>';
+                break;
+            case 'U':
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("users", "gd-star-rating").'</strong>';
+                break;
+            default:
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
+                break;
+        }
         return $row;
     }
     
@@ -305,7 +367,7 @@ class GDSRDB
             $count_v = '[ 0 ] ';
         }
         else {
-            $visitor_rating =  @number_format($row->visitor_votes / $row->visitor_voters, 1);
+            $visitor_rating = @number_format($row->visitor_votes / $row->visitor_voters, 1);
             $votes_v = '<strong><span style="color: red">'.$visitor_rating.'</span></strong>';
             $count_v = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=comment&vg=visitors"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $row->visitor_voters);
         }
@@ -315,7 +377,7 @@ class GDSRDB
             $count_u = '[ 0 ] ';
         }
         else {
-            $user_rating =  @number_format($row->user_votes / $row->user_voters, 1);
+            $user_rating = @number_format($row->user_votes / $row->user_voters, 1);
             $votes_u = '<strong><span style="color: red">'.$user_rating.'</span></strong>';
             $count_u = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=comment&vg=users"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $row->user_voters);
         }
@@ -328,7 +390,7 @@ class GDSRDB
             $count_t = '[ 0 ] ';
         }
         else {
-            $total_rating =  @number_format($total_votes / $total_voters, 1);
+            $total_rating = @number_format($total_votes / $total_voters, 1);
             $votes_t = '<strong><span style="color: red">'.$total_rating.'</span></strong>';
             $count_t = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=comment&vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $total_voters);
         }
