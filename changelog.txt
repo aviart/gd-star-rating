@@ -1,10 +1,12 @@
 = GD Star Rating =
 
 == Change Log ==
+
 === Version: 1.0.2 / november 10 2008 ===
   * new: comment review rating
   * new: edit comment review rating
   * new: more functions to use in the theme
+  * edit: improved loading of css and js needed
   * edit: improvement of all standalone functions
   * fix: few more typo errors
 

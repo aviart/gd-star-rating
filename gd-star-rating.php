@@ -43,6 +43,7 @@ if (!class_exists('GDStarRating')) {
         var $charting = false;
         var $admin_plugin = false;
         var $admin_plugin_page = '';
+        var $admin_page;
 
         var $active_wp_page;
         var $wp_version;
@@ -94,16 +95,19 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "version" => "1.0.1",
+            "version" => "1.0.2",
             "date" => "2008.11.10.",
             "status" => "Stable",
-            "build" => 197,
+            "build" => 202,
             "ie_png_fix" => 1,
             "ajax" => 1,
             "save_user_agent" => 0,
             "save_cookies" => 1,
             "widget_articles" => 1,
             "widget_top" => 1,
+            "integrate_post_edit" => 1,
+            "integrate_tinymce" => 1,
+            "integrate_comment_edit" => 1,
             "preview_active" => 1,
             "preview_trends_active" => 1,
             "moderation_active" => 1,
@@ -437,6 +441,10 @@ if (!class_exists('GDStarRating')) {
         }                                                                
         
         function admin_head() {
+            global $parent_file;
+            $this->admin_page = $parent_file;
+            $this->dump('p', $parent_file);
+            
             if (isset($_GET["page"])) {
                 if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
                     $this->admin_plugin = true;
@@ -453,49 +461,60 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin_page == "charts" && $this->charting && $this->admin_plugin) {
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'ofc2/js/swfobject.js"></script>';
             }
-                                    
-            $datepicker_date = date("Y, n, j");
-            echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>';
-            if(!empty($this->l)) {
-                $jsFile = $this->plugin_path.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js';
-                if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js"></script>';
+            
+            if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
+                $datepicker_date = date("Y, n, j");
+                echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>';
+                if(!empty($this->l)) {
+                    $jsFile = $this->plugin_path.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js';
+                    if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js"></script>';
+                }
             }
             echo('<script type="text/javascript">jQuery(document).ready(function() {');
-            include (dirname(__FILE__)."/code/gd-star-jsx.php");
+            if ($this->admin_page == "edit-comments.php") include (dirname(__FILE__)."/code/gd-star-jsx.php");
             if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs();');
-            echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
+            if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
             echo('});</script>');
+
+            if ($this->admin_page == "themes.php") echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/widgets.css" type="text/css" media="screen" />');
+
+            if ($this->admin_page == "edit-comments.php") {
+                $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
+                $comment_review = urlencode($this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary);
+                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment_review.css.php?stars='.$comment_review.'" type="text/css" media="screen" />');
+            }
 
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery.css" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_post.css" type="text/css" media="screen" />');
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/widgets.css" type="text/css" media="screen" />');
-
-            $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
-            $comment_review = urlencode($this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary);
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment_review.css.php?stars='.$comment_review.'" type="text/css" media="screen" />');
         }
 
         function actions_filters() {
             add_action('init', array(&$this, 'init'));
             add_action('wp_head', array(&$this, 'wp_head'));
-            if (!$this->o["ajax"]) 
+            if ($this->o["ajax"] != 1) 
                 add_action('get_header', array(&$this, 'redirect'));
             add_action('widgets_init', array(&$this, 'widget_init'));
             add_action('admin_menu', array(&$this, 'admin_menu'));
             add_action('admin_head', array(&$this, 'admin_head'));
-            add_action('submitpost_box', array(&$this, 'editbox_post'));
-            add_action('submitpage_box', array(&$this, 'editbox_post'));
-            add_action('save_post', array(&$this, 'saveedit_post'));
+            if ($this->o["integrate_post_edit"] == 1) {
+                add_action('submitpost_box', array(&$this, 'editbox_post'));
+                add_action('submitpage_box', array(&$this, 'editbox_post'));
+                add_action('save_post', array(&$this, 'saveedit_post'));
+            }
             add_filter('comment_text', array(&$this, 'display_comment'));
             add_filter('the_content', array(&$this, 'display_article'));
             if ($this->o["comments_review_active"] == 1) {
                 add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
                 add_filter('comment_post', array(&$this, 'comment_save_review'));
-                add_action('submitcomment_box', array(&$this, 'editbox_comment'));
-                add_filter('comment_save_pre', array(&$this, 'comment_edit_review'));
+                if ($this->o["integrate_comment_edit"] == 1) {
+                    add_action('submitcomment_box', array(&$this, 'editbox_comment'));
+                    add_filter('comment_save_pre', array(&$this, 'comment_edit_review'));
+                }
             }
-            add_filter("mce_external_plugins", array(&$this, 'add_tinymce_plugin'), 5);
-            add_filter('mce_buttons', array(&$this, 'add_tinymce_button'), 5);
+            if ($this->o["integrate_tinymce"] == 1) {
+                add_filter("mce_external_plugins", array(&$this, 'add_tinymce_plugin'), 5);
+                add_filter('mce_buttons', array(&$this, 'add_tinymce_button'), 5);
+            }
             
             foreach ($this->shortcodes as $code) {
                 $this->shortcode_action($code);
