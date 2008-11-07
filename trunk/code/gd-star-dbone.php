@@ -238,7 +238,7 @@ class GDSRDatabase
     function save_comment_review($comment_id, $review) {
         global $wpdb, $table_prefix;
         $comments = $table_prefix.'gdsr_data_comment';
-        $sql = sprintf("update %s set review = %s where comment_id = %", 
+        $sql = sprintf("update %s set review = %s where comment_id = %s", 
             $comments, $review, $comment_id);
         $wpdb->query($sql);
     }

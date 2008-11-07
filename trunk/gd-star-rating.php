@@ -110,6 +110,7 @@ if (!class_exists('GDStarRating')) {
             "review_active" => 1,
             "timer_active" => 1,
             "comments_active" => 1,
+            "comments_review_active" => 1,
             "style" => 'oxygen',
             "size" => 30,
             "stars" => 10,
@@ -356,11 +357,11 @@ if (!class_exists('GDStarRating')) {
         // shortcode
         
         // various rendering
-        function comment_review($allow_vote = true, $value = 0) {
+        function comment_review($value = 0, $allow_vote = true) {
             $stars = $this->o["cmm_review_stars"];
             $size = $this->o["cmm_review_size"];
             $width = $stars * $size;
-            return GDSRRender::rating_stars_local($width, $size, $stars, $allow_vote, $value);
+            return GDSRRender::rating_stars_local($width, $size, $stars, $allow_vote, $value * $size);
         }
         
         function get_rating_stars($style, $stars, $size, $zero_render, $value) {
@@ -460,6 +461,7 @@ if (!class_exists('GDStarRating')) {
                 if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js"></script>';
             }
             echo('<script type="text/javascript">jQuery(document).ready(function() {');
+            include (dirname(__FILE__)."/code/gd-star-jsx.php");
             if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs();');
             echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
             echo('});</script>');
@@ -467,6 +469,10 @@ if (!class_exists('GDStarRating')) {
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery.css" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_post.css" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/widgets.css" type="text/css" media="screen" />');
+
+            $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
+            $comment_review = urlencode($this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary);
+            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment_review.css.php?stars='.$comment_review.'" type="text/css" media="screen" />');
         }
 
         function actions_filters() {
@@ -477,18 +483,20 @@ if (!class_exists('GDStarRating')) {
             add_action('widgets_init', array(&$this, 'widget_init'));
             add_action('admin_menu', array(&$this, 'admin_menu'));
             add_action('admin_head', array(&$this, 'admin_head'));
-            if ($this->o["review_active"] == 1) {
-                add_action('submitpost_box', array(&$this, 'editbox_post'));
-                add_action('submitpage_box', array(&$this, 'editbox_post'));
-                add_action('save_post', array(&$this, 'saveedit_post'));
-            }
+            add_action('submitpost_box', array(&$this, 'editbox_post'));
+            add_action('submitpage_box', array(&$this, 'editbox_post'));
+            add_action('save_post', array(&$this, 'saveedit_post'));
             add_filter('comment_text', array(&$this, 'display_comment'));
             add_filter('the_content', array(&$this, 'display_article'));
+            if ($this->o["comments_review_active"] == 1) {
+                add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
+                add_filter('comment_post', array(&$this, 'comment_save_review'));
+                add_action('submitcomment_box', array(&$this, 'editbox_comment'));
+                add_filter('comment_save_pre', array(&$this, 'comment_edit_review'));
+            }
             add_filter("mce_external_plugins", array(&$this, 'add_tinymce_plugin'), 5);
             add_filter('mce_buttons', array(&$this, 'add_tinymce_button'), 5);
-            add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
-            add_filter('comment_post', array(&$this, 'comment_save_review'));
-
+            
             foreach ($this->shortcodes as $code) {
                 $this->shortcode_action($code);
             }
@@ -508,6 +516,20 @@ if (!class_exists('GDStarRating')) {
                 GDSRDatabase::save_comment_review($comment_id, $this->post_comment["review"]);
         }
 
+        function comment_edit_review($comment_content) {
+            if ($_POST['gdsr_comment_edit'] == "edit") {
+                $post_id = $_POST["comment_post_ID"];
+                $comment_id = $_POST["comment_ID"];
+                $value = $_POST["gdsr_cmm_review"];
+                $comment_data = GDSRDatabase::get_comment_data($comment_id);
+                if (count($comment_data) == 0)
+                    GDSRDatabase::add_empty_comment($comment_id, $post_id, $value);
+                else
+                    GDSRDatabase::save_comment_review($comment_id, $value);
+            }
+            return $comment_content;
+        }
+        
         function saveedit_post($post_id) {
             if ($_POST['gdsr_post_edit'] == "edit") {
                 $old = GDSRDatabase::check_post($post_id);
@@ -754,7 +776,7 @@ if (!class_exists('GDStarRating')) {
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/rating.css" type="text/css" media="screen" />');
             echo('<script type="text/javascript">');
             echo('function gdsrWait(rater, loader) { jQuery("#"+rater).css("display", "none"); jQuery("#"+loader).css("display", "block"); }');
-            if ($this->o["ajax"] == 1) include (dirname(__FILE__)."/code/gd-star-js.php");
+            include (dirname(__FILE__)."/code/gd-star-js.php");
             echo('</script>');
             
             if ($this->o["ie_png_fix"] == 1) $this->ie_png_fix();
@@ -1177,6 +1199,13 @@ if (!class_exists('GDStarRating')) {
         // log
 
         // menu
+        function editbox_comment() {
+            if ($this->wp_version < 27)
+                include($this->plugin_path.'options/editcomment26.php');
+            else
+                include($this->plugin_path.'options/editcomment27.php');
+        }
+        
         function editbox_post() {
             global $post;
             $gdsr_options = $this->o;
@@ -1883,7 +1912,7 @@ if (!class_exists('GDStarRating')) {
     }
 
     $gdsr = new GDStarRating();
-
+    
     function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
         global $gdsr;
         return $gdsr->get_blog_rating($select, $show);
@@ -1929,10 +1958,10 @@ if (!class_exists('GDStarRating')) {
         else return $gdsr->shortcode_starreview();
 	}
     
-    function wp_gdsr_new_comment_review($echo = true) {
+    function wp_gdsr_new_comment_review($value = 0, $echo = true) {
         global $gdsr;
-        if ($echo) echo $gdsr->comment_review();
-        else return $gdsr->comment_review();
+        if ($echo) echo $gdsr->comment_review($value);
+        else return $gdsr->comment_review($value);
     }
 
     function wp_gdsr_show_comment_review($comment_id = 0, $zero_render = true, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
