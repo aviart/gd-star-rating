@@ -111,6 +111,7 @@ if (!class_exists('GDStarRating')) {
             "preview_active" => 1,
             "preview_trends_active" => 1,
             "moderation_active" => 1,
+            "multis_active" => 1,
             "review_active" => 1,
             "timer_active" => 1,
             "comments_active" => 1,
@@ -161,6 +162,8 @@ if (!class_exists('GDStarRating')) {
             "admin_defaults" => 0,
             "admin_category" => 0,
             "admin_users" => 0,
+            "admin_import" => 1,
+            "admin_export" => 1,
             "author_vote" => 1,
             "cmm_author_vote" => 1,
             "default_moderation_articles" => 'N',
@@ -437,8 +440,8 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gd-star-rating-templates", array(&$this,"star_menu_templates"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), 10, "gd-star-rating-import", array(&$this,"star_menu_import"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), 10, "gd-star-rating-export", array(&$this,"star_menu_export"));
+            if ($this->o["admin_import"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), 10, "gd-star-rating-import", array(&$this,"star_menu_import"));
+            if ($this->o["admin_export"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), 10, "gd-star-rating-export", array(&$this,"star_menu_export"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), 10, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
         }                                                                
         
@@ -446,13 +449,6 @@ if (!class_exists('GDStarRating')) {
             global $parent_file;
             $this->admin_page = $parent_file;
             $this->dump('p', $parent_file);
-            
-            if (isset($_GET["page"])) {
-                if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
-                    $this->admin_plugin = true;
-                    $this->admin_plugin_page = substr($_GET["page"], 14);
-                }
-            }
             
             if ($this->admin_plugin) {
                 wp_print_scripts('jquery-ui-tabs');
@@ -722,6 +718,19 @@ if (!class_exists('GDStarRating')) {
         }
 
         function init() {
+            if (isset($_GET["page"])) {
+                if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
+                    $this->admin_plugin = true;
+                    $this->admin_plugin_page = substr($_GET["page"], 15);
+                }
+            }
+
+            if ($this->admin_plugin_page == "settings-page") {
+                $gdsr_options = $this->o;
+                include ($this->plugin_path."gd-star-settings.php");
+                $this->o = $gdsr_options;
+            }
+            
             if ($_POST["gdsr_full_uninstall"] == __("FULL UNINSTALL", "gd-star-rating")) {
                 delete_option('gd-star-rating');
                 delete_option('widget_gdstarrating');
