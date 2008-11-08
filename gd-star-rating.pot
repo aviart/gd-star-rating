@@ -1,12 +1,12 @@
-#: code/gd-star-dbone.php:718
+#: code/gd-star-dbone.php:777
 msgid "Show all dates"
 msgstr ""
 
-#: code/gd-star-dbone.php:746
+#: code/gd-star-dbone.php:805
 msgid "All users and visitors"
 msgstr ""
 
-#: code/gd-star-dbone.php:747
+#: code/gd-star-dbone.php:806
 #: tinymce3/window.php:185
 #: widgets/widget.php:42
 #: widgets/widget.php:178
@@ -15,11 +15,11 @@ msgstr ""
 msgid "Visitors Only"
 msgstr ""
 
-#: code/gd-star-dbone.php:748
+#: code/gd-star-dbone.php:807
 msgid "All Users"
 msgstr ""
 
-#: code/gd-star-dbone.php:764
+#: code/gd-star-dbone.php:823
 msgid "All categories"
 msgstr ""
 
@@ -131,6 +131,8 @@ msgid "everyone"
 msgstr ""
 
 #: code/gd-star-dbtwo.php:280
+#: options/users.php:82
+#: options/users.php:83
 msgid "rating"
 msgstr ""
 
@@ -139,6 +141,8 @@ msgid "views"
 msgstr ""
 
 #: code/gd-star-dbtwo.php:397
+#: options/users.php:82
+#: options/users.php:83
 msgid "votes"
 msgstr ""
 
@@ -198,17 +202,20 @@ msgid "Date limited"
 msgstr ""
 
 #: code/gd-star-functions.php:167
-#: options/articles.php:205
+#: options/articles.php:204
+#: options/categories.php:111
 msgid "Hours"
 msgstr ""
 
 #: code/gd-star-functions.php:168
-#: options/articles.php:208
+#: options/articles.php:207
+#: options/categories.php:114
 msgid "Days"
 msgstr ""
 
 #: code/gd-star-functions.php:169
-#: options/articles.php:211
+#: options/articles.php:210
+#: options/categories.php:117
 msgid "Months"
 msgstr ""
 
@@ -297,10 +304,11 @@ msgstr ""
 
 #: options/articles.php:112
 #: options/articles.php:252
-#: options/categories.php:124
+#: options/categories.php:156
+#: options/users.php:62
 #: templates/templates.php:42
-#: gd-star-rating.php:430
-#: gd-star-rating.php:430
+#: gd-star-rating.php:432
+#: gd-star-rating.php:432
 msgid "Articles"
 msgstr ""
 
@@ -333,31 +341,31 @@ msgstr ""
 #: options/articles.php:150
 #: options/articles.php:267
 #: options/articles.php:337
-#: options/categories.php:76
-#: options/categories.php:139
-#: options/categories.php:196
+#: options/categories.php:84
+#: options/categories.php:171
+#: options/categories.php:228
 #: options/moderation.php:33
 msgid "Moderation"
 msgstr ""
 
 #: options/articles.php:153
-#: options/categories.php:79
+#: options/categories.php:87
 msgid "Time Restrictions"
 msgstr ""
 
 #: options/articles.php:155
 #: options/articles.php:274
 #: options/articles.php:344
-#: options/categories.php:81
-#: options/categories.php:146
-#: options/categories.php:203
+#: options/categories.php:89
+#: options/categories.php:178
+#: options/categories.php:235
 msgid "Vote Rules"
 msgstr ""
 
 #: options/articles.php:156
-#: options/categories.php:61
-#: gd-star-rating.php:431
-#: gd-star-rating.php:431
+#: options/categories.php:69
+#: gd-star-rating.php:433
+#: gd-star-rating.php:433
 msgid "Categories"
 msgstr ""
 
@@ -383,8 +391,8 @@ msgstr ""
 
 #: options/articles.php:255
 #: options/articles.php:325
-#: options/categories.php:127
-#: options/categories.php:184
+#: options/categories.php:159
+#: options/categories.php:216
 #: options/comments.php:130
 #: options/moderation.php:150
 #: options/voters.php:156
@@ -393,54 +401,56 @@ msgstr ""
 
 #: options/articles.php:260
 #: options/articles.php:330
-#: options/categories.php:132
-#: options/categories.php:189
+#: options/categories.php:164
+#: options/categories.php:221
 #: options/comments.php:133
 msgid "Visitors"
 msgstr ""
 
 #: options/articles.php:261
 #: options/articles.php:331
-#: options/categories.php:133
-#: options/categories.php:190
+#: options/categories.php:165
+#: options/categories.php:222
 #: options/comments.php:134
-#: gd-star-rating.php:432
-#: gd-star-rating.php:432
+#: options/users.php:45
+#: gd-star-rating.php:434
+#: gd-star-rating.php:434
 msgid "Users"
 msgstr ""
 
 #: options/articles.php:262
 #: options/articles.php:332
-#: options/categories.php:134
-#: options/categories.php:191
+#: options/categories.php:166
+#: options/categories.php:223
 #: options/comments.php:135
 msgid "All"
 msgstr ""
 
 #: options/articles.php:301
-#: options/categories.php:158
+#: options/categories.php:190
 #: options/edit.php:39
 msgid "Restriction"
 msgstr ""
 
 #: options/articles.php:307
-#: options/categories.php:164
+#: options/categories.php:196
 #: options/edit.php:54
 msgid "Countdown"
 msgstr ""
 
 #: options/articles.php:308
-#: options/categories.php:165
+#: options/categories.php:197
 #: options/edit.php:46
 #: tinymce3/window.php:226
 msgid "Date"
 msgstr ""
 
 #: options/articles.php:322
-#: options/categories.php:181
+#: options/categories.php:213
 #: options/charts.php:6
 #: options/comments.php:43
-#: options/settings.php:127
+#: options/settings.php:129
+#: options/users.php:63
 #: templates/templates.php:31
 #: templates/templates.php:47
 msgid "Comments"
@@ -448,7 +458,8 @@ msgstr ""
 
 #: options/articles.php:354
 #: options/articles.php:33
-#: options/categories.php:213
+#: options/categories.php:245
+#: options/categories.php:14
 #: options/comments.php:139
 #: options/comments.php:17
 #: options/voters.php:164
@@ -456,28 +467,43 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
+#: options/articles.php:196
+#: options/categories.php:103
+msgid "date limit"
+msgstr ""
+
+#: options/articles.php:200
+#: options/categories.php:107
+msgid "countdown"
+msgstr ""
+
+#: options/articles.php:214
+#: options/categories.php:121
+msgid "no limit"
+msgstr ""
+
 #: options/batch.php:0
 msgid "Batch Options"
 msgstr ""
 
-#: options/categories.php:74
+#: options/categories.php:82
 #: tinymce3/window.php:190
 #: widgets/widget.php:241
 msgid "Category"
 msgstr ""
 
-#: options/categories.php:82
+#: options/categories.php:90
 msgid "Posts"
 msgstr ""
 
 #: options/charts.php:0
-#: gd-star-rating.php:433
-#: gd-star-rating.php:433
+#: gd-star-rating.php:435
+#: gd-star-rating.php:435
 msgid "Charts"
 msgstr ""
 
 #: options/charts.php:5
-#: options/settings.php:126
+#: options/settings.php:128
 #: templates/templates.php:30
 msgid "Articles (Posts And Pages)"
 msgstr ""
@@ -706,30 +732,30 @@ msgstr ""
 msgid "Approve"
 msgstr ""
 
-#: options/settings.php:120
-#: gd-star-rating.php:434
-#: gd-star-rating.php:434
+#: options/settings.php:122
+#: gd-star-rating.php:436
+#: gd-star-rating.php:436
 msgid "Settings"
 msgstr ""
 
-#: options/settings.php:124
+#: options/settings.php:126
 #: tinymce3/window.php:31
 msgid "General"
 msgstr ""
 
-#: options/settings.php:125
+#: options/settings.php:127
 msgid "Integration"
 msgstr ""
 
-#: options/settings.php:128
+#: options/settings.php:130
 msgid "Statistics"
 msgstr ""
 
-#: options/settings.php:129
+#: options/settings.php:131
 msgid "Preview"
 msgstr ""
 
-#: options/settings.php:152
+#: options/settings.php:154
 #: templates/templates.php:69
 msgid "Save Settings"
 msgstr ""
@@ -895,47 +921,55 @@ msgstr ""
 msgid "Display Rating Defaults Settings."
 msgstr ""
 
-#: options/settings_general.php:36
-msgid "Plugin Features"
+#: options/settings_general.php:35
+msgid "Enable managment for default settings for categories."
 msgstr ""
 
-#: options/settings_general.php:38
-msgid "AJAX enabled rating."
+#: options/settings_general.php:37
+msgid "Enable users rating managment."
 msgstr ""
 
 #: options/settings_general.php:40
-msgid "Time restriction for rating."
+msgid "Plugin Features"
 msgstr ""
 
 #: options/settings_general.php:42
-msgid "Moderation options and handling."
+msgid "AJAX enabled rating."
 msgstr ""
 
 #: options/settings_general.php:44
-msgid "Post And Page Review Rating."
+msgid "Time restriction for rating."
 msgstr ""
 
 #: options/settings_general.php:46
-msgid "Comments Rating."
+msgid "Moderation options and handling."
 msgstr ""
 
 #: options/settings_general.php:48
-msgid "Comments Review Rating."
+msgid "Post And Page Review Rating."
 msgstr ""
 
 #: options/settings_general.php:50
+msgid "Comments Rating."
+msgstr ""
+
+#: options/settings_general.php:52
+msgid "Comments Review Rating."
+msgstr ""
+
+#: options/settings_general.php:54
 msgid "Use IE6 PNG Transparency Fix."
 msgstr ""
 
-#: options/settings_general.php:53
+#: options/settings_general.php:57
 msgid "Rating Log"
 msgstr ""
 
-#: options/settings_general.php:55
+#: options/settings_general.php:59
 msgid "Log user agent (browser) information."
 msgstr ""
 
-#: options/settings_general.php:57
+#: options/settings_general.php:61
 msgid "Save cookies with ratings."
 msgstr ""
 
@@ -1012,8 +1046,8 @@ msgid "Mean vote rating across the whole report"
 msgstr ""
 
 #: options/setup.php:27
-#: gd-star-rating.php:439
-#: gd-star-rating.php:439
+#: gd-star-rating.php:441
+#: gd-star-rating.php:441
 msgid "Setup"
 msgstr ""
 
@@ -1087,7 +1121,7 @@ msgid "This will remove all database tables created by plugin, all settings, tem
 msgstr ""
 
 #: options/setup.php:68
-#: gd-star-rating.php:722
+#: gd-star-rating.php:724
 msgid "FULL UNINSTALL"
 msgstr ""
 
@@ -1096,8 +1130,8 @@ msgid "After removal, plugin will be disabled."
 msgstr ""
 
 #: options/tools.php:1
-#: gd-star-rating.php:435
-#: gd-star-rating.php:435
+#: gd-star-rating.php:437
+#: gd-star-rating.php:437
 msgid "Tools"
 msgstr ""
 
@@ -1113,16 +1147,31 @@ msgstr ""
 msgid "Rescan"
 msgstr ""
 
+#: options/users.php:58
+#: options/voters.php:114
+msgid "Name"
+msgstr ""
+
+#: options/users.php:59
+#: tinymce3/window.php:205
+#: widgets/widget.php:197
+msgid "ID"
+msgstr ""
+
+#: options/users.php:60
+msgid "Email"
+msgstr ""
+
+#: options/users.php:61
+msgid "URL"
+msgstr ""
+
 #: options/voters.php:80
 msgid "Voters Log"
 msgstr ""
 
 #: options/voters.php:82
 msgid "Vote log for post"
-msgstr ""
-
-#: options/voters.php:114
-msgid "Name"
 msgstr ""
 
 #: options/voters.php:115
@@ -1142,8 +1191,8 @@ msgid "From Log Only"
 msgstr ""
 
 #: templates/templates.php:24
-#: gd-star-rating.php:436
-#: gd-star-rating.php:436
+#: gd-star-rating.php:438
+#: gd-star-rating.php:438
 msgid "Templates"
 msgstr ""
 
@@ -1571,11 +1620,6 @@ msgstr ""
 msgid "Total Votes"
 msgstr ""
 
-#: tinymce3/window.php:205
-#: widgets/widget.php:197
-msgid "ID"
-msgstr ""
-
 #: tinymce3/window.php:208
 #: widgets/widget.php:200
 msgid "Count"
@@ -1761,18 +1805,18 @@ msgstr ""
 msgid "singular/plural word vote"
 msgstr ""
 
-#: gd-star-rating.php:429
-#: gd-star-rating.php:429
+#: gd-star-rating.php:431
+#: gd-star-rating.php:431
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:437
-#: gd-star-rating.php:437
+#: gd-star-rating.php:439
+#: gd-star-rating.php:439
 msgid "Import"
 msgstr ""
 
-#: gd-star-rating.php:438
-#: gd-star-rating.php:438
+#: gd-star-rating.php:440
+#: gd-star-rating.php:440
 msgid "Export"
 msgstr ""
 
