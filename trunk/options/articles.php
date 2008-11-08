@@ -194,11 +194,11 @@ function gdsrTimerChange() {
         $timer_info = "";
         if ($options["timer_active"] == 1) {
             if ($row->expiry_type == "D") {
-                $timer_info = '<strong><span style="color: red">'.__('date limit').'</span></strong><br />';
+                $timer_info = '<strong><span style="color: red">'.__("date limit", "gd-star-rating").'</span></strong><br />';
                 $timer_info.= $row->expiry_value;
             }
             else if ($row->expiry_type == "T") {
-                $timer_info = '<strong><span style="color: red">'.__('countdown').'</span></strong><br />';
+                $timer_info = '<strong><span style="color: red">'.__("countdown", "gd-star-rating").'</span></strong><br />';
                 $timer_info.= substr($row->expiry_value, 1)." ";
                 switch (substr($row->expiry_value, 0, 1)) {
                     case "H":
@@ -212,7 +212,7 @@ function gdsrTimerChange() {
                         break;
                 }
             }
-            else $timer_info = __("no limit");
+            else $timer_info = __("no limit", "gd-star-rating");
         }
         
         echo '<tr id="post-'.$row->pid.'" class="'.$tr_class.' author-self status-publish" valign="top">';

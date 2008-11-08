@@ -80,8 +80,8 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
         echo '<td>'.$row["id"].'</td>';
         echo '<td>'.$row["email"].'</td>';
         echo '<td>'.$row["url"].'</td>';
-        echo '<td>'.__('votes').': <strong>'.$row["article"]["voters"].'</strong><br />'.__('rating').': <strong style="color: red">'.$r_pst.'</strong></td>';
-        echo '<td>'.__('votes').': <strong>'.$row["comment"]["voters"].'</strong><br />'.__('rating').': <strong style="color: red">'.$r_cmm.'</strong></td>';
+        echo '<td>'.__("votes", "gd-star-rating").': <strong>'.$row["article"]["voters"].'</strong><br />'.__("rating", "gd-star-rating").': <strong style="color: red">'.$r_pst.'</strong></td>';
+        echo '<td>'.__("votes", "gd-star-rating").': <strong>'.$row["comment"]["voters"].'</strong><br />'.__("rating", "gd-star-rating").': <strong style="color: red">'.$r_cmm.'</strong></td>';
         echo '</tr>';
         
         if ($tr_class == "")
