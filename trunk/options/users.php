@@ -29,6 +29,7 @@ foreach ($pre_users as $user) {
     $users[$count]["id"] = $user->user_id;
     $users[$count][$user->vote_type]["votes"] = $user->votes;
     $users[$count][$user->vote_type]["voters"] = $user->voters;
+    $users[$count][$user->vote_type]["ips"] = $user->ips;
     $users[$count]["name"] = $user->user_id == 0 ? "visitor" : $user->display_name;
     $users[$count]["email"] = $user->user_id == 0 ? "/" : $user->user_email;
     $users[$count]["url"] = $user->user_id == 0 ? "/" : $user->user_url;
@@ -62,6 +63,7 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
             <th scope="col"><?php _e("URL", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Articles", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Comments", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Unique IP's", "gd-star-rating"); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -82,6 +84,7 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
         echo '<td>'.$row["url"].'</td>';
         echo '<td>'.__("votes", "gd-star-rating").': <strong>'.$row["article"]["voters"].'</strong><br />'.__("rating", "gd-star-rating").': <strong style="color: red">'.$r_pst.'</strong></td>';
         echo '<td>'.__("votes", "gd-star-rating").': <strong>'.$row["comment"]["voters"].'</strong><br />'.__("rating", "gd-star-rating").': <strong style="color: red">'.$r_cmm.'</strong></td>';
+        echo '<td>'.__("articles").': <strong>'.$row["article"]["ips"].'</strong><br />'.__("comments").': <strong>'.$row["comment"]["ips"].'</strong></td>';
         echo '</tr>';
         
         if ($tr_class == "")
@@ -93,5 +96,12 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
 ?>
     </tbody>
 </table>
+<div class="tablenav">
+    <div class="alignleft">
+    </div>
+    <div class="tablenav-pages">
+    </div>
+</div>
+<br class="clear"/>
 </form>
 </div>

@@ -71,7 +71,7 @@ class GDSRDatabase
     //users
     function get_valid_users() {
         global $wpdb, $table_prefix;
-        $sql = sprintf("SELECT l.user_id, l.vote_type, count(*) as voters, sum(l.vote) as votes, u.display_name, u.user_email, u.user_url FROM %sgdsr_votes_log l left join %susers u on u.id = l.user_id group by user_id, vote_type order by user_id, vote_type",
+        $sql = sprintf("SELECT l.user_id, l.vote_type, count(*) as voters, sum(l.vote) as votes, count(distinct ip) as ips, u.display_name, u.user_email, u.user_url FROM %sgdsr_votes_log l left join %susers u on u.id = l.user_id group by user_id, vote_type order by user_id, vote_type",
                 $table_prefix, $table_prefix
             );
         return $wpdb->get_results($sql);

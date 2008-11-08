@@ -8,6 +8,8 @@
   * new: managment for settings for categories
   * new: users and visitors based rating info
   * new: more functions to use in the theme
+  * edit: more changes to admin panels and settings
+  * edit: improved saving and handling settings
   * edit: improved loading of css and js needed
   * edit: improvement of all standalone functions
   * fix: few more typo errors
