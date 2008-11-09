@@ -99,7 +99,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.2",
             "date" => "2008.11.10.",
             "status" => "Stable",
-            "build" => 209,
+            "build" => 210,
             "ie_png_fix" => 1,
             "ajax" => 1,
             "save_user_agent" => 0,

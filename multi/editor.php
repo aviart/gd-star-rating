@@ -42,7 +42,7 @@ else {
             <?php for ($i = 0; $i < count($set->object); $i++) { $counter = $i + 1; if ($counter < 10) $counter = "0".$counter;  ?>
             <tr>
                 <td width="50">[ <?php echo $counter; ?> ]</td>
-                <td width="100"><?php _e('Name'); ?>:</td>
+                <td width="100"><?php _e("Name", "gd-star-rating"); ?>:</td>
                 <td><input type="text" name="gdsr_ms_element[<?php echo $i; ?>]" id="gdsr_ms_element_<?php echo $i; ?>" value="<?php echo $set->object[$i]; ?>" style="width: 200px" /></td>
             </tr>
             <?php } ?>

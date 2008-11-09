@@ -14,6 +14,7 @@
   * edit: improved loading of css and js needed
   * edit: improvement of all standalone functions
   * fix: few more typo errors
+  * fix: saving votes into log tables
 
 === Version: 1.0.1 / november 5 2008 ===
   * new: top ratings blog summary widget
