@@ -29,17 +29,11 @@ class GDSRDatabase
         
         if ($user > 0)
             $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and id = %s and user_id = %s", 
-                $stats, 
-                $type, 
-                $id, 
-                $user
+                $stats, $type, $id, $user
             );
         else
             $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and id = %s and ip = '%s'", 
-                $stats, 
-                $type, 
-                $id, 
-                $ip
+                $stats, $type, $id, $ip
             );
         
         $vote_data = $wpdb->get_row($votes_sql); 
@@ -52,10 +46,12 @@ class GDSRDatabase
     
     function check_vote($id, $user, $type, $ip, $mod_only = false) {
         $result = true;
+        
         if (!$mod_only)
             $result = GDSRDatabase::check_vote_logged($id, $user, $type, $ip);
         if ($result) 
             $result = GDSRDatabase::check_vote_moderated($id, $user, $type, $ip);
+            
         return $result;
     }
     
@@ -775,7 +771,9 @@ class GDSRDatabase
             );
         return $sql;
     }
+    // get
     
+    // combox
     function get_combo_months($selected = "0", $name = "gdsr_dates") {
         global $wpdb, $wp_locale;
         $arc_query = "SELECT DISTINCT YEAR(post_date) AS yyear, MONTH(post_date) AS mmonth FROM $wpdb->posts WHERE post_type = 'post' ORDER BY post_date DESC";
@@ -834,7 +832,7 @@ class GDSRDatabase
         wp_dropdown_categories($dropdown_options);
         do_action('restrict_manage_posts');
     }
-    // get
+    // combos
 }
 
 ?>

@@ -15,6 +15,7 @@
   * edit: improvement of all standalone functions
   * fix: few more typo errors
   * fix: saving votes into log tables
+  * fix: invalid vote rule check for comments
 
 === Version: 1.0.1 / november 5 2008 ===
   * new: top ratings blog summary widget

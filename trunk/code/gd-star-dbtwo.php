@@ -18,7 +18,8 @@ class GDSRDB
             "data_comment" => $table_prefix.'gdsr_data_comment',
             "votes_log" => $table_prefix.'gdsr_votes_log',
             "votes_trend" => $table_prefix.'gdsr_votes_trend',
-            "moderate" => $table_prefix.'gdsr_moderate'
+            "moderate" => $table_prefix.'gdsr_moderate',
+            "multi_sets" => $table_prefix.'gdsr_multis'
         );
         return $tables;
     }
@@ -27,6 +28,7 @@ class GDSRDB
         global $wpdb, $table_prefix;
         
         $dbt_data_category = $table_prefix.'gdsr_data_category';
+        $dbt_data_multis = $table_prefix.'gdsr_multis';
 
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_category'") != $dbt_data_category) {
             $install_sql = "CREATE TABLE $dbt_data_category (";
@@ -38,6 +40,17 @@ class GDSRDB
             $install_sql.= "expiry_type VARCHAR(1) NOT NULL DEFAULT 'N',";
             $install_sql.= "expiry_value VARCHAR(32) NOT NULL,";
             $install_sql.= "PRIMARY KEY (category_id))";
+            $wpdb->query($install_sql);
+        }
+
+        if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_multis'") != $dbt_data_multis) {
+            $install_sql = "CREATE TABLE $dbt_data_multis (";
+            $install_sql.= "`multi_id` INTEGER(11) UNSIGNED NOT NULL,";
+            $install_sql.= "`name` VARCHAR(64) NOT NULL,";
+            $install_sql.= "`description` VARCHAR(512) NOT NULL,";
+            $install_sql.= "`stars` INTEGER(11) DEFAULT 10,";
+            $install_sql.= "`object` TEXT NOT NULL,";
+            $install_sql.= "PRIMARY KEY (multi_id))";
             $wpdb->query($install_sql);
         }
     }
@@ -65,9 +78,10 @@ class GDSRDB
         $dbt_data_article = $table_prefix.'gdsr_data_article';
         $dbt_data_comment = $table_prefix.'gdsr_data_comment';
         $dbt_data_category = $table_prefix.'gdsr_data_category';
+        $dbt_data_multis = $table_prefix.'gdsr_multis';
         $dbt_votes_trend = $table_prefix.'gdsr_votes_trend';
         $dbt_moderate = $table_prefix.'gdsr_moderate';
-        
+
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_category'") != $dbt_data_category) {
             $install_sql = "CREATE TABLE $dbt_data_category (";
             $install_sql.= "category_id INTEGER(11) UNSIGNED NOT NULL,";
@@ -80,7 +94,18 @@ class GDSRDB
             $install_sql.= "PRIMARY KEY (category_id))";
             $wpdb->query($install_sql);
         }
-        
+
+        if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_multis'") != $dbt_data_multis) {
+            $install_sql = "CREATE TABLE $dbt_data_multis (";
+            $install_sql.= "`multi_id` INTEGER(11) UNSIGNED NOT NULL,";
+            $install_sql.= "`name` VARCHAR(64) NOT NULL,";
+            $install_sql.= "`description` VARCHAR(512) NOT NULL,";
+            $install_sql.= "`stars` INTEGER(11) DEFAULT 10,";
+            $install_sql.= "`object` TEXT NOT NULL,";
+            $install_sql.= "PRIMARY KEY (multi_id))";
+            $wpdb->query($install_sql);
+        }
+
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_article'") != $dbt_data_article) {
             $install_sql = "CREATE TABLE $dbt_data_article (";
             $install_sql.= "post_id INTEGER(11) UNSIGNED NOT NULL,";
@@ -165,7 +190,7 @@ class GDSRDB
             $wpdb->query($install_sql);
         }
     }
-    
+
     function convert_row($row) {
         switch ($row->moderate_articles) {
             case 'I':
@@ -285,7 +310,7 @@ class GDSRDB
         
         return $row;
     }
-    
+
     function convert_category_row($row) {
         switch ($row->moderate_articles) {
             case 'A':
@@ -351,7 +376,7 @@ class GDSRDB
         }
         return $row;
     }
-    
+
     function convert_moderation_row($row) {
         if ($row->user_id == 0)
             $row->username = '<span style="color: red">visitor</span>';
@@ -360,7 +385,7 @@ class GDSRDB
         
         return $row;
     }
-    
+
     function convert_comment_row($row) {
         if ($row->visitor_voters == 0) {
             $votes_v = '/';
@@ -403,7 +428,7 @@ class GDSRDB
         
         return $row;
     }
-    
+
     function moderation_approve($ids, $ids_array) {
         global $wpdb, $table_prefix;
         
@@ -425,29 +450,29 @@ class GDSRDB
         $sql = sprintf("delete from %s where record_id in %s", $table_prefix."gdsr_moderate", $ids);
         $wpdb->query($sql);
     }
-    
+
     function get_post_title($post_id) {
         global $wpdb;
         return $wpdb->get_var("select post_title from $wpdb->posts where ID = ".$post_id);
     }
-    
+
     // totals
     function front_page_article_totals() {
         global $wpdb, $table_prefix;
         return $wpdb->get_row(sprintf("select sum(visitor_voters) as votersv, sum(visitor_votes) as votesv, sum(user_voters) as votersu, sum(user_votes) as votesu from %s", $table_prefix."gdsr_data_article"));
     }
-    
+
     function front_page_comment_totals() {
         global $wpdb, $table_prefix;
         return $wpdb->get_row(sprintf("select sum(visitor_voters) as votersv, sum(visitor_votes) as votesv, sum(user_voters) as votersu, sum(user_votes) as votesu from %s", $table_prefix."gdsr_data_comment"));
     }
-    
+
     function front_page_moderation_totals() {
         global $wpdb, $table_prefix;
         return $wpdb->get_row(sprintf("select vote_type, count(*) as queue from %s group by vote_type", $table_prefix."gdsr_moderate"));
     }
     // totals
-    
+
     // recalculate
     function recalculate_articles($gdsr_oldstars, $gdsr_newstars) {
         global $wpdb, $table_prefix;
