@@ -253,6 +253,8 @@ class GDSRDatabase
         
     function save_vote($id, $user, $ip, $ua, $vote) {
         global $wpdb, $table_prefix;
+        $ua = str_replace("'", "''", $ua);
+        $ua = substr($ua, 0, 250);
         $articles = $table_prefix.'gdsr_data_article';
         $moderate = $table_prefix.'gdsr_moderate';
         
@@ -272,6 +274,8 @@ class GDSRDatabase
     
     function save_vote_comment($id, $user, $ip, $ua, $vote) {
         global $wpdb, $table_prefix;
+        $ua = str_replace("'", "''", $ua);
+        $ua = substr($ua, 0, 250);
         $articles = $table_prefix.'gdsr_data_article';
         $comments = $table_prefix.'gdsr_data_comment';
         $moderate = $table_prefix.'gdsr_moderate';
@@ -337,6 +341,8 @@ class GDSRDatabase
     
     function add_vote_comment($id, $user, $ip, $ua, $vote) {
         global $wpdb, $table_prefix;
+        $ua = str_replace("'", "''", $ua);
+        $ua = substr($ua, 0, 250);
         $comments = $table_prefix.'gdsr_data_comment';
         $stats = $table_prefix.'gdsr_votes_log';
         $trend = $table_prefix.'gdsr_votes_trend';
@@ -389,6 +395,8 @@ class GDSRDatabase
     
     function add_vote($id, $user, $ip, $ua, $vote, $post_data = '') {
         global $wpdb, $table_prefix;
+        $ua = str_replace("'", "''", $ua);
+        $ua = substr($ua, 0, 250);
         $articles = $table_prefix.'gdsr_data_article';
         $stats = $table_prefix.'gdsr_votes_log';
         $trend = $table_prefix.'gdsr_votes_trend';
