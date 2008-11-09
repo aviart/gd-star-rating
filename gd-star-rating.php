@@ -99,7 +99,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.2",
             "date" => "2008.11.10.",
             "status" => "Stable",
-            "build" => 210,
+            "build" => 211,
             "ie_png_fix" => 1,
             "ajax" => 1,
             "save_user_agent" => 0,
@@ -1867,7 +1867,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             if ($allow_vote) 
-                $allow_vote = GDSRDatabase::check_vote($rd_comment_id, $rd_user_id, 'comment', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1);
+                $allow_vote = GDSRDatabase::check_vote($rd_comment_id, $rd_user_id, 'comment', $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1);
 
             if ($allow_vote)
                 $allow_vote = $this->check_cookie($rd_post_id, "comment");
@@ -1917,7 +1917,7 @@ if (!class_exists('GDStarRating')) {
                 $allow_vote = false;
             else
                 $allow_vote = true;
-            
+                        
             if ($allow_vote)
                 $allow_vote = !GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT']);
 
