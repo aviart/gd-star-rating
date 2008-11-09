@@ -33,6 +33,7 @@ require_once(dirname(__FILE__)."/code/gd-star-render.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbone.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbtwo.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbx.php");
+require_once(dirname(__FILE__)."/code/gd-star-dbmulti.php");
 require_once(dirname(__FILE__)."/code/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gd-star-import.php");
 
@@ -98,7 +99,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.2",
             "date" => "2008.11.10.",
             "status" => "Stable",
-            "build" => 206,
+            "build" => 209,
             "ie_png_fix" => 1,
             "ajax" => 1,
             "save_user_agent" => 0,
@@ -111,7 +112,7 @@ if (!class_exists('GDStarRating')) {
             "preview_active" => 1,
             "preview_trends_active" => 1,
             "moderation_active" => 1,
-            "multis_active" => 1,
+            "multis_active" => 0,
             "review_active" => 1,
             "timer_active" => 1,
             "comments_active" => 1,
@@ -437,6 +438,10 @@ if (!class_exists('GDStarRating')) {
             if ($this->o["admin_category"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), 10, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
             if ($this->o["admin_users"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), 10, "gd-star-rating-users", array(&$this,"star_menu_users"));
             if ($this->charting) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Charts", "gd-star-rating"), __("Charts", "gd-star-rating"), 10, "gd-star-rating-charts", array(&$this,"star_menu_charts"));
+            if ($this->o["multis_active"] == 1) {
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Sets", "gd-star-rating"), __("Multi Sets", "gd-star-rating"), 10, "gd-star-rating-multi-sets", array(&$this,"star_multi_sets"));
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Results", "gd-star-rating"), __("Multi Results", "gd-star-rating"), 10, "gd-star-rating-multi-results", array(&$this,"star_multi_results"));
+            }
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gd-star-rating-templates", array(&$this,"star_menu_templates"));
@@ -1281,6 +1286,37 @@ if (!class_exists('GDStarRating')) {
                 include($this->plugin_path.'options/edit27.php');
         }                  
 
+        function star_multi_sets() {
+            $options = $this->o;
+            $editor = true;
+            if (isset($_GET["gdsr"])) $gdsr = $_GET["gdsr"];
+            if ($_POST['gdsr_action'] == 'save') {
+                $editor = false;
+                $eset = new GDMultiSingle(false);
+                $eset->id = $_POST["gdsr_ms_id"];
+                $eset->name = $_POST["gdsr_ms_name"];
+                $eset->description = $_POST["gdsr_ms_description"];
+                $eset->stars = $_POST["gdsr_ms_stars"];
+                $elms = $_POST["gdsr_ms_element"];
+                foreach ($elms as $el) {
+                    if (($el != "" && $eset->id == 0) || $eset->id > 0) $eset->elements[] = $el;
+                }
+                if ($eset->name != "") {
+                    if ($eset->id == 0) GDSRDBMulti::add_multi_set($eset);
+                    else GDSRDBMulti::edit_multi_set($eset);
+                }
+            }
+            if (($gdsr == "munew" || $gdsr == "muedit") && $editor)
+                include($this->plugin_path.'multi/editor.php');
+            else
+                include($this->plugin_path.'multi/sets.php');
+        }
+
+        function star_multi_results() {
+            $options = $this->o;
+            include($this->plugin_path.'multi/results.php');
+        }
+        
         function star_menu_front() {
             $options = $this->o;
             include($this->plugin_path.'options/front.php');
@@ -1943,75 +1979,5 @@ if (!class_exists('GDStarRating')) {
 
     $gdsr = new GDStarRating();
     
-    function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
-        global $gdsr;
-        return $gdsr->get_blog_rating($select, $show);
-    }
-    
-    function wp_gdsr_user_votes($user_id) {
-        global $gdsr;
-    }
-    
-    function wp_gdsr_all_users_votes() {
-        global $gdsr;
-    }
-    
-    function wp_gdsr_render_widget($widget = array(), $echo = true) {
-        global $gdsr;
-
-        if ($echo) echo $gdsr->render_articles_widget($widget);
-        else return $gdsr->render_articles_widget($widget);
-    }
-    
-    function wp_gdsr_render_article($echo = true) {
-        global $post, $userdata, $gdsr;
-        
-        if ($echo) echo $gdsr->render_article($post, $userdata);
-        else return $gdsr->render_article($post, $userdata);
-    }
-    
-    function wp_gdsr_rating_text_article($cls = "", $echo = true) {
-        global $post, $gdsr;
-        if ($echo) echo $gdsr->render_rating_text_article($post, $cls);
-        else return $gdsr->render_rating_text_article($post, $cls);
-    }
-
-    function wp_gdsr_render_comment($echo = true) {
-        global $comment, $userdata, $gdsr, $post;
-        if ($echo) echo $gdsr->render_comment($post, $comment, $userdata);
-        else return $gdsr->render_comment($post, $comment, $userdata);
-    }
-    
-	function wp_gdsr_render_review($echo = true) {
-        global $gdsr;
-        if ($echo) echo $gdsr->shortcode_starreview();
-        else return $gdsr->shortcode_starreview();
-	}
-    
-    function wp_gdsr_new_comment_review($value = 0, $echo = true) {
-        global $gdsr;
-        if ($echo) echo $gdsr->comment_review($value);
-        else return $gdsr->comment_review($value);
-    }
-
-    function wp_gdsr_show_comment_review($comment_id = 0, $zero_render = true, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
-        global $comment, $gdsr;
-        if ($comment_id < 1) $comment_id = $comment->comment_ID;
-        if ($echo) echo $gdsr->display_comment_review($comment_id, $zero_render, $use_default, $style, $size);
-        else return $gdsr->display_comment_review($comment, $zero_render, $use_default, $style, $size);
-    }
-    
-    function wp_gdsr_show_article_review($post_id = 0, $zero_render = true, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
-        global $post, $gdsr;
-        if ($post_id < 1) $post_id = $post->ID;
-        if ($echo) echo $gdsr->display_article_review($post_id, $zero_render, $use_default, $style, $size);
-        else return $gdsr->display_article_review($post_id, $zero_render, $use_default, $style, $size);
-    }
-
-    function wp_gdsr_show_article_rating($post_id = 0, $zero_render = true, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
-        global $post, $gdsr;
-        if ($post_id < 1) $post_id = $post->ID;
-        if ($echo) echo $gdsr->display_article_rating($post_id, $zero_render, $use_default, $style, $size);
-        else return $gdsr->display_article_rating($post_id, $zero_render, $use_default, $style, $size);
-    }
+    include(STARRATING_PATH."gd-star-custom.php");
 }
