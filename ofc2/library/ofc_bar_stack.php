@@ -14,6 +14,19 @@ class bar_stack extends bar_base
 	{
 		$this->append_value( $v );
 	}
+	
+	// an array of HEX colours strings
+	// e.g. array( '#ff0000', '#00ff00' );
+	function set_colours( $colours )
+	{
+		$this->colours = $colours;
+	}
+	
+	// an array of bar_stack_value
+	function set_keys( $keys )
+	{
+		$this->keys = $keys;
+	}
 }
 
 class bar_stack_value
@@ -22,5 +35,16 @@ class bar_stack_value
 	{
 		$this->val = $val;
 		$this->colour = $colour;
+	}
+}
+
+class bar_stack_key
+{
+	function bar_stack_key( $colour, $text, $font_size )
+	{
+		$this->colour = $colour;
+		$this->text = $text;
+		$tmp = 'font-size';
+		$this->$tmp = $font_size;
 	}
 }
