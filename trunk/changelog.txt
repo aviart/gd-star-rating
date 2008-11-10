@@ -13,6 +13,7 @@
   * edit: improved saving and handling settings
   * edit: improved loading of css and js needed
   * edit: improvement of all standalone functions
+  * fix: wordpress 2.7 improvements
   * fix: few more typo errors
   * fix: saving votes into log tables
   * fix: invalid vote rule check for comments

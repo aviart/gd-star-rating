@@ -29,9 +29,9 @@
         $gdsr_options["preview_active"] = $_POST['gdsr_preview_stars'];
         $gdsr_options["preview_trends_active"] = $_POST['gdsr_preview_trends'];
 
-        $gdsr_options["integrate_post_edit"] = $_POST['gdsr_integrate_post_edit'];
-        $gdsr_options["integrate_tinymce"] = $_POST['gdsr_integrate_tinymce'];
-        $gdsr_options["integrate_comment_edit"] = $_POST['gdsr_integrate_comment_edit'];
+        $gdsr_options["integrate_post_edit"] = isset($_POST['gdsr_integrate_post_edit']) ? 1 : 0;
+        $gdsr_options["integrate_tinymce"] = isset($_POST['gdsr_integrate_tinymce']) ? 1 : 0;
+        $gdsr_options["integrate_comment_edit"] = isset($_POST['gdsr_integrate_comment_edit']) ? 1 : 0;
 
         $gdsr_options["trend_last"] = $_POST['gdsr_trend_last'];
         $gdsr_options["trend_over"] = $_POST['gdsr_trend_over'];

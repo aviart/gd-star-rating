@@ -453,7 +453,6 @@ if (!class_exists('GDStarRating')) {
         function admin_head() {
             global $parent_file;
             $this->admin_page = $parent_file;
-            $this->dump('p', $parent_file);
             
             if ($this->admin_plugin) {
                 wp_print_scripts('jquery-ui-tabs');
@@ -510,7 +509,11 @@ if (!class_exists('GDStarRating')) {
                 add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
                 add_filter('comment_post', array(&$this, 'comment_save_review'));
                 if ($this->o["integrate_comment_edit"] == 1) {
-                    add_action('submitcomment_box', array(&$this, 'editbox_comment'));
+                    if ($this->wp_version < 27) 
+                        add_action('submitcomment_box', array(&$this, 'editbox_comment'));
+                    else 
+                        add_action('do_meta_boxes', array(&$this, 'editbox_comment'), "comment");
+                    
                     add_filter('comment_save_pre', array(&$this, 'comment_edit_review'));
                 }
             }
@@ -1237,8 +1240,10 @@ if (!class_exists('GDStarRating')) {
         function editbox_comment() {
             if ($this->wp_version < 27)
                 include($this->plugin_path.'options/editcomment26.php');
-            else
+            else {
+                if ($this->admin_page != "edit-comments.php") return;
                 include($this->plugin_path.'options/editcomment27.php');
+            }
         }
         
         function editbox_post() {
