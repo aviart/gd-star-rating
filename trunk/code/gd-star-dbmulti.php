@@ -50,11 +50,11 @@ class GDMultiSingle {
     var $name = "";
     var $description = "";
     var $stars = 10;
-    var $elements = array();
+    var $object = array();
     
     function GDMultiSingle($fill_empty = true, $count = 10) {
         if ($fill_empty) {
-            for ($i = 0; $i < $count; $i++) $this->elements[] = "";
+            for ($i = 0; $i < $count; $i++) $this->object[] = "";
         }
     }
 }
