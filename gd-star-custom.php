@@ -5,14 +5,6 @@
         return $gdsr->get_blog_rating($select, $show);
     }
     
-    function wp_gdsr_user_votes($user_id) {
-        global $gdsr;
-    }
-    
-    function wp_gdsr_all_users_votes() {
-        global $gdsr;
-    }
-    
     function wp_gdsr_render_widget($widget = array(), $echo = true) {
         global $gdsr;
 
