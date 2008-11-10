@@ -61,4 +61,10 @@ class line_base
 	{
 		$this->loop = true;
 	}
+	
+	function line_style( $s )
+	{
+		$tmp = "line-style";
+		$this->$tmp = $s;
+	}
 }
