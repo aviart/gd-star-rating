@@ -1,0 +1,51 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 1.0.2 / november 12 2008 ===
+  * new: comment review rating
+  * new: edit comment review rating
+  * new: managment for settings for categories
+  * new: users and visitors based rating info
+  * new: multi rating editor
+  * new: more functions to use in the theme
+  * edit: more changes to admin panels and settings
+  * edit: improved saving and handling settings
+  * edit: improved loading of css and js needed
+  * edit: improvement of all standalone functions
+  * fix: wordpress 2.7 improvements
+  * fix: few more typo errors
+  * fix: saving votes into log tables
+  * fix: invalid vote rule check for comments
+ 
+=== Version: 1.0.1 / november 5 2008 ===
+  * new: top ratings blog summary widget
+  * new: tools panel
+  * new: option to control saving user agent data
+  * new: options to hide even more options on settings pages
+  * edit: improved voting restrictions with ip and cookie
+  * edit: all files encoding changed to utf8
+  * edit: all files changed to windows ending
+  * fix: invalid default rating for new posts
+  * fix: full deletion of votes
+  * fix: auto insert comments rating
+  * fix: various small bugs
+
+=== Version: 1.0.0 / october 31 2008 ===
+  * new: pumpkin stars set
+  * new: full plugin uninstall
+  * new: rendering time testrictions
+  * new: front page completed
+  * new: voters log panel
+  * edit: more code cleanup
+  * edit: expanded rating text template
+  * edit: translation files updated
+  * fix: time restriction recalculations
+  * fix: rendering rating header html
+  * fix: default shortcode settings
+  * fix: page loading renaming regressions
+  * fix: few more typo errors
+  * fix: default starrating template
+  * fix: some small errors
+
+=== Version: 0.9.9.6 RC4 / october 28 2008 ===

@@ -1,0 +1,26 @@
+﻿= GD Star Rating =
+
+== Languages ==
+
+=== English ===
+  * version: 1.0.2
+  * author: Milan Petrovic
+  * email: milan@gdragon.info
+  * web: http://www.gdragon.info/
+
+=== Serbian ===
+  * version: 1.0.2
+  * author: Milan Petrovic
+  * email: milan@gdragon.info
+  * web: http://www.gdragon.info/
+
+=== Spanish ===
+  * version: 1.0.2
+  * author: Ángel Guzmán Maeso
+  * email: shakaran@gmail.com
+
+=== French ===
+  * version: 1.0.2
+  * author: k|torz
+  * email: vlag@free.fr
+  * web: http://blog.lagrandmaison.fr/yop/
