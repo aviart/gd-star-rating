@@ -25,7 +25,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
 */
 
 require_once(dirname(__FILE__)."/code/gd-star-functions.php");
@@ -99,7 +98,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.2",
             "date" => "2008.11.11.",
             "status" => "Stable",
-            "build" => 211,
+            "build" => 219,
             "ie_png_fix" => 1,
             "ajax" => 1,
             "save_user_agent" => 0,
