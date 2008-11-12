@@ -2,6 +2,10 @@
 
 == Change Log ==
 
+=== Version: 1.0.3 / november 17 2008 ===
+  * new: banned ip's db table
+  * edit: users panel improvements
+
 === Version: 1.0.2 / november 12 2008 ===
   * new: comment review rating
   * new: edit comment review rating
