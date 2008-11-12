@@ -11,6 +11,16 @@
         </form>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Database Cleanup", "gd-star-rating"); ?></th>
+    <td>
+        <form method="post">
+
+        <input type="submit" class="inputbutton" value="<?php _e("Clean", "gd-star-rating"); ?>" name="gdsr_preview_scan" id="gdsr_preview_scan" />
+        <div class="gdsr-table-split"></div>
+        Last cleanup was executed on: <strong><?php echo $gdsr_options['database_cleanup']; ?></strong>
+        </form>
+    </td>
+</tr>
 </tbody></table>
 </div>
 </div>

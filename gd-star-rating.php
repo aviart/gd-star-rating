@@ -95,10 +95,11 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "version" => "1.0.2",
-            "date" => "2008.11.11.",
+            "version" => "1.0.3",
+            "date" => "2008.11.16.",
             "status" => "Stable",
-            "build" => 219,
+            "build" => 225,
+            "database_cleanup" => '',
             "ie_png_fix" => 1,
             "ajax" => 1,
             "save_user_agent" => 0,
@@ -1419,7 +1420,10 @@ if (!class_exists('GDStarRating')) {
         
         function star_menu_users(){
             $options = $this->o;
-            include($this->plugin_path.'options/users.php');
+            if ($_GET["gdsr"] == "userslog")
+                include($this->plugin_path.'options/users_log.php');
+            else
+                include($this->plugin_path.'options/users.php');
         }
 
         function star_menu_cats(){
@@ -1810,7 +1814,7 @@ if (!class_exists('GDStarRating')) {
 
             return $out;
         }
-        
+
         function render_rating_text_article($post, $cls = "") {
             $rd_post_id = intval($post->ID);
             $rd_is_page = $post->post_type == "page" ? "1" : "0";
@@ -1819,7 +1823,7 @@ if (!class_exists('GDStarRating')) {
             
             echo GDSRRender::rating_text($rd_post_id, "a", $votes, $score, $this->o["stars"], "article", $cls == "" ? $this->o["class_text"] : $cls);
         }
-        
+
         function render_comment($post, $comment, $user) {
             if ($this->o["comments_active"] != 1) 
                 return "";

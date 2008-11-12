@@ -19,7 +19,8 @@ class GDSRDB
             "votes_log" => $table_prefix.'gdsr_votes_log',
             "votes_trend" => $table_prefix.'gdsr_votes_trend',
             "moderate" => $table_prefix.'gdsr_moderate',
-            "multi_sets" => $table_prefix.'gdsr_multis'
+            "multi_sets" => $table_prefix.'gdsr_multis',
+            "banned_ips" => $table_prefix.'gdsr_ips'
         );
         return $tables;
     }
@@ -29,6 +30,15 @@ class GDSRDB
         
         $dbt_data_category = $table_prefix.'gdsr_data_category';
         $dbt_data_multis = $table_prefix.'gdsr_multis';
+        $dbt_banned_ips = $table_prefix.'gdsr_ips';
+
+        if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_banned_ips'") != $dbt_banned_ips) {
+            $install_sql = "CREATE TABLE $dbt_banned_ips (";
+            $install_sql.= "status VARCHAR(1) DEFAULT 'B',";
+            $install_sql.= "ip VARCHAR(32) DEFAULT NULL,";
+            $install_sql.= "logged DATETIME DEFAULT NULL)";
+            $wpdb->query($install_sql);
+        }
 
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_category'") != $dbt_data_category) {
             $install_sql = "CREATE TABLE $dbt_data_category (";
@@ -81,6 +91,15 @@ class GDSRDB
         $dbt_data_multis = $table_prefix.'gdsr_multis';
         $dbt_votes_trend = $table_prefix.'gdsr_votes_trend';
         $dbt_moderate = $table_prefix.'gdsr_moderate';
+        $dbt_banned_ips = $table_prefix.'gdsr_ips';
+
+        if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_banned_ips'") != $dbt_banned_ips) {
+            $install_sql = "CREATE TABLE $dbt_banned_ips (";
+            $install_sql.= "status VARCHAR(1) DEFAULT 'B',";
+            $install_sql.= "ip VARCHAR(32) DEFAULT NULL,";
+            $install_sql.= "logged DATETIME DEFAULT NULL)";
+            $wpdb->query($install_sql);
+        }
 
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_category'") != $dbt_data_category) {
             $install_sql = "CREATE TABLE $dbt_data_category (";

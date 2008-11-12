@@ -78,6 +78,31 @@ class GDSRDatabase
         $sql = sprintf("SELECT count(distinct user_id) from %sgdsr_votes_log", $table_prefix);
         return $wpdb->get_var($sql);
     }
+    
+    function get_user_log($user_id, $vote_type, $start = 0, $limit = 20) {
+        global $wpdb, $table_prefix;
+        if ($vote_type == "article") {
+            $join = sprintf("%sposts o on o.ID = l.id", $table_prefix); 
+            $select = "o.post_title as content, o.ID as control_id";
+        }
+        else if ($vote_type == "comment") {
+            $join = sprintf("%scomments o on o.comment_ID = l.id", $table_prefix); 
+            $select = "o.comment_content as content, o.comment_ID as control_id";
+        }
+        $sql = sprintf("SELECT l.*, %s from %sgdsr_votes_log l left join %s where l.user_id = %s and l.vote_type = '%s' order by l.ip asc, l.voted desc limit %s, %s", 
+                $select, $table_prefix, $join, $user_id, $vote_type, $start, $limit
+            );
+        print_r($sql);
+        return $wpdb->get_results($sql);
+    }
+
+    function get_count_user_log($user_id, $vote_type) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("SELECT count(*) from %sgdsr_votes_log where user_id = %s and vote_type = '%s'", 
+                $table_prefix, $user_id, $vote_type
+            );
+        return $wpdb->get_var($sql);
+    }
     //users
 
     // categories

@@ -1,4 +1,12 @@
-﻿.inputbutton{
+﻿.visitor {
+	background-color: #CEE1EF;
+}
+
+.admin {
+	background-color: #CCFF99;
+}
+
+.inputbutton{
 	-moz-border-radius-bottomleft:3px;
 	-moz-border-radius-bottomright:3px;
 	-moz-border-radius-topleft:3px;

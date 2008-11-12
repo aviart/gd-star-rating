@@ -7,6 +7,7 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
+$log_url = $url."&gdsr=userslog";
 $url.= "&gdsr=users";
 
 $page_id = 1;
@@ -30,7 +31,7 @@ foreach ($pre_users as $user) {
     $users[$count][$user->vote_type]["votes"] = $user->votes;
     $users[$count][$user->vote_type]["voters"] = $user->voters;
     $users[$count][$user->vote_type]["ips"] = $user->ips;
-    $users[$count]["name"] = $user->user_id == 0 ? "visitor" : $user->display_name;
+    $users[$count]["name"] = $user->user_id == 0 ? "Visitor" : $user->display_name;
     $users[$count]["email"] = $user->user_id == 0 ? "/" : $user->user_email;
     $users[$count]["url"] = $user->user_id == 0 ? "/" : $user->user_url;
     $usrid = $user->user_id;
@@ -63,7 +64,6 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
             <th scope="col"><?php _e("URL", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Articles", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Comments", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Unique IP's", "gd-star-rating"); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -72,19 +72,37 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
     $tr_class = "";
     for ($i = $usr_from; $i < $usr_to; $i++) {
         $row = $users[$i];
+        
+        $usr_url = $row["name"];
+        if ($row["id"] > 0) $usr_url = '<a href="./user-edit.php?user_id='.$row["id"].'">'.$row["name"].'</a>';
+        
+        $ip_pst = 0;
         $r_pst = 0;
         if ($row["article"]["voters"] > 0) $r_pst = @number_format($row["article"]["votes"] / $row["article"]["voters"], 1);
+        else $row["article"]["voters"] = "0";
+        if ($row["article"]["ips"] > 0) $ip_cmm = $row["comment"]["ips"];
+
+        if ($row["id"] == 0) $tr_class.= " visitor";
+        if ($row["id"] == 1) $tr_class.= " admin";
+
+        $ip_cmm = 0;
         $r_cmm = 0;
         if ($row["comment"]["voters"] > 0) $r_cmm = @number_format($row["comment"]["votes"] / $row["comment"]["voters"], 1);
+        else $row["comment"]["voters"] = "0";
+        if ($row["comment"]["ips"] > 0) $ip_cmm = $row["comment"]["ips"];
+
         echo '<tr id="post-'.$row["id"].'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row["id"].'" type="checkbox"></th>';
-        echo '<td><strong>'.$row["name"].'</strong></td>';
+        echo '<td><strong>'.$usr_url.'</strong></td>';
         echo '<td>'.$row["id"].'</td>';
         echo '<td>'.$row["email"].'</td>';
         echo '<td>'.$row["url"].'</td>';
-        echo '<td>'.__("votes", "gd-star-rating").': <strong>'.$row["article"]["voters"].'</strong><br />'.__("rating", "gd-star-rating").': <strong style="color: red">'.$r_pst.'</strong></td>';
-        echo '<td>'.__("votes", "gd-star-rating").': <strong>'.$row["comment"]["voters"].'</strong><br />'.__("rating", "gd-star-rating").': <strong style="color: red">'.$r_cmm.'</strong></td>';
-        echo '<td>'.__("articles", "gd-star-rating").': <strong>'.$row["article"]["ips"].'</strong><br />'.__("comments", "gd-star-rating").': <strong>'.$row["comment"]["ips"].'</strong></td>';
+        echo '<td>'.__("votes", "gd-star-rating").': <strong><a href="'.$log_url.'&ui='.$row["id"].'&vt=article&un='.urlencode($row["name"]).'">'.$row["article"]["voters"].'</a></strong><br />';
+        echo __("rating", "gd-star-rating").': <strong style="color: red">'.$r_pst.'</strong><br />';
+        echo __("unique ip's", "gd-star-rating").': <strong>'.$ip_pst.'</strong></td>';
+        echo '<td>'.__("votes", "gd-star-rating").': <strong><a href="'.$log_url.'&ui='.$row["id"].'&vt=comment&un='.urlencode($row["name"]).'">'.$row["comment"]["voters"].'</a></strong><br />';
+        echo __("rating", "gd-star-rating").': <strong style="color: red">'.$r_cmm.'</strong><br />';
+        echo __("unique ip's", "gd-star-rating").': <strong>'.$ip_cmm.'</strong></td>';
         echo '</tr>';
         
         if ($tr_class == "")
