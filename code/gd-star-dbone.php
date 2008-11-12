@@ -83,16 +83,15 @@ class GDSRDatabase
         global $wpdb, $table_prefix;
         if ($vote_type == "article") {
             $join = sprintf("%sposts o on o.ID = l.id", $table_prefix); 
-            $select = "o.post_title as content, o.ID as control_id";
+            $select = "o.post_title, o.ID as post_id, o.ID as control_id";
         }
         else if ($vote_type == "comment") {
-            $join = sprintf("%scomments o on o.comment_ID = l.id", $table_prefix); 
-            $select = "o.comment_content as content, o.comment_ID as control_id";
+            $join = sprintf("%scomments o on o.comment_ID = l.id left join %sposts p on p.ID = o.comment_post_ID", $table_prefix, $table_prefix); 
+            $select = "o.comment_content, o.comment_author as author, o.comment_ID as control_id, p.post_title, p.ID as post_id";
         }
-        $sql = sprintf("SELECT l.*, %s from %sgdsr_votes_log l left join %s where l.user_id = %s and l.vote_type = '%s' order by l.ip asc, l.voted desc limit %s, %s", 
+        $sql = sprintf("SELECT 1 as span, l.*, %s from %sgdsr_votes_log l left join %s where l.user_id = %s and l.vote_type = '%s' order by l.ip asc, l.voted desc limit %s, %s", 
                 $select, $table_prefix, $join, $user_id, $vote_type, $start, $limit
             );
-        print_r($sql);
         return $wpdb->get_results($sql);
     }
 
