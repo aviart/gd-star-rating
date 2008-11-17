@@ -1401,6 +1401,7 @@ if (!class_exists('GDStarRating')) {
 
         function star_menu_stats() {
             $options = $this->o;
+            $wpv = $this->wp_version;
             $gdsr_page = $_GET["gdsr"];
             
             switch ($gdsr_page) {

@@ -121,7 +121,7 @@ function gdsrTimerChange() {
 ?>
 <p id="post-search">
     <label class="hidden" for="post-search-input"><?php _e("Search Posts", "gd-star-rating"); ?>:</label>
-    <input id="post-search-input" type="text" value="<?php echo $search; ?>" name="s"/>
+    <input class="search-input" id="post-search-input" type="text" value="<?php echo $search; ?>" name="s"/>
     <input class="button" type="submit" value="<?php _e("Search Posts", "gd-star-rating"); ?>" name="gdsr_search" />
 </p>
 <div class="tablenav">
