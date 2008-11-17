@@ -458,6 +458,7 @@ if (!class_exists('GDStarRating')) {
                 wp_print_scripts('jquery-ui-tabs');
                 wp_admin_css('css/dashboard');
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin.css" type="text/css" media="screen" />');
+                if ($this->wp_version >= 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_wp27.css" type="text/css" media="screen" />');
             }
             
             if ($this->admin_plugin_page == "charts" && $this->charting && $this->admin_plugin) {
@@ -1324,6 +1325,7 @@ if (!class_exists('GDStarRating')) {
         
         function star_menu_front() {
             $options = $this->o;
+            $wpv = $this->wp_version;
             include($this->plugin_path.'options/front.php');
         }
 
