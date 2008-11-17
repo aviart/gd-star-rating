@@ -4,6 +4,7 @@
 
 === Version: 1.0.3 / november 17 2008 ===
   * new: banned ip's db table
+  * new: wordpress 2.7 styles for front page
   * edit: user ip log panel
   * edit: users panel improvements
 

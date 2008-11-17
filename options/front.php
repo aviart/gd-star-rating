@@ -1,6 +1,5 @@
-<?php
-    require_once(ABSPATH . WPINC . '/rss.php');
-?>
+<?php require_once(ABSPATH . WPINC . '/rss.php'); ?>
+
 <div class="wrap">
 <h2>GD Star Rating</h2>
 
@@ -48,7 +47,7 @@
 
 <div id="dashboard-widgets-wrap">
 <div id="dashboard-widgets">
-    <div id="dashboard_primary" class="dashboard-widget-holder widget_rss wp_dashboard_empty">
+    <div id="dashboard_primary" class="dashboard-widget-holder widget_rss wp_dashboard_empty dashboard-left">
         <div class="dashboard-widget" style="height:37em">
         <h3 class="dashboard-widget-title"><span><?php _e("Latest News", "gd-star-rating") ?></span>
         <small>
@@ -133,5 +132,4 @@
     <br class="clear"/>
 </div>
 </div>
-
 </div>
