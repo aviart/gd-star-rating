@@ -1,5 +1,20 @@
 <?php
 
+class GDSRDBTools
+{
+    function clean_invalid_log() {
+    
+    }
+
+    function clean_invalid_trend() {
+    
+    }
+
+    function clean_dead_posts() {
+    
+    }
+}
+
 class GDSRDB
 {
     function dump($msg, $object, $mode = "a+") {

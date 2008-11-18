@@ -37,6 +37,9 @@ require_once(dirname(__FILE__)."/code/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gd-star-import.php");
 
 if (!class_exists('GDStarRating')) {
+    /**
+    * Main plugin class
+    */
     class GDStarRating {
         var $log_file = "c:/gd_star_rating_log.txt";
         
@@ -271,6 +274,9 @@ if (!class_exists('GDStarRating')) {
             'review_size' => 20
         );
         
+        /**
+        * Constructor method
+        */
         function GDStarRating() {
             $this->tabpage = "front";
             $this->active_wp_page();
@@ -279,17 +285,32 @@ if (!class_exists('GDStarRating')) {
             $this->actions_filters();
         }
         
-        // shortcode
+        // shortcodes
+        /**
+        * Adds new button to tinyMCE editor toolbar
+        * 
+        * @param mixed $buttons
+        */
         function add_tinymce_button($buttons) {
             array_push($buttons, "separator", "StarRating");
             return $buttons;
         }
 
+        /**
+        * Adds plugin to tinyMCE editor
+        * 
+        * @param mixed $plugin_array
+        */
         function add_tinymce_plugin($plugin_array) {    
             $plugin_array['StarRating'] = $this->plugin_url.'tinymce3/plugin.js';
             return $plugin_array;
         }
 
+        /**
+        * Adds shortcodes into WordPress instance
+        * 
+        * @param string|array $scode one or more shortcode names
+        */
         function shortcode_action($scode) {
             if (is_array($scode)) {
                 $sc_name = $scode["name"];
@@ -302,16 +323,31 @@ if (!class_exists('GDStarRating')) {
             add_shortcode($sc_name, array(&$this, $sc_method));
         }
         
+        /**
+        * Code for StarRater shortcode implementation
+        * 
+        * @param array $atts
+        */
 		function shortcode_starrater($atts = array()) {
             global $post, $userdata;
             return $this->render_article($post, $userdata);
 		}
 
+        /**
+        * Code for StarRatingBlock shortcode implementation
+        * 
+        * @param array $atts
+        */
         function shortcode_starratingblock($atts = array()) {
             global $post, $userdata;
             return $this->render_article($post, $userdata);
         }
         
+        /**
+        * Code for StarReview shortcode implementation
+        * 
+        * @param array $atts
+        */
 		function shortcode_starreview($atts = array()) {
             global $post;
             $rating = GDSRDatabase::get_review($post->ID);
@@ -348,7 +384,12 @@ if (!class_exists('GDStarRating')) {
                 return '';
 		}
 		
-        function shortcode_starrating($atts) {
+        /**
+        * Code for StarRating shortcode implementation
+        * 
+        * @param array $atts
+        */
+        function shortcode_starrating($atts = array()) {
             $sett = shortcode_atts($this->default_shortcode_starrating, $atts);
             if ($sett["div_class"] != "") $rating = '<div class="'.$sett["div_class"].'">';
             else $rating = "<div>";
@@ -364,9 +405,15 @@ if (!class_exists('GDStarRating')) {
             $rating.= "</div>";
             return $rating;
         }
-        // shortcode
+        // shortcodes
         
         // various rendering
+        /**
+        * Renters comment review stara
+        * 
+        * @param int $value initial rating value
+        * @param bool $allow_vote render stars to support rendering or not to
+        */
         function comment_review($value = 0, $allow_vote = true) {
             $stars = $this->o["cmm_review_stars"];
             $size = $this->o["cmm_review_size"];
@@ -374,6 +421,16 @@ if (!class_exists('GDStarRating')) {
             return GDSRRender::rating_stars_local($width, $size, $stars, $allow_vote, $value * $size);
         }
         
+        /**
+        * Renders the rating stars for given parameters
+        * 
+        * @param string $style folder name of the stars set to use
+        * @param int $stars number of rating stars, maximal rating value
+        * @param int $size stars size 12, 20, 30, 46
+        * @param bool $zero_render if set to false and $value is 0 then nothing will be rendered
+        * @param decimal $value rating value to show
+        * @return string rendered html
+        */
         function get_rating_stars($style, $stars, $size, $zero_render, $value) {
             if ($value <= 0) {
                 if ($zero_render) $value = 0;
@@ -984,7 +1041,13 @@ if (!class_exists('GDStarRating')) {
         // vote
         
         // calculation
-        // $v: votes, $R: rating
+        /**
+        * Calculates Bayesian Estimate Mean value for given number of votes and rating
+        * 
+        * @param int $v number of votes
+        * @param decimal $R rating value
+        * @return decimal Bayesian rating value
+        */
         function bayesian_estimate($v, $R) {
             $m = $this->o["bayesian_minimal"];
             $C = ($this->o["bayesian_mean"] / 100) * $this->o["stars"];
@@ -1226,7 +1289,13 @@ if (!class_exists('GDStarRating')) {
         }
         // calculation
 
-        // log
+        /**
+        * Writes a object dump into the log file
+        * 
+        * @param string $msg log entry message
+        * @param mixed $object object to dump
+        * @param string $mode file open mode
+        */
         function dump($msg, $object, $mode = "a+") {
             $obj = print_r($object, true);
             $f = fopen($this->log_file, $mode);
@@ -1235,7 +1304,6 @@ if (!class_exists('GDStarRating')) {
             fwrite ($f, "\r\n");
             fclose($f);
         }
-        // log
 
         // menu
         function editbox_comment() {
@@ -1370,7 +1438,14 @@ if (!class_exists('GDStarRating')) {
                 $this->g = $this->gfx_scan();
                 update_option('gd-star-rating-gfx', $this->g);
             }
-
+            if (isset($_POST['gdsr_cleanup_tool'])) {
+                if (isset($_POST['gdsr_tools_clean_invalid_log'])) GDSRDBTools::clean_invalid_log();
+                if (isset($_POST['gdsr_tools_clean_invalid_trend'])) GDSRDBTools::clean_invalid_trend();
+                if (isset($_POST['gdsr_tools_clean_old_posts'])) GDSRDBTools::clean_dead_posts();
+                $this->o["database_cleanup"] = date("r");
+                update_option('gd-star-rating', $this->o);
+            }
+            
             $gdsr_options = $this->o;
             $gdsr_styles = $this->styles;
             $gdsr_trends = $this->trends;
@@ -1726,7 +1801,14 @@ if (!class_exists('GDStarRating')) {
         // widgets
 
         // ccookies
-        function check_cookie($post_id, $type = "article") {
+        /**
+        * Check the cookie for the given id and type to see if the visitor is already voted for it
+        * 
+        * @param int $id post or comment id depending on $type
+        * @param string $type article or comment
+        * @return bool true if cookie exists for $id and $type, false if is not
+        */
+        function check_cookie($id, $type = "article") {
             if (($type == "article" && $this->o["cookies"]) || ($type == "comment" && $this->o["cmm_cookies"])) {
                 if (isset($_COOKIE["wp_gdsr_".$type])) {
                     $cookie = $_COOKIE["wp_gdsr_".$type];
@@ -1739,6 +1821,12 @@ if (!class_exists('GDStarRating')) {
             return true;
         }
 
+        /**
+        * Saves the vote in the cookie for the given id and type
+        * 
+        * @param int $id post or comment id depending on $type
+        * @param string $type article or comment
+        */
         function save_cookie($id, $type = "article") {
             if (
                 ($type == "article" && $this->o["cookies"] == 1) || 
