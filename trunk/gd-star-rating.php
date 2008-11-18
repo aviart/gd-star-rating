@@ -99,9 +99,9 @@ if (!class_exists('GDStarRating')) {
         
         var $default_options = array(
             "version" => "1.0.3",
-            "date" => "2008.11.16.",
+            "date" => "2008.11.23.",
             "status" => "Stable",
-            "build" => 225,
+            "build" => 238,
             "database_cleanup" => '',
             "ie_png_fix" => 1,
             "ajax" => 1,
