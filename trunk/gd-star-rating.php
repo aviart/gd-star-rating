@@ -101,7 +101,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.3",
             "date" => "2008.11.23.",
             "status" => "Stable",
-            "build" => 238,
+            "build" => 240,
             "database_cleanup" => '',
             "ie_png_fix" => 1,
             "ajax" => 1,
@@ -168,6 +168,8 @@ if (!class_exists('GDStarRating')) {
             "admin_users" => 0,
             "admin_import" => 1,
             "admin_export" => 1,
+            "admin_setup" => 1,
+            "admin_ips" => 0,
             "author_vote" => 1,
             "cmm_author_vote" => 1,
             "default_moderation_articles" => 'N',
@@ -502,9 +504,10 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gd-star-rating-templates", array(&$this,"star_menu_templates"));
+            if ($this->o["admin_ips"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), 10, "gd-star-rating-ips", array(&$this,"star_menu_ips"));
             if ($this->o["admin_import"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), 10, "gd-star-rating-import", array(&$this,"star_menu_import"));
             if ($this->o["admin_export"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), 10, "gd-star-rating-export", array(&$this,"star_menu_export"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), 10, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
+            if ($this->o["admin_setup"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), 10, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
         }                                                                
         
         function admin_head() {
@@ -1433,6 +1436,10 @@ if (!class_exists('GDStarRating')) {
             include($this->plugin_path.'options/setup.php');
         }
 
+        function star_menu_ips() {
+            include($this->plugin_path.'options/ips.php');
+        }
+        
         function star_menu_tools() {
             if (isset($_POST['gdsr_preview_scan'])) {
                 $this->g = $this->gfx_scan();

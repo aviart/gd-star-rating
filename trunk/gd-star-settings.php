@@ -10,6 +10,8 @@
         $gdsr_options["admin_users"] = isset($_POST['gdsr_admin_users']) ? 1 : 0;
         $gdsr_options["admin_import"] = isset($_POST['gdsr_admin_import']) ? 1 : 0;
         $gdsr_options["admin_export"] = isset($_POST['gdsr_admin_export']) ? 1 : 0;
+        $gdsr_options["admin_setup"] = isset($_POST['gdsr_admin_setup']) ? 1 : 0;
+        $gdsr_options["admin_ips"] = isset($_POST['gdsr_admin_ips']) ? 1 : 0;
 
         $gdsr_options["ajax"] = isset($_POST['gdsr_ajax']) ? 1 : 0;
         $gdsr_options["widget_articles"] = isset($_POST['gdsr_widget_articles']) ? 1 : 0;
