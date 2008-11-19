@@ -105,14 +105,21 @@ class GDSRDatabase
     //users
     
     // ip
-    function get_all_banned_ips() {
+    function get_all_banned_ips($start = 0, $limit = 0) {
         global $wpdb, $table_prefix;
-        return $wpdb->get_results(sprintf("select * from %sgdsr_ips where status = 'B'", $table_prefix));
+        if ($limit > 0) $limiter = " LIMIT ".$start.", ".$limit;
+        else $limiter = "";
+        return $wpdb->get_results(sprintf("select * from %sgdsr_ips where status = 'B'%s", $table_prefix, $limiter));
+    }
+    
+    function get_all_banned_ips_count() {
+        global $wpdb, $table_prefix;
+        return $wpdb->get_var(sprintf("select count(*) from %sgdsr_ips where status = 'B'", $table_prefix));
     }
     
     function ban_ip($ip) {
         global $wpdb, $table_prefix;
-        $wpdb->query(sprintf("INSERT INTO %sgdsr_ips (status, ip) VALUES ('B', '%s')", $table_prefix, $ip));
+        $wpdb->query(sprintf("INSERT INTO %sgdsr_ips (`status`, `mode`, `ip`) VALUES ('B', 'S', '%s')", $table_prefix, $ip));
     }
     // ip
 

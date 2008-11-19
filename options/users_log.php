@@ -24,11 +24,11 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
         if (isset($_POST["gdsr_ip_ban"])) {
             $all_banned = GDSRDatabase::get_all_banned_ips();
             $banned_ips = array();
-            foreach ($all_banned as $ip)
+            foreach ($all_banned as $ip) {
                 $banned_ips[] = $ip->ip;
+            }
             foreach ($ips as $ip) {
-                if (!in_array($ip, $banned_ips)) 
-                    GDSRDatabase::ban_ip($ip);
+                if (!in_array($ip, $banned_ips)) GDSRDatabase::ban_ip($ip);
             }
         }
     }
