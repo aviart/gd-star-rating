@@ -49,9 +49,11 @@ class GDSRDB
 
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_banned_ips'") != $dbt_banned_ips) {
             $install_sql = "CREATE TABLE $dbt_banned_ips (";
-            $install_sql.= "status VARCHAR(1) DEFAULT 'B',";
-            $install_sql.= "mode VARCHAR(1) DEFAULT 'S',";
-            $install_sql.= "ip VARCHAR(32) DEFAULT NULL)";
+            $install_sql.= "`id` INTEGER(11) UNSIGNED NOT NULL AUTO_INCREMENT,";
+            $install_sql.= "`status` VARCHAR(1) DEFAULT 'B',";
+            $install_sql.= "`mode` VARCHAR(1) DEFAULT 'S',";
+            $install_sql.= "`ip` VARCHAR(128) DEFAULT NULL,";
+            $install_sql.= "PRIMARY KEY (id))";
             $wpdb->query($install_sql);
         }
 
@@ -70,7 +72,7 @@ class GDSRDB
 
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_multis'") != $dbt_data_multis) {
             $install_sql = "CREATE TABLE $dbt_data_multis (";
-            $install_sql.= "`multi_id` INTEGER(11) UNSIGNED NOT NULL,";
+            $install_sql.= "`multi_id` INTEGER(11) UNSIGNED NOT NULL AUTO_INCREMENT,";
             $install_sql.= "`name` VARCHAR(64) NOT NULL,";
             $install_sql.= "`description` VARCHAR(512) NOT NULL,";
             $install_sql.= "`stars` INTEGER(11) DEFAULT 10,";
@@ -109,10 +111,11 @@ class GDSRDB
         $dbt_banned_ips = $table_prefix.'gdsr_ips';
 
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_banned_ips'") != $dbt_banned_ips) {
-            $install_sql = "CREATE TABLE $dbt_banned_ips (";
-            $install_sql.= "status VARCHAR(1) DEFAULT 'B',";
-            $install_sql.= "mode VARCHAR(1) DEFAULT 'S')";
-            $install_sql.= "ip VARCHAR(32) DEFAULT NULL,";
+            $install_sql.= "`id` INTEGER(11) UNSIGNED NOT NULL AUTO_INCREMENT,";
+            $install_sql.= "`status` VARCHAR(1) DEFAULT 'B',";
+            $install_sql.= "`mode` VARCHAR(1) DEFAULT 'S',";
+            $install_sql.= "`ip` VARCHAR(128) DEFAULT NULL,";
+            $install_sql.= "PRIMARY KEY (id))";
             $wpdb->query($install_sql);
         }
 
@@ -131,7 +134,7 @@ class GDSRDB
 
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_data_multis'") != $dbt_data_multis) {
             $install_sql = "CREATE TABLE $dbt_data_multis (";
-            $install_sql.= "`multi_id` INTEGER(11) UNSIGNED NOT NULL,";
+            $install_sql.= "`multi_id` INTEGER(11) UNSIGNED NOT NULL AUTO_INCREMENT,";
             $install_sql.= "`name` VARCHAR(64) NOT NULL,";
             $install_sql.= "`description` VARCHAR(512) NOT NULL,";
             $install_sql.= "`stars` INTEGER(11) DEFAULT 10,";

@@ -101,7 +101,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.3",
             "date" => "2008.11.23.",
             "status" => "Stable",
-            "build" => 240,
+            "build" => 242,
             "database_cleanup" => '',
             "ie_png_fix" => 1,
             "ajax" => 1,
@@ -513,6 +513,7 @@ if (!class_exists('GDStarRating')) {
         function admin_head() {
             global $parent_file;
             $this->admin_page = $parent_file;
+            $tabs_extras = "";
             
             if ($this->admin_plugin) {
                 wp_print_scripts('jquery-ui-tabs');
@@ -524,6 +525,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin_page == "charts" && $this->charting && $this->admin_plugin) {
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'ofc2/js/swfobject.js"></script>';
             }
+            if ($this->admin_plugin_page == "ips" && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
             
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
                 $datepicker_date = date("Y, n, j");
@@ -535,7 +537,7 @@ if (!class_exists('GDStarRating')) {
             }
             echo('<script type="text/javascript">jQuery(document).ready(function() {');
             if ($this->admin_page == "edit-comments.php") include (dirname(__FILE__)."/code/gd-star-jsx.php");
-            if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs();');
+            if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
             echo('});</script>');
 
@@ -1437,6 +1439,7 @@ if (!class_exists('GDStarRating')) {
         }
 
         function star_menu_ips() {
+            $options = $this->o;
             include($this->plugin_path.'options/ips.php');
         }
         
