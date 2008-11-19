@@ -4,12 +4,14 @@
 
 === Version: 1.0.3 / november 23 2008 ===
   * new: banned ip's db table
+  * new: ip's managment panel
   * new: database cleanup tools
   * new: wordpress 2.7 styles for front page
   * new: main plugin class documented with phpdoc
   * edit: user ip log panel
   * edit: users panel improvements
   * edit: small css changes
+  * fix: invalid unique ip count for users
 
 === Version: 1.0.2 / november 12 2008 ===
   * new: comment review rating

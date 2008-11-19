@@ -44,7 +44,6 @@
     <li><a href="#fragment-2"><span><?php _e("Articles (Posts And Pages)", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-3"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-4"><span><?php _e("Statistics", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-7"><span><?php _e("Banned IP's", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-5"><span><?php _e("Preview", "gd-star-rating"); ?></span></a></li>
 </ul>
 <div style="clear: both"></div>
@@ -62,9 +61,6 @@
 </div>
 <div id="fragment-4">
 <?php include "settings_statistics.php"; ?>
-</div>
-<div id="fragment-7">
-<?php include "settings_ips.php"; ?>
 </div>
 <div id="fragment-5">
 <?php include "settings_preview.php"; ?>

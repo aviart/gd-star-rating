@@ -18,6 +18,22 @@ if (isset($_GET["ui"])) $user_id = $_GET["ui"];
 if (isset($_GET["vt"])) $vote_type = $_GET["vt"];
 if (isset($_GET["un"])) $user_name = urldecode($_GET["un"]);
 
+if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
+    $ips = $_POST["gdsr_item"];
+    if (count($ips) > 0) {
+        if (isset($_POST["gdsr_ip_ban"])) {
+            $all_banned = GDSRDatabase::get_all_banned_ips();
+            $banned_ips = array();
+            foreach ($all_banned as $ip)
+                $banned_ips[] = $ip->ip;
+            foreach ($ips as $ip) {
+                if (!in_array($ip, $banned_ips)) 
+                    GDSRDatabase::ban_ip($ip);
+            }
+        }
+    }
+}
+
 $url.= "&ui=".$user_id."&vt=".$vote_type."&un=".$user_name;
 
 $number_posts = GDSRDatabase::get_count_user_log($user_id, $vote_type);
@@ -29,6 +45,19 @@ if ($max_page > 1)
     $pager = GDSRHelper::draw_pager($max_page, $page_id, $url, "pg");
 
 ?>
+
+<script>
+function checkAll(form) {
+    for (i = 0, n = form.elements.length; i < n; i++) {
+        if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick', 2))) {
+            if(form.elements[i].checked == true)
+                form.elements[i].checked = false;
+            else
+                form.elements[i].checked = true;
+        }
+    }
+}
+</script>
 
 <div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
 <form id="gdsr-articles" method="post" action="">
@@ -49,6 +78,7 @@ if ($max_page > 1)
         <tr>
             <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>
             <th scope="col"><?php _e("IP", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("IP Status", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Vote Date", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Vote", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Post", "gd-star-rating"); ?></th>
@@ -79,8 +109,11 @@ if ($max_page > 1)
         for ($j = 0; $j < $idx[$i]; $j++) {
             echo '<tr id="post-'.$log[$counter]->record_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
             if ($j == 0) {
-                echo '<th rowspan='.$idx[$i].' scope="row" class="check-column"><input name="gdsr_item[]" value="'.$log[$counter]->record_id.'" type="checkbox"></th>';
+                echo '<th rowspan='.$idx[$i].' scope="row" class="check-column"><input name="gdsr_item[]" value="'.$log[$counter]->ip.'" type="checkbox"></th>';
                 echo '<td rowspan='.$idx[$i].'><strong>'.$log[$counter]->ip.'</strong></td>';
+                echo '<td rowspan='.$idx[$i].' nowrap="nowrap">';
+                echo $log[$counter]->status == "B" ? '<strong style="color: red">Banned</strong>' : 'OK';
+                echo '</td>';
             }
             echo '<td nowrap="nowrap">'.$log[$counter]->voted.'</td>';
             echo '<td><strong>'.$log[$counter]->vote.'</strong></td>';
@@ -107,8 +140,45 @@ if ($max_page > 1)
 
     </tbody>
 </table>
-<div class="tablenav">
+<div class="tablenav" style="height: 5em">
     <div class="alignleft">
+        <div class="panel">
+        <table cellpadding="0" cellspacing="0">
+        <tr>
+        <td>
+            <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 120px; height: 29px;">
+                    <span class="paneltext"><strong><?php _e("IP's", "gd-star-rating"); ?>:</strong></span>
+                </td>
+                <td colspan="3" style="height: 29px;">
+                    <input type="checkbox" name="gdsr_ip_ban" id="gdsr_ip_ban" checked="checked" /><label style="margin-left: 5px;" for="gdsr_ip_ban"><?php _e("Add selected IP's to ban IP's list.", "gd-star-rating"); ?></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 120px; height: 29px;">
+                    <span class="paneltext"><strong><?php _e("Votes", "gd-star-rating"); ?>:</strong></span>
+                </td>
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Delete", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 29px;" align="right">
+                    <select id="gdsr_delete_articles" name="gdsr_delete_articles" style="width: 120px;">
+                        <option value="">/</option>
+                        <option value="OI"><?php _e("Only Invalid", "gd-star-rating"); ?></option>
+                        <option value="LO"><?php _e("From Log Only", "gd-star-rating"); ?></option>
+                        <option value="FD"><?php _e("Full Delete", "gd-star-rating"); ?></option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+        </td>
+        <td style="width: 10px;"></td>
+        <td class="gdsr-vertical-line"><input class="button-secondary delete" type="submit" name="gdsr_update" value="<?php _e("Update", "gd-star-rating"); ?>" /></td>
+        </tr>
+        </table>
+        </div>
     </div>
     <div class="tablenav-pages">
     </div>

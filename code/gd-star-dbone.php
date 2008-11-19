@@ -89,8 +89,8 @@ class GDSRDatabase
             $join = sprintf("%scomments o on o.comment_ID = l.id left join %sposts p on p.ID = o.comment_post_ID", $table_prefix, $table_prefix); 
             $select = "o.comment_content, o.comment_author as author, o.comment_ID as control_id, p.post_title, p.ID as post_id";
         }
-        $sql = sprintf("SELECT 1 as span, l.*, %s from %sgdsr_votes_log l left join %s where l.user_id = %s and l.vote_type = '%s' order by l.ip asc, l.voted desc limit %s, %s", 
-                $select, $table_prefix, $join, $user_id, $vote_type, $start, $limit
+        $sql = sprintf("SELECT 1 as span, l.*, i.status, %s from %sgdsr_votes_log l left join %s left join %sgdsr_ips i on i.ip = l.ip where l.user_id = %s and l.vote_type = '%s' order by l.ip asc, l.voted desc limit %s, %s", 
+                $select, $table_prefix, $join, $table_prefix, $user_id, $vote_type, $start, $limit
             );
         return $wpdb->get_results($sql);
     }
@@ -103,6 +103,18 @@ class GDSRDatabase
         return $wpdb->get_var($sql);
     }
     //users
+    
+    // ip
+    function get_all_banned_ips() {
+        global $wpdb, $table_prefix;
+        return $wpdb->get_results(sprintf("select * from %sgdsr_ips where status = 'B'", $table_prefix));
+    }
+    
+    function ban_ip($ip) {
+        global $wpdb, $table_prefix;
+        $wpdb->query(sprintf("INSERT INTO %sgdsr_ips (status, ip) VALUES ('B', '%s')", $table_prefix, $ip));
+    }
+    // ip
 
     // categories
     function update_category_settings($ids, $upd_am, $upd_ar, $upd_cm, $upd_cr, $ids_array) {

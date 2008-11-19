@@ -57,7 +57,7 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
 <table class="widefat">
     <thead>
         <tr>
-            <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>
+            <!--<th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>-->
             <th scope="col"><?php _e("Name", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("ID", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Email", "gd-star-rating"); ?></th>
@@ -80,7 +80,7 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
         $r_pst = 0;
         if ($row["article"]["voters"] > 0) $r_pst = @number_format($row["article"]["votes"] / $row["article"]["voters"], 1);
         else $row["article"]["voters"] = "0";
-        if ($row["article"]["ips"] > 0) $ip_cmm = $row["comment"]["ips"];
+        if ($row["article"]["ips"] > 0) $ip_pst = $row["article"]["ips"];
 
         if ($row["id"] == 0) $tr_class.= " visitor";
         if ($row["id"] == 1) $tr_class.= " admin";
@@ -92,7 +92,7 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
         if ($row["comment"]["ips"] > 0) $ip_cmm = $row["comment"]["ips"];
 
         echo '<tr id="post-'.$row["id"].'" class="'.$tr_class.' author-self status-publish" valign="top">';
-        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row["id"].'" type="checkbox"></th>';
+        // echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row["id"].'" type="checkbox"></th>';
         echo '<td><strong>'.$usr_url.'</strong></td>';
         echo '<td>'.$row["id"].'</td>';
         echo '<td>'.$row["email"].'</td>';
@@ -114,12 +114,12 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
 ?>
     </tbody>
 </table>
-<div class="tablenav">
+<!--<div class="tablenav">
     <div class="alignleft">
     </div>
     <div class="tablenav-pages">
     </div>
-</div>
+</div>-->
 <br class="clear"/>
 </form>
 </div>

@@ -50,8 +50,8 @@ class GDSRDB
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_banned_ips'") != $dbt_banned_ips) {
             $install_sql = "CREATE TABLE $dbt_banned_ips (";
             $install_sql.= "status VARCHAR(1) DEFAULT 'B',";
-            $install_sql.= "ip VARCHAR(32) DEFAULT NULL,";
-            $install_sql.= "logged DATETIME DEFAULT NULL)";
+            $install_sql.= "mode VARCHAR(1) DEFAULT 'S',";
+            $install_sql.= "ip VARCHAR(32) DEFAULT NULL)";
             $wpdb->query($install_sql);
         }
 
@@ -111,8 +111,8 @@ class GDSRDB
         if ($wpdb->get_var("SHOW TABLES LIKE '$dbt_banned_ips'") != $dbt_banned_ips) {
             $install_sql = "CREATE TABLE $dbt_banned_ips (";
             $install_sql.= "status VARCHAR(1) DEFAULT 'B',";
+            $install_sql.= "mode VARCHAR(1) DEFAULT 'S')";
             $install_sql.= "ip VARCHAR(32) DEFAULT NULL,";
-            $install_sql.= "logged DATETIME DEFAULT NULL)";
             $wpdb->query($install_sql);
         }
 

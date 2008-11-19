@@ -11,6 +11,7 @@
                 <td><input type="text" name="gdsr_trend_over" id="gdsr_trend_over" value="<?php echo $gdsr_options["trend_over"]; ?>" style="width: 70px; text-align: right;" /> [0 to include complete history]</td>
             </tr>
         </table>
+    </td>
 </tr>
 <tr><th scope="row"><?php _e("Bayesian Estimate Mean", "gd-star-rating"); ?></th>
     <td>
