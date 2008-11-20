@@ -2,7 +2,7 @@
 <h3><span class="hndle">GD Star Rating</span></h3>
 <div class="inside" style="padding-top: 5px;">
 
-<?php include(STARRATING_PATH.'options/edit.php'); ?>
+<?php include(STARRATING_PATH.'integrate/edit.php'); ?>
 
 </div>
 </div>

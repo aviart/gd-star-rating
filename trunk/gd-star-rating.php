@@ -1339,10 +1339,10 @@ if (!class_exists('GDStarRating')) {
         // menu
         function editbox_comment() {
             if ($this->wp_version < 27)
-                include($this->plugin_path.'options/editcomment26.php');
+                include($this->plugin_path.'integrate/editcomment26.php');
             else {
                 if ($this->admin_page != "edit-comments.php") return;
-                include($this->plugin_path.'options/editcomment27.php');
+                include($this->plugin_path.'integrate/editcomment27.php');
             }
         }
         
@@ -1386,9 +1386,9 @@ if (!class_exists('GDStarRating')) {
             }
             
             if ($this->wp_version < 27)
-                include($this->plugin_path.'options/edit26.php');
+                include($this->plugin_path.'integrate/edit26.php');
             else
-                include($this->plugin_path.'options/edit27.php');
+                include($this->plugin_path.'integrate/edit27.php');
         }                  
 
         function star_multi_sets() {

@@ -2,15 +2,16 @@
 
 == Roadmap ==
 
-=== 1.0.5 ===
+=== 1.0.4 ===
+  * customization of bot filter
+  * comment review improvements
+
+=== 1.1.0 ===
   * multi rating support
 
-=== 1.0.6 ===
-  * customization of bot filter
-  
-=== 1.1.0 ===
-  * reccomendation ratings
-  * more export data options
+=== 1.1.5 ===
+  * changing vote (like wordpress extend website)
 
 === 1.2.0 ===
-  * changing vote (like wordpress extend website)
+  * reccomendation ratings
+  * more export data options
