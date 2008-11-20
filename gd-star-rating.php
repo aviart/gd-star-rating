@@ -103,6 +103,7 @@ if (!class_exists('GDStarRating')) {
             "status" => "Stable",
             "build" => 242,
             "database_cleanup" => '',
+            "mass_lock" => '',
             "ie_png_fix" => 1,
             "ajax" => 1,
             "save_user_agent" => 0,
@@ -462,7 +463,16 @@ if (!class_exists('GDStarRating')) {
             
             return $this->get_rating_stars($style, $stars, $size, $zero_render, $review);
         }
-        
+        /**
+         * Renders post review stars for selected post
+         *
+         * @param int $post_id id for the post you want review displayed
+         * @param bool $zero_render if set to false and $value is 0 then nothing will be rendered
+         * @param bool $use_default
+         * @param string $style folder name of the stars set to use
+         * @param int $size stars size 12, 20, 30, 46
+         * @return string rendered stars for article review
+         */
         function display_article_review($post_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
             if ($use_default) {
                 $style = $this->o["review_style"];
@@ -473,7 +483,17 @@ if (!class_exists('GDStarRating')) {
             
             return $this->get_rating_stars($style, $stars, $size, $zero_render, $review);
         }
-        
+
+        /**
+         * Renders post rating stars for selected post
+         *
+         * @param int $post_id id for the post you want rating displayed
+         * @param bool $zero_render if set to false and $value is 0 then nothing will be rendered
+         * @param bool $use_default
+         * @param string $style folder name of the stars set to use
+         * @param int $size stars size 12, 20, 30, 46
+         * @return string rendered stars for article rating
+         */
         function display_article_rating($post_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
             if ($use_default) {
                 $style = $this->o["style"];
@@ -536,7 +556,7 @@ if (!class_exists('GDStarRating')) {
                 }
             }
             echo('<script type="text/javascript">jQuery(document).ready(function() {');
-            if ($this->admin_page == "edit-comments.php") include (dirname(__FILE__)."/code/gd-star-jsx.php");
+            if ($this->admin_page == "edit-comments.php") include ($this->plugin_path."code/gd-star-jsx.php");
             if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
             echo('});</script>');
@@ -877,7 +897,7 @@ if (!class_exists('GDStarRating')) {
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/rating.css" type="text/css" media="screen" />');
             echo('<script type="text/javascript">');
             echo('function gdsrWait(rater, loader) { jQuery("#"+rater).css("display", "none"); jQuery("#"+loader).css("display", "block"); }');
-            include (dirname(__FILE__)."/code/gd-star-js.php");
+            include ($this->plugin_path."code/gd-star-js.php");
             echo('</script>');
             
             if ($this->o["ie_png_fix"] == 1) $this->ie_png_fix();
@@ -1455,6 +1475,11 @@ if (!class_exists('GDStarRating')) {
                 $this->o["database_cleanup"] = date("r");
                 update_option('gd-star-rating', $this->o);
             }
+            if (isset($_POST['gdsr_post_lock'])) {
+                $lock_date = $_POST['gdst_lock_date'];
+                $this->o["mass_lock"] = $lock_date;
+                update_option('gd-star-rating', $this->o);
+            }
             
             $gdsr_options = $this->o;
             $gdsr_styles = $this->styles;
@@ -1612,7 +1637,7 @@ if (!class_exists('GDStarRating')) {
             
             $wpfn = 'gdstart['.$wpnm.']';
             
-            include("widgets/widget_top.php");
+            include($this->plugin_path."widgets/widget_top.php");
         }
 
         function widget_top_display($args, $widget_args = 1) {
@@ -1772,7 +1797,7 @@ if (!class_exists('GDStarRating')) {
             $wpfn = 'gdstarr['.$wpnm.']';
             $wptr = $this->g->trend;
             
-            include("widgets/widget.php");
+            include($this->plugin_path."widgets/widget.php");
         }
 
         function widget_articles_display($args, $widget_args = 1) {

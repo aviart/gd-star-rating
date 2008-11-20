@@ -48,22 +48,22 @@
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-1">
-<?php include "settings_general.php"; ?>
+<?php include STARRATING_PATH."options/settings_general.php"; ?>
 </div>
 <div id="fragment-6">
-<?php include "settings_integration.php"; ?>
+<?php include STARRATING_PATH."options/settings_integration.php"; ?>
 </div>
 <div id="fragment-2">
-<?php include "settings_articles.php"; ?>
+<?php include STARRATING_PATH."options/settings_articles.php"; ?>
 </div>
 <div id="fragment-3">
-<?php include "settings_comments.php"; ?>
+<?php include STARRATING_PATH."options/settings_comments.php"; ?>
 </div>
 <div id="fragment-4">
-<?php include "settings_statistics.php"; ?>
+<?php include STARRATING_PATH."options/settings_statistics.php"; ?>
 </div>
 <div id="fragment-5">
-<?php include "settings_preview.php"; ?>
+<?php include STARRATING_PATH."options/settings_preview.php"; ?>
 </div>
 </div>
 

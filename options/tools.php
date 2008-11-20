@@ -26,6 +26,21 @@
         </form>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Date Based Post Locking", "gd-star-rating"); ?></th>
+    <td>
+        <form method="post">
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="300" height="25"><?php _e("Lock voting for posts older then", "gd-star-rating"); ?>:</td>
+                <td height="25"><input type="text" name="gdst_lock_date" value="" /></td>
+            </tr>
+        </table>
+        <input type="submit" class="inputbutton" value="<?php _e("Lock", "gd-star-rating"); ?>" name="gdsr_post_lock" id="gdsr_post_lock" />
+        <div class="gdsr-table-split"></div>
+        Previous Lock Date: <strong><?php echo $gdsr_options['mass_lock']; ?></strong>
+        </form>
+    </td>
+</tr>
 </tbody></table>
 </div>
 </div>
