@@ -12,6 +12,7 @@
   * edit: user ip log panel
   * edit: users panel improvements
   * edit: small css changes
+  * fix: saving comment review with empty value
   * fix: invalid unique ip count for users
 
 === Version: 1.0.2 / november 12 2008 ===

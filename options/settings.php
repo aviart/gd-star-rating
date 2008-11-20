@@ -45,6 +45,7 @@
     <li><a href="#fragment-3"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-4"><span><?php _e("Statistics", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-5"><span><?php _e("Preview", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-8"><span><?php _e("BOT List", "gd-star-rating"); ?></span></a></li>
     <?php if ($gdsr_wpr8) { ?><li><a href="#fragment-7"><span style="color: red">wpr8.com</span></a></li><?php } ?>
 </ul>
 <div style="clear: both"></div>
@@ -65,6 +66,9 @@
 </div>
 <div id="fragment-5">
 <?php include STARRATING_PATH."options/settings_preview.php"; ?>
+</div>
+<div id="fragment-8">
+<?php include STARRATING_PATH."options/settings_bots.php"; ?>
 </div>
 <?php if ($gdsr_wpr8) { ?>
 <div id="fragment-7">
