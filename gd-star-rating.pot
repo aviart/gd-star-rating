@@ -1,12 +1,12 @@
-#: code/gd-star-dbone.php:785
+#: code/gd-star-dbone.php:826
 msgid "Show all dates"
 msgstr ""
 
-#: code/gd-star-dbone.php:813
+#: code/gd-star-dbone.php:854
 msgid "All users and visitors"
 msgstr ""
 
-#: code/gd-star-dbone.php:814
+#: code/gd-star-dbone.php:855
 #: tinymce3/window.php:185
 #: widgets/widget.php:42
 #: widgets/widget.php:178
@@ -15,136 +15,134 @@ msgstr ""
 msgid "Visitors Only"
 msgstr ""
 
-#: code/gd-star-dbone.php:815
+#: code/gd-star-dbone.php:856
 msgid "All Users"
 msgstr ""
 
-#: code/gd-star-dbone.php:831
+#: code/gd-star-dbone.php:872
 msgid "All categories"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:171
-#: code/gd-star-dbtwo.php:174
-#: code/gd-star-dbtwo.php:177
-#: code/gd-star-dbtwo.php:180
-#: code/gd-star-dbtwo.php:183
-#: code/gd-star-dbtwo.php:205
-#: code/gd-star-dbtwo.php:208
-#: code/gd-star-dbtwo.php:211
-#: code/gd-star-dbtwo.php:214
-#: code/gd-star-dbtwo.php:217
-#: code/gd-star-dbtwo.php:220
-#: code/gd-star-dbtwo.php:291
-#: code/gd-star-dbtwo.php:294
-#: code/gd-star-dbtwo.php:297
-#: code/gd-star-dbtwo.php:300
-#: code/gd-star-dbtwo.php:319
-#: code/gd-star-dbtwo.php:322
-#: code/gd-star-dbtwo.php:325
-#: code/gd-star-dbtwo.php:328
-#: code/gd-star-dbtwo.php:331
-#: options/users.php:86
+#: code/gd-star-dbtwo.php:233
+#: code/gd-star-dbtwo.php:236
+#: code/gd-star-dbtwo.php:239
+#: code/gd-star-dbtwo.php:242
+#: code/gd-star-dbtwo.php:245
+#: code/gd-star-dbtwo.php:267
+#: code/gd-star-dbtwo.php:270
+#: code/gd-star-dbtwo.php:273
+#: code/gd-star-dbtwo.php:276
+#: code/gd-star-dbtwo.php:279
+#: code/gd-star-dbtwo.php:282
+#: code/gd-star-dbtwo.php:353
+#: code/gd-star-dbtwo.php:356
+#: code/gd-star-dbtwo.php:359
+#: code/gd-star-dbtwo.php:362
+#: code/gd-star-dbtwo.php:381
+#: code/gd-star-dbtwo.php:384
+#: code/gd-star-dbtwo.php:387
+#: code/gd-star-dbtwo.php:390
+#: code/gd-star-dbtwo.php:393
 msgid "articles"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:171
-#: code/gd-star-dbtwo.php:188
-#: code/gd-star-dbtwo.php:205
-#: code/gd-star-dbtwo.php:225
+#: code/gd-star-dbtwo.php:233
+#: code/gd-star-dbtwo.php:250
+#: code/gd-star-dbtwo.php:267
+#: code/gd-star-dbtwo.php:287
 msgid "inherited"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:174
-#: code/gd-star-dbtwo.php:191
-#: code/gd-star-dbtwo.php:291
-#: code/gd-star-dbtwo.php:305
+#: code/gd-star-dbtwo.php:236
+#: code/gd-star-dbtwo.php:253
+#: code/gd-star-dbtwo.php:353
+#: code/gd-star-dbtwo.php:367
 msgid "all"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:177
-#: code/gd-star-dbtwo.php:194
-#: code/gd-star-dbtwo.php:214
-#: code/gd-star-dbtwo.php:234
-#: code/gd-star-dbtwo.php:281
-#: code/gd-star-dbtwo.php:294
-#: code/gd-star-dbtwo.php:308
-#: code/gd-star-dbtwo.php:325
-#: code/gd-star-dbtwo.php:342
-#: code/gd-star-dbtwo.php:398
+#: code/gd-star-dbtwo.php:239
+#: code/gd-star-dbtwo.php:256
+#: code/gd-star-dbtwo.php:276
+#: code/gd-star-dbtwo.php:296
+#: code/gd-star-dbtwo.php:343
+#: code/gd-star-dbtwo.php:356
+#: code/gd-star-dbtwo.php:370
+#: code/gd-star-dbtwo.php:387
+#: code/gd-star-dbtwo.php:404
+#: code/gd-star-dbtwo.php:460
 msgid "visitors"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:180
-#: code/gd-star-dbtwo.php:197
-#: code/gd-star-dbtwo.php:217
-#: code/gd-star-dbtwo.php:237
-#: code/gd-star-dbtwo.php:281
-#: code/gd-star-dbtwo.php:297
-#: code/gd-star-dbtwo.php:311
-#: code/gd-star-dbtwo.php:328
-#: code/gd-star-dbtwo.php:345
-#: code/gd-star-dbtwo.php:398
+#: code/gd-star-dbtwo.php:242
+#: code/gd-star-dbtwo.php:259
+#: code/gd-star-dbtwo.php:279
+#: code/gd-star-dbtwo.php:299
+#: code/gd-star-dbtwo.php:343
+#: code/gd-star-dbtwo.php:359
+#: code/gd-star-dbtwo.php:373
+#: code/gd-star-dbtwo.php:390
+#: code/gd-star-dbtwo.php:407
+#: code/gd-star-dbtwo.php:460
 msgid "users"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:188
-#: code/gd-star-dbtwo.php:191
-#: code/gd-star-dbtwo.php:194
-#: code/gd-star-dbtwo.php:197
-#: code/gd-star-dbtwo.php:200
-#: code/gd-star-dbtwo.php:225
-#: code/gd-star-dbtwo.php:228
-#: code/gd-star-dbtwo.php:231
-#: code/gd-star-dbtwo.php:234
-#: code/gd-star-dbtwo.php:237
-#: code/gd-star-dbtwo.php:240
-#: code/gd-star-dbtwo.php:305
-#: code/gd-star-dbtwo.php:308
-#: code/gd-star-dbtwo.php:311
-#: code/gd-star-dbtwo.php:314
-#: code/gd-star-dbtwo.php:336
-#: code/gd-star-dbtwo.php:339
-#: code/gd-star-dbtwo.php:342
-#: code/gd-star-dbtwo.php:345
-#: code/gd-star-dbtwo.php:348
-#: options/users.php:86
+#: code/gd-star-dbtwo.php:250
+#: code/gd-star-dbtwo.php:253
+#: code/gd-star-dbtwo.php:256
+#: code/gd-star-dbtwo.php:259
+#: code/gd-star-dbtwo.php:262
+#: code/gd-star-dbtwo.php:287
+#: code/gd-star-dbtwo.php:290
+#: code/gd-star-dbtwo.php:293
+#: code/gd-star-dbtwo.php:296
+#: code/gd-star-dbtwo.php:299
+#: code/gd-star-dbtwo.php:302
+#: code/gd-star-dbtwo.php:367
+#: code/gd-star-dbtwo.php:370
+#: code/gd-star-dbtwo.php:373
+#: code/gd-star-dbtwo.php:376
+#: code/gd-star-dbtwo.php:398
+#: code/gd-star-dbtwo.php:401
+#: code/gd-star-dbtwo.php:404
+#: code/gd-star-dbtwo.php:407
+#: code/gd-star-dbtwo.php:410
 msgid "comments"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:208
-#: code/gd-star-dbtwo.php:228
-#: code/gd-star-dbtwo.php:319
-#: code/gd-star-dbtwo.php:336
+#: code/gd-star-dbtwo.php:270
+#: code/gd-star-dbtwo.php:290
+#: code/gd-star-dbtwo.php:381
+#: code/gd-star-dbtwo.php:398
 msgid "hidden"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:211
-#: code/gd-star-dbtwo.php:231
-#: code/gd-star-dbtwo.php:322
-#: code/gd-star-dbtwo.php:339
+#: code/gd-star-dbtwo.php:273
+#: code/gd-star-dbtwo.php:293
+#: code/gd-star-dbtwo.php:384
+#: code/gd-star-dbtwo.php:401
 msgid "locked"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:220
-#: code/gd-star-dbtwo.php:240
-#: code/gd-star-dbtwo.php:331
-#: code/gd-star-dbtwo.php:348
+#: code/gd-star-dbtwo.php:282
+#: code/gd-star-dbtwo.php:302
+#: code/gd-star-dbtwo.php:393
+#: code/gd-star-dbtwo.php:410
 msgid "everyone"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:280
-#: options/users.php:84
-#: options/users.php:85
+#: code/gd-star-dbtwo.php:342
+#: options/users.php:100
+#: options/users.php:103
 msgid "rating"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:280
+#: code/gd-star-dbtwo.php:342
 msgid "views"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:397
-#: options/users.php:84
-#: options/users.php:85
+#: code/gd-star-dbtwo.php:459
+#: options/users.php:99
+#: options/users.php:102
 msgid "votes"
 msgstr ""
 
@@ -311,7 +309,7 @@ msgstr ""
 #: multi/editor.php:21
 #: multi/editor.php:44
 #: multi/sets.php:53
-#: options/users.php:59
+#: options/users.php:60
 #: options/voters.php:114
 msgid "Name"
 msgstr ""
@@ -342,8 +340,8 @@ msgid "Save Multi Set"
 msgstr ""
 
 #: multi/sets.php:36
-#: gd-star-rating.php:441
-#: gd-star-rating.php:441
+#: gd-star-rating.php:522
+#: gd-star-rating.php:522
 msgid "Multi Sets"
 msgstr ""
 
@@ -352,7 +350,7 @@ msgid "Add New Multi Rating Set"
 msgstr ""
 
 #: multi/sets.php:52
-#: options/users.php:60
+#: options/users.php:61
 #: tinymce3/window.php:205
 #: widgets/widget.php:197
 msgid "ID"
@@ -380,10 +378,10 @@ msgstr ""
 #: options/articles.php:112
 #: options/articles.php:252
 #: options/categories.php:156
-#: options/users.php:63
+#: options/users.php:64
 #: templates/templates.php:42
-#: gd-star-rating.php:436
-#: gd-star-rating.php:436
+#: gd-star-rating.php:517
+#: gd-star-rating.php:517
 msgid "Articles"
 msgstr ""
 
@@ -440,8 +438,8 @@ msgstr ""
 #: options/articles.php:156
 #: options/categories.php:69
 #: options/settings_general.php:49
-#: gd-star-rating.php:437
-#: gd-star-rating.php:437
+#: gd-star-rating.php:518
+#: gd-star-rating.php:518
 msgid "Categories"
 msgstr ""
 
@@ -467,6 +465,7 @@ msgstr ""
 #: options/categories.php:216
 #: options/comments.php:130
 #: options/moderation.php:150
+#: options/users_log.php:162
 #: options/voters.php:156
 msgid "Delete"
 msgstr ""
@@ -485,9 +484,9 @@ msgstr ""
 #: options/categories.php:222
 #: options/comments.php:134
 #: options/settings_general.php:51
-#: options/users.php:46
-#: gd-star-rating.php:438
-#: gd-star-rating.php:438
+#: options/users.php:47
+#: gd-star-rating.php:519
+#: gd-star-rating.php:519
 msgid "Users"
 msgstr ""
 
@@ -523,7 +522,7 @@ msgstr ""
 #: options/charts.php:6
 #: options/comments.php:43
 #: options/settings.php:44
-#: options/users.php:64
+#: options/users.php:65
 #: templates/templates.php:31
 #: templates/templates.php:47
 msgid "Comments"
@@ -535,6 +534,8 @@ msgstr ""
 #: options/categories.php:14
 #: options/comments.php:139
 #: options/comments.php:17
+#: options/users_log.php:177
+#: options/users_log.php:20
 #: options/voters.php:164
 #: options/voters.php:30
 msgid "Update"
@@ -570,8 +571,8 @@ msgid "Posts"
 msgstr ""
 
 #: options/charts.php:0
-#: gd-star-rating.php:439
-#: gd-star-rating.php:439
+#: gd-star-rating.php:520
+#: gd-star-rating.php:520
 msgid "Charts"
 msgstr ""
 
@@ -600,6 +601,7 @@ msgid "Date And Time"
 msgstr ""
 
 #: options/comments.php:92
+#: options/users_log.php:159
 msgid "Votes"
 msgstr ""
 
@@ -662,7 +664,9 @@ msgid "Additional Columns"
 msgstr ""
 
 #: options/export.php:44
+#: options/ips_list.php:41
 #: options/moderation.php:116
+#: options/users_log.php:79
 #: options/voters.php:118
 msgid "IP"
 msgstr ""
@@ -689,82 +693,82 @@ msgstr ""
 msgid "Comment date"
 msgstr ""
 
-#: options/front.php:52
+#: options/front.php:51
 msgid "Latest News"
 msgstr ""
 
-#: options/front.php:87
+#: options/front.php:86
 msgid "Important Links"
 msgstr ""
 
-#: options/front.php:94
-#: options/front.php:115
+#: options/front.php:93
+#: options/front.php:114
 msgid "official page"
 msgstr ""
 
-#: options/front.php:95
+#: options/front.php:94
 msgid "development home with svn"
 msgstr ""
 
-#: options/front.php:96
+#: options/front.php:95
 msgid "discussions group"
 msgstr ""
 
-#: options/front.php:97
+#: options/front.php:96
 msgid "wordpress plugin page"
 msgstr ""
 
-#: options/front.php:104
+#: options/front.php:103
 msgid "main development portal"
 msgstr ""
 
-#: options/front.php:105
+#: options/front.php:104
 msgid "wordpress plugins development"
 msgstr ""
 
-#: options/front.php:106
+#: options/front.php:105
 msgid "development discussion forum"
 msgstr ""
 
-#: options/front.php:107
+#: options/front.php:106
 msgid "plugins, user guides and more"
 msgstr ""
 
-#: options/front.php:108
+#: options/front.php:107
 msgid "help further development"
 msgstr ""
 
-#: options/front.php:116
+#: options/front.php:115
 msgid "announcements and theme demo"
 msgstr ""
 
-#: options/front.php:117
+#: options/front.php:116
 msgid "different versions and user guide"
 msgstr ""
 
-#: options/front.php:124
+#: options/front.php:123
 msgid "Version"
 msgstr ""
 
-#: options/front.php:125
+#: options/front.php:124
 #: options/import.php:42
 #: options/import.php:67
 msgid "Status"
 msgstr ""
 
-#: options/front.php:126
+#: options/front.php:125
 msgid "Release Date"
 msgstr ""
 
-#: options/front.php:29
+#: options/front.php:28
 msgid "Registered users rated %s articles with average rating of %s and %s comments with average rating of %s. Visitors rated %s articles with average rating of %s and %s comments with average rating of %s."
 msgstr ""
 
-#: options/front.php:40
+#: options/front.php:39
 msgid " There are %s article and %s comments ratings waiting in moderation queue."
 msgstr ""
 
-#: options/front.php:78
+#: options/front.php:77
 msgid "An error occured while loading newsfeed. Go to the %sfront page%s to check for updates."
 msgstr ""
 
@@ -792,7 +796,74 @@ msgstr ""
 msgid "To avoid rating data import problems, please don't use GD Star Rating in the same time as the plugins above, to avoid potential import problems and false data. I can't guarantee that data will be transfered without problems."
 msgstr ""
 
+#: options/ips.php:1
+#: options/settings_general.php:61
+#: options/users_log.php:151
+#: gd-star-rating.php:528
+#: gd-star-rating.php:528
+msgid "IP's"
+msgstr ""
+
+#: options/ips.php:5
+msgid "Ban New"
+msgstr ""
+
+#: options/ips.php:6
+msgid "Banned"
+msgstr ""
+
+#: options/ips_list.php:39
+msgid "Record Id"
+msgstr ""
+
+#: options/ips_list.php:40
+msgid "Type"
+msgstr ""
+
+#: options/ips_options.php:1
+msgid "Ban Single IP's"
+msgstr ""
+
+#: options/ips_options.php:7
+msgid "Add IP addresses"
+msgstr ""
+
+#: options/ips_options.php:8
+msgid "One IP address per line."
+msgstr ""
+
+#: options/ips_options.php:14
+#: options/ips_options.php:32
+#: options/ips_options.php:47
+msgid "Add"
+msgstr ""
+
+#: options/ips_options.php:18
+msgid "Ban IP Range"
+msgstr ""
+
+#: options/ips_options.php:23
+msgid "From"
+msgstr ""
+
+#: options/ips_options.php:27
+msgid "To"
+msgstr ""
+
+#: options/ips_options.php:36
+msgid "Ban IP Masked"
+msgstr ""
+
+#: options/ips_options.php:41
+msgid "Maxk"
+msgstr ""
+
+#: options/ips_options.php:45
+msgid "Use XXX as a part of IP or leave empty to mask."
+msgstr ""
+
 #: options/moderation.php:115
+#: options/users_log.php:82
 #: options/voters.php:116
 msgid "Vote"
 msgstr ""
@@ -806,8 +877,8 @@ msgid "Approve"
 msgstr ""
 
 #: options/settings.php:37
-#: gd-star-rating.php:444
-#: gd-star-rating.php:444
+#: gd-star-rating.php:525
+#: gd-star-rating.php:525
 msgid "Settings"
 msgstr ""
 
@@ -828,7 +899,7 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: options/settings.php:69
+#: options/settings.php:75
 #: templates/templates.php:69
 msgid "Save Settings"
 msgstr ""
@@ -990,71 +1061,86 @@ msgstr ""
 msgid "Users rating managment."
 msgstr ""
 
-#: options/settings_general.php:55
-#: gd-star-rating.php:447
-#: gd-star-rating.php:447
+#: options/settings_general.php:53
+#: options/setup.php:27
+#: gd-star-rating.php:531
+#: gd-star-rating.php:531
+msgid "Setup"
+msgstr ""
+
+#: options/settings_general.php:53
+msgid "Uninstall and maintenance."
+msgstr ""
+
+#: options/settings_general.php:57
+#: gd-star-rating.php:529
+#: gd-star-rating.php:529
 msgid "Import"
 msgstr ""
 
-#: options/settings_general.php:55
+#: options/settings_general.php:57
 msgid "Importing data for other rating plugins."
 msgstr ""
 
-#: options/settings_general.php:57
-#: gd-star-rating.php:448
-#: gd-star-rating.php:448
+#: options/settings_general.php:59
+#: gd-star-rating.php:530
+#: gd-star-rating.php:530
 msgid "Export"
 msgstr ""
 
-#: options/settings_general.php:57
+#: options/settings_general.php:59
 msgid "Exporting rating data."
 msgstr ""
 
-#: options/settings_general.php:63
+#: options/settings_general.php:61
+msgid "IP addresses managment."
+msgstr ""
+
+#: options/settings_general.php:67
 msgid "Plugin Features"
 msgstr ""
 
-#: options/settings_general.php:65
+#: options/settings_general.php:69
 msgid "AJAX enabled rating."
 msgstr ""
 
-#: options/settings_general.php:70
+#: options/settings_general.php:74
 msgid "Time restriction for rating."
 msgstr ""
 
-#: options/settings_general.php:72
+#: options/settings_general.php:76
 msgid "Moderation options and handling."
 msgstr ""
 
-#: options/settings_general.php:74
+#: options/settings_general.php:78
 msgid "Multiple rating support."
 msgstr ""
 
-#: options/settings_general.php:78
+#: options/settings_general.php:82
 msgid "Post And Page Review Rating."
 msgstr ""
 
-#: options/settings_general.php:80
+#: options/settings_general.php:84
 msgid "Comments Rating."
 msgstr ""
 
-#: options/settings_general.php:82
+#: options/settings_general.php:86
 msgid "Comments Review Rating."
 msgstr ""
 
-#: options/settings_general.php:87
+#: options/settings_general.php:91
 msgid "Use IE6 PNG Transparency Fix."
 msgstr ""
 
-#: options/settings_general.php:90
+#: options/settings_general.php:94
 msgid "Rating Log"
 msgstr ""
 
-#: options/settings_general.php:92
+#: options/settings_general.php:96
 msgid "Log user agent (browser) information."
 msgstr ""
 
-#: options/settings_general.php:94
+#: options/settings_general.php:98
 msgid "Save cookies with ratings."
 msgstr ""
 
@@ -1118,22 +1204,16 @@ msgstr ""
 msgid "Calculate over how many days before"
 msgstr ""
 
-#: options/settings_statistics.php:14
+#: options/settings_statistics.php:15
 msgid "Bayesian Estimate Mean"
 msgstr ""
 
-#: options/settings_statistics.php:18
+#: options/settings_statistics.php:19
 msgid "Minimum votes required"
 msgstr ""
 
-#: options/settings_statistics.php:22
+#: options/settings_statistics.php:23
 msgid "Mean vote rating across the whole report"
-msgstr ""
-
-#: options/setup.php:27
-#: gd-star-rating.php:449
-#: gd-star-rating.php:449
-msgid "Setup"
 msgstr ""
 
 #: options/setup.php:30
@@ -1206,7 +1286,7 @@ msgid "This will remove all database tables created by plugin, all settings, tem
 msgstr ""
 
 #: options/setup.php:68
-#: gd-star-rating.php:738
+#: gd-star-rating.php:830
 msgid "FULL UNINSTALL"
 msgstr ""
 
@@ -1215,8 +1295,8 @@ msgid "After removal, plugin will be disabled."
 msgstr ""
 
 #: options/tools.php:1
-#: gd-star-rating.php:445
-#: gd-star-rating.php:445
+#: gd-star-rating.php:526
+#: gd-star-rating.php:526
 msgid "Tools"
 msgstr ""
 
@@ -1232,16 +1312,96 @@ msgstr ""
 msgid "Rescan"
 msgstr ""
 
-#: options/users.php:61
-msgid "Email"
+#: options/tools.php:13
+msgid "Database Cleanup"
+msgstr ""
+
+#: options/tools.php:16
+msgid "Remove all invalid votes from votes log."
+msgstr ""
+
+#: options/tools.php:18
+msgid "Remove all invalid votes from trends log."
+msgstr ""
+
+#: options/tools.php:20
+msgid "Remove data for old and deleted posts."
+msgstr ""
+
+#: options/tools.php:22
+msgid "Clean"
+msgstr ""
+
+#: options/tools.php:28
+msgid "Date Based Post Locking"
+msgstr ""
+
+#: options/tools.php:33
+msgid "Lock voting for posts older then"
+msgstr ""
+
+#: options/tools.php:37
+msgid "Lock"
 msgstr ""
 
 #: options/users.php:62
+msgid "Email"
+msgstr ""
+
+#: options/users.php:63
 msgid "URL"
 msgstr ""
 
-#: options/users.php:65
-msgid "Unique IP's"
+#: options/users.php:101
+#: options/users.php:104
+msgid "unique ip's"
+msgstr ""
+
+#: options/users_log.php:63
+msgid "User Vote Log"
+msgstr ""
+
+#: options/users_log.php:64
+msgid "Votes log for user"
+msgstr ""
+
+#: options/users_log.php:80
+msgid "IP Status"
+msgstr ""
+
+#: options/users_log.php:81
+#: options/voters.php:117
+msgid "Vote Date"
+msgstr ""
+
+#: options/users_log.php:83
+msgid "Post"
+msgstr ""
+
+#: options/users_log.php:85
+msgid "Comment Author"
+msgstr ""
+
+#: options/users_log.php:86
+msgid "Comment Excerpt"
+msgstr ""
+
+#: options/users_log.php:154
+msgid "Add selected IP's to ban IP's list."
+msgstr ""
+
+#: options/users_log.php:167
+msgid "Only Invalid"
+msgstr ""
+
+#: options/users_log.php:168
+#: options/voters.php:160
+msgid "From Log Only"
+msgstr ""
+
+#: options/users_log.php:169
+#: options/voters.php:159
+msgid "Full Delete"
 msgstr ""
 
 #: options/voters.php:80
@@ -1256,21 +1416,9 @@ msgstr ""
 msgid "User ID"
 msgstr ""
 
-#: options/voters.php:117
-msgid "Vote Date"
-msgstr ""
-
-#: options/voters.php:159
-msgid "Full Delete"
-msgstr ""
-
-#: options/voters.php:160
-msgid "From Log Only"
-msgstr ""
-
 #: templates/templates.php:24
-#: gd-star-rating.php:446
-#: gd-star-rating.php:446
+#: gd-star-rating.php:527
+#: gd-star-rating.php:527
 msgid "Templates"
 msgstr ""
 
@@ -1876,13 +2024,13 @@ msgstr ""
 msgid "singular/plural word vote"
 msgstr ""
 
-#: gd-star-rating.php:435
-#: gd-star-rating.php:435
+#: gd-star-rating.php:516
+#: gd-star-rating.php:516
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:442
-#: gd-star-rating.php:442
+#: gd-star-rating.php:523
+#: gd-star-rating.php:523
 msgid "Multi Results"
 msgstr ""
 

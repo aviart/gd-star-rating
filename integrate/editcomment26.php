@@ -1,5 +1,5 @@
 <div id="gdsr_comment_review_edit" style="display: none;">
-    <?php include(STARRATING_PATH.'options/editcomment.php'); ?>
+    <?php include(STARRATING_PATH.'integrate/editcomment.php'); ?>
 </div>
 <script type="text/javascript">
     function gdsr_move_editbox() {
