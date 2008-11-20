@@ -8,6 +8,7 @@
   * new: database cleanup tools
   * new: wordpress 2.7 styles for front page
   * new: main plugin class documented with phpdoc
+  * edit: all includes use full path
   * edit: user ip log panel
   * edit: users panel improvements
   * edit: small css changes

@@ -4,6 +4,6 @@
 // It will send the correct MIME type so that IE will execute the script correctly.
 
 header('Content-type: text/x-component');
-include('iepngfix.htc');
+include(STARRATING_PATH.'iepngfix.htc');
 
 ?>

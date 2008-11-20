@@ -8,10 +8,10 @@
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-1">
-<?php include "ips_options.php"; ?>
+<?php include STARRATING_PATH."options/ips_options.php"; ?>
 </div>
 <div id="fragment-2">
-<?php include "ips_list.php"; ?>
+<?php include STARRATING_PATH."options/ips_list.php"; ?>
 </div>
 </div>
 </div>

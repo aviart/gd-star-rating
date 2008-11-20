@@ -69,4 +69,5 @@
 </div>
 <p class="submit"><input type="submit" value="<?php _e("Save Settings", "gd-star-rating"); ?>" name="gdsr_saving"/></p>
 </div>
+</div>
 </form>
