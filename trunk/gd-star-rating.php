@@ -70,6 +70,7 @@ if (!class_exists('GDStarRating')) {
         var $e;
         var $i;
         var $g;
+        var $s;
         
         var $post_comment;
 
@@ -85,6 +86,8 @@ if (!class_exists('GDStarRating')) {
             "starratingblock"
         );
         
+        var $default_spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
+
         var $default_templates = array(
             "word_votes_singular" => "vote",
             "word_votes_plural" => "votes",
@@ -613,7 +616,10 @@ if (!class_exists('GDStarRating')) {
         }
         
         function comment_read_post($comment) {
-            $this->post_comment["review"] = $_POST["gdsr_cmm_review"];
+			if (isset($_POST["gdsr_cmm_review"]))
+				$this->post_comment["review"] = $_POST["gdsr_cmm_review"];
+			else
+				$this->post_comment["review"] = -1;
             $this->post_comment["post_id"] = $_POST["comment_post_ID"];
             return $comment;
         }
@@ -630,7 +636,10 @@ if (!class_exists('GDStarRating')) {
             if ($_POST['gdsr_comment_edit'] == "edit") {
                 $post_id = $_POST["comment_post_ID"];
                 $comment_id = $_POST["comment_ID"];
-                $value = $_POST["gdsr_cmm_review"];
+				if (isset($_POST["gdsr_cmm_review"]))
+					$value = $_POST["gdsr_cmm_review"];
+				else
+					$value = -1;
                 $comment_data = GDSRDatabase::get_comment_data($comment_id);
                 if (count($comment_data) == 0)
                     GDSRDatabase::add_empty_comment($comment_id, $post_id, $value);
