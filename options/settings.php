@@ -45,6 +45,7 @@
     <li><a href="#fragment-3"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-4"><span><?php _e("Statistics", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-5"><span><?php _e("Preview", "gd-star-rating"); ?></span></a></li>
+    <?php if ($gdsr_wpr8) { ?><li><a href="#fragment-7"><span style="color: red">wpr8.com</span></a></li><?php } ?>
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-1">
@@ -65,6 +66,11 @@
 <div id="fragment-5">
 <?php include STARRATING_PATH."options/settings_preview.php"; ?>
 </div>
+<?php if ($gdsr_wpr8) { ?>
+<div id="fragment-7">
+<?php include STARRATING_PATH."wpr8/settings.php"; ?>
+</div>
+<?php } ?>
 </div>
 
 <p class="submit"><input type="submit" class="inputbutton" value="<?php _e("Save Settings", "gd-star-rating"); ?>" name="gdsr_saving"/></p>
