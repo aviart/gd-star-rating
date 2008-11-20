@@ -44,6 +44,7 @@ if (!class_exists('GDStarRating')) {
         var $log_file = "c:/gd_star_rating_log.txt";
         
         var $charting = false;
+        var $wpr8 = false;
         var $admin_plugin = false;
         var $admin_plugin_page = '';
         var $admin_page;
@@ -58,6 +59,7 @@ if (!class_exists('GDStarRating')) {
         var $plugin_xtra_path;
         var $plugin_chart_url;
         var $plugin_chart_path;
+        var $plugin_wpr8_path;
         
         var $l;
         var $o;
@@ -793,10 +795,14 @@ if (!class_exists('GDStarRating')) {
             }
             $this->plugin_path = dirname(__FILE__)."/";
             $this->e = $this->plugin_url."gfx/blank.gif";
-            
+
+            $this->plugin_wpr8_path = $this->plugin_path."wpr8/";
             $this->plugin_chart_path = $this->plugin_path."ofc2/";
             $this->plugin_chart_url = $this->plugin_url."ofc2/";
             
+            if (is_dir($this->plugin_wpr8_path))
+                $this->wpr8 = true;
+
             if (is_dir($this->plugin_chart_path))
                 $this->charting = true;
             
@@ -1433,6 +1439,7 @@ if (!class_exists('GDStarRating')) {
             $gdsr_options = $this->o;
             $gdsr_root_url = $this->plugin_url;
             $gdsr_gfx = $this->g;
+            $gdsr_wpr8 = $this->wpr8;
             
             include($this->plugin_path.'options/settings.php');
 
