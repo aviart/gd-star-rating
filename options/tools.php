@@ -32,7 +32,7 @@
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="300" height="25"><?php _e("Lock voting for posts older then", "gd-star-rating"); ?>:</td>
-                <td height="25"><input type="text" name="gdst_lock_date" value="" /></td>
+                <td height="25"><input type="text" id="gdsr_lock_date" name="gdsr_lock_date" value="" /></td>
             </tr>
         </table>
         <input type="submit" class="inputbutton" value="<?php _e("Lock", "gd-star-rating"); ?>" name="gdsr_post_lock" id="gdsr_post_lock" />
@@ -41,6 +41,27 @@
         </form>
     </td>
 </tr>
-</tbody></table>
+<tr><th scope="row"><?php _e("Global Voting Rules Update", "gd-star-rating"); ?></th>
+    <td>
+        <form method="post">
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150" height="25"><?php _e("Posts", "gd-star-rating"); ?>:</td>
+                <td height="25"></td>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150" height="25"><?php _e("Comments", "gd-star-rating"); ?>:</td>
+                <td height="25"></td>
+            </tr>
+        </table>
+        <input type="submit" class="inputbutton" value="<?php _e("Set", "gd-star-rating"); ?>" name="gdsr_rules_set" id="gdsr_rules_set" />
+        </form>
+    </td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
