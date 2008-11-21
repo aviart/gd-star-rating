@@ -1,5 +1,13 @@
 <?php
-    
+
+    /**
+     * Returns calculated data for avergae blog rating including bayesian estimate mean.
+     *
+     * @global class $gdsr
+     * @param string $select articles to select postpage|post|page
+     * @param string $show votes to use: total|users|visitors
+     * @return object with average blog rating values
+     */
     function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
         global $gdsr;
         return $gdsr->get_blog_rating($select, $show);
