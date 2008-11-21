@@ -23,8 +23,22 @@ if ($max_page > 1)
 
 ?>
 
-<div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
+<script>
+function checkAll(form) {
+    for (i = 0, n = form.elements.length; i < n; i++) {
+        if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick', 2))) {
+            if(form.elements[i].checked == true)
+                form.elements[i].checked = false;
+            else
+                form.elements[i].checked = true;
+        }
+    }
+}
+</script>
+
+<div class="wrap" style="max-width: <?php echo $options['admin_width']; ?>px">
 <form id="gdsr-articles" method="post" action="">
+<input type="hidden" name="action" value="deletebans" />
 <div class="tablenav">
     <div class="alignleft">
     </div>
@@ -49,7 +63,7 @@ $rows = GDSRDatabase::get_all_banned_ips(($page_id - 1) * $posts_per_page, $post
     $tr_class = "";
     foreach ($rows as $row) {
         echo '<tr id="post-'.$row["id"].'" class="'.$tr_class.' author-self status-publish" valign="top">';
-        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row["id"].'" type="checkbox"></th>';
+        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->id.'" type="checkbox"></th>';
         echo '<td>'.$row->id.'</td>';
         echo '<td><strong>';
         switch ($row->mode) {
@@ -79,6 +93,7 @@ $rows = GDSRDatabase::get_all_banned_ips(($page_id - 1) * $posts_per_page, $post
 </table>
 <div class="tablenav">
     <div class="alignleft">
+        <input type="submit" class="inputbutton" value="<?php _e("Unban Selected", "gd-star-rating"); ?>" name="gdsr_unban" id="gdsr_unban" />
     </div>
     <div class="tablenav-pages">
     </div>

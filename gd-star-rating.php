@@ -111,6 +111,7 @@ if (!class_exists('GDStarRating')) {
             "mass_lock" => '',
             "ie_png_fix" => 1,
             "ajax" => 1,
+            "ip_filtering" => 1,
             "save_user_agent" => 0,
             "save_cookies" => 1,
             "widget_articles" => 1,

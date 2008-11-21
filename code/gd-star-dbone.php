@@ -117,9 +117,29 @@ class GDSRDatabase
         return $wpdb->get_var(sprintf("select count(*) from %sgdsr_ips where status = 'B'", $table_prefix));
     }
     
-    function ban_ip($ip) {
+    function ban_ip_check($ip, $mode = 'S') {
         global $wpdb, $table_prefix;
-        $wpdb->query(sprintf("INSERT INTO %sgdsr_ips (`status`, `mode`, `ip`) VALUES ('B', 'S', '%s')", $table_prefix, $ip));
+        $sql = sprintf("select count(*) from %sgdsr_ips where `status` = 'B' and `mode` = '%s' and `ip` = '%s'", $table_prefix, $mode, $ip);
+        $result = $wpdb->get_var($sql);
+        return !($result == 0);
+    }
+
+    function ban_ip($ip, $mode = 'M') {
+        global $wpdb, $table_prefix;
+        if (!GDSRDatabase::ban_ip_check($ip, $mode))
+            $wpdb->query(sprintf("INSERT INTO %sgdsr_ips (`status`, `mode`, `ip`) VALUES ('B', '%s', '%s')", $table_prefix, $mode, $ip));
+    }
+
+    function ban_ip_range($ip_from, $ip_to) {
+        global $wpdb, $table_prefix;
+        $ip = $ip_from."|".$ip_to;
+        GDSRDatabase::ban_ip($ip, 'R');
+    }
+
+    function unban_ips($ips) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("delete from %sgdsr_ips where id in %s", $table_prefix, $ips);
+        $wpdb->query($sql);
     }
     // ip
 

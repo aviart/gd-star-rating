@@ -5,6 +5,7 @@
 === Version: 1.0.3 / november 23 2008 ===
   * new: banned ip's db table
   * new: ip's managment panel
+  * new: ip filtering settings
   * new: database cleanup tools
   * new: wordpress 2.7 styles for front page
   * new: main plugin class documented with phpdoc
