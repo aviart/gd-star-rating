@@ -35,13 +35,14 @@ require_once(dirname(__FILE__)."/code/gd-star-dbx.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbmulti.php");
 require_once(dirname(__FILE__)."/code/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gd-star-import.php");
+require_once(dirname(__FILE__)."/gd-star-config.php");
 
 if (!class_exists('GDStarRating')) {
     /**
     * Main plugin class
     */
     class GDStarRating {
-        var $log_file = "c:/gd_star_rating_log.txt";
+        var $log_file = "";
         
         var $charting = false;
         var $wpr8 = false;
@@ -288,6 +289,7 @@ if (!class_exists('GDStarRating')) {
         */
         function GDStarRating() {
             $this->tabpage = "front";
+            $this->log_file = STARRATING_LOG_PATH;
             $this->active_wp_page();
             $this->plugin_path_url();
             $this->install_plugin();
@@ -2004,6 +2006,9 @@ if (!class_exists('GDStarRating')) {
             else
                 $allow_vote = true;
             
+            if ($allow_vote && $this->o["ip_filtering"] == 1)
+                $allow_vote = !GDSRHelper::filter_ip();
+
             if ($allow_vote)
                 $allow_vote = !GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT']);
 
@@ -2069,6 +2074,9 @@ if (!class_exists('GDStarRating')) {
             else
                 $allow_vote = true;
                         
+            if ($allow_vote && $this->o["ip_filtering"] == 1)
+                $allow_vote = !GDSRHelper::filter_ip();
+
             if ($allow_vote)
                 $allow_vote = !GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT']);
 

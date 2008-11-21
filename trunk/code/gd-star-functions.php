@@ -11,6 +11,10 @@ class GDSRHelper
         return false;
     }
 
+    function filter_ip() {
+        return true;
+    }
+
     function expiration_countdown($post_date, $value) {
         $period = substr($value, 0, 1);
         $value = substr($value, 1);

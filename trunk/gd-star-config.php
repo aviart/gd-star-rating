@@ -1,6 +1,7 @@
 <?php
 
 define('STARRATING_WPCONFIG', '');
+define('STARRATING_LOG_PATH', 'c:/gd_star_rating_log.txt');
 
 function get_wpconfig() {
 	if (STARRATING_WPCONFIG == '') {
