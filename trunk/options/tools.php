@@ -31,7 +31,7 @@
         <form method="post">
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="300" height="25"><?php _e("Lock voting for posts older then", "gd-star-rating"); ?>:</td>
+                <td width="150" height="25"><?php _e("Lock posts older than", "gd-star-rating"); ?>:</td>
                 <td height="25"><input type="text" id="gdsr_lock_date" name="gdsr_lock_date" value="" /></td>
             </tr>
         </table>
@@ -46,18 +46,45 @@
         <form method="post">
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150" height="25"><?php _e("Posts", "gd-star-rating"); ?>:</td>
-                <td height="25"></td>
+                <td width="150" height="25"><strong><?php _e("Posts", "gd-star-rating"); ?>:</strong></td>
+                <?php if ($gdsr_options["moderation_active"] == 1) { ?>
+                <td style="width: 80px; height: 25px;">
+                    <span class="paneltext"><?php _e("Moderation", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 25px;" align="right">
+                <?php GDSRHelper::render_moderation_combo("gdsr_article_moderation", "/", 120, "", true); ?>
+                </td><td style="width: 10px"></td>
+                <?php } ?>
+                <td style="width: 80px; height: 25px;">
+                    <span class="paneltext"><?php _e("Vote Rules", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 25px;" align="right">
+                <?php GDSRHelper::render_rules_combo("gdsr_article_voterules", "/", 120, "", true); ?>
+                </td>
             </tr>
         </table>
-        <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150" height="25"><?php _e("Comments", "gd-star-rating"); ?>:</td>
-                <td height="25"></td>
+                <td width="150" height="25"><strong><?php _e("Comments", "gd-star-rating"); ?>:</strong></td>
+                <?php if ($gdsr_options["moderation_active"] == 1) { ?>
+                <td style="width: 80px; height: 25px;">
+                    <span class="paneltext"><?php _e("Moderation", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 25px;" align="right">
+                <?php GDSRHelper::render_moderation_combo("gdsr_comments_moderation", "/", 120, "", true); ?>
+                </td><td style="width: 10px"></td>
+                <?php } ?>
+                <td style="width: 80px; height: 25px;">
+                    <span class="paneltext"><?php _e("Vote Rules", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 25px;" align="right">
+                <?php GDSRHelper::render_rules_combo("gdsr_comments_voterules", "/", 120, "", true); ?>
+                </td>
             </tr>
         </table>
         <input type="submit" class="inputbutton" value="<?php _e("Set", "gd-star-rating"); ?>" name="gdsr_rules_set" id="gdsr_rules_set" />
+        <div class="gdsr-table-split"></div>
+        This will update all posts and with previously saved ratings.
         </form>
     </td>
 </tr>

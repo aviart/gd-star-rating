@@ -44,6 +44,9 @@ if (!class_exists('GDStarRating')) {
     class GDStarRating {
         var $log_file = "";
         
+        var $is_bot = false;
+        var $is_ban = false;
+
         var $charting = false;
         var $wpr8 = false;
         var $admin_plugin = false;
@@ -835,6 +838,9 @@ if (!class_exists('GDStarRating')) {
                 }
             }
 
+            $this->is_bot = GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT']);
+            $this->is_ban = GDSRHelper::detect_ban();
+
             if ($this->admin_plugin_page == "settings-page") {
                 $gdsr_options = $this->o;
                 include ($this->plugin_path."gd-star-settings.php");
@@ -1500,7 +1506,10 @@ if (!class_exists('GDStarRating')) {
                 $this->o["mass_lock"] = $lock_date;
                 update_option('gd-star-rating', $this->o);
             }
-            
+            if (isset($_POST['gdsr_rules_set'])) {
+                GDSRDatabase::update_settings_full($_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"]);
+            }
+
             $gdsr_options = $this->o;
             $gdsr_styles = $this->styles;
             $gdsr_trends = $this->trends;
@@ -1971,8 +1980,9 @@ if (!class_exists('GDStarRating')) {
         }
 
         function render_comment($post, $comment, $user) {
-            if ($this->o["comments_active"] != 1) 
-                return "";
+            if ($this->is_bot) return "";
+            if ($this->is_ban && $this->o["ip_filtering"] == 1) return "";
+            if ($this->o["comments_active"] != 1) return "";
 
             $rd_unit_width = $this->o["cmm_size"];
             $rd_unit_count = $this->o["cmm_stars"];
@@ -2007,12 +2017,6 @@ if (!class_exists('GDStarRating')) {
             else
                 $allow_vote = true;
             
-            if ($allow_vote && $this->o["ip_filtering"] == 1)
-                $allow_vote = !GDSRHelper::filter_ip();
-
-            if ($allow_vote)
-                $allow_vote = !GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT']);
-
             if ($allow_vote) {
                 if (
                     ($post_data->rules_comments == "A") || 
@@ -2050,6 +2054,8 @@ if (!class_exists('GDStarRating')) {
 
         function render_article($post, $user) {
             global $wpdb;
+            if ($this->is_bot) return "";
+            if ($this->is_ban && $this->o["ip_filtering"] == 1) return "";
             if (is_single()) $this->init_post();
             
             $rd_unit_width = $this->o["size"];
@@ -2067,20 +2073,13 @@ if (!class_exists('GDStarRating')) {
                     $post_data = GDSRDatabase::get_post_data($rd_post_id);
                 }
             }
-            if ($post_data->rules_articles == "H") 
-                return "";
+            if ($post_data->rules_articles == "H") return "";
             
             if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author)
                 $allow_vote = false;
             else
                 $allow_vote = true;
                         
-            if ($allow_vote && $this->o["ip_filtering"] == 1)
-                $allow_vote = !GDSRHelper::filter_ip();
-
-            if ($allow_vote)
-                $allow_vote = !GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT']);
-
             if ($allow_vote) {
                 if (
                     ($post_data->rules_articles == "A") || 

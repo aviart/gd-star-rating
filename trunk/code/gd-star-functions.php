@@ -11,7 +11,7 @@ class GDSRHelper
         return false;
     }
 
-    function filter_ip() {
+    function detect_ban() {
         return true;
     }
 
