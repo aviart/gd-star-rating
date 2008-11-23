@@ -110,12 +110,13 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.3",
             "date" => "2008.11.23.",
             "status" => "Stable",
-            "build" => 248,
+            "build" => 251,
             "database_cleanup" => '',
             "mass_lock" => '',
             "ie_png_fix" => 1,
             "ajax" => 1,
             "ip_filtering" => 1,
+            "ip_filtering_restrictive" => 0,
             "save_user_agent" => 0,
             "save_cookies" => 1,
             "widget_articles" => 1,
@@ -1980,9 +1981,14 @@ if (!class_exists('GDStarRating')) {
         }
 
         function render_comment($post, $comment, $user) {
-            if ($this->is_bot) return "";
-            if ($this->is_ban && $this->o["ip_filtering"] == 1) return "";
             if ($this->o["comments_active"] != 1) return "";
+            
+            $allow_vote = true;
+            if ($this->is_bot) return "";
+            if ($this->is_ban && $this->o["ip_filtering"] == 1) {
+                if ($this->o["ip_filtering_restrictive"] == 1) return "";
+                else $allow_vote = false;
+            }
 
             $rd_unit_width = $this->o["cmm_size"];
             $rd_unit_count = $this->o["cmm_stars"];
@@ -2012,10 +2018,10 @@ if (!class_exists('GDStarRating')) {
                 $comment_data = GDSRDatabase::get_comment_data($rd_comment_id);
             }
 
-            if ($this->o["cmm_author_vote"] == 1 && $rd_user_id == $comment->user_id)
-                $allow_vote = false;
-            else
-                $allow_vote = true;
+            if ($allow_vote) {
+                if ($this->o["cmm_author_vote"] == 1 && $rd_user_id == $comment->user_id)
+                    $allow_vote = false;
+            }
             
             if ($allow_vote) {
                 if (
@@ -2054,8 +2060,13 @@ if (!class_exists('GDStarRating')) {
 
         function render_article($post, $user) {
             global $wpdb;
+            $allow_vote = true;
             if ($this->is_bot) return "";
-            if ($this->is_ban && $this->o["ip_filtering"] == 1) return "";
+            if ($this->is_ban && $this->o["ip_filtering"] == 1) {
+                if ($this->o["ip_filtering_restrictive"] == 1) return "";
+                else $allow_vote = false;
+            }
+            
             if (is_single()) $this->init_post();
             
             $rd_unit_width = $this->o["size"];
@@ -2075,11 +2086,11 @@ if (!class_exists('GDStarRating')) {
             }
             if ($post_data->rules_articles == "H") return "";
             
-            if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author)
-                $allow_vote = false;
-            else
-                $allow_vote = true;
-                        
+            if ($allow_vote) {
+                if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author)
+                    $allow_vote = false;
+            }
+
             if ($allow_vote) {
                 if (
                     ($post_data->rules_articles == "A") || 

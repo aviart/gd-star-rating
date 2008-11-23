@@ -12,7 +12,7 @@ class GDSRHelper
     }
 
     function detect_ban() {
-        return true;
+        return false;
     }
 
     function expiration_countdown($post_date, $value) {
