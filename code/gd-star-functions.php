@@ -12,7 +12,22 @@ class GDSRHelper
     }
 
     function detect_ban() {
-        return false;
+        $ip = $_SERVER["REMOTE_ADDR"];
+        $ban = false;
+        $ban = GDSRDatabase::check_ip_single($ip);
+        if (!$ban)
+            $ban = GDSRDatabase::check_ip_range($ip);
+        if (!$ban)
+            $ban = GDSRDatabase::check_ip_mask($ip);
+        return $ban;
+    }
+
+    function clean_ip($ip) {
+        $parts = explode(".", $ip);
+        for ($i = 0; $i < count($parts); $i++)
+            $parts[$i] = intval($parts[$i]);
+
+        return join(".", $parts);
     }
 
     function expiration_countdown($post_date, $value) {
