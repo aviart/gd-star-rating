@@ -7,6 +7,26 @@ This is the list of changes for each release of the plugin.
 
 == Change log ==
 
+=== Version: 1.0.3 / november 23 2008 ===
+  * new: banned ip's db table
+  * new: ip's managment panel
+  * new: ip filtering settings
+  * new: tool for global date based lock
+  * new: tool for global rules change
+  * new: wordpress 2.7 styles for front page
+  * new: main plugin class documented with phpdoc
+  * edit: improved speed and reduced mysql load
+  * edit: changed bot detection
+  * edit: all includes use full path
+  * edit: user ip log panel
+  * edit: users panel improvements
+  * edit: small css changes
+  * fix: saving comment review with empty value
+  * fix: invalid unique ip count for users
+  * fix: voting cookie check
+  * fix: few invalid css classes
+  * fix: various small bugs
+
 === Version: 1.0.2 / november 12 2008 ===
   * new: comment review rating
   * new: edit comment review rating
