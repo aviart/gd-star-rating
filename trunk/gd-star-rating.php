@@ -1503,7 +1503,7 @@ if (!class_exists('GDStarRating')) {
                 update_option('gd-star-rating', $this->o);
             }
             if (isset($_POST['gdsr_post_lock'])) {
-                $lock_date = $_POST['gdst_lock_date'];
+                $lock_date = $_POST['gdsr_lock_date'];
                 GDSRDatabase::lock_post_massive($lock_date);
                 $this->o["mass_lock"] = $lock_date;
                 update_option('gd-star-rating', $this->o);
