@@ -62,7 +62,7 @@ function checkAll(form) {
 $rows = GDSRDatabase::get_all_banned_ips(($page_id - 1) * $posts_per_page, $posts_per_page);
     $tr_class = "";
     foreach ($rows as $row) {
-        echo '<tr id="post-'.$row["id"].'" class="'.$tr_class.' author-self status-publish" valign="top">';
+        echo '<tr id="post-'.$row->id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->id.'" type="checkbox"></th>';
         echo '<td>'.$row->id.'</td>';
         echo '<td><strong>';

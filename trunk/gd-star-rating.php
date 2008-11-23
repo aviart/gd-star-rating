@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.0.2
+Version: 1.0.3
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -110,7 +110,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.3",
             "date" => "2008.11.23.",
             "status" => "Stable",
-            "build" => 251,
+            "build" => 253,
             "database_cleanup" => '',
             "mass_lock" => '',
             "ie_png_fix" => 1,
@@ -1504,6 +1504,7 @@ if (!class_exists('GDStarRating')) {
             }
             if (isset($_POST['gdsr_post_lock'])) {
                 $lock_date = $_POST['gdst_lock_date'];
+                GDSRDatabase::lock_post_massive($lock_date);
                 $this->o["mass_lock"] = $lock_date;
                 update_option('gd-star-rating', $this->o);
             }
@@ -1877,7 +1878,7 @@ if (!class_exists('GDStarRating')) {
             if (($type == "article" && $this->o["cookies"]) || ($type == "comment" && $this->o["cmm_cookies"])) {
                 if (isset($_COOKIE["wp_gdsr_".$type])) {
                     $cookie = $_COOKIE["wp_gdsr_".$type];
-                    $cookie = substr($cookie, 6, strlen($cookie) - 6);
+                    $cookie = substr($cookie, 7, strlen($cookie) - 7);
                     $cookie_ids = explode('|', $cookie);
                     if (in_array($post_id, $cookie_ids))
                         return false;
@@ -1982,7 +1983,6 @@ if (!class_exists('GDStarRating')) {
 
         function render_comment($post, $comment, $user) {
             if ($this->o["comments_active"] != 1) return "";
-            
             $allow_vote = true;
             if ($this->is_bot) return "";
             if ($this->is_ban && $this->o["ip_filtering"] == 1) {
@@ -2037,7 +2037,7 @@ if (!class_exists('GDStarRating')) {
                 $allow_vote = GDSRDatabase::check_vote($rd_comment_id, $rd_user_id, 'comment', $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1);
 
             if ($allow_vote)
-                $allow_vote = $this->check_cookie($rd_post_id, "comment");
+                $allow_vote = $this->check_cookie($rd_comment_id, "comment");
 
             $votes = 0;
             $score = 0;

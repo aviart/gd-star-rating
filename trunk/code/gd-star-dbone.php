@@ -105,6 +105,27 @@ class GDSRDatabase
     //users
     
     // ip
+    function check_ip_single($ip) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select count(*) from %sgdsr_ips where `status` = 'B' and `mode` = 'S' and `ip` = '%s'", $table_prefix, $ip);
+        return $wpdb->get_var($sql) > 0;
+    }
+
+    // TODO: complete range check
+    function check_ip_range($ip) {
+        global $wpdb, $table_prefix;
+        $parts = explode(".", $ip);
+        $ip_fix = $parts[0].".".$parts[1].".".$parts[2];
+        $ip_range = $parts[4];
+
+        return false;
+    }
+
+    // TODO: complete masked check
+    function check_ip_mask($ip) {
+        return false;
+    }
+
     function get_all_banned_ips($start = 0, $limit = 0) {
         global $wpdb, $table_prefix;
         if ($limit > 0) $limiter = " LIMIT ".$start.", ".$limit;
@@ -124,8 +145,9 @@ class GDSRDatabase
         return !($result == 0);
     }
 
-    function ban_ip($ip, $mode = 'M') {
+    function ban_ip($ip, $mode = 'S') {
         global $wpdb, $table_prefix;
+        if ($mode == 'S') $ip = GDSRHelper::clean_ip($ip);
         if (!GDSRDatabase::ban_ip_check($ip, $mode))
             $wpdb->query(sprintf("INSERT INTO %sgdsr_ips (`status`, `mode`, `ip`) VALUES ('B', '%s', '%s')", $table_prefix, $mode, $ip));
     }
@@ -307,6 +329,15 @@ class GDSRDatabase
         
         $wpdb->query(sprintf("update %sgdsr_data_article set rules_articles = '%s' where post_id = %s",
             $table_prefix, $rules_articles, $post_id));
+    }
+
+    function lock_post_massive($date) {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("update %sgdsr_data_article a inner join %sposts p on a.post_id = p.id set a.rules_articles = 'N', a.rules_comments = 'N' where p.post_date < '%s'",
+            $table_prefix, $table_prefix, $date
+        );
+        $wpdb->query($sql);
     }
     
     function update_reviews($ids, $review, $ids_array) {

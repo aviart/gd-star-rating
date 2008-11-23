@@ -6,7 +6,8 @@
   * new: banned ip's db table
   * new: ip's managment panel
   * new: ip filtering settings
-  * new: database cleanup tools
+  * new: tool for global date based lock
+  * new: tool for global rules change
   * new: wordpress 2.7 styles for front page
   * new: main plugin class documented with phpdoc
   * edit: improved speed and reduced mysql load
@@ -17,6 +18,7 @@
   * edit: small css changes
   * fix: saving comment review with empty value
   * fix: invalid unique ip count for users
+  * fix: voting cookie check
 
 === Version: 1.0.2 / november 12 2008 ===
   * new: comment review rating
