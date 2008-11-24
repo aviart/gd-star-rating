@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Milan Petrovic <milan@gdragon.info>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -841,11 +841,11 @@ msgstr "Забрани ИП"
 
 #: options/ips_options.php:8
 msgid "Add IP addresses"
-msgstr ""
+msgstr "Додај ИП адресе"
 
 #: options/ips_options.php:9
 msgid "One IP address per line."
-msgstr ""
+msgstr "Један ИП у свакој линији"
 
 #: options/ips_options.php:15
 #: options/ips_options.php:41
@@ -855,7 +855,7 @@ msgstr "Додај"
 
 #: options/ips_options.php:19
 msgid "Ban IP Range"
-msgstr ""
+msgstr "Забрани ИП Опсег"
 
 #: options/ips_options.php:25
 msgid "From"
@@ -867,7 +867,7 @@ msgstr "До"
 
 #: options/ips_options.php:45
 msgid "Ban IP Masked"
-msgstr ""
+msgstr "Забрани ИП Маскиран"
 
 #: options/ips_options.php:51
 msgid "Mask"
@@ -1086,9 +1086,8 @@ msgid "Setup"
 msgstr "Организација"
 
 #: options/settings_general.php:53
-#, fuzzy
 msgid "Uninstall and maintenance."
-msgstr "Одржавање базе"
+msgstr "Деисталација и одржавање."
 
 #: options/settings_general.php:57
 #: gd-star-rating.php:539
@@ -1109,9 +1108,8 @@ msgid "Exporting rating data."
 msgstr "Извоз података."
 
 #: options/settings_general.php:61
-#, fuzzy
 msgid "IP addresses managment."
-msgstr "Контрола корисника."
+msgstr "Контрола ИП адреса."
 
 #: options/settings_general.php:67
 msgid "Plugin Features"
@@ -1337,9 +1335,8 @@ msgid "Rescan"
 msgstr "Скенирај"
 
 #: options/tools.php:13
-#, fuzzy
 msgid "Database Cleanup"
-msgstr "Одржавање базе"
+msgstr "Чишћење Базе"
 
 #: options/tools.php:16
 msgid "Remove all invalid votes from votes log."
@@ -1363,7 +1360,7 @@ msgstr ""
 
 #: options/tools.php:33
 msgid "Lock posts older than"
-msgstr ""
+msgstr "Закључај чланке старије од"
 
 #: options/tools.php:37
 msgid "Lock"
@@ -1393,14 +1390,12 @@ msgid "unique ip's"
 msgstr "јединствени ИП'јеви"
 
 #: options/users_log.php:63
-#, fuzzy
 msgid "User Vote Log"
-msgstr "Листа гласова"
+msgstr "Листа гласова корисника"
 
 #: options/users_log.php:64
-#, fuzzy
 msgid "Votes log for user"
-msgstr "Листа гласова за чланке."
+msgstr "Листа гласова за корисника"
 
 #: options/users_log.php:80
 msgid "IP Status"
@@ -1416,14 +1411,12 @@ msgid "Post"
 msgstr "Чланцак"
 
 #: options/users_log.php:85
-#, fuzzy
 msgid "Comment Author"
-msgstr "Аутор коментара"
+msgstr "Аутор Коментара"
 
 #: options/users_log.php:86
-#, fuzzy
 msgid "Comment Excerpt"
-msgstr "Измена Коментара"
+msgstr "Део Коментара"
 
 #: options/users_log.php:154
 msgid "Add selected IP's to ban IP's list."
@@ -1431,7 +1424,7 @@ msgstr ""
 
 #: options/users_log.php:167
 msgid "Only Invalid"
-msgstr ""
+msgstr "Само Невалидне"
 
 #: options/users_log.php:168
 #: options/voters.php:160
