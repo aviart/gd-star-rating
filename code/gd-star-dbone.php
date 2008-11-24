@@ -368,7 +368,7 @@ class GDSRDatabase
         );
         
         if ($post_data->moderate_articles == "N" || ($post_data->moderate_articles == "V" && $user > 0) || ($post_data->moderate_articles == "U" && $user == 0)) {
-            GDSRDatabase::add_vote($id, $user, $ip, $ua, $vote, $post_data);
+            GDSRDatabase::add_vote($id, $user, $ip, $ua, $vote);
         }
         else {
             $modsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'article', %s, %s, '%s', '%s', '%s')",
@@ -446,51 +446,49 @@ class GDSRDatabase
     
     function add_vote_comment($id, $user, $ip, $ua, $vote) {
         global $wpdb, $table_prefix;
-        $ua = str_replace("'", "''", $ua);
-        $ua = substr($ua, 0, 250);
         $comments = $table_prefix.'gdsr_data_comment';
         $stats = $table_prefix.'gdsr_votes_log';
         $trend = $table_prefix.'gdsr_votes_trend';
-        $moderate = $table_prefix.'gdsr_moderate';
         
         $trend_date = date("Y-m-d");
-        $comment_data = $wpdb->get_row(sprintf("SELECT * FROM %s WHERE comment_id = %s", $comments, $id));
         
-        $sql_trend = sprintf("SELECT * FROM %s WHERE vote_date = '%s' and vote_type = 'comment' and id = %s", $trend, $trend_date, $id);
-        $trend_data = $wpdb->get_row($sql_trend);
-        
-        if (count($trend_data) == 0) {
-            $wpdb->query(sprintf("INSERT INTO %s (id, vote_type, user_voters, user_votes, visitor_voters, visitor_votes, vote_date) VALUES (%s, 'comment', 0, 0, 0, 0, '%s')", $trend, $id, $trend_date));
-            $trend_data = $wpdb->get_row($sql_trend);
+        $sql_trend = sprintf("SELECT count(*) FROM %s WHERE vote_date = '%s' and vote_type = 'comment' and id = %s", $trend, $trend_date, $id);
+        $trend_data = $wpdb->get_var($sql_trend);
+
+        $trend_added = false;
+        if ($trend_data == 0) {
+            $trend_added = true;
+            if ($user > 0) {
+                $sql = sprintf("INSERT INTO %s (id, vote_type, user_voters, user_votes, vote_date) VALUES (%s, 'comment', 1, %s, '%s')",
+                    $trend, $id, $vote, $trend_date);
+                $wpdb->query($sql);
+            }
+            else {
+                $sql = sprintf("INSERT INTO %s (id, vote_type, visitor_voters, visitor_votes, vote_date) VALUES (%s, 'comment', 1, %s, '%s')",
+                    $trend, $id, $vote, $trend_date);
+                $wpdb->query($sql);
+            }
         }
 
         if ($user > 0) {
-            $comment_data->user_voters+= 1;
-            $comment_data->user_votes+= $vote;
-            $trend_data->user_voters+= 1;
-            $trend_data->user_votes+= $vote;
-            $wpdb->query(
-                sprintf("UPDATE %s SET user_voters = %s, user_votes = %s WHERE comment_id = %s",
-                $comments, $comment_data->user_voters, $comment_data->user_votes, $id)
-            );
-            $wpdb->query(
-                sprintf("UPDATE %s SET user_voters = %s, user_votes = %s WHERE id = %s and vote_type = 'comment' and vote_date = '%s'",
-                $trend, $trend_data->user_voters, $trend_data->user_votes, $id, $trend_date)
-            );
+            $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE comment_id = %s",
+                $comments, $vote, $id);
+            $wpdb->query($sql);
+            if (!$trend_added) {
+                $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE id = %s and vote_type = 'comment' and vote_date = '%s'",
+                    $trend, $vote, $id, $trend_date);
+                $wpdb->query($sql);
+            }
         }
         else {
-            $comment_data->visitor_voters+= 1;
-            $comment_data->visitor_votes+= $vote;
-            $trend_data->visitor_voters+= 1;
-            $trend_data->visitor_votes+= $vote;
-            $wpdb->query(
-                sprintf("UPDATE %s SET visitor_voters = %s, visitor_votes = %s WHERE comment_id = %s",
-                $comments, $comment_data->visitor_voters, $comment_data->visitor_votes, $id)
-            );
-            $wpdb->query(
-                sprintf("UPDATE %s SET visitor_voters = %s, visitor_votes = %s WHERE id = %s and vote_type = 'comment' and vote_date = '%s'",
-                $trend, $trend_data->visitor_voters, $trend_data->visitor_votes, $id, $trend_date)
-            );
+            $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE comment_id = %s",
+                $comments, $vote, $id);
+            $wpdb->query($sql);
+            if (!$trend_added) {
+                $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE id = %s and vote_type = 'comment' and vote_date = '%s'",
+                    $trend, $vote, $id, $trend_date);
+                $wpdb->query($sql);
+            }
         }
 
         $logsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'comment', %s, %s, '%s', '%s', '%s')",
@@ -498,58 +496,51 @@ class GDSRDatabase
         $wpdb->query($logsql);
     }
     
-    function add_vote($id, $user, $ip, $ua, $vote, $post_data = '') {
+    function add_vote($id, $user, $ip, $ua, $vote) {
         global $wpdb, $table_prefix;
-        $ua = str_replace("'", "''", $ua);
-        $ua = substr($ua, 0, 250);
         $articles = $table_prefix.'gdsr_data_article';
         $stats = $table_prefix.'gdsr_votes_log';
         $trend = $table_prefix.'gdsr_votes_trend';
-        $moderate = $table_prefix.'gdsr_moderate';
 
         $trend_date = date("Y-m-d");
-        if ($post_data == '') {
-            $post_data = $wpdb->get_row(
-                sprintf("SELECT * FROM %s WHERE post_id = %s", 
-                $articles, $id)
-            );
-        }
 
-        $sql_trend = sprintf("SELECT * FROM %s WHERE vote_date = '%s' and vote_type = 'article' and id = %s", $trend, $trend_date, $id);
-        $trend_data = $wpdb->get_row($sql_trend);
-        
-        if (count($trend_data) == 0) {
-            $wpdb->query(sprintf("INSERT INTO %s (id, vote_type, user_voters, user_votes, visitor_voters, visitor_votes, vote_date) VALUES (%s, 'article', 0, 0, 0, 0, '%s')", $trend, $id, $trend_date));
-            $trend_data = $wpdb->get_row($sql_trend);
+        $sql_trend = sprintf("SELECT count(*) FROM %s WHERE vote_date = '%s' and vote_type = 'article' and id = %s", $trend, $trend_date, $id);
+        $trend_data = $wpdb->get_var($sql_trend);
+
+        $trend_added = false;
+        if ($trend_data == 0) {
+            $trend_added = true;
+            if ($user > 0) {
+                $sql = sprintf("INSERT INTO %s (id, vote_type, user_voters, user_votes, vote_date) VALUES (%s, 'article', 1, %s, '%s')",
+                        $trend, $id, $vote, $trend_date);
+                $wpdb->query($sql);
+            }
+            else {
+                $sql = sprintf("INSERT INTO %s (id, vote_type, visitor_voters, visitor_votes, vote_date) VALUES (%s, 'article', 1, %s, '%s')",
+                        $trend, $id, $vote, $trend_date);
+                $wpdb->query($sql);
+            }
         }
         
         if ($user > 0) {
-            $post_data->user_voters+= 1;
-            $post_data->user_votes+= $vote;
-            $trend_data->user_voters+= 1;
-            $trend_data->user_votes+= $vote;
-            $wpdb->query(
-                sprintf("UPDATE %s SET user_voters = %s, user_votes = %s WHERE post_id = %s",
-                $articles, $post_data->user_voters, $post_data->user_votes, $id)
-            );
-            $wpdb->query(
-                sprintf("UPDATE %s SET user_voters = %s, user_votes = %s WHERE id = %s and vote_type = 'article' and vote_date = '%s'",
-                $trend, $trend_data->user_voters, $trend_data->user_votes, $id, $trend_date)
-            );
+            $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE post_id = %s",
+                $articles, $vote, $id);
+            $wpdb->query($sql);
+            if (!$trend_added) {
+                $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE id = %s and vote_type = 'article' and vote_date = '%s'",
+                    $trend, $vote, $id, $trend_date);
+                $wpdb->query($sql);
+            }
         }
         else {
-            $post_data->visitor_voters+= 1;
-            $post_data->visitor_votes+= $vote;
-            $trend_data->visitor_voters+= 1;
-            $trend_data->visitor_votes+= $vote;
-            $wpdb->query(
-                sprintf("UPDATE %s SET visitor_voters = %s, visitor_votes = %s WHERE post_id = %s",
-                $articles, $post_data->visitor_voters, $post_data->visitor_votes, $id)
-            );
-            $wpdb->query(
-                sprintf("UPDATE %s SET visitor_voters = %s, visitor_votes = %s WHERE id = %s and vote_type = 'article' and vote_date = '%s'",
-                $trend, $trend_data->visitor_voters, $trend_data->visitor_votes, $id, $trend_date)
-            );
+            $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE post_id = %s",
+                $articles, $vote, $id);
+            $wpdb->query($sql);
+            if (!$trend_added) {
+                $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE id = %s and vote_type = 'article' and vote_date = '%s'",
+                    $trend, $vote, $id, $trend_date);
+                $wpdb->query($sql);
+            }
         }
         
         $logsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'article', %s, %s, '%s', '%s', '%s')",
@@ -853,7 +844,7 @@ class GDSRDatabase
         global $table_prefix;
         $where = "";
         
-        $extras = ", '' as total, '' as votes, '' as title";
+        $extras = ", '' as total, '' as votes, '' as title, 0 as rating_total, 0 as rating_users, 0 as rating_visitors";
 
         if ($dates != "" && $dates != "0") {
             $where.= " and year(p.post_date) = ".substr($dates, 0, 4);

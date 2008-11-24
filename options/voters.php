@@ -81,7 +81,7 @@ function checkAll(form) {
 <div class="wrap"><h2>GD Star Rating: <?php _e("Voters Log", "gd-star-rating"); ?></h2>
 <form id="gdsr-comments" method="post" action="">
 <p><strong><?php _e("Vote log for post", "gd-star-rating"); ?>: 
-    <?php echo sprintf('<a href="./post.php?action=edit&post=%s">%s</a>', $post_id, GDSRDB::get_post_title($post_id)); ?>
+    <?php echo sprintf('<a href="./post.php?action=edit&post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $post_id, GDSRDB::get_post_title($post_id), get_permalink($post_id)); ?>
 </strong></p>
 <ul class="subsubsub">
     <li><a<?php echo $select == "total" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&vg=total">All Votes (<?php echo $number_posts_all; ?>)</a> |</li>
@@ -112,8 +112,8 @@ function checkAll(form) {
     <thead>
         <tr>
             <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>
+            <th scope="col" nowrap="nowrap"><?php _e("ID", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Name", "gd-star-rating"); ?></th>
-            <th scope="col" nowrap="nowrap"><?php _e("User ID", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Vote", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Vote Date", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("IP", "gd-star-rating"); ?></th>
@@ -125,12 +125,15 @@ function checkAll(form) {
        
     $tr_class = "";
     foreach ($rows as $row) {
+        if ($row->user_id == 0) $tr_class.= " visitor";
+        if ($row->user_id == 1) $tr_class.= " admin";
+
         echo '<tr id="post-'.$row->record_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->record_id.'" type="checkbox"></th>';
+        echo '<td><strong>'.$row->user_id.'</strong></td>';
         echo '<td><strong>';
         echo $row->user_id == 0 ? "Visitor" : $row->user_nicename;
         echo '</strong></td>';
-        echo '<td>'.$row->user_id.'</td>';
         echo '<td>'.$row->vote.'</td>';
         echo '<td>'.$row->voted.'</td>';
         echo '<td>'.$row->ip.'</td>';

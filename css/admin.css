@@ -6,6 +6,10 @@
 	background-color: #CCFF99;
 }
 
+.invalidarticle {
+	background-color: #ffff00;
+}
+
 .inputbutton{
 	-moz-border-radius-bottomleft:3px;
 	-moz-border-radius-bottomright:3px;

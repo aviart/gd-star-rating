@@ -43,8 +43,9 @@ function checkAll(form) {
 <form id="gdsr-comments" method="post" action="">
 <h2>GD Star Rating: <?php _e("Comments", "gd-star-rating"); ?></h2>
 <div>
-<p><strong><?php _e("Comments for post", "gd-star-rating"); ?>: 
-    <?php echo sprintf('<a href="./post.php?action=edit&post=%s">%s</a>', $id, GDSRDB::get_post_title($id)); ?>
+<p><strong><?php _e("Comments for post", "gd-star-rating"); ?>:
+    <?php echo ''; ?>
+    <?php echo sprintf('<a href="./post.php?action=edit&post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $id, GDSRDB::get_post_title($id), get_permalink($id)); ?>
 </strong></p>
 <?php
 

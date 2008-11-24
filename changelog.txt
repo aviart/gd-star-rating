@@ -4,7 +4,15 @@
 
 === Version: 1.0.4 / december 1 2008 ===
   * new: debug info included with each rating block
+  * new: articles panel new column to view post or page
+  * new: articles panel shows invalid rated post in yellow
+  * new: fixing articles with invalid rating
+  * edit: rewriten and optimized save votes method
+  * edit: improvements to articles and users panels
+  * fix: rare saving votes bug
   * fix: another bug voting cookie check
+  * fix: comments votes panel totals column
+  * fix: deleting votes from voters log minor bug
 
 === Version: 1.0.3 / november 23 2008 ===
   * new: banned ip's db table

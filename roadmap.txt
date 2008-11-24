@@ -5,12 +5,12 @@
 === 1.0.4 ===
   * customization of bot filter
   * database cleanup tool
-  * comment review improvements
+  * code cleanup
 
 === 1.0.5 ===
   * more phpdoc documentation
-  * debug log to file options
-  * code cleanup
+  * comment review improvements
+  * even more code cleanup
 
 === 1.1.0 ===
   * multi rating support
