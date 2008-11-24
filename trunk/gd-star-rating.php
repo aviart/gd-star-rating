@@ -680,7 +680,14 @@ if (!class_exists('GDStarRating')) {
                 }
             }
         }
-        
+
+        /**
+         * Adds all new settings array elements and remove obsolete ones.
+         *
+         * @param array $old old settings
+         * @param array $new new settings
+         * @return array upgraded array
+         */
         function upgrade_settings($old, $new) {
             foreach ($new as $key => $value) {
                 if (!isset($old[$key])) $old[$key] = $value;
