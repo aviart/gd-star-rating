@@ -47,13 +47,14 @@ class GDSRRender
         return $rater;
     }
     
-    function rating_block_div($rater_stars, $rater_text, $rater_header, $text, $align, $custom_class = "") {
+    function rating_block_div($rater_stars, $rater_text, $rater_header, $text, $align, $custom_class = "", $debug = "") {
         if ($align != 'none')
             $rater_align = ' align="'.$align.'"';
         else
             $rater_align = '';
                   
         $rater = '<div class="ratingblock '.$custom_class.'"'.$rater_align.'>';
+        $rater.= '<div class="gdsrdebug">'.$debug.'</div>';
         if ($rater_header != '')
             $rater.= '<div class="ratingheader">'.$rater_header.'</div>';
         
@@ -69,7 +70,7 @@ class GDSRRender
         return $rater;
     }
 
-    function rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_class = "") {
+    function rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_class = "", $debug = "") {
         if ($align != 'none') {
             $rater_header_align = ' style="text-align: '.$align.';"';
             $rater_align = ' align="'.$align.'"';
@@ -80,6 +81,7 @@ class GDSRRender
         }
                   
         $rater = '<div class="ratingblock '.$custom_class.'"'.$rater_align.'>';
+        $rater.= '<div class="gdsrdebug">'.$debug.'</div>';
         $rater.= '<table cellpadding="0" cellspacing="0">';
         if ($rater_header != "") 
             $rater.= '<tr><td colspan="2"'.$rater_header_align.'>'.$rater_header.'</td></tr>';
@@ -139,7 +141,7 @@ class GDSRRender
         return $rater_text;
     }
     
-    function rating_block($id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $align, $text, $header, $header_text, $custom_css_block = "", $custom_css_text = "", $ajax = false, $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+    function rating_block($id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $align, $text, $header, $header_text, $custom_css_block = "", $custom_css_text = "", $ajax = false, $debug = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
         $template = get_option('gd-star-rating-templates');
         if ($votes == 1) $tense = $template["word_votes_singular"];
         else $tense = $template["word_votes_plural"];
@@ -211,9 +213,9 @@ class GDSRRender
         $rater_header = GDSRRender::rating_header($header, $header_text);
         
         if ($text == "hide" || $text == "top" || $text == "top_hidden" || $text == "bottom" || $text == "bottom_hidden" || $rater_text == '')
-            return GDSRRender::rating_block_div($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block);
+            return GDSRRender::rating_block_div($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block, $debug);
         else
-            return GDSRRender::rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block);
+            return GDSRRender::rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block, $debug);
     }
 }
 
