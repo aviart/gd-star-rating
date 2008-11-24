@@ -1880,7 +1880,7 @@ if (!class_exists('GDStarRating')) {
                     $cookie = $_COOKIE["wp_gdsr_".$type];
                     $cookie = substr($cookie, 7, strlen($cookie) - 7);
                     $cookie_ids = explode('|', $cookie);
-                    if (in_array($post_id, $cookie_ids))
+                    if (in_array($id, $cookie_ids))
                         return false;
                 }
             }
@@ -1983,11 +1983,14 @@ if (!class_exists('GDStarRating')) {
 
         function render_comment($post, $comment, $user) {
             if ($this->o["comments_active"] != 1) return "";
-            $allow_vote = true;
             if ($this->is_bot) return "";
+
+            $dbg_allow = "F";
+            $allow_vote = true;
             if ($this->is_ban && $this->o["ip_filtering"] == 1) {
                 if ($this->o["ip_filtering_restrictive"] == 1) return "";
                 else $allow_vote = false;
+                $dbg_allow = "B";
             }
 
             $rd_unit_width = $this->o["cmm_size"];
@@ -2019,8 +2022,10 @@ if (!class_exists('GDStarRating')) {
             }
 
             if ($allow_vote) {
-                if ($this->o["cmm_author_vote"] == 1 && $rd_user_id == $comment->user_id)
+                if ($this->o["cmm_author_vote"] == 1 && $rd_user_id == $comment->user_id) {
                     $allow_vote = false;
+                    $dbg_allow = "A";
+                }
             }
             
             if ($allow_vote) {
@@ -2029,15 +2034,21 @@ if (!class_exists('GDStarRating')) {
                     ($post_data->rules_comments == "U" && $rd_user_id > 0) || 
                     ($post_data->rules_comments == "V" && $rd_user_id == 0)
                 ) $allow_vote = true;
-                else
+                else {
                     $allow_vote = false;
+                    $dbg_allow = "R_".$post_data->rules_comments;
+                }
             }
 
-            if ($allow_vote) 
+            if ($allow_vote) {
                 $allow_vote = GDSRDatabase::check_vote($rd_comment_id, $rd_user_id, 'comment', $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1);
+                if (!$allow_vote) $dbg_allow = "D";
+            }
 
-            if ($allow_vote)
+            if ($allow_vote) {
                 $allow_vote = $this->check_cookie($rd_comment_id, "comment");
+                if (!$allow_vote) $dbg_allow = "C";
+            }
 
             $votes = 0;
             $score = 0;
@@ -2055,16 +2066,21 @@ if (!class_exists('GDStarRating')) {
                 $score = $comment_data->user_votes;
             }
 
-            return GDSRRender::rating_block($rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $this->o["cmm_align"], $this->o["cmm_text"], $this->o["cmm_header"], $this->o["cmm_header_text"], $this->o["cmm_class_block"], $this->o["cmm_class_text"], $this->o["ajax"]);
+            $debug = $rd_user_id == 0 ? "V" : "U";
+            $debug.= $rd_user_id == $comment->user_id ? "A" : "N";
+            $debug.= ":".$dbg_allow;
+            return GDSRRender::rating_block($rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $this->o["cmm_align"], $this->o["cmm_text"], $this->o["cmm_header"], $this->o["cmm_header_text"], $this->o["cmm_class_block"], $this->o["cmm_class_text"], $this->o["ajax"], $debug);
         }
 
         function render_article($post, $user) {
-            global $wpdb;
-            $allow_vote = true;
             if ($this->is_bot) return "";
+
+            $dbg_allow = "F";
+            $allow_vote = true;
             if ($this->is_ban && $this->o["ip_filtering"] == 1) {
                 if ($this->o["ip_filtering_restrictive"] == 1) return "";
                 else $allow_vote = false;
+                $dbg_allow = "B";
             }
             
             if (is_single()) $this->init_post();
@@ -2087,8 +2103,10 @@ if (!class_exists('GDStarRating')) {
             if ($post_data->rules_articles == "H") return "";
             
             if ($allow_vote) {
-                if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author)
+                if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author) {
                     $allow_vote = false;
+                    $dbg_allow = "A";
+                }
             }
 
             if ($allow_vote) {
@@ -2097,8 +2115,10 @@ if (!class_exists('GDStarRating')) {
                     ($post_data->rules_articles == "U" && $rd_user_id > 0) || 
                     ($post_data->rules_articles == "V" && $rd_user_id == 0)
                 ) $allow_vote = true;
-                else
+                else {
                     $allow_vote = false;
+                    $dbg_allow = "R_".$post_data->rules_articles;
+                }
             }
             
             $remaining = 0;
@@ -2116,14 +2136,19 @@ if (!class_exists('GDStarRating')) {
                 if ($remaining < 1) {
                     GDSRDatabase::lock_post($rd_post_id);
                     $allow_vote = false;
+                    $dbg_allow = "T";
                 }
             }
 
-            if ($allow_vote) 
+            if ($allow_vote) {
                 $allow_vote = GDSRDatabase::check_vote($rd_post_id, $rd_user_id, 'article', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1);
+                if (!$allow_vote) $dbg_allow = "D";
+            }
                 
-            if ($allow_vote)
+            if ($allow_vote) {
                 $allow_vote = $this->check_cookie($rd_post_id);
+                if (!$allow_vote) $dbg_allow = "C";
+            }
             
             $votes = 0;
             $score = 0;
@@ -2140,8 +2165,11 @@ if (!class_exists('GDStarRating')) {
                 $votes = $post_data->user_voters;
                 $score = $post_data->user_votes;
             }
-            
-            $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"], $post_data->expiry_type, $remaining, $deadline);
+
+            $debug = $rd_user_id == 0 ? "V" : "U";
+            $debug.= $rd_user_id == $post->post_author ? "A" : "N";
+            $debug.= ":".$dbg_allow;
+            $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"], $debug, $post_data->expiry_type, $remaining, $deadline);
             return $rating_block;
         }
         // render

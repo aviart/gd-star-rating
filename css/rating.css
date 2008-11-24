@@ -19,6 +19,8 @@
 }
 
 /* rating stars */
+.gdsrdebug { display: none; }
+
 .ratingblock td { vertical-align: middle; }
 
 .raterclear { clear: both; }
