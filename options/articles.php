@@ -146,7 +146,7 @@ function gdsrTimerChange() {
         <tr>
             <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>
             <th scope="col"><?php _e("Title", "gd-star-rating"); ?></th>
-            <th scope="col"></th>
+            <th scope="col" width="16"></th>
             <th scope="col" class="num"><div class="vers"><img src="images/comment-grey-bubble.png" alt="Comments"/></div></th>
             <?php if ($options["moderation_active"] == 1) { ?>
                 <th scope="col"><?php _e("Moderation", "gd-star-rating"); ?></th>

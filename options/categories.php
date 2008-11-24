@@ -81,6 +81,7 @@ function gdsrTimerChange() {
         <tr>
             <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>
             <th scope="col"><?php _e("Category", "gd-star-rating"); ?></th>
+            <th scope="col" width="16"></th>
             <?php if ($options["moderation_active"] == 1) { ?>
                 <th scope="col"><?php _e("Moderation", "gd-star-rating"); ?></th>
             <?php } ?>
@@ -127,11 +128,12 @@ function gdsrTimerChange() {
         echo '<td><strong><a href="./admin.php?page=gd-star-rating-stats&gdsr=articles&cat='.$row->term_id.'">';
         echo str_repeat("― ", $row->depth).$row->name;
         echo '</a></strong></td>';
+        echo '<td><a href="'.get_category_link($row->term_id).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a></td>';
         if ($options["moderation_active"] == 1) 
-            echo '<td>'.$row->moderate_articles.'<br />'.$row->moderate_comments.'</td>';
+            echo '<td nowrap="nowrap">'.$row->moderate_articles.'<br />'.$row->moderate_comments.'</td>';
         if ($options["timer_active"] == 1)
             echo '<td>'.$timer_info.'</td>';
-        echo '<td>'.$row->rules_articles.'<br />'.$row->rules_comments.'</td>';
+        echo '<td nowrap="nowrap">'.$row->rules_articles.'<br />'.$row->rules_comments.'</td>';
         echo '<td>'.$row->count.'</td>';
         echo '</tr>';
         

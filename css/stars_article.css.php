@@ -43,7 +43,7 @@ header('Content-Type: text/css');
   background: url('<?php echo $url; ?>') repeat-x 0px -<?php echo $size * 2; ?>px;
 }
 
-.ratepost .starsbar a:active, .ratepost .starsbar a:visible, .ratepost .starsbar a:hover {
+.ratepost .starsbar a:active, .ratepost .starsbar a:visited, .ratepost .starsbar a:hover {
   text-decoration: none;
   border: 0;
 }
