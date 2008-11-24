@@ -149,6 +149,7 @@ class GDSRRender
         $rater = '';
         if ($votes > 0) $rating2 = $score / $votes;
         else $rating2 = 0;
+        if ($rating2 > $unit_count) $rating2 = $unit_count;
         $rating1 = @number_format($rating2, 1);
         $rating_width = $rating2 * $unit_width;
         $rater_length = $unit_width * $unit_count; 

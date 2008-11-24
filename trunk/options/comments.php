@@ -102,6 +102,10 @@ if (isset($id)) {
     $tr_class = "";
     foreach ($rows as $row) {
         $row = GDSRDB::convert_comment_row($row);
+
+        if ($row->rating_total > $options["cmm_stars"] || $row->rating_visitors > $options["cmm_stars"] || $row->rating_users > $options["cmm_stars"])
+            $tr_class.=" invalidarticle";
+
         echo '<tr id="post-'.$row->comment_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->comment_id.'" type="checkbox"></th>';
         echo '<td>'.$row->comment_content.'</td>';
