@@ -54,10 +54,10 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
     </div>
 </div>
 <br class="clear"/>
+
 <table class="widefat">
     <thead>
         <tr>
-            <!--<th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>-->
             <th scope="col"><?php _e("Name", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("ID", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Email", "gd-star-rating"); ?></th>
@@ -92,7 +92,6 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
         if ($row["comment"]["ips"] > 0) $ip_cmm = $row["comment"]["ips"];
 
         echo '<tr id="post-'.$row["id"].'" class="'.$tr_class.' author-self status-publish" valign="top">';
-        // echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row["id"].'" type="checkbox"></th>';
         echo '<td><strong>'.$usr_url.'</strong></td>';
         echo '<td>'.$row["id"].'</td>';
         echo '<td>'.$row["email"].'</td>';

@@ -17,12 +17,16 @@ $post_id = -1;
 $page_id = 1;
 $filter_date = "";
 $vote_type = "article";
+$sort_column = '';
+$sort_order = '';
 
 if (isset($_GET["pid"])) $post_id = $_GET["pid"];
 if (isset($_GET["vg"])) $select = $_GET["vg"];
 if (isset($_GET["vt"])) $vote_type = $_GET["vt"];
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 if (isset($_GET["date"])) $filter_date = $_GET["date"];
+if (isset($_GET["sc"])) $sort_column = $_GET["sc"];
+if (isset($_GET["so"])) $sort_order = $_GET["so"];
 
 if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     $filter_date = $_POST["gdsr_dates"];
@@ -34,13 +38,15 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
         $ids = "(".join(", ", $gdsr_items).")";
         $delact = $_POST["gdsr_delete_voters"];
         if ($delact == "L") GDSRDatabase::delete_voters_log($ids);
-        if ($delact = "D") GDSRDatabase::delete_voters_full($ids, $vote_type);
+        if ($delact == "D") GDSRDatabase::delete_voters_full($ids, $vote_type);
     }
 }
 
 $url.= "&pid=".$post_id;
 if ($filter_date != '' || $filter_date != '0') $url.= "&date=".$filter_date;
 if ($select != '') $url.= "&vg=".$select;
+$b_url = $url;
+if ($sort_colum != '') $url.= '&sc='.$sort_colum.'&so='.$sort_order;
 
 $sql_count = GDSRDatabase::get_voters_count($post_id, $filter_date);
 $np = $wpdb->get_results($sql_count);
@@ -78,7 +84,7 @@ function checkAll(form) {
 }
 </script>
 
-<div class="wrap"><h2>GD Star Rating: <?php _e("Voters Log", "gd-star-rating"); ?></h2>
+<div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px"><h2>GD Star Rating: <?php _e("Voters Log", "gd-star-rating"); ?></h2>
 <form id="gdsr-comments" method="post" action="">
 <p><strong><?php _e("Vote log for post", "gd-star-rating"); ?>: 
     <?php echo sprintf('<a href="./post.php?action=edit&post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $post_id, GDSRDB::get_post_title($post_id), get_permalink($post_id)); ?>
@@ -103,21 +109,28 @@ function checkAll(form) {
 <br class="clear"/>
 <?php
 
-    $sql = GDSRDatabase::get_visitors($post_id, $vote_type, $filter_date, $select, ($page_id - 1) * $posts_per_page, $posts_per_page);
+    $sql = GDSRDatabase::get_visitors($post_id, $vote_type, $filter_date, $select, ($page_id - 1) * $posts_per_page, $posts_per_page, $sort_column, $sort_order);
     $rows = $wpdb->get_results($sql, OBJECT);
-    
+
+    $col[0] = GDSRHelper::get_column_sort_vars("user_id", $sort_order, $sort_column);
+    $col[1] = GDSRHelper::get_column_sort_vars("user_nicename", $sort_order, $sort_column);
+    $col[2] = GDSRHelper::get_column_sort_vars("vote", $sort_order, $sort_column);
+    $col[3] = GDSRHelper::get_column_sort_vars("voted", $sort_order, $sort_column);
+    $col[4] = GDSRHelper::get_column_sort_vars("ip", $sort_order, $sort_column);
+    $col[5] = GDSRHelper::get_column_sort_vars("user_agent", $sort_order, $sort_column);
+
 ?>
 
 <table class="widefat">
     <thead>
         <tr>
             <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>
-            <th scope="col" nowrap="nowrap"><?php _e("ID", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Name", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Vote", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Vote Date", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("IP", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("User Agent", "gd-star-rating"); ?></th>
+            <th scope="col" nowrap="nowrap"><a href="<?php echo $b_url.$col[0]["url"]; ?>"<?php echo $col[0]["cls"]; ?>><?php _e("ID", "gd-star-rating"); ?></a></th>
+            <th scope="col"><a href="<?php echo $b_url.$col[1]["url"]; ?>"<?php echo $col[1]["cls"]; ?>><?php _e("Name", "gd-star-rating"); ?></a></th>
+            <th scope="col"><a href="<?php echo $b_url.$col[2]["url"]; ?>"<?php echo $col[2]["cls"]; ?>><?php _e("Vote", "gd-star-rating"); ?></a></th>
+            <th scope="col"><a href="<?php echo $b_url.$col[3]["url"]; ?>"<?php echo $col[3]["cls"]; ?>><?php _e("Vote Date", "gd-star-rating"); ?></a></th>
+            <th scope="col"><a href="<?php echo $b_url.$col[4]["url"]; ?>"<?php echo $col[4]["cls"]; ?>><?php _e("IP", "gd-star-rating"); ?></a></th>
+            <th scope="col"><a href="<?php echo $b_url.$col[5]["url"]; ?>"<?php echo $col[5]["cls"]; ?>><?php _e("User Agent", "gd-star-rating"); ?></a></th>
         </tr>
     </thead>
     <tbody>

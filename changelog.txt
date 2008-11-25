@@ -7,6 +7,9 @@
   * new: categories panel new column to view category archive
   * new: articles panel new column to view post or page
   * new: articles panel shows invalid rated post and comments in yellow
+  * new: sorting for voters log panel
+  * new: masked ip filtering
+  * new: range ip filtering
   * edit: rewriten and optimized save votes method
   * edit: improvements to articles and users panels
   * fix: rare saving votes bug

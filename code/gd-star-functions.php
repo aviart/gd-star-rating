@@ -1,7 +1,6 @@
 <?php
 
-class GDSRHelper
-{
+class GDSRHelper {
     function detect_bot($str) {
         $spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
         foreach($spiders as $spider) {
@@ -368,6 +367,23 @@ class GDSRHelper
             }
         }
         return $h;
+    }
+
+    function get_column_sort_vars($column, $sort_order, $sort_column) {
+        $col["url"] = '&sc='.$column;
+        $col["cls"] = '';
+        if ($sort_column == $column) {
+            if ($sort_order == "asc") {
+                $col["url"].= '&so=desc';
+                $col["cls"] = ' class="sort-order-up"';
+            }
+            else {
+                $col["url"].= '&so=asc';
+                $col["cls"] = ' class="sort-order-down"';
+            }
+        }
+        else $col["url"].= '&so=asc';
+        return $col;
     }
 }
 

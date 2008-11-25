@@ -78,7 +78,7 @@ function checkAll(form) {
         <tr>
             <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>
             <th scope="col"><?php _e("IP", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("IP Status", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Status", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Vote Date", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Vote", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Post", "gd-star-rating"); ?></th>
