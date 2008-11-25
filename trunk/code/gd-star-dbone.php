@@ -111,18 +111,26 @@ class GDSRDatabase
         return $wpdb->get_var($sql) > 0;
     }
 
-    // TODO: complete range check
     function check_ip_range($ip) {
         global $wpdb, $table_prefix;
-        $parts = explode(".", $ip);
-        $ip_fix = $parts[0].".".$parts[1].".".$parts[2];
-        $ip_range = $parts[4];
-
-        return false;
+        $sql = sprintf("select count(*) from %sgdsr_ips where `status` = 'B' and `mode` = 'R' and inet_aton(substring_index(ip, '|', 1)) <= inet_aton('%s') and inet_aton(substring_index(ip, '|', -1)) >= inet_aton('%s')", $table_prefix, $ip, $ip);
+        return $wpdb->get_var($sql) > 0;
     }
 
-    // TODO: complete masked check
     function check_ip_mask($ip) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select ip from %sgdsr_ips where `status` = 'B' and `mode` = 'M'", $table_prefix);
+        $ips = $wpdb->get_results($sql);
+        foreach ($ips as $i) {
+            $mask = explode('.', $i->ip);
+            $ip = explode('.', $ip);
+            for ($i = 0; $i < 4; $i++) {
+                if (is_numeric($mask[$i])) {
+                    if ($ip[$i] != $mask[$i]) return false;
+                }
+            }
+            return true;
+        }
         return false;
     }
 
@@ -798,8 +806,15 @@ class GDSRDatabase
         return $sql;
     }
     
-    function get_visitors($post_id, $vote_type = "article", $dates = "", $select = "total", $start = 0, $limit = 20) {
+    function get_visitors($post_id, $vote_type = "article", $dates = "", $select = "total", $start = 0, $limit = 20, $sort_column = '', $sort_order = '') {
         global $table_prefix;
+
+        if ($sort_column == '') $sort_column = 'user_id';
+        if ($sort_order == '') $sort_order = 'asc';
+
+        if ($sort_column == 'ip') $sort_column = 'INET_ATON(p.ip)';
+        else if ($sort_column == 'user_nicename') $sort_column = "u.user_nicename";
+        else $sort_column = "p.".$sort_column;
 
         $where = " where vote_type = '".$vote_type."'";
         $where.= " and p.id = ".$post_id;
@@ -812,8 +827,8 @@ class GDSRDatabase
         if ($select == "visitors")
             $where.= " and user_id = 0";
         
-        $sql = sprintf("SELECT p.*, u.user_nicename FROM %sgdsr_votes_log p LEFT JOIN %susers u ON u.ID = p.user_id%s LIMIT %s, %s",
-            $table_prefix, $table_prefix, $where, $start, $limit
+        $sql = sprintf("SELECT p.*, u.user_nicename FROM %sgdsr_votes_log p LEFT JOIN %susers u ON u.ID = p.user_id%s ORDER BY %s %s LIMIT %s, %s",
+            $table_prefix, $table_prefix, $where, $sort_column, $sort_order, $start, $limit
             );
         
         return $sql;

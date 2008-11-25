@@ -10,6 +10,16 @@
 	background-color: #ffff00;
 }
 
+.sort-order-up {
+	background: url(../gfx/sort_up.png) no-repeat;
+	padding-left: 18px;
+}
+
+.sort-order-down {
+	background: url(../gfx/sort_down.png) no-repeat;
+	padding-left: 18px;
+}
+
 .inputbutton{
 	-moz-border-radius-bottomleft:3px;
 	-moz-border-radius-bottomright:3px;
