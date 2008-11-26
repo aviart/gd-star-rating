@@ -1,22 +1,38 @@
 <?php
 
-class GDSRDBTools
-{
-    function clean_invalid_log() {
+class GDSRDBTools {
+    function clean_invalid_log_articles() {
+        global $table_prefix;
+        $sql = sprintf("delete l from %sgdsr_votes_log l left join %sposts o on o.ID = l.id where l.vote_type = 'article' and o.ID is null", $table_prefix, $table_prefix);
+        $wpdb->query($sql);
+        return $wpdb->affected_rows;
+    }
+
+    function clean_invalid_log_comments() {
+        global $table_prefix;
+        $sql = sprintf("delete l from %sgdsr_votes_log l left join %scomments o on o.comment_ID = l.id where l.vote_type = 'comment' and o.comment_ID is null", $table_prefix, $table_prefix);
+        $wpdb->query($sql);
+        return $wpdb->affected_rows;
+    }
+
+    function clean_invalid_trend_articles() {
     
     }
 
-    function clean_invalid_trend() {
+    function clean_invalid_trend_comments() {
+
+    }
+
+    function clean_dead_articles() {
     
     }
 
-    function clean_dead_posts() {
-    
+    function clean_dead_comments() {
+
     }
 }
 
-class GDSRDB
-{
+class GDSRDB {
     function dump($msg, $object, $mode = "a+") {
         $obj = print_r($object, true);
         $f = fopen("c:/db_two.txt", $mode);
