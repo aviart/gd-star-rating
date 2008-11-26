@@ -112,6 +112,7 @@ if (!class_exists('GDStarRating')) {
             "status" => "Stable",
             "build" => 261,
             "database_cleanup" => '',
+            "database_cleanup_msg" => '',
             "mass_lock" => '',
             "ie_png_fix" => 1,
             "ajax" => 1,
@@ -1502,11 +1503,28 @@ if (!class_exists('GDStarRating')) {
                 $this->g = $this->gfx_scan();
                 update_option('gd-star-rating-gfx', $this->g);
             }
+            $msg = "";
             if (isset($_POST['gdsr_cleanup_tool'])) {
-                if (isset($_POST['gdsr_tools_clean_invalid_log'])) GDSRDBTools::clean_invalid_log();
-                if (isset($_POST['gdsr_tools_clean_invalid_trend'])) GDSRDBTools::clean_invalid_trend();
-                if (isset($_POST['gdsr_tools_clean_old_posts'])) GDSRDBTools::clean_dead_posts();
+                if (isset($_POST['gdsr_tools_clean_invalid_log'])) {
+                    $count = GDSRDBTools::clean_invalid_log_articles();
+                    if ($count > 0) $msg.= $count." articles records from log table removed. ";
+                    $count = GDSRDBTools::clean_invalid_log_comments();
+                    if ($count > 0) $msg.= $count." comments records from log table removed. ";
+                }
+                if (isset($_POST['gdsr_tools_clean_invalid_trend'])) {
+                    $count = GDSRDBTools::clean_invalid_trend_articles();
+                    if ($count > 0) $msg.= $count." articles records from trends log table removed. ";
+                    $count = GDSRDBTools::clean_invalid_trend_comments();
+                    if ($count > 0) $msg.= $count." comments records from trends log table removed. ";
+                }
+                if (isset($_POST['gdsr_tools_clean_old_posts'])) {
+                    GDSRDBTools::clean_dead_articles();
+                    if ($count > 0) $msg.= $count." dead articles records from articles table. ";
+                    GDSRDBTools::clean_dead_comments();
+                    if ($count > 0) $msg.= $count." dead comments records from comments table. ";
+                }
                 $this->o["database_cleanup"] = date("r");
+                $this->o["database_cleanup_msg"] = $msg;
                 update_option('gd-star-rating', $this->o);
             }
             if (isset($_POST['gdsr_post_lock'])) {

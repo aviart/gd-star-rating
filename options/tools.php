@@ -22,7 +22,8 @@
         <br />
         <input disabled="disabled" type="submit" class="inputbutton" value="<?php _e("Clean", "gd-star-rating"); ?>" name="gdsr_cleanup_tool" id="gdsr_cleanup_tool" />
         <div class="gdsr-table-split"></div>
-        Last cleanup was executed on: <strong><?php echo $gdsr_options['database_cleanup']; ?></strong>
+        Last cleanup was executed on: <strong><?php echo $gdsr_options['database_cleanup']; ?></strong><br />
+        Cleanup summary: <strong><?php echo $gdsr_options['database_cleanup_msg']; ?></strong><br />
         </form>
     </td>
 </tr>

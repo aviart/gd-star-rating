@@ -3,11 +3,11 @@
 == Roadmap ==
 
 === 1.0.4 ===
-  * customization of bot filter
   * database cleanup tool
   * code cleanup
 
 === 1.0.5 ===
+  * customization of bot filter
   * more phpdoc documentation
   * comment review improvements
   * even more code cleanup

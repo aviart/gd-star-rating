@@ -3,6 +3,7 @@
 == Change Log ==
 
 === Version: 1.0.4 / november 28 2008 ===
+  * new: tools for database cleanup
   * new: debug info included with each rating block
   * new: categories panel new column to view category archive
   * new: articles panel new column to view post or page
@@ -12,6 +13,7 @@
   * new: range ip filtering
   * edit: rewriten and optimized save votes method
   * edit: improvements to articles and users panels
+  * edit: cleanup tools expanded to include cleanup message
   * fix: rare saving votes bug
   * fix: another bug voting cookie check
   * fix: comments votes panel totals column
