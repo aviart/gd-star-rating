@@ -1518,9 +1518,9 @@ if (!class_exists('GDStarRating')) {
                     if ($count > 0) $msg.= $count." comments records from trends log table removed. ";
                 }
                 if (isset($_POST['gdsr_tools_clean_old_posts'])) {
-                    GDSRDBTools::clean_dead_articles();
+                    $count = GDSRDBTools::clean_dead_articles();
                     if ($count > 0) $msg.= $count." dead articles records from articles table. ";
-                    GDSRDBTools::clean_dead_comments();
+                    $count = GDSRDBTools::clean_dead_comments();
                     if ($count > 0) $msg.= $count." dead comments records from comments table. ";
                 }
                 $this->o["database_cleanup"] = date("r");

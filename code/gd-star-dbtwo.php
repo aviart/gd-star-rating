@@ -2,33 +2,45 @@
 
 class GDSRDBTools {
     function clean_invalid_log_articles() {
-        global $table_prefix;
+        global $wpdb, $table_prefix;
         $sql = sprintf("delete l from %sgdsr_votes_log l left join %sposts o on o.ID = l.id where l.vote_type = 'article' and o.ID is null", $table_prefix, $table_prefix);
         $wpdb->query($sql);
-        return $wpdb->affected_rows;
+        return $wpdb->rows_affected;
     }
 
     function clean_invalid_log_comments() {
-        global $table_prefix;
+        global $wpdb, $table_prefix;
         $sql = sprintf("delete l from %sgdsr_votes_log l left join %scomments o on o.comment_ID = l.id where l.vote_type = 'comment' and o.comment_ID is null", $table_prefix, $table_prefix);
         $wpdb->query($sql);
-        return $wpdb->affected_rows;
+        return $wpdb->rows_affected;
     }
 
     function clean_invalid_trend_articles() {
-    
+        global $wpdb, $table_prefix;
+        $sql = sprintf("delete l from %sgdsr_votes_trend l left join %sposts o on o.ID = l.id where l.vote_type = 'article' and o.ID is null", $table_prefix, $table_prefix);
+        $wpdb->query($sql);
+        return $wpdb->rows_affected;
     }
 
     function clean_invalid_trend_comments() {
-
+        global $wpdb, $table_prefix;
+        $sql = sprintf("delete l from %sgdsr_votes_trend l left join %scomments o on o.comment_ID = l.id where l.vote_type = 'comment' and o.comment_ID is null", $table_prefix, $table_prefix);
+        $wpdb->query($sql);
+        return $wpdb->rows_affected;
     }
 
     function clean_dead_articles() {
-    
+        global $wpdb, $table_prefix;
+        $sql = sprintf("delete l from %sgdsr_data_article l left join %sposts o on o.ID = l.post_id where o.ID is null", $table_prefix, $table_prefix);
+        $wpdb->query($sql);
+        return $wpdb->rows_affected;
     }
 
     function clean_dead_comments() {
-
+        global $wpdb, $table_prefix;
+        $sql = sprintf("delete l from %sgdsr_data_comment l left join %scomments o on o.comment_ID = l.comment_id where o.comment_ID is null", $table_prefix, $table_prefix);
+        $wpdb->query($sql);
+        return $wpdb->rows_affected;
     }
 }
 
