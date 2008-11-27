@@ -246,7 +246,7 @@ function gdsrTimerChange() {
 
     </tbody>
 </table>
-<div class="tablenav" style="height: 9em">
+<div class="tablenav" style="height: 13em">
     <div class="alignleft">
         <div class="panel">
         <table cellpadding="0" cellspacing="0">
@@ -355,9 +355,19 @@ function gdsrTimerChange() {
             </tr>
             </table>
             <?php } ?>
+            <div class="gdsr-table-split"></div>
+            <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 120px; height: 29px;">
+                    <span class="paneltext"><strong><?php _e("Fixing", "gd-star-rating"); ?>:</strong></span>
+                </td>
+            </tr>
+            </table>
         </td>
         <td style="width: 10px;"></td>
-        <td class="gdsr-vertical-line"><input class="button-secondary delete" type="submit" name="gdsr_update" value="<?php _e("Update", "gd-star-rating"); ?>" /></td>
+        <td class="gdsr-vertical-line">
+            <input class="button-secondary delete" type="submit" name="gdsr_update" value="<?php _e("Update", "gd-star-rating"); ?>" />
+        </td>
         </tr>
         </table>
         </div>

@@ -444,3 +444,13 @@ a.rssurl:hover { color: white; }
 	padding-left: 10px;
 	vertical-align: top;
 }
+
+.gdsr-article-options {
+	vertical-align: top;
+    text-align: right;
+}
+
+.fix {
+    color: red;
+    font-weight: bold;
+}
