@@ -48,7 +48,7 @@ if (!class_exists('GDStarRating')) {
         var $is_ban = false;
 
         var $charting = false;
-        var $wpr8 = false;
+        var $wpr8_available = false;
         var $admin_plugin = false;
         var $admin_plugin_page = '';
         var $admin_page;
@@ -75,6 +75,7 @@ if (!class_exists('GDStarRating')) {
         var $i;
         var $g;
         var $s;
+        var $wpr8;
         
         var $post_comment;
 
@@ -199,6 +200,10 @@ if (!class_exists('GDStarRating')) {
             "trend_over" => 30,
             "bayesian_minimal" => 10,
             "bayesian_mean" => 70
+        );
+
+        var $default_wpr8 = array(
+            "web_key" => ""
         );
         
         var $default_import = array(
@@ -711,6 +716,7 @@ if (!class_exists('GDStarRating')) {
             $this->x = get_option('gd-star-rating-templates');
             $this->i = get_option('gd-star-rating-import');
             $this->g = get_option('gd-star-rating-gfx');
+            $this->wpr8 = get_option('gd-star-rating-wpr8');
 
             if ($this->o["build"] < $this->default_options["build"])
                 GDSRDB::upgrade_database();
@@ -747,6 +753,13 @@ if (!class_exists('GDStarRating')) {
             if (!is_object($this->g)) {
                 $this->g = $this->gfx_scan();
                 update_option('gd-star-rating-gfx', $this->g);
+            }
+
+            if (!is_object($this->wpr8))
+                update_option('gd-star-rating-wpr8', $this->default_wpr8);
+            else {
+                $this->wpr8 = $this->upgrade_settings($this->wpr8, $this->default_wpr8);
+                update_option('gd-star-rating-wpr8', $this->wpr8);
             }
 
             $this->t = GDSRDB::get_database_tables();
@@ -826,7 +839,7 @@ if (!class_exists('GDStarRating')) {
             $this->plugin_chart_url = $this->plugin_url."ofc2/";
             
             if (is_dir($this->plugin_wpr8_path))
-                $this->wpr8 = true;
+                $this->wpr8_available = true;
 
             if (is_dir($this->plugin_chart_path))
                 $this->charting = true;
@@ -1467,7 +1480,9 @@ if (!class_exists('GDStarRating')) {
             $gdsr_options = $this->o;
             $gdsr_root_url = $this->plugin_url;
             $gdsr_gfx = $this->g;
-            $gdsr_wpr8 = $this->wpr8;
+            $gdsr_wpr8 = $this->wpr8_available;
+            
+            $wpr8 = $this->wpr8;
             
             include($this->plugin_path.'options/settings.php');
 
