@@ -422,6 +422,11 @@ function gd_mysql_version($full = false) {
         return substr(mysql_get_server_info(), 0, 1); 
 }
 
+function gd_mysql_pre_4_1() {
+    $mysql = str_replace(".", "", substr(mysql_get_server_info(), 0, 3));
+    return $mysql < 41;
+}
+
 function gd_php_version($full = false) {
     if ($full)
         return phpversion();
