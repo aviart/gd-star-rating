@@ -43,10 +43,15 @@ class GDSRRender
             $rater.= '</div>';
         }
         $rater.= '</div></div></div>';
-        $rater.= '<div id="'.$loader_id.'" style="display: none; width:'.$rater_length.'px;" class="ratingloader'.$typecls.'">please wait...</div>';
+        $rater.= GDSRRender::rating_wait($loader_id, $rater_length, $typecls);
         return $rater;
     }
-    
+
+    function rating_wait($loader_id, $rater_length, $typecls) {
+        $loader = '<div id="'.$loader_id.'" style="display: none; width:'.$rater_length.'px;" class="ratingloader'.$typecls.'">please wait...</div>';
+        return $loader;
+    }
+
     function rating_block_div($rater_stars, $rater_text, $rater_header, $text, $align, $custom_class = "", $debug = "") {
         if ($align != 'none')
             $rater_align = ' align="'.$align.'"';

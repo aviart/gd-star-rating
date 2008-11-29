@@ -368,3 +368,10 @@ for ($i = 1; $i < $stars + 1; $i++)
 	width: 30px;
 }
 
+/* loading indicators */
+.loader-circle {
+    background: url(../gfx/loader/circle.gif);
+    background-position: left;
+	padding-left: 18px;
+    background-repeat: no-repeat;
+}

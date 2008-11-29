@@ -5,9 +5,7 @@
 === 1.0.5 ===
   * customization of bot filter
   * more phpdoc documentation
-  * comment review improvements
-  * even more code cleanup
-  * css loading improvements
+  * please wait message customization
 
 === 1.1.0 ===
   * multi rating support
