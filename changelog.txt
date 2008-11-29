@@ -2,6 +2,9 @@
 
 == Change Log ==
 
+=== Version: 1.0.5 / december 2 2008 ===
+  * new: rating css files joined into one
+
 === Version: 1.0.4 / november 28 2008 ===
   * new: tools for database cleanup
   * new: debug info included with each rating block

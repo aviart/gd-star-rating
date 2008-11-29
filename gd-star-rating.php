@@ -930,18 +930,16 @@ if (!class_exists('GDStarRating')) {
             if (is_feed()) return;
            
             $gfx_a = $this->g->find_stars($this->o["style"]);
-            $article = urlencode($this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary);
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_article.css.php?stars='.$article.'" type="text/css" media="screen" />');
+            $css_string = $this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
+            if (is_single()) {
+                $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
+                $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
 
-            $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
-            $comment = urlencode($this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary);
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment.css.php?stars='.$comment.'" type="text/css" media="screen" />');
-
-            $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
-            $comment_review = urlencode($this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary);
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment_review.css.php?stars='.$comment_review.'" type="text/css" media="screen" />');
-            
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/rating.css" type="text/css" media="screen" />');
+                $css_string.= "#".$this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary;
+                $css_string.= "#".$this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
+            }
+            $css_string = urlencode($css_string);
+            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
             echo('<script type="text/javascript">');
             echo('function gdsrWait(rater, loader) { jQuery("#"+rater).css("display", "none"); jQuery("#"+loader).css("display", "block"); }');
             include ($this->plugin_path."code/gd-star-js.php");
