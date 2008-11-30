@@ -5,3 +5,5 @@
 === Version: 1.0.5 / december 2 2008 ===
   * new: rating css files joined into one
   * new: various vote waiting animations
+  * new: basic support for qtranslate
+  * fix: default widget template and word vote/votes

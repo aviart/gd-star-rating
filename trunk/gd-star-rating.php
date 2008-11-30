@@ -234,7 +234,7 @@ if (!class_exists('GDStarRating')) {
             "hide_empty" => 1,
             "hide_noreview" => 0,
             "tpl_header" => '&lt;ul&gt;',
-            "tpl_item" => '&lt;li&gt;&lt;strong&gt;%RATING%&lt;/strong&gt; : &lt;a href=&quot;%PERMALINK%&quot;&gt;%TITLE%&lt;/a&gt; (%VOTES% votes)&lt;/li&gt;',
+            "tpl_item" => '&lt;li&gt;&lt;strong&gt;%RATING%&lt;/strong&gt; : &lt;a href=&quot;%PERMALINK%&quot;&gt;%TITLE%&lt;/a&gt; (%VOTES% %WORD_VOTES%)&lt;/li&gt;',
             "tpl_footer" => '&lt;/ul&gt;',
             "tpl_title_length" => 0,
             "tpl_encoded" => 1,
@@ -1024,7 +1024,7 @@ if (!class_exists('GDStarRating')) {
                 $rt = str_replace('%RATING%', $rating1, $rt);
                 $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
                 $rt = str_replace('%VOTES%', $votes, $rt);
-                $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
                 
                 return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
             }
@@ -1100,7 +1100,7 @@ if (!class_exists('GDStarRating')) {
                 $rt = str_replace('%CMM_RATING%', $rating1, $rt);
                 $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
                 $rt = str_replace('%CMM_VOTES%', $votes, $rt);
-                $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
                 
                 return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
             }
@@ -1292,7 +1292,7 @@ if (!class_exists('GDStarRating')) {
                         break;
                 }
 
-                if ($voters > 1) $row->tense = $this->x["word_votes_plural"];
+                if ($row->voters > 1) $row->tense = $this->x["word_votes_plural"];
                 else $row->tense = $this->x["word_votes_singular"];
 
                 if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = $this->prepare_stars($widget['rating_size'], $this->o["stars"], $widget['rating_stars'], $row->rating);
@@ -1328,11 +1328,11 @@ if (!class_exists('GDStarRating')) {
             $template = str_replace('%VOTES%', $row->voters, $template);
             $template = str_replace('%REVIEW%', $row->review, $template);
             $template = str_replace('%MAX_REVIEW%', $this->o["review_stars"], $template);
-            $template = str_replace('%TITLE%', $row->title, $template);
+            $template = str_replace('%TITLE%', __($row->title), $template);
             $template = str_replace('%PERMALINK%', $row->permalink, $template);
             $template = str_replace('%ID%', $row->post_id, $template);
             $template = str_replace('%COUNT%', $row->counter, $template);
-            $template = str_replace('%WORD_VOTES%', $row->tense, $template);
+            $template = str_replace('%WORD_VOTES%', __($row->tense), $template);
             $template = str_replace('%BAYES_RATING%', $row->bayesian, $template);
             $template = str_replace('%BAYES_STARS%', $row->bayesian_stars, $template);
             $template = str_replace('%STARS%', $row->rating_stars, $template);
@@ -1739,7 +1739,7 @@ if (!class_exists('GDStarRating')) {
             $rt = str_replace('%VOTES%', $data->voters, $rt);
             $rt = str_replace('%COUNT%', $data->count, $rt);
             $rt = str_replace('%BAYES_RATING%', $data->bayes_rating, $rt);
-            $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+            $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
             echo $rt;
         }
         
