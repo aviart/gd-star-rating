@@ -127,7 +127,7 @@ class GDSRRender
                 $rt = str_replace('%RATING%', $rating1, $rt);
                 $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
                 $rt = str_replace('%VOTES%', $votes, $rt);
-                $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
                 $rt = str_replace('%ID%', $id, $rt);
                 $rater_text.= $rt;
                 break;
@@ -137,7 +137,7 @@ class GDSRRender
                 $rt = str_replace('%CMM_RATING%', $rating1, $rt);
                 $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
                 $rt = str_replace('%CMM_VOTES%', $votes, $rt);
-                $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
                 $rt = str_replace('%ID%', $id, $rt);
                 $rater_text.= $rt;
                 break;
@@ -196,7 +196,7 @@ class GDSRRender
                     $rt = str_replace('%RATING%', $rating1, $rt);
                     $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
                     $rt = str_replace('%VOTES%', $votes, $rt);
-                    $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                    $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
                     $rt = str_replace('%ID%', $id, $rt);
                     $rater_text.= $rt;
                     break;
@@ -206,7 +206,7 @@ class GDSRRender
                     $rt = str_replace('%CMM_RATING%', $rating1, $rt);
                     $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
                     $rt = str_replace('%CMM_VOTES%', $votes, $rt);
-                    $rt = str_replace('%WORD_VOTES%', $tense, $rt);
+                    $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
                     $rt = str_replace('%ID%', $id, $rt);
                     $rater_text.= $rt;
                     break;
