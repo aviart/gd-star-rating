@@ -29,18 +29,12 @@ class GDDebug
     * @param string $mode file open mode
     */
     function dump($msg, $object, $mode = "a+") {
-        if ($this->active) {
-            try {
-                $obj = print_r($object, true);
-                $f = fopen($this->log_file, $mode);
-                fwrite ($f, sprintf("[%s] : %s\r\n", current_time('mysql'), $msg));
-                fwrite ($f, "$obj");
-                fwrite ($f, "\r\n");
-                fclose($f);
-            } catch (Exception $e) {
-                $this->active = false;
-            }
-        }
+        $obj = print_r($object, true);
+        $f = fopen($this->log_file, $mode);
+        fwrite ($f, sprintf("[%s] : %s\r\n", current_time('mysql'), $msg));
+        fwrite ($f, "$obj");
+        fwrite ($f, "\r\n");
+        fclose($f);
     }
 }
 
