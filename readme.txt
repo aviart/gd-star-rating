@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://wp.gdragon.info/donate/
-Version: 1.0.4
+Version: 1.0.5
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review
 Requires at least: 2.5.0
 Tested up to: 2.7.0
@@ -33,6 +33,7 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 * Advanced Rating Widget
 * Rating and Voting trend calculations
 * Import data from other rating plugins
+* Support for QTranslate plugin
 * PDF User Guide
 
 = Warning =

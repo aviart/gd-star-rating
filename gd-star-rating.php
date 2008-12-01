@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.0.4
+Version: 1.0.5
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -46,6 +46,7 @@ if (!class_exists('GDStarRating')) {
         
         var $is_bot = false;
         var $is_ban = false;
+        var $use_nonce = true;
 
         var $charting = false;
         var $wpr8_available = false;
@@ -108,10 +109,10 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "version" => "1.0.4",
+            "version" => "1.0.5",
             "date" => "2008.11.28.",
-            "status" => "Stable",
-            "build" => 267,
+            "status" => "Beta",
+            "build" => 272,
             "database_cleanup" => '',
             "database_cleanup_msg" => '',
             "mass_lock" => '',
@@ -199,7 +200,10 @@ if (!class_exists('GDStarRating')) {
             "trend_last" => 1,
             "trend_over" => 30,
             "bayesian_minimal" => 10,
-            "bayesian_mean" => 70
+            "bayesian_mean" => 70,
+            "use_nonce" => 1,
+            "please_wait_article" => '',
+            "please_wait_comment" => ''
         );
 
         var $default_wpr8 = array(
@@ -762,6 +766,7 @@ if (!class_exists('GDStarRating')) {
                 update_option('gd-star-rating-wpr8', $this->wpr8);
             }
 
+            $this->use_nonce = $this->o["use_nonce"] == 1;
             $this->t = GDSRDB::get_database_tables();
         }
 
@@ -939,6 +944,7 @@ if (!class_exists('GDStarRating')) {
                 $css_string.= "#".$this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
             }
             $css_string = urlencode($css_string);
+            $use_nonce = $this->use_nonce;
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
             echo('<script type="text/javascript">');
             echo('function gdsrWait(rater, loader) { jQuery("#"+rater).css("display", "none"); jQuery("#"+loader).css("display", "block"); }');

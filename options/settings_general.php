@@ -68,6 +68,8 @@
 <tr><th scope="row"><?php _e("Plugin Features", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_ajax" id="gdsr_ajax"<?php if ($gdsr_options["ajax"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ajax"><?php _e("AJAX enabled rating.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_use_nonce" id="gdsr_use_nonce"<?php if ($gdsr_options["use_nonce"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ajax"><?php _e("Use Nonce with AJAX for improved security.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
         <input type="checkbox" name="gdsr_ip_filtering" id="gdsr_ip_filtering"<?php if ($gdsr_options["ip_filtering"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ip_filtering"><?php _e("Use banned IP's lists to filter out visitors.", "gd-star-rating"); ?></label>
         <br />

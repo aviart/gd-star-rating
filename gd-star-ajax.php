@@ -5,7 +5,11 @@
     require($wpconfig);
 
     global $gdsr;
-    
+    if ($gdsr->use_nonce) {
+        require_once(ABSPATH.WPINC."/pluggable.php");
+        check_ajax_referer('gdsr_ajax_r8');
+    }
+
     $vote_id = $_GET["vote_id"];
     $vote_value = $_GET["vote_value"];
     $vote_user = $_GET["vote_user"];

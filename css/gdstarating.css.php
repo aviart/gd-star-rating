@@ -369,9 +369,37 @@ for ($i = 1; $i < $stars + 1; $i++)
 }
 
 /* loading indicators */
-.loader-circle {
-    background: url(../gfx/loader/circle.gif);
+.loader {
     background-position: left;
-	padding-left: 18px;
     background-repeat: no-repeat;
+}
+
+.loader.circle {
+    background: url(../gfx/loader/circle.gif);
+	padding-left: 18px;
+}
+
+.loader.bar {
+    background: url(../gfx/loader/bar.gif);
+	padding-left: 216px;
+}
+
+.loader.arrows {
+    background: url(../gfx/loader/arrows.gif);
+	padding-left: 18px;
+}
+
+.loader.flower {
+    background: url(../gfx/loader/flower.gif);
+	padding-left: 18px;
+}
+
+.loader.gauge {
+    background: url(../gfx/loader/gauge.gif);
+	padding-left: 134px;
+}
+
+.loader.squares {
+    background: url(../gfx/loader/squares.gif);
+	padding-left: 48px;
 }
