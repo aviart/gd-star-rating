@@ -10,3 +10,4 @@
   * new: basic support for qtranslate
   * new: global debug into file support
   * fix: default widget template and word vote/votes
+  * fix: widget shortcode rendering with no valid results
