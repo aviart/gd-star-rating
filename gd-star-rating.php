@@ -1144,174 +1144,176 @@ if (!class_exists('GDStarRating')) {
             $sql = GDSRX::get_widget($widget, $this->o["bayesian_minimal"]);
             $all_rows = $wpdb->get_results($sql);
 
-            if ($t_rate || $t_vote) {
-                $idx = array();
+            if (count($all_rows) > 0) {
+                if ($t_rate || $t_vote) {
+                    $idx = array();
+                    foreach ($all_rows as $row) {
+                        switch ($widget["grouping"]) {
+                            case "post":
+                                $id = $row->post_id;
+                                break;
+                            case "category":
+                                $id = $row->term_id;
+                                break;
+                            case "user":
+                                $id = $row->id;
+                                break;
+                        }
+                        $idx[] = $id;
+                    }
+                    $trends = GDSRX::get_trend_calculation(join(", ", $idx), $widget["grouping"], $widget['show'], $this->o["trend_last"], $this->o["trend_over"]);
+                    $trends_calculated = true;
+                }
+                else {
+                    $trends = array();
+                    $trends_calculated = false;
+                }
+
+                $new_rows = array();
                 foreach ($all_rows as $row) {
-                    switch ($widget["grouping"]) {
-                        case "post":
-                            $id = $row->post_id;
-                            break;
-                        case "category":
-                            $id = $row->term_id;
-                            break;
-                        case "user":
-                            $id = $row->id;
-                            break;
+                    if ($widget['show'] == "total") {
+                        $row->votes = $row->user_votes + $row->visitor_votes;
+                        $row->voters = $row->user_voters + $row->visitor_voters;
                     }
-                    $idx[] = $id;
-                }
-                $trends = GDSRX::get_trend_calculation(join(", ", $idx), $widget["grouping"], $widget['show'], $this->o["trend_last"], $this->o["trend_over"]);
-                $trends_calculated = true;
-            }
-            else {
-                $trends = array();
-                $trends_calculated = false;
-            }
+                    if ($widget['show'] == "visitors") {
+                        $row->votes = $row->visitor_votes;
+                        $row->voters = $row->visitor_voters;
+                    }
+                    if ($widget['show'] == "users") {
+                        $row->votes = $row->user_votes ;
+                        $row->voters = $row->user_voters;
+                    }
 
-            $new_rows = array();
-            foreach ($all_rows as $row) {
-                if ($widget['show'] == "total") {
-                    $row->votes = $row->user_votes + $row->visitor_votes;
-                    $row->voters = $row->user_voters + $row->visitor_voters;
-                }                
-                if ($widget['show'] == "visitors") {
-                    $row->votes = $row->visitor_votes;
-                    $row->voters = $row->visitor_voters;
-                }                
-                if ($widget['show'] == "users") {
-                    $row->votes = $row->user_votes ;
-                    $row->voters = $row->user_voters;
+                    if ($row->voters == 0) $row->rating = 0;
+                    else $row->rating = @number_format($row->votes / $row->voters, 1);
+
+                    if ($bayesian_calculated)
+                        $row->bayesian = $this->bayesian_estimate($row->voters, $row->rating);
+                    else
+                        $row->bayesian = -1;
+                    $new_rows[] = $row;
                 }
 
-                if ($row->voters == 0) $row->rating = 0;
-                else $row->rating = @number_format($row->votes / $row->voters, 1);
+                if ($widget["column"] == "bayes" && $bayesian_calculated)
+                    usort($new_rows, "gd_sort_bayesian_".$widget["order"]);
 
-                if ($bayesian_calculated)
-                    $row->bayesian = $this->bayesian_estimate($row->voters, $row->rating);
-                else
-                    $row->bayesian = -1;
-                $new_rows[] = $row;
-            }
-
-            if ($widget["column"] == "bayes" && $bayesian_calculated)
-                usort($new_rows, "gd_sort_bayesian_".$widget["order"]);
-
-            $tr_class = $this->x["table_row_even"];
-            if ($trends_calculated) {
-                $set_rating = $this->g->find_trend($widget["trends_rating_set"]);
-                $set_voting = $this->g->find_trend($widget["trends_voting_set"]);
-            }
-            
-            $all_rows = array();
-            foreach ($new_rows as $row) {
-                $row->table_row_class = $tr_class;
-                if (strlen($row->title) > $widget["tpl_title_length"] - 3 && $widget["tpl_title_length"] > 0)
-                    $row->title = substr($row->title, 0, $widget["tpl_title_length"] - 3)." ...";
-
+                $tr_class = $this->x["table_row_even"];
                 if ($trends_calculated) {
-                    $empty = $this->e;
+                    $set_rating = $this->g->find_trend($widget["trends_rating_set"]);
+                    $set_voting = $this->g->find_trend($widget["trends_voting_set"]);
+                }
+
+                $all_rows = array();
+                foreach ($new_rows as $row) {
+                    $row->table_row_class = $tr_class;
+                    if (strlen($row->title) > $widget["tpl_title_length"] - 3 && $widget["tpl_title_length"] > 0)
+                        $row->title = substr($row->title, 0, $widget["tpl_title_length"] - 3)." ...";
+
+                    if ($trends_calculated) {
+                        $empty = $this->e;
+
+                        switch ($widget["grouping"]) {
+                            case "post":
+                                $id = $row->post_id;
+                                break;
+                            case "category":
+                                $id = $row->term_id;
+                                break;
+                            case "user":
+                                $id = $row->id;
+                                break;
+                        }
+                        $t = $trends[$id];
+                        switch ($widget["trends_rating"]) {
+                            case "img":
+                                $rate_url = $set_rating->get_url();
+                                switch ($t->trend_rating) {
+                                    case -1:
+                                        $image_loc = "bottom";
+                                        break;
+                                    case 0:
+                                        $image_loc = "center";
+                                        break;
+                                    case 1:
+                                        $image_loc = "top";
+                                        break;
+                                }
+                                $image_bg = sprintf('background: url(%s) %s no-repeat; height: %spx; width: %spx;', $rate_url, $image_loc, $set_rating->size, $set_rating->size);
+                                $row->item_trend_rating = sprintf('<img class="trend" src="%s" style="%s" width="%s" height="%s"></img>', $this->e, $image_bg, $set_rating->size, $set_rating->size);
+                                break;
+                            case "txt":
+                                switch ($t->trend_rating) {
+                                    case -1:
+                                        $row->item_trend_rating = $widget["trends_rating_fall"];
+                                        break;
+                                    case 0:
+                                        $row->item_trend_rating = $widget["trends_rating_same"];
+                                        break;
+                                    case 1:
+                                        $row->item_trend_rating = $widget["trends_rating_rise"];
+                                        break;
+                                }
+                                break;
+                        }
+                        switch ($widget["trends_voting"]) {
+                            case "img":
+                                $vote_url = $set_voting->get_url();
+                                switch ($t->trend_voting) {
+                                    case -1:
+                                        $image_loc = "bottom";
+                                        break;
+                                    case 0:
+                                        $image_loc = "center";
+                                        break;
+                                    case 1:
+                                        $image_loc = "top";
+                                        break;
+                                }
+                                $image_bg = sprintf('background: url(%s) %s no-repeat; height: %spx; width: %spx;', $vote_url, $image_loc, $set_voting->size, $set_voting->size);
+                                $row->item_trend_voting = sprintf('<img class="trend" src="%s" style="%s" width="%s" height="%s"></img>', $this->e, $image_bg, $set_voting->size, $set_voting->size);
+                                break;
+                            case "txt":
+                                switch ($t->trend_voting) {
+                                    case -1:
+                                        $row->item_trend_voting = $widget["trends_voting_fall"];
+                                        break;
+                                    case 0:
+                                        $row->item_trend_voting = $widget["trends_voting_same"];
+                                        break;
+                                    case 1:
+                                        $row->item_trend_voting = $widget["trends_voting_rise"];
+                                        break;
+                                }
+                                break;
+                        }
+                    }
 
                     switch ($widget["grouping"]) {
                         case "post":
-                            $id = $row->post_id;
+                            $row->permalink = get_permalink($row->post_id);
                             break;
                         case "category":
-                            $id = $row->term_id;
+                            $row->permalink = get_category_link($row->term_id);
                             break;
                         case "user":
-                            $id = $row->id;
+                            $row->permalink = get_bloginfo('url')."/index.php?author=".$row->id;
                             break;
                     }
-                    $t = $trends[$id];
-                    switch ($widget["trends_rating"]) {
-                        case "img":
-                            $rate_url = $set_rating->get_url();
-                            switch ($t->trend_rating) {
-                                case -1:
-                                    $image_loc = "bottom";
-                                    break;
-                                case 0:
-                                    $image_loc = "center";
-                                    break;
-                                case 1:
-                                    $image_loc = "top";
-                                    break;
-                            }
-                            $image_bg = sprintf('background: url(%s) %s no-repeat; height: %spx; width: %spx;', $rate_url, $image_loc, $set_rating->size, $set_rating->size);
-                            $row->item_trend_rating = sprintf('<img class="trend" src="%s" style="%s" width="%s" height="%s"></img>', $this->e, $image_bg, $set_rating->size, $set_rating->size);
-                            break;
-                        case "txt":
-                            switch ($t->trend_rating) {
-                                case -1:
-                                    $row->item_trend_rating = $widget["trends_rating_fall"];
-                                    break;
-                                case 0:
-                                    $row->item_trend_rating = $widget["trends_rating_same"];
-                                    break;
-                                case 1:
-                                    $row->item_trend_rating = $widget["trends_rating_rise"];
-                                    break;
-                            }
-                            break;
-                    }
-                    switch ($widget["trends_voting"]) {
-                        case "img":
-                            $vote_url = $set_voting->get_url();
-                            switch ($t->trend_voting) {
-                                case -1:
-                                    $image_loc = "bottom";
-                                    break;
-                                case 0:
-                                    $image_loc = "center";
-                                    break;
-                                case 1:
-                                    $image_loc = "top";
-                                    break;
-                            }
-                            $image_bg = sprintf('background: url(%s) %s no-repeat; height: %spx; width: %spx;', $vote_url, $image_loc, $set_voting->size, $set_voting->size);
-                            $row->item_trend_voting = sprintf('<img class="trend" src="%s" style="%s" width="%s" height="%s"></img>', $this->e, $image_bg, $set_voting->size, $set_voting->size);
-                            break;
-                        case "txt":
-                            switch ($t->trend_voting) {
-                                case -1:
-                                    $row->item_trend_voting = $widget["trends_voting_fall"];
-                                    break;
-                                case 0:
-                                    $row->item_trend_voting = $widget["trends_voting_same"];
-                                    break;
-                                case 1:
-                                    $row->item_trend_voting = $widget["trends_voting_rise"];
-                                    break;
-                            }
-                            break;
-                    }
+
+                    if ($row->voters > 1) $row->tense = $this->x["word_votes_plural"];
+                    else $row->tense = $this->x["word_votes_singular"];
+
+                    if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = $this->prepare_stars($widget['rating_size'], $this->o["stars"], $widget['rating_stars'], $row->rating);
+                    if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = $this->prepare_stars($widget['rating_size'], $this->o["stars"], $widget['rating_stars'], $row->bayesian);
+                    if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = $this->prepare_stars($widget['review_size'], $this->o["review_stars"], $widget['review_stars'], $row->review);
+
+                    if ($tr_class == $this->x["table_row_even"])
+                        $tr_class = $this->x["table_row_odd"];
+                    else
+                        $tr_class = $this->x["table_row_even"];
+
+                    $all_rows[] = $row;
                 }
-
-                switch ($widget["grouping"]) {
-                    case "post":
-                        $row->permalink = get_permalink($row->post_id);
-                        break;
-                    case "category":
-                        $row->permalink = get_category_link($row->term_id);
-                        break;
-                    case "user":
-                        $row->permalink = get_bloginfo('url')."/index.php?author=".$row->id;
-                        break;
-                }
-
-                if ($row->voters > 1) $row->tense = $this->x["word_votes_plural"];
-                else $row->tense = $this->x["word_votes_singular"];
-
-                if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = $this->prepare_stars($widget['rating_size'], $this->o["stars"], $widget['rating_stars'], $row->rating);
-                if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = $this->prepare_stars($widget['rating_size'], $this->o["stars"], $widget['rating_stars'], $row->bayesian);
-                if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = $this->prepare_stars($widget['review_size'], $this->o["review_stars"], $widget['review_stars'], $row->review);
-                
-                if ($tr_class == $this->x["table_row_even"])
-                    $tr_class = $this->x["table_row_odd"];
-                else
-                    $tr_class = $this->x["table_row_even"];
-                
-                $all_rows[] = $row;
             }
 
             return $all_rows;
