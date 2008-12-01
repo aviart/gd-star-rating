@@ -8,4 +8,5 @@
   * new: please wait message customization
   * new: various vote waiting animations
   * new: basic support for qtranslate
+  * new: global debug into file support
   * fix: default widget template and word vote/votes

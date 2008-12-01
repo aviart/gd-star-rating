@@ -1,6 +1,20 @@
 <?php
 
     /**
+    * Writes a object dump into the log file
+    *
+    * @param string $msg log entry message
+    * @param mixed $object object to dump
+    * @param string $mode file open mode
+    */
+    function wp_gdsr_dump($msg, $obj, $mode = "a+") {
+        if (STARRATING_DEBUG_ACTIVE) {
+            global $gd_debug;
+            $gd_debug->dump($msg, $obj, $mode);
+        }
+    }
+
+    /**
      * Returns calculated data for avergae blog rating including bayesian estimate mean.
      *
      * @global class $gdsr

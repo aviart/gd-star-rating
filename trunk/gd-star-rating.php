@@ -36,14 +36,13 @@ require_once(dirname(__FILE__)."/code/gd-star-dbmulti.php");
 require_once(dirname(__FILE__)."/code/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gd-star-import.php");
 require_once(dirname(__FILE__)."/gd-star-config.php");
+require_once(dirname(__FILE__)."/gd-star-debug.php");
 
 if (!class_exists('GDStarRating')) {
     /**
     * Main plugin class
     */
     class GDStarRating {
-        var $log_file = "";
-        
         var $is_bot = false;
         var $is_ban = false;
         var $use_nonce = true;
@@ -109,6 +108,7 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
+            "debug_active" => 0,
             "version" => "1.0.5",
             "date" => "2008.11.28.",
             "status" => "Beta",
@@ -767,6 +767,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             $this->use_nonce = $this->o["use_nonce"] == 1;
+            define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"] == 1);
             $this->t = GDSRDB::get_database_tables();
         }
 
@@ -1364,22 +1365,6 @@ if (!class_exists('GDStarRating')) {
             return $data;
         }
         // calculation
-
-        /**
-        * Writes a object dump into the log file
-        * 
-        * @param string $msg log entry message
-        * @param mixed $object object to dump
-        * @param string $mode file open mode
-        */
-        function dump($msg, $object, $mode = "a+") {
-            $obj = print_r($object, true);
-            $f = fopen($this->log_file, $mode);
-            fwrite ($f, sprintf("[%s] : %s\r\n", current_time('mysql'), $msg));
-            fwrite ($f, "$obj");
-            fwrite ($f, "\r\n");
-            fclose($f);
-        }
 
         // menu
         function editbox_comment() {
@@ -2219,7 +2204,8 @@ if (!class_exists('GDStarRating')) {
         // render
     }
 
+    $gd_debug = new GDDebug();
     $gdsr = new GDStarRating();
-    
+
     include(STARRATING_PATH."gd-star-custom.php");
 }
