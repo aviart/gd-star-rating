@@ -129,6 +129,10 @@
         <input type="checkbox" name="gdsr_cookies" id="gdsr_cookies"<?php if ($gdsr_options["cookies"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cookies"><?php _e("Use cookies to prevent duplicate voting.", "gd-star-rating"); ?></label>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Vote Waiting Message", "gd-star-rating"); ?></th>
+    <td>
+    </td>
+</tr>
 <?php if ($gdsr_options["review_active"] == 1) { ?>
 <tr><th scope="row"><?php _e("Review", "gd-star-rating"); ?></th>
     <td>

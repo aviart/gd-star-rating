@@ -2,8 +2,10 @@
 
 == Change Log ==
 
-=== Version: 1.0.5 / december 2 2008 ===
+=== Version: 1.0.5 / december 3 2008 ===
   * new: rating css files joined into one
+  * new: ajax voting nonce security protection
+  * new: please wait message customization
   * new: various vote waiting animations
   * new: basic support for qtranslate
   * fix: default widget template and word vote/votes
