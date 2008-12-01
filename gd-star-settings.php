@@ -13,6 +13,7 @@
         $gdsr_options["admin_setup"] = isset($_POST['gdsr_admin_setup']) ? 1 : 0;
         $gdsr_options["admin_ips"] = isset($_POST['gdsr_admin_ips']) ? 1 : 0;
 
+        $gdsr_options["debug_active"] = isset($_POST['gdsr_debug_active']) ? 1 : 0;
         $gdsr_options["ajax"] = isset($_POST['gdsr_ajax']) ? 1 : 0;
         $gdsr_options["use_nonce"] = isset($_POST['gdsr_use_nonce']) ? 1 : 0;
         $gdsr_options["ip_filtering"] = isset($_POST['gdsr_ip_filtering']) ? 1 : 0;

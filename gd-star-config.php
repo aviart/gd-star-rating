@@ -1,6 +1,13 @@
 <?php
 
+/**
+ * Full path to wp-config file. Only for WordPress 2.6 or newer and only if the location of wp-content folder is changed.
+ */
 define('STARRATING_WPCONFIG', '');
+
+/**
+ * Full path to a text file used to save debug info. File must be writeable.
+ */
 define('STARRATING_LOG_PATH', 'c:/gd_star_rating_log.txt');
 
 function get_wpconfig() {
