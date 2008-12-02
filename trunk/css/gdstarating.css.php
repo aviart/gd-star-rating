@@ -369,37 +369,74 @@ for ($i = 1; $i < $stars + 1; $i++)
 }
 
 /* loading indicators */
-.loader {
-    background-position: left;
-    background-repeat: no-repeat;
+.loader.circle {
+    background: url(../gfx/loader/circle.gif) no-repeat left;
+	padding-left: 18px;
 }
 
-.loader.circle {
-    background: url(../gfx/loader/circle.gif);
-	padding-left: 18px;
+.loader.circle.width {
+    width: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
 }
 
 .loader.bar {
-    background: url(../gfx/loader/bar.gif);
+    background: url(../gfx/loader/bar.gif) no-repeat left;
 	padding-left: 216px;
 }
 
+.loader.bar.width {
+    width: 208px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
+}
+
 .loader.arrows {
-    background: url(../gfx/loader/arrows.gif);
+    background: url(../gfx/loader/arrows.gif) no-repeat left;
 	padding-left: 18px;
+}
+
+.loader.arrows.width {
+    width: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
 }
 
 .loader.flower {
-    background: url(../gfx/loader/flower.gif);
+    background: url(../gfx/loader/flower.gif) no-repeat left;
 	padding-left: 18px;
 }
 
+.loader.flower.width {
+    width: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
+}
+
 .loader.gauge {
-    background: url(../gfx/loader/gauge.gif);
+    background: url(../gfx/loader/gauge.gif) no-repeat left;
 	padding-left: 134px;
 }
 
+.loader.gauge.width {
+    width: 128px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
+}
+
 .loader.squares {
-    background: url(../gfx/loader/squares.gif);
-	padding-left: 48px;
+    background: url(../gfx/loader/squares.gif) no-repeat left;
+	padding-left: 43px;
+}
+
+.loader.squares.width {
+    width: 43px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
 }
