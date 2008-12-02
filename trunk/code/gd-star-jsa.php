@@ -17,7 +17,11 @@ jQuery(".jqloadercomment").change(function() {
     var texts = jQuery("#gdsr_wait_text_comment").val();
     var usetx = jQuery("#gdsr_wait_show_comment").is(':checked');
     var class = jQuery("#gdsr_wait_class_comment").val();
-
+    if (usetx) {
+        texts = '';
+        loadr = loadr + ' width';
+    }
     jQuery("#gdsrwaitpreviewcomment").removeClass();
-    jQuery("#gdsrwaitpreviewcomment").addClass("wait-preview-holder-article loader "+loadr+" "+class);
+    jQuery("#gdsrwaitpreviewcomment").addClass("wait-preview-holder-comment loader "+loadr+" "+class);
+    jQuery("#gdsrwaitpreviewcomment").html(texts);
 });

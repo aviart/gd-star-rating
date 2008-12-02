@@ -1,3 +1,12 @@
+<?php
+
+$default_preview_class = "wait-preview-holder-comment loader ";
+$default_preview_class.= $gdsr_options["wait_loader_comment"]." ";
+if ($gdsr_options["wait_show_comment"] == 1)
+    $default_preview_class.= "width ";
+$default_preview_class.= $gdsr_options["wait_class_comment"];
+
+?>
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Rating", "gd-star-rating"); ?></th>
     <td>
@@ -105,6 +114,33 @@
 </tr>
 <tr><th scope="row"><?php _e("Vote Waiting Message", "gd-star-rating"); ?></th>
     <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Animation Indicator", "gd-star-rating"); ?>:</td>
+                <td width="200"><?php GDSRHelper::render_loaders("gdsr_wait_loader_comment", $gdsr_options["wait_loader_comment"], "jqloadercomment"); ?></td>
+                <td width="10"></td>
+                <td rowspan="3" width="150" valign="top"><?php _e("Preview", "gd-star-rating"); ?>:</td>
+                <td rowspan="3" valign="top">
+                    <div class="wait-preview-article">
+                        <div id="gdsrwaitpreviewcomment" class="<?php echo $default_preview_class; ?>">
+                            <?php if ($gdsr_options["wait_show_comment"] == 0) echo $gdsr_options["wait_text_comment"]; ?>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="150"><?php _e("Text to display", "gd-star-rating"); ?>:</td>
+                <td width="200"><input class="jqloadercomment" type="text" name="gdsr_wait_text_comment" id="gdsr_wait_text_comment" value="<?php echo $gdsr_options["wait_text_comment"]; ?>" style="width: 170px;" /></td>
+                <td width="10"></td>
+            </tr>
+            <tr>
+                <td width="150"><?php _e("Additional CSS Class", "gd-star-rating"); ?>:</td>
+                <td width="200"><input class="jqloadercomment" type="text" name="gdsr_wait_class_comment" id="gdsr_wait_class_comment" value="<?php echo $gdsr_options["wait_class_comment"]; ?>" style="width: 170px;" /></td>
+                <td width="10"></td>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <input class="jqloadercomment" type="checkbox" name="gdsr_wait_show_comment" id="gdsr_wait_show_comment"<?php if ($gdsr_options["wait_show_comment"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_wait_show_comment"><?php _e("Hide text and show only animation image.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <?php if ($gdsr_options["comments_review_active"] == 1) { ?>

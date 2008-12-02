@@ -202,12 +202,12 @@ if (!class_exists('GDStarRating')) {
             "bayesian_minimal" => 10,
             "bayesian_mean" => 70,
             "use_nonce" => 1,
-            "wait_text_article" => '',
-            "wait_loader_article" => '',
+            "wait_text_article" => 'please wait...',
+            "wait_loader_article" => 'flower',
             "wait_show_article" => 0,
             "wait_class_article" => '',
-            "wait_text_comment" => '',
-            "wait_loader_comment" => '',
+            "wait_text_comment" => 'please wait...',
+            "wait_loader_comment" => 'flower',
             "wait_show_comment" => 0,
             "wait_class_comment" => ''
         );

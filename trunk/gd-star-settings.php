@@ -13,6 +13,15 @@
         $gdsr_options["admin_setup"] = isset($_POST['gdsr_admin_setup']) ? 1 : 0;
         $gdsr_options["admin_ips"] = isset($_POST['gdsr_admin_ips']) ? 1 : 0;
 
+        $gdsr_options["wait_show_article"] = isset($_POST['gdsr_wait_show_article']) ? 1 : 0;
+        $gdsr_options["wait_show_comment"] = isset($_POST['gdsr_wait_show_comment']) ? 1 : 0;
+        $gdsr_options["wait_loader_article"] = $_POST['gdsr_wait_loader_article'];
+        $gdsr_options["wait_loader_comment"] = $_POST['gdsr_wait_loader_comment'];
+        $gdsr_options["wait_text_article"] = $_POST['gdsr_wait_text_article'];
+        $gdsr_options["wait_text_comment"] = $_POST['gdsr_wait_text_comment'];
+        $gdsr_options["wait_class_article"] = $_POST['gdsr_wait_class_article'];
+        $gdsr_options["wait_class_comment"] = $_POST['gdsr_wait_class_comment'];
+
         $gdsr_options["debug_active"] = isset($_POST['gdsr_debug_active']) ? 1 : 0;
         $gdsr_options["ajax"] = isset($_POST['gdsr_ajax']) ? 1 : 0;
         $gdsr_options["use_nonce"] = isset($_POST['gdsr_use_nonce']) ? 1 : 0;
