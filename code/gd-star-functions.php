@@ -212,7 +212,21 @@ class GDSRHelper {
 </select>
         <?php
     }
-    
+
+    function render_loaders($name, $selected = 'bar', $cls = 'jqloaderarticle', $width = 180, $extraSel = "") {
+        ?>
+<select class="<?php echo $cls ?>" style="width: <?php echo $width ?>px;" name="<?php echo $name; ?>" id="<?php echo $name; ?>" <?php echo $extraSel; ?>>
+    <option value=""<?php echo $selected == '' ? ' selected="selected"' : ''; ?>><?php _e("No Animation", "gd-star-rating"); ?></option>
+    <option value="arrows"<?php echo $selected == 'arrows' ? ' selected="selected"' : ''; ?>>Arrows [16x16]</option>
+    <option value="bar"<?php echo $selected == 'bar' ? ' selected="selected"' : ''; ?>>Bar [208x13]</option>
+    <option value="circle"<?php echo $selected == 'circle' ? ' selected="selected"' : ''; ?>>Circle [16x16]</option>
+    <option value="flower"<?php echo $selected == 'flower' ? ' selected="selected"' : ''; ?>>Flower [15x15]</option>
+    <option value="gauge"<?php echo $selected == 'gauge' ? ' selected="selected"' : ''; ?>>Gauge [128x15]</option>
+    <option value="squares"<?php echo $selected == 'squares' ? ' selected="selected"' : ''; ?>>Squares [43x11]</option>
+</select>
+        <?php
+    }
+
     function render_placement($name, $selected = 'bottom', $width = 180) {
         ?>
 <select style="width: <?php echo $width ?>px;" name="<?php echo $name; ?>" id="<?php echo $name; ?>">

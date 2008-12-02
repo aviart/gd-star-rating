@@ -202,8 +202,14 @@ if (!class_exists('GDStarRating')) {
             "bayesian_minimal" => 10,
             "bayesian_mean" => 70,
             "use_nonce" => 1,
-            "please_wait_article" => '',
-            "please_wait_comment" => ''
+            "wait_text_article" => '',
+            "wait_loader_article" => '',
+            "wait_show_article" => 0,
+            "wait_class_article" => '',
+            "wait_text_comment" => '',
+            "wait_loader_comment" => '',
+            "wait_show_comment" => 0,
+            "wait_class_comment" => ''
         );
 
         var $default_wpr8 = array(
@@ -582,6 +588,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
             if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
+            if ($this->admin_plugin_page == "settings-page") include(STARRATING_PATH."code/gd-star-jsa.php");
             echo('});</script>');
 
             if ($this->admin_page == "themes.php") echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/widgets.css" type="text/css" media="screen" />');

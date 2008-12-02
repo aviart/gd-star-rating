@@ -131,6 +131,33 @@
 </tr>
 <tr><th scope="row"><?php _e("Vote Waiting Message", "gd-star-rating"); ?></th>
     <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Animation Indicator", "gd-star-rating"); ?>:</td>
+                <td width="200"><?php GDSRHelper::render_loaders("gdsr_wait_loader_article", $gdsr_options["wait_loader_article"]); ?></td>
+                <td width="10"></td>
+                <td rowspan="3" width="150" valign="top"><?php _e("Preview", "gd-star-rating"); ?>:</td>
+                <td rowspan="3" valign="top">
+                    <div class="wait-preview-article">
+                        <div id="gdsrwaitpreviewarticle" class="wait-preview-holder-article loader arrows">
+                        please wait...
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="150"><?php _e("Text to display", "gd-star-rating"); ?>:</td>
+                <td width="200"><input class="jqloaderarticle" type="text" name="gdsr_wait_text_article" id="gdsr_wait_text_article" value="<?php echo $gdsr_options["wait_text_article"]; ?>" style="width: 170px;" /></td>
+                <td width="10"></td>
+            </tr>
+            <tr>
+                <td width="150"><?php _e("Additional CSS Class", "gd-star-rating"); ?>:</td>
+                <td width="200"><input class="jqloaderarticle" type="text" name="gdsr_wait_class_article" id="gdsr_wait_class_article" value="<?php echo $gdsr_options["wait_class_article"]; ?>" style="width: 170px;" /></td>
+                <td width="10"></td>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <input class="jqloaderarticle" type="checkbox" name="gdsr_wait_show_article" id="gdsr_wait_show_article"<?php if ($gdsr_options["wait_show_article"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cookies"><?php _e("Hide text and show only animation image.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <?php if ($gdsr_options["review_active"] == 1) { ?>
