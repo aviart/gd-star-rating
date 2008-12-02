@@ -530,7 +530,7 @@ a.rssurl:hover { color: white; }
 .wait-preview-article, .wait-preview-comment {
     border: 1px solid black;
     height: 46px;
-    width: 300px;
+    width: 330px;
     background-color: white;
 }
 

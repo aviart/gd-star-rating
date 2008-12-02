@@ -1,3 +1,12 @@
+<?php
+
+$default_preview_class = "wait-preview-holder-article loader ";
+$default_preview_class.= $gdsr_options["wait_loader_article"]." ";
+if ($gdsr_options["wait_show_article"] == 1)
+    $default_preview_class.= "width ";
+$default_preview_class.= $gdsr_options["wait_class_article"];
+
+?>
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Rating", "gd-star-rating"); ?></th>
     <td>
@@ -139,8 +148,8 @@
                 <td rowspan="3" width="150" valign="top"><?php _e("Preview", "gd-star-rating"); ?>:</td>
                 <td rowspan="3" valign="top">
                     <div class="wait-preview-article">
-                        <div id="gdsrwaitpreviewarticle" class="wait-preview-holder-article loader arrows">
-                        please wait...
+                        <div id="gdsrwaitpreviewarticle" class="<?php echo $default_preview_class; ?>">
+                            <?php if ($gdsr_options["wait_show_article"] == 0) echo $gdsr_options["wait_text_article"]; ?>
                         </div>
                     </div>
                 </td>
@@ -157,7 +166,7 @@
             </tr>
         </table>
         <div class="gdsr-table-split"></div>
-        <input class="jqloaderarticle" type="checkbox" name="gdsr_wait_show_article" id="gdsr_wait_show_article"<?php if ($gdsr_options["wait_show_article"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cookies"><?php _e("Hide text and show only animation image.", "gd-star-rating"); ?></label>
+        <input class="jqloaderarticle" type="checkbox" name="gdsr_wait_show_article" id="gdsr_wait_show_article"<?php if ($gdsr_options["wait_show_article"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_wait_show_article"><?php _e("Hide text and show only animation image.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <?php if ($gdsr_options["review_active"] == 1) { ?>
