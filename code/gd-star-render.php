@@ -18,7 +18,7 @@ class GDSRRender
         return $rater;
     }
     
-    function rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $id, $user_id, $loader_id, $rater_length, $typecls, $ajax = false) {
+    function rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $id, $user_id, $loader_id, $rater_length, $typecls, $ajax = false, $wait_msg = '') {
         $rater = '<div id="'.$rater_id.'" class="'.$class.'"><div class="starsbar">';
         $rater.= '<div class="outer" align="left"><div id="gdr_vote_'.$id.'" style="width: '.$rating_width.'px;" class="inner"></div>';
         if ($allow_vote) {
@@ -43,12 +43,14 @@ class GDSRRender
             $rater.= '</div>';
         }
         $rater.= '</div></div></div>';
-        $rater.= GDSRRender::rating_wait($loader_id, $rater_length, $typecls);
+        $rater.= GDSRRender::rating_wait($loader_id, $rater_length, $typecls, $wait_msg);
         return $rater;
     }
 
-    function rating_wait($loader_id, $rater_length, $typecls) {
-        $loader = '<div id="'.$loader_id.'" style="display: none; width:'.$rater_length.'px;" class="ratingloader'.$typecls.'">please wait...</div>';
+    function rating_wait($loader_id, $rater_length, $typecls, $wait_msg = '') {
+        $loader = '<div id="'.$loader_id.'" style="display: none; width:'.$rater_length.'px;" class="ratingloader'.$typecls.'">';
+        $loader.= $wait_msg;
+        $loader.= '</div>';
         return $loader;
     }
 
@@ -65,9 +67,9 @@ class GDSRRender
         
         if ($text == 'top' || $text == 'top_hidden')
             $rater.= $rater_text;
-        
+
         $rater.= $rater_stars;
-        
+
         if ($text == 'bottom' || $text == 'top_bottom')
             $rater.= $rater_text;
         
@@ -84,7 +86,7 @@ class GDSRRender
             $rater_header_align = '';
             $rater_align = '';
         }
-                  
+
         $rater = '<div class="ratingblock '.$custom_class.'"'.$rater_align.'>';
         $rater.= '<div class="gdsrdebug">'.$debug.'</div>';
         $rater.= '<table cellpadding="0" cellspacing="0">';
@@ -146,7 +148,7 @@ class GDSRRender
         return $rater_text;
     }
     
-    function rating_block($id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $align, $text, $header, $header_text, $custom_css_block = "", $custom_css_text = "", $ajax = false, $debug = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+    function rating_block($id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $align, $text, $header, $header_text, $custom_css_block = "", $custom_css_text = "", $ajax = false, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
         $template = get_option('gd-star-rating-templates');
         if ($votes == 1) $tense = $template["word_votes_singular"];
         else $tense = $template["word_votes_plural"];
@@ -214,7 +216,7 @@ class GDSRRender
             $rater_text.= '</div>';
         }
         
-        $rater_stars = GDSRRender::rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $id, $user_id, $loader_id, $rater_length, $typecls, $ajax);
+        $rater_stars = GDSRRender::rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $id, $user_id, $loader_id, $rater_length, $typecls, $ajax, $wait_msg);
 
         $rater_header = GDSRRender::rating_header($header, $header_text);
         

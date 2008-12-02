@@ -47,6 +47,8 @@ if (!class_exists('GDStarRating')) {
         var $is_ban = false;
         var $use_nonce = true;
 
+        var $loader_article = "";
+        var $loader_comment = "";
         var $charting = false;
         var $wpr8_available = false;
         var $admin_plugin = false;
@@ -110,9 +112,9 @@ if (!class_exists('GDStarRating')) {
         var $default_options = array(
             "debug_active" => 0,
             "version" => "1.0.5",
-            "date" => "2008.11.28.",
+            "date" => "2008.12.04.",
             "status" => "Beta",
-            "build" => 272,
+            "build" => 279,
             "database_cleanup" => '',
             "database_cleanup_msg" => '',
             "mass_lock" => '',
@@ -873,8 +875,12 @@ if (!class_exists('GDStarRating')) {
                 }
             }
 
-            $this->is_bot = GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT']);
-            $this->is_ban = GDSRHelper::detect_ban();
+            if (!is_admin()) {
+                $this->is_bot = GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT']);
+                $this->is_ban = GDSRHelper::detect_ban();
+                $this->render_wait_article();
+                $this->render_wait_comment();
+            }
 
             if ($this->admin_plugin_page == "settings-page") {
                 $gdsr_options = $this->o;
@@ -1948,6 +1954,28 @@ if (!class_exists('GDStarRating')) {
         // ccookies
 
         // render
+        function render_wait_article() {
+            $cls = "loader ".$this->o["wait_loader_article"]." ";
+            if ($this->o["wait_show_article"] == 1)
+                $cls.= "width ";
+            $cls.= $this->o["wait_class_article"];
+            $div = '<div class="'.$cls.'">';
+            if ($this->o["wait_show_article"] == 0) $div.= $this->o["wait_text_article"];
+            $div.= '</div>';
+            $this->loader_article = $div;
+        }
+
+        function render_wait_comment() {
+            $cls = "loader ".$this->o["wait_loader_comment"]." ";
+            if ($this->o["wait_show_comment"] == 1)
+                $cls.= "width ";
+            $cls.= $this->o["wait_class_comment"];
+            $div = '<div class="'.$cls.'">';
+            if ($this->o["wait_show_comment"] == 0) $div.= $this->o["wait_text_comment"];
+            $div.= '</div>';
+            $this->loader_comment = $div;
+        }
+
         function display_comment($content) {
             global $post, $comment, $userdata;
             
@@ -2107,7 +2135,7 @@ if (!class_exists('GDStarRating')) {
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $comment->user_id ? "A" : "N";
             $debug.= ":".$dbg_allow;
-            return GDSRRender::rating_block($rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $this->o["cmm_align"], $this->o["cmm_text"], $this->o["cmm_header"], $this->o["cmm_header_text"], $this->o["cmm_class_block"], $this->o["cmm_class_text"], $this->o["ajax"], $debug);
+            return GDSRRender::rating_block($rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $this->o["cmm_align"], $this->o["cmm_text"], $this->o["cmm_header"], $this->o["cmm_header_text"], $this->o["cmm_class_block"], $this->o["cmm_class_text"], $this->o["ajax"], $debug, $this->loader_comment);
         }
 
         function render_article($post, $user) {
@@ -2207,7 +2235,7 @@ if (!class_exists('GDStarRating')) {
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow;
-            $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"], $debug, $post_data->expiry_type, $remaining, $deadline);
+            $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
             return $rating_block;
         }
         // render
