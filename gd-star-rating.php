@@ -113,8 +113,8 @@ if (!class_exists('GDStarRating')) {
             "debug_active" => 0,
             "version" => "1.0.5",
             "date" => "2008.12.04.",
-            "status" => "Beta",
-            "build" => 279,
+            "status" => "Stable",
+            "build" => 280,
             "database_cleanup" => '',
             "database_cleanup_msg" => '',
             "mass_lock" => '',
@@ -1960,7 +1960,7 @@ if (!class_exists('GDStarRating')) {
                 $cls.= "width ";
             $cls.= $this->o["wait_class_article"];
             $div = '<div class="'.$cls.'">';
-            if ($this->o["wait_show_article"] == 0) $div.= $this->o["wait_text_article"];
+            if ($this->o["wait_show_article"] == 0) $div.= '<div class="loaderinner">'.__($this->o["wait_text_article"]).'</div>';
             $div.= '</div>';
             $this->loader_article = $div;
         }
@@ -1971,7 +1971,7 @@ if (!class_exists('GDStarRating')) {
                 $cls.= "width ";
             $cls.= $this->o["wait_class_comment"];
             $div = '<div class="'.$cls.'">';
-            if ($this->o["wait_show_comment"] == 0) $div.= $this->o["wait_text_comment"];
+            if ($this->o["wait_show_comment"] == 0) $div.= '<div class="loaderinner">'.__($this->o["wait_text_comment"]).'</div>';
             $div.= '</div>';
             $this->loader_comment = $div;
         }

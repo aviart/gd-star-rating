@@ -360,6 +360,17 @@ for ($i = 1; $i < $stars + 1; $i++)
 }
 
 /* loading indicators */
+.loader {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    height: <?php echo $size; ?>px;
+}
+
+<?php if ($size > 20) { ?>
+.loaderinner { padding-top: <?php echo ($size / 2) - 10; ?>px; }
+<?php } ?>
+
 .loader.circle {
     background: url(../gfx/loader/circle.gif) no-repeat left;
 	padding-left: 18px;
@@ -367,7 +378,6 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.circle.width {
     width: 16px;
-    height: 16px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
@@ -380,7 +390,6 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.bar.width {
     width: 208px;
-    height: 13px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
@@ -393,7 +402,6 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.arrows.width {
     width: 16px;
-    height: 16px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
@@ -406,7 +414,6 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.flower.width {
     width: 15px;
-    height: 15px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
@@ -419,7 +426,6 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.gauge.width {
     width: 128px;
-    height: 15px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
@@ -432,7 +438,6 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.squares.width {
     width: 43px;
-    height: 11px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
