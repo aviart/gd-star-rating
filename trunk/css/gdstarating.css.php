@@ -12,9 +12,6 @@ $stars = $query[2];
 $size = $query[1];
 $type = $query[3];
 $loc = $query[4];
-$text = $size - 3;
-if ($text > 14)
-    $text = 14;
 
 if ($loc == 1)
     $url = "../stars/".$style."/stars".$size.".".$type;
@@ -79,7 +76,7 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .ratingloaderarticle {
     height: <?php echo $size; ?>px;
-    font-size: <?php echo $text; ?>px;
+    font-size: 12px;
     text-align: center;
     vertical-align: middle;
 }
@@ -94,9 +91,6 @@ $stars = $query[2];
 $size = $query[1];
 $type = $query[3];
 $loc = $query[4];
-$text = $size - 3;
-if ($text > 15)
-    $text = 15;
 
 if ($loc == 1)
     $url = "../stars/".$style."/stars".$size.".".$type;
@@ -163,7 +157,7 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .ratingloadercomment {
     height: <?php echo $size; ?>px;
-    font-size: <?php echo $text; ?>px;
+    font-size: 12px;
     text-align: center;
     vertical-align: middle;
 }
@@ -176,9 +170,6 @@ $stars = $query[2];
 $size = $query[1];
 $type = $query[3];
 $loc = $query[4];
-$text = $size - 3;
-if ($text > 15)
-    $text = 15;
 
 if ($loc == 1)
     $url = "../stars/".$style."/stars".$size.".".$type;
@@ -245,7 +236,7 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .ratingloadercomment {
     height: <?php echo $size; ?>px;
-    font-size: <?php echo $text; ?>px;
+    font-size: 12px;
     text-align: center;
     vertical-align: middle;
 }
@@ -376,6 +367,7 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.circle.width {
     width: 16px;
+    height: 16px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
@@ -388,6 +380,7 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.bar.width {
     width: 208px;
+    height: 13px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
@@ -400,6 +393,7 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.arrows.width {
     width: 16px;
+    height: 16px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
@@ -412,6 +406,7 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.flower.width {
     width: 15px;
+    height: 15px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
@@ -424,6 +419,7 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.gauge.width {
     width: 128px;
+    height: 15px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
@@ -436,6 +432,7 @@ for ($i = 1; $i < $stars + 1; $i++)
 
 .loader.squares.width {
     width: 43px;
+    height: 11px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;
