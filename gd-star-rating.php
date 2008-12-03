@@ -2088,7 +2088,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             if ($allow_vote) {
-                if ($this->o["cmm_author_vote"] == 1 && $rd_user_id == $comment->user_id) {
+                if ($this->o["cmm_author_vote"] == 1 && $rd_user_id == $comment->user_id && $rd_user_id > 0) {
                     $allow_vote = false;
                     $dbg_allow = "A";
                 }

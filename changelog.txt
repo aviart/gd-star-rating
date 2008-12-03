@@ -13,3 +13,4 @@
   * edit: helper classes code cleanup
   * fix: default widget template and word vote/votes
   * fix: widget shortcode rendering with no valid results
+  * fix: problem with anonymous comment authors
