@@ -1,7 +1,6 @@
 <?php
 
-class GDSRImport
-{
+class GDSRImport {
     function import_check($import_exists) {
         if ($import_exists) {
             _e("Data not imported.", "gd-star-rating");

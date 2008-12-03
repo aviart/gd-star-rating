@@ -1,7 +1,6 @@
 <?php
 
-class GDgfxLib
-{
+class GDgfxLib {
     var $stars = array();
     var $trend = array();
     var $last_scan = "";
@@ -38,8 +37,7 @@ class GDgfxLib
     }
 }
 
-class GDgfxBase
-{
+class GDgfxBase {
     var $name = "";
     var $folder = "";
     var $type = "png";
@@ -104,8 +102,7 @@ class GDgfxBase
     }
 }
 
-class GDgfxStar extends GDgfxBase
-{
+class GDgfxStar extends GDgfxBase {
     function GDgfxStar($folder, $primary = true) {
         parent::GDgfxBase($folder, $primary);
     }
@@ -115,8 +112,7 @@ class GDgfxStar extends GDgfxBase
     }
 }
 
-class GDgfxTrend extends GDgfxBase
-{
+class GDgfxTrend extends GDgfxBase {
     var $size = 16;
     
     function GDgfxTrend($folder, $primary = true) {

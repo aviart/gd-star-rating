@@ -9,5 +9,7 @@
   * new: various vote waiting animations
   * new: basic support for qtranslate
   * new: global debug into file support
+  * new: setup page confirmations
+  * edit: helper classes code cleanup
   * fix: default widget template and word vote/votes
   * fix: widget shortcode rendering with no valid results
