@@ -9,7 +9,7 @@
     * @param string $mode file open mode
     */
     function wp_gdsr_dump($msg, $obj, $block = "none", $mode = "a+") {
-        if (STARRATING_DEBUG_ACTIVE) {
+        if (STARRATING_DEBUG_ACTIVE == 1) {
             global $gd_debug;
             $gd_debug->dump($msg, $obj, $block, $mode);
         }

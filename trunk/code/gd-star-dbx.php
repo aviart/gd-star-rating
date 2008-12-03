@@ -147,7 +147,7 @@ class GDSRX {
             $where[] = "d.user_voters > ".$min;
         }
         
-        $select.= ", count(*) as count, 0 as rating, 0 as bayes_rating, 0 as max_rating";
+        $select.= ", count(*) as count, 0 as rating, 0 as bayes_rating, 0 as max_rating, 0 as percentage";
         
         if ($widget["select"] != "" && $widget["select"] != "postpage") 
             $where[] = "p.post_type = '".$widget["select"]."'";
