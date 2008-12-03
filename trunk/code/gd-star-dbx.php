@@ -1,7 +1,6 @@
 <?php
 
-class GDSRX
-{
+class GDSRX {
     function get_trend_data($ids, $grouping = "post", $type = "article", $period = "over", $last = 1, $over = 30) {
         global $wpdb, $table_prefix;
         $mysql4_strtodate = "date_add(d.vote_date, interval 0 day)";

@@ -57,15 +57,6 @@ class GDSRDBTools {
 }
 
 class GDSRDB {
-    function dump($msg, $object, $mode = "a+") {
-        $obj = print_r($object, true);
-        $f = fopen("c:/db_two.txt", $mode);
-        fwrite ($f, sprintf("[%s] : %s\r\n", current_time('mysql'), $msg));
-        fwrite ($f, "$obj");
-        fwrite ($f, "\r\n");
-        fclose($f);
-    }
-
     function get_database_tables() {
         global $table_prefix;
         $tables = array(

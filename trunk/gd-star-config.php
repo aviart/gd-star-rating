@@ -10,6 +10,11 @@ define('STARRATING_WPCONFIG', '');
  */
 define('STARRATING_LOG_PATH', 'c:/gd_star_rating_log.txt');
 
+/**
+ * Returns the path to wp-config.php file
+ * 
+ * @return string wp-config.php path
+ */
 function get_wpconfig() {
 	if (STARRATING_WPCONFIG == '') {
 	    $d = 0;

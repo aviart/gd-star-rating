@@ -1,16 +1,6 @@
 <?php
 
-class GDSRDatabase
-{
-    function dump($msg, $object, $mode = "a+") {
-        $obj = print_r($object, true);
-        $f = fopen("c:/db_one.txt", $mode);
-        fwrite ($f, sprintf("[%s] : %s\r\n", current_time('mysql'), $msg));
-        fwrite ($f, "$obj");
-        fwrite ($f, "\r\n");
-        fclose($f);
-    }
-
+class GDSRDatabase {
     function truncate_table($table_name) {
         global $wpdb, $table_prefix;
         $sql = sprintf("TRUNCATE TABLE %s%s", $table_prefix, $table_name);

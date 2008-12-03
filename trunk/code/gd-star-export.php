@@ -1,7 +1,6 @@
 <?php
 
-class GDSERExport
-{
+class GDSERExport {
     function export_users($user_data = "min", $data_export = "article", $get_data = array()) {
         global $table_prefix;
         $columns = array();

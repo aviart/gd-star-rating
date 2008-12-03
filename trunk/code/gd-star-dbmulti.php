@@ -1,15 +1,6 @@
 <?php
 
 class GDSRDBMulti {
-    function dump($msg, $object, $mode = "a+") {
-        $obj = print_r($object, true);
-        $f = fopen("c:/db_multi.txt", $mode);
-        fwrite ($f, sprintf("[%s] : %s\r\n", current_time('mysql'), $msg));
-        fwrite ($f, "$obj");
-        fwrite ($f, "\r\n");
-        fclose($f);
-    }
-
     function get_multis_count() {
         global $wpdb, $table_prefix;
         return $wpdb->get_var(sprintf("select count(*) from %sgdsr_multis", $table_prefix));

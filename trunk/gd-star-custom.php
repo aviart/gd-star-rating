@@ -5,12 +5,13 @@
     *
     * @param string $msg log entry message
     * @param mixed $object object to dump
+    * @param string $block adds start or end dump limiters { none | start | end }
     * @param string $mode file open mode
     */
-    function wp_gdsr_dump($msg, $obj, $mode = "a+") {
+    function wp_gdsr_dump($msg, $obj, $block = "none", $mode = "a+") {
         if (STARRATING_DEBUG_ACTIVE) {
             global $gd_debug;
-            $gd_debug->dump($msg, $obj, $mode);
+            $gd_debug->dump($msg, $obj, $block, $mode);
         }
     }
 
@@ -26,14 +27,31 @@
         global $gdsr;
         return $gdsr->get_blog_rating($select, $show);
     }
-    
+
+    /**
+     * Renders widget-like element based on the $widget settings array
+     *
+     * @global GDStarRating $gdsr main rating class instance
+     * @param array $widget settings to use for rendering
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
     function wp_gdsr_render_widget($widget = array(), $echo = true) {
         global $gdsr;
 
         if ($echo) echo $gdsr->render_articles_widget($widget);
         else return $gdsr->render_articles_widget($widget);
     }
-    
+
+    /**
+     * Renders the rating stars. This function call must be withing the post loop.
+     *
+     * @global object $post post data
+     * @global object $userdata user data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
     function wp_gdsr_render_article($echo = true) {
         global $post, $userdata, $gdsr;
         

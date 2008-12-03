@@ -24,9 +24,14 @@
     }
     
 ?>
+<script>
+    function areYouSure() {
+        return confirm("Are you sure?");
+    }
+</script>
 
 <div class="wrap"><h2>GD Star Rating: <?php _e("Setup", "gd-star-rating"); ?></h2>
-<form method="post">
+<form method="post" onsubmit="return areYouSure()">
     <div id="rightnow">
         <h3 class="reallynow"><span><?php _e("Database Maintenance", "gd-star-rating"); ?>:</span><br class="clear"/></h3>
         <p class="youhave"><?php _e("Use this options to reinstall or uninstall the plugin. This will remove all existing data recorded by the plugin.", "gd-star-rating"); ?></p>

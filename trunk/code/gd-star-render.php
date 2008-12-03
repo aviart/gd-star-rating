@@ -1,7 +1,6 @@
 <?php
 
-class GDSRRender
-{
+class GDSRRender {
     function rating_stars_local($width, $height, $unit_count, $allow_vote = true, $value = 0) {
         $rater = '<input type="hidden" id="gdsr_cmm_review" name="gdsr_cmm_review" value="0" />';
         $rater.= '<div id="gdsr_cmm_stars" class="reviewcmm"><div class="starsbar">';

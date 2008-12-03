@@ -26,15 +26,22 @@ class GDDebug
     *
     * @param string $msg log entry message
     * @param mixed $object object to dump
+    * @param string $block adds start or end dump limiters { none | start | end }
     * @param string $mode file open mode
     */
-    function dump($msg, $object, $mode = "a+") {
-        $obj = print_r($object, true);
-        $f = fopen($this->log_file, $mode);
-        fwrite ($f, sprintf("[%s] : %s\r\n", current_time('mysql'), $msg));
-        fwrite ($f, "$obj");
-        fwrite ($f, "\r\n");
-        fclose($f);
+    function dump($msg, $object, $block = "none", $mode = "a+") {
+        if ($this->active) {
+            $obj = print_r($object, true);
+            $f = fopen($this->log_file, $mode);
+            if ($block == "start")
+                fwrite ($f, "-- DUMP BLOCK STARTED ---------------------------------- \r\n");
+            fwrite ($f, sprintf("[%s] : %s\r\n", current_time('mysql'), $msg));
+            fwrite ($f, "$obj");
+            fwrite ($f, "\r\n");
+            if ($block == "end")
+                fwrite ($f, "-------------------------------------------------------- \r\n");
+            fclose($f);
+        }
     }
 }
 
