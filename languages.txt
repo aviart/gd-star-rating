@@ -3,13 +3,13 @@
 == Languages ==
 
 === English ===
-  * version: 1.0.4
+  * version: 1.0.5
   * author: Milan Petrovic
   * email: milan@gdragon.info
   * web: http://www.gdragon.info/
 
 === Serbian ===
-  * version: 1.0.4
+  * version: 1.0.5
   * author: Milan Petrovic
   * email: milan@gdragon.info
   * web: http://www.gdragon.info/
@@ -20,7 +20,7 @@
   * email: shakaran@gmail.com
 
 === French ===
-  * version: 1.0.4
+  * version: 1.0.5
   * author: k|torz
   * email: vlag@free.fr
   * web: http://blog.lagrandmaison.fr/yop/

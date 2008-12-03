@@ -113,6 +113,10 @@ function gdsrShowHidePreview(gdid, index) {
     <td><strong>%RATING%</strong></td><td> : <?php _e("article rating", "gd-star-rating"); ?></td>
   </tr>
   <tr>
+    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divelemets', '<?php echo $wpnm; ?>')"><?php _e("Elements", "gd-star-rating"); ?></a></strong></td>
+    <td><strong>%PERCENTAGE%</strong></td><td> : <?php _e("article percentage rating", "gd-star-rating"); ?></td>
+  </tr>
+  <tr>
     <td width="100"></td>
     <td><strong>%MAX_RATING%</strong></td><td> : <?php _e("maximum rating value", "gd-star-rating"); ?></td>
   </tr>

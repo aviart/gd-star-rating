@@ -10,7 +10,9 @@
   * new: basic support for qtranslate
   * new: global debug into file support
   * new: setup page confirmations
+  * new: percent value for blog rating wiget
   * edit: helper classes code cleanup
   * fix: default widget template and word vote/votes
   * fix: widget shortcode rendering with no valid results
   * fix: problem with anonymous comment authors
+  * fix: blog rating widget no votes value

@@ -776,7 +776,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             $this->use_nonce = $this->o["use_nonce"] == 1;
-            define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"] == 1);
+            define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"]);
             $this->t = GDSRDB::get_database_tables();
         }
 
@@ -1370,11 +1370,16 @@ if (!class_exists('GDStarRating')) {
 
             $sql = GDSRX::get_totals($widget);
             $data = $wpdb->get_row($sql);
-            
+
             $data->max_rating = $this->o["stars"];
+            if ($data->votes == null) {
+                $data->votes = 0;
+                $data->voters = 0;
+            }
             if ($data->votes > 0) {
                 $data->rating = @number_format($data->votes / $data->voters, 1);
                 $data->bayes_rating = $this->bayesian_estimate($data->voters, $data->rating);
+                $data->percentage = floor((100 / $data->max_rating) * $data->rating);
             }
             
             return $data;
@@ -1737,10 +1742,12 @@ if (!class_exists('GDStarRating')) {
         
         function render_top_widget($widget) {
             $data = $this->prepare_blog_rating($widget);
+
             if ($data->voters == 1) $tense = $this->x["word_votes_singular"];
             else $tense = $this->x["word_votes_plural"];
             $template = html_entity_decode($widget["template"]);
-            $rt = str_replace('%RATING%', $data->rating, $template);
+            $rt = str_replace('%PERCENTAGE%', $data->percentage, $template);
+            $rt = str_replace('%RATING%', $data->rating, $rt);
             $rt = str_replace('%MAX_RATING%', $data->max_rating, $rt);
             $rt = str_replace('%VOTES%', $data->voters, $rt);
             $rt = str_replace('%COUNT%', $data->count, $rt);
