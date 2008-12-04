@@ -361,10 +361,19 @@ class GDSRDatabase {
         $articles = $table_prefix.'gdsr_data_article';
         $moderate = $table_prefix.'gdsr_moderate';
         
-        $post_data = $wpdb->get_row(
-            sprintf("SELECT * FROM %s WHERE post_id = %s", $articles, $id)
-        );
-        
+wp_gdsr_dump("SAVEVOTE_post_id", $id, "start");
+wp_gdsr_dump("SAVEVOTE_user_id", $user);
+wp_gdsr_dump("SAVEVOTE_vote", $vote);
+wp_gdsr_dump("SAVEVOTE_ip", $ip);
+wp_gdsr_dump("SAVEVOTE_user_agent", $ua);
+
+        $sql = sprintf("SELECT * FROM %s WHERE post_id = %s", $articles, $id);
+        $post_data = $wpdb->get_row($sql);
+
+wp_gdsr_dump("SAVEVOTE_post_data_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_post_data_sql_error", $wpdb->last_error);
+wp_gdsr_dump("SAVEVOTE_post_data", $post_data);
+
         if ($post_data->moderate_articles == "N" || ($post_data->moderate_articles == "V" && $user > 0) || ($post_data->moderate_articles == "U" && $user == 0)) {
             GDSRDatabase::add_vote($id, $user, $ip, $ua, $vote);
         }
@@ -372,7 +381,13 @@ class GDSRDatabase {
             $modsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'article', %s, %s, '%s', '%s', '%s')",
                 $moderate, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
             $wpdb->query($modsql);
+
+wp_gdsr_dump("SAVEVOTE_moderate_sql", $modsql);
+wp_gdsr_dump("SAVEVOTE_moderate_sql_error", $wpdb->last_error);
+wp_gdsr_dump("SAVEVOTE_moderate_row_id", $wpdb->insert_id);
+
         }
+wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
     }
     
     function save_vote_comment($id, $user, $ip, $ua, $vote) {
@@ -382,6 +397,12 @@ class GDSRDatabase {
         $articles = $table_prefix.'gdsr_data_article';
         $comments = $table_prefix.'gdsr_data_comment';
         $moderate = $table_prefix.'gdsr_moderate';
+
+wp_gdsr_dump("SAVEVOTE_CMM_comment_id", $id, "start");
+wp_gdsr_dump("SAVEVOTE_CMM_user_id", $user);
+wp_gdsr_dump("SAVEVOTE_CMM_vote", $vote);
+wp_gdsr_dump("SAVEVOTE_CMM_ip", $ip);
+wp_gdsr_dump("SAVEVOTE_CMM_user_agent", $ua);
 
         $post = $wpdb->get_row("select comment_post_ID from $wpdb->comments where comment_ID = ".$id);
         $post_id = $post->comment_post_ID;

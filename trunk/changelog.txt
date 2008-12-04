@@ -12,6 +12,7 @@
   * new: setup page confirmations
   * new: percent value for blog rating wiget
   * edit: helper classes code cleanup
+  * edit: updated readme text file
   * fix: default widget template and word vote/votes
   * fix: widget shortcode rendering with no valid results
   * fix: problem with anonymous comment authors
