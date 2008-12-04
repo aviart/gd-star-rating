@@ -9,6 +9,7 @@
   * new: various vote waiting animations
   * new: basic support for qtranslate
   * new: global debug into file support
+  * new: saving debug info for articles and comment votes
   * new: setup page confirmations
   * new: percent value for blog rating wiget
   * edit: helper classes code cleanup

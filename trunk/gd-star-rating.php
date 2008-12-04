@@ -114,7 +114,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.5",
             "date" => "2008.12.04.",
             "status" => "Stable",
-            "build" => 282,
+            "build" => 288,
             "database_cleanup" => '',
             "database_cleanup_msg" => '',
             "mass_lock" => '',
