@@ -411,7 +411,7 @@ wp_gdsr_dump("SAVEVOTE_CMM_user_agent", $ua);
 
 wp_gdsr_dump("SAVEVOTE_CMM_post_id", $post_id);
 
-        $sql = sprintf("SELECT * FROM %s WHERE post_id = %s", $articles, $id);
+        $sql = sprintf("SELECT * FROM %s WHERE post_id = %s", $articles, $post_id);
         $post_data = $wpdb->get_row($sql);
 
 wp_gdsr_dump("SAVEVOTE_CMM_post_data_sql", $sql);
@@ -792,8 +792,9 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
         else
             $users = ' and m.user_id = '.$user;
 
-        $sql = sprintf("select m.*, u.user_login as username from %s m left join wpdev_users u on u.id = m.user_id where m.id = %s and m.vote_type = '%s'%s order by m.voted desc LIMIT %s, %s",
+        $sql = sprintf("select m.*, u.user_login as username from %s m left join %s u on u.id = m.user_id where m.id = %s and m.vote_type = '%s'%s order by m.voted desc LIMIT %s, %s",
             $table_prefix."gdsr_moderate",
+            $wpdb->users,
             $post_id,
             $vote_type,
             $users,
@@ -815,9 +816,10 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
         else
             $users = ' and m.user_id = '.$user;
 
-        $sql = sprintf("select m.*, u.user_login as username from %s c inner join %s m on m.id = c.comment_ID left join wpdev_users u on u.id = m.user_id where c.comment_post_ID = %s and m.vote_type = 'comment'%s order by m.voted desc LIMIT %s, %s",
+        $sql = sprintf("select m.*, u.user_login as username from %s c inner join %s m on m.id = c.comment_ID left join %s u on u.id = m.user_id where c.comment_post_ID = %s and m.vote_type = 'comment'%s order by m.voted desc LIMIT %s, %s",
             $wpdb->comments,
             $table_prefix."gdsr_moderate",
+            $wpdb->users,
             $post_id,
             $users,
             $start,

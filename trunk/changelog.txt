@@ -18,3 +18,5 @@
   * fix: widget shortcode rendering with no valid results
   * fix: problem with anonymous comment authors
   * fix: blog rating widget no votes value
+  * fix: rare saving comment vote bug
+  * fix: moderation control panel
