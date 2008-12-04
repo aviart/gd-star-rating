@@ -387,7 +387,9 @@ wp_gdsr_dump("SAVEVOTE_moderate_sql_error", $wpdb->last_error);
 wp_gdsr_dump("SAVEVOTE_moderate_row_id", $wpdb->insert_id);
 
         }
+
 wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
+
     }
     
     function save_vote_comment($id, $user, $ip, $ua, $vote) {
@@ -407,10 +409,14 @@ wp_gdsr_dump("SAVEVOTE_CMM_user_agent", $ua);
         $post = $wpdb->get_row("select comment_post_ID from $wpdb->comments where comment_ID = ".$id);
         $post_id = $post->comment_post_ID;
 
-        $post_data = $wpdb->get_row(
-            sprintf("SELECT * FROM %s WHERE post_id = %s", 
-            $articles, $post_id)
-        );
+wp_gdsr_dump("SAVEVOTE_CMM_post_id", $post_id);
+
+        $sql = sprintf("SELECT * FROM %s WHERE post_id = %s", $articles, $id);
+        $post_data = $wpdb->get_row($sql);
+
+wp_gdsr_dump("SAVEVOTE_CMM_post_data_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_CMM_post_data_sql_error", $wpdb->last_error);
+wp_gdsr_dump("SAVEVOTE_CMM_post_data", $post_data);
 
         if ($post_data->moderate_comments == "N" || ($post_data->moderate_comments == "V" && $user > 0) || ($post_data->moderate_comments == "U" && $user == 0)) {
             GDSRDatabase::add_vote_comment($id, $user, $ip, $ua, $vote);
@@ -419,7 +425,15 @@ wp_gdsr_dump("SAVEVOTE_CMM_user_agent", $ua);
             $modsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'comment', %s, %s, '%s', '%s', '%s')",
                 $moderate, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
             $wpdb->query($modsql);
+
+wp_gdsr_dump("SAVEVOTE_CMM_moderate_sql", $modsql);
+wp_gdsr_dump("SAVEVOTE_CMM_moderate_sql_error", $wpdb->last_error);
+wp_gdsr_dump("SAVEVOTE_CMM_moderate_row_id", $wpdb->insert_id);
+
         }
+
+wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
+
     }
     
     function save_comment_review($comment_id, $review) {
@@ -474,6 +488,10 @@ wp_gdsr_dump("SAVEVOTE_CMM_user_agent", $ua);
         $sql_trend = sprintf("SELECT count(*) FROM %s WHERE vote_date = '%s' and vote_type = 'comment' and id = %s", $trend, $trend_date, $id);
         $trend_data = $wpdb->get_var($sql_trend);
 
+wp_gdsr_dump("SAVEVOTE_CMM_trend_check_sql", $sql_trend);
+wp_gdsr_dump("SAVEVOTE_CMM_trend_check_data", $trend_data);
+wp_gdsr_dump("SAVEVOTE_CMM_trend_check_error", $wpdb->last_error);
+
         $trend_added = false;
         if ($trend_data == 0) {
             $trend_added = true;
@@ -487,32 +505,56 @@ wp_gdsr_dump("SAVEVOTE_CMM_user_agent", $ua);
                     $trend, $id, $vote, $trend_date);
                 $wpdb->query($sql);
             }
+
+wp_gdsr_dump("SAVEVOTE_CMM_trend_insert_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_CMM_trend_insert_error", $wpdb->last_error);
+
         }
 
         if ($user > 0) {
             $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE comment_id = %s",
                 $comments, $vote, $id);
             $wpdb->query($sql);
+
+wp_gdsr_dump("SAVEVOTE_CMM_trend_update_user_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_CMM_trend_update_user_error", $wpdb->last_error);
+
             if (!$trend_added) {
                 $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE id = %s and vote_type = 'comment' and vote_date = '%s'",
                     $trend, $vote, $id, $trend_date);
                 $wpdb->query($sql);
+
+wp_gdsr_dump("SAVEVOTE_CMM_trend_update_user_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_CMM_trend_update_user_error", $wpdb->last_error);
+
             }
         }
         else {
             $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE comment_id = %s",
                 $comments, $vote, $id);
             $wpdb->query($sql);
+
+wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_error", $wpdb->last_error);
+
             if (!$trend_added) {
                 $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE id = %s and vote_type = 'comment' and vote_date = '%s'",
                     $trend, $vote, $id, $trend_date);
                 $wpdb->query($sql);
+
+wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_error", $wpdb->last_error);
+
             }
         }
 
         $logsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'comment', %s, %s, '%s', '%s', '%s')",
             $stats, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
         $wpdb->query($logsql);
+
+wp_gdsr_dump("SAVEVOTE_CMM_insert_stats_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_CMM_insert_stats_id", $wpdb->insert_id);
+wp_gdsr_dump("SAVEVOTE_CMM_insert_stats_error", $wpdb->last_error);
     }
     
     function add_vote($id, $user, $ip, $ua, $vote) {
@@ -525,6 +567,10 @@ wp_gdsr_dump("SAVEVOTE_CMM_user_agent", $ua);
 
         $sql_trend = sprintf("SELECT count(*) FROM %s WHERE vote_date = '%s' and vote_type = 'article' and id = %s", $trend, $trend_date, $id);
         $trend_data = $wpdb->get_var($sql_trend);
+
+wp_gdsr_dump("SAVEVOTE_trend_check_sql", $sql_trend);
+wp_gdsr_dump("SAVEVOTE_trend_check_data", $trend_data);
+wp_gdsr_dump("SAVEVOTE_trend_check_error", $wpdb->last_error);
 
         $trend_added = false;
         if ($trend_data == 0) {
@@ -539,32 +585,56 @@ wp_gdsr_dump("SAVEVOTE_CMM_user_agent", $ua);
                         $trend, $id, $vote, $trend_date);
                 $wpdb->query($sql);
             }
+
+wp_gdsr_dump("SAVEVOTE_trend_insert_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_trend_insert_error", $wpdb->last_error);
+
         }
         
         if ($user > 0) {
             $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE post_id = %s",
                 $articles, $vote, $id);
             $wpdb->query($sql);
+
+wp_gdsr_dump("SAVEVOTE_trend_update_user_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_trend_update_user", $wpdb->last_error);
+
             if (!$trend_added) {
                 $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE id = %s and vote_type = 'article' and vote_date = '%s'",
                     $trend, $vote, $id, $trend_date);
                 $wpdb->query($sql);
+
+wp_gdsr_dump("SAVEVOTE_trend_update_user_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_trend_update_user_error", $wpdb->last_error);
+
             }
         }
         else {
             $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE post_id = %s",
                 $articles, $vote, $id);
             $wpdb->query($sql);
+
+wp_gdsr_dump("SAVEVOTE_trend_update_visitor_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_trend_update_visitor_error", $wpdb->last_error);
+
             if (!$trend_added) {
                 $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE id = %s and vote_type = 'article' and vote_date = '%s'",
                     $trend, $vote, $id, $trend_date);
                 $wpdb->query($sql);
             }
+
+wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_error", $wpdb->last_error);
+
         }
         
         $logsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'article', %s, %s, '%s', '%s', '%s')",
             $stats, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
         $wpdb->query($logsql);
+
+wp_gdsr_dump("SAVEVOTE_insert_stats_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_insert_stats_id", $wpdb->insert_id);
+wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
     }
     
     function add_default_vote($post_id, $is_page = '', $review = -1) {
