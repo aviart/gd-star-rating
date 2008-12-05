@@ -421,10 +421,11 @@ function gd_scandir($path) {
 		return scandir($path);
 	}
 	else {
-		$dh  = opendir($path);
+		$dh = opendir($path);
 		while (false !== ($filename = readdir($dh))) {
 			$files[] = $filename;
 		}
+        closedir($dh);
 		return $files;
 	}
 }
