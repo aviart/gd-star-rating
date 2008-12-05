@@ -20,3 +20,4 @@
   * fix: blog rating widget no votes value
   * fix: rare saving comment vote bug
   * fix: moderation control panel
+  * fix: scan dir for php4 not closing the directory resource
