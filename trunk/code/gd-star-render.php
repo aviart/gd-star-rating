@@ -69,7 +69,7 @@ class GDSRRender {
 
         $rater.= $rater_stars;
 
-        if ($text == 'bottom' || $text == 'top_bottom')
+        if ($text == 'bottom' || $text == 'bottom_hidden')
             $rater.= $rater_text;
         
         $rater.= '</div>';
