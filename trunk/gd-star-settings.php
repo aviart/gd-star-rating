@@ -23,6 +23,7 @@
         $gdsr_options["wait_class_comment"] = $_POST['gdsr_wait_class_comment'];
 
         $gdsr_options["debug_active"] = isset($_POST['gdsr_debug_active']) ? 1 : 0;
+        $gdsr_options["debug_inline"] = isset($_POST['gdsr_debug_inline']) ? 1 : 0;
         $gdsr_options["ajax"] = isset($_POST['gdsr_ajax']) ? 1 : 0;
         $gdsr_options["use_nonce"] = isset($_POST['gdsr_use_nonce']) ? 1 : 0;
         $gdsr_options["ip_filtering"] = isset($_POST['gdsr_ip_filtering']) ? 1 : 0;
@@ -41,9 +42,6 @@
         $gdsr_options["save_cookies"] = isset($_POST['gdsr_save_cookies']) ? 1 : 0;
         $gdsr_options["ie_png_fix"] = isset($_POST['gdsr_iepngfix']) ? 1 : 0;
         
-        $gdsr_options["preview_active"] = $_POST['gdsr_preview_stars'];
-        $gdsr_options["preview_trends_active"] = $_POST['gdsr_preview_trends'];
-
         $gdsr_options["integrate_post_edit"] = isset($_POST['gdsr_integrate_post_edit']) ? 1 : 0;
         $gdsr_options["integrate_tinymce"] = isset($_POST['gdsr_integrate_tinymce']) ? 1 : 0;
         $gdsr_options["integrate_comment_edit"] = isset($_POST['gdsr_integrate_comment_edit']) ? 1 : 0;

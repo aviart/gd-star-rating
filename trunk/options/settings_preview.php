@@ -31,30 +31,14 @@ function gdsrStyleSelection(preview) {
     jQuery(gdsrBase+"_gray").attr("src", gdsrImage);
     jQuery(gdsrBase+"_picture").attr("src", gdsrImage);
 }
-
-function gdsrShowHidePreview(what) {
-    var preview = document.getElementById("gdsr-preview-"+what);
-    var message = document.getElementById("gdsr-preview-"+what+"-msg");
-    var hidden = document.getElementById("gdsr_preview_"+what);
-    if (preview.style.display == "block") {
-        preview.style.display = "none";
-        message.style.display = "block";
-        hidden.value = "0";
-    }
-    else {
-        preview.style.display = "block";
-        message.style.display = "none";
-        hidden.value = "1";
-    }
-}
 </script>
 
 <input type="hidden" id="gdsr_preview_stars" name="gdsr_preview_stars" value="<?php echo $gdsr_options["preview_active"]; ?>" />
 <input type="hidden" id="gdsr_preview_trends" name="gdsr_preview_trends" value="<?php echo $gdsr_options["preview_trends_active"]; ?>" />
 
 <table class="form-table"><tbody>
-<tr><th scope="row"><a href="javascript:gdsrShowHidePreview('stars')"><?php _e("Stars", "gd-star-rating"); ?></a></th>
-    <td><div id="gdsr-preview-stars" style="display: <?php echo $gdsr_options["preview_active"] == 1 ? "block" : "none" ?>;">
+<tr><th scope="row"><?php _e("Stars", "gd-star-rating"); ?></th>
+    <td>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td width="150" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Stars", "gd-star-rating"); ?>:</td>
@@ -93,15 +77,10 @@ function gdsrShowHidePreview(what) {
                 </td>
             </tr>
         </table>
-        </div>
-        <div id="gdsr-preview-stars-msg" style="display: <?php echo $gdsr_options["preview_active"] == 1 ? "none" : "block" ?>;">
-            <?php _e("Click on this section header title to show preview panel.", "gd-star-rating"); ?>
-        </div>
     </td>
 </tr>
-<tr><th scope="row"><a href="javascript:gdsrShowHidePreview('trends')"><?php _e("Trends", "gd-star-rating"); ?></a></th>
-    <td><div id="gdsr-preview-trends" style="display: <?php echo $gdsr_options["preview_trends_active"] == 1 ? "block" : "none" ?>;">
-
+<tr><th scope="row"><?php _e("Trends", "gd-star-rating"); ?></th>
+    <td>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td width="150" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Trends", "gd-star-rating"); ?>:</td>
@@ -134,11 +113,6 @@ function gdsrShowHidePreview(what) {
                 </td>
             </tr>
         </table>
-
-        </div>
-        <div id="gdsr-preview-trends-msg" style="display: <?php echo $gdsr_options["preview_trends_active"] == 1 ? "none" : "block" ?>;">
-            <?php _e("Click on this section header title to show preview panel.", "gd-star-rating"); ?>
-        </div>
     </td>
 </tr>
 </tbody></table>

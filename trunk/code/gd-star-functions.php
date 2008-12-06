@@ -117,11 +117,13 @@ class GDSRHelper {
         GDSRHelper::render_stars_select_full($selected);
     }
     
-    function render_stars_select_full($selected = 10, $stars = 20, $start = 1) {
+    function render_stars_select_full($selected = 10, $stars = 20, $start = 1, $prefix = '') {
         for ($i = $start; $i < $stars + 1; $i++) {
             if ($selected == $i) $current = ' selected="selected"';
             else $current = '';
-            echo "\t<option value='".$i."'".$current.">".$i."</option>\r\n";
+            if ($prefix != '') $name = $prefix.': '.$i;
+            else $name = $i;
+            echo "\t<option value='".$i."'".$current.">".$name."</option>\r\n";
         }
     }
     
