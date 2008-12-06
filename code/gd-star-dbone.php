@@ -69,7 +69,7 @@ class GDSRDatabase {
         return $wpdb->get_var($sql);
     }
     
-    function get_user_log($user_id, $vote_type, $start = 0, $limit = 20) {
+    function get_user_log($user_id, $vote_type, $vote_value = 0, $start = 0, $limit = 20) {
         global $wpdb, $table_prefix;
         if ($vote_type == "article") {
             $join = sprintf("%sposts o on o.ID = l.id", $table_prefix); 
@@ -79,16 +79,20 @@ class GDSRDatabase {
             $join = sprintf("%scomments o on o.comment_ID = l.id left join %sposts p on p.ID = o.comment_post_ID", $table_prefix, $table_prefix); 
             $select = "o.comment_content, o.comment_author as author, o.comment_ID as control_id, p.post_title, p.ID as post_id";
         }
-        $sql = sprintf("SELECT 1 as span, l.*, i.status, %s from %sgdsr_votes_log l left join %s left join %sgdsr_ips i on i.ip = l.ip where l.user_id = %s and l.vote_type = '%s' order by l.ip asc, l.voted desc limit %s, %s", 
-                $select, $table_prefix, $join, $table_prefix, $user_id, $vote_type, $start, $limit
+        if ($vote_value > 0) $vote_value = ' and vote = '.$vote_value;
+        else $vote_value = '';
+        $sql = sprintf("SELECT 1 as span, l.*, i.status, %s from %sgdsr_votes_log l left join %s left join %sgdsr_ips i on i.ip = l.ip where l.user_id = %s and l.vote_type = '%s'%s order by l.ip asc, l.voted desc limit %s, %s",
+                $select, $table_prefix, $join, $table_prefix, $user_id, $vote_type, $vote_value, $start, $limit
             );
         return $wpdb->get_results($sql);
     }
 
-    function get_count_user_log($user_id, $vote_type) {
+    function get_count_user_log($user_id, $vote_type, $vote_value = 0) {
         global $wpdb, $table_prefix;
-        $sql = sprintf("SELECT count(*) from %sgdsr_votes_log where user_id = %s and vote_type = '%s'", 
-                $table_prefix, $user_id, $vote_type
+        if ($vote_value > 0) $vote_value = ' and vote = '.$vote_value;
+        else $vote_value = '';
+        $sql = sprintf("SELECT count(*) from %sgdsr_votes_log where user_id = %s and vote_type = '%s'%s",
+                $table_prefix, $user_id, $vote_type, $vote_value
             );
         return $wpdb->get_var($sql);
     }
@@ -873,7 +877,7 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
         return $output;
     }
 
-    function get_voters_count($post_id, $dates = "", $vote_type = "article") {
+    function get_voters_count($post_id, $dates = "", $vote_type = "article", $vote_value = 0) {
         global $table_prefix;
         $where = " where vote_type = '".$vote_type."'";
         $where.= " and id = ".$post_id;
@@ -881,6 +885,8 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
             $where.= " and year(voted) = ".substr($dates, 0, 4);
             $where.= " and month(voted) = ".substr($dates, 4, 2);
         }
+        if ($vote_value > 0)
+            $where.= " and vote = ".$vote_value;
         
         $sql = sprintf("SELECT count(*) as count, user_id = 0 as user FROM %sgdsr_votes_log%s group by (user_id = 0)", 
             $table_prefix, $where
@@ -889,7 +895,7 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
         return $sql;
     }
     
-    function get_visitors($post_id, $vote_type = "article", $dates = "", $select = "total", $start = 0, $limit = 20, $sort_column = '', $sort_order = '') {
+    function get_visitors($post_id, $vote_type = "article", $dates = "", $vote_value = 0, $select = "total", $start = 0, $limit = 20, $sort_column = '', $sort_order = '') {
         global $table_prefix;
 
         if ($sort_column == '') $sort_column = 'user_id';
@@ -909,6 +915,8 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
             $where.= " and user_id > 0";
         if ($select == "visitors")
             $where.= " and user_id = 0";
+        if ($vote_value > 0)
+            $where.= " and vote = ".$vote_value;
         
         $sql = sprintf("SELECT p.*, u.user_nicename FROM %sgdsr_votes_log p LEFT JOIN %susers u ON u.ID = p.user_id%s ORDER BY %s %s LIMIT %s, %s",
             $table_prefix, $table_prefix, $where, $sort_column, $sort_order, $start, $limit

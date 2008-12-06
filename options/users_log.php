@@ -13,10 +13,18 @@ $page_id = 1;
 $user_id = 0;
 $vote_type = "article";
 $user_name = "Visitor";
+$filter_vote = 0;
+
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 if (isset($_GET["ui"])) $user_id = $_GET["ui"];
 if (isset($_GET["vt"])) $vote_type = $_GET["vt"];
 if (isset($_GET["un"])) $user_name = urldecode($_GET["un"]);
+if (isset($_GET["vote"])) $filter_vote = $_GET["vote"];
+
+if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
+    $filter_vote = $_POST["gdsr_vote"];
+    $page_id = 1;
+}
 
 if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $ips = $_POST["gdsr_item"];
@@ -34,15 +42,21 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     }
 }
 
+if ($filter_vote > 0) $url.= "&vote=".$filter_vote;
 $url.= "&ui=".$user_id."&vt=".$vote_type."&un=".$user_name;
 
-$number_posts = GDSRDatabase::get_count_user_log($user_id, $vote_type);
+$number_posts = GDSRDatabase::get_count_user_log($user_id, $vote_type, $filter_vote);
 
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
 
 if ($max_page > 1)
     $pager = GDSRHelper::draw_pager($max_page, $page_id, $url, "pg");
+
+if ($vote_type == "article")
+    $max_stars = $options["stars"];
+else
+    $max_stars = $options["cmm_stars"];
 
 ?>
 
@@ -67,6 +81,11 @@ function checkAll(form) {
 </strong></p>
 <div class="tablenav">
     <div class="alignleft">
+        <select style="width: 100px;" name="gdsr_vote" id="gdsr_vote">
+        <option value="0"<?php if ($filter_vote == 0) echo ' selected="selected"'; ?>><?php _e("All Votes", "gd-star-rating"); ?></option>
+        <?php GDSRHelper::render_stars_select_full($filter_vote, $max_stars, 1, __("Vote", "gd-star-rating")); ?>
+        </select>
+        <input class="button-secondary delete" type="submit" name="gdsr_filter" value="<?php _e("Filter", "gd-star-rating"); ?>" />
     </div>
     <div class="tablenav-pages">
         <?php echo $pager; ?>
@@ -92,7 +111,7 @@ function checkAll(form) {
 
 <?php
 
-    $log = GDSRDatabase::get_user_log($user_id, $vote_type, ($page_id - 1) * $posts_per_page, $posts_per_page);
+    $log = GDSRDatabase::get_user_log($user_id, $vote_type, $filter_vote, ($page_id - 1) * $posts_per_page, $posts_per_page);
     $ips = array();
     $idx = array();
     foreach ($log as $l) {

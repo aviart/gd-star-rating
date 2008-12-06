@@ -2,9 +2,6 @@
 
 == Roadmap ==
 
-=== 1.0.5 ===
-  * please wait message customization
-
 === 1.1.0 ===
   * customization of bot filter
   * multi rating support

@@ -111,10 +111,11 @@ if (!class_exists('GDStarRating')) {
         
         var $default_options = array(
             "debug_active" => 0,
+            "debug_inline" => 1,
             "version" => "1.0.5",
-            "date" => "2008.12.04.",
+            "date" => "2008.12.07.",
             "status" => "Stable",
-            "build" => 288,
+            "build" => 293,
             "database_cleanup" => '',
             "database_cleanup_msg" => '',
             "mass_lock" => '',
@@ -129,8 +130,6 @@ if (!class_exists('GDStarRating')) {
             "integrate_post_edit" => 1,
             "integrate_tinymce" => 1,
             "integrate_comment_edit" => 1,
-            "preview_active" => 1,
-            "preview_trends_active" => 1,
             "moderation_active" => 1,
             "multis_active" => 0,
             "review_active" => 1,
@@ -777,6 +776,7 @@ if (!class_exists('GDStarRating')) {
 
             $this->use_nonce = $this->o["use_nonce"] == 1;
             define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"]);
+            define("STARRATING_VERSION", $this->o["version"].'_'.$this->o["build"]);
             $this->t = GDSRDB::get_database_tables();
         }
 
@@ -2141,7 +2141,7 @@ if (!class_exists('GDStarRating')) {
 
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $comment->user_id ? "A" : "N";
-            $debug.= ":".$dbg_allow;
+            $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
             return GDSRRender::rating_block($rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $this->o["cmm_align"], $this->o["cmm_text"], $this->o["cmm_header"], $this->o["cmm_header_text"], $this->o["cmm_class_block"], $this->o["cmm_class_text"], $this->o["ajax"], $debug, $this->loader_comment);
         }
 
@@ -2241,7 +2241,7 @@ if (!class_exists('GDStarRating')) {
 
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
-            $debug.= ":".$dbg_allow;
+            $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
             $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
             return $rating_block;
         }

@@ -16,6 +16,7 @@ $select = "";
 $post_id = -1;
 $page_id = 1;
 $filter_date = "";
+$filter_vote = 0;
 $vote_type = "article";
 $sort_column = '';
 $sort_order = '';
@@ -25,11 +26,14 @@ if (isset($_GET["vg"])) $select = $_GET["vg"];
 if (isset($_GET["vt"])) $vote_type = $_GET["vt"];
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 if (isset($_GET["date"])) $filter_date = $_GET["date"];
+if (isset($_GET["vote"])) $filter_vote = $_GET["vote"];
 if (isset($_GET["sc"])) $sort_column = $_GET["sc"];
 if (isset($_GET["so"])) $sort_order = $_GET["so"];
 
 if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     $filter_date = $_POST["gdsr_dates"];
+    $filter_vote = $_POST["gdsr_vote"];
+    $page_id = 1;
 }
 
 if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
@@ -44,11 +48,12 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
 
 $url.= "&pid=".$post_id;
 if ($filter_date != '' || $filter_date != '0') $url.= "&date=".$filter_date;
+if ($filter_vote > 0) $url.= "&vote=".$filter_vote;
 if ($select != '') $url.= "&vg=".$select;
 $b_url = $url;
 if ($sort_colum != '') $url.= '&sc='.$sort_colum.'&so='.$sort_order;
 
-$sql_count = GDSRDatabase::get_voters_count($post_id, $filter_date);
+$sql_count = GDSRDatabase::get_voters_count($post_id, $filter_date, $vote_type, $filter_vote);
 $np = $wpdb->get_results($sql_count);
 $number_posts_users = 0;
 $number_posts_visitors = 0;
@@ -68,6 +73,11 @@ if ($max_page * $posts_per_page != $number_posts) $max_page++;
 
 if ($max_page > 1)
     $pager = GDSRHelper::draw_pager($max_page, $page_id, $url, "pg");
+
+if ($vote_type == "article")
+    $max_stars = $options["stars"];
+else
+    $max_stars = $options["cmm_stars"];
 
 ?>
 
@@ -99,7 +109,11 @@ function checkAll(form) {
 ?>
 <div class="tablenav">
     <div class="alignleft">
-<?php GDSRDatabase::get_combo_months($filter_date); ?>
+        <?php GDSRDatabase::get_combo_months($filter_date); ?>
+        <select style="width: 100px;" name="gdsr_vote" id="gdsr_vote">
+        <option value="0"<?php if ($filter_vote == 0) echo ' selected="selected"'; ?>><?php _e("All Votes", "gd-star-rating"); ?></option>
+        <?php GDSRHelper::render_stars_select_full($filter_vote, $max_stars, 1, __("Vote", "gd-star-rating")); ?>
+        </select>
         <input class="button-secondary delete" type="submit" name="gdsr_filter" value="<?php _e("Filter", "gd-star-rating"); ?>" />
     </div>
     <div class="tablenav-pages">
@@ -109,7 +123,7 @@ function checkAll(form) {
 <br class="clear"/>
 <?php
 
-    $sql = GDSRDatabase::get_visitors($post_id, $vote_type, $filter_date, $select, ($page_id - 1) * $posts_per_page, $posts_per_page, $sort_column, $sort_order);
+    $sql = GDSRDatabase::get_visitors($post_id, $vote_type, $filter_date, $filter_vote, $select, ($page_id - 1) * $posts_per_page, $posts_per_page, $sort_column, $sort_order);
     $rows = $wpdb->get_results($sql, OBJECT);
 
     $col[0] = GDSRHelper::get_column_sort_vars("user_id", $sort_order, $sort_column);
