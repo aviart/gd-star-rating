@@ -29,6 +29,8 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
 if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $ips = $_POST["gdsr_item"];
     if (count($ips) > 0) {
+		$filter_vote = 0;
+		$page_id = 1;
         if (isset($_POST["gdsr_ip_ban"])) {
             $all_banned = GDSRDatabase::get_all_banned_ips();
             $banned_ips = array();
