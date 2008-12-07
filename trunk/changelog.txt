@@ -15,7 +15,7 @@
   * new: setup page confirmations
   * new: debug settings tab
   * new: percent value for blog rating wiget
-  * edit: helper classes code cleanup
+  * edit: code cleanup of the helper classes
   * edit: updated readme text file
   * edit: added version to inline debug info
   * edit: removed obsolete preview code and settings
