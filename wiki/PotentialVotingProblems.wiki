@@ -20,3 +20,9 @@ There are some things that can disrupt the plugin's regular functioning. All the
   * *WordPress older than 2.5*: Some people are trying plugin with WordPress 2.3 or even earlier. But, as the readme file says, plugin require WordPress 2.5 minimum.
 
   * *Plugin Settings*: Some voting problems are connected to invalid settings. You should check plugin settings after every update, because I offten update this, add new settings and also remove some of them.
+
+  * *Cookies*: by default plugin is set to use cookies to prevent duplicate voting. And because of that you can't vote twice for the same post. Some people report that as a bug. It's not a bug, check your settings!
+
+= MS Internet Explorer only problems =
+
+  * *Use of BASE tag*: this tag goes into header, and modifies the target and URL for all A tags on the page. If you set target to blank, all links will open in new windows. Each rating star is A tag, and this will cause the problem. Rating will work fine, but a new page will be opened with a JS call, and that will generate error. Remove this BASE tag on your blog if you have such problems. I will try to make some kind of override in future versions.
