@@ -57,27 +57,35 @@
         <br class="clear"/></h3>
         <div class="dashboard-widget-content">
         <?php
-          $rss = fetch_rss('http://wp.gdragon.info/category/plugins/gd-star-rating/feed/');
-          
-          if ( isset($rss->items) && 0 != count($rss->items) )
-          {
-            echo '<ul>';
-            $rss->items = array_slice($rss->items, 0, 3);
-            foreach ($rss->items as $item)
-            {
-            ?>
-              <li><a target="_blank" class="rsswidget" title='' href='<?php echo wp_filter_kses($item['link']); ?>'><?php echo wp_specialchars($item['title']); ?></a><span class="rss-date"><?php echo human_time_diff(strtotime($item['pubdate'], time())); ?></span>
-              <div class="rssSummary"><?php echo '<strong>'.date("F, jS", strtotime($item['pubdate'])).'</strong> - '.$item['description']; ?></div></li>
-            <?php
-            }
-            echo '</ul>';
+
+          if ($options["news_feed_active"] == 1) {
+              $rss = fetch_rss('http://wp.gdragon.info/category/plugins/gd-star-rating/feed/');
+              if (isset($rss->items) && 0 != count($rss->items))
+              {
+                echo '<ul>';
+                $rss->items = array_slice($rss->items, 0, 3);
+                foreach ($rss->items as $item)
+                {
+                ?>
+                  <li><a target="_blank" class="rsswidget" title='' href='<?php echo wp_filter_kses($item['link']); ?>'><?php echo wp_specialchars($item['title']); ?></a><span class="rss-date"><?php echo human_time_diff(strtotime($item['pubdate'], time())); ?></span>
+                  <div class="rssSummary"><?php echo '<strong>'.date("F, jS", strtotime($item['pubdate'])).'</strong> - '.$item['description']; ?></div></li>
+                <?php
+                }
+                echo '</ul>';
+              }
+              else
+              {
+                ?>
+                <p><?php printf(__("An error occured while loading newsfeed. Go to the %sfront page%s to check for updates.", "gd-star-rating"), '<a href="http://wp.gdragon.info/">', '</a>') ?></p>
+                <?php
+              }
           }
-          else
-          {
+          else {
             ?>
-            <p><?php printf(__("An error occured while loading newsfeed. Go to the %sfront page%s to check for updates.", "gd-star-rating"), '<a href="http://wp.gdragon.info/">', '</a>') ?></p>
+            <p><?php _e("Newsfeed update is disabled. You can enable it on settings page.", "gd-star-rating"); ?></p>
             <?php
           }
+
         ?>
         </div>
         </div>
