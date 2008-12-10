@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.0.5
+Version: 1.0.6
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -112,7 +112,7 @@ if (!class_exists('GDStarRating')) {
         var $default_options = array(
             "debug_active" => 0,
             "debug_inline" => 1,
-            "version" => "1.0.5",
+            "version" => "1.0.6",
             "date" => "2008.12.07.",
             "status" => "Stable",
             "build" => 294,
@@ -166,6 +166,7 @@ if (!class_exists('GDStarRating')) {
             "review_class_block" => '',
             "review_class_text" => '',
             "display_comment" => 1,
+            "display_comment_page" => 0,
             "display_posts" => 1,
             "display_pages" => 1,
             "display_home" => 1,
@@ -867,6 +868,10 @@ if (!class_exists('GDStarRating')) {
             define('STARRATING_CHART_PATH', $this->plugin_chart_path);
         }
 
+        function custom_actions($action) {
+            do_action('gdsr_'.$action);
+        }
+
         function init() {
             if (isset($_GET["page"])) {
                 if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
@@ -926,6 +931,7 @@ if (!class_exists('GDStarRating')) {
                     }
                 }
             }
+            $this->custom_actions('init');
         }
 
         function init_post() {
@@ -1989,7 +1995,8 @@ if (!class_exists('GDStarRating')) {
             if ($comment->comment_type == "pingback" && $this->o["display_trackback"] == 0)
                 return $content;
 
-            if (is_single() && !is_admin() && $this->o["display_comment"] == 1)
+            if ((is_single() && !is_admin() && $this->o["display_comment"] == 1) ||
+                (is_page() && !is_admin() && $this->o["display_comment_page"] == 1))
                 $content .= $this->render_comment($post, $comment, $userdata);
             return $content;
         }
@@ -2074,7 +2081,7 @@ if (!class_exists('GDStarRating')) {
 
             if ($this->p)
                 $post_data = $this->p;
-            else if (is_single()) {
+            else if (is_single() || is_page()) {
                 $this->init_post();
                 $post_data = $this->p;
             }
@@ -2156,7 +2163,8 @@ if (!class_exists('GDStarRating')) {
                 $dbg_allow = "B";
             }
             
-            if (is_single()) $this->init_post();
+            if (is_single() || (is_page() && $this->o["display_comment_page"] == 1))
+                $this->init_post();
             
             $rd_unit_width = $this->o["size"];
             $rd_unit_count = $this->o["stars"];

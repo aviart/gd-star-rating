@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://wp.gdragon.info/donate/
-Version: 1.0.5
+Version: 1.0.6
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review
 Requires at least: 2.5.0
 Tested up to: 2.7.0
@@ -85,11 +85,11 @@ Plugin administration consist of 10 panels:
 = Where can I see an example of the plugin? =
 My Wordpress blog has this plugin installed, so you can see it in action there.
 
+= Is there a user guide for this plugin? =
+Yes, there is a PDF file with detailed explanations on over 30 pages. You can download it from official plugin blog.
+
 = I have encountered a bug. How can I determine what the problem is? =
 Plugin has debug into log file feature built in. Information on activating this can be found in user guide.
-
-= Is there a user guide for this plugin?
-Yes, there is a PDF file with detailed explanations on over 30 pages. You can download it from official plugin blog.
 
 == Screenshots ==
 

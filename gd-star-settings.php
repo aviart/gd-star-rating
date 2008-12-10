@@ -35,6 +35,7 @@
         $gdsr_options["display_home"] = isset($_POST['gdsr_home']) ? 1 : 0;
         $gdsr_options["display_search"] = isset($_POST['gdsr_search']) ? 1 : 0;
         $gdsr_options["display_comment"] = isset($_POST['gdsr_dispcomment']) ? 1 : 0;
+        $gdsr_options["display_comment_page"] = isset($_POST['gdsr_dispcomment_pages']) ? 1 : 0;
         $gdsr_options["moderation_active"] = isset($_POST['gdsr_modactive']) ? 1 : 0;
         $gdsr_options["multis_active"] = isset($_POST['gdsr_multis']) ? 1 : 0;
         $gdsr_options["timer_active"] = isset($_POST['gdsr_timer']) ? 1 : 0;
