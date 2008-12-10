@@ -25,9 +25,13 @@ class GDSRDatabase {
             $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and id = %s and ip = '%s'", 
                 $stats, $type, $id, $ip
             );
-        
-        $vote_data = $wpdb->get_row($votes_sql); 
-        
+
+        $vote_data = $wpdb->get_row($votes_sql);
+
+wp_gdsr_dump("CHECKVOTE_sql", $votes_sql);
+wp_gdsr_dump("CHECKVOTE", $vote_data);
+wp_gdsr_dump("CHECKVOTE_count", count($vote_data));
+
         if (count($vote_data) == 0) 
             return true;
         else 
