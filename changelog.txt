@@ -7,6 +7,7 @@
   * new: auto insert rating for comments for pages
   * new: option to disable newsfeed update on the front panel
   * new: starratercustom shortcode
+  * edit: debug check vote methods
 
 === Version: 1.0.5 / december 7 2008 ===
   * new: rating css files joined into one
