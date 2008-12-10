@@ -58,7 +58,33 @@
         if ($echo) echo $gdsr->render_article($post, $userdata);
         else return $gdsr->render_article($post, $userdata);
     }
-    
+
+    /**
+     * Renders the rating stars. This function call must be withing the post loop.
+     *
+     * @global object $post post data
+     * @global object $userdata user data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param array $override paramters for overriding defulat rating block behavior
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_render_article_custom($override = array(), $echo = true) {
+        global $post, $userdata, $gdsr;
+
+        if ($echo) echo $gdsr->render_article($post, $userdata, $override);
+        else return $gdsr->render_article($post, $userdata, $override);
+    }
+
+    /**
+     *
+     * @global object $post post data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param string $cls
+     * @param bool $echo
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
     function wp_gdsr_rating_text_article($cls = "", $echo = true) {
         global $post, $gdsr;
         if ($echo) echo $gdsr->render_rating_text_article($post, $cls);
