@@ -40,6 +40,8 @@
                 </td>
             </tr>
         </table>
+        <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_news_feed_active" id="gdsr_news_feed_active"<?php if ($gdsr_options["news_feed_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_news_feed_active"><?php _e("Update Front page latest news feed.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Administration Panels", "gd-star-rating"); ?></th>

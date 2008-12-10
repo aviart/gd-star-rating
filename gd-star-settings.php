@@ -1,6 +1,8 @@
 <?php 
 
     if ($_POST['gdsr_action'] == 'save') {
+        $gdsr_options["news_feed_active"] = isset($_POST['gdsr_news_feed_active']) ? 1 : 0;
+
         $gdsr_options["admin_width"] = $_POST['gdsr_admin_width'];
         $gdsr_options["admin_rows"] = $_POST['gdsr_admin_rows'];
         $gdsr_options["admin_advanced"] = isset($_POST['gdsr_admin_advanced']) ? 1 : 0;

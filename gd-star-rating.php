@@ -110,12 +110,13 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "debug_active" => 0,
-            "debug_inline" => 1,
             "version" => "1.0.6",
             "date" => "2008.12.07.",
             "status" => "Stable",
             "build" => 294,
+            "news_feed_active" => 1,
+            "debug_active" => 0,
+            "debug_inline" => 1,
             "database_cleanup" => '',
             "database_cleanup_msg" => '',
             "mass_lock" => '',
