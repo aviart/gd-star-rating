@@ -28,22 +28,23 @@
 <form name="StarRating" action="#">
     <div class="tabs">
         <ul>
-            <li id="shortcode_tab" class="current"><span><a href="javascript:mcTabs.displayTab('shortcode_tab','shortcode_panel');" onmousedown="return false;"><?php _e("Shortcode", "gd-star-rating"); ?></a></span></li>
+            <li id="shortcode_tab" class="current"><span><a href="javascript:mcTabs.displayTab('shortcode_tab','shortcode_panel');" onmousedown="return false;"><?php _e("Insert", "gd-star-rating"); ?></a></span></li>
             <li id="general_tab"><span><a href="javascript:mcTabs.displayTab('general_tab','general_panel');" onmousedown="return false;"><?php _e("General", "gd-star-rating"); ?></a></span></li>
             <li id="filter_tab"><span><a href="javascript:mcTabs.displayTab('filter_tab','filter_panel');" onmousedown="return false;"><?php _e("Filter", "gd-star-rating"); ?></a></span></li>
-            <li id="styles_tab"><span><a href="javascript:mcTabs.displayTab('styles_tab','styles_panel');" onmousedown="return false;"><?php _e("Rendering", "gd-star-rating"); ?></a></span></li>
+            <li id="styles_tab"><span><a href="javascript:mcTabs.displayTab('styles_tab','styles_panel');" onmousedown="return false;"><?php _e("Render", "gd-star-rating"); ?></a></span></li>
         </ul>
     </div>
 <div class="panel_wrapper">
 
 <div id="shortcode_panel" class="panel current">
 <fieldset>
-<legend><?php _e("Insert Shortcode", "gd-star-rating"); ?></legend>
+<legend><?php _e("Shortcode", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="3" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrright">
-            <label><select id="srShortcode" name="srShortcode" style="width: 150px">
+            <label><select id="srShortcode" name="srShortcode" style="width: 200px">
                 <option value="starrating">Advanced: StarRating</option>
+                <option value="starrating">Advanced: StarRaterCustom</option>
                 <option value="starrating">--------------------</option>
                 <option value="starreview">Simple: StarReview</option>
                 <option value="starrater">Simple: StarRater</option>

@@ -90,7 +90,8 @@ if (!class_exists('GDStarRating')) {
             "starrating",
 			"starreview",
 			"starrater",
-            "starratingblock"
+            "starratingblock",
+            "starratercustom"
         );
         
         var $default_spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
@@ -113,7 +114,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.6",
             "date" => "2008.12.07.",
             "status" => "Stable",
-            "build" => 294,
+            "build" => 299,
             "news_feed_active" => 1,
             "debug_active" => 0,
             "debug_inline" => 1,
@@ -274,6 +275,12 @@ if (!class_exists('GDStarRating')) {
             "bayesian_calculation" => '0'
         );
         
+        var $default_shortcode_starratercustom = array(
+            'allow_voting' => 0,
+            'rating_header' => 0,
+            'rating_text' => 0
+        );
+
         var $default_shortcode_starrating = array(
             'rows' => 10, 
             'select' => 'postpage', 
@@ -366,6 +373,17 @@ if (!class_exists('GDStarRating')) {
             global $post, $userdata;
             return $this->render_article($post, $userdata);
 		}
+
+        /**
+        * Code for StarRaterCustom shortcode implementation
+        *
+        * @param array $atts
+        */
+        function shortcode_starratercustom($atts = array()) {
+            global $post, $userdata;
+            $override = shortcode_atts($this->default_shortcode_starratercustom, $atts);
+            return $this->render_article($post, $userdata, $override);
+        }
 
         /**
         * Code for StarRatingBlock shortcode implementation
@@ -2153,7 +2171,7 @@ if (!class_exists('GDStarRating')) {
             return GDSRRender::rating_block($rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $this->o["cmm_align"], $this->o["cmm_text"], $this->o["cmm_header"], $this->o["cmm_header_text"], $this->o["cmm_class_block"], $this->o["cmm_class_text"], $this->o["ajax"], $debug, $this->loader_comment);
         }
 
-        function render_article($post, $user) {
+        function render_article($post, $user, $override = array()) {
             if ($this->is_bot) return "";
 
             $dbg_allow = "F";
