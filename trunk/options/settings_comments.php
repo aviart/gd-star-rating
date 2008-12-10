@@ -97,7 +97,11 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
             <tr>
                 <td width="150" valign="top"><?php _e("Auto Insert Rating Code", "gd-star-rating"); ?>:</td>
                 <td valign="top" width="200">
-                    <input type="checkbox" name="gdsr_dispcomment" id="gdsr_dispcomment"<?php if ($gdsr_options["display_comment"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_dispcomment"><?php _e("For comments.", "gd-star-rating"); ?></label>
+                    <input type="checkbox" name="gdsr_dispcomment" id="gdsr_dispcomment"<?php if ($gdsr_options["display_comment"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_dispcomment"><?php _e("For comments for posts.", "gd-star-rating"); ?></label>
+                </td>
+                <td width="10"></td>
+                <td valign="top">
+                    <input type="checkbox" name="gdsr_dispcomment_pages" id="gdsr_dispcomment_pages"<?php if ($gdsr_options["display_comment_page"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_dispcomment_pages"><?php _e("For comments for pages.", "gd-star-rating"); ?></label>
                 </td>
             </tr>
         </table>
