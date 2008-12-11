@@ -16,7 +16,7 @@
     }
 
     /**
-     * Returns calculated data for avergae blog rating including bayesian estimate mean.
+     * Returns calculated data for average blog rating including bayesian estimate mean.
      *
      * @global class $gdsr
      * @param string $select articles to select postpage|post|page

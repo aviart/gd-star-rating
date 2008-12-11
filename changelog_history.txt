@@ -2,12 +2,15 @@
 
 == Change Log ==
 
-=== Version: 1.0.6 / december 11 2008 ===
+=== Version: 1.0.6 / december 14 2008 ===
+  * new: italian translation
+  * new: import from star rating for review plugin
   * new: plugin custom action init (gdsr_init)
   * new: auto insert rating for comments for pages
   * new: option to disable newsfeed update on the front panel
   * new: starratercustom shortcode
   * edit: debug check vote methods
+  * fix: small visual problems
 
 === Version: 1.0.5 / december 7 2008 ===
   * new: rating css files joined into one
