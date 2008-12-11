@@ -2,24 +2,29 @@
 #labels Featured
 
 === English ===
-  * version: 1.0.2
+  * version: 1.0.5
   * author: Milan Petrovic
   * email: milan@gdragon.info
   * web: http://www.gdragon.info/
 
 === Serbian ===
-  * version: 1.0.2
+  * version: 1.0.5
   * author: Milan Petrovic
   * email: milan@gdragon.info
   * web: http://www.gdragon.info/
 
 === Spanish ===
-  * version: 1.0.2
+  * version: 1.0.5
   * author: Ángel Guzmán Maeso
   * email: shakaran at gmail dot com
 
 === French ===
-  * version: 1.0.2
+  * version: 1.0.5
   * author: k|torz
   * email: vlag@free.fr
   * web: http://blog.lagrandmaison.fr/yop/
+
+=== Italian ===
+  * version: 1.0.5
+  * author: Paolo Benvenuto
+  * email: donpaolo at gsi dot it
