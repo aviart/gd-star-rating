@@ -9,6 +9,7 @@
   * new: option to disable newsfeed update on the front panel
   * new: starratercustom shortcode
   * edit: debug check vote methods
+  * fix: small visual problems
 
 === Version: 1.0.5 / december 7 2008 ===
   * new: rating css files joined into one

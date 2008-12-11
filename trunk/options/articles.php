@@ -152,7 +152,7 @@ function gdsrTimerChange() {
                 <th scope="col"><?php _e("Moderation", "gd-star-rating"); ?></th>
             <?php } ?>
             <?php if ($options["timer_active"] == 1) { ?>
-                <th scope="col"><?php _e("Time Restrictions", "gd-star-rating"); ?></th>
+                <th scope="col"><?php _e("Time", "gd-star-rating"); ?></th>
             <?php } ?>
             <th scope="col"><?php _e("Vote Rules", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Categories", "gd-star-rating"); ?></th>

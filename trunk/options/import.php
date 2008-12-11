@@ -14,6 +14,13 @@
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>Data import completed.</div> <?php
     }
 
+    if ($_POST["gdsr_import_srfr"] == __("Import Data", "gd-star-rating")) {
+        GDSRImport::import_srfr($_POST["gdsr_srfr_max"], $_POST["gdsr_srfr_meta"], $_POST["gdsr_srfr_try"], isset($_POST["gdsr_srfr_over"]) ? 1 : 0);
+        $imports["star_rating_for_reviews"] = $imports["star_rating_for_reviews"] + 1;
+        update_option('gd-star-rating-import', $imports);
+        ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>Data import completed.</div> <?php
+    }
+
 ?>
 
 <div class="wrap"><h2>GD Star Rating: <?php _e("Import Data", "gd-star-rating"); ?></h2>
@@ -21,10 +28,10 @@
 
 <div id="gdsr_tabs" class="gdsrtabs">
 <ul>
+    <li><a href="#fragment-3"><span>Star Rating For Reviews</span></a></li>
     <li><a href="#fragment-1"><span>Post Star Rating</span></a></li>
     <li><a href="#fragment-2"><span>WP Post Ratings</span></a></li>
-    <li><a href="#fragment-3"><span>Star Rating For Reviews</span></a></li>
-    <!--<li><a href="#fragment-4"><span>Vote The Post </span></a></li>-->
+    <!--<li><a href="#fragment-4"><span>Vote The Post</span></a></li>-->
 </ul>
 <div style="clear: both"></div>
 
@@ -115,14 +122,16 @@
                 <td width="150"><?php _e("Try Importing from", "gd-star-rating"); ?>:</td>
                 <td>
                     <select name="gdsr_srfr_try" id="gdsr_srfr_try" style="width: 180px">
-                        <option value="P"><?php _e("Posts contents only", "gd-star-rating"); ?></option>
                         <option value="M"><?php _e("Posts meta table", "gd-star-rating"); ?></option>
+                        <option value="P"><?php _e("Posts contents only", "gd-star-rating"); ?></option>
                         <option value="B"><?php _e("Both contents and meta", "gd-star-rating"); ?></option>
                     </select>
                 </td>
             </tr>
         </table>
-    </td>
+        <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_srfr_over" id="gdsr_srfr_over" checked="checked" /><label style="margin-left: 5px;" for="gdsr_srfr_over"><?php _e("Overwrite already existing reviews in GD Star Rating tables.", "gd-star-rating"); ?></label>
+</td>
 <tr><th scope="row"><?php _e("Status", "gd-star-rating"); ?>:</th>
     <td>
         <?php $import_available = GDSRImport::import_srfr_check($imports["star_rating_for_reviews"]); ?>
@@ -144,7 +153,7 @@
 </tr>
 <tr><th scope="row"><?php _e("Author URL", "gd-star-rating"); ?>:</th>
     <td>
-        <a target="_blank" href="http://crowdfavorite.com/">eyn</a>
+        <a target="_blank" href="http://crowdfavorite.com/">Alex King</a>
     </td>
 </tr>
 </tbody></table>
