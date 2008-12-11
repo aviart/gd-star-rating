@@ -15,7 +15,7 @@
     }
 
     if ($_POST["gdsr_import_srfr"] == __("Import Data", "gd-star-rating")) {
-        GDSRImport::import_srfr($_POST["gdsr_srfr_max"], $_POST["gdsr_srfr_meta"], $_POST["gdsr_srfr_try"], isset($_POST["gdsr_srfr_over"]) ? 1 : 0);
+        GDSRImport::import_srfr($_POST["gdsr_srfr_max"], $_POST["gdsr_srfr_meta"], $_POST["gdsr_srfr_try"]);
         $imports["star_rating_for_reviews"] = $imports["star_rating_for_reviews"] + 1;
         update_option('gd-star-rating-import', $imports);
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>Data import completed.</div> <?php
@@ -129,9 +129,7 @@
                 </td>
             </tr>
         </table>
-        <div class="gdsr-table-split"></div>
-        <input type="checkbox" name="gdsr_srfr_over" id="gdsr_srfr_over" checked="checked" /><label style="margin-left: 5px;" for="gdsr_srfr_over"><?php _e("Overwrite already existing reviews in GD Star Rating tables.", "gd-star-rating"); ?></label>
-</td>
+    </td>
 <tr><th scope="row"><?php _e("Status", "gd-star-rating"); ?>:</th>
     <td>
         <?php $import_available = GDSRImport::import_srfr_check($imports["star_rating_for_reviews"]); ?>
