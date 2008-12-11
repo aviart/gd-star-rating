@@ -1,5 +1,10 @@
 <?php
 
+// from content:
+// SELECT ID, trim(substring(substring_index(substring_index(post_content, '[rating:', 2), ']', 1), 9)) as rating FROM `wpdev_posts` where post_content like '%[rating:%' and post_status = 'publish'
+// from meta:
+// SELECT p.ID, trim(m.meta_value) as rating FROM wpdev_postmeta m inner join wpdev_posts p on p.ID = m.post_id where m.meta_key = 'rating' and p.post_status = 'publish'
+
 class GDSRImport {
     function import_check($import_exists) {
         if ($import_exists) {
@@ -10,6 +15,16 @@ class GDSRImport {
             _e("Plugin not available for import.", "gd-star-rating");
             return false;
         }
+    }
+
+
+    // import star rating for review
+    function import_srfr_check($import_status) {
+        if ($import_status == 1) {
+            _e("Data imported.", "gd-star-rating");
+            return false;
+        }
+        else return GDSRImport::import_check(true);
     }
 
     // import post star rating

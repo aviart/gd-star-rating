@@ -114,6 +114,7 @@ Check out a read-only working copy anonymously over HTTP:
 == Support ==
 
 * Google Code: http://code.google.com/p/gd-star-rating/
+* Ohloh: https://www.ohloh.net/p/gd-star-rating/
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
 * PDF User Guide: http://wp.gdragon.info/download/12/
 * Email: starrating@gdragon.info
