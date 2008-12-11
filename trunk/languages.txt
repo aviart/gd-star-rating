@@ -24,3 +24,7 @@
   * author: k|torz
   * email: vlag@free.fr
   * web: http://blog.lagrandmaison.fr/yop/
+
+=== Italian ===
+  * version: 1.0.5
+  * author: Paolo
