@@ -17,8 +17,26 @@ class GDSRImport {
         }
     }
 
-
     // import star rating for review
+    function import_srfr($max_value = 5, $meta_key = 'rating', $import_try = 'B', $over_write = 1) {
+        if ($import_try == 'B' || $import_try == 'M')
+            GDSRImport::import_srfr_meta($max_value, $meta_key, $over_write);
+        if ($import_try == 'B' || $import_try == 'P')
+            GDSRImport::import_srfr_post($max_value, $over_write);
+    }
+
+    function import_srfr_meta($max_value = 5, $meta_key = 'rating', $over_write = 1) {
+
+    }
+
+    function import_srfr_post($max_value = 5, $over_write = 1) {
+
+    }
+
+    function import_srfr_execute($data, $max_value = 5, $over_write = 1) {
+
+    }
+
     function import_srfr_check($import_status) {
         if ($import_status == 1) {
             _e("Data imported.", "gd-star-rating");
