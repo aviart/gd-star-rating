@@ -19,6 +19,7 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 * Serbian
 * Spanish
 * French
+* Italian
 
 = Features =
 
