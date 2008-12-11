@@ -23,7 +23,8 @@
 <ul>
     <li><a href="#fragment-1"><span>Post Star Rating</span></a></li>
     <li><a href="#fragment-2"><span>WP Post Ratings</span></a></li>
-    <!--<li><a href="#fragment-3"><span>Vote The Post </span></a></li>-->
+    <li><a href="#fragment-3"><span>Star Rating For Reviews</span></a></li>
+    <!--<li><a href="#fragment-4"><span>Vote The Post </span></a></li>-->
 </ul>
 <div style="clear: both"></div>
 
@@ -77,7 +78,64 @@
 </form>
 </div>
 
-<!--<div id="fragment-3">
+<div id="fragment-3">
+<form method="post">
+<table class="form-table"><tbody>
+<tr><th scope="row"><?php _e("Plugin URL", "gd-star-rating"); ?>:</th>
+    <td>
+        <a target="_blank" href="http://www.channel-ai.com/blog/plugins/star-rating/">http://www.channel-ai.com/blog/plugins/star-rating/</a>
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("Author URL", "gd-star-rating"); ?>:</th>
+    <td>
+        <a target="_blank" href="http://www.channel-ai.com/">eyn</a>
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("Instructions", "gd-star-rating"); ?>:</th>
+    <td>
+        
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("Import Settings", "gd-star-rating"); ?>:</th>
+    <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Maximum review value", "gd-star-rating"); ?>:</td>
+                <td>
+                    <input type="text" name="gdsr_srfr_max" id="gdsr_srfr_max" value="5" style="width: 170px" /> [$sr_defaultstar]
+                </td>
+            </tr>
+            <tr>
+                <td width="150"><?php _e("Meta Key", "gd-star-rating"); ?>:</td>
+                <td>
+                    <input type="text" name="gdsr_srfr_meta" id="gdsr_srfr_meta" value="rating" style="width: 170px" /> [$sr_metakey]
+                </td>
+            </tr>
+            <tr>
+                <td width="150"><?php _e("Try Importing from", "gd-star-rating"); ?>:</td>
+                <td>
+                    <select name="gdsr_srfr_try" id="gdsr_srfr_try" style="width: 180px">
+                        <option value="P"><?php _e("Posts contents only", "gd-star-rating"); ?></option>
+                        <option value="M"><?php _e("Posts meta table", "gd-star-rating"); ?></option>
+                        <option value="B"><?php _e("Both contents and meta", "gd-star-rating"); ?></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </td>
+<tr><th scope="row"><?php _e("Status", "gd-star-rating"); ?>:</th>
+    <td>
+        <?php $import_available = GDSRImport::import_srfr_check($imports["star_rating_for_reviews"]); ?>
+    </td>
+</tr>
+</tbody></table>
+<?php if ($import_available) { ?>
+<p class="submit"><input type="submit" value="<?php _e("Import Data", "gd-star-rating"); ?>" name="gdsr_import_srfr"/></p>
+<?php } ?>
+</form>
+</div>
+
+<!--<div id="fragment-4">
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Plugin URL", "gd-star-rating"); ?>:</th>
     <td>
@@ -86,7 +144,7 @@
 </tr>
 <tr><th scope="row"><?php _e("Author URL", "gd-star-rating"); ?>:</th>
     <td>
-        <a target="_blank" href="http://crowdfavorite.com/">Crowd Favorite</a>
+        <a target="_blank" href="http://crowdfavorite.com/">eyn</a>
     </td>
 </tr>
 </tbody></table>

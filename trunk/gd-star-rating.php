@@ -222,7 +222,8 @@ if (!class_exists('GDStarRating')) {
         
         var $default_import = array(
             "post_star_rating" => 0,
-            "wp_post_ratings" => 0
+            "wp_post_ratings" => 0,
+            "star_rating_for_reviews" => 0,
         );
         
         var $default_widget_top = array(
