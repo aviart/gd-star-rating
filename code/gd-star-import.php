@@ -1,10 +1,5 @@
 <?php
 
-// from content:
-// SELECT ID, trim(substring(substring_index(substring_index(post_content, '[rating:', 2), ']', 1), 9)) as rating FROM `wpdev_posts` where post_content like '%[rating:%' and post_status = 'publish'
-// from meta:
-// SELECT p.ID, trim(m.meta_value) as rating FROM wpdev_postmeta m inner join wpdev_posts p on p.ID = m.post_id where m.meta_key = 'rating' and p.post_status = 'publish'
-
 class GDSRImport {
     function import_check($import_exists) {
         if ($import_exists) {
@@ -18,23 +13,34 @@ class GDSRImport {
     }
 
     // import star rating for review
-    function import_srfr($max_value = 5, $meta_key = 'rating', $import_try = 'B', $over_write = 1) {
+    function import_srfr($max_value = 5, $meta_key = 'rating', $import_try = 'B') {
         if ($import_try == 'B' || $import_try == 'M')
-            GDSRImport::import_srfr_meta($max_value, $meta_key, $over_write);
+            GDSRImport::import_srfr_meta($max_value, $meta_key);
         if ($import_try == 'B' || $import_try == 'P')
-            GDSRImport::import_srfr_post($max_value, $over_write);
+            GDSRImport::import_srfr_post($max_value);
     }
 
-    function import_srfr_meta($max_value = 5, $meta_key = 'rating', $over_write = 1) {
-
+    function import_srfr_meta($max_value = 5, $meta_key = 'rating') {
+        global $table_prefix;
+        $sql = sprintf("SELECT p.ID, trim(m.meta_value) as rating FROM %spostmeta m inner join %sposts p on p.ID = m.post_id where m.meta_key = '%s' and p.post_status = 'publish'",
+            $table_prefix, $table_prefix, $meta_key);
+        GDSRImport::import_srfr_execute($sql, $max_value);
     }
 
-    function import_srfr_post($max_value = 5, $over_write = 1) {
-
+    function import_srfr_post($max_value = 5) {
+        global $table_prefix;
+        $sql = sprintf("SELECT ID, trim(substring(substring_index(substring_index(post_content, '[rating:', 2), ']', 1), 9)) as rating FROM %sposts where post_content like '%s' and post_status = 'publish'",
+            $table_prefix, '%[rating:%');
+        GDSRImport::import_srfr_execute($sql, $max_value);
     }
 
-    function import_srfr_execute($data, $max_value = 5, $over_write = 1) {
-
+    function import_srfr_execute($sql, $max_value = 5) {
+        global $wpdb;
+        $data = $wpdb->get_results($sql);
+        foreach ($data as $row) {
+            $id = $row->ID;
+            $rating = $row->rating;
+        }
     }
 
     function import_srfr_check($import_status) {
