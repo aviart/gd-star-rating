@@ -871,8 +871,8 @@ if (!class_exists('GDStarRating')) {
             $this->e = $this->plugin_url."gfx/blank.gif";
 
             $this->plugin_wpr8_path = $this->plugin_path."wpr8/";
-            $this->plugin_chart_path = $this->plugin_path."ofc2/";
-            $this->plugin_chart_url = $this->plugin_url."ofc2/";
+            $this->plugin_chart_path = $this->plugin_path."pchart/";
+            $this->plugin_chart_url = $this->plugin_url."pchart/";
             
             if (is_dir($this->plugin_wpr8_path))
                 $this->wpr8_available = true;
