@@ -10,6 +10,7 @@
   * new: option to disable newsfeed update on the front panel
   * new: starratercustom shortcode
   * new: functions for getting rating objects
+  * edit: improvements to tools panel
   * edit: debug check vote methods
   * edit: additional code comments
   * edit: small css changes for wordpress 2.7

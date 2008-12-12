@@ -13,33 +13,41 @@ class GDSRImport {
     }
 
     // import star rating for review
-    function import_srfr($max_value = 5, $meta_key = 'rating', $import_try = 'B') {
+    function import_srfr($review_rating = 5, $max_value = 5, $meta_key = 'rating', $import_try = 'B') {
         if ($import_try == 'B' || $import_try == 'M')
-            GDSRImport::import_srfr_meta($max_value, $meta_key);
+            GDSRImport::import_srfr_meta($review_rating, $max_value, $meta_key);
         if ($import_try == 'B' || $import_try == 'P')
-            GDSRImport::import_srfr_post($max_value);
+            GDSRImport::import_srfr_post($review_rating, $max_value);
     }
 
-    function import_srfr_meta($max_value = 5, $meta_key = 'rating') {
+    function import_srfr_meta($review_rating = 5, $max_value = 5, $meta_key = 'rating') {
         global $table_prefix;
-        $sql = sprintf("SELECT p.ID, trim(m.meta_value) as rating FROM %spostmeta m inner join %sposts p on p.ID = m.post_id where m.meta_key = '%s' and p.post_status = 'publish'",
+        $sql = sprintf("SELECT p.ID, trim(m.meta_value) as rating, p.post_type FROM %spostmeta m inner join %sposts p on p.ID = m.post_id where m.meta_key = '%s' and p.post_status = 'publish'",
             $table_prefix, $table_prefix, $meta_key);
-        GDSRImport::import_srfr_execute($sql, $max_value);
+        GDSRImport::import_srfr_execute($sql, $review_rating, $max_value);
     }
 
-    function import_srfr_post($max_value = 5) {
+    function import_srfr_post($review_rating = 5, $max_value = 5) {
         global $table_prefix;
-        $sql = sprintf("SELECT ID, trim(substring(substring_index(substring_index(post_content, '[rating:', 2), ']', 1), 9)) as rating FROM %sposts where post_content like '%s' and post_status = 'publish'",
+        $sql = sprintf("SELECT ID, trim(substring(substring_index(substring_index(post_content, '[rating:', 2), ']', 1), 9)) as rating, post_type FROM %sposts where post_content like '%s' and post_status = 'publish'",
             $table_prefix, '%[rating:%');
-        GDSRImport::import_srfr_execute($sql, $max_value);
+        GDSRImport::import_srfr_execute($sql, $review_rating, $max_value);
     }
 
-    function import_srfr_execute($sql, $max_value = 5) {
-        global $wpdb;
+    function import_srfr_execute($sql, $review_rating = 5, $max_value = 5) {
+        global $wpdb, $table_prefix;
         $data = $wpdb->get_results($sql);
         foreach ($data as $row) {
             $id = $row->ID;
-            $rating = $row->rating;
+            $is_page = $row->post_type == 'page' ? '1' : '0';
+            $old_rating = $row->rating;
+            $rating = number_format($old_rating * ($review_rating / $max_value), 1);
+            $sql_update = sprintf("update %sgdsr_data_article set review = '%s' where post_id = %s",
+                $table_prefix, $rating, $id);
+            $wpdb->query($sql_update);
+            if ($wpdb->rows_affected == 0) {
+                GDSRDatabase::add_default_vote($id, $is_page, $rating);
+            }
         }
     }
 
