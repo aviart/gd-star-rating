@@ -66,3 +66,11 @@ div.dashboard-widget-content {
 	border-width:1px;
 	padding:2px;
 }
+
+.form-table tr {
+	background-color: #f5f5f5;
+}
+
+.form-table td, .form-table th {
+	border-bottom: 6px solid white;
+}
