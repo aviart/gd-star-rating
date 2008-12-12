@@ -26,7 +26,7 @@
   * web: http://blog.lagrandmaison.fr/yop/
 
 === Italian ===
-  * version: 1.0.5
+  * version: 1.0.6
   * author: Paolo Benvenuto
   * email: donpaolo@gsi.it
   * web: www.parrocchialagaccio.it
