@@ -2,12 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-12-11 17:38+0100\n"
-"Last-Translator: Paolo Benvenuto <donpaolo@gsi.it>\n"
+"PO-Revision-Date: 2008-12-11 23:16+0100\n"
+"Last-Translator: Paolo <Benvenuto>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
 
 #: code/gd-star-dbone.php:888
 msgid "Show all dates"
@@ -178,7 +180,7 @@ msgstr "Modera tutti"
 #: code/gd-star-functions.php:176
 #: code/gd-star-functions.php:188
 msgid "Inherit from Category"
-msgstr "Deriva dalla categoria"
+msgstr "Derivato dalla categoria"
 
 #: code/gd-star-functions.php:158
 msgid "Everyone can vote"
@@ -202,11 +204,11 @@ msgstr "Bloccato e nascosto"
 
 #: code/gd-star-functions.php:173
 msgid "No timer"
-msgstr "Non scade"
+msgstr "Nessun limite di tempo"
 
 #: code/gd-star-functions.php:174
 msgid "Countdown timer"
-msgstr "Tempo per scadere"
+msgstr "Conto alla rovescia"
 
 #: code/gd-star-functions.php:175
 msgid "Date limited"
@@ -265,7 +267,7 @@ msgstr "Sinistra"
 
 #: code/gd-star-functions.php:209
 msgid "Center"
-msgstr "Sinistra"
+msgstr "Centrato"
 
 #: code/gd-star-functions.php:210
 #: code/gd-star-functions.php:239
@@ -326,7 +328,7 @@ msgstr "Dati importati."
 #: tinymce3/window.php:207
 #: widgets/widget.php:199
 msgid "Review"
-msgstr "Rivedi"
+msgstr "Revisione"
 
 #: integrate/edit.php:24
 msgid "Vote Rule"
@@ -520,7 +522,7 @@ msgstr "Cancella"
 #: options/categories.php:223
 #: options/comments.php:138
 msgid "Visitors"
-msgstr "Посетиоци"
+msgstr "Visitatori"
 
 #: options/articles.php:266
 #: options/articles.php:336
@@ -531,7 +533,7 @@ msgstr "Посетиоци"
 #: options/users.php:47
 #: gd-star-rating.php:547
 msgid "Users"
-msgstr "Visitatori"
+msgstr "Utenti"
 
 #: options/articles.php:267
 #: options/articles.php:337
@@ -555,7 +557,7 @@ msgstr "Commenti"
 
 #: options/articles.php:361
 msgid "Fixing"
-msgstr "Aggiustamento"
+msgstr "Correzione"
 
 #: options/articles.php:368
 #: options/articles.php:33
@@ -827,11 +829,11 @@ msgstr "IP"
 
 #: options/ips.php:70
 msgid "Ban New"
-msgstr "Inibisci il Nuovo"
+msgstr "Interdici il Nuovo"
 
 #: options/ips.php:71
 msgid "Banned"
-msgstr "Inibito"
+msgstr "Interdetto"
 
 #: options/ips_list.php:53
 msgid "Record Id"
@@ -847,7 +849,7 @@ msgstr "Riammetti i selezionati"
 
 #: options/ips_options.php:1
 msgid "Ban Single IP's"
-msgstr "Inibisci un singolo IP"
+msgstr "Interdici un singolo IP"
 
 #: options/ips_options.php:8
 msgid "Add IP addresses"
@@ -865,7 +867,7 @@ msgstr "Aggiungi"
 
 #: options/ips_options.php:19
 msgid "Ban IP Range"
-msgstr "Inibisci uno spettro di IP"
+msgstr "Interdici un intervallo di IP"
 
 #: options/ips_options.php:25
 msgid "From"
@@ -877,7 +879,7 @@ msgstr "A"
 
 #: options/ips_options.php:45
 msgid "Ban IP Masked"
-msgstr "Inibisci la maschera di IP"
+msgstr "Interdici una maschera di IP"
 
 #: options/ips_options.php:51
 msgid "Mask"
@@ -1016,15 +1018,15 @@ msgstr "Per pagine singole."
 
 #: options/settings_articles.php:121
 msgid "For posts displayed in Archives."
-msgstr "Per contributi mostrati negli Archivi"
+msgstr "Per contributi mostrati negli Archivi."
 
 #: options/settings_articles.php:123
 msgid "For posts displayed on Front Page."
-msgstr "Per contributi mostrati nella Pagina Iniziale"
+msgstr "Per contributi mostrati nella Pagina Iniziale."
 
 #: options/settings_articles.php:125
 msgid "For posts displayed on Search results."
-msgstr "Per contributi mostrati nei risultati di Ricerca"
+msgstr "Per contributi mostrati nei risultati di Ricerca."
 
 #: options/settings_articles.php:131
 #: options/settings_comments.php:105
@@ -1033,11 +1035,11 @@ msgstr "Ristretto"
 
 #: options/settings_articles.php:133
 msgid "Prevent article author to vote."
-msgstr "Impedisci all'autore dell'articolo di votare"
+msgstr "Impedisci all'autore dell'articolo di votare."
 
 #: options/settings_articles.php:133
 msgid "This is only for registered users."
-msgstr "Questo è solo per utenti registrati."
+msgstr "È solo per utenti registrati."
 
 #: options/settings_articles.php:135
 #: options/settings_comments.php:109
@@ -1163,7 +1165,7 @@ msgstr "Usa elenchi di IP interdetti per filtrare i visitatori."
 
 #: options/settings_general.php:75
 msgid "Don't even show rating stars to visitors comming from banned IP's."
-msgstr "Non mostra nemmeno le stelle di valutazione per i visitatori provenienti da IP interdetti"
+msgstr "Non mostrare nemmeno le stelle di valutazione per i visitatori provenienti da IP interdetti"
 
 #: options/settings_general.php:80
 msgid "Time restriction for rating."
@@ -1357,7 +1359,7 @@ msgstr "Rimuoverà tutte le tavole della base di dati create da questa estension
 #: options/setup.php:73
 #: gd-star-rating.php:890
 msgid "FULL UNINSTALL"
-msgstr "ПУНА ДЕИНСТАЛАЦИЈА"
+msgstr "DISINSTALLAZIONE TOTALE"
 
 #: options/setup.php:74
 msgid "After removal, plugin will be disabled."
@@ -1366,7 +1368,7 @@ msgstr "Dopo la rimozione, l'estensione sarà disabilitata."
 #: options/tools.php:1
 #: gd-star-rating.php:554
 msgid "Tools"
-msgstr "Attrezzi"
+msgstr "Strumenti"
 
 #: options/tools.php:3
 msgid "Stars and Trends Graphics"
@@ -1420,7 +1422,7 @@ msgstr "Aggiornamento delle Regole Globali di Votazione"
 #: tinymce3/window.php:277
 #: tinymce3/window.php:302
 msgid "Set"
-msgstr "Insieme"
+msgstr "Stabilisci"
 
 #: options/users.php:62
 msgid "Email"
@@ -1560,7 +1562,7 @@ msgstr "tutti gli articoli e gli elementi dei modelli particolari"
 #: templates/templates_articles.php:40
 #: widgets/widget.php:336
 msgid "Footer"
-msgstr "Pié di pagina"
+msgstr "Chiusura"
 
 #: templates/templates_elements_articles.php:3
 #: widgets/widget.php:359
