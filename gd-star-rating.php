@@ -1662,7 +1662,7 @@ if (!class_exists('GDStarRating')) {
                 $options = array();
                 
             $widget_ops = array('classname' => 'widget_gdstarrating_top', 'description' => 'GD Blog Rating');
-            $control_ops = array('width' => $this->wp_old ? 580 : 420, 'height' => 420, 'id_base' => 'gdstartop');
+            $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstartop');
             $name = 'GD Blog Rating';
             
             $registered = false;
@@ -1793,7 +1793,7 @@ if (!class_exists('GDStarRating')) {
                 $options = array();
                 
             $widget_ops = array('classname' => 'widget_gdstarrating', 'description' => 'GD Star Rating');
-            $control_ops = array('width' => $this->wp_old ? 580 : 420, 'height' => 420, 'id_base' => 'gdstarrmulti');
+            $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstarrmulti');
             $name = 'GD Star Rating';
             
             $registered = false;

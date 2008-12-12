@@ -12,7 +12,9 @@
   * new: functions for getting rating objects
   * edit: debug check vote methods
   * edit: additional code comments
+  * edit: small css changes for wordpress 2.7
   * fix: small visual problems
+  * fix: blog widget control problem
 
 === Version: 1.0.5 / december 7 2008 ===
   * new: rating css files joined into one
