@@ -3,6 +3,7 @@
 == Change Log ==
 
 === Version: 1.0.6 / december 14 2008 ===
+  * new: christmas style stars
   * new: italian translation
   * new: import from star rating for review plugin
   * new: plugin custom action init (gdsr_init)
