@@ -16,6 +16,32 @@
     }
 
     /**
+     * Returns object with all needed rating properties for post or page.
+     *
+     * @global object $post post data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param int $post_id post to get rating for, leave 0 to get post from loop
+     * @return object rating post properties
+     */
+    function wp_gdsr_rating_article($post_id = 0) {
+        global $post, $gdsr;
+        if ($post_id < 1) $post_id = $post->ID;
+    }
+
+    /**
+     * Returns object with all needed rating properties for comment.
+     *
+     * @global object $comment comment data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param int $post_id post to get rating for, leave 0 to get post from loop
+     * @return object rating post properties
+     */
+    function wp_gdsr_rating_comment($comment_id = 0) {
+        global $comment, $gdsr;
+        if ($comment_id < 1) $comment_id = $comment->comment_ID;
+    }
+
+    /**
      * Returns calculated data for average blog rating including bayesian estimate mean.
      *
      * @global class $gdsr
@@ -77,11 +103,11 @@
     }
 
     /**
+     * Renders only rating text part of the rating block
      *
      * @global object $post post data
      * @global GDStarRating $gdsr main rating class instance
-     * @param string $cls
-     * @param bool $echo
+     * @param string $cls CSS class to ad to rendered block
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
@@ -91,12 +117,29 @@
         else return $gdsr->render_rating_text_article($post, $cls);
     }
 
+    /**
+     * Manual render of comment rating
+     *
+     * @global object $comment comment data
+     * @global object $post post data
+     * @global object $userdata user data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
     function wp_gdsr_render_comment($echo = true) {
         global $comment, $userdata, $gdsr, $post;
         if ($echo) echo $gdsr->render_comment($post, $comment, $userdata);
         else return $gdsr->render_comment($post, $comment, $userdata);
     }
     
+    /**
+     *
+     *
+     * @global GDStarRating $gdsr main rating class instance
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
     function wp_gdsr_render_review($echo = true) {
         global $gdsr;
         if ($echo) echo $gdsr->shortcode_starreview();

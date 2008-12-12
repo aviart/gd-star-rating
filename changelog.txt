@@ -9,7 +9,9 @@
   * new: auto insert rating for comments for pages
   * new: option to disable newsfeed update on the front panel
   * new: starratercustom shortcode
+  * new: functions for getting rating objects
   * edit: debug check vote methods
+  * edit: additional code comments
   * fix: small visual problems
 
 === Version: 1.0.5 / december 7 2008 ===

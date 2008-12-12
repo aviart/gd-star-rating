@@ -100,7 +100,9 @@
 </tr>
 <tr><th scope="row"><?php _e("Instructions", "gd-star-rating"); ?>:</th>
     <td>
-        
+        <?php printf(__("You need to enter few settings for this plugin. This can be found in the plugin's main and only PHP file: %s", "gd-star-rating"), "star-rating.php"); ?>
+        <?php _e("For each value you have a name of the variable from plugin file in square brackets.", "gd-star-rating"); ?>
+        <?php _e("Plugin could save data in post meta table or only in the post using shortcodes. Import can try both, but if you are usre that ratings are stored in post meta table, use that option.", "gd-star-rating"); ?>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Import Settings", "gd-star-rating"); ?>:</th>
