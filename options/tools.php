@@ -1,5 +1,14 @@
-<div class="gdsr">
 <div class="wrap"><h2>GD Star Rating: <?php _e("Tools", "gd-star-rating"); ?></h2>
+<div class="gdsr">
+
+<div id="gdsr_tabs" class="gdsrtabs">
+<ul>
+    <li><a href="#fragment-1"><span><?php _e("Graphics", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-2"><span><?php _e("Cleanup", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-3"><span><?php _e("Bulk", "gd-star-rating"); ?></span></a></li>
+</ul>
+<div style="clear: both"></div>
+<div id="fragment-1">
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Stars and Trends Graphics", "gd-star-rating"); ?></th>
     <td>
@@ -11,6 +20,10 @@
         </form>
     </td>
 </tr>
+</tbody></table>
+</div>
+<div id="fragment-2">
+<table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Database Cleanup", "gd-star-rating"); ?></th>
     <td>
         <form method="post">
@@ -27,6 +40,10 @@
         </form>
     </td>
 </tr>
+</tbody></table>
+</div>
+<div id="fragment-3">
+<table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Date Based Post Locking", "gd-star-rating"); ?></th>
     <td>
         <form method="post">
@@ -89,7 +106,9 @@
         </form>
     </td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+</div>
+</div>
+
 </div>
 </div>
