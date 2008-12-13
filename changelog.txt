@@ -4,12 +4,11 @@
 
 === Version: 1.0.6 / december 14 2008 ===
   * new: christmas style stars
-  * new: italian translation
+  * new: added italian translation
   * new: import from star rating for review plugin
   * new: plugin custom action init (gdsr_init)
   * new: auto insert rating for comments for pages
   * new: option to disable newsfeed update on the front panel
-  * new: starratercustom shortcode
   * new: functions for getting rating objects
   * edit: improvements to tools panel
   * edit: debug check vote methods
@@ -17,29 +16,3 @@
   * edit: small css changes for wordpress 2.7
   * fix: small visual problems
   * fix: blog widget control problem
-
-=== Version: 1.0.5 / december 7 2008 ===
-  * new: rating css files joined into one
-  * new: ajax voting nonce security protection
-  * new: please wait message customization with preview
-  * new: various vote waiting animations
-  * new: basic support for qtranslate
-  * new: global debug into file support
-  * new: filter post and comments voters log by vote value
-  * new: filter user vote log by vote value
-  * new: saving debug info for articles and comment votes
-  * new: setup page confirmations
-  * new: debug settings tab
-  * new: percent value for blog rating wiget
-  * edit: code cleanup of the helper classes
-  * edit: updated readme text file
-  * edit: added version to inline debug info
-  * edit: removed obsolete preview code and settings
-  * fix: bottom and hidden rating text layout
-  * fix: default widget template and word vote/votes
-  * fix: widget shortcode rendering with no valid results
-  * fix: problem with anonymous comment authors
-  * fix: blog rating widget no votes value
-  * fix: rare saving comment vote bug
-  * fix: moderation control panel
-  * fix: scan dir for php4 not closing the directory resource

@@ -26,6 +26,7 @@
     function wp_gdsr_rating_article($post_id = 0) {
         global $post, $gdsr;
         if ($post_id < 1) $post_id = $post->ID;
+        return $gdsr->get_ratings_post($post_id);
     }
 
     /**
@@ -39,6 +40,7 @@
     function wp_gdsr_rating_comment($comment_id = 0) {
         global $comment, $gdsr;
         if ($comment_id < 1) $comment_id = $comment->comment_ID;
+        return $gdsr->get_ratings_comment($comment_id);
     }
 
     /**
