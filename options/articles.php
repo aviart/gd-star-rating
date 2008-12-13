@@ -146,7 +146,7 @@ function gdsrTimerChange() {
         <tr>
             <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>
             <th scope="col"><?php _e("Title", "gd-star-rating"); ?></th>
-            <th scope="col" width="16"></th>
+            <th scope="col"><?php _e("View", "gd-star-rating"); ?></th>
             <th scope="col" class="num"><div class="vers"><img src="images/comment-grey-bubble.png" alt="Comments"/></div></th>
             <?php if ($options["moderation_active"] == 1) { ?>
                 <th scope="col"><?php _e("Moderation", "gd-star-rating"); ?></th>
@@ -222,7 +222,10 @@ function gdsrTimerChange() {
         echo '<tr id="post-'.$row->pid.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->pid.'" type="checkbox"></th>';
         echo '<td><strong>'.$row->title.'</strong></td>';
-        echo '<td><a href="'.get_permalink($row->pid).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a></td>';
+        echo '<td nowrap="nowrap">';
+        echo '<a href="'.get_permalink($row->pid).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a>&nbsp;';
+        echo '<img src="'.STARRATING_URL.'gfx/chart.png" border="0" />';
+        echo '</td>';
         echo '<td class="num"><div class="post-com-count-wrapper">'.$comment_count.'</div></td>';
         if ($options["moderation_active"] == 1) 
             echo '<td nowrap="nowrap">'.$moderate_articles.$row->moderate_articles.'<br />'.$moderate_comments.$row->moderate_comments.'</td>';

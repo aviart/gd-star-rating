@@ -1,4 +1,4 @@
-﻿= GD Star Rating =
+= GD Star Rating =
 
 == Languages ==
 
