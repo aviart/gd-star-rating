@@ -126,5 +126,6 @@ Check out a read-only working copy anonymously over HTTP:
 
 == Thanx To ==
 
-1. Ryan Masuga (http://www.masugadesign.com / ryan@masugadesign.com) for Unobtusive AJAX Rating Bars v 1.2.2
-2. Angus Turnbull (http://www.twinhelix.com) for IE PNG Alpha Fix v2.0 Alpha 3
+1. Ryan Masuga (http://www.masugadesign.com) for Unobtusive AJAX Rating Bars
+2. Angus Turnbull (http://www.twinhelix.com) for IE PNG Alpha Fix
+3. Jean-Damien Pogolotti (http://pchart.sourceforge.net/) for pChart

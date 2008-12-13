@@ -49,7 +49,6 @@ if (!class_exists('GDStarRating')) {
 
         var $loader_article = "";
         var $loader_comment = "";
-        var $charting = false;
         var $wpr8_available = false;
         var $admin_plugin = false;
         var $admin_plugin_page = '';
@@ -580,7 +579,6 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), 10, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
             if ($this->o["admin_category"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), 10, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
             if ($this->o["admin_users"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), 10, "gd-star-rating-users", array(&$this,"star_menu_users"));
-            if ($this->charting) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Charts", "gd-star-rating"), __("Charts", "gd-star-rating"), 10, "gd-star-rating-charts", array(&$this,"star_menu_charts"));
             if ($this->o["multis_active"] == 1) {
                 add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Sets", "gd-star-rating"), __("Multi Sets", "gd-star-rating"), 10, "gd-star-rating-multi-sets", array(&$this,"star_multi_sets"));
                 add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Results", "gd-star-rating"), __("Multi Results", "gd-star-rating"), 10, "gd-star-rating-multi-results", array(&$this,"star_multi_results"));
@@ -605,13 +603,11 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin) {
                 wp_print_scripts('jquery-ui-tabs');
                 wp_admin_css('css/dashboard');
+                add_thickbox();
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin.css" type="text/css" media="screen" />');
                 if ($this->wp_version >= 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_wp27.css" type="text/css" media="screen" />');
             }
             
-            if ($this->admin_plugin_page == "charts" && $this->charting && $this->admin_plugin) {
-                echo '<script type="text/javascript" src="'.$this->plugin_url.'ofc2/js/swfobject.js"></script>';
-            }
             if ($this->admin_plugin_page == "ips" && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
             
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
@@ -918,9 +914,6 @@ if (!class_exists('GDStarRating')) {
             
             if (is_dir($this->plugin_wpr8_path))
                 $this->wpr8_available = true;
-
-            if (is_dir($this->plugin_chart_path))
-                $this->charting = true;
             
             define('STARRATING_URL', $this->plugin_url);
             define('STARRATING_PATH', $this->plugin_path);
@@ -1671,10 +1664,6 @@ if (!class_exists('GDStarRating')) {
             $gdsr_gfx = $this->g;
 
             include($this->plugin_path.'options/tools.php');
-        }
-        
-        function star_menu_charts() {
-            include($this->plugin_path.'options/charts.php');
         }
 
         function star_menu_batch() {
