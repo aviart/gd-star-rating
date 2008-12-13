@@ -502,7 +502,17 @@ if (!class_exists('GDStarRating')) {
             );
             return $render;
         }
-        
+
+        /**
+         * Renders comment review stars for selected comment
+         *
+         * @param int $comment_id id of the comment you want displayed
+         * @param bool $zero_render if set to false and $value is 0 then nothing will be rendered
+         * @param bool $use_default rendering is using default rendering settings
+         * @param string $style folder name of the stars set to use
+         * @param int $size stars size 12, 20, 30, 46
+         * @return string rendered stars for comment review
+         */
         function display_comment_review($comment_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
             if ($use_default) {
                 $style = $this->o["cmm_review_style"];
@@ -513,12 +523,13 @@ if (!class_exists('GDStarRating')) {
             
             return $this->get_rating_stars($style, $stars, $size, $zero_render, $review);
         }
+
         /**
          * Renders post review stars for selected post
          *
          * @param int $post_id id for the post you want review displayed
          * @param bool $zero_render if set to false and $value is 0 then nothing will be rendered
-         * @param bool $use_default
+         * @param bool $use_default rendering is using default rendering settings
          * @param string $style folder name of the stars set to use
          * @param int $size stars size 12, 20, 30, 46
          * @return string rendered stars for article review
@@ -539,7 +550,7 @@ if (!class_exists('GDStarRating')) {
          *
          * @param int $post_id id for the post you want rating displayed
          * @param bool $zero_render if set to false and $value is 0 then nothing will be rendered
-         * @param bool $use_default
+         * @param bool $use_default rendering is using default rendering settings
          * @param string $style folder name of the stars set to use
          * @param int $size stars size 12, 20, 30, 46
          * @return string rendered stars for article rating
@@ -560,6 +571,9 @@ if (!class_exists('GDStarRating')) {
         // various rendering
 
         // install
+        /**
+         * WordPress action for adding administration menu items
+         */
         function admin_menu() {
             add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 10, __FILE__, array(&$this,"star_menu_front"));
@@ -580,6 +594,9 @@ if (!class_exists('GDStarRating')) {
             if ($this->o["admin_setup"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), 10, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
         }                                                                
         
+        /**
+         * WordPress action for adding administration header contents
+         */
         function admin_head() {
             global $parent_file;
             $this->admin_page = $parent_file;
@@ -625,6 +642,9 @@ if (!class_exists('GDStarRating')) {
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_post.css" type="text/css" media="screen" />');
         }
 
+        /**
+         * Adding WordPress action and filter
+         */
         function actions_filters() {
             add_action('init', array(&$this, 'init'));
             add_action('wp_head', array(&$this, 'wp_head'));
@@ -744,6 +764,9 @@ if (!class_exists('GDStarRating')) {
             return $old;
         }
 
+        /**
+         * Main installation method of the plugin
+         */
         function install_plugin() {
             $this->o = get_option('gd-star-rating');
             $this->x = get_option('gd-star-rating-templates');
@@ -801,6 +824,11 @@ if (!class_exists('GDStarRating')) {
             $this->t = GDSRDB::get_database_tables();
         }
 
+        /**
+         * Scans main and additional graphics folders for stars and trends sets.
+         *
+         * @return GDgfxLib scanned graphics object
+         */
         function gfx_scan() {
             $data = new GDgfxLib();
             
@@ -834,7 +862,13 @@ if (!class_exists('GDStarRating')) {
             }
             return $data;
         }
-        
+
+        /**
+         * Scans folder and adds all folders to array.
+         *
+         * @param string $path folder path
+         * @return array founded folders in array
+         */
         function scan_folder($path) {
             $folders = gd_scandir($path);
             $import = array();
@@ -846,7 +880,10 @@ if (!class_exists('GDStarRating')) {
             }
             return $import;
         }
-        
+
+        /**
+         * Gest the name of active plugin page
+         */
         function active_wp_page() {
             if (stripos($_GET["page"], "gd-star-rating") === false)
                 $this->active_wp_page = false;
@@ -854,6 +891,11 @@ if (!class_exists('GDStarRating')) {
                 $this->active_wp_page = true;
         }
 
+        /**
+         * Calculates all needed paths and sets them as constants.
+         *
+         * @global string $wp_version wordpress version
+         */
         function plugin_path_url() {
             global $wp_version;
             $this->wp_version = substr(str_replace('.', '', $wp_version), 0, 2);
@@ -888,10 +930,19 @@ if (!class_exists('GDStarRating')) {
             define('STARRATING_CHART_PATH', $this->plugin_chart_path);
         }
 
+        /**
+         * Executes attached hook actions methods for plugin internal actions.
+         * - init: executed after init method
+         *
+         * @param <type> $action name of the plugin action
+         */
         function custom_actions($action) {
             do_action('gdsr_'.$action);
         }
 
+        /**
+         * Main init method executed as wordpress action 'init'.
+         */
         function init() {
             if (isset($_GET["page"])) {
                 if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
@@ -954,6 +1005,11 @@ if (!class_exists('GDStarRating')) {
             $this->custom_actions('init');
         }
 
+        /**
+         * Gets rating posts data for the post in the loop, used only when wordpress is rendering page or single post.
+         *
+         * @global object $post post from the loop
+         */
         function init_post() {
             global $post;
             
@@ -964,6 +1020,9 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
+        /**
+         * Simple function that uses WordPress redirect function
+         */
         function redirect() {
             if ($this->vote_status) {
                 $url = $_SERVER["HTTP_REFERER"];
@@ -971,6 +1030,9 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
+        /**
+         * WordPress action for adding blog header contents
+         */
         function wp_head() {
             if (is_feed()) return;
            
@@ -994,6 +1056,9 @@ if (!class_exists('GDStarRating')) {
             if ($this->o["ie_png_fix"] == 1) $this->ie_png_fix();
         }
 
+        /**
+         * Adding elements for IE PNG fix
+         */
         function ie_png_fix() {
             echo('<!--[if lte IE 6]>');
             echo('<style type="text/css">');
@@ -1156,7 +1221,7 @@ if (!class_exists('GDStarRating')) {
         }
         // vote
         
-        // calculation
+        // calculations
         /**
         * Calculates Bayesian Estimate Mean value for given number of votes and rating
         * 
@@ -1410,9 +1475,22 @@ if (!class_exists('GDStarRating')) {
             
             return $data;
         }
-        // calculation
 
-        // menu
+        function get_ratings_post($post_id) {
+            if ($this->p && $this->p->post_id == $post_id) $post_data = $this->p;
+            else $post_data = GDSRDatabase::get_post_data($post_id);
+            if (count($post_data) == 0) return null;
+            return new GDSRArticleRating($post_data);
+        }
+
+        function get_ratings_comment($comment_id) {
+            $comment_data = GDSRDatabase::get_comment_data($comment_id);
+            if (count($comment_data) == 0) return null;
+            return new GDSRCommentRating($comment_data);
+        }
+        // calculations
+
+        // menues
         function editbox_comment() {
             if ($this->wp_version < 27)
                 include($this->plugin_path.'integrate/editcomment26.php');
@@ -1649,7 +1727,7 @@ if (!class_exists('GDStarRating')) {
             $options = $this->o;
             include($this->plugin_path.'options/categories.php');
         }
-        // menu
+        // menues
 
         // widgets
         function widget_init() {
@@ -1986,7 +2064,7 @@ if (!class_exists('GDStarRating')) {
         }
         // ccookies
 
-        // render
+        // rendering
         function render_wait_article() {
             $cls = "loader ".$this->o["wait_loader_article"]." ";
             if ($this->o["wait_show_article"] == 1)
@@ -2273,7 +2351,7 @@ if (!class_exists('GDStarRating')) {
             $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
             return $rating_block;
         }
-        // render
+        // rendering
     }
 
     $gd_debug = new GDDebug();

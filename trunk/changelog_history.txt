@@ -4,12 +4,11 @@
 
 === Version: 1.0.6 / december 14 2008 ===
   * new: christmas style stars
-  * new: italian translation
+  * new: added italian translation
   * new: import from star rating for review plugin
   * new: plugin custom action init (gdsr_init)
   * new: auto insert rating for comments for pages
   * new: option to disable newsfeed update on the front panel
-  * new: starratercustom shortcode
   * new: functions for getting rating objects
   * edit: improvements to tools panel
   * edit: debug check vote methods

@@ -15,7 +15,7 @@
   * web: http://www.gdragon.info/
 
 === Spanish ===
-  * version: 1.0.5
+  * version: 1.0.6
   * author: Ángel Guzmán Maeso
   * email: shakaran@gmail.com
 

@@ -43,11 +43,11 @@
       <tr>
         <td class="gdsrright">
             <label><select id="srShortcode" name="srShortcode" style="width: 200px">
-                <option value="starrating">Advanced: StarRating</option>
-                <option value="starrating">Advanced: StarRaterCustom</option>
+                <option value="starrating"><?php __("Advanced", "gd-star-rating"); ?>: StarRating</option>
+                <!-- <option value="starrating"><?php __("Advanced", "gd-star-rating"); ?>: StarRaterCustom</option> -->
                 <option value="starrating">--------------------</option>
-                <option value="starreview">Simple: StarReview</option>
-                <option value="starrater">Simple: StarRater</option>
+                <option value="starreview"><?php __("Simple", "gd-star-rating"); ?>: StarReview</option>
+                <option value="starrater"><?php __("Simple", "gd-star-rating"); ?>: StarRater</option>
             </select></label>
         </td>
       </tr>
