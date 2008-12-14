@@ -35,6 +35,7 @@ require_once(dirname(__FILE__)."/code/gd-star-dbx.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbmulti.php");
 require_once(dirname(__FILE__)."/code/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gd-star-import.php");
+require_once(dirname(__FILE__)."/code/gd-star-chart.php");
 require_once(dirname(__FILE__)."/gd-star-config.php");
 require_once(dirname(__FILE__)."/gd-star-debug.php");
 
@@ -131,6 +132,7 @@ if (!class_exists('GDStarRating')) {
             "integrate_post_edit" => 1,
             "integrate_tinymce" => 1,
             "integrate_comment_edit" => 1,
+            "integrate_dashboard" => 1,
             "moderation_active" => 1,
             "multis_active" => 0,
             "review_active" => 1,
@@ -732,6 +734,11 @@ if (!class_exists('GDStarRating')) {
                 }
                 add_action('save_post', array(&$this, 'saveedit_post'));
             }
+            if ($this->o["integrate_dashboard"] == 1) {
+                add_action('wp_dashboard_setup', array(&$this, 'add_dashboard_widget'));
+                if (!function_exists('wp_add_dashboard_widget'))
+                    add_filter('wp_dashboard_widgets', array(&$this, 'add_dashboard_widget_filter'));
+            }
             add_filter('comment_text', array(&$this, 'display_comment'));
             add_filter('the_content', array(&$this, 'display_article'));
             if ($this->o["comments_review_active"] == 1) {
@@ -754,6 +761,33 @@ if (!class_exists('GDStarRating')) {
             }
         }
         
+        function add_dashboard_widget() {
+            if (!function_exists('wp_add_dashboard_widget'))
+                wp_register_sidebar_widget("dashboard_gdstarrating", "GD Star Rating", array(&$this, 'display_dashboard_widget'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
+            else
+                wp_add_dashboard_widget("dashboard_gdstarrating", "GD Star Rating", array(&$this, 'display_dashboard_widget'));
+        }
+        
+        function add_dashboard_widget_filter($widgets) {
+            global $wp_registered_widgets;
+
+            if (!isset($wp_registered_widgets["dashboard_gdstarrating"])) return $widgets;
+
+            array_splice($widgets, 2, 0, "dashboard_gdstarrating");
+            return $widgets;
+        }
+
+        function display_dashboard_widget($sidebar_args) {
+            if (!function_exists('wp_add_dashboard_widget')) {
+                extract($sidebar_args, EXTR_SKIP);
+                echo $before_widget.$before_title.$widget_name.$after_title;
+            }
+            include($this->plugin_path.'integrate/dashboard.php');
+            if (!function_exists('wp_add_dashboard_widget')) {
+                echo $after_widget;
+            }
+        }
+
         function comment_read_post($comment) {
 			if (isset($_POST["gdsr_cmm_review"]))
 				$this->post_comment["review"] = $_POST["gdsr_cmm_review"];
