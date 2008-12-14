@@ -1,8 +1,9 @@
-<div id="gd-star-rating" class="postbox">
-<h3><span class="hndle">GD Star Rating</span></h3>
-<div class="inside" style="padding-top: 5px;">
+<div class="meta-box-sortables ui-sortable" style="position: relative;">
+<div class="postbox">
+	<h3 class="hndle">GD Star Rating</h3>
 
-<?php include(STARRATING_PATH.'integrate/edit.php'); ?>
-
+	<div class="inside" id="gdstarratingstuff">
+		<?php include(STARRATING_PATH.'integrate/edit.php'); ?>
+	</div>
 </div>
 </div>
