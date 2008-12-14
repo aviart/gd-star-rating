@@ -6,7 +6,7 @@
   * new: christmas style stars
   * new: added italian translation
   * new: import from star rating for review plugin
-  * new: plugin custom action init (gdsr_init)
+  * new: plugin custom actions support
   * new: auto insert rating for comments for pages
   * new: option to disable newsfeed update on the front panel
   * new: functions for getting rating objects
