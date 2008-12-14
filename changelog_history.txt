@@ -10,6 +10,8 @@
   * new: auto insert rating for comments for pages
   * new: option to disable newsfeed update on the front panel
   * new: functions for getting rating objects
+  * new: included pchart class for charting support
+  * new: wordpress 2.7 navigation icon
   * edit: improvements to tools panel
   * edit: debug check vote methods
   * edit: additional code comments
