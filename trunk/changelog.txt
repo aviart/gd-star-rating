@@ -6,6 +6,7 @@
   * new: christmas style stars
   * new: added italian translation
   * new: added dashboard widget
+  * new: chart for dashboard with votes distribution
   * new: import from star rating for review plugin
   * new: plugin custom actions support
   * new: auto insert rating for comments for pages
