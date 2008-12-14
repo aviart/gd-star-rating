@@ -1,0 +1,24 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 1.0.6 / december 14 2008 ===
+  * new: christmas style stars
+  * new: added italian translation
+  * new: added dashboard widget
+  * new: chart for dashboard with votes distribution
+  * new: import from star rating for review plugin
+  * new: plugin custom actions support
+  * new: auto insert rating for comments for pages
+  * new: option to disable newsfeed update on the front panel
+  * new: functions for getting rating objects
+  * new: included pchart class for charting support
+  * new: wordpress 2.7 navigation icon
+  * edit: post edit box wordpress 2.7 support
+  * edit: improvements to tools panel
+  * edit: debug check vote methods
+  * edit: additional code comments
+  * edit: small css changes for wordpress 2.7
+  * fix: small visual problems
+  * fix: blog widget control problem
+  * fix: editing comment review style loading
