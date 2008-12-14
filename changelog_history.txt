@@ -12,6 +12,7 @@
   * new: functions for getting rating objects
   * new: included pchart class for charting support
   * new: wordpress 2.7 navigation icon
+  * edit: small change to post edit widget in wordpress 2.7
   * edit: improvements to tools panel
   * edit: debug check vote methods
   * edit: additional code comments
