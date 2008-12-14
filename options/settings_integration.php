@@ -1,4 +1,9 @@
 <table class="form-table"><tbody>
+<tr><th scope="row"><?php _e("Dashboard", "gd-star-rating"); ?></th>
+    <td>
+        <input type="checkbox" name="gdsr_integrate_dashboard" id="gdsr_integrate_dashboard"<?php if ($gdsr_options["integrate_dashboard"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard"><?php _e("Add summary rating widget to the administration dashboard.", "gd-star-rating"); ?></label>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Widgets", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_widget_articles" id="gdsr_widget_articles"<?php if ($gdsr_options["widget_articles"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_widget_articles"><?php _e("GD Star Rating: Post/Page rating widget.", "gd-star-rating"); ?></label>
