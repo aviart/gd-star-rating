@@ -569,6 +569,67 @@ if (!class_exists('GDStarRating')) {
         }
         // various rendering
 
+        // edit boxes
+        function editbox_comment() {
+            if ($this->wp_version < 27)
+                include($this->plugin_path.'integrate/editcomment26.php');
+            else {
+                if ($this->admin_page != "edit-comments.php") return;
+                include($this->plugin_path.'integrate/editcomment27.php');
+            }
+        }
+
+        function editbox_post() {
+            global $post;
+            print_r ($_POST);
+            $gdsr_options = $this->o;
+            $post_id = $post->ID;
+            $default = false;
+
+            $countdown_value = $gdsr_options["default_timer_countdown_value"];
+            $countdown_type = $gdsr_options["default_timer_countdown_type"];
+            if ($post_id == 0)
+                $default = true;
+            else {
+                $post_data = GDSRDatabase::get_post_edit($post_id);
+                if (count($post_data) > 0) {
+                    $rating = explode(".", strval($post_data->review));
+                    $rating_decimal = intval($rating[1]);
+                    $rating = intval($rating[0]);
+                    $vote_rules = $post_data->rules_articles;
+                    $moderation_rules = $post_data->moderate_articles;
+                    $timer_restrictions = $post_data->expiry_type;
+                    if ($timer_restrictions == "T") {
+                        $countdown_type = substr($post_data->expiry_value, 0, 1);
+                        $countdown_value = substr($post_data->expiry_value, 1);
+                    }
+                    else if ($timer_restrictions == "D") {
+                        $timer_date_value = $post_data->expiry_value;
+                    }
+                }
+                else
+                    $default = true;
+            }
+
+            if ($default) {
+                $rating_decimal = -1;
+                $rating = -1;
+                $vote_rules = $gdsr_options["default_voterules_articles"];
+                $moderation_rules = $gdsr_options["default_moderation_articles"];
+                $timer_restrictions = $gdsr_options["default_timer_type"];
+            }
+
+            if ($this->wp_version < 27) {
+                $box_width = "100%";
+                include($this->plugin_path.'integrate/edit26.php');
+            }
+            else {
+                $box_width = "260";
+                include($this->plugin_path.'integrate/edit.php');
+            }
+        }
+        // edit boxes
+
         // install
         /**
          * WordPress action for adding administration menu items
@@ -576,8 +637,12 @@ if (!class_exists('GDStarRating')) {
         function admin_menu() {
             if ($this->wp_version < 27)
                 add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"));
-            else
+            else {
                 add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
+
+                add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "post", "advanced", "high");
+                add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "page", "advanced", "high");
+            }
 
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 10, __FILE__, array(&$this,"star_menu_front"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), 10, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
@@ -633,10 +698,10 @@ if (!class_exists('GDStarRating')) {
 
             if ($this->admin_page == "themes.php") echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/widgets.css" type="text/css" media="screen" />');
 
-            if ($this->admin_page == "edit-comments.php") {
+            if ($this->admin_page == "edit-comments.php" || $this->admin_page == "comment.php") {
                 $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
                 $comment_review = urlencode($this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary);
-                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/stars_comment_review.css.php?stars='.$comment_review.'" type="text/css" media="screen" />');
+                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_comment.css.php?stars='.$comment_review.'" type="text/css" media="screen" />');
             }
 
             $this->custom_actions('admin_head');
@@ -657,8 +722,10 @@ if (!class_exists('GDStarRating')) {
             add_action('admin_menu', array(&$this, 'admin_menu'));
             add_action('admin_head', array(&$this, 'admin_head'));
             if ($this->o["integrate_post_edit"] == 1) {
-                add_action('submitpost_box', array(&$this, 'editbox_post'));
-                add_action('submitpage_box', array(&$this, 'editbox_post'));
+                if ($this->wp_version < 27) {
+                    add_action('submitpost_box', array(&$this, 'editbox_post'));
+                    add_action('submitpage_box', array(&$this, 'editbox_post'));
+                }
                 add_action('save_post', array(&$this, 'saveedit_post'));
             }
             add_filter('comment_text', array(&$this, 'display_comment'));
@@ -1493,60 +1560,6 @@ if (!class_exists('GDStarRating')) {
         // calculations
 
         // menues
-        function editbox_comment() {
-            if ($this->wp_version < 27)
-                include($this->plugin_path.'integrate/editcomment26.php');
-            else {
-                if ($this->admin_page != "edit-comments.php") return;
-                include($this->plugin_path.'integrate/editcomment27.php');
-            }
-        }
-        
-        function editbox_post() {
-            global $post;
-            $gdsr_options = $this->o;
-            $post_id = $post->ID;
-            $default = false;
-            
-            $countdown_value = $gdsr_options["default_timer_countdown_value"];
-            $countdown_type = $gdsr_options["default_timer_countdown_type"];
-            if ($post_id == 0)
-                $default = true;
-            else {
-                $post_data = GDSRDatabase::get_post_edit($post_id);
-                if (count($post_data) > 0) {
-                    $rating = explode(".", strval($post_data->review));
-                    $rating_decimal = intval($rating[1]);
-                    $rating = intval($rating[0]);
-                    $vote_rules = $post_data->rules_articles;
-                    $moderation_rules = $post_data->moderate_articles;
-                    $timer_restrictions = $post_data->expiry_type;
-                    if ($timer_restrictions == "T") {
-                        $countdown_type = substr($post_data->expiry_value, 0, 1);
-                        $countdown_value = substr($post_data->expiry_value, 1);
-                    }
-                    else if ($timer_restrictions == "D") {
-                        $timer_date_value = $post_data->expiry_value;
-                    }
-                }
-                else
-                    $default = true;
-            }
-
-            if ($default) {
-                $rating_decimal = -1;
-                $rating = -1;
-                $vote_rules = $gdsr_options["default_voterules_articles"];
-                $moderation_rules = $gdsr_options["default_moderation_articles"];
-                $timer_restrictions = $gdsr_options["default_timer_type"];
-            }
-            
-            if ($this->wp_version < 27)
-                include($this->plugin_path.'integrate/edit26.php');
-            else
-                include($this->plugin_path.'integrate/edit27.php');
-        }                  
-
         function star_multi_sets() {
             $options = $this->o;
             $editor = true;
