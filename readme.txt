@@ -27,6 +27,8 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 * Review Rating for posts
 * Ajax rating support
 * Voting rules on post/page base
+* Charting support with pChart library
+* Administration dasboard widget
 * Moderation of votes on post/page base
 * Different trend and star styles and sizes
 * Separate saving of voting data for registered users and regular visitors
