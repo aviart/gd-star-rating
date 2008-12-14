@@ -581,7 +581,7 @@ if (!class_exists('GDStarRating')) {
 
         function editbox_post() {
             global $post;
-            print_r ($_POST);
+
             $gdsr_options = $this->o;
             $post_id = $post->ID;
             $default = false;
@@ -639,9 +639,13 @@ if (!class_exists('GDStarRating')) {
                 add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"));
             else {
                 add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
-
-                add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "post", "advanced", "high");
-                add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "page", "advanced", "high");
+                if ($this->o["integrate_post_edit"] == 1) {
+                    add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "post", "side", "high");
+                    add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "page", "side", "high");
+                }
+                if ($this->o["integrate_comment_edit"] == 1) {
+                    add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_comment'), "comments", "side", "high");
+                }
             }
 
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 10, __FILE__, array(&$this,"star_menu_front"));
@@ -736,8 +740,6 @@ if (!class_exists('GDStarRating')) {
                 if ($this->o["integrate_comment_edit"] == 1) {
                     if ($this->wp_version < 27) 
                         add_action('submitcomment_box', array(&$this, 'editbox_comment'));
-                    else 
-                        add_action('do_meta_boxes', array(&$this, 'editbox_comment'), "comment");
                     
                     add_filter('comment_save_pre', array(&$this, 'comment_edit_review'));
                 }
