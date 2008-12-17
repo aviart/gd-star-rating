@@ -650,13 +650,18 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
         $options = get_option('gd-star-rating');
         if ($is_page == '')
             $is_page = GDSRDatabase::get_post_type($post_id) == 'page' ? '1' : '0';
-        
+
+wp_gdsr_dump("ADD_DEFAULT_is_page", $is_page);
+
         $dbt_data_article = $table_prefix.'gdsr_data_article';
         $sql = sprintf(
                 "INSERT INTO %s (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (%s, '%s', '%s', '%s', '%s', '%s', 0, 0, 0, 0, %s, '%s', '%s')",
                 $dbt_data_article, $post_id, $options["default_voterules_articles"], $options["default_voterules_comments"], $options["default_moderation_articles"], $options["default_moderation_comments"], $is_page, $review, $options["default_timer_type"], $options["default_timer_value"]
                 );
         $wpdb->query($sql);
+
+wp_gdsr_dump("ADD_DEFAULT_sql", $sql);
+wp_gdsr_dump("ADD_DEFAULT_error", $wpdb->last_error);
     }
     
     function add_empty_comment($comment_id, $post_id, $review = -1) {
@@ -670,6 +675,9 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
                     $review
                 );
         $wpdb->query($sql);
+
+wp_gdsr_dump("ADD_DEFAULT_CMM_sql", $sql);
+wp_gdsr_dump("ADD_DEFAULT_CMM_error", $wpdb->last_error);
     }
     
     function add_empty_comments($post_id) {
@@ -700,6 +708,11 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
         $articles = $table_prefix.'gdsr_data_article';
         $sql = "select * from ".$articles." WHERE post_id = ".$post_id;
         $results = $wpdb->get_row($sql, OBJECT);
+
+wp_gdsr_dump("GET_POSTDATA_sql", $sql);
+wp_gdsr_dump("GET_POSTDATA_results", $results);
+wp_gdsr_dump("GET_POSTDATA_error", $wpdb->last_error);
+
         return $results;
     }
     
@@ -708,6 +721,11 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
         $comments = $table_prefix.'gdsr_data_comment';
         $sql = "select * from ".$comments." WHERE comment_id = ".$comment_id;
         $results = $wpdb->get_row($sql, OBJECT);
+
+wp_gdsr_dump("GET_COMMENTDATA_sql", $sql);
+wp_gdsr_dump("GET_COMMENTDATA_results", $results);
+wp_gdsr_dump("GET_COMMENTDATA_error", $wpdb->last_error);
+
         return $results;
     }
     
@@ -863,6 +881,10 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
         global $wpdb;
         $sql = "SELECT post_type FROM $wpdb->posts WHERE ID = ".$post_id;
         $r = $wpdb->get_row($sql);
+
+wp_gdsr_dump("GET_POST_TYPE_sql", $sql);
+wp_gdsr_dump("GET_POST_TYPE_type", $r);
+
         return $r->post_type;
     }
     

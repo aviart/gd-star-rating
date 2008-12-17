@@ -1,4 +1,4 @@
-= GD Star Rating =
+﻿= GD Star Rating =
 
 == Languages ==
 
@@ -29,4 +29,4 @@
   * version: 1.0.6
   * author: Paolo Benvenuto
   * email: donpaolo@gsi.it
-  * web: www.parrocchialagaccio.it
+  * web: http://www.parrocchialagaccio.it

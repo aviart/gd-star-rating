@@ -224,7 +224,7 @@ function gdsrTimerChange() {
         echo '<td><strong>'.$row->title.'</strong></td>';
         echo '<td nowrap="nowrap">';
         echo '<a href="'.get_permalink($row->pid).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a>&nbsp;';
-        echo '<img src="'.STARRATING_URL.'gfx/chart.png" border="0" />';
+        echo '<a onclick="generateUrl('.$row->pid.')" href="#TB_inline?height=520&width=950&inlineId=gdsrchart" title="'._("Charts", "gd-star-rating").'" class="thickbox"><img src="'.STARRATING_URL.'gfx/chart.png" border="0" /></a>';
         echo '</td>';
         echo '<td class="num"><div class="post-com-count-wrapper">'.$comment_count.'</div></td>';
         if ($options["moderation_active"] == 1) 
@@ -379,4 +379,8 @@ function gdsrTimerChange() {
 </div>
 <br class="clear"/>
 </form>
+</div>
+
+<div id="gdsrchart" style="display: none">
+    <?php include(STARRATING_PATH.'options/articles_chart.php'); ?>
 </div>

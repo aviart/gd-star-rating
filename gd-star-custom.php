@@ -57,6 +57,21 @@
     }
 
     /**
+     * Renders blog rating widget element based on the $widget settings array
+     *
+     * @global GDStarRating $gdsr main rating class instance
+     * @param array $widget settings to use for rendering
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_render_blog_rating_widget($widget = array(), $echo = true) {
+        global $gdsr;
+
+        if ($echo) echo $gdsr->render_top_widget($widget);
+        else return $gdsr->render_top_widget($widget);
+    }
+
+    /**
      * Renders widget-like element based on the $widget settings array
      *
      * @global GDStarRating $gdsr main rating class instance
