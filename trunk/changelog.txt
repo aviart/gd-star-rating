@@ -2,6 +2,11 @@
 
 == Change Log ==
 
+=== Version: 1.0.7 / december 21 2008 ===
+  * new: function for manual rendering of blog rating widget
+  * edit: more database calls in debug file
+  * edit: small change in rendering blog rating widget
+
 === Version: 1.0.6 / december 14 2008 ===
   * new: christmas style stars
   * new: added italian translation

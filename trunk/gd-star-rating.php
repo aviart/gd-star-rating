@@ -679,7 +679,6 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin) {
                 wp_print_scripts('jquery-ui-tabs');
                 wp_admin_css('css/dashboard');
-                add_thickbox();
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin.css" type="text/css" media="screen" />');
                 if ($this->wp_version >= 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_wp27.css" type="text/css" media="screen" />');
             }
@@ -1029,8 +1028,11 @@ if (!class_exists('GDStarRating')) {
             define('STARRATING_PATH', $this->plugin_path);
             define('STARRATING_XTRA_URL', $this->plugin_xtra_url);
             define('STARRATING_XTRA_PATH', $this->plugin_xtra_path);
+            
             define('STARRATING_CHART_URL', $this->plugin_chart_url);
             define('STARRATING_CHART_PATH', $this->plugin_chart_path);
+            define('STARRATING_CHART_CACHE_URL', $this->plugin_xtra_url."charts/");
+            define('STARRATING_CHART_CACHE_PATH', $this->plugin_xtra_path."charts/");
         }
 
         /**
@@ -1081,6 +1083,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             wp_enqueue_script('jquery');
+            if ($this->admin_plugin) add_thickbox();
             $this->l = get_locale();
             if(!empty($this->l)) {
                 $moFile = dirname(__FILE__)."/languages/gd-star-rating-".$this->l.".mo";
@@ -1744,6 +1747,7 @@ if (!class_exists('GDStarRating')) {
             $options = $this->o;
             $wpv = $this->wp_version;
             $gdsr_page = $_GET["gdsr"];
+            $use_nonce = $this->use_nonce;
             
             switch ($gdsr_page) {
                 case "articles":
@@ -1887,7 +1891,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->w["display"] == "hide" || ($this->w["display"] == "users" && $userdata->ID == 0) || ($this->w["display"] == "visitors" && $userdata->ID > 0)) return;
            
             echo $before_widget.$before_title.$this->w['title'].$after_title;
-            $this->render_top_widget($this->w);
+            echo $this->render_top_widget($this->w);
             echo $after_widget;
         }
         
@@ -1904,7 +1908,7 @@ if (!class_exists('GDStarRating')) {
             $rt = str_replace('%COUNT%', $data->count, $rt);
             $rt = str_replace('%BAYES_RATING%', $data->bayes_rating, $rt);
             $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-            echo $rt;
+            return $rt;
         }
         
         function get_blog_rating($select = "postpage", $show = "total") {
