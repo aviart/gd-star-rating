@@ -1,0 +1,7 @@
+CREATE TABLE `%sgdsr_multis` (
+  `multi_id` int(10) unsigned NOT NULL auto_increment,
+  `name` varchar(64) NOT NULL,
+  `description` varchar(512) NOT NULL,
+  `stars` int(11) NOT NULL default '10',
+  `object` text NOT NULL,
+  PRIMARY KEY  (`multi_id`));

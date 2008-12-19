@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://wp.gdragon.info/plugin/gd-star-rating/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.0.6
+Version: 1.0.7
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -27,6 +27,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+require_once(dirname(__FILE__)."/install/db_install.php");
 require_once(dirname(__FILE__)."/code/gd-star-functions.php");
 require_once(dirname(__FILE__)."/code/gd-star-render.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbone.php");
@@ -111,10 +112,10 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "version" => "1.0.6",
+            "version" => "1.0.7",
             "date" => "2008.12.14.",
-            "status" => "Stable",
-            "build" => 327,
+            "status" => "Beta",
+            "build" => 333,
             "news_feed_active" => 1,
             "debug_active" => 0,
             "debug_inline" => 1,
@@ -880,11 +881,11 @@ if (!class_exists('GDStarRating')) {
             $this->wpr8 = get_option('gd-star-rating-wpr8');
 
             if ($this->o["build"] < $this->default_options["build"])
-                GDSRDB::upgrade_database();
+                gdDBInstall::upgrade_tables(STARRATING_PATH);
             
             if (!is_array($this->o)) {
                 update_option('gd-star-rating', $this->default_options);
-                GDSRDB::install_database();
+                gdDBInstall::create_tables(STARRATING_PATH);
             }
             else {
                 $this->o = $this->upgrade_settings($this->o, $this->default_options);
@@ -1075,8 +1076,8 @@ if (!class_exists('GDStarRating')) {
                 delete_option('gd-star-rating-templates');
                 delete_option('gd-star-rating-import');
                 delete_option('gd-star-rating-gfx');
-                
-                GDSRDB::uninstall_database();
+
+                gdDBInstall::drop_tables(STARRATING_PATH);
                 GDSRHelper::deactivate_plugin();
                 update_option('recently_activated', array("gd-star-rating/gd-star-rating.php" => time()) + (array)get_option('recently_activated'));
                 wp_redirect('index.php');

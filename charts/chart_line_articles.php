@@ -43,35 +43,38 @@ include(STARRATING_CHART_PATH."pchart/pData.class");
 include(STARRATING_CHART_PATH."pchart/pChart.class");
 
 $DataSet = new pData;
-$DataSet->AddPoint($vote, "Serie1");
-$DataSet->AddPoint($rate, "Serie2");
-
-$DataSet->AddAllSeries();
-$DataSet->SetAbsciseLabelSerie();
-$DataSet->SetSerieName("Votes", "Serie1");
-$DataSet->SetSerieName("Rating", "Serie2");
+$DataSet->AddPoint($vote,"Serie1");
+$DataSet->AddPoint($rate,"Serie2");
+$DataSet->AddPoint($date,"Serie3");
+$DataSet->AddSerie("Serie1");
+$DataSet->SetAbsciseLabelSerie("Serie3");
+$DataSet->SetSerieName("Votes","Serie1");
+$DataSet->SetSerieName("Rating","Serie2");
 
 $Test = new pChart(750,380);
-$Test->setFontProperties(STARRATING_CHART_PATH."fonts/quicksand.ttf",8);
-$Test->setGraphArea(50,40,700,330);
-$Test->drawFilledRoundedRectangle(7,7,743,373,5,240,240,240);
-$Test->drawRoundedRectangle(5,5,745,375,5,230,230,230);
-$Test->drawGraphArea(255,255,255,TRUE);
-$Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,150,150,150,TRUE,90,2);
+$Test->drawFilledRoundedRectangle(7, 7, 743, 373, 5, 240, 240, 240);
+$Test->drawRoundedRectangle(5, 5, 745, 375, 5, 230, 230, 230);
+
+$Test->setFontProperties(STARRATING_CHART_PATH."fonts/quicksand.ttf", 8);
+$Test->setGraphArea(60, 40, 695, 290);
+
+$DataSet->SetYAxisName("Votes");
+$Test->drawScale($DataSet->GetData(), $DataSet->GetDataDescription(), SCALE_NORMAL, 150, 150, 150, TRUE, 90, 0);
 $Test->drawGrid(4,TRUE,230,230,230,50);
 
-$Test->setFontProperties(STARRATING_CHART_PATH."fonts/quicksand.ttf",6);
-$Test->drawTreshold(0,143,55,72,TRUE,TRUE);
-
-// Draw the line graph
 $Test->drawLineGraph($DataSet->GetData(),$DataSet->GetDataDescription());
 $Test->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),2,1,255,255,255);
 
-// Finish the graph
-$Test->setFontProperties(STARRATING_CHART_PATH."fonts/quicksand.ttf",8);
-$Test->drawLegend(600,30,$DataSet->GetDataDescription(),255,255,255);
-$Test->setFontProperties(STARRATING_CHART_PATH."fonts/quicksand.ttf",10);
-$Test->drawTitle(50,22,"Example 9",50,50,50,585);
+$Test->clearScale();   
+  
+$DataSet->RemoveSerie("Serie1");   
+$DataSet->AddSerie("Serie2");   
+$DataSet->SetYAxisName("Ratings");
+
+$Test->drawRightScale($DataSet->GetData(), $DataSet->GetDataDescription(), SCALE_NORMAL, 150, 150, 150, TRUE, 90, 0);
+$Test->drawLineGraph($DataSet->GetData(),$DataSet->GetDataDescription());
+$Test->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),2,1,255,255,255);
+
 $Test->Stroke();
 
 ?>

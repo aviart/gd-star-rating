@@ -1,12 +1,12 @@
 <?php
 
     if ($_POST["gdsr_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
-        GDSRDB::uninstall_database();
+        gdDBInstall::drop_tables(STARRATING_PATH);
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>All database table deleted.</strong></p></div> <?php
     }
     if ($_POST["gdsr_reinstall"] == __("REINSTALL", "gd-star-rating")) {
-        GDSRDB::uninstall_database();
-        GDSRDB::install_database();
+        gdDBInstall::drop_tables(STARRATING_PATH);
+        gdDBInstall::create_tables(STARRATING_PATH);
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>Database tables reinstalled.</strong></p></div> <?php
     }
     if ($_POST["gdsr_remove_settings"] == __("REMOVE SETTINGS", "gd-star-rating")) {
