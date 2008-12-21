@@ -15,6 +15,35 @@ class gdDBInstall {
     }
 
     function upgrade_tables($path) {
+        $path.= "install/tables";
+        $files = gdDBInstall::scan_folder($path);
+        foreach ($files as $file) {
+            if (substr($file, 0, 1) != '.')
+                gdDBInstall::upgrade_table($path, $file);
+        }
+    }
+
+    function check_column($columns, $column) {
+        foreach ($columns as $c)
+            if ($c->Field == $column) return true;
+        return false;
+    }
+
+    function upgrade_table($path, $file) {
+        global $wpdb, $table_prefix;
+        $file_path = $path."/".$file;
+        $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
+        $columns = $wpdb->get_results(sprintf("SHOW COLUMNS FROM %s", $table_name));
+        wp_gdsr_dump('columns', $columns);
+        $fc = file($file_path);
+        $after = '';
+        foreach ($fc as $f) {
+            $f = trim($f);
+            if (substr($f, 0, 1) == "`") {
+                if (!gdDBInstall::check_column($columns, $column)) {
+                }
+            }
+        }
     }
 
     function create_tables($path) {
