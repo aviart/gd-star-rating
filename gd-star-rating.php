@@ -1050,6 +1050,7 @@ if (!class_exists('GDStarRating')) {
          * Main init method executed as wordpress action 'init'.
          */
         function init() {
+            gdDBInstall::upgrade_tables(STARRATING_PATH);
             if (isset($_GET["page"])) {
                 if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
                     $this->admin_plugin = true;
