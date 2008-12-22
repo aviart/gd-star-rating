@@ -13,3 +13,5 @@ Plugin requires at least WordPress 2.5 to run.
   * no issues
 
 == WordPress 2.7.x ==
+
+  * comment review rating edit issues due to deleted actions
