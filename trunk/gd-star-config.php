@@ -8,7 +8,7 @@ define('STARRATING_WPCONFIG', '');
 /**
  * Full path to a text file used to save debug info. File must be writeable.
  */
-define('STARRATING_LOG_PATH', 'c:/gd_star_rating_log.txt');
+define('STARRATING_LOG_PATH', dirname(__FILE__).'/debug.txt');
 
 /**
  * Returns the path to wp-config.php file

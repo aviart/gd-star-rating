@@ -27,7 +27,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-require_once(dirname(__FILE__)."/install/db_install.php");
 require_once(dirname(__FILE__)."/code/gd-star-functions.php");
 require_once(dirname(__FILE__)."/code/gd-star-render.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbone.php");
@@ -39,6 +38,7 @@ require_once(dirname(__FILE__)."/code/gd-star-import.php");
 require_once(dirname(__FILE__)."/code/gd-star-chart.php");
 require_once(dirname(__FILE__)."/gd-star-config.php");
 require_once(dirname(__FILE__)."/gd-star-debug.php");
+require_once(dirname(__FILE__)."/install/db_install.php");
 
 if (!class_exists('GDStarRating')) {
     /**
@@ -925,8 +925,8 @@ if (!class_exists('GDStarRating')) {
             }
 
             $this->use_nonce = $this->o["use_nonce"] == 1;
-            define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"]);
             define("STARRATING_VERSION", $this->o["version"].'_'.$this->o["build"]);
+            define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"]);
             $this->t = GDSRDB::get_database_tables();
         }
 

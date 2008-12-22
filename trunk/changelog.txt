@@ -8,6 +8,7 @@
   * edit: more database calls in debug file
   * edit: small change in rendering blog rating widget
   * fix: problems caused by incorrect database upgrade
+  * fix: default debug file becauase of open_basedir restrictions
 
 === Version: 1.0.6 / december 14 2008 ===
   * new: christmas style stars
