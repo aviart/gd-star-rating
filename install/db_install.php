@@ -1,5 +1,28 @@
 <?php
 
+/*
+Name:    gdDBInstall
+Version: 0.9.9
+
+== Copyright ==
+
+Copyright 2008 Milan Petrovic (email : milan@gdragon.info)
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+
 class gdDBInstall {
     function drop_tables($path) {
         global $wpdb, $table_prefix;
@@ -18,7 +41,7 @@ class gdDBInstall {
         $path.= "install/tables";
         $files = gdDBInstall::scan_folder($path);
         foreach ($files as $file) {
-            if (substr($file, 0, 1) != '.')
+            if (substr($file, 0, 1) != '.' && is_file($file))
                 gdDBInstall::upgrade_table($path, $file);
         }
     }
@@ -34,7 +57,6 @@ class gdDBInstall {
         $file_path = $path."/".$file;
         $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
         $columns = $wpdb->get_results(sprintf("SHOW COLUMNS FROM %s", $table_name));
-        wp_gdsr_dump('columns', $columns);
         $fc = file($file_path);
         $after = '';
         foreach ($fc as $f) {
@@ -97,7 +119,7 @@ class gdDBInstall {
             return scandir($path);
         }
         else {
-            $dh  = opendir($path);
+            $dh = opendir($path);
             while (false !== ($filename = readdir($dh))) {
                 $files[] = $filename;
             }

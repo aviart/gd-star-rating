@@ -15,9 +15,11 @@ class GDDebug
             $this->log_file = STARRATING_LOG_PATH;
         else
             $this->log_file = $log_url;
-            
-        if (file_exists($this->log_file) && is_writable($this->log_file)) {
-            $this->active = true;
+
+        if ($this->log_file != '') {
+            if (file_exists($this->log_file) && is_writable($this->log_file)) {
+                $this->active = true;
+            }
         }
     }
 
@@ -42,6 +44,21 @@ class GDDebug
                 fwrite ($f, "-------------------------------------------------------- \r\n");
             fclose($f);
         }
+    }
+}
+
+/**
+* Writes a object dump into the log file
+*
+* @param string $msg log entry message
+* @param mixed $object object to dump
+* @param string $block adds start or end dump limiters { none | start | end }
+* @param string $mode file open mode
+*/
+function wp_gdsr_dump($msg, $obj, $block = "none", $mode = "a+") {
+    if (STARRATING_DEBUG_ACTIVE == 1) {
+        global $gd_debug;
+        $gd_debug->dump($msg, $obj, $block, $mode);
     }
 }
 
