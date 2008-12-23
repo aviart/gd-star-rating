@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://wp.gdragon.info/donate/
-Version: 1.0.6
+Version: 1.0.7
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review
 Requires at least: 2.5.0
 Tested up to: 2.7.0

@@ -4,7 +4,7 @@
 <div id="gdsr_tabs" class="gdsrtabs">
 <ul>
     <li><a href="#fragment-1"><span><?php _e("Graphics", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-2"><span><?php _e("Cleanup", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-2"><span><?php _e("Database", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-3"><span><?php _e("Bulk", "gd-star-rating"); ?></span></a></li>
 </ul>
 <div style="clear: both"></div>
@@ -24,7 +24,17 @@
 </div>
 <div id="fragment-2">
 <table class="form-table"><tbody>
-<tr><th scope="row"><?php _e("Database Cleanup", "gd-star-rating"); ?></th>
+<tr><th scope="row"><?php _e("Upgrade", "gd-star-rating"); ?></th>
+    <td>
+        <form method="post">
+        <?php _e("Try to upgrade plugin tables. This is performed automatically after each plugin upgrade, but you can use this tool also.", "gd-star-rating"); ?><br />
+        <input type="submit" class="inputbutton" value="<?php _e("Upgrade", "gd-star-rating"); ?>" name="gdsr_upgrade_tool" id="gdsr_upgrade_tool" />
+        <div class="gdsr-table-split"></div>
+        <?php _e("Last cleanup was executed on", "gd-star-rating"); ?>: <strong><?php echo $gdsr_options['database_upgrade']; ?></strong>
+        </form>
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("Cleanup", "gd-star-rating"); ?></th>
     <td>
         <form method="post">
         <input type="checkbox" name="gdsr_tools_clean_invalid_log" id="gdsr_tools_clean_invalid_log" checked="checked" /><label style="margin-left: 5px;" for="gdsr_tools_clean_invalid_log"><?php _e("Remove all invalid votes from votes log.", "gd-star-rating"); ?></label>
@@ -35,8 +45,8 @@
         <br />
         <input type="submit" class="inputbutton" value="<?php _e("Clean", "gd-star-rating"); ?>" name="gdsr_cleanup_tool" id="gdsr_cleanup_tool" />
         <div class="gdsr-table-split"></div>
-        Last cleanup was executed on: <strong><?php echo $gdsr_options['database_cleanup']; ?></strong><br />
-        Cleanup summary: <strong><?php echo $gdsr_options['database_cleanup_msg']; ?></strong><br />
+        <?php _e("Last cleanup was executed on", "gd-star-rating"); ?>: <strong><?php echo $gdsr_options['database_cleanup']; ?></strong><br />
+        <?php _e("Cleanup summary", "gd-star-rating"); ?>: <strong><?php echo $gdsr_options['database_cleanup_msg']; ?></strong>
         </form>
     </td>
 </tr>
@@ -55,7 +65,7 @@
         </table>
         <input type="submit" class="inputbutton" value="<?php _e("Lock", "gd-star-rating"); ?>" name="gdsr_post_lock" id="gdsr_post_lock" />
         <div class="gdsr-table-split"></div>
-        Previous Lock Date: <strong><?php echo $gdsr_options['mass_lock']; ?></strong>
+        <?php _e("Previous Lock Date", "gd-star-rating"); ?>: <strong><?php echo $gdsr_options['mass_lock']; ?></strong>
         </form>
     </td>
 </tr>
@@ -102,7 +112,7 @@
         </table>
         <input type="submit" class="inputbutton" value="<?php _e("Set", "gd-star-rating"); ?>" name="gdsr_rules_set" id="gdsr_rules_set" />
         <div class="gdsr-table-split"></div>
-        This will update all posts and with previously saved ratings.
+        <?php _e("This will update all posts and comments with previously saved ratings.", "gd-star-rating"); ?>
         </form>
     </td>
 </tr>

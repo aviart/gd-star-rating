@@ -86,7 +86,7 @@ class GDSRDB {
                 $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
                 break;
             default:
-                $row->moderate_articles = __("articles", "gd-star-rating").': <strong>free</strong>';
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong>'.__("free", "gd-star-rating").'</strong>';
                 break;
         }
         switch ($row->moderate_comments) {
@@ -103,7 +103,7 @@ class GDSRDB {
                 $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
                 break;
             default:
-                $row->moderate_comments = __("comments", "gd-star-rating").': <strong>free</strong>';
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong>'.__("free", "gd-star-rating").'</strong>';
                 break;
         }
         switch ($row->rules_articles) {
@@ -206,7 +206,7 @@ class GDSRDB {
                 $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
                 break;
             default:
-                $row->moderate_articles = __("articles", "gd-star-rating").': <strong>free</strong>';
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong>'.__("free", "gd-star-rating").'</strong>';
                 break;
         }
         switch ($row->moderate_comments) {
@@ -220,7 +220,7 @@ class GDSRDB {
                 $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
                 break;
             default:
-                $row->moderate_comments = __("comments", "gd-star-rating").': <strong>free</strong>';
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong>'.__("free", "gd-star-rating").'</strong>';
                 break;
         }
         switch ($row->rules_articles) {
