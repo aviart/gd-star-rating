@@ -78,8 +78,13 @@ function checkAll(form) {
 <div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
 <form id="gdsr-articles" method="post" action="">
 <h2>GD Star Rating: <?php _e("User Vote Log", "gd-star-rating"); ?></h2>
-<p><strong><?php _e("Votes log for user", "gd-star-rating"); ?>: 
-    <?php echo sprintf('<a href="./user-edit.php?user_id=%s">%s</a>', $user_id, $user_name); ?>
+<p><strong>
+<?php if ($user_id > 0) { ?>
+<?php _e("Votes log for user", "gd-star-rating"); ?>: 
+<?php echo sprintf('<a href="./user-edit.php?user_id=%s">%s</a>', $user_id, $user_name); ?>
+<?php } else { ?>
+<?php _e("Votes log for visitors", "gd-star-rating"); ?>
+<?php } ?>
 </strong></p>
 <div class="tablenav">
     <div class="alignleft">

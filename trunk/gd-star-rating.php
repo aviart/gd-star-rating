@@ -115,10 +115,11 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.7",
             "date" => "2008.12.14.",
             "status" => "Beta",
-            "build" => 333,
+            "build" => 339,
             "news_feed_active" => 1,
             "debug_active" => 0,
             "debug_inline" => 1,
+            "database_upgrade" => '',
             "database_cleanup" => '',
             "database_cleanup_msg" => '',
             "mass_lock" => '',
@@ -880,8 +881,10 @@ if (!class_exists('GDStarRating')) {
             $this->g = get_option('gd-star-rating-gfx');
             $this->wpr8 = get_option('gd-star-rating-wpr8');
 
-            if ($this->o["build"] < $this->default_options["build"])
+            if ($this->o["build"] < $this->default_options["build"]) {
                 gdDBInstall::upgrade_tables(STARRATING_PATH);
+                $this->o["database_upgrade"] = date("r");
+            }
             
             if (!is_array($this->o)) {
                 update_option('gd-star-rating', $this->default_options);
@@ -1683,11 +1686,17 @@ if (!class_exists('GDStarRating')) {
         }
         
         function star_menu_tools() {
+            $msg = "";
             if (isset($_POST['gdsr_preview_scan'])) {
                 $this->g = $this->gfx_scan();
                 update_option('gd-star-rating-gfx', $this->g);
             }
-            $msg = "";
+            if (isset($_POST['gdsr_upgrade_tool'])) {
+                gdDBInstall::create_tables(STARRATING_PATH);
+                gdDBInstall::upgrade_tables(STARRATING_PATH);
+                $this->o["database_upgrade"] = date("r");
+                update_option('gd-star-rating', $this->o);
+            }
             if (isset($_POST['gdsr_cleanup_tool'])) {
                 if (isset($_POST['gdsr_tools_clean_invalid_log'])) {
                     $count = GDSRDBTools::clean_invalid_log_articles();

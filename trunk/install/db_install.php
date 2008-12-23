@@ -23,7 +23,17 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+/*
+ * Class for installing, droping, populating and upgrading database tables using the file format for each table.
+ */
 class gdDBInstall {
+    /**
+     * Drops all tables according to the table names.
+     *
+     * @global object $wpdb Wordpress DB class
+     * @global string $table_prefix Wordpress table prefix
+     * @param string $path base path to folder where the install folder is located with trailing slash
+     */
     function drop_tables($path) {
         global $wpdb, $table_prefix;
         $path.= "install/tables";
@@ -37,6 +47,11 @@ class gdDBInstall {
         }
     }
 
+    /**
+     * Upgrades database tables.
+     *
+     * @param string $path base path to folder where the install folder is located with trailing slash
+     */
     function upgrade_tables($path) {
         $path.= "install/tables";
         $files = gdDBInstall::scan_folder($path);
@@ -46,12 +61,26 @@ class gdDBInstall {
         }
     }
 
+    /**
+     * Checks if the column exists in the table columns.
+     *
+     * @param array $columns all columns in the table
+     * @param string $column column name to check
+     */
     function check_column($columns, $column) {
         foreach ($columns as $c)
             if ($c->Field == $column) return true;
         return false;
     }
 
+    /**
+     * Upgrades table.
+     *
+     * @global object $wpdb Wordpress DB class
+     * @global string $table_prefix Wordpress table prefix
+     * @param string $path base path to folder where the install folder is located with trailing slash
+     * @param string $file table file name
+     */
     function upgrade_table($path, $file) {
         global $wpdb, $table_prefix;
         $file_path = $path."/".$file;
@@ -71,6 +100,14 @@ class gdDBInstall {
         }
     }
 
+    /**
+     * Adds column to the database.
+     *
+     * @global object $wpdb Wordpress DB class
+     * @param string $table table name
+     * @param string $column_info column definition
+     * @param string $position column name used for after element in alter table
+     */
     function add_column($table, $column_info, $position = '') {
         global $wpdb;
         if (substr($column_info, -1) == ",")
@@ -81,6 +118,13 @@ class gdDBInstall {
         $wpdb->query($sql);
     }
 
+    /**
+     * Creates table based on the table install file
+     *
+     * @global object $wpdb Wordpress DB class
+     * @global string $table_prefix Wordpress table prefix
+     * @param string $path base path to folder where the install folder is located with trailing slash
+     */
     function create_tables($path) {
         global $wpdb, $table_prefix;
         $path.= "install/tables";
@@ -106,6 +150,13 @@ class gdDBInstall {
         }
     }
 
+    /**
+     * Imports data from file into table
+     *
+     * @global object $wpdb Wordpress DB class
+     * @global string $table_prefix Wordpress table prefix
+     * @param string $path base path to folder where the install folder is located with trailing slash
+     */
     function import_data($path) {
         global $wpdb, $table_prefix;
         $path.= "install/data";
@@ -127,6 +178,12 @@ class gdDBInstall {
         }
     }
 
+    /**
+     * Scans folder for files.
+     *
+     * @param string $path base path to folder where the install folder is located with trailing slash
+     * @return array list of files and folders
+     */
     function scan_folder($path) {
         if (function_exists(scandir)) {
             return scandir($path);

@@ -31,7 +31,7 @@ foreach ($pre_users as $user) {
     $users[$count][$user->vote_type]["votes"] = $user->votes;
     $users[$count][$user->vote_type]["voters"] = $user->voters;
     $users[$count][$user->vote_type]["ips"] = $user->ips;
-    $users[$count]["name"] = $user->user_id == 0 ? "Visitor" : $user->display_name;
+    $users[$count]["name"] = $user->user_id == 0 ? __("Visitor", "gd-star-rating") : $user->display_name;
     $users[$count]["email"] = $user->user_id == 0 ? "/" : $user->user_email;
     $users[$count]["url"] = $user->user_id == 0 ? "/" : $user->user_url;
     $usrid = $user->user_id;

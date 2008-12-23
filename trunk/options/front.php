@@ -23,7 +23,7 @@
 ?>
 
 <div id="rightnow">
-    <h3 class="reallynow"><span>Quick Rating Facts:</span><br class="clear"/></h3>
+    <h3 class="reallynow"><span><?php _e("Quick Rating Facts", "gd-star-rating"); ?>:</span><br class="clear"/></h3>
     <p class="youhave">
     <?php 
         printf(__("Registered users rated %s articles with average rating of %s and %s comments with average rating of %s. Visitors rated %s articles with average rating of %s and %s comments with average rating of %s.", "gd-star-rating"), 
@@ -51,7 +51,7 @@
         <div class="dashboard-widget" style="height:37em">
         <h3 class="dashboard-widget-title"><span><?php _e("Latest News", "gd-star-rating") ?></span>
         <small>
-            <a target="_blank" href="http://wp.gdragon.info/">See All</a> | <img class="rss-icon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/>
+            <a target="_blank" href="http://wp.gdragon.info/"><?php _e("See All", "gd-star-rating"); ?></a> | <img class="rss-icon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/>
             <a href="http://wp.gdragon.info/feed/">RSS</a>
         </small>
         <br class="clear"/></h3>
