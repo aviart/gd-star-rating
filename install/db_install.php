@@ -2,7 +2,7 @@
 
 /*
 Name:    gdDBInstall
-Version: 0.9.9
+Version: 1.0.0
 
 == Copyright ==
 
@@ -41,7 +41,7 @@ class gdDBInstall {
         $path.= "install/tables";
         $files = gdDBInstall::scan_folder($path);
         foreach ($files as $file) {
-            if (substr($file, 0, 1) != '.' && is_file($file))
+            if (substr($file, 0, 1) != '.' && is_file($path."/".$file))
                 gdDBInstall::upgrade_table($path, $file);
         }
     }
@@ -62,10 +62,23 @@ class gdDBInstall {
         foreach ($fc as $f) {
             $f = trim($f);
             if (substr($f, 0, 1) == "`") {
-                if (!gdDBInstall::check_column($columns, $column)) {
-                }
+                $column = substr($f, 1);
+                $column = substr($column, 0, strpos($column, "`"));
+                if (!gdDBInstall::check_column($columns, $column))
+                    gdDBInstall::add_column($table_name, $f, $after);
+                $after = $column;
             }
         }
+    }
+
+    function add_column($table, $column_info, $position = '') {
+        global $wpdb;
+        if (substr($column_info, -1) == ",")
+            $column_info = substr($column_info, 0, strlen($column_info) - 1);
+        if ($position == '') $position = "FIRST";
+        else $position = "AFTER ".$position;
+        $sql = sprintf("ALTER TABLE %s ADD %s %s", $table, $column_info, $position);
+        $wpdb->query($sql);
     }
 
     function create_tables($path) {

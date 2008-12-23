@@ -2261,6 +2261,7 @@ if (!class_exists('GDStarRating')) {
             
             if ($allow_vote) {
                 if (
+                    ($post_data->rules_comments == "") ||
                     ($post_data->rules_comments == "A") || 
                     ($post_data->rules_comments == "U" && $rd_user_id > 0) || 
                     ($post_data->rules_comments == "V" && $rd_user_id == 0)
@@ -2343,7 +2344,8 @@ if (!class_exists('GDStarRating')) {
 
             if ($allow_vote) {
                 if (
-                    ($post_data->rules_articles == "A") || 
+                    ($post_data->rules_articles == "") ||
+                    ($post_data->rules_articles == "A") ||
                     ($post_data->rules_articles == "U" && $rd_user_id > 0) || 
                     ($post_data->rules_articles == "V" && $rd_user_id == 0)
                 ) $allow_vote = true;
