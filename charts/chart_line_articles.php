@@ -51,30 +51,31 @@ $DataSet->SetAbsciseLabelSerie("Serie3");
 $DataSet->SetSerieName("Votes","Serie1");
 $DataSet->SetSerieName("Rating","Serie2");
 
-$Test = new pChart(750,380);
-$Test->drawFilledRoundedRectangle(7, 7, 743, 373, 5, 240, 240, 240);
-$Test->drawRoundedRectangle(5, 5, 745, 375, 5, 230, 230, 230);
+$chart = new pChart(750,380);
+$chart->loadColorPalette(STARRATING_CHART_PATH."colors/default.palette");
+$chart->drawFilledRoundedRectangle(7, 7, 743, 373, 5, 240, 240, 240);
+$chart->drawRoundedRectangle(5, 5, 745, 375, 5, 230, 230, 230);
 
-$Test->setFontProperties(STARRATING_CHART_PATH."fonts/quicksand.ttf", 8);
-$Test->setGraphArea(60, 40, 695, 290);
+$chart->setFontProperties(STARRATING_CHART_PATH."fonts/quicksand.ttf", 8);
+$chart->setGraphArea(60, 40, 695, 290);
 
 $DataSet->SetYAxisName("Votes");
-$Test->drawScale($DataSet->GetData(), $DataSet->GetDataDescription(), SCALE_NORMAL, 150, 150, 150, TRUE, 90, 0);
-$Test->drawGrid(4,TRUE,230,230,230,50);
+$chart->drawScale($DataSet->GetData(), $DataSet->GetDataDescription(), SCALE_NORMAL, 150, 150, 150, TRUE, 90, 0);
+$chart->drawGrid(4,TRUE,230,230,230,50);
 
-$Test->drawLineGraph($DataSet->GetData(),$DataSet->GetDataDescription());
-$Test->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),2,1,255,255,255);
+$chart->drawLineGraph($DataSet->GetData(),$DataSet->GetDataDescription());
+$chart->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),2,1,255,255,255);
 
-$Test->clearScale();   
+$chart->clearScale();
   
 $DataSet->RemoveSerie("Serie1");   
 $DataSet->AddSerie("Serie2");   
 $DataSet->SetYAxisName("Ratings");
 
-$Test->drawRightScale($DataSet->GetData(), $DataSet->GetDataDescription(), SCALE_NORMAL, 150, 150, 150, TRUE, 90, 0);
-$Test->drawLineGraph($DataSet->GetData(),$DataSet->GetDataDescription());
-$Test->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),2,1,255,255,255);
+$chart->drawRightScale($DataSet->GetData(), $DataSet->GetDataDescription(), SCALE_NORMAL, 150, 150, 150, TRUE, 90, 0);
+$chart->drawLineGraph($DataSet->GetData(),$DataSet->GetDataDescription());
+$chart->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),2,1,255,255,255);
 
-$Test->Stroke();
+$chart->Stroke();
 
 ?>

@@ -115,7 +115,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.7",
             "date" => "2008.12.24.",
             "status" => "Stable",
-            "build" => 344,
+            "build" => 345,
             "news_feed_active" => 1,
             "debug_active" => 0,
             "debug_inline" => 1,

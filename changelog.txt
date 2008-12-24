@@ -6,6 +6,7 @@
   * new: rewritten database installation and upgrade
   * new: function for manual rendering of blog rating widget
   * new: database upgrade tool
+  * new: default color palette for charts
   * edit: more database calls in debug file
   * edit: small change in rendering blog rating widget
   * edit: updated translation strings

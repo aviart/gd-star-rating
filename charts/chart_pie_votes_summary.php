@@ -23,6 +23,7 @@ $data_set->AddAllSeries();
 $data_set->SetAbsciseLabelSerie("Serie2");
 
 $chart = new pChart(430,240);
+$chart->loadColorPalette(STARRATING_CHART_PATH."colors/default.palette");
 $chart->drawFilledRoundedRectangle(7, 7, 423, 233, 5, 240, 240, 240);
 $chart->drawRoundedRectangle(5, 5, 425, 235, 5, 230, 230, 230);
 
