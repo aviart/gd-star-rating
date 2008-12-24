@@ -1,0 +1,14 @@
+= GD Star Rating =
+
+== Roadmap ==
+
+=== 1.1.0 ===
+  * customization of bot filter
+  * multi rating support
+
+=== 1.1.5 ===
+  * changing vote (like wordpress extend website)
+
+=== 1.2.0 ===
+  * reccomendation ratings
+  * more export data options
