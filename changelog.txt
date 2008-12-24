@@ -12,7 +12,9 @@
   * edit: improved user votes log
   * fix: problems caused by incorrect database upgrade
   * fix: invalid voting rules voting problem
+  * fix: saving rules and rating from post edit page
   * fix: default debug file becauase of open_basedir restrictions
+  * fix: tinymce invalid translation string rendering
 
 === Version: 1.0.6 / december 14 2008 ===
   * new: christmas style stars

@@ -113,9 +113,9 @@ if (!class_exists('GDStarRating')) {
         
         var $default_options = array(
             "version" => "1.0.7",
-            "date" => "2008.12.14.",
-            "status" => "Beta",
-            "build" => 339,
+            "date" => "2008.12.24.",
+            "status" => "Stable",
+            "build" => 341,
             "news_feed_active" => 1,
             "debug_active" => 0,
             "debug_inline" => 1,
@@ -465,7 +465,7 @@ if (!class_exists('GDStarRating')) {
         
         // various rendering
         /**
-        * Renters comment review stara
+        * Renders comment review stars
         * 
         * @param int $value initial rating value
         * @param bool $allow_vote render stars to support rendering or not to
@@ -831,7 +831,7 @@ if (!class_exists('GDStarRating')) {
                     $review = $_POST['gdsr_review'];
                     if ($_POST['gdsr_review_decimal'] != "-1")
                         $review.= ".".$_POST['gdsr_review_decimal'];
-                    GDSRDatabase::save_review($post_id, $review);
+                    GDSRDatabase::save_review($post_id, $review, $old);
                     $old = true;
                 }
                 
@@ -841,7 +841,10 @@ if (!class_exists('GDStarRating')) {
                     GDSRDatabase::save_timer_rules(
                         $post_id, 
                         $timer, 
-                        GDSRHelper::timer_value($timer, $_POST['gdsr_timer_date_value'], $_POST['gdsr_timer_countdown_value'], $_POST['gdsr_timer_countdown_type'])
+                        GDSRHelper::timer_value($timer,
+                            $_POST['gdsr_timer_date_value'],
+                            $_POST['gdsr_timer_countdown_value'],
+                            $_POST['gdsr_timer_countdown_type'])
                     );
                 }
             }
@@ -882,6 +885,7 @@ if (!class_exists('GDStarRating')) {
             $this->wpr8 = get_option('gd-star-rating-wpr8');
 
             if ($this->o["build"] < $this->default_options["build"]) {
+                gdDBInstall::create_tables(STARRATING_PATH);
                 gdDBInstall::upgrade_tables(STARRATING_PATH);
                 $this->o["database_upgrade"] = date("r");
             }
