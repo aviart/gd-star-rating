@@ -27,6 +27,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+require_once(dirname(__FILE__)."/gd-star-config.php");
 require_once(dirname(__FILE__)."/code/gd-star-functions.php");
 require_once(dirname(__FILE__)."/code/gd-star-render.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbone.php");
@@ -36,9 +37,8 @@ require_once(dirname(__FILE__)."/code/gd-star-dbmulti.php");
 require_once(dirname(__FILE__)."/code/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gd-star-import.php");
 require_once(dirname(__FILE__)."/code/gd-star-chart.php");
-require_once(dirname(__FILE__)."/gd-star-config.php");
-require_once(dirname(__FILE__)."/gd-star-debug.php");
-require_once(dirname(__FILE__)."/install/db_install.php");
+require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
+require_once(dirname(__FILE__)."/gdragon/gd_db_install.php");
 
 if (!class_exists('GDStarRating')) {
     /**
@@ -115,7 +115,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.7",
             "date" => "2008.12.24.",
             "status" => "Stable",
-            "build" => 341,
+            "build" => 344,
             "news_feed_active" => 1,
             "debug_active" => 0,
             "debug_inline" => 1,
@@ -2418,7 +2418,7 @@ if (!class_exists('GDStarRating')) {
         // rendering
     }
 
-    $gd_debug = new GDDebug();
+    $gd_debug = new gdDebug(STARRATING_LOG_PATH);
     $gdsr = new GDStarRating();
 
     include(STARRATING_PATH."gd-star-custom.php");

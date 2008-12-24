@@ -10,6 +10,7 @@
   * edit: small change in rendering blog rating widget
   * edit: updated translation strings
   * edit: improved user votes log
+  * edit: debug and install classes improvements
   * fix: problems caused by incorrect database upgrade
   * fix: invalid voting rules voting problem
   * fix: saving rules and rating from post edit page
