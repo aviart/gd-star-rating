@@ -827,26 +827,22 @@ if (!class_exists('GDStarRating')) {
             if ($_POST['gdsr_post_edit'] == "edit") {
                 $old = GDSRDatabase::check_post($post_id);
                     
-                if ($_POST['gdsr_review'] != "-1") {
-                    $review = $_POST['gdsr_review'];
-                    if ($_POST['gdsr_review_decimal'] != "-1")
-                        $review.= ".".$_POST['gdsr_review_decimal'];
-                    GDSRDatabase::save_review($post_id, $review, $old);
-                    $old = true;
-                }
+                $review = $_POST['gdsr_review'];
+                if ($_POST['gdsr_review_decimal'] != "-1")
+                    $review.= ".".$_POST['gdsr_review_decimal'];
+                GDSRDatabase::save_review($post_id, $review, $old);
+                $old = true;
                 
                 GDSRDatabase::save_article_rules($post_id, $_POST['gdsr_vote_articles'], $_POST['gdsr_mod_articles']);
                 $timer = $_POST['gdsr_timer_type'];
-                if ($timer != 'N') {
-                    GDSRDatabase::save_timer_rules(
-                        $post_id, 
-                        $timer, 
-                        GDSRHelper::timer_value($timer,
-                            $_POST['gdsr_timer_date_value'],
-                            $_POST['gdsr_timer_countdown_value'],
-                            $_POST['gdsr_timer_countdown_type'])
-                    );
-                }
+                GDSRDatabase::save_timer_rules(
+                    $post_id,
+                    $timer,
+                    GDSRHelper::timer_value($timer,
+                        $_POST['gdsr_timer_date_value'],
+                        $_POST['gdsr_timer_countdown_value'],
+                        $_POST['gdsr_timer_countdown_type'])
+                );
             }
         }
 

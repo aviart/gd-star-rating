@@ -455,6 +455,7 @@ wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
     function save_review($post_id, $rating, $old = true) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
+        if ($rating < 0) $rating = -1;
         if (!$old) 
             GDSRDatabase::add_default_vote($post_id, '', $rating);
         else 
