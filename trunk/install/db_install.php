@@ -3,6 +3,9 @@
 /*
 Name:    gdDBInstall
 Version: 1.0.0
+Author:  Milan Petrovic
+Email:   milan@gdragon.info
+Website: http://wp.gdragon.info/
 
 == Copyright ==
 

@@ -5,9 +5,16 @@
 === Version: 1.0.7 / december 22 2008 ===
   * new: rewritten database installation and upgrade
   * new: function for manual rendering of blog rating widget
+  * new: database upgrade tool
   * edit: more database calls in debug file
   * edit: small change in rendering blog rating widget
+  * edit: updated translation strings
+  * edit: improved user votes log
   * fix: problems caused by incorrect database upgrade
+  * fix: invalid voting rules voting problem
+  * fix: saving rules and rating from post edit page
+  * fix: default debug file becauase of open_basedir restrictions
+  * fix: tinymce invalid translation string rendering
 
 === Version: 1.0.6 / december 14 2008 ===
   * new: christmas style stars
