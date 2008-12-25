@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://wp.gdragon.info/donate/
-Version: 1.0.7
+Version: 1.0.8
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review
 Requires at least: 2.5.0
 Tested up to: 2.7.0
@@ -23,28 +23,58 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 
 = Features =
 
-* Rating of posts and pages and comments
-* Review Rating for posts
-* Ajax rating support
+* Rating of posts and pages
+* Rating of comments
+* Review rating for posts and pages
+* Review rating for comments
+* Ajax rating support using jQuery
 * Voting rules on post/page base
+* Voting rules based on categories
+* Moderation of votes
+* Multi language support
+* Advanced templates support
 * Charting support with pChart library
 * Administration dasboard widget
-* Moderation of votes on post/page base
-* Different trend and star styles and sizes
-* Separate saving of voting data for registered users and regular visitors
-* Saving cookies with votes
+* Post and comments based votes administration
+* User based votes administrations
+* Saving of voting data for registered users and regular visitors
 * Calculation of voting trend data for each post, page and comment
-* Rating multi instance support widget
+* Different trend and star styles and sizes
+* Saving cookies with votes
+* Saving IP and user agent data for each vote
+* Widget with list of ratings
+* Widget with top blog rating
+* Widgets with multi instance support
+* Widgets support templates
 * WordPress shortcode support
+* Various additional tools for maintenace and bulk operation
 * WordPress editor button and tinyMCE3 plugin for shortcode
-* Multi language support
-* Manual placement functions of the rating code
-* Category support for posts
-* Advanced Rating Widget
-* Rating and Voting trend calculations
+* Manual placement functions of the rating code and template integration
+* Banning IP's, IP ranges and masked IP's
 * Import data from other rating plugins
+* Export data into csv file
+* Expanding support based on actions
 * Support for QTranslate plugin
-* PDF User Guide
+* Extensive PDF User Guide
+
+== Planned Features ==
+
+* Reccomendation ratings
+* Multiple ratings
+* Support for custom modules
+* Expanding export features
+* More charts
+* Chart caching
+* Alternative rendering
+* Rendering caching
+
+== Import Data ==
+
+Plugin can import data from different rating plugins:
+
+* Star Rating For Revies [http://wordpress.org/extend/plugins/star-rating-for-reviews/]
+* Post Star Rating [http://wordpress.org/extend/plugins/post-star-rating/]
+* WP Post Rating [http://wordpress.org/extend/plugins/wp-postratings/]
 
 == Configuration ==
 
@@ -104,23 +134,23 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 == Source SVN ==
 
-Check out a read-only working copy anonymously over HTTP:
-
 * svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only
 
 == Website ==
 
 * Homepage: http://wp.gdragon.info/
 * Plugin: http://wp.gdragon.info/plugins/gd-star-rating/
-* Changelog: http://wp.gdragon.info/plugins/gd-star-rating/changelog/
 
 == Support ==
 
-* Google Code: http://code.google.com/p/gd-star-rating/
-* Ohloh: https://www.ohloh.net/p/gd-star-rating/
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
 * PDF User Guide: http://wp.gdragon.info/download/12/
 * Email: starrating@gdragon.info
+
+== Communities ==
+
+* Google Code: http://code.google.com/p/gd-star-rating/
+* Ohloh: https://www.ohloh.net/p/gd-star-rating/
 
 == WordPress Extend ==
 

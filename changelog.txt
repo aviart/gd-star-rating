@@ -2,7 +2,11 @@
 
 == Change Log ==
 
-=== Version: 1.0.7 / december 22 2008 ===
+=== Version: 1.0.8 / december 29 2008 ===
+  * edit: improved readme file
+  * edit: various small changes
+
+=== Version: 1.0.7 / december 24 2008 ===
   * new: rewritten database installation and upgrade
   * new: function for manual rendering of blog rating widget
   * new: database upgrade tool
