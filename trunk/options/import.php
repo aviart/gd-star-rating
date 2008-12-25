@@ -90,7 +90,7 @@
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Plugin URL", "gd-star-rating"); ?>:</th>
     <td>
-        <a target="_blank" href="http://www.channel-ai.com/blog/plugins/star-rating/">http://www.channel-ai.com/blog/plugins/star-rating/</a>
+        <a target="_blank" href="http://wordpress.org/extend/plugins/star-rating-for-reviews/">http://wordpress.org/extend/plugins/star-rating-for-reviews/</a>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Author URL", "gd-star-rating"); ?>:</th>
