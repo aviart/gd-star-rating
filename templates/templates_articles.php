@@ -10,7 +10,7 @@
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="100" valign="top"><?php _e("Voting Active", "gd-star-rating"); ?>:</td>
-                <td><input type="text" name="gdsr_tpl_srheader" id="gdsr_tpl_srheader" value="<?php echo wp_specialchars($gdsr_options["shortcode_starrating_header"]); ?>" style="width: 570px" /><br />
+                <td><input type="text" name="gdsr_time_active" id="gdsr_time_active" value="<?php echo wp_specialchars($gdsr_options["time_restricted_active"]); ?>" style="width: 570px" /><br />
                     <strong><?php _e("Allowed elements", "gd-star-rating"); ?>:</strong> %RATING%, %MAX_RATING%, %VOTES%, %WORD_VOTES%, %ID% <?php _e("and time restriction elements", "gd-star-rating"); ?></td>
             <tr>
         </table>
@@ -18,7 +18,7 @@
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="100" valign="top"><?php _e("Voting Closed", "gd-star-rating"); ?>:</td>
-                <td><input type="text" name="gdsr_tpl_sritem" id="gdsr_tpl_sritem" value="<?php echo wp_specialchars($gdsr_options["shortcode_starrating_item"]); ?>" style="width: 570px" /><br />
+                <td><input type="text" name="gdsr_time_closed" id="gdsr_time_closed" value="<?php echo wp_specialchars($gdsr_options["time_restricted_closed"]); ?>" style="width: 570px" /><br />
                     <strong><?php _e("Allowed elements", "gd-star-rating"); ?>:</strong> %RATING%, %MAX_RATING%, %VOTES%, %WORD_VOTES%, %ID%</td>
             <tr>
         </table>
