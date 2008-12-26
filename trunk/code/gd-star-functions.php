@@ -101,13 +101,13 @@ class GDSRHelper {
         $pdate = strtotime($post_date);
         switch ($period) {
             case 'H':
-                $expiry = mktime(date("H", $pdate) + $value, date("i", $pdate), date("s", $pdate), date("m", $pdate), date("d", $pdate), date("Y", $pdate));
+                $expiry = mktime(date("H", $pdate) + $value, date("i", $pdate), date("s", $pdate), date("m", $pdate),          date("j", $pdate),          date("Y", $pdate));
                 break;
             case 'D':
-                $expiry = mktime(date("H", $pdate), date("i", $pdate), date("s", $pdate), date("m", $pdate), date("d", $pdate) + $value, date("Y", $pdate));
+                $expiry = mktime(date("H", $pdate),          date("i", $pdate), date("s", $pdate), date("m", $pdate),          date("j", $pdate) + $value, date("Y", $pdate));
                 break;
             case 'M':
-                $expiry = mktime(date("H", $pdate), date("i", $pdate), date("s", $pdate), date("m", $pdate) + $value, date("d", $pdate), date("Y", $pdate));
+                $expiry = mktime(date("H", $pdate),          date("i", $pdate), date("s", $pdate), date("m", $pdate) + $value, date("j", $pdate),          date("Y", $pdate));
                 break;
         }
         return $expiry - mktime();

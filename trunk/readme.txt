@@ -51,6 +51,7 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 * WordPress editor button and tinyMCE3 plugin for shortcode
 * Manual placement functions of the rating code and template integration
 * Banning IP's, IP ranges and masked IP's
+* Filtering out search bots
 * Import data from other rating plugins
 * Export data into csv file
 * Expanding support based on actions
@@ -67,6 +68,7 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 * Chart caching
 * Alternative rendering
 * Rendering caching
+* Customization of BOT filter
 
 == Import Data ==
 
@@ -92,6 +94,8 @@ Plugin administration consist of 10 panels:
   All options for this plugin are here
 * Tools:
   Various tools for cleanup and global updates
+* IP:
+  Banning IP addresses
 * Templates:
   Rating text and shortcode templates
 * Import:

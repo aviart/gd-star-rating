@@ -2,7 +2,7 @@
 
 /*
 Name:    gdDBInstall
-Version: 1.0.1
+Version: 1.0.2
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://wp.gdragon.info/
@@ -43,11 +43,9 @@ if (!class_exists('gdDBInstall')) {
             $path.= "install/tables";
             $files = gdDBInstall::scan_folder($path);
             foreach ($files as $file) {
-                if (substr($file, 0, 1) != '.') {
-                    $file_path = $path."/".$file;
-                    $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
-                    $wpdb->query("drop table ".$table_name);
-                }
+                $file_path = $path."/".$file;
+                $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
+                $wpdb->query("drop table ".$table_name);
             }
         }
 
@@ -60,8 +58,7 @@ if (!class_exists('gdDBInstall')) {
             $path.= "install/tables";
             $files = gdDBInstall::scan_folder($path);
             foreach ($files as $file) {
-                if (substr($file, 0, 1) != '.' && is_file($path."/".$file))
-                    gdDBInstall::upgrade_table($path, $file);
+                gdDBInstall::upgrade_table($path, $file);
             }
         }
 
@@ -134,22 +131,20 @@ if (!class_exists('gdDBInstall')) {
             $path.= "install/tables";
             $files = gdDBInstall::scan_folder($path);
             foreach ($files as $file) {
-                if (substr($file, 0, 1) != '.') {
-                    $file_path = $path."/".$file;
-                    $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
-                    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
-                        $fc = file($file_path);
-                        $first = true;
-                        $sql = "";
-                        foreach ($fc as $f) {
-                            if ($first) {
-                                $sql.= sprintf($f, $table_prefix);
-                                $first = false;
-                            }
-                            else $sql.= $f;
+                $file_path = $path."/".$file;
+                $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
+                if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+                    $fc = file($file_path);
+                    $first = true;
+                    $sql = "";
+                    foreach ($fc as $f) {
+                        if ($first) {
+                            $sql.= sprintf($f, $table_prefix);
+                            $first = false;
                         }
-                        $wpdb->query($sql);
+                        else $sql.= $f;
                     }
+                    $wpdb->query($sql);
                 }
             }
         }
@@ -195,7 +190,8 @@ if (!class_exists('gdDBInstall')) {
             else {
                 $dh = opendir($path);
                 while (false !== ($filename = readdir($dh))) {
-                    $files[] = $filename;
+                    if (substr($file, 0, 1) != '.' && substr($file, 0, 1) != '_' && is_file($path."/".$filename))
+                        $files[] = $filename;
                 }
                 return $files;
             }
