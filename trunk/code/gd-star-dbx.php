@@ -165,7 +165,8 @@ class GDSRX {
         $where = array();
         $select = "";
         if ($widget["bayesian_calculation"] == "0") $min = 0;
-        else $min--;
+        if ($widget["min_votes"] > $min) $min = $widget["min_votes"];
+        if ($min == 0 && $widget["hide_empty"] == "1") $min = 1;
 
         $where[] = "p.id = d.post_id";
         $where[] = "p.post_status = 'publish'";
@@ -199,10 +200,10 @@ class GDSRX {
         if ($widget["select"] != "" && $widget["select"] != "postpage") 
             $where[] = "p.post_type = '".$widget["select"]."'";
         
-        if ($widget["hide_empty"] == "1" || $widget["bayesian_calculation"] == "1") {
-            if ($widget["show"] == "total") $where[] = "(d.user_voters + d.visitor_voters) > ".$min;
-            if ($widget["show"] == "visitors") $where[] = "d.visitor_voters > ".$min;
-            if ($widget["show"] == "users") $where[] = "d.user_voters > ".$min;
+        if ($min > 0) {
+            if ($widget["show"] == "total") $where[] = "(d.user_voters + d.visitor_voters) >= ".$min;
+            if ($widget["show"] == "visitors") $where[] = "d.visitor_voters >= ".$min;
+            if ($widget["show"] == "users") $where[] = "d.user_voters >= ".$min;
         }
         if ($widget["hide_noreview"] == "1") $where[] = "d.review > -1";
         
@@ -247,7 +248,9 @@ class GDSRX {
         $sql = sprintf("select %s%s from %s%sposts p, %sgdsr_data_article d where %s %s order by %s %s limit 0, %s",
                 $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]
             );
-        
+
+wp_gdsr_dump("WIDGET", $sql);
+
         return $sql;
     }
 }

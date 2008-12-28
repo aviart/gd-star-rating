@@ -2,6 +2,14 @@
 
 == Change Log ==
 
+=== Version: 1.0.8 / december 29 2008 ===
+  * new: parameter minimum votes required for widget and shortcode
+  * edit: improved readme file
+  * edit: various small changes
+  * edit: prepering widget data improved
+  * fix: template panel editing of time restrictions
+  * fix: database install invalid folder name
+
 === Version: 1.0.7 / december 22 2008 ===
   * new: rewritten database installation and upgrade
   * new: function for manual rendering of blog rating widget
