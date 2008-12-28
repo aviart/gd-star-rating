@@ -63,6 +63,8 @@ function insertStarRatingCode() {
            tagtext = tagtext + " hide_noreview=1";
         if (document.getElementById('srHidemptyBayes').checked)
            tagtext = tagtext + " bayesian_calculation=1";
+        if (document.getElementById('srMinVotes').value != 5)
+            tagtext = tagtext + " min_votes=" + document.getElementById('srMinVotes').value
 
         if (document.getElementById('publishDate').value == 'lastd') {
             if (document.getElementById('publishDays').value > 0) {

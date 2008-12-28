@@ -192,6 +192,10 @@
         <td class="gdsrleft"><?php _e("Category", "gd-star-rating"); ?>:</td>
         <td class="gdsrright"><?php GDSRDatabase::get_combo_categories('', 'srCategory'); ?></td>
       </tr>
+      <tr>
+        <td class="gdsrleft"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright"><input type="text" size="8" id="srMinVotes" name="srMinVotes" value="5" /></td>
+      </tr>
     </table>
 </fieldset>
 

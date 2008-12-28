@@ -30,6 +30,7 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 * Ajax rating support using jQuery
 * Voting rules on post/page base
 * Voting rules based on categories
+* Auto inserting rating code
 * Moderation of votes
 * Multi language support
 * Advanced templates support
@@ -47,7 +48,8 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 * Widgets with multi instance support
 * Widgets support templates
 * WordPress shortcode support
-* Various additional tools for maintenace and bulk operation
+* Preview stars and trends image sets
+* Various additional tools for maintenace and bulk operations
 * WordPress editor button and tinyMCE3 plugin for shortcode
 * Manual placement functions of the rating code and template integration
 * Banning IP's, IP ranges and masked IP's
@@ -58,10 +60,20 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 * Support for QTranslate plugin
 * Extensive PDF User Guide
 
+= Import Data =
+
+Plugin can import data from different rating plugins:
+
+* Star Rating For Revies [http://wordpress.org/extend/plugins/star-rating-for-reviews/]
+* Post Star Rating [http://wordpress.org/extend/plugins/post-star-rating/]
+* WP Post Rating [http://wordpress.org/extend/plugins/wp-postratings/]
+
 == Planned Features ==
 
 * Reccomendation ratings
 * Multiple ratings
+* Dedicated website
+* WP Super Cache support
 * Support for custom modules
 * Expanding export features
 * More charts
@@ -69,14 +81,6 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 * Alternative rendering
 * Rendering caching
 * Customization of BOT filter
-
-== Import Data ==
-
-Plugin can import data from different rating plugins:
-
-* Star Rating For Revies [http://wordpress.org/extend/plugins/star-rating-for-reviews/]
-* Post Star Rating [http://wordpress.org/extend/plugins/post-star-rating/]
-* WP Post Rating [http://wordpress.org/extend/plugins/wp-postratings/]
 
 == Configuration ==
 

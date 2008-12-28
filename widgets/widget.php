@@ -190,6 +190,13 @@ function gdsrShowHidePreview(gdid, index) {
   </tr>
   <tr>
     <td width="100" valign="top"></td>
+    <td width="150" nowrap="nowrap"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[min_votes]" id="gdstarr-minvotes" value="<?php echo $wpno["min_votes"]; ?>" />
+    </td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Sorting Column", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select name="<?php echo $wpfn; ?>[column]" id="gdstarr-column" style="width: 110px">

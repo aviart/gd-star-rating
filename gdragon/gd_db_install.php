@@ -2,7 +2,7 @@
 
 /*
 Name:    gdDBInstall
-Version: 1.0.2
+Version: 1.0.3
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://wp.gdragon.info/
@@ -184,17 +184,22 @@ if (!class_exists('gdDBInstall')) {
          * @return array list of files and folders
          */
         function scan_folder($path) {
+            $files = array();
             if (function_exists(scandir)) {
-                return scandir($path);
+                $f = scandir($path);
+                foreach ($f as $filename) {
+                    if (substr($filename, 0, 1) != '.' && substr($filename, 0, 1) != '_' && is_file($path."/".$filename))
+                        $files[] = $filename;
+                }
             }
             else {
                 $dh = opendir($path);
                 while (false !== ($filename = readdir($dh))) {
-                    if (substr($file, 0, 1) != '.' && substr($file, 0, 1) != '_' && is_file($path."/".$filename))
+                    if (substr($filename, 0, 1) != '.' && substr($filename, 0, 1) != '_' && is_file($path."/".$filename))
                         $files[] = $filename;
                 }
-                return $files;
             }
+            return $files;
         }
     }
 }

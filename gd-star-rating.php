@@ -244,6 +244,7 @@ if (!class_exists('GDStarRating')) {
             "title" => "Rating",
             "display" => "all",
             "rows" => 10,
+            "min_votes" => 5,
             "select" => "postpage",
             "column" => "rating",
             "order" => "desc",
@@ -287,6 +288,7 @@ if (!class_exists('GDStarRating')) {
 
         var $default_shortcode_starrating = array(
             'rows' => 10, 
+            "min_votes" => 5,
             'select' => 'postpage', 
             'column' => 'rating', 
             'order' => 'desc', 
@@ -1053,7 +1055,6 @@ if (!class_exists('GDStarRating')) {
          * Main init method executed as wordpress action 'init'.
          */
         function init() {
-            gdDBInstall::upgrade_tables(STARRATING_PATH);
             if (isset($_GET["page"])) {
                 if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
                     $this->admin_plugin = true;
@@ -1993,6 +1994,7 @@ if (!class_exists('GDStarRating')) {
                     $options['tpl_title_length'] = $posted['title_max'];
                     
                     $options['rows'] = $posted['rows'];
+                    $options['min_votes'] = $posted['min_votes'];
                     $options['select'] = $posted['select'];
                     $options['grouping'] = $posted['grouping'];
                     $options['column'] = $posted['column'];
