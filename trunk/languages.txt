@@ -3,7 +3,7 @@
 == Languages ==
 
 === English ===
-  * version: 1.0.7
+  * version: 1.0.8
   * author: Milan Petrovic
   * email: milan@gdragon.info
   * web: http://www.gdragon.info/
