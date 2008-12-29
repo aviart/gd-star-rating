@@ -115,7 +115,7 @@ if (!class_exists('GDStarRating')) {
             "version" => "1.0.8",
             "date" => "2008.12.29.",
             "status" => "Stable",
-            "build" => 350,
+            "build" => 355,
             "news_feed_active" => 1,
             "debug_active" => 0,
             "debug_inline" => 1,
@@ -890,6 +890,7 @@ if (!class_exists('GDStarRating')) {
             
             if (!is_array($this->o)) {
                 update_option('gd-star-rating', $this->default_options);
+                $this->o = get_option('gd-star-rating');
                 gdDBInstall::create_tables(STARRATING_PATH);
             }
             else {
@@ -903,15 +904,19 @@ if (!class_exists('GDStarRating')) {
                 update_option('gd-star-rating', $this->o);
             }
 
-            if (!is_array($this->x))
+            if (!is_array($this->x)) {
                 update_option('gd-star-rating-templates', $this->default_templates);
+                $this->x = get_option('gd-star-rating-templates');
+            }
             else {
                 $this->x = $this->upgrade_settings($this->x, $this->default_templates);
                 update_option('gd-star-rating-templates', $this->x);
             }
 
-            if (!is_array($this->i))
+            if (!is_array($this->i)) {
                 update_option('gd-star-rating-import', $this->default_import);
+                $this->i = get_option('gd-star-rating-import');
+            }
             else {
                 $this->i = $this->upgrade_settings($this->i, $this->default_import);
                 update_option('gd-star-rating-import', $this->i);
@@ -922,8 +927,10 @@ if (!class_exists('GDStarRating')) {
                 update_option('gd-star-rating-gfx', $this->g);
             }
 
-            if (!is_object($this->wpr8))
+            if (!is_object($this->wpr8)) {
                 update_option('gd-star-rating-wpr8', $this->default_wpr8);
+                $this->wpr8 = get_option('gd-star-rating-wpr8');
+            }
             else {
                 $this->wpr8 = $this->upgrade_settings($this->wpr8, $this->default_wpr8);
                 update_option('gd-star-rating-wpr8', $this->wpr8);
