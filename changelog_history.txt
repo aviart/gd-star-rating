@@ -7,6 +7,7 @@
   * edit: improved readme file
   * edit: various small changes
   * edit: prepering widget data improved
+  * edit: all custom functions now with phpdoc comments
   * fix: template panel editing of time restrictions
   * fix: database install invalid folder name
 

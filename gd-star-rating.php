@@ -1105,7 +1105,7 @@ if (!class_exists('GDStarRating')) {
 
                 if ($votes != '' && $id != '' && $type != '') {
                     switch ($type) {
-                        case "a": 
+                        case "a":
                             $this->vote_article($votes, $id, $user);
                             break;
                         case "c":

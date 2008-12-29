@@ -56,7 +56,7 @@ Star Rating plugin allows you to set up rating system for pages and/or posts in 
 * Filtering out search bots
 * Import data from other rating plugins
 * Export data into csv file
-* Expanding support based on actions
+* Expanding support based on WordPress actions
 * Support for QTranslate plugin
 * Extensive PDF User Guide
 
