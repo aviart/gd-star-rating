@@ -1,0 +1,51 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 1.0.8 / december 29 2008 ===
+  * new: parameter minimum votes required for widget and shortcode
+  * edit: improved readme file
+  * edit: various small changes
+  * edit: prepering widget data improved
+  * edit: all custom functions now with phpdoc comments
+  * fix: invalid initialization of settings after reset or remove settings
+  * fix: template panel editing of time restrictions
+  * fix: database install invalid folder name
+
+=== Version: 1.0.7 / december 24 2008 ===
+  * new: rewritten database installation and upgrade
+  * new: function for manual rendering of blog rating widget
+  * new: database upgrade tool
+  * new: default color palette for charts
+  * edit: more database calls in debug file
+  * edit: small change in rendering blog rating widget
+  * edit: updated translation strings
+  * edit: improved user votes log
+  * edit: debug and install classes improvements
+  * fix: problems caused by incorrect database upgrade
+  * fix: invalid voting rules voting problem
+  * fix: saving rules and rating from post edit page
+  * fix: default debug file becauase of open_basedir restrictions
+  * fix: tinymce invalid translation string rendering
+  * fix: problem with changing timer and post rating values in post edit
+
+=== Version: 1.0.6 / december 14 2008 ===
+  * new: christmas style stars
+  * new: added italian translation
+  * new: added dashboard widget
+  * new: chart for dashboard with votes distribution
+  * new: import from star rating for review plugin
+  * new: plugin custom actions support
+  * new: auto insert rating for comments for pages
+  * new: option to disable newsfeed update on the front panel
+  * new: functions for getting rating objects
+  * new: included pchart class for charting support
+  * new: wordpress 2.7 navigation icon
+  * edit: post edit box wordpress 2.7 support
+  * edit: improvements to tools panel
+  * edit: debug check vote methods
+  * edit: additional code comments
+  * edit: small css changes for wordpress 2.7
+  * fix: small visual problems
+  * fix: blog widget control problem
+  * fix: editing comment review style loading
