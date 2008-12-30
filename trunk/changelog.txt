@@ -2,6 +2,9 @@
 
 == Change Log ==
 
+=== Version: 1.0.9 / january 5 2008 ===
+  * fix: admin settings page problem with IE
+
 === Version: 1.0.8 / december 29 2008 ===
   * new: parameter minimum votes required for widget and shortcode
   * edit: improved readme file
