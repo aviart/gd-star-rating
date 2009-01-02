@@ -85,6 +85,7 @@ class GDSRDB {
             case 'U':
                 $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
                 break;
+            case 'N':
             default:
                 $row->moderate_articles = __("articles", "gd-star-rating").': <strong>'.__("free", "gd-star-rating").'</strong>';
                 break;
@@ -102,6 +103,7 @@ class GDSRDB {
             case 'U':
                 $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
                 break;
+            case 'N':
             default:
                 $row->moderate_comments = __("comments", "gd-star-rating").': <strong>'.__("free", "gd-star-rating").'</strong>';
                 break;
