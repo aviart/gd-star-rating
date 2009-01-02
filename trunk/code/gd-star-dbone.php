@@ -288,7 +288,7 @@ wp_gdsr_dump("CHECKVOTE_count", count($vote_data));
                 $wpdb->query($sql);
             }
         }
-        
+
         $sql = sprintf("delete from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
         $wpdb->query($sql);
     }
@@ -312,7 +312,7 @@ wp_gdsr_dump("CHECKVOTE_count", count($vote_data));
         global $wpdb, $table_prefix;
         GDSRDatabase::add_defaults($ids, $ids_array);
         $dbt_data_article = $table_prefix.'gdsr_data_article';
-        
+
         $update = array();
         if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
         if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
@@ -323,7 +323,7 @@ wp_gdsr_dump("CHECKVOTE_count", count($vote_data));
             $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_article, $updstring, $ids));
         }
     }
-    
+
     function update_restrictions($ids, $timer_type, $timer_value) {
         global $wpdb, $table_prefix;
         $wpdb->query(sprintf("update %sgdsr_data_article set expiry_type = '%s', expiry_value = '%s' where post_id in %s", 
@@ -382,7 +382,7 @@ wp_gdsr_dump("SAVEVOTE_post_data_sql", $sql);
 wp_gdsr_dump("SAVEVOTE_post_data_sql_error", $wpdb->last_error);
 wp_gdsr_dump("SAVEVOTE_post_data", $post_data);
 
-        if ($post_data->moderate_articles == "N" || ($post_data->moderate_articles == "V" && $user > 0) || ($post_data->moderate_articles == "U" && $user == 0)) {
+        if ($post_data->moderate_articles == "" || $post_data->moderate_articles == "N" || ($post_data->moderate_articles == "V" && $user > 0) || ($post_data->moderate_articles == "U" && $user == 0)) {
             GDSRDatabase::add_vote($id, $user, $ip, $ua, $vote);
         }
         else {
@@ -426,7 +426,7 @@ wp_gdsr_dump("SAVEVOTE_CMM_post_data_sql", $sql);
 wp_gdsr_dump("SAVEVOTE_CMM_post_data_sql_error", $wpdb->last_error);
 wp_gdsr_dump("SAVEVOTE_CMM_post_data", $post_data);
 
-        if ($post_data->moderate_comments == "N" || ($post_data->moderate_comments == "V" && $user > 0) || ($post_data->moderate_comments == "U" && $user == 0)) {
+        if ($post_data->moderate_comments == "" || $post_data->moderate_comments == "N" || ($post_data->moderate_comments == "V" && $user > 0) || ($post_data->moderate_comments == "U" && $user == 0)) {
             GDSRDatabase::add_vote_comment($id, $user, $ip, $ua, $vote);
         }
         else {
