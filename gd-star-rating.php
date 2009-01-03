@@ -1096,7 +1096,10 @@ if (!class_exists('GDStarRating')) {
             }
 
             wp_enqueue_script('jquery');
-            if ($this->admin_plugin) add_thickbox();
+            if ($this->admin_plugin) {
+                wp_enqueue_script('thickbox');
+                wp_enqueue_style('thickbox');
+            }
             $this->l = get_locale();
             if(!empty($this->l)) {
                 $moFile = dirname(__FILE__)."/languages/gd-star-rating-".$this->l.".mo";

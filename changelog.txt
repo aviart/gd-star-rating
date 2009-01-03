@@ -6,6 +6,7 @@
   * edit: removed some obsolete functions
   * fix: admin settings page problem with IE
   * fix: moderation check for saving votes
+  * fix: small incompatibility with wordpress 2.5.x
 
 === Version: 1.0.8 / december 29 2008 ===
   * new: parameter minimum votes required for widget and shortcode
