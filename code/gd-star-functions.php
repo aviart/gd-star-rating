@@ -311,61 +311,6 @@ class GDSRHelper {
         <?php
     }
    
-    function create_posts_query($select, $sort_column, $sort_order = 'desc') {
-        global $table_prefix;
-        
-        if ($sort_column == 'id' || $sort_column == 'post_title') $prefix = "p.";
-        else $prefix = "d.";
-        
-        if ($sort_column == "votes") {
-            $sort_column = "count(*)";
-            $prefix = "";
-        }
-
-        if ($sort_column == "users") {
-            $sort_column = "count(distinct s.user_id)";
-            $prefix = "";
-        }
-        
-        if ($select == "post") $where.= " and p.post_type = 'post";
-        else if ($select == "page") $where.= " and p.post_type = 'page'";
-        
-        $sql = "select p.id, p.post_title, count(distinct s.user_id) as users, count(*) as votes from ".$table_prefix."gdstarrating_stats s left join ".$table_prefix."posts p on p.id = s.post_id ".$where." group by p.id order by ".$prefix.$sort_column." ".$sort_order;
-        return $sql;
-    }
-    
-    function create_posts_query_count($select) {
-        global $table_prefix;
-        $where = "";
-        if ($select == "post") $where = "where d.is_page = 0";
-        else if ($select == "page") $where = "where d.is_page = 1";
-        
-        $sql = "select count(distinct p.post_id) as count from ".$table_prefix."gdstarrating_stats p inner join ".$table_prefix."gdstarrating_data d on p.post_id = d.post_id ".$where;
-        return $sql;
-    }
-
-    function create_users_query($sort_column, $sort_order = 'desc') {
-        global $table_prefix;
-
-        if ($sort_column == 'user_login') $prefix = "p.";
-        else $prefix = "s.";
-        
-        if ($sort_column == "votes") {
-            $sort_column = "count(*)";
-            $prefix = "";
-        }
-        
-        $sql = "SELECT s.user_id, p.user_login, count(*) as votes FROM ".$table_prefix."gdstarrating_stats s left join ".$table_prefix."users p on s.user_id = p.id group by s.user_id order by ".$prefix.$sort_column." ".$sort_order;
-        return $sql;
-    }
-    
-    function create_users_query_count() {
-        global $table_prefix;
-
-        $sql = "select count(distinct user_id) as count from ".$table_prefix."gdstarrating_stats";
-        return $sql;
-    }
-
     function draw_pager($total_pages, $current_page, $url, $query = "page") {
         $pages = array();
         $break_first = -1;

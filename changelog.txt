@@ -3,6 +3,7 @@
 == Change Log ==
 
 === Version: 1.0.9 / january 5 2008 ===
+  * edit: removed some obsolete functions
   * fix: admin settings page problem with IE
   * fix: moderation check for saving votes
 
