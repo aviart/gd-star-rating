@@ -680,15 +680,14 @@ if (!class_exists('GDStarRating')) {
             $this->admin_page = $parent_file;
             $tabs_extras = "";
             
+            if ($this->admin_plugin_page == "ips" && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
             if ($this->admin_plugin) {
-                wp_print_scripts('jquery-ui-tabs');
                 wp_admin_css('css/dashboard');
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin.css" type="text/css" media="screen" />');
                 if ($this->wp_version >= 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_wp27.css" type="text/css" media="screen" />');
+                echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>';
+                echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>';
             }
-            
-            if ($this->admin_plugin_page == "ips" && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
-            
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
                 $datepicker_date = date("Y, n, j");
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>';
@@ -718,7 +717,8 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin && $this->wp_version < 26)
                 echo('<link rel="stylesheet" href="'.get_option('home').'/wp-includes/js/thickbox/thickbox.css" type="text/css" media="screen" />');
 
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery.css" type="text/css" media="screen" />');
+            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.core.css" type="text/css" media="screen" />');
+            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.theme.css" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_post.css" type="text/css" media="screen" />');
         }
 
