@@ -715,6 +715,9 @@ if (!class_exists('GDStarRating')) {
 
             $this->custom_actions('admin_head');
 
+            if ($this->admin_plugin && $this->wp_version < 26)
+                echo('<link rel="stylesheet" href="'.get_option('home').'/wp-includes/js/thickbox/thickbox.css" type="text/css" media="screen" />');
+
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery.css" type="text/css" media="screen" />');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_post.css" type="text/css" media="screen" />');
         }
@@ -1097,8 +1100,8 @@ if (!class_exists('GDStarRating')) {
 
             wp_enqueue_script('jquery');
             if ($this->admin_plugin) {
-                wp_enqueue_script('thickbox');
-                wp_enqueue_style('thickbox');
+                if ($this->wp_version >= 26) add_thickbox();
+                else wp_enqueue_script("thickbox");
             }
             $this->l = get_locale();
             if(!empty($this->l)) {
