@@ -1,0 +1,124 @@
+<?php
+
+class GDSRGenerator {
+    function generate_png($file_path, $size, $stars, $value, $output = '') {
+        $image_set = imagecreatefrompng($file_path);
+
+        $star_empty = imagecreatetruecolor($size, $size);
+        imagesavealpha($star_empty, true);
+        $star_empty_transparent = imagecolorallocatealpha($star_empty, 0, 0, 0, 127);
+        imagefill($star_empty, 0, 0, $star_empty_transparent);
+        $star_filled = imagecreatetruecolor($size, $size);
+        imagesavealpha($star_filled, true);
+        $star_filled_transparent = imagecolorallocatealpha($star_filled, 0, 0, 0, 127);
+        imagefill($star_filled, 0, 0, $star_filled_transparent);
+
+        imagecopy($star_empty, $image_set, 0, 0, 0, 0, $size, $size);
+        imagecopy($star_filled, $image_set, 0, 0, 0, $size * 2, $size, $size);
+
+        $image = imageCreateTrueColor($stars * $size, $size);
+        imagesavealpha($image, true);
+        $image_transparent = imagecolorallocatealpha($image, 0, 0, 0, 127);
+        imagefill($image, 0, 0, $image_transparent);
+
+        imageSetTile($image, $star_empty);
+        imagefilledrectangle($image, 0, 0, $stars * $size, $size, IMG_COLOR_TILED);
+        imageSetTile($image, $star_filled);
+        imagefilledrectangle($image, 0, 0, $value * $size, $size, IMG_COLOR_TILED);
+
+        if ($output == '') {
+            Header("Content-type: image/png");
+            imagepng($image);
+        } else imagepng($image, $output);
+
+        imagedestroy($image);
+        imagedestroy($image_set);
+        imagedestroy($star_empty);
+        imagedestroy($star_filled);
+    }
+
+    function generate_gif($file_path, $size, $stars, $value, $output = '') {
+        $image_set = imagecreatefromgif($file);
+
+        $star_empty = imagecreate($size, $size);
+        $star_filled = imagecreate($size, $size);
+        $image = imagecreate($stars * $size, $size);
+
+        $image_set_transparent = imagecolortransparent($image_set);
+        if ($image_set_transparent > 0) {
+            $trnprt_color = imagecolorsforindex($image_set, $image_set_transparent);
+
+            $star_empty_transparent = imagecolorallocate($star_empty, $trnprt_color['red'], $trnprt_color['green'], $trnprt_color['blue']);
+            imagefill($star_empty, 0, 0,$star_empty_transparent);
+            imagecolortransparent($star_empty, $star_empty_transparent);
+
+            $star_filled_transparent = imagecolorallocate($star_filled, $trnprt_color['red'], $trnprt_color['green'], $trnprt_color['blue']);
+            imagefill($star_filled, 0, 0, $star_filled_transparent);
+            imagecolortransparent($star_filled, $star_filled_transparent);
+
+            $image_transparent = imagecolorallocate($image, $trnprt_color['red'], $trnprt_color['green'], $trnprt_color['blue']);
+            imagefill($image, 0, 0, $image_transparent);
+            imagecolortransparent($image, $image_transparent);
+        }
+
+        imagecopy($star_empty, $image_set, 0, 0, 0, 0, $size, $size);
+        imagecopy($star_filled, $image_set, 0, 0, 0, $size * 2, $size, $size);
+
+        imageSetTile($image, $star_empty);
+        imagefilledrectangle($image, 0, 0, $stars * $size, $size, IMG_COLOR_TILED);
+        imageSetTile($image, $star_filled);
+        imagefilledrectangle($image, 0, 0, $value * $size, $size, IMG_COLOR_TILED);
+
+        if ($output == '') {
+            Header("Content-type: image/gif");
+            imagegif($image);
+        } else imagegif($image, $output);
+
+        imagedestroy($image);
+        imagedestroy($image_set);
+        imagedestroy($star_empty);
+        imagedestroy($star_filled);
+    }
+
+    function generate_jpg($file_path, $size, $stars, $value, $output = '') {
+        $image_set = imagecreatefromjpeg($file_path);
+
+        $star_empty = imagecreate($size, $size);
+        $star_filled = imagecreate($size, $size);
+        $image = imagecreate($stars * $size, $size);
+        imagecopy($star_empty, $image_set, 0, 0, 0, 0, $size, $size);
+        imagecopy($star_filled, $image_set, 0, 0, 0, $size * 2, $size, $size);
+
+        imageSetTile($image, $star_empty);
+        imagefilledrectangle($image, 0, 0, $stars * $size, $size, IMG_COLOR_TILED);
+        imageSetTile($image, $star_filled);
+        imagefilledrectangle($image, 0, 0, $value * $size, $size, IMG_COLOR_TILED);
+
+        if ($output == '') {
+            Header("Content-type: image/jpg");
+            imagejpeg($image);
+        } else imagejpeg($image, $output);
+
+        imagedestroy($image);
+        imagedestroy($image_set);
+        imagedestroy($star_empty);
+        imagedestroy($star_filled);
+    }
+
+    function generate_image($file_path, $size, $stars, $value, $output = '') {
+        $extension = end(explode(".", $file_path));
+        switch ($extension) {
+            case "png":
+                GDSRGenerator::generate_png($file_path, $size, $stars, $value, $output);
+                break;
+            case "gif":
+                GDSRGenerator::generate_gif($file_path, $size, $stars, $value, $output);
+                break;
+            case "jpg":
+                GDSRGenerator::generate_jpg($file_path, $size, $stars, $value, $output);
+                break;
+        }
+    }
+}
+
+?>
