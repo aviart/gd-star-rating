@@ -37,6 +37,7 @@ require_once(dirname(__FILE__)."/code/gd-star-dbmulti.php");
 require_once(dirname(__FILE__)."/code/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gd-star-import.php");
 require_once(dirname(__FILE__)."/code/gd-star-chart.php");
+require_once(dirname(__FILE__)."/gdragon/gd_functions.php");
 require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
 require_once(dirname(__FILE__)."/gdragon/gd_db_install.php");
 
@@ -114,8 +115,8 @@ if (!class_exists('GDStarRating')) {
         var $default_options = array(
             "version" => "1.0.8",
             "date" => "2008.12.29.",
-            "status" => "Stable",
-            "build" => 357,
+            "status" => "Beta",
+            "build" => 365,
             "news_feed_active" => 1,
             "debug_active" => 0,
             "debug_inline" => 1,

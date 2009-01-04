@@ -4,7 +4,7 @@ class GDSRDBTools {
     function clean_invalid_log_articles() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_log l left join %sposts o on o.ID = l.id where l.vote_type = 'article' and o.ID is null",
-            gd_mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -13,7 +13,7 @@ class GDSRDBTools {
     function clean_invalid_log_comments() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_log l left join %scomments o on o.comment_ID = l.id where l.vote_type = 'comment' and o.comment_ID is null",
-            gd_mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -22,7 +22,7 @@ class GDSRDBTools {
     function clean_invalid_trend_articles() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_trend l left join %sposts o on o.ID = l.id where l.vote_type = 'article' and o.ID is null",
-            gd_mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -31,7 +31,7 @@ class GDSRDBTools {
     function clean_invalid_trend_comments() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_trend l left join %scomments o on o.comment_ID = l.id where l.vote_type = 'comment' and o.comment_ID is null",
-            gd_mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -40,7 +40,7 @@ class GDSRDBTools {
     function clean_dead_articles() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_data_article l left join %sposts o on o.ID = l.post_id where o.ID is null",
-            gd_mysql_pre_4_1() ? sprintf("%sgdsr_data_article", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_data_article", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -49,7 +49,7 @@ class GDSRDBTools {
     function clean_dead_comments() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_data_comment l left join %scomments o on o.comment_ID = l.comment_id where o.comment_ID is null",
-            gd_mysql_pre_4_1() ? sprintf("%sgdsr_data_comment", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_data_comment", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
