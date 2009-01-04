@@ -1,0 +1,6 @@
+CREATE TABLE `%smultis_trend` (
+  `post_id` int(11) NOT NULL,
+  `multi_id` int(11) NOT NULL,
+  `user_votes` text NOT NULL,
+  `visitor_votes` text NOT NULL,
+  `vote_date` varchar(10) default NULL);
