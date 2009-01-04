@@ -2,7 +2,7 @@
 
 /*
 Name:    gdDebug
-Version: 1.0.2
+Version: 1.0.5
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://wp.gdragon.info/
@@ -63,7 +63,7 @@ if (!class_exists('gdDebug')) {
                 $f = fopen($this->log_file, $mode);
                 if ($block == "start")
                     fwrite ($f, "-- DUMP BLOCK STARTED ---------------------------------- \r\n");
-                fwrite ($f, sprintf("[%s] : %s\r\n", date('l jS \of F Y h:i:s A'), $msg));
+                fwrite ($f, sprintf("[%s] : %s\r\n", date('Y-m-d h:i:s'), $msg));
                 fwrite ($f, "$obj");
                 fwrite ($f, "\r\n");
                 if ($block == "end")

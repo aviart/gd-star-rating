@@ -8,6 +8,8 @@
   * new: generate full rating image methods
   * edit: jquery theme for tabs and datepicker
   * edit: removed some obsolete functions
+  * edit: few more small changes
+  * edit: updated gdragon lib classes
   * fix: admin settings page problem with IE
   * fix: moderation check for saving votes
   * fix: small incompatibility with wordpress 2.5.x

@@ -395,28 +395,6 @@ class GDSRHelper {
         }
         return $h;
     }
-
-    function get_column_sort_vars($column, $sort_order, $sort_column) {
-        $col["url"] = '&sc='.$column;
-        $col["cls"] = '';
-        if ($sort_column == $column) {
-            if ($sort_order == "asc") {
-                $col["url"].= '&so=desc';
-                $col["cls"] = ' class="sort-order-up"';
-            }
-            else {
-                $col["url"].= '&so=asc';
-                $col["cls"] = ' class="sort-order-down"';
-            }
-        }
-        else $col["url"].= '&so=asc';
-        return $col;
-    }
-}
-
-function gd_addslashes($input) {
-    if (get_magic_quotes_gpc()) return $input;
-    else return addslashes($input);
 }
 
 function gd_sort_bayesian_asc($a, $b) {
@@ -441,23 +419,4 @@ function gd_scandir($path) {
         closedir($dh);
 		return $files;
 	}
-}
-
-function gd_mysql_version($full = false) {
-    if ($full)
-        return mysql_get_server_info();
-    else
-        return substr(mysql_get_server_info(), 0, 1); 
-}
-
-function gd_mysql_pre_4_1() {
-    $mysql = str_replace(".", "", substr(mysql_get_server_info(), 0, 3));
-    return $mysql < 41;
-}
-
-function gd_php_version($full = false) {
-    if ($full)
-        return phpversion();
-    else
-        return substr(phpversion(), 0, 1); 
 }
