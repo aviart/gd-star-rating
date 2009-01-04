@@ -73,16 +73,15 @@ function gdsrAddNewMulti() {
         echo '<td><strong>'.$row->stars.'</strong></td>';
         echo '<td>';
             $elements = unserialize($row->object);
+            $weights = unserialize($row->weight);
             $half = floor(count($elements) / 2);
             if ($half * 2 < count($elements)) $half++;
             echo '<table style="width: 100%;"><tr><td style="border: 0; padding: 0;">';
-            for ($i = 0; $i < $half; $i++) {
-                echo '['.($i+1).'] '.$elements[$i].'<br />';
-            }
+            for ($i = 0; $i < $half; $i++)
+                echo sprintf("[%s] %s (%s)<br />", $i+1, $elements[$i], $weights[$i]);
             echo '</td><td style="border: 0; padding: 0;">';
-            for ($i = $half; $i < count($elements); $i++) {
-                echo '['.($i+1).'] '.$elements[$i].'<br />';
-            }
+            for ($i = $half; $i < count($elements); $i++)
+                echo sprintf("[%s] %s (%s)<br />", $i+1, $elements[$i], $weights[$i]);
             echo '</td></tr></table>';
         echo '</td>';
         echo '</tr>';

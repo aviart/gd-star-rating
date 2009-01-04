@@ -1631,8 +1631,16 @@ if (!class_exists('GDStarRating')) {
                 $eset->description = $_POST["gdsr_ms_description"];
                 $eset->stars = $_POST["gdsr_ms_stars"];
                 $elms = $_POST["gdsr_ms_element"];
+                $elwe = $_POST["gdsr_ms_weight"];
+                $i = 0;
                 foreach ($elms as $el) {
-                    if (($el != "" && $eset->id == 0) || $eset->id > 0) $eset->elements[] = $el;
+                    if (($el != "" && $eset->id == 0) || $eset->id > 0) {
+                        $eset->object[] = $el;
+                        $ew = $elwe[$i];
+                        if (!is_numeric($ew)) $ew = 1;
+                        $eset->weight[] = $ew;
+                        $i++;
+                    }
                 }
                 if ($eset->name != "") {
                     if ($eset->id == 0) GDSRDBMulti::add_multi_set($eset);
