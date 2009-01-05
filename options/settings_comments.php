@@ -23,7 +23,7 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                 <?php GDSRHelper::render_star_sizes("gdsr_cmm_size", $gdsr_options["cmm_size"]); ?>
                 </td>
                 <td width="10"></td>
-                <td width="100"><?php _e("Number Of Stars", "gd-star-rating"); ?>:</td>
+                <td width="100"><?php _e("Number of stars", "gd-star-rating"); ?>:</td>
                 <td width="80" align="left">
                 <select style="width: 70px;" name="gdsr_cmm_stars" id="gdsr_cmm_stars">
                 <?php GDSRHelper::render_stars_select($gdsr_options["cmm_stars"]); ?>
@@ -35,18 +35,18 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150"><?php _e("Rating Alignment", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating alignment", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
                 <?php GDSRHelper::render_alignment("gdsr_cmm_align", $gdsr_options["cmm_align"]); ?>
                 </td>
                 <td width="10"></td>
-                <td width="150"><?php _e("Rating Text Placement", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating text placement", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
                 <?php GDSRHelper::render_placement("gdsr_cmm_text", $gdsr_options["cmm_text"]); ?>
                 </td>
             </tr>
             <tr>
-                <td width="150"><?php _e("Rating Header", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating header", "gd-star-rating"); ?>:</td>
                 <td width="200">
                     <input type="checkbox" name="gdsr_cmm_header" id="gdsr_cmm_header"<?php if ($gdsr_options["cmm_header"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_header"><?php _e("Display header text.", "gd-star-rating"); ?></label>
                 </td>
@@ -62,12 +62,12 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150"><?php _e("Rating Block CSS Class", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating block CSS class", "gd-star-rating"); ?>:</td>
                 <td width="200">
                     <input type="text" name="gdsr_cmm_classblock" id="gdsr_cmm_classblock" value="<?php echo wp_specialchars($gdsr_options["cmm_class_block"]); ?>" style="width: 170px" />
                 </td>
                 <td width="10"></td>
-                <td width="150"><?php _e("Rating Text CSS Class", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating text CSS class", "gd-star-rating"); ?>:</td>
                 <td>
                     <input type="text" name="gdsr_cmm_classtext" id="gdsr_cmm_classtext" value="<?php echo wp_specialchars($gdsr_options["cmm_class_text"]); ?>" style="width: 170px" />
                 </td>
@@ -77,7 +77,7 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150" valign="top"><?php _e("Auto Insert Rating Code", "gd-star-rating"); ?>:</td>
+                <td width="150" valign="top"><?php _e("Auto insert rating code", "gd-star-rating"); ?>:</td>
                 <td valign="top" width="200">
                     <input type="checkbox" name="gdsr_dispcomment" id="gdsr_dispcomment"<?php if ($gdsr_options["display_comment"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_dispcomment"><?php _e("For comments for posts.", "gd-star-rating"); ?></label>
                 </td>
@@ -123,7 +123,7 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150"><?php _e("Animation Indicator", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Animation indicator", "gd-star-rating"); ?>:</td>
                 <td width="200"><?php GDSRHelper::render_loaders("gdsr_wait_loader_comment", $gdsr_options["wait_loader_comment"], "jqloadercomment"); ?></td>
                 <td width="10"></td>
                 <td rowspan="3" width="150" valign="top"><?php _e("Preview", "gd-star-rating"); ?>:</td>
@@ -141,7 +141,7 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                 <td width="10"></td>
             </tr>
             <tr>
-                <td width="150"><?php _e("Additional CSS Class", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Additional CSS class", "gd-star-rating"); ?>:</td>
                 <td width="200"><input class="jqloadercomment" type="text" name="gdsr_wait_class_comment" id="gdsr_wait_class_comment" value="<?php echo $gdsr_options["wait_class_comment"]; ?>" style="width: 170px;" /></td>
                 <td width="10"></td>
             </tr>
@@ -166,7 +166,7 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                 <?php GDSRHelper::render_star_sizes("gdsr_cmm_review_size", $gdsr_options["cmm_review_size"]); ?>
                 </td>
                 <td width="10"></td>
-                <td width="100"><?php _e("Number Of Stars", "gd-star-rating"); ?>:</td>
+                <td width="100"><?php _e("Number of stars", "gd-star-rating"); ?>:</td>
                 <td width="80" align="left">
                 <select style="width: 70px;" name="gdsr_cmm_review_stars" id="gdsr_cmm_review_stars">
                 <?php GDSRHelper::render_stars_select($gdsr_options["cmm_review_stars"]); ?>
