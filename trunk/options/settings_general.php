@@ -30,18 +30,18 @@
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="350" valign="top">
-                    <input type="checkbox" name="gdsr_admin_advanced" id="gdsr_admin_advanced"<?php if ($gdsr_options["admin_advanced"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_advanced"><?php _e("Display Rating Custom CSS Settings.", "gd-star-rating"); ?></label>
+                    <input type="checkbox" name="gdsr_admin_advanced" id="gdsr_admin_advanced"<?php if ($gdsr_options["admin_advanced"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_advanced"><?php _e("Display custom rating CSS settings.", "gd-star-rating"); ?></label>
                     <br />
-                    <input type="checkbox" name="gdsr_admin_placement" id="gdsr_admin_placement"<?php if ($gdsr_options["admin_placement"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_placement"><?php _e("Display Rating Placement Settings.", "gd-star-rating"); ?></label>
+                    <input type="checkbox" name="gdsr_admin_placement" id="gdsr_admin_placement"<?php if ($gdsr_options["admin_placement"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_placement"><?php _e("Display rating placement settings.", "gd-star-rating"); ?></label>
                 </td>
                 <td width="10"></td>
                 <td valign="top">
-                    <input type="checkbox" name="gdsr_admin_defaults" id="gdsr_admin_defaults"<?php if ($gdsr_options["admin_defaults"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_defaults"><?php _e("Display Rating Defaults Settings.", "gd-star-rating"); ?></label>
+                    <input type="checkbox" name="gdsr_admin_defaults" id="gdsr_admin_defaults"<?php if ($gdsr_options["admin_defaults"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_defaults"><?php _e("Display rating defaults settings.", "gd-star-rating"); ?></label>
                 </td>
             </tr>
         </table>
         <div class="gdsr-table-split"></div>
-        <input type="checkbox" name="gdsr_news_feed_active" id="gdsr_news_feed_active"<?php if ($gdsr_options["news_feed_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_news_feed_active"><?php _e("Update Front page latest news feed.", "gd-star-rating"); ?></label>
+        <input type="checkbox" name="gdsr_news_feed_active" id="gdsr_news_feed_active"<?php if ($gdsr_options["news_feed_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_news_feed_active"><?php _e("Update front page latest news feed.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Administration Panels", "gd-star-rating"); ?></th>
@@ -97,7 +97,7 @@
             </tr>
         </table>
         <div class="gdsr-table-split"></div>
-        <input type="checkbox" name="gdsr_iepngfix" id="gdsr_iepngfix"<?php if ($gdsr_options["ie_png_fix"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_commentsactive"><?php _e("Use IE6 PNG Transparency Fix.", "gd-star-rating"); ?></label>
+        <input type="checkbox" name="gdsr_iepngfix" id="gdsr_iepngfix"<?php if ($gdsr_options["ie_png_fix"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_commentsactive"><?php _e("Use IE6 PNG transparency fix.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Rating Log", "gd-star-rating"); ?></th>

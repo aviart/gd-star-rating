@@ -23,7 +23,7 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
                 <?php GDSRHelper::render_star_sizes("gdsr_size", $gdsr_options["size"]); ?>
                 </td>
                 <td width="10"></td>
-                <td width="100"><?php _e("Number Of Stars", "gd-star-rating"); ?>:</td>
+                <td width="100"><?php _e("Number of stars", "gd-star-rating"); ?>:</td>
                 <td width="80" align="left">
                 <select style="width: 70px;" name="gdsr_stars" id="gdsr_stars">
                 <?php GDSRHelper::render_stars_select($gdsr_options["stars"]); ?>
@@ -35,18 +35,18 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150"><?php _e("Rating Alignment", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating alignment", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
                 <?php GDSRHelper::render_alignment("gdsr_align", $gdsr_options["align"]); ?>
                 </td>
                 <td width="10"></td>
-                <td width="150"><?php _e("Rating Text Placement", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating text placement", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
                 <?php GDSRHelper::render_placement("gdsr_text", $gdsr_options["text"]); ?>
                 </td>
             </tr>
             <tr>
-                <td width="150"><?php _e("Rating Header", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating header", "gd-star-rating"); ?>:</td>
                 <td width="200">
                     <input type="checkbox" name="gdsr_header" id="gdsr_header"<?php if ($gdsr_options["header"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_header"><?php _e("Display header text.", "gd-star-rating"); ?></label>
                 </td>
@@ -62,12 +62,12 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150"><?php _e("Rating Block CSS Class", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating block CSS class", "gd-star-rating"); ?>:</td>
                 <td width="200">
                     <input type="text" name="gdsr_classblock" id="gdsr_classblock" value="<?php echo wp_specialchars($gdsr_options["class_block"]); ?>" style="width: 170px" />
                 </td>
                 <td width="10"></td>
-                <td width="150"><?php _e("Rating Text CSS Class", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating text CSS class", "gd-star-rating"); ?>:</td>
                 <td>
                     <input type="text" name="gdsr_classtext" id="gdsr_classtext" value="<?php echo wp_specialchars($gdsr_options["class_text"]); ?>" style="width: 170px" />
                 </td>
@@ -77,7 +77,7 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150" valign="top"><?php _e("Auto Insert Rating Code", "gd-star-rating"); ?>:</td>
+                <td width="150" valign="top"><?php _e("Auto insert rating code", "gd-star-rating"); ?>:</td>
                 <td width="200" valign="top">
                     <input type="checkbox" name="gdsr_posts" id="gdsr_posts"<?php if ($gdsr_options["display_posts"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_posts"><?php _e("For individual posts.", "gd-star-rating"); ?></label>
                     <br />
@@ -145,7 +145,7 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150"><?php _e("Animation Indicator", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Animation indicator", "gd-star-rating"); ?>:</td>
                 <td width="200"><?php GDSRHelper::render_loaders("gdsr_wait_loader_article", $gdsr_options["wait_loader_article"]); ?></td>
                 <td width="10"></td>
                 <td rowspan="3" width="150" valign="top"><?php _e("Preview", "gd-star-rating"); ?>:</td>
@@ -163,7 +163,7 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
                 <td width="10"></td>
             </tr>
             <tr>
-                <td width="150"><?php _e("Additional CSS Class", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Additional CSS class", "gd-star-rating"); ?>:</td>
                 <td width="200"><input class="jqloaderarticle" type="text" name="gdsr_wait_class_article" id="gdsr_wait_class_article" value="<?php echo $gdsr_options["wait_class_article"]; ?>" style="width: 170px;" /></td>
                 <td width="10"></td>
             </tr>
@@ -188,7 +188,7 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
                 <?php GDSRHelper::render_star_sizes("gdsr_review_size", $gdsr_options["review_size"]); ?>
                 </td>
                 <td width="10"></td>
-                <td width="100"><?php _e("Number Of Stars", "gd-star-rating"); ?>:</td>
+                <td width="100"><?php _e("Number of stars", "gd-star-rating"); ?>:</td>
                 <td width="80" align="left">
                 <select style="width: 70px;" name="gdsr_review_stars" id="gdsr_review_stars">
                 <?php GDSRHelper::render_stars_select($gdsr_options["review_stars"]); ?>
@@ -200,13 +200,13 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150"><?php _e("Rating Alignment", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating alignment", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
                 <?php GDSRHelper::render_alignment("gdsr_review_align", $gdsr_options["review_align"]); ?>
                 </td>
             </tr>
             <tr>
-                <td width="150"><?php _e("Rating Header", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating header", "gd-star-rating"); ?>:</td>
                 <td width="200">
                     <input type="checkbox" name="gdsr_review_header" id="gdsr_review_header"<?php if ($gdsr_options["review_header"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_review_header"><?php _e("Display header text.", "gd-star-rating"); ?></label>
                 </td>
@@ -222,7 +222,7 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150"><?php _e("Rating Block CSS Class", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Rating block CSS class", "gd-star-rating"); ?>:</td>
                 <td width="200">
                     <input type="text" name="gdsr_review_classblock" id="gdsr_review_classblock" value="<?php echo wp_specialchars($gdsr_options["review_class_block"]); ?>" style="width: 170px" />
                 </td>
