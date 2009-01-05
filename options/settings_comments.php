@@ -74,24 +74,6 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
             </tr>
         </table>
         <?php } ?>
-        <?php if ($gdsr_options["admin_defaults"] == 1) { ?>
-        <div class="gdsr-table-split"></div>
-        <table cellpadding="0" cellspacing="0" class="previewtable">
-            <tr>
-                <td width="150"><?php _e("Default Vote Rule", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left">
-                <?php GDSRHelper::render_rules_combo("gdsr_default_vote_comments", $gdsr_options["default_voterules_comments"]); ?>
-                </td>
-                <td width="10"></td>
-            <?php if ($gdsr_options["moderation_active"] == 1) { ?>
-                <td width="150"><?php _e("Default Moderation Rule", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left">
-                <?php GDSRHelper::render_moderation_combo("gdsr_default_mod_comments", $gdsr_options["default_moderation_comments"]); ?>
-                </td>
-            <?php } ?>
-            </tr>
-        </table>
-        <?php } ?>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -107,6 +89,27 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
         </table>
     </td>
 </tr>
+<?php if ($gdsr_options["admin_defaults"] == 1) { ?>
+<tr><th scope="row"><?php _e("Defaults", "gd-star-rating"); ?></th>
+    <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Vote rule", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <?php GDSRHelper::render_rules_combo("gdsr_default_vote_comments", $gdsr_options["default_voterules_comments"]); ?>
+                </td>
+                <td width="10"></td>
+            <?php if ($gdsr_options["moderation_active"] == 1) { ?>
+                <td width="150"><?php _e("Moderation rule", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <?php GDSRHelper::render_moderation_combo("gdsr_default_mod_comments", $gdsr_options["default_moderation_comments"]); ?>
+                </td>
+            <?php } ?>
+            </tr>
+        </table>
+    </td>
+</tr>
+<?php } ?>
 <tr><th scope="row"><?php _e("Restrict", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_cmm_authorvote" id="gdsr_cmm_authorvote"<?php if ($gdsr_options["cmm_author_vote"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_authorvote"><?php _e("Prevent comment author to vote.", "gd-star-rating"); ?></label>

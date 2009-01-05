@@ -3,12 +3,14 @@
 == Change Log ==
 
 === Version: 1.0.9 / january 12 2008 ===
-  * new: multi rating database tables
+  * new: multi ratings settings tab
+  * new: multi ratings database tables
   * new: multi sets weight property for each element
   * new: latest jquery ui
   * new: italian datepicker translation
   * new: generate full rating image methods
   * edit: jquery theme for tabs and datepicker
+  * edit: small changes to settings tabs
   * edit: removed some obsolete functions
   * edit: few more small changes
   * edit: updated gdragon lib classes

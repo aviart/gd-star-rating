@@ -79,7 +79,10 @@
         $gdsr_options["header_text"] = stripslashes(htmlentities($_POST['gdsr_header_text'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["class_block"] = $_POST['gdsr_classblock'];
         $gdsr_options["class_text"] = $_POST['gdsr_classtext'];
-        
+
+        $gdsr_options["mur_style"] = $_POST['gdsr_mur_style'];
+        $gdsr_options["mur_size"] = $_POST['gdsr_mur_size'];
+
         $gdsr_options["cmm_style"] = $_POST['gdsr_cmm_style'];
         $gdsr_options["cmm_size"] = $_POST['gdsr_cmm_size'];
         $gdsr_options["cmm_text"] = $_POST['gdsr_cmm_text'];

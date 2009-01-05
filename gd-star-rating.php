@@ -113,8 +113,8 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "version" => "1.0.8",
-            "date" => "2008.12.29.",
+            "version" => "1.0.9",
+            "date" => "2009.01.12.",
             "status" => "Beta",
             "build" => 365,
             "news_feed_active" => 1,
@@ -151,6 +151,8 @@ if (!class_exists('GDStarRating')) {
             "header_text" => '',
             "class_block" => '',
             "class_text" => '',
+            "mur_style" => 'oxygen',
+            "mur_size" => 12,
             "cmm_style" => 'oxygen',
             "cmm_size" => 12,
             "cmm_stars" => 5,

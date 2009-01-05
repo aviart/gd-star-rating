@@ -40,7 +40,7 @@ class GDMultiSingle {
     var $id = 0;
     var $name = "";
     var $description = "";
-    var $stars = 10;
+    var $stars = 5;
     var $object = array();
     var $weight = array();
     
