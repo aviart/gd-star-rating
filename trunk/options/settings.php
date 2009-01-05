@@ -43,8 +43,9 @@
     <li><a href="#fragment-9"><span><?php _e("Debug", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-7"><span><?php _e("Cache", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-6"><span><?php _e("Integration", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-2"><span><?php _e("Articles (Posts And Pages)", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-2"><span><?php _e("Posts And Pages", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-3"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-8"><span><?php _e("Multis", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-4"><span><?php _e("Statistics", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-5"><span><?php _e("Preview", "gd-star-rating"); ?></span></a></li>
     <!-- <li><a href="#fragment-8"><span><?php _e("BOT List", "gd-star-rating"); ?></span></a></li> -->
@@ -67,6 +68,9 @@
 </div>
 <div id="fragment-3">
 <?php include STARRATING_PATH."options/settings_comments.php"; ?>
+</div>
+<div id="fragment-8">
+<?php include STARRATING_PATH."options/settings_multis.php"; ?>
 </div>
 <div id="fragment-4">
 <?php include STARRATING_PATH."options/settings_statistics.php"; ?>

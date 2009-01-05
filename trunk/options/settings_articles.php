@@ -74,40 +74,6 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
             </tr>
         </table>
         <?php } ?>
-        <?php if ($gdsr_options["admin_defaults"] == 1) { ?>
-            <div class="gdsr-table-split"></div>
-            <table cellpadding="0" cellspacing="0" class="previewtable">
-                <tr>
-                    <td width="150"><?php _e("Default Vote Rule", "gd-star-rating"); ?>:</td>
-                    <td width="200" align="left">
-                    <?php GDSRHelper::render_rules_combo("gdsr_default_vote_articles", $gdsr_options["default_voterules_articles"]); ?>
-                    </td>
-                    <td width="10"></td>
-                <?php if ($gdsr_options["moderation_active"] == 1) { ?>
-                    <td width="150"><?php _e("Default Moderation Rule", "gd-star-rating"); ?>:</td>
-                    <td width="200" align="left">
-                    <?php GDSRHelper::render_moderation_combo("gdsr_default_mod_articles", $gdsr_options["default_moderation_articles"]); ?>
-                    </td>
-                <?php } ?>
-                </tr>
-            </table>
-            <?php if ($gdsr_options["timer_active"] == 1) { ?>
-            <table cellpadding="0" cellspacing="0" class="previewtable">
-                <tr>
-                    <td width="150"><?php _e("Default time restriction", "gd-star-rating"); ?>:</td>
-                    <td width="200" align="left">
-                    <?php GDSRHelper::render_timer_combo("gdsr_default_timer_type", $gdsr_options["default_timer_type"]); ?>
-                    </td>
-                    <td width="10"></td>
-                    <td width="150"><?php _e("Default countdown value", "gd-star-rating"); ?>:</td>
-                    <td width="200" align="left">
-                    <input type="text" value="<?php echo $gdsr_options["default_timer_countdown_value"]; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 80px; text-align: right;" />
-                    <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $gdsr_options["default_timer_countdown_type"], 85); ?>
-                    </td>
-                </tr>
-            </table>
-            <?php } ?>
-        <?php } ?>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -129,6 +95,43 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
         </table>
     </td>
 </tr>
+<?php if ($gdsr_options["admin_defaults"] == 1) { ?>
+<tr><th scope="row"><?php _e("Defaults", "gd-star-rating"); ?></th>
+    <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Vote rule", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <?php GDSRHelper::render_rules_combo("gdsr_default_vote_articles", $gdsr_options["default_voterules_articles"]); ?>
+                </td>
+                <td width="10"></td>
+            <?php if ($gdsr_options["moderation_active"] == 1) { ?>
+                <td width="150"><?php _e("Moderation rule", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <?php GDSRHelper::render_moderation_combo("gdsr_default_mod_articles", $gdsr_options["default_moderation_articles"]); ?>
+                </td>
+            <?php } ?>
+            </tr>
+        </table>
+        <?php if ($gdsr_options["timer_active"] == 1) { ?>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Ttime restriction", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <?php GDSRHelper::render_timer_combo("gdsr_default_timer_type", $gdsr_options["default_timer_type"]); ?>
+                </td>
+                <td width="10"></td>
+                <td width="150"><?php _e("Countdown value", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <input type="text" value="<?php echo $gdsr_options["default_timer_countdown_value"]; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 80px; text-align: right;" />
+                <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $gdsr_options["default_timer_countdown_type"], 85); ?>
+                </td>
+            </tr>
+        </table>
+        <?php } ?>
+    </td>
+</tr>
+<?php } ?>
 <tr><th scope="row"><?php _e("Restrict", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_authorvote" id="gdsr_authorvote"<?php if ($gdsr_options["author_vote"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_authorvote"><?php _e("Prevent article author to vote.", "gd-star-rating"); ?> <?php _e("This is only for registered users.", "gd-star-rating"); ?></label>
