@@ -99,7 +99,7 @@
                 <span style="float: right; margin-top: 2px;"></span>
                 <div class="ssclear"></div>
             </div>
-            <div class="ssiconurl"><a href="http://wp.gdragon.info/gd-star-rating/" target="_blank">GD Star Rating</a>: <?php _e("official page", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://www.gdstarrating.com/" target="_blank">GD Star Rating</a>: <?php _e("official page", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://code.google.com/p/gd-star-rating/" target="_blank">Google Code</a>: <?php _e("development home with svn", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://groups.google.com/group/gd-star-rating/" target="_blank">Google Groups</a>: <?php _e("discussions group", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://wordpress.org/extend/plugins/gd-star-rating/" target="_blank">WordPress Extend</a>: <?php _e("wordpress plugin page", "gd-star-rating") ?></div>

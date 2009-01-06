@@ -146,8 +146,9 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 == Website ==
 
-* Homepage: http://wp.gdragon.info/
-* Plugin: http://wp.gdragon.info/plugins/gd-star-rating/
+* Plugin Home: http://www.gdstarrating.com/
+* GDragoN Home: http://www.gdragon.info/
+* GDragoN Blog: http://wp.gdragon.info/
 
 == Support ==
 
