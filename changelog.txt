@@ -9,6 +9,7 @@
   * new: latest jquery ui
   * new: italian datepicker translation
   * new: generate full rating image methods
+  * new: supports both upper and lower case shortcodes
   * edit: added new official website url
   * edit: jquery theme for tabs and datepicker
   * edit: small changes to settings tabs
