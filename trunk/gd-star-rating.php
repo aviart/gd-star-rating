@@ -370,7 +370,8 @@ if (!class_exists('GDStarRating')) {
                 $sc_name = $scode;
                 $sc_method = "shortcode_".$scode;
             }
-            add_shortcode($sc_name, array(&$this, $sc_method));
+            add_shortcode(strtolower($sc_name), array(&$this, $sc_method));
+            add_shortcode(strtoupper($sc_name), array(&$this, $sc_method));
         }
         
         /**

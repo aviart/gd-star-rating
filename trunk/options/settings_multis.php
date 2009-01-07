@@ -5,7 +5,7 @@
             <tr>
                 <td width="150"><?php _e("Stars", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
-                <select style="width: 180px;" name="gdsr_style" id="gdsr_mur_style">
+                <select style="width: 180px;" name="gdsr_mur_style" id="gdsr_mur_style">
                 <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["mur_style"]); ?>
                 </select>
                 </td>
