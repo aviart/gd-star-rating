@@ -608,6 +608,8 @@ if (!class_exists('GDStarRating')) {
                     $rating = intval($rating[0]);
                     $vote_rules = $post_data->rules_articles;
                     $moderation_rules = $post_data->moderate_articles;
+                    $cmm_vote_rules = $post_data->rules_comments;
+                    $cmm_moderation_rules = $post_data->moderate_comments;
                     $timer_restrictions = $post_data->expiry_type;
                     if ($timer_restrictions == "T") {
                         $countdown_type = substr($post_data->expiry_value, 0, 1);
@@ -844,6 +846,8 @@ if (!class_exists('GDStarRating')) {
                 $old = true;
                 
                 GDSRDatabase::save_article_rules($post_id, $_POST['gdsr_vote_articles'], $_POST['gdsr_mod_articles']);
+                if ($this->o["comments_active"] == 1)
+                    GDSRDatabase::save_comment_rules($post_id, $_POST['gdsr_cmm_vote_articles'], $_POST['gdsr_cmm_mod_articles']);
                 $timer = $_POST['gdsr_timer_type'];
                 GDSRDatabase::save_timer_rules(
                     $post_id,
