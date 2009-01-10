@@ -3,6 +3,7 @@
 == Change Log ==
 
 === Version: 1.0.9 / january 12 2008 ===
+  * new: expaned post edit widget
   * new: multi ratings settings tab
   * new: multi ratings database tables
   * new: multi sets weight property for each element
@@ -20,6 +21,7 @@
   * fix: admin settings page problem with IE
   * fix: moderation check for saving votes
   * fix: small incompatibility with wordpress 2.5.x
+  * fix: hidding comments options when comments rating is disabled
 
 === Version: 1.0.8 / december 29 2008 ===
   * new: parameter minimum votes required for widget and shortcode
@@ -47,24 +49,3 @@
   * fix: default debug file becauase of open_basedir restrictions
   * fix: tinymce invalid translation string rendering
   * fix: problem with changing timer and post rating values in post edit
-
-=== Version: 1.0.6 / december 14 2008 ===
-  * new: christmas style stars
-  * new: added italian translation
-  * new: added dashboard widget
-  * new: chart for dashboard with votes distribution
-  * new: import from star rating for review plugin
-  * new: plugin custom actions support
-  * new: auto insert rating for comments for pages
-  * new: option to disable newsfeed update on the front panel
-  * new: functions for getting rating objects
-  * new: included pchart class for charting support
-  * new: wordpress 2.7 navigation icon
-  * edit: post edit box wordpress 2.7 support
-  * edit: improvements to tools panel
-  * edit: debug check vote methods
-  * edit: additional code comments
-  * edit: small css changes for wordpress 2.7
-  * fix: small visual problems
-  * fix: blog widget control problem
-  * fix: editing comment review style loading

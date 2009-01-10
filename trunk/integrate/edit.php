@@ -8,8 +8,9 @@
     }
     </script>
     <input type="hidden" id="gdsr_post_edit" name="gdsr_post_edit" value="edit" />
+    <h4 class="gdsr-section-title"><?php _e("Post Review", "gd-star-rating"); ?>:</h4>
     <table width="<?php echo $box_width; ?>"><tr>
-    <td style="height: 25px;"><label style="font-size: 12px;" for="gdsr_review"><?php _e("Review", "gd-star-rating"); ?>:</label></td>
+    <td style="height: 25px;"><label style="font-size: 12px;" for="gdsr_review"><?php _e("Value", "gd-star-rating"); ?>:</label></td>
     <td align="right" style="height: 25px;" valign="baseline">
     <select style="width: 50px; text-align: right;" name="gdsr_review" id="gdsr_review">
         <option value="-1">/</option>
@@ -21,21 +22,40 @@
     </select>
     </td></tr></table>
     <div class="gdsr-table-split-edit"></div>
+    <h4 class="gdsr-section-title"><?php _e("Post Rating", "gd-star-rating"); ?>:</h4>
     <table width="<?php echo $box_width; ?>"><tr>
-    <td style="height: 25px;"><label style="font-size: 12px;" for="gdsr_review"><?php _e("Vote Rule", "gd-star-rating"); ?>:</label></td>
+    <td style="height: 25px;"><label style="font-size: 12px;"><?php _e("Vote Rule", "gd-star-rating"); ?>:</label></td>
     <td align="right" style="height: 25px;" valign="baseline">
     <?php GDSRHelper::render_rules_combo("gdsr_vote_articles", $vote_rules, 110); ?>
     </td>
     <?php if ($gdsr_options["moderation_active"] == 1) { ?>
     </tr><tr>
-    <td style="height: 25px;"><label style="font-size: 12px;" for="gdsr_review"><?php _e("Moderate", "gd-star-rating"); ?>:</label></td>
+    <td style="height: 25px;"><label style="font-size: 12px;"><?php _e("Moderate", "gd-star-rating"); ?>:</label></td>
     <td align="right" style="height: 25px;" valign="baseline">
     <?php GDSRHelper::render_moderation_combo("gdsr_mod_articles", $moderation_rules, 110); ?>
     </td>
     <?php } ?>
     </tr></table>
+    <?php if ($gdsr_options["comments_active"] == 1) { ?>
+    <div class="gdsr-table-split-edit"></div>
+    <h4 class="gdsr-section-title"><?php _e("Comments Rating", "gd-star-rating"); ?>:</h4>
+    <table width="<?php echo $box_width; ?>"><tr>
+    <td style="height: 25px;"><label style="font-size: 12px;"><?php _e("Vote Rule", "gd-star-rating"); ?>:</label></td>
+    <td align="right" style="height: 25px;" valign="baseline">
+    <?php GDSRHelper::render_rules_combo("gdsr_cmm_vote_articles", $cmm_vote_rules, 110); ?>
+    </td>
+    <?php if ($gdsr_options["moderation_active"] == 1) { ?>
+    </tr><tr>
+    <td style="height: 25px;"><label style="font-size: 12px;"><?php _e("Moderate", "gd-star-rating"); ?>:</label></td>
+    <td align="right" style="height: 25px;" valign="baseline">
+    <?php GDSRHelper::render_moderation_combo("gdsr_cmm_mod_articles", $cmm_moderation_rules, 110); ?>
+    </td>
+    <?php } ?>
+    </tr></table>
+    <?php } ?>
     <?php if ($gdsr_options["timer_active"] == 1) { ?>
     <div class="gdsr-table-split-edit"></div>
+    <h4 class="gdsr-section-title"><?php _e("Time Restriction", "gd-star-rating"); ?>:</h4>
     <table width="<?php echo $box_width; ?>"><tr>
     <td style="height: 25px;"><label style="font-size: 12px;" for="gdsr_review"><?php _e("Restriction", "gd-star-rating"); ?>:</label></td>
     <td align="right" style="height: 25px;" valign="baseline">

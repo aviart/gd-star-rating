@@ -3,6 +3,7 @@
 == Change Log ==
 
 === Version: 1.0.9 / january 12 2008 ===
+  * new: expaned post edit widget
   * new: multi ratings settings tab
   * new: multi ratings database tables
   * new: multi sets weight property for each element
@@ -20,6 +21,7 @@
   * fix: admin settings page problem with IE
   * fix: moderation check for saving votes
   * fix: small incompatibility with wordpress 2.5.x
+  * fix: hidding comments options when comments rating is disabled
 
 === Version: 1.0.8 / december 29 2008 ===
   * new: parameter minimum votes required for widget and shortcode

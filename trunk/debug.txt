@@ -1,0 +1,204 @@
+[2009-01-10 06:13:14] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wpdev_posts p, wpdev_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and (d.user_voters + d.visitor_voters) >= 10 and TO_DAYS(CURDATE()) - 30 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 10
+[2009-01-10 07:07:21] : GET_POST_TYPE_sql
+SELECT post_type FROM wpdev_posts WHERE ID = 617
+[2009-01-10 07:07:21] : GET_POST_TYPE_type
+stdClass Object
+(
+    [post_type] => revision
+)
+
+[2009-01-10 07:07:21] : ADD_DEFAULT_is_page
+0
+[2009-01-10 07:07:21] : ADD_DEFAULT_sql
+INSERT INTO wpdev_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (617, 'A', 'A', 'N', 'N', '0', 0, 0, 0, 0, -1, 'N', '')
+[2009-01-10 07:07:21] : ADD_DEFAULT_error
+
+[2009-01-10 07:07:45] : GET_POST_TYPE_sql
+SELECT post_type FROM wpdev_posts WHERE ID = 618
+[2009-01-10 07:07:45] : GET_POST_TYPE_type
+stdClass Object
+(
+    [post_type] => revision
+)
+
+[2009-01-10 07:07:45] : ADD_DEFAULT_is_page
+0
+[2009-01-10 07:07:45] : ADD_DEFAULT_sql
+INSERT INTO wpdev_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (618, 'A', 'A', 'N', 'N', '0', 0, 0, 0, 0, -1, 'N', '')
+[2009-01-10 07:07:45] : ADD_DEFAULT_error
+
+[2009-01-10 07:08:22] : GET_POST_TYPE_sql
+SELECT post_type FROM wpdev_posts WHERE ID = 619
+[2009-01-10 07:08:22] : GET_POST_TYPE_type
+stdClass Object
+(
+    [post_type] => revision
+)
+
+[2009-01-10 07:08:22] : ADD_DEFAULT_is_page
+0
+[2009-01-10 07:08:22] : ADD_DEFAULT_sql
+INSERT INTO wpdev_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (619, 'A', 'A', 'N', 'N', '0', 0, 0, 0, 0, -1, 'N', '')
+[2009-01-10 07:08:22] : ADD_DEFAULT_error
+
+[2009-01-10 07:08:35] : GET_POST_TYPE_sql
+SELECT post_type FROM wpdev_posts WHERE ID = 620
+[2009-01-10 07:08:35] : GET_POST_TYPE_type
+stdClass Object
+(
+    [post_type] => revision
+)
+
+[2009-01-10 07:08:35] : ADD_DEFAULT_is_page
+0
+[2009-01-10 07:08:35] : ADD_DEFAULT_sql
+INSERT INTO wpdev_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (620, 'A', 'A', 'N', 'N', '0', 0, 0, 0, 0, -1, 'N', '')
+[2009-01-10 07:08:35] : ADD_DEFAULT_error
+
+[2009-01-10 07:08:57] : GET_POST_TYPE_sql
+SELECT post_type FROM wpdev_posts WHERE ID = 621
+[2009-01-10 07:08:57] : GET_POST_TYPE_type
+stdClass Object
+(
+    [post_type] => revision
+)
+
+[2009-01-10 07:08:57] : ADD_DEFAULT_is_page
+0
+[2009-01-10 07:08:57] : ADD_DEFAULT_sql
+INSERT INTO wpdev_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (621, 'A', 'A', 'N', 'N', '0', 0, 0, 0, 0, -1, 'N', '')
+[2009-01-10 07:08:57] : ADD_DEFAULT_error
+
+[2009-01-10 07:09:06] : GET_POSTDATA_sql
+select * from wpdev_gdsr_data_article WHERE post_id = 563
+[2009-01-10 07:09:06] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 563
+    [rules_articles] => V
+    [rules_comments] => U
+    [moderate_articles] => V
+    [moderate_comments] => U
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 9
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-10 07:09:06] : GET_POSTDATA_error
+
+[2009-01-10 07:09:06] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wpdev_posts p, wpdev_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and p.post_type = 'post' and (d.user_voters + d.visitor_voters) >= 5 and TO_DAYS(CURDATE()) - 60 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 30
+[2009-01-10 07:09:07] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wpdev_posts p, wpdev_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and (d.user_voters + d.visitor_voters) >= 10 and TO_DAYS(CURDATE()) - 30 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 10
+[2009-01-10 07:09:33] : GET_POST_TYPE_sql
+SELECT post_type FROM wpdev_posts WHERE ID = 622
+[2009-01-10 07:09:33] : GET_POST_TYPE_type
+stdClass Object
+(
+    [post_type] => revision
+)
+
+[2009-01-10 07:09:33] : ADD_DEFAULT_is_page
+0
+[2009-01-10 07:09:33] : ADD_DEFAULT_sql
+INSERT INTO wpdev_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (622, 'A', 'A', 'N', 'N', '0', 0, 0, 0, 0, -1, 'N', '')
+[2009-01-10 07:09:33] : ADD_DEFAULT_error
+
+[2009-01-10 07:09:46] : GET_POST_TYPE_sql
+SELECT post_type FROM wpdev_posts WHERE ID = 623
+[2009-01-10 07:09:46] : GET_POST_TYPE_type
+stdClass Object
+(
+    [post_type] => revision
+)
+
+[2009-01-10 07:09:46] : ADD_DEFAULT_is_page
+0
+[2009-01-10 07:09:46] : ADD_DEFAULT_sql
+INSERT INTO wpdev_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (623, 'A', 'A', 'N', 'N', '0', 0, 0, 0, 0, -1, 'N', '')
+[2009-01-10 07:09:46] : ADD_DEFAULT_error
+
+[2009-01-10 07:10:25] : GET_POSTDATA_sql
+select * from wpdev_gdsr_data_article WHERE post_id = 563
+[2009-01-10 07:10:25] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 563
+    [rules_articles] => U
+    [rules_comments] => U
+    [moderate_articles] => U
+    [moderate_comments] => U
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 10
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-10 07:10:25] : GET_POSTDATA_error
+
+[2009-01-10 07:10:25] : CHECKVOTE_sql
+SELECT * FROM wpdev_gdsr_votes_log WHERE vote_type = 'article' and id = 563 and user_id = 1
+[2009-01-10 07:10:25] : CHECKVOTE
+
+[2009-01-10 07:10:25] : CHECKVOTE_count
+0
+[2009-01-10 07:10:25] : CHECKVOTE_sql
+SELECT * FROM wpdev_gdsr_moderate WHERE vote_type = 'article' and id = 563 and user_id = 1
+[2009-01-10 07:10:25] : CHECKVOTE
+
+[2009-01-10 07:10:25] : CHECKVOTE_count
+0
+[2009-01-10 07:10:25] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wpdev_posts p, wpdev_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and p.post_type = 'post' and (d.user_voters + d.visitor_voters) >= 5 and TO_DAYS(CURDATE()) - 60 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 30
+[2009-01-10 07:10:25] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wpdev_posts p, wpdev_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and (d.user_voters + d.visitor_voters) >= 10 and TO_DAYS(CURDATE()) - 30 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 10
+[2009-01-10 07:10:35] : GET_POST_TYPE_sql
+SELECT post_type FROM wpdev_posts WHERE ID = 624
+[2009-01-10 07:10:35] : GET_POST_TYPE_type
+stdClass Object
+(
+    [post_type] => revision
+)
+
+[2009-01-10 07:10:35] : ADD_DEFAULT_is_page
+0
+[2009-01-10 07:10:35] : ADD_DEFAULT_sql
+INSERT INTO wpdev_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (624, 'A', 'A', 'N', 'N', '0', 0, 0, 0, 0, -1, 'N', '')
+[2009-01-10 07:10:35] : ADD_DEFAULT_error
+
+[2009-01-10 07:11:11] : GET_POST_TYPE_sql
+SELECT post_type FROM wpdev_posts WHERE ID = 625
+[2009-01-10 07:11:11] : GET_POST_TYPE_type
+stdClass Object
+(
+    [post_type] => revision
+)
+
+[2009-01-10 07:11:11] : ADD_DEFAULT_is_page
+0
+[2009-01-10 07:11:11] : ADD_DEFAULT_sql
+INSERT INTO wpdev_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (625, 'A', 'A', 'N', 'N', '0', 0, 0, 0, 0, -1, 'N', '')
+[2009-01-10 07:11:11] : ADD_DEFAULT_error
+

@@ -462,14 +462,22 @@ wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
             $wpdb->query("update ".$articles." set review = ".$rating." where post_id = ".$post_id);
     }
     
-    function save_article_rules($post_id, $article_vote, $article_moderation, $old = true) {
+    function save_comment_rules($post_id, $comment_vote, $comment_moderation, $old = true) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
         if (!$old) 
             GDSRDatabase::add_default_vote($post_id);
+        $wpdb->query("update ".$articles." set rules_comments = '".$comment_vote."', moderate_comments = '".$comment_moderation."' where post_id = ".$post_id);
+    }
+
+    function save_article_rules($post_id, $article_vote, $article_moderation, $old = true) {
+        global $wpdb, $table_prefix;
+        $articles = $table_prefix.'gdsr_data_article';
+        if (!$old)
+            GDSRDatabase::add_default_vote($post_id);
         $wpdb->query("update ".$articles." set rules_articles = '".$article_vote."', moderate_articles = '".$article_moderation."' where post_id = ".$post_id);
     }
-    
+
     function save_timer_rules($post_id, $timer_type, $timer_value, $old = true) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
