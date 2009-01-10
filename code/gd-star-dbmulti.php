@@ -5,17 +5,23 @@ class GDSRDBMulti {
         global $wpdb, $table_prefix;
         return $wpdb->get_var(sprintf("select count(*) from %sgdsr_multis", $table_prefix));
     }
+
+    function get_multis_tinymce() {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select multi_id as folder, name from %sgdsr_multis", $table_prefix);
+        return $wpdb->get_results($sql);
+    }
     
     function get_multis($start = 0, $limit = 20) {
         global $wpdb, $table_prefix;
         $sql = sprintf("select * from %sgdsr_multis limit %s, %s", $table_prefix, $start, $limit);
-        return $wpdb->get_results($sql);        
+        return $wpdb->get_results($sql);
     }
     
     function get_multi_set($id) {
         global $wpdb, $table_prefix;
         $sql = sprintf("select * from %sgdsr_multis where multi_id = %s", $table_prefix, $id);
-        return $wpdb->get_row($sql);        
+        return $wpdb->get_row($sql);
     }
     
     function add_multi_set($set) {

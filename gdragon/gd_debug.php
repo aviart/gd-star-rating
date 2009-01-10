@@ -39,7 +39,7 @@ if (!class_exists('gdDebug')) {
          *
          * @param string $log_url
          */
-        function GDDebug($log_url = '') {
+        function gdDebug($log_url = '') {
             $this->log_file = $log_url;
 
             if ($this->log_file != '') {

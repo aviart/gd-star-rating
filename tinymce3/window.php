@@ -9,6 +9,7 @@
     $gdsr_styles = $gdsr->g->stars;
     $gdsr_trends = $gdsr->g->trend;
     $gdsr_classes = $gdsr->shortcode_builtin_classes;
+    $gdst_multis = GDSRDBMulti::get_multis_tinymce();
 
 ?>
 
@@ -20,7 +21,6 @@
 	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
     <script language="javascript" type="text/javascript" src="<?php echo STARRATING_URL ?>tinymce3/tinymce.js"></script>
-    <script language="javascript" type="text/javascript" src="<?php echo STARRATING_URL ?>tinymce3/control.js"></script>
     <link rel="stylesheet" href="<?php echo STARRATING_URL ?>tinymce3/tinymce.css" type="text/css" media="screen" />
 	<base target="_self" />
 </head>
@@ -32,6 +32,7 @@
             <li id="general_tab"><span><a href="javascript:mcTabs.displayTab('general_tab','general_panel');" onmousedown="return false;"><?php _e("General", "gd-star-rating"); ?></a></span></li>
             <li id="filter_tab"><span><a href="javascript:mcTabs.displayTab('filter_tab','filter_panel');" onmousedown="return false;"><?php _e("Filter", "gd-star-rating"); ?></a></span></li>
             <li id="styles_tab"><span><a href="javascript:mcTabs.displayTab('styles_tab','styles_panel');" onmousedown="return false;"><?php _e("Render", "gd-star-rating"); ?></a></span></li>
+            <li style="display: none" id="multis_tab"><span><a href="javascript:mcTabs.displayTab('multis_tab','multis_panel');" onmousedown="return false;"><?php _e("Multi Rating", "gd-star-rating"); ?></a></span></li>
         </ul>
     </div>
 <div class="panel_wrapper">
@@ -42,20 +43,24 @@
     <table border="0" cellpadding="3" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrright">
-            <label><select id="srShortcode" name="srShortcode" style="width: 200px">
-                <option value="starrating"><?php _e("Advanced", "gd-star-rating"); ?>: StarRating</option>
-                <!-- <option value="starrating"><?php _e("Advanced", "gd-star-rating"); ?>: StarRaterCustom</option> -->
-                <option value="starrating">--------------------</option>
-                <option value="starreview"><?php _e("Simple", "gd-star-rating"); ?>: StarReview</option>
-                <option value="starrater"><?php _e("Simple", "gd-star-rating"); ?>: StarRater</option>
-            </select></label>
+            <label>
+                <select onchange="gdsrChangeShortcode()" id="srShortcode" name="srShortcode" style="width: 200px">
+                    <option value="starrating"><?php _e("Advanced", "gd-star-rating"); ?>: StarRating</option>
+                    <!-- <option value="starrating"><?php _e("Advanced", "gd-star-rating"); ?>: StarRaterCustom</option> -->
+                    <option value="starrating">--------------------</option>
+                    <option value="starratingmulti"><?php _e("Multi", "gd-star-rating"); ?>: StarRatingMulti</option>
+                    <option value="starrating">--------------------</option>
+                    <option value="starreview"><?php _e("Simple", "gd-star-rating"); ?>: StarReview</option>
+                    <option value="starrater"><?php _e("Simple", "gd-star-rating"); ?>: StarRater</option>
+                </select>
+            </label>
         </td>
       </tr>
     </table>
 </fieldset>
 <fieldset>
 <legend><?php _e("Shortcode Info", "gd-star-rating"); ?></legend>
-<p><?php _e("All the options in this options panel are for the StarRating panel. StarReview and StarRater don't have any options.", "gd-star-rating"); ?></p>
+<p><?php _e("Change shortcode to see additional options you can set.", "gd-star-rating"); ?></p>
 <br />
 <p><?php _e("StarReview will render stars representing review value assigned to the post or page.", "gd-star-rating"); ?></p>
 <br />
@@ -340,7 +345,7 @@
         </td>
       </tr>
     </table>
-<div id="gdsr-styles-built[tinymce]" style="display: block">
+<div id="gdsr-styles-built[tinymce]" style="display: none">
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrleft"><?php _e("Built In Class", "gd-star-rating"); ?>:</td>
@@ -360,6 +365,22 @@
       </tr>
     </table>
 </div>
+</fieldset>
+</div>
+
+<div id="multis_panel" class="panel">
+<fieldset>
+<legend><?php _e("Multi Ratings", "gd-star-rating"); ?></legend>
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
+      <tr>
+        <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <label><select id="srMultiRatingSet" name="srsrMultiRatingSet" style="width: 200px">
+                <?php GDSRHelper::render_styles_select($gdst_multis, 1); ?>
+            </select></label>
+        </td>
+      </tr>
+    </table>
 </fieldset>
 </div>
 

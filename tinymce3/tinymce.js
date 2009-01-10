@@ -1,3 +1,38 @@
+function gdsrChangeShortcode() {
+    var shortcode = document.getElementById("srShortcode").selectedIndex;
+    document.getElementById("general_tab").style.display = "none";
+    document.getElementById("filter_tab").style.display = "none";
+    document.getElementById("styles_tab").style.display = "none";
+    document.getElementById("multis_tab").style.display = "none";
+    switch (shortcode) {
+        case 0:
+            document.getElementById("general_tab").style.display = "block";
+            document.getElementById("filter_tab").style.display = "block";
+            document.getElementById("styles_tab").style.display = "block";
+            break;
+        case 2:
+            document.getElementById("multis_tab").style.display = "block";
+            break;
+    }
+
+}
+
+function gdsrChangeTrend(trend, el, index) {
+    document.getElementById("gdsr-"+trend+"-txt["+index+"]").style.display = el == "txt" ? "block" : "none";
+    document.getElementById("gdsr-"+trend+"-img["+index+"]").style.display = el == "img" ? "block" : "none";
+}
+
+function gdsrChangeStyles(el, index) {
+    document.getElementById("gdsr-styles-built["+index+"]").style.display = el == "built" ? "block" : "none";
+    document.getElementById("gdsr-styles-external["+index+"]").style.display = el == "external" ? "block" : "none";
+}
+
+function gdsrChangeDate(el, index) {
+    document.getElementById("gdsr-pd-lastd["+index+"]").style.display = el == "lastd" ? "block" : "none";
+    document.getElementById("gdsr-pd-month["+index+"]").style.display = el == "month" ? "block" : "none";
+    document.getElementById("gdsr-pd-range["+index+"]").style.display = el == "range" ? "block" : "none";
+}
+
 function init() {
 	tinyMCEPopup.resizeToInnerSize();
 }
@@ -11,6 +46,11 @@ function insertStarRatingCode() {
     }
     else if (shortcode == 'starrater') {
         tagtext = "[starrater]";
+    }
+    else if (shortcode == 'starratingmulti') {
+        tagtext = '[starratingmulti id=';
+        tagtext = tagtext + document.getElementById('srMultiRatingSet').value;
+        tagtext = tagtext + "]";
     }
     else {
         tagtext = "[starrating";

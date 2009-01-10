@@ -93,7 +93,8 @@ if (!class_exists('GDStarRating')) {
 			"starreview",
 			"starrater",
             "starratingblock",
-            "starratercustom"
+            "starratercustom",
+            "starratingmulti"
         );
         
         var $default_spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
@@ -288,6 +289,10 @@ if (!class_exists('GDStarRating')) {
             'rating_header' => 0,
             'rating_text' => 0
         );
+        
+        var $default_shortcode_starratingmulti = array(
+            'id' => 1
+        );
 
         var $default_shortcode_starrating = array(
             'rows' => 10, 
@@ -405,6 +410,11 @@ if (!class_exists('GDStarRating')) {
             return $this->render_article($post, $userdata);
         }
         
+        function shortcode_starratingmulti($atts = array()) {
+            global $post, $userdata;
+            $settings = shortcode_atts($this->default_shortcode_starratingmulti, $atts);
+        }
+
         /**
         * Code for StarReview shortcode implementation
         * 
@@ -2446,6 +2456,9 @@ if (!class_exists('GDStarRating')) {
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
             $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
             return $rating_block;
+        }
+
+        function render_multi_rating($post, $user, $override = array()) {
         }
         // rendering
     }
