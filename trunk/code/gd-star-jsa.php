@@ -25,3 +25,17 @@ jQuery(".jqloadercomment").change(function() {
     jQuery("#gdsrwaitpreviewcomment").addClass("wait-preview-holder-comment loader "+loadr+" "+clssx);
     jQuery("#gdsrwaitpreviewcomment").html(texts);
 });
+
+jQuery(".jqloadermultis").change(function() {
+    var loadr = jQuery("#gdsr_wait_loader_multis").val();
+    var texts = jQuery("#gdsr_wait_text_multis").val();
+    var usetx = jQuery("#gdsr_wait_show_multis").is(':checked');
+    var clssx = jQuery("#gdsr_wait_class_multis").val();
+    if (usetx) {
+        texts = '';
+        loadr = loadr + ' width';
+    }
+    jQuery("#gdsrwaitpreviewmultis").removeClass();
+    jQuery("#gdsrwaitpreviewmultis").addClass("wait-preview-holder-multis loader "+loadr+" "+clssx);
+    jQuery("#gdsrwaitpreviewmultis").html(texts);
+});
