@@ -69,16 +69,16 @@ if (!class_exists('GDStarRating')) {
         var $plugin_chart_path;
         var $plugin_wpr8_path;
         
-        var $l;
-        var $o;
-        var $w;
-        var $t;
-        var $p;
-        var $x;
-        var $e;
-        var $i;
-        var $g;
-        var $s;
+        var $l; // language
+        var $o; // options
+        var $w; // widget options
+        var $t; // database tables
+        var $p; // post data
+        var $x; // template
+        var $e; // blank image
+        var $i; // import
+        var $g; // gfx
+
         var $wpr8;
         
         var $post_comment;
@@ -154,6 +154,12 @@ if (!class_exists('GDStarRating')) {
             "class_text" => '',
             "mur_style" => 'oxygen',
             "mur_size" => 12,
+            "mur_header" => 0,
+            "mur_header_text" => '',
+            "mur_class_block" => '',
+            "mur_class_text" => '',
+            "mur_class_table" => '',
+            "mur_class_button" => '',
             "cmm_style" => 'oxygen',
             "cmm_size" => 12,
             "cmm_stars" => 5,
@@ -220,7 +226,11 @@ if (!class_exists('GDStarRating')) {
             "wait_text_comment" => 'please wait...',
             "wait_loader_comment" => 'flower',
             "wait_show_comment" => 0,
-            "wait_class_comment" => ''
+            "wait_class_comment" => '',
+            "wait_text_multis" => 'please wait...',
+            "wait_loader_multis" => 'flower',
+            "wait_show_multis" => 0,
+            "wait_class_multis" => ''
         );
 
         var $default_wpr8 = array(

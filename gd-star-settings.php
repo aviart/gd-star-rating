@@ -17,12 +17,16 @@
 
         $gdsr_options["wait_show_article"] = isset($_POST['gdsr_wait_show_article']) ? 1 : 0;
         $gdsr_options["wait_show_comment"] = isset($_POST['gdsr_wait_show_comment']) ? 1 : 0;
+        $gdsr_options["wait_show_multis"] = isset($_POST['gdsr_wait_show_multis']) ? 1 : 0;
         $gdsr_options["wait_loader_article"] = $_POST['gdsr_wait_loader_article'];
         $gdsr_options["wait_loader_comment"] = $_POST['gdsr_wait_loader_comment'];
+        $gdsr_options["wait_loader_multis"] = $_POST['gdsr_wait_loader_multis'];
         $gdsr_options["wait_text_article"] = $_POST['gdsr_wait_text_article'];
         $gdsr_options["wait_text_comment"] = $_POST['gdsr_wait_text_comment'];
+        $gdsr_options["wait_text_multis"] = $_POST['gdsr_wait_text_multis'];
         $gdsr_options["wait_class_article"] = $_POST['gdsr_wait_class_article'];
         $gdsr_options["wait_class_comment"] = $_POST['gdsr_wait_class_comment'];
+        $gdsr_options["wait_class_multis"] = $_POST['gdsr_wait_class_multis'];
 
         $gdsr_options["debug_active"] = isset($_POST['gdsr_debug_active']) ? 1 : 0;
         $gdsr_options["debug_inline"] = isset($_POST['gdsr_debug_inline']) ? 1 : 0;
@@ -82,6 +86,12 @@
 
         $gdsr_options["mur_style"] = $_POST['gdsr_mur_style'];
         $gdsr_options["mur_size"] = $_POST['gdsr_mur_size'];
+        $gdsr_options["mur_header"] = isset($_POST['gdsr_mur_header']) ? 1 : 0;
+        $gdsr_options["mur_header_text"] = stripslashes(htmlentities($_POST['gdsr_mur_header_text'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["mur_class_block"] = $_POST['gdsr_mur_classblock'];
+        $gdsr_options["mur_class_text"] = $_POST['gdsr_mur_classtext'];
+        $gdsr_options["mur_class_table"] = $_POST['gdsr_mur_classtable'];
+        $gdsr_options["mur_class_button"] = $_POST['gdsr_mur_classbutton'];
 
         $gdsr_options["cmm_style"] = $_POST['gdsr_cmm_style'];
         $gdsr_options["cmm_size"] = $_POST['gdsr_cmm_size'];

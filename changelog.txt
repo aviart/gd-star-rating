@@ -11,7 +11,7 @@
   * new: italian datepicker translation
   * new: generate full rating image methods
   * new: supports both upper and lower case shortcodes
-  * new: shortcodes expansion added tinymce plugin
+  * new: shortcodes expansion added to tinymce plugin
   * edit: added new official website url
   * edit: rewriten main css file (again) produce 20%-30% smaller file
   * edit: jquery theme for tabs and datepicker
@@ -20,6 +20,7 @@
   * edit: few more small changes
   * edit: updated gdragon lib classes
   * edit: reorganized css files
+  * edit: some more code cleanup
   * edit: improved tinymce plugin
   * edit: improved translation strings
   * fix: rating loader position
