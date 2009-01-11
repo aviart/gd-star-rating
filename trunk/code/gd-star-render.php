@@ -224,6 +224,27 @@ class GDSRRender {
         else
             return GDSRRender::rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block, $debug);
     }
+
+    function multi_rating_block($set, $header, $header_text, $debug = "", $custom_class = "") {
+        $rater = '<div class="ratingmulti '.$custom_class.'">';
+        if ($debug != '') $rater.= '<div class="gdsrdebug">'.$debug.'</div>';
+        $rater.= GDSRRender::rating_header($header, $header_text);
+        $rater.= '<table class="multitable">';
+        $tr_class = "mtrow";
+        foreach ($set->object as $el) {
+            $rater.= '<tr class="'.$tr_class.'">';
+            $rater.= '<td>'.$el.'</td>';
+            $rater.= '<td>';
+            $rater.= 'STARS';
+            $rater.= '</td>';
+            $rater.= '</tr>';
+            if ($tr_class == "mtrow") $tr_class.= " alternate";
+            else $tr_class = "mtrow";
+        }
+        $rater.= '</table>';
+        $rater.= '</div>';
+        return $rater;
+    }
 }
 
 ?>

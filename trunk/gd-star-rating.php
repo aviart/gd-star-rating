@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.0.8
+Version: 1.0.9
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -115,9 +115,9 @@ if (!class_exists('GDStarRating')) {
         
         var $default_options = array(
             "version" => "1.0.9",
-            "date" => "2009.01.12.",
+            "date" => "2009.01.13.",
             "status" => "Beta",
-            "build" => 365,
+            "build" => 374,
             "news_feed_active" => 1,
             "debug_active" => 0,
             "debug_inline" => 1,
@@ -413,6 +413,7 @@ if (!class_exists('GDStarRating')) {
         function shortcode_starratingmulti($atts = array()) {
             global $post, $userdata;
             $settings = shortcode_atts($this->default_shortcode_starratingmulti, $atts);
+            return $this->render_multi_rating($post, $userdata, $settings);
         }
 
         /**
@@ -699,8 +700,8 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin_page == "ips" && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
             if ($this->admin_plugin) {
                 wp_admin_css('css/dashboard');
-                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin.css" type="text/css" media="screen" />');
-                if ($this->wp_version >= 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_wp27.css" type="text/css" media="screen" />');
+                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_main.css" type="text/css" media="screen" />');
+                if ($this->wp_version >= 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />');
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>';
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>';
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
@@ -723,12 +724,12 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin_page == "settings-page") include(STARRATING_PATH."code/gd-star-jsa.php");
             echo('});</script>');
 
-            if ($this->admin_page == "themes.php") echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/widgets.css" type="text/css" media="screen" />');
+            if ($this->admin_page == "themes.php") echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />');
 
             if ($this->admin_page == "edit-comments.php" || $this->admin_page == "comment.php") {
                 $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
                 $comment_review = urlencode($this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary);
-                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_comment.css.php?stars='.$comment_review.'" type="text/css" media="screen" />');
+                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_comment.css.php?stars='.$comment_review.'" type="text/css" media="screen" />');
             }
 
             $this->custom_actions('admin_head');
@@ -736,7 +737,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin && $this->wp_version < 26)
                 echo('<link rel="stylesheet" href="'.get_option('home').'/wp-includes/js/thickbox/thickbox.css" type="text/css" media="screen" />');
 
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin_post.css" type="text/css" media="screen" />');
+            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_post.css" type="text/css" media="screen" />');
         }
 
         /**
@@ -1181,13 +1182,13 @@ if (!class_exists('GDStarRating')) {
             if (is_feed()) return;
            
             $gfx_a = $this->g->find_stars($this->o["style"]);
-            $css_string = $this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
+            $css_string = "a".$this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
             if (is_single()) {
                 $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
                 $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
 
-                $css_string.= "#".$this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary;
-                $css_string.= "#".$this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
+                $css_string.= "#c".$this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary;
+                $css_string.= "#r".$this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
             }
             $css_string = urlencode($css_string);
             $use_nonce = $this->use_nonce;
@@ -2174,8 +2175,12 @@ if (!class_exists('GDStarRating')) {
             if ($this->o["wait_show_article"] == 1)
                 $cls.= "width ";
             $cls.= $this->o["wait_class_article"];
-            $div = '<div class="'.$cls.'">';
-            if ($this->o["wait_show_article"] == 0) $div.= '<div class="loaderinner">'.__($this->o["wait_text_article"]).'</div>';
+            $div = '<div class="'.$cls.'" style="height: '.$this->o["size"].'">';
+            if ($this->o["wait_show_article"] == 0) {
+                $padding = "";
+                if ($this->o["size"] > 20) $padding = ' style="padding-top: '.(($this->o["size"] / 2) - 10).'px"';
+                $div.= '<div class="loaderinner"'.$padding.'>'.__($this->o["wait_text_article"]).'</div>';
+            }
             $div.= '</div>';
             $this->loader_article = $div;
         }
@@ -2185,8 +2190,12 @@ if (!class_exists('GDStarRating')) {
             if ($this->o["wait_show_comment"] == 1)
                 $cls.= "width ";
             $cls.= $this->o["wait_class_comment"];
-            $div = '<div class="'.$cls.'">';
-            if ($this->o["wait_show_comment"] == 0) $div.= '<div class="loaderinner">'.__($this->o["wait_text_comment"]).'</div>';
+            $div = '<div class="'.$cls.'" style="height: '.$this->o["cmm_size"].'">';
+            if ($this->o["wait_show_comment"] == 0) {
+                $padding = "";
+                if ($this->o["cmm_size"] > 20) $padding = ' style="padding-top: '.(($this->o["cmm_size"] / 2) - 10).'px"';
+                $div.= '<div class="loaderinner"'.$padding.'>'.__($this->o["wait_text_comment"]).'</div>';
+            }
             $div.= '</div>';
             $this->loader_comment = $div;
         }
@@ -2458,7 +2467,40 @@ if (!class_exists('GDStarRating')) {
             return $rating_block;
         }
 
-        function render_multi_rating($post, $user, $override = array()) {
+        function render_multi_rating($post, $user, $settings, $override = array()) {
+            if ($this->is_bot) return "";
+
+            $dbg_allow = "F";
+            $allow_vote = true;
+            if ($this->is_ban && $this->o["ip_filtering"] == 1) {
+                if ($this->o["ip_filtering_restrictive"] == 1) return "";
+                else $allow_vote = false;
+                $dbg_allow = "B";
+            }
+
+            if (is_single() || (is_page() && $this->o["display_comment_page"] == 1))
+                $this->init_post();
+
+            $rd_post_id = intval($post->ID);
+            $rd_user_id = intval($user->ID);
+            $rd_is_page = $post->post_type == "page" ? "1" : "0";
+
+            if ($this->p)
+                $post_data = $this->p;
+            else {
+                $post_data = GDSRDatabase::get_post_data($rd_post_id);
+                if (count($post_data) == 0) {
+                    GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
+                    $post_data = GDSRDatabase::get_post_data($rd_post_id);
+                }
+            }
+            if ($post_data->rules_articles == "H") return "";
+
+            $set = gd_get_multi_set($settings["id"]);
+            $debug = $rd_user_id == 0 ? "V" : "U";
+            $debug.= $rd_user_id == $post->post_author ? "A" : "N";
+            $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
+            return GDSRRender::multi_rating_block($set, 1, 'TEST', $debug);
         }
         // rendering
     }

@@ -3,26 +3,26 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Milan Petrovic <milan@gdragon.info>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: charts/chart_pie_votes_summary.php:34
+#: charts/chart_pie_votes_summary.php:35
 msgid "Chart with votes distribution"
 msgstr "Графикон са дистрибуцијом гласова"
 
-#: code/gd-star-dbone.php:1015
+#: code/gd-star-dbone.php:1024
 msgid "Show all dates"
 msgstr "Прикажи све датуме"
 
-#: code/gd-star-dbone.php:1043
+#: code/gd-star-dbone.php:1052
 msgid "All users and visitors"
 msgstr "Сви корисници и посетиоци"
 
-#: code/gd-star-dbone.php:1044
-#: tinymce3/window.php:186
+#: code/gd-star-dbone.php:1053
+#: tinymce3/window.php:191
 #: widgets/widget.php:42
 #: widgets/widget.php:178
 #: widgets/widget_top.php:31
@@ -30,11 +30,11 @@ msgstr "Сви корисници и посетиоци"
 msgid "Visitors Only"
 msgstr "Само Посетици"
 
-#: code/gd-star-dbone.php:1045
+#: code/gd-star-dbone.php:1054
 msgid "All Users"
 msgstr "Сви корисници"
 
-#: code/gd-star-dbone.php:1061
+#: code/gd-star-dbone.php:1070
 msgid "All categories"
 msgstr "Све категорије"
 
@@ -42,127 +42,127 @@ msgstr "Све категорије"
 #: code/gd-star-dbtwo.php:79
 #: code/gd-star-dbtwo.php:82
 #: code/gd-star-dbtwo.php:85
-#: code/gd-star-dbtwo.php:88
-#: code/gd-star-dbtwo.php:110
-#: code/gd-star-dbtwo.php:113
-#: code/gd-star-dbtwo.php:116
-#: code/gd-star-dbtwo.php:119
-#: code/gd-star-dbtwo.php:122
-#: code/gd-star-dbtwo.php:125
-#: code/gd-star-dbtwo.php:199
-#: code/gd-star-dbtwo.php:202
-#: code/gd-star-dbtwo.php:205
-#: code/gd-star-dbtwo.php:208
-#: code/gd-star-dbtwo.php:227
-#: code/gd-star-dbtwo.php:230
-#: code/gd-star-dbtwo.php:233
-#: code/gd-star-dbtwo.php:236
-#: code/gd-star-dbtwo.php:239
+#: code/gd-star-dbtwo.php:89
+#: code/gd-star-dbtwo.php:112
+#: code/gd-star-dbtwo.php:115
+#: code/gd-star-dbtwo.php:118
+#: code/gd-star-dbtwo.php:121
+#: code/gd-star-dbtwo.php:124
+#: code/gd-star-dbtwo.php:127
+#: code/gd-star-dbtwo.php:201
+#: code/gd-star-dbtwo.php:204
+#: code/gd-star-dbtwo.php:207
+#: code/gd-star-dbtwo.php:210
+#: code/gd-star-dbtwo.php:229
+#: code/gd-star-dbtwo.php:232
+#: code/gd-star-dbtwo.php:235
+#: code/gd-star-dbtwo.php:238
+#: code/gd-star-dbtwo.php:241
 msgid "articles"
 msgstr "чланци"
 
 #: code/gd-star-dbtwo.php:76
-#: code/gd-star-dbtwo.php:93
-#: code/gd-star-dbtwo.php:110
-#: code/gd-star-dbtwo.php:130
+#: code/gd-star-dbtwo.php:94
+#: code/gd-star-dbtwo.php:112
+#: code/gd-star-dbtwo.php:132
 msgid "inherited"
 msgstr "наследи"
 
 #: code/gd-star-dbtwo.php:79
-#: code/gd-star-dbtwo.php:96
-#: code/gd-star-dbtwo.php:199
-#: code/gd-star-dbtwo.php:213
+#: code/gd-star-dbtwo.php:97
+#: code/gd-star-dbtwo.php:201
+#: code/gd-star-dbtwo.php:215
 msgid "all"
 msgstr "све"
 
 #: code/gd-star-dbtwo.php:82
-#: code/gd-star-dbtwo.php:99
-#: code/gd-star-dbtwo.php:119
-#: code/gd-star-dbtwo.php:139
-#: code/gd-star-dbtwo.php:189
-#: code/gd-star-dbtwo.php:202
-#: code/gd-star-dbtwo.php:216
-#: code/gd-star-dbtwo.php:233
-#: code/gd-star-dbtwo.php:250
-#: code/gd-star-dbtwo.php:309
+#: code/gd-star-dbtwo.php:100
+#: code/gd-star-dbtwo.php:121
+#: code/gd-star-dbtwo.php:141
+#: code/gd-star-dbtwo.php:191
+#: code/gd-star-dbtwo.php:204
+#: code/gd-star-dbtwo.php:218
+#: code/gd-star-dbtwo.php:235
+#: code/gd-star-dbtwo.php:252
+#: code/gd-star-dbtwo.php:311
 msgid "visitors"
 msgstr "посетиоци"
 
 #: code/gd-star-dbtwo.php:85
-#: code/gd-star-dbtwo.php:102
-#: code/gd-star-dbtwo.php:122
-#: code/gd-star-dbtwo.php:142
-#: code/gd-star-dbtwo.php:189
-#: code/gd-star-dbtwo.php:205
-#: code/gd-star-dbtwo.php:219
-#: code/gd-star-dbtwo.php:236
-#: code/gd-star-dbtwo.php:253
-#: code/gd-star-dbtwo.php:309
+#: code/gd-star-dbtwo.php:103
+#: code/gd-star-dbtwo.php:124
+#: code/gd-star-dbtwo.php:144
+#: code/gd-star-dbtwo.php:191
+#: code/gd-star-dbtwo.php:207
+#: code/gd-star-dbtwo.php:221
+#: code/gd-star-dbtwo.php:238
+#: code/gd-star-dbtwo.php:255
+#: code/gd-star-dbtwo.php:311
 msgid "users"
 msgstr "корисници"
 
-#: code/gd-star-dbtwo.php:88
-#: code/gd-star-dbtwo.php:105
-#: code/gd-star-dbtwo.php:208
-#: code/gd-star-dbtwo.php:222
+#: code/gd-star-dbtwo.php:89
+#: code/gd-star-dbtwo.php:107
+#: code/gd-star-dbtwo.php:210
+#: code/gd-star-dbtwo.php:224
 msgid "free"
 msgstr "слободно"
 
-#: code/gd-star-dbtwo.php:93
-#: code/gd-star-dbtwo.php:96
-#: code/gd-star-dbtwo.php:99
-#: code/gd-star-dbtwo.php:102
-#: code/gd-star-dbtwo.php:105
-#: code/gd-star-dbtwo.php:130
-#: code/gd-star-dbtwo.php:133
-#: code/gd-star-dbtwo.php:136
-#: code/gd-star-dbtwo.php:139
-#: code/gd-star-dbtwo.php:142
-#: code/gd-star-dbtwo.php:145
-#: code/gd-star-dbtwo.php:213
-#: code/gd-star-dbtwo.php:216
-#: code/gd-star-dbtwo.php:219
-#: code/gd-star-dbtwo.php:222
-#: code/gd-star-dbtwo.php:244
-#: code/gd-star-dbtwo.php:247
-#: code/gd-star-dbtwo.php:250
-#: code/gd-star-dbtwo.php:253
-#: code/gd-star-dbtwo.php:256
+#: code/gd-star-dbtwo.php:94
+#: code/gd-star-dbtwo.php:97
+#: code/gd-star-dbtwo.php:100
+#: code/gd-star-dbtwo.php:103
+#: code/gd-star-dbtwo.php:107
+#: code/gd-star-dbtwo.php:132
+#: code/gd-star-dbtwo.php:135
+#: code/gd-star-dbtwo.php:138
+#: code/gd-star-dbtwo.php:141
+#: code/gd-star-dbtwo.php:144
+#: code/gd-star-dbtwo.php:147
+#: code/gd-star-dbtwo.php:215
+#: code/gd-star-dbtwo.php:218
+#: code/gd-star-dbtwo.php:221
+#: code/gd-star-dbtwo.php:224
+#: code/gd-star-dbtwo.php:246
+#: code/gd-star-dbtwo.php:249
+#: code/gd-star-dbtwo.php:252
+#: code/gd-star-dbtwo.php:255
+#: code/gd-star-dbtwo.php:258
 msgid "comments"
 msgstr "коментари"
 
-#: code/gd-star-dbtwo.php:113
-#: code/gd-star-dbtwo.php:133
-#: code/gd-star-dbtwo.php:227
-#: code/gd-star-dbtwo.php:244
+#: code/gd-star-dbtwo.php:115
+#: code/gd-star-dbtwo.php:135
+#: code/gd-star-dbtwo.php:229
+#: code/gd-star-dbtwo.php:246
 msgid "hidden"
 msgstr "сакривен"
 
-#: code/gd-star-dbtwo.php:116
-#: code/gd-star-dbtwo.php:136
-#: code/gd-star-dbtwo.php:230
-#: code/gd-star-dbtwo.php:247
+#: code/gd-star-dbtwo.php:118
+#: code/gd-star-dbtwo.php:138
+#: code/gd-star-dbtwo.php:232
+#: code/gd-star-dbtwo.php:249
 msgid "locked"
 msgstr "закључан"
 
-#: code/gd-star-dbtwo.php:125
-#: code/gd-star-dbtwo.php:145
-#: code/gd-star-dbtwo.php:239
-#: code/gd-star-dbtwo.php:256
+#: code/gd-star-dbtwo.php:127
+#: code/gd-star-dbtwo.php:147
+#: code/gd-star-dbtwo.php:241
+#: code/gd-star-dbtwo.php:258
 msgid "everyone"
 msgstr "сви"
 
-#: code/gd-star-dbtwo.php:188
+#: code/gd-star-dbtwo.php:190
 #: options/users.php:99
 #: options/users.php:102
 msgid "rating"
 msgstr "оцена"
 
-#: code/gd-star-dbtwo.php:188
+#: code/gd-star-dbtwo.php:190
 msgid "views"
 msgstr "посета"
 
-#: code/gd-star-dbtwo.php:308
+#: code/gd-star-dbtwo.php:310
 #: options/users.php:98
 #: options/users.php:101
 msgid "votes"
@@ -242,26 +242,26 @@ msgid "Months"
 msgstr "Месеци"
 
 #: code/gd-star-functions.php:264
-#: tinymce3/window.php:289
-#: tinymce3/window.php:314
+#: tinymce3/window.php:298
+#: tinymce3/window.php:323
 msgid "Mini"
 msgstr "Мини"
 
 #: code/gd-star-functions.php:265
-#: tinymce3/window.php:290
-#: tinymce3/window.php:315
+#: tinymce3/window.php:299
+#: tinymce3/window.php:324
 msgid "Small"
 msgstr "Мала"
 
 #: code/gd-star-functions.php:266
-#: tinymce3/window.php:291
-#: tinymce3/window.php:316
+#: tinymce3/window.php:300
+#: tinymce3/window.php:325
 msgid "Medium"
 msgstr "Средња"
 
 #: code/gd-star-functions.php:267
-#: tinymce3/window.php:292
-#: tinymce3/window.php:317
+#: tinymce3/window.php:301
+#: tinymce3/window.php:326
 msgid "Big"
 msgstr "Велика"
 
@@ -329,83 +329,107 @@ msgstr "Плугин није доступан за увоз."
 msgid "Data imported."
 msgstr "Подаци увезени."
 
-#: integrate/edit.php:11
-#: options/articles.php:161
-#: options/articles.php:295
-#: options/comments.php:95
-#: options/settings_articles.php:172
-#: options/settings_comments.php:150
-#: tinymce3/window.php:208
-#: widgets/widget.php:199
-msgid "Review"
+#: integrate/edit.php:10
+#, fuzzy
+msgid "Post Review"
 msgstr "Оцена"
 
+#: integrate/edit.php:12
+msgid "Value"
+msgstr "Врдност"
+
 #: integrate/edit.php:24
+#, fuzzy
+msgid "Post Rating"
+msgstr "Оцена"
+
+#: integrate/edit.php:26
+#: integrate/edit.php:42
 msgid "Vote Rule"
 msgstr "Правила Гласања"
 
-#: integrate/edit.php:30
+#: integrate/edit.php:32
+#: integrate/edit.php:48
 msgid "Moderate"
 msgstr "Модерација"
 
-#: integrate/edit.php:39
+#: integrate/edit.php:40
+#, fuzzy
+msgid "Comments Rating"
+msgstr "Оцена Кометара."
+
+#: integrate/edit.php:57
+#: templates/templates.php:55
+msgid "Time Restriction"
+msgstr "Временско Ограничење"
+
+#: integrate/edit.php:59
 #: options/articles.php:309
 #: options/categories.php:192
 msgid "Restriction"
 msgstr "Ограничења"
 
-#: integrate/edit.php:46
+#: integrate/edit.php:66
 #: options/articles.php:316
 #: options/categories.php:199
-#: tinymce3/window.php:227
+#: tinymce3/window.php:236
 msgid "Date"
 msgstr "Датум"
 
-#: integrate/edit.php:54
+#: integrate/edit.php:74
 #: options/articles.php:315
 #: options/categories.php:198
 msgid "Countdown"
 msgstr "Одбројавање"
 
-#: multi/editor.php:18
+#: multi/editor.php:19
 msgid "Multi Sets Editor"
 msgstr "Мулти Сет Едитор"
 
-#: multi/editor.php:21
-#: multi/editor.php:44
+#: multi/editor.php:22
+#: multi/editor.php:45
 #: multi/sets.php:53
 #: options/users.php:60
 #: options/voters.php:142
 msgid "Name"
 msgstr "Назив"
 
-#: multi/editor.php:26
+#: multi/editor.php:27
 #: multi/sets.php:54
 msgid "Description"
 msgstr "Опис"
 
-#: multi/editor.php:31
-#: options/settings_articles.php:25
-#: options/settings_articles.php:187
-#: options/settings_comments.php:25
-#: options/settings_comments.php:165
+#: multi/editor.php:32
 msgid "Number Of Stars"
 msgstr "Број звездица"
 
-#: multi/editor.php:38
-#: widgets/widget.php:350
-#: widgets/widget.php:358
+#: multi/editor.php:39
+#: widgets/widget.php:357
+#: widgets/widget.php:365
 #: widgets/widget_top.php:103
 #: widgets/widget_top.php:111
 msgid "Elements"
 msgstr "Елементи"
 
-#: multi/editor.php:53
+#: multi/editor.php:48
+msgid "Weight"
+msgstr "Тежина"
+
+#: multi/editor.php:56
+#, fuzzy
+msgid "Important Notice"
+msgstr "Важно"
+
+#: multi/editor.php:58
+msgid "Once the set is created, you can't change number of elements in the set or number of stars! You can edit names and weight of the elements, name and description of the set."
+msgstr ""
+
+#: multi/editor.php:64
 msgid "Save Multi Set"
 msgstr "Сними Мулти Сет"
 
 #: multi/sets.php:36
-#: gd-star-rating.php:659
+#: gd-star-rating.php:677
 msgid "Multi Sets"
 msgstr "Мулти Сетови"
 
@@ -416,16 +440,17 @@ msgstr "Додај Нови Мулти Сет"
 #: multi/sets.php:52
 #: options/users.php:61
 #: options/voters.php:141
-#: tinymce3/window.php:206
-#: widgets/widget.php:197
+#: tinymce3/window.php:215
+#: widgets/widget.php:204
 msgid "ID"
 msgstr "ID"
 
 #: multi/sets.php:55
 #: options/settings_articles.php:14
-#: options/settings_articles.php:176
+#: options/settings_articles.php:179
 #: options/settings_comments.php:14
-#: options/settings_comments.php:154
+#: options/settings_comments.php:157
+#: options/settings_multis.php:5
 #: options/settings_preview.php:39
 #: options/settings_preview.php:43
 msgid "Stars"
@@ -436,7 +461,7 @@ msgstr "Звезде"
 msgid "Ratings"
 msgstr "Оцене"
 
-#: multi/sets.php:103
+#: multi/sets.php:102
 msgid "Delete Selected Sets"
 msgstr "Обриши Селектоване Сетове"
 
@@ -444,8 +469,8 @@ msgstr "Обриши Селектоване Сетове"
 #: options/articles.php:260
 #: options/categories.php:158
 #: options/users.php:64
-#: templates/templates.php:42
-#: gd-star-rating.php:655
+#: templates/templates.php:45
+#: gd-star-rating.php:673
 msgid "Articles"
 msgstr "Чланци"
 
@@ -470,9 +495,9 @@ msgid "Filter"
 msgstr "Филтер"
 
 #: options/articles.php:147
-#: tinymce3/window.php:207
+#: tinymce3/window.php:216
 #: widgets/widget.php:32
-#: widgets/widget.php:198
+#: widgets/widget.php:205
 #: widgets/widget_top.php:21
 msgid "Title"
 msgstr "Наслов"
@@ -511,7 +536,7 @@ msgstr "Правила Гласања"
 #: options/articles.php:157
 #: options/categories.php:69
 #: options/settings_general.php:51
-#: gd-star-rating.php:656
+#: gd-star-rating.php:674
 msgid "Categories"
 msgstr "Категорије"
 
@@ -519,6 +544,16 @@ msgstr "Категорије"
 #: options/comments.php:94
 msgid "Total"
 msgstr "Укупно"
+
+#: options/articles.php:161
+#: options/articles.php:295
+#: options/comments.php:95
+#: options/settings_articles.php:175
+#: options/settings_comments.php:153
+#: tinymce3/window.php:217
+#: widgets/widget.php:206
+msgid "Review"
+msgstr "Оцена"
 
 #: options/articles.php:263
 #: options/articles.php:333
@@ -546,7 +581,7 @@ msgstr "Посетиоци"
 #: options/comments.php:139
 #: options/settings_general.php:53
 #: options/users.php:47
-#: gd-star-rating.php:657
+#: gd-star-rating.php:675
 msgid "Users"
 msgstr "Корисници"
 
@@ -565,8 +600,8 @@ msgstr "Сви"
 #: options/settings.php:46
 #: options/tools.php:95
 #: options/users.php:65
-#: templates/templates.php:31
-#: templates/templates.php:47
+#: templates/templates.php:34
+#: templates/templates.php:50
 msgid "Comments"
 msgstr "Коментари"
 
@@ -612,8 +647,8 @@ msgid "Batch Options"
 msgstr "Групне Опције"
 
 #: options/categories.php:82
-#: tinymce3/window.php:191
-#: widgets/widget.php:241
+#: tinymce3/window.php:196
+#: widgets/widget.php:248
 msgid "Category"
 msgstr "Категорија"
 
@@ -627,8 +662,7 @@ msgid "Posts"
 msgstr "Чланци"
 
 #: options/charts.php:5
-#: options/settings.php:45
-#: templates/templates.php:30
+#: templates/templates.php:33
 msgid "Articles (Posts And Pages)"
 msgstr "Чланци (Постови и Стране)"
 
@@ -903,7 +937,7 @@ msgstr "Потребно је да унесете нека подешавања 
 #: options/ips.php:66
 #: options/settings_general.php:63
 #: options/users_log.php:177
-#: gd-star-rating.php:665
+#: gd-star-rating.php:683
 msgid "IP's"
 msgstr "IP"
 
@@ -986,7 +1020,7 @@ msgid "Approve"
 msgstr "Одобри"
 
 #: options/settings.php:37
-#: gd-star-rating.php:662
+#: gd-star-rating.php:680
 msgid "Settings"
 msgstr "Подешавања"
 
@@ -1007,169 +1041,199 @@ msgstr "Кеш"
 msgid "Integration"
 msgstr "Интеграција"
 
+#: options/settings.php:45
+#: tinymce3/window.php:181
+msgid "Posts And Pages"
+msgstr "Чланци и Стране"
+
 #: options/settings.php:47
+#, fuzzy
+msgid "Multis"
+msgstr "Мулти Сетови"
+
+#: options/settings.php:48
 msgid "Statistics"
 msgstr "Статистика"
 
-#: options/settings.php:48
-#: options/settings_articles.php:147
-#: options/settings_comments.php:125
+#: options/settings.php:49
+#: options/settings_articles.php:150
+#: options/settings_comments.php:128
 msgid "Preview"
 msgstr "Преглед"
 
-#: options/settings.php:49
+#: options/settings.php:50
 msgid "BOT List"
 msgstr "Листа Ботова"
 
-#: options/settings.php:81
-#: templates/templates.php:69
+#: options/settings.php:85
+#: templates/templates.php:72
 msgid "Save Settings"
 msgstr "Сними подешавања"
 
 #: options/settings_articles.php:10
 #: options/settings_comments.php:10
-#: tinymce3/window.php:204
-#: widgets/widget.php:195
+#: options/settings_multis.php:1
+#: tinymce3/window.php:213
+#: widgets/widget.php:202
 msgid "Rating"
 msgstr "Оцена"
 
+#: options/settings_articles.php:25
+#: options/settings_articles.php:190
+#: options/settings_comments.php:25
+#: options/settings_comments.php:168
+#, fuzzy
+msgid "Number of stars"
+msgstr "Број звездица"
+
 #: options/settings_articles.php:37
-#: options/settings_articles.php:199
+#: options/settings_articles.php:202
 #: options/settings_comments.php:37
-msgid "Rating Alignment"
+#, fuzzy
+msgid "Rating alignment"
 msgstr "Поравнање Рејтинга"
 
 #: options/settings_articles.php:42
 #: options/settings_comments.php:42
-msgid "Rating Text Placement"
-msgstr "Позиција Рејтинг текста"
+msgid "Rating text placement"
+msgstr "Позиција рејтинг текста"
 
 #: options/settings_articles.php:48
-#: options/settings_articles.php:205
+#: options/settings_articles.php:208
 #: options/settings_comments.php:48
-msgid "Rating Header"
+msgid "Rating header"
 msgstr "Заглавље"
 
 #: options/settings_articles.php:50
-#: options/settings_articles.php:207
+#: options/settings_articles.php:210
 #: options/settings_comments.php:50
 msgid "Display header text."
 msgstr "Прикажи текст заглавља."
 
 #: options/settings_articles.php:53
-#: options/settings_articles.php:157
-#: options/settings_articles.php:210
+#: options/settings_articles.php:160
+#: options/settings_articles.php:213
 #: options/settings_comments.php:53
-#: options/settings_comments.php:135
+#: options/settings_comments.php:138
 msgid "Text to display"
 msgstr "Текст за приказ"
 
 #: options/settings_articles.php:64
-#: options/settings_articles.php:221
+#: options/settings_articles.php:224
 #: options/settings_comments.php:64
-msgid "Rating Block CSS Class"
-msgstr "CSS Класа Рејтинг блока"
+msgid "Rating block CSS class"
+msgstr "CSS класа рејтинг блока"
 
 #: options/settings_articles.php:69
 #: options/settings_comments.php:69
-msgid "Rating Text CSS Class"
+#, fuzzy
+msgid "Rating text CSS class"
 msgstr "CSS Класа Рејтинг текста"
 
-#: options/settings_articles.php:80
-#: options/settings_comments.php:80
-msgid "Default Vote Rule"
-msgstr "Стандардна правила гласања"
-
-#: options/settings_articles.php:86
-#: options/settings_comments.php:86
-msgid "Default Moderation Rule"
-msgstr "Стандардна правила модерације"
-
-#: options/settings_articles.php:96
-msgid "Default time restriction"
-msgstr "Стандардна временска ограничења"
-
-#: options/settings_articles.php:101
-msgid "Default countdown value"
-msgstr "Стандардна вредност одбројавања"
-
-#: options/settings_articles.php:113
-#: options/settings_comments.php:97
-msgid "Auto Insert Rating Code"
+#: options/settings_articles.php:79
+#: options/settings_comments.php:79
+#, fuzzy
+msgid "Auto insert rating code"
 msgstr "Ауоматски убаци рејтинг код"
 
-#: options/settings_articles.php:115
+#: options/settings_articles.php:81
 msgid "For individual posts."
 msgstr "За посебне чланке."
 
-#: options/settings_articles.php:117
+#: options/settings_articles.php:83
 msgid "For individual pages."
 msgstr "За посебне стране."
 
-#: options/settings_articles.php:121
+#: options/settings_articles.php:87
 msgid "For posts displayed in Archives."
 msgstr "За чланке приказане у Архиви."
 
-#: options/settings_articles.php:123
+#: options/settings_articles.php:89
 msgid "For posts displayed on Front Page."
 msgstr "За чланке приказане на Главној страни."
 
-#: options/settings_articles.php:125
+#: options/settings_articles.php:91
 msgid "For posts displayed on Search results."
 msgstr "За чланке приказане на страни са Резултатима."
 
-#: options/settings_articles.php:131
-#: options/settings_comments.php:109
+#: options/settings_articles.php:98
+#: options/settings_comments.php:92
+msgid "Defaults"
+msgstr ""
+
+#: options/settings_articles.php:102
+#: options/settings_comments.php:96
+msgid "Vote rule"
+msgstr "Правило гласања"
+
+#: options/settings_articles.php:108
+#: options/settings_comments.php:102
+msgid "Moderation rule"
+msgstr "Правило модерације"
+
+#: options/settings_articles.php:118
+#, fuzzy
+msgid "Ttime restriction"
+msgstr "Временско Ограничење"
+
+#: options/settings_articles.php:123
+#, fuzzy
+msgid "Countdown value"
+msgstr "Одбројавање"
+
+#: options/settings_articles.php:134
+#: options/settings_comments.php:112
 msgid "Restrict"
 msgstr "Ограничења"
 
-#: options/settings_articles.php:133
+#: options/settings_articles.php:136
 msgid "Prevent article author to vote."
 msgstr "Спречи аутора да гласа."
 
-#: options/settings_articles.php:133
+#: options/settings_articles.php:136
 msgid "This is only for registered users."
 msgstr "Само за регистроване кориснике."
 
-#: options/settings_articles.php:135
-#: options/settings_comments.php:113
+#: options/settings_articles.php:138
+#: options/settings_comments.php:116
 msgid "Use logged data (IP) to prevent duplicate voting."
 msgstr "Користи снимљене податке (IP) као превенцију дуплог гласања."
 
-#: options/settings_articles.php:137
-#: options/settings_comments.php:115
+#: options/settings_articles.php:140
+#: options/settings_comments.php:118
 msgid "Use cookies to prevent duplicate voting."
 msgstr "Користи колачић као превенцију дуплог гласања."
 
-#: options/settings_articles.php:140
-#: options/settings_comments.php:118
+#: options/settings_articles.php:143
+#: options/settings_comments.php:121
 msgid "Vote Waiting Message"
 msgstr "Порука Чекања"
 
-#: options/settings_articles.php:144
-#: options/settings_comments.php:122
-msgid "Animation Indicator"
+#: options/settings_articles.php:147
+#: options/settings_comments.php:125
+#, fuzzy
+msgid "Animation indicator"
 msgstr "Анимација"
 
-#: options/settings_articles.php:162
-#: options/settings_comments.php:140
-msgid "Additional CSS Class"
+#: options/settings_articles.php:165
+#: options/settings_comments.php:143
+msgid "Additional CSS class"
 msgstr "Додатна ЦСС класа"
 
-#: options/settings_articles.php:168
-#: options/settings_comments.php:146
+#: options/settings_articles.php:171
+#: options/settings_comments.php:149
 msgid "Hide text and show only animation image."
 msgstr "Сакриј текст и прикажи само анимацију."
 
-#: options/settings_comments.php:99
+#: options/settings_comments.php:81
 msgid "For comments for posts."
 msgstr "За коментаре за чланке."
 
-#: options/settings_comments.php:103
+#: options/settings_comments.php:85
 msgid "For comments for pages."
 msgstr "За коментаре за стране."
 
-#: options/settings_comments.php:111
+#: options/settings_comments.php:114
 msgid "Prevent comment author to vote."
 msgstr "Спречи аутора коментара да гласа."
 
@@ -1207,19 +1271,19 @@ msgid "Rows for display"
 msgstr "Редови за приказ"
 
 #: options/settings_general.php:32
-msgid "Display Rating Custom CSS Settings."
+msgid "Display custom rating CSS settings."
 msgstr "Прикажи CSS подешавања."
 
 #: options/settings_general.php:34
-msgid "Display Rating Placement Settings."
+msgid "Display rating placement settings."
 msgstr "Прикажи подешавања локације."
 
 #: options/settings_general.php:38
-msgid "Display Rating Defaults Settings."
+msgid "Display rating defaults settings."
 msgstr "Прикажи подешавања стандардних вредности."
 
 #: options/settings_general.php:43
-msgid "Update Front page latest news feed."
+msgid "Update front page latest news feed."
 msgstr "Обнављај вести на главној страни."
 
 #: options/settings_general.php:46
@@ -1236,7 +1300,7 @@ msgstr "Контрола корисника."
 
 #: options/settings_general.php:55
 #: options/setup.php:32
-#: gd-star-rating.php:669
+#: gd-star-rating.php:687
 msgid "Setup"
 msgstr "Организација"
 
@@ -1245,7 +1309,7 @@ msgid "Uninstall and maintenance."
 msgstr "Деисталација и одржавање."
 
 #: options/settings_general.php:59
-#: gd-star-rating.php:666
+#: gd-star-rating.php:684
 msgid "Import"
 msgstr "Увоз"
 
@@ -1254,7 +1318,7 @@ msgid "Importing data for other rating plugins."
 msgstr "Увоз података из других рејтинг плагинова."
 
 #: options/settings_general.php:61
-#: gd-star-rating.php:667
+#: gd-star-rating.php:685
 msgid "Export"
 msgstr "Извоз"
 
@@ -1311,7 +1375,7 @@ msgid "Comments Review Rating."
 msgstr "Оцена Autora Кометара."
 
 #: options/settings_general.php:99
-msgid "Use IE6 PNG Transparency Fix."
+msgid "Use IE6 PNG transparency fix."
 msgstr "Користи поправку IE PNG транспаренције."
 
 #: options/settings_general.php:102
@@ -1367,8 +1431,8 @@ msgid "Add rating box on the comment edit page."
 msgstr "Додај рејтинг бокс на едит цтрану коментара."
 
 #: options/settings_preview.php:73
-#: tinymce3/window.php:286
-#: tinymce3/window.php:311
+#: tinymce3/window.php:295
+#: tinymce3/window.php:320
 msgid "Size"
 msgstr "Величина"
 
@@ -1471,7 +1535,7 @@ msgid "This will remove all database tables created by plugin, all settings, tem
 msgstr "Ово ће уклонити све табеле које је креирао плагин, сва подешавања и све податке о увозу."
 
 #: options/setup.php:73
-#: gd-star-rating.php:1076
+#: gd-star-rating.php:1106
 msgid "FULL UNINSTALL"
 msgstr "ПУНА ДЕИНСТАЛАЦИЈА"
 
@@ -1480,7 +1544,7 @@ msgid "After removal, plugin will be disabled."
 msgstr "После брисања, плугин ће бити искључен."
 
 #: options/tools.php:0
-#: gd-star-rating.php:663
+#: gd-star-rating.php:681
 msgid "Tools"
 msgstr "Алати"
 
@@ -1567,8 +1631,9 @@ msgid "Global Voting Rules Update"
 msgstr "Ажурирање глобалних правила гласања"
 
 #: options/tools.php:112
-#: tinymce3/window.php:278
-#: tinymce3/window.php:303
+#: tinymce3/window.php:287
+#: tinymce3/window.php:312
+#: tinymce3/window.php:375
 msgid "Set"
 msgstr "Сет"
 
@@ -1653,22 +1718,18 @@ msgstr "Листа гласова"
 msgid "Vote log for post"
 msgstr "Листа гласова за чланке."
 
-#: templates/templates.php:24
-#: gd-star-rating.php:664
+#: templates/templates.php:27
+#: gd-star-rating.php:682
 msgid "Templates"
 msgstr "Шаблони"
 
-#: templates/templates.php:29
+#: templates/templates.php:32
 msgid "Template Elements"
 msgstr "Елементи Шаблона"
 
-#: templates/templates.php:37
+#: templates/templates.php:40
 msgid "Custom Elements"
 msgstr "Елементи"
-
-#: templates/templates.php:52
-msgid "Time Restriction"
-msgstr "Временско Ограничење"
 
 #: templates/templates_articles.php:1
 #: templates/templates_comments.php:1
@@ -1706,7 +1767,7 @@ msgid "Shortcode StarRating"
 msgstr "Shortcode StarRating"
 
 #: templates/templates_articles.php:30
-#: widgets/widget.php:326
+#: widgets/widget.php:333
 msgid "Header"
 msgstr "Заглавље"
 
@@ -1716,7 +1777,7 @@ msgid "no template elements allowed"
 msgstr "нису дозвољени елементи шаблона"
 
 #: templates/templates_articles.php:35
-#: widgets/widget.php:331
+#: widgets/widget.php:338
 msgid "Item"
 msgstr "Ставка"
 
@@ -1725,34 +1786,34 @@ msgid "all articles and custom templates elements"
 msgstr "сви елементи за чланке и додатни елементи"
 
 #: templates/templates_articles.php:40
-#: widgets/widget.php:336
+#: widgets/widget.php:343
 msgid "Footer"
 msgstr "Футер"
 
 #: templates/templates_elements_articles.php:3
-#: widgets/widget.php:359
+#: widgets/widget.php:366
 #: widgets/widget_top.php:112
 msgid "article rating"
 msgstr "рејтинг чланка"
 
 #: templates/templates_elements_articles.php:6
-#: widgets/widget.php:363
+#: widgets/widget.php:370
 #: widgets/widget_top.php:120
 msgid "maximum rating value"
 msgstr "максимална вредност рејтинга"
 
 #: templates/templates_elements_articles.php:10
-#: widgets/widget.php:375
+#: widgets/widget.php:382
 msgid "article review"
 msgstr "критика чланка"
 
 #: templates/templates_elements_articles.php:13
-#: widgets/widget.php:379
+#: widgets/widget.php:386
 msgid "maximum review value"
 msgstr "максимална вреност криткике"
 
 #: templates/templates_elements_articles.php:17
-#: widgets/widget.php:371
+#: widgets/widget.php:378
 #: widgets/widget_top.php:128
 msgid "total votes for article"
 msgstr "укупно гласова за чланак"
@@ -1793,13 +1854,13 @@ msgid "article review stars"
 msgstr "звезде за критика чланка"
 
 #: templates/templates_elements_articles.php:48
-#: widgets/widget.php:403
+#: widgets/widget.php:410
 #: widgets/widget_top.php:132
 msgid "number of posts/pages"
 msgstr "број чланака"
 
 #: templates/templates_elements_articles.php:52
-#: widgets/widget.php:399
+#: widgets/widget.php:406
 msgid "item id"
 msgstr "ид чланка"
 
@@ -1888,7 +1949,7 @@ msgid "total remaining minutes"
 msgstr "укупно преосталих минута"
 
 #: tinymce3/window.php:30
-#: tinymce3/window.php:369
+#: tinymce3/window.php:394
 msgid "Insert"
 msgstr "Убаци"
 
@@ -1896,165 +1957,180 @@ msgstr "Убаци"
 msgid "Render"
 msgstr "Исцртавање"
 
-#: tinymce3/window.php:40
+#: tinymce3/window.php:34
+#, fuzzy
+msgid "Multi Rating"
+msgstr "Додај Нови Мулти Сет"
+
+#: tinymce3/window.php:41
 msgid "Shortcode"
 msgstr "Скраћени код"
 
-#: tinymce3/window.php:56
+#: tinymce3/window.php:47
+#: tinymce3/window.php:48
+msgid "Advanced"
+msgstr "Напредно"
+
+#: tinymce3/window.php:50
+msgid "Multi"
+msgstr "Мулти"
+
+#: tinymce3/window.php:52
+#: tinymce3/window.php:53
+msgid "Simple"
+msgstr "Једноставно"
+
+#: tinymce3/window.php:61
 msgid "Shortcode Info"
 msgstr "Скраћени Код"
 
-#: tinymce3/window.php:57
-msgid "All the options in this options panel are for the StarRating panel. StarReview and StarRater don't have any options."
-msgstr "Све опције на овом панелу су за StarRating панел. StarReview и StarRater немају додатних опција."
+#: tinymce3/window.php:62
+msgid "Change shortcode to see additional options you can set."
+msgstr ""
 
-#: tinymce3/window.php:59
+#: tinymce3/window.php:64
 msgid "StarReview will render stars representing review value assigned to the post or page."
 msgstr "StarReview ће приказати звезде које представљају вредост критике за пост или страну."
 
-#: tinymce3/window.php:61
+#: tinymce3/window.php:66
 msgid "StarRater will render actual rating block if you choose not to have it automatically inserted. This way you can position it wherever you want in the contnents."
 msgstr "StarRater ће приказати рејтинг блок уколико одлучите да не желите да се аутоматски убацује. Овако се може позиционирати било где у садржају."
 
-#: tinymce3/window.php:67
+#: tinymce3/window.php:72
 msgid "Display"
 msgstr "Приказ"
 
-#: tinymce3/window.php:70
+#: tinymce3/window.php:75
 #: widgets/widget.php:185
 msgid "Number Of Posts"
 msgstr "Број Чланака"
 
-#: tinymce3/window.php:74
+#: tinymce3/window.php:79
 #: widgets/widget.php:49
 msgid "Items Grouping"
 msgstr "Груписање"
 
-#: tinymce3/window.php:76
+#: tinymce3/window.php:81
 #: widgets/widget.php:52
 msgid "No grouping"
 msgstr "Без груписања"
 
-#: tinymce3/window.php:77
+#: tinymce3/window.php:82
 #: widgets/widget.php:53
 msgid "User based"
 msgstr "Корисници"
 
-#: tinymce3/window.php:78
+#: tinymce3/window.php:83
 #: widgets/widget.php:54
 msgid "Category based"
 msgstr "Категорија"
 
-#: tinymce3/window.php:85
+#: tinymce3/window.php:90
 #: widgets/widget.php:65
 #: widgets/widget.php:73
 msgid "Trend"
 msgstr "Тренд"
 
-#: tinymce3/window.php:88
+#: tinymce3/window.php:93
 #: widgets/widget.php:74
 msgid "Rating trend display as"
 msgstr "Тренд рејтинга  прикажи као"
 
-#: tinymce3/window.php:91
-#: tinymce3/window.php:127
+#: tinymce3/window.php:96
+#: tinymce3/window.php:132
 #: widgets/widget.php:77
 #: widgets/widget.php:115
 msgid "Text"
 msgstr "Текст"
 
-#: tinymce3/window.php:92
-#: tinymce3/window.php:128
+#: tinymce3/window.php:97
+#: tinymce3/window.php:133
 #: widgets/widget.php:78
 #: widgets/widget.php:116
 msgid "Image"
 msgstr "Слика"
 
-#: tinymce3/window.php:101
-#: tinymce3/window.php:137
+#: tinymce3/window.php:106
+#: tinymce3/window.php:142
 #: widgets/widget.php:87
 #: widgets/widget.php:125
 msgid "Up"
 msgstr "Раст"
 
-#: tinymce3/window.php:103
-#: tinymce3/window.php:139
+#: tinymce3/window.php:108
+#: tinymce3/window.php:144
 #: widgets/widget.php:89
 #: widgets/widget.php:127
 msgid "Equal"
 msgstr "Исто"
 
-#: tinymce3/window.php:105
-#: tinymce3/window.php:141
+#: tinymce3/window.php:110
+#: tinymce3/window.php:146
 #: widgets/widget.php:91
 #: widgets/widget.php:129
 msgid "Down"
 msgstr "Пад"
 
-#: tinymce3/window.php:113
-#: tinymce3/window.php:149
+#: tinymce3/window.php:118
+#: tinymce3/window.php:154
 #: widgets/widget.php:100
 #: widgets/widget.php:138
 msgid "Image set"
 msgstr "Сет слика"
 
-#: tinymce3/window.php:124
+#: tinymce3/window.php:129
 #: widgets/widget.php:112
 msgid "Voting trend display as"
 msgstr "Тренд гласања прикажи као"
 
-#: tinymce3/window.php:161
+#: tinymce3/window.php:166
 msgid "Hiding"
 msgstr "Сакриј"
 
-#: tinymce3/window.php:162
-#: widgets/widget.php:218
+#: tinymce3/window.php:167
+#: widgets/widget.php:225
 msgid "Bayesian minumum votes required."
 msgstr "Бајесиан минимум потребних гласова"
 
-#: tinymce3/window.php:163
-#: widgets/widget.php:224
+#: tinymce3/window.php:168
+#: widgets/widget.php:231
 msgid "Hide articles with no recorded votes."
 msgstr "Сакриј чланке без уписаних гласова"
 
-#: tinymce3/window.php:164
-#: widgets/widget.php:230
+#: tinymce3/window.php:169
+#: widgets/widget.php:237
 msgid "Hide articles with no review values."
 msgstr "Сакриј чланке без критичке оцене."
 
-#: tinymce3/window.php:170
+#: tinymce3/window.php:175
 msgid "Basic"
 msgstr "Основни"
 
-#: tinymce3/window.php:173
+#: tinymce3/window.php:178
 #: widgets/widget.php:163
 #: widgets/widget_top.php:53
 msgid "Include Articles"
 msgstr "Укључи Чланке"
 
-#: tinymce3/window.php:176
-msgid "Posts And Pages"
-msgstr "Чланци и Стране"
-
-#: tinymce3/window.php:177
+#: tinymce3/window.php:182
 #: widgets/widget.php:167
 #: widgets/widget_top.php:57
 msgid "Posts Only"
 msgstr "Само Чланци"
 
-#: tinymce3/window.php:178
+#: tinymce3/window.php:183
 #: widgets/widget.php:168
 #: widgets/widget_top.php:58
 msgid "Pages Only"
 msgstr "Само Стране"
 
-#: tinymce3/window.php:183
+#: tinymce3/window.php:188
 #: widgets/widget.php:174
 #: widgets/widget_top.php:64
 msgid "Display Votes From"
 msgstr "Прикажи гласове од"
 
-#: tinymce3/window.php:185
+#: tinymce3/window.php:190
 #: widgets/widget.php:41
 #: widgets/widget.php:177
 #: widgets/widget_top.php:30
@@ -2062,7 +2138,7 @@ msgstr "Прикажи гласове од"
 msgid "Everyone"
 msgstr "Сви"
 
-#: tinymce3/window.php:187
+#: tinymce3/window.php:192
 #: widgets/widget.php:43
 #: widgets/widget.php:179
 #: widgets/widget_top.php:32
@@ -2070,127 +2146,128 @@ msgstr "Сви"
 msgid "Users Only"
 msgstr "Само корисници"
 
-#: tinymce3/window.php:198
+#: tinymce3/window.php:200
+#: widgets/widget.php:192
+#, fuzzy
+msgid "Minimum Votes"
+msgstr "Минимум потребних гласова"
+
+#: tinymce3/window.php:207
 msgid "Sorting"
 msgstr "Сортирање"
 
-#: tinymce3/window.php:201
+#: tinymce3/window.php:210
 msgid "Column"
 msgstr "Колона"
 
-#: tinymce3/window.php:205
-#: widgets/widget.php:196
+#: tinymce3/window.php:214
+#: widgets/widget.php:203
 msgid "Total Votes"
 msgstr "Укупно Гласова"
 
-#: tinymce3/window.php:209
-#: widgets/widget.php:200
+#: tinymce3/window.php:218
+#: widgets/widget.php:207
 msgid "Count"
 msgstr "Збир"
 
-#: tinymce3/window.php:210
-#: widgets/widget.php:201
+#: tinymce3/window.php:219
+#: widgets/widget.php:208
 msgid "Bayesian Rating"
 msgstr "Бајесова Процењена Средина"
 
-#: tinymce3/window.php:215
+#: tinymce3/window.php:224
 msgid "Order"
 msgstr "Редослед"
 
-#: tinymce3/window.php:218
-#: widgets/widget.php:210
+#: tinymce3/window.php:227
+#: widgets/widget.php:217
 msgid "Descending"
 msgstr "Опадајући"
 
-#: tinymce3/window.php:219
-#: widgets/widget.php:211
+#: tinymce3/window.php:228
+#: widgets/widget.php:218
 msgid "Ascending"
 msgstr "Растући"
 
-#: tinymce3/window.php:230
-#: widgets/widget.php:254
+#: tinymce3/window.php:239
+#: widgets/widget.php:261
 msgid "Publish Date"
 msgstr "Датум објављивања"
 
-#: tinymce3/window.php:233
-#: widgets/widget.php:257
+#: tinymce3/window.php:242
+#: widgets/widget.php:264
 msgid "Last # days"
 msgstr "Последњих # дана"
 
-#: tinymce3/window.php:234
-#: widgets/widget.php:258
+#: tinymce3/window.php:243
+#: widgets/widget.php:265
 msgid "Exact month"
 msgstr "Тачно месец"
 
-#: tinymce3/window.php:235
-#: widgets/widget.php:259
+#: tinymce3/window.php:244
+#: widgets/widget.php:266
 msgid "Date range"
 msgstr "Распон датума"
 
-#: tinymce3/window.php:243
-#: widgets/widget.php:268
+#: tinymce3/window.php:252
+#: widgets/widget.php:275
 msgid "Number Of Days"
 msgstr "Број дана"
 
-#: tinymce3/window.php:253
-#: widgets/widget.php:279
+#: tinymce3/window.php:262
+#: widgets/widget.php:286
 msgid "Month"
 msgstr "Месец"
 
-#: tinymce3/window.php:263
-#: widgets/widget.php:290
+#: tinymce3/window.php:272
+#: widgets/widget.php:297
 msgid "Range"
 msgstr "Опсег"
 
-#: tinymce3/window.php:275
+#: tinymce3/window.php:284
 msgid "Rating Stars"
 msgstr "Рејтинг Звезде"
 
-#: tinymce3/window.php:300
+#: tinymce3/window.php:309
 msgid "Review Stars"
 msgstr "Критика Звездице"
 
-#: tinymce3/window.php:325
+#: tinymce3/window.php:334
 msgid "Additional Style"
 msgstr "Додатни Стил"
 
-#: tinymce3/window.php:328
+#: tinymce3/window.php:337
 msgid "Style Class"
 msgstr "Стил класа"
 
-#: tinymce3/window.php:331
+#: tinymce3/window.php:340
 msgid "Don't Add"
 msgstr "Не Додај"
 
-#: tinymce3/window.php:332
+#: tinymce3/window.php:341
 msgid "Built In"
 msgstr "Уграђена"
 
-#: tinymce3/window.php:333
+#: tinymce3/window.php:342
 msgid "External"
 msgstr "Екстерна"
 
-#: tinymce3/window.php:341
+#: tinymce3/window.php:350
 msgid "Built In Class"
 msgstr "Уграђена класа"
 
-#: tinymce3/window.php:353
+#: tinymce3/window.php:362
 msgid "External Class"
 msgstr "Екстерна класа"
 
-#: tinymce3/window.php:365
+#: tinymce3/window.php:372
+#, fuzzy
+msgid "Multi Ratings"
+msgstr "Оцене"
+
+#: tinymce3/window.php:390
 msgid "Cancel"
 msgstr "Откажи"
-
-#: tinymce3/window.php:45
-#: tinymce3/window.php:46
-msgid "Advanced"
-msgstr "Напредно"
-
-#: tinymce3/window.php:48
-#: tinymce3/window.php:49
-msgid "Simple"
-msgstr "Једноставно"
 
 #: widgets/widget.php:38
 #: widgets/widget_top.php:27
@@ -2204,8 +2281,8 @@ msgstr "Сакриј виџет"
 
 #: widgets/widget.php:66
 #: widgets/widget.php:155
-#: widgets/widget.php:305
-#: widgets/widget.php:351
+#: widgets/widget.php:312
+#: widgets/widget.php:358
 #: widgets/widget_top.php:45
 #: widgets/widget_top.php:82
 #: widgets/widget_top.php:104
@@ -2217,47 +2294,47 @@ msgstr "Клик на наслов да би видели опције."
 msgid "Posts & Pages"
 msgstr "Чланци и Стране"
 
-#: widgets/widget.php:192
+#: widgets/widget.php:199
 msgid "Sorting Column"
 msgstr "Колона За Сортирање"
 
-#: widgets/widget.php:207
+#: widgets/widget.php:214
 msgid "Sorting Order"
 msgstr "Редослед Сортирања"
 
-#: widgets/widget.php:304
-#: widgets/widget.php:312
+#: widgets/widget.php:311
+#: widgets/widget.php:319
 #: widgets/widget_top.php:81
 #: widgets/widget_top.php:89
 msgid "Template"
 msgstr "Шаблон"
 
-#: widgets/widget.php:313
+#: widgets/widget.php:320
 msgid "Maximal character length for title"
 msgstr "Максимална дужина назива чланка"
 
-#: widgets/widget.php:367
+#: widgets/widget.php:374
 #: widgets/widget_top.php:124
 msgid "bayesian article rating"
 msgstr "рејтинг чланка"
 
-#: widgets/widget.php:383
+#: widgets/widget.php:390
 msgid "item title"
 msgstr "назив чланка"
 
-#: widgets/widget.php:387
+#: widgets/widget.php:394
 msgid "rating trend"
 msgstr "тренд рејтинга"
 
-#: widgets/widget.php:391
+#: widgets/widget.php:398
 msgid "voting trend"
 msgstr "тренд гласања"
 
-#: widgets/widget.php:395
+#: widgets/widget.php:402
 msgid "item url"
 msgstr "url чланка"
 
-#: widgets/widget.php:407
+#: widgets/widget.php:414
 #: widgets/widget_top.php:136
 msgid "singular/plural word vote"
 msgstr "једнина/множина речи глас"
@@ -2266,17 +2343,33 @@ msgstr "једнина/множина речи глас"
 msgid "article percentage rating"
 msgstr "рејтинг чланка у процентима"
 
-#: gd-star-rating.php:654
+#: wpr8/settings.php:1
+#: wpr8/settings.php:6
+msgid "Web Key"
+msgstr "Веб Кључ"
+
+#: gd-star-rating.php:672
 msgid "Front Page"
 msgstr "Главна Страна"
 
-#: gd-star-rating.php:660
+#: gd-star-rating.php:678
 msgid "Multi Results"
 msgstr "Мулти Резултати"
 
-#, fuzzy
-#~ msgid "Web Key"
-#~ msgstr "Мета Кључ"
+#~ msgid "Default Vote Rule"
+#~ msgstr "Стандардна правила гласања"
+#~ msgid "Default Moderation Rule"
+#~ msgstr "Стандардна правила модерације"
+#~ msgid "Default time restriction"
+#~ msgstr "Стандардна временска ограничења"
+#~ msgid "Default countdown value"
+#~ msgstr "Стандардна вредност одбројавања"
+#~ msgid ""
+#~ "All the options in this options panel are for the StarRating panel. "
+#~ "StarReview and StarRater don't have any options."
+#~ msgstr ""
+#~ "Све опције на овом панелу су за StarRating панел. StarReview и StarRater "
+#~ "немају додатних опција."
 #~ msgid "Database Cleanup"
 #~ msgstr "Чишћење Базе"
 #~ msgid "Click on this section header title to show preview panel."
