@@ -13,41 +13,17 @@
   * new: supports both upper and lower case shortcodes
   * new: shortcodes expansion added tinymce plugin
   * edit: added new official website url
+  * edit: rewriten main css file (again) produce 20%-30% smaller file
   * edit: jquery theme for tabs and datepicker
   * edit: small changes to settings tabs
   * edit: removed some obsolete functions
   * edit: few more small changes
   * edit: updated gdragon lib classes
+  * edit: reorganized css files
   * edit: improved tinymce plugin
   * edit: improved translation strings
+  * fix: rating loader position
   * fix: admin settings page problem with IE
   * fix: moderation check for saving votes
   * fix: small incompatibility with wordpress 2.5.x
-  * fix: hidding comments options when comments rating is disabled
-
-=== Version: 1.0.8 / december 29 2008 ===
-  * new: parameter minimum votes required for widget and shortcode
-  * edit: improved readme file
-  * edit: various small changes
-  * edit: prepering widget data improved
-  * edit: all custom functions now with phpdoc comments
-  * fix: invalid initialization of settings after reset or remove settings
-  * fix: template panel editing of time restrictions
-  * fix: database install invalid folder name
-
-=== Version: 1.0.7 / december 24 2008 ===
-  * new: rewritten database installation and upgrade
-  * new: function for manual rendering of blog rating widget
-  * new: database upgrade tool
-  * new: default color palette for charts
-  * edit: more database calls in debug file
-  * edit: small change in rendering blog rating widget
-  * edit: updated translation strings
-  * edit: improved user votes log
-  * edit: debug and install classes improvements
-  * fix: problems caused by incorrect database upgrade
-  * fix: invalid voting rules voting problem
-  * fix: saving rules and rating from post edit page
-  * fix: default debug file becauase of open_basedir restrictions
-  * fix: tinymce invalid translation string rendering
-  * fix: problem with changing timer and post rating values in post edit
+  * fix: hiding comments options when comments rating is disabled

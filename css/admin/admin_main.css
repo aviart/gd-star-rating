@@ -11,12 +11,12 @@
 }
 
 .sort-order-up {
-	background: url(../gfx/sort_up.png) no-repeat;
+	background: url(../../gfx/sort_up.png) no-repeat;
 	padding-left: 18px;
 }
 
 .sort-order-down {
-	background: url(../gfx/sort_down.png) no-repeat;
+	background: url(../../gfx/sort_down.png) no-repeat;
 	padding-left: 18px;
 }
 
@@ -126,7 +126,7 @@ form#gdsr-articles {
 	height: 18px;
 	font-size: 14px;
 	margin-bottom: 5px;
-	background: transparent url(../gfx/icon_home.png) no-repeat left;
+	background: transparent url(../../gfx/icon_home.png) no-repeat left;
 }
 
 .gdsr .urlstitle {
@@ -212,12 +212,12 @@ form#gdsr-articles {
 
 .gdsr-sortup {
 	padding-left: 12px;
-	background: url(../gfx/arrow_up.png) no-repeat left;
+	background: url(../../gfx/arrow_up.png) no-repeat left;
 }
 
 .gdsr-sortdown {
 	padding-left: 12px;
-	background: url(../gfx/arrow_down.png) no-repeat left;
+	background: url(../../gfx/arrow_down.png) no-repeat left;
 }
 
 .gdsr td.gdsr-preview {
@@ -233,7 +233,7 @@ form#gdsr-articles {
 }
 
 .gdsr td.gdsr-preview-pic {
-	background: url(../gfx/preview.png);
+	background: url(../../gfx/preview.png);
 }
 
 .gdsr td.gdsr-preview-space {
@@ -366,7 +366,7 @@ a.rssurl:hover { color: white; }
 }
 
 .loader.circle {
-    background: url(../gfx/loader/circle.gif) no-repeat left;
+    background: url(../../gfx/loader/circle.gif) no-repeat left;
 	padding-left: 18px;
 }
 
@@ -378,7 +378,7 @@ a.rssurl:hover { color: white; }
 }
 
 .loader.bar {
-    background: url(../gfx/loader/bar.gif) no-repeat left;
+    background: url(../../gfx/loader/bar.gif) no-repeat left;
 	padding-left: 216px;
 }
 
@@ -390,7 +390,7 @@ a.rssurl:hover { color: white; }
 }
 
 .loader.arrows {
-    background: url(../gfx/loader/arrows.gif) no-repeat left;
+    background: url(../../gfx/loader/arrows.gif) no-repeat left;
 	padding-left: 18px;
 }
 
@@ -402,7 +402,7 @@ a.rssurl:hover { color: white; }
 }
 
 .loader.flower {
-    background: url(../gfx/loader/flower.gif) no-repeat left;
+    background: url(../../gfx/loader/flower.gif) no-repeat left;
 	padding-left: 18px;
 }
 
@@ -414,7 +414,7 @@ a.rssurl:hover { color: white; }
 }
 
 .loader.gauge {
-    background: url(../gfx/loader/gauge.gif) no-repeat left;
+    background: url(../../gfx/loader/gauge.gif) no-repeat left;
 	padding-left: 134px;
 }
 
@@ -426,7 +426,7 @@ a.rssurl:hover { color: white; }
 }
 
 .loader.squares {
-    background: url(../gfx/loader/squares.gif) no-repeat left;
+    background: url(../../gfx/loader/squares.gif) no-repeat left;
 	padding-left: 43px;
 }
 

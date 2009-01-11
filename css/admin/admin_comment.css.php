@@ -13,9 +13,9 @@ if ($text > 15)
     $text = 15;
 
 if ($loc == 1)
-    $url = "../stars/".$style."/stars".$size.".".$type;
+    $url = "../../stars/".$style."/stars".$size.".".$type;
 else
-    $url = "../../../gd-star-rating/stars/".$style."/stars".$size.".".$type;
+    $url = "../../../../gd-star-rating/stars/".$style."/stars".$size.".".$type;
 
 header('Content-Type: text/css');
 

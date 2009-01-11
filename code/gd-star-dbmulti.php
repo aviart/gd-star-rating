@@ -42,6 +42,9 @@ class GDSRDBMulti {
     }
 }
 
+/**
+ * Multi Rating Set
+ */
 class GDMultiSingle {
     var $id = 0;
     var $name = "";
@@ -49,7 +52,13 @@ class GDMultiSingle {
     var $stars = 5;
     var $object = array();
     var $weight = array();
-    
+
+    /**
+     * Constructor
+     *
+     * @param bool $fill_empty prefill set with empty elements
+     * @param int $count number of elements in the set
+     */
     function GDMultiSingle($fill_empty = true, $count = 10) {
         if ($fill_empty) {
             for ($i = 0; $i < $count; $i++) {
@@ -58,6 +67,19 @@ class GDMultiSingle {
             }
         }
     }
+}
+
+/**
+ * Gets the multi rating set.
+ *
+ * @param int $id set id
+ * @return GDMultiSingle multi rating set
+ */
+function gd_get_multi_set($id) {
+    $set = GDSRDBMulti::get_multi_set($id);
+    $set->object = unserialize($set->object);
+    $set->weight = unserialize($set->weight);
+    return $set;
 }
 
 ?>

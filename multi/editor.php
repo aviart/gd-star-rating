@@ -5,9 +5,7 @@ if ($gdsr == "munew") {
 }
 else {
     $edit_id = $_GET["id"];
-    $set = GDSRDBMulti::get_multi_set($edit_id);
-    $set->object = unserialize($set->object);
-    $set->weight = unserialize($set->weight);
+    $set = gd_get_multi_set($edit_id);
 }
 
 ?>
@@ -53,13 +51,11 @@ else {
         </table>
     </td>
 </tr>
-<?php if ($gdsr == "munew") : ?>
 <tr><th scope="row"><?php _e("Important Notice", "gd-star-rating"); ?></th>
     <td>
         <?php _e("Once the set is created, you can't change number of elements in the set or number of stars! You can edit names and weight of the elements, name and description of the set.", "gd-star-rating"); ?>
     </td>
 </tr>
-<?php endif; ?>
 </tbody></table>
 
 <p class="submit"><input type="submit" value="<?php _e("Save Multi Set", "gd-star-rating"); ?>" name="gdsr_saving"/></p>

@@ -397,16 +397,36 @@ class GDSRHelper {
     }
 }
 
+/**
+ * Array sort method, ascending bayesian value.
+ *
+ * @param object $a first object
+ * @param object $b second object
+ * @return bool order
+ */
 function gd_sort_bayesian_asc($a, $b) {
     if ($a->bayesian == $b->bayesian) return 0;
     return ($a->bayesian < $b->bayesian) ? -1 : 1;
 }
 
+/**
+ * Array sort method, descending bayesian value.
+ *
+ * @param object $a first object
+ * @param object $b second object
+ * @return bool order
+ */
 function gd_sort_bayesian_desc($a, $b) {
     if ($a->bayesian == $b->bayesian) return 0;
     return ($a->bayesian > $b->bayesian) ? -1 : 1;
 }
 
+/**
+ * Scnas the folder and returns all the files and folder in it.
+ *
+ * @param string $path path of the folder to scan
+ * @return array list of files and folders in the folder
+ */
 function gd_scandir($path) {
 	if (function_exists(scandir)) {
 		return scandir($path);
