@@ -63,7 +63,7 @@ class GDSRRender {
             $rater_align = '';
                   
         $rater = '<div class="ratingblock '.$custom_class.'"'.$rater_align.'>';
-        if ($debug != '') $rater.= '<div class="gdsrdebug">'.$debug.'</div>';
+        if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
         if ($rater_header != '')
             $rater.= '<div class="ratingheader">'.$rater_header.'</div>';
         
@@ -90,7 +90,7 @@ class GDSRRender {
         }
 
         $rater = '<div class="ratingblock '.$custom_class.'"'.$rater_align.'>';
-        if ($debug != '') $rater.= '<div class="gdsrdebug">'.$debug.'</div>';
+        if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
         $rater.= '<table cellpadding="0" cellspacing="0">';
         if ($rater_header != "") 
             $rater.= '<tr><td colspan="2"'.$rater_header_align.'>'.$rater_header.'</td></tr>';
