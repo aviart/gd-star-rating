@@ -13,6 +13,7 @@
   * new: supports both upper and lower case shortcodes
   * new: shortcodes expansion added to tinymce plugin
   * edit: added new official website url
+  * edit: updated inline debug rendering
   * edit: rewriten main css file (again) produce 20%-30% smaller file
   * edit: jquery theme for tabs and datepicker
   * edit: small changes to settings tabs
