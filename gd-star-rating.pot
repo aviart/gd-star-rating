@@ -1165,7 +1165,7 @@ msgid "Moderation rule"
 msgstr ""
 
 #: options/settings_articles.php:118
-msgid "Ttime restriction"
+msgid "Time restriction"
 msgstr ""
 
 #: options/settings_articles.php:123

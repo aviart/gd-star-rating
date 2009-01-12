@@ -116,7 +116,7 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
         <?php if ($gdsr_options["timer_active"] == 1) { ?>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150"><?php _e("Ttime restriction", "gd-star-rating"); ?>:</td>
+                <td width="150"><?php _e("Time restriction", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
                 <?php GDSRHelper::render_timer_combo("gdsr_default_timer_type", $gdsr_options["default_timer_type"]); ?>
                 </td>
