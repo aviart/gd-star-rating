@@ -116,8 +116,8 @@ if (!class_exists('GDStarRating')) {
         var $default_options = array(
             "version" => "1.0.9",
             "date" => "2009.01.13.",
-            "status" => "Beta",
-            "build" => 378,
+            "status" => "Stable",
+            "build" => 379,
             "news_feed_active" => 1,
             "debug_active" => 0,
             "debug_inline" => 1,
