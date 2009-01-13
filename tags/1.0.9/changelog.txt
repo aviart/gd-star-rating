@@ -1,0 +1,31 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 1.0.9 / january 13 2008 ===
+  * new: expanded post edit widget
+  * new: multi ratings settings tab
+  * new: multi ratings database tables
+  * new: multi sets weight property for each element
+  * new: latest jquery ui
+  * new: italian datepicker translation
+  * new: generate full rating image methods
+  * new: supports both upper and lower case shortcodes
+  * new: shortcodes expansion added to tinymce plugin
+  * edit: added new official website url
+  * edit: updated inline debug rendering
+  * edit: rewriten main css file (again) produce 20%-30% smaller file
+  * edit: jquery theme for tabs and datepicker
+  * edit: small changes to settings tabs
+  * edit: removed some obsolete functions
+  * edit: few more small changes
+  * edit: updated gdragon lib classes
+  * edit: reorganized css files
+  * edit: some more code cleanup
+  * edit: improved tinymce plugin
+  * edit: improved translation strings
+  * fix: rating loader position
+  * fix: admin settings page problem with IE
+  * fix: moderation check for saving votes
+  * fix: small incompatibility with wordpress 2.5.x
+  * fix: hiding comments options when comments rating is disabled

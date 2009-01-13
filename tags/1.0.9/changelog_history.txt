@@ -1,0 +1,191 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 1.0.9 / january 13 2008 ===
+  * new: expanded post edit widget
+  * new: multi ratings settings tab
+  * new: multi ratings database tables
+  * new: multi sets weight property for each element
+  * new: latest jquery ui
+  * new: italian datepicker translation
+  * new: generate full rating image methods
+  * new: supports both upper and lower case shortcodes
+  * new: shortcodes expansion added to tinymce plugin
+  * edit: added new official website url
+  * edit: updated inline debug rendering
+  * edit: rewriten main css file (again) produce 20%-30% smaller file
+  * edit: jquery theme for tabs and datepicker
+  * edit: small changes to settings tabs
+  * edit: removed some obsolete functions
+  * edit: few more small changes
+  * edit: updated gdragon lib classes
+  * edit: reorganized css files
+  * edit: some more code cleanup
+  * edit: improved tinymce plugin
+  * edit: improved translation strings
+  * fix: rating loader position
+  * fix: admin settings page problem with IE
+  * fix: moderation check for saving votes
+  * fix: small incompatibility with wordpress 2.5.x
+  * fix: hiding comments options when comments rating is disabled
+
+=== Version: 1.0.8 / december 29 2008 ===
+  * new: parameter minimum votes required for widget and shortcode
+  * edit: improved readme file
+  * edit: various small changes
+  * edit: prepering widget data improved
+  * edit: all custom functions now with phpdoc comments
+  * fix: invalid initialization of settings after reset or remove settings
+  * fix: template panel editing of time restrictions
+  * fix: database install invalid folder name
+
+=== Version: 1.0.7 / december 22 2008 ===
+  * new: rewritten database installation and upgrade
+  * new: function for manual rendering of blog rating widget
+  * new: database upgrade tool
+  * edit: more database calls in debug file
+  * edit: small change in rendering blog rating widget
+  * edit: updated translation strings
+  * edit: improved user votes log
+  * edit: debug and install classes improvements
+  * fix: problems caused by incorrect database upgrade
+  * fix: invalid voting rules voting problem
+  * fix: saving rules and rating from post edit page
+  * fix: default debug file becauase of open_basedir restrictions
+  * fix: tinymce invalid translation string rendering
+  * fix: problem with changing timer and post rating values in post edit
+
+=== Version: 1.0.6 / december 14 2008 ===
+  * new: christmas style stars
+  * new: added italian translation
+  * new: added dashboard widget
+  * new: chart for dashboard with votes distribution
+  * new: import from star rating for review plugin
+  * new: plugin custom actions support
+  * new: auto insert rating for comments for pages
+  * new: option to disable newsfeed update on the front panel
+  * new: functions for getting rating objects
+  * new: included pchart class for charting support
+  * new: wordpress 2.7 navigation icon
+  * edit: post edit box wordpress 2.7 support
+  * edit: improvements to tools panel
+  * edit: debug check vote methods
+  * edit: additional code comments
+  * edit: small css changes for wordpress 2.7
+  * fix: small visual problems
+  * fix: blog widget control problem
+  * fix: editing comment review style loading
+
+=== Version: 1.0.5 / december 7 2008 ===
+  * new: rating css files joined into one
+  * new: ajax voting nonce security protection
+  * new: please wait message customization with preview
+  * new: various vote waiting animations
+  * new: basic support for qtranslate
+  * new: global debug into file support
+  * new: filter post and comments voters log by vote value
+  * new: filter user vote log by vote value
+  * new: saving debug info for articles and comment votes
+  * new: setup page confirmations
+  * new: debug settings tab
+  * new: percent value for blog rating wiget
+  * edit: code cleanup of the helper classes
+  * edit: updated readme text file
+  * edit: added version to inline debug info
+  * edit: removed obsolete preview code and settings
+  * fix: bottom and hidden rating text layout
+  * fix: default widget template and word vote/votes
+  * fix: widget shortcode rendering with no valid results
+  * fix: problem with anonymous comment authors
+  * fix: blog rating widget no votes value
+  * fix: rare saving comment vote bug
+  * fix: moderation control panel
+  * fix: scan dir for php4 not closing the directory resource
+
+=== Version: 1.0.4 / november 28 2008 ===
+  * new: tools for database cleanup
+  * new: debug info included with each rating block
+  * new: categories panel new column to view category archive
+  * new: articles panel new column to view post or page
+  * new: articles panel shows invalid rated post and comments in yellow
+  * new: sorting for voters log panel
+  * new: masked ip filtering
+  * new: range ip filtering
+  * edit: rewriten and optimized save votes method
+  * edit: improvements to articles and users panels
+  * edit: cleanup tools expanded to include cleanup message
+  * fix: rare saving votes bug
+  * fix: another bug voting cookie check
+  * fix: comments votes panel totals column
+  * fix: deleting votes from voters log minor bug
+  * fix: rating css files validity bug
+  * fix: rendering invalid rating value
+
+=== Version: 1.0.3 / november 23 2008 ===
+  * new: banned ip's db table
+  * new: ip's managment panel
+  * new: ip filtering settings
+  * new: tool for global date based lock
+  * new: tool for global rules change
+  * new: wordpress 2.7 styles for front page
+  * new: main plugin class documented with phpdoc
+  * edit: improved speed and reduced mysql load
+  * edit: changed bot detection
+  * edit: all includes use full path
+  * edit: user ip log panel
+  * edit: users panel improvements
+  * edit: small css changes
+  * fix: saving comment review with empty value
+  * fix: invalid unique ip count for users
+  * fix: voting cookie check
+  * fix: few invalid css classes
+  * fix: various small bugs
+
+=== Version: 1.0.2 / november 12 2008 ===
+  * new: comment review rating
+  * new: edit comment review rating
+  * new: managment for settings for categories
+  * new: users and visitors based rating info
+  * new: multi rating editor
+  * new: more functions to use in the theme
+  * edit: more changes to admin panels and settings
+  * edit: improved saving and handling settings
+  * edit: improved loading of css and js needed
+  * edit: improvement of all standalone functions
+  * fix: wordpress 2.7 improvements
+  * fix: few more typo errors
+  * fix: saving votes into log tables
+  * fix: invalid vote rule check for comments
+
+=== Version: 1.0.1 / november 5 2008 ===
+  * new: top ratings blog summary widget
+  * new: tools panel
+  * new: option to control saving user agent data
+  * new: options to hide even more options on settings pages
+  * edit: improved voting restrictions with ip and cookie
+  * edit: all files encoding changed to utf8
+  * edit: all files changed to windows ending
+  * fix: invalid default rating for new posts
+  * fix: full deletion of votes
+  * fix: auto insert comments rating
+  * fix: various small bugs
+
+=== Version: 1.0.0 / october 31 2008 ===
+  * new: pumpkin stars set
+  * new: full plugin uninstall
+  * new: rendering time testrictions
+  * new: front page completed
+  * new: voters log panel
+  * edit: more code cleanup
+  * edit: expanded rating text template
+  * edit: translation files updated
+  * fix: time restriction recalculations
+  * fix: rendering rating header html
+  * fix: default shortcode settings
+  * fix: page loading renaming regressions
+  * fix: few more typo errors
+  * fix: default starrating template
+  * fix: some small errors
+
+=== Version: 0.9.9.6 RC4 / october 28 2008 ===
