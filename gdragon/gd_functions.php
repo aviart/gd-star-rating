@@ -28,6 +28,68 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 if (!class_exists('gdFunctions')) {
     class gdFunctions {
+        /**
+         * Scans the folder and returns all the files and folder in it.
+         *
+         * @param string $path path of the folder to scan
+         * @return array list of files and folders in the folder
+         */
+        function scan_dir($path) {
+            if (function_exists(scandir)) {
+                return scandir($path);
+            }
+            else {
+                $dh = opendir($path);
+                while (false !== ($filename = readdir($dh))) {
+                    $files[] = $filename;
+                }
+                closedir($dh);
+                return $files;
+            }
+        }
+
+        /**
+         * Scans folder and adds all folders to array.
+         *
+         * @param string $path folder path
+         * @return array founded folders in array
+         */
+        function get_folders($path) {
+            $folders = gdFunctions::scan_dir($path);
+            $import = array();
+            foreach ($folders as $folder) {
+                if (substr($folder, 0, 1) != ".") {
+                    if (is_dir($path.$folder."/"))
+                        $import[] = $folder;
+                }
+            }
+            return $import;
+        }
+
+        /**
+         * Adds all new settings array elements and remove obsolete ones.
+         *
+         * @param array $old old settings
+         * @param array $new new settings
+         * @return array upgraded array
+         */
+        function upgrade_settings($old, $new) {
+            foreach ($new as $key => $value) {
+                if (!isset($old[$key])) $old[$key] = $value;
+            }
+
+            $unset = Array();
+            foreach ($old as $key => $value) {
+                if (!isset($new[$key])) $unset[] = $key;
+            }
+
+            foreach ($unset as $key) {
+                unset($old[$key]);
+            }
+
+            return $old;
+        }
+
         function prefill_attributes($defaults, $attributes) {
             $attributes = (array)$attributes;
             $result = array();
