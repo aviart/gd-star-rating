@@ -2,7 +2,7 @@
 
 == Change Log ==
 
-=== Version: 1.0.9 / january 13 2008 ===
+=== Version: 1.0.9 / january 13 2009 ===
   * new: expanded post edit widget
   * new: multi ratings settings tab
   * new: multi ratings database tables
