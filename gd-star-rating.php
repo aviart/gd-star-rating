@@ -114,9 +114,9 @@ if (!class_exists('GDStarRating')) {
         );
         
         var $default_options = array(
-            "version" => "1.0.9",
-            "date" => "2009.01.13.",
-            "status" => "Stable",
+            "version" => "1.1.0",
+            "date" => "2009.02.01.",
+            "status" => "Beta",
             "build" => 379,
             "news_feed_active" => 1,
             "debug_active" => 0,
@@ -133,6 +133,7 @@ if (!class_exists('GDStarRating')) {
             "save_cookies" => 1,
             "widget_articles" => 1,
             "widget_top" => 1,
+            "widget_comments" => 1,
             "integrate_post_edit" => 1,
             "integrate_tinymce" => 1,
             "integrate_comment_edit" => 1,
@@ -242,7 +243,17 @@ if (!class_exists('GDStarRating')) {
             "wp_post_ratings" => 0,
             "star_rating_for_reviews" => 0,
         );
-        
+
+        var $default_widget_comments = array(
+            "title" => "Blog Rating",
+            "display" => "all",
+            "rows" => 5,
+            "min_votes" => 3,
+            "column" => "rating",
+            "order" => "desc",
+            "hide_empty" => 1
+        );
+
         var $default_widget_top = array(
             "title" => "Blog Rating",
             "display" => "all",
@@ -1847,6 +1858,109 @@ if (!class_exists('GDStarRating')) {
         function widget_init() {
             if ($this->o["widget_articles"] == 1) $this->widget_articles_init();
             if ($this->o["widget_top"] == 1) $this->widget_top_init();
+            if ($this->o["widget_comments"] == 1) $this->widget_comments_init();
+        }
+
+        function widget_comments_init() {
+            if (!$options = get_option('widget_gdstarrating_comments'))
+                $options = array();
+
+            $widget_ops = array('classname' => 'widget_gdstarrating_comments', 'description' => 'GD Comments Rating');
+            $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstarcmm');
+            $name = 'GD Comments Rating';
+
+            $registered = false;
+            foreach (array_keys($options) as $o) {
+                if (!isset($options[$o]['title']))
+                    continue;
+
+                $id = "gdstarcmm-$o";
+                $registered = true;
+                wp_register_sidebar_widget($id, $name, array(&$this, 'widget_comments_display'), $widget_ops, array( 'number' => $o ) );
+                wp_register_widget_control($id, $name, array(&$this, 'widget_comments_control'), $control_ops, array( 'number' => $o ) );
+            }
+            if (!$registered) {
+                wp_register_sidebar_widget('gdstarcmm-1', $name, array(&$this, 'widget_comments_display'), $widget_ops, array( 'number' => -1 ) );
+                wp_register_widget_control('gdstarcmm-1', $name, array(&$this, 'widget_comments_control'), $control_ops, array( 'number' => -1 ) );
+            }
+        }
+
+        function widget_comments_control($widget_args = 1) {
+            global $wp_registered_widgets;
+            static $updated = false;
+
+            if ( is_numeric($widget_args) )
+                $widget_args = array('number' => $widget_args);
+
+            $widget_args = wp_parse_args($widget_args, array('number' => -1));
+            extract($widget_args, EXTR_SKIP);
+            $options_all = get_option('widget_gdstarrating_comments');
+            if (!is_array($options_all))
+                $options_all = array();
+
+            if (!$updated && !empty($_POST['sidebar'])) {
+                $sidebar = (string)$_POST['sidebar'];
+
+                $sidebars_widgets = wp_get_sidebars_widgets();
+                if (isset($sidebars_widgets[$sidebar]))
+                    $this_sidebar =& $sidebars_widgets[$sidebar];
+                else
+                    $this_sidebar = array();
+
+                foreach ($this_sidebar as $_widget_id) {
+                    if ('widget_gdstarrating_comments' == $wp_registered_widgets[$_widget_id]['callback'] && isset($wp_registered_widgets[$_widget_id]['params'][0]['number'])) {
+                        $widget_number = $wp_registered_widgets[$_widget_id]['params'][0]['number'];
+                        if (!in_array("gdstarcmm-$widget_number", $_POST['widget-id']))
+                            unset($options_all[$widget_number]);
+                    }
+                }
+                foreach ((array)$_POST['gdstart'] as $widget_number => $posted) {
+                    if (!isset($posted['title']) && isset($options_all[$widget_number]))
+                        continue;
+                    $options = array();
+
+                    $options['title'] = strip_tags(stripslashes($posted['title']));
+
+                    $options_all[$widget_number] = $options;
+                }
+                update_option('widget_gdstarrating_comments', $options_all);
+                $updated = true;
+            }
+
+            if (-1 == $number) {
+                $wpnm = '%i%';
+                $wpno = $this->default_widget_comments;
+            }
+            else {
+                $wpnm = $number;
+                $wpno = $options_all[$number];
+            }
+
+            $wpfn = 'gdstart['.$wpnm.']';
+
+            include($this->plugin_path."widgets/widget_comments.php");
+        }
+
+        function widget_comments_display($args, $widget_args = 1) {
+            extract($args);
+            global $wpdb, $userdata;
+
+            if (is_numeric($widget_args))
+                $widget_args = array('number' => $widget_args);
+            $widget_args = wp_parse_args($widget_args, array( 'number' => -1 ));
+            extract($widget_args, EXTR_SKIP);
+            $options_all = get_option('widget_gdstarrating_comments');
+            if (!isset($options_all[$number]))
+                return;
+            $this->w = $options_all[$number];
+
+            echo $before_widget.$before_title.$this->w['title'].$after_title;
+            echo $this->render_comments_widget($this->w);
+            echo $after_widget;
+        }
+
+        function render_comments_widget($widget) {
+
         }
 
         function widget_top_init() {
@@ -2098,7 +2212,7 @@ if (!class_exists('GDStarRating')) {
             $wpfn = 'gdstarr['.$wpnm.']';
             $wptr = $this->g->trend;
             
-            include($this->plugin_path."widgets/widget.php");
+            include($this->plugin_path."widgets/widget_rating.php");
         }
 
         function widget_articles_display($args, $widget_args = 1) {
