@@ -657,30 +657,6 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
-         * Adds all new settings array elements and remove obsolete ones.
-         *
-         * @param array $old old settings
-         * @param array $new new settings
-         * @return array upgraded array
-         */
-        function upgrade_settings($old, $new) {
-            foreach ($new as $key => $value) {
-                if (!isset($old[$key])) $old[$key] = $value;
-            }
-            
-            $unset = Array();
-            foreach ($old as $key => $value) {
-                if (!isset($new[$key])) $unset[] = $key;
-            }
-            
-            foreach ($unset as $key) {
-                unset($old[$key]);
-            }
-            
-            return $old;
-        }
-
-        /**
          * Main installation method of the plugin
          */
         function install_plugin() {
@@ -702,7 +678,7 @@ if (!class_exists('GDStarRating')) {
                 gdDBInstall::create_tables(STARRATING_PATH);
             }
             else {
-                $this->o = $this->upgrade_settings($this->o, $this->default_options);
+                $this->o = gdFunctions::upgrade_settings($this->o, $this->default_options);
 
                 $this->o["version"] = $this->default_options["version"];
                 $this->o["date"] = $this->default_options["date"];
@@ -717,7 +693,7 @@ if (!class_exists('GDStarRating')) {
                 $this->x = get_option('gd-star-rating-templates');
             }
             else {
-                $this->x = $this->upgrade_settings($this->x, $this->default_templates);
+                $this->x = gdFunctions::upgrade_settings($this->x, $this->default_templates);
                 update_option('gd-star-rating-templates', $this->x);
             }
 
@@ -726,7 +702,7 @@ if (!class_exists('GDStarRating')) {
                 $this->i = get_option('gd-star-rating-import');
             }
             else {
-                $this->i = $this->upgrade_settings($this->i, $this->default_import);
+                $this->i = gdFunctions::upgrade_settings($this->i, $this->default_import);
                 update_option('gd-star-rating-import', $this->i);
             }
             
@@ -740,7 +716,7 @@ if (!class_exists('GDStarRating')) {
                 $this->wpr8 = get_option('gd-star-rating-wpr8');
             }
             else {
-                $this->wpr8 = $this->upgrade_settings($this->wpr8, $this->default_wpr8);
+                $this->wpr8 = gdFunctions::upgrade_settings($this->wpr8, $this->default_wpr8);
                 update_option('gd-star-rating-wpr8', $this->wpr8);
             }
 
@@ -758,28 +734,28 @@ if (!class_exists('GDStarRating')) {
         function gfx_scan() {
             $data = new GDgfxLib();
             
-            $stars_folders = $this->scan_folder($this->plugin_path."stars/");
+            $stars_folders = gdFunctions::get_folders($this->plugin_path."stars/");
             foreach ($stars_folders as $f) {
                 $gfx = new GDgfxStar($f);
                 if ($gfx->imported)
                     $data->stars[] = $gfx;
             }
             if (is_dir($this->plugin_xtra_path."stars/")) {
-                $stars_folders = $this->scan_folder($this->plugin_xtra_path."stars/");
+                $stars_folders = gdFunctions::get_folders($this->plugin_xtra_path."stars/");
                 foreach ($stars_folders as $f) {
                     $gfx = new GDgfxStar($f, false);
                     if ($gfx->imported)
                         $data->stars[] = $gfx;
                 }
             }
-            $trend_folders = $this->scan_folder($this->plugin_path."trends/");
+            $trend_folders = gdFunctions::get_folders($this->plugin_path."trends/");
             foreach ($trend_folders as $f) {
                 $gfx = new GDgfxTrend($f);
                 if ($gfx->imported)
                     $data->trend[] = $gfx;
             }
             if (is_dir($this->plugin_xtra_path."trends/")) {
-                $trend_folders = $this->scan_folder($this->plugin_xtra_path."trends/");
+                $trend_folders = gdFunctions::get_folders($this->plugin_xtra_path."trends/");
                 foreach ($trend_folders as $f) {
                     $gfx = new GDgfxTrend($f, false);
                     if ($gfx->imported)
@@ -787,24 +763,6 @@ if (!class_exists('GDStarRating')) {
                 }
             }
             return $data;
-        }
-
-        /**
-         * Scans folder and adds all folders to array.
-         *
-         * @param string $path folder path
-         * @return array founded folders in array
-         */
-        function scan_folder($path) {
-            $folders = gd_scandir($path);
-            $import = array();
-            foreach ($folders as $folder) {
-                if (substr($folder, 0, 1) != ".") {
-                    if (is_dir($path.$folder."/"))
-                        $import[] = $folder;
-                }
-            }
-            return $import;
         }
 
         /**
@@ -985,19 +943,7 @@ if (!class_exists('GDStarRating')) {
 
             $this->custom_actions('wp_head');
             
-            if ($this->o["ie_png_fix"] == 1) $this->ie_png_fix();
-        }
-
-        /**
-         * Adding elements for IE PNG fix
-         */
-        function ie_png_fix() {
-            echo('<!--[if lte IE 6]>');
-            echo('<style type="text/css">');
-            echo('.ratertbl, .outer, .inner, .starsbar a:hover { behavior: url('.$this->plugin_url.'iepngfix/iepngfix.php) }');
-            echo('</style>');
-            echo('<script type="text/javascript" src="'.$this->plugin_url.'iepngfix/iepngfix_tilebg.js"></script>');
-            echo('<![endif]-->');
+            if ($this->o["ie_png_fix"] == 1) GDSRHelper::ie_png_fix();
         }
         // install
 

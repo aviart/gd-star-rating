@@ -67,6 +67,18 @@ class GDSRCommentRating {
 }
 
 class GDSRHelper {
+    /**
+     * Adding elements for IE PNG fix
+     */
+    function ie_png_fix() {
+        echo('<!--[if lte IE 6]>');
+        echo('<style type="text/css">');
+        echo('.ratertbl, .outer, .inner, .starsbar a:hover { behavior: url('.STARRATING_URL.'iepngfix/iepngfix.php) }');
+        echo('</style>');
+        echo('<script type="text/javascript" src="'.STARRATING_URL.'iepngfix/iepngfix_tilebg.js"></script>');
+        echo('<![endif]-->');
+    }
+
     function detect_bot($str) {
         $spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
         foreach($spiders as $spider) {
@@ -419,24 +431,4 @@ function gd_sort_bayesian_asc($a, $b) {
 function gd_sort_bayesian_desc($a, $b) {
     if ($a->bayesian == $b->bayesian) return 0;
     return ($a->bayesian > $b->bayesian) ? -1 : 1;
-}
-
-/**
- * Scnas the folder and returns all the files and folder in it.
- *
- * @param string $path path of the folder to scan
- * @return array list of files and folders in the folder
- */
-function gd_scandir($path) {
-	if (function_exists(scandir)) {
-		return scandir($path);
-	}
-	else {
-		$dh = opendir($path);
-		while (false !== ($filename = readdir($dh))) {
-			$files[] = $filename;
-		}
-        closedir($dh);
-		return $files;
-	}
 }
