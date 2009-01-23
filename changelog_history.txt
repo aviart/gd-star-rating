@@ -2,6 +2,10 @@
 
 == Change Log ==
 
+=== Version: 1.1.0 / february 2 2009 ===
+  * new: comments widget
+  * fix: some settings not saving properly
+
 === Version: 1.0.9 / january 13 2009 ===
   * new: expanded post edit widget
   * new: multi ratings settings tab
