@@ -8,8 +8,11 @@
   * new: generate rating images
   * new: gfx get type methods
   * new: powered by button
+  * new: integrate powered by button in rss feed posts
   * edit: main class optimizations
   * edit: renaming outside access files
+  * edit: wp 2.7 plugin menu icon
+  * edit: tinymce plugin icon
   * fix: some settings not saving properly
   * fix: small and rare css bug
 
