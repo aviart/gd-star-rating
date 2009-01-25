@@ -68,6 +68,25 @@ class GDSRCommentRating {
 
 class GDSRHelper {
     /**
+     * Creates extra folders.
+     *
+     * @return bool cache folder exists and is writeable
+     */
+    function create_folders() {
+        if (is_dir(STARRATING_XTRA_PATH)) {
+            if (is_writable(STARRATING_XTRA_PATH)) {
+                if (!is_dir(STARRATING_CACHE_PATH)) mkdir(STARRATING_CACHE_PATH, 0755);
+                if (!is_dir(STARRATING_XTRA_PATH."stars/")) mkdir(STARRATING_XTRA_PATH."stars/", 0755);
+                if (!is_dir(STARRATING_XTRA_PATH."trends/")) mkdir(STARRATING_XTRA_PATH."trends/", 0755);
+            }
+        }
+        else {
+            mkdir(STARRATING_XTRA_PATH, 0755);
+            GDSRHelper::create_folders();
+        }
+        return is_dir(STARRATING_CACHE_PATH) && is_writable(STARRATING_CACHE_PATH);
+    }
+    /**
      * Adding elements for IE PNG fix
      */
     function ie_png_fix() {

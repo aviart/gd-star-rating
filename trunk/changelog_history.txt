@@ -6,6 +6,7 @@
   * new: comments widget
   * edit: main class optimizations
   * fix: some settings not saving properly
+  * fix: small and rare css bug
 
 === Version: 1.0.9 / january 13 2009 ===
   * new: expanded post edit widget

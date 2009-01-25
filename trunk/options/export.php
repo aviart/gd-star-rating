@@ -4,7 +4,7 @@ function gdsrGetExportUser() {
     var de = jQuery("input[@name='gdsr_export_data']:checked").val();
     var ip = jQuery("input[@name='gdsr_export_ip']:checked").val();
     var ua = jQuery("input[@name='gdsr_export_agent']:checked").val();
-    var url = "<?php echo STARRATING_URL; ?>/gd-star-export.php?ex=user&us=" + us + "&de=" + de;
+    var url = "<?php echo STARRATING_URL; ?>/export.php?ex=user&us=" + us + "&de=" + de;
     if (jQuery("input[@name='gdsr_export_ip']:checked").val() == "on") url = url + "&ip=on";
     if (jQuery("input[@name='gdsr_export_agent']:checked").val() == "on") url = url + "&ua=on";
     if (jQuery("input[@name='gdsr_export_post_title']:checked").val() == "on") url = url + "&pt=on";
