@@ -35,6 +35,25 @@ class GDgfxLib {
     function find_trend($folder) {
         return $this->find_gfx($this->trend, $folder);
     }
+
+    function get_type($gfx, $folder) {
+        $result = null;
+        foreach ($gfx as $s) {
+            if ($s->folder == $folder) {
+                $result = $s->type;
+                break;
+            }
+        }
+        return $result;
+    }
+
+    function get_stars_type($folder) {
+        return $this->get_type($this->stars, $folder);
+    }
+
+    function get_trend_type($folder) {
+        return $this->get_type($this->trend, $folder);
+    }
 }
 
 class GDgfxBase {
