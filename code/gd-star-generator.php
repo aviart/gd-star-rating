@@ -1,6 +1,13 @@
 <?php
 
 class GDSRGenerator {
+    function get_image_name($set, $size, $stars, $value) {
+        if ($value < 10) $value = "0".$value;
+        $name = "gdsr_".$stars."_".$size;
+        $name.= "_".$set."_vl".$value;
+        return $name;
+    }
+
     function generate_png($file_path, $size, $stars, $value, $output = '') {
         $image_set = imagecreatefrompng($file_path);
 
@@ -118,6 +125,15 @@ class GDSRGenerator {
                 GDSRGenerator::generate_jpg($file_path, $size, $stars, $value, $output);
                 break;
         }
+    }
+
+    function image($file_path, $size, $stars, $value, $output) {
+        if (!file_exists($output)) {
+            GDSRGenerator::generate_image($file_path, $size, $stars, $value, $output);
+        }
+        $ext = end(explode(".", $output));
+        header("Content-Type: image/$ext");
+        readfile($output);
     }
 }
 

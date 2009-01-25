@@ -4,7 +4,12 @@
 
 === Version: 1.1.0 / february 2 2009 ===
   * new: comments widget
+  * new: auto creating of extra folders
+  * new: generate rating images
+  * new: gfx get type methods
+  * new: powered by button
   * edit: main class optimizations
+  * edit: renaming outside access files
   * fix: some settings not saving properly
   * fix: small and rare css bug
 
