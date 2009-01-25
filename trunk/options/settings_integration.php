@@ -25,4 +25,9 @@
         <input type="checkbox" name="gdsr_integrate_comment_edit" id="gdsr_integrate_comment_edit"<?php if ($gdsr_options["integrate_comment_edit"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_post_edit"><?php _e("Add rating box on the comment edit page.", "gd-star-rating"); ?></label>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("RSS Feeds", "gd-star-rating"); ?></th>
+    <td>
+        <input type="checkbox" name="gdsr_integrate_rss_powered" id="gdsr_integrate_rss_powered"<?php if ($gdsr_options["integrate_rss_powered"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_rss_powered"><?php _e("Add small 80x15 badge to posts in RSS feed.", "gd-star-rating"); ?></label>
+    </td>
+</tr>
 </tbody></table>

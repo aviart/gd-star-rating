@@ -567,10 +567,24 @@ if (!class_exists('GDStarRating')) {
                 add_filter("mce_external_plugins", array(&$this, 'add_tinymce_plugin'), 5);
                 add_filter('mce_buttons', array(&$this, 'add_tinymce_button'), 5);
             }
-            
+
+            if ($this->o["integrate_rss_powered"] == 1) {
+                add_filter('the_excerpt_rss', array(&$this, 'add_rss_powered_by'));
+                add_filter('the_content_rss', array(&$this, 'add_rss_powered_by'));
+            }
+
             foreach ($this->shortcodes as $code) {
                 $this->shortcode_action($code);
             }
+        }
+
+        function add_rss_powered_by($content) {
+            $content.= '<br />'.$this->powered_by();
+            return $content;
+        }
+
+        function powered_by() {
+            return '<a target="_blank" href="http://www.gdstarrating.com/"><img src="'.STARRATING_URL.'gfx/powered.png" border="0" width="80" height="15" /></a>';
         }
         
         function add_dashboard_widget() {
@@ -850,7 +864,7 @@ if (!class_exists('GDStarRating')) {
 
             if ($this->admin_plugin_page == "settings-page") {
                 $gdsr_options = $this->o;
-                include ($this->plugin_path."gd-star-settings.php");
+                include ($this->plugin_path."code/gd-star-settings.php");
                 $this->o = $gdsr_options;
             }
             

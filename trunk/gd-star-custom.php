@@ -16,6 +16,20 @@
     }
 
     /**
+     * Renders small 80x15 powered by GD Star Rating button.
+     *
+     * @global GDStarRating $gdsr main rating class instance
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_render_powered_by($echo = true) {
+        global $gdsr;
+
+    if ($echo) echo $gdsr->powered_by();
+        else return $gdsr->powered_by();
+    }
+
+    /**
      * Renders the rating stars. This function call must be withing the post loop.
      *
      * @global object $post post data

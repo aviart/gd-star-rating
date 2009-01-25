@@ -46,6 +46,7 @@ class GDSRDefaults {
         "integrate_tinymce" => 1,
         "integrate_comment_edit" => 1,
         "integrate_dashboard" => 1,
+        "integrate_rss_powered" => 0,
         "moderation_active" => 1,
         "multis_active" => 0,
         "review_active" => 1,
