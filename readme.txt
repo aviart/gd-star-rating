@@ -64,12 +64,14 @@ GD Star Rating plugin allows you to set up rating system for posts, pages and co
 
 Plugin can import data from different rating plugins:
 
-* Star Rating For Revies [http://wordpress.org/extend/plugins/star-rating-for-reviews/]
+* Star Rating For Reviews [http://wordpress.org/extend/plugins/star-rating-for-reviews/]
 * Post Star Rating [http://wordpress.org/extend/plugins/post-star-rating/]
 * WP Post Rating [http://wordpress.org/extend/plugins/wp-postratings/]
 
 == Planned Features ==
 
+* Comments Widget
+* RSS Integration
 * Reccomendation ratings
 * Multiple ratings
 * Dedicated website

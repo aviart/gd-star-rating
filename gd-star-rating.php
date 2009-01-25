@@ -50,6 +50,7 @@ if (!class_exists('GDStarRating')) {
         var $is_bot = false;
         var $is_ban = false;
         var $use_nonce = true;
+        var $extra_folders = false;
 
         var $loader_article = "";
         var $loader_comment = "";
@@ -68,6 +69,7 @@ if (!class_exists('GDStarRating')) {
         var $plugin_xtra_path;
         var $plugin_chart_url;
         var $plugin_chart_path;
+        var $plugin_cache_path;
         var $plugin_wpr8_path;
         
         var $l; // language
@@ -787,11 +789,13 @@ if (!class_exists('GDStarRating')) {
                 $this->plugin_url = get_option('home').'/'.PLUGINDIR.'/gd-star-rating/';
                 $this->plugin_xtra_url = get_option('home').'/wp-content/gd-star-rating/';
                 $this->plugin_xtra_path = ABSPATH.'/wp-content/gd-star-rating/';
+                $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
             }
             else {
                 $this->plugin_url = WP_PLUGIN_URL.'/gd-star-rating/';
                 $this->plugin_xtra_url = WP_CONTENT_URL.'/gd-star-rating/';
                 $this->plugin_xtra_path = WP_CONTENT_DIR.'/gd-star-rating/';
+                $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
             }
             $this->plugin_path = dirname(__FILE__)."/";
             $this->e = $this->plugin_url."gfx/blank.gif";
@@ -807,6 +811,7 @@ if (!class_exists('GDStarRating')) {
             define('STARRATING_PATH', $this->plugin_path);
             define('STARRATING_XTRA_URL', $this->plugin_xtra_url);
             define('STARRATING_XTRA_PATH', $this->plugin_xtra_path);
+            define('STARRATING_CACHE_PATH', $this->plugin_cache_path);
             
             define('STARRATING_CHART_URL', $this->plugin_chart_url);
             define('STARRATING_CHART_PATH', $this->plugin_chart_path);
@@ -865,6 +870,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin) {
                 if ($this->wp_version >= 26) add_thickbox();
                 else wp_enqueue_script("thickbox");
+                $this->extra_folders = GDSRHelper::create_folders();
             }
             $this->l = get_locale();
             if(!empty($this->l)) {

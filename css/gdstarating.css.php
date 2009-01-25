@@ -117,6 +117,7 @@ get_class_head($head, ""); ?> {
 .ratingblockcomment { font-size: 0.8em; }
 .ratingloaderarticle, .ratingloadercomment { font-size: 12px; text-align: center; vertical-align: middle; }
 
+.starsbar .inner { padding:0; }
 .ratingblock td { vertical-align: middle; }
 .raterclear { clear: both; }
 .raterleft { float: left; }

@@ -4,7 +4,7 @@ if ($use_nonce)
     $nonce = sprintf("_ajax_nonce: '%s', ", wp_create_nonce('gdsr_ajax_r8'));
 else
     $nonce = "";
-$ajax_url = STARRATING_URL."gd-star-ajax.php";
+$ajax_url = STARRATING_URL."ajax.php";
 
 ?>
 
