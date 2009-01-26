@@ -129,6 +129,10 @@ class GDgfxStar extends GDgfxBase {
     function get_url($size = '30') {
         return $this->gfx_url."stars".$size.".".$this->type;
     }
+
+    function get_path($size = '30') {
+        return $this->gfx_path."stars".$size.".".$this->type;
+    }
 }
 
 class GDgfxTrend extends GDgfxBase {
@@ -149,6 +153,10 @@ class GDgfxTrend extends GDgfxBase {
 
     function get_url() {
         return $this->gfx_url."trend.".$this->type;
+    }
+
+    function get_path() {
+        return $this->gfx_path."trend.".$this->type;
     }
 }
 

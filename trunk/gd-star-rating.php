@@ -52,6 +52,7 @@ if (!class_exists('GDStarRating')) {
         var $is_ban = false;
         var $use_nonce = true;
         var $extra_folders = false;
+        var $is_cached = false;
 
         var $loader_article = "";
         var $loader_comment = "";
