@@ -2,15 +2,16 @@
 
 class GDSRGenerator {
     function get_image_name($set, $size, $stars, $value) {
-        if ($value < 10) $value = "0".$value;
+        if ($value > $stars) $value = $stars;
+        if ($stars < 10) $stars = "0".intval($stars);
+        if ($value < 10) $value = "0".intval($value);
         $name = "gdsr_".$stars."_".$size;
-        $name.= "_".$set."_vl".$value;
+        $name.= "_".$set."_vl".str_replace(".", "", $value);
         return $name;
     }
 
     function generate_png($file_path, $size, $stars, $value, $output = '') {
         $image_set = imagecreatefrompng($file_path);
-
         $star_empty = imagecreatetruecolor($size, $size);
         imagesavealpha($star_empty, true);
         $star_empty_transparent = imagecolorallocatealpha($star_empty, 0, 0, 0, 127);
@@ -45,7 +46,7 @@ class GDSRGenerator {
     }
 
     function generate_gif($file_path, $size, $stars, $value, $output = '') {
-        $image_set = imagecreatefromgif($file);
+        $image_set = imagecreatefromgif($file_path);
 
         $star_empty = imagecreate($size, $size);
         $star_filled = imagecreate($size, $size);
@@ -134,6 +135,10 @@ class GDSRGenerator {
         $ext = end(explode(".", $output));
         header("Content-Type: image/$ext");
         readfile($output);
+    }
+
+    function image_nocache($file_path, $size, $stars, $value) {
+        GDSRGenerator::generate_image($file_path, $size, $stars, $value);
     }
 }
 
