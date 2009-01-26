@@ -1448,6 +1448,7 @@ if (!class_exists('GDStarRating')) {
             $gdsr_root_url = $this->plugin_url;
             $gdsr_gfx = $this->g;
             $gdsr_wpr8 = $this->wpr8_available;
+            $extra_folders = $this->extra_folders;
             
             $wpr8 = $this->wpr8;
             
