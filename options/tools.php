@@ -6,6 +6,7 @@
     <li><a href="#fragment-1"><span><?php _e("Graphics", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-2"><span><?php _e("Database", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-3"><span><?php _e("Bulk", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-4"><span><?php _e("Cache", "gd-star-rating"); ?></span></a></li>
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-1">
@@ -16,7 +17,7 @@
         <?php _e("Rescan graphics folders for new stars and trends images.", "gd-star-rating"); ?><br />
         <input type="submit" class="inputbutton" value="<?php _e("Rescan", "gd-star-rating"); ?>" name="gdsr_preview_scan" id="gdsr_preview_scan" />
         <div class="gdsr-table-split"></div>
-        Last scan was executed on: <strong><?php echo $gdsr_gfx->last_scan; ?></strong>
+        <?php _e("Last scan was executed on.", "gd-star-rating"); ?>: <strong><?php echo $gdsr_gfx->last_scan; ?></strong>
         </form>
     </td>
 </tr>
@@ -114,6 +115,27 @@
         <div class="gdsr-table-split"></div>
         <?php _e("This will update all posts and comments with previously saved ratings.", "gd-star-rating"); ?>
         </form>
+    </td>
+</tr>
+</tbody></table>
+</div>
+<div id="fragment-4">
+<table class="form-table"><tbody>
+<tr><th scope="row"><?php _e("Cleanup", "gd-star-rating"); ?></th>
+    <td>
+        <form method="post">
+        <?php _e("Delete all cached files from folder", "gd-star-rating"); ?> <strong>'/wp-content/gd-star-rating/cache/'</strong>:<br />
+        <input type="submit" class="inputbutton" value="<?php _e("Clean", "gd-star-rating"); ?>" name="gdsr_cache_clean" id="gdsr_cache_clean" />
+        <div class="gdsr-table-split"></div>
+        <?php _e("Last cleanup was executed on", "gd-star-rating"); ?>: <strong><?php echo $options->cache_cleanup_last; ?></strong>
+        </form>
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("Status", "gd-star-rating"); ?></th>
+    <td>
+        <?php _e("Total files cached", "gd-star-rating"); ?>: <strong><?php echo gdFunctions::get_folder_files_count( substr(STARRATING_CACHE_PATH, 0, strlen(STARRATING_CACHE_PATH) - 1) ); ?> files</strong>
+        <br />
+        <?php _e("Total size of cached files", "gd-star-rating"); ?>: <strong><?php echo gdFunctions::get_folder_size( substr(STARRATING_CACHE_PATH, 0, strlen(STARRATING_CACHE_PATH) - 1) ); ?> bytes</strong>
     </td>
 </tr>
 </tbody></table>

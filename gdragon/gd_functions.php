@@ -28,6 +28,30 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 if (!class_exists('gdFunctions')) {
     class gdFunctions {
+        function get_folder_files_count($path) {
+            if (!file_exists($path))
+                return 0;
+            if (is_file($path))
+                return filesize($path);
+            $ret = 0;
+            foreach(glob($path."/*") as $fn)
+                $ret++;
+
+            return $ret;
+        }
+
+        function get_folder_size($path) {
+            if (!file_exists($path))
+                return 0;
+            if (is_file($path))
+                return filesize($path);
+            $ret = 0;
+            foreach(glob($path."/*") as $fn)
+                $ret += gdFunctions::get_folder_size($fn);
+
+            return $ret;
+        }
+
         /**
          * Scans the folder and returns all the files and folder in it.
          *

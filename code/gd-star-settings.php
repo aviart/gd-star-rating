@@ -15,6 +15,10 @@
         $gdsr_options["admin_setup"] = isset($_POST['gdsr_admin_setup']) ? 1 : 0;
         $gdsr_options["admin_ips"] = isset($_POST['gdsr_admin_ips']) ? 1 : 0;
 
+        $gdsr_options["cache_active"] = isset($_POST['gdsr_cache_active']) ? 1 : 0;
+        $gdsr_options["cache_cleanup_auto"] = isset($_POST['gdsr_cache_cleanup_auto']) ? 1 : 0;
+        $gdsr_options["cache_cleanup_days"] = $_POST['gdsr_cache_cleanup_days'];
+
         $gdsr_options["wait_show_article"] = isset($_POST['gdsr_wait_show_article']) ? 1 : 0;
         $gdsr_options["wait_show_comment"] = isset($_POST['gdsr_wait_show_comment']) ? 1 : 0;
         $gdsr_options["wait_show_multis"] = isset($_POST['gdsr_wait_show_multis']) ? 1 : 0;

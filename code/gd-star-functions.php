@@ -86,6 +86,18 @@ class GDSRHelper {
         }
         return is_dir(STARRATING_CACHE_PATH) && is_writable(STARRATING_CACHE_PATH);
     }
+    
+    function clean_cache($path) {
+        if (!file_exists($path))
+            return;
+        if (is_file($path)) {
+            unlink ($path);
+            return;
+        }
+        foreach(glob($path."/*") as $fn)
+            GDSRHelper::clean_cache($fn);
+    }
+
     /**
      * Adding elements for IE PNG fix
      */
