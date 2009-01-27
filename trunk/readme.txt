@@ -52,6 +52,7 @@ GD Star Rating plugin allows you to set up rating system for posts, pages and co
 * Various additional tools for maintenace and bulk operations
 * WordPress editor button and tinyMCE3 plugin for shortcode
 * Manual placement functions of the rating code and template integration
+* Alternative rendering to generate rating stars as static images
 * Banning IP's, IP ranges and masked IP's
 * Filtering out search bots
 * Import data from other rating plugins
@@ -59,6 +60,7 @@ GD Star Rating plugin allows you to set up rating system for posts, pages and co
 * Expanding support based on WordPress actions
 * Support for QTranslate plugin
 * Extensive PDF User Guide
+* Cache support for storing rendered images
 
 = Import Data =
 
@@ -74,14 +76,11 @@ Plugin can import data from different rating plugins:
 * RSS Integration
 * Reccomendation ratings
 * Multiple ratings
-* Dedicated website
 * WP Super Cache support
 * Support for custom modules
 * Expanding export features
 * More charts
 * Chart caching
-* Alternative rendering
-* Rendering caching
 * Customization of BOT filter
 
 == Configuration ==
@@ -155,7 +154,7 @@ Plugin has debug into log file feature built in. Information on activating this 
 == Support ==
 
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
-* PDF User Guide: http://wp.gdragon.info/download/12/
+* PDF User Guide: http://www.gdstarrating.com/downloads/user-guide/
 * Email: starrating@gdragon.info
 
 == Communities ==
