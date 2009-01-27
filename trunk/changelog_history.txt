@@ -4,6 +4,7 @@
 
 === Version: 1.1.0 / february 2 2009 ===
   * new: comments widget
+  * new: cache support and cache cleanup tool
   * new: auto creating of extra folders
   * new: generate rating images
   * new: gfx get type methods

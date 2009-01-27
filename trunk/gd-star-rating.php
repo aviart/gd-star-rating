@@ -1483,6 +1483,11 @@ if (!class_exists('GDStarRating')) {
         
         function star_menu_tools() {
             $msg = "";
+            if (isset($_POST['gdsr_cache_clean'])) {
+                GDSRHelper::clean_cache(substr(STARRATING_CACHE_PATH, 0, strlen(STARRATING_CACHE_PATH) - 1));
+                $this->o["cache_cleanup_last"] = date("r");
+                update_option('gd-star-rating', $this->o);
+            }
             if (isset($_POST['gdsr_preview_scan'])) {
                 $this->g = $this->gfx_scan();
                 update_option('gd-star-rating-gfx', $this->g);
