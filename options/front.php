@@ -103,6 +103,7 @@
             <div class="ssiconurl"><a href="http://code.google.com/p/gd-star-rating/" target="_blank">Google Code</a>: <?php _e("development home with svn", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://groups.google.com/group/gd-star-rating/" target="_blank">Google Groups</a>: <?php _e("discussions group", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://wordpress.org/extend/plugins/gd-star-rating/" target="_blank">WordPress Extend</a>: <?php _e("wordpress plugin page", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://www.gdstarrating.com/donate/" target="_blank"><span style="color: red">Donate</span></a>: <?php _e("help further development", "gd-star-rating") ?></div>
             <div style="padding: 10px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Golden Dragon:</span>
@@ -113,7 +114,6 @@
             <div class="ssiconurl"><a href="http://wp.gdragon.info/" target="_blank">Wordpress Blog</a>: <?php _e("wordpress plugins development", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://forum.gdragon.info/" target="_blank">Forum</a>: <?php _e("development discussion forum", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://wp.gdragon.info/download/" target="_blank">Downloads</a>: <?php _e("plugins, user guides and more", "gd-star-rating") ?></div>
-            <div class="ssiconurl"><a href="http://wp.gdragon.info/donate/" target="_blank"><span style="color: red">Donate</span></a>: <?php _e("help further development", "gd-star-rating") ?></div>
             <div style="padding: 10px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Starscape Themes:</span>
