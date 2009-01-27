@@ -45,10 +45,11 @@
     <li><a href="#fragment-6"><span><?php _e("Integration", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-2"><span><?php _e("Posts And Pages", "gd-star-rating"); ?></span></a></li>
     <?php if ($gdsr_options["comments_active"] == 1) { ?><li><a href="#fragment-3"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li><?php } ?>
-    <li><a href="#fragment-8"><span><?php _e("Multis", "gd-star-rating"); ?></span></a></li>
+    <?php if ($gdsr_options["multis_active"] == 1) { ?><li><a href="#fragment-8"><span><?php _e("Multis", "gd-star-rating"); ?></span></a></li><?php } ?>
+    <?php if ($gdsr_options["rss_active"] == 1) { ?><li><a href="#fragment-10"><span><?php _e("RSS", "gd-star-rating"); ?></span></a></li><?php } ?>
     <li><a href="#fragment-4"><span><?php _e("Statistics", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-5"><span><?php _e("Preview", "gd-star-rating"); ?></span></a></li>
-    <!-- <li><a href="#fragment-8"><span><?php _e("BOT List", "gd-star-rating"); ?></span></a></li> -->
+    <!-- <li><a href="#fragment-11"><span><?php _e("BOT List", "gd-star-rating"); ?></span></a></li> -->
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-1">
@@ -81,6 +82,9 @@
 <!-- <div id="fragment-8">
 <?php include STARRATING_PATH."options/settings_bots.php"; ?>
 </div> -->
+<div id="fragment-10">
+<?php include STARRATING_PATH."options/settings_rss.php"; ?>
+</div>
 </div>
 
 <p class="submit"><input type="submit" class="inputbutton" value="<?php _e("Save Settings", "gd-star-rating"); ?>" name="gdsr_saving"/></p>
