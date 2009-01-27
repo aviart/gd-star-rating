@@ -580,7 +580,7 @@ if (!class_exists('GDStarRating')) {
         }
 
         function add_rss_powered_by($content) {
-            $content.= '<br />'.$this->powered_by();
+            $content.= '<br />'.$this->powered_by().'<br />';
             return $content;
         }
 

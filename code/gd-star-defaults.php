@@ -54,6 +54,7 @@ class GDSRDefaults {
         "integrate_rss_powered" => 0,
         "moderation_active" => 1,
         "multis_active" => 0,
+        "rss_active" => 0,
         "review_active" => 1,
         "timer_active" => 1,
         "comments_active" => 1,
