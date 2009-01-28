@@ -1,6 +1,7 @@
 <?php 
 
     if ($_POST['gdsr_action'] == 'save') :
+        $gdsr_options["rss_article_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_rss_ratingtext'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["article_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_ratingtext'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["cmm_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_cmm_ratingtext'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["word_votes_singular"] = stripslashes(htmlentities($_POST['gdsr_word_votessingular'], ENT_QUOTES, 'UTF-8'));
@@ -31,8 +32,9 @@
 <div id="gdsr_tabs" class="gdsrtabs">
 <ul>
     <li><a href="#fragment-1"><span><?php _e("Template Elements", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-2"><span><?php _e("Articles (Posts And Pages)", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-2"><span><?php _e("Posts And Pages", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-3"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li>
+    <?php if ($options["rss_active"] == 1) { ?><li><a href="#fragment-4"><span><?php _e("RSS", "gd-star-rating"); ?></span></a></li><?php } ?>
 </ul>
 <div style="clear: both"></div>
 
@@ -68,6 +70,10 @@
 <div id="fragment-3">
     <?php include(STARRATING_PATH."templates/templates_comments.php"); ?>
 </div>
+
+<?php if ($options["rss_active"] == 1) { ?><div id="fragment-4">
+    <?php include(STARRATING_PATH."templates/templates_rss.php"); ?>
+</div><?php } ?>
 
 </div>
 <p class="submit"><input type="submit" value="<?php _e("Save Settings", "gd-star-rating"); ?>" name="gdsr_saving"/></p>

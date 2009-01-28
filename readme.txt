@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.0.9
+Version: 1.1.0
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review
 Requires at least: 2.5.0
 Tested up to: 2.7.0
@@ -59,6 +59,8 @@ GD Star Rating plugin allows you to set up rating system for posts, pages and co
 * Export data into csv file
 * Expanding support based on WordPress actions
 * Support for QTranslate plugin
+* RSS Integration for powered by button
+* RSS Integration for post ratings
 * Extensive PDF User Guide
 * Cache support for storing rendered images
 
@@ -73,7 +75,6 @@ Plugin can import data from different rating plugins:
 == Planned Features ==
 
 * Comments Widget
-* RSS Integration
 * Reccomendation ratings
 * Multiple ratings
 * WP Super Cache support
