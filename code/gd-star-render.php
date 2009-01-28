@@ -30,7 +30,7 @@ class GDSRRender {
             }
         }
         if ($render != "text") {
-            $url = STARRATING_URL.sprintf("gfx.php?set=%s&size=%s&stars=%s&value=%s", $unit_set, $unit_width, $unit_count, $rating);
+            $url = STARRATING_URL.sprintf("gfx.php?value=%s", $rating);
             $rater_stars = '<img src="'.$url.'" />';
         }
         

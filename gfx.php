@@ -6,9 +6,9 @@
 
     global $gdsr;
 
-    $input["set"] = isset($_GET["set"]) ? $_GET["set"] : "oxygen";
-    $input["size"] = isset($_GET["size"]) ? $_GET["size"] : "20";
-    $input["stars"] = $_GET["stars"];
+    $input["set"] = $gdsr->o["rss_style"];
+    $input["size"] = $gdsr->o["rss_size"];
+    $input["stars"] = $gdsr->o["stars"];
     $input["value"] = $_GET["value"];
     
     $gfx_set = $gdsr->g->find_stars($input["set"]);
