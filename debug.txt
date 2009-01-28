@@ -1,0 +1,6889 @@
+[2009-01-28 04:29:06] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 415
+[2009-01-28 04:29:06] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 415
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 7
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => T
+    [expiry_value] => M10
+)
+
+[2009-01-28 04:29:06] : GET_POSTDATA_error
+
+[2009-01-28 04:29:06] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 415 and user_id = 1
+[2009-01-28 04:29:06] : CHECKVOTE
+stdClass Object
+(
+    [record_id] => 3481
+    [id] => 415
+    [vote_type] => article
+    [multi_id] => 0
+    [user_id] => 1
+    [vote] => 10
+    [object] => 
+    [voted] => 2008-12-26 11:16:27
+    [ip] => 127.0.0.1
+    [user_agent] => 
+)
+
+[2009-01-28 04:29:06] : CHECKVOTE_count
+1
+[2009-01-28 04:29:06] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 401
+[2009-01-28 04:29:06] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 401
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 10.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:06] : GET_POSTDATA_error
+
+[2009-01-28 04:29:06] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 401 and user_id = 1
+[2009-01-28 04:29:06] : CHECKVOTE
+stdClass Object
+(
+    [record_id] => 3482
+    [id] => 401
+    [vote_type] => article
+    [multi_id] => 0
+    [user_id] => 1
+    [vote] => 10
+    [object] => 
+    [voted] => 2008-12-29 15:26:35
+    [ip] => 127.0.0.1
+    [user_agent] => 
+)
+
+[2009-01-28 04:29:06] : CHECKVOTE_count
+1
+[2009-01-28 04:29:06] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 395
+[2009-01-28 04:29:06] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 395
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 2
+    [visitor_votes] => 19.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 55
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2009-01-27
+)
+
+[2009-01-28 04:29:06] : GET_POSTDATA_error
+
+[2009-01-28 04:29:06] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 390
+[2009-01-28 04:29:06] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 390
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 18.0
+    [visitor_voters] => 4
+    [visitor_votes] => 40.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 162
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:06] : GET_POSTDATA_error
+
+[2009-01-28 04:29:06] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 390 and user_id = 1
+[2009-01-28 04:29:06] : CHECKVOTE
+stdClass Object
+(
+    [record_id] => 3394
+    [id] => 390
+    [vote_type] => article
+    [multi_id] => 0
+    [user_id] => 1
+    [vote] => 10
+    [object] => 
+    [voted] => 2008-11-06 01:04:22
+    [ip] => 87.116.133.237
+    [user_agent] => 
+)
+
+[2009-01-28 04:29:06] : CHECKVOTE_count
+1
+[2009-01-28 04:29:07] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wp_test_posts p, wp_test_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and (d.user_voters + d.visitor_voters) >= 1 and TO_DAYS(CURDATE()) - 45 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 7
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 415
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 415
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 7
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => T
+    [expiry_value] => M10
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 401
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 401
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 10.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 395
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 395
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 2
+    [visitor_votes] => 19.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 55
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2009-01-27
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 390
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 390
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 18.0
+    [visitor_voters] => 4
+    [visitor_votes] => 40.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 162
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 363
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 363
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 60
+    [visitor_votes] => 499.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 989
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 360
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 360
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 10
+    [visitor_votes] => 94.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 210
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2008-12-06
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 342
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 342
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 8.0
+    [visitor_voters] => 10
+    [visitor_votes] => 84.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 368
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 338
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 338
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 17
+    [visitor_votes] => 138.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 356
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 330
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 330
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 1
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 311
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 324
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 324
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 4
+    [visitor_votes] => 37.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 254
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 314
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 314
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 8
+    [visitor_votes] => 70.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 261
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 310
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 310
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 9
+    [visitor_votes] => 76.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 265
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 415
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 415
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 7
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => T
+    [expiry_value] => M10
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 401
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 401
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 10.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 395
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 395
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 2
+    [visitor_votes] => 19.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 55
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2009-01-27
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 390
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 390
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 18.0
+    [visitor_voters] => 4
+    [visitor_votes] => 40.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 162
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 363
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 363
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 60
+    [visitor_votes] => 499.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 989
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 360
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 360
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 10
+    [visitor_votes] => 94.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 210
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2008-12-06
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 342
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 342
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 8.0
+    [visitor_voters] => 10
+    [visitor_votes] => 84.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 368
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 338
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 338
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 17
+    [visitor_votes] => 138.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 356
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 330
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 330
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 1
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 311
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 324
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 324
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 4
+    [visitor_votes] => 37.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 254
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 314
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 314
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 8
+    [visitor_votes] => 70.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 261
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 310
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 310
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 9
+    [visitor_votes] => 76.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 265
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 304
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 304
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 30
+    [visitor_votes] => 220.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 395
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 299
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 299
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 5
+    [visitor_votes] => 32.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 220
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 295
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 295
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 10
+    [visitor_votes] => 71.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 523
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 280
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 280
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 4
+    [user_votes] => 22.0
+    [visitor_voters] => 28
+    [visitor_votes] => 202.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 627
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 270
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 270
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 25
+    [visitor_votes] => 222.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 530
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 251
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 251
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 17
+    [visitor_votes] => 141.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 446
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 240
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 240
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 15
+    [visitor_votes] => 131.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 496
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:29:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 234
+[2009-01-28 04:29:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 234
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 10
+    [visitor_votes] => 93.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 499
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:29:16] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 415
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 415
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 7
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => T
+    [expiry_value] => M10
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 401
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 401
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 10.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 395
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 395
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 2
+    [visitor_votes] => 19.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 55
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2009-01-27
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 390
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 390
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 18.0
+    [visitor_voters] => 4
+    [visitor_votes] => 40.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 162
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 363
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 363
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 60
+    [visitor_votes] => 499.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 989
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 360
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 360
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 10
+    [visitor_votes] => 94.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 210
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2008-12-06
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 342
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 342
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 8.0
+    [visitor_voters] => 10
+    [visitor_votes] => 84.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 368
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 338
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 338
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 17
+    [visitor_votes] => 138.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 356
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 330
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 330
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 1
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 311
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 324
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 324
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 4
+    [visitor_votes] => 37.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 254
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 314
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 314
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 8
+    [visitor_votes] => 70.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 261
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 310
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 310
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 9
+    [visitor_votes] => 76.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 265
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 304
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 304
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 30
+    [visitor_votes] => 220.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 395
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 299
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 299
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 5
+    [visitor_votes] => 32.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 220
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 295
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 295
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 10
+    [visitor_votes] => 71.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 523
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 280
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 280
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 4
+    [user_votes] => 22.0
+    [visitor_voters] => 28
+    [visitor_votes] => 202.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 627
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 270
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 270
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 25
+    [visitor_votes] => 222.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 530
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 251
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 251
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 17
+    [visitor_votes] => 141.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 446
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 240
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 240
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 15
+    [visitor_votes] => 131.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 496
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:13] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 234
+[2009-01-28 04:31:13] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 234
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 10
+    [visitor_votes] => 93.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 499
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:13] : GET_POSTDATA_error
+
+[2009-01-28 04:31:23] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 401
+[2009-01-28 04:31:23] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 401
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 10.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:23] : GET_POSTDATA_error
+
+[2009-01-28 04:31:23] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 401 and user_id = 1
+[2009-01-28 04:31:23] : CHECKVOTE
+stdClass Object
+(
+    [record_id] => 3482
+    [id] => 401
+    [vote_type] => article
+    [multi_id] => 0
+    [user_id] => 1
+    [vote] => 10
+    [object] => 
+    [voted] => 2008-12-29 15:26:35
+    [ip] => 127.0.0.1
+    [user_agent] => 
+)
+
+[2009-01-28 04:31:23] : CHECKVOTE_count
+1
+[2009-01-28 04:31:23] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 395
+[2009-01-28 04:31:23] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 395
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 2
+    [visitor_votes] => 19.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 55
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2009-01-27
+)
+
+[2009-01-28 04:31:23] : GET_POSTDATA_error
+
+[2009-01-28 04:31:23] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 390
+[2009-01-28 04:31:23] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 390
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 18.0
+    [visitor_voters] => 4
+    [visitor_votes] => 40.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 162
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:23] : GET_POSTDATA_error
+
+[2009-01-28 04:31:23] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 390 and user_id = 1
+[2009-01-28 04:31:23] : CHECKVOTE
+stdClass Object
+(
+    [record_id] => 3394
+    [id] => 390
+    [vote_type] => article
+    [multi_id] => 0
+    [user_id] => 1
+    [vote] => 10
+    [object] => 
+    [voted] => 2008-11-06 01:04:22
+    [ip] => 87.116.133.237
+    [user_agent] => 
+)
+
+[2009-01-28 04:31:23] : CHECKVOTE_count
+1
+[2009-01-28 04:31:23] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 363
+[2009-01-28 04:31:23] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 363
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 60
+    [visitor_votes] => 499.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 989
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:23] : GET_POSTDATA_error
+
+[2009-01-28 04:31:23] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 363 and user_id = 1
+[2009-01-28 04:31:23] : CHECKVOTE
+stdClass Object
+(
+    [record_id] => 3236
+    [id] => 363
+    [vote_type] => article
+    [multi_id] => 0
+    [user_id] => 1
+    [vote] => 10
+    [object] => 
+    [voted] => 2008-11-01 01:03:11
+    [ip] => 87.116.133.237
+    [user_agent] => Opera/9.62 (Windows NT 5.2; U; en) Presto/2.1.1
+)
+
+[2009-01-28 04:31:23] : CHECKVOTE_count
+1
+[2009-01-28 04:31:23] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wp_test_posts p, wp_test_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and (d.user_voters + d.visitor_voters) >= 1 and TO_DAYS(CURDATE()) - 45 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 7
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 415
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 415
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 7
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => T
+    [expiry_value] => M10
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 401
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 401
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 10.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 395
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 395
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 2
+    [visitor_votes] => 19.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 55
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2009-01-27
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 390
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 390
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 18.0
+    [visitor_voters] => 4
+    [visitor_votes] => 40.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 162
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 363
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 363
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 60
+    [visitor_votes] => 499.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 989
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 360
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 360
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 10
+    [visitor_votes] => 94.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 210
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2008-12-06
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 342
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 342
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 8.0
+    [visitor_voters] => 10
+    [visitor_votes] => 84.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 368
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 338
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 338
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 17
+    [visitor_votes] => 138.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 356
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 330
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 330
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 1
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 311
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 324
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 324
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 4
+    [visitor_votes] => 37.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 254
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 314
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 314
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 8
+    [visitor_votes] => 70.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 261
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 310
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 310
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 9
+    [visitor_votes] => 76.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 265
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 304
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 304
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 30
+    [visitor_votes] => 220.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 395
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 299
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 299
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 5
+    [visitor_votes] => 32.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 220
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 295
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 295
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 10
+    [visitor_votes] => 71.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 523
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 280
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 280
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 4
+    [user_votes] => 22.0
+    [visitor_voters] => 28
+    [visitor_votes] => 202.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 627
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 270
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 270
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 25
+    [visitor_votes] => 222.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 530
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 251
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 251
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 17
+    [visitor_votes] => 141.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 446
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 240
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 240
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 15
+    [visitor_votes] => 131.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 496
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:31:39] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 234
+[2009-01-28 04:31:39] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 234
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 10
+    [visitor_votes] => 93.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 499
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:31:39] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 415
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 415
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 7
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => T
+    [expiry_value] => M10
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 401
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 401
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 10.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 395
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 395
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 2
+    [visitor_votes] => 19.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 55
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2009-01-27
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 390
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 390
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 18.0
+    [visitor_voters] => 4
+    [visitor_votes] => 40.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 162
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 363
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 363
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 60
+    [visitor_votes] => 499.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 989
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 360
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 360
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 10
+    [visitor_votes] => 94.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 210
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2008-12-06
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 342
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 342
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 8.0
+    [visitor_voters] => 10
+    [visitor_votes] => 84.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 368
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 338
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 338
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 17
+    [visitor_votes] => 138.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 356
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 330
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 330
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 1
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 311
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 324
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 324
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 4
+    [visitor_votes] => 37.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 254
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 314
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 314
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 8
+    [visitor_votes] => 70.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 261
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 310
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 310
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 9
+    [visitor_votes] => 76.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 265
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 304
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 304
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 30
+    [visitor_votes] => 220.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 395
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 299
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 299
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 5
+    [visitor_votes] => 32.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 220
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 295
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 295
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 10
+    [visitor_votes] => 71.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 523
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 280
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 280
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 4
+    [user_votes] => 22.0
+    [visitor_voters] => 28
+    [visitor_votes] => 202.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 627
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 270
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 270
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 25
+    [visitor_votes] => 222.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 530
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 251
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 251
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 17
+    [visitor_votes] => 141.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 446
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 240
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 240
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 15
+    [visitor_votes] => 131.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 496
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:33:01] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 234
+[2009-01-28 04:33:01] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 234
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 10
+    [visitor_votes] => 93.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 499
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:33:01] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 415
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 415
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 7
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => T
+    [expiry_value] => M10
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 401
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 401
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 10.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 395
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 395
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 2
+    [visitor_votes] => 19.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 55
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2009-01-27
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 390
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 390
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 18.0
+    [visitor_voters] => 4
+    [visitor_votes] => 40.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 162
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 363
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 363
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 60
+    [visitor_votes] => 499.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 989
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 360
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 360
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 10
+    [visitor_votes] => 94.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 210
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2008-12-06
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 342
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 342
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 8.0
+    [visitor_voters] => 10
+    [visitor_votes] => 84.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 368
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 338
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 338
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 17
+    [visitor_votes] => 138.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 356
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 330
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 330
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 1
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 311
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 324
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 324
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 4
+    [visitor_votes] => 37.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 254
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 314
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 314
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 8
+    [visitor_votes] => 70.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 261
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 310
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 310
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 9
+    [visitor_votes] => 76.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 265
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 304
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 304
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 30
+    [visitor_votes] => 220.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 395
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:31] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 299
+[2009-01-28 04:36:31] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 299
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 5
+    [visitor_votes] => 32.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 220
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:31] : GET_POSTDATA_error
+
+[2009-01-28 04:36:32] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 295
+[2009-01-28 04:36:32] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 295
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 10
+    [visitor_votes] => 71.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 523
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:32] : GET_POSTDATA_error
+
+[2009-01-28 04:36:32] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 280
+[2009-01-28 04:36:32] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 280
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 4
+    [user_votes] => 22.0
+    [visitor_voters] => 28
+    [visitor_votes] => 202.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 627
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:32] : GET_POSTDATA_error
+
+[2009-01-28 04:36:32] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 270
+[2009-01-28 04:36:32] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 270
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 25
+    [visitor_votes] => 222.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 530
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:32] : GET_POSTDATA_error
+
+[2009-01-28 04:36:32] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 251
+[2009-01-28 04:36:32] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 251
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 17
+    [visitor_votes] => 141.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 446
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:32] : GET_POSTDATA_error
+
+[2009-01-28 04:36:32] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 240
+[2009-01-28 04:36:32] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 240
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 15
+    [visitor_votes] => 131.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 496
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:32] : GET_POSTDATA_error
+
+[2009-01-28 04:36:32] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 234
+[2009-01-28 04:36:32] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 234
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 10
+    [visitor_votes] => 93.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 499
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:32] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 415
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 415
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 7
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => T
+    [expiry_value] => M10
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 401
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 401
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 10.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 395
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 395
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 2
+    [visitor_votes] => 19.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 55
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2009-01-27
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 390
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 390
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 18.0
+    [visitor_voters] => 4
+    [visitor_votes] => 40.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 162
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 363
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 363
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 60
+    [visitor_votes] => 499.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 989
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 360
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 360
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 10
+    [visitor_votes] => 94.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 210
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2008-12-06
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 342
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 342
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 8.0
+    [visitor_voters] => 10
+    [visitor_votes] => 84.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 368
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 338
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 338
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 17
+    [visitor_votes] => 138.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 356
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 330
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 330
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 1
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 311
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 324
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 324
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 4
+    [visitor_votes] => 37.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 254
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 314
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 314
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 8
+    [visitor_votes] => 70.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 261
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 310
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 310
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 9
+    [visitor_votes] => 76.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 265
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 304
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 304
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 30
+    [visitor_votes] => 220.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 395
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 299
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 299
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 5
+    [visitor_votes] => 32.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 220
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 295
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 295
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 10
+    [visitor_votes] => 71.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 523
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 280
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 280
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 4
+    [user_votes] => 22.0
+    [visitor_voters] => 28
+    [visitor_votes] => 202.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 627
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 270
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 270
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 25
+    [visitor_votes] => 222.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 530
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 251
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 251
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 17
+    [visitor_votes] => 141.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 446
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 240
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 240
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 15
+    [visitor_votes] => 131.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 496
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:33] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 234
+[2009-01-28 04:36:33] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 234
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 10
+    [visitor_votes] => 93.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 499
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:33] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 401
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 401
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 10.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 395
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 395
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 2
+    [visitor_votes] => 19.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 55
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2009-01-27
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 390
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 390
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 18.0
+    [visitor_voters] => 4
+    [visitor_votes] => 40.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 162
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 363
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 363
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 60
+    [visitor_votes] => 499.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 989
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 360
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 360
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 10
+    [visitor_votes] => 94.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 210
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2008-12-06
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 342
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 342
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 8.0
+    [visitor_voters] => 10
+    [visitor_votes] => 84.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 368
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 338
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 338
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 17
+    [visitor_votes] => 138.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 356
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 330
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 330
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 1
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 311
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 324
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 324
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 4
+    [visitor_votes] => 37.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 254
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 314
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 314
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 8
+    [visitor_votes] => 70.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 261
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 310
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 310
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 9
+    [visitor_votes] => 76.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 265
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 304
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 304
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 30
+    [visitor_votes] => 220.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 395
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 295
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 295
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 10
+    [visitor_votes] => 71.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 523
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 280
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 280
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 4
+    [user_votes] => 22.0
+    [visitor_voters] => 28
+    [visitor_votes] => 202.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 627
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 270
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 270
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 25
+    [visitor_votes] => 222.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 530
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 401
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 401
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 10.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 395
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 395
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 2
+    [visitor_votes] => 19.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 55
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2009-01-27
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 390
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 390
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 18.0
+    [visitor_voters] => 4
+    [visitor_votes] => 40.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 162
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 363
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 363
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 60
+    [visitor_votes] => 499.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 989
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 360
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 360
+    [rules_articles] => N
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 10
+    [visitor_votes] => 94.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 210
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => D
+    [expiry_value] => 2008-12-06
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 342
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 342
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 8.0
+    [visitor_voters] => 10
+    [visitor_votes] => 84.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 368
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 338
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 338
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 17
+    [visitor_votes] => 138.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 356
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 330
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 330
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 1
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 311
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 324
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 324
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 4
+    [visitor_votes] => 37.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 254
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 314
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 314
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 8
+    [visitor_votes] => 70.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 261
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:45] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 310
+[2009-01-28 04:36:45] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 310
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 9
+    [visitor_votes] => 76.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 265
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:45] : GET_POSTDATA_error
+
+[2009-01-28 04:36:46] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 304
+[2009-01-28 04:36:46] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 304
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 30
+    [visitor_votes] => 220.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 395
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:46] : GET_POSTDATA_error
+
+[2009-01-28 04:36:46] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 295
+[2009-01-28 04:36:46] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 295
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 10
+    [visitor_votes] => 71.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 523
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:46] : GET_POSTDATA_error
+
+[2009-01-28 04:36:46] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 280
+[2009-01-28 04:36:46] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 280
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 4
+    [user_votes] => 22.0
+    [visitor_voters] => 28
+    [visitor_votes] => 202.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 627
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:46] : GET_POSTDATA_error
+
+[2009-01-28 04:36:46] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 270
+[2009-01-28 04:36:46] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 270
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 25
+    [visitor_votes] => 222.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 530
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:46] : GET_POSTDATA_error
+
+[2009-01-28 04:36:46] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 251
+[2009-01-28 04:36:46] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 251
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 17
+    [visitor_votes] => 141.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 446
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:46] : GET_POSTDATA_error
+
+[2009-01-28 04:36:46] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 240
+[2009-01-28 04:36:46] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 240
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 20.0
+    [visitor_voters] => 15
+    [visitor_votes] => 131.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 496
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:46] : GET_POSTDATA_error
+
+[2009-01-28 04:36:46] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 234
+[2009-01-28 04:36:46] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 234
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 10
+    [visitor_votes] => 93.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 499
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:46] : GET_POSTDATA_error
+
+[2009-01-28 04:36:46] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 203
+[2009-01-28 04:36:46] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 203
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 5
+    [user_votes] => 50.0
+    [visitor_voters] => 4
+    [visitor_votes] => 31.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 379
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:46] : GET_POSTDATA_error
+
+[2009-01-28 04:36:46] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 200
+[2009-01-28 04:36:46] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 200
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 9.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 299
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:36:46] : GET_POSTDATA_error
+
+[2009-01-28 04:39:23] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 160
+[2009-01-28 04:39:23] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 160
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 318
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:23] : GET_POSTDATA_error
+
+[2009-01-28 04:39:23] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 160 and user_id = 1
+[2009-01-28 04:39:23] : CHECKVOTE
+
+[2009-01-28 04:39:23] : CHECKVOTE_count
+0
+[2009-01-28 04:39:23] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_moderate WHERE vote_type = 'article' and id = 160 and user_id = 1
+[2009-01-28 04:39:23] : CHECKVOTE
+
+[2009-01-28 04:39:23] : CHECKVOTE_count
+0
+[2009-01-28 04:39:23] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 47
+[2009-01-28 04:39:23] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 47
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 172
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:23] : GET_POSTDATA_error
+
+[2009-01-28 04:39:23] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 47 and user_id = 1
+[2009-01-28 04:39:23] : CHECKVOTE
+
+[2009-01-28 04:39:23] : CHECKVOTE_count
+0
+[2009-01-28 04:39:23] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_moderate WHERE vote_type = 'article' and id = 47 and user_id = 1
+[2009-01-28 04:39:23] : CHECKVOTE
+
+[2009-01-28 04:39:23] : CHECKVOTE_count
+0
+[2009-01-28 04:39:24] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 43
+[2009-01-28 04:39:24] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 43
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 137
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:24] : GET_POSTDATA_error
+
+[2009-01-28 04:39:24] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 43 and user_id = 1
+[2009-01-28 04:39:24] : CHECKVOTE
+
+[2009-01-28 04:39:24] : CHECKVOTE_count
+0
+[2009-01-28 04:39:24] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_moderate WHERE vote_type = 'article' and id = 43 and user_id = 1
+[2009-01-28 04:39:24] : CHECKVOTE
+
+[2009-01-28 04:39:24] : CHECKVOTE_count
+0
+[2009-01-28 04:39:24] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 37
+[2009-01-28 04:39:24] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 37
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 141
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:24] : GET_POSTDATA_error
+
+[2009-01-28 04:39:24] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 37 and user_id = 1
+[2009-01-28 04:39:24] : CHECKVOTE
+
+[2009-01-28 04:39:24] : CHECKVOTE_count
+0
+[2009-01-28 04:39:24] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_moderate WHERE vote_type = 'article' and id = 37 and user_id = 1
+[2009-01-28 04:39:24] : CHECKVOTE
+
+[2009-01-28 04:39:24] : CHECKVOTE_count
+0
+[2009-01-28 04:39:24] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wp_test_posts p, wp_test_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and (d.user_voters + d.visitor_voters) >= 1 and TO_DAYS(CURDATE()) - 45 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 7
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 160
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 160
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 318
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 47
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 47
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 172
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 43
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 43
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 137
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 37
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 37
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 141
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 33
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 33
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 166
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 25
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 25
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 143
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 18
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 18
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 119
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 14
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 14
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 130
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 8
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 8
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 136
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 160
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 160
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 318
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 47
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 47
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 172
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 43
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 43
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 137
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 37
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 37
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 141
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 33
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 33
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 166
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 25
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 25
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 143
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 18
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 18
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 119
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 14
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 14
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 130
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:39:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 8
+[2009-01-28 04:39:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 8
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 136
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:39:29] : GET_POSTDATA_error
+
+[2009-01-28 04:43:11] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 177
+[2009-01-28 04:43:11] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 177
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 10
+    [visitor_votes] => 68.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 257
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:11] : GET_POSTDATA_error
+
+[2009-01-28 04:43:11] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 177 and user_id = 1
+[2009-01-28 04:43:11] : CHECKVOTE
+
+[2009-01-28 04:43:11] : CHECKVOTE_count
+0
+[2009-01-28 04:43:11] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_moderate WHERE vote_type = 'article' and id = 177 and user_id = 1
+[2009-01-28 04:43:11] : CHECKVOTE
+
+[2009-01-28 04:43:11] : CHECKVOTE_count
+0
+[2009-01-28 04:43:11] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 58
+[2009-01-28 04:43:11] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 58
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 187
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:11] : GET_POSTDATA_error
+
+[2009-01-28 04:43:11] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 58 and user_id = 1
+[2009-01-28 04:43:11] : CHECKVOTE
+stdClass Object
+(
+    [record_id] => 3456
+    [id] => 58
+    [vote_type] => article
+    [multi_id] => 0
+    [user_id] => 1
+    [vote] => 9
+    [object] => 
+    [voted] => 2008-12-02 19:47:41
+    [ip] => 127.0.0.1
+    [user_agent] => 
+)
+
+[2009-01-28 04:43:11] : CHECKVOTE_count
+1
+[2009-01-28 04:43:11] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 50
+[2009-01-28 04:43:11] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 50
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 150
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:11] : GET_POSTDATA_error
+
+[2009-01-28 04:43:11] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 50 and user_id = 1
+[2009-01-28 04:43:11] : CHECKVOTE
+
+[2009-01-28 04:43:11] : CHECKVOTE_count
+0
+[2009-01-28 04:43:11] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_moderate WHERE vote_type = 'article' and id = 50 and user_id = 1
+[2009-01-28 04:43:11] : CHECKVOTE
+
+[2009-01-28 04:43:11] : CHECKVOTE_count
+0
+[2009-01-28 04:43:11] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 42
+[2009-01-28 04:43:11] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 42
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 148
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:11] : GET_POSTDATA_error
+
+[2009-01-28 04:43:11] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_votes_log WHERE vote_type = 'article' and id = 42 and user_id = 1
+[2009-01-28 04:43:11] : CHECKVOTE
+
+[2009-01-28 04:43:11] : CHECKVOTE_count
+0
+[2009-01-28 04:43:11] : CHECKVOTE_sql
+SELECT * FROM wp_test_gdsr_moderate WHERE vote_type = 'article' and id = 42 and user_id = 1
+[2009-01-28 04:43:11] : CHECKVOTE
+
+[2009-01-28 04:43:11] : CHECKVOTE_count
+0
+[2009-01-28 04:43:11] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wp_test_posts p, wp_test_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and (d.user_voters + d.visitor_voters) >= 1 and TO_DAYS(CURDATE()) - 45 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 7
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 177
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 177
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 10
+    [visitor_votes] => 68.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 257
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 58
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 58
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 187
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 50
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 50
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 150
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 42
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 42
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 148
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 38
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 144
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 29
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 29
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 107
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 28
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 28
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 120
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 177
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 177
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 10
+    [visitor_votes] => 68.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 257
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 58
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 58
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 187
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 50
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 50
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 150
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 42
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 42
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 148
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 38
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 144
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 29
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 29
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 107
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:18] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 28
+[2009-01-28 04:43:18] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 28
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 120
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:18] : GET_POSTDATA_error
+
+[2009-01-28 04:43:52] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 177
+[2009-01-28 04:43:52] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 177
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 10
+    [visitor_votes] => 68.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 257
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:52] : GET_POSTDATA_error
+
+[2009-01-28 04:43:52] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 58
+[2009-01-28 04:43:52] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 58
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 187
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:52] : GET_POSTDATA_error
+
+[2009-01-28 04:43:52] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 50
+[2009-01-28 04:43:52] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 50
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 150
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:52] : GET_POSTDATA_error
+
+[2009-01-28 04:43:52] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 42
+[2009-01-28 04:43:52] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 42
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 148
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:52] : GET_POSTDATA_error
+
+[2009-01-28 04:43:52] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 38
+[2009-01-28 04:43:52] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 144
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:52] : GET_POSTDATA_error
+
+[2009-01-28 04:43:52] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 29
+[2009-01-28 04:43:52] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 29
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 107
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:52] : GET_POSTDATA_error
+
+[2009-01-28 04:43:52] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 28
+[2009-01-28 04:43:52] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 28
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 120
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:43:52] : GET_POSTDATA_error
+
+[2009-01-28 04:45:25] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 177
+[2009-01-28 04:45:25] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 177
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 10
+    [visitor_votes] => 68.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 257
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:45:25] : GET_POSTDATA_error
+
+[2009-01-28 04:45:25] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 58
+[2009-01-28 04:45:25] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 58
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 2
+    [user_votes] => 19.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 187
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:45:25] : GET_POSTDATA_error
+
+[2009-01-28 04:45:25] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 50
+[2009-01-28 04:45:25] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 50
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 150
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:45:25] : GET_POSTDATA_error
+
+[2009-01-28 04:45:25] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 42
+[2009-01-28 04:45:25] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 42
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 148
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:45:25] : GET_POSTDATA_error
+
+[2009-01-28 04:45:25] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 38
+[2009-01-28 04:45:25] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 144
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:45:25] : GET_POSTDATA_error
+
+[2009-01-28 04:45:25] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 29
+[2009-01-28 04:45:25] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 29
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 107
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:45:25] : GET_POSTDATA_error
+
+[2009-01-28 04:45:25] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 28
+[2009-01-28 04:45:25] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 28
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 120
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:45:25] : GET_POSTDATA_error
+
+[2009-01-28 04:46:05] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 415
+[2009-01-28 04:46:05] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 415
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 7
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => T
+    [expiry_value] => M10
+)
+
+[2009-01-28 04:46:05] : GET_POSTDATA_error
+
+[2009-01-28 04:49:56] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 218
+[2009-01-28 04:49:56] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 218
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 9.0
+    [visitor_voters] => 4
+    [visitor_votes] => 32.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 460
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:49:56] : GET_POSTDATA_error
+
+[2009-01-28 04:49:56] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 45
+[2009-01-28 04:49:56] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 45
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 844
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:49:56] : GET_POSTDATA_error
+
+[2009-01-28 04:50:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 218
+[2009-01-28 04:50:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 218
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 9.0
+    [visitor_voters] => 4
+    [visitor_votes] => 32.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 460
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:50:29] : GET_POSTDATA_error
+
+[2009-01-28 04:50:29] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 45
+[2009-01-28 04:50:29] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 45
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 844
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:50:29] : GET_POSTDATA_error
+
+[2009-01-28 04:51:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 218
+[2009-01-28 04:51:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 218
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 9.0
+    [visitor_voters] => 4
+    [visitor_votes] => 32.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 460
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:51:16] : GET_POSTDATA_error
+
+[2009-01-28 04:51:16] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 45
+[2009-01-28 04:51:16] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 45
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 844
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:51:16] : GET_POSTDATA_error
+
+[2009-01-28 04:51:17] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 218
+[2009-01-28 04:51:17] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 218
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 9.0
+    [visitor_voters] => 4
+    [visitor_votes] => 32.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 460
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:51:17] : GET_POSTDATA_error
+
+[2009-01-28 04:51:17] : GET_POSTDATA_sql
+select * from wp_test_gdsr_data_article WHERE post_id = 45
+[2009-01-28 04:51:17] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 45
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => 0.0
+    [review_text] => 
+    [views] => 844
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-01-28 04:51:17] : GET_POSTDATA_error
+

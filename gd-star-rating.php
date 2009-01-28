@@ -580,9 +580,9 @@ if (!class_exists('GDStarRating')) {
         }
 
         function rss_filter($content) {
-            if ($this->o["rss_active"] == 1) $content.= '<br />'.$this->render_article_rss();
-            if ($this->o["integrate_rss_powered"] == 1) $content.= '<br />'.$this->powered_by();
-            return $content.'<br />';
+            if ($this->o["rss_active"] == 1) $content.= "<br />".$this->render_article_rss();
+            if ($this->o["integrate_rss_powered"] == 1) $content.= "<br />".$this->powered_by();
+            return $content."<br />";
         }
 
         function powered_by() {
@@ -913,6 +913,7 @@ if (!class_exists('GDStarRating')) {
                     }
                 }
             }
+            $this->is_cached = $this->o["cache_active"];
             $this->custom_actions('init');
         }
 
@@ -2249,7 +2250,7 @@ if (!class_exists('GDStarRating')) {
                 $score = $post_data->user_votes;
             }
 
-            $rating_block = GDSRRender::rss_rating_block($rd_post_id, $votes, $score, $this->o["rss_style"], $this->o["rss_size"], $this->o["stars"], $this->o["rss_render"], $this->o["rss_text"]);
+            $rating_block = GDSRRender::rss_rating_block($rd_post_id, $votes, $score, $this->o["rss_style"], $this->o["rss_size"], $this->o["stars"], $this->o["rss_render"], $this->o["rss_text"], $this->o["rss_header"], $this->o["rss_header_text"]);
             return $rating_block;
         }
 

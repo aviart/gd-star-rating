@@ -12,7 +12,7 @@ class GDSRRender {
         $rating = @number_format($rating2, 1);
 
         $rater = GDSRRender::rating_header($header, $header_text);
-        if ($rater != '') $rater.= '<br />';
+        if ($rater != '') $rater.= "<br />";
 
         if ($render == "stars") $rater_text = "";
         else {
