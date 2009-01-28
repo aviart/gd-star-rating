@@ -5,6 +5,7 @@
 === Version: 1.1.0 / february 2 2009 ===
   * new: cache support and cache cleanup tool
   * new: auto creating of extra folders
+  * new: rss integration settings
   * new: generate rating images
   * new: gfx get type methods
   * new: powered by button
