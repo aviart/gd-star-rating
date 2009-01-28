@@ -569,9 +569,9 @@ if (!class_exists('GDStarRating')) {
                 add_filter('mce_buttons', array(&$this, 'add_tinymce_button'), 5);
             }
 
-            if ($this->o["integrate_rss_powered"] == 1) {
-                add_filter('the_excerpt_rss', array(&$this, 'add_rss_powered_by'));
-                add_filter('the_content_rss', array(&$this, 'add_rss_powered_by'));
+            if ($this->o["integrate_rss_powered"] == 1 || $this->o["rss_active"] == 1) {
+                add_filter('the_excerpt_rss', array(&$this, 'rss_filter'));
+                add_filter('the_content_rss', array(&$this, 'rss_filter'));
             }
 
             foreach ($this->shortcodes as $code) {
@@ -579,9 +579,10 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
-        function add_rss_powered_by($content) {
-            $content.= '<br />'.$this->powered_by().'<br />';
-            return $content;
+        function rss_filter($content) {
+            if ($this->o["rss_active"] == 1) $content.= '<br />'.$this->render_article_rss();
+            if ($this->o["integrate_rss_powered"] == 1) $content.= '<br />'.$this->powered_by();
+            return $content.'<br />';
         }
 
         function powered_by() {
@@ -1469,6 +1470,7 @@ if (!class_exists('GDStarRating')) {
 
         function star_menu_templates() {
             $gdsr_options = $this->x;
+            $options = $this->o;
             include($this->plugin_path.'templates/templates.php');
         }
 
@@ -2224,6 +2226,31 @@ if (!class_exists('GDStarRating')) {
             $debug.= $rd_user_id == $comment->user_id ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
             return GDSRRender::rating_block($rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $this->o["cmm_align"], $this->o["cmm_text"], $this->o["cmm_header"], $this->o["cmm_header_text"], $this->o["cmm_class_block"], $this->o["cmm_class_text"], $this->o["ajax"], $debug, $this->loader_comment);
+        }
+
+        function render_article_rss() {
+            global $post;
+            $rd_post_id = intval($post->ID);
+            $post_data = GDSRDatabase::get_post_data($rd_post_id);
+            
+            $votes = 0;
+            $score = 0;
+
+            if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
+                $votes = $post_data->user_voters + $post_data->visitor_voters;
+                $score = $post_data->user_votes + $post_data->visitor_votes;
+            }
+            else if ($post_data->rules_articles == "V") {
+                $votes = $post_data->visitor_voters;
+                $score = $post_data->visitor_votes;
+            }
+            else {
+                $votes = $post_data->user_voters;
+                $score = $post_data->user_votes;
+            }
+
+            $rating_block = GDSRRender::rss_rating_block($rd_post_id, $votes, $score, $this->o["rss_style"], $this->o["rss_size"], $this->o["stars"], $this->o["rss_render"], $this->o["rss_text"]);
+            return $rating_block;
         }
 
         function render_article($post, $user, $override = array()) {

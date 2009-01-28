@@ -3,9 +3,11 @@
 == Change Log ==
 
 === Version: 1.1.0 / february 2 2009 ===
+  * ne: integrate post rating into rss feed posts
   * new: cache support and cache cleanup tool
   * new: auto creating of extra folders
   * new: rss integration settings
+  * new: rss post rendering template
   * new: generate rating images
   * new: gfx get type methods
   * new: powered by button

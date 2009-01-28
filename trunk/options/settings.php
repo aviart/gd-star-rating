@@ -82,9 +82,9 @@
 <!-- <div id="fragment-8">
 <?php include STARRATING_PATH."options/settings_bots.php"; ?>
 </div> -->
-<div id="fragment-10">
+<?php if ($gdsr_options["rss_active"] == 1) { ?><div id="fragment-10">
 <?php include STARRATING_PATH."options/settings_rss.php"; ?>
-</div>
+</div><?php } ?>
 </div>
 
 <p class="submit"><input type="submit" class="inputbutton" value="<?php _e("Save Settings", "gd-star-rating"); ?>" name="gdsr_saving"/></p>
