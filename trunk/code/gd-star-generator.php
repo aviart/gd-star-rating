@@ -3,8 +3,10 @@
 class GDSRGenerator {
     function get_image_name($set, $size, $stars, $value) {
         if ($value > $stars) $value = $stars;
+        $value = @number_format($value, 1);
         if ($stars < 10) $stars = "0".intval($stars);
-        if ($value < 10) $value = "0".intval($value);
+        if (intval($value) == 0) $value = "000";
+        if ($value < 10 && substr($value, 0, 1) != 0) $value = "0".$value;
         $name = "gdsr_".$stars."_".$size;
         $name.= "_".$set."_vl".str_replace(".", "", $value);
         return $name;
