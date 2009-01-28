@@ -313,6 +313,16 @@ class GDSRHelper {
         <?php
     }   
 
+    function render_rss_render($name, $selected = 'both', $width = 180) {
+        ?>
+<select style="width: <?php echo $width ?>px;" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
+    <option value="both"<?php echo $selected == 'both' ? ' selected="selected"' : ''; ?>><?php _e("Stars and text", "gd-star-rating"); ?></option>
+    <option value="stars"<?php echo $selected == 'stars' ? ' selected="selected"' : ''; ?>><?php _e("Stars only", "gd-star-rating"); ?></option>
+    <option value="text"<?php echo $selected == 'text' ? ' selected="selected"' : ''; ?>><?php _e("Text only", "gd-star-rating"); ?></option>
+</select>
+        <?php
+    }
+
     function render_alignment($name, $selected = 'left', $width = 180) {
         ?>
 <select style="width: <?php echo $width ?>px;" name="<?php echo $name; ?>" id="<?php echo $name; ?>">

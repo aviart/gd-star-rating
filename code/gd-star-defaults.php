@@ -60,7 +60,7 @@ class GDSRDefaults {
         "comments_active" => 1,
         "comments_review_active" => 1,
         "rss_style" => 'oxygen',
-        "rss_size" => 30,
+        "rss_size" => 20,
         "rss_text" => 'bottom',
         "rss_align" => 'none',
         "rss_header" => 0,
