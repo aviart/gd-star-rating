@@ -357,7 +357,7 @@ msgid "Comments Rating"
 msgstr ""
 
 #: integrate/edit.php:57
-#: templates/templates.php:55
+#: templates/templates.php:57
 msgid "Time Restriction"
 msgstr ""
 
@@ -468,7 +468,7 @@ msgstr ""
 #: options/articles.php:260
 #: options/categories.php:158
 #: options/users.php:64
-#: templates/templates.php:45
+#: templates/templates.php:47
 #: gd-star-rating.php:463
 #: gd-star-rating.php:463
 msgid "Articles"
@@ -602,8 +602,8 @@ msgstr ""
 #: options/settings.php:46
 #: options/tools.php:96
 #: options/users.php:65
-#: templates/templates.php:34
-#: templates/templates.php:50
+#: templates/templates.php:35
+#: templates/templates.php:52
 msgid "Comments"
 msgstr ""
 
@@ -665,7 +665,6 @@ msgid "Posts"
 msgstr ""
 
 #: options/charts.php:5
-#: templates/templates.php:33
 msgid "Articles (Posts And Pages)"
 msgstr ""
 
@@ -1049,6 +1048,7 @@ msgid "Integration"
 msgstr ""
 
 #: options/settings.php:45
+#: templates/templates.php:34
 #: tinymce3/window.php:181
 msgid "Posts And Pages"
 msgstr ""
@@ -1058,6 +1058,7 @@ msgid "Multis"
 msgstr ""
 
 #: options/settings.php:48
+#: templates/templates.php:36
 msgid "RSS"
 msgstr ""
 
@@ -1077,7 +1078,7 @@ msgid "BOT List"
 msgstr ""
 
 #: options/settings.php:89
-#: templates/templates.php:72
+#: templates/templates.php:78
 msgid "Save Settings"
 msgstr ""
 
@@ -1619,7 +1620,7 @@ msgid "This will remove all database tables created by plugin, all settings, tem
 msgstr ""
 
 #: options/setup.php:73
-#: gd-star-rating.php:871
+#: gd-star-rating.php:872
 msgid "FULL UNINSTALL"
 msgstr ""
 
@@ -1817,17 +1818,17 @@ msgstr ""
 msgid "Vote log for post"
 msgstr ""
 
-#: templates/templates.php:27
+#: templates/templates.php:28
 #: gd-star-rating.php:472
 #: gd-star-rating.php:472
 msgid "Templates"
 msgstr ""
 
-#: templates/templates.php:32
+#: templates/templates.php:33
 msgid "Template Elements"
 msgstr ""
 
-#: templates/templates.php:40
+#: templates/templates.php:42
 msgid "Custom Elements"
 msgstr ""
 
@@ -1843,6 +1844,7 @@ msgstr ""
 #: templates/templates_articles.php:37
 #: templates/templates_articles.php:42
 #: templates/templates_comments.php:4
+#: templates/templates_rss.php:4
 msgid "Allowed elements"
 msgstr ""
 
@@ -2046,6 +2048,10 @@ msgstr ""
 
 #: templates/templates_elements_timer.php:34
 msgid "total remaining minutes"
+msgstr ""
+
+#: templates/templates_rss.php:1
+msgid "Post Rating Text"
 msgstr ""
 
 #: tinymce3/window.php:30

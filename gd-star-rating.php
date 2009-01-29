@@ -199,6 +199,11 @@ if (!class_exists('GDStarRating')) {
             return $this->render_article($post, $userdata);
         }
         
+        /**
+        * Code for StarRatingMulti shortcode implementation
+        *
+        * @param array $atts
+        */
         function shortcode_starratingmulti($atts = array()) {
             global $post, $userdata;
             $settings = shortcode_atts($this->default_shortcode_starratingmulti, $atts);
