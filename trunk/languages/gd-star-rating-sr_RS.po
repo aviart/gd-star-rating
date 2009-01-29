@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Milan Petrovic <milan@gdragon.info>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -371,7 +371,7 @@ msgid "Comments Rating"
 msgstr "Оцена Кометара."
 
 #: integrate/edit.php:57
-#: templates/templates.php:55
+#: templates/templates.php:57
 msgid "Time Restriction"
 msgstr "Временско Ограничење"
 
@@ -481,7 +481,7 @@ msgstr "Обриши Селектоване Сетове"
 #: options/articles.php:260
 #: options/categories.php:158
 #: options/users.php:64
-#: templates/templates.php:45
+#: templates/templates.php:47
 #: gd-star-rating.php:463
 msgid "Articles"
 msgstr "Чланци"
@@ -612,8 +612,8 @@ msgstr "Сви"
 #: options/settings.php:46
 #: options/tools.php:96
 #: options/users.php:65
-#: templates/templates.php:34
-#: templates/templates.php:50
+#: templates/templates.php:35
+#: templates/templates.php:52
 msgid "Comments"
 msgstr "Коментари"
 
@@ -675,7 +675,6 @@ msgid "Posts"
 msgstr "Чланци"
 
 #: options/charts.php:5
-#: templates/templates.php:33
 msgid "Articles (Posts And Pages)"
 msgstr "Чланци (Постови и Стране)"
 
@@ -1057,6 +1056,7 @@ msgid "Integration"
 msgstr "Интеграција"
 
 #: options/settings.php:45
+#: templates/templates.php:34
 #: tinymce3/window.php:181
 msgid "Posts And Pages"
 msgstr "Чланци и Стране"
@@ -1066,6 +1066,7 @@ msgid "Multis"
 msgstr "Мулти Сетови"
 
 #: options/settings.php:48
+#: templates/templates.php:36
 msgid "RSS"
 msgstr "RSS"
 
@@ -1085,7 +1086,7 @@ msgid "BOT List"
 msgstr "Листа Ботова"
 
 #: options/settings.php:89
-#: templates/templates.php:72
+#: templates/templates.php:78
 msgid "Save Settings"
 msgstr "Сними подешавања"
 
@@ -1261,13 +1262,12 @@ msgid "Either make <strong>wp-content</strong> folder writeable or create <stron
 msgstr ""
 
 #: options/settings_cache.php:7
-#, fuzzy
 msgid "Activation"
-msgstr "Без Анимације"
+msgstr "Активација"
 
 #: options/settings_cache.php:9
 msgid "Cache enabled."
-msgstr ""
+msgstr "Кеширање активно."
 
 #: options/settings_cache.php:12
 #: options/tools.php:37
@@ -1277,11 +1277,11 @@ msgstr "Очисти"
 
 #: options/settings_cache.php:16
 msgid "Auto cleanup cache"
-msgstr ""
+msgstr "Аутоматско брисање кеша"
 
 #: options/settings_cache.php:17
 msgid "Enabled."
-msgstr ""
+msgstr "Уклјучено."
 
 #: options/settings_cache.php:20
 #, fuzzy
@@ -1499,9 +1499,8 @@ msgid "Add rating box on the comment edit page."
 msgstr "Додај рејтинг бокс на едит цтрану коментара."
 
 #: options/settings_integration.php:27
-#, fuzzy
 msgid "RSS Feeds"
-msgstr "RSS Fidovi"
+msgstr "RSS Фидови"
 
 #: options/settings_integration.php:29
 msgid "Add small 80x15 badge to posts in RSS feed."
@@ -1629,7 +1628,7 @@ msgid "This will remove all database tables created by plugin, all settings, tem
 msgstr "Ово ће уклонити све табеле које је креирао плагин, сва подешавања и све податке о увозу."
 
 #: options/setup.php:73
-#: gd-star-rating.php:871
+#: gd-star-rating.php:872
 msgid "FULL UNINSTALL"
 msgstr "ПУНА ДЕИНСТАЛАЦИЈА"
 
@@ -1827,16 +1826,16 @@ msgstr "Листа гласова"
 msgid "Vote log for post"
 msgstr "Листа гласова за чланке."
 
-#: templates/templates.php:27
+#: templates/templates.php:28
 #: gd-star-rating.php:472
 msgid "Templates"
 msgstr "Шаблони"
 
-#: templates/templates.php:32
+#: templates/templates.php:33
 msgid "Template Elements"
 msgstr "Елементи Шаблона"
 
-#: templates/templates.php:40
+#: templates/templates.php:42
 msgid "Custom Elements"
 msgstr "Елементи"
 
@@ -1852,6 +1851,7 @@ msgstr "Рејтинг Текст"
 #: templates/templates_articles.php:37
 #: templates/templates_articles.php:42
 #: templates/templates_comments.php:4
+#: templates/templates_rss.php:4
 msgid "Allowed elements"
 msgstr "Дозвољени елементи"
 
@@ -2056,6 +2056,11 @@ msgstr "укупно преосталих сати"
 #: templates/templates_elements_timer.php:34
 msgid "total remaining minutes"
 msgstr "укупно преосталих минута"
+
+#: templates/templates_rss.php:1
+#, fuzzy
+msgid "Post Rating Text"
+msgstr "Оцена"
 
 #: tinymce3/window.php:30
 #: tinymce3/window.php:394
