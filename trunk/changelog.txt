@@ -11,6 +11,7 @@
   * new: generate rating images
   * new: gfx get type methods
   * new: powered by button
+  * new: ajax url now made using siteurl option
   * new: integrate powered by button in rss feed posts
   * new: gfx set get path method
   * edit: ajax vote now returns value always even for duplicate votes
