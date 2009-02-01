@@ -19,9 +19,9 @@ function insert_styles($css) {
     echo "\r\n";
     echo '.'.$css["name"].' .starsbar { height: '.$size.'px; }';
     echo "\r\n";
-    echo ".".$css["name"]." .starsbar .outer { width: ".($stars * $size)."px; height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }";
+    echo ".".$css["name"]." .starsbar .gdouter { width: ".($stars * $size)."px; height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }";
     echo "\r\n";
-    echo ".".$css["name"]." .starsbar .inner { height: ".$size."px; background: url('".$url."') repeat-x 0px -".(2 * $size)."px; }";
+    echo ".".$css["name"]." .starsbar .gdinner { height: ".$size."px; background: url('".$url."') repeat-x 0px -".(2 * $size)."px; }";
     echo "\r\n";
     echo ".".$css["name"]." .starsbar a:hover { background: url('".$url."') repeat-x 0px -".$size."px; }";
     echo "\r\n";
@@ -84,7 +84,7 @@ get_class_head($head, ""); ?> {
   display: block;
 }
 
-<?php get_class_head($head, ".starsbar .inner"); ?> {
+<?php get_class_head($head, ".starsbar .gdinner"); ?> {
   width: 0;
 }
 
@@ -117,7 +117,7 @@ get_class_head($head, ""); ?> {
 .ratingblockcomment { font-size: 0.8em; }
 .ratingloaderarticle, .ratingloadercomment { font-size: 12px; text-align: center; vertical-align: middle; }
 
-.starsbar .inner { padding:0; }
+.starsbar .gdinner { padding: 0; }
 .ratingblock td { vertical-align: middle; }
 .raterclear { clear: both; }
 .raterleft { float: left; }
