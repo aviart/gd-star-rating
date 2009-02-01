@@ -36,3 +36,5 @@ There are some things that can disrupt the plugin's regular functioning. All the
 = WordPress plugins that are broken and will cause problems =
 
   * *Contact Form 7* This plugin adds broken jQuery code preventing all other jQuery code from executing. I am not sure what version of this plugin is broken, but updating it might help.
+
+  * *xLanguage* This plugin removes from generated post conent all empty tags, causing the problems to the rating plugin by removing peices of the rating block.
