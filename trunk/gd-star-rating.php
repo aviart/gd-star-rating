@@ -1009,46 +1009,46 @@ if (!class_exists('GDStarRating')) {
             if ($allow_vote) {
                 GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
                 $this->save_cookie($id);
-                $data = GDSRDatabase::get_post_data($id);
+                $msg = '%STATUS_OK_VOTED%';
+            }
+            else $msg = '%STATUS_ERROR_VOTED%';
 
-                if ($votes == 1) $tense = $this->x["word_votes_singular"];
-                else $tense = $this->x["word_votes_plural"];
-                $unit_width = $this->o["size"];
-                $unit_count = $this->o["stars"];
+            $data = GDSRDatabase::get_post_data($id);
 
-                $votes = 0;
-                $score = 0;
-                
-                if ($data->rules_articles == "A" || $data->rules_articles == "N") {
-                    $votes = $data->user_voters + $data->visitor_voters;
-                    $score = $data->user_votes + $data->visitor_votes;
-                }
-                else if ($data->rules_articles == "V") {
-                    $votes = $data->visitor_voters;
-                    $score = $data->visitor_votes;
-                }
-                else {
-                    $votes = $data->user_voters;
-                    $score = $data->user_votes;
-                }
-                
-                if ($votes > 0) $rating2 = $score / $votes;
-                else $rating2 = 0;
-                $rating1 = @number_format($rating2, 1);
-                $rating_width = $rating2 * $unit_width;
-                
-                $tpl = $this->x["article_rating_text"];
-                $rt = html_entity_decode($tpl);
-                $rt = str_replace('%RATING%', $rating1, $rt);
-                $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-                $rt = str_replace('%VOTES%', $votes, $rt);
-                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-                
-                return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
+            if ($votes == 1) $tense = $this->x["word_votes_singular"];
+            else $tense = $this->x["word_votes_plural"];
+            $unit_width = $this->o["size"];
+            $unit_count = $this->o["stars"];
+
+            $votes = 0;
+            $score = 0;
+
+            if ($data->rules_articles == "A" || $data->rules_articles == "N") {
+                $votes = $data->user_voters + $data->visitor_voters;
+                $score = $data->user_votes + $data->visitor_votes;
+            }
+            else if ($data->rules_articles == "V") {
+                $votes = $data->visitor_voters;
+                $score = $data->visitor_votes;
             }
             else {
-                return "{ status: 'error' }";
+                $votes = $data->user_voters;
+                $score = $data->user_votes;
             }
+
+            if ($votes > 0) $rating2 = $score / $votes;
+            else $rating2 = 0;
+            $rating1 = @number_format($rating2, 1);
+            $rating_width = $rating2 * $unit_width;
+
+            $tpl = $this->x["article_rating_text"];
+            $rt = html_entity_decode($tpl);
+            $rt = str_replace('%RATING%', $rating1, $rt);
+            $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
+            $rt = str_replace('%VOTES%', $votes, $rt);
+            $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+            return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
 
         function vote_comment($votes, $id, $user) {
