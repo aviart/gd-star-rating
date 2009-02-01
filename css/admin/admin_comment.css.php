@@ -32,13 +32,13 @@ header('Content-Type: text/css');
   height: <?php echo $size; ?>px;
 }
 
-.reviewcmm .starsbar .outer {
+.reviewcmm .starsbar .gdouter {
   width: <?php echo $stars * $size; ?>px;
   height: <?php echo $size; ?>px;
   background: url('<?php echo $url; ?>') repeat-x 0px 0px;
 }
 
-.reviewcmm .starsbar .inner { 
+.reviewcmm .starsbar .gdinner {
 /*  position: absolute;*/
   width: 0;
   height: <?php echo $size; ?>px;

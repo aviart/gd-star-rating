@@ -104,7 +104,7 @@ class GDSRHelper {
     function ie_png_fix() {
         echo('<!--[if lte IE 6]>');
         echo('<style type="text/css">');
-        echo('.ratertbl, .outer, .inner, .starsbar a:hover { behavior: url('.STARRATING_URL.'iepngfix/iepngfix.php) }');
+        echo('.ratertbl, .gdouter, .gdinner, .starsbar a:hover { behavior: url('.STARRATING_URL.'iepngfix/iepngfix.php) }');
         echo('</style>');
         echo('<script type="text/javascript" src="'.STARRATING_URL.'iepngfix/iepngfix_tilebg.js"></script>');
         echo('<![endif]-->');
