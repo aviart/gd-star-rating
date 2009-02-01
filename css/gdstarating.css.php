@@ -111,6 +111,7 @@ get_class_head($head, ""); ?> {
   text-decoration: none;
   border: 0;
   cursor: pointer;
+  background: none;
 }
 
 .ratingblockarticle { font-size: 1em; }

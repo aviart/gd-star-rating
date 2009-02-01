@@ -3,7 +3,7 @@
 == Change Log ==
 
 === Version: 1.1.0 / february 2 2009 ===
-  * ne: integrate post rating into rss feed posts
+  * new: integrate post rating into rss feed posts
   * new: cache support and cache cleanup tool
   * new: auto creating of extra folders
   * new: rss integration settings
@@ -13,6 +13,8 @@
   * new: powered by button
   * new: integrate powered by button in rss feed posts
   * new: gfx set get path method
+  * edit: ajax vote now returns value always even for duplicate votes
+  * edit: reorganized templates panel
   * edit: main class optimizations
   * edit: renaming outside access files
   * edit: renaming some of the css classes
@@ -20,6 +22,7 @@
   * edit: wp 2.7 plugin menu icon
   * edit: tinymce plugin icon
   * edit: various small improvements
+  * fix: small problem with backgound property of rating stars
   * fix: few more missing translation strings
   * fix: some settings not saving properly
   * fix: generating rating images

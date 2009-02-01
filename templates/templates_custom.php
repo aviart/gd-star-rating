@@ -1,3 +1,6 @@
+<table class="form-table"><tbody>
+<tr><th scope="row"><?php _e("Words", "gd-star-rating"); ?></th>
+    <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="150"><strong>%WORD_VOTES%</strong></td>
@@ -13,7 +16,10 @@
                 <td colspan="6"><?php _e("this can be used to replace word 'votes', and you need to set both singular and plural form of this word", "gd-star-rating"); ?></td>
             </tr>
         </table>
-        <div class="gdsr-table-split"></div>
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("CSS Classes", "gd-star-rating"); ?></th>
+    <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="150"><strong>%TABLE_ROW_CLASS%</strong></td>
@@ -29,4 +35,6 @@
                 <td colspan="6"><?php _e("this can be used to render table rows used in templates with different classes", "gd-star-rating"); ?></td>
             </tr>
         </table>
-        <div class="gdsr-table-split"></div>
+    </td>
+</tr>
+</tbody></table>
