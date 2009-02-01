@@ -66,6 +66,7 @@ if (!class_exists('GDStarRating')) {
         var $vote_status;
 
         var $plugin_url;
+        var $plugin_ajax;
         var $plugin_path;
         var $plugin_xtra_url;
         var $plugin_xtra_path;
@@ -809,12 +810,14 @@ if (!class_exists('GDStarRating')) {
             $this->wp_version = substr(str_replace('.', '', $wp_version), 0, 2);
             if ($this->wp_version < 26) {
                 $this->plugin_url = get_option('home').'/'.PLUGINDIR.'/gd-star-rating/';
+                $this->plugin_ajax = get_option('siteurl').'/'.PLUGINDIR.'/gd-star-rating/ajax.php';
                 $this->plugin_xtra_url = get_option('home').'/wp-content/gd-star-rating/';
                 $this->plugin_xtra_path = ABSPATH.'/wp-content/gd-star-rating/';
                 $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
             }
             else {
                 $this->plugin_url = WP_PLUGIN_URL.'/gd-star-rating/';
+                $this->plugin_ajax = get_option('siteurl').'/wp-content/plugins/gd-star-rating/ajax.php';
                 $this->plugin_xtra_url = WP_CONTENT_URL.'/gd-star-rating/';
                 $this->plugin_xtra_path = WP_CONTENT_DIR.'/gd-star-rating/';
                 $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
@@ -825,11 +828,12 @@ if (!class_exists('GDStarRating')) {
             $this->plugin_wpr8_path = $this->plugin_path."wpr8/";
             $this->plugin_chart_path = $this->plugin_path."charts/";
             $this->plugin_chart_url = $this->plugin_url."charts/";
-            
+
             if (is_dir($this->plugin_wpr8_path))
                 $this->wpr8_available = true;
-            
+
             define('STARRATING_URL', $this->plugin_url);
+            define('STARRATING_AJAX', $this->plugin_ajax);
             define('STARRATING_PATH', $this->plugin_path);
             define('STARRATING_XTRA_URL', $this->plugin_xtra_url);
             define('STARRATING_XTRA_PATH', $this->plugin_xtra_path);
