@@ -1,0 +1,115 @@
+[2009-02-02 06:21:03] : GET_POSTDATA_sql
+select * from wpdev_gdsr_data_article WHERE post_id = 627
+[2009-02-02 06:21:03] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 627
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 9.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 17
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-02-02 06:21:03] : GET_POSTDATA_error
+
+[2009-02-02 06:21:03] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wpdev_posts p, wpdev_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and p.post_type = 'post' and (d.user_voters + d.visitor_voters) >= 5 and TO_DAYS(CURDATE()) - 60 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 30
+[2009-02-02 06:21:04] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wpdev_posts p, wpdev_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and (d.user_voters + d.visitor_voters) >= 10 and TO_DAYS(CURDATE()) - 30 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 10
+[2009-02-02 06:22:24] : GET_POSTDATA_sql
+select * from wpdev_gdsr_data_article WHERE post_id = 627
+[2009-02-02 06:22:24] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 627
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 9.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 17
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-02-02 06:22:24] : GET_POSTDATA_error
+
+[2009-02-02 06:22:24] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wpdev_posts p, wpdev_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and p.post_type = 'post' and (d.user_voters + d.visitor_voters) >= 5 and TO_DAYS(CURDATE()) - 60 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 30
+[2009-02-02 06:22:24] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wpdev_posts p, wpdev_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and (d.user_voters + d.visitor_voters) >= 10 and TO_DAYS(CURDATE()) - 30 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 10
+[2009-02-02 06:22:30] : GET_POSTDATA_sql
+select * from wpdev_gdsr_data_article WHERE post_id = 630
+[2009-02-02 06:22:30] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 630
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 1
+    [user_votes] => 10.0
+    [visitor_voters] => 1
+    [visitor_votes] => 9.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 3
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-02-02 06:22:30] : GET_POSTDATA_error
+
+[2009-02-02 06:22:30] : CHECKVOTE_sql
+SELECT * FROM wpdev_gdsr_votes_log WHERE vote_type = 'article' and id = 630 and user_id = 1
+[2009-02-02 06:22:30] : CHECKVOTE
+stdClass Object
+(
+    [record_id] => 4311
+    [id] => 630
+    [vote_type] => article
+    [multi_id] => 0
+    [user_id] => 1
+    [vote] => 10
+    [object] => 
+    [voted] => 2009-02-02 01:07:04
+    [ip] => 127.0.0.1
+    [user_agent] => 
+)
+
+[2009-02-02 06:22:30] : CHECKVOTE_count
+1
+[2009-02-02 06:22:30] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wpdev_posts p, wpdev_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and (d.user_voters + d.visitor_voters) >= 10 and TO_DAYS(CURDATE()) - 30 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 10
+[2009-02-02 06:22:33] : WIDGET
+select p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars from wpdev_posts p, wpdev_gdsr_data_article d where p.id = d.post_id and p.post_status = 'publish' and (d.user_voters + d.visitor_voters) >= 10 and TO_DAYS(CURDATE()) - 30 <= TO_DAYS(p.post_date)  order by (d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters) desc limit 0, 10
