@@ -49,6 +49,20 @@ if (!class_exists('gdDBInstall')) {
             }
         }
 
+        function delete_tables($path) {
+            global $wpdb, $table_prefix;
+            $path.= "install/delete.txt";
+            if (file_exists($path)) {
+                $tables = file($path);
+                foreach ($tables as $table_name) {
+                    if (trim($table_name) != '') {
+                        $table_name = $table_prefix.$table_name;
+                        $wpdb->query("drop table ".$table_name);
+                    }
+                }
+            }
+        }
+
         /**
          * Upgrades database tables.
          *

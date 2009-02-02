@@ -692,6 +692,7 @@ if (!class_exists('GDStarRating')) {
             $this->wpr8 = get_option('gd-star-rating-wpr8');
 
             if ($this->o["build"] < $this->default_options["build"]) {
+                gdDBInstall::delete_tables(STARRATING_PATH);
                 gdDBInstall::create_tables(STARRATING_PATH);
                 gdDBInstall::upgrade_tables(STARRATING_PATH);
                 $this->o["database_upgrade"] = date("r");
@@ -1505,6 +1506,7 @@ if (!class_exists('GDStarRating')) {
                 update_option('gd-star-rating-gfx', $this->g);
             }
             if (isset($_POST['gdsr_upgrade_tool'])) {
+                gdDBInstall::delete_tables(STARRATING_PATH);
                 gdDBInstall::create_tables(STARRATING_PATH);
                 gdDBInstall::upgrade_tables(STARRATING_PATH);
                 $this->o["database_upgrade"] = date("r");
