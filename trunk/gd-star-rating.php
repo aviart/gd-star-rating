@@ -2015,7 +2015,11 @@ if (!class_exists('GDStarRating')) {
         * @return bool true if cookie exists for $id and $type, false if is not
         */
         function check_cookie($id, $type = "article") {
-            if (($type == "article" && $this->o["cookies"]) || ($type == "comment" && $this->o["cmm_cookies"])) {
+            if (
+                ($type == "article" && $this->o["cookies"]) ||
+                ($type == "multis" && $this->o["cookies"] == 1) ||
+                ($type == "comment" && $this->o["cmm_cookies"])
+                ) {
                 if (isset($_COOKIE["wp_gdsr_".$type])) {
                     $cookie = $_COOKIE["wp_gdsr_".$type];
                     $cookie = substr($cookie, 7, strlen($cookie) - 7);
@@ -2035,7 +2039,8 @@ if (!class_exists('GDStarRating')) {
         */
         function save_cookie($id, $type = "article") {
             if (
-                ($type == "article" && $this->o["cookies"] == 1) || 
+                ($type == "article" && $this->o["cookies"] == 1) ||
+                ($type == "multis" && $this->o["cookies"] == 1) ||
                 ($type == "comment" && $this->o["cmm_cookies"] == 1)
                 ) {
                 if (isset($_COOKIE["wp_gdsr_".$type])) {
@@ -2375,6 +2380,9 @@ if (!class_exists('GDStarRating')) {
         function render_multi_rating($post, $user, $settings, $override = array()) {
             if ($this->is_bot) return "";
 
+            $set = gd_get_multi_set($settings["id"]);
+            if ($set == null) return "";
+            
             $dbg_allow = "F";
             $allow_vote = true;
             if ($this->is_ban && $this->o["ip_filtering"] == 1) {
@@ -2401,7 +2409,54 @@ if (!class_exists('GDStarRating')) {
             }
             if ($post_data->rules_articles == "H") return "";
 
-            $set = gd_get_multi_set($settings["id"]);
+            if ($allow_vote) {
+                if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author) {
+                    $allow_vote = false;
+                    $dbg_allow = "A";
+                }
+            }
+
+            if ($allow_vote) {
+                if (
+                    ($post_data->rules_articles == "") ||
+                    ($post_data->rules_articles == "A") ||
+                    ($post_data->rules_articles == "U" && $rd_user_id > 0) ||
+                    ($post_data->rules_articles == "V" && $rd_user_id == 0)
+                ) $allow_vote = true;
+                else {
+                    $allow_vote = false;
+                    $dbg_allow = "R_".$post_data->rules_articles;
+                }
+            }
+
+            if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T')) {
+                switch($post_data->expiry_type) {
+                    case "D":
+                        $remaining = GDSRHelper::expiration_date($post_data->expiry_value);
+                        $deadline = $post_data->expiry_value;
+                        break;
+                    case "T":
+                        $remaining = GDSRHelper::expiration_countdown($post->post_date, $post_data->expiry_value);
+                        $deadline = GDSRHelper::calculate_deadline($remaining);
+                        break;
+                }
+                if ($remaining < 1) {
+                    GDSRDatabase::lock_post($rd_post_id);
+                    $allow_vote = false;
+                    $dbg_allow = "T";
+                }
+            }
+
+            if ($allow_vote) {
+                $allow_vote = GDSRDBMulti::check_vote($rd_post_id, $rd_user_id, $set_id, 'multis', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1);
+                if (!$allow_vote) $dbg_allow = "D";
+            }
+
+            if ($allow_vote) {
+                $allow_vote = $this->check_cookie($rd_post_id, "multis");
+                if (!$allow_vote) $dbg_allow = "C";
+            }
+
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
@@ -2412,6 +2467,6 @@ if (!class_exists('GDStarRating')) {
 
     $gd_debug = new gdDebug(STARRATING_LOG_PATH);
     $gdsr = new GDStarRating();
-    
+
     include(STARRATING_PATH."gd-star-custom.php");
 }

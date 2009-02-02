@@ -15,22 +15,20 @@ class GDSRDatabase {
     // check vote
     function check_vote_table($table, $id, $user, $type, $ip) {
         global $wpdb, $table_prefix;
-        $stats = $table_prefix.$table;
         
         if ($user > 0)
             $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and id = %s and user_id = %s", 
-                $stats, $type, $id, $user
+                $table_prefix.$table, $type, $id, $user
             );
         else
             $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and id = %s and ip = '%s'", 
-                $stats, $type, $id, $ip
+                $table_prefix.$table, $type, $id, $ip
             );
 
         $vote_data = $wpdb->get_row($votes_sql);
 
 wp_gdsr_dump("CHECKVOTE_sql", $votes_sql);
 wp_gdsr_dump("CHECKVOTE", $vote_data);
-wp_gdsr_dump("CHECKVOTE_count", count($vote_data));
 
         if (count($vote_data) == 0) 
             return true;
