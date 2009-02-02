@@ -25,6 +25,7 @@
   * edit: wp 2.7 plugin menu icon
   * edit: tinymce plugin icon
   * edit: various small improvements
+  * fix: stars missing for pages comments rating
   * fix: small problem with backgound property of rating stars
   * fix: few more missing translation strings
   * fix: some settings not saving properly

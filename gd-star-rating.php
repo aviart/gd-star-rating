@@ -960,12 +960,16 @@ if (!class_exists('GDStarRating')) {
            
             $gfx_a = $this->g->find_stars($this->o["style"]);
             $css_string = "a".$this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
-            if (is_single()) {
-                $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
-                $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
+            if (is_single() || is_page()) {
+                if ($this->o["comments_active"] == 1) {
+                    $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
+                    $css_string.= "#c".$this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary;
+                }
 
-                $css_string.= "#c".$this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary;
-                $css_string.= "#r".$this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
+                if ($this->o["comments_review_active"] == 1) {
+                    $css_string.= "#r".$this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
+                    $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
+                }
             }
             $css_string = urlencode($css_string);
             $use_nonce = $this->use_nonce;
