@@ -23,6 +23,10 @@ function insert_styles($css) {
     echo "\r\n";
     echo ".".$css["name"]." .starsbar .gdinner { height: ".$size."px; background: url('".$url."') repeat-x 0px -".(2 * $size)."px; }";
     echo "\r\n";
+    if ($css["name"] == "ratemulti") {
+        echo ".".$css["name"]." .starsbar .gdcurrent { height: ".$size."px; background: url('".$url."') repeat-x 0px -".($size)."px; }";
+        echo "\r\n";
+    }
     echo ".".$css["name"]." .starsbar a:hover { background: url('".$url."') repeat-x 0px -".$size."px; }";
     echo "\r\n";
     echo '.'.$css["name"].' .starsbar a { height: '.$size.'px; }';
@@ -114,6 +118,7 @@ get_class_head($head, ""); ?> {
   background: none;
 }
 
+.ratemulti .starsbar .gdcurrent { width: 0; top: 0; position: absolute; opacity: 0.4; }
 .ratingblockarticle { font-size: 1em; }
 .ratingblockcomment { font-size: 0.8em; }
 .ratingloaderarticle, .ratingloadercomment { font-size: 12px; text-align: center; vertical-align: middle; }
