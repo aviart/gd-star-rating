@@ -19,6 +19,7 @@
   * edit: improved db install procedure
   * edit: more optimizations to loading of javascript and css rating code
   * edit: ajax vote now returns value always even for duplicate votes
+  * edit: improved saving vote functions
   * edit: reorganized templates panel
   * edit: main class optimizations
   * edit: renaming outside access files
