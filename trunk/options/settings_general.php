@@ -97,7 +97,9 @@
             </tr>
         </table>
         <div class="gdsr-table-split"></div>
-        <input type="checkbox" name="gdsr_iepngfix" id="gdsr_iepngfix"<?php if ($gdsr_options["ie_png_fix"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_commentsactive"><?php _e("Use IE6 PNG transparency fix.", "gd-star-rating"); ?></label>
+        <input type="checkbox" name="gdsr_iepngfix" id="gdsr_iepngfix"<?php if ($gdsr_options["ie_png_fix"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_iepngfix"><?php _e("Use IE6 PNG transparency fix.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_ieopacityfix" id="gdsr_ieopacityfix"<?php if ($gdsr_options["ie_opacity_fix"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ieopacityfix"><?php _e("Use IE opacity fix for multi ratings.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Rating Log", "gd-star-rating"); ?></th>

@@ -55,6 +55,7 @@
         $gdsr_options["save_user_agent"] = isset($_POST['gdsr_save_user_agent']) ? 1 : 0;
         $gdsr_options["save_cookies"] = isset($_POST['gdsr_save_cookies']) ? 1 : 0;
         $gdsr_options["ie_png_fix"] = isset($_POST['gdsr_iepngfix']) ? 1 : 0;
+        $gdsr_options["ie_opacity_fix"] = isset($_POST['gdsr_ieopacityfix']) ? 1 : 0;
         
         $gdsr_options["integrate_dashboard"] = isset($_POST['gdsr_integrate_dashboard']) ? 1 : 0;
         $gdsr_options["integrate_post_edit"] = isset($_POST['gdsr_integrate_post_edit']) ? 1 : 0;
