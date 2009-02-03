@@ -88,7 +88,7 @@ wp_gdsr_dump("CHECKVOTE_MULTI", $vote_data);
  * Multi Rating Set
  */
 class GDMultiSingle {
-    var $id = 0;
+    var $multi_id = 0;
     var $name = "";
     var $description = "";
     var $stars = 5;
@@ -108,6 +108,11 @@ class GDMultiSingle {
                 $this->weight[] = 1;
             }
         }
+    }
+
+    function get_empty_value() {
+        $value = str_repeat("0|", count($this->object));
+        return substr($value, 0, strlen($value) - 1);
     }
 }
 

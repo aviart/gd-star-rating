@@ -3,6 +3,7 @@
 == Change Log ==
 
 === Version: 1.1.0 / february 2 2009 ===
+  * new: post and page multi rating
   * new: integrate post rating into rss feed posts
   * new: cache support and cache cleanup tool
   * new: auto creating of extra folders
@@ -16,6 +17,7 @@
   * new: gfx set get path method
   * new: multi ratings table layout
   * edit: improved db install procedure
+  * edit: more optimizations to loading of javascript and css rating code
   * edit: ajax vote now returns value always even for duplicate votes
   * edit: reorganized templates panel
   * edit: main class optimizations

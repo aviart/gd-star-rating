@@ -285,8 +285,7 @@ if (!class_exists('GDStarRating')) {
         function comment_review($value = 0, $allow_vote = true) {
             $stars = $this->o["cmm_review_stars"];
             $size = $this->o["cmm_review_size"];
-            $width = $stars * $size;
-            return GDSRRender::rating_stars_local($width, $size, $stars, $allow_vote, $value * $size);
+            return GDSRRender::rating_stars_local($size, $stars, $allow_vote, $value * $size);
         }
         
         /**
@@ -957,9 +956,16 @@ if (!class_exists('GDStarRating')) {
          */
         function wp_head() {
             if (is_feed()) return;
-           
+            $include_cmm_review = false;
+            $include_mur_rating = false;
+
             $gfx_a = $this->g->find_stars($this->o["style"]);
             $css_string = "a".$this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
+            if ($this->o["multis_active"] == 1) {
+                $gfx_m = $this->g->find_stars($this->o["mur_style"]);
+                $css_string = "m".$this->o["mur_style"]."|".$this->o["mur_size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
+                $include_mur_rating = true;
+            }
             if (is_single() || is_page()) {
                 if ($this->o["comments_active"] == 1) {
                     $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
@@ -969,6 +975,7 @@ if (!class_exists('GDStarRating')) {
                 if ($this->o["comments_review_active"] == 1) {
                     $css_string.= "#r".$this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
                     $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
+                    $include_cmm_review = true;
                 }
             }
             $css_string = urlencode($css_string);
@@ -2460,7 +2467,7 @@ if (!class_exists('GDStarRating')) {
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            return GDSRRender::multi_rating_block($set, 1, 'TEST', $debug);
+            return GDSRRender::multi_rating_block($debug, $rd_post_id, $set, $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"]);
         }
         // rendering
     }
