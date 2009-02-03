@@ -963,7 +963,7 @@ if (!class_exists('GDStarRating')) {
             $css_string = "a".$this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
             if ($this->o["multis_active"] == 1) {
                 $gfx_m = $this->g->find_stars($this->o["mur_style"]);
-                $css_string = "m".$this->o["mur_style"]."|".$this->o["mur_size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
+                $css_string.= "#m".$this->o["mur_style"]."|".$this->o["mur_size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
                 $include_mur_rating = true;
             }
             if (is_single() || is_page()) {
@@ -2467,7 +2467,7 @@ if (!class_exists('GDStarRating')) {
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            return GDSRRender::multi_rating_block($debug, $rd_post_id, $set, $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"]);
+            return GDSRRender::multi_rating_block($debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"]);
         }
         // rendering
     }
