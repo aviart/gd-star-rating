@@ -133,6 +133,42 @@ get_class_head($head, ""); ?> {
 .static {color: #5D3126;}
 .rater { top: 0; }
 
+.ratingtextmulti {
+    float: left;
+}
+
+.ratingbutton {
+    float: right;
+    padding: 1px 6px;
+}
+
+.ratingbutton.gdinactive {
+    border: 1px solid gray;
+    background-color: lightgray;
+}
+
+.ratingbutton.gdactive {
+    border: 1px solid black;
+    background-color: gray;
+    cursor: pointer;
+}
+
+.ratingbutton.gdactive a { color: white; }
+.ratingbutton.gdinactive a { color: gray; cursor: default; }
+
+.gdmultitable {
+    padding: 3px;
+    margin: 3px;
+    border: 1px solid gray;
+}
+
+.gdtblbottom td {
+    border-top: 1px dashed gray;
+    padding-top: 3px;
+}
+
+.gdmultitable td { vertical-align: middle; }
+
 .ratingblock {
 	display: block;
 	padding-bottom: 4px;
