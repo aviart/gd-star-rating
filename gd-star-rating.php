@@ -989,6 +989,7 @@ if (!class_exists('GDStarRating')) {
             $this->custom_actions('wp_head');
             
             if ($this->o["ie_png_fix"] == 1) GDSRHelper::ie_png_fix();
+            if ($this->o["ie_opacity_fix"] == 1) GDSRHelper::ie_opacity_fix();
         }
         // install
 

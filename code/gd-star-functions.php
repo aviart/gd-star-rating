@@ -110,6 +110,14 @@ class GDSRHelper {
         echo('<![endif]-->');
     }
 
+    function ie_opacity_fix() {
+        echo('<!--[if IE]>');
+        echo('<style type="text/css">');
+        echo('.ratemulti .starsbar .gdcurrent { -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); }');
+        echo('</style>');
+        echo('<![endif]-->');
+    }
+
     function detect_bot($str) {
         $spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
         foreach($spiders as $spider) {
