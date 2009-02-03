@@ -5,6 +5,11 @@ else $nonce = "";
 
 ?>
 
+function gdsrWait(rater, loader) {
+    jQuery("#"+rater).css("display", "none");
+    jQuery("#"+loader).css("display", "block");
+}
+
 function gdsrEmpty() { }
 
 jQuery(document).ready(function() {
@@ -13,7 +18,7 @@ jQuery(document).ready(function() {
     jQuery(".gdsr_rating_as > a").click(function() {
         var el = jQuery(this).attr("id").split("X");
         gdsrWait(el[5], el[6]);
-        jQuery.getJSON('<?php echo STARRATING_AJAX; ?>', {<?php echo $nonce; ?>vote_id: el[1], vote_value: el[2], vote_user: el[3], vote_type: el[4] }, function(json) {
+        jQuery.getJSON('<?php echo STARRATING_AJAX; ?>', {<?php echo $nonce; ?>vote_id: el[1], vote_value: el[2], vote_type: el[4] }, function(json) {
             gdsrWait(el[6], el[5]);
             if (json.status == 'ok') {
                 jQuery("#gdr_stars_" + el[1]).html("");

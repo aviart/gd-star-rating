@@ -982,7 +982,6 @@ if (!class_exists('GDStarRating')) {
             $use_nonce = $this->use_nonce;
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
             echo('<script type="text/javascript">');
-            echo('function gdsrWait(rater, loader) { jQuery("#"+rater).css("display", "none"); jQuery("#"+loader).css("display", "block"); }');
             include ($this->plugin_path."code/gd-star-js.php");
             echo('</script>');
 
@@ -1011,11 +1010,26 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
-        function vote_article_ajax($votes, $id, $user) {
+        function vote_multi_rating($votes, $post_id, $set_id) {
+            global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
             else $ua = "";
-            if ($user == '') $user = 0;
+            $user = intval($userdata->ID);
+
+wp_gdsr_dump("VOTE_MUR", $id."/".$set_id.": ".$votes." [".$user."]");
+
+            return $user;
+        }
+
+        function vote_article_ajax($votes, $id) {
+            global $userdata;
+            $ip = $_SERVER["REMOTE_ADDR"];
+            if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
+            else $ua = "";
+            $user = intval($userdata->ID);
+
+wp_gdsr_dump("VOTE", $id.": ".$votes." [".$user."]");
 
             $allow_vote = intval($votes) <= $this->o["stars"];
             
@@ -1085,11 +1099,14 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
-        function vote_comment_ajax($votes, $id, $user) {
+        function vote_comment_ajax($votes, $id) {
+            global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
             else $ua = "";
-            if ($user == '') $user = 0;
+            $user = intval($userdata->ID);
+
+wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
 
             $allow_vote = intval($votes) <= $this->o["cmm_stars"];
 

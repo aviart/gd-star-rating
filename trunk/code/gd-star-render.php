@@ -290,7 +290,7 @@ class GDSRRender {
         $rater = '<div class="ratingmulti '.$custom_class_block.'">';
         if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
 
-        $empty_value = str_repeat("0|", count($set->object));
+        $empty_value = str_repeat("0X", count($set->object));
         $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
 
         $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$empty_value.'" />';
