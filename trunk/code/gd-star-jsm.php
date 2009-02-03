@@ -17,4 +17,13 @@
             }
         }
         jQuery(input_id).val(rating_values.join("|"));
+        var button_id = '#gdsr_button_' + el[1] + '_' + el[2];
+        if (active) {
+            jQuery(button_id).removeClass('gdinactive');
+            jQuery(button_id).addClass('gdactive');
+        }
+        else {
+            jQuery(button_id).removeClass('gdactive');
+            jQuery(button_id).addClass('gdinactive');
+        }
     });

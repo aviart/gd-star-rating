@@ -295,12 +295,12 @@ class GDSRRender {
 
         $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$empty_value.'" />';
         $rater.= GDSRRender::rating_header($header, $header_text);
-        $rater.= '<table class="multitable '.$custom_class_table.'">';
+        $rater.= '<table class="gdmultitable '.$custom_class_table.'">';
         $tr_class = "mtrow";
         $i = 0;
         foreach ($set->object as $el) {
             $rater.= '<tr class="'.$tr_class.'">';
-            $rater.= '<td>'.$el.'</td>';
+            $rater.= '<td>'.$el.':</td>';
             $rater.= '<td>';
             $rater.= GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, 10, true);
             $rater.= '</td>';
@@ -309,7 +309,10 @@ class GDSRRender {
             else $tr_class = "mtrow";
             $i++;
         }
-        $rater.= '</table>';
+        $rater.= '<tr class="gdtblbottom"><td colspan="2">';
+        $rater.= '<div class="ratingtextmulti '.$custom_class_text.'">TEXT</div>';
+        $rater.= '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$custom_class_button.'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'"><a rel="nofollow">'.__("Submit", "gd-star-rating").'</a></div>';
+        $rater.= '</td></tr></table>';
         $rater.= '</div>';
         return $rater;
     }
