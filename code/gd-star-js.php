@@ -24,5 +24,6 @@ jQuery(document).ready(function() {
         });
     });
     <?php endif; ?>
-    <?php include(STARRATING_PATH.'code/gd-star-jsx.php'); ?>
+    <?php if ($include_cmm_review) include(STARRATING_PATH.'code/gd-star-jsx.php'); ?>
+    <?php if ($include_mur_rating) include(STARRATING_PATH.'code/gd-star-jsm.php'); ?>
 });

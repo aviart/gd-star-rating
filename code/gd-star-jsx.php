@@ -1,3 +1,4 @@
+    if (jQuery.browser.msie) jQuery(".gdsr_review_as > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_review_as > a").click(function() {
         var el = jQuery(this).attr("id").split("X");
         var vote = el[1];
