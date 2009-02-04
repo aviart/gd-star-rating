@@ -2,6 +2,7 @@
 
     if ($_POST['gdsr_action'] == 'save') :
         $gdsr_options["rss_article_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_rss_ratingtext'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["multis_rating_text"] = stripslashes(htmlentities($_POST['gdsr_mur_tpl_ratingtext'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["article_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_ratingtext'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["cmm_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_cmm_ratingtext'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["word_votes_singular"] = stripslashes(htmlentities($_POST['gdsr_word_votessingular'], ENT_QUOTES, 'UTF-8'));
@@ -9,6 +10,8 @@
         $gdsr_options["table_row_even"] = stripslashes(htmlentities($_POST['gdsr_tablerow_even'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["table_row_odd"] = stripslashes(htmlentities($_POST['gdsr_tablerow_odd'], ENT_QUOTES, 'UTF-8'));
 
+        $gdsr_options["multis_time_restricted_active"] = stripslashes(htmlentities($_POST['gdsr_mur_time_active'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["multis_time_restricted_closed"] = stripslashes(htmlentities($_POST['gdsr_mur_time_closed'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["time_restricted_active"] = stripslashes(htmlentities($_POST['gdsr_time_active'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["time_restricted_closed"] = stripslashes(htmlentities($_POST['gdsr_time_closed'], ENT_QUOTES, 'UTF-8'));
 
@@ -35,6 +38,7 @@
     <li><a href="#fragment-5"><span><?php _e("Custom Elements", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-2"><span><?php _e("Posts And Pages", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-3"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li>
+    <?php if ($options["multis_active"] == 1) { ?><li><a href="#fragment-6"><span><?php _e("Multis", "gd-star-rating"); ?></span></a></li><?php } ?>
     <?php if ($options["rss_active"] == 1) { ?><li><a href="#fragment-4"><span><?php _e("RSS", "gd-star-rating"); ?></span></a></li><?php } ?>
 </ul>
 <div style="clear: both"></div>
@@ -54,6 +58,10 @@
 <div id="fragment-3">
     <?php include(STARRATING_PATH."templates/templates_comments.php"); ?>
 </div>
+
+<?php if ($options["multis_active"] == 1) { ?><div id="fragment-6">
+    <?php include(STARRATING_PATH."templates/templates_multis.php"); ?>
+</div><?php } ?>
 
 <?php if ($options["rss_active"] == 1) { ?><div id="fragment-4">
     <?php include(STARRATING_PATH."templates/templates_rss.php"); ?>

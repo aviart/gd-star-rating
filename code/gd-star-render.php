@@ -46,12 +46,12 @@ class GDSRRender {
     }
 
     function rating_stars_multi($post_id, $set_id, $id, $height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '') {
-        $rater.= '<div id="gdsr_mur_stars" class="ratemulti"><div class="starsbar">';
+        $rater.= '<div id="gdsr_mur_stars_'.$post_id.'_'.$set_id.'_'.$id.'" class="ratemulti"><div class="starsbar">';
         $rater.= '<div class="gdouter" align="left">';
-        $rater.= '<div id="gdsr_cmm_stars_rated" style="width: '.($value * $height).'px;" class="gdinner"></div>';
-        $rater.= '<div id="gdsr_cmm_stars_current_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: 0px;" class="gdcurrent"></div>';
+        $rater.= '<div id="gdsr_mur_stars_rated_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($value * $height).'px;" class="gdinner"></div>';
         if ($allow_vote) {
-            $rater.= '<div id="gdr_stars_cmm_review" class="gdsr_multis_as">';
+            $rater.= '<div id="gdsr_mur_stars_current_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: 0px;" class="gdcurrent"></div>';
+            $rater.= '<div id="gdr_stars_mur_rating_'.$post_id.'_'.$set_id.'_'.$id.'" class="gdsr_multis_as">';
             for ($ic = 0; $ic < $unit_count; $ic++) {
                 $ncount = $unit_count - $ic;
                 $rater.='<a id="gdsrX'.$post_id.'X'.$set_id.'X'.$id.'X'.$ncount.'X'.$height.'" title="'.$ncount.' out of '.$unit_count.'" class="s'.$ncount.' '.$xtra_cls.'" rel="nofollow"></a>';
@@ -103,12 +103,12 @@ class GDSRRender {
             $rater.= '</div>';
         }
         $rater.= '</div></div></div>';
-        $rater.= GDSRRender::rating_wait($loader_id, $rater_length, $typecls, $wait_msg);
+        if ($allow_vote) $rater.= GDSRRender::rating_wait($loader_id, $rater_length."px", $typecls, $wait_msg);
         return $rater;
     }
 
     function rating_wait($loader_id, $rater_length, $typecls, $wait_msg = '') {
-        $loader = '<div id="'.$loader_id.'" style="display: none; width:'.$rater_length.'px;" class="ratingloader'.$typecls.'">';
+        $loader = '<div id="'.$loader_id.'" style="display: none; width:'.$rater_length.';" class="ratingloader'.$typecls.'">';
         $loader.= $wait_msg;
         $loader.= '</div>';
         return $loader;
@@ -286,18 +286,19 @@ class GDSRRender {
             return GDSRRender::rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block, $debug);
     }
 
-    function multi_rating_block($allow_vote, $votes, $debug, $post_id, $set, $height, $header, $header_text, $custom_class_block = "", $custom_class_text = "", $custom_class_table = "", $custom_class_button = "") {
-        $rater = '<div class="ratingmulti '.$custom_class_block.'">';
+    function multi_rating_block($wait_msg, $allow_vote, $votes, $debug, $post_id, $set, $height, $header, $header_text, $custom_class_block = "", $custom_class_text = "", $custom_class_table = "", $custom_class_button = "") {
+        $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti '.$custom_class_block.'">';
         if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
 
         $empty_value = str_repeat("0X", count($set->object));
         $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
 
-        $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$empty_value.'" />';
+        if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$empty_value.'" />';
         $rater.= GDSRRender::rating_header($header, $header_text);
         $rater.= '<table class="gdmultitable '.$custom_class_table.'">';
         $tr_class = "mtrow";
         $i = 0;
+        $weighted = 0;
         foreach ($set->object as $el) {
             $rater.= '<tr class="'.$tr_class.'">';
             $rater.= '<td>'.$el.':</td>';
@@ -307,11 +308,17 @@ class GDSRRender {
             $rater.= '</tr>';
             if ($tr_class == "mtrow") $tr_class.= " alternate";
             else $tr_class = "mtrow";
+            $weighted += $votes[$i]["rating"] * $set->weight[$i];
             $i++;
         }
+        $rating = @number_format($weighted / $i, 1);
+        
         $rater.= '<tr class="gdtblbottom"><td colspan="2">';
-        $rater.= '<div class="ratingtextmulti '.$custom_class_text.'">TEXT</div>';
-        $rater.= '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$custom_class_button.'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'"><a rel="nofollow">'.__("Submit", "gd-star-rating").'</a></div>';
+        $rater.= '<div id="gdsr_mur_text_'.$post_id.'_'.$set->multi_id.'">';
+            $rater.= '<div class="ratingtextmulti '.$custom_class_text.'">'.$rating.'</div>';
+            if ($allow_vote) $rater.= '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$custom_class_button.'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'"><a rel="nofollow">'.__("Submit", "gd-star-rating").'</a></div>';
+        $rater.= '</div>';
+        if ($allow_vote) $rater.= GDSRRender::rating_wait("gdsr_mur_loader_'.$post_id.'_'.$set->multi_id.'", "100%", $typecls, $wait_msg);
         $rater.= '</td></tr></table>';
         $rater.= '</div>';
         return $rater;

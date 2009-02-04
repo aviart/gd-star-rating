@@ -6,7 +6,10 @@
             var set_id = el[1];
             var values = jQuery("#gdsr_multi_" + post_id + "_" + set_id).val();
             jQuery.getJSON('<?php echo STARRATING_AJAX; ?>', {<?php echo $nonce; ?>vote_id: post_id, vote_set: set_id, vote_value: values, vote_type: 'm' }, function(json) {
-                alert(json);
+                jQuery("#gdsr_mur_block_" + post_id + "_" + set_id + " .gdsr_multis_as").remove();
+                jQuery("#gdsr_mur_block_" + post_id + "_" + set_id + " .gdcurrent").remove();
+                jQuery("#gdsr_mur_block_" + post_id + "_" + set_id + " input").remove();
+                jQuery("#gdsr_mur_block_" + post_id + "_" + set_id + " .ratingbutton").remove();
             });
         }
     });
@@ -17,7 +20,7 @@
         var vote = el[4];
         var size = el[5];
         var new_width = vote * size;
-        var current_id = '#gdsr_cmm_stars_current_' + el[1] + '_' + el[2] + '_' + el[3];
+        var current_id = '#gdsr_mur_stars_current_' + el[1] + '_' + el[2] + '_' + el[3];
         var input_id = '#gdsr_multi_' + el[1] + '_' + el[2];
         jQuery(current_id).css("width", new_width + "px");
         var rating_values = jQuery(input_id).val().split("X");
