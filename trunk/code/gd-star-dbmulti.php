@@ -7,11 +7,12 @@ class GDSRDBMulti {
         $ua = substr($ua, 0, 250);
 
         if ($post_data->moderate_articles == "" || $post_data->moderate_articles == "N" || ($post_data->moderate_articles == "V" && $user > 0) || ($post_data->moderate_articles == "U" && $user == 0)) {
-            GDSRDBMulti::add_vote($id, $user, $ip, $ua, $vote);
+            GDSRDBMulti::add_vote($post_id, $set_id, $user_id, $ip, $ua, $values);
         }
         else {
             $modsql = sprintf("INSERT INTO %sgdsr_moderate (id, vote_type, multi_id, user_id, object, voted, ip, user_agent) VALUES (%s, 'multis', %s, %s, '%s', '%s', '%s', '%s')",
-                $table_prefix, $post_id, $set_id, $user, $values, str_replace("'", "''", current_time('mysql')), $ip, $ua);
+                $table_prefix, $post_id, $set_id, $user_id, serialize($values), str_replace("'", "''", current_time('mysql')), $ip, $ua);
+            wp_gdsr_dump("MOD", $modsql);
             $wpdb->query($modsql);
         }
     }
@@ -23,23 +24,29 @@ class GDSRDBMulti {
 
         $trend_date = date("Y-m-d");
 
-        $sql_trend = sprintf("SELECT record_id FROM %s WHERE vote_date = '%s' and post_id = %s and multi_id = %s", $trend, $trend_date, $post_id, $set_id);
+        $sql_trend = sprintf("SELECT id FROM %s WHERE vote_date = '%s' and post_id = %s and multi_id = %s", $trend, $trend_date, $post_id, $set_id);
+        wp_gdsr_dump("TREND_GET", $sql_trend);
         $trend_data = intval($wpdb->get_var($sql_trend));
+        wp_gdsr_dump("TREND_GET", $trend_data);
 
         $trend_added = false;
         if ($trend_data == 0) {
             $trend_added = true;
             $sql = sprintf("INSERT INTO %s (post_id, multi_id, vote_date) VALUES (%s, %s, '%s')", $trend, $post_id, $set_id, $trend_date);
+            wp_gdsr_dump("TREND_INSERT", $sql);
             $wpdb->query($sql);
             $trend_id = $wpdb->insert_id;
         }
         else $trend_id = $trend_data;
 
-        GDSRDBMulti::add_values($trend_id, $user_id, $votes, "trend", $trend_added ? "edit" : "add");
-        GDSRDBMulti::add_values($trend_id, $user_id, $votes);
+        GDSRDBMulti::add_values($trend_id, $user_id, $votes, "trd", $trend_added ? "add" : "edit");
+
+        $data_id = GDSRDBMulti::get_vote($post_id, $set_id);
+
+        GDSRDBMulti::add_values($data_id, $user_id, $votes);
     }
 
-    function add_values($record_id, $user_id, $votes, $source = "data", $operation = "edit") {
+    function add_values($record_id, $user_id, $votes, $source = "dta", $operation = "edit") {
         global $wpdb, $table_prefix;
         $values = $table_prefix.'gdsr_multis_values';
         $cl_voters = $user_id == 0 ? "visitor_voters" : "user_voters";
@@ -51,13 +58,41 @@ class GDSRDBMulti {
         else
             $sql = sprintf("UPDATE %s SET %s = %s + 1, %s = %s + %s WHERE id = %s and item_id = %s and source = '%s'", 
                 $values, $cl_voters, $cl_voters, $cl_votes, $cl_votes, "%s", $record_id, "%s", $source);
-
+        wp_gdsr_dump("VALUE_INSERT", $sql);
         $i = 0;
         foreach ($votes as $vote) {
-            $sql = sprintf($sql, $vote, $i);
-            $wpdb->query($sql);
+            $sql_insert = sprintf($sql, $vote, $i);
+            wp_gdsr_dump("VALUE_INSERT_FULL", $sql_insert);
+            $wpdb->query($sql_insert);
             $i++;
         }
+    }
+    
+    function get_values($id, $source = 'dta') {
+        global $wpdb, $table_prefix;
+        
+        $sql = sprintf("SELECT * FROM %sgdsr_multis_data WHERE source = '%s' and id = %s", $table_prefix, $source, $id);
+        return $wpdb->get_results($sql);
+    }
+
+    function get_vote($post_id, $set_id, $values = 0) {
+        global $wpdb, $table_prefix;
+        
+        $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $post_id, $set_id);
+        $row = $wpdb->get_row($sql);
+        
+        if (count($row) == 0) {
+            $sql = sprintf("INSERT INTO %sgdsr_multis_data (post_id, multi_id) VALUES (%s, %s)", $table_prefix, $post_id, $set_id);
+            $wpdb->query($sql);
+            $record_id = $wpdb->insert_id;
+            for ($i = 0; $i < $values; $i++) {
+                $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id) VALUES (%s, 'dta', %s)",
+                    $table_prefix, $record_id, $i);
+                $wpdb->query($sql);
+            }
+        }
+        else $record_id = $row->id;
+        return $record_id;
     }
 
     function check_vote($id, $user, $set, $type, $ip, $mod_only = false) {
