@@ -2507,10 +2507,39 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             $multi_record_id = GDSRDBMulti::get_vote($rd_post_id, $set->multi_id, count($set->object));
             $multi_data = GDSRDBMulti::get_values($multi_record_id);
 
+            wp_gdsr_dump("RAW", $multi_data);
+
+            $votes = array();
+            foreach ($multi_data as $md) {
+                $single_vote["votes"] = 0;
+                $single_vote["score"] = 0;
+
+                if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
+                    $single_vote["votes"] = $md->user_voters + $md->visitor_voters;
+                    $single_vote["score"] = $md->user_votes + $md->visitor_votes;
+                }
+                else if ($post_data->rules_articles == "V") {
+                    $single_vote["votes"] = $md->visitor_voters;
+                    $single_vote["score"] = $md->visitor_votes;
+                }
+                else {
+                    $single_vote["votes"] = $md->user_voters;
+                    $single_vote["score"] = $md->user_votes;
+                }
+                if ($single_vote["votes"] > 0) $rating = $single_vote["score"] / $single_vote["votes"];
+                else $rating = 0;
+                if ($rating > $set->stars) $rating = $set->stars;
+                $single_vote["rating"] = @number_format($rating, 1);
+
+                $votes[] = $single_vote;
+            }
+
+            wp_gdsr_dump("CALC", $votes);
+
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            return GDSRRender::multi_rating_block($debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"]);
+            return GDSRRender::multi_rating_block($allow_vote, $votes, $debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"]);
         }
         // rendering
     }

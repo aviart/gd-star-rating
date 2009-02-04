@@ -118,7 +118,7 @@ get_class_head($head, ""); ?> {
   background: none;
 }
 
-.ratemulti .starsbar .gdcurrent { width: 0; top: 0; position: absolute; opacity: 0.4; }
+.ratemulti .starsbar .gdcurrent { width: 0; top: 0; position: absolute; opacity: 0.7; }
 .ratingblockarticle { font-size: 1em; }
 .ratingblockcomment { font-size: 0.8em; }
 .ratingloaderarticle, .ratingloadercomment { font-size: 12px; text-align: center; vertical-align: middle; }

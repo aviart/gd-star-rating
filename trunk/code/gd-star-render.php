@@ -48,7 +48,7 @@ class GDSRRender {
     function rating_stars_multi($post_id, $set_id, $id, $height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '') {
         $rater.= '<div id="gdsr_mur_stars" class="ratemulti"><div class="starsbar">';
         $rater.= '<div class="gdouter" align="left">';
-        $rater.= '<div id="gdsr_cmm_stars_rated" style="width: '.$value.'px;" class="gdinner"></div>';
+        $rater.= '<div id="gdsr_cmm_stars_rated" style="width: '.($value * $height).'px;" class="gdinner"></div>';
         $rater.= '<div id="gdsr_cmm_stars_current_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: 0px;" class="gdcurrent"></div>';
         if ($allow_vote) {
             $rater.= '<div id="gdr_stars_cmm_review" class="gdsr_multis_as">';
@@ -286,7 +286,7 @@ class GDSRRender {
             return GDSRRender::rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block, $debug);
     }
 
-    function multi_rating_block($debug, $post_id, $set, $height, $header, $header_text, $custom_class_block = "", $custom_class_text = "", $custom_class_table = "", $custom_class_button = "") {
+    function multi_rating_block($allow_vote, $votes, $debug, $post_id, $set, $height, $header, $header_text, $custom_class_block = "", $custom_class_text = "", $custom_class_table = "", $custom_class_button = "") {
         $rater = '<div class="ratingmulti '.$custom_class_block.'">';
         if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
 
@@ -302,7 +302,7 @@ class GDSRRender {
             $rater.= '<tr class="'.$tr_class.'">';
             $rater.= '<td>'.$el.':</td>';
             $rater.= '<td>';
-            $rater.= GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, 10, true);
+            $rater.= GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, 10, $allow_vote, $votes[$i]["rating"]);
             $rater.= '</td>';
             $rater.= '</tr>';
             if ($tr_class == "mtrow") $tr_class.= " alternate";

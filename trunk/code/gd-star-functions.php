@@ -113,7 +113,7 @@ class GDSRHelper {
     function ie_opacity_fix() {
         echo('<!--[if IE]>');
         echo('<style type="text/css">');
-        echo('.ratemulti .starsbar .gdcurrent { -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); }');
+        echo('.ratemulti .starsbar .gdcurrent { -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; filter: alpha(opacity=70); }');
         echo('</style>');
         echo('<![endif]-->');
     }
