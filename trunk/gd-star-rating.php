@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.0.9
+Version: 1.1.0
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -1046,6 +1046,7 @@ wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
             $votes_js = array();
             $weighted = 0;
             $i = 0;
+            $total_votes = 0;
             foreach ($multi_data as $md) {
                 $votes = 0;
                 $score = 0;
@@ -1068,11 +1069,23 @@ wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
                 $rating = @number_format($rating, 1);
                 $votes_js[] = $rating * $this->o["mur_size"];
                 $weighted += $rating * $set->weight[$i];
+                $total_votes += $votes[$i]["votes"];
                 $i++;
             }
             $rating = @number_format($weighted / $i, 1);
+            $total_votes = @number_format($total_votes / $i, 0);
+            if ($total_votes == 1) $tense = $this->x["word_votes_singular"];
+            else $tense = $this->x["word_votes_plural"];
 
-            return "{ status: 'ok', values: ".json_encode($votes_js).", rater: '".$rating."' }";
+            $tpl = $this->x["multis_rating_text"];
+            $rt = html_entity_decode($tpl);
+            $rt = str_replace('%RATING%', $rating, $rt);
+            $rt = str_replace('%MAX_RATING%', $set->stars, $rt);
+            $rt = str_replace('%VOTES%', $total_votes, $rt);
+            $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+            $rt = str_replace('%ID%', $post_id, $rt);
+
+            return "{ status: 'ok', values: ".json_encode($votes_js).", rater: '".$rt."' }";
         }
 
         function vote_article_ajax($votes, $id) {
@@ -2585,7 +2598,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            return GDSRRender::multi_rating_block($this->loader_article, $allow_vote, $votes, $debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"]);
+            return GDSRRender::multi_rating_block($this->loader_article, $allow_vote, $votes, $debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"], $post_data->expiry_type, $remaining, $deadline);
         }
         // rendering
     }

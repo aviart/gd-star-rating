@@ -133,41 +133,44 @@ get_class_head($head, ""); ?> {
 .static {color: #5D3126;}
 .rater { top: 0; }
 
-.ratingtextmulti {
-    float: left;
-}
+.ratingtextmulti { float: left; }
 
-.ratingbutton {
-    float: right;
-    padding: 1px 6px;
-}
+.ratingbutton { float: right; padding: 1px 6px; }
 
 .ratingbutton.gdinactive {
-    border: 1px solid gray;
-    background-color: lightgray;
+    border: 1px solid #9c5f5f;
+    background-color: #e9e4d4;
 }
 
 .ratingbutton.gdactive {
     border: 1px solid black;
-    background-color: gray;
+    background-color: #f1ede5;
     cursor: pointer;
 }
 
-.ratingbutton.gdactive a { color: white; }
+.ratingbutton a { line-height:14px; }
+
+.ratingbutton.gdactive a { color: #ad1b1b; }
 .ratingbutton.gdinactive a { color: gray; cursor: default; }
 
 .gdmultitable {
     padding: 3px;
     margin: 3px;
-    border: 1px solid gray;
+    border: 1px solid #999999;
 }
 
-.gdtblbottom td {
-    border-top: 1px dashed gray;
-    padding-top: 3px;
-}
+.gdtblbottom td { padding-top: 4px; }
 
-.gdmultitable td { vertical-align: middle; }
+.gdtblbottom { margin-top: 2px; }
+
+.mtrow { background-color: #fffcf4; }
+
+.mtrow.alternate { background-color: #f7f4ea; }
+
+.gdmultitable td {
+    vertical-align: middle;
+    padding: 2px 4px;
+}
 
 .ratingblock {
 	display: block;

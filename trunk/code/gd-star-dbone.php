@@ -11,11 +11,11 @@ class GDSRDatabase {
         global $wpdb, $table_prefix;
         return $wpdb->get_var(sprintf("SHOW TABLES LIKE '%s%s'", $table_prefix, $table_name)) == $table_prefix.$table_name;
     }
-    
+
     // check vote
     function check_vote_table($table, $id, $user, $type, $ip) {
         global $wpdb, $table_prefix;
-        
+
         if ($user > 0)
             $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and id = %s and user_id = %s", 
                 $table_prefix.$table, $type, $id, $user
@@ -35,27 +35,27 @@ wp_gdsr_dump("CHECKVOTE", $vote_data);
         else 
             return false;
     }
-    
+
     function check_vote($id, $user, $type, $ip, $mod_only = false) {
         $result = true;
-        
+
         if (!$mod_only)
             $result = GDSRDatabase::check_vote_logged($id, $user, $type, $ip);
         if ($result) 
             $result = GDSRDatabase::check_vote_moderated($id, $user, $type, $ip);
-            
+
         return $result;
     }
-    
+
     function check_vote_logged($id, $user, $type, $ip) {
         return GDSRDatabase::check_vote_table('gdsr_votes_log', $id, $user, $type, $ip);
     }
-    
+
     function check_vote_moderated($id, $user, $type, $ip) {
         return GDSRDatabase::check_vote_table('gdsr_moderate', $id, $user, $type, $ip);
     }
     // check vote
-    
+
     //users
     function get_valid_users() {
         global $wpdb, $table_prefix;
@@ -64,13 +64,13 @@ wp_gdsr_dump("CHECKVOTE", $vote_data);
             );
         return $wpdb->get_results($sql);
     }
-    
+
     function get_valid_users_count() {
         global $wpdb, $table_prefix;
         $sql = sprintf("SELECT count(distinct user_id) from %sgdsr_votes_log", $table_prefix);
         return $wpdb->get_var($sql);
     }
-    
+
     function get_user_log($user_id, $vote_type, $vote_value = 0, $start = 0, $limit = 20) {
         global $wpdb, $table_prefix;
         if ($vote_type == "article") {
@@ -99,7 +99,7 @@ wp_gdsr_dump("CHECKVOTE", $vote_data);
         return $wpdb->get_var($sql);
     }
     //users
-    
+
     // ip
     function check_ip_single($ip) {
         global $wpdb, $table_prefix;
@@ -136,12 +136,12 @@ wp_gdsr_dump("CHECKVOTE", $vote_data);
         else $limiter = "";
         return $wpdb->get_results(sprintf("select * from %sgdsr_ips where status = 'B'%s", $table_prefix, $limiter));
     }
-    
+
     function get_all_banned_ips_count() {
         global $wpdb, $table_prefix;
         return $wpdb->get_var(sprintf("select count(*) from %sgdsr_ips where status = 'B'", $table_prefix));
     }
-    
+
     function ban_ip_check($ip, $mode = 'S') {
         global $wpdb, $table_prefix;
         $sql = sprintf("select count(*) from %sgdsr_ips where `status` = 'B' and `mode` = '%s' and `ip` = '%s'", $table_prefix, $mode, $ip);
@@ -174,7 +174,7 @@ wp_gdsr_dump("CHECKVOTE", $vote_data);
         global $wpdb, $table_prefix;
         GDSRDatabase::add_category_defaults($ids, $ids_array);
         $dbt_data_cats = $table_prefix.'gdsr_data_category';
-        
+
         $update = array();
         if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
         if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
@@ -260,21 +260,21 @@ wp_gdsr_dump("CHECKVOTE", $vote_data);
             return;
         }
     }
-    
+
     function delete_voters_log($ids) {
         global $wpdb, $table_prefix;
-        
+
         $sql = sprintf("delete from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
         $wpdb->query($sql);
     }
-    
+
     function delete_voters_full($ids, $vote_type) {
         global $wpdb, $table_prefix;
         $delfrom = $table_prefix."gdsr_data_".$vote_type;
 
         $sql = sprintf("select id, user_id = 0 as user, count(*) as count, sum(vote) as votes from %sgdsr_votes_log where record_id in %s group by id, (user_id = 0)", $table_prefix, $ids);
         $del = $wpdb->get_results($sql);
-        
+
         if (count($del) > 0) {
             foreach ($del as $d) {
                 if ($d->user == 0)
@@ -343,7 +343,7 @@ wp_gdsr_dump("CHECKVOTE", $vote_data);
         );
         $wpdb->query($sql);
     }
-    
+
     function update_reviews($ids, $review, $ids_array) {
         global $wpdb, $table_prefix;
         GDSRDatabase::add_defaults($ids, $ids_array);
@@ -351,7 +351,7 @@ wp_gdsr_dump("CHECKVOTE", $vote_data);
         
         $wpdb->query(sprintf("update %s set review = %s where post_id in %s", $dbt_data_article, $review, $ids));
     }
-    
+
     function add_defaults($ids, $ids_array) {
         global $wpdb, $table_prefix;
         $rows = $wpdb->get_results(sprintf("select post_id from %sgdsr_data_article where post_id in %s", $table_prefix, $ids), ARRAY_N);
@@ -359,14 +359,14 @@ wp_gdsr_dump("CHECKVOTE", $vote_data);
         foreach ($ids_array as $id)
             if (!in_array($id, $rows)) GDSRDatabase::add_default_vote($id);
     }
-        
+
     function save_vote($id, $user, $ip, $ua, $vote) {
         global $wpdb, $table_prefix;
         $ua = str_replace("'", "''", $ua);
         $ua = substr($ua, 0, 250);
         $articles = $table_prefix.'gdsr_data_article';
         $moderate = $table_prefix.'gdsr_moderate';
-        
+
 wp_gdsr_dump("SAVEVOTE_post_id", $id, "start");
 wp_gdsr_dump("SAVEVOTE_user_id", $user);
 wp_gdsr_dump("SAVEVOTE_vote", $vote);
@@ -397,7 +397,7 @@ wp_gdsr_dump("SAVEVOTE_moderate_row_id", $wpdb->insert_id);
 wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
 
     }
-    
+
     function save_vote_comment($id, $user, $ip, $ua, $vote) {
         global $wpdb, $table_prefix;
         $ua = str_replace("'", "''", $ua);
@@ -441,7 +441,7 @@ wp_gdsr_dump("SAVEVOTE_CMM_moderate_row_id", $wpdb->insert_id);
 wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
 
     }
-    
+
     function save_comment_review($comment_id, $review) {
         global $wpdb, $table_prefix;
         $comments = $table_prefix.'gdsr_data_comment';
@@ -449,7 +449,7 @@ wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
             $comments, $review, $comment_id);
         $wpdb->query($sql);
     }
-    
+
     function save_review($post_id, $rating, $old = true) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
@@ -459,7 +459,7 @@ wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
         else 
             $wpdb->query("update ".$articles." set review = ".$rating." where post_id = ".$post_id);
     }
-    
+
     function save_comment_rules($post_id, $comment_vote, $comment_moderation, $old = true) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
@@ -483,7 +483,7 @@ wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
             GDSRDatabase::add_default_vote($post_id);
         $wpdb->query("update ".$articles." set expiry_type = '".$timer_type."', expiry_value = '".$timer_value."' where post_id = ".$post_id);
     }
-    
+
     function check_post($post_id) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
@@ -491,15 +491,15 @@ wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
         $results = $wpdb->get_row($sql, OBJECT);
         return count($results) > 0;
     }
-    
+
     function add_vote_comment($id, $user, $ip, $ua, $vote) {
         global $wpdb, $table_prefix;
         $comments = $table_prefix.'gdsr_data_comment';
         $stats = $table_prefix.'gdsr_votes_log';
         $trend = $table_prefix.'gdsr_votes_trend';
-        
+
         $trend_date = date("Y-m-d");
-        
+
         $sql_trend = sprintf("SELECT count(*) FROM %s WHERE vote_date = '%s' and vote_type = 'comment' and id = %s", $trend, $trend_date, $id);
         $trend_data = $wpdb->get_var($sql_trend);
 
@@ -570,8 +570,9 @@ wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_error", $wpdb->last_error);
 wp_gdsr_dump("SAVEVOTE_CMM_insert_stats_sql", $sql);
 wp_gdsr_dump("SAVEVOTE_CMM_insert_stats_id", $wpdb->insert_id);
 wp_gdsr_dump("SAVEVOTE_CMM_insert_stats_error", $wpdb->last_error);
+
     }
-    
+
     function add_vote($id, $user, $ip, $ua, $vote) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
@@ -605,7 +606,7 @@ wp_gdsr_dump("SAVEVOTE_trend_insert_sql", $sql);
 wp_gdsr_dump("SAVEVOTE_trend_insert_error", $wpdb->last_error);
 
         }
-        
+
         if ($user > 0) {
             $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE post_id = %s",
                 $articles, $vote, $id);
@@ -642,7 +643,7 @@ wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_sql", $sql);
 wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_error", $wpdb->last_error);
 
         }
-        
+
         $logsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'article', %s, %s, '%s', '%s', '%s')",
             $stats, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
         $wpdb->query($logsql);
@@ -651,7 +652,7 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_sql", $sql);
 wp_gdsr_dump("SAVEVOTE_insert_stats_id", $wpdb->insert_id);
 wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
     }
-    
+
     function add_default_vote($post_id, $is_page = '', $review = -1) {
         global $wpdb, $table_prefix;
         $options = get_option('gd-star-rating');
@@ -670,7 +671,7 @@ wp_gdsr_dump("ADD_DEFAULT_is_page", $is_page);
 wp_gdsr_dump("ADD_DEFAULT_sql", $sql);
 wp_gdsr_dump("ADD_DEFAULT_error", $wpdb->last_error);
     }
-    
+
     function add_empty_comment($comment_id, $post_id, $review = -1) {
         global $wpdb, $table_prefix;
         $dbt_data_comment = $table_prefix.'gdsr_data_comment';
@@ -686,7 +687,7 @@ wp_gdsr_dump("ADD_DEFAULT_error", $wpdb->last_error);
 wp_gdsr_dump("ADD_DEFAULT_CMM_sql", $sql);
 wp_gdsr_dump("ADD_DEFAULT_CMM_error", $wpdb->last_error);
     }
-    
+
     function add_empty_comments($post_id) {
         global $wpdb, $table_prefix;
         $dbt_data_comment = $table_prefix.'gdsr_data_comment';
@@ -700,7 +701,7 @@ wp_gdsr_dump("ADD_DEFAULT_CMM_error", $wpdb->last_error);
         foreach ($cmms as $c)
             GDSRDatabase::add_empty_comment($c->comment_ID, $post_id);
     }
-    
+
     function add_new_view($post_id) {
         global $wpdb, $table_prefix;
         $dbt_data_article = $table_prefix.'gdsr_data_article';
@@ -722,7 +723,7 @@ wp_gdsr_dump("GET_POSTDATA_error", $wpdb->last_error);
 
         return $results;
     }
-    
+
     function get_comment_data($comment_id) {
         global $wpdb, $table_prefix;
         $comments = $table_prefix.'gdsr_data_comment';
@@ -735,17 +736,17 @@ wp_gdsr_dump("GET_COMMENTDATA_error", $wpdb->last_error);
 
         return $results;
     }
-    
+
     function get_commentids_posts($post_ids) {
         global $wpdb, $table_prefix;
         $comments = $table_prefix.'gdsr_data_comment';
         return $wpdb->get_results("select comment_id from ".$comments." where post_id in ".$post_ids, OBJECT);
     }
-    
+
     function get_comment_review($comment_id) {
         global $wpdb, $table_prefix;
         $comments = $table_prefix.'gdsr_data_comment';
-        
+
         $sql = "select review from ".$comments." WHERE comment_id = ".$comment_id;
         $results = $wpdb->get_row($sql, OBJECT);
         if (count($results) == 0) return 0;
@@ -755,13 +756,13 @@ wp_gdsr_dump("GET_COMMENTDATA_error", $wpdb->last_error);
     function get_review($post_id) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
-        
+
         $sql = "select review from ".$articles." WHERE post_id = ".$post_id;
         $results = $wpdb->get_row($sql, OBJECT);
         if (count($results) == 0) return -1;
         else return $results->review;
     }
-    
+
     function get_post_edit($post_id) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
@@ -770,7 +771,7 @@ wp_gdsr_dump("GET_COMMENTDATA_error", $wpdb->last_error);
         $results = $wpdb->get_row($sql, OBJECT);
         return $results;
     }
-    
+
     function get_moderation_count($id, $vote_type = 'article', $user = 'all') {
         global $wpdb, $table_prefix;
 
@@ -782,7 +783,7 @@ wp_gdsr_dump("GET_COMMENTDATA_error", $wpdb->last_error);
             $users = ' and user_id = 0';
         else
             $users = ' and user_id = '.$user;
-        
+
         $sql = sprintf("select count(*) from %s where id = %s and vote_type = '%s'%s", 
             $table_prefix."gdsr_moderate", 
             $id, 
@@ -794,7 +795,7 @@ wp_gdsr_dump("GET_COMMENTDATA_error", $wpdb->last_error);
 
     function get_moderation_count_joined($post_id, $user = 'all') {
         global $wpdb, $table_prefix;
-        
+
         if ($user == "all")
             $users = '';
         else if ($user == "users")
@@ -803,7 +804,7 @@ wp_gdsr_dump("GET_COMMENTDATA_error", $wpdb->last_error);
             $users = ' and m.user_id = 0';
         else
             $users = ' and m.user_id = '.$user;
-        
+
         $sql = sprintf("select count(*) from %s c inner join %s m on m.id = c.comment_ID where c.comment_post_ID = %s and m.vote_type = 'comment'%s",
             $wpdb->comments,
             $table_prefix."gdsr_moderate",
@@ -836,7 +837,7 @@ wp_gdsr_dump("GET_COMMENTDATA_error", $wpdb->last_error);
         );
         return $sql;
     }
-    
+
     function get_moderation_joined($post_id, $start = 0, $limit = 20, $user = 'all') {
         global $wpdb, $table_prefix;
 
@@ -860,17 +861,17 @@ wp_gdsr_dump("GET_COMMENTDATA_error", $wpdb->last_error);
         );
         return $sql;
     }
-    
+
     function get_comments_count($post_id) {
         global $wpdb, $table_prefix;
-        
+
         $sql = sprintf("select count(*) from %s where comment_approved = 1 and comment_type = '' and comment_post_id = %s",
             $wpdb->comments,
             $post_id
         );
         return $wpdb->get_var($sql);
     }
-    
+
     function get_comments($post_id) {
         global $wpdb, $table_prefix;
         $dbt_data_comment = $table_prefix.'gdsr_data_comment';
@@ -883,7 +884,7 @@ wp_gdsr_dump("GET_COMMENTDATA_error", $wpdb->last_error);
         );
         return $sql;
     }
-        
+
     function get_post_type($post_id) {
         global $wpdb;
         $sql = "SELECT post_type FROM $wpdb->posts WHERE ID = ".$post_id;
@@ -894,10 +895,10 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
 
         return $r->post_type;
     }
-    
+
     function get_categories($post_id) {
         global $wpdb;
-        
+
         $sql = "SELECT s.name FROM $wpdb->term_taxonomy t, $wpdb->terms s, $wpdb->term_relationships r WHERE t.taxonomy = 'category' AND t.term_taxonomy_id = r.term_taxonomy_id AND t.term_id = s.term_id AND r.object_id = ".$post_id;
         $cats = $wpdb->get_results($sql);
         $output = '';
@@ -906,7 +907,7 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
         if ($output != '')
             $output = substr($output, 0, strlen($output) - 2);
         else $output = '/';
-        
+
         return $output;
     }
 
@@ -927,7 +928,7 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
 
         return $sql;
     }
-    
+
     function get_visitors($post_id, $vote_type = "article", $dates = "", $vote_value = 0, $select = "total", $start = 0, $limit = 20, $sort_column = '', $sort_order = '') {
         global $table_prefix;
 
@@ -950,14 +951,14 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
             $where.= " and user_id = 0";
         if ($vote_value > 0)
             $where.= " and vote = ".$vote_value;
-        
+
         $sql = sprintf("SELECT p.*, u.user_nicename FROM %sgdsr_votes_log p LEFT JOIN %susers u ON u.ID = p.user_id%s ORDER BY %s %s LIMIT %s, %s",
             $table_prefix, $table_prefix, $where, $sort_column, $sort_order, $start, $limit
             );
-        
+
         return $sql;
     }
-    
+
     function get_stats_count($dates = "0", $cats = "0", $search = "") {
         global $table_prefix;
         $where = "";
@@ -978,11 +979,11 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
             );
         return $sql;
     }
-    
+
     function get_stats($select = "", $start = 0, $limit = 20, $dates = "0", $cats = "0", $search = "", $sort_column = 'id', $sort_order = 'desc', $additional = '') {
         global $table_prefix;
         $where = "";
-        
+
         $extras = ", '' as total, '' as votes, '' as title, 0 as rating_total, 0 as rating_users, 0 as rating_visitors";
 
         if ($dates != "" && $dates != "0") {
@@ -994,7 +995,7 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
 
         if ($select != "" && $select != "postpage") 
             $where.= " and post_type = '".$select."'";
-            
+
         if ($sort_column == 'post_title' || $sort_column == 'id')
             $order = " ORDER BY p.".$sort_column." ".$sort_order;
         else
@@ -1011,7 +1012,7 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
         return $sql;
     }
     // get
-    
+
     // combox
     function get_combo_months($selected = "0", $name = "gdsr_dates") {
         global $wpdb, $wp_locale;
@@ -1064,7 +1065,7 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
         </select>
         <?php
     }
-    
+
     function get_combo_categories($selected = '', $name = 'gdsr_categories') {
         $dropdown_options = array('show_option_all' => __("All categories", "gd-star-rating"), 'hide_empty' => 0, 'hierarchical' => 1,
             'show_count' => 0, 'orderby' => 'ID', 'selected' => $selected, 'name' => $name);
