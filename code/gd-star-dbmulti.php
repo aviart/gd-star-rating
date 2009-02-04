@@ -80,12 +80,20 @@ class GDSRDBMulti {
         return $wpdb->get_results($sql);
     }
 
+    function get_values_join($post_id, $set_id) {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("select v.* from %sgdsr_multis_values v inner join %sgdsr_multis_data d on d.id = v.id where v.source = 'dta' and d.post_id = %s and d.multi_id = %s order by v.item_id asc",
+            $table_prefix, $table_prefix, $post_id, $set_id);
+        return $wpdb->get_results($sql);
+    }
+
     function get_vote($post_id, $set_id, $values = 0) {
         global $wpdb, $table_prefix;
         
         $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $post_id, $set_id);
         $row = $wpdb->get_row($sql);
-        
+
         if (count($row) == 0) {
             $sql = sprintf("INSERT INTO %sgdsr_multis_data (post_id, multi_id) VALUES (%s, %s)", $table_prefix, $post_id, $set_id);
             $wpdb->query($sql);

@@ -470,10 +470,8 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), 10, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
             if ($this->o["admin_category"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), 10, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
             if ($this->o["admin_users"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), 10, "gd-star-rating-users", array(&$this,"star_menu_users"));
-            if ($this->o["multis_active"] == 1) {
+            if ($this->o["multis_active"] == 1)
                 add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Sets", "gd-star-rating"), __("Multi Sets", "gd-star-rating"), 10, "gd-star-rating-multi-sets", array(&$this,"star_multi_sets"));
-                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Results", "gd-star-rating"), __("Multi Results", "gd-star-rating"), 10, "gd-star-rating-multi-results", array(&$this,"star_multi_results"));
-            }
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gd-star-rating-templates", array(&$this,"star_menu_templates"));
@@ -1043,7 +1041,38 @@ wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
             }
             else $msg = '%STATUS_ERROR_VOTED%';
 
-            return $user;
+            $set = gd_get_multi_set($set_id);
+            $multi_data = GDSRDBMulti::get_values_join($post_id, $set_id);
+            $votes_js = array();
+            $weighted = 0;
+            $i = 0;
+            foreach ($multi_data as $md) {
+                $votes = 0;
+                $score = 0;
+
+                if ($data->rules_articles == "A" || $data->rules_articles == "N") {
+                    $votes = $md->user_voters + $md->visitor_voters;
+                    $score = $md->user_votes + $md->visitor_votes;
+                }
+                else if ($data->rules_articles == "V") {
+                    $votes = $md->visitor_voters;
+                    $score = $md->visitor_votes;
+                }
+                else {
+                    $votes = $md->user_voters;
+                    $score = $md->user_votes;
+                }
+                if ($votes > 0) $rating = $score / $votes;
+                else $rating = 0;
+                if ($rating > $set->stars) $rating = $set->stars;
+                $rating = @number_format($rating, 1);
+                $votes_js[] = $rating * $this->o["mur_size"];
+                $weighted += $rating * $set->weight[$i];
+                $i++;
+            }
+            $rating = @number_format($weighted / $i, 1);
+
+            return "{ status: 'ok', values: ".json_encode($votes_js).", rater: '".$rating."' }";
         }
 
         function vote_article_ajax($votes, $id) {
@@ -2109,7 +2138,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             if ($this->o["wait_show_article"] == 1)
                 $cls.= "width ";
             $cls.= $this->o["wait_class_article"];
-            $div = '<div class="'.$cls.'" style="height: '.$this->o["size"].'">';
+            $div = '<div class="'.$cls.'" style="height: '.$this->o["size"].'px">';
             if ($this->o["wait_show_article"] == 0) {
                 $padding = "";
                 if ($this->o["size"] > 20) $padding = ' style="padding-top: '.(($this->o["size"] / 2) - 10).'px"';
@@ -2124,7 +2153,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             if ($this->o["wait_show_multis"] == 1)
                 $cls.= "width ";
             $cls.= $this->o["wait_class_multis"];
-            $div = '<div class="'.$cls.'" style="height: '.$this->o["mur_size"].'">';
+            $div = '<div class="'.$cls.'" style="height: '.$this->o["mur_size"].'px">';
             if ($this->o["wait_show_multis"] == 0) {
                 $padding = "";
                 if ($this->o["size"] > 20) $padding = ' style="padding-top: '.(($this->o["mur_size"] / 2) - 10).'px"';
@@ -2139,7 +2168,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             if ($this->o["wait_show_comment"] == 1)
                 $cls.= "width ";
             $cls.= $this->o["wait_class_comment"];
-            $div = '<div class="'.$cls.'" style="height: '.$this->o["cmm_size"].'">';
+            $div = '<div class="'.$cls.'" style="height: '.$this->o["cmm_size"].'px">';
             if ($this->o["wait_show_comment"] == 0) {
                 $padding = "";
                 if ($this->o["cmm_size"] > 20) $padding = ' style="padding-top: '.(($this->o["cmm_size"] / 2) - 10).'px"';

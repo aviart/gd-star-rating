@@ -318,7 +318,7 @@ class GDSRRender {
             $rater.= '<div class="ratingtextmulti '.$custom_class_text.'">'.$rating.'</div>';
             if ($allow_vote) $rater.= '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$custom_class_button.'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'"><a rel="nofollow">'.__("Submit", "gd-star-rating").'</a></div>';
         $rater.= '</div>';
-        if ($allow_vote) $rater.= GDSRRender::rating_wait("gdsr_mur_loader_'.$post_id.'_'.$set->multi_id.'", "100%", $typecls, $wait_msg);
+        if ($allow_vote) $rater.= GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", $typecls, $wait_msg);
         $rater.= '</td></tr></table>';
         $rater.= '</div>';
         return $rater;
