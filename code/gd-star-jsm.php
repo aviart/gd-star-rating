@@ -13,7 +13,7 @@
                 jQuery("#gdsr_mur_block_" + post_id + "_" + set_id + " .ratingbutton").remove();
                 for (var i = 0; i < json.values.length; i++)
                     jQuery("#gdsr_mur_stars_rated_" + post_id + "_" + set_id + "_" + i).css("width", json.values[i]);
-                jQuery("#gdsr_mur_text_" + post_id + "_" + set_id + " .ratingtextmulti").html(json.rater);
+                jQuery("#gdsr_mur_text_" + post_id + "_" + set_id + " .ratingtextmulti").html(json.rater).addClass("voted");
                 gdsrWait("gdsr_mur_loader_" + post_id + "_" + set_id, "gdsr_mur_text_" + post_id + "_" + set_id);
             });
         }
