@@ -1017,9 +1017,9 @@ if (!class_exists('GDStarRating')) {
             else $ua = "";
             $user = intval($userdata->ID);
 
-wp_gdsr_dump("VOTE_MUR", $id."/".$set_id.": ".$votes." [".$user."]");
+wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
 
-            $values = explode($votes, "X");
+            $values = explode("X", $votes);
             $allow_vote = true;
             foreach ($values as $v) {
                 if ($v > $this->o["stars"]) {
@@ -1027,16 +1027,16 @@ wp_gdsr_dump("VOTE_MUR", $id."/".$set_id.": ".$votes." [".$user."]");
                     break;
                 }
             }
-
-            if ($allow_vote) $allow_vote = $this->check_cookie($id."#".$set_id, "multis");
             
-            if ($allow_vote) $allow_vote = GDSRDBMulti::check_vote($id, $user, $set_id, 'multis', $ip, $this->o["logged"] != 1);
+            if ($allow_vote) $allow_vote = $this->check_cookie($post_id."#".$set_id, "multis");
+            
+            if ($allow_vote) $allow_vote = GDSRDBMulti::check_vote($post_id, $user, $set_id, 'multis', $ip, $this->o["logged"] != 1);
 
-            $data = GDSRDatabase::get_post_data($id);
+            $data = GDSRDatabase::get_post_data($post_id);
 
             if ($allow_vote) {
-                GDSRDBMulti::save_vote($id, $set_id, $user, $ip, $ua, $values, $data);
-                $this->save_cookie($id."#".$set_id, "multis");
+                GDSRDBMulti::save_vote($post_id, $set_id, $user, $ip, $ua, $values, $data);
+                $this->save_cookie($post_id."#".$set_id, "multis");
                 $msg = '%STATUS_OK_VOTED%';
             }
             else $msg = '%STATUS_ERROR_VOTED%';
@@ -2503,6 +2503,9 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                 $allow_vote = $this->check_cookie($rd_post_id, "multis");
                 if (!$allow_vote) $dbg_allow = "C";
             }
+
+            $multi_record_id = GDSRDBMulti::get_vote($rd_post_id, $set->multi_id, count($set->object));
+            $multi_data = GDSRDBMulti::get_values($multi_record_id);
 
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";

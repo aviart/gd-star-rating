@@ -23,7 +23,7 @@
             break;
         case 'm':
             $vote_set = $_GET["vote_set"];
-            $result = $gdsr->vote_multi_rating($vote_value, $vote_id, $vote_type);
+            $result = $gdsr->vote_multi_rating($vote_value, $vote_id, $vote_set);
             break;
     }
     echo $result;
