@@ -1019,6 +1019,28 @@ if (!class_exists('GDStarRating')) {
 
 wp_gdsr_dump("VOTE_MUR", $id."/".$set_id.": ".$votes." [".$user."]");
 
+            $values = explode($votes, "X");
+            $allow_vote = true;
+            foreach ($values as $v) {
+                if ($v > $this->o["stars"]) {
+                    $allow_vote = false;
+                    break;
+                }
+            }
+
+            if ($allow_vote) $allow_vote = $this->check_cookie($id."#".$set_id, "multis");
+            
+            if ($allow_vote) $allow_vote = GDSRDBMulti::check_vote($id, $user, $set_id, 'multis', $ip, $this->o["logged"] != 1);
+
+            $data = GDSRDatabase::get_post_data($id);
+
+            if ($allow_vote) {
+                GDSRDBMulti::save_vote($id, $set_id, $user, $ip, $ua, $values, $data);
+                $this->save_cookie($id."#".$set_id, "multis");
+                $msg = '%STATUS_OK_VOTED%';
+            }
+            else $msg = '%STATUS_ERROR_VOTED%';
+
             return $user;
         }
 
