@@ -18,9 +18,12 @@ class GDSRDBMulti {
         }
     }
 
-    function add_to_log() {
+    function add_to_log($post_id, $set_id, $user_id, $ip, $ua, $values) {
         global $wpdb, $table_prefix;
-        
+            $modsql = sprintf("INSERT INTO %sgdsr_votes_log (id, vote_type, multi_id, user_id, object, voted, ip, user_agent) VALUES (%s, 'multis', %s, %s, '%s', '%s', '%s', '%s')",
+                $table_prefix, $post_id, $set_id, $user_id, serialize($values), str_replace("'", "''", current_time('mysql')), $ip, $ua);
+            wp_gdsr_dump("LOG", $modsql);
+            $wpdb->query($modsql);
     }
 
     function add_vote($post_id, $set_id, $user_id, $ip, $ua, $votes) {

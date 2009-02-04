@@ -56,6 +56,7 @@ if (!class_exists('GDStarRating')) {
 
         var $loader_article = "";
         var $loader_comment = "";
+        var $loader_multis = "";
         var $wpr8_available = false;
         var $admin_plugin = false;
         var $admin_plugin_page = '';
@@ -870,7 +871,8 @@ if (!class_exists('GDStarRating')) {
                 $this->is_bot = GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT']);
                 $this->is_ban = GDSRHelper::detect_ban();
                 $this->render_wait_article();
-                $this->render_wait_comment();
+                if ($this->o["comments_active"] == 1) $this->render_wait_comment();
+                if ($this->o["multis_active"] == 1) $this->render_wait_multis();
             }
 
             if ($this->admin_plugin_page == "settings-page") {
@@ -2117,6 +2119,21 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             $this->loader_article = $div;
         }
 
+        function render_wait_multis() {
+            $cls = "loader ".$this->o["wait_loader_multis"]." ";
+            if ($this->o["wait_show_multis"] == 1)
+                $cls.= "width ";
+            $cls.= $this->o["wait_class_multis"];
+            $div = '<div class="'.$cls.'" style="height: '.$this->o["mur_size"].'">';
+            if ($this->o["wait_show_multis"] == 0) {
+                $padding = "";
+                if ($this->o["size"] > 20) $padding = ' style="padding-top: '.(($this->o["mur_size"] / 2) - 10).'px"';
+                $div.= '<div class="loaderinner"'.$padding.'>'.__($this->o["wait_text_multis"]).'</div>';
+            }
+            $div.= '</div>';
+            $this->loader_multis = $div;
+        }
+
         function render_wait_comment() {
             $cls = "loader ".$this->o["wait_loader_comment"]." ";
             if ($this->o["wait_show_comment"] == 1)
@@ -2495,7 +2512,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             }
 
             if ($allow_vote) {
-                $allow_vote = GDSRDBMulti::check_vote($rd_post_id, $rd_user_id, $set_id, 'multis', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1);
+                $allow_vote = GDSRDBMulti::check_vote($rd_post_id, $rd_user_id, $set->multi_id, 'multis', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1);
                 if (!$allow_vote) $dbg_allow = "D";
             }
 
@@ -2539,7 +2556,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            return GDSRRender::multi_rating_block($allow_vote, $votes, $debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"]);
+            return GDSRRender::multi_rating_block($this->loader_article, $allow_vote, $votes, $debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"]);
         }
         // rendering
     }
