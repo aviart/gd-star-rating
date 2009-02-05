@@ -1,0 +1,6 @@
+CREATE TABLE `%sgdsr_multis_trend` (
+  `id` bigint(20) unsigned NOT NULL auto_increment,
+  `post_id` int(11) NOT NULL,
+  `multi_id` int(11) NOT NULL,
+  `vote_date` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`));
