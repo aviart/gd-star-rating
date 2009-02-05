@@ -2,7 +2,7 @@
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
 Version: 1.1.0
-Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review
+Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review, multi
 Requires at least: 2.5.0
 Tested up to: 2.7.0
 Stable tag: trunk
@@ -96,6 +96,8 @@ Plugin administration consist of 10 panels:
   Category based voting rules
 * Users:
   Votes organized on user base with IP lookup for each vote
+* Mulit Sets:
+  Main panel for multiple ratings feature
 * Settings:
   All options for this plugin are here
 * Tools:
@@ -131,7 +133,7 @@ My Wordpress blog has this plugin installed, so you can see it in action there.
 = Is there a user guide for this plugin? =
 Yes, there is a PDF file with detailed explanations on over 30 pages. You can download it from official plugin blog.
 
-= I have encountered a bug. How can I determine what the problem is? =
+= I have encountered a potential bug? =
 Plugin has debug into log file feature built in. Information on activating this can be found in user guide.
 
 == Screenshots ==
@@ -149,6 +151,7 @@ Plugin has debug into log file feature built in. Information on activating this 
 == Website ==
 
 * Plugin Home: http://www.gdstarrating.com/
+* Feedburner: http://feeds2.feedburner.com/GdStarRating
 * GDragoN Home: http://www.gdragon.info/
 * GDragoN Blog: http://wp.gdragon.info/
 
@@ -156,16 +159,14 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
 * PDF User Guide: http://www.gdstarrating.com/downloads/user-guide/
+* Tutorials: http://www.gdstarrating.com/category/tutorials/
 * Email: starrating@gdragon.info
 
 == Communities ==
 
 * Google Code: http://code.google.com/p/gd-star-rating/
 * Ohloh: https://www.ohloh.net/p/gd-star-rating/
-
-== WordPress Extend ==
-
-* Plugin: http://wordpress.org/extend/plugins/gd-star-rating/
+* WordPress Extend: http://wordpress.org/extend/plugins/gd-star-rating/
 
 == Thanx To ==
 

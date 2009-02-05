@@ -46,6 +46,23 @@
     }
 
     /**
+     * Renders multi rating block. This function call must be withing the post loop.
+     *
+     * @global object $post post data
+     * @global object $userdata user data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param int $multi_set_id id of the multi rating set to use
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_render_multi($multi_set_id, $echo = true) {
+        global $post, $userdata, $gdsr;
+
+        if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id));
+        else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id));
+    }
+
+    /**
      * Manual render of comment rating
      *
      * @global object $comment comment data

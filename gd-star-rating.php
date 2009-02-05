@@ -1186,8 +1186,8 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                 $data = GDSRDatabase::get_comment_data($id);
                 $post_data = GDSRDatabase::get_post_data($data->post_id);
 
-                if ($votes == 1) $tense = $this->o["word_votes_singular"];
-                else $tense = $this->o["word_votes_plural"];
+                if ($votes == 1) $tense = $this->x["word_votes_singular"];
+                else $tense = $this->x["word_votes_plural"];
 
                 $unit_width = $this->o["cmm_size"];
                 $unit_count = $this->o["cmm_stars"];

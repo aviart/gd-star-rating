@@ -4,6 +4,7 @@
 
 === Version: 1.1.0 / february 5 2009 ===
   * new: post and page multi rating
+  * new: function for manula insertion of multi rating code
   * new: integrate post rating into rss feed posts
   * new: cache support and cache cleanup tool
   * new: auto creating of extra folders
@@ -35,6 +36,7 @@
   * fix: few more missing translation strings
   * fix: some settings not saving properly
   * fix: generating rating images
+  * fix: generating ajax reponse rating for comments
   * fix: small and rare css bug
 
 === Version: 1.0.9 / january 13 2009 ===
