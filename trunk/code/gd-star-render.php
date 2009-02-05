@@ -47,7 +47,7 @@ class GDSRRender {
 
     function rating_stars_multi($post_id, $set_id, $id, $height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '') {
         $rater.= '<div id="gdsr_mur_stars_'.$post_id.'_'.$set_id.'_'.$id.'" class="ratemulti"><div class="starsbar">';
-        $rater.= '<div class="gdouter" align="left">';
+        $rater.= '<div class="gdouter" align="left" style="width: '.($unit_count * $height).'px">';
         $rater.= '<div id="gdsr_mur_stars_rated_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($value * $height).'px;" class="gdinner"></div>';
         if ($allow_vote) {
             $rater.= '<div id="gdsr_mur_stars_current_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: 0px;" class="gdcurrent"></div>';
@@ -306,7 +306,7 @@ class GDSRRender {
             $rater.= '<tr class="'.$tr_class.'">';
             $rater.= '<td>'.$el.':</td>';
             $rater.= '<td>';
-            $rater.= GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, 10, $allow_vote, $votes[$i]["rating"]);
+            $rater.= GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"]);
             $rater.= '</td>';
             $rater.= '</tr>';
             if ($tr_class == "mtrow") $tr_class.= " alternate";

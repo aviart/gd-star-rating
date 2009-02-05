@@ -15,11 +15,14 @@ function insert_styles($css) {
     else $url = "../../../gd-star-rating/stars/".$style."/stars".$size.".".$type;
 
     echo "\r\n\r\n";
-    echo '.'.$css["name"].' { width: '.($stars * $size).'px; }';
-    echo "\r\n";
+    if ($css["name"] != "ratemulti") {
+        echo '.'.$css["name"].' { width: '.($stars * $size).'px; }';
+        echo "\r\n";
+    }
     echo '.'.$css["name"].' .starsbar { height: '.$size.'px; }';
     echo "\r\n";
-    echo ".".$css["name"]." .starsbar .gdouter { width: ".($stars * $size)."px; height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }";
+    if ($css["name"] != "ratemulti") echo ".".$css["name"]." .starsbar .gdouter { width: ".($stars * $size)."px; height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }";
+    else echo ".".$css["name"]." .starsbar .gdouter { height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }";
     echo "\r\n";
     echo ".".$css["name"]." .starsbar .gdinner { height: ".$size."px; background: url('".$url."') repeat-x 0px -".(2 * $size)."px; }";
     echo "\r\n";
