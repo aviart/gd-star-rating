@@ -55,6 +55,7 @@ function gdsrAddNewMulti() {
             <th scope="col"><?php _e("Description", "gd-star-rating"); ?></th>
             <th scope="col" width="55"><?php _e("Stars", "gd-star-rating"); ?></th>
             <th scope="col" width="333"><?php _e("Ratings", "gd-star-rating"); ?></th>
+            <th scope="col" width="333"><?php _e("Statistics", "gd-star-rating"); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -83,6 +84,10 @@ function gdsrAddNewMulti() {
             for ($i = $half; $i < count($elements); $i++)
                 echo sprintf("[%s] %s (%s)<br />", $i+1, $elements[$i], $weights[$i]);
             echo '</td></tr></table>';
+        echo '</td>';
+        echo '<td>';
+            echo sprintf("[ <strong>%s</strong> ] %s<br />", GDSRDBMulti::get_usage_count_posts($row->multi_id), __("Posts", "gd-star-rating"));
+            echo sprintf("[ <strong>%s</strong> ] %s", GDSRDBMulti::get_usage_count_voters($row->multi_id), __("Voters", "gd-star-rating"));
         echo '</td>';
         echo '</tr>';
         

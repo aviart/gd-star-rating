@@ -150,6 +150,18 @@ wp_gdsr_dump("CHECKVOTE_MULTI", $vote_data);
             return false;
     }
 
+    function get_usage_count_posts($set_id) {
+        global $wpdb, $table_prefix;
+        return $wpdb->get_var(sprintf("select count(*) from %sgdsr_multis_data where multi_id = %s", $table_prefix, $set_id));
+    }
+
+    function get_usage_count_voters($set_id) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select count(*) from %sgdsr_votes_log where multi_id = %s and vote_type = 'multis'",
+            $table_prefix, $set_id);
+        return $wpdb->get_var($sql);
+    }
+
     function get_multis_count() {
         global $wpdb, $table_prefix;
         return $wpdb->get_var(sprintf("select count(*) from %sgdsr_multis", $table_prefix));
