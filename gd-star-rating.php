@@ -963,7 +963,7 @@ if (!class_exists('GDStarRating')) {
             $css_string = "a".$this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
             if ($this->o["multis_active"] == 1) {
                 $gfx_m = $this->g->find_stars($this->o["mur_style"]);
-                $css_string.= "#m".$this->o["mur_style"]."|".$this->o["mur_size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
+                $css_string.= "#m".$this->o["mur_style"]."|".$this->o["mur_size"]."|20|".$gfx_a->type."|".$gfx_a->primary;
                 $include_mur_rating = true;
             }
             if (is_single() || is_page()) {
@@ -2559,7 +2559,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             }
 
             if ($allow_vote) {
-                $allow_vote = $this->check_cookie($rd_post_id, "multis");
+                $allow_vote = $this->check_cookie($rd_post_id."#".$set->multi_id, "multis");
                 if (!$allow_vote) $dbg_allow = "C";
             }
 
