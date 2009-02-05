@@ -2,6 +2,9 @@
 
 == Roadmap ==
 
+=== 1.1.5 ===
+  * redesigned templates system
+
 === 1.2.0 ===
   * customization of bot filter
   * reccomendation ratings
