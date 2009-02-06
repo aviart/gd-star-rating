@@ -5,6 +5,7 @@
 === Version: 1.1.1 / february 6 2009 ===
   * new: check safe mode before checking cache folders
   * edit: database alter added for multi ratings data table
+  * edit: default feed replaced with new feedburner feed
   * fix: create new record in the database for multi ratings
   * fix: cache mkdir warning
 

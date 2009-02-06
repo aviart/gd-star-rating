@@ -1,4 +1,4 @@
-<?php require_once(ABSPATH . WPINC . '/rss.php'); ?>
+<?php require_once(ABSPATH.WPINC.'/rss.php'); ?>
 
 <div class="wrap">
 <h2>GD Star Rating</h2>
@@ -52,18 +52,18 @@
         <h3 class="dashboard-widget-title"><span><?php _e("Latest News", "gd-star-rating") ?></span>
         <small>
             <a target="_blank" href="http://wp.gdragon.info/"><?php _e("See All", "gd-star-rating"); ?></a> | <img class="rss-icon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/>
-            <a href="http://wp.gdragon.info/feed/">RSS</a>
+            <a href="http://feeds2.feedburner.com/GdStarRating">RSS</a>
         </small>
         <br class="clear"/></h3>
         <div class="dashboard-widget-content">
         <?php
 
           if ($options["news_feed_active"] == 1) {
-              $rss = fetch_rss('http://wp.gdragon.info/category/plugins/gd-star-rating/feed/');
+              $rss = fetch_rss('http://www.gdstarrating.com/feed/');
               if (isset($rss->items) && 0 != count($rss->items))
               {
                 echo '<ul>';
-                $rss->items = array_slice($rss->items, 0, 3);
+                $rss->items = array_slice($rss->items, 0, $wpv < 27 ? 2 : 3);
                 foreach ($rss->items as $item)
                 {
                 ?>
@@ -76,7 +76,7 @@
               else
               {
                 ?>
-                <p><?php printf(__("An error occured while loading newsfeed. Go to the %sfront page%s to check for updates.", "gd-star-rating"), '<a href="http://wp.gdragon.info/">', '</a>') ?></p>
+                <p><?php printf(__("An error occured while loading newsfeed. Go to the %sfront page%s to check for updates.", "gd-star-rating"), '<a href="http://www.gdstarrating.com/">', '</a>') ?></p>
                 <?php
               }
           }
