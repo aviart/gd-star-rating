@@ -1,0 +1,48 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 1.1.1 / february 6 2009 ===
+  * new: check safe mode before checking cache folders
+  * edit: database alter added for multi ratings data table
+  * edit: default feed replaced with new feedburner feed
+  * fix: create new record in the database for multi ratings
+  * fix: cache mkdir warning
+  * fix: votes count returend after voting
+
+=== Version: 1.1.0 / february 5 2009 ===
+  * new: post and page multi rating
+  * new: function for manula insertion of multi rating code
+  * new: integrate post rating into rss feed posts
+  * new: cache support and cache cleanup tool
+  * new: auto creating of extra folders
+  * new: rss integration settings
+  * new: rss post rendering template
+  * new: generate rating images
+  * new: gfx get type methods
+  * new: powered by button
+  * new: ajax url now made using siteurl option
+  * new: integrate powered by button in rss feed posts
+  * new: gfx set get path method
+  * new: multi ratings table layout
+  * edit: improved db install procedure
+  * edit: more optimizations to loading of javascript and css rating code
+  * edit: ajax vote now returns value always even for duplicate votes
+  * edit: improved saving vote functions
+  * edit: reorganized templates panel
+  * edit: main class optimizations
+  * edit: skip rendering loaders if voting is not allowed
+  * edit: renaming outside access files
+  * edit: renaming some of the css classes
+  * edit: small improvements to rating block rendering
+  * edit: wp 2.7 plugin menu icon
+  * edit: tinymce plugin icon
+  * edit: various small improvements
+  * fix: stars missing for pages comments rating
+  * fix: rendering of loaders for post and comment rating blocks
+  * fix: small problem with backgound property of rating stars
+  * fix: few more missing translation strings
+  * fix: some settings not saving properly
+  * fix: generating rating images
+  * fix: generating ajax reponse rating for comments
+  * fix: small and rare css bug
