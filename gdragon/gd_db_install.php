@@ -49,6 +49,20 @@ if (!class_exists('gdDBInstall')) {
             }
         }
 
+        function alter_tables($path) {
+            global $wpdb, $table_prefix;
+            $path.= "install/alter.txt";
+            if (file_exists($path)) {
+                $alters = file($path);
+                foreach ($alters as $a) {
+                    if (trim($a) != '') {
+                        $a = sprintf($a, $table_prefix);
+                        $wpdb->query($a);
+                    }
+                }
+            }
+        }
+
         function delete_tables($path) {
             global $wpdb, $table_prefix;
             $path.= "install/delete.txt";

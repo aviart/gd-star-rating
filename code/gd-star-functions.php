@@ -68,6 +68,15 @@ class GDSRCommentRating {
 
 class GDSRHelper {
     /**
+     * Checks if the php is running in safe mode.
+     *
+     * @return bool
+     */
+    function php_in_safe_mode() {
+        return (@ini_get("safe_mode") == 'On' || @ini_get("safe_mode") === 1) ? TRUE : FALSE;
+    }
+
+    /**
      * Creates extra folders.
      *
      * @return bool cache folder exists and is writeable
