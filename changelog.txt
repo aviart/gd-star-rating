@@ -7,6 +7,7 @@
   * edit: database alter added for multi ratings data table
   * edit: default feed replaced with new feedburner feed
   * fix: create new record in the database for multi ratings
+  * fix: saving multi rating text template
   * fix: cache mkdir warning
   * fix: votes count returend after voting
 

@@ -25,7 +25,7 @@ class GDSRDefaults {
         "version" => "1.1.1",
         "date" => "2009.02.06.",
         "status" => "Stable",
-        "build" => 427,
+        "build" => 429,
         "news_feed_active" => 1,
         "cache_active" => 1,
         "cache_cleanup_auto" => false,
