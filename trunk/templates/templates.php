@@ -2,7 +2,7 @@
 
     if ($_POST['gdsr_action'] == 'save') :
         $gdsr_options["rss_article_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_rss_ratingtext'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["multis_rating_text"] = stripslashes(htmlentities($_POST['gdsr_mur_tpl_ratingtext'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["multis_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_mur_ratingtext'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["article_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_ratingtext'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["cmm_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_cmm_ratingtext'], ENT_QUOTES, 'UTF-8'));
         $gdsr_options["word_votes_singular"] = stripslashes(htmlentities($_POST['gdsr_word_votessingular'], ENT_QUOTES, 'UTF-8'));
