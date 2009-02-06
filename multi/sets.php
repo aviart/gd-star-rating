@@ -2,6 +2,14 @@
 
 global $wpdb;
 
+if ($_POST["gdsr_operation"] == __("Delete Selected Sets", "gd-star-rating")) {
+    $gdsr_items = $_POST["gdsr_item"];
+    if (count($gdsr_items) > 0) {
+        $ids = "(".join(", ", $gdsr_items).")";
+        GDSRDBMulti::delete_sets($ids);
+    }
+}
+
 $posts_per_page = $options["admin_rows"];
 
 $url = $_SERVER['REQUEST_URI'];
@@ -32,7 +40,7 @@ function gdsrAddNewMulti() {
 </script>
 
 <div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
-<form id="gdsr-articles" method="post" action="">
+<form method="post" action="">
 <div class="gdsr">
 <h2>GD Star Rating: <?php _e("Multi Sets", "gd-star-rating"); ?></h2>
 
@@ -105,7 +113,7 @@ function gdsrAddNewMulti() {
 
 <div class="tablenav">
     <div class="alignleft">
-        <input class="button-secondary delete" type="submit" name="gdsr_filter" value="<?php _e("Delete Selected Sets", "gd-star-rating"); ?>" />
+        <input class="button-secondary delete" type="submit" name="gdsr_operation" value="<?php _e("Delete Selected Sets", "gd-star-rating"); ?>" />
     </div>
     <div class="tablenav-pages">
         <?php echo $pager; ?>

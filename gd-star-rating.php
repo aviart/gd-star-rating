@@ -1073,7 +1073,7 @@ wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
                 $rating = @number_format($rating, 1);
                 $votes_js[] = $rating * $this->o["mur_size"];
                 $weighted += $rating * $set->weight[$i];
-                $total_votes += $votes[$i]["votes"];
+                $total_votes += $votes;
                 $i++;
             }
             $rating = @number_format($weighted / $i, 1);

@@ -8,6 +8,7 @@
   * edit: default feed replaced with new feedburner feed
   * fix: create new record in the database for multi ratings
   * fix: cache mkdir warning
+  * fix: votes count returend after voting
 
 === Version: 1.1.0 / february 5 2009 ===
   * new: post and page multi rating
