@@ -86,7 +86,7 @@ Plugin can import data from different rating plugins:
 
 == Configuration ==
 
-Plugin administration consist of 10 panels:
+Plugin administration consist of 12 panels:
 
 * Front Page:
   General info about the plugin and links
@@ -114,6 +114,7 @@ Plugin administration consist of 10 panels:
   Upgrade and setup options
 
 == Installation ==
+Plugin folder in the WordPress plugins folder must be `gd-star-rating`.
 
 * Upload `gd-star-rating` folder to the `/wp-content/plugins/` directory
 * Activate the plugin through the 'Plugins' menu in WordPress
@@ -141,8 +142,9 @@ Plugin has debug into log file feature built in. Information on activating this 
 1. Plugin settings General tab
 2. Post And Pages Voting And Rating statistics
 3. Example rating stars
-4. Post that uses shortcode with rating stars
-5. TinyMCE3 plugin
+4. Example multi rating block
+5. Post that uses shortcode with rating stars
+6. TinyMCE3 plugin
 
 == Source SVN ==
 

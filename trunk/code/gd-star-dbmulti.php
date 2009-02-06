@@ -1,6 +1,12 @@
 <?php
 
 class GDSRDBMulti {
+    function delete_sets($ids) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("delete from %sgdsr_multis where multi_id in %s", $table_prefix, $ids);
+        $wpdb->query($sql);
+    }
+
     function save_vote($post_id, $set_id, $user_id, $ip, $ua, $values, $post_data) {
         global $wpdb, $table_prefix;
         $ua = str_replace("'", "''", $ua);
@@ -227,11 +233,6 @@ class GDMultiSingle {
                 $this->weight[] = 1;
             }
         }
-    }
-
-    function get_empty_value() {
-        $value = str_repeat("0|", count($this->object));
-        return substr($value, 0, strlen($value) - 1);
     }
 }
 
