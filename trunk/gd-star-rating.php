@@ -52,6 +52,7 @@ if (!class_exists('GDStarRating')) {
         var $is_ban = false;
         var $use_nonce = true;
         var $extra_folders = false;
+        var $safe_mode = false;
         var $is_cached = false;
 
         var $loader_article = "";
@@ -693,6 +694,7 @@ if (!class_exists('GDStarRating')) {
                 gdDBInstall::delete_tables(STARRATING_PATH);
                 gdDBInstall::create_tables(STARRATING_PATH);
                 gdDBInstall::upgrade_tables(STARRATING_PATH);
+                gdDBInstall::alter_tables(STARRATING_PATH);
                 $this->o["database_upgrade"] = date("r");
             }
             
@@ -896,7 +898,9 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin) {
                 if ($this->wp_version >= 26) add_thickbox();
                 else wp_enqueue_script("thickbox");
-                $this->extra_folders = GDSRHelper::create_folders();
+                $this->safe_mode = GDSRHelper::php_in_safe_mode();
+                if (!$this->safe_mode)
+                    $this->extra_folders = GDSRHelper::create_folders();
             }
             $this->l = get_locale();
             if(!empty($this->l)) {
@@ -1556,6 +1560,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             $gdsr_gfx = $this->g;
             $gdsr_wpr8 = $this->wpr8_available;
             $extra_folders = $this->extra_folders;
+            $safe_mode = $this->safe_mode;
             
             $wpr8 = $this->wpr8;
             
@@ -1604,6 +1609,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                 gdDBInstall::delete_tables(STARRATING_PATH);
                 gdDBInstall::create_tables(STARRATING_PATH);
                 gdDBInstall::upgrade_tables(STARRATING_PATH);
+                gdDBInstall::alter_tables(STARRATING_PATH);
                 $this->o["database_upgrade"] = date("r");
                 update_option('gd-star-rating', $this->o);
             }

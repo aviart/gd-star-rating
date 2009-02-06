@@ -22,10 +22,10 @@ class GDSRDefaults {
     );
 
     var $default_options = array(
-        "version" => "1.1.0",
-        "date" => "2009.02.05.",
+        "version" => "1.1.1",
+        "date" => "2009.02.06.",
         "status" => "Stable",
-        "build" => 424,
+        "build" => 425,
         "news_feed_active" => 1,
         "cache_active" => 1,
         "cache_cleanup_auto" => false,
