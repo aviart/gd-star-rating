@@ -1,1 +1,0 @@
-<?php include(STARRATING_PATH.'integrate/editcomment.php'); ?>

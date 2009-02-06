@@ -1,8 +1,0 @@
-CREATE TABLE `%sgdsr_multis_data` (
-  `id` bigint(20) unsigned NOT NULL auto_increment,
-  `post_id` int(11) NOT NULL,
-  `multi_id` int(11) NOT NULL,
-  `review` decimal(3,1) default '-1.0',
-  `review_text` varchar(255) default NULL,
-  PRIMARY KEY (`id`),
-  KEY `post_id` (`post_id`));
