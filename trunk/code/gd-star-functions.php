@@ -68,15 +68,6 @@ class GDSRCommentRating {
 
 class GDSRHelper {
     /**
-     * Checks if the php is running in safe mode.
-     *
-     * @return bool
-     */
-    function php_in_safe_mode() {
-        return (@ini_get("safe_mode") == 'On' || @ini_get("safe_mode") === 1) ? TRUE : FALSE;
-    }
-
-    /**
      * Creates extra folders.
      *
      * @return bool cache folder exists and is writeable
@@ -100,7 +91,12 @@ class GDSRHelper {
         }
         return is_dir(STARRATING_CACHE_PATH) && is_writable(STARRATING_CACHE_PATH);
     }
-    
+
+    /**
+     * Removes all files from cache
+     *
+     * @param string $path Path to the cache folder
+     */
     function clean_cache($path) {
         if (!file_exists($path))
             return;
@@ -124,6 +120,9 @@ class GDSRHelper {
         echo('<![endif]-->');
     }
 
+    /**
+     * Adding elements for IE Opacity fix
+     */
     function ie_opacity_fix() {
         echo('<!--[if IE]>');
         echo('<style type="text/css">');
