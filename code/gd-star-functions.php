@@ -81,7 +81,7 @@ class GDSRHelper {
      *
      * @return bool cache folder exists and is writeable
      */
-    function create_folders() {
+    function create_folders($version) {
         if (is_dir(STARRATING_XTRA_PATH)) {
             if (is_writable(STARRATING_XTRA_PATH)) {
                 if (!is_dir(STARRATING_CACHE_PATH)) mkdir(STARRATING_CACHE_PATH, 0755);
@@ -90,8 +90,13 @@ class GDSRHelper {
             }
         }
         else {
-            mkdir(STARRATING_XTRA_PATH, 0755);
-            GDSRHelper::create_folders();
+            if ($version < 27) $path = get_option('siteurl').'/wp-content';
+            else $path = WP_CONTENT_URL;
+            if (is_writable($path)) {
+                mkdir(STARRATING_XTRA_PATH, 0755);
+                GDSRHelper::create_folders();
+            }
+            else return false;
         }
         return is_dir(STARRATING_CACHE_PATH) && is_writable(STARRATING_CACHE_PATH);
     }

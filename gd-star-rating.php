@@ -810,9 +810,9 @@ if (!class_exists('GDStarRating')) {
             global $wp_version;
             $this->wp_version = substr(str_replace('.', '', $wp_version), 0, 2);
             if ($this->wp_version < 26) {
-                $this->plugin_url = get_option('home').'/'.PLUGINDIR.'/gd-star-rating/';
+                $this->plugin_url = get_option('siteurl').'/'.PLUGINDIR.'/gd-star-rating/';
                 $this->plugin_ajax = get_option('siteurl').'/'.PLUGINDIR.'/gd-star-rating/ajax.php';
-                $this->plugin_xtra_url = get_option('home').'/wp-content/gd-star-rating/';
+                $this->plugin_xtra_url = get_option('siteurl').'/wp-content/gd-star-rating/';
                 $this->plugin_xtra_path = ABSPATH.'/wp-content/gd-star-rating/';
                 $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
             }
@@ -900,7 +900,7 @@ if (!class_exists('GDStarRating')) {
                 else wp_enqueue_script("thickbox");
                 $this->safe_mode = GDSRHelper::php_in_safe_mode();
                 if (!$this->safe_mode)
-                    $this->extra_folders = GDSRHelper::create_folders();
+                    $this->extra_folders = GDSRHelper::create_folders($this->wp_version);
             }
             $this->l = get_locale();
             if(!empty($this->l)) {
