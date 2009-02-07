@@ -2,6 +2,9 @@
 
 == Change Log ==
 
+=== Version: 1.1.2 / february 11 2009 ===
+  * fix: mkdir warning problem with wp-content not writable
+
 === Version: 1.1.1 / february 6 2009 ===
   * new: check safe mode before checking cache folders
   * edit: database alter added for multi ratings data table

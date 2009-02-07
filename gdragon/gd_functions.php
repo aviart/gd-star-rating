@@ -211,6 +211,21 @@ if (!class_exists('gdFunctions')) {
             return $col;
         }
 
+        /**
+         * Checks if the php is running in safe mode.
+         *
+         * @return bool
+         */
+        function php_in_safe_mode() {
+            return (@ini_get("safe_mode") == 'On' || @ini_get("safe_mode") === 1) ? TRUE : FALSE;
+        }
+
+        /**
+         * Returns mySQL version.
+         *
+         * @param bool $full return full version string or only main version number
+         * @return string mySQL version
+         */
         function mysql_version($full = false) {
             if ($full)
                 return mysql_get_server_info();
@@ -218,11 +233,22 @@ if (!class_exists('gdFunctions')) {
                 return substr(mysql_get_server_info(), 0, 1);
         }
 
+        /**
+         * Returns true/false if the mysql is older than 4.1
+         *
+         * @return bool mySQL older than 4.1 returns true
+         */
         function mysql_pre_4_1() {
             $mysql = str_replace(".", "", substr(mysql_get_server_info(), 0, 3));
             return $mysql < 41;
         }
 
+        /**
+         * Returns PHP version.
+         *
+         * @param bool $full return full version string or only main version number
+         * @return string PHP version
+         */
         function php_version($full = false) {
             if ($full)
                 return phpversion();
@@ -230,6 +256,12 @@ if (!class_exists('gdFunctions')) {
                 return substr(phpversion(), 0, 1);
         }
 
+        /**
+         * Adds slashes to a string if not already added.
+         *
+         * @param string $input Input string
+         * @return string Result
+         */
         function add_slashes($input) {
             if (get_magic_quotes_gpc()) return $input;
             else return addslashes($input);
