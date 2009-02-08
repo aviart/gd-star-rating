@@ -22,8 +22,8 @@ class GDSRDefaults {
     );
 
     var $default_options = array(
-        "version" => "1.1.1",
-        "date" => "2009.02.06.",
+        "version" => "1.1.2",
+        "date" => "2009.02.09.",
         "status" => "Stable",
         "build" => 429,
         "news_feed_active" => 1,
