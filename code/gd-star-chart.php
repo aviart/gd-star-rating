@@ -24,7 +24,6 @@ class GDSRChart {
         }
         $sql = sprintf("SELECT user_voters, user_votes, visitor_voters, visitor_votes, %s as vote_date FROM %sgdsr_votes_trend where vote_type = '%s' and id = %s and %s between DATE_SUB(NOW(), INTERVAL %s DAY) AND NOW() order by vote_date asc",
             $strtodate, $table_prefix, $vote_type, $id, $strtodate, $days);
-        wp_gdsr_dump("sql", $sql);
         $results = $wpdb->get_results($sql);
         $data = array();
         for ($i = $days; $i > 0; $i--) {
