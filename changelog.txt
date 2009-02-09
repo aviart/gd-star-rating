@@ -3,9 +3,13 @@
 == Change Log ==
 
 === Version: 1.1.2 / february 9 2009 ===
+  * new: multi set support for custom encoding
+  * new: encoding for character set
   * edit: multi rating will not render for feeds
+  * edit: small changes to plugin admin front page
   * fix: mkdir warning problem with wp-content not writable
   * fix: error with including iepngfix
+  * fix: error with saving new multi set
 
 === Version: 1.1.1 / february 6 2009 ===
   * new: check safe mode before checking cache folders

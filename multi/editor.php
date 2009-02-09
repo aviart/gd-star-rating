@@ -20,12 +20,12 @@ else {
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Name", "gd-star-rating"); ?></th>
     <td>
-        <input type="text" name="gdsr_ms_name" id="gdsr_ms_name" value="<?php echo $set->name; ?>" style="width: 300px" />
+        <input type="text" name="gdsr_ms_name" id="gdsr_ms_name" value="<?php echo html_entity_decode($set->name, ENT_QUOTES, STARRATING_ENCODING); ?>" style="width: 300px" />
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Description", "gd-star-rating"); ?></th>
     <td>
-        <input type="text" name="gdsr_ms_description" id="gdsr_ms_description" value="<?php echo $set->description; ?>" style="width: 700px" />
+        <input type="text" name="gdsr_ms_description" id="gdsr_ms_description" value="<?php echo html_entity_decode($set->description, ENT_QUOTES, STARRATING_ENCODING); ?>" style="width: 700px" />
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Number Of Stars", "gd-star-rating"); ?></th>
@@ -42,7 +42,7 @@ else {
             <tr>
                 <td width="50">[ <?php echo $counter; ?> ]</td>
                 <td width="100"><?php _e("Name", "gd-star-rating"); ?>:</td>
-                <td><input type="text" name="gdsr_ms_element[<?php echo $i; ?>]" id="gdsr_ms_element_<?php echo $i; ?>" value="<?php echo $set->object[$i]; ?>" style="width: 200px" /></td>
+                <td><input type="text" name="gdsr_ms_element[<?php echo $i; ?>]" id="gdsr_ms_element_<?php echo $i; ?>" value="<?php echo html_entity_decode($set->object[$i], ENT_QUOTES, STARRATING_ENCODING); ?>" style="width: 200px" /></td>
                 <td width="20"></td>
                 <td width="100"><?php _e("Weight", "gd-star-rating"); ?>:</td>
                 <td><input type="text" name="gdsr_ms_weight[<?php echo $i; ?>]" id="gdsr_ms_weight_<?php echo $i; ?>" value="<?php echo $set->weight[$i]; ?>" style="width: 50px; text-align: right;" /></td>

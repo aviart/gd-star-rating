@@ -3,6 +3,7 @@
     if ($_POST['gdsr_action'] == 'save') {
         $gdsr_options["news_feed_active"] = isset($_POST['gdsr_news_feed_active']) ? 1 : 0;
 
+        $gdsr_options["encoding"] = $_POST['gdsr_encoding'];
         $gdsr_options["admin_width"] = $_POST['gdsr_admin_width'];
         $gdsr_options["admin_rows"] = $_POST['gdsr_admin_rows'];
         $gdsr_options["admin_advanced"] = isset($_POST['gdsr_admin_advanced']) ? 1 : 0;
@@ -89,21 +90,21 @@
         $gdsr_options["rss_text"] = $_POST['gdsr_rss_text'];
         $gdsr_options["rss_render"] = $_POST['gdsr_rss_render'];
         $gdsr_options["rss_header"] = isset($_POST['gdsr_rss_header']) ? 1 : 0;
-        $gdsr_options["rss_header_text"] = stripslashes(htmlentities($_POST['gdsr_rss_header_text'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["rss_header_text"] = stripslashes(htmlentities($_POST['gdsr_rss_header_text'], ENT_QUOTES, STARRATING_ENCODING));
 
         $gdsr_options["style"] = $_POST['gdsr_style'];
         $gdsr_options["size"] = $_POST['gdsr_size'];
         $gdsr_options["text"] = $_POST['gdsr_text'];
         $gdsr_options["align"] = $_POST['gdsr_align'];
         $gdsr_options["header"] = isset($_POST['gdsr_header']) ? 1 : 0;
-        $gdsr_options["header_text"] = stripslashes(htmlentities($_POST['gdsr_header_text'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["header_text"] = stripslashes(htmlentities($_POST['gdsr_header_text'], ENT_QUOTES, STARRATING_ENCODING));
         $gdsr_options["class_block"] = $_POST['gdsr_classblock'];
         $gdsr_options["class_text"] = $_POST['gdsr_classtext'];
 
         $gdsr_options["mur_style"] = $_POST['gdsr_mur_style'];
         $gdsr_options["mur_size"] = $_POST['gdsr_mur_size'];
         $gdsr_options["mur_header"] = isset($_POST['gdsr_mur_header']) ? 1 : 0;
-        $gdsr_options["mur_header_text"] = stripslashes(htmlentities($_POST['gdsr_mur_header_text'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["mur_header_text"] = stripslashes(htmlentities($_POST['gdsr_mur_header_text'], ENT_QUOTES, STARRATING_ENCODING));
         $gdsr_options["mur_class_block"] = $_POST['gdsr_mur_classblock'];
         $gdsr_options["mur_class_text"] = $_POST['gdsr_mur_classtext'];
         $gdsr_options["mur_class_table"] = $_POST['gdsr_mur_classtable'];
@@ -114,7 +115,7 @@
         $gdsr_options["cmm_text"] = $_POST['gdsr_cmm_text'];
         $gdsr_options["cmm_align"] = $_POST['gdsr_cmm_align'];
         $gdsr_options["cmm_header"] = isset($_POST['gdsr_cmm_header']) ? 1 : 0;
-        $gdsr_options["cmm_header_text"] = stripslashes(htmlentities($_POST['gdsr_cmm_header_text'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["cmm_header_text"] = stripslashes(htmlentities($_POST['gdsr_cmm_header_text'], ENT_QUOTES, STARRATING_ENCODING));
         $gdsr_options["cmm_class_block"] = $_POST['gdsr_cmm_classblock'];
         $gdsr_options["cmm_class_text"] = $_POST['gdsr_cmm_classtext'];
         
@@ -124,7 +125,7 @@
         $gdsr_options["review_align"] = $_POST['gdsr_review_align'];
         $gdsr_options["review_header"] = isset($_POST['gdsr_review_header']) ? 1 : 0;
 
-        $gdsr_options["review_header_text"] = stripslashes(htmlentities($_POST['gdsr_review_header_text'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["review_header_text"] = stripslashes(htmlentities($_POST['gdsr_review_header_text'], ENT_QUOTES, STARRATING_ENCODING));
         $gdsr_options["review_class_block"] = $_POST['gdsr_review_classblock'];
                            
         $gdsr_options["cmm_review_style"] = $_POST['gdsr_cmm_review_style'];

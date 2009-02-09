@@ -44,6 +44,17 @@
         <input type="checkbox" name="gdsr_news_feed_active" id="gdsr_news_feed_active"<?php if ($gdsr_options["news_feed_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_news_feed_active"><?php _e("Update front page latest news feed.", "gd-star-rating"); ?></label>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Charset", "gd-star-rating"); ?></th>
+    <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Character encoding", "gd-star-rating"); ?>:</td>
+                <td><input type="text" name="gdsr_encoding" id="gdsr_encoding" value="<?php echo $gdsr_options["encoding"]; ?>" style="width: 170px;" /></td>
+            </tr>
+        </table>
+        <?php _e("For list of supported charsets visit: ", "gd-star-rating"); ?><a href="http://www.php.net/manual/en/function.htmlentities.php" target="_blank">http://www.php.net/manual/en/function.htmlentities.php</a>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Administration Panels", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">

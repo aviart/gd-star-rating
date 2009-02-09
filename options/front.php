@@ -48,7 +48,7 @@
 <div id="dashboard-widgets-wrap">
 <div id="dashboard-widgets">
     <div id="dashboard_primary" class="dashboard-widget-holder widget_rss wp_dashboard_empty dashboard-left">
-        <div class="dashboard-widget" style="height:37em">
+        <div class="dashboard-widget" style="height:40em">
         <h3 class="dashboard-widget-title"><span><?php _e("Latest News", "gd-star-rating") ?></span>
         <small>
             <a target="_blank" href="http://wp.gdragon.info/"><?php _e("See All", "gd-star-rating"); ?></a> | <img class="rss-icon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/>
