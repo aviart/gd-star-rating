@@ -860,6 +860,8 @@ if (!class_exists('GDStarRating')) {
          * Main init method executed as wordpress action 'init'.
          */
         function init() {
+            define('STARRATING_ENCODING', $this->o["encoding"]);
+
             if (isset($_GET["page"])) {
                 if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
                     $this->admin_plugin = true;
@@ -1509,16 +1511,16 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             if ($_POST['gdsr_action'] == 'save') {
                 $editor = false;
                 $eset = new GDMultiSingle(false);
-                $eset->id = $_POST["gdsr_ms_id"];
-                $eset->name = $_POST["gdsr_ms_name"];
-                $eset->description = $_POST["gdsr_ms_description"];
+                $eset->multi_id = $_POST["gdsr_ms_id"];
+                $eset->name = stripslashes(htmlentities($_POST["gdsr_ms_name"], ENT_QUOTES, STARRATING_ENCODING));
+                $eset->description = stripslashes(htmlentities($_POST["gdsr_ms_description"], ENT_QUOTES, STARRATING_ENCODING));
                 $eset->stars = $_POST["gdsr_ms_stars"];
                 $elms = $_POST["gdsr_ms_element"];
                 $elwe = $_POST["gdsr_ms_weight"];
                 $i = 0;
                 foreach ($elms as $el) {
                     if (($el != "" && $eset->id == 0) || $eset->id > 0) {
-                        $eset->object[] = $el;
+                        $eset->object[] = stripslashes(htmlentities($el, ENT_QUOTES, STARRATING_ENCODING));
                         $ew = $elwe[$i];
                         if (!is_numeric($ew)) $ew = 1;
                         $eset->weight[] = $ew;
@@ -1883,7 +1885,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                     $options['div_filter'] = $posted['div_filter'];
                     $options['div_elements'] = $posted['div_elements'];
 
-                    $options['template'] = stripslashes(htmlentities($posted['template'], ENT_QUOTES, 'UTF-8'));
+                    $options['template'] = stripslashes(htmlentities($posted['template'], ENT_QUOTES, STARRATING_ENCODING));
                     
                     $options_all[$widget_number] = $options;
                 }
@@ -2006,9 +2008,9 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                     $options = array();
                     
                     $options['title'] = strip_tags(stripslashes($posted['title']));
-                    $options['tpl_header'] = stripslashes(htmlentities($posted['tpl_header'], ENT_QUOTES, 'UTF-8'));
-                    $options['tpl_item'] = stripslashes(htmlentities($posted['tpl_item'], ENT_QUOTES, 'UTF-8'));
-                    $options['tpl_footer'] = stripslashes(htmlentities($posted['tpl_footer'], ENT_QUOTES, 'UTF-8'));
+                    $options['tpl_header'] = stripslashes(htmlentities($posted['tpl_header'], ENT_QUOTES, STARRATING_ENCODING));
+                    $options['tpl_item'] = stripslashes(htmlentities($posted['tpl_item'], ENT_QUOTES, STARRATING_ENCODING));
+                    $options['tpl_footer'] = stripslashes(htmlentities($posted['tpl_footer'], ENT_QUOTES, STARRATING_ENCODING));
                     $options['tpl_title_length'] = $posted['title_max'];
                     
                     $options['rows'] = $posted['rows'];

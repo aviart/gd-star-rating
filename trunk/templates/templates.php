@@ -1,23 +1,23 @@
 <?php 
 
     if ($_POST['gdsr_action'] == 'save') :
-        $gdsr_options["rss_article_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_rss_ratingtext'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["multis_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_mur_ratingtext'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["article_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_ratingtext'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["cmm_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_cmm_ratingtext'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["word_votes_singular"] = stripslashes(htmlentities($_POST['gdsr_word_votessingular'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["word_votes_plural"] = stripslashes(htmlentities($_POST['gdsr_word_votesplural'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["table_row_even"] = stripslashes(htmlentities($_POST['gdsr_tablerow_even'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["table_row_odd"] = stripslashes(htmlentities($_POST['gdsr_tablerow_odd'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["rss_article_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_rss_ratingtext'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["multis_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_mur_ratingtext'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["article_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_ratingtext'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["cmm_rating_text"] = stripslashes(htmlentities($_POST['gdsr_tpl_cmm_ratingtext'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["word_votes_singular"] = stripslashes(htmlentities($_POST['gdsr_word_votessingular'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["word_votes_plural"] = stripslashes(htmlentities($_POST['gdsr_word_votesplural'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["table_row_even"] = stripslashes(htmlentities($_POST['gdsr_tablerow_even'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["table_row_odd"] = stripslashes(htmlentities($_POST['gdsr_tablerow_odd'], ENT_QUOTES, STARRATING_ENCODING));
 
-        $gdsr_options["multis_time_restricted_active"] = stripslashes(htmlentities($_POST['gdsr_mur_time_active'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["multis_time_restricted_closed"] = stripslashes(htmlentities($_POST['gdsr_mur_time_closed'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["time_restricted_active"] = stripslashes(htmlentities($_POST['gdsr_time_active'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["time_restricted_closed"] = stripslashes(htmlentities($_POST['gdsr_time_closed'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["multis_time_restricted_active"] = stripslashes(htmlentities($_POST['gdsr_mur_time_active'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["multis_time_restricted_closed"] = stripslashes(htmlentities($_POST['gdsr_mur_time_closed'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["time_restricted_active"] = stripslashes(htmlentities($_POST['gdsr_time_active'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["time_restricted_closed"] = stripslashes(htmlentities($_POST['gdsr_time_closed'], ENT_QUOTES, STARRATING_ENCODING));
 
-        $gdsr_options["shortcode_starrating_header"] = stripslashes(htmlentities($_POST['gdsr_tpl_srheader'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["shortcode_starrating_item"] = stripslashes(htmlentities($_POST['gdsr_tpl_sritem'], ENT_QUOTES, 'UTF-8'));
-        $gdsr_options["shortcode_starrating_footer"] = stripslashes(htmlentities($_POST['gdsr_tpl_srfooter'], ENT_QUOTES, 'UTF-8'));
+        $gdsr_options["shortcode_starrating_header"] = stripslashes(htmlentities($_POST['gdsr_tpl_srheader'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["shortcode_starrating_item"] = stripslashes(htmlentities($_POST['gdsr_tpl_sritem'], ENT_QUOTES, STARRATING_ENCODING));
+        $gdsr_options["shortcode_starrating_footer"] = stripslashes(htmlentities($_POST['gdsr_tpl_srfooter'], ENT_QUOTES, STARRATING_ENCODING));
         
         update_option("gd-star-rating-templates", $gdsr_options);
 
