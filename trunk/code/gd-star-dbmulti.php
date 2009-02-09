@@ -1,6 +1,58 @@
 <?php
 
 class GDSRDBMulti {
+    function get_stats_count($set_id, $dates = "0", $cats = "0", $search = "") {
+        global $table_prefix;
+        $where = " and ms.multi_id = ".$set_id;
+
+        if ($dates != "" && $dates != "0") {
+            $where.= " and year(p.post_date) = ".substr($dates, 0, 4);
+            $where.= " and month(p.post_date) = ".substr($dates, 4, 2);
+        }
+        if ($search != "")
+            $where.= " and p.post_title like '%".$search."%'";
+
+        if ($cats != "" && $cats != "0")
+            $sql = sprintf("SELECT p.post_type, count(*) as count FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p, %sgdsr_multis_data ms WHERE p.ID = ms.post_id and t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.ID AND t.term_id = %s AND p.post_status = 'publish'%s GROUP BY p.post_type",
+                $table_prefix, $table_prefix, $table_prefix, $table_prefix, $cats, $where
+            );
+        else
+            $sql = sprintf("select p.post_type, count(*) as count from %sposts p inner join %sgdsr_multis_data ms on p.ID = ms.post_id where p.post_status = 'publish'%s group by post_type",
+                $table_prefix, $table_prefix, $where
+            );
+        return $sql;
+    }
+
+    function get_stats($set_id, $select = "", $start = 0, $limit = 20, $dates = "0", $cats = "0", $search = "", $sort_column = 'id', $sort_order = 'desc', $additional = '') {
+        global $table_prefix;
+        $where = " and ms.multi_id = ".$set_id;
+
+        if ($dates != "" && $dates != "0") {
+            $where.= " and year(p.post_date) = ".substr($dates, 0, 4);
+            $where.= " and month(p.post_date) = ".substr($dates, 4, 2);
+        }
+        if ($search != "")
+            $where.= " and p.post_title like '%".$search."%'";
+
+        if ($select != "" && $select != "postpage")
+            $where.= " and post_type = '".$select."'";
+
+        if ($sort_column == 'post_title' || $sort_column == 'id')
+            $order = " ORDER BY p.".$sort_column." ".$sort_order;
+        else
+            $order = " ORDER BY ".$sort_column." ".$sort_order;
+
+        if ($cats != "" && $cats != "0")
+            $sql = sprintf("SELECT p.id as pid, p.post_title, p.post_type, ms.* FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p, %sgdsr_multis_data ms WHERE ms.post_id = p.id and t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.id AND t.term_id = %s AND p.post_status = 'publish'%s%s%s LIMIT %s, %s",
+                 $table_prefix, $table_prefix, $table_prefix, $table_prefix, $cats, $where, $additional, $order, $start, $limit
+            );
+        else
+            $sql = sprintf("select p.id as pid, p.post_title, p.post_type, ms.* from %sposts p left join %sgdsr_multis_data ms on p.id = ms.post_id WHERE p.post_status = 'publish'%s%s%s limit %s, %s",
+                $table_prefix, $table_prefix, $where, $additional, $order, $start, $limit
+            );
+        return $sql;
+    }
+
     function delete_sets($ids) {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete from %sgdsr_multis where multi_id in %s", $table_prefix, $ids);
@@ -79,6 +131,35 @@ class GDSRDBMulti {
         }
     }
     
+    function calculate_set_rating($set, $record_id) {
+        $values = GDSRDBMulti::get_values($record_id);
+        $weight_norm = array_sum($set->weight);
+        $weighted["users"]["rating"] = 0;
+        $weighted["visitors"]["rating"] = 0;
+        $weighted["total"]["rating"] = 0;
+        $weighted["users"]["votes"] = 0;
+        $weighted["visitors"]["votes"] = 0;
+        $weighted["total"]["votes"] = 0;
+        $votes = false;
+        foreach ($values as $row) {
+            $weighted["users"]["rating"] += ( ( $row->user_votes / $row->user_voters ) * $set->weight[$row->item_id] ) / $weight_norm;
+            $weighted["visitors"]["rating"] += ( ( $row->visitor_votes / $row->visitor_voters ) * $set->weight[$row->item_id] ) / $weight_norm;
+            $weighted["total"]["rating"] += ( ( ($row->visitor_votes + $row->user_votes) / ($row->visitor_voters + $row->user_voters) ) * $set->weight[$row->item_id] ) / $weight_norm;
+            if (!$votes) {
+                $votes = true;
+                $weighted["users"]["votes"] = $row->user_voters;
+                $weighted["visitors"]["votes"] = $row->visitor_voters;
+                $weighted["total"]["votes"] = $row->visitor_voters + $row->user_voters;
+            }
+        }
+
+        $weighted["users"]["rating"] = @number_format($weighted["users"]["rating"], 1);
+        $weighted["visitors"]["rating"] = @number_format($weighted["visitors"]["rating"], 1);
+        $weighted["total"]["rating"] = @number_format($weighted["total"]["rating"], 1);
+
+        return $weighted;
+    }
+
     function get_values($id, $source = 'dta') {
         global $wpdb, $table_prefix;
         

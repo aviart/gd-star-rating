@@ -1,7 +1,5 @@
 <?php
 
-global $wpdb;
-
 if ($_POST["gdsr_operation"] == __("Delete Selected Sets", "gd-star-rating")) {
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
@@ -94,8 +92,14 @@ function gdsrAddNewMulti() {
             echo '</td></tr></table>';
         echo '</td>';
         echo '<td>';
-            echo sprintf("[ <strong>%s</strong> ] %s<br />", GDSRDBMulti::get_usage_count_posts($row->multi_id), __("Posts", "gd-star-rating"));
-            echo sprintf("[ <strong>%s</strong> ] %s", GDSRDBMulti::get_usage_count_voters($row->multi_id), __("Voters", "gd-star-rating"));
+            $usg_counter = intval(GDSRDBMulti::get_usage_count_posts($row->multi_id));
+            $vtr_counter = intval(GDSRDBMulti::get_usage_count_voters($row->multi_id));
+            if ($usg_counter > 0)
+                $usg_counter = sprintf('<a href="./admin.php?page=gd-star-rating-multi-sets&gdsr=murpost&sid=%s"><strong style="color: red;">%s</strong></a>', $row->multi_id, $usg_counter);
+            if ($vtr_counter > 0)
+                $vtr_counter = sprintf('<a href="./admin.php?page=gd-star-rating-multi-sets&gdsr=murset&sid=%s"><strong style="color: red;">%s</strong></a>', $row->multi_id, $vtr_counter);
+            echo sprintf("[ <strong>%s</strong> ] %s<br />", $usg_counter, __("Posts", "gd-star-rating"));
+            echo sprintf("[ <strong>%s</strong> ] %s", $vtr_counter, __("Voters", "gd-star-rating"));
         echo '</td>';
         echo '</tr>';
         
