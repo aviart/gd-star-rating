@@ -1,0 +1,24 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 1.1.2 / february 9 2009 ===
+  * new: encoding for character set
+  * new: multi sets statistics page per post view
+  * new: multi set support for custom encoding
+  * edit: php multi ratings function expanded with post_id
+  * edit: normalized multi ratings calculations
+  * edit: multi rating will not render for feeds
+  * edit: small changes to plugin admin front page
+  * fix: mkdir warning problem with wp-content not writable
+  * fix: error with including iepngfix
+  * fix: error with saving new multi set
+
+=== Version: 1.1.1 / february 6 2009 ===
+  * new: check safe mode before checking cache folders
+  * edit: database alter added for multi ratings data table
+  * edit: default feed replaced with new feedburner feed
+  * fix: create new record in the database for multi ratings
+  * fix: saving multi rating text template
+  * fix: cache mkdir warning
+  * fix: votes count returend after voting

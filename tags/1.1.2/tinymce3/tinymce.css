@@ -1,0 +1,19 @@
+td.gdsrright, td.gdsrleft, td.gdsrreg {
+	vertical-align: top;
+	height:24px;
+}
+
+td.gdsrright { text-align: right; }
+
+td.gdsrleft { text-align: left; }
+
+fieldset { margin-bottom: 5px; }
+
+p {
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+
+.panel_wrapper {
+    height: 275px;
+}
