@@ -302,6 +302,7 @@ class GDSRRender {
         $i = 0;
         $weighted = 0;
         $total_votes = 0;
+        $weight_norm = array_sum($set->weight);
         foreach ($set->object as $el) {
             $rater.= '<tr class="'.$tr_class.'">';
             $rater.= '<td>'.$el.':</td>';
@@ -311,11 +312,11 @@ class GDSRRender {
             $rater.= '</tr>';
             if ($tr_class == "mtrow") $tr_class.= " alternate";
             else $tr_class = "mtrow";
-            $weighted += $votes[$i]["rating"] * $set->weight[$i];
+            $weighted += ( $votes[$i]["rating"] * $set->weight[$i] ) / $weight_norm;
             $total_votes += $votes[$i]["votes"];
             $i++;
         }
-        $rating = @number_format($weighted / $i, 1);
+        $rating = @number_format($weighted, 1);
         $total_votes = @number_format($total_votes / $i, 0);
         if ($total_votes == 1) $tense = $template["word_votes_singular"];
         else $tense = $template["word_votes_plural"];

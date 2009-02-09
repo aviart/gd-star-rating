@@ -1,8 +1,7 @@
 <?php
 
-global $wpdb, $gdsr;
+global $wpdb;
 
-$options = $gdsr->o;
 $posts_per_page = $options["admin_rows"];
 
 $url = $_SERVER['REQUEST_URI'];
@@ -11,7 +10,7 @@ if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
 $url.= "&gdsr=articles";
-    
+
 $select = "";
 $page_id = 1;
 $filter_date = "";
@@ -223,8 +222,8 @@ function gdsrTimerChange() {
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->pid.'" type="checkbox"></th>';
         echo '<td><strong>'.$row->title.'</strong></td>';
         echo '<td nowrap="nowrap">';
-        echo '<a href="'.get_permalink($row->pid).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a>&nbsp;';
-        echo '<a onclick="generateUrl('.$row->pid.')" href="#TB_inline?height=520&width=950&inlineId=gdsrchart" title="'.__("Charts", "gd-star-rating").'" class="thickbox"><img src="'.STARRATING_URL.'gfx/chart.png" border="0" /></a>';
+            echo '<a href="'.get_permalink($row->pid).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a>&nbsp;';
+            echo '<a onclick="generateUrl('.$row->pid.')" href="#TB_inline?height=520&width=950&inlineId=gdsrchart" title="'.__("Charts", "gd-star-rating").'" class="thickbox"><img src="'.STARRATING_URL.'gfx/chart.png" border="0" /></a>';
         echo '</td>';
         echo '<td class="num"><div class="post-com-count-wrapper">'.$comment_count.'</div></td>';
         if ($options["moderation_active"] == 1) 

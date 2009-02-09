@@ -52,11 +52,14 @@
      * @global object $userdata user data
      * @global GDStarRating $gdsr main rating class instance
      * @param int $multi_set_id id of the multi rating set to use
+     * @param int $post_id id of the post rating will be attributed to
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_render_multi($multi_set_id, $echo = true) {
-        global $post, $userdata, $gdsr;
+    function wp_gdsr_render_multi($multi_set_id, $post_id = 0, $echo = true) {
+        global $userdata, $gdsr;
+        if ($post_id == 0) global $post;
+        else $post = get_post($post_id);
 
         if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id));
         else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id));

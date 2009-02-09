@@ -1050,9 +1050,10 @@ wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
             $set = gd_get_multi_set($set_id);
             $multi_data = GDSRDBMulti::get_values_join($post_id, $set_id);
             $votes_js = array();
+            $weight_norm = array_sum($set->weight);
+            $total_votes = 0;
             $weighted = 0;
             $i = 0;
-            $total_votes = 0;
             foreach ($multi_data as $md) {
                 $votes = 0;
                 $score = 0;
@@ -1074,11 +1075,11 @@ wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
                 if ($rating > $set->stars) $rating = $set->stars;
                 $rating = @number_format($rating, 1);
                 $votes_js[] = $rating * $this->o["mur_size"];
-                $weighted += $rating * $set->weight[$i];
+                $weighted += ( $rating * $set->weight[$i] ) / $weight_norm;
                 $total_votes += $votes;
                 $i++;
             }
-            $rating = @number_format($weighted / $i, 1);
+            $rating = @number_format($weighted, 1);
             $total_votes = @number_format($total_votes / $i, 0);
             if ($total_votes == 1) $tense = $this->x["word_votes_singular"];
             else $tense = $this->x["word_votes_plural"];
@@ -1506,6 +1507,9 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
         // menues
         function star_multi_sets() {
             $options = $this->o;
+            $wpv = $this->wp_version;
+            $gdsr_page = $_GET["gdsr"];
+
             $editor = true;
             if (isset($_GET["gdsr"])) $gdsr = $_GET["gdsr"];
             if ($_POST['gdsr_action'] == 'save') {
@@ -1532,10 +1536,21 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                     else GDSRDBMulti::edit_multi_set($eset);
                 }
             }
-            if (($gdsr == "munew" || $gdsr == "muedit") && $editor)
-                include($this->plugin_path.'multi/editor.php');
-            else
-                include($this->plugin_path.'multi/sets.php');
+            if (($gdsr == "munew" || $gdsr == "muedit") && $editor) include($this->plugin_path.'multi/editor.php');
+            else {
+                switch ($gdsr_page) {
+                    case "mulist":
+                    default:
+                        include($this->plugin_path.'multi/sets.php');
+                        break;
+                    case "murpost":
+                        include($this->plugin_path.'multi/results_post.php');
+                        break;
+                    case "murset":
+                        include($this->plugin_path.'multi/results_set.php');
+                        break;
+                }
+            }
         }
 
         function star_multi_results() {
