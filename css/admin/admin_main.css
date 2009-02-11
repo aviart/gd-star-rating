@@ -4,6 +4,18 @@
     padding-left: 72px;
 }
 
+.gderror {
+    padding: 12px;
+    background-color: #FFEBE8;
+    border-color: #CC0000;
+    -moz-border-radius-bottomleft:3px;
+    -moz-border-radius-bottomright:3px;
+    -moz-border-radius-topleft:3px;
+    -moz-border-radius-topright:3px;
+    border-style:solid;
+    border-width:1px;
+}
+
 #gdptlogo h2 {
     font-size: 30px;
 	 font-style: normal;
