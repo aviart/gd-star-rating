@@ -1,3 +1,21 @@
+#gdptlogo {
+    background: transparent url(../../gfx/logo.png) no-repeat;
+    height: 64px;
+    padding-left: 74px;
+}
+
+#gdptlogo h2 {
+    font-size: 30px;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif;
+    padding-bottom: 3px;
+}
+
+#gdptlogo h3 {
+    margin: 3px 0 0 0;
+    font-style: italic;
+    font-weight: normal;
+}
+
 .visitor { background-color: #CEE1EF; }
 
 .admin { background-color: #CCFF99; }

@@ -2,6 +2,9 @@
 
 == Change Log ==
 
+=== Version: 1.1.3 / february 9 2009 ===
+  * edit: updated plugin front page
+
 === Version: 1.1.2 / february 9 2009 ===
   * new: encoding for character set
   * new: multi sets statistics page per post view
@@ -13,12 +16,3 @@
   * fix: mkdir warning problem with wp-content not writable
   * fix: error with including iepngfix
   * fix: error with saving new multi set
-
-=== Version: 1.1.1 / february 6 2009 ===
-  * new: check safe mode before checking cache folders
-  * edit: database alter added for multi ratings data table
-  * edit: default feed replaced with new feedburner feed
-  * fix: create new record in the database for multi ratings
-  * fix: saving multi rating text template
-  * fix: cache mkdir warning
-  * fix: votes count returend after voting
