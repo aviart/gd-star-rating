@@ -1,9 +1,3 @@
-#gdptlogo {
-    background: transparent url(../../gfx/logo.png) no-repeat;
-    height: 64px;
-    padding-left: 72px;
-}
-
 .gderror {
     padding: 12px;
     background-color: #FFEBE8;
@@ -16,12 +10,28 @@
     border-width:1px;
 }
 
-#gdptlogo h2 {
-    font-size: 30px;
-	 font-style: normal;
-    font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif;
-    padding: 0 0 3px 0;
-	 border-bottom: 1px solid #DADADA;
+#gdptlogo {
+    background: transparent url(../../gfx/logo.png) no-repeat;
+    height: 64px;
+    padding-left: 72px;
+	margin-top: 5px;
+}
+
+#gdptlogo .gdpttitle {
+	font-size: 30px;
+	font-style: normal;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif;
+	padding: 0 0 3px 0;
+	border-bottom: 1px solid #DADADA;
+	color: #696969;
+}
+
+.gdpttitle span {
+	font-size: 12px;
+	vertical-align: 14px;
+    color: red;
+    font-weight: bold;
+	margin-left: 5px;
 }
 
 #gdptlogo h3 {
