@@ -27,7 +27,7 @@
 
 <div id="rightnow">
     <h3 class="reallynow"><span><?php _e("Quick Rating Facts", "gd-star-rating"); ?>:</span><br class="clear"/></h3>
-    <p class="youhave">
+    <p class="gdptyouhave">
     <?php 
         printf(__("Registered users rated %s articles with average rating of %s and %s comments with average rating of %s. Visitors rated %s articles with average rating of %s and %s comments with average rating of %s.", "gd-star-rating"), 
             '<strong>'.$votes_articles->votersu.'</strong>', 
@@ -51,7 +51,7 @@
 <div id="dashboard-widgets-wrap">
 <div id="dashboard-widgets">
     <div id="dashboard_primary" class="dashboard-widget-holder widget_rss wp_dashboard_empty dashboard-left">
-        <div class="dashboard-widget" style="height:40em">
+        <div class="dashboard-widget" style="height:41em">
         <h3 class="dashboard-widget-title"><span><?php _e("Latest News", "gd-star-rating") ?></span>
         <small>
             <a target="_blank" href="http://wp.gdragon.info/"><?php _e("See All", "gd-star-rating"); ?></a> | <img class="rss-icon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/>
@@ -70,7 +70,12 @@
                 foreach ($rss->items as $item)
                 {
                 ?>
-                  <li><a target="_blank" class="rsswidget" title='' href='<?php echo wp_filter_kses($item['link']); ?>'><?php echo wp_specialchars($item['title']); ?></a><span class="rss-date"><?php echo human_time_diff(strtotime($item['pubdate'], time())); ?></span>
+                  <li>
+                  <div class="rssTitle">
+                    <a target="_blank" class="rsswidget" title='' href='<?php echo wp_filter_kses($item['link']); ?>'><?php echo wp_specialchars($item['title']); ?></a>
+                    <span class="rss-date"><?php echo human_time_diff(strtotime($item['pubdate'], time())); ?></span>
+                    <div class="clear"></div>
+                  </div>
                   <div class="rssSummary"><?php echo '<strong>'.date("F, jS", strtotime($item['pubdate'])).'</strong> - '.$item['description']; ?></div></li>
                 <?php
                 }
@@ -94,7 +99,7 @@
         </div>
     </div>
     <div id="dashboard_plugins" class="dashboard-widget-holder wp_dashboard_empty">
-        <div class="dashboard-widget" style="height:40em">
+        <div class="dashboard-widget" style="height:41em">
         <h3 class="dashboard-widget-title"><?php _e("Important Links", "gd-star-rating") ?></h3>
         <div class="dashboard-widget-content">
             <div class="ssurlstitle">

@@ -4,7 +4,6 @@
 
 div.dashboard-widget-holder {
 	float: left;
-	margin-top: 20px;
 	width: 49%;
 }
 
@@ -14,7 +13,7 @@ div.dashboard-widget {
 	font-size: 11px;
 	margin-top: 10px;
 	overflow: auto;
-	padding: 2px;
+	padding: 0;
 	position: relative;
 }
 
@@ -63,3 +62,4 @@ div.dashboard-widget-content { padding: 10px 15px; }
 
 .rss-date { padding-left: 5px; }
 
+#rightnow { padding: 0; }
