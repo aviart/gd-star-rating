@@ -1,7 +1,10 @@
 <?php require_once(ABSPATH.WPINC.'/rss.php'); ?>
 
 <div class="wrap">
-<h2>GD Star Rating</h2>
+    <div id="gdptlogo">
+        <h2>GD Star Rating</h2>
+        <h3>a wordpress rating system</h3>
+    </div>
 
 <?php
 
@@ -91,7 +94,7 @@
         </div>
     </div>
     <div id="dashboard_plugins" class="dashboard-widget-holder wp_dashboard_empty">
-        <div class="dashboard-widget" style="height:37em">
+        <div class="dashboard-widget" style="height:40em">
         <h3 class="dashboard-widget-title"><?php _e("Important Links", "gd-star-rating") ?></h3>
         <div class="dashboard-widget-content">
             <div class="ssurlstitle">
@@ -107,13 +110,14 @@
             <div style="padding: 10px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Golden Dragon:</span>
-                <span style="float: right; margin-top: 2px;"><img class="rss-icon ssrssicon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/><a href="http://wp.gdragon.info/feed/" class="rssurl">RSS</a></span>
+                <span style="float: right; margin-top: 2px;"><img class="rss-icon ssrssicon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/><a href="http://feeds2.feedburner.com/GDWordPress" class="rssurl">RSS</a></span>
                 <div class="ssclear"></div>
             </div>
             <div class="ssiconurl"><a href="http://www.gdragon.info/" target="_blank">Home Page</a>: <?php _e("main development portal", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://wp.gdragon.info/" target="_blank">Wordpress Blog</a>: <?php _e("wordpress plugins development", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://forum.gdragon.info/" target="_blank">Forum</a>: <?php _e("development discussion forum", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://wp.gdragon.info/download/" target="_blank">Downloads</a>: <?php _e("plugins, user guides and more", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/plugins" target="_blank">Wordpress Plugins</a>: <?php _e("wordpress plugins", "gd-star-rating") ?></div>
             <div style="padding: 10px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Starscape Themes:</span>
