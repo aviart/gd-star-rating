@@ -63,3 +63,7 @@ div.dashboard-widget-content { padding: 10px 15px; }
 .rss-date { padding-left: 5px; }
 
 #rightnow { padding: 0; }
+
+a.rsswidget { padding: 0 !important; }
+
+.rssTitle { margin-top: 3px; }
