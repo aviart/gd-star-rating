@@ -1,6 +1,6 @@
 <?php
 
-if ($gdsr == "munew") {
+if ($gdsr_page == "munew") {
     $set = new GDMultiSingle();
 }
 else {
@@ -20,17 +20,17 @@ else {
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Name", "gd-star-rating"); ?></th>
     <td>
-        <input type="text" name="gdsr_ms_name" id="gdsr_ms_name" value="<?php echo html_entity_decode($set->name, ENT_QUOTES, STARRATING_ENCODING); ?>" style="width: 300px" />
+        <input maxlength="64" type="text" name="gdsr_ms_name" id="gdsr_ms_name" value="<?php echo html_entity_decode($set->name, ENT_QUOTES, STARRATING_ENCODING); ?>" style="width: 300px" />
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Description", "gd-star-rating"); ?></th>
     <td>
-        <input type="text" name="gdsr_ms_description" id="gdsr_ms_description" value="<?php echo html_entity_decode($set->description, ENT_QUOTES, STARRATING_ENCODING); ?>" style="width: 700px" />
+        <input maxlength="256" type="text" name="gdsr_ms_description" id="gdsr_ms_description" value="<?php echo html_entity_decode($set->description, ENT_QUOTES, STARRATING_ENCODING); ?>" style="width: 700px" />
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Number Of Stars", "gd-star-rating"); ?></th>
     <td>
-        <select<?php if ($gdsr == "muedit") echo ' disabled="disabled"'; ?> style="width: 70px;" name="gdsr_ms_stars" id="gdsr_ms_stars">
+        <select<?php if ($gdsr_page == "muedit") echo ' disabled="disabled"'; ?> style="width: 70px;" name="gdsr_ms_stars" id="gdsr_ms_stars">
             <?php GDSRHelper::render_stars_select($set->stars); ?>
         </select>
     </td>

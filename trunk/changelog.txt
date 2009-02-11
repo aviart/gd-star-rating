@@ -6,10 +6,12 @@
   * edit: updated plugin front page
   * edit: cache notice moved inside the cache tab
   * edit: more strict important css styles
+  * edit: multi set name and description limited in length
   * fix: multi rating block rendering when multi rating is disabled
   * fix: check if wp-content is writable
   * fix: settings page problem with multi ratings disabled
   * fix: loader preview backgorund color
+  * fix: deleting multi set after adding new one
 
 === Version: 1.1.2 / february 9 2009 ===
   * new: encoding for character set

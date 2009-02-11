@@ -4,7 +4,7 @@ Donate link: http://www.gdstarrating.com/donate/
 Version: 1.1.2
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review, multi
 Requires at least: 2.5.0
-Tested up to: 2.7.0
+Tested up to: 2.7.1
 Stable tag: trunk
 
 GD Star Rating plugin allows you to set up rating and review system for pages, posts and comments in your blog.

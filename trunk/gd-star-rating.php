@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.1.2
+Version: 1.1.3
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -1514,7 +1514,6 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             $gdsr_page = $_GET["gdsr"];
 
             $editor = true;
-            if (isset($_GET["gdsr"])) $gdsr = $_GET["gdsr"];
             if ($_POST['gdsr_action'] == 'save') {
                 $editor = false;
                 $eset = new GDMultiSingle(false);
@@ -1539,7 +1538,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                     else GDSRDBMulti::edit_multi_set($eset);
                 }
             }
-            if (($gdsr == "munew" || $gdsr == "muedit") && $editor) include($this->plugin_path.'multi/editor.php');
+            if (($gdsr_page == "munew" || $gdsr_page == "muedit") && $editor) include($this->plugin_path.'multi/editor.php');
             else {
                 switch ($gdsr_page) {
                     case "mulist":

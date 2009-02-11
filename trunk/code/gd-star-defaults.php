@@ -22,8 +22,8 @@ class GDSRDefaults {
     );
 
     var $default_options = array(
-        "version" => "1.1.2",
-        "date" => "2009.02.09.",
+        "version" => "1.1.3",
+        "date" => "2009.02.11.",
         "status" => "Stable",
         "build" => 437,
         "encoding" => "UTF-8",
