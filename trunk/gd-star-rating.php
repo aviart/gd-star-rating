@@ -208,9 +208,12 @@ if (!class_exists('GDStarRating')) {
         * @param array $atts
         */
         function shortcode_starratingmulti($atts = array()) {
-            global $post, $userdata;
-            $settings = shortcode_atts($this->default_shortcode_starratingmulti, $atts);
-            return $this->render_multi_rating($post, $userdata, $settings);
+            if ($this->o["multis_active"] == 1) {
+                global $post, $userdata;
+                $settings = shortcode_atts($this->default_shortcode_starratingmulti, $atts);
+                return $this->render_multi_rating($post, $userdata, $settings);
+            }
+            else return '';
         }
 
         /**

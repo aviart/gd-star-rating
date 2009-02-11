@@ -5,8 +5,11 @@
 === Version: 1.1.3 / february 11 2009 ===
   * edit: updated plugin front page
   * edit: cache notice moved inside the cache tab
+  * edit: more strict important css styles
+  * fix: multi rating block rendering when multi rating is disabled
   * fix: check if wp-content is writable
   * fix: settings page problem with multi ratings disabled
+  * fix: loader preview backgorund color
 
 === Version: 1.1.2 / february 9 2009 ===
   * new: encoding for character set

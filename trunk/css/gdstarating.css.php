@@ -30,7 +30,7 @@ function insert_styles($css) {
         echo ".".$css["name"]." .starsbar .gdcurrent { height: ".$size."px; background: url('".$url."') repeat-x 0px -".($size)."px; }";
         echo "\r\n";
     }
-    echo ".".$css["name"]." .starsbar a:hover { background: url('".$url."') repeat-x 0px -".$size."px; }";
+    echo ".".$css["name"]." .starsbar a:hover { background: url('".$url."') repeat-x 0px -".$size."px !important; }";
     echo "\r\n";
     echo '.'.$css["name"].' .starsbar a { height: '.$size.'px; }';
     echo "\r\n";
@@ -97,17 +97,17 @@ get_class_head($head, ""); ?> {
 
 <?php get_class_head($head, ".starsbar a:active"); ?> {
   text-decoration: none;
-  border: 0;
+  border: 0 !important;
 }
 
 <?php get_class_head($head, ".starsbar a:visited"); ?> {
   text-decoration: none;
-  border: 0;
+  border: 0 !important;
 }
 
 <?php get_class_head($head, ".starsbar a:hover"); ?> {
   text-decoration: none;
-  border: 0;
+  border: 0 !important;
 }
 
 <?php get_class_head($head, ".starsbar a"); ?> {
@@ -116,9 +116,9 @@ get_class_head($head, ""); ?> {
   left: 0;
   top: 0;
   text-decoration: none;
-  border: 0;
+  border: 0 !important;
   cursor: pointer;
-  background: none;
+  background: none !important;
 }
 
 .ratemulti .starsbar .gdcurrent { width: 0; top: 0; position: absolute; opacity: 0.7; }
