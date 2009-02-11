@@ -429,7 +429,6 @@ a.rssurl:hover { color: white; }
 
 .wait-preview-holder-multis, .wait-preview-holder-article, .wait-preview-holder-comment {
     height: 24px;
-    background-color: red;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 11px;
