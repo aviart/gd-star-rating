@@ -451,14 +451,19 @@ a.rssurl:hover { color: white; }
     padding: 1px 6px;
 }
 
-.rsswidget {
+div.dashboard-widget-content li { margin: 0; }
+
+a.rsswidget {
     color: #c00000;
     float: left;
+    text-decoration: none;
+    margin: 0 !important;
+    padding-top: 3px !important;
 }
 
-.rss-date {
-    float: right;
-    margin-top: 3px;
+span.rss-date {
+    float: right !important;
+    margin-top: 3px !important;
 }
 
 .rssSummary {
