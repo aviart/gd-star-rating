@@ -38,7 +38,7 @@ function gdsrAddNewMulti() {
 </script>
 
 <div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
-<form method="post" action="">
+<form method="post" action="admin.php?page=gd-star-rating-multi-sets">
 <div class="gdsr">
 <h2>GD Star Rating: <?php _e("Multi Sets", "gd-star-rating"); ?></h2>
 
