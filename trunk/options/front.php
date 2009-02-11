@@ -66,7 +66,7 @@
               if (isset($rss->items) && 0 != count($rss->items))
               {
                 echo '<ul>';
-                $rss->items = array_slice($rss->items, 0, $wpv < 27 ? 2 : 3);
+                $rss->items = array_slice($rss->items, 0, $wpv < 27 ? 3 : 3);
                 foreach ($rss->items as $item)
                 {
                 ?>
