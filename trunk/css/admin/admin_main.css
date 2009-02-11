@@ -1,13 +1,15 @@
 #gdptlogo {
     background: transparent url(../../gfx/logo.png) no-repeat;
     height: 64px;
-    padding-left: 74px;
+    padding-left: 72px;
 }
 
 #gdptlogo h2 {
     font-size: 30px;
+	 font-style: normal;
     font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif;
-    padding-bottom: 3px;
+    padding: 0 0 3px 0;
+	 border-bottom: 1px solid #DADADA;
 }
 
 #gdptlogo h3 {
