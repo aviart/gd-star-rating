@@ -112,26 +112,31 @@
             <div class="ssiconurl"><a href="http://groups.google.com/group/gd-star-rating/" target="_blank">Google Groups</a>: <?php _e("discussions group", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://wordpress.org/extend/plugins/gd-star-rating/" target="_blank">WordPress Extend</a>: <?php _e("wordpress plugin page", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://www.gdstarrating.com/donate/" target="_blank"><span style="color: red">Donate</span></a>: <?php _e("help further development", "gd-star-rating") ?></div>
-            <div style="padding: 10px"></div>
+            <div style="padding: 6px"></div>
+            <div class="ssurlstitle">
+                <span style="float: left;">GD WordPress Plugins:</span>
+                <span style="float: right; margin-top: 2px;"></span>
+                <div class="ssclear"></div>
+            </div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/plugins/gd-press-tools" target="_blank"><span style="color: red">GD Press Tools</span></a>: <?php _e("various administration tools", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/plugins/gd-pages-navigator" target="_blank">GD Pages Navigator</a>: <?php _e("advanced pages widget", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/plugins/gd-linkedin-badge" target="_blank">GD LinkedIn Badge</a>: <?php _e("widget to add linkedin badge with link", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/plugins/gd-plugin-core" target="_blank">GD Plugin Core</a>: <?php _e("basic class and wizard for creating plugins", "gd-star-rating") ?></div>
+            <div style="padding: 6px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Golden Dragon:</span>
                 <span style="float: right; margin-top: 2px;"><img class="rss-icon ssrssicon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/><a href="http://feeds2.feedburner.com/GDWordPress" class="rssurl">RSS</a></span>
                 <div class="ssclear"></div>
             </div>
-            <div class="ssiconurl"><a href="http://www.gdragon.info/" target="_blank">Home Page</a>: <?php _e("main development portal", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://wp.gdragon.info/" target="_blank">Wordpress Blog</a>: <?php _e("wordpress plugins development", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://forum.gdragon.info/" target="_blank">Forum</a>: <?php _e("development discussion forum", "gd-star-rating") ?></div>
-            <div class="ssiconurl"><a href="http://wp.gdragon.info/download/" target="_blank">Downloads</a>: <?php _e("plugins, user guides and more", "gd-star-rating") ?></div>
-            <div class="ssiconurl"><a href="http://wp.gdragon.info/plugins" target="_blank">Wordpress Plugins</a>: <?php _e("wordpress plugins", "gd-star-rating") ?></div>
-            <div style="padding: 10px"></div>
+            <div style="padding: 6px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Starscape Themes:</span>
                 <span style="float: right; margin-top: 2px;"><img class="rss-icon ssrssicon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/><a href="http://blog.starscapetheme.com/feed/" class="rssurl">RSS</a></span>
                 <div class="ssclear"></div>
             </div>
-            <div class="ssiconurl"><a href="http://www.starscapetheme.com/" target="_blank">Home Page</a>: <?php _e("official page", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://blog.starscapetheme.com/" target="_blank">Official Blog</a>: <?php _e("announcements and theme demo", "gd-star-rating") ?></div>
-            <div class="ssiconurl"><a href="http://blog.starscapetheme.com/download/" target="_blank">Downloads</a>: <?php _e("different versions and user guide", "gd-star-rating") ?></div>
         </div>
         </div>
     </div>
