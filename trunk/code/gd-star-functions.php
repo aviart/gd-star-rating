@@ -81,11 +81,11 @@ class GDSRHelper {
             }
         }
         else {
-            if ($version < 27) $path = get_option('siteurl').'/wp-content';
-            else $path = WP_CONTENT_URL;
+            if ($version < 27) $path = ABSPATH.'/wp-content';
+            else $path = WP_CONTENT_DIR;
             if (is_writable($path)) {
                 mkdir(STARRATING_XTRA_PATH, 0755);
-                GDSRHelper::create_folders();
+                GDSRHelper::create_folders($version);
             }
             else return false;
         }

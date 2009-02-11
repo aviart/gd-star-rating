@@ -70,9 +70,9 @@
 <?php if ($gdsr_options["comments_active"] == 1) { ?><div id="fragment-3">
 <?php include STARRATING_PATH."options/settings_comments.php"; ?>
 </div><?php } ?>
-<div id="fragment-8">
+<?php if ($gdsr_options["multis_active"] == 1) { ?><div id="fragment-8">
 <?php include STARRATING_PATH."options/settings_multis.php"; ?>
-</div>
+</div><?php } ?>
 <div id="fragment-4">
 <?php include STARRATING_PATH."options/settings_statistics.php"; ?>
 </div>
