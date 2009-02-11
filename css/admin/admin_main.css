@@ -287,15 +287,17 @@ div.ui-tabs-panel {
 	font-size:15px;
 	line-height:2;
 	margin:0pt;
-	background-color:#D54E21;
-	color:#FFFFFF;
+	background-color:#FFE96A;
+	color:#C00000;
 }
 
-#rightnow .youhave {
+#rightnow .gdptyouhave {
 	font-size:13px;
-	padding:7px;
-	background-color:#F0F6FB;
+	padding: 0 10px;
+    margin: 0.4em 0
 }
+
+div.dashboard-widget-holder { margin-top: 10px; }
 
 #rightnow h3, #rightnow p { padding: 0pt 5px; }
 
@@ -442,4 +444,23 @@ a.rssurl:hover { color: white; }
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 11px;
+}
+
+.rssTitle {
+    background-color: #DFDFDF;
+    padding: 1px 6px;
+}
+
+.rsswidget {
+    color: #c00000;
+    float: left;
+}
+
+.rss-date {
+    float: right;
+    margin-top: 3px;
+}
+
+.rssSummary {
+    font-size: 11px;
 }
