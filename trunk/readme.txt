@@ -19,6 +19,7 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 * Serbian
 * Spanish
 * French
+* Polish
 * Italian
 
 = Features =
