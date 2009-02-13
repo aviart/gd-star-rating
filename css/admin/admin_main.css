@@ -1,3 +1,5 @@
+.gdsrclear { height: 0; clear: both; }
+
 .gderror {
     padding: 12px;
     background-color: #FFEBE8;
@@ -279,9 +281,18 @@ div.ui-tabs-panel {
 	border-width:1px;
 	margin-right:7px;
 	margin-top:10px;
-	padding:2px;
+	padding:0 !important;
 }
 
+div.dashboard-widget { padding: 0; }
+
+a.rsswidget {
+    font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+    font-size: 13px !important;
+    line-height: 1.6em  !important;
+    padding: 0 !important;
+    font-weight: normal !important;
+}
 #rightnow .reallynow {
 	padding: 0 5px 0 5px;
 	font-size:15px;
@@ -464,6 +475,7 @@ a.rsswidget {
 span.rss-date {
     float: right !important;
     margin-top: 3px !important;
+    font-size: 12px !important;
 }
 
 .rssSummary {
