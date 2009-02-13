@@ -84,6 +84,8 @@
         <br />
         <input type="checkbox" name="gdsr_use_nonce" id="gdsr_use_nonce"<?php if ($gdsr_options["use_nonce"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ajax"><?php _e("Use Nonce with AJAX for improved security.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_external_javascript" id="gdsr_external_javascript"<?php if ($gdsr_options["external_javascript"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_javascript"><?php _e("Link external javascript rating code, instead of embeding it into the page.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
         <input type="checkbox" name="gdsr_ip_filtering" id="gdsr_ip_filtering"<?php if ($gdsr_options["ip_filtering"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ip_filtering"><?php _e("Use banned IP's lists to filter out visitors.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_ip_filtering_restrictive" id="gdsr_ip_filtering_restrictive"<?php if ($gdsr_options["ip_filtering_restrictive"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ip_filtering_restrictive"><?php _e("Don't even show rating stars to visitors comming from banned IP's.", "gd-star-rating"); ?></label>
