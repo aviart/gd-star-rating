@@ -57,7 +57,7 @@
             <a target="_blank" href="http://wp.gdragon.info/"><?php _e("See All", "gd-star-rating"); ?></a> | <img class="rss-icon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/>
             <a href="http://feeds2.feedburner.com/GdStarRating">RSS</a>
         </small>
-        <br class="clear"/></h3>
+        <br class="gdsrclear"/></h3>
         <div class="dashboard-widget-content">
         <?php
 
@@ -66,7 +66,7 @@
               if (isset($rss->items) && 0 != count($rss->items))
               {
                 echo '<ul>';
-                $rss->items = array_slice($rss->items, 0, $wpv < 27 ? 3 : 3);
+                $rss->items = array_slice($rss->items, 0, 3);
                 foreach ($rss->items as $item)
                 {
                 ?>
@@ -74,7 +74,7 @@
                   <div class="rssTitle">
                     <a target="_blank" class="rsswidget" title='' href='<?php echo wp_filter_kses($item['link']); ?>'><?php echo wp_specialchars($item['title']); ?></a>
                     <span class="rss-date"><?php echo human_time_diff(strtotime($item['pubdate'], time())); ?></span>
-                    <div class="clear"></div>
+                    <div class="gdsrclear"></div>
                   </div>
                   <div class="rssSummary"><?php echo '<strong>'.date("F, jS", strtotime($item['pubdate'])).'</strong> - '.$item['description']; ?></div></li>
                 <?php
@@ -105,7 +105,7 @@
             <div class="ssurlstitle">
                 <span style="float: left;">GD Star Rating:</span>
                 <span style="float: right; margin-top: 2px;"></span>
-                <div class="ssclear"></div>
+                <div class="gdsrclear"></div>
             </div>
             <div class="ssiconurl"><a href="http://www.gdstarrating.com/" target="_blank">GD Star Rating</a>: <?php _e("official page", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://code.google.com/p/gd-star-rating/" target="_blank">Google Code</a>: <?php _e("development home with svn", "gd-star-rating") ?></div>
