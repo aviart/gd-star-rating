@@ -6,6 +6,7 @@
         $gdsr_options["encoding"] = $_POST['gdsr_encoding'];
         $gdsr_options["admin_width"] = $_POST['gdsr_admin_width'];
         $gdsr_options["admin_rows"] = $_POST['gdsr_admin_rows'];
+        $gdsr_options["external_javascript"] = isset($_POST['gdsr_external_javascript']) ? 1 : 0;
         $gdsr_options["admin_advanced"] = isset($_POST['gdsr_admin_advanced']) ? 1 : 0;
         $gdsr_options["admin_placement"] = isset($_POST['gdsr_admin_placement']) ? 1 : 0;
         $gdsr_options["admin_defaults"] = isset($_POST['gdsr_admin_defaults']) ? 1 : 0;

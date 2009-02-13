@@ -1,9 +1,4 @@
-<?php
-
-if ($use_nonce) $nonce = sprintf("_ajax_nonce: '%s', ", wp_create_nonce('gdsr_ajax_r8'));
-else $nonce = "";
-
-?>
+<?php if ($nonce != "") $nonce = sprintf("_ajax_nonce: '%s', ", $nonce); ?>
 
 function gdsrWait(rater, loader) {
     jQuery("#"+rater).css("display", "none");
@@ -13,7 +8,7 @@ function gdsrWait(rater, loader) {
 function gdsrEmpty() { }
 
 jQuery(document).ready(function() {
-    <?php if ($this->o["ajax"] == 1) : ?>
+<?php if ($ajax_active == 1) : ?>
     if (jQuery.browser.msie) jQuery(".gdsr_rating_as > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_rating_as > a").click(function() {
         var el = jQuery(this).attr("id").split("X");
@@ -28,7 +23,7 @@ jQuery(document).ready(function() {
             }
         });
     });
-    <?php endif; ?>
     <?php if ($include_cmm_review) include(STARRATING_PATH.'code/gd-star-jsx.php'); ?>
     <?php if ($include_mur_rating) include(STARRATING_PATH.'code/gd-star-jsm.php'); ?>
+<?php endif; ?>
 });

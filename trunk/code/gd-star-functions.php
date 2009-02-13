@@ -118,6 +118,7 @@ class GDSRHelper {
         echo('</style>');
         echo('<script type="text/javascript" src="'.STARRATING_URL.'iepngfix/iepngfix_tilebg.js"></script>');
         echo('<![endif]-->');
+        echo("\r\n");
     }
 
     /**
@@ -129,6 +130,7 @@ class GDSRHelper {
         echo('.ratemulti .starsbar .gdcurrent { -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; filter: alpha(opacity=70); }');
         echo('</style>');
         echo('<![endif]-->');
+        echo("\r\n");
     }
 
     function detect_bot($str) {

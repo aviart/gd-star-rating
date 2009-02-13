@@ -26,6 +26,7 @@ class GDSRDefaults {
         "date" => "2009.02.11.",
         "status" => "Stable",
         "build" => 449,
+        "external_javascript" => 0,
         "encoding" => "UTF-8",
         "news_feed_active" => 1,
         "cache_active" => 1,

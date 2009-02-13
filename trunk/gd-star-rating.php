@@ -988,11 +988,21 @@ if (!class_exists('GDStarRating')) {
                 }
             }
             $css_string = urlencode($css_string);
-            $use_nonce = $this->use_nonce;
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
-            echo('<script type="text/javascript">');
-            include ($this->plugin_path."code/gd-star-js.php");
-            echo('</script>');
+            echo("\r\n");
+            if ($this->o["external_javascript"] == 1)
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'script.js.php"></script>');
+            else {
+                echo('<script type="text/javascript">');
+                if ($this->use_nonce) $nonce = wp_create_nonce('gdsr_ajax_r8');
+                else $nonce = "";
+                $ajax_active = $this->o["ajax"];
+                echo('//<[!CDATA[');
+                include ($this->plugin_path."code/gd-star-js.php");
+                echo('// ]]>');
+                echo('</script>');
+            }
+            echo("\r\n");
 
             $this->custom_actions('wp_head');
             
