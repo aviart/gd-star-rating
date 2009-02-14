@@ -10,6 +10,7 @@
   * edit: more changes to plugin front page
   * edit: tinymce plugin improvements
   * edit: updatad powered by button
+  * edit: better stars sets optmization
   * fix: insert new record into multi_data table
   * fix: w3c validation problem with javascript
 
