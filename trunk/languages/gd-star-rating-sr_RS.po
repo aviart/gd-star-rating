@@ -22,7 +22,7 @@ msgid "All users and visitors"
 msgstr "Сви корисници и посетиоци"
 
 #: code/gd-star-dbone.php:1052
-#: tinymce3/window.php:191
+#: tinymce3/panels/advanced.php:121
 #: widgets/widget_rating.php:42
 #: widgets/widget_rating.php:178
 #: widgets/widget_top.php:31
@@ -248,26 +248,26 @@ msgid "Months"
 msgstr "Месеци"
 
 #: code/gd-star-functions.php:330
-#: tinymce3/window.php:298
-#: tinymce3/window.php:323
+#: tinymce3/panels/advanced.php:228
+#: tinymce3/panels/advanced.php:253
 msgid "Mini"
 msgstr "Мини"
 
 #: code/gd-star-functions.php:331
-#: tinymce3/window.php:299
-#: tinymce3/window.php:324
+#: tinymce3/panels/advanced.php:229
+#: tinymce3/panels/advanced.php:254
 msgid "Small"
 msgstr "Мала"
 
 #: code/gd-star-functions.php:332
-#: tinymce3/window.php:300
-#: tinymce3/window.php:325
+#: tinymce3/panels/advanced.php:230
+#: tinymce3/panels/advanced.php:255
 msgid "Medium"
 msgstr "Средња"
 
 #: code/gd-star-functions.php:333
-#: tinymce3/window.php:301
-#: tinymce3/window.php:326
+#: tinymce3/panels/advanced.php:231
+#: tinymce3/panels/advanced.php:256
 msgid "Big"
 msgstr "Велика"
 
@@ -391,7 +391,7 @@ msgstr "Ограничења"
 #: integrate/edit.php:66
 #: options/articles.php:315
 #: options/categories.php:199
-#: tinymce3/window.php:236
+#: tinymce3/panels/advanced.php:166
 msgid "Date"
 msgstr "Датум"
 
@@ -489,7 +489,7 @@ msgstr "Филтер"
 
 #: multi/results_post.php:116
 #: options/articles.php:146
-#: tinymce3/window.php:216
+#: tinymce3/panels/advanced.php:146
 #: widgets/widget_rating.php:32
 #: widgets/widget_rating.php:205
 #: widgets/widget_top.php:21
@@ -527,7 +527,7 @@ msgstr "Укупно"
 #: options/comments.php:95
 #: options/settings_articles.php:175
 #: options/settings_comments.php:153
-#: tinymce3/window.php:217
+#: tinymce3/panels/advanced.php:147
 #: widgets/widget_rating.php:206
 msgid "Review"
 msgstr "Оцена"
@@ -549,7 +549,7 @@ msgstr "Додај Нови Мулти Сет"
 #: multi/sets.php:58
 #: options/users.php:61
 #: options/voters.php:141
-#: tinymce3/window.php:215
+#: tinymce3/panels/advanced.php:145
 #: widgets/widget_rating.php:204
 msgid "ID"
 msgstr "ID"
@@ -702,7 +702,7 @@ msgid "Batch Options"
 msgstr "Групне Опције"
 
 #: options/categories.php:82
-#: tinymce3/window.php:196
+#: tinymce3/panels/advanced.php:126
 #: widgets/widget_rating.php:248
 msgid "Category"
 msgstr "Категорија"
@@ -1073,6 +1073,7 @@ msgid "Approve"
 msgstr "Одобри"
 
 #: options/settings.php:37
+#: tinymce3/panels/multi.php:15
 #: gd-star-rating.php:478
 msgid "Settings"
 msgstr "Подешавања"
@@ -1097,7 +1098,7 @@ msgstr "Интеграција"
 
 #: options/settings.php:45
 #: templates/templates.php:38
-#: tinymce3/window.php:181
+#: tinymce3/panels/advanced.php:111
 msgid "Posts And Pages"
 msgstr "Чланци и Стране"
 
@@ -1114,7 +1115,7 @@ msgstr "RSS"
 #: options/settings.php:50
 #: options/settings_articles.php:150
 #: options/settings_comments.php:128
-#: options/settings_multis.php:76
+#: options/settings_multis.php:90
 msgid "Preview"
 msgstr "Преглед"
 
@@ -1130,7 +1131,7 @@ msgstr "Сними подешавања"
 #: options/settings_articles.php:10
 #: options/settings_comments.php:10
 #: options/settings_multis.php:10
-#: tinymce3/window.php:213
+#: tinymce3/panels/advanced.php:143
 #: widgets/widget_rating.php:202
 msgid "Rating"
 msgstr "Оцена"
@@ -1176,7 +1177,7 @@ msgstr "Прикажи текст заглавља."
 #: options/settings_comments.php:53
 #: options/settings_comments.php:138
 #: options/settings_multis.php:34
-#: options/settings_multis.php:86
+#: options/settings_multis.php:100
 #: options/settings_rss.php:37
 msgid "Text to display"
 msgstr "Текст за приказ"
@@ -1267,25 +1268,25 @@ msgstr "Користи колачић као превенцију дуплог �
 
 #: options/settings_articles.php:143
 #: options/settings_comments.php:121
-#: options/settings_multis.php:69
+#: options/settings_multis.php:83
 msgid "Vote Waiting Message"
 msgstr "Порука Чекања"
 
 #: options/settings_articles.php:147
 #: options/settings_comments.php:125
-#: options/settings_multis.php:73
+#: options/settings_multis.php:87
 msgid "Animation indicator"
 msgstr "Анимација"
 
 #: options/settings_articles.php:165
 #: options/settings_comments.php:143
-#: options/settings_multis.php:91
+#: options/settings_multis.php:105
 msgid "Additional CSS class"
 msgstr "Додатна ЦСС класа"
 
 #: options/settings_articles.php:171
 #: options/settings_comments.php:149
-#: options/settings_multis.php:97
+#: options/settings_multis.php:111
 msgid "Hide text and show only animation image."
 msgstr "Сакриј текст и прикажи само анимацију."
 
@@ -1576,9 +1577,21 @@ msgstr "CSS Класа Рејтинг табеле"
 msgid "Rating button CSS class"
 msgstr "CSS Класа Рејтинг дугмета"
 
+#: options/settings_multis.php:69
+msgid "Submit Button"
+msgstr "Дугме За Слање"
+
+#: options/settings_multis.php:73
+msgid "Button text"
+msgstr "Текст дугмета"
+
+#: options/settings_multis.php:80
+msgid "Use submit button to send votes. If disabled, votes will be send once all block elements are rated."
+msgstr "Користи фугме за слање гласова. Ако је опција искључена, гласови ће бити послати када сви елементи буду оцењени."
+
 #: options/settings_preview.php:73
-#: tinymce3/window.php:295
-#: tinymce3/window.php:320
+#: tinymce3/panels/advanced.php:225
+#: tinymce3/panels/advanced.php:250
 msgid "Size"
 msgstr "Величина"
 
@@ -1784,9 +1797,9 @@ msgid "Global Voting Rules Update"
 msgstr "Ажурирање глобалних правила гласања"
 
 #: options/tools.php:113
-#: tinymce3/window.php:287
-#: tinymce3/window.php:312
-#: tinymce3/window.php:375
+#: tinymce3/panels/advanced.php:217
+#: tinymce3/panels/advanced.php:242
+#: tinymce3/panels/multi.php:5
 msgid "Set"
 msgstr "Сет"
 
@@ -2134,8 +2147,279 @@ msgstr "укупно преосталих сати"
 msgid "total remaining minutes"
 msgstr "укупно преосталих минута"
 
+#: tinymce3/panels/advanced.php:2
+msgid "Display"
+msgstr "Приказ"
+
+#: tinymce3/panels/advanced.php:5
+#: widgets/widget_rating.php:185
+msgid "Number Of Posts"
+msgstr "Број Чланака"
+
+#: tinymce3/panels/advanced.php:9
+#: widgets/widget_rating.php:49
+msgid "Items Grouping"
+msgstr "Груписање"
+
+#: tinymce3/panels/advanced.php:11
+#: widgets/widget_rating.php:52
+msgid "No grouping"
+msgstr "Без груписања"
+
+#: tinymce3/panels/advanced.php:12
+#: widgets/widget_rating.php:53
+msgid "User based"
+msgstr "Корисници"
+
+#: tinymce3/panels/advanced.php:13
+#: widgets/widget_rating.php:54
+msgid "Category based"
+msgstr "Категорија"
+
+#: tinymce3/panels/advanced.php:20
+#: widgets/widget_rating.php:65
+#: widgets/widget_rating.php:73
+msgid "Trend"
+msgstr "Тренд"
+
+#: tinymce3/panels/advanced.php:23
+#: widgets/widget_rating.php:74
+msgid "Rating trend display as"
+msgstr "Тренд рејтинга  прикажи као"
+
+#: tinymce3/panels/advanced.php:26
+#: tinymce3/panels/advanced.php:62
+#: widgets/widget_rating.php:77
+#: widgets/widget_rating.php:115
+msgid "Text"
+msgstr "Текст"
+
+#: tinymce3/panels/advanced.php:27
+#: tinymce3/panels/advanced.php:63
+#: widgets/widget_rating.php:78
+#: widgets/widget_rating.php:116
+msgid "Image"
+msgstr "Слика"
+
+#: tinymce3/panels/advanced.php:36
+#: tinymce3/panels/advanced.php:72
+#: widgets/widget_rating.php:87
+#: widgets/widget_rating.php:125
+msgid "Up"
+msgstr "Раст"
+
+#: tinymce3/panels/advanced.php:38
+#: tinymce3/panels/advanced.php:74
+#: widgets/widget_rating.php:89
+#: widgets/widget_rating.php:127
+msgid "Equal"
+msgstr "Исто"
+
+#: tinymce3/panels/advanced.php:40
+#: tinymce3/panels/advanced.php:76
+#: widgets/widget_rating.php:91
+#: widgets/widget_rating.php:129
+msgid "Down"
+msgstr "Пад"
+
+#: tinymce3/panels/advanced.php:48
+#: tinymce3/panels/advanced.php:84
+#: widgets/widget_rating.php:100
+#: widgets/widget_rating.php:138
+msgid "Image set"
+msgstr "Сет слика"
+
+#: tinymce3/panels/advanced.php:59
+#: widgets/widget_rating.php:112
+msgid "Voting trend display as"
+msgstr "Тренд гласања прикажи као"
+
+#: tinymce3/panels/advanced.php:96
+msgid "Hiding"
+msgstr "Сакриј"
+
+#: tinymce3/panels/advanced.php:97
+#: widgets/widget_rating.php:225
+msgid "Bayesian minumum votes required."
+msgstr "Бајесиан минимум потребних гласова"
+
+#: tinymce3/panels/advanced.php:98
+#: widgets/widget_rating.php:231
+msgid "Hide articles with no recorded votes."
+msgstr "Сакриј чланке без уписаних гласова"
+
+#: tinymce3/panels/advanced.php:99
+#: widgets/widget_rating.php:237
+msgid "Hide articles with no review values."
+msgstr "Сакриј чланке без критичке оцене."
+
+#: tinymce3/panels/advanced.php:105
+msgid "Basic"
+msgstr "Основни"
+
+#: tinymce3/panels/advanced.php:108
+#: widgets/widget_rating.php:163
+#: widgets/widget_top.php:53
+msgid "Include Articles"
+msgstr "Укључи Чланке"
+
+#: tinymce3/panels/advanced.php:112
+#: widgets/widget_rating.php:167
+#: widgets/widget_top.php:57
+msgid "Posts Only"
+msgstr "Само Чланци"
+
+#: tinymce3/panels/advanced.php:113
+#: widgets/widget_rating.php:168
+#: widgets/widget_top.php:58
+msgid "Pages Only"
+msgstr "Само Стране"
+
+#: tinymce3/panels/advanced.php:118
+#: widgets/widget_rating.php:174
+#: widgets/widget_top.php:64
+msgid "Display Votes From"
+msgstr "Прикажи гласове од"
+
+#: tinymce3/panels/advanced.php:120
+#: widgets/widget_rating.php:41
+#: widgets/widget_rating.php:177
+#: widgets/widget_top.php:30
+#: widgets/widget_top.php:67
+msgid "Everyone"
+msgstr "Сви"
+
+#: tinymce3/panels/advanced.php:122
+#: widgets/widget_rating.php:43
+#: widgets/widget_rating.php:179
+#: widgets/widget_top.php:32
+#: widgets/widget_top.php:69
+msgid "Users Only"
+msgstr "Само корисници"
+
+#: tinymce3/panels/advanced.php:130
+#: widgets/widget_rating.php:192
+msgid "Minimum Votes"
+msgstr "Минимум Гласова"
+
+#: tinymce3/panels/advanced.php:137
+msgid "Sorting"
+msgstr "Сортирање"
+
+#: tinymce3/panels/advanced.php:140
+msgid "Column"
+msgstr "Колона"
+
+#: tinymce3/panels/advanced.php:144
+#: widgets/widget_rating.php:203
+msgid "Total Votes"
+msgstr "Укупно Гласова"
+
+#: tinymce3/panels/advanced.php:148
+#: widgets/widget_rating.php:207
+msgid "Count"
+msgstr "Збир"
+
+#: tinymce3/panels/advanced.php:149
+#: widgets/widget_rating.php:208
+msgid "Bayesian Rating"
+msgstr "Бајесова Процењена Средина"
+
+#: tinymce3/panels/advanced.php:154
+msgid "Order"
+msgstr "Редослед"
+
+#: tinymce3/panels/advanced.php:157
+#: widgets/widget_rating.php:217
+msgid "Descending"
+msgstr "Опадајући"
+
+#: tinymce3/panels/advanced.php:158
+#: widgets/widget_rating.php:218
+msgid "Ascending"
+msgstr "Растући"
+
+#: tinymce3/panels/advanced.php:169
+#: widgets/widget_rating.php:261
+msgid "Publish Date"
+msgstr "Датум објављивања"
+
+#: tinymce3/panels/advanced.php:172
+#: widgets/widget_rating.php:264
+msgid "Last # days"
+msgstr "Последњих # дана"
+
+#: tinymce3/panels/advanced.php:173
+#: widgets/widget_rating.php:265
+msgid "Exact month"
+msgstr "Тачно месец"
+
+#: tinymce3/panels/advanced.php:174
+#: widgets/widget_rating.php:266
+msgid "Date range"
+msgstr "Распон датума"
+
+#: tinymce3/panels/advanced.php:182
+#: widgets/widget_rating.php:275
+msgid "Number Of Days"
+msgstr "Број дана"
+
+#: tinymce3/panels/advanced.php:192
+#: widgets/widget_rating.php:286
+msgid "Month"
+msgstr "Месец"
+
+#: tinymce3/panels/advanced.php:202
+#: widgets/widget_rating.php:297
+msgid "Range"
+msgstr "Опсег"
+
+#: tinymce3/panels/advanced.php:214
+msgid "Rating Stars"
+msgstr "Рејтинг Звезде"
+
+#: tinymce3/panels/advanced.php:239
+msgid "Review Stars"
+msgstr "Критика Звездице"
+
+#: tinymce3/panels/advanced.php:264
+msgid "Additional Style"
+msgstr "Додатни Стил"
+
+#: tinymce3/panels/advanced.php:267
+msgid "Style Class"
+msgstr "Стил класа"
+
+#: tinymce3/panels/advanced.php:270
+msgid "Don't Add"
+msgstr "Не Додај"
+
+#: tinymce3/panels/advanced.php:271
+msgid "Built In"
+msgstr "Уграђена"
+
+#: tinymce3/panels/advanced.php:272
+msgid "External"
+msgstr "Екстерна"
+
+#: tinymce3/panels/advanced.php:280
+msgid "Built In Class"
+msgstr "Уграђена класа"
+
+#: tinymce3/panels/advanced.php:292
+msgid "External Class"
+msgstr "Екстерна класа"
+
+#: tinymce3/panels/multi.php:2
+msgid "Multi Ratings"
+msgstr "Мулти Рејтинг"
+
+#: tinymce3/panels/multi.php:16
+msgid "Display rating block as read only."
+msgstr "Рејтинг блок не дозвољава гласање."
+
 #: tinymce3/window.php:30
-#: tinymce3/window.php:394
+#: tinymce3/window.php:81
 msgid "Insert"
 msgstr "Убаци"
 
@@ -2177,274 +2461,7 @@ msgstr "StarReview ће приказати звезде које предста�
 msgid "StarRater will render actual rating block if you choose not to have it automatically inserted. This way you can position it wherever you want in the contnents."
 msgstr "StarRater ће приказати рејтинг блок уколико одлучите да не желите да се аутоматски убацује. Овако се може позиционирати било где у садржају."
 
-#: tinymce3/window.php:72
-msgid "Display"
-msgstr "Приказ"
-
-#: tinymce3/window.php:75
-#: widgets/widget_rating.php:185
-msgid "Number Of Posts"
-msgstr "Број Чланака"
-
-#: tinymce3/window.php:79
-#: widgets/widget_rating.php:49
-msgid "Items Grouping"
-msgstr "Груписање"
-
-#: tinymce3/window.php:81
-#: widgets/widget_rating.php:52
-msgid "No grouping"
-msgstr "Без груписања"
-
-#: tinymce3/window.php:82
-#: widgets/widget_rating.php:53
-msgid "User based"
-msgstr "Корисници"
-
-#: tinymce3/window.php:83
-#: widgets/widget_rating.php:54
-msgid "Category based"
-msgstr "Категорија"
-
-#: tinymce3/window.php:90
-#: widgets/widget_rating.php:65
-#: widgets/widget_rating.php:73
-msgid "Trend"
-msgstr "Тренд"
-
-#: tinymce3/window.php:93
-#: widgets/widget_rating.php:74
-msgid "Rating trend display as"
-msgstr "Тренд рејтинга  прикажи као"
-
-#: tinymce3/window.php:96
-#: tinymce3/window.php:132
-#: widgets/widget_rating.php:77
-#: widgets/widget_rating.php:115
-msgid "Text"
-msgstr "Текст"
-
-#: tinymce3/window.php:97
-#: tinymce3/window.php:133
-#: widgets/widget_rating.php:78
-#: widgets/widget_rating.php:116
-msgid "Image"
-msgstr "Слика"
-
-#: tinymce3/window.php:106
-#: tinymce3/window.php:142
-#: widgets/widget_rating.php:87
-#: widgets/widget_rating.php:125
-msgid "Up"
-msgstr "Раст"
-
-#: tinymce3/window.php:108
-#: tinymce3/window.php:144
-#: widgets/widget_rating.php:89
-#: widgets/widget_rating.php:127
-msgid "Equal"
-msgstr "Исто"
-
-#: tinymce3/window.php:110
-#: tinymce3/window.php:146
-#: widgets/widget_rating.php:91
-#: widgets/widget_rating.php:129
-msgid "Down"
-msgstr "Пад"
-
-#: tinymce3/window.php:118
-#: tinymce3/window.php:154
-#: widgets/widget_rating.php:100
-#: widgets/widget_rating.php:138
-msgid "Image set"
-msgstr "Сет слика"
-
-#: tinymce3/window.php:129
-#: widgets/widget_rating.php:112
-msgid "Voting trend display as"
-msgstr "Тренд гласања прикажи као"
-
-#: tinymce3/window.php:166
-msgid "Hiding"
-msgstr "Сакриј"
-
-#: tinymce3/window.php:167
-#: widgets/widget_rating.php:225
-msgid "Bayesian minumum votes required."
-msgstr "Бајесиан минимум потребних гласова"
-
-#: tinymce3/window.php:168
-#: widgets/widget_rating.php:231
-msgid "Hide articles with no recorded votes."
-msgstr "Сакриј чланке без уписаних гласова"
-
-#: tinymce3/window.php:169
-#: widgets/widget_rating.php:237
-msgid "Hide articles with no review values."
-msgstr "Сакриј чланке без критичке оцене."
-
-#: tinymce3/window.php:175
-msgid "Basic"
-msgstr "Основни"
-
-#: tinymce3/window.php:178
-#: widgets/widget_rating.php:163
-#: widgets/widget_top.php:53
-msgid "Include Articles"
-msgstr "Укључи Чланке"
-
-#: tinymce3/window.php:182
-#: widgets/widget_rating.php:167
-#: widgets/widget_top.php:57
-msgid "Posts Only"
-msgstr "Само Чланци"
-
-#: tinymce3/window.php:183
-#: widgets/widget_rating.php:168
-#: widgets/widget_top.php:58
-msgid "Pages Only"
-msgstr "Само Стране"
-
-#: tinymce3/window.php:188
-#: widgets/widget_rating.php:174
-#: widgets/widget_top.php:64
-msgid "Display Votes From"
-msgstr "Прикажи гласове од"
-
-#: tinymce3/window.php:190
-#: widgets/widget_rating.php:41
-#: widgets/widget_rating.php:177
-#: widgets/widget_top.php:30
-#: widgets/widget_top.php:67
-msgid "Everyone"
-msgstr "Сви"
-
-#: tinymce3/window.php:192
-#: widgets/widget_rating.php:43
-#: widgets/widget_rating.php:179
-#: widgets/widget_top.php:32
-#: widgets/widget_top.php:69
-msgid "Users Only"
-msgstr "Само корисници"
-
-#: tinymce3/window.php:200
-#: widgets/widget_rating.php:192
-msgid "Minimum Votes"
-msgstr "Минимум Гласова"
-
-#: tinymce3/window.php:207
-msgid "Sorting"
-msgstr "Сортирање"
-
-#: tinymce3/window.php:210
-msgid "Column"
-msgstr "Колона"
-
-#: tinymce3/window.php:214
-#: widgets/widget_rating.php:203
-msgid "Total Votes"
-msgstr "Укупно Гласова"
-
-#: tinymce3/window.php:218
-#: widgets/widget_rating.php:207
-msgid "Count"
-msgstr "Збир"
-
-#: tinymce3/window.php:219
-#: widgets/widget_rating.php:208
-msgid "Bayesian Rating"
-msgstr "Бајесова Процењена Средина"
-
-#: tinymce3/window.php:224
-msgid "Order"
-msgstr "Редослед"
-
-#: tinymce3/window.php:227
-#: widgets/widget_rating.php:217
-msgid "Descending"
-msgstr "Опадајући"
-
-#: tinymce3/window.php:228
-#: widgets/widget_rating.php:218
-msgid "Ascending"
-msgstr "Растући"
-
-#: tinymce3/window.php:239
-#: widgets/widget_rating.php:261
-msgid "Publish Date"
-msgstr "Датум објављивања"
-
-#: tinymce3/window.php:242
-#: widgets/widget_rating.php:264
-msgid "Last # days"
-msgstr "Последњих # дана"
-
-#: tinymce3/window.php:243
-#: widgets/widget_rating.php:265
-msgid "Exact month"
-msgstr "Тачно месец"
-
-#: tinymce3/window.php:244
-#: widgets/widget_rating.php:266
-msgid "Date range"
-msgstr "Распон датума"
-
-#: tinymce3/window.php:252
-#: widgets/widget_rating.php:275
-msgid "Number Of Days"
-msgstr "Број дана"
-
-#: tinymce3/window.php:262
-#: widgets/widget_rating.php:286
-msgid "Month"
-msgstr "Месец"
-
-#: tinymce3/window.php:272
-#: widgets/widget_rating.php:297
-msgid "Range"
-msgstr "Опсег"
-
-#: tinymce3/window.php:284
-msgid "Rating Stars"
-msgstr "Рејтинг Звезде"
-
-#: tinymce3/window.php:309
-msgid "Review Stars"
-msgstr "Критика Звездице"
-
-#: tinymce3/window.php:334
-msgid "Additional Style"
-msgstr "Додатни Стил"
-
-#: tinymce3/window.php:337
-msgid "Style Class"
-msgstr "Стил класа"
-
-#: tinymce3/window.php:340
-msgid "Don't Add"
-msgstr "Не Додај"
-
-#: tinymce3/window.php:341
-msgid "Built In"
-msgstr "Уграђена"
-
-#: tinymce3/window.php:342
-msgid "External"
-msgstr "Екстерна"
-
-#: tinymce3/window.php:350
-msgid "Built In Class"
-msgstr "Уграђена класа"
-
-#: tinymce3/window.php:362
-msgid "External Class"
-msgstr "Екстерна класа"
-
-#: tinymce3/window.php:372
-msgid "Multi Ratings"
-msgstr "Мулти Рејтинг"
-
-#: tinymce3/window.php:390
+#: tinymce3/window.php:77
 msgid "Cancel"
 msgstr "Откажи"
 
