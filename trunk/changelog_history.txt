@@ -8,11 +8,13 @@
   * new: linking javascript rating code instead of embeding it
   * new: multi rating parameter read_only
   * edit: more changes to plugin front page
+  * edit: updated heading for all admin pages
   * edit: tinymce plugin improvements
   * edit: updatad powered by button
   * edit: better stars sets optmization
   * fix: insert new record into multi_data table
   * fix: w3c validation problem with javascript
+  * fix: singular/plural votes returned by ajax vote call
 
 === Version: 1.1.3 / february 11 2009 ===
   * edit: updated plugin front page

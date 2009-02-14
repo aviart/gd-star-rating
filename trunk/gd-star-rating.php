@@ -1132,8 +1132,6 @@ wp_gdsr_dump("VOTE", $id.": ".$votes." [".$user."]");
 
             $data = GDSRDatabase::get_post_data($id);
 
-            if ($votes == 1) $tense = $this->x["word_votes_singular"];
-            else $tense = $this->x["word_votes_plural"];
             $unit_width = $this->o["size"];
             $unit_count = $this->o["stars"];
 
@@ -1152,6 +1150,9 @@ wp_gdsr_dump("VOTE", $id.": ".$votes." [".$user."]");
                 $votes = $data->user_voters;
                 $score = $data->user_votes;
             }
+
+            if ($votes == 1) $tense = $this->x["word_votes_singular"];
+            else $tense = $this->x["word_votes_plural"];
 
             if ($votes > 0) $rating2 = $score / $votes;
             else $rating2 = 0;
@@ -1206,9 +1207,6 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                 $data = GDSRDatabase::get_comment_data($id);
                 $post_data = GDSRDatabase::get_post_data($data->post_id);
 
-                if ($votes == 1) $tense = $this->x["word_votes_singular"];
-                else $tense = $this->x["word_votes_plural"];
-
                 $unit_width = $this->o["cmm_size"];
                 $unit_count = $this->o["cmm_stars"];
                 
@@ -1227,6 +1225,9 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                     $votes = $data->user_voters;
                     $score = $data->user_votes;
                 }
+
+                if ($votes == 1) $tense = $this->x["word_votes_singular"];
+                else $tense = $this->x["word_votes_plural"];
 
                 if ($votes > 0) $rating2 = $score / $votes;
                 else $rating2 = 0;

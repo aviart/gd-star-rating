@@ -30,7 +30,7 @@
     }
 </script>
 
-<div class="wrap"><h2>GD Star Rating: <?php _e("Setup", "gd-star-rating"); ?></h2>
+<div class="wrap"><h2 class="gdptlogopage">GD Star Rating: <?php _e("Setup", "gd-star-rating"); ?></h2>
 <form method="post" onsubmit="return areYouSure()">
     <div id="rightnow">
         <h3 class="reallynow"><span><?php _e("Database Maintenance", "gd-star-rating"); ?>:</span><br class="clear"/></h3>

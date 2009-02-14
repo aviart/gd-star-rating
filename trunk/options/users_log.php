@@ -77,7 +77,7 @@ function checkAll(form) {
 
 <div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
 <form id="gdsr-articles" method="post" action="">
-<h2>GD Star Rating: <?php _e("User Vote Log", "gd-star-rating"); ?></h2>
+<h2 class="gdptlogopage">GD Star Rating: <?php _e("User Vote Log", "gd-star-rating"); ?></h2>
 <p><strong>
 <?php if ($user_id > 0) { ?>
 <?php _e("Votes log for user", "gd-star-rating"); ?>: 

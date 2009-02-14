@@ -78,7 +78,7 @@ function checkAll(form) {
 
 <div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
 <form id="gdsr-articles" method="post" action="">
-<h2>GD Star Rating: <?php _e("Multi Set Results", "gd-star-rating"); ?>: <?php _e("Articles", "gd-star-rating"); ?></h2>
+<h2 class="gdptlogopage">GD Star Rating: <?php _e("Multi Set Results", "gd-star-rating"); ?>: <?php _e("Articles", "gd-star-rating"); ?></h2>
 <ul class="subsubsub">
     <li><a<?php echo $select == "" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>">All Articles (<?php echo $number_posts_all; ?>)</a> |</li>
     <li><a<?php echo $select == "post" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&select=post">Posts (<?php echo $number_posts_post; ?>)</a> |</li>
