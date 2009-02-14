@@ -232,7 +232,8 @@ class GDSRDefaults {
     );
 
     var $default_shortcode_starratingmulti = array(
-        'id' => 1
+        'id' => 1,
+        'read_only' => 0
     );
 
     var $default_templates = array(
