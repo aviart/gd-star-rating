@@ -2,11 +2,13 @@
 
 == Change Log ==
 
-=== Version: 1.1.4 / february 16 2009 ===
+=== Version: 1.1.4 / february 15 2009 ===
   * new: star rating default set
   * new: polish translation
   * new: linking javascript rating code instead of embeding it
+  * new: multi rating parameter read_only
   * edit: more changes to plugin front page
+  * edit: tinymce plugin improvements
   * edit: updatad powered by button
   * fix: insert new record into multi_data table
   * fix: w3c validation problem with javascript

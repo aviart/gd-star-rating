@@ -67,6 +67,20 @@ $default_preview_class.= $gdsr_options["wait_class_multis"];
         <?php } ?>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Submit Button", "gd-star-rating"); ?></th>
+    <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Button text", "gd-star-rating"); ?>:</td>
+                <td width="200">
+                    <input type="text" name="gdsr_mur_submittext" id="gdsr_mur_submittext" value="<?php echo wp_specialchars($gdsr_options["mur_button_text"]); ?>" style="width: 170px" />
+                </td>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_mur_submitactive" id="gdsr_mur_submitactive"<?php if ($gdsr_options["mur_button_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_mur_submitactive"><?php _e("Use submit button to send votes. If disabled, votes will be send once all block elements are rated.", "gd-star-rating"); ?></label>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Vote Waiting Message", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">

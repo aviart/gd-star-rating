@@ -110,6 +110,8 @@
         $gdsr_options["mur_class_text"] = $_POST['gdsr_mur_classtext'];
         $gdsr_options["mur_class_table"] = $_POST['gdsr_mur_classtable'];
         $gdsr_options["mur_class_button"] = $_POST['gdsr_mur_classbutton'];
+        $gdsr_options["mur_button_text"] = $_POST['gdsr_mur_submittext'];
+        $gdsr_options["mur_button_active"] = isset($_POST['gdsr_mur_submitactive']) ? 1 : 0;
 
         $gdsr_options["cmm_style"] = $_POST['gdsr_cmm_style'];
         $gdsr_options["cmm_size"] = $_POST['gdsr_cmm_size'];
