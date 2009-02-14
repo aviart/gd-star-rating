@@ -1,4 +1,5 @@
-<div class="wrap"><h2>GD Star Rating: <?php _e("Charts", "gd-star-rating"); ?></h2>
+<div class="wrap">
+    <h2 class="gdptlogopage">GD Star Rating: <?php _e("Charts", "gd-star-rating"); ?></h2>
 <div class="gdsr">
 
 <div id="gdsr_tabs" class="gdsrtabs">

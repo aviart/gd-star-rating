@@ -15,7 +15,7 @@ else {
 <input type="hidden" id="gdsr_action" name="gdsr_action" value="save" />
 <input type="hidden" id="gdsr_ms_id" name="gdsr_ms_id" value="<?php echo $set->multi_id; ?>" />
 <div class="gdsr">
-<h2>GD Star Rating: <?php _e("Multi Sets Editor", "gd-star-rating"); ?></h2>
+<h2 class="gdptlogopage">GD Star Rating: <?php _e("Multi Sets Editor", "gd-star-rating"); ?></h2>
 
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Name", "gd-star-rating"); ?></th>

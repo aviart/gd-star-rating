@@ -15,7 +15,7 @@ $url.= "&gdsr=murset";
 
 <div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
 <form id="gdsr-articles" method="post" action="">
-<h2>GD Star Rating: <?php _e("Multi Set Results", "gd-star-rating"); ?>: <?php _e("Voters", "gd-star-rating"); ?></h2>
+<h2 class="gdptlogopage">GD Star Rating: <?php _e("Multi Set Results", "gd-star-rating"); ?>: <?php _e("Voters", "gd-star-rating"); ?></h2>
 <div class="tablenav">
     <div class="alignleft">
 <?php GDSRDatabase::get_combo_months($filter_date); ?>

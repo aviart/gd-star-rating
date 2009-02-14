@@ -64,7 +64,8 @@ if ($_POST["action"] == "deletebans") {
 
 ?>
 <div class="gdsr">
-<div class="wrap"><h2>GD Star Rating: <?php _e("IP's", "gd-star-rating"); ?></h2>
+<div class="wrap">
+    <h2 class="gdptlogopage">GD Star Rating: <?php _e("IP's", "gd-star-rating"); ?></h2>
 
 <div id="gdsr_tabs" class="gdsrtabs">
 <ul>

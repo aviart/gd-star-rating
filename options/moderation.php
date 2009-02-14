@@ -31,7 +31,7 @@ function checkAll(form) {
 
 <div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
 <form id="gdsr-moderation" method="post" action="">
-<h2>GD Star Rating: <?php _e("Moderation", "gd-star-rating"); ?></h2>
+<h2 class="gdptlogopage">GD Star Rating: <?php _e("Moderation", "gd-star-rating"); ?></h2>
 <div>
 <p><strong>
     <?php

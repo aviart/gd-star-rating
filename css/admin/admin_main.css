@@ -12,6 +12,16 @@
     border-width:1px;
 }
 
+h2.gdptlogopage {
+	background: transparent url(../../gfx/menu32.png) no-repeat;
+	padding: 0 0 0 38px;
+	height: 32px;
+	margin: 14px 0;
+	line-height: 30px;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif;
+	border: 0;
+}
+
 #gdptlogo {
     background: transparent url(../../gfx/logo.png) no-repeat;
     height: 64px;
