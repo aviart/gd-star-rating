@@ -286,7 +286,7 @@ class GDSRRender {
             return GDSRRender::rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block, $debug);
     }
 
-    function multi_rating_block($wait_msg, $allow_vote, $votes, $debug, $post_id, $set, $height, $header, $header_text, $custom_class_block = "", $custom_class_text = "", $custom_class_table = "", $custom_class_button = "", $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+    function multi_rating_block($wait_msg, $allow_vote, $votes, $debug, $post_id, $set, $height, $header, $header_text, $custom_class_block = "", $custom_class_text = "", $custom_class_table = "", $custom_class_button = "", $time_restirctions = "N", $time_remaining = 0, $time_date = '', $button_active = true, $button_text = "Submit") {
         $template = get_option('gd-star-rating-templates');
 
         $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti '.$custom_class_block.'">';
@@ -353,7 +353,7 @@ class GDSRRender {
         $rater.= '<tr class="gdtblbottom"><td colspan="2">';
         $rater.= '<div id="gdsr_mur_text_'.$post_id.'_'.$set->multi_id.'">';
             $rater.= '<div class="ratingtextmulti '.$custom_class_text.($allow_vote ? "" : " voted").'">'.$rt.'</div>';
-            if ($allow_vote) $rater.= '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$custom_class_button.'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'"><a rel="nofollow">'.__("Submit", "gd-star-rating").'</a></div>';
+            if ($allow_vote && $button_active) $rater.= '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$custom_class_button.'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'"><a rel="nofollow">'.$button_text.'</a></div>';
         $rater.= '</div>';
         if ($allow_vote) $rater.= GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", $typecls, $wait_msg);
         $rater.= '</td></tr></table>';
