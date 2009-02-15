@@ -163,162 +163,162 @@ msgstr ""
 msgid "votes"
 msgstr ""
 
-#: code/gd-star-functions.php:279
+#: code/gd-star-functions.php:283
 msgid "No moderation"
 msgstr ""
 
-#: code/gd-star-functions.php:280
+#: code/gd-star-functions.php:284
 msgid "Moderate visitors"
 msgstr ""
 
-#: code/gd-star-functions.php:281
+#: code/gd-star-functions.php:285
 msgid "Moderate users"
 msgstr ""
 
-#: code/gd-star-functions.php:282
+#: code/gd-star-functions.php:286
 msgid "Moderate all"
 msgstr ""
 
-#: code/gd-star-functions.php:283
-#: code/gd-star-functions.php:297
-#: code/gd-star-functions.php:310
-#: code/gd-star-functions.php:322
+#: code/gd-star-functions.php:287
+#: code/gd-star-functions.php:301
+#: code/gd-star-functions.php:314
+#: code/gd-star-functions.php:326
 msgid "Inherit from Category"
 msgstr ""
 
-#: code/gd-star-functions.php:292
+#: code/gd-star-functions.php:296
 msgid "Everyone can vote"
 msgstr ""
 
-#: code/gd-star-functions.php:293
+#: code/gd-star-functions.php:297
 msgid "Only visitors"
 msgstr ""
 
-#: code/gd-star-functions.php:294
+#: code/gd-star-functions.php:298
 msgid "Only users"
 msgstr ""
 
-#: code/gd-star-functions.php:295
+#: code/gd-star-functions.php:299
 msgid "Locked"
 msgstr ""
 
-#: code/gd-star-functions.php:296
+#: code/gd-star-functions.php:300
 msgid "Locked and hidden"
 msgstr ""
 
-#: code/gd-star-functions.php:307
+#: code/gd-star-functions.php:311
 msgid "No timer"
 msgstr ""
 
-#: code/gd-star-functions.php:308
+#: code/gd-star-functions.php:312
 msgid "Countdown timer"
 msgstr ""
 
-#: code/gd-star-functions.php:309
+#: code/gd-star-functions.php:313
 msgid "Date limited"
 msgstr ""
 
-#: code/gd-star-functions.php:319
+#: code/gd-star-functions.php:323
 #: options/articles.php:204
 #: options/categories.php:112
 msgid "Hours"
 msgstr ""
 
-#: code/gd-star-functions.php:320
+#: code/gd-star-functions.php:324
 #: options/articles.php:207
 #: options/categories.php:115
 msgid "Days"
 msgstr ""
 
-#: code/gd-star-functions.php:321
+#: code/gd-star-functions.php:325
 #: options/articles.php:210
 #: options/categories.php:118
 msgid "Months"
 msgstr ""
 
-#: code/gd-star-functions.php:330
+#: code/gd-star-functions.php:334
 #: tinymce3/panels/advanced.php:228
 #: tinymce3/panels/advanced.php:253
 msgid "Mini"
 msgstr ""
 
-#: code/gd-star-functions.php:331
+#: code/gd-star-functions.php:335
 #: tinymce3/panels/advanced.php:229
 #: tinymce3/panels/advanced.php:254
 msgid "Small"
 msgstr ""
 
-#: code/gd-star-functions.php:332
+#: code/gd-star-functions.php:336
 #: tinymce3/panels/advanced.php:230
 #: tinymce3/panels/advanced.php:255
 msgid "Medium"
 msgstr ""
 
-#: code/gd-star-functions.php:333
+#: code/gd-star-functions.php:337
 #: tinymce3/panels/advanced.php:231
 #: tinymce3/panels/advanced.php:256
 msgid "Big"
 msgstr ""
 
-#: code/gd-star-functions.php:341
+#: code/gd-star-functions.php:345
 msgid "Stars and text"
 msgstr ""
 
-#: code/gd-star-functions.php:342
+#: code/gd-star-functions.php:346
 msgid "Stars only"
 msgstr ""
 
-#: code/gd-star-functions.php:343
+#: code/gd-star-functions.php:347
 msgid "Text only"
 msgstr ""
 
-#: code/gd-star-functions.php:351
+#: code/gd-star-functions.php:355
 msgid "No alignment"
 msgstr ""
 
-#: code/gd-star-functions.php:352
-#: code/gd-star-functions.php:381
+#: code/gd-star-functions.php:356
+#: code/gd-star-functions.php:385
 msgid "Left"
 msgstr ""
 
-#: code/gd-star-functions.php:353
+#: code/gd-star-functions.php:357
 msgid "Center"
 msgstr ""
 
-#: code/gd-star-functions.php:354
-#: code/gd-star-functions.php:383
+#: code/gd-star-functions.php:358
+#: code/gd-star-functions.php:387
 msgid "Right"
 msgstr ""
 
-#: code/gd-star-functions.php:362
+#: code/gd-star-functions.php:366
 msgid "No Animation"
 msgstr ""
 
-#: code/gd-star-functions.php:376
+#: code/gd-star-functions.php:380
 msgid "Always hide"
 msgstr ""
 
-#: code/gd-star-functions.php:377
+#: code/gd-star-functions.php:381
 msgid "Top"
 msgstr ""
 
-#: code/gd-star-functions.php:378
+#: code/gd-star-functions.php:382
 msgid "Top (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:379
+#: code/gd-star-functions.php:383
 msgid "Bottom"
 msgstr ""
 
-#: code/gd-star-functions.php:380
+#: code/gd-star-functions.php:384
 msgid "Bottom (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:382
+#: code/gd-star-functions.php:386
 msgid "Left (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:384
+#: code/gd-star-functions.php:388
 msgid "Right (hide if empty)"
 msgstr ""
 
@@ -494,7 +494,7 @@ msgstr ""
 #: multi/results_post.php:118
 #: options/articles.php:156
 #: options/categories.php:69
-#: options/settings_general.php:62
+#: options/settings_administration.php:54
 #: gd-star-rating.php:474
 #: gd-star-rating.php:474
 msgid "Categories"
@@ -559,7 +559,7 @@ msgid "Stars"
 msgstr ""
 
 #: multi/sets.php:63
-#: options/settings.php:49
+#: options/settings.php:50
 msgid "Statistics"
 msgstr ""
 
@@ -626,7 +626,7 @@ msgstr ""
 #: options/categories.php:167
 #: options/categories.php:224
 #: options/comments.php:139
-#: options/settings_general.php:64
+#: options/settings_administration.php:56
 #: options/users.php:47
 #: gd-star-rating.php:475
 #: gd-star-rating.php:475
@@ -643,9 +643,9 @@ msgstr ""
 
 #: options/articles.php:329
 #: options/categories.php:215
-#: options/charts.php:6
+#: options/charts.php:7
 #: options/comments.php:43
-#: options/settings.php:46
+#: options/settings.php:47
 #: options/tools.php:96
 #: options/users.php:65
 #: templates/templates.php:39
@@ -686,7 +686,7 @@ msgid "no limit"
 msgstr ""
 
 #: options/articles.php:225
-#: options/charts.php:0
+#: options/charts.php:1
 msgid "Charts"
 msgstr ""
 
@@ -704,7 +704,7 @@ msgstr ""
 msgid "Time Restrictions"
 msgstr ""
 
-#: options/charts.php:5
+#: options/charts.php:6
 msgid "Articles (Posts And Pages)"
 msgstr ""
 
@@ -736,52 +736,52 @@ msgstr ""
 msgid "With selected"
 msgstr ""
 
-#: options/export.php:17
-#: options/export.php:55
+#: options/export.php:18
+#: options/export.php:56
 msgid "Export Data"
 msgstr ""
 
-#: options/export.php:22
+#: options/export.php:23
 msgid "Users Data"
 msgstr ""
 
-#: options/export.php:23
+#: options/export.php:24
 msgid "Posts Data"
 msgstr ""
 
-#: options/export.php:24
+#: options/export.php:25
 msgid "Comments Data"
 msgstr ""
 
-#: options/export.php:30
+#: options/export.php:31
 msgid "User Info"
 msgstr ""
 
-#: options/export.php:32
+#: options/export.php:33
 msgid "Minimal: only user id is exported"
 msgstr ""
 
-#: options/export.php:33
+#: options/export.php:34
 msgid "Normal: user id, name and email are exported"
 msgstr ""
 
-#: options/export.php:36
+#: options/export.php:37
 msgid "Data"
 msgstr ""
 
-#: options/export.php:38
+#: options/export.php:39
 msgid "Post / Page votes"
 msgstr ""
 
-#: options/export.php:39
+#: options/export.php:40
 msgid "Comments votes"
 msgstr ""
 
-#: options/export.php:42
+#: options/export.php:43
 msgid "Additional Columns"
 msgstr ""
 
-#: options/export.php:44
+#: options/export.php:45
 #: options/ips_list.php:55
 #: options/moderation.php:116
 #: options/users_log.php:105
@@ -789,25 +789,25 @@ msgstr ""
 msgid "IP"
 msgstr ""
 
-#: options/export.php:45
+#: options/export.php:46
 #: options/moderation.php:117
 #: options/voters.php:146
 msgid "User Agent"
 msgstr ""
 
-#: options/export.php:47
+#: options/export.php:48
 msgid "Post/Page title"
 msgstr ""
 
-#: options/export.php:48
+#: options/export.php:49
 msgid "Post/Page date"
 msgstr ""
 
-#: options/export.php:50
+#: options/export.php:51
 msgid "Comment author"
 msgstr ""
 
-#: options/export.php:51
+#: options/export.php:52
 msgid "Comment date"
 msgstr ""
 
@@ -884,9 +884,9 @@ msgid "Version"
 msgstr ""
 
 #: options/front.php:146
-#: options/import.php:50
-#: options/import.php:75
-#: options/import.php:134
+#: options/import.php:51
+#: options/import.php:76
+#: options/import.php:135
 #: options/tools.php:133
 #: options/users_log.php:106
 msgid "Status"
@@ -908,91 +908,91 @@ msgstr ""
 msgid "An error occured while loading newsfeed. Go to the %sfront page%s to check for updates."
 msgstr ""
 
-#: options/import.php:25
-#: options/import.php:57
-#: options/import.php:82
-#: options/import.php:141
+#: options/import.php:26
+#: options/import.php:58
+#: options/import.php:83
+#: options/import.php:142
 #: options/import.php:2
 #: options/import.php:9
 #: options/import.php:16
 msgid "Import Data"
 msgstr ""
 
-#: options/import.php:40
-#: options/import.php:65
-#: options/import.php:90
-#: options/import.php:148
+#: options/import.php:41
+#: options/import.php:66
+#: options/import.php:91
+#: options/import.php:149
 msgid "Plugin URL"
 msgstr ""
 
-#: options/import.php:45
-#: options/import.php:70
-#: options/import.php:95
-#: options/import.php:153
+#: options/import.php:46
+#: options/import.php:71
+#: options/import.php:96
+#: options/import.php:154
 msgid "Author URL"
 msgstr ""
 
-#: options/import.php:100
+#: options/import.php:101
 msgid "Instructions"
 msgstr ""
 
-#: options/import.php:103
+#: options/import.php:104
 msgid "For each value you have a name of the variable from plugin file in square brackets."
 msgstr ""
 
-#: options/import.php:104
+#: options/import.php:105
 msgid "Plugin could save data in post meta table or only in the post using shortcodes. Import can try both, but if you are usre that ratings are stored in post meta table, use that option."
 msgstr ""
 
-#: options/import.php:107
+#: options/import.php:108
 msgid "Import Settings"
 msgstr ""
 
-#: options/import.php:111
+#: options/import.php:112
 msgid "Maximum review value"
 msgstr ""
 
-#: options/import.php:117
+#: options/import.php:118
 msgid "Meta Key"
 msgstr ""
 
-#: options/import.php:123
+#: options/import.php:124
 msgid "Try Importing from"
 msgstr ""
 
-#: options/import.php:126
+#: options/import.php:127
 msgid "Posts meta table"
 msgstr ""
 
-#: options/import.php:127
+#: options/import.php:128
 msgid "Posts contents only"
 msgstr ""
 
-#: options/import.php:128
+#: options/import.php:129
 msgid "Both contents and meta"
 msgstr ""
 
-#: options/import.php:163
+#: options/import.php:164
 msgid "To avoid rating data import problems, please don't use GD Star Rating in the same time as the plugins above, to avoid potential import problems and false data. I can't guarantee that data will be transfered without problems."
 msgstr ""
 
-#: options/import.php:102
+#: options/import.php:103
 msgid "You need to enter few settings for this plugin. This can be found in the plugin's main and only PHP file: %s"
 msgstr ""
 
-#: options/ips.php:66
-#: options/settings_general.php:74
+#: options/ips.php:67
+#: options/settings_administration.php:66
 #: options/users_log.php:177
 #: gd-star-rating.php:481
 #: gd-star-rating.php:481
 msgid "IP's"
 msgstr ""
 
-#: options/ips.php:70
+#: options/ips.php:71
 msgid "Ban New"
 msgstr ""
 
-#: options/ips.php:71
+#: options/ips.php:72
 msgid "Banned"
 msgstr ""
 
@@ -1067,6 +1067,7 @@ msgid "Approve"
 msgstr ""
 
 #: options/settings.php:37
+#: options/settings_administration.php:30
 #: tinymce3/panels/multi.php:15
 #: gd-star-rating.php:478
 #: gd-star-rating.php:478
@@ -1074,53 +1075,132 @@ msgid "Settings"
 msgstr ""
 
 #: options/settings.php:41
-#: tinymce3/window.php:31
-msgid "General"
+msgid "Features"
 msgstr ""
 
 #: options/settings.php:42
-msgid "Debug"
+msgid "Administration"
 msgstr ""
 
 #: options/settings.php:43
+msgid "Debug"
+msgstr ""
+
+#: options/settings.php:44
 #: options/tools.php:8
 msgid "Cache"
 msgstr ""
 
-#: options/settings.php:44
+#: options/settings.php:45
 msgid "Integration"
 msgstr ""
 
-#: options/settings.php:45
+#: options/settings.php:46
 #: templates/templates.php:38
 #: tinymce3/panels/advanced.php:111
 msgid "Posts And Pages"
 msgstr ""
 
-#: options/settings.php:47
+#: options/settings.php:48
 #: templates/templates.php:40
 msgid "Multis"
 msgstr ""
 
-#: options/settings.php:48
+#: options/settings.php:49
 #: templates/templates.php:41
 msgid "RSS"
 msgstr ""
 
-#: options/settings.php:50
+#: options/settings.php:51
 #: options/settings_articles.php:150
 #: options/settings_comments.php:128
 #: options/settings_multis.php:90
 msgid "Preview"
 msgstr ""
 
-#: options/settings.php:51
+#: options/settings.php:52
 msgid "BOT List"
 msgstr ""
 
-#: options/settings.php:89
+#: options/settings.php:93
 #: templates/templates.php:70
 msgid "Save Settings"
+msgstr ""
+
+#: options/settings_administration.php:1
+#: tinymce3/panels/advanced.php:2
+msgid "Display"
+msgstr ""
+
+#: options/settings_administration.php:5
+msgid "Maximum screen width"
+msgstr ""
+
+#: options/settings_administration.php:16
+msgid "Rows for display"
+msgstr ""
+
+#: options/settings_administration.php:35
+msgid "Display custom rating CSS settings."
+msgstr ""
+
+#: options/settings_administration.php:37
+msgid "Display rating placement settings."
+msgstr ""
+
+#: options/settings_administration.php:41
+msgid "Display rating defaults settings."
+msgstr ""
+
+#: options/settings_administration.php:46
+msgid "Update front page latest news feed."
+msgstr ""
+
+#: options/settings_administration.php:49
+msgid "Panels"
+msgstr ""
+
+#: options/settings_administration.php:54
+msgid "Managment for default settings."
+msgstr ""
+
+#: options/settings_administration.php:56
+msgid "Users rating managment."
+msgstr ""
+
+#: options/settings_administration.php:58
+#: options/setup.php:32
+#: gd-star-rating.php:485
+#: gd-star-rating.php:485
+msgid "Setup"
+msgstr ""
+
+#: options/settings_administration.php:58
+msgid "Uninstall and maintenance."
+msgstr ""
+
+#: options/settings_administration.php:62
+#: gd-star-rating.php:482
+#: gd-star-rating.php:482
+msgid "Import"
+msgstr ""
+
+#: options/settings_administration.php:62
+msgid "Importing data for other rating plugins."
+msgstr ""
+
+#: options/settings_administration.php:64
+#: gd-star-rating.php:483
+#: gd-star-rating.php:483
+msgid "Export"
+msgstr ""
+
+#: options/settings_administration.php:64
+msgid "Exporting rating data."
+msgstr ""
+
+#: options/settings_administration.php:66
+msgid "IP addresses managment."
 msgstr ""
 
 #: options/settings_articles.php:10
@@ -1356,159 +1436,96 @@ msgstr ""
 msgid "Log into file various debug information."
 msgstr ""
 
-#: options/settings_general.php:1
-msgid "Administration Settings"
+#: options/settings_features.php:1
+msgid "Voting"
 msgstr ""
 
-#: options/settings_general.php:5
-msgid "Maximum screen width"
-msgstr ""
-
-#: options/settings_general.php:16
-msgid "Rows for display"
-msgstr ""
-
-#: options/settings_general.php:32
-msgid "Display custom rating CSS settings."
-msgstr ""
-
-#: options/settings_general.php:34
-msgid "Display rating placement settings."
-msgstr ""
-
-#: options/settings_general.php:38
-msgid "Display rating defaults settings."
-msgstr ""
-
-#: options/settings_general.php:43
-msgid "Update front page latest news feed."
-msgstr ""
-
-#: options/settings_general.php:46
-msgid "Charset"
-msgstr ""
-
-#: options/settings_general.php:50
-msgid "Character encoding"
-msgstr ""
-
-#: options/settings_general.php:54
-msgid "For list of supported charsets visit: "
-msgstr ""
-
-#: options/settings_general.php:57
-msgid "Administration Panels"
-msgstr ""
-
-#: options/settings_general.php:62
-msgid "Managment for default settings."
-msgstr ""
-
-#: options/settings_general.php:64
-msgid "Users rating managment."
-msgstr ""
-
-#: options/settings_general.php:66
-#: options/setup.php:32
-#: gd-star-rating.php:485
-#: gd-star-rating.php:485
-msgid "Setup"
-msgstr ""
-
-#: options/settings_general.php:66
-msgid "Uninstall and maintenance."
-msgstr ""
-
-#: options/settings_general.php:70
-#: gd-star-rating.php:482
-#: gd-star-rating.php:482
-msgid "Import"
-msgstr ""
-
-#: options/settings_general.php:70
-msgid "Importing data for other rating plugins."
-msgstr ""
-
-#: options/settings_general.php:72
-#: gd-star-rating.php:483
-#: gd-star-rating.php:483
-msgid "Export"
-msgstr ""
-
-#: options/settings_general.php:72
-msgid "Exporting rating data."
-msgstr ""
-
-#: options/settings_general.php:74
-msgid "IP addresses managment."
-msgstr ""
-
-#: options/settings_general.php:80
-msgid "Plugin Features"
-msgstr ""
-
-#: options/settings_general.php:82
+#: options/settings_features.php:3
 msgid "AJAX enabled rating."
 msgstr ""
 
-#: options/settings_general.php:84
+#: options/settings_features.php:5
 msgid "Use Nonce with AJAX for improved security."
 msgstr ""
 
-#: options/settings_general.php:86
-msgid "Link external javascript rating code, instead of embeding it into the page."
-msgstr ""
-
-#: options/settings_general.php:88
+#: options/settings_features.php:7
 msgid "Use banned IP's lists to filter out visitors."
 msgstr ""
 
-#: options/settings_general.php:90
+#: options/settings_features.php:9
 msgid "Don't even show rating stars to visitors comming from banned IP's."
 msgstr ""
 
-#: options/settings_general.php:95
+#: options/settings_features.php:12
+msgid "Plugin Features"
+msgstr ""
+
+#: options/settings_features.php:14
+msgid "Link external javascript rating code, instead of embeding it into the page."
+msgstr ""
+
+#: options/settings_features.php:16
+msgid "Link additional css file"
+msgstr ""
+
+#: options/settings_features.php:21
 msgid "Time restriction for rating."
 msgstr ""
 
-#: options/settings_general.php:97
+#: options/settings_features.php:23
 msgid "Moderation options and handling."
 msgstr ""
 
-#: options/settings_general.php:99
+#: options/settings_features.php:25
 msgid "Multiple rating support."
 msgstr ""
 
-#: options/settings_general.php:103
+#: options/settings_features.php:29
 msgid "Post And Page Review Rating."
 msgstr ""
 
-#: options/settings_general.php:105
+#: options/settings_features.php:31
 msgid "Comments Rating."
 msgstr ""
 
-#: options/settings_general.php:107
+#: options/settings_features.php:33
 msgid "Comments Review Rating."
 msgstr ""
 
-#: options/settings_general.php:112
-msgid "Use IE6 PNG transparency fix."
+#: options/settings_features.php:39
+msgid "Charset"
 msgstr ""
 
-#: options/settings_general.php:114
-msgid "Use IE opacity fix for multi ratings."
+#: options/settings_features.php:43
+msgid "Character encoding"
 msgstr ""
 
-#: options/settings_general.php:117
+#: options/settings_features.php:47
+msgid "For list of supported charsets visit: "
+msgstr ""
+
+#: options/settings_features.php:50
 msgid "Rating Log"
 msgstr ""
 
-#: options/settings_general.php:119
+#: options/settings_features.php:52
 msgid "Log user agent (browser) information."
 msgstr ""
 
-#: options/settings_general.php:121
+#: options/settings_features.php:54
 msgid "Save cookies with ratings."
+msgstr ""
+
+#: options/settings_features.php:57
+msgid "Internet Explorer"
+msgstr ""
+
+#: options/settings_features.php:59
+msgid "Use IE6 PNG transparency fix."
+msgstr ""
+
+#: options/settings_features.php:61
+msgid "Use IE opacity fix for multi ratings."
 msgstr ""
 
 #: options/settings_integration.php:1
@@ -2147,10 +2164,6 @@ msgstr ""
 msgid "total remaining minutes"
 msgstr ""
 
-#: tinymce3/panels/advanced.php:2
-msgid "Display"
-msgstr ""
-
 #: tinymce3/panels/advanced.php:5
 #: widgets/widget_rating.php:185
 msgid "Number Of Posts"
@@ -2421,6 +2434,10 @@ msgstr ""
 #: tinymce3/window.php:30
 #: tinymce3/window.php:81
 msgid "Insert"
+msgstr ""
+
+#: tinymce3/window.php:31
+msgid "General"
 msgstr ""
 
 #: tinymce3/window.php:34
