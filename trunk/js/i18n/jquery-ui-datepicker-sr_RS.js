@@ -1,4 +1,4 @@
-﻿/* Croatian i18n for the jQuery UI date picker plugin. */
+/* Serbian i18n for the jQuery UI date picker plugin. */
 /* Written by Milan Petrovic. */
 jQuery(function($){
 	$.datepicker.regional['sr_RS'] = {
