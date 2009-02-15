@@ -10,6 +10,7 @@
   * edit: more changes to plugin front page
   * edit: updated heading for all admin pages
   * edit: tinymce plugin improvements
+  * edit: updated icons used in admin panels
   * edit: updatad powered by button
   * edit: better stars sets optmization
   * fix: insert new record into multi_data table
