@@ -12,6 +12,7 @@
 
     $include_mur_rating = $gdsr->o["multis_active"] == 1;
     $include_cmm_review = $gdsr->o["comments_review_active"] == 1;
+    $button_active = $gdsr->o["mur_button_active"] == 1;
 
     header("Cache-Control: no-cache, must-revalidate");
     header('Content-Type: text/javascript');

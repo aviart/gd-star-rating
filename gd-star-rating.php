@@ -661,13 +661,13 @@ if (!class_exists('GDStarRating')) {
         function saveedit_post($post_id) {
             if ($_POST['gdsr_post_edit'] == "edit") {
                 $old = GDSRDatabase::check_post($post_id);
-                    
+
                 $review = $_POST['gdsr_review'];
                 if ($_POST['gdsr_review_decimal'] != "-1")
                     $review.= ".".$_POST['gdsr_review_decimal'];
                 GDSRDatabase::save_review($post_id, $review, $old);
                 $old = true;
-                
+
                 GDSRDatabase::save_article_rules($post_id, $_POST['gdsr_vote_articles'], $_POST['gdsr_mod_articles']);
                 if ($this->o["comments_active"] == 1)
                     GDSRDatabase::save_comment_rules($post_id, $_POST['gdsr_cmm_vote_articles'], $_POST['gdsr_cmm_mod_articles']);
@@ -1001,6 +1001,7 @@ if (!class_exists('GDStarRating')) {
                 if ($this->use_nonce) $nonce = wp_create_nonce('gdsr_ajax_r8');
                 else $nonce = "";
                 $ajax_active = $this->o["ajax"];
+                $button_active = $this->o["mur_button_active"] == 1;
                 echo('//<[!CDATA[');
                 include ($this->plugin_path."code/gd-star-js.php");
                 echo('// ]]>');
@@ -2538,7 +2539,10 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                 $dbg_allow = "B";
             }
 
-            $allow_vote = $settings["read_only"] == 1;
+            if ($settings["read_only"] == 1) {
+                $dbg_allow = "RO";
+                $allow_vote = false;
+            }
 
             if (is_single() || (is_page() && $this->o["display_comment_page"] == 1))
                 $this->init_post();
@@ -2641,7 +2645,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            return GDSRRender::multi_rating_block($this->loader_article, $allow_vote, $votes, $debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"], $post_data->expiry_type, $remaining, $deadline);
+            return GDSRRender::multi_rating_block($this->loader_article, $allow_vote, $votes, $debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"], $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"]);
         }
         // rendering
     }

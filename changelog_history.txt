@@ -8,6 +8,8 @@
   * new: linking javascript rating code instead of embeding it
   * new: multi rating parameter read_only
   * new: loading of extra css file
+  * new: multi rating vote without button
+  * new: custom multi submit button text
   * new: additional features settings tab
   * edit: more changes to plugin front page
   * edit: updated heading for all admin pages
