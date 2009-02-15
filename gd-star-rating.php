@@ -990,6 +990,10 @@ if (!class_exists('GDStarRating')) {
             $css_string = urlencode($css_string);
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
             echo("\r\n");
+            if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
+                echo('<link rel="stylesheet" href="'.$this->plugin_xtra_url.'css/rating.css" type="text/css" media="screen" />');
+                echo("\r\n");
+            }
             if ($this->o["external_javascript"] == 1)
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'script.js.php"></script>');
             else {

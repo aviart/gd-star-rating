@@ -2,11 +2,13 @@
 
 == Change Log ==
 
-=== Version: 1.1.4 / february 15 2009 ===
+=== Version: 1.1.4 / february 16 2009 ===
   * new: star rating default set
   * new: polish translation
   * new: linking javascript rating code instead of embeding it
   * new: multi rating parameter read_only
+  * new: loading of extra css file
+  * new: additional features settings tab
   * edit: more changes to plugin front page
   * edit: updated heading for all admin pages
   * edit: tinymce plugin improvements
