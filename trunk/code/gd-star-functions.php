@@ -78,6 +78,10 @@ class GDSRHelper {
                 if (!is_dir(STARRATING_CACHE_PATH)) mkdir(STARRATING_CACHE_PATH, 0755);
                 if (!is_dir(STARRATING_XTRA_PATH."stars/")) mkdir(STARRATING_XTRA_PATH."stars/", 0755);
                 if (!is_dir(STARRATING_XTRA_PATH."trends/")) mkdir(STARRATING_XTRA_PATH."trends/", 0755);
+                if (!is_dir(STARRATING_XTRA_PATH."css/")) mkdir(STARRATING_XTRA_PATH."css/", 0755);
+                if (!file_exists(STARRATING_XTRA_PATH."css/rating.css")) {
+                    copy(STARRATING_PATH."css/rating.css", STARRATING_XTRA_PATH."css/rating.css");
+                }
             }
         }
         else {
