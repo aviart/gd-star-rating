@@ -1,0 +1,2 @@
+ALTER TABLE `%sgdsr_multis_data` CHANGE `review` `review` DECIMAL(3, 1) NOT NULL DEFAULT '-1'
+ALTER TABLE `%sgdsr_multis_data` CHANGE `review_text` `review_text` VARCHAR(255) NULL DEFAULT NULL
