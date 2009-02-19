@@ -15,7 +15,9 @@
 </tr>
 <tr><th scope="row"><?php _e("Post Edit", "gd-star-rating"); ?></th>
     <td>
-        <input type="checkbox" name="gdsr_integrate_post_edit" id="gdsr_integrate_post_edit"<?php if ($gdsr_options["integrate_post_edit"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_post_edit"><?php _e("Add rating box in the post/page edit sidebar area.", "gd-star-rating"); ?></label>
+        <input type="checkbox" name="gdsr_integrate_post_edit" id="gdsr_integrate_post_edit"<?php if ($gdsr_options["integrate_post_edit"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_post_edit"><?php _e("Add standard rating box in the post/page edit sidebar area.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_integrate_post_edit_mur" id="gdsr_integrate_post_edit_mur"<?php if ($gdsr_options["integrate_post_edit_mur"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_post_edit_mur"><?php _e("Add multi ratings box in the post/page edit.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_integrate_tinymce" id="gdsr_integrate_tinymce"<?php if ($gdsr_options["integrate_tinymce"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_tinymce"><?php _e("Add rating shortcode plugin into tinyMCE visual editor.", "gd-star-rating"); ?></label>
     </td>

@@ -52,6 +52,7 @@ class GDSRDefaults {
         "widget_top" => 1,
         "widget_comments" => 1,
         "integrate_post_edit" => 1,
+        "integrate_post_edit_mur" => 1,
         "integrate_tinymce" => 1,
         "integrate_comment_edit" => 1,
         "integrate_dashboard" => 1,

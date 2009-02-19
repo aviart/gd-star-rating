@@ -399,6 +399,12 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
+        function editbox_post_mur() {
+            global $post;
+
+            include($this->plugin_path.'integrate/edit_multi.php');
+        }
+
         function editbox_post() {
             global $post;
 
@@ -459,11 +465,19 @@ if (!class_exists('GDStarRating')) {
         function admin_menu() {
             if ($this->wp_version < 27)
                 add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"));
+                if ($this->o["integrate_post_edit"] == 1) {
+                    add_meta_box("gdsr-meta-box", "GD Star Rating: ".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
+                    add_meta_box("gdsr-meta-box", "GD Star Rating: ".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
+                }
             else {
                 add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
                 if ($this->o["integrate_post_edit"] == 1) {
                     add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "post", "side", "high");
                     add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "page", "side", "high");
+                }
+                if ($this->o["integrate_post_edit_mur"] == 1) {
+                    add_meta_box("gdsr-meta-box-mur", "GD Star Rating".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
+                    add_meta_box("gdsr-meta-box-mur", "GD Star Rating".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
                 }
                 if ($this->o["integrate_comment_edit"] == 1) {
                     add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_comment'), "comments", "side", "high");
@@ -553,8 +567,8 @@ if (!class_exists('GDStarRating')) {
                     add_action('submitpost_box', array(&$this, 'editbox_post'));
                     add_action('submitpage_box', array(&$this, 'editbox_post'));
                 }
-                add_action('save_post', array(&$this, 'saveedit_post'));
             }
+            if ($this->o["integrate_post_edit_mur"] == 1 || $this->o["integrate_post_edit"] == 1) add_action('save_post', array(&$this, 'saveedit_post'));
             if ($this->o["integrate_dashboard"] == 1) {
                 add_action('wp_dashboard_setup', array(&$this, 'add_dashboard_widget'));
                 if (!function_exists('wp_add_dashboard_widget'))
