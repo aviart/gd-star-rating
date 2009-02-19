@@ -264,7 +264,7 @@ form#gdsr-articles { position: relative; }
 	padding: 6px;
 }
 
-.clearboth { clear: both; }
+.gdsr-clear, .clearboth { clear: both; }
 
 .paneltext {
 	font-size: 11px;
