@@ -1,12 +1,15 @@
 <?php
 
 if ($gdsr_page == "munew") {
+    $edit_id = 0;
     $set = new GDMultiSingle();
 }
 else {
     $edit_id = $_GET["id"];
     $set = gd_get_multi_set($edit_id);
 }
+
+$review_set = $options["mur_review_set"];
 
 ?>
 
@@ -33,6 +36,11 @@ else {
         <select<?php if ($gdsr_page == "muedit") echo ' disabled="disabled"'; ?> style="width: 70px;" name="gdsr_ms_stars" id="gdsr_ms_stars">
             <?php GDSRHelper::render_stars_select($set->stars); ?>
         </select>
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("Review", "gd-star-rating"); ?></th>
+    <td>
+        <input type="checkbox" name="gdsr_ms_review" id="gdsr_ms_review"<?php if ($review_set == $edit_id) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ms_review"><?php _e("Use this set for post/page review. Only one set at the time can be used for review feature.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Elements", "gd-star-rating"); ?></th>

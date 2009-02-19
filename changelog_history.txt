@@ -5,6 +5,8 @@
 === Version: 1.1.5 / february 23 2009 ===
   * new: multi ratings review box on edit page
   * edit: default rating.css file updated
+  * fix: processing new multi set
+  * fix: upgrade of multi ratings database table
 
 === Version: 1.1.4 / february 16 2009 ===
   * new: star rating default set

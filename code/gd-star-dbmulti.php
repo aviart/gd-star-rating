@@ -242,6 +242,11 @@ wp_gdsr_dump("CHECKVOTE_MULTI", $vote_data);
         return $wpdb->get_var(sprintf("select count(*) from %sgdsr_multis_data where multi_id = %s", $table_prefix, $set_id));
     }
 
+    function get_usage_count_post_reviews($set_id) {
+        global $wpdb, $table_prefix;
+        return $wpdb->get_var(sprintf("select count(*) from %sgdsr_multis_data where review > 0 and multi_id = %s", $table_prefix, $set_id));
+    }
+
     function get_usage_count_voters($set_id) {
         global $wpdb, $table_prefix;
         $sql = sprintf("select count(*) from %sgdsr_votes_log where multi_id = %s and vote_type = 'multis'",
@@ -278,13 +283,14 @@ wp_gdsr_dump("CHECKVOTE_MULTI", $vote_data);
                 $table_prefix, $set->name, $set->description, $set->stars, serialize($set->object), serialize($set->weight)
             );
         $wpdb->query($sql);
+        return $wpdb->inser_id;
     }
     
     function edit_multi_set($set) {
         global $wpdb, $table_prefix;
         
         $sql = sprintf("update %sgdsr_multis set `name` = '%s', `description` = '%s', `object` = '%s', `weight` = '%s' where multi_id = %s",
-                $table_prefix, $set->name, $set->description, serialize($set->object), serialize($set->weight), $set->id
+                $table_prefix, $set->name, $set->description, serialize($set->object), serialize($set->weight), $set->multi_id
             );
         $wpdb->query($sql);
     }
