@@ -1,11 +1,4 @@
     <script>
-    function gdsrTimerChange() {
-        var timer = jQuery("#gdsr_timer_type").val();
-        jQuery("#gdsr_timer_date").css("display", "none");
-        jQuery("#gdsr_timer_countdown").css("display", "none");
-        if (timer == "D") jQuery("#gdsr_timer_date").css("display", "block");
-        if (timer == "T") jQuery("#gdsr_timer_countdown").css("display", "block");
-    }
     </script>
     <input type="hidden" id="gdsr_post_edit" name="gdsr_post_edit" value="edit" />
     <h4 class="gdsr-section-title"><?php _e("Post Review", "gd-star-rating"); ?>:</h4>

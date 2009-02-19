@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.1.4
+Version: 1.1.5
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -463,12 +463,13 @@ if (!class_exists('GDStarRating')) {
          * WordPress action for adding administration menu items
          */
         function admin_menu() {
-            if ($this->wp_version < 27)
+            if ($this->wp_version < 27) {
                 add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"));
-                if ($this->o["integrate_post_edit"] == 1) {
+                if ($this->o["integrate_post_edit_mur"] == 1) {
                     add_meta_box("gdsr-meta-box", "GD Star Rating: ".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
                     add_meta_box("gdsr-meta-box", "GD Star Rating: ".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
                 }
+            }
             else {
                 add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
                 if ($this->o["integrate_post_edit"] == 1) {
@@ -476,8 +477,8 @@ if (!class_exists('GDStarRating')) {
                     add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "page", "side", "high");
                 }
                 if ($this->o["integrate_post_edit_mur"] == 1) {
-                    add_meta_box("gdsr-meta-box-mur", "GD Star Rating".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
-                    add_meta_box("gdsr-meta-box-mur", "GD Star Rating".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
+                    add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
+                    add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
                 }
                 if ($this->o["integrate_comment_edit"] == 1) {
                     add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_comment'), "comments", "side", "high");
@@ -527,13 +528,22 @@ if (!class_exists('GDStarRating')) {
                     if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js"></script>';
                 }
             }
+            echo("\r\n");
             echo('<script type="text/javascript">jQuery(document).ready(function() {');
-            if ($this->admin_page == "edit-comments.php") include ($this->plugin_path."code/gd-star-jsx.php");
-            if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
-            if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
-            if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
-            if ($this->admin_plugin_page == "settings-page") include(STARRATING_PATH."code/gd-star-jsa.php");
-            echo('});</script>');
+                echo("\r\n");
+                if ($this->admin_page == "edit-comments.php") include ($this->plugin_path."code/gd-star-jsx.php");
+                if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
+                if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
+                if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
+                if ($this->admin_plugin_page == "settings-page") include(STARRATING_PATH."code/gd-star-jsa.php");
+            echo('});');
+            if ($this->admin_page == "edit.php") {
+                $edit_std = $this->o["integrate_post_edit_mur"] == 1;
+                $edit_mur = $this->o["integrate_post_edit"] == 1;
+                echo("\r\n");
+                include(STARRATING_PATH."code/gd-star-jse.php");
+            }
+            echo('</script>');
 
             if ($this->admin_page == "themes.php") echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />');
 
@@ -568,7 +578,8 @@ if (!class_exists('GDStarRating')) {
                     add_action('submitpage_box', array(&$this, 'editbox_post'));
                 }
             }
-            if ($this->o["integrate_post_edit_mur"] == 1 || $this->o["integrate_post_edit"] == 1) add_action('save_post', array(&$this, 'saveedit_post'));
+            if ($this->o["integrate_post_edit_mur"] == 1 || $this->o["integrate_post_edit"] == 1)
+                add_action('save_post', array(&$this, 'saveedit_post'));
             if ($this->o["integrate_dashboard"] == 1) {
                 add_action('wp_dashboard_setup', array(&$this, 'add_dashboard_widget'));
                 if (!function_exists('wp_add_dashboard_widget'))
