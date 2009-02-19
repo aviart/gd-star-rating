@@ -1,5 +1,7 @@
 <?php
 
+$review_set = $options["mur_review_set"];
+
 if ($_POST["gdsr_operation"] == __("Delete Selected Sets", "gd-star-rating")) {
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
@@ -59,9 +61,10 @@ function gdsrAddNewMulti() {
             <th scope="col" width="33"><?php _e("ID", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Name", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Description", "gd-star-rating"); ?></th>
-            <th scope="col" width="55"><?php _e("Stars", "gd-star-rating"); ?></th>
-            <th scope="col" width="333"><?php _e("Ratings", "gd-star-rating"); ?></th>
-            <th scope="col" width="333"><?php _e("Statistics", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Stars", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Ratings", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Review", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Statistics", "gd-star-rating"); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -83,13 +86,20 @@ function gdsrAddNewMulti() {
             $weights = unserialize($row->weight);
             $half = floor(count($elements) / 2);
             if ($half * 2 < count($elements)) $half++;
-            echo '<table style="width: 100%;"><tr><td style="border: 0; padding: 0;">';
+            echo '<table style="width: 100%;"><tr><td style="border: 0; padding: 0; width: 50%;">';
             for ($i = 0; $i < $half; $i++)
                 echo sprintf("[%s] %s (%s)<br />", $i+1, $elements[$i], $weights[$i]);
-            echo '</td><td style="border: 0; padding: 0;">';
+            echo '</td><td style="border: 0; padding: 0; width: 50%;">';
             for ($i = $half; $i < count($elements); $i++)
                 echo sprintf("[%s] %s (%s)<br />", $i+1, $elements[$i], $weights[$i]);
             echo '</td></tr></table>';
+        echo '</td>';
+        echo '<td>';
+            $rvw_counter = intval(GDSRDBMulti::get_usage_count_post_reviews($row->multi_id));
+            if ($rvw_counter > 0)
+                $rvw_counter = sprintf('<a href="./admin.php?page=gd-star-rating-multi-sets&gdsr=murpost&sid=%s"><strong style="color: red;">%s</strong></a>', $row->multi_id, $rvw_counter);
+            echo sprintf("[ <strong>%s</strong> ] %s", $rvw_counter, __("Posts", "gd-star-rating"));
+            if ($review_set == $row->multi_id) echo '<br /><strong style="color: red;">active</strong>';
         echo '</td>';
         echo '<td>';
             $usg_counter = intval(GDSRDBMulti::get_usage_count_posts($row->multi_id));

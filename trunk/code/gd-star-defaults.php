@@ -89,6 +89,7 @@ class GDSRDefaults {
         "mur_class_button" => '',
         "mur_button_text" => 'Submit',
         "mur_button_active" => 1,
+        "mur_review_set" => 0,
         "cmm_style" => 'oxygen',
         "cmm_size" => 12,
         "cmm_stars" => 5,

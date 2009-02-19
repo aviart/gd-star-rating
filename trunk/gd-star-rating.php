@@ -1566,7 +1566,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                 $elwe = $_POST["gdsr_ms_weight"];
                 $i = 0;
                 foreach ($elms as $el) {
-                    if (($el != "" && $eset->id == 0) || $eset->id > 0) {
+                    if (($el != "" && $eset->multi_id == 0) || $eset->multi_id > 0) {
                         $eset->object[] = stripslashes(htmlentities($el, ENT_QUOTES, STARRATING_ENCODING));
                         $ew = $elwe[$i];
                         if (!is_numeric($ew)) $ew = 1;
@@ -1575,8 +1575,16 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                     }
                 }
                 if ($eset->name != "") {
-                    if ($eset->id == 0) GDSRDBMulti::add_multi_set($eset);
-                    else GDSRDBMulti::edit_multi_set($eset);
+                    if ($eset->multi_id == 0) $set_id = GDSRDBMulti::add_multi_set($eset);
+                    else {
+                        $set_id = $eset->multi_id;
+                        GDSRDBMulti::edit_multi_set($eset);
+                    }
+                    $review_set = isset($_POST["gdsr_ms_review"]) ? 1 : 0;
+                    if ($review_set == 1) $this->o["mur_review_set"] = $set_id;
+                    else if ($this->o["mur_review_set"] == $set_id) $this->o["mur_review_set"] = 0;
+                    update_option('gd-star-rating', $this->o);
+                    $options = $this->o;
                 }
             }
             if (($gdsr_page == "munew" || $gdsr_page == "muedit") && $editor) include($this->plugin_path.'multi/editor.php');
