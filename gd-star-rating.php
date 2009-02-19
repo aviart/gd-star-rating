@@ -402,6 +402,11 @@ if (!class_exists('GDStarRating')) {
         function editbox_post_mur() {
             global $post;
 
+            $gdsr_options = $this->o;
+            $post_id = $post->ID;
+            $multi_id = $this->o["mur_review_set"];
+            if ($multi_id > 0) $set = gd_get_multi_set($multi_id);
+
             include($this->plugin_path.'integrate/edit_multi.php');
         }
 
@@ -466,8 +471,8 @@ if (!class_exists('GDStarRating')) {
             if ($this->wp_version < 27) {
                 add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"));
                 if ($this->o["integrate_post_edit_mur"] == 1) {
-                    add_meta_box("gdsr-meta-box", "GD Star Rating: ".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
-                    add_meta_box("gdsr-meta-box", "GD Star Rating: ".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
+                    add_meta_box("gdsr-meta-box", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
+                    add_meta_box("gdsr-meta-box", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
                 }
             }
             else {
@@ -477,8 +482,8 @@ if (!class_exists('GDStarRating')) {
                     add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "page", "side", "high");
                 }
                 if ($this->o["integrate_post_edit_mur"] == 1) {
-                    add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
-                    add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
+                    add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
+                    add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
                 }
                 if ($this->o["integrate_comment_edit"] == 1) {
                     add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_comment'), "comments", "side", "high");
