@@ -21,3 +21,9 @@
     background-color: #CEE1EF;
     font-size: 12px;
 }
+
+.gdsr-review-block {}
+.gdsr-review-table { border: 0; }
+.gdsr-review-table tr.mtrow { background-color: white; }
+.gdsr-review-table tr.mtrow.alternate { background-color: white; }
+

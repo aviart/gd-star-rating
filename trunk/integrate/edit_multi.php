@@ -10,9 +10,7 @@
         echo __("");
         echo '</td><td width="65%">';
 
-?>
-
-<?php
+        echo GDSRRender::multi_rating_review($votes, $post_id, $set, 20);
 
         echo '</td></tr></table>';
     }
