@@ -286,9 +286,11 @@ class GDSRRender {
             return GDSRRender::rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block, $debug);
     }
 
-    function multi_rating_block($wait_msg, $allow_vote, $votes, $debug, $post_id, $set, $height, $header, $header_text, $custom_class_block = "", $custom_class_text = "", $custom_class_table = "", $custom_class_button = "", $time_restirctions = "N", $time_remaining = 0, $time_date = '', $button_active = true, $button_text = "Submit") {
-        $template = get_option('gd-star-rating-templates');
+    function multi_rating_review($votes, $post_id, $set, $height) {
+        return GDSRRender::multi_rating_block("", true, $votes, false, $post_id, $set, $height, 0, "", "gdsr-review-block", "", "gdsr-review-table", "", "N", 0, "", false, "", true);
+    }
 
+    function multi_rating_block($wait_msg, $allow_vote, $votes, $debug, $post_id, $set, $height, $header, $header_text, $custom_class_block = "", $custom_class_text = "", $custom_class_table = "", $custom_class_button = "", $time_restirctions = "N", $time_remaining = 0, $time_date = "", $button_active = true, $button_text = "Submit", $review_mode = false) {
         $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti '.$custom_class_block.'">';
         if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
 
@@ -304,60 +306,60 @@ class GDSRRender {
         $total_votes = 0;
         $weight_norm = array_sum($set->weight);
         foreach ($set->object as $el) {
-            $rater.= '<tr class="'.$tr_class.'">';
-            $rater.= '<td>'.$el.':</td>';
-            $rater.= '<td>';
+            $rater.= '<tr class="'.$tr_class.'"><td>'.$el.':</td><td>';
             $rater.= GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"]);
-            $rater.= '</td>';
-            $rater.= '</tr>';
+            $rater.= '</td></tr>';
             if ($tr_class == "mtrow") $tr_class.= " alternate";
             else $tr_class = "mtrow";
             $weighted += ( $votes[$i]["rating"] * $set->weight[$i] ) / $weight_norm;
             $total_votes += $votes[$i]["votes"];
             $i++;
         }
-        $rating = @number_format($weighted, 1);
-        $total_votes = @number_format($total_votes / $i, 0);
-        if ($total_votes == 1) $tense = $template["word_votes_singular"];
-        else $tense = $template["word_votes_plural"];
+        if (!$review_mode) {
+            $templates = get_option('gd-star-rating-templates');
+            $rating = @number_format($weighted, 1);
+            $total_votes = @number_format($total_votes / $i, 0);
+            if ($total_votes == 1) $tense = $templates["word_votes_singular"];
+            else $tense = $templates["word_votes_plural"];
 
-        if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
-            $time_parts = GDSRHelper::remaining_time_parts($time_remaining);
-            $time_total = GDSRHelper::remaining_time_total($time_remaining);
-            $tpl = $template["multis_time_restricted_active"];
-            $rt = html_entity_decode($tpl);
-            $rt = str_replace('%TR_DATE%', $time_date, $rt);
-            $rt = str_replace('%TR_YEARS%', $time_parts["year"], $rt);
-            $rt = str_replace('%TR_MONTHS%', $time_parts["month"], $rt);
-            $rt = str_replace('%TR_DAYS%', $time_parts["day"], $rt);
-            $rt = str_replace('%TR_HOURS%', $time_parts["hour"], $rt);
-            $rt = str_replace('%TR_MINUTES%', $time_parts["minute"], $rt);
-            $rt = str_replace('%TR_SECONDS%', $time_parts["second"], $rt);
-            $rt = str_replace('%TOT_DAYS%', $time_total["day"], $rt);
-            $rt = str_replace('%TOT_HOURS%', $time_total["hour"], $rt);
-            $rt = str_replace('%TOT_MINUTES%', $time_total["minute"], $rt);
-        }
-        else {
-            if ($time_restirctions == 'D' || $time_restirctions == 'T')
-                $tpl = $template["multis_time_restricted_closed"];
-            else
-                $tpl = $template["multis_rating_text"];
-            $rt = html_entity_decode($tpl);
-        }
-        $rt = str_replace('%RATING%', $rating, $rt);
-        $rt = str_replace('%MAX_RATING%', $set->stars, $rt);
-        $rt = str_replace('%VOTES%', $total_votes, $rt);
-        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-        $rt = str_replace('%ID%', $post_id, $rt);
+            if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
+                $time_parts = GDSRHelper::remaining_time_parts($time_remaining);
+                $time_total = GDSRHelper::remaining_time_total($time_remaining);
+                $tpl = $templates["multis_time_restricted_active"];
+                $rt = html_entity_decode($tpl);
+                $rt = str_replace('%TR_DATE%', $time_date, $rt);
+                $rt = str_replace('%TR_YEARS%', $time_parts["year"], $rt);
+                $rt = str_replace('%TR_MONTHS%', $time_parts["month"], $rt);
+                $rt = str_replace('%TR_DAYS%', $time_parts["day"], $rt);
+                $rt = str_replace('%TR_HOURS%', $time_parts["hour"], $rt);
+                $rt = str_replace('%TR_MINUTES%', $time_parts["minute"], $rt);
+                $rt = str_replace('%TR_SECONDS%', $time_parts["second"], $rt);
+                $rt = str_replace('%TOT_DAYS%', $time_total["day"], $rt);
+                $rt = str_replace('%TOT_HOURS%', $time_total["hour"], $rt);
+                $rt = str_replace('%TOT_MINUTES%', $time_total["minute"], $rt);
+            }
+            else {
+                if ($time_restirctions == 'D' || $time_restirctions == 'T')
+                    $tpl = $templates["multis_time_restricted_closed"];
+                else
+                    $tpl = $templates["multis_rating_text"];
+                $rt = html_entity_decode($tpl);
+            }
+            $rt = str_replace('%RATING%', $rating, $rt);
+            $rt = str_replace('%MAX_RATING%', $set->stars, $rt);
+            $rt = str_replace('%VOTES%', $total_votes, $rt);
+            $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+            $rt = str_replace('%ID%', $post_id, $rt);
 
-        $rater.= '<tr class="gdtblbottom"><td colspan="2">';
-        $rater.= '<div id="gdsr_mur_text_'.$post_id.'_'.$set->multi_id.'">';
-            $rater.= '<div class="ratingtextmulti '.$custom_class_text.($allow_vote ? "" : " voted").'">'.$rt.'</div>';
-            if ($allow_vote && $button_active) $rater.= '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$custom_class_button.'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'"><a rel="nofollow">'.$button_text.'</a></div>';
-        $rater.= '</div>';
-        if ($allow_vote) $rater.= GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", $typecls, $wait_msg);
-        $rater.= '</td></tr></table>';
-        $rater.= '</div>';
+            $rater.= '<tr class="gdtblbottom"><td colspan="2">';
+            $rater.= '<div id="gdsr_mur_text_'.$post_id.'_'.$set->multi_id.'">';
+                $rater.= '<div class="ratingtextmulti '.$custom_class_text.($allow_vote ? "" : " voted").'">'.$rt.'</div>';
+                if ($allow_vote && $button_active) $rater.= '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$custom_class_button.'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'"><a rel="nofollow">'.$button_text.'</a></div>';
+            $rater.= '</div>';
+            if ($allow_vote) $rater.= GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", $typecls, $wait_msg);
+            $rater.= '</td></tr>';
+        }
+        $rater.= '</table></div>';
         return $rater;
     }
 }

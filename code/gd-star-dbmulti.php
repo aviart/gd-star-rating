@@ -167,6 +167,16 @@ class GDSRDBMulti {
         return $wpdb->get_results($sql);
     }
 
+    function add_empty_review_values($id, $values = 0) {
+        global $wpdb, $table_prefix;
+
+        for ($i = 0; $i < $values; $i++) {
+            $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id) VALUES (%s, 'rvw', %s)",
+                $table_prefix, $record_id, $i);
+            $wpdb->query($sql);
+        }
+    }
+
     function get_values_join($post_id, $set_id) {
         global $wpdb, $table_prefix;
 

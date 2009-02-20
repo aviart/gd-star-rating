@@ -2,28 +2,11 @@
 
 == Change Log ==
 
-=== Version: 1.1.5 / february 23 2009 ===
+=== Version: 1.1.5 / february 22 2009 ===
   * new: multi ratings review box on edit page
   * edit: default rating.css file updated
+  * edit: various small improvements
   * fix: processing new multi set
+  * fix: generating styles for multi sets
   * fix: editing multi sets
   * fix: upgrade of multi ratings database table
-
-=== Version: 1.1.4 / february 16 2009 ===
-  * new: star rating default set
-  * new: polish translation
-  * new: linking javascript rating code instead of embeding it
-  * new: multi rating parameter read_only
-  * new: loading of extra css file
-  * new: multi rating vote without button
-  * new: custom multi submit button text
-  * new: additional features settings tab
-  * edit: more changes to plugin front page
-  * edit: updated heading for all admin pages
-  * edit: tinymce plugin improvements
-  * edit: updated icons used in admin panels
-  * edit: updatad powered by button
-  * edit: better stars sets optmization
-  * fix: insert new record into multi_data table
-  * fix: w3c validation problem with javascript
-  * fix: singular/plural votes returned by ajax vote call

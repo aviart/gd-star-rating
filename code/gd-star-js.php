@@ -8,7 +8,7 @@ function gdsrWait(rater, loader) {
 function gdsrEmpty() { }
 
 <?php if ($ajax_active == 1) : ?>
-<?php if ($include_mur_rating) include(STARRATING_PATH.'code/gd-star-jsm2.php'); ?>
+<?php if ($include_mur_rating) include(STARRATING_PATH.'code/gd-star-jsmf.php'); ?>
 jQuery(document).ready(function() {
     if (jQuery.browser.msie) jQuery(".gdsr_rating_as > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_rating_as > a").click(function() {
