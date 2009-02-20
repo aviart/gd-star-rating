@@ -570,8 +570,9 @@ if (!class_exists('GDStarRating')) {
             }
             echo('</script>');
             if ($this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) {
-                $gfx_m = $this->g->find_stars($this->o["mur_style"]);
-                $css_string = "#m".$this->o["mur_style"]."|".$this->o["mur_size"]."|20|".$gfx_m->type."|".$gfx_m->primary;
+                $review_stars = "oxygen";
+                $gfx_m = $this->g->find_stars($review_stars);
+                $css_string = "#m".$review_stars."|20|20|".$gfx_m->type."|".$gfx_m->primary;
                 echo("\r\n");
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
             }
