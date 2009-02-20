@@ -10,8 +10,8 @@
 
 ?>
 
-        <input type="button" class="gdsr-input-button" value="<?php _e("Clear"); ?>" />
-        <input type="button" class="gdsr-input-button" value="<?php _e("Revert"); ?>" />
+        <input onclick="gdsrMultiClear(<?php echo $multi_id; ?>, <?php echo $post_id; ?>, <?php echo count($set->object); ?>)" type="button" class="gdsr-input-button" value="<?php _e("Clear"); ?>" />
+        <input onclick="gdsrMultiRevert(<?php echo $multi_id; ?>, <?php echo $post_id; ?>, <?php echo count($set->object); ?>)" type="button" class="gdsr-input-button" value="<?php _e("Revert"); ?>" />
 
 <?php
 
