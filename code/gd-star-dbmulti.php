@@ -172,7 +172,7 @@ class GDSRDBMulti {
 
         for ($i = 0; $i < $values; $i++) {
             $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id) VALUES (%s, 'rvw', %s)",
-                $table_prefix, $record_id, $i);
+                $table_prefix, $id, $i);
             $wpdb->query($sql);
         }
     }

@@ -45,12 +45,14 @@ class GDSRRender {
         return $rater;
     }
 
-    function rating_stars_multi($post_id, $set_id, $id, $height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '') {
+    function rating_stars_multi($post_id, $set_id, $id, $height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '', $review_mode = false) {
+        if ($review_mode) $current = $value;
+        else $current = 0;
         $rater.= '<div id="gdsr_mur_stars_'.$post_id.'_'.$set_id.'_'.$id.'" class="ratemulti"><div class="starsbar">';
         $rater.= '<div class="gdouter" align="left" style="width: '.($unit_count * $height).'px">';
         $rater.= '<div id="gdsr_mur_stars_rated_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($value * $height).'px;" class="gdinner"></div>';
         if ($allow_vote) {
-            $rater.= '<div id="gdsr_mur_stars_current_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: 0px;" class="gdcurrent"></div>';
+            $rater.= '<div id="gdsr_mur_stars_current_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($current * $height).'px;" class="gdcurrent"></div>';
             $rater.= '<div id="gdr_stars_mur_rating_'.$post_id.'_'.$set_id.'_'.$id.'" class="gdsr_multis_as">';
             for ($ic = 0; $ic < $unit_count; $ic++) {
                 $ncount = $unit_count - $ic;
@@ -286,8 +288,8 @@ class GDSRRender {
             return GDSRRender::rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block, $debug);
     }
 
-    function multi_rating_review($votes, $post_id, $set, $height) {
-        return GDSRRender::multi_rating_block("", true, $votes, false, $post_id, $set, $height, 0, "", "gdsr-review-block", "", "gdsr-review-table", "", "N", 0, "", false, "", true);
+    function multi_rating_review($votes, $post_id, $set, $height, $allow_vote = true) {
+        return GDSRRender::multi_rating_block("", $allow_vote, $votes, false, $post_id, $set, $height, 0, "", "gdsr-review-block", "", "gdsr-review-table", "", "N", 0, "", false, "", true);
     }
 
     function multi_rating_block($wait_msg, $allow_vote, $votes, $debug, $post_id, $set, $height, $header, $header_text, $custom_class_block = "", $custom_class_text = "", $custom_class_table = "", $custom_class_button = "", $time_restirctions = "N", $time_remaining = 0, $time_date = "", $button_active = true, $button_text = "Submit", $review_mode = false) {
@@ -297,6 +299,13 @@ class GDSRRender {
         $empty_value = str_repeat("0X", count($set->object));
         $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
 
+        if ($review_mode) {
+            $original_value = "";
+            foreach($votes as $vote) $original_value.= number_format($vote["rating"], 0)."X";
+            $original_value = substr($original_value, 0, strlen($original_value) - 1);
+            $rater.= '<input type="hidden" id="gdsr_mur_review_'.$post_id.'_'.$set->multi_id.'" name="gdsrmurreview['.$post_id.']['.$set->id.']" value="'.$original_value.'" />';
+            $empty_value = $original_value;
+        }
         if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$empty_value.'" />';
         $rater.= GDSRRender::rating_header($header, $header_text);
         $rater.= '<table class="gdmultitable '.$custom_class_table.'" cellpadding="0" cellspacing="0">';
@@ -307,7 +316,7 @@ class GDSRRender {
         $weight_norm = array_sum($set->weight);
         foreach ($set->object as $el) {
             $rater.= '<tr class="'.$tr_class.'"><td>'.$el.':</td><td>';
-            $rater.= GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"]);
+            $rater.= GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"], "", $review_mode);
             $rater.= '</td></tr>';
             if ($tr_class == "mtrow") $tr_class.= " alternate";
             else $tr_class = "mtrow";
