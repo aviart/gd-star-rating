@@ -28,6 +28,7 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 * Rating of comments
 * Multiple ratings
 * Review rating for posts and pages
+* Review rating for posts and pages with multi ratings
 * Review rating for comments
 * Ajax rating support using jQuery
 * Voting rules on post/page base
