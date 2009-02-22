@@ -714,9 +714,24 @@ if (!class_exists('GDStarRating')) {
             }
             return $comment_content;
         }
-        
+
+        /**
+         * Triggers saving GD Star Rating data for post.
+         *
+         * @param int $post_id ID of the post saving
+         */
         function saveedit_post($post_id) {
             if ($_POST['gdsr_post_edit'] == "edit") {
+
+                if ($this->o["integrate_post_edit"] == 1) {
+                    $mur = $_POST['gdsrmulti'];
+                    $mur = $mur[$post_id][0];
+                    $values = explode("X", $mur);
+                    $set_id = $this->o["mur_review_set"];
+                    $record_id = GDSRDBMulti::get_vote($post_id, $set_id);
+                    GDSRDBMulti::save_review($record_id, $values);
+                }
+
                 $old = GDSRDatabase::check_post($post_id);
 
                 $review = $_POST['gdsr_review'];
