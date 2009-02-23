@@ -33,6 +33,7 @@
             <li id="filter_tab"><span><a href="javascript:mcTabs.displayTab('filter_tab','filter_panel');" onmousedown="return false;"><?php _e("Filter", "gd-star-rating"); ?></a></span></li>
             <li id="styles_tab"><span><a href="javascript:mcTabs.displayTab('styles_tab','styles_panel');" onmousedown="return false;"><?php _e("Render", "gd-star-rating"); ?></a></span></li>
             <li style="display: none" id="multis_tab"><span><a href="javascript:mcTabs.displayTab('multis_tab','multis_panel');" onmousedown="return false;"><?php _e("Multi Rating", "gd-star-rating"); ?></a></span></li>
+            <li style="display: none" id="multisreview_tab"><span><a href="javascript:mcTabs.displayTab('multisreview_tab','multisreview_panel');" onmousedown="return false;"><?php _e("Multi Review", "gd-star-rating"); ?></a></span></li>
         </ul>
     </div>
 <div class="panel_wrapper">
@@ -49,6 +50,7 @@
                     <!-- <option value="starrating"><?php _e("Advanced", "gd-star-rating"); ?>: StarRaterCustom</option> -->
                     <option value="starrating">--------------------</option>
                     <option value="starratingmulti"><?php _e("Multi", "gd-star-rating"); ?>: StarRatingMulti</option>
+                    <option value="starreviewmulti"><?php _e("Multi", "gd-star-rating"); ?>: StarReviewMulti</option>
                     <option value="starrating">--------------------</option>
                     <option value="starreview"><?php _e("Simple", "gd-star-rating"); ?>: StarReview</option>
                     <option value="starrater"><?php _e("Simple", "gd-star-rating"); ?>: StarRater</option>

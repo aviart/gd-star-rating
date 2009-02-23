@@ -17,3 +17,10 @@
     <input type="checkbox" size="5" id="srMultiRead" name="srMultiRead" /><label for="srMultiRead"> <?php _e("Display rating block as read only.", "gd-star-rating"); ?></label><br />
 </fieldset>
 </div>
+
+<div id="multisreview_panel" class="panel">
+<fieldset>
+<legend><?php _e("Multi Reviews", "gd-star-rating"); ?></legend>
+    There are no settings for this shortcode yet. This will be updated soon.
+</fieldset>
+</div>
