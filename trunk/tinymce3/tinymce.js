@@ -52,7 +52,7 @@ function insertStarRatingCode() {
         tagtext = "[starrater]";
     }
     else if (shortcode == 'starreviewmulti') {
-        tagtext = "[starrater";
+        tagtext = "[starreviewmulti";
         tagtext = tagtext + "]";
     }
     else if (shortcode == 'starratingmulti') {

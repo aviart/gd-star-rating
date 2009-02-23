@@ -221,9 +221,10 @@ if (!class_exists('GDStarRating')) {
         *
         * @param array $atts
         */
-        function shortcode_shortcode_starreviewmulti($atts = array()) {
+        function shortcode_starreviewmulti($atts = array()) {
             global $post;
 
+            $post_id = $post->ID;
             $multi_id = $this->o["mur_review_set"];
             $set = gd_get_multi_set($multi_id);
             if ($multi_id > 0 && $post_id > 0) {
@@ -236,7 +237,7 @@ if (!class_exists('GDStarRating')) {
                     $single_vote["rating"] = $md->user_votes;
                     $votes[] = $single_vote;
                 }
-                return GDSRRender::multi_rating_review($votes, $post_id, $set, $this->o["mur_size"]);
+                return GDSRRender::multi_rating_review($votes, $post_id, $set, $this->o["mur_size"], false, "", "");
             }
             else return '';
         }
