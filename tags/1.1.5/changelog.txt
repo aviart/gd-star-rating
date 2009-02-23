@@ -1,0 +1,14 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 1.1.5 / february 22 2009 ===
+  * new: multi ratings review
+  * new: multi ratings review box on edit page
+  * new: shortcode for multi review
+  * edit: default rating.css file updated
+  * edit: various small improvements
+  * fix: processing new multi set
+  * fix: generating styles for multi sets
+  * fix: editing multi sets
+  * fix: upgrade of multi ratings database table
