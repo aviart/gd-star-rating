@@ -5,6 +5,7 @@
 === Version: 1.1.5 / february 22 2009 ===
   * new: multi ratings review
   * new: multi ratings review box on edit page
+  * new: shortcode for multi review
   * edit: default rating.css file updated
   * edit: various small improvements
   * fix: processing new multi set

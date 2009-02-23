@@ -12,7 +12,8 @@ class GDSRDefaults {
         "starrater",
         "starratingblock",
         "starratercustom",
-        "starratingmulti"
+        "starratingmulti",
+        "starreviewmulti"
     );
 
     var $default_spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
@@ -80,7 +81,7 @@ class GDSRDefaults {
         "class_block" => '',
         "class_text" => '',
         "mur_style" => 'oxygen',
-        "mur_size" => 12,
+        "mur_size" => 20,
         "mur_header" => 0,
         "mur_header_text" => '',
         "mur_class_block" => '',

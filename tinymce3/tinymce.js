@@ -4,6 +4,7 @@ function gdsrChangeShortcode() {
     document.getElementById("filter_tab").style.display = "none";
     document.getElementById("styles_tab").style.display = "none";
     document.getElementById("multis_tab").style.display = "none";
+    document.getElementById("multisreview_tab").style.display = "none";
     switch (shortcode) {
         case 0:
             document.getElementById("general_tab").style.display = "block";
@@ -12,6 +13,9 @@ function gdsrChangeShortcode() {
             break;
         case 2:
             document.getElementById("multis_tab").style.display = "block";
+            break;
+        case 3:
+            document.getElementById("multisreview_tab").style.display = "block";
             break;
     }
 
@@ -46,6 +50,10 @@ function insertStarRatingCode() {
     }
     else if (shortcode == 'starrater') {
         tagtext = "[starrater]";
+    }
+    else if (shortcode == 'starreviewmulti') {
+        tagtext = "[starrater";
+        tagtext = tagtext + "]";
     }
     else if (shortcode == 'starratingmulti') {
         tagtext = '[starratingmulti id=';

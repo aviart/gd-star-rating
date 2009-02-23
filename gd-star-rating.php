@@ -217,6 +217,31 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
+        * Code for StarReviewMulti shortcode implementation
+        *
+        * @param array $atts
+        */
+        function shortcode_shortcode_starreviewmulti($atts = array()) {
+            global $post;
+
+            $multi_id = $this->o["mur_review_set"];
+            $set = gd_get_multi_set($multi_id);
+            if ($multi_id > 0 && $post_id > 0) {
+                $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id);
+                $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
+                $votes = array();
+                foreach ($multi_data as $md) {
+                    $single_vote["votes"] = 1;
+                    $single_vote["score"] = $md->user_votes;
+                    $single_vote["rating"] = $md->user_votes;
+                    $votes[] = $single_vote;
+                }
+                return GDSRRender::multi_rating_review($votes, $post_id, $set, $this->o["mur_size"]);
+            }
+            else return '';
+        }
+
+        /**
         * Code for StarReview shortcode implementation
         * 
         * @param array $atts
