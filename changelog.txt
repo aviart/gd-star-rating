@@ -4,8 +4,10 @@
 
 === Version: 1.1.6 / march 2 2009 ===
   * new: database table for templates
+  * new: aggregated comments rating settings
   * edit: reorganized folders and files (again)
   * edit: setup panel redesigned
+  * fix: saving new multi set and review setting
 
 === Version: 1.1.5 / february 22 2009 ===
   * new: multi ratings review

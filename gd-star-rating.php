@@ -1623,7 +1623,6 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
 
         // menues
         function star_multi_sets() {
-            $options = $this->o;
             $wpv = $this->wp_version;
             $gdsr_page = $_GET["gdsr"];
 
@@ -1657,9 +1656,9 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                     if ($review_set == 1) $this->o["mur_review_set"] = $set_id;
                     else if ($this->o["mur_review_set"] == $set_id) $this->o["mur_review_set"] = 0;
                     update_option('gd-star-rating', $this->o);
-                    $options = $this->o;
                 }
             }
+            $options = $this->o;
             if (($gdsr_page == "munew" || $gdsr_page == "muedit") && $editor) include($this->plugin_path.'multi/editor.php');
             else {
                 switch ($gdsr_page) {

@@ -4,6 +4,7 @@
         $gdsr_options["news_feed_active"] = isset($_POST['gdsr_news_feed_active']) ? 1 : 0;
 
         $gdsr_options["encoding"] = $_POST['gdsr_encoding'];
+        $gdsr_options["gfx_generator_auto"] = $_POST['gdsr_gfx_generator_auto'];
         $gdsr_options["admin_width"] = $_POST['gdsr_admin_width'];
         $gdsr_options["admin_rows"] = $_POST['gdsr_admin_rows'];
         $gdsr_options["external_javascript"] = isset($_POST['gdsr_external_javascript']) ? 1 : 0;
@@ -115,6 +116,8 @@
         $gdsr_options["mur_button_text"] = $_POST['gdsr_mur_submittext'];
         $gdsr_options["mur_button_active"] = isset($_POST['gdsr_mur_submitactive']) ? 1 : 0;
 
+        $gdsr_options["cmm_aggr_style"] = $_POST['gdsr_cmm_aggr_style'];
+        $gdsr_options["cmm_aggr_size"] = $_POST['gdsr_cmm_aggr_size'];
         $gdsr_options["cmm_style"] = $_POST['gdsr_cmm_style'];
         $gdsr_options["cmm_size"] = $_POST['gdsr_cmm_size'];
         $gdsr_options["cmm_text"] = $_POST['gdsr_cmm_text'];
