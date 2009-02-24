@@ -305,7 +305,7 @@ wp_gdsr_dump("CHECKVOTE_MULTI", $vote_data);
                 $table_prefix, $set->name, $set->description, $set->stars, serialize($set->object), serialize($set->weight)
             );
         $wpdb->query($sql);
-        return $wpdb->inser_id;
+        return $wpdb->insert_id;
     }
     
     function edit_multi_set($set) {
