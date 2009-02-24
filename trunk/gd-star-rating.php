@@ -39,6 +39,7 @@ require_once(dirname(__FILE__)."/code/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gd-star-import.php");
 require_once(dirname(__FILE__)."/code/gd-star-chart.php");
 require_once(dirname(__FILE__)."/code/gd-star-generator.php");
+require_once(dirname(__FILE__)."/templates/tpl_init.php");
 require_once(dirname(__FILE__)."/gdragon/gd_functions.php");
 require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
 require_once(dirname(__FILE__)."/gdragon/gd_db_install.php");
@@ -541,6 +542,7 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gd-star-rating-templates", array(&$this,"star_menu_templates"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("T2 / Alpha", "gd-star-rating"), __("T2 / Alpha", "gd-star-rating"), 10, "gd-star-rating-t2", array(&$this,"star_menu_t2"));
             if ($this->o["admin_ips"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), 10, "gd-star-rating-ips", array(&$this,"star_menu_ips"));
             if ($this->o["admin_import"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), 10, "gd-star-rating-import", array(&$this,"star_menu_import"));
             if ($this->o["admin_export"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), 10, "gd-star-rating-export", array(&$this,"star_menu_export"));
@@ -1567,12 +1569,15 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
         }
         
         function prepare_row($row, $template) {
+            $title = $row->title;
+            if (strlen($title) == 0) $title = __("(no title)");
+            
             $template = str_replace('%RATING%', $row->rating, $template);
             $template = str_replace('%MAX_RATING%', $this->o["stars"], $template);
             $template = str_replace('%VOTES%', $row->voters, $template);
             $template = str_replace('%REVIEW%', $row->review, $template);
             $template = str_replace('%MAX_REVIEW%', $this->o["review_stars"], $template);
-            $template = str_replace('%TITLE%', __($row->title), $template);
+            $template = str_replace('%TITLE%', __($title), $template);
             $template = str_replace('%PERMALINK%', $row->permalink, $template);
             $template = str_replace('%ID%', $row->post_id, $template);
             $template = str_replace('%COUNT%', $row->counter, $template);
@@ -1725,6 +1730,12 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             include($this->plugin_path.'templates/templates.php');
         }
 
+        function star_menu_t2() {
+            $gdsr_options = $this->x;
+            $options = $this->o;
+            include($this->plugin_path.'templates/tpl_panel_list.php');
+        }
+
         function star_menu_setup() {
             include($this->plugin_path.'options/setup.php');
         }
@@ -1792,11 +1803,6 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             $gdsr_gfx = $this->g;
 
             include($this->plugin_path.'options/tools.php');
-        }
-
-        function star_menu_batch() {
-            $options = $this->o;
-            include($this->plugin_path.'options/batch.php');
         }
 
         function star_menu_import() {
