@@ -984,7 +984,7 @@ if (!class_exists('GDStarRating')) {
                 $this->o = $gdsr_options;
             }
             
-            if ($_POST["gdsr_full_uninstall"] == __("FULL UNINSTALL", "gd-star-rating")) {
+            if ($_POST["gdsr_full_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
                 delete_option('gd-star-rating');
                 delete_option('widget_gdstarrating');
                 delete_option('gd-star-rating-templates');
@@ -995,6 +995,7 @@ if (!class_exists('GDStarRating')) {
                 GDSRHelper::deactivate_plugin();
                 update_option('recently_activated', array("gd-star-rating/gd-star-rating.php" => time()) + (array)get_option('recently_activated'));
                 wp_redirect('index.php');
+                exit;
             }
 
             wp_enqueue_script('jquery');
