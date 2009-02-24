@@ -10,19 +10,41 @@ class gdTemplateElement {
     }
 }
 
+class gdTemplatePart {
+    var $name;
+    var $description;
+    var $elements;
+    var $size;
+
+    function gdTemplatePart($n, $d, $s = "single") {
+        $this->name = $n;
+        $this->description = $d;
+        $this->size = $s;
+        $this->elements = array();
+    }
+}
+
 class gdTemplate {
     var $section;
     var $code;
     var $elements;
+    var $parts;
 
     function gdTemplate($c, $s) {
         $this->code = $c;
         $this->section = $s;
-        $elements = array();
+        $this->elements = array();
+        $this->parts = array();
     }
 
     function add_element($t, $d) {
         $this->elements[] = new gdTemplateElement($t, $d);
+    }
+    
+    function add_part($n, $d, $parts = array(), $s = "single") {
+        $part = new gdTemplatePart($n, $d, $s);
+        $part->elements = $parts;
+        $this->parts[] = $part;
     }
 }
 
