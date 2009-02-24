@@ -54,40 +54,40 @@
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-11">
-<?php include STARRATING_PATH."options/settings_features.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_features.php"; ?>
 </div>
 <div id="fragment-1">
-<?php include STARRATING_PATH."options/settings_administration.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_administration.php"; ?>
 </div>
 <div id="fragment-9">
-<?php include STARRATING_PATH."options/settings_debug.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_debug.php"; ?>
 </div>
 <div id="fragment-7">
-<?php include STARRATING_PATH."options/settings_cache.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_cache.php"; ?>
 </div>
 <div id="fragment-6">
-<?php include STARRATING_PATH."options/settings_integration.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_integration.php"; ?>
 </div>
 <div id="fragment-2">
-<?php include STARRATING_PATH."options/settings_articles.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_articles.php"; ?>
 </div>
 <?php if ($gdsr_options["comments_active"] == 1) { ?><div id="fragment-3">
-<?php include STARRATING_PATH."options/settings_comments.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_comments.php"; ?>
 </div><?php } ?>
 <?php if ($gdsr_options["multis_active"] == 1) { ?><div id="fragment-8">
-<?php include STARRATING_PATH."options/settings_multis.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_multis.php"; ?>
 </div><?php } ?>
 <div id="fragment-4">
-<?php include STARRATING_PATH."options/settings_statistics.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_statistics.php"; ?>
 </div>
 <div id="fragment-5">
-<?php include STARRATING_PATH."options/settings_preview.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_preview.php"; ?>
 </div>
 <!-- <div id="fragment-8">
-<?php include STARRATING_PATH."options/settings_bots.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_bots.php"; ?>
 </div> -->
 <?php if ($gdsr_options["rss_active"] == 1) { ?><div id="fragment-10">
-<?php include STARRATING_PATH."options/settings_rss.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_rss.php"; ?>
 </div><?php } ?>
 </div>
 
