@@ -37,6 +37,8 @@
         </table>
         <div class="gdsr-table-split"></div>
         <input type="checkbox" name="gdsr_gfx_generator_auto" id="gdsr_gfx_generator_auto"<?php if ($gdsr_options["gfx_generator_auto"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_gfx_generator_auto"><?php _e("Use graphics generator to generate and display static stars images.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_gfx_prevent_leeching" id="gdsr_gfx_prevent_leeching"<?php if ($gdsr_options["gfx_prevent_leeching"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_gfx_prevent_leeching"><?php _e("Prevent outside access to graphics generator. Graphics integrated into RSS is not affected.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Charset", "gd-star-rating"); ?></th>
