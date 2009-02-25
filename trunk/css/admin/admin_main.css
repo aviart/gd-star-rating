@@ -37,6 +37,12 @@
     color: white;
 }
 
+.tpl-edit-name {
+    font-size: 13px;
+    margin: 0;
+    font-weight: bold;
+}
+
 .tpl-element-tag, .tpl-element-desc { padding: 0; }
 
 .tpl-element-tag {

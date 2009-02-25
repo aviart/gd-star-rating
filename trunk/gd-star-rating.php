@@ -1564,7 +1564,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
         
         function prepare_row($row, $template) {
             $title = $row->title;
-            if (strlen($title) == 0) $title = __("(no title)");
+            if (strlen($title) == 0) $title = __("(no title)", "gd-star-rating");
             
             $template = str_replace('%RATING%', $row->rating, $template);
             $template = str_replace('%MAX_RATING%', $this->o["stars"], $template);
@@ -1739,6 +1739,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                 include($this->plugin_path.'templates/tpl_panel_editor.php');
             }
             else if (isset($_POST["gdsr_save_tpl"])) {
+                print_r($_POST);
                 include($this->plugin_path.'templates/tpl_panel_list.php');
             }
             else {

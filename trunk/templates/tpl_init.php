@@ -12,12 +12,14 @@ class gdTemplateElement {
 
 class gdTemplatePart {
     var $name;
+    var $code;
     var $description;
     var $elements;
     var $size;
 
-    function gdTemplatePart($n, $d, $s = "single") {
+    function gdTemplatePart($n, $c, $d, $s = "single") {
         $this->name = $n;
+        $this->code = $c;
         $this->description = $d;
         $this->size = $s;
         $this->elements = array();
@@ -41,8 +43,8 @@ class gdTemplate {
         $this->elements[] = new gdTemplateElement($t, $d);
     }
     
-    function add_part($n, $d, $parts = array(), $s = "single") {
-        $part = new gdTemplatePart($n, $d, $s);
+    function add_part($n, $c, $d, $parts = array(), $s = "single") {
+        $part = new gdTemplatePart($n, $c, $d, $s);
         $part->elements = $parts;
         $this->parts[] = $part;
     }

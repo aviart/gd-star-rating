@@ -11,27 +11,59 @@ $template = $tpls->get_list($section);
 
 <div class="wrap"><h2 class="gdptlogopage">GD Star Rating: <?php _e("Template Editor", "gd-star-rating"); ?></h2>
 <form method="post">
+<input type="hidden" name="gdsr_save_tpl" value="" />
+<input type="hidden" name="tpl_section" value="<?php echo $section ?>" />
+<input type="hidden" name="tpl_id" value="<?php echo $id ?>" />
 <div class="gdsr">
 <table width="100%" cellpadding="0" cellspacing="7"><tr>
 <td class="tpl-editor-title">
-    <h3><?php _e("Editor"); ?></h3>
+    <h3><?php _e("Editor", "gd-star-rating"); ?></h3>
 </td><td class="tpl-editor-title">
-    <h3><?php _e("Elements"); ?></h3>
+    <h3><?php _e("Elements", "gd-star-rating"); ?></h3>
 </td>
 </tr><tr>
 <td class="tpl-editor-form-td">
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("General", "gd-star-rating"); ?></th>
     <td>
-        
+        <?php _e("Name", "gd-star-rating"); ?>:<br />
+        <input type="text" name="tpl_gen_name" id="tpl_gen_name" value="<?php echo ""; ?>" style="width: 500px" /><br />
+        <?php _e("Description", "gd-star-rating"); ?>:<br />
+        <textarea rows="3" style="width: 500px"><?php echo ""; ?></textarea>
     </td>
 </tr>
-<tr><th scope="row"><?php _e("Templates", "gd-star-rating"); ?></th>
+<tr><th scope="row"><?php _e("Template", "gd-star-rating"); ?></th>
     <td>
+<?php
 
+$lines = count($template->parts) - 1;
+foreach ($template->parts as $p) {
+    echo '<p class="tpl-edit-name">'.$p->name.":</p>";
+    if ($p->size == "single") echo '<input type="text" name="tpl_element['.$p->code.']" value="" style="width: 500px" /><br />';
+    else echo '<textarea rows="3" style="width: 500px" name="tpl_element['.$p->code.']"></textarea>';
+    if ($p->description != "") echo '<strong>'.__("Description", "gd-star-rating").':</strong><br />';
+    echo '<strong>'.__("Allowed elements", "gd-star-rating").':</strong> ';
+    if (is_array($p->elements)) {
+        for ($i = 0; $i < count($p->elements); $i++) {
+            echo $p->elements[$i];
+            if ($i < count($p->elements) - 1) echo ', ';
+        }
+    }
+    else {
+        if ($p->elements == "all") _e("All tag elements", "gd-star-rating");
+        else _e("No tag elements allowed", "gd-star-rating");
+    }
+    if ($lines > 0) {
+        echo '<div class="gdsr-table-split"></div>';
+        $lines--;
+    }
+}
+
+?>
     </td>
 </tr>
 </tbody></table>
+<p class="submit"><input type="submit" value="<?php _e("Save Template", "gd-star-rating"); ?>" name="gdsr_saving"/></p>
 </td><td class="tpl-editor-list-td">
 <?php
 
