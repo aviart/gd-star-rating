@@ -1,6 +1,37 @@
 <?php
 
 class GDSRRender {
+    function render_static_stars($star_style, $star_size, $star_max, $rating) {
+        switch (STARRATING_STARS_GENERATOR) {
+            case "GFX":
+                return GDSRRender::render_static_stars_gfx($star_style, $star_size, $star_max, $rating);
+                break;
+            default:
+            case "DIV":
+                return GDSRRender::render_static_stars_div($star_style, $star_size, $star_max, $rating);
+                break;
+        }
+    }
+
+    function render_static_stars_div($star_style, $star_size, $star_max, $rating) {
+        global $gdsr;
+
+        $gfx = $gdsr->g->find_stars($star_style);
+        $star_path = $gfx->get_url($star_size);
+        $full_width = $star_size * $star_max;
+        $rate_width = $star_size * $rating;
+        
+        return sprintf('<div style="%s"><div style="%s"></div></div>',
+            sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $star_size, $full_width),
+            sprintf('background: url(%s) bottom left; height: %spx; width: %spx;', $star_path, $star_size, $rate_width)
+        );
+    }
+
+    function render_static_stars_gfx($star_style, $star_size, $star_max, $rating) {
+        $url = STARRATING_URL.sprintf("gfx.php?value=%s&set=%s&size=%s&max=%s", $rating, $star_style, $star_size, $star_max);
+        return sprintf('<img src="%s" />', $url);
+    }
+
     function rss_rating_block($id, $votes, $score, $unit_set, $unit_width, $unit_count, $render, $text, $header, $header_text) {
         $template = get_option('gd-star-rating-templates');
         if ($votes == 1) $tense = $template["word_votes_singular"];

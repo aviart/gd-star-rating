@@ -252,9 +252,6 @@ if (!class_exists('GDStarRating')) {
             global $post;
             $rating = GDSRDatabase::get_review($post->ID);
             if ($rating > -1) {
-                $full_width = $this->o['review_size'] * $this->o["review_stars"];
-                $rate_width = $this->o['review_size'] * $rating;
-
                 if ($this->o['review_class_block'] != '')
                     $css_class = ' class="'.$this->o['review_class_block'].'"';
                 else
@@ -270,20 +267,16 @@ if (!class_exists('GDStarRating')) {
                 else
                     $rater_header = '';
                 
-                $gfx = $this->g->find_stars($this->o['review_style']);
-                $star_path = $gfx->get_url($this->o['review_size']);
-
-                $review = sprintf('<div%s%s>%s<div style="%s"><div style="%s"></div></div></div>',
-                    $css_class, $rater_align, $rater_header,
-                    sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $this->o['review_size'], $full_width),
-                    sprintf('background: url(%s) bottom left; height: %spx; width: %spx;', $star_path, $this->o['review_size'], $rate_width)
+                $review_stars = GDSRRender::render_static_stars($this->o['review_style'], $this->o['review_size'], $this->o["review_stars"], $rating);
+                $review = sprintf('<div%s%s>%s%s</div>',
+                    $css_class, $rater_align, $rater_header, $review_stars
                 );
                 return $review;
             }
             else
                 return '';
 		}
-		
+
         /**
         * Code for StarRating shortcode implementation
         * 
@@ -852,6 +845,7 @@ if (!class_exists('GDStarRating')) {
             $this->use_nonce = $this->o["use_nonce"] == 1;
             define("STARRATING_VERSION", $this->o["version"].'_'.$this->o["build"]);
             define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"]);
+            define("STARRATING_STARS_GENERATOR", $this->o["gfx_generator_auto"] == 0 ? "DIV" : "GFX");
             $this->t = GDSRDB::get_database_tables();
         }
 
@@ -1083,8 +1077,8 @@ if (!class_exists('GDStarRating')) {
                 }
 
                 if ($this->o["comments_review_active"] == 1) {
-                    $css_string.= "#r".$this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
                     $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
+                    $css_string.= "#r".$this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
                     $include_cmm_review = true;
                 }
             }
