@@ -52,7 +52,7 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     <div class="alignleft">
         <form method="post">
             <table cellpadding="0" cellspacing="0"><tr><td>
-            <?php _e("New template for:"); ?> </td><td>
+            <?php _e("New template for:", "gd-star-rating"); ?> </td><td>
             <?php GDSRHelper::render_templates_sections("tpl_section", $tpls->list_sections(), false) ?>
             <input class="button-secondary delete" type="submit" name="gdsr_create" value="<?php _e("Create", "gd-star-rating"); ?>" />
             </td></tr></table>

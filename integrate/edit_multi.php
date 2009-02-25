@@ -1,17 +1,17 @@
 <?php 
     
     if ($multi_id == 0)
-        _e("You first need to select which multi set you want to use for review rating.");
+        _e("You first need to select which multi set you want to use for review rating.", "gd-star-rating");
     else {
         echo '<table width="100%" cellspacing="0" cellpadding="0"><tr><td width="35%" class="gdsr-mur-review-info">';
-        echo __("Set ID").": <strong>".$multi_id."</strong><br />";
-        echo __("Set Name").": <strong>".$set->name."</strong>";
+        echo __("Set ID", "gd-star-rating").": <strong>".$multi_id."</strong><br />";
+        echo __("Set Name", "gd-star-rating").": <strong>".$set->name."</strong>";
         echo '<div class="gdsr-table-split-edit"></div>';
 
 ?>
 
-        <input onclick="gdsrMultiClear(<?php echo $multi_id; ?>, <?php echo $post_id; ?>, <?php echo count($set->object); ?>)" type="button" class="gdsr-input-button" value="<?php _e("Clear"); ?>" />
-        <input onclick="gdsrMultiRevert(<?php echo $multi_id; ?>, <?php echo $post_id; ?>, <?php echo count($set->object); ?>)" type="button" class="gdsr-input-button" value="<?php _e("Revert"); ?>" />
+        <input onclick="gdsrMultiClear(<?php echo $multi_id; ?>, <?php echo $post_id; ?>, <?php echo count($set->object); ?>)" type="button" class="gdsr-input-button" value="<?php _e("Clear", "gd-star-rating"); ?>" />
+        <input onclick="gdsrMultiRevert(<?php echo $multi_id; ?>, <?php echo $post_id; ?>, <?php echo count($set->object); ?>)" type="button" class="gdsr-input-button" value="<?php _e("Revert", "gd-star-rating"); ?>" />
 
 <?php
 
