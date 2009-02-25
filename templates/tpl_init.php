@@ -59,6 +59,13 @@ class gdTemplates {
         $this->tpls[] = $t;
     }
 
+    function get_list($section) {
+        foreach ($this->tpls as $t) {
+            if ($t->code == $section) return $t;
+        }
+        return null;
+    }
+
     function list_sections() {
         $sections = array();
         $listed = array();
