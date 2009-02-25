@@ -1727,7 +1727,23 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
         function star_menu_t2() {
             $gdsr_options = $this->x;
             $options = $this->o;
-            include($this->plugin_path.'templates/tpl_panel_list.php');
+
+            if (isset($_GET["tplid"])) {
+                $mode = "edit";
+                $id = $_GET["tplid"];
+                include($this->plugin_path.'templates/tpl_panel_editor.php');
+            }
+            else if (isset($_POST["gdsr_create"])) {
+                $mode = "new";
+                $id = 0;
+                include($this->plugin_path.'templates/tpl_panel_editor.php');
+            }
+            else if (isset($_POST["gdsr_save_tpl"])) {
+                include($this->plugin_path.'templates/tpl_panel_list.php');
+            }
+            else {
+                include($this->plugin_path.'templates/tpl_panel_list.php');
+            }
         }
 
         function star_menu_setup() {

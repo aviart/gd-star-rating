@@ -127,7 +127,7 @@ function gdsrAddNewMulti() {
 
 <div class="tablenav">
     <div class="alignleft">
-        <input class="button-secondary delete" type="submit" name="gdsr_operation" value="<?php _e("Delete Selected Sets", "gd-star-rating"); ?>" />
+        <input class="button-secondary delete" type="submit" name="gdsr_operation" value="<?php _e("Delete Selected", "gd-star-rating"); ?>" />
     </div>
     <div class="tablenav-pages">
         <?php echo $pager; ?>

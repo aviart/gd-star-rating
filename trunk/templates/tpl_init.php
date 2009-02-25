@@ -25,8 +25,8 @@ class gdTemplatePart {
 }
 
 class gdTemplate {
-    var $section;
     var $code;
+    var $section;
     var $elements;
     var $parts;
 
@@ -57,6 +57,20 @@ class gdTemplates {
 
     function add_template($t) {
         $this->tpls[] = $t;
+    }
+
+    function list_sections() {
+        $sections = array();
+        $listed = array();
+        foreach ($this->tpls as $t) {
+            $code = $t->code;
+            $name = $t->section;
+            if (!in_array($code, $listed)) {
+                $listed[] = $code;
+                $sections[] = array("code" => $code, "name" => $name);
+            }
+        }
+        return $sections;
     }
 }
 
