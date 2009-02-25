@@ -6,10 +6,13 @@
 
     global $gdsr;
 
-    $input["set"] = $gdsr->o["rss_style"];
-    $input["size"] = $gdsr->o["rss_size"];
-    $input["stars"] = $gdsr->o["stars"];
     $input["value"] = $_GET["value"];
+    if (isset($_GET["set"])) $input["set"] = $_GET["set"];
+    else $input["set"] = $gdsr->o["rss_style"];
+    if (isset($_GET["size"])) $input["size"] = $_GET["size"];
+    else $input["size"] = $gdsr->o["rss_size"];
+    if (isset($_GET["max"])) $input["stars"] = $_GET["max"];
+    else $input["stars"] = $gdsr->o["stars"];
     
     $gfx_set = $gdsr->g->find_stars($input["set"]);
     if ($gdsr->is_cached) {

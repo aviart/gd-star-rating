@@ -5,10 +5,13 @@
 === Version: 1.1.6 / march 2 2009 ===
   * new: database table for templates
   * new: aggregated comments rating settings
+  * new: alternative method for rendering static stars
   * edit: reorganized folders and files (again)
   * edit: setup panel redesigned
+  * edit: expanded gfx generating handler
   * fix: saving new multi set and review setting
   * fix: display rating data with element that has no title
+  * fix: invalid css for comment review stars
 
 === Version: 1.1.5 / february 22 2009 ===
   * new: multi ratings review
