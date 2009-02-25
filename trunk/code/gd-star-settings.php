@@ -7,6 +7,7 @@
         $gdsr_options["admin_width"] = $_POST['gdsr_admin_width'];
         $gdsr_options["admin_rows"] = $_POST['gdsr_admin_rows'];
         $gdsr_options["gfx_generator_auto"] = isset($_POST['gdsr_gfx_generator_auto']) ? 1 : 0;
+        $gdsr_options["gfx_prevent_leeching"] = isset($_POST['gdsr_gfx_prevent_leeching']) ? 1 : 0;
         $gdsr_options["external_javascript"] = isset($_POST['gdsr_external_javascript']) ? 1 : 0;
         $gdsr_options["external_css"] = isset($_POST['gdsr_external_css']) ? 1 : 0;
         $gdsr_options["admin_advanced"] = isset($_POST['gdsr_admin_advanced']) ? 1 : 0;

@@ -33,6 +33,7 @@ class GDSRDefaults {
         "news_feed_active" => 1,
         "cache_active" => 1,
         "gfx_generator_auto" => 0,
+        "gfx_prevent_leeching" => 1,
         "cache_cleanup_auto" => false,
         "cache_cleanup_days" => 7,
         "cache_cleanup_counter" => 0,
