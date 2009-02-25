@@ -290,6 +290,19 @@ class GDSRHelper {
         <?php
     }	
 
+    function render_templates_sections($name, $section, $empty = true, $selected = "") {
+        ?>
+<select name="<?php echo $name; ?>" id="<?php echo $name; ?>">
+<?php if ($empty) { ?><option value=""<?php echo $selected == '' ? ' selected="selected"' : ''; ?>>All Sections</option><?php } ?>
+        <?php
+            foreach ($section as $s) {
+                echo sprintf('<option value="%s"%s>%s</option>', $s["code"], ($selected == $s["code"] ? ' selected="selected"' : ''),  $s["name"]);
+            }
+        ?>
+</select>
+        <?php
+    }
+
     function render_rules_combo($name, $selected = "A", $width = 180, $style = '', $row_zero = false, $cat = false) {
         ?>
 <select style="width: <?php echo $width ?>px; <?php echo $style; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>">

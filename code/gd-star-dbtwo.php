@@ -344,6 +344,14 @@ class GDSRDB {
         return $wpdb->get_var("select post_title from $wpdb->posts where ID = ".$post_id);
     }
 
+    function get_templates($section = '') {
+        global $wpdb, $table_prefix;
+        if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
+        
+        $sql = sprintf("select * from %sgdsr_templates%s order by template asc", $table_prefix, $section);
+        return $wpdb->get_results($sql);
+    }
+
     // totals
     function front_page_article_totals() {
         global $wpdb, $table_prefix;

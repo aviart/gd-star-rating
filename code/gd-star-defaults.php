@@ -173,6 +173,12 @@ class GDSRDefaults {
         "star_rating_for_reviews" => 0,
     );
 
+    var $default_aggregated_comments = array(
+        "show" => "total",
+        "stars_set" => "oxygen",
+        "stars_size" => 20
+    );
+
     var $default_widget_comments = array(
         "title" => "Blog Rating",
         "display" => "all",
