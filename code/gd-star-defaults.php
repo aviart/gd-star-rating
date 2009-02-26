@@ -26,7 +26,7 @@ class GDSRDefaults {
         "version" => "1.1.6",
         "date" => "2009.03.02.",
         "status" => "Stable",
-        "build" => 471,
+        "build" => 494,
         "external_javascript" => 0,
         "external_css" => 1,
         "encoding" => "UTF-8",

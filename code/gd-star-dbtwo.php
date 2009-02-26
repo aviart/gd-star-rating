@@ -372,6 +372,13 @@ class GDSRDB {
         return $general["id"];
     }
 
+    function delete_template($id) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("DELETE FROM %sgdsr_templates WHERE `template_id` = %s",
+            $table_prefix, $id);
+        return $wpdb->query($sql);
+    }
+
     function add_template($general, $elements) {
         global $wpdb, $table_prefix;
         $sql = sprintf("INSERT INTO %sgdsr_templates (`section`, `name`, `description`, `elements`, `preinstalled`) VALUES ('%s', '%s', '%s', '%s', '%s')",
