@@ -957,6 +957,8 @@ if (!class_exists('GDStarRating')) {
          * Main init method executed as wordpress action 'init'.
          */
         function init() {
+            $this->init_uninstall();
+
             define('STARRATING_ENCODING', $this->o["encoding"]);
 
             if (isset($_GET["page"])) {
@@ -965,6 +967,8 @@ if (!class_exists('GDStarRating')) {
                     $this->admin_plugin_page = substr($_GET["page"], 15);
                 }
             }
+
+            $this->init_operations();
 
             if (!is_admin()) {
                 $this->is_bot = GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT']);
@@ -978,20 +982,6 @@ if (!class_exists('GDStarRating')) {
                 $gdsr_options = $this->o;
                 include ($this->plugin_path."code/gd-star-settings.php");
                 $this->o = $gdsr_options;
-            }
-            
-            if ($_POST["gdsr_full_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
-                delete_option('gd-star-rating');
-                delete_option('widget_gdstarrating');
-                delete_option('gd-star-rating-templates');
-                delete_option('gd-star-rating-import');
-                delete_option('gd-star-rating-gfx');
-
-                gdDBInstall::drop_tables(STARRATING_PATH);
-                GDSRHelper::deactivate_plugin();
-                update_option('recently_activated', array("gd-star-rating/gd-star-rating.php" => time()) + (array)get_option('recently_activated'));
-                wp_redirect('index.php');
-                exit;
             }
 
             wp_enqueue_script('jquery');
@@ -1028,6 +1018,50 @@ if (!class_exists('GDStarRating')) {
             }
             $this->is_cached = $this->o["cache_active"];
             $this->custom_actions('init');
+        }
+
+        function init_uninstall() {
+            if ($_POST["gdsr_full_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
+                delete_option('gd-star-rating');
+                delete_option('widget_gdstarrating');
+                delete_option('gd-star-rating-templates');
+                delete_option('gd-star-rating-import');
+                delete_option('gd-star-rating-gfx');
+
+                gdDBInstall::drop_tables(STARRATING_PATH);
+                GDSRHelper::deactivate_plugin();
+                update_option('recently_activated', array("gd-star-rating/gd-star-rating.php" => time()) + (array)get_option('recently_activated'));
+                wp_redirect('index.php');
+                exit;
+            }
+        }
+
+        function init_operations() {
+            if (isset($_GET["deltpl"])) {
+                $del_id = $_GET["deltpl"];
+                GDSRDB::delete_template($del_id);
+                $url = remove_query_arg("deltpl");
+                wp_redirect($url);
+                exit;
+            }
+
+            if (isset($_POST["gdsr_save_tpl"])) {
+                $general["name"] = stripslashes(htmlentities($_POST['tpl_gen_name'], ENT_QUOTES, STARRATING_ENCODING));
+                $general["desc"] = stripslashes(htmlentities($_POST['tpl_gen_desc'], ENT_QUOTES, STARRATING_ENCODING));
+                $general["section"] = $_POST["tpl_section"];
+                $general["id"] = $_POST["tpl_id"];
+                $general["preinstalled"] = '0';
+                $tpl_input = $_POST["tpl_element"];
+                $elements = array();
+                foreach ($tpl_input as $key => $value)
+                    $elements[$key] = stripslashes(htmlentities($value, ENT_QUOTES, STARRATING_ENCODING));
+                if ($general["id"] == 0) GDSRDB::add_template($general, $elements);
+                else GDSRDB::edit_template($general, $elements);
+                $url = remove_query_arg("tplid");
+                $url = remove_query_arg("mode", $url);
+                wp_redirect($url);
+                exit;
+            }
         }
 
         /**
@@ -1737,20 +1771,6 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                 $id = 0;
                 $mode = "new";
                 include($this->plugin_path.'templates/tpl_panel_editor.php');
-            }
-            else if (isset($_POST["gdsr_save_tpl"])) {
-                $general["name"] = stripslashes(htmlentities($_POST['tpl_gen_name'], ENT_QUOTES, STARRATING_ENCODING));
-                $general["desc"] = stripslashes(htmlentities($_POST['tpl_gen_desc'], ENT_QUOTES, STARRATING_ENCODING));
-                $general["section"] = $_POST["tpl_section"];
-                $general["id"] = $_POST["tpl_id"];
-                $general["preinstalled"] = '0';
-                $tpl_input = $_POST["tpl_element"];
-                $elements = array();
-                foreach ($tpl_input as $key => $value)
-                    $elements[$key] = stripslashes(htmlentities($value, ENT_QUOTES, STARRATING_ENCODING));
-                if ($general["id"] == 0) GDSRDB::add_template($general, $elements);
-                else GDSRDB::edit_template($general, $elements);
-                include($this->plugin_path.'templates/tpl_panel_list.php');
             }
             else {
                 include($this->plugin_path.'templates/tpl_panel_list.php');
@@ -2771,8 +2791,6 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
 
                 $votes[] = $single_vote;
             }
-
-            wp_gdsr_dump("CALC", $votes);
 
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";

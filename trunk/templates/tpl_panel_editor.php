@@ -8,6 +8,12 @@ else {
     $section = $tpl->section;
     $elements = unserialize($tpl->elements);
 }
+if ($mode == "copy") {
+    $id = 0;
+    $tpl->name = "New Template";
+    $tpl->description = "";
+}
+else if ($mode == "edit" && $tpl->preinstalled == "1") $id = 0;
 
 $template = $tpls->get_list($section);
 

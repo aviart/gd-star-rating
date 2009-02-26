@@ -52,7 +52,7 @@ $all_sections = $tpls->list_sections_assoc();
         echo '<td>'.$all_sections[$t->section].'</td>';
         echo '<td>'.$t->description.'</td>';
         echo '<td style="text-align: right">';
-        if ($t->preinstalled == "0") echo '<a href="'.$url.'tplid='.$t->template_id.'">delete</a> | ';
+        if ($t->preinstalled == "0") echo '<a href="'.$url.'deltpl='.$t->template_id.'">delete</a> | ';
         echo '<a href="'.$url.'mode=edit&tplid='.$t->template_id.'">edit</a>';
         echo ' | <a href="'.$url.'mode=copy&tplid='.$t->template_id.'">duplicate</a>';
         echo '</td>';
