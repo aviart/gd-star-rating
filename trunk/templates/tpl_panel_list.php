@@ -8,6 +8,7 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     $filter_section = $_POST["filter_section"];
 }
 
+$all_sections = $tpls->list_sections_assoc();
 
 ?>
 
@@ -31,9 +32,9 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
         <tr>
             <th scope="col" width="33"><?php _e("ID", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Name", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Section", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Section / Type", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Description", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Options", "gd-star-rating"); ?></th>
+            <th scope="col" style="text-align: right"><?php _e("Options", "gd-star-rating"); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -41,6 +42,27 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
 <?php
 
     $templates = GDSRDB::get_templates($filter_section);
+
+    $tr_class = "";
+    foreach ($templates as $t) {
+        $url = "admin.php?page=gd-star-rating-t2&";
+        echo '<tr id="post-'.$t->template_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
+        echo '<td><strong>'.$t->template_id.'</strong></td>';
+        echo '<td><strong><a href="'.$url.'mode=copy&tplid='.$t->template_id.'">'.$t->name.'</a></strong></td>';
+        echo '<td>'.$all_sections[$t->section].'</td>';
+        echo '<td>'.$t->description.'</td>';
+        echo '<td style="text-align: right">';
+        if ($t->preinstalled == "0") echo '<a href="'.$url.'tplid='.$t->template_id.'">delete</a> | ';
+        echo '<a href="'.$url.'mode=edit&tplid='.$t->template_id.'">edit</a>';
+        echo ' | <a href="'.$url.'mode=copy&tplid='.$t->template_id.'">duplicate</a>';
+        echo '</td>';
+        echo '</tr>';
+        
+        if ($tr_class == "")
+            $tr_class = "alternate ";
+        else
+            $tr_class = "";
+    }
 
 ?>
 

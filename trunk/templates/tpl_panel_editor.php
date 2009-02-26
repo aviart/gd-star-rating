@@ -3,7 +3,11 @@
 include(dirname(__FILE__)."/tpl_list.php");
 
 if ($id == 0) $section = $_POST["tpl_section"];
-else $section = "SRR";
+else {
+    $tpl = GDSRDB::get_template($id);
+    $section = $tpl->section;
+    $elements = unserialize($tpl->elements);
+}
 
 $template = $tpls->get_list($section);
 
@@ -27,9 +31,9 @@ $template = $tpls->get_list($section);
 <tr><th scope="row"><?php _e("General", "gd-star-rating"); ?></th>
     <td>
         <?php _e("Name", "gd-star-rating"); ?>:<br />
-        <input type="text" name="tpl_gen_name" id="tpl_gen_name" value="<?php echo ""; ?>" style="width: 500px" /><br />
+        <input type="text" name="tpl_gen_name" id="tpl_gen_name" value="<?php echo $tpl->name; ?>" style="width: 500px" /><br />
         <?php _e("Description", "gd-star-rating"); ?>:<br />
-        <textarea rows="3" style="width: 500px"><?php echo ""; ?></textarea>
+        <textarea rows="3" name="tpl_gen_desc" style="width: 500px"><?php echo $tpl->description; ?></textarea>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Template", "gd-star-rating"); ?></th>
@@ -39,8 +43,8 @@ $template = $tpls->get_list($section);
 $lines = count($template->parts) - 1;
 foreach ($template->parts as $p) {
     echo '<p class="tpl-edit-name">'.$p->name.":</p>";
-    if ($p->size == "single") echo '<input type="text" name="tpl_element['.$p->code.']" value="" style="width: 500px" /><br />';
-    else echo '<textarea rows="3" style="width: 500px" name="tpl_element['.$p->code.']"></textarea>';
+    if ($p->size == "single") echo '<input type="text" name="tpl_element['.$p->code.']" value="'.wp_specialchars($elements[$p->code]).'" style="width: 500px" /><br />';
+    else echo '<textarea rows="3" style="width: 500px" name="tpl_element['.$p->code.']">'.wp_specialchars($elements[$p->code]).'</textarea>';
     if ($p->description != "") echo '<strong>'.__("Description", "gd-star-rating").':</strong><br />';
     echo '<strong>'.__("Allowed elements", "gd-star-rating").':</strong> ';
     if (is_array($p->elements)) {

@@ -23,8 +23,8 @@ class GDSRDefaults {
     );
 
     var $default_options = array(
-        "version" => "1.1.5",
-        "date" => "2009.02.23.",
+        "version" => "1.1.6",
+        "date" => "2009.03.02.",
         "status" => "Stable",
         "build" => 471,
         "external_javascript" => 0,

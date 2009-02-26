@@ -70,7 +70,13 @@ class GDSRDB {
         );
         return $tables;
     }
-    
+
+    function get_post_title($post_id) {
+        global $wpdb;
+        return $wpdb->get_var("select post_title from $wpdb->posts where ID = ".$post_id);
+    }
+
+    // conversion
     function convert_row($row) {
         switch ($row->moderate_articles) {
             case 'I':
@@ -316,7 +322,9 @@ class GDSRDB {
         
         return $row;
     }
+    // conversion
 
+    // moderation
     function moderation_approve($ids, $ids_array) {
         global $wpdb, $table_prefix;
         
@@ -338,19 +346,40 @@ class GDSRDB {
         $sql = sprintf("delete from %s where record_id in %s", $table_prefix."gdsr_moderate", $ids);
         $wpdb->query($sql);
     }
+    // moderation
 
-    function get_post_title($post_id) {
-        global $wpdb;
-        return $wpdb->get_var("select post_title from $wpdb->posts where ID = ".$post_id);
-    }
-
+    // templates
     function get_templates($section = '') {
         global $wpdb, $table_prefix;
         if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
         
-        $sql = sprintf("select * from %sgdsr_templates%s order by template asc", $table_prefix, $section);
+        $sql = sprintf("select * from %sgdsr_templates%s order by template_id asc", $table_prefix, $section);
         return $wpdb->get_results($sql);
     }
+
+    function get_template($id) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("SELECT * FROM %sgdsr_templates WHERE `template_id` = %s",
+            $table_prefix, $id);
+        return $wpdb->get_row($sql);
+    }
+
+    function edit_template($general, $elements) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("UPDATE %sgdsr_templates SET `section` = '%s', `name` = '%s', `description` = '%s', `elements` = '%s', `preinstalled` = '%s' WHERE `template_id` = %s",
+            $table_prefix, $general["section"], $general["name"], $general["description"], serialize($elements), $general["preinstalled"], $general["id"]);
+        $wpdb->query($sql);
+        return $general["id"];
+    }
+
+    function add_template($general, $elements) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("INSERT INTO %sgdsr_templates (`section`, `name`, `description`, `elements`, `preinstalled`) VALUES ('%s', '%s', '%s', '%s', '%s')",
+            $table_prefix, $general["section"], $general["name"], $general["description"], serialize($elements), $general["preinstalled"]);
+        $wpdb->query($sql);
+        return $wpdb->insert_id;
+    }
+    // templates
 
     // totals
     function front_page_article_totals() {

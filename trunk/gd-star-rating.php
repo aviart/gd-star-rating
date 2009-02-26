@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.1.5
+Version: 1.1.6
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -1729,17 +1729,27 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             $options = $this->o;
 
             if (isset($_GET["tplid"])) {
-                $mode = "edit";
                 $id = $_GET["tplid"];
+                $mode = $_GET["mode"];
                 include($this->plugin_path.'templates/tpl_panel_editor.php');
             }
             else if (isset($_POST["gdsr_create"])) {
-                $mode = "new";
                 $id = 0;
+                $mode = "new";
                 include($this->plugin_path.'templates/tpl_panel_editor.php');
             }
             else if (isset($_POST["gdsr_save_tpl"])) {
-                print_r($_POST);
+                $general["name"] = stripslashes(htmlentities($_POST['tpl_gen_name'], ENT_QUOTES, STARRATING_ENCODING));
+                $general["desc"] = stripslashes(htmlentities($_POST['tpl_gen_desc'], ENT_QUOTES, STARRATING_ENCODING));
+                $general["section"] = $_POST["tpl_section"];
+                $general["id"] = $_POST["tpl_id"];
+                $general["preinstalled"] = '0';
+                $tpl_input = $_POST["tpl_element"];
+                $elements = array();
+                foreach ($tpl_input as $key => $value)
+                    $elements[$key] = stripslashes(htmlentities($value, ENT_QUOTES, STARRATING_ENCODING));
+                if ($general["id"] == 0) GDSRDB::add_template($general, $elements);
+                else GDSRDB::edit_template($general, $elements);
                 include($this->plugin_path.'templates/tpl_panel_list.php');
             }
             else {
