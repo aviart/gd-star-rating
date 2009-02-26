@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.1.5
+Version: 1.1.6
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review, multi
 Requires at least: 2.5.0
 Tested up to: 2.7.1
@@ -116,8 +116,17 @@ Plugin administration consist of 12 panels:
   Upgrade and setup options
 
 == Installation ==
-Plugin folder in the WordPress plugins folder must be `gd-star-rating`.
 
+= Requirements =
+* mySQL: 4.0, 4.1 or 5.x
+* PHP: 4.4.x or 5.x.x
+* WordPress: 2.5.0 or newer
+
+= Browser Notice =
+* Multi review feature on administration Post Edit page will not work properly with IE6 browsers
+
+= Basic Installation =
+* Plugin folder in the WordPress plugins folder must be `gd-star-rating`.
 * Upload `gd-star-rating` folder to the `/wp-content/plugins/` directory
 * Activate the plugin through the 'Plugins' menu in WordPress
 
@@ -126,7 +135,7 @@ Plugin folder in the WordPress plugins folder must be `gd-star-rating`.
 
 = WordPress 2.6 / 2.7 =
 * if you don't change location of `wp-content` folder, then you don't need to make any more changes.
-* if your `wp-content` folder is moved out of WordPress web location, then you must edit `gd-star-config.php` file and set value with exact location of `wp-content` file for `STARRATING_WPCONFIG` in line 3. Without this Editor plugin for shortcodes will not work.
+* if your `wp-content` folder is moved out of WordPress web location, then you must edit `gd-star-config.php` file and set value with exact location of `wp-content` file for `STARRATING_WPCONFIG` in line 3. Without this some plugin feature will not work.
 
 == Frequently Asked Questions ==
 

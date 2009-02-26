@@ -81,6 +81,20 @@ class gdTemplates {
         }
         return $sections;
     }
+
+    function list_sections_assoc() {
+        $sections = array();
+        $listed = array();
+        foreach ($this->tpls as $t) {
+            $code = $t->code;
+            $name = $t->section;
+            if (!in_array($code, $listed)) {
+                $listed[] = $code;
+                $sections[$code] = $name;
+            }
+        }
+        return $sections;
+    }
 }
 
 ?>

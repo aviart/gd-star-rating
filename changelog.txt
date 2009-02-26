@@ -10,6 +10,9 @@
   * edit: reorganized folders and files (again)
   * edit: setup panel redesigned
   * edit: expanded gfx generating handler
+  * edit: listed requirements in readme file
+  * fix: mysql4 varchar limits converted to text columns
   * fix: saving new multi set and review setting
   * fix: display rating data with element that has no title
   * fix: invalid css for comment review stars
+  * fix: edit post multi review bug in ie7 browser

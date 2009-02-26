@@ -1,3 +1,5 @@
+function gdsrEmpty() { }
+
 <?php if ($edit_std) { ?>
 function gdsrTimerChange() {
     var timer = jQuery("#gdsr_timer_type").val();
