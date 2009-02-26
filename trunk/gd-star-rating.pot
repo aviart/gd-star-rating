@@ -27,125 +27,125 @@ msgstr ""
 msgid "All categories"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:76
-#: code/gd-star-dbtwo.php:79
 #: code/gd-star-dbtwo.php:82
 #: code/gd-star-dbtwo.php:85
-#: code/gd-star-dbtwo.php:89
-#: code/gd-star-dbtwo.php:112
-#: code/gd-star-dbtwo.php:115
+#: code/gd-star-dbtwo.php:88
+#: code/gd-star-dbtwo.php:91
+#: code/gd-star-dbtwo.php:95
 #: code/gd-star-dbtwo.php:118
 #: code/gd-star-dbtwo.php:121
 #: code/gd-star-dbtwo.php:124
 #: code/gd-star-dbtwo.php:127
-#: code/gd-star-dbtwo.php:201
-#: code/gd-star-dbtwo.php:204
+#: code/gd-star-dbtwo.php:130
+#: code/gd-star-dbtwo.php:133
 #: code/gd-star-dbtwo.php:207
 #: code/gd-star-dbtwo.php:210
-#: code/gd-star-dbtwo.php:229
-#: code/gd-star-dbtwo.php:232
+#: code/gd-star-dbtwo.php:213
+#: code/gd-star-dbtwo.php:216
 #: code/gd-star-dbtwo.php:235
 #: code/gd-star-dbtwo.php:238
 #: code/gd-star-dbtwo.php:241
+#: code/gd-star-dbtwo.php:244
+#: code/gd-star-dbtwo.php:247
 msgid "articles"
-msgstr ""
-
-#: code/gd-star-dbtwo.php:76
-#: code/gd-star-dbtwo.php:94
-#: code/gd-star-dbtwo.php:112
-#: code/gd-star-dbtwo.php:132
-msgid "inherited"
-msgstr ""
-
-#: code/gd-star-dbtwo.php:79
-#: code/gd-star-dbtwo.php:97
-#: code/gd-star-dbtwo.php:201
-#: code/gd-star-dbtwo.php:215
-msgid "all"
 msgstr ""
 
 #: code/gd-star-dbtwo.php:82
 #: code/gd-star-dbtwo.php:100
-#: code/gd-star-dbtwo.php:121
-#: code/gd-star-dbtwo.php:141
-#: code/gd-star-dbtwo.php:191
-#: code/gd-star-dbtwo.php:204
-#: code/gd-star-dbtwo.php:218
-#: code/gd-star-dbtwo.php:235
-#: code/gd-star-dbtwo.php:252
-#: code/gd-star-dbtwo.php:311
+#: code/gd-star-dbtwo.php:118
+#: code/gd-star-dbtwo.php:138
+msgid "inherited"
+msgstr ""
+
+#: code/gd-star-dbtwo.php:85
+#: code/gd-star-dbtwo.php:103
+#: code/gd-star-dbtwo.php:207
+#: code/gd-star-dbtwo.php:221
+msgid "all"
+msgstr ""
+
+#: code/gd-star-dbtwo.php:88
+#: code/gd-star-dbtwo.php:106
+#: code/gd-star-dbtwo.php:127
+#: code/gd-star-dbtwo.php:147
+#: code/gd-star-dbtwo.php:197
+#: code/gd-star-dbtwo.php:210
+#: code/gd-star-dbtwo.php:224
+#: code/gd-star-dbtwo.php:241
+#: code/gd-star-dbtwo.php:258
+#: code/gd-star-dbtwo.php:317
 #: multi/results_post.php:141
 #: multi/results_post.php:142
 msgid "visitors"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:85
-#: code/gd-star-dbtwo.php:103
-#: code/gd-star-dbtwo.php:124
-#: code/gd-star-dbtwo.php:144
-#: code/gd-star-dbtwo.php:191
-#: code/gd-star-dbtwo.php:207
-#: code/gd-star-dbtwo.php:221
-#: code/gd-star-dbtwo.php:238
-#: code/gd-star-dbtwo.php:255
-#: code/gd-star-dbtwo.php:311
+#: code/gd-star-dbtwo.php:91
+#: code/gd-star-dbtwo.php:109
+#: code/gd-star-dbtwo.php:130
+#: code/gd-star-dbtwo.php:150
+#: code/gd-star-dbtwo.php:197
+#: code/gd-star-dbtwo.php:213
+#: code/gd-star-dbtwo.php:227
+#: code/gd-star-dbtwo.php:244
+#: code/gd-star-dbtwo.php:261
+#: code/gd-star-dbtwo.php:317
 #: multi/results_post.php:143
 #: multi/results_post.php:144
 msgid "users"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:89
-#: code/gd-star-dbtwo.php:107
-#: code/gd-star-dbtwo.php:210
-#: code/gd-star-dbtwo.php:224
+#: code/gd-star-dbtwo.php:95
+#: code/gd-star-dbtwo.php:113
+#: code/gd-star-dbtwo.php:216
+#: code/gd-star-dbtwo.php:230
 msgid "free"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:94
-#: code/gd-star-dbtwo.php:97
 #: code/gd-star-dbtwo.php:100
 #: code/gd-star-dbtwo.php:103
-#: code/gd-star-dbtwo.php:107
-#: code/gd-star-dbtwo.php:132
-#: code/gd-star-dbtwo.php:135
+#: code/gd-star-dbtwo.php:106
+#: code/gd-star-dbtwo.php:109
+#: code/gd-star-dbtwo.php:113
 #: code/gd-star-dbtwo.php:138
 #: code/gd-star-dbtwo.php:141
 #: code/gd-star-dbtwo.php:144
 #: code/gd-star-dbtwo.php:147
-#: code/gd-star-dbtwo.php:215
-#: code/gd-star-dbtwo.php:218
+#: code/gd-star-dbtwo.php:150
+#: code/gd-star-dbtwo.php:153
 #: code/gd-star-dbtwo.php:221
 #: code/gd-star-dbtwo.php:224
-#: code/gd-star-dbtwo.php:246
-#: code/gd-star-dbtwo.php:249
+#: code/gd-star-dbtwo.php:227
+#: code/gd-star-dbtwo.php:230
 #: code/gd-star-dbtwo.php:252
 #: code/gd-star-dbtwo.php:255
 #: code/gd-star-dbtwo.php:258
+#: code/gd-star-dbtwo.php:261
+#: code/gd-star-dbtwo.php:264
 msgid "comments"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:115
-#: code/gd-star-dbtwo.php:135
-#: code/gd-star-dbtwo.php:229
-#: code/gd-star-dbtwo.php:246
+#: code/gd-star-dbtwo.php:121
+#: code/gd-star-dbtwo.php:141
+#: code/gd-star-dbtwo.php:235
+#: code/gd-star-dbtwo.php:252
 msgid "hidden"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:118
-#: code/gd-star-dbtwo.php:138
-#: code/gd-star-dbtwo.php:232
-#: code/gd-star-dbtwo.php:249
+#: code/gd-star-dbtwo.php:124
+#: code/gd-star-dbtwo.php:144
+#: code/gd-star-dbtwo.php:238
+#: code/gd-star-dbtwo.php:255
 msgid "locked"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:127
-#: code/gd-star-dbtwo.php:147
-#: code/gd-star-dbtwo.php:241
-#: code/gd-star-dbtwo.php:258
+#: code/gd-star-dbtwo.php:133
+#: code/gd-star-dbtwo.php:153
+#: code/gd-star-dbtwo.php:247
+#: code/gd-star-dbtwo.php:264
 msgid "everyone"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:190
+#: code/gd-star-dbtwo.php:196
 #: multi/results_post.php:147
 #: multi/results_post.php:148
 #: options/users.php:99
@@ -153,11 +153,11 @@ msgstr ""
 msgid "rating"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:190
+#: code/gd-star-dbtwo.php:196
 msgid "views"
 msgstr ""
 
-#: code/gd-star-dbtwo.php:310
+#: code/gd-star-dbtwo.php:316
 #: options/users.php:98
 #: options/users.php:101
 msgid "votes"
@@ -415,16 +415,16 @@ msgstr ""
 #: multi/sets.php:61
 #: options/users.php:60
 #: options/voters.php:142
-#: templates/tpl_panel_editor.php:25
-#: templates/tpl_panel_list.php:32
+#: templates/tpl_panel_editor.php:38
+#: templates/tpl_panel_list.php:33
 msgid "Name"
 msgstr ""
 
 #: multi/editor.php:28
 #: multi/sets.php:62
-#: templates/tpl_panel_editor.php:27
 #: templates/tpl_panel_editor.php:40
-#: templates/tpl_panel_list.php:34
+#: templates/tpl_panel_editor.php:53
+#: templates/tpl_panel_list.php:35
 msgid "Description"
 msgstr ""
 
@@ -450,7 +450,7 @@ msgid "Use this set for post/page review. Only one set at the time can be used f
 msgstr ""
 
 #: multi/editor.php:45
-#: templates/tpl_panel_editor.php:18
+#: templates/tpl_panel_editor.php:31
 #: widgets/widget_rating.php:357
 #: widgets/widget_rating.php:365
 #: widgets/widget_top.php:103
@@ -508,7 +508,7 @@ msgstr ""
 #: options/users_log.php:23
 #: options/voters.php:116
 #: options/voters.php:32
-#: templates/tpl_panel_list.php:20
+#: templates/tpl_panel_list.php:21
 #: templates/tpl_panel_list.php:6
 #: tinymce3/window.php:32
 #: widgets/widget_rating.php:154
@@ -571,7 +571,7 @@ msgstr ""
 #: multi/sets.php:60
 #: options/users.php:61
 #: options/voters.php:141
-#: templates/tpl_panel_list.php:31
+#: templates/tpl_panel_list.php:32
 #: tinymce3/panels/advanced.php:145
 #: widgets/widget_rating.php:204
 msgid "ID"
@@ -1019,39 +1019,43 @@ msgstr ""
 msgid "Use graphics generator to generate and display static stars images."
 msgstr ""
 
-#: options/settings/settings_features.php:41
+#: options/settings/settings_features.php:40
+msgid "Prevent outside access to graphics generator. Graphics integrated into RSS is not affected."
+msgstr ""
+
+#: options/settings/settings_features.php:43
 msgid "Charset"
 msgstr ""
 
-#: options/settings/settings_features.php:45
+#: options/settings/settings_features.php:47
 msgid "Character encoding"
 msgstr ""
 
-#: options/settings/settings_features.php:49
+#: options/settings/settings_features.php:51
 msgid "For list of supported charsets visit: "
 msgstr ""
 
-#: options/settings/settings_features.php:52
+#: options/settings/settings_features.php:54
 msgid "Rating Log"
 msgstr ""
 
-#: options/settings/settings_features.php:54
+#: options/settings/settings_features.php:56
 msgid "Log user agent (browser) information."
 msgstr ""
 
-#: options/settings/settings_features.php:56
+#: options/settings/settings_features.php:58
 msgid "Save cookies with ratings."
 msgstr ""
 
-#: options/settings/settings_features.php:59
+#: options/settings/settings_features.php:61
 msgid "Internet Explorer"
 msgstr ""
 
-#: options/settings/settings_features.php:61
+#: options/settings/settings_features.php:63
 msgid "Use IE6 PNG transparency fix."
 msgstr ""
 
-#: options/settings/settings_features.php:63
+#: options/settings/settings_features.php:65
 msgid "Use IE opacity fix for multi ratings."
 msgstr ""
 
@@ -1231,7 +1235,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:982
+#: gd-star-rating.php:1023
 msgid "UNINSTALL"
 msgstr ""
 
@@ -1955,7 +1959,7 @@ msgid "Vote log for post"
 msgstr ""
 
 #: templates/templates.php:31
-#: templates/tpl_panel_list.php:13
+#: templates/tpl_panel_list.php:14
 #: gd-star-rating.php:536
 #: gd-star-rating.php:536
 msgid "Templates"
@@ -1986,7 +1990,7 @@ msgstr ""
 #: templates/templates_multis.php:13
 #: templates/templates_multis.php:21
 #: templates/templates_rss.php:4
-#: templates/tpl_panel_editor.php:41
+#: templates/tpl_panel_editor.php:54
 msgid "Allowed elements"
 msgstr ""
 
@@ -2080,6 +2084,7 @@ msgstr ""
 #: templates/templates_standard.php:6
 #: templates/tpl_list.php:5
 #: templates/tpl_list.php:26
+#: templates/tpl_list.php:57
 #: widgets/widget_rating.php:366
 #: widgets/widget_top.php:112
 msgid "article rating"
@@ -2088,6 +2093,7 @@ msgstr ""
 #: templates/templates_standard.php:9
 #: templates/tpl_list.php:6
 #: templates/tpl_list.php:27
+#: templates/tpl_list.php:58
 #: widgets/widget_rating.php:370
 #: widgets/widget_top.php:120
 msgid "maximum rating value"
@@ -2108,6 +2114,7 @@ msgstr ""
 #: templates/templates_standard.php:20
 #: templates/tpl_list.php:7
 #: templates/tpl_list.php:30
+#: templates/tpl_list.php:59
 #: widgets/widget_rating.php:378
 #: widgets/widget_top.php:128
 msgid "total votes for article"
@@ -2169,14 +2176,17 @@ msgid "item id"
 msgstr ""
 
 #: templates/templates_standard.php:68
+#: templates/tpl_list.php:49
 msgid "comment rating"
 msgstr ""
 
 #: templates/templates_standard.php:71
+#: templates/tpl_list.php:50
 msgid "maximum comment rating value"
 msgstr ""
 
 #: templates/templates_standard.php:75
+#: templates/tpl_list.php:51
 msgid "total votes for comment"
 msgstr ""
 
@@ -2244,15 +2254,20 @@ msgstr ""
 
 #: templates/tpl_list.php:8
 #: templates/tpl_list.php:40
+#: templates/tpl_list.php:60
 msgid "post/page id"
 msgstr ""
 
 #: templates/tpl_list.php:9
 #: templates/tpl_list.php:41
+#: templates/tpl_list.php:52
+#: templates/tpl_list.php:61
 msgid "singular/plural word votes"
 msgstr ""
 
 #: templates/tpl_list.php:20
+#: templates/tpl_list.php:53
+#: templates/tpl_list.php:62
 msgid "Normal"
 msgstr ""
 
@@ -2272,20 +2287,28 @@ msgstr ""
 msgid "class for alternating table rows"
 msgstr ""
 
-#: templates/tpl_panel_editor.php:11
+#: templates/tpl_list.php:48
+msgid "Comments Ratings Block"
+msgstr ""
+
+#: templates/tpl_list.php:56
+msgid "Standard RSS Block"
+msgstr ""
+
+#: templates/tpl_panel_editor.php:21
 msgid "Template Editor"
 msgstr ""
 
-#: templates/tpl_panel_editor.php:16
+#: templates/tpl_panel_editor.php:29
 msgid "Editor"
 msgstr ""
 
-#: templates/tpl_panel_editor.php:23
+#: templates/tpl_panel_editor.php:36
 #: tinymce3/window.php:31
 msgid "General"
 msgstr ""
 
-#: templates/tpl_panel_editor.php:31
+#: templates/tpl_panel_editor.php:44
 #: widgets/widget_rating.php:311
 #: widgets/widget_rating.php:319
 #: widgets/widget_top.php:81
@@ -2293,31 +2316,31 @@ msgstr ""
 msgid "Template"
 msgstr ""
 
-#: templates/tpl_panel_editor.php:49
+#: templates/tpl_panel_editor.php:62
 msgid "All tag elements"
 msgstr ""
 
-#: templates/tpl_panel_editor.php:50
+#: templates/tpl_panel_editor.php:63
 msgid "No tag elements allowed"
 msgstr ""
 
-#: templates/tpl_panel_editor.php:62
+#: templates/tpl_panel_editor.php:75
 msgid "Save Template"
 msgstr ""
 
-#: templates/tpl_panel_list.php:33
-msgid "Section"
+#: templates/tpl_panel_list.php:34
+msgid "Section / Type"
 msgstr ""
 
-#: templates/tpl_panel_list.php:35
+#: templates/tpl_panel_list.php:36
 msgid "Options"
 msgstr ""
 
-#: templates/tpl_panel_list.php:54
+#: templates/tpl_panel_list.php:76
 msgid "New template for:"
 msgstr ""
 
-#: templates/tpl_panel_list.php:56
+#: templates/tpl_panel_list.php:78
 msgid "Create"
 msgstr ""
 
@@ -2733,7 +2756,7 @@ msgstr ""
 msgid "T2 / Alpha"
 msgstr ""
 
-#: gd-star-rating.php:1566
+#: gd-star-rating.php:1600
 msgid "(no title)"
 msgstr ""
 
