@@ -1037,6 +1037,18 @@ if (!class_exists('GDStarRating')) {
         }
 
         function init_operations() {
+            if (isset($_POST["gdsr_editcss_rating"])) {
+                $rating_css = STARRATING_XTRA_PATH."css/rating.css";
+                if (is_writeable($rating_css)) {
+                    $newcontent = stripslashes($_POST['gdsr_editcss_contents']);
+                    $f = fopen($rating_css, 'w+');
+                    fwrite($f, $newcontent);
+                    fclose($f);
+                }
+                wp_redirect("admin.php?page=gd-star-rating-tools");
+                exit;
+            }
+
             if (isset($_GET["deltpl"])) {
                 $del_id = $_GET["deltpl"];
                 GDSRDB::delete_template($del_id);

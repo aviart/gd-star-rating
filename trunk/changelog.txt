@@ -5,6 +5,7 @@
 === Version: 1.1.6 / march 2 2009 ===
   * new: database table for templates
   * new: templates t2 system alpha version
+  * new: tool for editing rating.css file
   * new: aggregated comments rating settings
   * new: alternative method for rendering static stars
   * new: plain stars set

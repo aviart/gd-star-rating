@@ -54,7 +54,7 @@
         <div class="dashboard-widget" style="height:41em">
         <h3 class="dashboard-widget-title"><span><?php _e("Latest News", "gd-star-rating") ?></span>
         <small>
-            <a target="_blank" href="http://wp.gdragon.info/"><?php _e("See All", "gd-star-rating"); ?></a> | <img class="rss-icon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/>
+            <a target="_blank" href="http://www.gdstarrating.com/"><?php _e("See All", "gd-star-rating"); ?></a> | <img class="rss-icon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/>
             <a href="http://feeds2.feedburner.com/GdStarRating">RSS</a>
         </small>
         <br class="gdsrclear"/></h3>

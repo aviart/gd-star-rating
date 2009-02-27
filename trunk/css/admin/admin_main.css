@@ -12,6 +12,13 @@
     border-width:1px;
 }
 
+.gdsr-editcss-area {
+    font-family: 'Courier New',Courier,monospace;
+    font-size: 12px;
+    width: 98%;
+    height: 270px;
+}
+
 .tpl-editor-list-td {
     background-color:#EAF3FA;
     width: 220px;

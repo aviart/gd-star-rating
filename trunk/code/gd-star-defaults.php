@@ -13,7 +13,8 @@ class GDSRDefaults {
         "starratingblock",
         "starratercustom",
         "starratingmulti",
-        "starreviewmulti"
+        "starreviewmulti",
+        "starcomments"
     );
 
     var $default_spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
@@ -174,10 +175,8 @@ class GDSRDefaults {
         "star_rating_for_reviews" => 0,
     );
 
-    var $default_aggregated_comments = array(
-        "show" => "total",
-        "stars_set" => "oxygen",
-        "stars_size" => 20
+    var $default_shortcode_starcomments = array(
+        "show" => "total"
     );
 
     var $default_widget_comments = array(
