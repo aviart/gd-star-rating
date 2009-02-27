@@ -21,6 +21,6 @@
 <div id="multisreview_panel" class="panel">
 <fieldset>
 <legend><?php _e("Multi Reviews", "gd-star-rating"); ?></legend>
-    There are no settings for this shortcode yet. This will be updated soon.
+<p><?php _e("There are no settings for this shortcode yet. This will be updated soon.", "gd-star-rating"); ?></p>
 </fieldset>
 </div>
