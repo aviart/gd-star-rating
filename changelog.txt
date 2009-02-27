@@ -10,6 +10,7 @@
   * new: aggregated comments rating settings
   * new: alternative method for rendering static stars
   * new: plain stars set
+  * new: cache auto cleanup implemented
   * edit: reorganized folders and files (again)
   * edit: setup panel redesigned
   * edit: expanded gfx generating handler
