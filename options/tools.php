@@ -7,6 +7,7 @@
     <li><a href="#fragment-2"><span><?php _e("Database", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-3"><span><?php _e("Bulk", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-4"><span><?php _e("Cache", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-5"><span><?php _e("Edit CSS", "gd-star-rating"); ?></span></a></li>
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-1">
@@ -20,6 +21,9 @@
 </div>
 <div id="fragment-4">
 <?php include STARRATING_PATH."options/tools/tools_cache.php"; ?>
+</div>
+<div id="fragment-5">
+<?php include STARRATING_PATH."options/tools/tools_editcss.php"; ?>
 </div>
 </div>
 

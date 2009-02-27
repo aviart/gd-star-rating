@@ -152,10 +152,11 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 1. Plugin settings General tab
 2. Post And Pages Voting And Rating statistics
-3. Example rating stars
-4. Example multi rating block
+3. Templates T2 Editor
+4. TinyMCE3 plugin
 5. Post that uses shortcode with rating stars
-6. TinyMCE3 plugin
+6. Example rating stars
+7. Example multi rating block
 
 == Source SVN ==
 
