@@ -5,6 +5,9 @@ function gdsrChangeShortcode() {
     document.getElementById("styles_tab").style.display = "none";
     document.getElementById("multis_tab").style.display = "none";
     document.getElementById("multisreview_tab").style.display = "none";
+    document.getElementById("articlesreview_tab").style.display = "none";
+    document.getElementById("articlesrater_tab").style.display = "none";
+    document.getElementById("commentsaggr_tab").style.display = "none";
     switch (shortcode) {
         case 0:
             document.getElementById("general_tab").style.display = "block";
@@ -17,8 +20,16 @@ function gdsrChangeShortcode() {
         case 3:
             document.getElementById("multisreview_tab").style.display = "block";
             break;
+        case 5:
+            document.getElementById("articlesreview_tab").style.display = "block";
+            break;
+        case 6:
+            document.getElementById("articlesrater_tab").style.display = "block";
+            break;
+        case 8:
+            document.getElementById("commentsaggr_tab").style.display = "block";
+            break;
     }
-
 }
 
 function gdsrChangeTrend(trend, el, index) {
@@ -46,10 +57,16 @@ function insertStarRatingCode() {
     var shortcode = document.getElementById('srShortcode').value;
     
     if (shortcode == 'starreview') {
-        tagtext = "[starreview]";
+        tagtext = "[starreview";
+        tagtext = tagtext + "]";
+    }
+    else if (shortcode == 'starcomments') {
+        tagtext = "[starcomments";
+        tagtext = tagtext + "]";
     }
     else if (shortcode == 'starrater') {
-        tagtext = "[starrater]";
+        tagtext = "[starrater";
+        tagtext = tagtext + "]";
     }
     else if (shortcode == 'starreviewmulti') {
         tagtext = "[starreviewmulti";

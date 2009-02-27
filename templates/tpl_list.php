@@ -63,4 +63,7 @@ $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all");
 $tpls->add_template($t);
 
+$t = new gdTemplate("CAR", __("Comments Aggregated Rating", "gd-star-rating"));
+$tpls->add_template($t);
+
 ?>
