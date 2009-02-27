@@ -62,6 +62,8 @@ function insertStarRatingCode() {
     }
     else if (shortcode == 'starcomments') {
         tagtext = "[starcomments";
+        if (document.getElementById('srCagShow').value != 'total')
+            tagtext = tagtext + " show='" + document.getElementById('srCagShow').value + "'";
         tagtext = tagtext + "]";
     }
     else if (shortcode == 'starrater') {

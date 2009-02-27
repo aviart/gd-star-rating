@@ -367,12 +367,6 @@ wp_gdsr_dump("CHECKVOTE", $vote_data);
         $articles = $table_prefix.'gdsr_data_article';
         $moderate = $table_prefix.'gdsr_moderate';
 
-wp_gdsr_dump("SAVEVOTE_post_id", $id, "start");
-wp_gdsr_dump("SAVEVOTE_user_id", $user);
-wp_gdsr_dump("SAVEVOTE_vote", $vote);
-wp_gdsr_dump("SAVEVOTE_ip", $ip);
-wp_gdsr_dump("SAVEVOTE_user_agent", $ua);
-
         $sql = sprintf("SELECT * FROM %s WHERE post_id = %s", $articles, $id);
         $post_data = $wpdb->get_row($sql);
 
@@ -405,12 +399,6 @@ wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
         $articles = $table_prefix.'gdsr_data_article';
         $comments = $table_prefix.'gdsr_data_comment';
         $moderate = $table_prefix.'gdsr_moderate';
-
-wp_gdsr_dump("SAVEVOTE_CMM_comment_id", $id, "start");
-wp_gdsr_dump("SAVEVOTE_CMM_user_id", $user);
-wp_gdsr_dump("SAVEVOTE_CMM_vote", $vote);
-wp_gdsr_dump("SAVEVOTE_CMM_ip", $ip);
-wp_gdsr_dump("SAVEVOTE_CMM_user_agent", $ua);
 
         $post = $wpdb->get_row("select comment_post_ID from $wpdb->comments where comment_ID = ".$id);
         $post_id = $post->comment_post_ID;
@@ -711,6 +699,26 @@ wp_gdsr_dump("ADD_DEFAULT_CMM_error", $wpdb->last_error);
     // save & update
 
     // get
+    function get_comments_aggregation($post_id, $filter_show = "total") {
+        global $wpdb, $table_prefix;
+
+        switch ($filter_show) {
+            default:
+            case "total":
+                $where = " user_voters + visitor_voters > 0";
+                break;
+            case "users":
+                $where = " user_voters > 0";
+                break;
+            case "visitors":
+                $where = " visitor_voters > 0";
+                break;
+        }
+
+        $sql = sprintf("SELECT * FROM %sgdsr_data_comment where post_id = %s and %s", $table_prefix, $post_id, $where);
+        return $wpdb->get_results($sql);
+    }
+
     function get_post_data($post_id) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';

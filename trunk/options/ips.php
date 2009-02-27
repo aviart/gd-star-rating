@@ -74,10 +74,10 @@ if ($_POST["action"] == "deletebans") {
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-1">
-<?php include STARRATING_PATH."options/ips_options.php"; ?>
+<?php include STARRATING_PATH."options/ips/ips_options.php"; ?>
 </div>
 <div id="fragment-2">
-<?php include STARRATING_PATH."options/ips_list.php"; ?>
+<?php include STARRATING_PATH."options/ips/ips_list.php"; ?>
 </div>
 </div>
 </div>
