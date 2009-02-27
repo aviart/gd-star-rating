@@ -5,7 +5,7 @@
         <?php _e("Delete all cached files from folder", "gd-star-rating"); ?> <strong>'/wp-content/gd-star-rating/cache/'</strong>:<br />
         <input type="submit" class="inputbutton" value="<?php _e("Clean", "gd-star-rating"); ?>" name="gdsr_cache_clean" id="gdsr_cache_clean" />
         <div class="gdsr-table-split"></div>
-        <?php _e("Last cleanup was executed on", "gd-star-rating"); ?>: <strong><?php echo $options->cache_cleanup_last; ?></strong>
+        <?php _e("Last cleanup was executed on", "gd-star-rating"); ?>: <strong><?php echo $gdsr_options["cache_cleanup_last"]; ?></strong>
         </form>
     </td>
 </tr>

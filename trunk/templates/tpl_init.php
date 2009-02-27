@@ -97,4 +97,8 @@ class gdTemplates {
     }
 }
 
+function wp_gdsr_get_template($template_id) {
+    return GDSRDB::get_template($template_id);
+}
+
 ?>
