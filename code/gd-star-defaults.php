@@ -27,7 +27,7 @@ class GDSRDefaults {
         "version" => "1.1.6",
         "date" => "2009.03.02.",
         "status" => "Stable",
-        "build" => 494,
+        "build" => 500,
         "external_javascript" => 0,
         "external_css" => 1,
         "encoding" => "UTF-8",
@@ -176,6 +176,7 @@ class GDSRDefaults {
     );
 
     var $default_shortcode_starcomments = array(
+        "post" => 0,
         "show" => "total"
     );
 

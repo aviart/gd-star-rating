@@ -97,6 +97,7 @@ if (!class_exists('GDStarRating')) {
         var $default_shortcode_starrating;
         var $default_shortcode_starratercustom;
         var $default_shortcode_starratingmulti;
+        var $default_shortcode_starcomments;
         var $default_templates;
         var $default_options;
         var $default_import;
@@ -118,6 +119,7 @@ if (!class_exists('GDStarRating')) {
             $this->default_shortcode_starrating = $gdd->default_shortcode_starrating;
             $this->default_shortcode_starratercustom = $gdd->default_shortcode_starratercustom;
             $this->default_shortcode_starratingmulti = $gdd->default_shortcode_starratingmulti;
+            $this->default_shortcode_starcomments = $gdd->default_shortcode_starcomments;
             $this->default_templates = $gdd->default_templates;
             $this->default_options = $gdd->default_options;
             $this->default_import = $gdd->default_import;
@@ -215,6 +217,48 @@ if (!class_exists('GDStarRating')) {
                 return $this->render_multi_rating($post, $userdata, $settings);
             }
             else return '';
+        }
+
+        /**
+        * Code for StarComments shortcode implementation
+        *
+        * @param array $atts
+        */
+        function shortcode_starcomments($atts = array()) {
+            $rating = "";
+            $sett = shortcode_atts($this->default_shortcode_starcomments, $atts);
+            if ($sett["post"] == 0) {
+                global $post;
+                $sett["post"] = $post->ID;
+            }
+            if ($post->ID > 0) {
+                $rows = GDSRDatabase::get_comments_aggregation($sett["post"], $sett["show"]);
+                $totel_comments = count($rows);
+                $total_voters = 0;
+                $total_votes = 0;
+                $calc_rating = 0;
+                foreach ($rows as $row) {
+                    switch ($sett["show"]) {
+                        default:
+                        case "total":
+                            $total_voters += $row->user_voters + $row->visitor_voters;
+                            $total_votes += $row->user_votes + $row->visitor_votes;
+                            break;
+                        case "users":
+                            $total_voters += $row->user_voters;
+                            $total_votes += $row->user_votes;
+                            break;
+                        case "visitors":
+                            $total_voters += $row->visitor_voters;
+                            $total_votes += $row->visitor_votes;
+                            break;
+                    }
+                }
+                if ($total_voters > 0) $calc_rating = $total_votes / $total_voters;
+                $calc_rating = number_format($calc_rating, 1);
+                $rating = GDSRRender::render_static_stars($this->o['cmm_aggr_style'], $this->o['cmm_aggr_size'], $this->o["cmm_stars"], $calc_rating);
+            }
+            return $rating;
         }
 
         /**
