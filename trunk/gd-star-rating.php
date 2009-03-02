@@ -451,23 +451,8 @@ if (!class_exists('GDStarRating')) {
             
             return $this->get_rating_stars($style, $stars, $size, $zero_render, $rating);
         }
-        // various rendering
 
-        // edit boxes
-        function editbox_comment() {
-            if ($this->wp_version < 27)
-                include($this->plugin_path.'integrate/editcomment26.php');
-            else {
-                if ($this->admin_page != "edit-comments.php") return;
-                include($this->plugin_path.'integrate/editcomment27.php');
-            }
-        }
-
-        function editbox_post_mur() {
-            global $post;
-
-            $gdsr_options = $this->o;
-            $post_id = $post->ID;
+        function blog_multi_review_editor($post_id, $admin = true) {
             $multi_id = $this->o["mur_review_set"];
             $set = gd_get_multi_set($multi_id);
             if ($multi_id > 0 && $post_id > 0) {
@@ -486,8 +471,25 @@ if (!class_exists('GDStarRating')) {
                 $single_vote["rating"] = $md->user_votes;
                 $votes[] = $single_vote;
             }
+            if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
+            else return GDSRRender::multi_rating_review($votes, $post_id, $set, 20);
+        }
+        // various rendering
 
-            include($this->plugin_path.'integrate/edit_multi.php');
+        // edit boxes
+        function editbox_comment() {
+            if ($this->wp_version < 27)
+                include($this->plugin_path.'integrate/editcomment26.php');
+            else {
+                if ($this->admin_page != "edit-comments.php") return;
+                include($this->plugin_path.'integrate/editcomment27.php');
+            }
+        }
+
+        function editbox_post_mur() {
+            global $post;
+            $post_id = $post->ID;
+            $this->blog_multi_review_editor($post_id);
         }
 
         function editbox_post() {
