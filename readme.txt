@@ -118,8 +118,8 @@ Plugin administration consist of 12 panels:
 == Installation ==
 
 = Requirements =
-* mySQL: 4.0, 4.1 or 5.x
 * PHP: 4.4.x or 5.x.x
+* mySQL: 4.0, 4.1 or 5.x
 * WordPress: 2.5.0 or newer
 
 = Browser Notice =

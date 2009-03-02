@@ -15,6 +15,7 @@
   * edit: setup panel redesigned
   * edit: expanded gfx generating handler
   * edit: listed requirements in readme file
+  * edit: improved tinymce plugin dialog
   * fix: mysql4 varchar limits converted to text columns
   * fix: saving new multi set and review setting
   * fix: display rating data with element that has no title

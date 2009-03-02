@@ -65,6 +65,16 @@
         else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id));
     }
 
+    function wp_gdsr_mutli_review_editor($post_id = 0, $echo = true) {
+        if ($post_id == 0) {
+            global $post;
+            $post_id = $post->ID;
+        }
+
+        if ($echo) echo $gdsr->blog_multi_review_editor($post_id, false);
+        else return $gdsr->blog_multi_review_editor($post_id, false);
+    }
+
     /**
      * Manual render of comment rating
      *

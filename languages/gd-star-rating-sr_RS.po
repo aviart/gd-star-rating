@@ -399,27 +399,23 @@ msgstr "Одбројавање"
 
 #: integrate/edit_multi.php:3
 msgid "You first need to select which multi set you want to use for review rating."
-msgstr ""
+msgstr "Морате прво одредити сет који ће се користити за рејтинг."
 
 #: integrate/edit_multi.php:12
-#, fuzzy
 msgid "Clear"
 msgstr "Очисти"
 
 #: integrate/edit_multi.php:13
-#, fuzzy
 msgid "Revert"
-msgstr "Оцена"
+msgstr "Врати"
 
 #: integrate/edit_multi.php:6
-#, fuzzy
 msgid "Set ID"
-msgstr "Сет"
+msgstr "Сет ИД"
 
 #: integrate/edit_multi.php:7
-#, fuzzy
 msgid "Set Name"
-msgstr "Назив"
+msgstr "Име Сета"
 
 #: multi/editor.php:20
 msgid "Multi Sets Editor"
@@ -462,7 +458,7 @@ msgstr "Оцена"
 
 #: multi/editor.php:42
 msgid "Use this set for post/page review. Only one set at the time can be used for review feature."
-msgstr ""
+msgstr "Користие овај сет за рејтинг критике. Само се један сет може користити у исто време."
 
 #: multi/editor.php:45
 #: templates/tpl_panel_editor.php:31
@@ -608,9 +604,8 @@ msgid "Statistics"
 msgstr "Статистика"
 
 #: multi/sets.php:129
-#, fuzzy
 msgid "Delete Selected"
-msgstr "Обриши Селектоване Сетове"
+msgstr "Обриши Селектоване"
 
 #: multi/sets.php:4
 msgid "Delete Selected Sets"
@@ -938,9 +933,8 @@ msgid "For comments for pages."
 msgstr "За коментаре за стране."
 
 #: options/settings/settings_comments.php:91
-#, fuzzy
 msgid "Aggregated Rating"
-msgstr "Рејтинг Критике"
+msgstr "Агрегиран Рејтинг"
 
 #: options/settings/settings_comments.php:132
 msgid "Prevent comment author to vote."
@@ -1025,11 +1019,11 @@ msgstr "Оцена Autora Кометара."
 
 #: options/settings/settings_features.php:38
 msgid "Use graphics generator to generate and display static stars images."
-msgstr ""
+msgstr "Користи генератор слика за статичке слике звезда."
 
 #: options/settings/settings_features.php:40
 msgid "Prevent outside access to graphics generator. Graphics integrated into RSS is not affected."
-msgstr ""
+msgstr "Спречите спољни приступ генератору слика. Слике интегрисане у РСС неће бити погођене."
 
 #: options/settings/settings_features.php:43
 msgid "Charset"
@@ -1096,14 +1090,12 @@ msgid "Post Edit"
 msgstr "Измена Чланка"
 
 #: options/settings/settings_integration.php:17
-#, fuzzy
 msgid "Add standard rating box in the post/page edit sidebar area."
 msgstr "Додај рејтинг бокс на едит страну чланка."
 
 #: options/settings/settings_integration.php:19
-#, fuzzy
 msgid "Add multi ratings box in the post/page edit."
-msgstr "Додај рејтинг бокс на едит страну чланка."
+msgstr "Додај мулти рејтинг бокс на едит страну чланка."
 
 #: options/settings/settings_integration.php:21
 msgid "Add rating shortcode plugin into tinyMCE visual editor."
@@ -1192,9 +1184,8 @@ msgstr "Средња оцена целог извештаја"
 #: options/setup/setup_database.php:1
 #: options/setup/setup_database.php:5
 #: options/setup.php:2
-#, fuzzy
 msgid "Reinstall"
-msgstr "Пуна Деинсталација"
+msgstr "Пеинсталација"
 
 #: options/setup/setup_database.php:4
 msgid "All database tables will be deleted, and installed again."
@@ -1205,14 +1196,13 @@ msgstr "Све табеле ће бити обрисане, и поново кр
 #: options/setup/setup_global.php:17
 #: options/setup/setup_uninstall.php:7
 msgid "This operation is not reversable. Backup your data if you want to be able to restore it later."
-msgstr ""
+msgstr "Ова операције се не може повратити. Сачувајте податке уколико желите да их вратите касније."
 
 #: options/setup/setup_global.php:1
 #: options/setup/setup_global.php:5
 #: options/setup.php:7
-#, fuzzy
 msgid "Remove Settings"
-msgstr "Сними подешавања"
+msgstr "Обриши подешавања"
 
 #: options/setup/setup_global.php:4
 msgid "This will remove all plugin settings and all the saved widgets."
@@ -1221,9 +1211,8 @@ msgstr "Ово ће уклонити сва подешавања и све са�
 #: options/setup/setup_global.php:11
 #: options/setup/setup_global.php:15
 #: options/setup.php:12
-#, fuzzy
 msgid "Remove Templates"
-msgstr "Шаблони"
+msgstr "Обриши Шаблоне"
 
 #: options/setup/setup_global.php:14
 msgid "This will remove all saved templates for the plugin. Templates will be reseted to their default values."
@@ -1232,23 +1221,20 @@ msgstr "Ово ће уклонити све сачуване шњблоне. Ш�
 #: options/setup/setup_global.php:21
 #: options/setup/setup_global.php:25
 #: options/setup.php:16
-#, fuzzy
 msgid "Reset Imports"
-msgstr "Увоз"
+msgstr "Ресетуј Увозе"
 
 #: options/setup/setup_global.php:24
 msgid "This will reset all import flags for import data modules and will allow you to import again allready imported data."
 msgstr "Ово ће да ресетује податке о увозу за све модуле за увоз и дозволиће поновни увоз већ увезених података."
 
 #: options/setup/setup_uninstall.php:1
-#, fuzzy
 msgid "Uninstall"
-msgstr "Пуна Деинсталација"
+msgstr "Деинсталирај"
 
 #: options/setup/setup_uninstall.php:4
-#, fuzzy
 msgid "After removal, plugin will be disabled. All data recorded by the plugin will be lost"
-msgstr "После брисања, плугин ће бити искључен."
+msgstr "После брисања, плугин ће бити искључен. "
 
 #: options/setup/setup_uninstall.php:5
 #: gd-star-rating.php:1023
@@ -1818,9 +1804,8 @@ msgid "Approve"
 msgstr "Одобри"
 
 #: options/settings.php:30
-#, fuzzy
 msgid "Settings saved."
-msgstr "Подешавања"
+msgstr "Подешавања снимљена."
 
 #: options/settings.php:41
 msgid "Features"
@@ -2265,20 +2250,18 @@ msgstr "укупно преосталих минута"
 
 #: templates/tpl_list.php:4
 msgid "Standard Ratings Block"
-msgstr ""
+msgstr "Стандардни Рејтинг Блок"
 
 #: templates/tpl_list.php:8
 #: templates/tpl_list.php:40
 #: templates/tpl_list.php:60
-#, fuzzy
 msgid "post/page id"
-msgstr "назив чланка"
+msgstr "ид чланка"
 
 #: templates/tpl_list.php:9
 #: templates/tpl_list.php:41
 #: templates/tpl_list.php:52
 #: templates/tpl_list.php:61
-#, fuzzy
 msgid "singular/plural word votes"
 msgstr "једнина/множина речи глас"
 
@@ -2286,44 +2269,39 @@ msgstr "једнина/множина речи глас"
 #: templates/tpl_list.php:53
 #: templates/tpl_list.php:62
 msgid "Normal"
-msgstr ""
+msgstr "Нормалан"
 
 #: templates/tpl_list.php:21
-#, fuzzy
 msgid "Time Restricted Active"
-msgstr "Временско Ограничење"
+msgstr "Временско Ограничење Активно"
 
 #: templates/tpl_list.php:22
-#, fuzzy
 msgid "Time Restricted Closed"
-msgstr "Временска Ограничења"
+msgstr "Временско Ограничење Затворено"
 
 #: templates/tpl_list.php:25
 msgid "Standard Ratings Results"
-msgstr ""
+msgstr "Стандарни Рејтинг Резултати"
 
 #: templates/tpl_list.php:42
 msgid "class for alternating table rows"
-msgstr ""
+msgstr "класа за алтернитвне редове табеле"
 
 #: templates/tpl_list.php:48
-#, fuzzy
 msgid "Comments Ratings Block"
-msgstr "Оцена Кометара."
+msgstr "Рејтинг Блок Коментара"
 
 #: templates/tpl_list.php:56
 msgid "Standard RSS Block"
-msgstr ""
+msgstr "Стандардни РСС Блок"
 
 #: templates/tpl_panel_editor.php:21
-#, fuzzy
 msgid "Template Editor"
-msgstr "Шаблон"
+msgstr "Шаблон Едитор"
 
 #: templates/tpl_panel_editor.php:29
-#, fuzzy
 msgid "Editor"
-msgstr "Посетиоц"
+msgstr "Едитор"
 
 #: templates/tpl_panel_editor.php:36
 #: tinymce3/window.php:31
@@ -2339,38 +2317,32 @@ msgid "Template"
 msgstr "Шаблон"
 
 #: templates/tpl_panel_editor.php:62
-#, fuzzy
 msgid "All tag elements"
-msgstr "Дозвољени елементи"
+msgstr "Сви таг елементи"
 
 #: templates/tpl_panel_editor.php:63
-#, fuzzy
 msgid "No tag elements allowed"
-msgstr "нису дозвољени елементи шаблона"
+msgstr "нису дозвољени таг елементи"
 
 #: templates/tpl_panel_editor.php:75
-#, fuzzy
 msgid "Save Template"
-msgstr "Шаблон"
+msgstr "Сними Шаблон"
 
 #: templates/tpl_panel_list.php:34
-#, fuzzy
 msgid "Section / Type"
-msgstr "Ограничења"
+msgstr "Секција / Тип"
 
 #: templates/tpl_panel_list.php:36
-#, fuzzy
 msgid "Options"
-msgstr "Групне Опције"
+msgstr "Опције"
 
 #: templates/tpl_panel_list.php:76
 msgid "New template for:"
-msgstr ""
+msgstr "Ново шаблон за:"
 
 #: templates/tpl_panel_list.php:78
-#, fuzzy
 msgid "Create"
-msgstr "Центар"
+msgstr "Креирај"
 
 #: tinymce3/panels/advanced.php:5
 #: widgets/widget_rating.php:185
@@ -2640,9 +2612,8 @@ msgid "Display rating block as read only."
 msgstr "Рејтинг блок не дозвољава гласање."
 
 #: tinymce3/panels/multi.php:22
-#, fuzzy
 msgid "Multi Reviews"
-msgstr "Мулти Сетови"
+msgstr "Мулти Критике"
 
 #: tinymce3/window.php:30
 #: tinymce3/window.php:83
@@ -2654,9 +2625,8 @@ msgid "Multi Rating"
 msgstr "Мулти Рејтинг"
 
 #: tinymce3/window.php:35
-#, fuzzy
 msgid "Multi Review"
-msgstr "Оцена"
+msgstr "Мулти Критика"
 
 #: tinymce3/window.php:42
 msgid "Shortcode"
@@ -2773,9 +2743,8 @@ msgstr "Веб Кључ"
 #: gd-star-rating.php:510
 #: gd-star-rating.php:520
 #: gd-star-rating.php:521
-#, fuzzy
 msgid "Multi Ratings Review"
-msgstr "Мулти Рејтинг"
+msgstr "Мулти Рејтинг Критика"
 
 #: gd-star-rating.php:528
 msgid "Front Page"
@@ -2783,7 +2752,7 @@ msgstr "Главна Страна"
 
 #: gd-star-rating.php:537
 msgid "T2 / Alpha"
-msgstr ""
+msgstr "Т2 / Алфа"
 
 #: gd-star-rating.php:1600
 msgid "(no title)"
