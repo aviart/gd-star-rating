@@ -1100,6 +1100,19 @@ if (!class_exists('GDStarRating')) {
         }
 
         function init_operations() {
+            if ($_POST["gdsr_multi_review_form"] == "review") {
+                $mur_all = $_POST['gdsrmulti'];
+                $set_id = $this->o["mur_review_set"];
+                foreach ($mur_all as $post_id => $data) {
+                    $mur = $data[0];
+                    $values = explode("X", $mur);
+                    $record_id = GDSRDBMulti::get_vote($post_id, $set_id);
+                    GDSRDBMulti::save_review($record_id, $values);
+                }
+                $this->custom_actions('init_save_review');
+                wp_redirect($_SERVER['REQUEST_URI']);
+            }
+
             if (isset($_POST["gdsr_editcss_rating"])) {
                 $rating_css = STARRATING_XTRA_PATH."css/rating.css";
                 if (is_writeable($rating_css)) {

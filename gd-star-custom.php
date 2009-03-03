@@ -66,6 +66,7 @@
     }
 
     function wp_gdsr_mutli_review_editor($post_id = 0, $echo = true) {
+        global $gdsr;
         if ($post_id == 0) {
             global $post;
             $post_id = $post->ID;
