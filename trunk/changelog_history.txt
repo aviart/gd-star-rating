@@ -2,6 +2,8 @@
 
 == Change Log ==
 
+=== Version: 1.1.7 / march 6 2009 ===
+
 === Version: 1.1.6 / march 2 2009 ===
   * new: database table for templates
   * new: aggregated comments for post

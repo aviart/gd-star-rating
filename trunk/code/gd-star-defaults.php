@@ -24,10 +24,10 @@ class GDSRDefaults {
     );
 
     var $default_options = array(
-        "version" => "1.1.6",
-        "date" => "2009.03.02.",
+        "version" => "1.1.7",
+        "date" => "2009.03.06.",
         "status" => "Stable",
-        "build" => 502,
+        "build" => 504,
         "external_javascript" => 0,
         "external_css" => 1,
         "encoding" => "UTF-8",
