@@ -65,15 +65,85 @@
         else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id));
     }
 
-    function wp_gdsr_mutli_review_editor($post_id = 0, $echo = true) {
+    /**
+     * Renders multi rating review editor block.
+     *
+     * @global object $post post data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param int $post_id id of the post rating will be attributed to
+     * @param bool $echo echo results or return it as a string
+     * @param array $settings override settings for rendering the block
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_multi_review_editor($post_id = 0, $settings = array(), $echo = true) {
         global $gdsr;
         if ($post_id == 0) {
             global $post;
             $post_id = $post->ID;
         }
 
-        if ($echo) echo $gdsr->blog_multi_review_editor($post_id, false);
-        else return $gdsr->blog_multi_review_editor($post_id, false);
+        if ($echo) echo $gdsr->blog_multi_review_editor($post_id, $settings, false);
+        else return $gdsr->blog_multi_review_editor($post_id, $settings, false);
+    }
+
+    /**
+     * Renders multi rating review for a post.
+     *
+     * @global object $post post data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param int $post_id id of the post rating will be attributed to
+     * @param bool $echo echo results or return it as a string
+     * @param array $settings override settings for rendering the block
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_show_multi_review($post_id = 0, $settings = array(), $echo = true) {
+        global $gdsr;
+        if ($post_id == 0) {
+            global $post;
+            $post_id = $post->ID;
+        }
+        
+        if ($echo) echo $gdsr->blog_multi_review_editor($post_id, $settings, false, false);
+        else return $gdsr->blog_multi_review_editor($post_id, $settings, false, false);
+    }
+
+    /**
+     * Renders single rating stars image with average rating for the multi rating post results from rating or review.
+     *
+     * @global object $post post data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param bool $review if set to true average of review will be rendered
+     * @param int $post_id id of the post rating will be attributed to
+     * @param array $settings override settings for rendering the block
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_multi_review_average($post_id = 0, $settings = array(), $echo = false) {
+        global $gdsr;
+        if ($post_id == 0) {
+            global $post;
+            $post_id = $post->ID;
+        }
+        $review = $gdsr->get_multi_review($post_id, $settings);
+
+        if ($echo) echo $review->rendered;
+        else return $review->rendered;
+    }
+
+    /**
+     *
+     * @global object $post post data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param int $post_id id of the post rating will be attributed to
+     * @return GDSRArticleMultiReview review results
+     */
+    function wp_gdsr_get_multi_review($post_id = 0) {
+        global $gdsr;
+        if ($post_id == 0) {
+            global $post;
+            $post_id = $post->ID;
+        }
+        return $gdsr->get_multi_review($post_id, $settings);
     }
 
     /**

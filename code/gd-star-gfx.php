@@ -87,7 +87,7 @@ class GDgfxBase {
         }
         $this->import();
     }
-    
+
     function import() {
         $data = $this->load_info_file();
         if ($data != null) {
