@@ -1,5 +1,17 @@
 <?php
 
+class GDSRArticleMultiReview {
+    var $post_id;
+    var $values;
+    var $rating;
+    var $set;
+    var $rendered;
+    
+    function GDSRArticleMultiReview($post_id) {
+        $this->post_id = $post_id;
+    }
+}
+
 /**
  * Class with agregated results for a single post.
  * Constructor is givent the post data object, and from that class is filled with data.

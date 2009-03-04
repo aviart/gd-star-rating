@@ -452,16 +452,59 @@ if (!class_exists('GDStarRating')) {
             return $this->get_rating_stars($style, $stars, $size, $zero_render, $rating);
         }
 
-        function blog_multi_review_editor($post_id, $admin = true) {
+        /**
+         * Renders single rating stars image with average rating for the multi rating post results from rating or review.
+         *
+         * @param int $post_id id of the post rating will be attributed to
+         * @param bool $review if set to true average of review will be rendered
+         * @param array $settings override settings for rendering the block
+         */
+        function get_multi_review($post_id, $settings = array()) {
             $multi_id = $this->o["mur_review_set"];
             $set = gd_get_multi_set($multi_id);
             if ($multi_id > 0 && $post_id > 0) {
                 $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id);
                 $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
+                if (count($multi_data) == 0) {
+                    GDSRDBMulti::add_empty_review_values($vote_id, count($set->object));
+                    $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
+                }
             }
-            if (count($multi_data) == 0) {
-                GDSRDBMulti::add_empty_review_values($vote_id, count($set->object));
+            $review = new GDSRArticleMultiReview($post_id);
+            $review->set = $set;
+            $i = 0;
+            $weighted = 0;
+            $weight_norm = array_sum($set->weight);
+            foreach ($multi_data as $md) {
+                $single_vote["votes"] = 1;
+                $single_vote["score"] = $md->user_votes;
+                $single_vote["rating"] = $single_vote["score"];
+                $review->values = $single_vote;
+                $weighted += ( $single_vote["rating"] * $set->weight[$i] ) / $weight_norm;
+                $i++;
+            }
+            $review->rating = @number_format($weighted, 1);
+            $review->rendered = GDSRRender::render_static_stars($this->o['mur_style'], $this->o['mur_size'], $set->stars, $review->rating);
+            return $review;
+        }
+
+        /**
+         * Renders multi rating review editor block.
+         *
+         * @param int $post_id id of the post to render review editor for
+         * @param bool $admin wheter the rendering is for admin edit post page or not
+         * @return string rendered result
+         */
+        function blog_multi_review_editor($post_id, $settings = array(), $admin = true, $allow_vote = true) {
+            $multi_id = $this->o["mur_review_set"];
+            $set = gd_get_multi_set($multi_id);
+            if ($multi_id > 0 && $post_id > 0) {
+                $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id);
                 $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
+                if (count($multi_data) == 0) {
+                    GDSRDBMulti::add_empty_review_values($vote_id, count($set->object));
+                    $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
+                }
             }
 
             $votes = array();
@@ -472,7 +515,7 @@ if (!class_exists('GDStarRating')) {
                 $votes[] = $single_vote;
             }
             if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
-            else return GDSRRender::multi_rating_review($votes, $post_id, $set, 20);
+            else return GDSRRender::multi_rating_review($votes, $post_id, $set, 20, $allow_vote);
         }
         // various rendering
 
