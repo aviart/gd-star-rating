@@ -1,7 +1,7 @@
 <?php
 
 /*
-Name:    gdDBInstall
+Name:    gdDBInstallGDSR
 Version: 1.0.3
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
@@ -26,11 +26,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if (!class_exists('gdDBInstall')) {
+if (!class_exists('gdDBInstallGDSR')) {
     /*
      * Class for installing, droping, populating and upgrading database tables using the file format for each table.
      */
-    class gdDBInstall {
+    class gdDBInstallGDSR {
         /**
          * Drops all tables according to the table names.
          *
@@ -41,7 +41,7 @@ if (!class_exists('gdDBInstall')) {
         function drop_tables($path) {
             global $wpdb, $table_prefix;
             $path.= "install/tables";
-            $files = gdDBInstall::scan_folder($path);
+            $files = gdDBInstallGDSR::scan_folder($path);
             foreach ($files as $file) {
                 $file_path = $path."/".$file;
                 $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
@@ -84,9 +84,9 @@ if (!class_exists('gdDBInstall')) {
          */
         function upgrade_tables($path) {
             $path.= "install/tables";
-            $files = gdDBInstall::scan_folder($path);
+            $files = gdDBInstallGDSR::scan_folder($path);
             foreach ($files as $file) {
-                gdDBInstall::upgrade_table($path, $file);
+                gdDBInstallGDSR::upgrade_table($path, $file);
             }
         }
 
@@ -122,8 +122,8 @@ if (!class_exists('gdDBInstall')) {
                 if (substr($f, 0, 1) == "`") {
                     $column = substr($f, 1);
                     $column = substr($column, 0, strpos($column, "`"));
-                    if (!gdDBInstall::check_column($columns, $column))
-                        gdDBInstall::add_column($table_name, $f, $after);
+                    if (!gdDBInstallGDSR::check_column($columns, $column))
+                        gdDBInstallGDSR::add_column($table_name, $f, $after);
                     $after = $column;
                 }
             }
@@ -157,7 +157,7 @@ if (!class_exists('gdDBInstall')) {
         function create_tables($path) {
             global $wpdb, $table_prefix;
             $path.= "install/tables";
-            $files = gdDBInstall::scan_folder($path);
+            $files = gdDBInstallGDSR::scan_folder($path);
             foreach ($files as $file) {
                 $file_path = $path."/".$file;
                 $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
@@ -187,7 +187,7 @@ if (!class_exists('gdDBInstall')) {
         function import_data($path) {
             global $wpdb, $table_prefix;
             $path.= "install/data";
-            $files = gdDBInstall::scan_folder($path);
+            $files = gdDBInstallGDSR::scan_folder($path);
             $wpdb->show_errors = true;
             foreach ($files as $file) {
                 if (substr($file, 0, 1) != '.') {

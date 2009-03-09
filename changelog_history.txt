@@ -2,10 +2,13 @@
 
 == Change Log ==
 
-=== Version: 1.1.7 / march 6 2009 ===
+=== Version: 1.1.7 / march 12 2009 ===
   * new: more multi set related custom functions
+  * new: default templates inserted into database
   * edit: saving review editor results
+  * edit: updated and cleaned up database installation
   * fix: custom review editor function
+  * fix: templates t2 system bugs
 
 === Version: 1.1.6 / march 2 2009 ===
   * new: database table for templates

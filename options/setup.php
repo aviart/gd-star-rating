@@ -1,8 +1,8 @@
 <?php
 
     if ($_POST["gdsr_reinstall"] == __("Reinstall", "gd-star-rating")) {
-        gdDBInstall::drop_tables(STARRATING_PATH);
-        gdDBInstall::create_tables(STARRATING_PATH);
+        gdDBInstallGDSR::drop_tables(STARRATING_PATH);
+        gdDBInstallGDSR::create_tables(STARRATING_PATH);
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>Database tables reinstalled.</strong></p></div> <?php
     }
     if ($_POST["gdsr_remove_settings"] == __("Remove Settings", "gd-star-rating")) {

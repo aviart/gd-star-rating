@@ -1,7 +1,7 @@
 <?php
 
 /*
-Name:    gdFunctions
+Name:    gdFunctionsGDSR
 Version: 1.0.5
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
@@ -26,8 +26,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if (!class_exists('gdFunctions')) {
-    class gdFunctions {
+if (!class_exists('gdFunctionsGDSR')) {
+    class gdFunctionsGDSR {
         function get_folder_files_count($path) {
             if (!file_exists($path))
                 return 0;
@@ -47,7 +47,7 @@ if (!class_exists('gdFunctions')) {
                 return filesize($path);
             $ret = 0;
             foreach(glob($path."/*") as $fn)
-                $ret += gdFunctions::get_folder_size($fn);
+                $ret += gdFunctionsGDSR::get_folder_size($fn);
 
             return $ret;
         }
@@ -79,7 +79,7 @@ if (!class_exists('gdFunctions')) {
          * @return array founded folders in array
          */
         function get_folders($path) {
-            $folders = gdFunctions::scan_dir($path);
+            $folders = gdFunctionsGDSR::scan_dir($path);
             $import = array();
             foreach ($folders as $folder) {
                 if (substr($folder, 0, 1) != ".") {
@@ -122,6 +122,22 @@ if (!class_exists('gdFunctions')) {
                 else $result[$name] = $default;
             }
             return $result;
+        }
+
+        function size_format($size) {
+            if (strlen($size) <= 9 && strlen($size) >= 7) {
+                $size = number_format($size / 1048576,1);
+                return "$size MB";
+            }
+            elseif (strlen($size) >= 10) {
+                $size = number_format($size / 1073741824,1);
+                return "$size GB";
+            }
+            elseif (strlen($size) <= 6 && strlen($size) >= 4) {
+                $size = number_format($size / 1024,1);
+                return "$size KB";
+            }
+            else return "$size B";
         }
 
         function recalculate_size($size) {

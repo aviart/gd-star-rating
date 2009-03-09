@@ -4,7 +4,7 @@ class GDSRDBTools {
     function clean_invalid_log_articles() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_log l left join %sposts o on o.ID = l.id where l.vote_type = 'article' and o.ID is null",
-            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
+            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -13,7 +13,7 @@ class GDSRDBTools {
     function clean_invalid_log_comments() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_log l left join %scomments o on o.comment_ID = l.id where l.vote_type = 'comment' and o.comment_ID is null",
-            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
+            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -22,7 +22,7 @@ class GDSRDBTools {
     function clean_invalid_trend_articles() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_trend l left join %sposts o on o.ID = l.id where l.vote_type = 'article' and o.ID is null",
-            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
+            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -31,7 +31,7 @@ class GDSRDBTools {
     function clean_invalid_trend_comments() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_trend l left join %scomments o on o.comment_ID = l.id where l.vote_type = 'comment' and o.comment_ID is null",
-            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
+            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -40,7 +40,7 @@ class GDSRDBTools {
     function clean_dead_articles() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_data_article l left join %sposts o on o.ID = l.post_id where o.ID is null",
-            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_data_article", $table_prefix) : "l",
+            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_data_article", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -49,7 +49,7 @@ class GDSRDBTools {
     function clean_dead_comments() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_data_comment l left join %scomments o on o.comment_ID = l.comment_id where o.comment_ID is null",
-            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_data_comment", $table_prefix) : "l",
+            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_data_comment", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -385,6 +385,24 @@ class GDSRDB {
             $table_prefix, $general["section"], $general["name"], $general["description"], serialize($elements), $general["preinstalled"]);
         $wpdb->query($sql);
         return $wpdb->insert_id;
+    }
+
+    function insert_default_templates($path) {
+        global $wpdb, $table_prefix;
+        $path.= "install/data/gdsr_templates.txt";
+        if (file_exists($path)) {
+            $tpls = file($path);
+            foreach ($tpls as $tpl) {
+                $tpl_check = substr($tpl, 0, 3);
+                $tpl_insert = substr($tpl, 4);
+                $sql = sprintf("select count(*) from %sgdsr_templates where section = '%s' and preinstalled = '1'", $table_prefix, $tpl_check);
+                $counter = $wpdb->get_var($sql);
+                if ($counter == 0) {
+                    $sql = str_replace("%sgdsr_templates", $table_prefix."gdsr_templates", $tpl_insert);
+                    $wpdb->query($sql);
+                }
+            }
+        }
     }
     // templates
 

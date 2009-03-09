@@ -12,7 +12,7 @@ class GDSRChart {
         $mysql4_strtodate = "date_add(vote_date, interval 0 day)";
         $mysql5_strtodate = "str_to_date(vote_date, '%Y-%m-%d')";
 
-        switch(gdFunctions::mysql_version())
+        switch(gdFunctionsGDSR::mysql_version())
         {
             case "4":
                 $strtodate = $mysql4_strtodate;

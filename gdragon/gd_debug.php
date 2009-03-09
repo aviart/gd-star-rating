@@ -1,7 +1,7 @@
 <?php
 
 /*
-Name:    gdDebug
+Name:    gdDebugGDSR
 Version: 1.0.5
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
@@ -26,11 +26,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if (!class_exists('gdDebug')) {
+if (!class_exists('gdDebugGDSR')) {
     /**
      * Class for saving debug dumps into file.
      */
-    class gdDebug {
+    class gdDebugGDSR {
         var $log_file;
         var $active = false;
 
@@ -39,7 +39,7 @@ if (!class_exists('gdDebug')) {
          *
          * @param string $log_url
          */
-        function gdDebug($log_url = '') {
+        function gdDebugGDSR($log_url = '') {
             $this->log_file = $log_url;
 
             if ($this->log_file != '') {
