@@ -3,4 +3,4 @@ CREATE TABLE `%sgdsr_ips` (
   `status` varchar(1) default 'B',
   `mode` varchar(1) default 'S',
   `ip` varchar(128) default NULL,
-  PRIMARY KEY (`id`));
+  PRIMARY KEY  (`id`));

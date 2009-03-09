@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.1.6
+Version: 1.1.7
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review, multi
 Requires at least: 2.5.0
 Tested up to: 2.7.1
@@ -123,7 +123,7 @@ Plugin administration consist of 12 panels:
 * WordPress: 2.5.0 or newer
 
 = Browser Notice =
-* Multi review feature on administration Post Edit page will not work properly with IE6 browsers
+* Multi review feature on administration Post Edit page will not work properly with IE6 browsers.
 
 = Basic Installation =
 * Plugin folder in the WordPress plugins folder must be `gd-star-rating`.
@@ -174,6 +174,7 @@ Plugin has debug into log file feature built in. Information on activating this 
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
 * PDF User Guide: http://www.gdstarrating.com/downloads/user-guide/
 * Tutorials: http://www.gdstarrating.com/category/tutorials/
+* Database Layout: http://code.google.com/p/gd-star-rating/wiki/DatabaseTablesFormat
 * Email: starrating@gdragon.info
 
 == Communities ==

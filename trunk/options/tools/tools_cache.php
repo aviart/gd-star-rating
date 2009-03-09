@@ -11,9 +11,9 @@
 </tr>
 <tr><th scope="row"><?php _e("Status", "gd-star-rating"); ?></th>
     <td>
-        <?php _e("Total files cached", "gd-star-rating"); ?>: <strong><?php echo gdFunctions::get_folder_files_count( substr(STARRATING_CACHE_PATH, 0, strlen(STARRATING_CACHE_PATH) - 1) ); ?> files</strong>
+        <?php _e("Total files cached", "gd-star-rating"); ?>: <strong><?php echo gdFunctionsGDSR::get_folder_files_count( substr(STARRATING_CACHE_PATH, 0, strlen(STARRATING_CACHE_PATH) - 1) ); ?> files</strong>
         <br />
-        <?php _e("Total size of cached files", "gd-star-rating"); ?>: <strong><?php echo gdFunctions::get_folder_size( substr(STARRATING_CACHE_PATH, 0, strlen(STARRATING_CACHE_PATH) - 1) ); ?> bytes</strong>
+        <?php _e("Total size of cached files", "gd-star-rating"); ?>: <strong><?php echo gdFunctionsGDSR::get_folder_size( substr(STARRATING_CACHE_PATH, 0, strlen(STARRATING_CACHE_PATH) - 1) ); ?> bytes</strong>
     </td>
 </tr>
 </tbody></table>

@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.1.6
+Version: 1.1.7
 Author: Milan Petrovic
 Author URI: http://wp.gdragon.info/
  
@@ -876,20 +876,22 @@ if (!class_exists('GDStarRating')) {
             $this->wpr8 = get_option('gd-star-rating-wpr8');
 
             if ($this->o["build"] < $this->default_options["build"]) {
-                gdDBInstall::delete_tables(STARRATING_PATH);
-                gdDBInstall::create_tables(STARRATING_PATH);
-                gdDBInstall::upgrade_tables(STARRATING_PATH);
-                gdDBInstall::alter_tables(STARRATING_PATH);
+                gdDBInstallGDSR::delete_tables(STARRATING_PATH);
+                gdDBInstallGDSR::create_tables(STARRATING_PATH);
+                gdDBInstallGDSR::upgrade_tables(STARRATING_PATH);
+                gdDBInstallGDSR::alter_tables(STARRATING_PATH);
                 $this->o["database_upgrade"] = date("r");
+
+                GDSRDB::insert_default_templates(STARRATING_PATH);
             }
             
             if (!is_array($this->o)) {
                 update_option('gd-star-rating', $this->default_options);
                 $this->o = get_option('gd-star-rating');
-                gdDBInstall::create_tables(STARRATING_PATH);
+                gdDBInstallGDSR::create_tables(STARRATING_PATH);
             }
             else {
-                $this->o = gdFunctions::upgrade_settings($this->o, $this->default_options);
+                $this->o = gdFunctionsGDSR::upgrade_settings($this->o, $this->default_options);
 
                 $this->o["version"] = $this->default_options["version"];
                 $this->o["date"] = $this->default_options["date"];
@@ -904,7 +906,7 @@ if (!class_exists('GDStarRating')) {
                 $this->x = get_option('gd-star-rating-templates');
             }
             else {
-                $this->x = gdFunctions::upgrade_settings($this->x, $this->default_templates);
+                $this->x = gdFunctionsGDSR::upgrade_settings($this->x, $this->default_templates);
                 update_option('gd-star-rating-templates', $this->x);
             }
 
@@ -913,7 +915,7 @@ if (!class_exists('GDStarRating')) {
                 $this->i = get_option('gd-star-rating-import');
             }
             else {
-                $this->i = gdFunctions::upgrade_settings($this->i, $this->default_import);
+                $this->i = gdFunctionsGDSR::upgrade_settings($this->i, $this->default_import);
                 update_option('gd-star-rating-import', $this->i);
             }
             
@@ -927,7 +929,7 @@ if (!class_exists('GDStarRating')) {
                 $this->wpr8 = get_option('gd-star-rating-wpr8');
             }
             else {
-                $this->wpr8 = gdFunctions::upgrade_settings($this->wpr8, $this->default_wpr8);
+                $this->wpr8 = gdFunctionsGDSR::upgrade_settings($this->wpr8, $this->default_wpr8);
                 update_option('gd-star-rating-wpr8', $this->wpr8);
             }
 
@@ -946,28 +948,28 @@ if (!class_exists('GDStarRating')) {
         function gfx_scan() {
             $data = new GDgfxLib();
             
-            $stars_folders = gdFunctions::get_folders($this->plugin_path."stars/");
+            $stars_folders = gdFunctionsGDSR::get_folders($this->plugin_path."stars/");
             foreach ($stars_folders as $f) {
                 $gfx = new GDgfxStar($f);
                 if ($gfx->imported)
                     $data->stars[] = $gfx;
             }
             if (is_dir($this->plugin_xtra_path."stars/")) {
-                $stars_folders = gdFunctions::get_folders($this->plugin_xtra_path."stars/");
+                $stars_folders = gdFunctionsGDSR::get_folders($this->plugin_xtra_path."stars/");
                 foreach ($stars_folders as $f) {
                     $gfx = new GDgfxStar($f, false);
                     if ($gfx->imported)
                         $data->stars[] = $gfx;
                 }
             }
-            $trend_folders = gdFunctions::get_folders($this->plugin_path."trends/");
+            $trend_folders = gdFunctionsGDSR::get_folders($this->plugin_path."trends/");
             foreach ($trend_folders as $f) {
                 $gfx = new GDgfxTrend($f);
                 if ($gfx->imported)
                     $data->trend[] = $gfx;
             }
             if (is_dir($this->plugin_xtra_path."trends/")) {
-                $trend_folders = gdFunctions::get_folders($this->plugin_xtra_path."trends/");
+                $trend_folders = gdFunctionsGDSR::get_folders($this->plugin_xtra_path."trends/");
                 foreach ($trend_folders as $f) {
                     $gfx = new GDgfxTrend($f, false);
                     if ($gfx->imported)
@@ -1078,7 +1080,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin) {
                 if ($this->wp_version >= 26) add_thickbox();
                 else wp_enqueue_script("thickbox");
-                $this->safe_mode = gdFunctions::php_in_safe_mode();
+                $this->safe_mode = gdFunctionsGDSR::php_in_safe_mode();
                 if (!$this->safe_mode)
                     $this->extra_folders = GDSRHelper::create_folders($this->wp_version);
             }
@@ -1134,7 +1136,7 @@ if (!class_exists('GDStarRating')) {
                 delete_option('gd-star-rating-import');
                 delete_option('gd-star-rating-gfx');
 
-                gdDBInstall::drop_tables(STARRATING_PATH);
+                gdDBInstallGDSR::drop_tables(STARRATING_PATH);
                 GDSRHelper::deactivate_plugin();
                 update_option('recently_activated', array("gd-star-rating/gd-star-rating.php" => time()) + (array)get_option('recently_activated'));
                 wp_redirect('index.php');
@@ -1184,10 +1186,10 @@ if (!class_exists('GDStarRating')) {
             }
 
             if (isset($_POST['gdsr_upgrade_tool'])) {
-                gdDBInstall::delete_tables(STARRATING_PATH);
-                gdDBInstall::create_tables(STARRATING_PATH);
-                gdDBInstall::upgrade_tables(STARRATING_PATH);
-                gdDBInstall::alter_tables(STARRATING_PATH);
+                gdDBInstallGDSR::delete_tables(STARRATING_PATH);
+                gdDBInstallGDSR::create_tables(STARRATING_PATH);
+                gdDBInstallGDSR::upgrade_tables(STARRATING_PATH);
+                gdDBInstallGDSR::alter_tables(STARRATING_PATH);
                 $this->o["database_upgrade"] = date("r");
                 update_option('gd-star-rating', $this->o);
                 wp_redirect("admin.php?page=gd-star-rating-tools");
@@ -2949,7 +2951,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
         // rendering
     }
 
-    $gd_debug = new gdDebug(STARRATING_LOG_PATH);
+    $gd_debug = new gdDebugGDSR(STARRATING_LOG_PATH);
     $gdsr = new GDStarRating();
 
     include(STARRATING_PATH."gd-star-custom.php");

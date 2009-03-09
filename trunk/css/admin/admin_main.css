@@ -73,15 +73,15 @@ h2.gdptlogopage {
 	margin: 14px 0;
 	line-height: 30px;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif;
-	border: 0;
-    font-style: normal;
+        border: 0;
+        font-style: normal;
 }
 
 #gdptlogo {
     background: transparent url(../../gfx/logo.png) no-repeat;
     height: 64px;
     padding-left: 72px;
-	margin-top: 5px;
+    margin-top: 5px;
 }
 
 #gdptlogo .gdpttitle {
