@@ -2,15 +2,15 @@
 msgid "Chart with votes distribution"
 msgstr ""
 
-#: code/gd-star-dbone.php:1023
+#: code/gd-star-dbone.php:1031
 msgid "Show all dates"
 msgstr ""
 
-#: code/gd-star-dbone.php:1051
+#: code/gd-star-dbone.php:1059
 msgid "All users and visitors"
 msgstr ""
 
-#: code/gd-star-dbone.php:1052
+#: code/gd-star-dbone.php:1060
 #: tinymce3/panels/advanced.php:121
 #: tinymce3/panels/comments.php:8
 #: widgets/widget_rating.php:42
@@ -20,11 +20,11 @@ msgstr ""
 msgid "Visitors Only"
 msgstr ""
 
-#: code/gd-star-dbone.php:1053
+#: code/gd-star-dbone.php:1061
 msgid "All Users"
 msgstr ""
 
-#: code/gd-star-dbone.php:1069
+#: code/gd-star-dbone.php:1077
 msgid "All categories"
 msgstr ""
 
@@ -164,162 +164,162 @@ msgstr ""
 msgid "votes"
 msgstr ""
 
-#: code/gd-star-functions.php:283
+#: code/gd-star-functions.php:295
 msgid "No moderation"
 msgstr ""
 
-#: code/gd-star-functions.php:284
+#: code/gd-star-functions.php:296
 msgid "Moderate visitors"
 msgstr ""
 
-#: code/gd-star-functions.php:285
+#: code/gd-star-functions.php:297
 msgid "Moderate users"
 msgstr ""
 
-#: code/gd-star-functions.php:286
+#: code/gd-star-functions.php:298
 msgid "Moderate all"
 msgstr ""
 
-#: code/gd-star-functions.php:287
-#: code/gd-star-functions.php:314
-#: code/gd-star-functions.php:327
+#: code/gd-star-functions.php:299
+#: code/gd-star-functions.php:326
 #: code/gd-star-functions.php:339
+#: code/gd-star-functions.php:351
 msgid "Inherit from Category"
 msgstr ""
 
-#: code/gd-star-functions.php:309
+#: code/gd-star-functions.php:321
 msgid "Everyone can vote"
 msgstr ""
 
-#: code/gd-star-functions.php:310
+#: code/gd-star-functions.php:322
 msgid "Only visitors"
 msgstr ""
 
-#: code/gd-star-functions.php:311
+#: code/gd-star-functions.php:323
 msgid "Only users"
 msgstr ""
 
-#: code/gd-star-functions.php:312
+#: code/gd-star-functions.php:324
 msgid "Locked"
 msgstr ""
 
-#: code/gd-star-functions.php:313
+#: code/gd-star-functions.php:325
 msgid "Locked and hidden"
 msgstr ""
 
-#: code/gd-star-functions.php:324
+#: code/gd-star-functions.php:336
 msgid "No timer"
 msgstr ""
 
-#: code/gd-star-functions.php:325
+#: code/gd-star-functions.php:337
 msgid "Countdown timer"
 msgstr ""
 
-#: code/gd-star-functions.php:326
+#: code/gd-star-functions.php:338
 msgid "Date limited"
 msgstr ""
 
-#: code/gd-star-functions.php:336
+#: code/gd-star-functions.php:348
 #: options/articles.php:204
 #: options/categories.php:112
 msgid "Hours"
 msgstr ""
 
-#: code/gd-star-functions.php:337
+#: code/gd-star-functions.php:349
 #: options/articles.php:207
 #: options/categories.php:115
 msgid "Days"
 msgstr ""
 
-#: code/gd-star-functions.php:338
+#: code/gd-star-functions.php:350
 #: options/articles.php:210
 #: options/categories.php:118
 msgid "Months"
 msgstr ""
 
-#: code/gd-star-functions.php:347
+#: code/gd-star-functions.php:359
 #: tinymce3/panels/advanced.php:228
 #: tinymce3/panels/advanced.php:253
 msgid "Mini"
 msgstr ""
 
-#: code/gd-star-functions.php:348
+#: code/gd-star-functions.php:360
 #: tinymce3/panels/advanced.php:229
 #: tinymce3/panels/advanced.php:254
 msgid "Small"
 msgstr ""
 
-#: code/gd-star-functions.php:349
+#: code/gd-star-functions.php:361
 #: tinymce3/panels/advanced.php:230
 #: tinymce3/panels/advanced.php:255
 msgid "Medium"
 msgstr ""
 
-#: code/gd-star-functions.php:350
+#: code/gd-star-functions.php:362
 #: tinymce3/panels/advanced.php:231
 #: tinymce3/panels/advanced.php:256
 msgid "Big"
 msgstr ""
 
-#: code/gd-star-functions.php:358
+#: code/gd-star-functions.php:370
 msgid "Stars and text"
 msgstr ""
 
-#: code/gd-star-functions.php:359
+#: code/gd-star-functions.php:371
 msgid "Stars only"
 msgstr ""
 
-#: code/gd-star-functions.php:360
+#: code/gd-star-functions.php:372
 msgid "Text only"
 msgstr ""
 
-#: code/gd-star-functions.php:368
+#: code/gd-star-functions.php:380
 msgid "No alignment"
 msgstr ""
 
-#: code/gd-star-functions.php:369
-#: code/gd-star-functions.php:398
+#: code/gd-star-functions.php:381
+#: code/gd-star-functions.php:410
 msgid "Left"
 msgstr ""
 
-#: code/gd-star-functions.php:370
+#: code/gd-star-functions.php:382
 msgid "Center"
 msgstr ""
 
-#: code/gd-star-functions.php:371
-#: code/gd-star-functions.php:400
+#: code/gd-star-functions.php:383
+#: code/gd-star-functions.php:412
 msgid "Right"
 msgstr ""
 
-#: code/gd-star-functions.php:379
+#: code/gd-star-functions.php:391
 msgid "No Animation"
 msgstr ""
 
-#: code/gd-star-functions.php:393
+#: code/gd-star-functions.php:405
 msgid "Always hide"
 msgstr ""
 
-#: code/gd-star-functions.php:394
+#: code/gd-star-functions.php:406
 msgid "Top"
 msgstr ""
 
-#: code/gd-star-functions.php:395
+#: code/gd-star-functions.php:407
 msgid "Top (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:396
+#: code/gd-star-functions.php:408
 msgid "Bottom"
 msgstr ""
 
-#: code/gd-star-functions.php:397
+#: code/gd-star-functions.php:409
 msgid "Bottom (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:399
+#: code/gd-star-functions.php:411
 msgid "Left (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:401
+#: code/gd-star-functions.php:413
 msgid "Right (hide if empty)"
 msgstr ""
 
@@ -488,8 +488,8 @@ msgstr ""
 #: templates/templates_standard.php:1
 #: tinymce3/window.php:56
 #: tinymce3/window.php:57
-#: gd-star-rating.php:529
-#: gd-star-rating.php:529
+#: gd-star-rating.php:618
+#: gd-star-rating.php:618
 msgid "Articles"
 msgstr ""
 
@@ -539,8 +539,8 @@ msgstr ""
 #: options/settings/settings_administration.php:54
 #: options/articles.php:156
 #: options/categories.php:69
-#: gd-star-rating.php:530
-#: gd-star-rating.php:530
+#: gd-star-rating.php:619
+#: gd-star-rating.php:619
 msgid "Categories"
 msgstr ""
 
@@ -562,8 +562,8 @@ msgid "Voters"
 msgstr ""
 
 #: multi/sets.php:44
-#: gd-star-rating.php:533
-#: gd-star-rating.php:533
+#: gd-star-rating.php:622
+#: gd-star-rating.php:622
 msgid "Multi Sets"
 msgstr ""
 
@@ -614,6 +614,68 @@ msgstr ""
 msgid "Posts"
 msgstr ""
 
+#: options/ips/ips_list.php:53
+msgid "Record Id"
+msgstr ""
+
+#: options/ips/ips_list.php:54
+msgid "Type"
+msgstr ""
+
+#: options/ips/ips_list.php:55
+#: options/export.php:45
+#: options/moderation.php:116
+#: options/users_log.php:105
+#: options/voters.php:145
+msgid "IP"
+msgstr ""
+
+#: options/ips/ips_list.php:95
+msgid "Unban Selected"
+msgstr ""
+
+#: options/ips/ips_options.php:1
+msgid "Ban Single IP's"
+msgstr ""
+
+#: options/ips/ips_options.php:8
+msgid "Add IP addresses"
+msgstr ""
+
+#: options/ips/ips_options.php:9
+msgid "One IP address per line."
+msgstr ""
+
+#: options/ips/ips_options.php:15
+#: options/ips/ips_options.php:41
+#: options/ips/ips_options.php:57
+msgid "Add"
+msgstr ""
+
+#: options/ips/ips_options.php:19
+msgid "Ban IP Range"
+msgstr ""
+
+#: options/ips/ips_options.php:25
+msgid "From"
+msgstr ""
+
+#: options/ips/ips_options.php:35
+msgid "To"
+msgstr ""
+
+#: options/ips/ips_options.php:45
+msgid "Ban IP Masked"
+msgstr ""
+
+#: options/ips/ips_options.php:51
+msgid "Mask"
+msgstr ""
+
+#: options/ips/ips_options.php:55
+msgid "Use XXX as a part of IP or leave empty to mask."
+msgstr ""
+
 #: options/settings/settings_administration.php:1
 #: tinymce3/panels/advanced.php:2
 msgid "Display"
@@ -630,8 +692,8 @@ msgstr ""
 #: options/settings/settings_administration.php:30
 #: options/settings.php:37
 #: tinymce3/panels/multi.php:15
-#: gd-star-rating.php:534
-#: gd-star-rating.php:534
+#: gd-star-rating.php:623
+#: gd-star-rating.php:623
 msgid "Settings"
 msgstr ""
 
@@ -666,8 +728,8 @@ msgstr ""
 #: options/categories.php:224
 #: options/comments.php:139
 #: options/users.php:47
-#: gd-star-rating.php:531
-#: gd-star-rating.php:531
+#: gd-star-rating.php:620
+#: gd-star-rating.php:620
 msgid "Users"
 msgstr ""
 
@@ -677,8 +739,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:58
 #: options/setup.php:28
-#: gd-star-rating.php:542
-#: gd-star-rating.php:542
+#: gd-star-rating.php:631
+#: gd-star-rating.php:631
 msgid "Setup"
 msgstr ""
 
@@ -687,8 +749,8 @@ msgid "Uninstall and maintenance."
 msgstr ""
 
 #: options/settings/settings_administration.php:62
-#: gd-star-rating.php:539
-#: gd-star-rating.php:539
+#: gd-star-rating.php:628
+#: gd-star-rating.php:628
 msgid "Import"
 msgstr ""
 
@@ -697,8 +759,8 @@ msgid "Importing data for other rating plugins."
 msgstr ""
 
 #: options/settings/settings_administration.php:64
-#: gd-star-rating.php:540
-#: gd-star-rating.php:540
+#: gd-star-rating.php:629
+#: gd-star-rating.php:629
 msgid "Export"
 msgstr ""
 
@@ -709,8 +771,8 @@ msgstr ""
 #: options/settings/settings_administration.php:66
 #: options/ips.php:67
 #: options/users_log.php:177
-#: gd-star-rating.php:538
-#: gd-star-rating.php:538
+#: gd-star-rating.php:627
+#: gd-star-rating.php:627
 msgid "IP's"
 msgstr ""
 
@@ -1238,7 +1300,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1023
+#: gd-star-rating.php:1131
 msgid "UNINSTALL"
 msgstr ""
 
@@ -1364,6 +1426,18 @@ msgstr ""
 
 #: options/tools/tools_db.php:23
 msgid "Cleanup summary"
+msgstr ""
+
+#: options/tools/tools_editcss.php:21
+msgid "Save"
+msgstr ""
+
+#: options/tools/tools_editcss.php:6
+msgid "File is not writeable and can't be saved through this form."
+msgstr ""
+
+#: options/tools/tools_editcss.php:11
+msgid "Additional CSS file not found"
 msgstr ""
 
 #: options/tools/tools_gfx.php:1
@@ -1535,14 +1609,6 @@ msgstr ""
 
 #: options/export.php:43
 msgid "Additional Columns"
-msgstr ""
-
-#: options/export.php:45
-#: options/ips_list.php:55
-#: options/moderation.php:116
-#: options/users_log.php:105
-#: options/voters.php:145
-msgid "IP"
 msgstr ""
 
 #: options/export.php:46
@@ -1735,60 +1801,6 @@ msgstr ""
 msgid "Banned"
 msgstr ""
 
-#: options/ips_list.php:53
-msgid "Record Id"
-msgstr ""
-
-#: options/ips_list.php:54
-msgid "Type"
-msgstr ""
-
-#: options/ips_list.php:95
-msgid "Unban Selected"
-msgstr ""
-
-#: options/ips_options.php:1
-msgid "Ban Single IP's"
-msgstr ""
-
-#: options/ips_options.php:8
-msgid "Add IP addresses"
-msgstr ""
-
-#: options/ips_options.php:9
-msgid "One IP address per line."
-msgstr ""
-
-#: options/ips_options.php:15
-#: options/ips_options.php:41
-#: options/ips_options.php:57
-msgid "Add"
-msgstr ""
-
-#: options/ips_options.php:19
-msgid "Ban IP Range"
-msgstr ""
-
-#: options/ips_options.php:25
-msgid "From"
-msgstr ""
-
-#: options/ips_options.php:35
-msgid "To"
-msgstr ""
-
-#: options/ips_options.php:45
-msgid "Ban IP Masked"
-msgstr ""
-
-#: options/ips_options.php:51
-msgid "Mask"
-msgstr ""
-
-#: options/ips_options.php:55
-msgid "Use XXX as a part of IP or leave empty to mask."
-msgstr ""
-
 #: options/moderation.php:115
 #: options/users_log.php:108
 #: options/users_log.php:92
@@ -1868,8 +1880,8 @@ msgid "Full Uninstall"
 msgstr ""
 
 #: options/tools.php:0
-#: gd-star-rating.php:535
-#: gd-star-rating.php:535
+#: gd-star-rating.php:624
+#: gd-star-rating.php:624
 msgid "Tools"
 msgstr ""
 
@@ -1883,6 +1895,10 @@ msgstr ""
 
 #: options/tools.php:7
 msgid "Bulk"
+msgstr ""
+
+#: options/tools.php:9
+msgid "Edit CSS"
 msgstr ""
 
 #: options/users.php:62
@@ -1964,8 +1980,8 @@ msgstr ""
 
 #: templates/templates.php:31
 #: templates/tpl_panel_list.php:14
-#: gd-star-rating.php:536
-#: gd-star-rating.php:536
+#: gd-star-rating.php:625
+#: gd-star-rating.php:625
 msgid "Templates"
 msgstr ""
 
@@ -2089,6 +2105,7 @@ msgstr ""
 #: templates/tpl_list.php:5
 #: templates/tpl_list.php:26
 #: templates/tpl_list.php:57
+#: templates/tpl_list.php:76
 #: widgets/widget_rating.php:366
 #: widgets/widget_top.php:112
 msgid "article rating"
@@ -2098,6 +2115,7 @@ msgstr ""
 #: templates/tpl_list.php:6
 #: templates/tpl_list.php:27
 #: templates/tpl_list.php:58
+#: templates/tpl_list.php:77
 #: widgets/widget_rating.php:370
 #: widgets/widget_top.php:120
 msgid "maximum rating value"
@@ -2119,6 +2137,7 @@ msgstr ""
 #: templates/tpl_list.php:7
 #: templates/tpl_list.php:30
 #: templates/tpl_list.php:59
+#: templates/tpl_list.php:78
 #: widgets/widget_rating.php:378
 #: widgets/widget_top.php:128
 msgid "total votes for article"
@@ -2181,11 +2200,13 @@ msgstr ""
 
 #: templates/templates_standard.php:68
 #: templates/tpl_list.php:49
+#: templates/tpl_list.php:66
 msgid "comment rating"
 msgstr ""
 
 #: templates/templates_standard.php:71
 #: templates/tpl_list.php:50
+#: templates/tpl_list.php:67
 msgid "maximum comment rating value"
 msgstr ""
 
@@ -2204,61 +2225,72 @@ msgstr ""
 
 #: templates/templates_standard.php:102
 #: templates/tpl_list.php:10
+#: templates/tpl_list.php:81
 msgid "remaining years"
 msgstr ""
 
 #: templates/templates_standard.php:105
 #: templates/tpl_list.php:11
+#: templates/tpl_list.php:82
 msgid "remaining months"
 msgstr ""
 
 #: templates/templates_standard.php:109
 #: templates/tpl_list.php:12
+#: templates/tpl_list.php:83
 msgid "remaining days"
 msgstr ""
 
 #: templates/templates_standard.php:112
 #: templates/tpl_list.php:13
+#: templates/tpl_list.php:84
 msgid "remaining hours"
 msgstr ""
 
 #: templates/templates_standard.php:116
 #: templates/tpl_list.php:14
+#: templates/tpl_list.php:85
 msgid "remaining minutes"
 msgstr ""
 
 #: templates/templates_standard.php:119
 #: templates/tpl_list.php:15
+#: templates/tpl_list.php:86
 msgid "remaining seconds"
 msgstr ""
 
 #: templates/templates_standard.php:123
 #: templates/tpl_list.php:16
+#: templates/tpl_list.php:87
 msgid "end voting date"
 msgstr ""
 
 #: templates/templates_standard.php:126
 #: templates/tpl_list.php:17
+#: templates/tpl_list.php:88
 msgid "total remaining days"
 msgstr ""
 
 #: templates/templates_standard.php:130
 #: templates/tpl_list.php:18
+#: templates/tpl_list.php:89
 msgid "total remaining hours"
 msgstr ""
 
 #: templates/templates_standard.php:133
 #: templates/tpl_list.php:19
+#: templates/tpl_list.php:90
 msgid "total remaining minutes"
 msgstr ""
 
 #: templates/tpl_list.php:4
-msgid "Standard Ratings Block"
+msgid "Standard Ratings Text"
 msgstr ""
 
 #: templates/tpl_list.php:8
 #: templates/tpl_list.php:40
 #: templates/tpl_list.php:60
+#: templates/tpl_list.php:79
 msgid "post/page id"
 msgstr ""
 
@@ -2266,20 +2298,26 @@ msgstr ""
 #: templates/tpl_list.php:41
 #: templates/tpl_list.php:52
 #: templates/tpl_list.php:61
+#: templates/tpl_list.php:71
+#: templates/tpl_list.php:80
 msgid "singular/plural word votes"
 msgstr ""
 
 #: templates/tpl_list.php:20
 #: templates/tpl_list.php:53
 #: templates/tpl_list.php:62
+#: templates/tpl_list.php:72
+#: templates/tpl_list.php:91
 msgid "Normal"
 msgstr ""
 
 #: templates/tpl_list.php:21
+#: templates/tpl_list.php:92
 msgid "Time Restricted Active"
 msgstr ""
 
 #: templates/tpl_list.php:22
+#: templates/tpl_list.php:93
 msgid "Time Restricted Closed"
 msgstr ""
 
@@ -2292,15 +2330,31 @@ msgid "class for alternating table rows"
 msgstr ""
 
 #: templates/tpl_list.php:48
-msgid "Comments Ratings Block"
+msgid "Comments Ratings Text"
 msgstr ""
 
 #: templates/tpl_list.php:56
-msgid "Standard RSS Block"
+msgid "Standard RSS Text"
 msgstr ""
 
 #: templates/tpl_list.php:65
 msgid "Comments Aggregated Rating"
+msgstr ""
+
+#: templates/tpl_list.php:68
+msgid "total comments"
+msgstr ""
+
+#: templates/tpl_list.php:69
+msgid "total votes for all comment"
+msgstr ""
+
+#: templates/tpl_list.php:70
+msgid "comment rating stars"
+msgstr ""
+
+#: templates/tpl_list.php:75
+msgid "Multi Ratings Text"
 msgstr ""
 
 #: templates/tpl_panel_editor.php:21
@@ -2774,24 +2828,24 @@ msgstr ""
 msgid "Web Key"
 msgstr ""
 
-#: gd-star-rating.php:509
-#: gd-star-rating.php:510
-#: gd-star-rating.php:520
-#: gd-star-rating.php:521
+#: gd-star-rating.php:598
+#: gd-star-rating.php:599
+#: gd-star-rating.php:609
+#: gd-star-rating.php:610
 msgid "Multi Ratings Review"
 msgstr ""
 
-#: gd-star-rating.php:528
-#: gd-star-rating.php:528
+#: gd-star-rating.php:617
+#: gd-star-rating.php:617
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:537
-#: gd-star-rating.php:537
+#: gd-star-rating.php:626
+#: gd-star-rating.php:626
 msgid "T2 / Alpha"
 msgstr ""
 
-#: gd-star-rating.php:1600
+#: gd-star-rating.php:1800
 msgid "(no title)"
 msgstr ""
 

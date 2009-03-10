@@ -4,12 +4,12 @@
     if (file_exists($rating_css)) {
         $css_file = htmlspecialchars(file_get_contents($rating_css));
         if (!is_writable($rating_css)) {
-            $msg = __("File is not writeable and can't be saved through this form.");
+            $msg = __("File is not writeable and can't be saved through this form.", "gd-star-rating");
             $button = ' disabled="disabled"';
         }
     }
     else {
-        $msg = __("Additional CSS file not found");
+        $msg = __("Additional CSS file not found", "gd-star-rating");
         $button = ' disabled="disabled"';
     }
 
