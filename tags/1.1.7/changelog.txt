@@ -1,0 +1,33 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 1.1.7 / march 10 2009 ===
+  * new: more multi set related custom functions
+  * new: default templates inserted into database
+  * edit: saving review editor results
+  * edit: updated and cleaned up database installation
+  * edit: few changes to t2 system
+  * edit: updated missing translation strings
+  * fix: custom review editor function
+  * fix: templates t2 system bugs
+
+=== Version: 1.1.6 / march 2 2009 ===
+  * new: database table for templates
+  * new: aggregated comments for post
+  * new: templates t2 system alpha version
+  * new: tool for editing rating.css file
+  * new: aggregated comments rating settings
+  * new: alternative method for rendering static stars
+  * new: plain stars set
+  * new: cache auto cleanup implemented
+  * edit: reorganized folders and files (again)
+  * edit: setup panel redesigned
+  * edit: expanded gfx generating handler
+  * edit: listed requirements in readme file
+  * edit: improved tinymce plugin dialog
+  * fix: mysql4 varchar limits converted to text columns
+  * fix: saving new multi set and review setting
+  * fix: display rating data with element that has no title
+  * fix: invalid css for comment review stars
+  * fix: edit post multi review bug in ie7 browser
