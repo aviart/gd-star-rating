@@ -1,6 +1,6 @@
 <?php
 
-    require_once("./gd-star-config.php");
+    require_once(dirname(__FILE__)."/gd-star-config.php");
     $wpconfig = get_wpconfig();
     require($wpconfig);
 

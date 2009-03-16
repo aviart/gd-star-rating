@@ -3,26 +3,26 @@
     if ($_POST["gdsr_reinstall"] == __("Reinstall", "gd-star-rating")) {
         gdDBInstallGDSR::drop_tables(STARRATING_PATH);
         gdDBInstallGDSR::create_tables(STARRATING_PATH);
-        ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>Database tables reinstalled.</strong></p></div> <?php
+        ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Database tables reinstalled.", "gd-star-rating"); ?></strong></p></div> <?php
     }
     if ($_POST["gdsr_remove_settings"] == __("Remove Settings", "gd-star-rating")) {
         delete_option('gd-star-rating');
         delete_option('widget_gdstarrating');
-        ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>Settings are removed from WordPress installation.</strong></p></div> <?php
+        ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Settings are removed from WordPress installation.", "gd-star-rating"); ?></strong></p></div> <?php
     }
     if ($_POST["gdsr_remove_templates"] == __("Remove Templates", "gd-star-rating")) {
         delete_option('gd-star-rating-templates');
-        ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>Plugin Templates are removed from WordPress installation.</strong></p></div> <?php
+        ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Plugin Templates are removed from WordPress installation.", "gd-star-rating"); ?></strong></p></div> <?php
     }
     if ($_POST["gdsr_reset_imports"] == __("Reset Imports", "gd-star-rating")) {
         delete_option('gd-star-rating-import');
-        ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong>Import Information is reseted.</strong></p></div> <?php
+        ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Import Information is reseted.", "gd-star-rating"); ?></strong></p></div> <?php
     }
     
 ?>
 <script>
     function areYouSure() {
-        return confirm("Are you sure?");
+        return confirm("<?php _e("Are you sure?"); ?>");
     }
 </script>
 

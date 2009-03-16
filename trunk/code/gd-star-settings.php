@@ -9,6 +9,7 @@
         $gdsr_options["gfx_generator_auto"] = isset($_POST['gdsr_gfx_generator_auto']) ? 1 : 0;
         $gdsr_options["gfx_prevent_leeching"] = isset($_POST['gdsr_gfx_prevent_leeching']) ? 1 : 0;
         $gdsr_options["external_javascript"] = isset($_POST['gdsr_external_javascript']) ? 1 : 0;
+        $gdsr_options["external_rating_css"] = isset($_POST['gdsr_external_rating_css']) ? 1 : 0;
         $gdsr_options["external_css"] = isset($_POST['gdsr_external_css']) ? 1 : 0;
         $gdsr_options["admin_advanced"] = isset($_POST['gdsr_admin_advanced']) ? 1 : 0;
         $gdsr_options["admin_placement"] = isset($_POST['gdsr_admin_placement']) ? 1 : 0;
@@ -78,7 +79,7 @@
         $gdsr_options["default_timer_countdown_value"] = $_POST['default_timer_countdown_value'];
         $gdsr_options["default_timer_countdown_type"] = $_POST['default_timer_countdown_type'];
         $gdsr_options["default_timer_value"] = $_POST['default_timer_countdown_type'].$_POST['default_timer_countdown_value'];
-        
+
         $gdsr_options["review_active"] = isset($_POST['gdsr_reviewactive']) ? 1 : 0;
         $gdsr_options["comments_active"] = isset($_POST['gdsr_commentsactive']) ? 1 : 0;
         $gdsr_options["comments_review_active"] = isset($_POST['gdsr_cmmreviewactive']) ? 1 : 0;
@@ -89,7 +90,7 @@
         $gdsr_options["cmm_author_vote"] = isset($_POST['gdsr_cmm_authorvote']) ? 1 : 0;
         $gdsr_options["logged"] = isset($_POST['gdsr_logged']) ? 1 : 0;
         $gdsr_options["cmm_logged"] = isset($_POST['gdsr_cmm_logged']) ? 1 : 0;
-        
+
         $gdsr_options["rss_style"] = $_POST['gdsr_rss_style'];
         $gdsr_options["rss_size"] = $_POST['gdsr_rss_size'];
         $gdsr_options["rss_text"] = $_POST['gdsr_rss_text'];
@@ -127,7 +128,7 @@
         $gdsr_options["cmm_header_text"] = stripslashes(htmlentities($_POST['gdsr_cmm_header_text'], ENT_QUOTES, STARRATING_ENCODING));
         $gdsr_options["cmm_class_block"] = $_POST['gdsr_cmm_classblock'];
         $gdsr_options["cmm_class_text"] = $_POST['gdsr_cmm_classtext'];
-        
+
         $gdsr_options["review_style"] = $_POST['gdsr_review_style'];
         $gdsr_options["review_size"] = $_POST['gdsr_review_size'];
         $gdsr_options["review_text"] = $_POST['gdsr_review_text'];
@@ -136,15 +137,15 @@
 
         $gdsr_options["review_header_text"] = stripslashes(htmlentities($_POST['gdsr_review_header_text'], ENT_QUOTES, STARRATING_ENCODING));
         $gdsr_options["review_class_block"] = $_POST['gdsr_review_classblock'];
-                           
+
         $gdsr_options["cmm_review_style"] = $_POST['gdsr_cmm_review_style'];
         $gdsr_options["cmm_review_size"] = $_POST['gdsr_cmm_review_size'];
-                           
+
         $gdsr_options["default_voterules_articles"] = $_POST['gdsr_default_vote_articles'];
         $gdsr_options["default_voterules_comments"] = $_POST['gdsr_default_vote_comments'];
         $gdsr_options["default_moderation_articles"] = $_POST['gdsr_default_mod_articles'];
         $gdsr_options["default_moderation_comments"] = $_POST['gdsr_default_mod_comments'];
-        
+
         update_option("gd-star-rating", $gdsr_options);
     }
     
