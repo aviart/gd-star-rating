@@ -1053,74 +1053,78 @@ msgid "Link external javascript rating code, instead of embeding it into the pag
 msgstr ""
 
 #: options/settings/settings_features.php:16
+msgid "Link external CSS rating code, uncheck to embed all the CSS into the page."
+msgstr ""
+
+#: options/settings/settings_features.php:18
 msgid "Link additional css file"
 msgstr ""
 
-#: options/settings/settings_features.php:21
+#: options/settings/settings_features.php:23
 msgid "Time restriction for rating."
 msgstr ""
 
-#: options/settings/settings_features.php:23
+#: options/settings/settings_features.php:25
 msgid "Moderation options and handling."
 msgstr ""
 
-#: options/settings/settings_features.php:25
+#: options/settings/settings_features.php:27
 msgid "Multiple rating support."
 msgstr ""
 
-#: options/settings/settings_features.php:29
+#: options/settings/settings_features.php:31
 msgid "Post And Page Review Rating."
 msgstr ""
 
-#: options/settings/settings_features.php:31
+#: options/settings/settings_features.php:33
 msgid "Comments Rating."
 msgstr ""
 
-#: options/settings/settings_features.php:33
+#: options/settings/settings_features.php:35
 msgid "Comments Review Rating."
 msgstr ""
 
-#: options/settings/settings_features.php:38
+#: options/settings/settings_features.php:40
 msgid "Use graphics generator to generate and display static stars images."
 msgstr ""
 
-#: options/settings/settings_features.php:40
+#: options/settings/settings_features.php:42
 msgid "Prevent outside access to graphics generator. Graphics integrated into RSS is not affected."
 msgstr ""
 
-#: options/settings/settings_features.php:43
+#: options/settings/settings_features.php:45
 msgid "Charset"
 msgstr ""
 
-#: options/settings/settings_features.php:47
+#: options/settings/settings_features.php:49
 msgid "Character encoding"
 msgstr ""
 
-#: options/settings/settings_features.php:51
+#: options/settings/settings_features.php:53
 msgid "For list of supported charsets visit: "
 msgstr ""
 
-#: options/settings/settings_features.php:54
+#: options/settings/settings_features.php:56
 msgid "Rating Log"
 msgstr ""
 
-#: options/settings/settings_features.php:56
+#: options/settings/settings_features.php:58
 msgid "Log user agent (browser) information."
 msgstr ""
 
-#: options/settings/settings_features.php:58
+#: options/settings/settings_features.php:60
 msgid "Save cookies with ratings."
 msgstr ""
 
-#: options/settings/settings_features.php:61
+#: options/settings/settings_features.php:63
 msgid "Internet Explorer"
 msgstr ""
 
-#: options/settings/settings_features.php:63
+#: options/settings/settings_features.php:65
 msgid "Use IE6 PNG transparency fix."
 msgstr ""
 
-#: options/settings/settings_features.php:65
+#: options/settings/settings_features.php:67
 msgid "Use IE opacity fix for multi ratings."
 msgstr ""
 
