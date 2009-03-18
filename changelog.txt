@@ -7,6 +7,7 @@
   * edit: updated missing translation strings
   * edit: some of the default settings changed
   * fix: multi review rating with no set selected
+  * fix: setup panel missing confirmations
 
 === Version: 1.1.7 / march 10 2009 ===
   * new: more multi set related custom functions

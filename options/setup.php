@@ -22,12 +22,11 @@
 ?>
 <script>
     function areYouSure() {
-        return confirm("<?php _e("Are you sure?"); ?>");
+        return confirm("<?php _e("Are you sure? Operation is not reversible."); ?>");
     }
 </script>
 
 <div class="wrap"><h2 class="gdptlogopage">GD Star Rating: <?php _e("Setup", "gd-star-rating"); ?></h2>
-<form method="post" onsubmit="return areYouSure()">
 <div id="gdsr_tabs" class="gdsrtabs">
 <ul>
     <li><a href="#fragment-1"><span><?php _e("Database Maintenance", "gd-star-rating"); ?></span></a></li>
@@ -45,5 +44,4 @@
 <?php include STARRATING_PATH."options/setup/setup_uninstall.php"; ?>
 </div>
 </div>
-</form>
 </div>

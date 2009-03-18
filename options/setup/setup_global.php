@@ -1,7 +1,7 @@
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Remove Settings", "gd-star-rating"); ?></th>
     <td>
-        <form method="post">
+        <form method="post" onsubmit="return areYouSure()">
         <?php _e("This will remove all plugin settings and all the saved widgets.", "gd-star-rating"); ?><br />
         <input type="submit" value="<?php _e("Remove Settings", "gd-star-rating"); ?>" name="gdsr_remove_settings" class="inputbutton" />
         <div class="gdsr-table-split"></div>
@@ -11,7 +11,7 @@
 </tr>
 <tr><th scope="row"><?php _e("Remove Templates", "gd-star-rating"); ?></th>
     <td>
-        <form method="post">
+        <form method="post" onsubmit="return areYouSure()">
         <?php _e("This will remove all saved templates for the plugin. Templates will be reseted to their default values.", "gd-star-rating"); ?><br />
         <input type="submit" value="<?php _e("Remove Templates", "gd-star-rating"); ?>" name="gdsr_remove_templates" class="inputbutton" />
         <div class="gdsr-table-split"></div>
@@ -21,7 +21,7 @@
 </tr>
 <tr><th scope="row"><?php _e("Reset Imports", "gd-star-rating"); ?></th>
     <td>
-        <form method="post">
+        <form method="post" onsubmit="return areYouSure()">
         <?php _e("This will reset all import flags for import data modules and will allow you to import again allready imported data.", "gd-star-rating"); ?><br />
         <input type="submit" value="<?php _e("Reset Imports", "gd-star-rating"); ?>" name="gdsr_reset_imports" class="inputbutton" />
         </form>
