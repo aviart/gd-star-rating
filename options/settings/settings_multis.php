@@ -23,6 +23,14 @@ $default_preview_class.= $gdsr_options["wait_class_multis"];
                 <?php GDSRHelper::render_star_sizes("gdsr_mur_size", $gdsr_options["mur_size"]); ?>
                 </td>
             </tr>
+            <tr>
+                <td width="150">MSIE 6:</td>
+                <td width="200" align="left" colspan="3">
+                <select style="width: 180px;" name="gdsr_mur_style_ie6" id="gdsr_mur_style_ie6">
+                <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["mur_style_ie6"]); ?>
+                </select>
+                </td>
+            </tr>
         </table>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
