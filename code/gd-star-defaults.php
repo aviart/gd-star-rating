@@ -25,7 +25,7 @@ class GDSRDefaults {
 
     var $default_options = array(
         "version" => "1.1.8",
-        "date" => "2009.03.24.",
+        "date" => "2009.03.29.",
         "status" => "Stable",
         "build" => 509,
         "external_javascript" => 0,
@@ -141,6 +141,9 @@ class GDSRDefaults {
         "admin_ips" => 0,
         "author_vote" => 0,
         "cmm_author_vote" => 0,
+        "allow_mixed_ip_votes" => 0,
+        "cmm_allow_mixed_ip_votes" => 0,
+        "mur_allow_mixed_ip_votes" => 0,
         "default_moderation_articles" => 'N',
         "default_moderation_comments" => 'N',
         "default_voterules_articles" => 'A',

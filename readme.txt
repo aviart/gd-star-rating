@@ -157,7 +157,7 @@ Plugin has debug into log file feature built in. Information on activating this 
 * Plugin Home: http://www.gdstarrating.com/
 * Feedburner: http://feeds2.feedburner.com/GdStarRating
 * GDragoN Home: http://www.gdragon.info/
-* GDragoN Blog: http://wp.gdragon.info/
+* Dev4Press: http://www.dev4press.com/
 
 == Support ==
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
