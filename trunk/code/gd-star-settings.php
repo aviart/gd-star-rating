@@ -64,7 +64,6 @@
         $gdsr_options["rss_active"] = isset($_POST['gdsr_rss']) ? 1 : 0;
         $gdsr_options["save_user_agent"] = isset($_POST['gdsr_save_user_agent']) ? 1 : 0;
         $gdsr_options["save_cookies"] = isset($_POST['gdsr_save_cookies']) ? 1 : 0;
-        $gdsr_options["ie_png_fix"] = isset($_POST['gdsr_iepngfix']) ? 1 : 0;
         $gdsr_options["ie_opacity_fix"] = isset($_POST['gdsr_ieopacityfix']) ? 1 : 0;
         
         $gdsr_options["integrate_dashboard"] = isset($_POST['gdsr_integrate_dashboard']) ? 1 : 0;
@@ -103,6 +102,7 @@
         $gdsr_options["rss_header_text"] = stripslashes(htmlentities($_POST['gdsr_rss_header_text'], ENT_QUOTES, STARRATING_ENCODING));
 
         $gdsr_options["style"] = $_POST['gdsr_style'];
+        $gdsr_options["style_ie6"] = $_POST['gdsr_style_ie6'];
         $gdsr_options["size"] = $_POST['gdsr_size'];
         $gdsr_options["text"] = $_POST['gdsr_text'];
         $gdsr_options["align"] = $_POST['gdsr_align'];
@@ -112,6 +112,7 @@
         $gdsr_options["class_text"] = $_POST['gdsr_classtext'];
 
         $gdsr_options["mur_style"] = $_POST['gdsr_mur_style'];
+        $gdsr_options["mur_style_ie6"] = $_POST['gdsr_mur_style_ie6'];
         $gdsr_options["mur_size"] = $_POST['gdsr_mur_size'];
         $gdsr_options["mur_header"] = isset($_POST['gdsr_mur_header']) ? 1 : 0;
         $gdsr_options["mur_header_text"] = stripslashes(htmlentities($_POST['gdsr_mur_header_text'], ENT_QUOTES, STARRATING_ENCODING));
@@ -123,8 +124,10 @@
         $gdsr_options["mur_button_active"] = isset($_POST['gdsr_mur_submitactive']) ? 1 : 0;
 
         $gdsr_options["cmm_aggr_style"] = $_POST['gdsr_cmm_aggr_style'];
+        $gdsr_options["cmm_aggr_style_ie6"] = $_POST['gdsr_cmm_aggr_style_ie6'];
         $gdsr_options["cmm_aggr_size"] = $_POST['gdsr_cmm_aggr_size'];
         $gdsr_options["cmm_style"] = $_POST['gdsr_cmm_style'];
+        $gdsr_options["cmm_style_ie6"] = $_POST['gdsr_cmm_style_ie6'];
         $gdsr_options["cmm_size"] = $_POST['gdsr_cmm_size'];
         $gdsr_options["cmm_text"] = $_POST['gdsr_cmm_text'];
         $gdsr_options["cmm_align"] = $_POST['gdsr_cmm_align'];
@@ -134,6 +137,7 @@
         $gdsr_options["cmm_class_text"] = $_POST['gdsr_cmm_classtext'];
 
         $gdsr_options["review_style"] = $_POST['gdsr_review_style'];
+        $gdsr_options["review_style_ie6"] = $_POST['gdsr_review_style_ie6'];
         $gdsr_options["review_size"] = $_POST['gdsr_review_size'];
         $gdsr_options["review_text"] = $_POST['gdsr_review_text'];
         $gdsr_options["review_align"] = $_POST['gdsr_review_align'];
@@ -143,6 +147,7 @@
         $gdsr_options["review_class_block"] = $_POST['gdsr_review_classblock'];
 
         $gdsr_options["cmm_review_style"] = $_POST['gdsr_cmm_review_style'];
+        $gdsr_options["cmm_review_style_ie6"] = $_POST['gdsr_cmm_review_style_ie6'];
         $gdsr_options["cmm_review_size"] = $_POST['gdsr_cmm_review_size'];
 
         $gdsr_options["default_voterules_articles"] = $_POST['gdsr_default_vote_articles'];

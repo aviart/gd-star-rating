@@ -30,6 +30,14 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
                 </select>
                 </td>
             </tr>
+            <tr>
+                <td width="150">MSIE 6:</td>
+                <td width="200" align="left" colspan="6">
+                <select style="width: 180px;" name="gdsr_style_ie6" id="gdsr_style_ie6">
+                <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["style_ie6"]); ?>
+                </select>
+                </td>
+            </tr>
         </table>
         <?php if ($gdsr_options["admin_placement"] == 1) { ?>
         <div class="gdsr-table-split"></div>
@@ -194,6 +202,14 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
                 <td width="80" align="left">
                 <select style="width: 70px;" name="gdsr_review_stars" id="gdsr_review_stars">
                 <?php GDSRHelper::render_stars_select($gdsr_options["review_stars"]); ?>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td width="150">MSIE 6:</td>
+                <td width="200" align="left" colspan="6">
+                <select style="width: 180px;" name="gdsr_review_style_ie6" id="gdsr_review_style_ie6">
+                <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["review_style_ie6"]); ?>
                 </select>
                 </td>
             </tr>

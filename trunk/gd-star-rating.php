@@ -879,6 +879,11 @@ if (!class_exists('GDStarRating')) {
             $this->wpr8 = get_option('gd-star-rating-wpr8');
 
             if ($this->o["build"] < $this->default_options["build"]) {
+                if (is_object($this->g)) {
+                    $this->g = $this->gfx_scan();
+                    update_option('gd-star-rating-gfx', $this->g);
+                }
+
                 gdDBInstallGDSR::delete_tables(STARRATING_PATH);
                 gdDBInstallGDSR::create_tables(STARRATING_PATH);
                 gdDBInstallGDSR::upgrade_tables(STARRATING_PATH);
