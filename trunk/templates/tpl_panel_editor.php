@@ -19,7 +19,7 @@ $template = $tpls->get_list($section);
 
 ?>
 
-<div class="wrap"><h2 class="gdptlogopage">GD Star Rating: <?php _e("Template Editor", "gd-star-rating"); ?></h2>
+<div class="wrap"><h2 class="gdptlogopage">GD Star Rating: T2 <?php _e("Template Editor", "gd-star-rating"); ?></h2>
 <form method="post">
 <input type="hidden" name="gdsr_save_tpl" value="" />
 <input type="hidden" name="tpl_section" value="<?php echo $section ?>" />
