@@ -1,8 +1,13 @@
 <?php
 
-header('Content-Type: text/css');
+if ($inclusion != "internal") {
+    $base_url_local = "../";
+    $base_url_extra = "../../../gd-star-rating/";
+    header('Content-Type: text/css');
+    $q = urldecode($_GET["s"]);
+}
 
-function insert_styles($css) {
+function insert_styles($css, $base_url_local, $base_url_extra) {
     $query = explode("|", $css["values"]);
 
     $style = $query[0];
@@ -11,8 +16,8 @@ function insert_styles($css) {
     $type = $query[3];
     $loc = $query[4];
 
-    if ($loc == 1) $url = "../stars/".$style."/stars".$size.".".$type;
-    else $url = "../../../gd-star-rating/stars/".$style."/stars".$size.".".$type;
+    if ($loc == 1) $url = $base_url_local."stars/".$style."/stars".$size.".".$type;
+    else $url = $base_url_extra."stars/".$style."/stars".$size.".".$type;
 
     echo "\r\n\r\n";
     if ($css["name"] != "ratemulti") {
@@ -57,7 +62,6 @@ function get_class_head($head, $element) {
 
 $csss = array();
 $head = array();
-$q = urldecode($_GET["s"]);
 $q = explode("#", $q);
 
 foreach ($q as $cs) {
@@ -84,7 +88,7 @@ foreach ($q as $cs) {
     $csss[] = $css;
 }
 
-foreach ($csss as $css) insert_styles($css);
+foreach ($csss as $css) insert_styles($css, $base_url_local, $base_url_extra);
 
 get_class_head($head, ""); ?> {
   position: relative;
@@ -258,22 +262,22 @@ get_class_head($head, ""); ?> {
 /* loading indicators */
 .loader { margin-left: auto; margin-right: auto; text-align: left; }
 
-.loader.circle { background: url(../gfx/loader/circle.gif) no-repeat left; padding-left: 18px; }
+.loader.circle { background: url(<?php echo $base_url_local;?>gfx/loader/circle.gif) no-repeat left; padding-left: 18px; }
 .loader.circle.width { width: 16px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
-.loader.bar { background: url(../gfx/loader/bar.gif) no-repeat left; padding-left: 216px; }
+.loader.bar { background: url(<?php echo $base_url_local;?>gfx/loader/bar.gif) no-repeat left; padding-left: 216px; }
 .loader.bar.width { width: 208px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
-.loader.arrows { background: url(../gfx/loader/arrows.gif) no-repeat left; padding-left: 18px; }
+.loader.arrows { background: url(<?php echo $base_url_local;?>gfx/loader/arrows.gif) no-repeat left; padding-left: 18px; }
 .loader.arrows.width { width: 16px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
-.loader.flower { background: url(../gfx/loader/flower.gif) no-repeat left; padding-left: 18px; }
+.loader.flower { background: url(<?php echo $base_url_local;?>gfx/loader/flower.gif) no-repeat left; padding-left: 18px; }
 .loader.flower.width { width: 15px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
-.loader.gauge { background: url(../gfx/loader/gauge.gif) no-repeat left; padding-left: 134px; }
+.loader.gauge { background: url(<?php echo $base_url_local;?>gfx/loader/gauge.gif) no-repeat left; padding-left: 134px; }
 .loader.gauge.width { width: 128px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
-.loader.squares { background: url(../gfx/loader/squares.gif) no-repeat left; padding-left: 43px; }
+.loader.squares { background: url(<?php echo $base_url_local;?>gfx/loader/squares.gif) no-repeat left; padding-left: 43px; }
 .loader.squares.width { width: 43px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
 /* top rating widget */

@@ -2,15 +2,15 @@
 msgid "Chart with votes distribution"
 msgstr ""
 
-#: code/gd-star-dbone.php:1031
+#: code/gd-star-dbone.php:1028
 msgid "Show all dates"
 msgstr ""
 
-#: code/gd-star-dbone.php:1059
+#: code/gd-star-dbone.php:1056
 msgid "All users and visitors"
 msgstr ""
 
-#: code/gd-star-dbone.php:1060
+#: code/gd-star-dbone.php:1057
 #: tinymce3/panels/advanced.php:121
 #: tinymce3/panels/comments.php:8
 #: widgets/widget_rating.php:42
@@ -20,11 +20,11 @@ msgstr ""
 msgid "Visitors Only"
 msgstr ""
 
-#: code/gd-star-dbone.php:1061
+#: code/gd-star-dbone.php:1058
 msgid "All Users"
 msgstr ""
 
-#: code/gd-star-dbone.php:1077
+#: code/gd-star-dbone.php:1074
 msgid "All categories"
 msgstr ""
 
@@ -436,8 +436,8 @@ msgstr ""
 #: multi/editor.php:40
 #: multi/results_post.php:122
 #: multi/sets.php:65
-#: options/settings/settings_articles.php:175
-#: options/settings/settings_comments.php:171
+#: options/settings/settings_articles.php:177
+#: options/settings/settings_comments.php:173
 #: options/articles.php:160
 #: options/articles.php:294
 #: options/comments.php:95
@@ -488,8 +488,8 @@ msgstr ""
 #: templates/templates_standard.php:1
 #: tinymce3/window.php:56
 #: tinymce3/window.php:57
-#: gd-star-rating.php:618
-#: gd-star-rating.php:618
+#: gd-star-rating.php:619
+#: gd-star-rating.php:619
 msgid "Articles"
 msgstr ""
 
@@ -539,8 +539,8 @@ msgstr ""
 #: options/settings/settings_administration.php:54
 #: options/articles.php:156
 #: options/categories.php:69
-#: gd-star-rating.php:619
-#: gd-star-rating.php:619
+#: gd-star-rating.php:620
+#: gd-star-rating.php:620
 msgid "Categories"
 msgstr ""
 
@@ -562,8 +562,8 @@ msgid "Voters"
 msgstr ""
 
 #: multi/sets.php:44
-#: gd-star-rating.php:622
-#: gd-star-rating.php:622
+#: gd-star-rating.php:623
+#: gd-star-rating.php:623
 msgid "Multi Sets"
 msgstr ""
 
@@ -582,10 +582,10 @@ msgstr ""
 
 #: multi/sets.php:63
 #: options/settings/settings_articles.php:14
-#: options/settings/settings_articles.php:179
+#: options/settings/settings_articles.php:181
 #: options/settings/settings_comments.php:14
 #: options/settings/settings_comments.php:95
-#: options/settings/settings_comments.php:175
+#: options/settings/settings_comments.php:177
 #: options/settings/settings_multis.php:14
 #: options/settings/settings_preview.php:39
 #: options/settings/settings_preview.php:43
@@ -692,8 +692,8 @@ msgstr ""
 #: options/settings/settings_administration.php:30
 #: options/settings.php:37
 #: tinymce3/panels/multi.php:15
-#: gd-star-rating.php:623
-#: gd-star-rating.php:623
+#: gd-star-rating.php:624
+#: gd-star-rating.php:624
 msgid "Settings"
 msgstr ""
 
@@ -728,8 +728,8 @@ msgstr ""
 #: options/categories.php:224
 #: options/comments.php:139
 #: options/users.php:47
-#: gd-star-rating.php:620
-#: gd-star-rating.php:620
+#: gd-star-rating.php:621
+#: gd-star-rating.php:621
 msgid "Users"
 msgstr ""
 
@@ -739,8 +739,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:58
 #: options/setup.php:28
-#: gd-star-rating.php:631
-#: gd-star-rating.php:631
+#: gd-star-rating.php:632
+#: gd-star-rating.php:632
 msgid "Setup"
 msgstr ""
 
@@ -749,8 +749,8 @@ msgid "Uninstall and maintenance."
 msgstr ""
 
 #: options/settings/settings_administration.php:62
-#: gd-star-rating.php:628
-#: gd-star-rating.php:628
+#: gd-star-rating.php:629
+#: gd-star-rating.php:629
 msgid "Import"
 msgstr ""
 
@@ -759,8 +759,8 @@ msgid "Importing data for other rating plugins."
 msgstr ""
 
 #: options/settings/settings_administration.php:64
-#: gd-star-rating.php:629
-#: gd-star-rating.php:629
+#: gd-star-rating.php:630
+#: gd-star-rating.php:630
 msgid "Export"
 msgstr ""
 
@@ -771,8 +771,8 @@ msgstr ""
 #: options/settings/settings_administration.php:66
 #: options/ips.php:67
 #: options/users_log.php:177
-#: gd-star-rating.php:627
-#: gd-star-rating.php:627
+#: gd-star-rating.php:628
+#: gd-star-rating.php:628
 msgid "IP's"
 msgstr ""
 
@@ -789,14 +789,14 @@ msgid "Rating"
 msgstr ""
 
 #: options/settings/settings_articles.php:25
-#: options/settings/settings_articles.php:190
+#: options/settings/settings_articles.php:192
 #: options/settings/settings_comments.php:25
-#: options/settings/settings_comments.php:186
+#: options/settings/settings_comments.php:188
 msgid "Number of stars"
 msgstr ""
 
 #: options/settings/settings_articles.php:37
-#: options/settings/settings_articles.php:202
+#: options/settings/settings_articles.php:204
 #: options/settings/settings_comments.php:37
 msgid "Rating alignment"
 msgstr ""
@@ -808,7 +808,7 @@ msgid "Rating text placement"
 msgstr ""
 
 #: options/settings/settings_articles.php:48
-#: options/settings/settings_articles.php:208
+#: options/settings/settings_articles.php:210
 #: options/settings/settings_comments.php:48
 #: options/settings/settings_multis.php:29
 #: options/settings/settings_rss.php:32
@@ -816,7 +816,7 @@ msgid "Rating header"
 msgstr ""
 
 #: options/settings/settings_articles.php:50
-#: options/settings/settings_articles.php:210
+#: options/settings/settings_articles.php:212
 #: options/settings/settings_comments.php:50
 #: options/settings/settings_multis.php:31
 #: options/settings/settings_rss.php:34
@@ -824,10 +824,10 @@ msgid "Display header text."
 msgstr ""
 
 #: options/settings/settings_articles.php:53
-#: options/settings/settings_articles.php:160
-#: options/settings/settings_articles.php:213
+#: options/settings/settings_articles.php:162
+#: options/settings/settings_articles.php:215
 #: options/settings/settings_comments.php:53
-#: options/settings/settings_comments.php:156
+#: options/settings/settings_comments.php:158
 #: options/settings/settings_multis.php:34
 #: options/settings/settings_multis.php:100
 #: options/settings/settings_rss.php:37
@@ -835,7 +835,7 @@ msgid "Text to display"
 msgstr ""
 
 #: options/settings/settings_articles.php:64
-#: options/settings/settings_articles.php:224
+#: options/settings/settings_articles.php:226
 #: options/settings/settings_comments.php:64
 #: options/settings/settings_multis.php:44
 msgid "Rating block CSS class"
@@ -918,33 +918,38 @@ msgstr ""
 msgid "Use cookies to prevent duplicate voting."
 msgstr ""
 
-#: options/settings/settings_articles.php:143
-#: options/settings/settings_comments.php:139
+#: options/settings/settings_articles.php:142
+#: options/settings/settings_comments.php:138
+msgid "Allow votes from user and visitor coming from same IP address."
+msgstr ""
+
+#: options/settings/settings_articles.php:145
+#: options/settings/settings_comments.php:141
 #: options/settings/settings_multis.php:83
 msgid "Vote Waiting Message"
 msgstr ""
 
-#: options/settings/settings_articles.php:147
-#: options/settings/settings_comments.php:143
+#: options/settings/settings_articles.php:149
+#: options/settings/settings_comments.php:145
 #: options/settings/settings_multis.php:87
 msgid "Animation indicator"
 msgstr ""
 
-#: options/settings/settings_articles.php:150
-#: options/settings/settings_comments.php:146
+#: options/settings/settings_articles.php:152
+#: options/settings/settings_comments.php:148
 #: options/settings/settings_multis.php:90
 #: options/settings.php:51
 msgid "Preview"
 msgstr ""
 
-#: options/settings/settings_articles.php:165
-#: options/settings/settings_comments.php:161
+#: options/settings/settings_articles.php:167
+#: options/settings/settings_comments.php:163
 #: options/settings/settings_multis.php:105
 msgid "Additional CSS class"
 msgstr ""
 
-#: options/settings/settings_articles.php:171
-#: options/settings/settings_comments.php:167
+#: options/settings/settings_articles.php:173
+#: options/settings/settings_comments.php:169
 #: options/settings/settings_multis.php:111
 msgid "Hide text and show only animation image."
 msgstr ""
@@ -1304,7 +1309,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1131
+#: gd-star-rating.php:1114
 msgid "UNINSTALL"
 msgstr ""
 
@@ -1871,21 +1876,41 @@ msgstr ""
 msgid "Save Settings"
 msgstr ""
 
-#: options/setup.php:32
+#: options/setup.php:5
+msgid "Database tables reinstalled."
+msgstr ""
+
+#: options/setup.php:10
+msgid "Settings are removed from WordPress installation."
+msgstr ""
+
+#: options/setup.php:14
+msgid "Plugin Templates are removed from WordPress installation."
+msgstr ""
+
+#: options/setup.php:18
+msgid "Import Information is reseted."
+msgstr ""
+
+#: options/setup.php:24
+msgid "Are you sure? Operation is not reversible."
+msgstr ""
+
+#: options/setup.php:31
 msgid "Database Maintenance"
 msgstr ""
 
-#: options/setup.php:33
+#: options/setup.php:32
 msgid "Global Maintenance"
 msgstr ""
 
-#: options/setup.php:34
+#: options/setup.php:33
 msgid "Full Uninstall"
 msgstr ""
 
 #: options/tools.php:0
-#: gd-star-rating.php:624
-#: gd-star-rating.php:624
+#: gd-star-rating.php:625
+#: gd-star-rating.php:625
 msgid "Tools"
 msgstr ""
 
@@ -1984,8 +2009,8 @@ msgstr ""
 
 #: templates/templates.php:31
 #: templates/tpl_panel_list.php:14
-#: gd-star-rating.php:625
-#: gd-star-rating.php:625
+#: gd-star-rating.php:626
+#: gd-star-rating.php:626
 msgid "Templates"
 msgstr ""
 
@@ -2832,24 +2857,24 @@ msgstr ""
 msgid "Web Key"
 msgstr ""
 
-#: gd-star-rating.php:598
 #: gd-star-rating.php:599
-#: gd-star-rating.php:609
+#: gd-star-rating.php:600
 #: gd-star-rating.php:610
+#: gd-star-rating.php:611
 msgid "Multi Ratings Review"
 msgstr ""
 
-#: gd-star-rating.php:617
-#: gd-star-rating.php:617
+#: gd-star-rating.php:618
+#: gd-star-rating.php:618
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:626
-#: gd-star-rating.php:626
+#: gd-star-rating.php:627
+#: gd-star-rating.php:627
 msgid "T2 / Alpha"
 msgstr ""
 
-#: gd-star-rating.php:1800
+#: gd-star-rating.php:1760
 msgid "(no title)"
 msgstr ""
 

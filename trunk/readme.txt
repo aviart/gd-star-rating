@@ -66,6 +66,7 @@ Plugin can import data from different rating plugins:
 * Comments Widget
 * Reccomendation ratings
 * WP Super Cache support
+* WordPress MU support
 * Support for custom modules
 * Expanding export features
 * More charts

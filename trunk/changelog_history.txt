@@ -5,6 +5,7 @@
 === Version: 1.1.8 / march 29 2009 ===
   * new: setting to embed all the css needed into the page
   * new: allowing both user and visitor votes from same ip
+  * del: removed non-ajax voting code
   * edit: optimization in checking votes
   * edit: updated missing translation strings
   * edit: some of the default settings changed

@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.1.7
+Version: 1.1.8
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -126,6 +126,7 @@ if (!class_exists('GDStarRating')) {
             $this->default_widget_comments = $gdd->default_widget_comments;
             $this->default_widget_top = $gdd->default_widget_top;
             $this->default_widget = $gdd->default_widget;
+            define('STARRATING_INSTALLED', $this->default_options["version"]." ".$this->default_options["status"]);
 
             $this->tabpage = "front";
             $this->log_file = STARRATING_LOG_PATH;
@@ -1090,24 +1091,6 @@ if (!class_exists('GDStarRating')) {
                 if (@file_exists($moFile) && is_readable($moFile)) load_textdomain('gd-star-rating', $moFile);
             }
 
-            if (!$this->o["ajax"]) {
-                $votes = $_REQUEST['gdsrvotes'];
-                $id = $_REQUEST['gdsrid'];
-                $type = $_REQUEST['gdsrtype'];
-                $user = $_REQUEST['gdsruser'];
-                $this->vote_status = false;
-
-                if ($votes != '' && $id != '' && $type != '') {
-                    switch ($type) {
-                        case "a":
-                            $this->vote_article($votes, $id, $user);
-                            break;
-                        case "c":
-                            $this->vote_comment($votes, $id, $user);
-                            break;
-                    }
-                }
-            }
             $this->is_cached = $this->o["cache_active"];
             $this->custom_actions('init');
         }
@@ -1289,11 +1272,7 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
-        /**
-         * WordPress action for adding blog header contents
-         */
-        function wp_head() {
-            if (is_feed()) return;
+        function include_rating_css($external = true) {
             $include_cmm_review = false;
             $include_mur_rating = false;
 
@@ -1316,7 +1295,27 @@ if (!class_exists('GDStarRating')) {
                     $include_cmm_review = true;
                 }
             }
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
+            if ($external) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
+            else {
+                echo('<style type="text/css" media=screen>');
+                $inclusion = "internal";
+                $base_url_local = $this->plugin_url;
+                $base_url_extra = $this->plugin_xtra_url;
+                $q = $css_string;
+                include ($this->plugin_path."css/gdstarating.css.php");
+                echo('</style>');
+            }
+        }
+
+        /**
+         * WordPress action for adding blog header contents
+         */
+        function wp_head() {
+            if (is_feed()) return;
+
+            if ($this->o["external_rating_css"] == 1) $this->include_rating_css();
+            else $this->include_rating_css(false);
+
             echo("\r\n");
             if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
                 echo('<link rel="stylesheet" href="'.$this->plugin_xtra_url.'css/rating.css" type="text/css" media="screen" />');
@@ -1345,23 +1344,6 @@ if (!class_exists('GDStarRating')) {
         // install
 
         // vote
-        function vote_article($votes, $id, $user) {
-            $ip = $_SERVER["REMOTE_ADDR"];
-            if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
-            else $ua = "";
-            if ($user == '') $user = 0;
-
-            $allow_vote = $this->check_cookie($id);
-
-            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
-
-            if ($allow_vote) {
-                GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
-                $this->save_cookie($id);
-                if (!$this->o["ajax"]) $this->vote_status = true;
-            }
-        }
-
         function vote_multi_rating($votes, $post_id, $set_id) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
@@ -1500,23 +1482,6 @@ wp_gdsr_dump("VOTE", $id.": ".$votes." [".$user."]");
             $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
 
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
-        }
-
-        function vote_comment($votes, $id, $user) {
-            $ip = $_SERVER["REMOTE_ADDR"];
-            if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
-            else $ua = "";
-            if ($user == '') $user = 0;
-
-            $allow_vote = $this->check_cookie($id, 'comment');
-
-            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip, $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
-
-            if ($allow_vote) {
-                GDSRDatabase::save_vote_comment($id, $user, $ip, $ua, $votes);
-                $this->save_cookie($id, 'comment');
-                $this->vote_status = true;
-            }
         }
 
         function vote_comment_ajax($votes, $id) {
