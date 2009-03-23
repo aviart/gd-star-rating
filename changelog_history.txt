@@ -6,10 +6,12 @@
   * new: setting to embed all the css needed into the page
   * new: allowing both user and visitor votes from same ip
   * del: removed non-ajax voting code
+  * edit: cleanup now removes revisions data from database
   * edit: optimization in checking votes
   * edit: updated missing translation strings
   * edit: some of the default settings changed
   * edit: readme file and links
+  * fix: saving review data for revision as articles
   * fix: multi review rating with no set selected
   * fix: setup panel missing confirmations
 

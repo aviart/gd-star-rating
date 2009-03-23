@@ -46,6 +46,15 @@ class GDSRDBTools {
         return $wpdb->rows_affected;
     }
 
+    function clean_revision_articles() {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("delete %s from %sgdsr_data_article l inner join %sposts o on o.ID = l.post_id where o.post_type = 'revision'",
+            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_data_article", $table_prefix) : "l",
+            $table_prefix, $table_prefix);
+        $wpdb->query($sql);
+        return $wpdb->rows_affected;
+    }
+
     function clean_dead_comments() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_data_comment l left join %scomments o on o.comment_ID = l.comment_id where o.comment_ID is null",
