@@ -139,6 +139,8 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
         <input type="checkbox" name="gdsr_logged" id="gdsr_logged"<?php if ($gdsr_options["logged"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_logged"><?php _e("Use logged data (IP) to prevent duplicate voting.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_cookies" id="gdsr_cookies"<?php if ($gdsr_options["cookies"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cookies"><?php _e("Use cookies to prevent duplicate voting.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_allow_mixed_ip_votes" id="gdsr_allow_mixed_ip_votes"<?php if ($gdsr_options["allow_mixed_ip_votes"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_allow_mixed_ip_votes"><?php _e("Allow votes from user and visitor coming from same IP address.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Vote Waiting Message", "gd-star-rating"); ?></th>

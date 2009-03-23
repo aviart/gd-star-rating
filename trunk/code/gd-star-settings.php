@@ -21,6 +21,10 @@
         $gdsr_options["admin_setup"] = isset($_POST['gdsr_admin_setup']) ? 1 : 0;
         $gdsr_options["admin_ips"] = isset($_POST['gdsr_admin_ips']) ? 1 : 0;
 
+        $gdsr_options["allow_mixed_ip_votes"] = isset($_POST['gdsr_allow_mixed_ip_votes']) ? 1 : 0;
+        $gdsr_options["cmm_allow_mixed_ip_votes"] = isset($_POST['gdsr_cmm_allow_mixed_ip_votes']) ? 1 : 0;
+        $gdsr_options["mur_allow_mixed_ip_votes"] = isset($_POST['gdsr_mur_allow_mixed_ip_votes']) ? 1 : 0;
+
         $gdsr_options["cache_active"] = isset($_POST['gdsr_cache_active']) ? 1 : 0;
         $gdsr_options["cache_cleanup_auto"] = isset($_POST['gdsr_cache_cleanup_auto']) ? 1 : 0;
         $gdsr_options["cache_cleanup_days"] = $_POST['gdsr_cache_cleanup_days'];

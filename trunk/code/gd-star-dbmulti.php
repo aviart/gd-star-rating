@@ -217,46 +217,43 @@ class GDSRDBMulti {
         }
     }
 
-    function check_vote($id, $user, $set, $type, $ip, $mod_only = false) {
+    function check_vote($id, $user, $set, $type, $ip, $mod_only = false, $mixed = false) {
         $result = true;
 
         if (!$mod_only)
-            $result = GDSRDBMulti::check_vote_logged($id, $user, $set, $type, $ip);
+            $result = GDSRDBMulti::check_vote_logged($id, $user, $set, $type, $ip, $mixed);
         if ($result)
-            $result = GDSRDBMulti::check_vote_moderated($id, $user, $set, $type, $ip);
+            $result = GDSRDBMulti::check_vote_moderated($id, $user, $set, $type, $ip, $mixed);
 
         return $result;
     }
 
-    function check_vote_logged($id, $user, $set, $type, $ip) {
-        return GDSRDBMulti::check_vote_table('gdsr_votes_log', $id, $user, $set, $type, $ip);
+    function check_vote_logged($id, $user, $set, $type, $ip, $mixed = false) {
+        return GDSRDBMulti::check_vote_table('gdsr_votes_log', $id, $user, $set, $type, $ip, $mixed);
     }
 
-    function check_vote_moderated($id, $user, $set, $type, $ip) {
-        return GDSRDBMulti::check_vote_table('gdsr_moderate', $id, $user, $set, $type, $ip);
+    function check_vote_moderated($id, $user, $set, $type, $ip, $mixed = false) {
+        return GDSRDBMulti::check_vote_table('gdsr_moderate', $id, $user, $set, $type, $ip, $mixed);
     }
     
-    function check_vote_table($table, $id, $user, $set, $type, $ip) {
+    function check_vote_table($table, $id, $user, $set, $type, $ip, $mixed = false) {
         global $wpdb, $table_prefix;
 
-        if ($user > 0)
-            $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and multi_id = %s and id = %s and user_id = %s",
-                $table_prefix.$table, $type, $set, $id, $user
-            );
-        else
-            $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and multi_id = %s and id = %s and ip = '%s'",
-                $table_prefix.$table, $type, $set, $id, $ip
-            );
-
-        $vote_data = $wpdb->get_row($votes_sql);
-
-wp_gdsr_dump("CHECKVOTE_MULTI_sql", $votes_sql);
-wp_gdsr_dump("CHECKVOTE_MULTI", $vote_data);
-
-        if (count($vote_data) == 0)
-            return true;
-        else
-            return false;
+        if ($user > 0) {
+            $votes_sql = sprintf("SELECT count(*) FROM %s WHERE vote_type = '%s' and multi_id = %s and id = %s and user_id = %s", $table_prefix.$table, $type, $set, $id, $user);
+            $votes = $wpdb->get_var($votes_sql);
+            return $votes == 0;
+        }
+        else {
+            $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and multi_id = %s and id = %s and ip = '%s'", $table_prefix.$table, $type, $set, $id, $ip);
+            $votes = $wpdb->get_var($votes_sql);
+            if ($votes > 0 && $mixed) {
+                $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and user_id > 0 and multi_id = %s and id = %s and ip = '%s'", $table_prefix.$table, $type, $set, $id, $ip);
+                $votes_mixed = $wpdb->get_var($votes_sql);
+                if ($votes_mixed > 0) $votes = 0;
+            }
+            return $votes == 0;
+        }
     }
 
     function get_usage_count_posts($set_id) {

@@ -6,7 +6,7 @@ Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
 Version: 1.1.7
 Author: Milan Petrovic
-Author URI: http://wp.gdragon.info/
+Author URI: http://www.dev4press.com/
 
 == Copyright ==
 
@@ -1353,7 +1353,7 @@ if (!class_exists('GDStarRating')) {
 
             $allow_vote = $this->check_cookie($id);
 
-            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, $this->o["logged"] != 1);
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
 
             if ($allow_vote) {
                 GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
@@ -1382,7 +1382,7 @@ wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
 
             if ($allow_vote) $allow_vote = $this->check_cookie($post_id."#".$set_id, "multis");
 
-            if ($allow_vote) $allow_vote = GDSRDBMulti::check_vote($post_id, $user, $set_id, 'multis', $ip, $this->o["logged"] != 1);
+            if ($allow_vote) $allow_vote = GDSRDBMulti::check_vote($post_id, $user, $set_id, 'multis', $ip, $this->o["logged"] != 1, $this->o["mur_allow_mixed_ip_votes"] == 1);
 
             $data = GDSRDatabase::get_post_data($post_id);
 
@@ -1454,7 +1454,7 @@ wp_gdsr_dump("VOTE", $id.": ".$votes." [".$user."]");
 
             if ($allow_vote) $allow_vote = $this->check_cookie($id);
 
-            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, $this->o["logged"] != 1);
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
 
             if ($allow_vote) {
                 GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
@@ -1510,7 +1510,7 @@ wp_gdsr_dump("VOTE", $id.": ".$votes." [".$user."]");
 
             $allow_vote = $this->check_cookie($id, 'comment');
 
-            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip, $this->o["cmm_logged"] != 1);
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip, $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
 
             if ($allow_vote) {
                 GDSRDatabase::save_vote_comment($id, $user, $ip, $ua, $votes);
@@ -1532,7 +1532,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
 
             if ($allow_vote) $allow_vote = $this->check_cookie($id, 'comment');
 
-            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip, $this->o["cmm_logged"] != 1);
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip, $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
 
             if ($allow_vote) {
                 GDSRDatabase::save_vote_comment($id, $user, $ip, $ua, $votes);
@@ -2668,7 +2668,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             }
 
             if ($allow_vote) {
-                $allow_vote = GDSRDatabase::check_vote($rd_comment_id, $rd_user_id, 'comment', $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1);
+                $allow_vote = GDSRDatabase::check_vote($rd_comment_id, $rd_user_id, 'comment', $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
                 if (!$allow_vote) $dbg_allow = "D";
             }
 
@@ -2795,7 +2795,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             }
 
             if ($allow_vote) {
-                $allow_vote = GDSRDatabase::check_vote($rd_post_id, $rd_user_id, 'article', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1);
+                $allow_vote = GDSRDatabase::check_vote($rd_post_id, $rd_user_id, 'article', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
                 if (!$allow_vote) $dbg_allow = "D";
             }
 
@@ -2904,7 +2904,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             }
 
             if ($allow_vote) {
-                $allow_vote = GDSRDBMulti::check_vote($rd_post_id, $rd_user_id, $set->multi_id, 'multis', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1);
+                $allow_vote = GDSRDBMulti::check_vote($rd_post_id, $rd_user_id, $set->multi_id, 'multis', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["mur_allow_mixed_ip_votes"] == 1);
                 if (!$allow_vote) $dbg_allow = "D";
             }
 
