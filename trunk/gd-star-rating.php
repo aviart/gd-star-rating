@@ -1202,6 +1202,12 @@ if (!class_exists('GDStarRating')) {
                     $count = GDSRDBTools::clean_dead_comments();
                     if ($count > 0) $msg.= $count." ".__("dead comments records from comments table.", "gd-star-rating")." ";
                 }
+                if (isset($_POST['gdsr_tools_clean_old_posts'])) {
+                    $count = GDSRDBMulti::clean_dead_articles();
+                    if ($count > 0) $msg.= $count." ".__("dead articles records from multi ratings tables.", "gd-star-rating")." ";
+                    $count = GDSRDBMulti::clean_revision_articles();
+                    if ($count > 0) $msg.= $count." ".__("post revisions records from multi ratings tables.", "gd-star-rating")." ";
+                }
                 $this->o["database_cleanup"] = date("r");
                 $this->o["database_cleanup_msg"] = $msg;
                 update_option('gd-star-rating', $this->o);

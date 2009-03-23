@@ -1,6 +1,38 @@
 <?php
 
 class GDSRDBMulti {
+    function clean_revision_articles() {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("delete %s from %sgdsr_multis_data l inner join %sposts o on o.ID = l.post_id where o.post_type = 'revision'",
+            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_multis_data", $table_prefix) : "l",
+            $table_prefix, $table_prefix);
+        $wpdb->query($sql);
+        $posts = $wpdb->rows_affected;
+
+        $sql = sprintf("delete %s from %sgdsr_multis_values l left join %sgdsr_multis_data o on o.id = l.id where o.id is null",
+            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_multis_values", $table_prefix) : "l",
+            $table_prefix, $table_prefix);
+        $wpdb->query($sql);
+
+        return $posts;
+    }
+
+    function clean_dead_articles() {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("delete %s from %sgdsr_multis_data l left join %sposts o on o.ID = l.post_id where o.ID is null",
+            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_multis_data", $table_prefix) : "l",
+            $table_prefix, $table_prefix);
+        $wpdb->query($sql);
+        $posts = $wpdb->rows_affected;
+
+        $sql = sprintf("delete %s from %sgdsr_multis_values l left join %sgdsr_multis_data o on o.id = l.id where o.id is null",
+            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_multis_values", $table_prefix) : "l",
+            $table_prefix, $table_prefix);
+        $wpdb->query($sql);
+
+        return $posts;
+    }
+
     function get_stats_count($set_id, $dates = "0", $cats = "0", $search = "") {
         global $table_prefix;
         $where = " and ms.multi_id = ".$set_id;

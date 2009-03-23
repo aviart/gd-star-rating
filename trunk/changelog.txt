@@ -5,6 +5,7 @@
 === Version: 1.1.8 / march 29 2009 ===
   * new: setting to embed all the css needed into the page
   * new: allowing both user and visitor votes from same ip
+  * new: cleaning of invalid and obsolete multi ratings data
   * del: removed non-ajax voting code
   * edit: cleanup now removes revisions data from database
   * edit: optimization in checking votes
