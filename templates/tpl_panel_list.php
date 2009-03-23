@@ -12,7 +12,7 @@ $all_sections = $tpls->list_sections_assoc();
 
 ?>
 
-<div class="wrap"><h2 class="gdptlogopage">GD Star Rating: <?php _e("Templates", "gd-star-rating"); ?></h2>
+<div class="wrap"><h2 class="gdptlogopage">GD Star Rating: T2 <?php _e("Templates", "gd-star-rating"); ?></h2>
 <div class="gdsr">
 
 <div class="tablenav">

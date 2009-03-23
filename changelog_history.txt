@@ -11,6 +11,7 @@
   * del: removed non-ajax voting code
   * del: removed ie6 png fix support
   * edit: cleanup now removes revisions data from database
+  * edit: templates t2 system beta version
   * edit: optimization in checking votes
   * edit: updated missing translation strings
   * edit: some of the default settings changed

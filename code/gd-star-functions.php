@@ -525,3 +525,14 @@ function gd_sort_bayesian_desc($a, $b) {
     if ($a->bayesian == $b->bayesian) return 0;
     return ($a->bayesian > $b->bayesian) ? -1 : 1;
 }
+
+function is_msie6() {
+    $agent = $_SERVER['HTTP_USER_AGENT'];
+    if(eregi("msie",$agent) && !eregi("opera",$agent)) {
+        $val = explode(" ", stristr($agent, "msie"));
+        $version = substr($val[1], 0, 1);
+        if ($version < 7) return true;
+        else return false;
+    }
+    return false;
+}

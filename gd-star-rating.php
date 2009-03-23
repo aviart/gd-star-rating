@@ -51,6 +51,7 @@ if (!class_exists('GDStarRating')) {
     class GDStarRating {
         var $is_bot = false;
         var $is_ban = false;
+        var $is_ie6 = false;
         var $use_nonce = true;
         var $extra_folders = false;
         var $safe_mode = false;
@@ -257,7 +258,7 @@ if (!class_exists('GDStarRating')) {
                 }
                 if ($total_voters > 0) $calc_rating = $total_votes / $total_voters;
                 $calc_rating = number_format($calc_rating, 1);
-                $rating = GDSRRender::render_static_stars($this->o['cmm_aggr_style'], $this->o['cmm_aggr_size'], $this->o["cmm_stars"], $calc_rating);
+                $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["cmm_aggr_style_ie6"] : $this->o["cmm_aggr_style"]), $this->o['cmm_aggr_size'], $this->o["cmm_stars"], $calc_rating);
             }
             return $rating;
         }
@@ -312,7 +313,7 @@ if (!class_exists('GDStarRating')) {
                 else
                     $rater_header = '';
 
-                $review_stars = GDSRRender::render_static_stars($this->o['review_style'], $this->o['review_size'], $this->o["review_stars"], $rating);
+                $review_stars = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["review_style_ie6"] : $this->o["review_style"]), $this->o['review_size'], $this->o["review_stars"], $rating);
                 $review = sprintf('<div%s%s>%s%s</div>',
                     $css_class, $rater_align, $rater_header, $review_stars
                 );
@@ -399,7 +400,7 @@ if (!class_exists('GDStarRating')) {
          */
         function display_comment_review($comment_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
             if ($use_default) {
-                $style = $this->o["cmm_review_style"];
+                $style = ($this->is_ie6 ? $this->o["cmm_review_style_ie6"] : $this->o["cmm_review_style"]);
                 $size = $this->o["cmm_review_size"];
             }
             $stars = $this->o["cmm_review_stars"];
@@ -420,7 +421,7 @@ if (!class_exists('GDStarRating')) {
          */
         function display_article_review($post_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
             if ($use_default) {
-                $style = $this->o["review_style"];
+                $style = ($this->is_ie6 ? $this->o["review_style_ie6"] : $this->o["review_style"]);
                 $size = $this->o["review_size"];
             }
             $stars = $this->o["review_stars"];
@@ -441,7 +442,7 @@ if (!class_exists('GDStarRating')) {
          */
         function display_article_rating($post_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
             if ($use_default) {
-                $style = $this->o["style"];
+                $style = ($this->is_ie6 ? $this->o["style_ie6"] : $this->o["style"]);
                 $size = $this->o["size"];
             }
             $stars = $this->o["stars"];
@@ -485,7 +486,7 @@ if (!class_exists('GDStarRating')) {
                 $i++;
             }
             $review->rating = @number_format($weighted, 1);
-            $review->rendered = GDSRRender::render_static_stars($this->o['mur_style'], $this->o['mur_size'], $set->stars, $review->rating);
+            $review->rendered = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $review->rating);
             return $review;
         }
 
@@ -625,7 +626,7 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gd-star-rating-templates", array(&$this,"star_menu_templates"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("T2 / Alpha", "gd-star-rating"), __("T2 / Alpha", "gd-star-rating"), 10, "gd-star-rating-t2", array(&$this,"star_menu_t2"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("T2", "gd-star-rating"), __("T2", "gd-star-rating"), 10, "gd-star-rating-t2", array(&$this,"star_menu_t2"));
             if ($this->o["admin_ips"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), 10, "gd-star-rating-ips", array(&$this,"star_menu_ips"));
             if ($this->o["admin_import"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), 10, "gd-star-rating-import", array(&$this,"star_menu_import"));
             if ($this->o["admin_export"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), 10, "gd-star-rating-export", array(&$this,"star_menu_export"));
@@ -1099,6 +1100,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             $this->is_cached = $this->o["cache_active"];
+            $this->is_ie6 = is_msie6();
             $this->custom_actions('init');
         }
 
@@ -1291,22 +1293,22 @@ if (!class_exists('GDStarRating')) {
             $include_cmm_review = false;
             $include_mur_rating = false;
 
-            $gfx_a = $this->g->find_stars($this->o["style"]);
-            $css_string = "a".$this->o["style"]."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
+            $gfx_a = $this->g->find_stars($this->is_ie6 ? $this->o["style_ie6"] : $this->o["style"]);
+            $css_string = "a".($this->is_ie6 ? $this->o["style_ie6"] : $this->o["style"])."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
             if ($this->o["multis_active"] == 1) {
-                $gfx_m = $this->g->find_stars($this->o["mur_style"]);
-                $css_string.= "#m".$this->o["mur_style"]."|".$this->o["mur_size"]."|20|".$gfx_m->type."|".$gfx_m->primary;
+                $gfx_m = $this->g->find_stars($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]);
+                $css_string.= "#m".($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"])."|".$this->o["mur_size"]."|20|".$gfx_m->type."|".$gfx_m->primary;
                 $include_mur_rating = true;
             }
             if (is_single() || is_page()) {
                 if ($this->o["comments_active"] == 1) {
-                    $gfx_c = $this->g->find_stars($this->o["cmm_style"]);
-                    $css_string.= "#c".$this->o["cmm_style"]."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary;
+                    $gfx_c = $this->g->find_stars($this->is_ie6 ? $this->o["cmm_style_ie6"] : $this->o["cmm_style"]);
+                    $css_string.= "#c".($this->is_ie6 ? $this->o["cmm_style_ie6"] : $this->o["cmm_style"])."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary;
                 }
 
                 if ($this->o["comments_review_active"] == 1) {
-                    $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
-                    $css_string.= "#r".$this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
+                    $gfx_r = $this->g->find_stars($this->is_ie6 ? $this->o["cmm_review_style_ie6"] : $this->o["cmm_review_style"]);
+                    $css_string.= "#r".($this->is_ie6 ? $this->o["cmm_review_style_ie6"] : $this->o["cmm_review_style"])."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
                     $include_cmm_review = true;
                 }
             }

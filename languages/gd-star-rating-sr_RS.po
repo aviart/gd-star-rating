@@ -447,8 +447,8 @@ msgstr "Број звездица"
 #: multi/editor.php:40
 #: multi/results_post.php:122
 #: multi/sets.php:65
-#: options/settings/settings_articles.php:177
-#: options/settings/settings_comments.php:173
+#: options/settings/settings_articles.php:185
+#: options/settings/settings_comments.php:189
 #: options/articles.php:160
 #: options/articles.php:294
 #: options/comments.php:95
@@ -590,10 +590,10 @@ msgstr "ID"
 
 #: multi/sets.php:63
 #: options/settings/settings_articles.php:14
-#: options/settings/settings_articles.php:181
+#: options/settings/settings_articles.php:189
 #: options/settings/settings_comments.php:14
-#: options/settings/settings_comments.php:95
-#: options/settings/settings_comments.php:177
+#: options/settings/settings_comments.php:103
+#: options/settings/settings_comments.php:193
 #: options/settings/settings_multis.php:14
 #: options/settings/settings_preview.php:39
 #: options/settings/settings_preview.php:43
@@ -791,169 +791,169 @@ msgid "Rating"
 msgstr "Оцена"
 
 #: options/settings/settings_articles.php:25
-#: options/settings/settings_articles.php:192
+#: options/settings/settings_articles.php:200
 #: options/settings/settings_comments.php:25
-#: options/settings/settings_comments.php:188
+#: options/settings/settings_comments.php:204
 msgid "Number of stars"
 msgstr "Број звездица"
 
-#: options/settings/settings_articles.php:37
-#: options/settings/settings_articles.php:204
-#: options/settings/settings_comments.php:37
+#: options/settings/settings_articles.php:45
+#: options/settings/settings_articles.php:220
+#: options/settings/settings_comments.php:45
 msgid "Rating alignment"
 msgstr "Поравнање Рејтинга"
 
-#: options/settings/settings_articles.php:42
-#: options/settings/settings_comments.php:42
+#: options/settings/settings_articles.php:50
+#: options/settings/settings_comments.php:50
 #: options/settings/settings_rss.php:26
 msgid "Rating text placement"
 msgstr "Позиција рејтинг текста"
 
-#: options/settings/settings_articles.php:48
-#: options/settings/settings_articles.php:210
-#: options/settings/settings_comments.php:48
-#: options/settings/settings_multis.php:29
+#: options/settings/settings_articles.php:56
+#: options/settings/settings_articles.php:226
+#: options/settings/settings_comments.php:56
+#: options/settings/settings_multis.php:37
 #: options/settings/settings_rss.php:32
 msgid "Rating header"
 msgstr "Заглавље"
 
-#: options/settings/settings_articles.php:50
-#: options/settings/settings_articles.php:212
-#: options/settings/settings_comments.php:50
-#: options/settings/settings_multis.php:31
+#: options/settings/settings_articles.php:58
+#: options/settings/settings_articles.php:228
+#: options/settings/settings_comments.php:58
+#: options/settings/settings_multis.php:39
 #: options/settings/settings_rss.php:34
 msgid "Display header text."
 msgstr "Прикажи текст заглавља."
 
-#: options/settings/settings_articles.php:53
-#: options/settings/settings_articles.php:162
-#: options/settings/settings_articles.php:215
-#: options/settings/settings_comments.php:53
-#: options/settings/settings_comments.php:158
-#: options/settings/settings_multis.php:34
-#: options/settings/settings_multis.php:100
+#: options/settings/settings_articles.php:61
+#: options/settings/settings_articles.php:170
+#: options/settings/settings_articles.php:231
+#: options/settings/settings_comments.php:61
+#: options/settings/settings_comments.php:174
+#: options/settings/settings_multis.php:42
+#: options/settings/settings_multis.php:108
 #: options/settings/settings_rss.php:37
 msgid "Text to display"
 msgstr "Текст за приказ"
 
-#: options/settings/settings_articles.php:64
-#: options/settings/settings_articles.php:226
-#: options/settings/settings_comments.php:64
-#: options/settings/settings_multis.php:44
+#: options/settings/settings_articles.php:72
+#: options/settings/settings_articles.php:242
+#: options/settings/settings_comments.php:72
+#: options/settings/settings_multis.php:52
 msgid "Rating block CSS class"
 msgstr "CSS класа рејтинг блока"
 
-#: options/settings/settings_articles.php:69
-#: options/settings/settings_comments.php:69
-#: options/settings/settings_multis.php:49
+#: options/settings/settings_articles.php:77
+#: options/settings/settings_comments.php:77
+#: options/settings/settings_multis.php:57
 msgid "Rating text CSS class"
 msgstr "CSS Класа Рејтинг текста"
 
-#: options/settings/settings_articles.php:79
-#: options/settings/settings_comments.php:79
+#: options/settings/settings_articles.php:87
+#: options/settings/settings_comments.php:87
 msgid "Auto insert rating code"
 msgstr "Ауоматски убаци рејтинг код"
 
-#: options/settings/settings_articles.php:81
+#: options/settings/settings_articles.php:89
 msgid "For individual posts."
 msgstr "За посебне чланке."
 
-#: options/settings/settings_articles.php:83
+#: options/settings/settings_articles.php:91
 msgid "For individual pages."
 msgstr "За посебне стране."
 
-#: options/settings/settings_articles.php:87
+#: options/settings/settings_articles.php:95
 msgid "For posts displayed in Archives."
 msgstr "За чланке приказане у Архиви."
 
-#: options/settings/settings_articles.php:89
+#: options/settings/settings_articles.php:97
 msgid "For posts displayed on Front Page."
 msgstr "За чланке приказане на Главној страни."
 
-#: options/settings/settings_articles.php:91
+#: options/settings/settings_articles.php:99
 msgid "For posts displayed on Search results."
 msgstr "За чланке приказане на страни са Резултатима."
 
-#: options/settings/settings_articles.php:98
-#: options/settings/settings_comments.php:110
+#: options/settings/settings_articles.php:106
+#: options/settings/settings_comments.php:126
 msgid "Defaults"
 msgstr "Иницијалне"
 
-#: options/settings/settings_articles.php:102
-#: options/settings/settings_comments.php:114
+#: options/settings/settings_articles.php:110
+#: options/settings/settings_comments.php:130
 msgid "Vote rule"
 msgstr "Правило гласања"
 
-#: options/settings/settings_articles.php:108
-#: options/settings/settings_comments.php:120
+#: options/settings/settings_articles.php:116
+#: options/settings/settings_comments.php:136
 msgid "Moderation rule"
 msgstr "Правило модерације"
 
-#: options/settings/settings_articles.php:118
+#: options/settings/settings_articles.php:126
 msgid "Time restriction"
 msgstr "Временско ограничење"
 
-#: options/settings/settings_articles.php:123
+#: options/settings/settings_articles.php:131
 msgid "Countdown value"
 msgstr "Вредност одбројавања"
 
-#: options/settings/settings_articles.php:134
-#: options/settings/settings_comments.php:130
+#: options/settings/settings_articles.php:142
+#: options/settings/settings_comments.php:146
 msgid "Restrict"
 msgstr "Ограничења"
 
-#: options/settings/settings_articles.php:136
+#: options/settings/settings_articles.php:144
 msgid "Prevent article author to vote."
 msgstr "Спречи аутора да гласа."
 
-#: options/settings/settings_articles.php:136
+#: options/settings/settings_articles.php:144
 msgid "This is only for registered users."
 msgstr "Само за регистроване кориснике."
 
-#: options/settings/settings_articles.php:138
-#: options/settings/settings_comments.php:134
+#: options/settings/settings_articles.php:146
+#: options/settings/settings_comments.php:150
 msgid "Use logged data (IP) to prevent duplicate voting."
 msgstr "Користи снимљене податке (IP) као превенцију дуплог гласања."
 
-#: options/settings/settings_articles.php:140
-#: options/settings/settings_comments.php:136
+#: options/settings/settings_articles.php:148
+#: options/settings/settings_comments.php:152
 msgid "Use cookies to prevent duplicate voting."
 msgstr "Користи колачић као превенцију дуплог гласања."
 
-#: options/settings/settings_articles.php:142
-#: options/settings/settings_comments.php:138
+#: options/settings/settings_articles.php:150
+#: options/settings/settings_comments.php:154
 #, fuzzy
 msgid "Allow votes from user and visitor coming from same IP address."
 msgstr "Не приказуј блок за гласање посетиоцима који долазе са забрањених ИП адреса."
 
-#: options/settings/settings_articles.php:145
-#: options/settings/settings_comments.php:141
-#: options/settings/settings_multis.php:83
+#: options/settings/settings_articles.php:153
+#: options/settings/settings_comments.php:157
+#: options/settings/settings_multis.php:91
 msgid "Vote Waiting Message"
 msgstr "Порука Чекања"
 
-#: options/settings/settings_articles.php:149
-#: options/settings/settings_comments.php:145
-#: options/settings/settings_multis.php:87
+#: options/settings/settings_articles.php:157
+#: options/settings/settings_comments.php:161
+#: options/settings/settings_multis.php:95
 msgid "Animation indicator"
 msgstr "Анимација"
 
-#: options/settings/settings_articles.php:152
-#: options/settings/settings_comments.php:148
-#: options/settings/settings_multis.php:90
+#: options/settings/settings_articles.php:160
+#: options/settings/settings_comments.php:164
+#: options/settings/settings_multis.php:98
 #: options/settings.php:51
 msgid "Preview"
 msgstr "Преглед"
 
-#: options/settings/settings_articles.php:167
-#: options/settings/settings_comments.php:163
-#: options/settings/settings_multis.php:105
+#: options/settings/settings_articles.php:175
+#: options/settings/settings_comments.php:179
+#: options/settings/settings_multis.php:113
 msgid "Additional CSS class"
 msgstr "Додатна ЦСС класа"
 
-#: options/settings/settings_articles.php:173
-#: options/settings/settings_comments.php:169
-#: options/settings/settings_multis.php:111
+#: options/settings/settings_articles.php:181
+#: options/settings/settings_comments.php:185
+#: options/settings/settings_multis.php:119
 msgid "Hide text and show only animation image."
 msgstr "Сакриј текст и прикажи само анимацију."
 
@@ -995,19 +995,19 @@ msgstr "Уклјучено."
 msgid "Cleanup cache every"
 msgstr "Очисти кеш сваких"
 
-#: options/settings/settings_comments.php:81
+#: options/settings/settings_comments.php:89
 msgid "For comments for posts."
 msgstr "За коментаре за чланке."
 
-#: options/settings/settings_comments.php:85
+#: options/settings/settings_comments.php:93
 msgid "For comments for pages."
 msgstr "За коментаре за стране."
 
-#: options/settings/settings_comments.php:91
+#: options/settings/settings_comments.php:99
 msgid "Aggregated Rating"
 msgstr "Агрегиран Рејтинг"
 
-#: options/settings/settings_comments.php:132
+#: options/settings/settings_comments.php:148
 msgid "Prevent comment author to vote."
 msgstr "Спречи аутора коментара да гласа."
 
@@ -1130,10 +1130,6 @@ msgid "Internet Explorer"
 msgstr "Интернет Експлорер"
 
 #: options/settings/settings_features.php:65
-msgid "Use IE6 PNG transparency fix."
-msgstr "Користи поправку IE PNG транспаренције."
-
-#: options/settings/settings_features.php:67
 msgid "Use IE opacity fix for multi ratings."
 msgstr "Додај ИЕ фикс за провидност мулти рејтинга."
 
@@ -1197,23 +1193,23 @@ msgstr "Додају малу слику 80x15 у чланке у РСС фид�
 msgid "Add ratings to posts in RSS feeds."
 msgstr "Додај рејтинг у чланке у РСС фиду."
 
-#: options/settings/settings_multis.php:55
+#: options/settings/settings_multis.php:63
 msgid "Rating table CSS class"
 msgstr "CSS Класа Рејтинг табеле"
 
-#: options/settings/settings_multis.php:60
+#: options/settings/settings_multis.php:68
 msgid "Rating button CSS class"
 msgstr "CSS Класа Рејтинг дугмета"
 
-#: options/settings/settings_multis.php:69
+#: options/settings/settings_multis.php:77
 msgid "Submit Button"
 msgstr "Дугме За Слање"
 
-#: options/settings/settings_multis.php:73
+#: options/settings/settings_multis.php:81
 msgid "Button text"
 msgstr "Текст дугмета"
 
-#: options/settings/settings_multis.php:80
+#: options/settings/settings_multis.php:88
 msgid "Use submit button to send votes. If disabled, votes will be send once all block elements are rated."
 msgstr "Користи фугме за слање гласова. Ако је опција искључена, гласови ће бити послати када сви елементи буду оцењени."
 
@@ -1313,7 +1309,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr "После брисања, плугин ће бити искључен. "
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1117
+#: gd-star-rating.php:1123
 msgid "UNINSTALL"
 msgstr "ДЕИНСТАЛИРАЈ"
 
@@ -1389,13 +1385,13 @@ msgid "Delete all cached files from folder"
 msgstr "Обриши све кеширане фајлове из фолдера"
 
 #: options/tools/tools_cache.php:5
-#: options/tools/tools_db.php:20
+#: options/tools/tools_db.php:22
 msgid "Clean"
 msgstr "Очисти"
 
 #: options/tools/tools_cache.php:7
 #: options/tools/tools_db.php:7
-#: options/tools/tools_db.php:22
+#: options/tools/tools_db.php:24
 msgid "Last cleanup was executed on"
 msgstr "Последње чишћење извршено"
 
@@ -1437,7 +1433,12 @@ msgstr "Уклони све неисправне гласове из тренд 
 msgid "Remove data for old and deleted posts and comments."
 msgstr "Уклони податке за све старе и обрисане чланке и коментаре."
 
-#: options/tools/tools_db.php:23
+#: options/tools/tools_db.php:20
+#, fuzzy
+msgid "Remove data for old and deleted multi ratings."
+msgstr "Уклони податке за све старе и обрисане чланке и коментаре."
+
+#: options/tools/tools_db.php:25
 msgid "Cleanup summary"
 msgstr "Порука чишћења"
 
@@ -2880,42 +2881,56 @@ msgid "Front Page"
 msgstr "Главна Страна"
 
 #: gd-star-rating.php:628
-msgid "T2 / Alpha"
-msgstr "Т2 / Алфа"
+msgid "T2"
+msgstr "T2"
 
-#: gd-star-rating.php:1187
+#: gd-star-rating.php:1193
 msgid "articles records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1189
+#: gd-star-rating.php:1195
 msgid "comments records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1193
+#: gd-star-rating.php:1199
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1195
+#: gd-star-rating.php:1201
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1199
+#: gd-star-rating.php:1205
 #, fuzzy
 msgid "dead articles records from articles table."
 msgstr "Сакриј чланке без уписаних гласова"
 
-#: gd-star-rating.php:1201
+#: gd-star-rating.php:1207
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1203
+#: gd-star-rating.php:1209
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: gd-star-rating.php:1772
+#: gd-star-rating.php:1213
+#, fuzzy
+msgid "dead articles records from multi ratings tables."
+msgstr "Сакриј чланке без уписаних гласова"
+
+#: gd-star-rating.php:1215
+#, fuzzy
+msgid "post revisions records from multi ratings tables."
+msgstr "Сакриј чланке без уписаних гласова"
+
+#: gd-star-rating.php:1784
 msgid "(no title)"
 msgstr "(без имена)"
 
+#~ msgid "Use IE6 PNG transparency fix."
+#~ msgstr "Користи поправку IE PNG транспаренције."
+#~ msgid "T2 / Alpha"
+#~ msgstr "Т2 / Алфа"
 #~ msgid "Standard Ratings Block"
 #~ msgstr "Стандардни Рејтинг Блок"
 #~ msgid "Simple"
