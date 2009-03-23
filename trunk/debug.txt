@@ -1,0 +1,632 @@
+[2009-03-23 04:13:53] : RPOST
+stdClass Object
+(
+    [ID] => 0
+    [post_name] => 
+    [post_author] => 
+    [post_date] => 
+    [post_password] => 
+    [post_status] => draft
+    [post_type] => post
+    [to_ping] => 
+    [pinged] => 
+    [comment_status] => open
+    [ping_status] => open
+    [post_pingback] => 0
+    [post_category] => 1
+    [post_content] => 
+    [post_title] => 
+    [post_excerpt] => 
+    [page_template] => default
+    [post_parent] => 0
+    [menu_order] => 0
+)
+
+[2009-03-23 04:13:57] : XXXXXXXXXXXXXX
+Array
+(
+    [action] => autosave
+    [post_ID] => -1237821233
+    [post_title] => Proba
+    [autosavenonce] => af85dfbd51
+    [tags_input] => Array
+        (
+            [0] => 
+        )
+
+    [post_type] => post
+    [autosave] => 1
+    [content] => 
+    [catslist] => 
+    [comment_status] => open
+    [ping_status] => open
+    [excerpt] => 
+    [post_author] => 1
+    [user_ID] => 1
+    [temp_ID] => -1237821233
+    [post_category] => Array
+        (
+            [0] => 
+        )
+
+    [post_status] => draft
+    [post_content] => 
+    [post_excerpt] => 
+    [post_parent] => 
+)
+
+[2009-03-23 04:13:59] : XXXXXXXXXXXXXX
+Array
+(
+    [_wpnonce] => 387abbfecf
+    [_wp_http_referer] => /wpx/wp-admin/post-new.php
+    [user_ID] => 1
+    [action] => editpost
+    [originalaction] => post
+    [post_author] => 1
+    [post_type] => post
+    [original_post_status] => draft
+    [referredby] => http://localhost/wpx/wp-admin/edit.php
+    [post_ID] => 11
+    [gdsr_post_edit] => edit
+    [gdsr_review] => -1
+    [gdsr_review_decimal] => -1
+    [gdsr_vote_articles] => A
+    [gdsr_mod_articles] => N
+    [gdsr_cmm_vote_articles] => A
+    [gdsr_cmm_mod_articles] => N
+    [gdsr_timer_type] => N
+    [gdsr_timer_date_value] => 
+    [gdsr_timer_countdown_value] => 30
+    [gdsr_timer_countdown_type] => D
+    [save] => Save Draft
+    [wp-preview] => 
+    [hidden_post_status] => draft
+    [post_status] => draft
+    [hidden_post_password] => 
+    [hidden_post_visibility] => public
+    [visibility] => public
+    [post_password] => 
+    [mm] => 03
+    [jj] => 23
+    [aa] => 2009
+    [hh] => 16
+    [mn] => 13
+    [ss] => 53
+    [hidden_mm] => 03
+    [cur_mm] => 03
+    [hidden_jj] => 23
+    [cur_jj] => 23
+    [hidden_aa] => 2009
+    [cur_aa] => 2009
+    [hidden_hh] => 16
+    [cur_hh] => 16
+    [hidden_mn] => 13
+    [cur_mn] => 13
+    [original_publish] => Publish
+    [newtag] => Add new tag
+    [tags_input] => 
+    [newcat] => New category name
+    [newcat_parent] => -1
+    [_ajax_nonce] => 10b8e61cf9
+    [post_title] => Proba
+    [content] => 
+    [autosavenonce] => af85dfbd51
+    [closedpostboxesnonce] => e829fe17c6
+    [getpermalinknonce] => 83bca894d4
+    [samplepermalinknonce] => 4c570209f7
+    [meta-box-order-nonce] => fe296339ef
+    [excerpt] => 
+    [trackback_url] => 
+    [metakeyinput] => 
+    [metavalue] => 
+    [advanced_view] => 1
+    [comment_status] => open
+    [ping_status] => open
+    [post_name] => 
+    [gdsrmurreview] => Array
+        (
+            [0] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+    [gdsrmulti] => Array
+        (
+            [0] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+    [ID] => 11
+    [post_content] => 
+    [post_excerpt] => 
+    [post_parent] => 
+    [to_ping] => 
+)
+
+[2009-03-23 04:13:59] : GET_POST_TYPE_sql
+SELECT post_type FROM wp_posts WHERE ID = 11
+[2009-03-23 04:13:59] : GET_POST_TYPE_type
+stdClass Object
+(
+    [post_type] => post
+)
+
+[2009-03-23 04:13:59] : ADD_DEFAULT_is_page
+0
+[2009-03-23 04:13:59] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (11, 'A', 'A', 'N', 'N', '0', 0, 0, 0, 0, -1, 'N', '')
+[2009-03-23 04:13:59] : ADD_DEFAULT_error
+
+[2009-03-23 04:13:59] : XXXXXXXXXXXXXX
+Array
+(
+    [_wpnonce] => 387abbfecf
+    [_wp_http_referer] => /wpx/wp-admin/post-new.php
+    [user_ID] => 1
+    [action] => editpost
+    [originalaction] => post
+    [post_author] => 1
+    [post_type] => post
+    [original_post_status] => draft
+    [referredby] => http://localhost/wpx/wp-admin/edit.php
+    [post_ID] => 11
+    [gdsr_post_edit] => edit
+    [gdsr_review] => -1
+    [gdsr_review_decimal] => -1
+    [gdsr_vote_articles] => A
+    [gdsr_mod_articles] => N
+    [gdsr_cmm_vote_articles] => A
+    [gdsr_cmm_mod_articles] => N
+    [gdsr_timer_type] => N
+    [gdsr_timer_date_value] => 
+    [gdsr_timer_countdown_value] => 30
+    [gdsr_timer_countdown_type] => D
+    [save] => Save Draft
+    [wp-preview] => 
+    [hidden_post_status] => draft
+    [post_status] => draft
+    [hidden_post_password] => 
+    [hidden_post_visibility] => public
+    [visibility] => public
+    [post_password] => 
+    [mm] => 03
+    [jj] => 23
+    [aa] => 2009
+    [hh] => 16
+    [mn] => 13
+    [ss] => 53
+    [hidden_mm] => 03
+    [cur_mm] => 03
+    [hidden_jj] => 23
+    [cur_jj] => 23
+    [hidden_aa] => 2009
+    [cur_aa] => 2009
+    [hidden_hh] => 16
+    [cur_hh] => 16
+    [hidden_mn] => 13
+    [cur_mn] => 13
+    [original_publish] => Publish
+    [newtag] => Add new tag
+    [tags_input] => 
+    [newcat] => New category name
+    [newcat_parent] => -1
+    [_ajax_nonce] => 10b8e61cf9
+    [post_title] => Proba
+    [content] => 
+    [autosavenonce] => af85dfbd51
+    [closedpostboxesnonce] => e829fe17c6
+    [getpermalinknonce] => 83bca894d4
+    [samplepermalinknonce] => 4c570209f7
+    [meta-box-order-nonce] => fe296339ef
+    [excerpt] => 
+    [trackback_url] => 
+    [metakeyinput] => 
+    [metavalue] => 
+    [advanced_view] => 1
+    [comment_status] => open
+    [ping_status] => open
+    [post_name] => 
+    [gdsrmurreview] => Array
+        (
+            [0] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+    [gdsrmulti] => Array
+        (
+            [0] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+    [ID] => 11
+    [post_content] => 
+    [post_excerpt] => 
+    [post_parent] => 
+    [to_ping] => 
+)
+
+[2009-03-23 04:14:00] : RPOST
+stdClass Object
+(
+    [ID] => 11
+    [post_author] => 1
+    [post_date] => 2009-03-23 16:13:59
+    [post_date_gmt] => 0000-00-00 00:00:00
+    [post_content] => 
+    [post_title] => Proba
+    [post_category] => 0
+    [post_excerpt] => 
+    [post_status] => draft
+    [comment_status] => open
+    [ping_status] => open
+    [post_password] => 
+    [post_name] => 
+    [to_ping] => 
+    [pinged] => 
+    [post_modified] => 2009-03-23 16:13:59
+    [post_modified_gmt] => 2009-03-23 15:13:59
+    [post_content_filtered] => 
+    [post_parent] => 0
+    [guid] => http://localhost/wpx/?p=11
+    [menu_order] => 0
+    [post_type] => post
+    [post_mime_type] => 
+    [comment_count] => 0
+    [ancestors] => Array
+    [filter] => edit
+)
+
+[2009-03-23 04:25:20] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 4
+[2009-03-23 04:25:20] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 4
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 2
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-03-23 04:25:20] : GET_POSTDATA_error
+
+[2009-03-23 04:25:20] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 4
+[2009-03-23 04:25:20] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 4
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 2
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-03-23 04:25:20] : GET_POSTDATA_error
+
+[2009-03-23 04:25:20] : RAW
+Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 1
+            [source] => dta
+            [item_id] => 0
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+    [1] => stdClass Object
+        (
+            [id] => 1
+            [source] => dta
+            [item_id] => 1
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+    [2] => stdClass Object
+        (
+            [id] => 1
+            [source] => dta
+            [item_id] => 2
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+    [3] => stdClass Object
+        (
+            [id] => 1
+            [source] => dta
+            [item_id] => 3
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+)
+
+[2009-03-23 04:25:20] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 4
+[2009-03-23 04:25:20] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 4
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 2
+    [visitor_votes] => 17.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-03-23 04:25:20] : GET_POSTDATA_error
+
+[2009-03-23 04:25:20] : RAW
+Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 2
+            [source] => dta
+            [item_id] => 0
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+    [1] => stdClass Object
+        (
+            [id] => 2
+            [source] => dta
+            [item_id] => 1
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+    [2] => stdClass Object
+        (
+            [id] => 2
+            [source] => dta
+            [item_id] => 2
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+)
+
+[2009-03-23 04:25:20] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 1
+[2009-03-23 04:25:20] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 1
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-03-23 04:25:20] : GET_POSTDATA_error
+
+[2009-03-23 04:25:20] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 1
+[2009-03-23 04:25:20] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 1
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-03-23 04:25:20] : GET_POSTDATA_error
+
+[2009-03-23 04:25:20] : RAW
+Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 3
+            [source] => dta
+            [item_id] => 0
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+    [1] => stdClass Object
+        (
+            [id] => 3
+            [source] => dta
+            [item_id] => 1
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+    [2] => stdClass Object
+        (
+            [id] => 3
+            [source] => dta
+            [item_id] => 2
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+    [3] => stdClass Object
+        (
+            [id] => 3
+            [source] => dta
+            [item_id] => 3
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+)
+
+[2009-03-23 04:25:20] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 1
+[2009-03-23 04:25:20] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 1
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-03-23 04:25:20] : GET_POSTDATA_error
+
+[2009-03-23 04:25:20] : RAW
+Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 4
+            [source] => dta
+            [item_id] => 0
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+    [1] => stdClass Object
+        (
+            [id] => 4
+            [source] => dta
+            [item_id] => 1
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+    [2] => stdClass Object
+        (
+            [id] => 4
+            [source] => dta
+            [item_id] => 2
+            [user_voters] => 0
+            [user_votes] => 0.0
+            [visitor_voters] => 0
+            [visitor_votes] => 0.0
+        )
+
+)
+

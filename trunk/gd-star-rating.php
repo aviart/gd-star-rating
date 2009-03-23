@@ -832,6 +832,8 @@ if (!class_exists('GDStarRating')) {
          * @param int $post_id ID of the post saving
          */
         function saveedit_post($post_id) {
+            $post_id = $_POST["post_ID"];
+
             if ($_POST['gdsr_post_edit'] == "edit") {
 
                 if ($this->o["integrate_post_edit"] == 1) {
@@ -1182,21 +1184,23 @@ if (!class_exists('GDStarRating')) {
             if (isset($_POST['gdsr_cleanup_tool'])) {
                 if (isset($_POST['gdsr_tools_clean_invalid_log'])) {
                     $count = GDSRDBTools::clean_invalid_log_articles();
-                    if ($count > 0) $msg.= $count." articles records from log table removed. ";
+                    if ($count > 0) $msg.= $count." ".__("articles records from log table removed.", "gd-star-rating")." ";
                     $count = GDSRDBTools::clean_invalid_log_comments();
-                    if ($count > 0) $msg.= $count." comments records from log table removed. ";
+                    if ($count > 0) $msg.= $count." ".__("comments records from log table removed.", "gd-star-rating")." ";
                 }
                 if (isset($_POST['gdsr_tools_clean_invalid_trend'])) {
                     $count = GDSRDBTools::clean_invalid_trend_articles();
-                    if ($count > 0) $msg.= $count." articles records from trends log table removed. ";
+                    if ($count > 0) $msg.= $count." ".__("articles records from trends log table removed.", "gd-star-rating")." ";
                     $count = GDSRDBTools::clean_invalid_trend_comments();
-                    if ($count > 0) $msg.= $count." comments records from trends log table removed. ";
+                    if ($count > 0) $msg.= $count." ".__("comments records from trends log table removed.", "gd-star-rating")." ";
                 }
                 if (isset($_POST['gdsr_tools_clean_old_posts'])) {
                     $count = GDSRDBTools::clean_dead_articles();
-                    if ($count > 0) $msg.= $count." dead articles records from articles table. ";
+                    if ($count > 0) $msg.= $count." ".__("dead articles records from articles table.", "gd-star-rating")." ";
+                    $count = GDSRDBTools::clean_revision_articles();
+                    if ($count > 0) $msg.= $count." ".__("post revisions records from articles table.", "gd-star-rating")." ";
                     $count = GDSRDBTools::clean_dead_comments();
-                    if ($count > 0) $msg.= $count." dead comments records from comments table. ";
+                    if ($count > 0) $msg.= $count." ".__("dead comments records from comments table.", "gd-star-rating")." ";
                 }
                 $this->o["database_cleanup"] = date("r");
                 $this->o["database_cleanup_msg"] = $msg;
@@ -1311,6 +1315,8 @@ if (!class_exists('GDStarRating')) {
          * WordPress action for adding blog header contents
          */
         function wp_head() {
+            $include_cmm_review = $this->o["comments_review_active"] == 1;
+            $include_mur_rating = $this->o["multis_active"] == 1;
             if (is_feed()) return;
 
             if ($this->o["external_rating_css"] == 1) $this->include_rating_css();

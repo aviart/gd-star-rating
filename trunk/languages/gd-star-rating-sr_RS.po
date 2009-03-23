@@ -39,125 +39,125 @@ msgstr "Сви корисници"
 msgid "All categories"
 msgstr "Све категорије"
 
-#: code/gd-star-dbtwo.php:82
-#: code/gd-star-dbtwo.php:85
-#: code/gd-star-dbtwo.php:88
 #: code/gd-star-dbtwo.php:91
-#: code/gd-star-dbtwo.php:95
-#: code/gd-star-dbtwo.php:118
-#: code/gd-star-dbtwo.php:121
-#: code/gd-star-dbtwo.php:124
+#: code/gd-star-dbtwo.php:94
+#: code/gd-star-dbtwo.php:97
+#: code/gd-star-dbtwo.php:100
+#: code/gd-star-dbtwo.php:104
 #: code/gd-star-dbtwo.php:127
 #: code/gd-star-dbtwo.php:130
 #: code/gd-star-dbtwo.php:133
-#: code/gd-star-dbtwo.php:207
-#: code/gd-star-dbtwo.php:210
-#: code/gd-star-dbtwo.php:213
+#: code/gd-star-dbtwo.php:136
+#: code/gd-star-dbtwo.php:139
+#: code/gd-star-dbtwo.php:142
 #: code/gd-star-dbtwo.php:216
-#: code/gd-star-dbtwo.php:235
-#: code/gd-star-dbtwo.php:238
-#: code/gd-star-dbtwo.php:241
+#: code/gd-star-dbtwo.php:219
+#: code/gd-star-dbtwo.php:222
+#: code/gd-star-dbtwo.php:225
 #: code/gd-star-dbtwo.php:244
 #: code/gd-star-dbtwo.php:247
+#: code/gd-star-dbtwo.php:250
+#: code/gd-star-dbtwo.php:253
+#: code/gd-star-dbtwo.php:256
 msgid "articles"
 msgstr "чланци"
 
-#: code/gd-star-dbtwo.php:82
-#: code/gd-star-dbtwo.php:100
-#: code/gd-star-dbtwo.php:118
-#: code/gd-star-dbtwo.php:138
+#: code/gd-star-dbtwo.php:91
+#: code/gd-star-dbtwo.php:109
+#: code/gd-star-dbtwo.php:127
+#: code/gd-star-dbtwo.php:147
 msgid "inherited"
 msgstr "наследи"
 
-#: code/gd-star-dbtwo.php:85
-#: code/gd-star-dbtwo.php:103
-#: code/gd-star-dbtwo.php:207
-#: code/gd-star-dbtwo.php:221
+#: code/gd-star-dbtwo.php:94
+#: code/gd-star-dbtwo.php:112
+#: code/gd-star-dbtwo.php:216
+#: code/gd-star-dbtwo.php:230
 msgid "all"
 msgstr "све"
 
-#: code/gd-star-dbtwo.php:88
-#: code/gd-star-dbtwo.php:106
-#: code/gd-star-dbtwo.php:127
-#: code/gd-star-dbtwo.php:147
-#: code/gd-star-dbtwo.php:197
-#: code/gd-star-dbtwo.php:210
-#: code/gd-star-dbtwo.php:224
-#: code/gd-star-dbtwo.php:241
-#: code/gd-star-dbtwo.php:258
-#: code/gd-star-dbtwo.php:317
+#: code/gd-star-dbtwo.php:97
+#: code/gd-star-dbtwo.php:115
+#: code/gd-star-dbtwo.php:136
+#: code/gd-star-dbtwo.php:156
+#: code/gd-star-dbtwo.php:206
+#: code/gd-star-dbtwo.php:219
+#: code/gd-star-dbtwo.php:233
+#: code/gd-star-dbtwo.php:250
+#: code/gd-star-dbtwo.php:267
+#: code/gd-star-dbtwo.php:326
 #: multi/results_post.php:141
 #: multi/results_post.php:142
 msgid "visitors"
 msgstr "посетиоци"
 
-#: code/gd-star-dbtwo.php:91
-#: code/gd-star-dbtwo.php:109
-#: code/gd-star-dbtwo.php:130
-#: code/gd-star-dbtwo.php:150
-#: code/gd-star-dbtwo.php:197
-#: code/gd-star-dbtwo.php:213
-#: code/gd-star-dbtwo.php:227
-#: code/gd-star-dbtwo.php:244
-#: code/gd-star-dbtwo.php:261
-#: code/gd-star-dbtwo.php:317
+#: code/gd-star-dbtwo.php:100
+#: code/gd-star-dbtwo.php:118
+#: code/gd-star-dbtwo.php:139
+#: code/gd-star-dbtwo.php:159
+#: code/gd-star-dbtwo.php:206
+#: code/gd-star-dbtwo.php:222
+#: code/gd-star-dbtwo.php:236
+#: code/gd-star-dbtwo.php:253
+#: code/gd-star-dbtwo.php:270
+#: code/gd-star-dbtwo.php:326
 #: multi/results_post.php:143
 #: multi/results_post.php:144
 msgid "users"
 msgstr "корисници"
 
-#: code/gd-star-dbtwo.php:95
-#: code/gd-star-dbtwo.php:113
-#: code/gd-star-dbtwo.php:216
-#: code/gd-star-dbtwo.php:230
+#: code/gd-star-dbtwo.php:104
+#: code/gd-star-dbtwo.php:122
+#: code/gd-star-dbtwo.php:225
+#: code/gd-star-dbtwo.php:239
 msgid "free"
 msgstr "слободно"
 
-#: code/gd-star-dbtwo.php:100
-#: code/gd-star-dbtwo.php:103
-#: code/gd-star-dbtwo.php:106
 #: code/gd-star-dbtwo.php:109
-#: code/gd-star-dbtwo.php:113
-#: code/gd-star-dbtwo.php:138
-#: code/gd-star-dbtwo.php:141
-#: code/gd-star-dbtwo.php:144
+#: code/gd-star-dbtwo.php:112
+#: code/gd-star-dbtwo.php:115
+#: code/gd-star-dbtwo.php:118
+#: code/gd-star-dbtwo.php:122
 #: code/gd-star-dbtwo.php:147
 #: code/gd-star-dbtwo.php:150
 #: code/gd-star-dbtwo.php:153
-#: code/gd-star-dbtwo.php:221
-#: code/gd-star-dbtwo.php:224
-#: code/gd-star-dbtwo.php:227
+#: code/gd-star-dbtwo.php:156
+#: code/gd-star-dbtwo.php:159
+#: code/gd-star-dbtwo.php:162
 #: code/gd-star-dbtwo.php:230
-#: code/gd-star-dbtwo.php:252
-#: code/gd-star-dbtwo.php:255
-#: code/gd-star-dbtwo.php:258
+#: code/gd-star-dbtwo.php:233
+#: code/gd-star-dbtwo.php:236
+#: code/gd-star-dbtwo.php:239
 #: code/gd-star-dbtwo.php:261
 #: code/gd-star-dbtwo.php:264
+#: code/gd-star-dbtwo.php:267
+#: code/gd-star-dbtwo.php:270
+#: code/gd-star-dbtwo.php:273
 msgid "comments"
 msgstr "коментари"
 
-#: code/gd-star-dbtwo.php:121
-#: code/gd-star-dbtwo.php:141
-#: code/gd-star-dbtwo.php:235
-#: code/gd-star-dbtwo.php:252
+#: code/gd-star-dbtwo.php:130
+#: code/gd-star-dbtwo.php:150
+#: code/gd-star-dbtwo.php:244
+#: code/gd-star-dbtwo.php:261
 msgid "hidden"
 msgstr "сакривен"
-
-#: code/gd-star-dbtwo.php:124
-#: code/gd-star-dbtwo.php:144
-#: code/gd-star-dbtwo.php:238
-#: code/gd-star-dbtwo.php:255
-msgid "locked"
-msgstr "закључан"
 
 #: code/gd-star-dbtwo.php:133
 #: code/gd-star-dbtwo.php:153
 #: code/gd-star-dbtwo.php:247
 #: code/gd-star-dbtwo.php:264
+msgid "locked"
+msgstr "закључан"
+
+#: code/gd-star-dbtwo.php:142
+#: code/gd-star-dbtwo.php:162
+#: code/gd-star-dbtwo.php:256
+#: code/gd-star-dbtwo.php:273
 msgid "everyone"
 msgstr "сви"
 
-#: code/gd-star-dbtwo.php:196
+#: code/gd-star-dbtwo.php:205
 #: multi/results_post.php:147
 #: multi/results_post.php:148
 #: options/users.php:99
@@ -165,11 +165,11 @@ msgstr "сви"
 msgid "rating"
 msgstr "оцена"
 
-#: code/gd-star-dbtwo.php:196
+#: code/gd-star-dbtwo.php:205
 msgid "views"
 msgstr "посета"
 
-#: code/gd-star-dbtwo.php:316
+#: code/gd-star-dbtwo.php:325
 #: options/users.php:98
 #: options/users.php:101
 msgid "votes"
@@ -499,7 +499,7 @@ msgstr "Мулти Сет Резултати"
 #: templates/templates_standard.php:1
 #: tinymce3/window.php:56
 #: tinymce3/window.php:57
-#: gd-star-rating.php:619
+#: gd-star-rating.php:620
 msgid "Articles"
 msgstr "Чланци"
 
@@ -549,7 +549,7 @@ msgstr "Поглед"
 #: options/settings/settings_administration.php:54
 #: options/articles.php:156
 #: options/categories.php:69
-#: gd-star-rating.php:620
+#: gd-star-rating.php:621
 msgid "Categories"
 msgstr "Категорије"
 
@@ -571,7 +571,7 @@ msgid "Voters"
 msgstr "Гласачи"
 
 #: multi/sets.php:44
-#: gd-star-rating.php:623
+#: gd-star-rating.php:624
 msgid "Multi Sets"
 msgstr "Мулти Сетови"
 
@@ -700,7 +700,7 @@ msgstr "Редови за приказ"
 #: options/settings/settings_administration.php:30
 #: options/settings.php:37
 #: tinymce3/panels/multi.php:15
-#: gd-star-rating.php:624
+#: gd-star-rating.php:625
 msgid "Settings"
 msgstr "Подешавања"
 
@@ -735,7 +735,7 @@ msgstr "Контрола подешавања."
 #: options/categories.php:224
 #: options/comments.php:139
 #: options/users.php:47
-#: gd-star-rating.php:621
+#: gd-star-rating.php:622
 msgid "Users"
 msgstr "Корисници"
 
@@ -745,7 +745,7 @@ msgstr "Контрола корисника."
 
 #: options/settings/settings_administration.php:58
 #: options/setup.php:28
-#: gd-star-rating.php:632
+#: gd-star-rating.php:633
 msgid "Setup"
 msgstr "Организација"
 
@@ -754,7 +754,7 @@ msgid "Uninstall and maintenance."
 msgstr "Деисталација и одржавање."
 
 #: options/settings/settings_administration.php:62
-#: gd-star-rating.php:629
+#: gd-star-rating.php:630
 msgid "Import"
 msgstr "Увоз"
 
@@ -763,7 +763,7 @@ msgid "Importing data for other rating plugins."
 msgstr "Увоз података из других рејтинг плагинова."
 
 #: options/settings/settings_administration.php:64
-#: gd-star-rating.php:630
+#: gd-star-rating.php:631
 msgid "Export"
 msgstr "Извоз"
 
@@ -774,7 +774,7 @@ msgstr "Извоз података."
 #: options/settings/settings_administration.php:66
 #: options/ips.php:67
 #: options/users_log.php:177
-#: gd-star-rating.php:628
+#: gd-star-rating.php:629
 msgid "IP's"
 msgstr "IP"
 
@@ -1313,7 +1313,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr "После брисања, плугин ће бити искључен. "
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1114
+#: gd-star-rating.php:1117
 msgid "UNINSTALL"
 msgstr "ДЕИНСТАЛИРАЈ"
 
@@ -1915,7 +1915,7 @@ msgid "Full Uninstall"
 msgstr "Пуна Деинсталација"
 
 #: options/tools.php:0
-#: gd-star-rating.php:625
+#: gd-star-rating.php:626
 msgid "Tools"
 msgstr "Алати"
 
@@ -2014,7 +2014,7 @@ msgstr "Листа гласова за чланке."
 
 #: templates/templates.php:31
 #: templates/tpl_panel_list.php:14
-#: gd-star-rating.php:626
+#: gd-star-rating.php:627
 msgid "Templates"
 msgstr "Шаблони"
 
@@ -2764,14 +2764,12 @@ msgid "Multi Review"
 msgstr "Мулти Критика"
 
 #: tinymce3/window.php:36
-#, fuzzy
 msgid "Articles Review"
-msgstr "критика чланка"
+msgstr "Kритика Чланка"
 
 #: tinymce3/window.php:38
-#, fuzzy
 msgid "Aggregated Comments"
-msgstr "Агрегиран Рејтинг"
+msgstr "Aggregated Comments"
 
 #: tinymce3/window.php:45
 msgid "Shortcode"
@@ -2870,22 +2868,51 @@ msgstr "рејтинг чланка у процентима"
 msgid "Web Key"
 msgstr "Веб Кључ"
 
-#: gd-star-rating.php:599
 #: gd-star-rating.php:600
-#: gd-star-rating.php:610
+#: gd-star-rating.php:601
 #: gd-star-rating.php:611
+#: gd-star-rating.php:612
 msgid "Multi Ratings Review"
 msgstr "Мулти Рејтинг Критика"
 
-#: gd-star-rating.php:618
+#: gd-star-rating.php:619
 msgid "Front Page"
 msgstr "Главна Страна"
 
-#: gd-star-rating.php:627
+#: gd-star-rating.php:628
 msgid "T2 / Alpha"
 msgstr "Т2 / Алфа"
 
-#: gd-star-rating.php:1760
+#: gd-star-rating.php:1187
+msgid "articles records from log table removed."
+msgstr ""
+
+#: gd-star-rating.php:1189
+msgid "comments records from log table removed."
+msgstr ""
+
+#: gd-star-rating.php:1193
+msgid "articles records from trends log table removed."
+msgstr ""
+
+#: gd-star-rating.php:1195
+msgid "comments records from trends log table removed."
+msgstr ""
+
+#: gd-star-rating.php:1199
+#, fuzzy
+msgid "dead articles records from articles table."
+msgstr "Сакриј чланке без уписаних гласова"
+
+#: gd-star-rating.php:1201
+msgid "post revisions records from articles table."
+msgstr ""
+
+#: gd-star-rating.php:1203
+msgid "dead comments records from comments table."
+msgstr ""
+
+#: gd-star-rating.php:1772
 msgid "(no title)"
 msgstr "(без имена)"
 
