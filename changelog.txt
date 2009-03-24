@@ -19,13 +19,3 @@
   * fix: saving review data for revision as articles
   * fix: multi review rating with no set selected
   * fix: setup panel missing confirmations
-
-=== Version: 1.1.7 / march 10 2009 ===
-  * new: more multi set related custom functions
-  * new: default templates inserted into database
-  * edit: saving review editor results
-  * edit: updated and cleaned up database installation
-  * edit: few changes to t2 system
-  * edit: updated missing translation strings
-  * fix: custom review editor function
-  * fix: templates t2 system bugs

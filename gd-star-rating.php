@@ -1869,25 +1869,21 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
                         $set_id = $eset->multi_id;
                         GDSRDBMulti::edit_multi_set($eset);
                     }
-                    $review_set = isset($_POST["gdsr_ms_review"]) ? 1 : 0;
-                    if ($review_set == 1) $this->o["mur_review_set"] = $set_id;
-                    else if ($this->o["mur_review_set"] == $set_id) $this->o["mur_review_set"] = 0;
-                    update_option('gd-star-rating', $this->o);
                 }
             }
             $options = $this->o;
-            if (($gdsr_page == "munew" || $gdsr_page == "muedit") && $editor) include($this->plugin_path.'multi/editor.php');
+            if (($gdsr_page == "munew" || $gdsr_page == "muedit") && $editor) include($this->plugin_path.'options/multis/editor.php');
             else {
                 switch ($gdsr_page) {
                     case "mulist":
                     default:
-                        include($this->plugin_path.'multi/sets.php');
+                        include($this->plugin_path.'options/multis/sets.php');
                         break;
                     case "murpost":
-                        include($this->plugin_path.'multi/results_post.php');
+                        include($this->plugin_path.'options/multis/results_post.php');
                         break;
                     case "murset":
-                        include($this->plugin_path.'multi/results_set.php');
+                        include($this->plugin_path.'options/multis/results_set.php');
                         break;
                 }
             }
@@ -1895,7 +1891,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
 
         function star_multi_results() {
             $options = $this->o;
-            include($this->plugin_path.'multi/results.php');
+            include($this->plugin_path.'options/multis/results.php');
         }
 
         function star_menu_front() {
