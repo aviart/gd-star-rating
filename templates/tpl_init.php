@@ -31,10 +31,12 @@ class gdTemplate {
     var $section;
     var $elements;
     var $parts;
+    var $tag;
 
-    function gdTemplate($c, $s) {
+    function gdTemplate($c, $s, $t = "") {
         $this->code = $c;
         $this->section = $s;
+        $this->tag = $t;
         $this->elements = array();
         $this->parts = array();
     }
@@ -80,6 +82,17 @@ class gdTemplates {
             }
         }
         return $sections;
+    }
+
+    function find_template_tag($code) {
+        $tag = "";
+        foreach ($this->tpls as $t) {
+            if ($t->code == $code) {
+                $tag = $t->tag;
+                break;
+            }
+        }
+        return $tag;
     }
 
     function list_sections_assoc() {

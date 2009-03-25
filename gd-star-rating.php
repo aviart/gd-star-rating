@@ -516,7 +516,9 @@ if (!class_exists('GDStarRating')) {
                 $single_vote["rating"] = $md->user_votes;
                 $votes[] = $single_vote;
             }
-            if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
+            if ($admin) {
+                include($this->plugin_path.'integrate/edit_multi.php');
+            }
             else return GDSRRender::multi_rating_review($votes, $post_id, $set, 20, $allow_vote);
         }
         // various rendering
@@ -892,14 +894,7 @@ if (!class_exists('GDStarRating')) {
                 $this->o["database_upgrade"] = date("r");
 
                 GDSRDB::insert_default_templates(STARRATING_PATH);
-            }
 
-            if (!is_array($this->o)) {
-                update_option('gd-star-rating', $this->default_options);
-                $this->o = get_option('gd-star-rating');
-                gdDBInstallGDSR::create_tables(STARRATING_PATH);
-            }
-            else {
                 $this->o = gdFunctionsGDSR::upgrade_settings($this->o, $this->default_options);
 
                 $this->o["version"] = $this->default_options["version"];
@@ -908,6 +903,12 @@ if (!class_exists('GDStarRating')) {
                 $this->o["build"] = $this->default_options["build"];
 
                 update_option('gd-star-rating', $this->o);
+            }
+
+            if (!is_array($this->o)) {
+                update_option('gd-star-rating', $this->default_options);
+                $this->o = get_option('gd-star-rating');
+                gdDBInstallGDSR::create_tables(STARRATING_PATH);
             }
 
             if (!is_array($this->x)) {
@@ -1102,6 +1103,14 @@ if (!class_exists('GDStarRating')) {
             $this->is_cached = $this->o["cache_active"];
             $this->is_ie6 = is_msie6();
             $this->custom_actions('init');
+
+            if (is_admin() && $this->o["mur_review_set"] == 0) {
+                $set = GDSRDBMulti::get_multis(0, 1);
+                if (count($set) > 0) {
+                    $this->o["mur_review_set"] = $set[0]->multi_id;
+                    update_option('gd-star-rating', $this->o);
+                }
+            }
         }
 
         function cache_cleanup() {
