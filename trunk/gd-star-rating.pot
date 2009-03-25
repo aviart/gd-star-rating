@@ -75,8 +75,8 @@ msgstr ""
 #: code/gd-star-dbtwo.php:250
 #: code/gd-star-dbtwo.php:267
 #: code/gd-star-dbtwo.php:326
-#: multi/results_post.php:141
-#: multi/results_post.php:142
+#: options/multis/results_post.php:141
+#: options/multis/results_post.php:142
 msgid "visitors"
 msgstr ""
 
@@ -90,8 +90,8 @@ msgstr ""
 #: code/gd-star-dbtwo.php:253
 #: code/gd-star-dbtwo.php:270
 #: code/gd-star-dbtwo.php:326
-#: multi/results_post.php:143
-#: multi/results_post.php:144
+#: options/multis/results_post.php:143
+#: options/multis/results_post.php:144
 msgid "users"
 msgstr ""
 
@@ -147,8 +147,8 @@ msgid "everyone"
 msgstr ""
 
 #: code/gd-star-dbtwo.php:205
-#: multi/results_post.php:147
-#: multi/results_post.php:148
+#: options/multis/results_post.php:147
+#: options/multis/results_post.php:148
 #: options/users.php:99
 #: options/users.php:102
 msgid "rating"
@@ -388,230 +388,31 @@ msgid "Countdown"
 msgstr ""
 
 #: integrate/edit_multi.php:3
-msgid "You first need to select which multi set you want to use for review rating."
+msgid "You don't have any multi rating sets defined. Create at least one set."
 msgstr ""
 
-#: integrate/edit_multi.php:12
-msgid "Clear"
-msgstr ""
-
-#: integrate/edit_multi.php:13
-msgid "Revert"
+#: integrate/edit_multi.php:5
+msgid "To change the active set, you need to select the set you want from the list on the left, and save this article to accept the change."
 msgstr ""
 
 #: integrate/edit_multi.php:6
+msgid "All values for all sets will be saved in the database. This allows different multi rating sets reviews."
+msgstr ""
+
+#: integrate/edit_multi.php:14
+msgid "Clear"
+msgstr ""
+
+#: integrate/edit_multi.php:15
+msgid "Revert"
+msgstr ""
+
+#: integrate/edit_multi.php:8
 msgid "Set ID"
 msgstr ""
 
-#: integrate/edit_multi.php:7
+#: integrate/edit_multi.php:9
 msgid "Set Name"
-msgstr ""
-
-#: multi/editor.php:20
-msgid "Multi Sets Editor"
-msgstr ""
-
-#: multi/editor.php:23
-#: multi/editor.php:51
-#: multi/sets.php:61
-#: options/users.php:60
-#: options/voters.php:142
-#: templates/tpl_panel_editor.php:38
-#: templates/tpl_panel_list.php:33
-msgid "Name"
-msgstr ""
-
-#: multi/editor.php:28
-#: multi/sets.php:62
-#: templates/tpl_panel_editor.php:40
-#: templates/tpl_panel_editor.php:53
-#: templates/tpl_panel_list.php:35
-msgid "Description"
-msgstr ""
-
-#: multi/editor.php:33
-msgid "Number Of Stars"
-msgstr ""
-
-#: multi/editor.php:40
-#: multi/results_post.php:122
-#: multi/sets.php:65
-#: options/settings/settings_articles.php:185
-#: options/settings/settings_comments.php:189
-#: options/articles.php:160
-#: options/articles.php:294
-#: options/comments.php:95
-#: tinymce3/panels/advanced.php:147
-#: widgets/widget_rating.php:206
-msgid "Review"
-msgstr ""
-
-#: multi/editor.php:42
-msgid "Use this set for post/page review. Only one set at the time can be used for review feature."
-msgstr ""
-
-#: multi/editor.php:45
-#: templates/tpl_panel_editor.php:31
-#: widgets/widget_rating.php:357
-#: widgets/widget_rating.php:365
-#: widgets/widget_top.php:103
-#: widgets/widget_top.php:111
-msgid "Elements"
-msgstr ""
-
-#: multi/editor.php:54
-msgid "Weight"
-msgstr ""
-
-#: multi/editor.php:61
-msgid "Important Notice"
-msgstr ""
-
-#: multi/editor.php:63
-msgid "Once the set is created, you can't change number of elements in the set or number of stars! You can edit names and weight of the elements, name and description of the set."
-msgstr ""
-
-#: multi/editor.php:68
-msgid "Save Multi Set"
-msgstr ""
-
-#: multi/results_post.php:80
-#: multi/results_set.php:17
-msgid "Multi Set Results"
-msgstr ""
-
-#: multi/results_post.php:80
-#: options/articles.php:111
-#: options/articles.php:259
-#: options/categories.php:158
-#: options/users.php:64
-#: templates/templates_standard.php:1
-#: tinymce3/window.php:56
-#: tinymce3/window.php:57
-#: gd-star-rating.php:620
-#: gd-star-rating.php:620
-msgid "Articles"
-msgstr ""
-
-#: multi/results_post.php:90
-#: multi/results_post.php:92
-#: multi/results_post.php:30
-#: options/articles.php:121
-#: options/articles.php:123
-#: options/articles.php:28
-msgid "Search Posts"
-msgstr ""
-
-#: multi/results_post.php:98
-#: multi/results_post.php:25
-#: multi/results_set.php:22
-#: options/articles.php:129
-#: options/articles.php:23
-#: options/users_log.php:94
-#: options/users_log.php:23
-#: options/voters.php:116
-#: options/voters.php:32
-#: templates/tpl_panel_list.php:21
-#: templates/tpl_panel_list.php:6
-#: tinymce3/window.php:32
-#: widgets/widget_rating.php:154
-#: widgets/widget_rating.php:162
-#: widgets/widget_top.php:44
-#: widgets/widget_top.php:52
-msgid "Filter"
-msgstr ""
-
-#: multi/results_post.php:116
-#: options/articles.php:146
-#: tinymce3/panels/advanced.php:146
-#: widgets/widget_rating.php:32
-#: widgets/widget_rating.php:205
-#: widgets/widget_top.php:21
-msgid "Title"
-msgstr ""
-
-#: multi/results_post.php:117
-#: options/articles.php:147
-msgid "View"
-msgstr ""
-
-#: multi/results_post.php:118
-#: options/settings/settings_administration.php:54
-#: options/articles.php:156
-#: options/categories.php:69
-#: gd-star-rating.php:621
-#: gd-star-rating.php:621
-msgid "Categories"
-msgstr ""
-
-#: multi/results_post.php:119
-#: multi/sets.php:64
-#: options/articles.php:157
-msgid "Ratings"
-msgstr ""
-
-#: multi/results_post.php:120
-#: options/articles.php:158
-#: options/comments.php:94
-msgid "Total"
-msgstr ""
-
-#: multi/results_set.php:17
-#: multi/sets.php:111
-msgid "Voters"
-msgstr ""
-
-#: multi/sets.php:44
-#: gd-star-rating.php:624
-#: gd-star-rating.php:624
-msgid "Multi Sets"
-msgstr ""
-
-#: multi/sets.php:48
-msgid "Add New Multi Rating Set"
-msgstr ""
-
-#: multi/sets.php:60
-#: options/users.php:61
-#: options/voters.php:141
-#: templates/tpl_panel_list.php:32
-#: tinymce3/panels/advanced.php:145
-#: widgets/widget_rating.php:204
-msgid "ID"
-msgstr ""
-
-#: multi/sets.php:63
-#: options/settings/settings_articles.php:14
-#: options/settings/settings_articles.php:189
-#: options/settings/settings_comments.php:14
-#: options/settings/settings_comments.php:103
-#: options/settings/settings_comments.php:193
-#: options/settings/settings_multis.php:14
-#: options/settings/settings_preview.php:39
-#: options/settings/settings_preview.php:43
-#: options/settings/settings_rss.php:5
-msgid "Stars"
-msgstr ""
-
-#: multi/sets.php:66
-#: options/settings.php:50
-msgid "Statistics"
-msgstr ""
-
-#: multi/sets.php:129
-msgid "Delete Selected"
-msgstr ""
-
-#: multi/sets.php:4
-msgid "Delete Selected Sets"
-msgstr ""
-
-#: multi/sets.php:100
-#: multi/sets.php:110
-#: options/settings/settings_rss.php:1
-#: options/tools/tools_bulk.php:21
-#: options/categories.php:91
-msgid "Posts"
 msgstr ""
 
 #: options/ips/ips_list.php:53
@@ -676,6 +477,208 @@ msgstr ""
 msgid "Use XXX as a part of IP or leave empty to mask."
 msgstr ""
 
+#: options/multis/editor.php:20
+msgid "Multi Sets Editor"
+msgstr ""
+
+#: options/multis/editor.php:23
+#: options/multis/editor.php:46
+#: options/multis/sets.php:61
+#: options/users.php:60
+#: options/voters.php:142
+#: templates/tpl_panel_editor.php:38
+#: templates/tpl_panel_list.php:33
+msgid "Name"
+msgstr ""
+
+#: options/multis/editor.php:28
+#: options/multis/sets.php:62
+#: templates/tpl_panel_editor.php:40
+#: templates/tpl_panel_editor.php:53
+#: templates/tpl_panel_list.php:35
+msgid "Description"
+msgstr ""
+
+#: options/multis/editor.php:33
+msgid "Number Of Stars"
+msgstr ""
+
+#: options/multis/editor.php:40
+#: templates/tpl_panel_editor.php:31
+#: widgets/widget_rating.php:357
+#: widgets/widget_rating.php:365
+#: widgets/widget_top.php:103
+#: widgets/widget_top.php:111
+msgid "Elements"
+msgstr ""
+
+#: options/multis/editor.php:49
+msgid "Weight"
+msgstr ""
+
+#: options/multis/editor.php:56
+msgid "Important Notice"
+msgstr ""
+
+#: options/multis/editor.php:58
+msgid "Once the set is created, you can't change number of elements in the set or number of stars! You can edit names and weight of the elements, name and description of the set."
+msgstr ""
+
+#: options/multis/editor.php:63
+msgid "Save Multi Set"
+msgstr ""
+
+#: options/multis/results_post.php:80
+#: options/multis/results_set.php:17
+msgid "Multi Set Results"
+msgstr ""
+
+#: options/multis/results_post.php:80
+#: options/articles.php:111
+#: options/articles.php:259
+#: options/categories.php:158
+#: options/users.php:64
+#: templates/templates_standard.php:1
+#: tinymce3/window.php:56
+#: tinymce3/window.php:57
+#: gd-star-rating.php:622
+#: gd-star-rating.php:622
+msgid "Articles"
+msgstr ""
+
+#: options/multis/results_post.php:90
+#: options/multis/results_post.php:92
+#: options/multis/results_post.php:30
+#: options/articles.php:121
+#: options/articles.php:123
+#: options/articles.php:28
+msgid "Search Posts"
+msgstr ""
+
+#: options/multis/results_post.php:98
+#: options/multis/results_post.php:25
+#: options/multis/results_set.php:22
+#: options/articles.php:129
+#: options/articles.php:23
+#: options/users_log.php:94
+#: options/users_log.php:23
+#: options/voters.php:116
+#: options/voters.php:32
+#: templates/tpl_panel_list.php:21
+#: templates/tpl_panel_list.php:6
+#: tinymce3/window.php:32
+#: widgets/widget_rating.php:154
+#: widgets/widget_rating.php:162
+#: widgets/widget_top.php:44
+#: widgets/widget_top.php:52
+msgid "Filter"
+msgstr ""
+
+#: options/multis/results_post.php:116
+#: options/articles.php:146
+#: tinymce3/panels/advanced.php:146
+#: widgets/widget_rating.php:32
+#: widgets/widget_rating.php:205
+#: widgets/widget_top.php:21
+msgid "Title"
+msgstr ""
+
+#: options/multis/results_post.php:117
+#: options/articles.php:147
+msgid "View"
+msgstr ""
+
+#: options/multis/results_post.php:118
+#: options/settings/settings_administration.php:54
+#: options/articles.php:156
+#: options/categories.php:69
+#: gd-star-rating.php:623
+#: gd-star-rating.php:623
+msgid "Categories"
+msgstr ""
+
+#: options/multis/results_post.php:119
+#: options/multis/sets.php:64
+#: options/articles.php:157
+msgid "Ratings"
+msgstr ""
+
+#: options/multis/results_post.php:120
+#: options/articles.php:158
+#: options/comments.php:94
+msgid "Total"
+msgstr ""
+
+#: options/multis/results_post.php:122
+#: options/multis/sets.php:65
+#: options/settings/settings_articles.php:185
+#: options/settings/settings_comments.php:189
+#: options/articles.php:160
+#: options/articles.php:294
+#: options/comments.php:95
+#: tinymce3/panels/advanced.php:147
+#: widgets/widget_rating.php:206
+msgid "Review"
+msgstr ""
+
+#: options/multis/results_set.php:17
+#: options/multis/sets.php:110
+msgid "Voters"
+msgstr ""
+
+#: options/multis/sets.php:44
+#: gd-star-rating.php:626
+#: gd-star-rating.php:626
+msgid "Multi Sets"
+msgstr ""
+
+#: options/multis/sets.php:48
+msgid "Add New Multi Rating Set"
+msgstr ""
+
+#: options/multis/sets.php:60
+#: options/users.php:61
+#: options/voters.php:141
+#: templates/tpl_panel_list.php:32
+#: tinymce3/panels/advanced.php:145
+#: widgets/widget_rating.php:204
+msgid "ID"
+msgstr ""
+
+#: options/multis/sets.php:63
+#: options/settings/settings_articles.php:14
+#: options/settings/settings_articles.php:189
+#: options/settings/settings_comments.php:14
+#: options/settings/settings_comments.php:103
+#: options/settings/settings_comments.php:193
+#: options/settings/settings_multis.php:14
+#: options/settings/settings_preview.php:39
+#: options/settings/settings_preview.php:43
+#: options/settings/settings_rss.php:5
+msgid "Stars"
+msgstr ""
+
+#: options/multis/sets.php:66
+#: options/settings.php:50
+msgid "Statistics"
+msgstr ""
+
+#: options/multis/sets.php:128
+msgid "Delete Selected"
+msgstr ""
+
+#: options/multis/sets.php:4
+msgid "Delete Selected Sets"
+msgstr ""
+
+#: options/multis/sets.php:100
+#: options/multis/sets.php:109
+#: options/settings/settings_rss.php:1
+#: options/tools/tools_bulk.php:21
+#: options/categories.php:91
+msgid "Posts"
+msgstr ""
+
 #: options/settings/settings_administration.php:1
 #: tinymce3/panels/advanced.php:2
 msgid "Display"
@@ -692,8 +695,8 @@ msgstr ""
 #: options/settings/settings_administration.php:30
 #: options/settings.php:37
 #: tinymce3/panels/multi.php:15
-#: gd-star-rating.php:625
-#: gd-star-rating.php:625
+#: gd-star-rating.php:627
+#: gd-star-rating.php:627
 msgid "Settings"
 msgstr ""
 
@@ -728,8 +731,8 @@ msgstr ""
 #: options/categories.php:224
 #: options/comments.php:139
 #: options/users.php:47
-#: gd-star-rating.php:622
-#: gd-star-rating.php:622
+#: gd-star-rating.php:624
+#: gd-star-rating.php:624
 msgid "Users"
 msgstr ""
 
@@ -739,8 +742,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:58
 #: options/setup.php:28
-#: gd-star-rating.php:633
-#: gd-star-rating.php:633
+#: gd-star-rating.php:635
+#: gd-star-rating.php:635
 msgid "Setup"
 msgstr ""
 
@@ -749,8 +752,8 @@ msgid "Uninstall and maintenance."
 msgstr ""
 
 #: options/settings/settings_administration.php:62
-#: gd-star-rating.php:630
-#: gd-star-rating.php:630
+#: gd-star-rating.php:632
+#: gd-star-rating.php:632
 msgid "Import"
 msgstr ""
 
@@ -759,8 +762,8 @@ msgid "Importing data for other rating plugins."
 msgstr ""
 
 #: options/settings/settings_administration.php:64
-#: gd-star-rating.php:631
-#: gd-star-rating.php:631
+#: gd-star-rating.php:633
+#: gd-star-rating.php:633
 msgid "Export"
 msgstr ""
 
@@ -771,8 +774,8 @@ msgstr ""
 #: options/settings/settings_administration.php:66
 #: options/ips.php:67
 #: options/users_log.php:177
-#: gd-star-rating.php:629
-#: gd-star-rating.php:629
+#: gd-star-rating.php:631
+#: gd-star-rating.php:631
 msgid "IP's"
 msgstr ""
 
@@ -1305,7 +1308,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1123
+#: gd-star-rating.php:1132
 msgid "UNINSTALL"
 msgstr ""
 
@@ -1909,8 +1912,8 @@ msgid "Full Uninstall"
 msgstr ""
 
 #: options/tools.php:0
-#: gd-star-rating.php:626
-#: gd-star-rating.php:626
+#: gd-star-rating.php:628
+#: gd-star-rating.php:628
 msgid "Tools"
 msgstr ""
 
@@ -2009,8 +2012,8 @@ msgstr ""
 
 #: templates/templates.php:31
 #: templates/tpl_panel_list.php:14
-#: gd-star-rating.php:627
-#: gd-star-rating.php:627
+#: gd-star-rating.php:629
+#: gd-star-rating.php:629
 msgid "Templates"
 msgstr ""
 
@@ -2424,14 +2427,18 @@ msgid "Section / Type"
 msgstr ""
 
 #: templates/tpl_panel_list.php:36
+msgid "Tag"
+msgstr ""
+
+#: templates/tpl_panel_list.php:37
 msgid "Options"
 msgstr ""
 
-#: templates/tpl_panel_list.php:76
+#: templates/tpl_panel_list.php:78
 msgid "New template for:"
 msgstr ""
 
-#: templates/tpl_panel_list.php:78
+#: templates/tpl_panel_list.php:80
 msgid "Create"
 msgstr ""
 
@@ -2857,60 +2864,60 @@ msgstr ""
 msgid "Web Key"
 msgstr ""
 
-#: gd-star-rating.php:600
-#: gd-star-rating.php:601
-#: gd-star-rating.php:611
-#: gd-star-rating.php:612
+#: gd-star-rating.php:602
+#: gd-star-rating.php:603
+#: gd-star-rating.php:613
+#: gd-star-rating.php:614
 msgid "Multi Ratings Review"
 msgstr ""
 
-#: gd-star-rating.php:619
-#: gd-star-rating.php:619
+#: gd-star-rating.php:621
+#: gd-star-rating.php:621
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:628
-#: gd-star-rating.php:628
+#: gd-star-rating.php:630
+#: gd-star-rating.php:630
 msgid "T2"
 msgstr ""
 
-#: gd-star-rating.php:1193
+#: gd-star-rating.php:1202
 msgid "articles records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1195
+#: gd-star-rating.php:1204
 msgid "comments records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1199
+#: gd-star-rating.php:1208
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1201
+#: gd-star-rating.php:1210
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1205
+#: gd-star-rating.php:1214
 msgid "dead articles records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1207
+#: gd-star-rating.php:1216
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1209
+#: gd-star-rating.php:1218
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: gd-star-rating.php:1213
+#: gd-star-rating.php:1222
 msgid "dead articles records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1215
+#: gd-star-rating.php:1224
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1784
+#: gd-star-rating.php:1793
 msgid "(no title)"
 msgstr ""
 

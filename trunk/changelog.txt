@@ -8,6 +8,7 @@
   * new: cleaning of invalid and obsolete multi ratings data
   * new: setting additional styles for ie6 browsers
   * new: auto scan for stars set on update
+  * new: tag definition for templates
   * del: removed non-ajax voting code
   * del: removed ie6 png fix support
   * edit: cleanup now removes revisions data from database
