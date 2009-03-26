@@ -1,0 +1,13 @@
+.gdsr-table-split {
+    border-top: 2px solid #add8e6;
+    width: 100%; 
+    margin-top: 10px; 
+    padding-top: 10px;
+}
+
+.gdsr-table-split-filter {
+    border-top: 1px solid #add8e6;
+    width: 100%; 
+    margin-top: 4px; 
+    padding-top: 4px;
+}
