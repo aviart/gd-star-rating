@@ -241,10 +241,12 @@ class GDSRDBMulti {
         global $wpdb, $table_prefix;
 
         $sql = sprintf("DELETE FROM %sgdsr_multis_values where id = %s and source = 'rvw'", $table_prefix, $record_id);
+        wp_gdsr_dump("DEL", $sql);
         $wpdb->query($sql);
         for ($i = 0; $i < count($values); $i++) {
             $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id, user_voters, user_votes) VALUES (%s, 'rvw', %s, 1, '%s')",
                 $table_prefix, $record_id, $i, $values[$i]);
+            wp_gdsr_dump("INSERT", $sql);
             $wpdb->query($sql);
         }
     }
