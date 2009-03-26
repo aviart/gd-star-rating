@@ -19,6 +19,8 @@
   * edit: updated missing translation strings
   * edit: some of the default settings changed
   * edit: readme file and links
+  * edit: partially removed old non ajax rating code
+  * fix: invalid replacemnet of the comment and post rating text after voting
   * fix: w3c validation error caused by invalid cdata sequence
   * fix: saving review data for revision as articles
   * fix: multi review rating with no set selected
