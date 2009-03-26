@@ -400,15 +400,15 @@ msgstr "Одбројавање"
 
 #: integrate/edit_multi.php:3
 msgid "You don't have any multi rating sets defined. Create at least one set."
-msgstr ""
+msgstr "Немате дефинисане мулти рејтинг сетове. Креирајте макар један сет."
 
 #: integrate/edit_multi.php:5
 msgid "To change the active set, you need to select the set you want from the list on the left, and save this article to accept the change."
-msgstr ""
+msgstr "Да би променили активни сет, потребно је да селектујете сет из листе лево, и да снимите чланак да прихвати промене."
 
 #: integrate/edit_multi.php:6
 msgid "All values for all sets will be saved in the database. This allows different multi rating sets reviews."
-msgstr ""
+msgstr "Све вредности за све сетове биће снимљене у бази. Ово дозвољава употребу различитих рејтинг сетова."
 
 #: integrate/edit_multi.php:14
 msgid "Clear"
@@ -925,9 +925,8 @@ msgstr "Користи колачић као превенцију дуплог �
 
 #: options/settings/settings_articles.php:150
 #: options/settings/settings_comments.php:154
-#, fuzzy
 msgid "Allow votes from user and visitor coming from same IP address."
-msgstr "Не приказуј блок за гласање посетиоцима који долазе са забрањених ИП адреса."
+msgstr "Дозволити гласање корисника и посетилаца који долазе са исте ИП адресе."
 
 #: options/settings/settings_articles.php:153
 #: options/settings/settings_comments.php:157
@@ -1064,9 +1063,8 @@ msgid "Link external javascript rating code, instead of embeding it into the pag
 msgstr "Линкуј екстерни јавасцрипт фајл, уместо да се уграђује у страну."
 
 #: options/settings/settings_features.php:16
-#, fuzzy
 msgid "Link external CSS rating code, uncheck to embed all the CSS into the page."
-msgstr "Линкуј екстерни јавасцрипт фајл, уместо да се уграђује у страну."
+msgstr "Линкуј екстерни ЦСС фајл, ако не код ће се уградити у страну."
 
 #: options/settings/settings_features.php:18
 msgid "Link additional css file"
@@ -1437,9 +1435,8 @@ msgid "Remove data for old and deleted posts and comments."
 msgstr "Уклони податке за све старе и обрисане чланке и коментаре."
 
 #: options/tools/tools_db.php:20
-#, fuzzy
 msgid "Remove data for old and deleted multi ratings."
-msgstr "Уклони податке за све старе и обрисане чланке и коментаре."
+msgstr "Уклони податке за све старе и обрисане чланке за мулти рејтинг податке."
 
 #: options/tools/tools_db.php:25
 msgid "Cleanup summary"
@@ -1451,12 +1448,11 @@ msgstr "СНими"
 
 #: options/tools/tools_editcss.php:6
 msgid "File is not writeable and can't be saved through this form."
-msgstr ""
+msgstr "У фајл не може да се пише и снимање није дозвољено корз ову форму."
 
 #: options/tools/tools_editcss.php:11
-#, fuzzy
 msgid "Additional CSS file not found"
-msgstr "Додатна ЦСС класа"
+msgstr "Додатна ЦСС класа није пронађена"
 
 #: options/tools/tools_gfx.php:1
 msgid "Stars and Trends Graphics"
@@ -1886,25 +1882,24 @@ msgid "Save Settings"
 msgstr "Сними подешавања"
 
 #: options/setup.php:5
-#, fuzzy
 msgid "Database tables reinstalled."
-msgstr "Све табеле у бази биће обрисане"
+msgstr "Табеле у бази реинсталиране."
 
 #: options/setup.php:10
 msgid "Settings are removed from WordPress installation."
-msgstr ""
+msgstr "Подешавања су уклоњена из ВордПрес инсталације."
 
 #: options/setup.php:14
 msgid "Plugin Templates are removed from WordPress installation."
-msgstr ""
+msgstr "Плагин Шаблони су уклоњени из ВордПрес инсталације."
 
 #: options/setup.php:18
 msgid "Import Information is reseted."
-msgstr ""
+msgstr "Информације о увозу података су ресетоване."
 
 #: options/setup.php:24
 msgid "Are you sure? Operation is not reversible."
-msgstr ""
+msgstr "Да ли сте сигурни? Операција није реверзибилна."
 
 #: options/setup.php:31
 msgid "Database Maintenance"
@@ -2321,9 +2316,8 @@ msgid "total remaining minutes"
 msgstr "укупно преосталих минута"
 
 #: templates/tpl_list.php:4
-#, fuzzy
 msgid "Standard Ratings Text"
-msgstr "Стандарни Рејтинг Резултати"
+msgstr "Стандарни Рејтинг Текст"
 
 #: templates/tpl_list.php:8
 #: templates/tpl_list.php:40
@@ -2368,9 +2362,8 @@ msgid "class for alternating table rows"
 msgstr "класа за алтернитвне редове табеле"
 
 #: templates/tpl_list.php:48
-#, fuzzy
 msgid "Comments Ratings Text"
-msgstr "Оцена Кометара."
+msgstr "Рејтинг Текст Кометара."
 
 #: templates/tpl_list.php:56
 msgid "Standard RSS Text"
@@ -2389,9 +2382,8 @@ msgid "total votes for all comment"
 msgstr "total votes for all comment"
 
 #: templates/tpl_list.php:70
-#, fuzzy
 msgid "comment rating stars"
-msgstr "рејтинга тренд коментара"
+msgstr "звезде за рејтинг коментара"
 
 #: templates/tpl_list.php:75
 msgid "Multi Ratings Text"
@@ -2712,9 +2704,8 @@ msgid "External Class"
 msgstr "Екстерна класа"
 
 #: tinymce3/panels/articles.php:2
-#, fuzzy
 msgid "Articles Review Rating"
-msgstr "Оцена Autora Кометара."
+msgstr "Оцена Autora Чланка."
 
 #: tinymce3/panels/articles.php:3
 msgid "StarReview will render stars representing review value assigned to the post or page."
@@ -2724,27 +2715,24 @@ msgstr "StarReview ће приказати звезде које предста�
 #: tinymce3/panels/articles.php:12
 #: tinymce3/panels/multi.php:23
 msgid "There are no settings for this shortcode yet. This will be updated soon."
-msgstr ""
+msgstr "Нема подешавања за овај шорткод. Ускоро ће их бити."
 
 #: tinymce3/panels/articles.php:10
 #: tinymce3/window.php:37
-#, fuzzy
 msgid "Articles Rating Block"
-msgstr "Рејтинг Блок Коментара"
+msgstr "Рејтинг Блок Чланака"
 
 #: tinymce3/panels/articles.php:11
 msgid "StarRater will render actual rating block if you choose not to have it automatically inserted. This way you can position it wherever you want in the contnents."
 msgstr "StarRater ће приказати рејтинг блок уколико одлучите да не желите да се аутоматски убацује. Овако се може позиционирати било где у садржају."
 
 #: tinymce3/panels/comments.php:2
-#, fuzzy
 msgid "Aggregated Comments Ratings"
-msgstr "Агрегиран Рејтинг"
+msgstr "Агрегирани Рејтинг Коментара"
 
 #: tinymce3/panels/comments.php:5
-#, fuzzy
 msgid "Calculate Votes From"
-msgstr "Прикажи гласове од"
+msgstr "Израчунај Гласове Из"
 
 #: tinymce3/panels/multi.php:2
 msgid "Multi Ratings"
@@ -2893,42 +2881,39 @@ msgstr "T2"
 
 #: gd-star-rating.php:1202
 msgid "articles records from log table removed."
-msgstr ""
+msgstr "чланка из лог табеле је уклоњено."
 
 #: gd-star-rating.php:1204
 msgid "comments records from log table removed."
-msgstr ""
+msgstr "коментара из лог табеле је уклоњено."
 
 #: gd-star-rating.php:1208
 msgid "articles records from trends log table removed."
-msgstr ""
+msgstr "чланака из тренд табеле је уклоњено."
 
 #: gd-star-rating.php:1210
 msgid "comments records from trends log table removed."
-msgstr ""
+msgstr "коментара је уклоњено из тренд лог табеле."
 
 #: gd-star-rating.php:1214
-#, fuzzy
 msgid "dead articles records from articles table."
-msgstr "Сакриј чланке без уписаних гласова"
+msgstr "мртвих чланака из рејтинг табела"
 
 #: gd-star-rating.php:1216
 msgid "post revisions records from articles table."
-msgstr ""
+msgstr "ревизија чланак је уклоњено из табеле чланака."
 
 #: gd-star-rating.php:1218
 msgid "dead comments records from comments table."
-msgstr ""
+msgstr "мртвих коментара уклоњено из табеле коментара."
 
 #: gd-star-rating.php:1222
-#, fuzzy
 msgid "dead articles records from multi ratings tables."
-msgstr "Сакриј чланке без уписаних гласова"
+msgstr "мртвих чланака из мулти рејтинг табела"
 
 #: gd-star-rating.php:1224
-#, fuzzy
 msgid "post revisions records from multi ratings tables."
-msgstr "Сакриј чланке без уписаних гласова"
+msgstr "ревизија из мулти рејтинг табела."
 
 #: gd-star-rating.php:1793
 msgid "(no title)"

@@ -12,6 +12,7 @@
   * new: tag definition for templates
   * del: removed non-ajax voting code
   * del: removed ie6 png fix support
+  * edit: extanded multi review shortcode with set property
   * edit: cleanup now removes revisions data from database
   * edit: templates t2 system beta version
   * edit: optimization in checking votes
@@ -22,3 +23,5 @@
   * fix: saving review data for revision as articles
   * fix: multi review rating with no set selected
   * fix: setup panel missing confirmations
+  * fix: warning about missing multi rating set
+  * fix: several small problems
