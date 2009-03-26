@@ -3,11 +3,12 @@
 == Change Log ==
 
 === Version: 1.1.8 / march 26 2009 ===
+  * new: each and all sets can be used for multi review
   * new: setting to embed all the css needed into the page
   * new: allowing both user and visitor votes from same ip
   * new: cleaning of invalid and obsolete multi ratings data
   * new: setting additional styles for ie6 browsers
-  * new: auto scan for stars set on update
+  * new: auto scan for stars sets on update
   * new: tag definition for templates
   * del: removed non-ajax voting code
   * del: removed ie6 png fix support
@@ -17,6 +18,7 @@
   * edit: updated missing translation strings
   * edit: some of the default settings changed
   * edit: readme file and links
+  * fix: w3c validation error caused by invalid cdata sequence
   * fix: saving review data for revision as articles
   * fix: multi review rating with no set selected
   * fix: setup panel missing confirmations

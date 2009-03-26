@@ -8,8 +8,19 @@
 	color: white;
 }
 
+.gdsr-mur-sets-background {
+    background-color: #CEE1EF;
+    padding: 6px;
+    margin: 0;
+}
+
+.gdsr-mur-sets-background td {
+    padding-right: 10px;
+    vertical-align: top;
+}
+
 .gdsr-table-split-edit {
-	border-top: 2px solid #add8e6; 
+	border-top: 2px solid #CEE1EF;
 	width: 100%; 
 	margin-top: 3px; 
 	padding-top: 3px;
@@ -28,7 +39,7 @@
 }
 
 .gdsr-mur-review-stars {
-    border-left: 2px solid #add8e6;
+    border-left: 2px solid #CEE1EF;
     padding-left: 5px;
     vertical-align: top;
 }

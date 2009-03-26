@@ -843,9 +843,11 @@ if (!class_exists('GDStarRating')) {
                     $mur = $_POST['gdsrmulti'];
                     $mur = $mur[$post_id][0];
                     $values = explode("X", $mur);
-                    $set_id = $this->o["mur_review_set"];
+                    $set_id = $_POST["gdsrmultiactive"];
                     $record_id = GDSRDBMulti::get_vote($post_id, $set_id);
                     GDSRDBMulti::save_review($record_id, $values);
+                    $this->o["mur_review_set"] = $_POST["gdsrmultiset"];
+                    update_option('gd-star-rating', $this->o);
                 }
 
                 $old = GDSRDatabase::check_post($post_id);
@@ -1357,7 +1359,7 @@ if (!class_exists('GDStarRating')) {
                 else $nonce = "";
                 $ajax_active = $this->o["ajax"];
                 $button_active = $this->o["mur_button_active"] == 1;
-                echo('//<[!CDATA[');
+                echo('//<![CDATA[');
                 include ($this->plugin_path."code/gd-star-js.php");
                 echo('// ]]>');
                 echo('</script>');
