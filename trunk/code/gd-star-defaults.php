@@ -47,7 +47,6 @@ class GDSRDefaults {
         "database_cleanup_msg" => '',
         "mass_lock" => '',
         "ie_opacity_fix" => 1,
-        "ajax" => 1,
         "ip_filtering" => 1,
         "ip_filtering_restrictive" => 0,
         "save_user_agent" => 0,

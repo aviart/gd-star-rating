@@ -717,8 +717,6 @@ if (!class_exists('GDStarRating')) {
         function actions_filters() {
             add_action('init', array(&$this, 'init'));
             add_action('wp_head', array(&$this, 'wp_head'));
-            if ($this->o["ajax"] != 1)
-                add_action('get_header', array(&$this, 'redirect'));
             add_action('widgets_init', array(&$this, 'widget_init'));
             add_action('admin_menu', array(&$this, 'admin_menu'));
             add_action('admin_head', array(&$this, 'admin_head'));
@@ -907,7 +905,7 @@ if (!class_exists('GDStarRating')) {
                 $this->o["date"] = $this->default_options["date"];
                 $this->o["status"] = $this->default_options["status"];
                 $this->o["build"] = $this->default_options["build"];
-
+                
                 update_option('gd-star-rating', $this->o);
             }
 
@@ -1294,16 +1292,6 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
-        /**
-         * Simple function that uses WordPress redirect function
-         */
-        function redirect() {
-            if ($this->vote_status) {
-                $url = $_SERVER["HTTP_REFERER"];
-                wp_redirect($url);
-            }
-        }
-
         function include_rating_css($external = true) {
             $include_cmm_review = false;
             $include_mur_rating = false;
@@ -1361,7 +1349,6 @@ if (!class_exists('GDStarRating')) {
                 echo('<script type="text/javascript">');
                 if ($this->use_nonce) $nonce = wp_create_nonce('gdsr_ajax_r8');
                 else $nonce = "";
-                $ajax_active = $this->o["ajax"];
                 $button_active = $this->o["mur_button_active"] == 1;
                 echo('//<![CDATA[');
                 include ($this->plugin_path."code/gd-star-js.php");
@@ -2691,7 +2678,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $comment->user_id ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            return GDSRRender::rating_block($rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $this->o["cmm_align"], $this->o["cmm_text"], $this->o["cmm_header"], $this->o["cmm_header_text"], $this->o["cmm_class_block"], $this->o["cmm_class_text"], $this->o["ajax"], $debug, $this->loader_comment);
+            return GDSRRender::rating_block($rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $this->o["cmm_align"], $this->o["cmm_text"], $this->o["cmm_header"], $this->o["cmm_header_text"], $this->o["cmm_class_block"], $this->o["cmm_class_text"], $debug, $this->loader_comment);
         }
 
         function render_article_rss() {
@@ -2818,7 +2805,7 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $this->o["ajax"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
+            $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
             return $rating_block;
         }
 
