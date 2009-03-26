@@ -261,6 +261,10 @@ class GDSRDefaults {
         'read_only' => 0
     );
 
+    var $default_shortcode_starreviewmulti = array(
+        'id' => 1
+    );
+
     var $default_templates = array(
         "word_votes_singular" => "vote",
         "word_votes_plural" => "votes",

@@ -21,6 +21,16 @@
 <div id="multisreview_panel" class="panel">
 <fieldset>
 <legend><?php _e("Multi Reviews", "gd-star-rating"); ?></legend>
-<p><?php _e("There are no settings for this shortcode yet. This will be updated soon.", "gd-star-rating"); ?></p>
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
+      <tr>
+        <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <label><select id="srMultiRatingSet" name="srsrMultiRatingSet" style="width: 200px">
+                <option value="0"><?php _e("Default", "gd-star-rating"); ?></option>
+                <?php GDSRHelper::render_styles_select($gdst_multis, 1); ?>
+            </select></label>
+        </td>
+      </tr>
+    </table>
 </fieldset>
 </div>

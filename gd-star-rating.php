@@ -98,6 +98,7 @@ if (!class_exists('GDStarRating')) {
         var $default_shortcode_starrating;
         var $default_shortcode_starratercustom;
         var $default_shortcode_starratingmulti;
+        var $default_shortcode_starreviewmulti;
         var $default_shortcode_starcomments;
         var $default_templates;
         var $default_options;
@@ -120,6 +121,7 @@ if (!class_exists('GDStarRating')) {
             $this->default_shortcode_starrating = $gdd->default_shortcode_starrating;
             $this->default_shortcode_starratercustom = $gdd->default_shortcode_starratercustom;
             $this->default_shortcode_starratingmulti = $gdd->default_shortcode_starratingmulti;
+            $this->default_shortcode_starreviewmulti = $gdd->default_shortcode_starreviewmulti;
             $this->default_shortcode_starcomments = $gdd->default_shortcode_starcomments;
             $this->default_templates = $gdd->default_templates;
             $this->default_options = $gdd->default_options;
@@ -270,9 +272,11 @@ if (!class_exists('GDStarRating')) {
         */
         function shortcode_starreviewmulti($atts = array()) {
             global $post;
+            $settings = shortcode_atts($this->default_shortcode_starreviewmulti, $atts);
 
             $post_id = $post->ID;
-            $multi_id = $this->o["mur_review_set"];
+            if ($settings["id"] == 0) $multi_id = $this->o["mur_review_set"];
+            else $multi_id = $settings["id"];
             $set = gd_get_multi_set($multi_id);
             if ($multi_id > 0 && $post_id > 0) {
                 $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id);
@@ -294,7 +298,7 @@ if (!class_exists('GDStarRating')) {
         *
         * @param array $atts
         */
-		function shortcode_starreview($atts = array()) {
+	function shortcode_starreview($atts = array()) {
             global $post;
             $rating = GDSRDatabase::get_review($post->ID);
             if ($rating > -1) {
