@@ -1,33 +1,11 @@
 <?php
 
 class GDSRDefaults {
-    var $shortcode_builtin_classes = array(
-        array("name" => "Standard", "class" => "starrating"),
-        array("name" => "Simple", "class" => "starsimple")
-    );
-
-    var $shortcodes = array(
-        "starrating",
-        "starreview",
-        "starrater",
-        "starratingblock",
-        "starratercustom",
-        "starratingmulti",
-        "starreviewmulti",
-        "starcomments"
-    );
-
-    var $default_spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
-    
-    var $default_wpr8 = array(
-        "web_key" => ""
-    );
-
     var $default_options = array(
-        "version" => "1.1.8",
-        "date" => "2009.03.26.",
+        "version" => "1.1.9",
+        "date" => "2009.04.16.",
         "status" => "Stable",
-        "build" => 518,
+        "build" => 520,
         "external_javascript" => 0,
         "external_rating_css" => 1,
         "external_css" => 1,
@@ -134,9 +112,9 @@ class GDSRDefaults {
         "cmm_logged" => 1,
         "admin_width" => 1240,
         "admin_rows" => 20,
-        "admin_advanced" => 0,
-        "admin_placement" => 0,
-        "admin_defaults" => 0,
+        "admin_advanced" => 1,
+        "admin_placement" => 1,
+        "admin_defaults" => 1,
         "admin_category" => 0,
         "admin_users" => 0,
         "admin_import" => 1,
@@ -175,6 +153,28 @@ class GDSRDefaults {
         "wait_loader_multis" => 'flower',
         "wait_show_multis" => 0,
         "wait_class_multis" => ''
+    );
+
+    var $shortcode_builtin_classes = array(
+        array("name" => "Standard", "class" => "starrating"),
+        array("name" => "Simple", "class" => "starsimple")
+    );
+
+    var $shortcodes = array(
+        "starrating",
+        "starreview",
+        "starrater",
+        "starratingblock",
+        "starratercustom",
+        "starratingmulti",
+        "starreviewmulti",
+        "starcomments"
+    );
+
+    var $default_spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
+
+    var $default_wpr8 = array(
+        "web_key" => ""
     );
 
     var $default_import = array(
