@@ -13,7 +13,8 @@
     $vote_id = $_GET["vote_id"];
     $vote_value = $_GET["vote_value"];
     $vote_type = $_GET["vote_type"];
-    
+
+    $result = $vote_type."_error";
     switch ($vote_type) {
         case 'a':
             $result = $gdsr->vote_article_ajax($vote_value, $vote_id);

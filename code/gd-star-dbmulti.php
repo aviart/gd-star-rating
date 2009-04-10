@@ -224,7 +224,7 @@ class GDSRDBMulti {
         $row = $wpdb->get_row($sql);
 
         if (count($row) == 0) {
-            $sql = sprintf("INSERT INTO %sgdsr_multis_data (post_id, multi_id, review, review_text) VALUES (%s, %s, '-1', '')", $table_prefix, $post_id, $set_id);
+            $sql = sprintf("INSERT INTO %sgdsr_multis_data (post_id, multi_id) VALUES (%s, %s)", $table_prefix, $post_id, $set_id);
             $wpdb->query($sql);
             $record_id = $wpdb->insert_id;
             for ($i = 0; $i < $values; $i++) {

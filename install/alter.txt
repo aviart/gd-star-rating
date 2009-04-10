@@ -1,5 +1,5 @@
-ALTER TABLE `%sgdsr_multis_data` CHANGE `review` `review` DECIMAL(3, 1) NOT NULL DEFAULT '-1'
-ALTER TABLE `%sgdsr_multis_data` CHANGE `review_text` `review_text` VARCHAR(255) NULL DEFAULT NULL
-ALTER TABLE `%stest_gdsr_multis` ADD PRIMARY KEY (`multi_id`)
+ALTER TABLE `%sgdsr_multis` ADD PRIMARY KEY (`multi_id`)
 ALTER TABLE `%sgdsr_multis` CHANGE `multi_id` `multi_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT
 ALTER TABLE `%sgdsr_multis` CHANGE `description` `description` text NOT NULL default ''
+ALTER TABLE `%sgdsr_multis_data` DROP `review`
+ALTER TABLE `%sgdsr_multis_data` DROP `review_text`
