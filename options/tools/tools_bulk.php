@@ -61,4 +61,8 @@
         </form>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Recalculate Multi Ratings Averages", "gd-star-rating"); ?></th>
+    <td>
+    </td>
+</tr>
 </tbody></table>

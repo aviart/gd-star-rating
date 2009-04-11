@@ -1375,79 +1375,48 @@ if (!class_exists('GDStarRating')) {
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
             else $ua = "";
             $user = intval($userdata->ID);
+            $data = GDSRDatabase::get_post_data($post_id);
+            $set = gd_get_multi_set($set_id);
 
 wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [".$user."]");
 
             $values = explode("X", $votes);
             $allow_vote = true;
             foreach ($values as $v) {
-                if ($v > $this->o["stars"]) {
+                if ($v > $set->stars) {
                     $allow_vote = false;
                     break;
                 }
             }
 
             if ($allow_vote) $allow_vote = $this->check_cookie($post_id."#".$set_id, "multis");
-
             if ($allow_vote) $allow_vote = GDSRDBMulti::check_vote($post_id, $user, $set_id, 'multis', $ip, $this->o["logged"] != 1, $this->o["mur_allow_mixed_ip_votes"] == 1);
-
-            $data = GDSRDatabase::get_post_data($post_id);
 
             if ($allow_vote) {
                 GDSRDBMulti::save_vote($post_id, $set_id, $user, $ip, $ua, $values, $data);
+                $summary = GDSRDBMulti::recalculate_multi_averages($post_id, $set_id, $data->rules_articles);
                 $this->save_cookie($post_id."#".$set_id, "multis");
                 $msg = 'VOTED';
-                $summary = GDSRDBMulti::recalculate_multi_averages($post_id, $set_id, $data->rules_articles);
+
+                $rating = $summary["total"]["rating"];
+                $total_votes = $summary["total"]["votes"];
+                if ($total_votes == 1) $tense = $this->x["word_votes_singular"];
+                else $tense = $this->x["word_votes_plural"];
+
+                $tpl = $this->x["multis_rating_text"];
+                $rt = html_entity_decode($tpl);
+                $rt = str_replace('%RATING%', $rating, $rt);
+                $rt = str_replace('%MAX_RATING%', $set->stars, $rt);
+                $rt = str_replace('%VOTES%', $total_votes, $rt);
+                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+                $rt = str_replace('%ID%', $post_id, $rt);
+
+                return "{ status: 'ok', values: ".json_encode($summary["json"]).", rater: '".$rt."', msg: '".$msg."' }";
             }
-            else $msg = 'NOTALLOWED';
-
-            $set = gd_get_multi_set($set_id);
-            $multi_data = GDSRDBMulti::get_values_join($post_id, $set_id);
-            $votes_js = array();
-            $weight_norm = array_sum($set->weight);
-            $total_votes = 0;
-            $weighted = 0;
-            $i = 0;
-            foreach ($multi_data as $md) {
-                $votes = 0;
-                $score = 0;
-
-                if ($data->rules_articles == "A" || $data->rules_articles == "N") {
-                    $votes = $md->user_voters + $md->visitor_voters;
-                    $score = $md->user_votes + $md->visitor_votes;
-                }
-                else if ($data->rules_articles == "V") {
-                    $votes = $md->visitor_voters;
-                    $score = $md->visitor_votes;
-                }
-                else {
-                    $votes = $md->user_voters;
-                    $score = $md->user_votes;
-                }
-                if ($votes > 0) $rating = $score / $votes;
-                else $rating = 0;
-                if ($rating > $set->stars) $rating = $set->stars;
-                $rating = @number_format($rating, 1);
-                $votes_js[] = $rating * $this->o["mur_size"];
-                $weighted += ($rating * $set->weight[$i]) / $weight_norm;
-                $total_votes += $votes;
-                $i++;
+            else {
+                $msg = 'NOTALLOWED';
+                return "{ status: 'voted', msg: '".$msg."' }";
             }
-            $rating = @number_format($weighted, 1);
-            $total_votes = @number_format($total_votes / $i, 0);
-            if ($total_votes == 1) $tense = $this->x["word_votes_singular"];
-            else $tense = $this->x["word_votes_plural"];
-
-            $tpl = $this->x["multis_rating_text"];
-            $rt = html_entity_decode($tpl);
-            $rt = str_replace('%RATING%', $rating, $rt);
-            $rt = str_replace('%MAX_RATING%', $set->stars, $rt);
-            $rt = str_replace('%VOTES%', $total_votes, $rt);
-            $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-            $rt = str_replace('%ID%', $post_id, $rt);
-
-            if ($msg == 'VOTED') return "{ status: 'ok', values: ".json_encode($votes_js).", rater: '".$rt."', msg: '".$msg."' }";
-            else return "{ status: 'voted', msg: '".$msg."' }";
         }
 
         function vote_article_ajax($votes, $id) {
@@ -1457,7 +1426,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
             else $ua = "";
             $user = intval($userdata->ID);
 
-wp_gdsr_dump("VOTE", $id.": ".$votes." [".$user."]");
+wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
 
             $allow_vote = intval($votes) <= $this->o["stars"];
 
@@ -1518,7 +1487,7 @@ wp_gdsr_dump("VOTE", $id.": ".$votes." [".$user."]");
             else $ua = "";
             $user = intval($userdata->ID);
 
-wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
+wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
             $allow_vote = intval($votes) <= $this->o["cmm_stars"];
 

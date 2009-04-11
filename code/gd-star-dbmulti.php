@@ -1,6 +1,46 @@
 <?php
 
 class GDSRDBMulti {
+    function recalculate_trend_averages($trend_id, $set) {
+        global $wpdb, $table_prefix;
+
+        $multi_data = GDSRDBMulti::get_trend_values($trend_id);
+        $weight_norm = array_sum($set->weight);
+        $total_users = $total_visitors = $total_votes = 0;
+        $user_weighted = $visitors_weighted = $weighted = 0;
+        $i = 0;
+        foreach ($multi_data as $md) {
+            $v_user = $v_visitor = $s_user = $s_visitor = $r_user = $r_visitor = 0;
+
+            $v_visitor = $md->visitor_voters;
+            $s_visitor = $md->visitor_votes;
+            $v_user = $md->user_voters;
+            $s_user = $md->user_votes;
+
+            if ($v_visitor > 0) $r_visitor = $s_visitor / $v_visitor;
+            if ($v_user > 0) $r_user = $s_user / $v_user;
+            if ($r_visitor > $set->stars) $r_visitor = $set->stars;
+            if ($r_user > $set->stars) $r_user = $set->stars;
+
+            $r_visitor = @number_format($r_visitor, 1);
+            $r_user = @number_format($r_user, 1);
+            $visitors_weighted += ($r_visitor * $set->weight[$i]) / $weight_norm;
+            $user_weighted += ($r_user * $set->weight[$i]) / $weight_norm;
+            $total_visitors += $v_visitor;
+            $total_users += $v_user;
+
+            $i++;
+        }
+        $rating_users = @number_format($user_weighted, 1);
+        $rating_visitors = @number_format($visitors_weighted, 1);
+        $total_users = @number_format($total_users / $i, 0);
+        $total_visitors = @number_format($total_visitors / $i, 0);
+
+        $sql = sprintf("update %sgdsr_multis_trend set average_rating_users = '%s', average_rating_visitors = '%s', total_votes_users = '%s', total_votes_visitors = '%s' where id = %s",
+            $table_prefix, $rating_users, $rating_visitors, $total_users, $total_visitors, $trend_id);
+        $wpdb->query($sql);
+    }
+
     function recalculate_multi_averages($post_id, $set_id, $rules = "") {
         global $wpdb, $table_prefix;
 
@@ -10,7 +50,7 @@ class GDSRDBMulti {
         $weight_norm = array_sum($set->weight);
         $total_users = $total_visitors = $total_votes = 0;
         $user_weighted = $visitors_weighted = $weighted = 0;
-        $i = count($multi_data);
+        $i = 0;
         foreach ($multi_data as $md) {
             $votes = $score = $rating = $v_user = $v_visitor = $s_user = $s_visitor = $r_user = $r_visitor = 0;
 
@@ -51,6 +91,7 @@ class GDSRDBMulti {
                 $weighted += ($rating * $set->weight[$i]) / $weight_norm;
                 $total_votes += $votes;
             }
+            $i++;
         }
         $rating_users = @number_format($user_weighted, 1);
         $rating_visitors = @number_format($visitors_weighted, 1);
@@ -62,6 +103,7 @@ class GDSRDBMulti {
             $total_votes = @number_format($total_votes / $i, 0);
             $output["total"]["rating"] = $rating;
             $output["total"]["votes"] = $total_votes;
+            $output["json"] = $votes_js;
         }
 
         $sql = sprintf("update %sgdsr_multis_data set average_rating_users = '%s', average_rating_visitors = '%s', total_votes_users = '%s', total_votes_visitors = '%s' where post_id = %s and multi_id = %s",
@@ -214,6 +256,7 @@ class GDSRDBMulti {
         else $trend_id = $trend_data;
 
         GDSRDBMulti::add_values($trend_id, $user_id, $votes, "trd", $trend_added ? "add" : "edit");
+        GDSRDBMulti::recalculate_trend_averages($trend_id, $set);
 
         $data_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
 
@@ -286,6 +329,15 @@ class GDSRDBMulti {
                 $table_prefix, $id, $i);
             $wpdb->query($sql);
         }
+    }
+
+    function get_trend_values($id) {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("select * from %sgdsr_multis_values where source = 'trd' and id = %s order by item_id asc",
+            $table_prefix, $id);
+        wp_gdsr_dump("TR", $sql);
+        return $wpdb->get_results($sql);
     }
 
     function get_values_join($post_id, $set_id) {
