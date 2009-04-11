@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.1.8
+Version: 1.1.9
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -43,6 +43,7 @@ require_once(dirname(__FILE__)."/templates/tpl_init.php");
 require_once(dirname(__FILE__)."/gdragon/gd_functions.php");
 require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
 require_once(dirname(__FILE__)."/gdragon/gd_db_install.php");
+require_once(dirname(__FILE__)."/gdragon/gd_wordpress.php");
 
 if (!class_exists('GDStarRating')) {
     /**
@@ -279,7 +280,7 @@ if (!class_exists('GDStarRating')) {
             else $multi_id = $settings["id"];
             $set = gd_get_multi_set($multi_id);
             if ($multi_id > 0 && $post_id > 0) {
-                $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id);
+                $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id, count($set->object));
                 $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
                 $votes = array();
                 foreach ($multi_data as $md) {
@@ -469,7 +470,7 @@ if (!class_exists('GDStarRating')) {
             $multi_id = $this->o["mur_review_set"];
             $set = gd_get_multi_set($multi_id);
             if ($multi_id > 0 && $post_id > 0) {
-                $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id);
+                $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id, count($set->object));
                 $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
                 if (count($multi_data) == 0) {
                     GDSRDBMulti::add_empty_review_values($vote_id, count($set->object));
@@ -505,7 +506,7 @@ if (!class_exists('GDStarRating')) {
             $multi_id = $this->o["mur_review_set"];
             $set = gd_get_multi_set($multi_id);
             if ($multi_id > 0 && $post_id > 0) {
-                $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id);
+                $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id, count($set->object));
                 $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
                 if (count($multi_data) == 0) {
                     GDSRDBMulti::add_empty_review_values($vote_id, count($set->object));
@@ -846,7 +847,8 @@ if (!class_exists('GDStarRating')) {
                     $mur = $mur[$post_id][0];
                     $values = explode("X", $mur);
                     $set_id = $_POST["gdsrmultiactive"];
-                    $record_id = GDSRDBMulti::get_vote($post_id, $set_id);
+                    $set = gd_get_multi_set($set_id);
+                    $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
                     GDSRDBMulti::save_review($record_id, $values);
                     $this->o["mur_review_set"] = $_POST["gdsrmultiset"];
                     update_option('gd-star-rating', $this->o);
@@ -1156,11 +1158,13 @@ if (!class_exists('GDStarRating')) {
                 foreach ($mur_all as $post_id => $data) {
                     $mur = $data[0];
                     $values = explode("X", $mur);
-                    $record_id = GDSRDBMulti::get_vote($post_id, $set_id);
+                    $set = gd_get_multi_set($set_id);
+                    $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
                     GDSRDBMulti::save_review($record_id, $values);
                 }
                 $this->custom_actions('init_save_review');
                 wp_redirect($_SERVER['REQUEST_URI']);
+                exit;
             }
 
             if (isset($_POST["gdsr_editcss_rating"])) {
@@ -1372,7 +1376,7 @@ if (!class_exists('GDStarRating')) {
             else $ua = "";
             $user = intval($userdata->ID);
 
-wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
+wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [".$user."]");
 
             $values = explode("X", $votes);
             $allow_vote = true;
@@ -1392,9 +1396,10 @@ wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
             if ($allow_vote) {
                 GDSRDBMulti::save_vote($post_id, $set_id, $user, $ip, $ua, $values, $data);
                 $this->save_cookie($post_id."#".$set_id, "multis");
-                $msg = '%STATUS_OK_VOTED%';
+                $msg = 'VOTED';
+                $summary = GDSRDBMulti::recalculate_multi_averages($post_id, $set_id, $data->rules_articles);
             }
-            else $msg = '%STATUS_ERROR_VOTED%';
+            else $msg = 'NOTALLOWED';
 
             $set = gd_get_multi_set($set_id);
             $multi_data = GDSRDBMulti::get_values_join($post_id, $set_id);
@@ -1424,7 +1429,7 @@ wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
                 if ($rating > $set->stars) $rating = $set->stars;
                 $rating = @number_format($rating, 1);
                 $votes_js[] = $rating * $this->o["mur_size"];
-                $weighted += ( $rating * $set->weight[$i] ) / $weight_norm;
+                $weighted += ($rating * $set->weight[$i]) / $weight_norm;
                 $total_votes += $votes;
                 $i++;
             }
@@ -1441,7 +1446,8 @@ wp_gdsr_dump("VOTE_MUR", $post_id."/".$set_id.": ".$votes." [".$user."]");
             $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
             $rt = str_replace('%ID%', $post_id, $rt);
 
-            return "{ status: 'ok', values: ".json_encode($votes_js).", rater: '".$rt."' }";
+            if ($msg == 'VOTED') return "{ status: 'ok', values: ".json_encode($votes_js).", rater: '".$rt."', msg: '".$msg."' }";
+            else return "{ status: 'voted', msg: '".$msg."' }";
         }
 
         function vote_article_ajax($votes, $id) {
@@ -2897,8 +2903,6 @@ wp_gdsr_dump("VOTE_CMM", $id.": ".$votes." [".$user."]");
 
             $multi_record_id = GDSRDBMulti::get_vote($rd_post_id, $set->multi_id, count($set->object));
             $multi_data = GDSRDBMulti::get_values($multi_record_id);
-
-            wp_gdsr_dump("RAW", $multi_data);
 
             $votes = array();
             foreach ($multi_data as $md) {

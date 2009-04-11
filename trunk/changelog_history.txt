@@ -3,8 +3,12 @@
 == Change Log ==
 
 === Version: 1.1.9 / april 15 2009 ===
-  * new: added average rating columns for multi ratinf results
+  * new: added average rating columns for multi rating results
+  * new: recalculating average multi ratings for posts
+  * new: tool to recalculate mutli ratings
+  * fix: critical error in saving multi rating votes
   * fix: some problems with database table upgrading
+  * fix: various small bugs
 
 === Version: 1.1.8 / march 26 2009 ===
   * new: each and all sets can be used for multi review

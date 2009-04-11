@@ -1,0 +1,328 @@
+[2009-04-11 02:01:14] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 38
+[2009-04-11 02:01:14] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 14
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 02:01:14] : GET_POSTDATA_error
+
+[2009-04-11 02:01:14] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 38
+[2009-04-11 02:01:14] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 14
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 02:01:14] : GET_POSTDATA_error
+
+[2009-04-11 02:01:14] : RID
+13
+[2009-04-11 02:01:24] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 38
+[2009-04-11 02:01:24] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 15
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 02:01:24] : GET_POSTDATA_error
+
+[2009-04-11 02:01:24] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 38
+[2009-04-11 02:01:24] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 15
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 02:01:24] : GET_POSTDATA_error
+
+[2009-04-11 02:01:24] : RID
+13
+[2009-04-11 02:01:30] : VOTE_MUR
+[POST: 38|SET: 1] --10X6X9X4-- [0]
+[2009-04-11 02:01:30] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 38
+[2009-04-11 02:01:30] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 15
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 02:01:30] : GET_POSTDATA_error
+
+[2009-04-11 02:01:30] : TREND_CHECK
+SELECT id FROM wp_gdsr_multis_trend WHERE vote_date = '2009-04-11' and post_id = 38 and multi_id = 1
+[2009-04-11 02:01:30] : TREND_ID
+1
+[2009-04-11 02:01:30] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 10 WHERE id = 1 and item_id = 0 and source = 'trd'
+[2009-04-11 02:01:30] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 6 WHERE id = 1 and item_id = 1 and source = 'trd'
+[2009-04-11 02:01:30] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 9 WHERE id = 1 and item_id = 2 and source = 'trd'
+[2009-04-11 02:01:30] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 4 WHERE id = 1 and item_id = 3 and source = 'trd'
+[2009-04-11 02:01:30] : RID
+13
+[2009-04-11 02:01:30] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 10 WHERE id = 13 and item_id = 0 and source = 'dta'
+[2009-04-11 02:01:30] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 6 WHERE id = 13 and item_id = 1 and source = 'dta'
+[2009-04-11 02:01:30] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 9 WHERE id = 13 and item_id = 2 and source = 'dta'
+[2009-04-11 02:01:30] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 4 WHERE id = 13 and item_id = 3 and source = 'dta'
+[2009-04-11 02:01:30] : LOG
+INSERT INTO wp_gdsr_votes_log (id, vote_type, multi_id, user_id, object, voted, ip, user_agent) VALUES (38, 'multis', 1, 0, 'a:4:{i:0;s:2:"10";i:1;s:1:"6";i:2;s:1:"9";i:3;s:1:"4";}', '2009-04-11 01:01:30', '127.0.0.1', '')
+[2009-04-11 02:01:30] : O
+Array
+(
+    [total] => Array
+        (
+            [rating] => 0.0
+            [votes] => 1
+        )
+
+    [users] => Array
+        (
+            [rating] => 0.0
+            [votes] => 0
+        )
+
+    [visitors] => Array
+        (
+            [rating] => 0.0
+            [votes] => 1
+        )
+
+)
+
+[2009-04-11 02:01:34] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 38
+[2009-04-11 02:01:34] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 16
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 02:01:34] : GET_POSTDATA_error
+
+[2009-04-11 02:01:34] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 38
+[2009-04-11 02:01:34] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 16
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 02:01:34] : GET_POSTDATA_error
+
+[2009-04-11 02:01:34] : RID
+13
+[2009-04-11 02:01:40] : VOTE_MUR
+[POST: 38|SET: 1] --8X8X2X9-- [0]
+[2009-04-11 02:01:40] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 38
+[2009-04-11 02:01:40] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 38
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 16
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 02:01:40] : GET_POSTDATA_error
+
+[2009-04-11 02:01:40] : TREND_CHECK
+SELECT id FROM wp_gdsr_multis_trend WHERE vote_date = '2009-04-11' and post_id = 38 and multi_id = 1
+[2009-04-11 02:01:40] : TREND_ID
+1
+[2009-04-11 02:01:40] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 8 WHERE id = 1 and item_id = 0 and source = 'trd'
+[2009-04-11 02:01:40] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 8 WHERE id = 1 and item_id = 1 and source = 'trd'
+[2009-04-11 02:01:40] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 2 WHERE id = 1 and item_id = 2 and source = 'trd'
+[2009-04-11 02:01:40] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 9 WHERE id = 1 and item_id = 3 and source = 'trd'
+[2009-04-11 02:01:40] : RID
+13
+[2009-04-11 02:01:40] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 8 WHERE id = 13 and item_id = 0 and source = 'dta'
+[2009-04-11 02:01:40] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 8 WHERE id = 13 and item_id = 1 and source = 'dta'
+[2009-04-11 02:01:40] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 2 WHERE id = 13 and item_id = 2 and source = 'dta'
+[2009-04-11 02:01:40] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + 9 WHERE id = 13 and item_id = 3 and source = 'dta'
+[2009-04-11 02:01:40] : LOG
+INSERT INTO wp_gdsr_votes_log (id, vote_type, multi_id, user_id, object, voted, ip, user_agent) VALUES (38, 'multis', 1, 0, 'a:4:{i:0;s:1:"8";i:1;s:1:"8";i:2;s:1:"2";i:3;s:1:"9";}', '2009-04-11 01:01:40', '127.0.0.1', '')
+[2009-04-11 02:01:40] : O
+Array
+(
+    [total] => Array
+        (
+            [rating] => 0.0
+            [votes] => 2
+        )
+
+    [users] => Array
+        (
+            [rating] => 0.0
+            [votes] => 0
+        )
+
+    [visitors] => Array
+        (
+            [rating] => 0.0
+            [votes] => 2
+        )
+
+)
+
