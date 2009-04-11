@@ -5,7 +5,9 @@
 === Version: 1.1.9 / april 15 2009 ===
   * new: added average rating columns for multi rating results
   * new: recalculating average multi ratings for posts
+  * new: recalculating average multi ratings trends for posts
   * new: tool to recalculate mutli ratings
+  * edit: multi rating ajax call improved
   * fix: critical error in saving multi rating votes
   * fix: some problems with database table upgrading
   * fix: various small bugs
