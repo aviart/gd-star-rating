@@ -237,89 +237,89 @@ msgstr ""
 msgid "Months"
 msgstr ""
 
-#: code/gd-star-functions.php:359
+#: code/gd-star-functions.php:374
 #: tinymce3/panels/advanced.php:228
 #: tinymce3/panels/advanced.php:253
 msgid "Mini"
 msgstr ""
 
-#: code/gd-star-functions.php:360
+#: code/gd-star-functions.php:375
 #: tinymce3/panels/advanced.php:229
 #: tinymce3/panels/advanced.php:254
 msgid "Small"
 msgstr ""
 
-#: code/gd-star-functions.php:361
+#: code/gd-star-functions.php:376
 #: tinymce3/panels/advanced.php:230
 #: tinymce3/panels/advanced.php:255
 msgid "Medium"
 msgstr ""
 
-#: code/gd-star-functions.php:362
+#: code/gd-star-functions.php:377
 #: tinymce3/panels/advanced.php:231
 #: tinymce3/panels/advanced.php:256
 msgid "Big"
 msgstr ""
 
-#: code/gd-star-functions.php:370
+#: code/gd-star-functions.php:385
 msgid "Stars and text"
 msgstr ""
 
-#: code/gd-star-functions.php:371
+#: code/gd-star-functions.php:386
 msgid "Stars only"
 msgstr ""
 
-#: code/gd-star-functions.php:372
+#: code/gd-star-functions.php:387
 msgid "Text only"
 msgstr ""
 
-#: code/gd-star-functions.php:380
+#: code/gd-star-functions.php:395
 msgid "No alignment"
 msgstr ""
 
-#: code/gd-star-functions.php:381
-#: code/gd-star-functions.php:410
+#: code/gd-star-functions.php:396
+#: code/gd-star-functions.php:425
 msgid "Left"
 msgstr ""
 
-#: code/gd-star-functions.php:382
+#: code/gd-star-functions.php:397
 msgid "Center"
 msgstr ""
 
-#: code/gd-star-functions.php:383
-#: code/gd-star-functions.php:412
+#: code/gd-star-functions.php:398
+#: code/gd-star-functions.php:427
 msgid "Right"
 msgstr ""
 
-#: code/gd-star-functions.php:391
+#: code/gd-star-functions.php:406
 msgid "No Animation"
 msgstr ""
 
-#: code/gd-star-functions.php:405
+#: code/gd-star-functions.php:420
 msgid "Always hide"
 msgstr ""
 
-#: code/gd-star-functions.php:406
+#: code/gd-star-functions.php:421
 msgid "Top"
 msgstr ""
 
-#: code/gd-star-functions.php:407
+#: code/gd-star-functions.php:422
 msgid "Top (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:408
+#: code/gd-star-functions.php:423
 msgid "Bottom"
 msgstr ""
 
-#: code/gd-star-functions.php:409
+#: code/gd-star-functions.php:424
 msgid "Bottom (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:411
+#: code/gd-star-functions.php:426
 msgid "Left (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:413
+#: code/gd-star-functions.php:428
 msgid "Right (hide if empty)"
 msgstr ""
 
@@ -496,7 +496,7 @@ msgstr ""
 #: options/users.php:60
 #: options/voters.php:142
 #: templates/tpl_panel_editor.php:38
-#: templates/tpl_panel_list.php:33
+#: templates/tpl_panel_list.php:31
 msgid "Name"
 msgstr ""
 
@@ -504,7 +504,7 @@ msgstr ""
 #: options/multis/sets.php:62
 #: templates/tpl_panel_editor.php:40
 #: templates/tpl_panel_editor.php:53
-#: templates/tpl_panel_list.php:35
+#: templates/tpl_panel_list.php:33
 msgid "Description"
 msgstr ""
 
@@ -573,8 +573,8 @@ msgstr ""
 #: options/users_log.php:23
 #: options/voters.php:116
 #: options/voters.php:32
-#: templates/tpl_panel_list.php:21
-#: templates/tpl_panel_list.php:6
+#: templates/tpl_panel_list.php:19
+#: templates/tpl_panel_list.php:4
 #: tinymce3/window.php:32
 #: widgets/widget_rating.php:154
 #: widgets/widget_rating.php:162
@@ -648,7 +648,7 @@ msgstr ""
 #: options/multis/sets.php:60
 #: options/users.php:61
 #: options/voters.php:141
-#: templates/tpl_panel_list.php:32
+#: templates/tpl_panel_list.php:30
 #: tinymce3/panels/advanced.php:145
 #: widgets/widget_rating.php:204
 msgid "ID"
@@ -1323,7 +1323,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1138
+#: gd-star-rating.php:1141
 msgid "UNINSTALL"
 msgstr ""
 
@@ -2047,7 +2047,7 @@ msgid "Vote log for post"
 msgstr ""
 
 #: templates/templates.php:31
-#: templates/tpl_panel_list.php:14
+#: templates/tpl_panel_list.php:12
 #: gd-star-rating.php:634
 #: gd-star-rating.php:634
 msgid "Templates"
@@ -2089,6 +2089,8 @@ msgstr ""
 
 #: templates/templates_articles.php:11
 #: templates/templates_multis.php:11
+#: templates/tpl_list.php:101
+#: templates/tpl_list.php:112
 msgid "Voting Active"
 msgstr ""
 
@@ -2174,6 +2176,12 @@ msgstr ""
 #: templates/tpl_list.php:26
 #: templates/tpl_list.php:57
 #: templates/tpl_list.php:76
+#: templates/tpl_list.php:98
+#: templates/tpl_list.php:99
+#: templates/tpl_list.php:100
+#: templates/tpl_list.php:109
+#: templates/tpl_list.php:110
+#: templates/tpl_list.php:111
 #: widgets/widget_rating.php:366
 #: widgets/widget_top.php:112
 msgid "article rating"
@@ -2425,6 +2433,29 @@ msgstr ""
 msgid "Multi Ratings Text"
 msgstr ""
 
+#: templates/tpl_list.php:96
+msgid "Standard Ratings Block"
+msgstr ""
+
+#: templates/tpl_list.php:102
+#: templates/tpl_list.php:113
+msgid "Already Voted Visitor"
+msgstr ""
+
+#: templates/tpl_list.php:103
+#: templates/tpl_list.php:114
+msgid "Already Voted User"
+msgstr ""
+
+#: templates/tpl_list.php:104
+#: templates/tpl_list.php:115
+msgid "Voting Not Allowed"
+msgstr ""
+
+#: templates/tpl_list.php:107
+msgid "Comments Ratings Block"
+msgstr ""
+
 #: templates/tpl_panel_editor.php:21
 msgid "Template Editor"
 msgstr ""
@@ -2458,23 +2489,27 @@ msgstr ""
 msgid "Save Template"
 msgstr ""
 
-#: templates/tpl_panel_list.php:34
+#: templates/tpl_panel_editor.php:85
+msgid "Select template to use for this element:"
+msgstr ""
+
+#: templates/tpl_panel_list.php:32
 msgid "Section / Type"
 msgstr ""
 
-#: templates/tpl_panel_list.php:36
+#: templates/tpl_panel_list.php:34
 msgid "Tag"
 msgstr ""
 
-#: templates/tpl_panel_list.php:37
+#: templates/tpl_panel_list.php:35
 msgid "Options"
 msgstr ""
 
-#: templates/tpl_panel_list.php:78
+#: templates/tpl_panel_list.php:76
 msgid "New template for:"
 msgstr ""
 
-#: templates/tpl_panel_list.php:80
+#: templates/tpl_panel_list.php:78
 msgid "Create"
 msgstr ""
 
@@ -2920,43 +2955,43 @@ msgstr ""
 msgid "T2"
 msgstr ""
 
-#: gd-star-rating.php:1218
+#: gd-star-rating.php:1221
 msgid "articles records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1220
+#: gd-star-rating.php:1223
 msgid "comments records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1224
+#: gd-star-rating.php:1227
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1226
+#: gd-star-rating.php:1229
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1230
+#: gd-star-rating.php:1233
 msgid "dead articles records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1232
+#: gd-star-rating.php:1235
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1234
+#: gd-star-rating.php:1237
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: gd-star-rating.php:1238
+#: gd-star-rating.php:1241
 msgid "dead articles records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1240
+#: gd-star-rating.php:1243
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1769
+#: gd-star-rating.php:1773
 msgid "(no title)"
 msgstr ""
 
