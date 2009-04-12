@@ -1,3 +1,4 @@
+<?php $gdsr_multis = GDSRDBMulti::get_multis_tinymce(); ?>
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Date Based Post Locking", "gd-star-rating"); ?></th>
     <td>
@@ -63,6 +64,24 @@
 </tr>
 <tr><th scope="row"><?php _e("Recalculate Multi Ratings Averages", "gd-star-rating"); ?></th>
     <td>
+        <form method="post">
+        <?php _e("If you change multi rating sets weight for the elements you can execute recaluculation of all average ratings saved. Select the set you want to recalculate for, or select all sets.", "gd-star-rating"); ?><br />
+        <?php _e("Use this also if you update from versions before 1.2.0 and you had problems with saving multi rating results.", "gd-star-rating"); ?><br />
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150" height="25"><?php _e("Select multi set", "gd-star-rating"); ?>:</td>
+                <td height="25">
+                <select name="gdsr_mulitrecalc_set" style="width: 200px">
+                    <option value="0"><?php _e("All Sets", "gd-star-rating"); ?></option>
+                    <?php GDSRHelper::render_styles_select($gdsr_multis); ?>
+                </select>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" class="inputbutton" value="<?php _e("Recalculate", "gd-star-rating"); ?>" name="gdsr_mulitrecalc_tool" id="gdsr_mulitrecalc_tool" />
+        <div class="gdsr-table-split"></div>
+        <?php _e("Depending on the number of posts, this operation can take a while to complete. Be patient.", "gd-star-rating"); ?>
+        </form>
     </td>
 </tr>
 </tbody></table>

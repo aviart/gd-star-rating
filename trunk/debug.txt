@@ -433,3 +433,1533 @@ stdClass Object
 
 [2009-04-11 02:36:05] : RID
 13
+[2009-04-11 11:32:11] : RID
+1
+[2009-04-11 11:32:17] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 72
+[2009-04-11 11:32:17] : GET_POSTDATA_results
+
+[2009-04-11 11:32:17] : GET_POSTDATA_error
+
+[2009-04-11 11:32:17] : ADD_DEFAULT_is_page
+0
+[2009-04-11 11:32:17] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (72, 'A', 'A', 'N', 'N', '0', 0, 0, 0, 0, -1, 'N', '')
+[2009-04-11 11:32:17] : ADD_DEFAULT_error
+
+[2009-04-11 11:32:17] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 72
+[2009-04-11 11:32:17] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 72
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 11:32:17] : GET_POSTDATA_error
+
+[2009-04-11 11:33:20] : RID
+1
+[2009-04-11 11:33:20] : DEL
+DELETE FROM wp_gdsr_multis_values where id = 1 and source = 'rvw'
+[2009-04-11 11:33:20] : INSERT
+INSERT INTO wp_gdsr_multis_values (id, source, item_id, user_voters, user_votes) VALUES (1, 'rvw', 0, 1, '0')
+[2009-04-11 11:33:20] : INSERT
+INSERT INTO wp_gdsr_multis_values (id, source, item_id, user_voters, user_votes) VALUES (1, 'rvw', 1, 1, '0')
+[2009-04-11 11:33:20] : INSERT
+INSERT INTO wp_gdsr_multis_values (id, source, item_id, user_voters, user_votes) VALUES (1, 'rvw', 2, 1, '0')
+[2009-04-11 11:33:20] : INSERT
+INSERT INTO wp_gdsr_multis_values (id, source, item_id, user_voters, user_votes) VALUES (1, 'rvw', 3, 1, '0')
+[2009-04-11 11:33:20] : RID
+1
+[2009-04-11 11:33:20] : DEL
+DELETE FROM wp_gdsr_multis_values where id = 1 and source = 'rvw'
+[2009-04-11 11:33:20] : INSERT
+INSERT INTO wp_gdsr_multis_values (id, source, item_id, user_voters, user_votes) VALUES (1, 'rvw', 0, 1, '0')
+[2009-04-11 11:33:20] : INSERT
+INSERT INTO wp_gdsr_multis_values (id, source, item_id, user_voters, user_votes) VALUES (1, 'rvw', 1, 1, '0')
+[2009-04-11 11:33:20] : INSERT
+INSERT INTO wp_gdsr_multis_values (id, source, item_id, user_voters, user_votes) VALUES (1, 'rvw', 2, 1, '0')
+[2009-04-11 11:33:20] : INSERT
+INSERT INTO wp_gdsr_multis_values (id, source, item_id, user_voters, user_votes) VALUES (1, 'rvw', 3, 1, '0')
+[2009-04-11 11:33:21] : RID
+1
+[2009-04-11 11:33:24] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 72
+[2009-04-11 11:33:24] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 72
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 11:33:24] : GET_POSTDATA_error
+
+[2009-04-11 11:33:24] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 72
+[2009-04-11 11:33:24] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 72
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 1
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 11:33:24] : GET_POSTDATA_error
+
+[2009-04-11 11:33:24] : RID
+1
+[2009-04-11 11:34:00] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 72
+[2009-04-11 11:34:00] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 72
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 2
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 11:34:00] : GET_POSTDATA_error
+
+[2009-04-11 11:34:00] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 72
+[2009-04-11 11:34:00] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 72
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 2
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 11:34:00] : GET_POSTDATA_error
+
+[2009-04-11 11:34:00] : RID
+1
+[2009-04-11 11:34:05] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 72
+[2009-04-11 11:34:05] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 72
+    [rules_articles] => A
+    [rules_comments] => A
+    [moderate_articles] => N
+    [moderate_comments] => N
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 2
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => N
+    [expiry_value] => 
+)
+
+[2009-04-11 11:34:05] : GET_POSTDATA_error
+
+[2009-04-11 11:34:05] : VOTE_MUR
+[POST: 72|SET: 1] --10X6X8X7-- [1]
+[2009-04-11 11:34:05] : TREND_CHECK
+SELECT id FROM wp_gdsr_multis_trend WHERE vote_date = '2009-04-11' and post_id = 72 and multi_id = 1
+[2009-04-11 11:34:05] : TREND_ID
+0
+[2009-04-11 11:34:05] : SAVE_VOTE
+INSERT INTO wp_gdsr_multis_values (id, source, user_voters, user_votes, item_id) VALUES (1, 'trd', 1, 10, 0)
+[2009-04-11 11:34:05] : SAVE_VOTE
+INSERT INTO wp_gdsr_multis_values (id, source, user_voters, user_votes, item_id) VALUES (1, 'trd', 1, 6, 1)
+[2009-04-11 11:34:05] : SAVE_VOTE
+INSERT INTO wp_gdsr_multis_values (id, source, user_voters, user_votes, item_id) VALUES (1, 'trd', 1, 8, 2)
+[2009-04-11 11:34:05] : SAVE_VOTE
+INSERT INTO wp_gdsr_multis_values (id, source, user_voters, user_votes, item_id) VALUES (1, 'trd', 1, 7, 3)
+[2009-04-11 11:34:05] : TR
+select * from wp_gdsr_multis_values where source = 'trd' and id = 1 order by item_id asc
+[2009-04-11 11:34:05] : RID
+1
+[2009-04-11 11:34:05] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET user_voters = user_voters + 1, user_votes = user_votes + 10 WHERE id = 1 and item_id = 0 and source = 'dta'
+[2009-04-11 11:34:05] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET user_voters = user_voters + 1, user_votes = user_votes + 6 WHERE id = 1 and item_id = 1 and source = 'dta'
+[2009-04-11 11:34:05] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET user_voters = user_voters + 1, user_votes = user_votes + 8 WHERE id = 1 and item_id = 2 and source = 'dta'
+[2009-04-11 11:34:05] : SAVE_VOTE
+UPDATE wp_gdsr_multis_values SET user_voters = user_voters + 1, user_votes = user_votes + 7 WHERE id = 1 and item_id = 3 and source = 'dta'
+[2009-04-11 11:34:05] : LOG
+INSERT INTO wp_gdsr_votes_log (id, vote_type, multi_id, user_id, object, voted, ip, user_agent) VALUES (72, 'multis', 1, 1, 'a:4:{i:0;s:2:"10";i:1;s:1:"6";i:2;s:1:"8";i:3;s:1:"7";}', '2009-04-11 22:34:05', '127.0.0.1', '')
+[2009-04-11 11:34:05] : O
+Array
+(
+    [total] => Array
+        (
+            [rating] => 7.8
+            [votes] => 1
+        )
+
+    [json] => Array
+        (
+            [0] => 200
+            [1] => 120
+            [2] => 160
+            [3] => 140
+        )
+
+    [users] => Array
+        (
+            [rating] => 7.8
+            [votes] => 1
+        )
+
+    [visitors] => Array
+        (
+            [rating] => 0.0
+            [votes] => 0
+        )
+
+)
+
+[2009-04-12 12:14:50] : O
+Array
+(
+    [users] => Array
+        (
+            [rating] => 7.8
+            [votes] => 1
+        )
+
+    [visitors] => Array
+        (
+            [rating] => 0.0
+            [votes] => 0
+        )
+
+)
+
+[2009-04-12 12:14:50] : TR
+select * from wp_gdsr_multis_values where source = 'trd' and id = 1 order by item_id asc
+[2009-04-12 12:37:41] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 107
+[2009-04-12 12:37:41] : GET_POSTDATA_results
+
+[2009-04-12 12:37:41] : GET_POSTDATA_error
+
+[2009-04-12 12:37:41] : ADD_DEFAULT_is_page
+0
+[2009-04-12 12:37:41] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (107, '', '', '', '', '0', 0, 0, 0, 0, -1, '', '')
+[2009-04-12 12:37:41] : ADD_DEFAULT_error
+
+[2009-04-12 12:37:41] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 107
+[2009-04-12 12:37:41] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 107
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:41] : GET_POSTDATA_error
+
+[2009-04-12 12:37:41] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 108
+[2009-04-12 12:37:41] : GET_POSTDATA_results
+
+[2009-04-12 12:37:41] : GET_POSTDATA_error
+
+[2009-04-12 12:37:41] : ADD_DEFAULT_is_page
+0
+[2009-04-12 12:37:41] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (108, '', '', '', '', '0', 0, 0, 0, 0, -1, '', '')
+[2009-04-12 12:37:41] : ADD_DEFAULT_error
+
+[2009-04-12 12:37:41] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 108
+[2009-04-12 12:37:41] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 108
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:41] : GET_POSTDATA_error
+
+[2009-04-12 12:37:41] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 109
+[2009-04-12 12:37:41] : GET_POSTDATA_results
+
+[2009-04-12 12:37:41] : GET_POSTDATA_error
+
+[2009-04-12 12:37:41] : ADD_DEFAULT_is_page
+0
+[2009-04-12 12:37:41] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (109, '', '', '', '', '0', 0, 0, 0, 0, -1, '', '')
+[2009-04-12 12:37:41] : ADD_DEFAULT_error
+
+[2009-04-12 12:37:41] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 109
+[2009-04-12 12:37:41] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 109
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:41] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 104
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : ADD_DEFAULT_is_page
+0
+[2009-04-12 12:37:42] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (104, '', '', '', '', '0', 0, 0, 0, 0, -1, '', '')
+[2009-04-12 12:37:42] : ADD_DEFAULT_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 104
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 104
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 105
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : ADD_DEFAULT_is_page
+0
+[2009-04-12 12:37:42] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (105, '', '', '', '', '0', 0, 0, 0, 0, -1, '', '')
+[2009-04-12 12:37:42] : ADD_DEFAULT_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 105
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 105
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 106
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : ADD_DEFAULT_is_page
+0
+[2009-04-12 12:37:42] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (106, '', '', '', '', '0', 0, 0, 0, 0, -1, '', '')
+[2009-04-12 12:37:42] : ADD_DEFAULT_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 106
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 106
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 103
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : ADD_DEFAULT_is_page
+0
+[2009-04-12 12:37:42] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (103, '', '', '', '', '0', 0, 0, 0, 0, -1, '', '')
+[2009-04-12 12:37:42] : ADD_DEFAULT_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 103
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 103
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 102
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : ADD_DEFAULT_is_page
+0
+[2009-04-12 12:37:42] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (102, '', '', '', '', '0', 0, 0, 0, 0, -1, '', '')
+[2009-04-12 12:37:42] : ADD_DEFAULT_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 102
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 102
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 100
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : ADD_DEFAULT_is_page
+0
+[2009-04-12 12:37:42] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (100, '', '', '', '', '0', 0, 0, 0, 0, -1, '', '')
+[2009-04-12 12:37:42] : ADD_DEFAULT_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 100
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 100
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 101
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:42] : ADD_DEFAULT_is_page
+0
+[2009-04-12 12:37:42] : ADD_DEFAULT_sql
+INSERT INTO wp_gdsr_data_article (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (101, '', '', '', '', '0', 0, 0, 0, 0, -1, '', '')
+[2009-04-12 12:37:42] : ADD_DEFAULT_error
+
+[2009-04-12 12:37:42] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 101
+[2009-04-12 12:37:42] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 101
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:42] : GET_POSTDATA_error
+
+[2009-04-12 12:37:53] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 109
+[2009-04-12 12:37:53] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 109
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:53] : GET_POSTDATA_error
+
+[2009-04-12 12:37:53] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 108
+[2009-04-12 12:37:53] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 108
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:53] : GET_POSTDATA_error
+
+[2009-04-12 12:37:54] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 107
+[2009-04-12 12:37:54] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 107
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:54] : GET_POSTDATA_error
+
+[2009-04-12 12:37:54] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 106
+[2009-04-12 12:37:54] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 106
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:54] : GET_POSTDATA_error
+
+[2009-04-12 12:37:54] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 105
+[2009-04-12 12:37:54] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 105
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:54] : GET_POSTDATA_error
+
+[2009-04-12 12:37:54] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 104
+[2009-04-12 12:37:54] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 104
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:54] : GET_POSTDATA_error
+
+[2009-04-12 12:37:54] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 103
+[2009-04-12 12:37:54] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 103
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:54] : GET_POSTDATA_error
+
+[2009-04-12 12:37:54] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 102
+[2009-04-12 12:37:54] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 102
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:54] : GET_POSTDATA_error
+
+[2009-04-12 12:37:54] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 101
+[2009-04-12 12:37:54] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 101
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:54] : GET_POSTDATA_error
+
+[2009-04-12 12:37:54] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 100
+[2009-04-12 12:37:54] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 100
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:37:54] : GET_POSTDATA_error
+
+[2009-04-12 12:38:12] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 107
+[2009-04-12 12:38:12] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 107
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:12] : GET_POSTDATA_error
+
+[2009-04-12 12:38:12] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 108
+[2009-04-12 12:38:12] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 108
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:12] : GET_POSTDATA_error
+
+[2009-04-12 12:38:12] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 109
+[2009-04-12 12:38:12] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 109
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:12] : GET_POSTDATA_error
+
+[2009-04-12 12:38:12] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 104
+[2009-04-12 12:38:12] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 104
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:12] : GET_POSTDATA_error
+
+[2009-04-12 12:38:12] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 105
+[2009-04-12 12:38:12] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 105
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:12] : GET_POSTDATA_error
+
+[2009-04-12 12:38:12] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 106
+[2009-04-12 12:38:12] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 106
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:12] : GET_POSTDATA_error
+
+[2009-04-12 12:38:12] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 103
+[2009-04-12 12:38:12] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 103
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:12] : GET_POSTDATA_error
+
+[2009-04-12 12:38:12] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 102
+[2009-04-12 12:38:12] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 102
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:12] : GET_POSTDATA_error
+
+[2009-04-12 12:38:12] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 100
+[2009-04-12 12:38:12] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 100
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:12] : GET_POSTDATA_error
+
+[2009-04-12 12:38:12] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 101
+[2009-04-12 12:38:12] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 101
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:12] : GET_POSTDATA_error
+
+[2009-04-12 12:38:35] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 107
+[2009-04-12 12:38:35] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 107
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:35] : GET_POSTDATA_error
+
+[2009-04-12 12:38:35] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 108
+[2009-04-12 12:38:35] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 108
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:35] : GET_POSTDATA_error
+
+[2009-04-12 12:38:35] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 109
+[2009-04-12 12:38:35] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 109
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:35] : GET_POSTDATA_error
+
+[2009-04-12 12:38:35] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 104
+[2009-04-12 12:38:35] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 104
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:35] : GET_POSTDATA_error
+
+[2009-04-12 12:38:35] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 105
+[2009-04-12 12:38:35] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 105
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:35] : GET_POSTDATA_error
+
+[2009-04-12 12:38:35] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 106
+[2009-04-12 12:38:35] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 106
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:35] : GET_POSTDATA_error
+
+[2009-04-12 12:38:35] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 103
+[2009-04-12 12:38:35] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 103
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:35] : GET_POSTDATA_error
+
+[2009-04-12 12:38:35] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 102
+[2009-04-12 12:38:35] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 102
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:35] : GET_POSTDATA_error
+
+[2009-04-12 12:38:36] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 100
+[2009-04-12 12:38:36] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 100
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:36] : GET_POSTDATA_error
+
+[2009-04-12 12:38:36] : GET_POSTDATA_sql
+select * from wp_gdsr_data_article WHERE post_id = 101
+[2009-04-12 12:38:36] : GET_POSTDATA_results
+stdClass Object
+(
+    [post_id] => 101
+    [rules_articles] => 
+    [rules_comments] => 
+    [moderate_articles] => 
+    [moderate_comments] => 
+    [is_page] => 0
+    [user_voters] => 0
+    [user_votes] => 0.0
+    [visitor_voters] => 0
+    [visitor_votes] => 0.0
+    [review] => -1.0
+    [review_text] => 
+    [views] => 0
+    [user_recc_plus] => 0
+    [user_recc_minus] => 0
+    [visitor_recc_plus] => 0
+    [visitor_recc_minus] => 0
+    [expiry_type] => 
+    [expiry_value] => 
+)
+
+[2009-04-12 12:38:36] : GET_POSTDATA_error
+

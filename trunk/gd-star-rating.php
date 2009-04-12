@@ -1163,7 +1163,7 @@ if (!class_exists('GDStarRating')) {
                     GDSRDBMulti::save_review($record_id, $values);
                 }
                 $this->custom_actions('init_save_review');
-                wp_redirect($_SERVER['REQUEST_URI']);
+                wp_redirect_self();
                 exit;
             }
 
@@ -1175,7 +1175,7 @@ if (!class_exists('GDStarRating')) {
                     fwrite($f, $newcontent);
                     fclose($f);
                 }
-                wp_redirect("admin.php?page=gd-star-rating-tools");
+                wp_redirect_self();
                 exit;
             }
 
@@ -1183,14 +1183,14 @@ if (!class_exists('GDStarRating')) {
                 GDSRHelper::clean_cache(substr(STARRATING_CACHE_PATH, 0, strlen(STARRATING_CACHE_PATH) - 1));
                 $this->o["cache_cleanup_last"] = date("r");
                 update_option('gd-star-rating', $this->o);
-                wp_redirect("admin.php?page=gd-star-rating-tools");
+                wp_redirect_self();
                 exit;
             }
 
             if (isset($_POST['gdsr_preview_scan'])) {
                 $this->g = $this->gfx_scan();
                 update_option('gd-star-rating-gfx', $this->g);
-                wp_redirect("admin.php?page=gd-star-rating-tools");
+                wp_redirect_self();
                 exit;
             }
 
@@ -1201,7 +1201,15 @@ if (!class_exists('GDStarRating')) {
                 gdDBInstallGDSR::alter_tables(STARRATING_PATH);
                 $this->o["database_upgrade"] = date("r");
                 update_option('gd-star-rating', $this->o);
-                wp_redirect("admin.php?page=gd-star-rating-tools");
+                wp_redirect_self();
+                exit;
+            }
+
+            if (isset($_POST['gdsr_mulitrecalc_tool'])) {
+                $set_id = $_POST['gdsr_mulitrecalc_set'];
+                if ($set_id > 0) GDSRDBMulti::recalculate_set($set_id);
+                else GDSRDBMulti::recalculate_all_sets();
+                wp_redirect_self();
                 exit;
             }
 
@@ -1235,7 +1243,7 @@ if (!class_exists('GDStarRating')) {
                 $this->o["database_cleanup"] = date("r");
                 $this->o["database_cleanup_msg"] = $msg;
                 update_option('gd-star-rating', $this->o);
-                wp_redirect("admin.php?page=gd-star-rating-tools");
+                wp_redirect_self();
                 exit;
             }
 
@@ -1244,13 +1252,13 @@ if (!class_exists('GDStarRating')) {
                 GDSRDatabase::lock_post_massive($lock_date);
                 $this->o["mass_lock"] = $lock_date;
                 update_option('gd-star-rating', $this->o);
-                wp_redirect("admin.php?page=gd-star-rating-tools");
+                wp_redirect_self();
                 exit;
             }
 
             if (isset($_POST['gdsr_rules_set'])) {
                 GDSRDatabase::update_settings_full($_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"]);
-                wp_redirect("admin.php?page=gd-star-rating-tools");
+                wp_redirect_self();
                 exit;
             }
 
@@ -1394,7 +1402,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
 
             if ($allow_vote) {
                 GDSRDBMulti::save_vote($post_id, $set_id, $user, $ip, $ua, $values, $data);
-                $summary = GDSRDBMulti::recalculate_multi_averages($post_id, $set_id, $data->rules_articles);
+                $summary = GDSRDBMulti::recalculate_multi_averages($post_id, $set_id, $data->rules_articles, $set);
                 $this->save_cookie($post_id."#".$set_id, "multis");
                 $msg = 'VOTED';
 
