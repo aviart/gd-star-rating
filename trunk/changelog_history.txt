@@ -7,6 +7,8 @@
   * new: recalculating average multi ratings for posts
   * new: recalculating average multi ratings trends for posts
   * new: tool to recalculate multi ratings
+  * new: t2 templates system expanded with co-dependent templates
+  * new: t2 templates for rating and comment rating blocks
   * edit: multi rating ajax call improved
   * edit: few css and javascript layout improvements
   * fix: critical error in saving multi rating votes
