@@ -248,89 +248,89 @@ msgstr "Дани"
 msgid "Months"
 msgstr "Месеци"
 
-#: code/gd-star-functions.php:359
+#: code/gd-star-functions.php:374
 #: tinymce3/panels/advanced.php:228
 #: tinymce3/panels/advanced.php:253
 msgid "Mini"
 msgstr "Мини"
 
-#: code/gd-star-functions.php:360
+#: code/gd-star-functions.php:375
 #: tinymce3/panels/advanced.php:229
 #: tinymce3/panels/advanced.php:254
 msgid "Small"
 msgstr "Мала"
 
-#: code/gd-star-functions.php:361
+#: code/gd-star-functions.php:376
 #: tinymce3/panels/advanced.php:230
 #: tinymce3/panels/advanced.php:255
 msgid "Medium"
 msgstr "Средња"
 
-#: code/gd-star-functions.php:362
+#: code/gd-star-functions.php:377
 #: tinymce3/panels/advanced.php:231
 #: tinymce3/panels/advanced.php:256
 msgid "Big"
 msgstr "Велика"
 
-#: code/gd-star-functions.php:370
+#: code/gd-star-functions.php:385
 msgid "Stars and text"
 msgstr "Звезде и текст"
 
-#: code/gd-star-functions.php:371
+#: code/gd-star-functions.php:386
 msgid "Stars only"
 msgstr "Само звезде"
 
-#: code/gd-star-functions.php:372
+#: code/gd-star-functions.php:387
 msgid "Text only"
 msgstr "Само текст"
 
-#: code/gd-star-functions.php:380
+#: code/gd-star-functions.php:395
 msgid "No alignment"
 msgstr "Без поравнања"
 
-#: code/gd-star-functions.php:381
-#: code/gd-star-functions.php:410
+#: code/gd-star-functions.php:396
+#: code/gd-star-functions.php:425
 msgid "Left"
 msgstr "Лево"
 
-#: code/gd-star-functions.php:382
+#: code/gd-star-functions.php:397
 msgid "Center"
 msgstr "Центар"
 
-#: code/gd-star-functions.php:383
-#: code/gd-star-functions.php:412
+#: code/gd-star-functions.php:398
+#: code/gd-star-functions.php:427
 msgid "Right"
 msgstr "Десно"
 
-#: code/gd-star-functions.php:391
+#: code/gd-star-functions.php:406
 msgid "No Animation"
 msgstr "Без Анимације"
 
-#: code/gd-star-functions.php:405
+#: code/gd-star-functions.php:420
 msgid "Always hide"
 msgstr "Увек Сакриј"
 
-#: code/gd-star-functions.php:406
+#: code/gd-star-functions.php:421
 msgid "Top"
 msgstr "Врх"
 
-#: code/gd-star-functions.php:407
+#: code/gd-star-functions.php:422
 msgid "Top (hide if empty)"
 msgstr "Врх (сакриј ако је празан)"
 
-#: code/gd-star-functions.php:408
+#: code/gd-star-functions.php:423
 msgid "Bottom"
 msgstr "Дно"
 
-#: code/gd-star-functions.php:409
+#: code/gd-star-functions.php:424
 msgid "Bottom (hide if empty)"
 msgstr "Дно (сакриј ако је празан)"
 
-#: code/gd-star-functions.php:411
+#: code/gd-star-functions.php:426
 msgid "Left (hide if empty)"
 msgstr "Лево (сакриј ако је празан)"
 
-#: code/gd-star-functions.php:413
+#: code/gd-star-functions.php:428
 msgid "Right (hide if empty)"
 msgstr "Десно (сакриј ако је празан)"
 
@@ -348,51 +348,51 @@ msgstr "Плугин није доступан за увоз."
 msgid "Data imported."
 msgstr "Подаци увезени."
 
-#: integrate/edit.php:3
+#: integrate/edit.php:1
 msgid "Post Review"
 msgstr "Оцена"
 
-#: integrate/edit.php:5
+#: integrate/edit.php:3
 msgid "Value"
 msgstr "Врдност"
 
-#: integrate/edit.php:17
+#: integrate/edit.php:15
 msgid "Post Rating"
 msgstr "Оцена"
 
-#: integrate/edit.php:19
-#: integrate/edit.php:35
+#: integrate/edit.php:17
+#: integrate/edit.php:33
 msgid "Vote Rule"
 msgstr "Правила Гласања"
 
-#: integrate/edit.php:25
-#: integrate/edit.php:41
+#: integrate/edit.php:23
+#: integrate/edit.php:39
 msgid "Moderate"
 msgstr "Модерација"
 
-#: integrate/edit.php:33
+#: integrate/edit.php:31
 msgid "Comments Rating"
 msgstr "Оцена Кометара."
 
-#: integrate/edit.php:50
+#: integrate/edit.php:48
 #: templates/templates_standard.php:97
 msgid "Time Restriction"
 msgstr "Временско Ограничење"
 
-#: integrate/edit.php:52
+#: integrate/edit.php:50
 #: options/articles.php:308
 #: options/categories.php:192
 msgid "Restriction"
 msgstr "Ограничења"
 
-#: integrate/edit.php:59
+#: integrate/edit.php:57
 #: options/articles.php:315
 #: options/categories.php:199
 #: tinymce3/panels/advanced.php:166
 msgid "Date"
 msgstr "Датум"
 
-#: integrate/edit.php:67
+#: integrate/edit.php:65
 #: options/articles.php:314
 #: options/categories.php:198
 msgid "Countdown"
@@ -402,27 +402,36 @@ msgstr "Одбројавање"
 msgid "You don't have any multi rating sets defined. Create at least one set."
 msgstr "Немате дефинисане мулти рејтинг сетове. Креирајте макар један сет."
 
-#: integrate/edit_multi.php:5
+#: integrate/edit_multi.php:11
+#: options/tools/tools_bulk.php:58
+#: tinymce3/panels/advanced.php:217
+#: tinymce3/panels/advanced.php:242
+#: tinymce3/panels/multi.php:5
+#: tinymce3/panels/multi.php:25
+msgid "Set"
+msgstr "Сет"
+
+#: integrate/edit_multi.php:18
 msgid "To change the active set, you need to select the set you want from the list on the left, and save this article to accept the change."
 msgstr "Да би променили активни сет, потребно је да селектујете сет из листе лево, и да снимите чланак да прихвати промене."
 
-#: integrate/edit_multi.php:6
+#: integrate/edit_multi.php:20
 msgid "All values for all sets will be saved in the database. This allows different multi rating sets reviews."
 msgstr "Све вредности за све сетове биће снимљене у бази. Ово дозвољава употребу различитих рејтинг сетова."
 
-#: integrate/edit_multi.php:14
+#: integrate/edit_multi.php:33
 msgid "Clear"
 msgstr "Очисти"
 
-#: integrate/edit_multi.php:15
+#: integrate/edit_multi.php:34
 msgid "Revert"
 msgstr "Врати"
 
-#: integrate/edit_multi.php:8
+#: integrate/edit_multi.php:27
 msgid "Set ID"
 msgstr "Сет ИД"
 
-#: integrate/edit_multi.php:9
+#: integrate/edit_multi.php:28
 msgid "Set Name"
 msgstr "Име Сета"
 
@@ -498,7 +507,7 @@ msgstr "Мулти Сет Едитор"
 #: options/users.php:60
 #: options/voters.php:142
 #: templates/tpl_panel_editor.php:38
-#: templates/tpl_panel_list.php:33
+#: templates/tpl_panel_list.php:31
 msgid "Name"
 msgstr "Назив"
 
@@ -506,7 +515,7 @@ msgstr "Назив"
 #: options/multis/sets.php:62
 #: templates/tpl_panel_editor.php:40
 #: templates/tpl_panel_editor.php:53
-#: templates/tpl_panel_list.php:35
+#: templates/tpl_panel_list.php:33
 msgid "Description"
 msgstr "Опис"
 
@@ -552,7 +561,7 @@ msgstr "Мулти Сет Резултати"
 #: templates/templates_standard.php:1
 #: tinymce3/window.php:56
 #: tinymce3/window.php:57
-#: gd-star-rating.php:622
+#: gd-star-rating.php:627
 msgid "Articles"
 msgstr "Чланци"
 
@@ -574,8 +583,8 @@ msgstr "Претрага"
 #: options/users_log.php:23
 #: options/voters.php:116
 #: options/voters.php:32
-#: templates/tpl_panel_list.php:21
-#: templates/tpl_panel_list.php:6
+#: templates/tpl_panel_list.php:19
+#: templates/tpl_panel_list.php:4
 #: tinymce3/window.php:32
 #: widgets/widget_rating.php:154
 #: widgets/widget_rating.php:162
@@ -602,7 +611,7 @@ msgstr "Поглед"
 #: options/settings/settings_administration.php:54
 #: options/articles.php:156
 #: options/categories.php:69
-#: gd-star-rating.php:623
+#: gd-star-rating.php:628
 msgid "Categories"
 msgstr "Категорије"
 
@@ -636,7 +645,7 @@ msgid "Voters"
 msgstr "Гласачи"
 
 #: options/multis/sets.php:44
-#: gd-star-rating.php:626
+#: gd-star-rating.php:631
 msgid "Multi Sets"
 msgstr "Мулти Сетови"
 
@@ -647,7 +656,7 @@ msgstr "Додај Нови Мулти Сет"
 #: options/multis/sets.php:60
 #: options/users.php:61
 #: options/voters.php:141
-#: templates/tpl_panel_list.php:32
+#: templates/tpl_panel_list.php:30
 #: tinymce3/panels/advanced.php:145
 #: widgets/widget_rating.php:204
 msgid "ID"
@@ -682,7 +691,7 @@ msgstr "Обриши Селектоване Сетове"
 #: options/multis/sets.php:100
 #: options/multis/sets.php:109
 #: options/settings/settings_rss.php:1
-#: options/tools/tools_bulk.php:21
+#: options/tools/tools_bulk.php:22
 #: options/categories.php:91
 msgid "Posts"
 msgstr "Чланци"
@@ -703,7 +712,7 @@ msgstr "Редови за приказ"
 #: options/settings/settings_administration.php:30
 #: options/settings.php:37
 #: tinymce3/panels/multi.php:15
-#: gd-star-rating.php:627
+#: gd-star-rating.php:632
 msgid "Settings"
 msgstr "Подешавања"
 
@@ -738,7 +747,7 @@ msgstr "Контрола подешавања."
 #: options/categories.php:224
 #: options/comments.php:139
 #: options/users.php:47
-#: gd-star-rating.php:624
+#: gd-star-rating.php:629
 msgid "Users"
 msgstr "Корисници"
 
@@ -748,7 +757,7 @@ msgstr "Контрола корисника."
 
 #: options/settings/settings_administration.php:58
 #: options/setup.php:28
-#: gd-star-rating.php:635
+#: gd-star-rating.php:640
 msgid "Setup"
 msgstr "Организација"
 
@@ -757,7 +766,7 @@ msgid "Uninstall and maintenance."
 msgstr "Деисталација и одржавање."
 
 #: options/settings/settings_administration.php:62
-#: gd-star-rating.php:632
+#: gd-star-rating.php:637
 msgid "Import"
 msgstr "Увоз"
 
@@ -766,7 +775,7 @@ msgid "Importing data for other rating plugins."
 msgstr "Увоз података из других рејтинг плагинова."
 
 #: options/settings/settings_administration.php:64
-#: gd-star-rating.php:633
+#: gd-star-rating.php:638
 msgid "Export"
 msgstr "Извоз"
 
@@ -777,7 +786,7 @@ msgstr "Извоз података."
 #: options/settings/settings_administration.php:66
 #: options/ips.php:67
 #: options/users_log.php:177
-#: gd-star-rating.php:631
+#: gd-star-rating.php:636
 msgid "IP's"
 msgstr "IP"
 
@@ -1039,98 +1048,94 @@ msgid "Voting"
 msgstr "Гласање"
 
 #: options/settings/settings_features.php:3
-msgid "AJAX enabled rating."
-msgstr "AJAX гласање."
-
-#: options/settings/settings_features.php:5
 msgid "Use Nonce with AJAX for improved security."
 msgstr "Користи Nonce уз AJAX за повећану сигурност."
 
-#: options/settings/settings_features.php:7
+#: options/settings/settings_features.php:5
 msgid "Use banned IP's lists to filter out visitors."
 msgstr "Корисит листу забрањених ИП адреса за филтрирање посетилаца."
 
-#: options/settings/settings_features.php:9
+#: options/settings/settings_features.php:7
 msgid "Don't even show rating stars to visitors comming from banned IP's."
 msgstr "Не приказуј блок за гласање посетиоцима који долазе са забрањених ИП адреса."
 
-#: options/settings/settings_features.php:12
+#: options/settings/settings_features.php:10
 msgid "Plugin Features"
 msgstr "Опције плугина"
 
-#: options/settings/settings_features.php:14
+#: options/settings/settings_features.php:12
 msgid "Link external javascript rating code, instead of embeding it into the page."
 msgstr "Линкуј екстерни јавасцрипт фајл, уместо да се уграђује у страну."
 
-#: options/settings/settings_features.php:16
+#: options/settings/settings_features.php:14
 msgid "Link external CSS rating code, uncheck to embed all the CSS into the page."
 msgstr "Линкуј екстерни ЦСС фајл, ако не код ће се уградити у страну."
 
-#: options/settings/settings_features.php:18
+#: options/settings/settings_features.php:16
 msgid "Link additional css file"
 msgstr "Линкуј додатни ЦСС фајл"
 
-#: options/settings/settings_features.php:23
+#: options/settings/settings_features.php:21
 msgid "Time restriction for rating."
 msgstr "Временска ограничења за рејтинг."
 
-#: options/settings/settings_features.php:25
+#: options/settings/settings_features.php:23
 msgid "Moderation options and handling."
 msgstr "Опције за модерацију."
 
-#: options/settings/settings_features.php:27
+#: options/settings/settings_features.php:25
 msgid "Multiple rating support."
 msgstr "Подршка за вишеструки рејтинг."
 
-#: options/settings/settings_features.php:31
+#: options/settings/settings_features.php:29
 msgid "Post And Page Review Rating."
 msgstr "Рејтинг Критике."
 
-#: options/settings/settings_features.php:33
+#: options/settings/settings_features.php:31
 msgid "Comments Rating."
 msgstr "Оцена Кометара."
 
-#: options/settings/settings_features.php:35
+#: options/settings/settings_features.php:33
 msgid "Comments Review Rating."
 msgstr "Оцена Autora Кометара."
 
-#: options/settings/settings_features.php:40
+#: options/settings/settings_features.php:38
 msgid "Use graphics generator to generate and display static stars images."
 msgstr "Користи генератор слика за статичке слике звезда."
 
-#: options/settings/settings_features.php:42
+#: options/settings/settings_features.php:40
 msgid "Prevent outside access to graphics generator. Graphics integrated into RSS is not affected."
 msgstr "Спречите спољни приступ генератору слика. Слике интегрисане у РСС неће бити погођене."
 
-#: options/settings/settings_features.php:45
+#: options/settings/settings_features.php:43
 msgid "Charset"
 msgstr "Карактер сет"
 
-#: options/settings/settings_features.php:49
+#: options/settings/settings_features.php:47
 msgid "Character encoding"
 msgstr "Карактер кодирање"
 
-#: options/settings/settings_features.php:53
+#: options/settings/settings_features.php:51
 msgid "For list of supported charsets visit: "
 msgstr "За листу подржаних карактер сетова посети:"
 
-#: options/settings/settings_features.php:56
+#: options/settings/settings_features.php:54
 msgid "Rating Log"
 msgstr "Листа Рејтинга"
 
-#: options/settings/settings_features.php:58
+#: options/settings/settings_features.php:56
 msgid "Log user agent (browser) information."
 msgstr "Памти податке о програму корисника."
 
-#: options/settings/settings_features.php:60
+#: options/settings/settings_features.php:58
 msgid "Save cookies with ratings."
 msgstr "Сними колачић за рејтинг."
 
-#: options/settings/settings_features.php:63
+#: options/settings/settings_features.php:61
 msgid "Internet Explorer"
 msgstr "Интернет Експлорер"
 
-#: options/settings/settings_features.php:65
+#: options/settings/settings_features.php:63
 msgid "Use IE opacity fix for multi ratings."
 msgstr "Додај ИЕ фикс за провидност мулти рејтинга."
 
@@ -1256,6 +1261,7 @@ msgstr "Средња оцена целог извештаја"
 
 #: options/setup/setup_database.php:1
 #: options/setup/setup_database.php:5
+#: options/setup/setup_database.php:15
 #: options/setup.php:2
 msgid "Reinstall"
 msgstr "Пеинсталација"
@@ -1265,11 +1271,20 @@ msgid "All database tables will be deleted, and installed again."
 msgstr "Све табеле ће бити обрисане, и поново креиране."
 
 #: options/setup/setup_database.php:7
+#: options/setup/setup_database.php:17
 #: options/setup/setup_global.php:7
 #: options/setup/setup_global.php:17
 #: options/setup/setup_uninstall.php:7
 msgid "This operation is not reversable. Backup your data if you want to be able to restore it later."
 msgstr "Ова операције се не може повратити. Сачувајте податке уколико желите да их вратите касније."
+
+#: options/setup/setup_database.php:11
+msgid "Reinstall Multi Ratings"
+msgstr "Реинсталирај Мулти Рејтинг"
+
+#: options/setup/setup_database.php:14
+msgid "Only multi ratings tables will be deleted, and installed again."
+msgstr "Само мулти рејтинг табеле ће бити обрисане, и поново креиране."
 
 #: options/setup/setup_global.php:1
 #: options/setup/setup_global.php:5
@@ -1310,32 +1325,32 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr "После брисања, плугин ће бити искључен. "
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1132
+#: gd-star-rating.php:1141
 msgid "UNINSTALL"
 msgstr "ДЕИНСТАЛИРАЈ"
 
-#: options/tools/tools_bulk.php:1
+#: options/tools/tools_bulk.php:2
 msgid "Date Based Post Locking"
 msgstr "Закључавање гласања на бази датума"
 
-#: options/tools/tools_bulk.php:6
+#: options/tools/tools_bulk.php:7
 msgid "Lock posts older than"
 msgstr "Закључај чланке старије од"
 
-#: options/tools/tools_bulk.php:10
+#: options/tools/tools_bulk.php:11
 msgid "Lock"
 msgstr "Закључај"
 
-#: options/tools/tools_bulk.php:12
+#: options/tools/tools_bulk.php:13
 msgid "Previous Lock Date"
 msgstr "Предходни датум закључавања"
 
-#: options/tools/tools_bulk.php:16
+#: options/tools/tools_bulk.php:17
 msgid "Global Voting Rules Update"
 msgstr "Ажурирање глобалних правила гласања"
 
-#: options/tools/tools_bulk.php:24
-#: options/tools/tools_bulk.php:43
+#: options/tools/tools_bulk.php:25
+#: options/tools/tools_bulk.php:44
 #: options/articles.php:150
 #: options/articles.php:274
 #: options/articles.php:344
@@ -1346,8 +1361,8 @@ msgstr "Ажурирање глобалних правила гласања"
 msgid "Moderation"
 msgstr "Модерација"
 
-#: options/tools/tools_bulk.php:31
-#: options/tools/tools_bulk.php:50
+#: options/tools/tools_bulk.php:32
+#: options/tools/tools_bulk.php:51
 #: options/articles.php:155
 #: options/articles.php:281
 #: options/articles.php:351
@@ -1357,7 +1372,7 @@ msgstr "Модерација"
 msgid "Vote Rules"
 msgstr "Правила Гласања"
 
-#: options/tools/tools_bulk.php:40
+#: options/tools/tools_bulk.php:41
 #: options/articles.php:329
 #: options/categories.php:215
 #: options/charts.php:7
@@ -1370,16 +1385,37 @@ msgstr "Правила Гласања"
 msgid "Comments"
 msgstr "Коментари"
 
-#: options/tools/tools_bulk.php:57
-#: tinymce3/panels/advanced.php:217
-#: tinymce3/panels/advanced.php:242
-#: tinymce3/panels/multi.php:5
-msgid "Set"
-msgstr "Сет"
-
-#: options/tools/tools_bulk.php:59
+#: options/tools/tools_bulk.php:60
 msgid "This will update all posts and comments with previously saved ratings."
 msgstr "Ово ће изменити сва подешавања за предходно снимљене чланке и коментаре."
+
+#: options/tools/tools_bulk.php:64
+msgid "Recalculate Multi Ratings Averages"
+msgstr "Прерачунај Мулти Рејтинг Просеке"
+
+#: options/tools/tools_bulk.php:67
+msgid "If you change multi rating sets weight for the elements you can execute recaluculation of all average ratings saved. Select the set you want to recalculate for, or select all sets."
+msgstr "Ако променит мулти сет тежине за елементе, можете извршити реклакулацију. Изаберите сет или све сетове."
+
+#: options/tools/tools_bulk.php:68
+msgid "Use this also if you update from versions before 1.2.0 and you had problems with saving multi rating results."
+msgstr "Корицтите ако унапређујете од верзије старије од 1.2.0 а имали сте проблене са снимањем резултата."
+
+#: options/tools/tools_bulk.php:71
+msgid "Select multi set"
+msgstr "Изабери Мулти Сет"
+
+#: options/tools/tools_bulk.php:74
+msgid "All Sets"
+msgstr "Сви Сетови"
+
+#: options/tools/tools_bulk.php:80
+msgid "Recalculate"
+msgstr "Прерачунај"
+
+#: options/tools/tools_bulk.php:82
+msgid "Depending on the number of posts, this operation can take a while to complete. Be patient."
+msgstr "У зависности од броја чланак, операција може да потраје. Будите стрпљиви."
 
 #: options/tools/tools_cache.php:4
 msgid "Delete all cached files from folder"
@@ -1914,7 +1950,7 @@ msgid "Full Uninstall"
 msgstr "Пуна Деинсталација"
 
 #: options/tools.php:0
-#: gd-star-rating.php:628
+#: gd-star-rating.php:633
 msgid "Tools"
 msgstr "Алати"
 
@@ -2012,8 +2048,8 @@ msgid "Vote log for post"
 msgstr "Листа гласова за чланке."
 
 #: templates/templates.php:31
-#: templates/tpl_panel_list.php:14
-#: gd-star-rating.php:629
+#: templates/tpl_panel_list.php:12
+#: gd-star-rating.php:634
 msgid "Templates"
 msgstr "Шаблони"
 
@@ -2053,6 +2089,8 @@ msgstr "Рејтинг текст за времески ограничено г�
 
 #: templates/templates_articles.php:11
 #: templates/templates_multis.php:11
+#: templates/tpl_list.php:101
+#: templates/tpl_list.php:112
 msgid "Voting Active"
 msgstr "Гласање Активно"
 
@@ -2138,6 +2176,12 @@ msgstr "Текст рејтинга чланка"
 #: templates/tpl_list.php:26
 #: templates/tpl_list.php:57
 #: templates/tpl_list.php:76
+#: templates/tpl_list.php:98
+#: templates/tpl_list.php:99
+#: templates/tpl_list.php:100
+#: templates/tpl_list.php:109
+#: templates/tpl_list.php:110
+#: templates/tpl_list.php:111
 #: widgets/widget_rating.php:366
 #: widgets/widget_top.php:112
 msgid "article rating"
@@ -2389,6 +2433,29 @@ msgstr "звезде за рејтинг коментара"
 msgid "Multi Ratings Text"
 msgstr "Мулти Рејтинг Текст"
 
+#: templates/tpl_list.php:96
+msgid "Standard Ratings Block"
+msgstr "Стандардни Рејтинг Блок"
+
+#: templates/tpl_list.php:102
+#: templates/tpl_list.php:113
+msgid "Already Voted Visitor"
+msgstr "Већ Гласао Посетилац"
+
+#: templates/tpl_list.php:103
+#: templates/tpl_list.php:114
+msgid "Already Voted User"
+msgstr "Већ Гласао Корисник"
+
+#: templates/tpl_list.php:104
+#: templates/tpl_list.php:115
+msgid "Voting Not Allowed"
+msgstr "Гласање Није Дозвољено"
+
+#: templates/tpl_list.php:107
+msgid "Comments Ratings Block"
+msgstr "Рејтинг Блок Коментара"
+
 #: templates/tpl_panel_editor.php:21
 msgid "Template Editor"
 msgstr "Шаблон Едитор"
@@ -2422,23 +2489,27 @@ msgstr "нису дозвољени таг елементи"
 msgid "Save Template"
 msgstr "Сними Шаблон"
 
-#: templates/tpl_panel_list.php:34
+#: templates/tpl_panel_editor.php:85
+msgid "Select template to use for this element:"
+msgstr "Изабери шаблон за овај елемент:"
+
+#: templates/tpl_panel_list.php:32
 msgid "Section / Type"
 msgstr "Секција / Тип"
 
-#: templates/tpl_panel_list.php:36
+#: templates/tpl_panel_list.php:34
 msgid "Tag"
 msgstr "Таг"
 
-#: templates/tpl_panel_list.php:37
+#: templates/tpl_panel_list.php:35
 msgid "Options"
 msgstr "Опције"
 
-#: templates/tpl_panel_list.php:78
+#: templates/tpl_panel_list.php:76
 msgid "New template for:"
 msgstr "Ново шаблон за:"
 
-#: templates/tpl_panel_list.php:80
+#: templates/tpl_panel_list.php:78
 msgid "Create"
 msgstr "Креирај"
 
@@ -2713,7 +2784,6 @@ msgstr "StarReview ће приказати звезде које предста�
 
 #: tinymce3/panels/articles.php:4
 #: tinymce3/panels/articles.php:12
-#: tinymce3/panels/multi.php:23
 msgid "There are no settings for this shortcode yet. This will be updated soon."
 msgstr "Нема подешавања за овај шорткод. Ускоро ће их бити."
 
@@ -2745,6 +2815,10 @@ msgstr "Рејтинг блок не дозвољава гласање."
 #: tinymce3/panels/multi.php:22
 msgid "Multi Reviews"
 msgstr "Мулти Критике"
+
+#: tinymce3/panels/multi.php:28
+msgid "Default"
+msgstr "Default"
 
 #: tinymce3/window.php:30
 #: tinymce3/window.php:85
@@ -2864,61 +2938,63 @@ msgstr "рејтинг чланка у процентима"
 msgid "Web Key"
 msgstr "Веб Кључ"
 
-#: gd-star-rating.php:602
-#: gd-star-rating.php:603
-#: gd-star-rating.php:613
-#: gd-star-rating.php:614
+#: gd-star-rating.php:607
+#: gd-star-rating.php:608
+#: gd-star-rating.php:618
+#: gd-star-rating.php:619
 msgid "Multi Ratings Review"
 msgstr "Мулти Рејтинг Критика"
 
-#: gd-star-rating.php:621
+#: gd-star-rating.php:626
 msgid "Front Page"
 msgstr "Главна Страна"
 
-#: gd-star-rating.php:630
+#: gd-star-rating.php:635
 msgid "T2"
 msgstr "T2"
 
-#: gd-star-rating.php:1202
+#: gd-star-rating.php:1221
 msgid "articles records from log table removed."
 msgstr "чланка из лог табеле је уклоњено."
 
-#: gd-star-rating.php:1204
+#: gd-star-rating.php:1223
 msgid "comments records from log table removed."
 msgstr "коментара из лог табеле је уклоњено."
 
-#: gd-star-rating.php:1208
+#: gd-star-rating.php:1227
 msgid "articles records from trends log table removed."
 msgstr "чланака из тренд табеле је уклоњено."
 
-#: gd-star-rating.php:1210
+#: gd-star-rating.php:1229
 msgid "comments records from trends log table removed."
 msgstr "коментара је уклоњено из тренд лог табеле."
 
-#: gd-star-rating.php:1214
+#: gd-star-rating.php:1233
 msgid "dead articles records from articles table."
 msgstr "мртвих чланака из рејтинг табела"
 
-#: gd-star-rating.php:1216
+#: gd-star-rating.php:1235
 msgid "post revisions records from articles table."
 msgstr "ревизија чланак је уклоњено из табеле чланака."
 
-#: gd-star-rating.php:1218
+#: gd-star-rating.php:1237
 msgid "dead comments records from comments table."
 msgstr "мртвих коментара уклоњено из табеле коментара."
 
-#: gd-star-rating.php:1222
+#: gd-star-rating.php:1241
 msgid "dead articles records from multi ratings tables."
 msgstr "мртвих чланака из мулти рејтинг табела"
 
-#: gd-star-rating.php:1224
+#: gd-star-rating.php:1243
 msgid "post revisions records from multi ratings tables."
 msgstr "ревизија из мулти рејтинг табела."
 
-#: gd-star-rating.php:1793
+#: gd-star-rating.php:1773
 msgid "(no title)"
 msgstr "(без имена)"
 
+#~ msgid "AJAX enabled rating."
+#~ msgstr "AJAX гласање."
 #~ msgid ""
 #~ "You first need to select which multi set you want to use for review "
 #~ "rating."
@@ -2933,8 +3009,6 @@ msgstr "(без имена)"
 #~ msgstr "Користи поправку IE PNG транспаренције."
 #~ msgid "T2 / Alpha"
 #~ msgstr "Т2 / Алфа"
-#~ msgid "Standard Ratings Block"
-#~ msgstr "Стандардни Рејтинг Блок"
 #~ msgid "Simple"
 #~ msgstr "Једноставно"
 #~ msgid "Submit"
