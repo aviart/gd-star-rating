@@ -41,10 +41,45 @@ class GDSRDBMulti {
         $wpdb->query($sql);
     }
 
-    function recalculate_multi_averages($post_id, $set_id, $rules = "") {
+    function recalculate_all_sets() {
+        global $wpdb, $table_prefix;
+        $set = null;
+        $prev_set = 0;
+
+        $sql = sprintf("select post_id, multi_id from %sgdsr_multis_data order by multi_id asc", $table_prefix);
+        $posts = $wpdb->get_results($sql);
+        foreach ($posts as $post) {
+            if ($prev_set != $post->multi_id) $set = gd_get_multi_set($post->multi_id);
+            GDSRDBMulti::recalculate_multi_averages($post->post_id, $post->multi_id, "", $set);
+        }
+
+        $prev_set = 0;
+
+        $sql = sprintf("select id, multi_id from %sgdsr_multis_trend order by multi_id asc", $table_prefix);
+        $ids = $wpdb->get_results($sql);
+        foreach ($ids as $id) {
+            if ($prev_set != $id->multi_id) $set = gd_get_multi_set($id->multi_id);
+            foreach ($ids as $id) GDSRDBMulti::recalculate_trend_averages($id->id, $set);
+        }
+    }
+
+    function recalculate_set($set_id) {
+        global $wpdb, $table_prefix;
+        $set = gd_get_multi_set($set_id);
+
+        $sql = sprintf("select post_id from %sgdsr_multis_data where multi_id = %s", $table_prefix, $set_id);
+        $posts = $wpdb->get_results($sql);
+        foreach ($posts as $post) GDSRDBMulti::recalculate_multi_averages($post->post_id, $set_id, "", $set);
+
+        $sql = sprintf("select id from %sgdsr_multis_trend where multi_id = %s", $table_prefix, $set_id);
+        $ids = $wpdb->get_results($sql);
+        foreach ($ids as $id) GDSRDBMulti::recalculate_trend_averages($id->id, $set);
+    }
+
+    function recalculate_multi_averages($post_id, $set_id, $rules = "", $set = null) {
         global $wpdb, $table_prefix;
 
-        $set = gd_get_multi_set($set_id);
+        if ($set == null) $set = gd_get_multi_set($set_id);
         $multi_data = GDSRDBMulti::get_values_join($post_id, $set_id);
         $votes_js = array();
         $weight_norm = array_sum($set->weight);

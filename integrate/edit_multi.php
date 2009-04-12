@@ -3,7 +3,7 @@
     if ($multi_id == 0)
         _e("You don't have any multi rating sets defined. Create at least one set.", "gd-star-rating");
     else {
-        $gdst_multis = GDSRDBMulti::get_multis_tinymce();
+        $gdsr_multis = GDSRDBMulti::get_multis_tinymce();
     ?>
     <div class="gdsr-mur-sets-background">
     <input type="hidden" name="gdsrmultiactive" value="<?php echo $multi_id; ?>" />
@@ -12,7 +12,7 @@
         <td style="padding-top: 3px;"><?php _e("Set", "gd-star-rating"); ?>:</td>
         <td>
             <label><select id="srMultiRatingSet" name="gdsrmultiset" style="width: 222px">
-                <?php GDSRHelper::render_styles_select($gdst_multis, $multi_id); ?>
+                <?php GDSRHelper::render_styles_select($gdsr_multis, $multi_id); ?>
             </select></label>
         </td>
         <td>

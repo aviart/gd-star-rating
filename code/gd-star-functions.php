@@ -198,12 +198,12 @@ class GDSRHelper {
     function expiration_date($value) {
         return strtotime($value) - mktime();
     }
-    
+
     function calculate_deadline($timestamp) {
         $deadline_ts = $timestamp + mktime();
         return date("Y-m-d", $deadline_ts);
     }
-    
+
     function remaining_time_parts($timestamp) {
         $times = array(
                 31536000 => 'year', 
@@ -227,7 +227,7 @@ class GDSRHelper {
         
         return $parts;
     }
-    
+
     function remaining_time_total($timestamp) {
         $times = array(
                 31536000 => 'year', 
@@ -242,10 +242,10 @@ class GDSRHelper {
         foreach ($times AS $key => $value) {
             $parts[$value] = floor($secs / $key);
         }
-        
+
         return $parts;
     }
-    
+
     function render_styles_select($styles, $selected = '') { 
         foreach ($styles as $style) {
             if ($selected == $style->folder) $current = ' selected="selected"';
@@ -260,11 +260,11 @@ class GDSRHelper {
             echo "\t<option value='".$style["class"]."'>".$style["name"]."</option>\r\n";
         }
     }
-	
+
 	function render_stars_select($selected = 10) {
         GDSRHelper::render_stars_select_full($selected);
     }
-    
+
     function render_stars_select_full($selected = 10, $stars = 20, $start = 1, $prefix = '') {
         for ($i = $start; $i < $stars + 1; $i++) {
             if ($selected == $i) $current = ' selected="selected"';

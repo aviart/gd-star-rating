@@ -337,51 +337,51 @@ msgstr ""
 msgid "Data imported."
 msgstr ""
 
-#: integrate/edit.php:3
+#: integrate/edit.php:1
 msgid "Post Review"
 msgstr ""
 
-#: integrate/edit.php:5
+#: integrate/edit.php:3
 msgid "Value"
 msgstr ""
 
-#: integrate/edit.php:17
+#: integrate/edit.php:15
 msgid "Post Rating"
 msgstr ""
 
-#: integrate/edit.php:19
-#: integrate/edit.php:35
+#: integrate/edit.php:17
+#: integrate/edit.php:33
 msgid "Vote Rule"
 msgstr ""
 
-#: integrate/edit.php:25
-#: integrate/edit.php:41
+#: integrate/edit.php:23
+#: integrate/edit.php:39
 msgid "Moderate"
 msgstr ""
 
-#: integrate/edit.php:33
+#: integrate/edit.php:31
 msgid "Comments Rating"
 msgstr ""
 
-#: integrate/edit.php:50
+#: integrate/edit.php:48
 #: templates/templates_standard.php:97
 msgid "Time Restriction"
 msgstr ""
 
-#: integrate/edit.php:52
+#: integrate/edit.php:50
 #: options/articles.php:308
 #: options/categories.php:192
 msgid "Restriction"
 msgstr ""
 
-#: integrate/edit.php:59
+#: integrate/edit.php:57
 #: options/articles.php:315
 #: options/categories.php:199
 #: tinymce3/panels/advanced.php:166
 msgid "Date"
 msgstr ""
 
-#: integrate/edit.php:67
+#: integrate/edit.php:65
 #: options/articles.php:314
 #: options/categories.php:198
 msgid "Countdown"
@@ -391,27 +391,36 @@ msgstr ""
 msgid "You don't have any multi rating sets defined. Create at least one set."
 msgstr ""
 
-#: integrate/edit_multi.php:5
+#: integrate/edit_multi.php:11
+#: options/tools/tools_bulk.php:58
+#: tinymce3/panels/advanced.php:217
+#: tinymce3/panels/advanced.php:242
+#: tinymce3/panels/multi.php:5
+#: tinymce3/panels/multi.php:25
+msgid "Set"
+msgstr ""
+
+#: integrate/edit_multi.php:18
 msgid "To change the active set, you need to select the set you want from the list on the left, and save this article to accept the change."
 msgstr ""
 
-#: integrate/edit_multi.php:6
+#: integrate/edit_multi.php:20
 msgid "All values for all sets will be saved in the database. This allows different multi rating sets reviews."
 msgstr ""
 
-#: integrate/edit_multi.php:14
+#: integrate/edit_multi.php:33
 msgid "Clear"
 msgstr ""
 
-#: integrate/edit_multi.php:15
+#: integrate/edit_multi.php:34
 msgid "Revert"
 msgstr ""
 
-#: integrate/edit_multi.php:8
+#: integrate/edit_multi.php:27
 msgid "Set ID"
 msgstr ""
 
-#: integrate/edit_multi.php:9
+#: integrate/edit_multi.php:28
 msgid "Set Name"
 msgstr ""
 
@@ -541,8 +550,8 @@ msgstr ""
 #: templates/templates_standard.php:1
 #: tinymce3/window.php:56
 #: tinymce3/window.php:57
-#: gd-star-rating.php:622
-#: gd-star-rating.php:622
+#: gd-star-rating.php:627
+#: gd-star-rating.php:627
 msgid "Articles"
 msgstr ""
 
@@ -592,8 +601,8 @@ msgstr ""
 #: options/settings/settings_administration.php:54
 #: options/articles.php:156
 #: options/categories.php:69
-#: gd-star-rating.php:623
-#: gd-star-rating.php:623
+#: gd-star-rating.php:628
+#: gd-star-rating.php:628
 msgid "Categories"
 msgstr ""
 
@@ -627,8 +636,8 @@ msgid "Voters"
 msgstr ""
 
 #: options/multis/sets.php:44
-#: gd-star-rating.php:626
-#: gd-star-rating.php:626
+#: gd-star-rating.php:631
+#: gd-star-rating.php:631
 msgid "Multi Sets"
 msgstr ""
 
@@ -674,7 +683,7 @@ msgstr ""
 #: options/multis/sets.php:100
 #: options/multis/sets.php:109
 #: options/settings/settings_rss.php:1
-#: options/tools/tools_bulk.php:21
+#: options/tools/tools_bulk.php:22
 #: options/categories.php:91
 msgid "Posts"
 msgstr ""
@@ -695,8 +704,8 @@ msgstr ""
 #: options/settings/settings_administration.php:30
 #: options/settings.php:37
 #: tinymce3/panels/multi.php:15
-#: gd-star-rating.php:627
-#: gd-star-rating.php:627
+#: gd-star-rating.php:632
+#: gd-star-rating.php:632
 msgid "Settings"
 msgstr ""
 
@@ -731,8 +740,8 @@ msgstr ""
 #: options/categories.php:224
 #: options/comments.php:139
 #: options/users.php:47
-#: gd-star-rating.php:624
-#: gd-star-rating.php:624
+#: gd-star-rating.php:629
+#: gd-star-rating.php:629
 msgid "Users"
 msgstr ""
 
@@ -742,8 +751,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:58
 #: options/setup.php:28
-#: gd-star-rating.php:635
-#: gd-star-rating.php:635
+#: gd-star-rating.php:640
+#: gd-star-rating.php:640
 msgid "Setup"
 msgstr ""
 
@@ -752,8 +761,8 @@ msgid "Uninstall and maintenance."
 msgstr ""
 
 #: options/settings/settings_administration.php:62
-#: gd-star-rating.php:632
-#: gd-star-rating.php:632
+#: gd-star-rating.php:637
+#: gd-star-rating.php:637
 msgid "Import"
 msgstr ""
 
@@ -762,8 +771,8 @@ msgid "Importing data for other rating plugins."
 msgstr ""
 
 #: options/settings/settings_administration.php:64
-#: gd-star-rating.php:633
-#: gd-star-rating.php:633
+#: gd-star-rating.php:638
+#: gd-star-rating.php:638
 msgid "Export"
 msgstr ""
 
@@ -774,8 +783,8 @@ msgstr ""
 #: options/settings/settings_administration.php:66
 #: options/ips.php:67
 #: options/users_log.php:177
-#: gd-star-rating.php:631
-#: gd-star-rating.php:631
+#: gd-star-rating.php:636
+#: gd-star-rating.php:636
 msgid "IP's"
 msgstr ""
 
@@ -1037,98 +1046,94 @@ msgid "Voting"
 msgstr ""
 
 #: options/settings/settings_features.php:3
-msgid "AJAX enabled rating."
-msgstr ""
-
-#: options/settings/settings_features.php:5
 msgid "Use Nonce with AJAX for improved security."
 msgstr ""
 
-#: options/settings/settings_features.php:7
+#: options/settings/settings_features.php:5
 msgid "Use banned IP's lists to filter out visitors."
 msgstr ""
 
-#: options/settings/settings_features.php:9
+#: options/settings/settings_features.php:7
 msgid "Don't even show rating stars to visitors comming from banned IP's."
 msgstr ""
 
-#: options/settings/settings_features.php:12
+#: options/settings/settings_features.php:10
 msgid "Plugin Features"
 msgstr ""
 
-#: options/settings/settings_features.php:14
+#: options/settings/settings_features.php:12
 msgid "Link external javascript rating code, instead of embeding it into the page."
 msgstr ""
 
-#: options/settings/settings_features.php:16
+#: options/settings/settings_features.php:14
 msgid "Link external CSS rating code, uncheck to embed all the CSS into the page."
 msgstr ""
 
-#: options/settings/settings_features.php:18
+#: options/settings/settings_features.php:16
 msgid "Link additional css file"
 msgstr ""
 
-#: options/settings/settings_features.php:23
+#: options/settings/settings_features.php:21
 msgid "Time restriction for rating."
 msgstr ""
 
-#: options/settings/settings_features.php:25
+#: options/settings/settings_features.php:23
 msgid "Moderation options and handling."
 msgstr ""
 
-#: options/settings/settings_features.php:27
+#: options/settings/settings_features.php:25
 msgid "Multiple rating support."
 msgstr ""
 
-#: options/settings/settings_features.php:31
+#: options/settings/settings_features.php:29
 msgid "Post And Page Review Rating."
 msgstr ""
 
-#: options/settings/settings_features.php:33
+#: options/settings/settings_features.php:31
 msgid "Comments Rating."
 msgstr ""
 
-#: options/settings/settings_features.php:35
+#: options/settings/settings_features.php:33
 msgid "Comments Review Rating."
 msgstr ""
 
-#: options/settings/settings_features.php:40
+#: options/settings/settings_features.php:38
 msgid "Use graphics generator to generate and display static stars images."
 msgstr ""
 
-#: options/settings/settings_features.php:42
+#: options/settings/settings_features.php:40
 msgid "Prevent outside access to graphics generator. Graphics integrated into RSS is not affected."
 msgstr ""
 
-#: options/settings/settings_features.php:45
+#: options/settings/settings_features.php:43
 msgid "Charset"
 msgstr ""
 
-#: options/settings/settings_features.php:49
+#: options/settings/settings_features.php:47
 msgid "Character encoding"
 msgstr ""
 
-#: options/settings/settings_features.php:53
+#: options/settings/settings_features.php:51
 msgid "For list of supported charsets visit: "
 msgstr ""
 
-#: options/settings/settings_features.php:56
+#: options/settings/settings_features.php:54
 msgid "Rating Log"
 msgstr ""
 
-#: options/settings/settings_features.php:58
+#: options/settings/settings_features.php:56
 msgid "Log user agent (browser) information."
 msgstr ""
 
-#: options/settings/settings_features.php:60
+#: options/settings/settings_features.php:58
 msgid "Save cookies with ratings."
 msgstr ""
 
-#: options/settings/settings_features.php:63
+#: options/settings/settings_features.php:61
 msgid "Internet Explorer"
 msgstr ""
 
-#: options/settings/settings_features.php:65
+#: options/settings/settings_features.php:63
 msgid "Use IE opacity fix for multi ratings."
 msgstr ""
 
@@ -1254,6 +1259,7 @@ msgstr ""
 
 #: options/setup/setup_database.php:1
 #: options/setup/setup_database.php:5
+#: options/setup/setup_database.php:15
 #: options/setup.php:2
 msgid "Reinstall"
 msgstr ""
@@ -1263,10 +1269,19 @@ msgid "All database tables will be deleted, and installed again."
 msgstr ""
 
 #: options/setup/setup_database.php:7
+#: options/setup/setup_database.php:17
 #: options/setup/setup_global.php:7
 #: options/setup/setup_global.php:17
 #: options/setup/setup_uninstall.php:7
 msgid "This operation is not reversable. Backup your data if you want to be able to restore it later."
+msgstr ""
+
+#: options/setup/setup_database.php:11
+msgid "Reinstall Multi Ratings"
+msgstr ""
+
+#: options/setup/setup_database.php:14
+msgid "Only multi ratings tables will be deleted, and installed again."
 msgstr ""
 
 #: options/setup/setup_global.php:1
@@ -1308,32 +1323,32 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1132
+#: gd-star-rating.php:1138
 msgid "UNINSTALL"
 msgstr ""
 
-#: options/tools/tools_bulk.php:1
+#: options/tools/tools_bulk.php:2
 msgid "Date Based Post Locking"
 msgstr ""
 
-#: options/tools/tools_bulk.php:6
+#: options/tools/tools_bulk.php:7
 msgid "Lock posts older than"
 msgstr ""
 
-#: options/tools/tools_bulk.php:10
+#: options/tools/tools_bulk.php:11
 msgid "Lock"
 msgstr ""
 
-#: options/tools/tools_bulk.php:12
+#: options/tools/tools_bulk.php:13
 msgid "Previous Lock Date"
 msgstr ""
 
-#: options/tools/tools_bulk.php:16
+#: options/tools/tools_bulk.php:17
 msgid "Global Voting Rules Update"
 msgstr ""
 
-#: options/tools/tools_bulk.php:24
-#: options/tools/tools_bulk.php:43
+#: options/tools/tools_bulk.php:25
+#: options/tools/tools_bulk.php:44
 #: options/articles.php:150
 #: options/articles.php:274
 #: options/articles.php:344
@@ -1344,8 +1359,8 @@ msgstr ""
 msgid "Moderation"
 msgstr ""
 
-#: options/tools/tools_bulk.php:31
-#: options/tools/tools_bulk.php:50
+#: options/tools/tools_bulk.php:32
+#: options/tools/tools_bulk.php:51
 #: options/articles.php:155
 #: options/articles.php:281
 #: options/articles.php:351
@@ -1355,7 +1370,7 @@ msgstr ""
 msgid "Vote Rules"
 msgstr ""
 
-#: options/tools/tools_bulk.php:40
+#: options/tools/tools_bulk.php:41
 #: options/articles.php:329
 #: options/categories.php:215
 #: options/charts.php:7
@@ -1368,15 +1383,36 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
-#: options/tools/tools_bulk.php:57
-#: tinymce3/panels/advanced.php:217
-#: tinymce3/panels/advanced.php:242
-#: tinymce3/panels/multi.php:5
-msgid "Set"
+#: options/tools/tools_bulk.php:60
+msgid "This will update all posts and comments with previously saved ratings."
 msgstr ""
 
-#: options/tools/tools_bulk.php:59
-msgid "This will update all posts and comments with previously saved ratings."
+#: options/tools/tools_bulk.php:64
+msgid "Recalculate Multi Ratings Averages"
+msgstr ""
+
+#: options/tools/tools_bulk.php:67
+msgid "If you change multi rating sets weight for the elements you can execute recaluculation of all average ratings saved. Select the set you want to recalculate for, or select all sets."
+msgstr ""
+
+#: options/tools/tools_bulk.php:68
+msgid "Use this also if you update from versions before 1.2.0 and you had problems with saving multi rating results."
+msgstr ""
+
+#: options/tools/tools_bulk.php:71
+msgid "Select multi set"
+msgstr ""
+
+#: options/tools/tools_bulk.php:74
+msgid "All Sets"
+msgstr ""
+
+#: options/tools/tools_bulk.php:80
+msgid "Recalculate"
+msgstr ""
+
+#: options/tools/tools_bulk.php:82
+msgid "Depending on the number of posts, this operation can take a while to complete. Be patient."
 msgstr ""
 
 #: options/tools/tools_cache.php:4
@@ -1912,8 +1948,8 @@ msgid "Full Uninstall"
 msgstr ""
 
 #: options/tools.php:0
-#: gd-star-rating.php:628
-#: gd-star-rating.php:628
+#: gd-star-rating.php:633
+#: gd-star-rating.php:633
 msgid "Tools"
 msgstr ""
 
@@ -2012,8 +2048,8 @@ msgstr ""
 
 #: templates/templates.php:31
 #: templates/tpl_panel_list.php:14
-#: gd-star-rating.php:629
-#: gd-star-rating.php:629
+#: gd-star-rating.php:634
+#: gd-star-rating.php:634
 msgid "Templates"
 msgstr ""
 
@@ -2713,7 +2749,6 @@ msgstr ""
 
 #: tinymce3/panels/articles.php:4
 #: tinymce3/panels/articles.php:12
-#: tinymce3/panels/multi.php:23
 msgid "There are no settings for this shortcode yet. This will be updated soon."
 msgstr ""
 
@@ -2744,6 +2779,10 @@ msgstr ""
 
 #: tinymce3/panels/multi.php:22
 msgid "Multi Reviews"
+msgstr ""
+
+#: tinymce3/panels/multi.php:28
+msgid "Default"
 msgstr ""
 
 #: tinymce3/window.php:30
@@ -2864,60 +2903,60 @@ msgstr ""
 msgid "Web Key"
 msgstr ""
 
-#: gd-star-rating.php:602
-#: gd-star-rating.php:603
-#: gd-star-rating.php:613
-#: gd-star-rating.php:614
+#: gd-star-rating.php:607
+#: gd-star-rating.php:608
+#: gd-star-rating.php:618
+#: gd-star-rating.php:619
 msgid "Multi Ratings Review"
 msgstr ""
 
-#: gd-star-rating.php:621
-#: gd-star-rating.php:621
+#: gd-star-rating.php:626
+#: gd-star-rating.php:626
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:630
-#: gd-star-rating.php:630
+#: gd-star-rating.php:635
+#: gd-star-rating.php:635
 msgid "T2"
 msgstr ""
 
-#: gd-star-rating.php:1202
+#: gd-star-rating.php:1218
 msgid "articles records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1204
+#: gd-star-rating.php:1220
 msgid "comments records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1208
+#: gd-star-rating.php:1224
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1210
+#: gd-star-rating.php:1226
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1214
+#: gd-star-rating.php:1230
 msgid "dead articles records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1216
+#: gd-star-rating.php:1232
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1218
+#: gd-star-rating.php:1234
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: gd-star-rating.php:1222
+#: gd-star-rating.php:1238
 msgid "dead articles records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1224
+#: gd-star-rating.php:1240
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1793
+#: gd-star-rating.php:1769
 msgid "(no title)"
 msgstr ""
 
