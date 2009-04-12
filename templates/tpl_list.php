@@ -94,4 +94,26 @@ $t->add_part(__("Time Restricted Active", "gd-star-rating"), "time_active", "", 
 $t->add_part(__("Time Restricted Closed", "gd-star-rating"), "time_closed", "", array("%RATING%", "%MAX_RATING%", "%VOTES%", "%ID%", "%WORD_VOTES%"));
 $tpls->add_template($t);
 
+$t = new gdTemplate("SRB", __("Standard Ratings Block", "gd-star-rating"), "%RATING_BLOCK%");
+$t->add_template("SRT", "%RATING_TEXT%");
+$t->add_element("%HEADER_TEXT%", __("article rating", "gd-star-rating"));
+$t->add_element("%RATING_STARS%", __("article rating", "gd-star-rating"));
+$t->add_element("%RATING_TEXT%", __("article rating", "gd-star-rating"));
+$t->add_part(__("Voting Active", "gd-star-rating"), "active", "", "all", "area");
+$t->add_part(__("Already Voted Visitor", "gd-star-rating"), "voted_visitor", "", "all", "area");
+$t->add_part(__("Already Voted User", "gd-star-rating"), "voted_user", "", "all", "area");
+$t->add_part(__("Voting Not Allowed", "gd-star-rating"), "not_allowed", "", "all", "area");
+$tpls->add_template($t);
+
+$t = new gdTemplate("CRB", __("Comments Ratings Block", "gd-star-rating"), "%RATING_BLOCK%");
+$t->add_template("CRT", "%CMM_RATING_TEXT%");
+$t->add_element("%CMM_HEADER_TEXT%", __("article rating", "gd-star-rating"));
+$t->add_element("%CMM_RATING_STARS%", __("article rating", "gd-star-rating"));
+$t->add_element("%CMM_RATING_TEXT%", __("article rating", "gd-star-rating"));
+$t->add_part(__("Voting Active", "gd-star-rating"), "active", "", "all", "area");
+$t->add_part(__("Already Voted Visitor", "gd-star-rating"), "voted_visitor", "", "all", "area");
+$t->add_part(__("Already Voted User", "gd-star-rating"), "voted_user", "", "all", "area");
+$t->add_part(__("Voting Not Allowed", "gd-star-rating"), "not_allowed", "", "all", "area");
+$tpls->add_template($t);
+
 ?>

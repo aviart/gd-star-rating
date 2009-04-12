@@ -657,6 +657,9 @@ if (!class_exists('GDStarRating')) {
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>';
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>';
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
+                if ($this->admin_plugin_page == "t2") {
+                    include(STARRATING_PATH."code/gd-star-jsf.php");
+                }
             }
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.core.css" type="text/css" media="screen" />');
@@ -1274,6 +1277,7 @@ if (!class_exists('GDStarRating')) {
                 $general["name"] = stripslashes(htmlentities($_POST['tpl_gen_name'], ENT_QUOTES, STARRATING_ENCODING));
                 $general["desc"] = stripslashes(htmlentities($_POST['tpl_gen_desc'], ENT_QUOTES, STARRATING_ENCODING));
                 $general["section"] = $_POST["tpl_section"];
+                $general["dependencies"] = $_POST["tpl_tpl"];
                 $general["id"] = $_POST["tpl_id"];
                 $general["preinstalled"] = '0';
                 $tpl_input = $_POST["tpl_element"];
@@ -1926,6 +1930,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         function star_menu_t2() {
             $gdsr_options = $this->x;
             $options = $this->o;
+
+            include($this->plugin_path.'templates/tpl_list.php');
 
             if (isset($_GET["tplid"])) {
                 $id = $_GET["tplid"];

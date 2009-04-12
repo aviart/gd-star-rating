@@ -1,7 +1,5 @@
 <?php
 
-include(dirname(__FILE__)."/tpl_list.php");
-
 $filter_section = "";
 
 if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
