@@ -550,8 +550,8 @@ msgstr ""
 #: templates/templates_standard.php:1
 #: tinymce3/window.php:56
 #: tinymce3/window.php:57
-#: gd-star-rating.php:627
-#: gd-star-rating.php:627
+#: gd-star-rating.php:613
+#: gd-star-rating.php:613
 msgid "Articles"
 msgstr ""
 
@@ -601,8 +601,8 @@ msgstr ""
 #: options/settings/settings_administration.php:54
 #: options/articles.php:156
 #: options/categories.php:69
-#: gd-star-rating.php:628
-#: gd-star-rating.php:628
+#: gd-star-rating.php:614
+#: gd-star-rating.php:614
 msgid "Categories"
 msgstr ""
 
@@ -636,8 +636,8 @@ msgid "Voters"
 msgstr ""
 
 #: options/multis/sets.php:44
-#: gd-star-rating.php:631
-#: gd-star-rating.php:631
+#: gd-star-rating.php:617
+#: gd-star-rating.php:617
 msgid "Multi Sets"
 msgstr ""
 
@@ -704,8 +704,8 @@ msgstr ""
 #: options/settings/settings_administration.php:30
 #: options/settings.php:37
 #: tinymce3/panels/multi.php:15
-#: gd-star-rating.php:632
-#: gd-star-rating.php:632
+#: gd-star-rating.php:618
+#: gd-star-rating.php:618
 msgid "Settings"
 msgstr ""
 
@@ -740,8 +740,8 @@ msgstr ""
 #: options/categories.php:224
 #: options/comments.php:139
 #: options/users.php:47
-#: gd-star-rating.php:629
-#: gd-star-rating.php:629
+#: gd-star-rating.php:615
+#: gd-star-rating.php:615
 msgid "Users"
 msgstr ""
 
@@ -751,8 +751,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:58
 #: options/setup.php:28
-#: gd-star-rating.php:640
-#: gd-star-rating.php:640
+#: gd-star-rating.php:626
+#: gd-star-rating.php:626
 msgid "Setup"
 msgstr ""
 
@@ -761,8 +761,8 @@ msgid "Uninstall and maintenance."
 msgstr ""
 
 #: options/settings/settings_administration.php:62
-#: gd-star-rating.php:637
-#: gd-star-rating.php:637
+#: gd-star-rating.php:623
+#: gd-star-rating.php:623
 msgid "Import"
 msgstr ""
 
@@ -771,8 +771,8 @@ msgid "Importing data for other rating plugins."
 msgstr ""
 
 #: options/settings/settings_administration.php:64
-#: gd-star-rating.php:638
-#: gd-star-rating.php:638
+#: gd-star-rating.php:624
+#: gd-star-rating.php:624
 msgid "Export"
 msgstr ""
 
@@ -783,8 +783,8 @@ msgstr ""
 #: options/settings/settings_administration.php:66
 #: options/ips.php:67
 #: options/users_log.php:177
-#: gd-star-rating.php:636
-#: gd-star-rating.php:636
+#: gd-star-rating.php:622
+#: gd-star-rating.php:622
 msgid "IP's"
 msgstr ""
 
@@ -1323,7 +1323,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1141
+#: gd-star-rating.php:1128
 msgid "UNINSTALL"
 msgstr ""
 
@@ -1948,8 +1948,8 @@ msgid "Full Uninstall"
 msgstr ""
 
 #: options/tools.php:0
-#: gd-star-rating.php:633
-#: gd-star-rating.php:633
+#: gd-star-rating.php:619
+#: gd-star-rating.php:619
 msgid "Tools"
 msgstr ""
 
@@ -2048,8 +2048,8 @@ msgstr ""
 
 #: templates/templates.php:31
 #: templates/tpl_panel_list.php:12
-#: gd-star-rating.php:634
-#: gd-star-rating.php:634
+#: gd-star-rating.php:620
+#: gd-star-rating.php:620
 msgid "Templates"
 msgstr ""
 
@@ -2439,12 +2439,12 @@ msgstr ""
 
 #: templates/tpl_list.php:102
 #: templates/tpl_list.php:113
-msgid "Already Voted Visitor"
+msgid "Visitor Already Voted"
 msgstr ""
 
 #: templates/tpl_list.php:103
 #: templates/tpl_list.php:114
-msgid "Already Voted User"
+msgid "User Already Voted"
 msgstr ""
 
 #: templates/tpl_list.php:104
@@ -2938,60 +2938,60 @@ msgstr ""
 msgid "Web Key"
 msgstr ""
 
-#: gd-star-rating.php:607
-#: gd-star-rating.php:608
-#: gd-star-rating.php:618
-#: gd-star-rating.php:619
+#: gd-star-rating.php:593
+#: gd-star-rating.php:594
+#: gd-star-rating.php:604
+#: gd-star-rating.php:605
 msgid "Multi Ratings Review"
 msgstr ""
 
-#: gd-star-rating.php:626
-#: gd-star-rating.php:626
+#: gd-star-rating.php:612
+#: gd-star-rating.php:612
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:635
-#: gd-star-rating.php:635
+#: gd-star-rating.php:621
+#: gd-star-rating.php:621
 msgid "T2"
 msgstr ""
 
-#: gd-star-rating.php:1221
+#: gd-star-rating.php:1209
 msgid "articles records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1223
+#: gd-star-rating.php:1211
 msgid "comments records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1227
+#: gd-star-rating.php:1215
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1229
+#: gd-star-rating.php:1217
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1233
+#: gd-star-rating.php:1221
 msgid "dead articles records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1235
+#: gd-star-rating.php:1223
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1237
+#: gd-star-rating.php:1225
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: gd-star-rating.php:1241
+#: gd-star-rating.php:1229
 msgid "dead articles records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1243
+#: gd-star-rating.php:1231
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1773
+#: gd-star-rating.php:1766
 msgid "(no title)"
 msgstr ""
 
