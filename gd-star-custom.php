@@ -86,6 +86,13 @@
         else return $gdsr->blog_multi_review_editor($post_id, $settings, false);
     }
 
+    /**
+     * Renders multi rating review header elements css and javascript.
+     *
+     * @global GDStarRating $gdsr main rating class instance
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
     function wp_gdsr_multi_review_editor_header($echo = true) {
         global $gdsr;
 
@@ -99,8 +106,8 @@
      * @global object $post post data
      * @global GDStarRating $gdsr main rating class instance
      * @param int $post_id id of the post rating will be attributed to
-     * @param bool $echo echo results or return it as a string
      * @param array $settings override settings for rendering the block
+     * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
     function wp_gdsr_show_multi_review($post_id = 0, $settings = array(), $echo = true) {
@@ -109,7 +116,7 @@
             global $post;
             $post_id = $post->ID;
         }
-        
+
         if ($echo) echo $gdsr->blog_multi_review_editor($post_id, $settings, false, false);
         else return $gdsr->blog_multi_review_editor($post_id, $settings, false, false);
     }
@@ -138,13 +145,14 @@
     }
 
     /**
+     * Returns review or rating object results.
      *
      * @global object $post post data
      * @global GDStarRating $gdsr main rating class instance
      * @param int $post_id id of the post rating will be attributed to
      * @return GDSRArticleMultiReview review results
      */
-    function wp_gdsr_get_multi_review($post_id = 0) {
+    function wp_gdsr_get_multi_review($post_id = 0, $settings = array()) {
         global $gdsr;
         if ($post_id == 0) {
             global $post;
