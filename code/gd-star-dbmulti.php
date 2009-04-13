@@ -46,11 +46,12 @@ class GDSRDBMulti {
         $set = null;
         $prev_set = 0;
 
-        $sql = sprintf("select post_id, multi_id from %sgdsr_multis_data order by multi_id asc", $table_prefix);
+        $sql = sprintf("select id, post_id, multi_id from %sgdsr_multis_data order by multi_id asc", $table_prefix);
         $posts = $wpdb->get_results($sql);
         foreach ($posts as $post) {
             if ($prev_set != $post->multi_id) $set = gd_get_multi_set($post->multi_id);
             GDSRDBMulti::recalculate_multi_averages($post->post_id, $post->multi_id, "", $set);
+            GDSRDBMulti::recalculate_multi_review_db($post->post_id, $post->id, $set);
         }
 
         $prev_set = 0;
@@ -67,16 +68,48 @@ class GDSRDBMulti {
         global $wpdb, $table_prefix;
         $set = gd_get_multi_set($set_id);
 
-        $sql = sprintf("select post_id from %sgdsr_multis_data where multi_id = %s", $table_prefix, $set_id);
+        $sql = sprintf("select id, post_id from %sgdsr_multis_data where multi_id = %s", $table_prefix, $set_id);
         $posts = $wpdb->get_results($sql);
-        foreach ($posts as $post) GDSRDBMulti::recalculate_multi_averages($post->post_id, $set_id, "", $set);
+        foreach ($posts as $post) {
+            GDSRDBMulti::recalculate_multi_averages($post->post_id, $set_id, "", $set);
+            GDSRDBMulti::recalculate_multi_review_db($post->post_id, $post->id, $set);
+        }
 
         $sql = sprintf("select id from %sgdsr_multis_trend where multi_id = %s", $table_prefix, $set_id);
         $ids = $wpdb->get_results($sql);
         foreach ($ids as $id) GDSRDBMulti::recalculate_trend_averages($id->id, $set);
     }
 
-    function recalculate_multi_review($record_id, $values, $set, $insert = true) {
+    function recalculate_multi_review_db($post_id, $record_id, $set) {
+        global $wpdb, $table_prefix;
+        $multi_data = GDSRDBMulti::get_values($record_id, 'rvw');
+        if (count($multi_data) == 0) {
+            GDSRDBMulti::add_empty_review_values($record_id, count($set->object));
+            $multi_data = GDSRDBMulti::get_values($record_id, 'rvw');
+        }
+        $review = new GDSRArticleMultiReview($post_id);
+        $review->set = $set;
+        $i = 0;
+        $weighted = 0;
+        $weight_norm = array_sum($set->weight);
+        foreach ($multi_data as $md) {
+            $single_vote = array();
+            $single_vote["votes"] = 1;
+            $single_vote["score"] = $md->user_votes;
+            $single_vote["rating"] = $single_vote["score"];
+            $review->values = $single_vote;
+            $weighted += ( $single_vote["rating"] * $set->weight[$i] ) / $weight_norm;
+            $i++;
+        }
+        $review->rating = @number_format($weighted, 1);
+
+        $sql = sprintf("update %sgdsr_multis_data set average_review = '%s' where id = %s", $table_prefix, $review->rating, $record_id);
+        $wpdb->query($sql);
+
+        return $review;
+    }
+
+    function recalculate_multi_review($record_id, $values, $set) {
         global $wpdb, $table_prefix;
 
         $weight_norm = array_sum($set->weight);
@@ -86,10 +119,8 @@ class GDSRDBMulti {
         }
         $overall = @number_format($overall, 1);
 
-        if ($insert) {
-            $sql = sprintf("update %sgdsr_multis_data set average_review = '%s' where id = %s", $table_prefix, $overall, $record_id);
-            $wpdb->query($sql);
-        }
+        $sql = sprintf("update %sgdsr_multis_data set average_review = '%s' where id = %s", $table_prefix, $overall, $record_id);
+        $wpdb->query($sql);
 
         return $overall;
     }

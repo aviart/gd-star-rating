@@ -100,8 +100,8 @@ $t->add_element("%HEADER_TEXT%", __("article rating", "gd-star-rating"));
 $t->add_element("%RATING_STARS%", __("article rating", "gd-star-rating"));
 $t->add_element("%RATING_TEXT%", __("article rating", "gd-star-rating"));
 $t->add_part(__("Voting Active", "gd-star-rating"), "active", "", "all", "area");
-$t->add_part(__("Already Voted Visitor", "gd-star-rating"), "voted_visitor", "", "all", "area");
-$t->add_part(__("Already Voted User", "gd-star-rating"), "voted_user", "", "all", "area");
+$t->add_part(__("Visitor Already Voted", "gd-star-rating"), "voted_visitor", "", "all", "area");
+$t->add_part(__("User Already Voted", "gd-star-rating"), "voted_user", "", "all", "area");
 $t->add_part(__("Voting Not Allowed", "gd-star-rating"), "not_allowed", "", "all", "area");
 $tpls->add_template($t);
 
@@ -111,8 +111,8 @@ $t->add_element("%CMM_HEADER_TEXT%", __("article rating", "gd-star-rating"));
 $t->add_element("%CMM_RATING_STARS%", __("article rating", "gd-star-rating"));
 $t->add_element("%CMM_RATING_TEXT%", __("article rating", "gd-star-rating"));
 $t->add_part(__("Voting Active", "gd-star-rating"), "active", "", "all", "area");
-$t->add_part(__("Already Voted Visitor", "gd-star-rating"), "voted_visitor", "", "all", "area");
-$t->add_part(__("Already Voted User", "gd-star-rating"), "voted_user", "", "all", "area");
+$t->add_part(__("Visitor Already Voted", "gd-star-rating"), "voted_visitor", "", "all", "area");
+$t->add_part(__("User Already Voted", "gd-star-rating"), "voted_user", "", "all", "area");
 $t->add_part(__("Voting Not Allowed", "gd-star-rating"), "not_allowed", "", "all", "area");
 $tpls->add_template($t);
 

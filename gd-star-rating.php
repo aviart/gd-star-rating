@@ -467,33 +467,16 @@ if (!class_exists('GDStarRating')) {
          * @param array $settings override settings for rendering the block
          */
         function get_multi_review($post_id, $settings = array()) {
-            $multi_id = $this->o["mur_review_set"];
-            $set = gd_get_multi_set($multi_id);
+            if ($settings["id"] == "") $multi_id = $this->o["mur_review_set"];
+            else $multi_id = $settings["id"];
             if ($multi_id > 0 && $post_id > 0) {
-                $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id, count($set->object));
-                $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
-                if (count($multi_data) == 0) {
-                    GDSRDBMulti::add_empty_review_values($vote_id, count($set->object));
-                    $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
-                }
+                $set = gd_get_multi_set($multi_id);
+                $record_id = GDSRDBMulti::get_vote($post_id, $multi_id, count($set->object));
+                $review = GDSRDBMulti::recalculate_multi_review_db($post_id, $record_id, $set);
+                $review->rendered = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $review->rating);
+                return $review;
             }
-            $review = new GDSRArticleMultiReview($post_id);
-            $review->set = $set;
-            $i = 0;
-            $weighted = 0;
-            $weight_norm = array_sum($set->weight);
-            foreach ($multi_data as $md) {
-                $single_vote = array();
-                $single_vote["votes"] = 1;
-                $single_vote["score"] = $md->user_votes;
-                $single_vote["rating"] = $single_vote["score"];
-                $review->values = $single_vote;
-                $weighted += ( $single_vote["rating"] * $set->weight[$i] ) / $weight_norm;
-                $i++;
-            }
-            $review->rating = @number_format($weighted, 1);
-            $review->rendered = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $review->rating);
-            return $review;
+            else return null;
         }
 
         /**

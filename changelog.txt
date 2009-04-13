@@ -10,8 +10,9 @@
   * new: t2 templates system expanded with co-dependent templates
   * new: t2 templates for rating and comment rating blocks
   * edit: expanded functions for multi review integration
+  * edit: improved multi review average calculations
   * edit: multi rating ajax call improved
-  * edit: database tables expanded
+  * edit: database tables expanded for multi ratings
   * edit: few css and javascript layout improvements
   * fix: critical error in saving multi rating votes
   * fix: some problems with database table upgrading
