@@ -483,6 +483,7 @@ if (!class_exists('GDStarRating')) {
             $weighted = 0;
             $weight_norm = array_sum($set->weight);
             foreach ($multi_data as $md) {
+                $single_vote = array();
                 $single_vote["votes"] = 1;
                 $single_vote["score"] = $md->user_votes;
                 $single_vote["rating"] = $single_vote["score"];
@@ -503,7 +504,8 @@ if (!class_exists('GDStarRating')) {
          * @return string rendered result
          */
         function blog_multi_review_editor($post_id, $settings = array(), $admin = true, $allow_vote = true) {
-            $multi_id = $this->o["mur_review_set"];
+            if ($settings["id"] == "") $multi_id = $this->o["mur_review_set"];
+            else $multi_id = $settings["id"];
             $set = gd_get_multi_set($multi_id);
             if ($multi_id > 0 && $post_id > 0) {
                 $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id, count($set->object));
@@ -516,6 +518,7 @@ if (!class_exists('GDStarRating')) {
 
             $votes = array();
             foreach ($multi_data as $md) {
+                $single_vote = array();
                 $single_vote["votes"] = 1;
                 $single_vote["score"] = $md->user_votes;
                 $single_vote["rating"] = $md->user_votes;
@@ -853,6 +856,7 @@ if (!class_exists('GDStarRating')) {
                     $set = gd_get_multi_set($set_id);
                     $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
                     GDSRDBMulti::save_review($record_id, $values);
+                    GDSRDBMulti::recalculate_multi_review($record_id, $values, $set);
                     $this->o["mur_review_set"] = $_POST["gdsrmultiset"];
                     update_option('gd-star-rating', $this->o);
                 }
@@ -1341,6 +1345,11 @@ if (!class_exists('GDStarRating')) {
                 include ($this->plugin_path."css/gdstarating.css.php");
                 echo('</style>');
             }
+        }
+
+        function multi_rating_header($external_css = true) {
+            $this->include_rating_css($external_css);
+            echo('<script type="text/javascript" src="'.$this->plugin_url.'script.js.php"></script>');
         }
 
         /**
