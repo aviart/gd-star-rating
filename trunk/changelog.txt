@@ -15,4 +15,5 @@
   * edit: few css and javascript layout improvements
   * fix: critical error in saving multi rating votes
   * fix: some problems with database table upgrading
+  * fix: some of the custom functions missing elements
   * fix: various small bugs
