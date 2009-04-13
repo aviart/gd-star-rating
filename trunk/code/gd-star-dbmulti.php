@@ -76,6 +76,24 @@ class GDSRDBMulti {
         foreach ($ids as $id) GDSRDBMulti::recalculate_trend_averages($id->id, $set);
     }
 
+    function recalculate_multi_review($record_id, $values, $set, $insert = true) {
+        global $wpdb, $table_prefix;
+
+        $weight_norm = array_sum($set->weight);
+        $overall = 0;
+        for ($i = 0; $i < count($values); $i++) {
+            $overall += ($values[$i] * $set->weight[$i]) / $weight_norm;
+        }
+        $overall = @number_format($overall, 1);
+
+        if ($insert) {
+            $sql = sprintf("update %sgdsr_multis_data set average_review = '%s' where id = %s", $table_prefix, $overall, $record_id);
+            $wpdb->query($sql);
+        }
+
+        return $overall;
+    }
+
     function recalculate_multi_averages($post_id, $set_id, $rules = "", $set = null) {
         global $wpdb, $table_prefix;
 
@@ -323,6 +341,7 @@ class GDSRDBMulti {
     function calculate_set_rating($set, $record_id) {
         $values = GDSRDBMulti::get_values($record_id);
         $weight_norm = array_sum($set->weight);
+        $weighted = array();
         $weighted["users"]["rating"] = 0;
         $weighted["visitors"]["rating"] = 0;
         $weighted["total"]["rating"] = 0;

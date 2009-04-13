@@ -86,6 +86,13 @@
         else return $gdsr->blog_multi_review_editor($post_id, $settings, false);
     }
 
+    function wp_gdsr_multi_review_editor_header($echo = true) {
+        global $gdsr;
+
+        if ($echo) echo $gdsr->multi_rating_header();
+        else return $gdsr->multi_rating_header();
+    }
+
     /**
      * Renders multi rating review for a post.
      *
