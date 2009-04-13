@@ -1168,6 +1168,7 @@ if (!class_exists('GDStarRating')) {
                     $set = gd_get_multi_set($set_id);
                     $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
                     GDSRDBMulti::save_review($record_id, $values);
+                    GDSRDBMulti::recalculate_multi_review($record_id, $values, $set);
                 }
                 $this->custom_actions('init_save_review');
                 wp_redirect_self();
