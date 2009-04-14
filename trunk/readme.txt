@@ -58,6 +58,7 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 
 = Import Data =
 Plugin can import data from different rating plugins:
+
 * Star Rating For Reviews [http://wordpress.org/extend/plugins/star-rating-for-reviews/]
 * Post Star Rating [http://wordpress.org/extend/plugins/post-star-rating/]
 * WP Post Rating [http://wordpress.org/extend/plugins/wp-postratings/]

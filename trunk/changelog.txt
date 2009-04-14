@@ -9,8 +9,11 @@
   * new: tool to recalculate multi ratings
   * new: t2 templates system expanded with co-dependent templates
   * new: t2 templates for rating and comment rating blocks
+  * new: t2 template for element word votes
+  * new: jquery datepicker polish translation
   * edit: expanded functions for multi review integration
   * edit: improved multi review average calculations
+  * edit: improved insertion of default templates into database
   * edit: multi rating ajax call improved
   * edit: database tables expanded for multi ratings
   * edit: few css and javascript layout improvements
