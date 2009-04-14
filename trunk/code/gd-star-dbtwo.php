@@ -414,7 +414,7 @@ class GDSRDB {
                     $wpdb->query($sql);
                     $tpl_id = $wpdb->insert_id;
                 }
-                $templates[$tpl_check] = $tpl_id;
+                $templates[$tpl_check] = sprintf("%s", $tpl_id);
             }
         }
         if (count($templates) > 0) {
@@ -427,11 +427,9 @@ class GDSRDB {
                         $depend[$section] = $templates[$section];
                     }
                 }
-                print_r($depend);
                 if (count($depend) > 0) {
                     $sql = sprintf("update %sgdsr_templates set dependencies = '%s' where template_id = %s",
                         $table_prefix, serialize($depend), $templates[$tpl->code]);
-                    print_r($sql);
                     $wpdb->query($sql);
                 }
             }

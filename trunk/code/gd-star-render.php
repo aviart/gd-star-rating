@@ -187,14 +187,14 @@ class GDSRRender {
         return $rater;
         
     }
-    
+
     function rating_header($header, $header_text = '') {
         if ($header == 1)
             return '<div class="ratingheader">'.html_entity_decode($header_text).'</div>';
         else
             return '';
     }
-    
+
     function rating_text($id, $type, $votes, $score, $unit_count, $typecls, $custom_css_text = "") {
         $template = get_option('gd-star-rating-templates');
         if ($votes == 1) $tense = $template["word_votes_singular"];

@@ -107,17 +107,25 @@ $tpls->add_template($t);
 
 $t = new gdTemplate("SRB", __("Standard Ratings Block", "gd-star-rating"), "%RATING_BLOCK%");
 $t->add_template("SRT", "%RATING_TEXT%");
-$t->add_element("%HEADER_TEXT%", __("article rating", "gd-star-rating"));
-$t->add_element("%RATING_STARS%", __("article rating", "gd-star-rating"));
-$t->add_element("%RATING_TEXT%", __("article rating", "gd-star-rating"));
+$t->add_element("%HEADER_TEXT%", __("rating header text", "gd-star-rating"));
+$t->add_element("%RATING_STARS%", __("rating stars", "gd-star-rating"));
+$t->add_element("%RATING_TEXT%", __("rating text", "gd-star-rating"));
+$t->add_element("%CSS_BLOCK%", __("css class for whole block", "gd-star-rating"));
+$t->add_element("%CSS_HEADER%", __("css class for header", "gd-star-rating"));
+$t->add_element("%CSS_STARS%", __("css class for stars", "gd-star-rating"));
+$t->add_element("%CSS_TEXT%", __("css class for rating text", "gd-star-rating"));
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
 $tpls->add_template($t);
 
 $t = new gdTemplate("CRB", __("Comments Ratings Block", "gd-star-rating"), "%RATING_BLOCK%");
 $t->add_template("CRT", "%CMM_RATING_TEXT%");
-$t->add_element("%CMM_HEADER_TEXT%", __("article rating", "gd-star-rating"));
-$t->add_element("%CMM_RATING_STARS%", __("article rating", "gd-star-rating"));
-$t->add_element("%CMM_RATING_TEXT%", __("article rating", "gd-star-rating"));
+$t->add_element("%CMM_HEADER_TEXT%", __("rating header text", "gd-star-rating"));
+$t->add_element("%CMM_RATING_STARS%", __("rating stars", "gd-star-rating"));
+$t->add_element("%CMM_RATING_TEXT%", __("rating text", "gd-star-rating"));
+$t->add_element("%CMM_CSS_BLOCK%", __("css class for whole block", "gd-star-rating"));
+$t->add_element("%CMM_CSS_HEADER%", __("css class for header", "gd-star-rating"));
+$t->add_element("%CMM_CSS_STARS%", __("css class for stars", "gd-star-rating"));
+$t->add_element("%CMM_CSS_TEXT%", __("css class for rating text", "gd-star-rating"));
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
 $tpls->add_template($t);
 
