@@ -246,7 +246,7 @@ class GDSRRender {
         $rater_length = $unit_width * $unit_count; 
         $rater_id = $typecls."_rater_".$id;
         $loader_id = $typecls."_loader_".$id;
-        
+
         if ($text == 'hide' || ($text == 'top_hidden' && $votes == 0) || ($text == 'bottom_hidden' && $votes == 0) || ($text == 'left_hidden' && $votes == 0) || ($text == 'right_hidden' && $votes == 0))
             $rater_text = "";
         else {
@@ -299,11 +299,11 @@ class GDSRRender {
             }
             $rater_text.= '</div>';
         }
-        
+
         $rater_stars = GDSRRender::rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg);
 
         $rater_header = GDSRRender::rating_header($header, $header_text);
-        
+
         if ($text == "hide" || $text == "top" || $text == "top_hidden" || $text == "bottom" || $text == "bottom_hidden" || $rater_text == '')
             return GDSRRender::rating_block_div($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block, $debug);
         else
