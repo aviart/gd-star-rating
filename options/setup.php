@@ -11,6 +11,9 @@
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Settings are removed from WordPress installation.", "gd-star-rating"); ?></strong></p></div> <?php
     }
     if ($_POST["gdsr_remove_templates"] == __("Remove Templates", "gd-star-rating")) {
+        gdDBInstallGDSR::drop_table("gdsr_templates");
+        gdDBInstallGDSR::create_tables(STARRATING_PATH);
+        GDSRDB::insert_default_templates(STARRATING_PATH);
         delete_option('gd-star-rating-templates');
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Plugin Templates are removed from WordPress installation.", "gd-star-rating"); ?></strong></p></div> <?php
     }
@@ -18,7 +21,7 @@
         delete_option('gd-star-rating-import');
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Import Information is reseted.", "gd-star-rating"); ?></strong></p></div> <?php
     }
-    
+
 ?>
 <script>
     function areYouSure() {

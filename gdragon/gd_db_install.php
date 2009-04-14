@@ -2,7 +2,7 @@
 
 /*
 Name:    gdDBInstallGDSR
-Version: 1.0.3
+Version: 1.0.5
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://wp.gdragon.info/
@@ -49,6 +49,25 @@ if (!class_exists('gdDBInstallGDSR')) {
             }
         }
 
+        /**
+         * Drops the table from the database.
+         *
+         * @global object $wpdb Wordpress DB class
+         * @global string $table_prefix Wordpress table prefix
+         * @param <type> $table_name table to drop without the prefix
+         */
+        function drop_table($table_name) {
+            global $wpdb, $table_prefix;
+            $wpdb->query("drop table ".$table_prefix.$table_name);
+        }
+
+        /**
+         * Executes alert scrips from alert.txt file.
+         *
+         * @global object $wpdb Wordpress DB class
+         * @global string $table_prefix Wordpress table prefix
+         * @param string $path base path to folder where the install folder is located with trailing slash
+         */
         function alter_tables($path) {
             global $wpdb, $table_prefix;
             $path.= "install/alter.txt";
@@ -63,6 +82,13 @@ if (!class_exists('gdDBInstallGDSR')) {
             }
         }
 
+        /**
+         * Executes drop scrips from delete.txt file.
+         *
+         * @global object $wpdb Wordpress DB class
+         * @global string $table_prefix Wordpress table prefix
+         * @param string $path base path to folder where the install folder is located with trailing slash
+         */
         function delete_tables($path) {
             global $wpdb, $table_prefix;
             $path.= "install/delete.txt";
