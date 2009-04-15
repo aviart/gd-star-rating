@@ -1,0 +1,23 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 1.1.9 / april 15 2009 ===
+  * new: added average rating columns for multi rating results
+  * new: recalculating average multi ratings for posts
+  * new: recalculating average multi ratings trends for posts
+  * new: tool to recalculate multi ratings
+  * new: t2 templates system expanded with co-dependent templates
+  * new: t2 templates for rating and comment rating blocks
+  * new: t2 template for element word votes
+  * new: jquery datepicker polish translation
+  * edit: expanded functions for multi review integration
+  * edit: improved multi review average calculations
+  * edit: improved insertion of default templates into database
+  * edit: multi rating ajax call improved
+  * edit: database tables expanded for multi ratings
+  * edit: few css and javascript layout improvements
+  * fix: critical error in saving multi rating votes
+  * fix: some problems with database table upgrading
+  * fix: some of the custom functions missing elements
+  * fix: various small bugs
