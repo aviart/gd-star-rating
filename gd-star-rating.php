@@ -31,7 +31,6 @@ require_once(dirname(__FILE__)."/gd-star-config.php");
 require_once(dirname(__FILE__)."/code/gd-star-defaults.php");
 require_once(dirname(__FILE__)."/code/gd-star-functions.php");
 require_once(dirname(__FILE__)."/code/gd-star-render.php");
-require_once(dirname(__FILE__)."/code/gd-star-render-t2.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbone.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbtwo.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbx.php");
