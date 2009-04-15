@@ -99,6 +99,7 @@ function gdsrAddNewMulti() {
             if ($rvw_counter > 0)
                 $rvw_counter = sprintf('<a href="./admin.php?page=gd-star-rating-multi-sets&gdsr=murpost&sid=%s"><strong style="color: red;">%s</strong></a>', $row->multi_id, $rvw_counter);
             echo sprintf("[ <strong>%s</strong> ] %s", $rvw_counter, __("Posts", "gd-star-rating"));
+            if ($review_set == $row->multi_id) echo '<br /><strong style="color: red;">active</strong>';
         echo '</td>';
         echo '<td>';
             $usg_counter = intval(GDSRDBMulti::get_usage_count_posts($row->multi_id));

@@ -30,14 +30,6 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                 </select>
                 </td>
             </tr>
-            <tr>
-                <td width="150">MSIE 6:</td>
-                <td width="200" align="left" colspan="6">
-                <select style="width: 180px;" name="gdsr_cmm_style_ie6" id="gdsr_cmm_style_ie6">
-                <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["cmm_style_ie6"]); ?>
-                </select>
-                </td>
-            </tr>
         </table>
         <?php if ($gdsr_options["admin_placement"] == 1) { ?>
         <div class="gdsr-table-split"></div>
@@ -112,14 +104,6 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                 <?php GDSRHelper::render_star_sizes("gdsr_cmm_aggr_size", $gdsr_options["cmm_aggr_size"]); ?>
                 </td>
             </tr>
-            <tr>
-                <td width="150">MSIE 6:</td>
-                <td width="200" align="left" colspan="3">
-                <select style="width: 180px;" name="gdsr_cmm_aggr_style_ie6" id="gdsr_cmm_aggr_style_ie6">
-                <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["cmm_aggr_style_ie6"]); ?>
-                </select>
-                </td>
-            </tr>
         </table>
     </td>
 </tr>
@@ -151,8 +135,6 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
         <input type="checkbox" name="gdsr_cmm_logged" id="gdsr_cmm_logged"<?php if ($gdsr_options["cmm_logged"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_logged"><?php _e("Use logged data (IP) to prevent duplicate voting.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_cmm_cookies" id="gdsr_cmm_cookies"<?php if ($gdsr_options["cmm_cookies"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_cookies"><?php _e("Use cookies to prevent duplicate voting.", "gd-star-rating"); ?></label>
-        <br />
-        <input type="checkbox" name="gdsr_cmm_allow_mixed_ip_votes" id="gdsr_cmm_allow_mixed_ip_votes"<?php if ($gdsr_options["cmm_allow_mixed_ip_votes"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_allow_mixed_ip_votes"><?php _e("Allow votes from user and visitor coming from same IP address.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Vote Waiting Message", "gd-star-rating"); ?></th>
@@ -206,14 +188,6 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                 <td width="80" align="left">
                 <select style="width: 70px;" name="gdsr_cmm_review_stars" id="gdsr_cmm_review_stars">
                 <?php GDSRHelper::render_stars_select($gdsr_options["cmm_review_stars"]); ?>
-                </select>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">MSIE 6:</td>
-                <td width="200" align="left" colspan="6">
-                <select style="width: 180px;" name="gdsr_cmm_review_style_ie6" id="gdsr_cmm_review_style_ie6">
-                <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["cmm_review_style_ie6"]); ?>
                 </select>
                 </td>
             </tr>

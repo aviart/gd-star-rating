@@ -71,8 +71,7 @@ function insertStarRatingCode() {
         tagtext = tagtext + "]";
     }
     else if (shortcode == 'starreviewmulti') {
-        tagtext = "[starreviewmulti id=";
-        tagtext = tagtext + document.getElementById('srMultiRatingSet').value;
+        tagtext = "[starreviewmulti";
         tagtext = tagtext + "]";
     }
     else if (shortcode == 'starratingmulti') {

@@ -1,6 +1,6 @@
 <?php
 
-    require_once(dirname(__FILE__)."/gd-star-config.php");
+    require_once("./gd-star-config.php");
     $wpconfig = get_wpconfig();
     require($wpconfig);
 
@@ -13,8 +13,7 @@
     $vote_id = $_GET["vote_id"];
     $vote_value = $_GET["vote_value"];
     $vote_type = $_GET["vote_type"];
-
-    $result = $vote_type."_error";
+    
     switch ($vote_type) {
         case 'a':
             $result = $gdsr->vote_article_ajax($vote_value, $vote_id);

@@ -1,17 +1,5 @@
 <?php
 
-class GDSRArticleMultiReview {
-    var $post_id;
-    var $values;
-    var $rating;
-    var $set;
-    var $rendered;
-    
-    function GDSRArticleMultiReview($post_id) {
-        $this->post_id = $post_id;
-    }
-}
-
 /**
  * Class with agregated results for a single post.
  * Constructor is givent the post data object, and from that class is filled with data.
@@ -198,12 +186,12 @@ class GDSRHelper {
     function expiration_date($value) {
         return strtotime($value) - mktime();
     }
-
+    
     function calculate_deadline($timestamp) {
         $deadline_ts = $timestamp + mktime();
         return date("Y-m-d", $deadline_ts);
     }
-
+    
     function remaining_time_parts($timestamp) {
         $times = array(
                 31536000 => 'year', 
@@ -227,7 +215,7 @@ class GDSRHelper {
         
         return $parts;
     }
-
+    
     function remaining_time_total($timestamp) {
         $times = array(
                 31536000 => 'year', 
@@ -242,10 +230,10 @@ class GDSRHelper {
         foreach ($times AS $key => $value) {
             $parts[$value] = floor($secs / $key);
         }
-
+        
         return $parts;
     }
-
+    
     function render_styles_select($styles, $selected = '') { 
         foreach ($styles as $style) {
             if ($selected == $style->folder) $current = ' selected="selected"';
@@ -260,11 +248,11 @@ class GDSRHelper {
             echo "\t<option value='".$style["class"]."'>".$style["name"]."</option>\r\n";
         }
     }
-
+	
 	function render_stars_select($selected = 10) {
         GDSRHelper::render_stars_select_full($selected);
     }
-
+    
     function render_stars_select_full($selected = 10, $stars = 20, $start = 1, $prefix = '') {
         for ($i = $start; $i < $stars + 1; $i++) {
             if ($selected == $i) $current = ' selected="selected"';
@@ -353,22 +341,7 @@ class GDSRHelper {
 </select>
         <?php
     } 
-
-    function render_templates_section($section, $name, $selected = "0", $width = 205) {
-        $templates = GDSRDB::get_templates($section, true);
-        ?>
-<select style="width: <?php echo $width ?>px;" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
-        <?php
-        foreach ($templates as $t) {
-            if ($t->template_id == $selected) $select = ' selected="selected"';
-            else $select = '';
-            echo sprintf('<option value="%s"%s>%s</option>', $t->template_id, $select, $t->name);
-        }
-        ?>
-</select>
-        <?php
-    }
-
+    
     function render_star_sizes($name, $selected = 20, $width = 120, $extraSel = "") {
         ?>
 <select style="width: <?php echo $width ?>px;" name="<?php echo $name; ?>" id="<?php echo $name; ?>" <?php echo $extraSel; ?>>
@@ -539,15 +512,4 @@ function gd_sort_bayesian_asc($a, $b) {
 function gd_sort_bayesian_desc($a, $b) {
     if ($a->bayesian == $b->bayesian) return 0;
     return ($a->bayesian > $b->bayesian) ? -1 : 1;
-}
-
-function is_msie6() {
-    $agent = $_SERVER['HTTP_USER_AGENT'];
-    if(eregi("msie",$agent) && !eregi("opera",$agent)) {
-        $val = explode(" ", stristr($agent, "msie"));
-        $version = substr($val[1], 0, 1);
-        if ($version < 7) return true;
-        else return false;
-    }
-    return false;
 }

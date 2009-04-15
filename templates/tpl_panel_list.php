@@ -1,5 +1,7 @@
 <?php
 
+include(dirname(__FILE__)."/tpl_list.php");
+
 $filter_section = "";
 
 if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
@@ -10,7 +12,7 @@ $all_sections = $tpls->list_sections_assoc();
 
 ?>
 
-<div class="wrap"><h2 class="gdptlogopage">GD Star Rating: T2 <?php _e("Templates", "gd-star-rating"); ?></h2>
+<div class="wrap"><h2 class="gdptlogopage">GD Star Rating: <?php _e("Templates", "gd-star-rating"); ?></h2>
 <div class="gdsr">
 
 <div class="tablenav">
@@ -32,7 +34,6 @@ $all_sections = $tpls->list_sections_assoc();
             <th scope="col"><?php _e("Name", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Section / Type", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Description", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Tag", "gd-star-rating"); ?></th>
             <th scope="col" style="text-align: right"><?php _e("Options", "gd-star-rating"); ?></th>
         </tr>
     </thead>
@@ -50,11 +51,10 @@ $all_sections = $tpls->list_sections_assoc();
         echo '<td><strong><a href="'.$url.'mode=copy&tplid='.$t->template_id.'">'.$t->name.'</a></strong></td>';
         echo '<td>'.$all_sections[$t->section].'</td>';
         echo '<td>'.$t->description.'</td>';
-        echo '<td>'.$tpls->find_template_tag($t->section).'</td>';
         echo '<td style="text-align: right">';
         if ($t->preinstalled == "0") echo '<a href="'.$url.'deltpl='.$t->template_id.'">delete</a> | ';
-        if ($t->preinstalled == "0") echo '<a href="'.$url.'mode=edit&tplid='.$t->template_id.'">edit</a> | ';
-        echo '<a href="'.$url.'mode=copy&tplid='.$t->template_id.'">duplicate</a>';
+        echo '<a href="'.$url.'mode=edit&tplid='.$t->template_id.'">edit</a>';
+        echo ' | <a href="'.$url.'mode=copy&tplid='.$t->template_id.'">duplicate</a>';
         echo '</td>';
         echo '</tr>';
         

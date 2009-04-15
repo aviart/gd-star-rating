@@ -118,17 +118,17 @@
                 <span style="float: right; margin-top: 2px;"></span>
                 <div class="ssclear"></div>
             </div>
-            <div class="ssiconurl"><a href="http://www.dev4press.com/plugins/gd-press-tools" target="_blank"><span style="color: red">GD Press Tools</span></a>: <?php _e("various administration tools", "gd-star-rating") ?></div>
-            <div class="ssiconurl"><a href="http://www.dev4press.com/plugins/gd-pages-navigator" target="_blank">GD Pages Navigator</a>: <?php _e("advanced pages widget", "gd-star-rating") ?></div>
-            <div class="ssiconurl"><a href="http://www.dev4press.com/plugins/gd-linkedin-badge" target="_blank">GD LinkedIn Badge</a>: <?php _e("widget to add linkedin badge with link", "gd-star-rating") ?></div>
-            <div class="ssiconurl"><a href="http://www.dev4press.com/plugins/gd-plugin-core" target="_blank">GD Plugin Core</a>: <?php _e("basic class and wizard for creating plugins", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/plugins/gd-press-tools" target="_blank"><span style="color: red">GD Press Tools</span></a>: <?php _e("various administration tools", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/plugins/gd-pages-navigator" target="_blank">GD Pages Navigator</a>: <?php _e("advanced pages widget", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/plugins/gd-linkedin-badge" target="_blank">GD LinkedIn Badge</a>: <?php _e("widget to add linkedin badge with link", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/plugins/gd-plugin-core" target="_blank">GD Plugin Core</a>: <?php _e("basic class and wizard for creating plugins", "gd-star-rating") ?></div>
             <div style="padding: 6px"></div>
             <div class="ssurlstitle">
                 <span style="float: left;">Golden Dragon:</span>
                 <span style="float: right; margin-top: 2px;"><img class="rss-icon ssrssicon" alt="rss icon" src="<?php bloginfo('home'); echo '/'.WPINC; ?>/images/rss.png"/><a href="http://feeds2.feedburner.com/GDWordPress" class="rssurl">RSS</a></span>
                 <div class="ssclear"></div>
             </div>
-            <div class="ssiconurl"><a href="http://www.dev4press.com/" target="_blank">Dev4Press</a>: <?php _e("wordpress plugins development", "gd-star-rating") ?></div>
+            <div class="ssiconurl"><a href="http://wp.gdragon.info/" target="_blank">Wordpress Blog</a>: <?php _e("wordpress plugins development", "gd-star-rating") ?></div>
             <div class="ssiconurl"><a href="http://forum.gdragon.info/" target="_blank">Forum</a>: <?php _e("development discussion forum", "gd-star-rating") ?></div>
             <div style="padding: 6px"></div>
             <div class="ssurlstitle">
@@ -146,8 +146,8 @@
                 <?php _e("Version", "gd-star-rating"); ?>: <font style="color: red;"><?php echo $options["version"]; ?></font> | 
                 <?php _e("Status", "gd-star-rating"); ?>: <font style="color: red;"><?php echo $options["status"]; ?></font> | 
                 <?php _e("Release Date", "gd-star-rating"); ?>: <font style="color: red;"><?php echo $options["date"]; ?></font> | 
-                PHP: <font style="color: red;"><?php echo gdFunctionsGDSR::php_version(true); ?></font> |
-                mySQL: <font style="color: red;"><?php echo gdFunctionsGDSR::mysql_version(true); ?></font>
+                PHP: <font style="color: red;"><?php echo gdFunctions::php_version(true); ?></font> |
+                mySQL: <font style="color: red;"><?php echo gdFunctions::mysql_version(true); ?></font>
             </h3>
         </div>
     </div>

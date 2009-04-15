@@ -13,43 +13,46 @@ class GDSRDatabase {
     }
 
     // check vote
-    function check_vote_table($table, $id, $user, $type, $ip, $mixed = false) {
+    function check_vote_table($table, $id, $user, $type, $ip) {
         global $wpdb, $table_prefix;
 
-        if ($user > 0) {
-            $votes_sql = sprintf("SELECT count(*) FROM %s WHERE vote_type = '%s' and id = %s and user_id = %s", $table_prefix.$table, $type, $id, $user);
-            $votes = $wpdb->get_var($votes_sql);
-            return $votes == 0;
-        }
-        else {
-            $votes_sql = sprintf("SELECT count(*) FROM %s WHERE vote_type = '%s' and id = %s and ip = '%s'", $table_prefix.$table, $type, $id, $ip);
-            $votes = $wpdb->get_var($votes_sql);
-            if ($votes > 0 && $mixed) {
-                $votes_sql = sprintf("SELECT count(*) FROM %s WHERE vote_type = '%s' and user_id > 0 and id = %s and ip = '%s'", $table_prefix.$table, $type, $id, $ip);
-                $votes_mixed = $wpdb->get_var($votes_sql);
-                if ($votes_mixed > 0) $votes = 0;
-            }
-            return $votes == 0;
-        }
+        if ($user > 0)
+            $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and id = %s and user_id = %s", 
+                $table_prefix.$table, $type, $id, $user
+            );
+        else
+            $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and id = %s and ip = '%s'", 
+                $table_prefix.$table, $type, $id, $ip
+            );
+
+        $vote_data = $wpdb->get_row($votes_sql);
+
+wp_gdsr_dump("CHECKVOTE_sql", $votes_sql);
+wp_gdsr_dump("CHECKVOTE", $vote_data);
+
+        if (count($vote_data) == 0) 
+            return true;
+        else 
+            return false;
     }
 
-    function check_vote($id, $user, $type, $ip, $mod_only = false, $mixed = false) {
+    function check_vote($id, $user, $type, $ip, $mod_only = false) {
         $result = true;
 
         if (!$mod_only)
-            $result = GDSRDatabase::check_vote_logged($id, $user, $type, $ip, $mixed);
+            $result = GDSRDatabase::check_vote_logged($id, $user, $type, $ip);
         if ($result) 
-            $result = GDSRDatabase::check_vote_moderated($id, $user, $type, $ip, $mixed);
+            $result = GDSRDatabase::check_vote_moderated($id, $user, $type, $ip);
 
         return $result;
     }
 
-    function check_vote_logged($id, $user, $type, $ip, $mixed = false) {
-        return GDSRDatabase::check_vote_table('gdsr_votes_log', $id, $user, $type, $ip, $mixed);
+    function check_vote_logged($id, $user, $type, $ip) {
+        return GDSRDatabase::check_vote_table('gdsr_votes_log', $id, $user, $type, $ip);
     }
 
-    function check_vote_moderated($id, $user, $type, $ip, $mixed = false) {
-        return GDSRDatabase::check_vote_table('gdsr_moderate', $id, $user, $type, $ip, $mixed);
+    function check_vote_moderated($id, $user, $type, $ip) {
+        return GDSRDatabase::check_vote_table('gdsr_moderate', $id, $user, $type, $ip);
     }
     // check vote
 

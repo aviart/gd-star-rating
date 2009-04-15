@@ -126,12 +126,12 @@ function checkAll(form) {
     $sql = GDSRDatabase::get_visitors($post_id, $vote_type, $filter_date, $filter_vote, $select, ($page_id - 1) * $posts_per_page, $posts_per_page, $sort_column, $sort_order);
     $rows = $wpdb->get_results($sql, OBJECT);
 
-    $col[0] = gdFunctionsGDSR::column_sort_vars("user_id", $sort_order, $sort_column);
-    $col[1] = gdFunctionsGDSR::column_sort_vars("user_nicename", $sort_order, $sort_column);
-    $col[2] = gdFunctionsGDSR::column_sort_vars("vote", $sort_order, $sort_column);
-    $col[3] = gdFunctionsGDSR::column_sort_vars("voted", $sort_order, $sort_column);
-    $col[4] = gdFunctionsGDSR::column_sort_vars("ip", $sort_order, $sort_column);
-    $col[5] = gdFunctionsGDSR::column_sort_vars("user_agent", $sort_order, $sort_column);
+    $col[0] = gdFunctions::column_sort_vars("user_id", $sort_order, $sort_column);
+    $col[1] = gdFunctions::column_sort_vars("user_nicename", $sort_order, $sort_column);
+    $col[2] = gdFunctions::column_sort_vars("vote", $sort_order, $sort_column);
+    $col[3] = gdFunctions::column_sort_vars("voted", $sort_order, $sort_column);
+    $col[4] = gdFunctions::column_sort_vars("ip", $sort_order, $sort_column);
+    $col[5] = gdFunctions::column_sort_vars("user_agent", $sort_order, $sort_column);
 
 ?>
 

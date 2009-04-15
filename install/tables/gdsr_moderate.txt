@@ -1,12 +1,12 @@
 CREATE TABLE `%sgdsr_moderate` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
-  `id` int(11) DEFAULT NULL,
-  `vote_type` varchar(10) DEFAULT 'article',
-  `multi_id` int(11) DEFAULT '0',
-  `user_id` int(11) DEFAULT '0',
-  `vote` int(11) DEFAULT '0',
+  `record_id` int(11) NOT NULL auto_increment,
+  `id` int(11) default NULL,
+  `vote_type` varchar(10) default 'article',
+  `multi_id` int(11) default '0',
+  `user_id` int(11) default '0',
+  `vote` int(11) default '0',
   `object` text NOT NULL,
-  `voted` datetime DEFAULT NULL,
-  `ip` varchar(32) DEFAULT NULL,
-  `user_agent` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`record_id`));
+  `voted` datetime default NULL,
+  `ip` varchar(32) default NULL,
+  `user_agent` varchar(255) default NULL,
+  PRIMARY KEY  (`record_id`));

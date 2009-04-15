@@ -2,62 +2,6 @@
 
 == Change Log ==
 
-=== Version: 1.1.9 / april 15 2009 ===
-  * new: added average rating columns for multi rating results
-  * new: recalculating average multi ratings for posts
-  * new: recalculating average multi ratings trends for posts
-  * new: tool to recalculate multi ratings
-  * new: t2 templates system expanded with co-dependent templates
-  * new: t2 templates for rating and comment rating blocks
-  * new: t2 template for element word votes
-  * new: jquery datepicker polish translation
-  * edit: expanded functions for multi review integration
-  * edit: improved multi review average calculations
-  * edit: improved insertion of default templates into database
-  * edit: multi rating ajax call improved
-  * edit: database tables expanded for multi ratings
-  * edit: few css and javascript layout improvements
-  * fix: critical error in saving multi rating votes
-  * fix: some problems with database table upgrading
-  * fix: some of the custom functions missing elements
-  * fix: various small bugs
-
-=== Version: 1.1.8 / march 26 2009 ===
-  * new: each and all sets can be used for multi review
-  * new: setting to embed all the css needed into the page
-  * new: allowing both user and visitor votes from same ip
-  * new: cleaning of invalid and obsolete multi ratings data
-  * new: setting additional styles for ie6 browsers
-  * new: auto scan for stars sets on update
-  * new: tag definition for templates
-  * del: removed non-ajax voting code
-  * del: removed ie6 png fix support
-  * edit: extanded multi review shortcode with set property
-  * edit: cleanup now removes revisions data from database
-  * edit: templates t2 system beta version
-  * edit: optimization in checking votes
-  * edit: updated missing translation strings
-  * edit: some of the default settings changed
-  * edit: readme file and links
-  * edit: partially removed old non ajax rating code
-  * fix: invalid replacemnet of the comment and post rating text after voting
-  * fix: w3c validation error caused by invalid cdata sequence
-  * fix: saving review data for revision as articles
-  * fix: multi review rating with no set selected
-  * fix: setup panel missing confirmations
-  * fix: warning about missing multi rating set
-  * fix: several small problems
-
-=== Version: 1.1.7 / march 10 2009 ===
-  * new: more multi set related custom functions
-  * new: default templates inserted into database
-  * edit: saving review editor results
-  * edit: updated and cleaned up database installation
-  * edit: few changes to t2 system
-  * edit: updated missing translation strings
-  * fix: custom review editor function
-  * fix: templates t2 system bugs
-
 === Version: 1.1.6 / march 2 2009 ===
   * new: database table for templates
   * new: aggregated comments for post

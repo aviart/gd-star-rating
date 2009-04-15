@@ -4,7 +4,7 @@ class GDSRDBTools {
     function clean_invalid_log_articles() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_log l left join %sposts o on o.ID = l.id where l.vote_type = 'article' and o.ID is null",
-            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -13,7 +13,7 @@ class GDSRDBTools {
     function clean_invalid_log_comments() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_log l left join %scomments o on o.comment_ID = l.id where l.vote_type = 'comment' and o.comment_ID is null",
-            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_log", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -22,7 +22,7 @@ class GDSRDBTools {
     function clean_invalid_trend_articles() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_trend l left join %sposts o on o.ID = l.id where l.vote_type = 'article' and o.ID is null",
-            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -31,7 +31,7 @@ class GDSRDBTools {
     function clean_invalid_trend_comments() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_votes_trend l left join %scomments o on o.comment_ID = l.id where l.vote_type = 'comment' and o.comment_ID is null",
-            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_votes_trend", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -40,16 +40,7 @@ class GDSRDBTools {
     function clean_dead_articles() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_data_article l left join %sposts o on o.ID = l.post_id where o.ID is null",
-            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_data_article", $table_prefix) : "l",
-            $table_prefix, $table_prefix);
-        $wpdb->query($sql);
-        return $wpdb->rows_affected;
-    }
-
-    function clean_revision_articles() {
-        global $wpdb, $table_prefix;
-        $sql = sprintf("delete %s from %sgdsr_data_article l inner join %sposts o on o.ID = l.post_id where o.post_type = 'revision'",
-            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_data_article", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_data_article", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -58,7 +49,7 @@ class GDSRDBTools {
     function clean_dead_comments() {
         global $wpdb, $table_prefix;
         $sql = sprintf("delete %s from %sgdsr_data_comment l left join %scomments o on o.comment_ID = l.comment_id where o.comment_ID is null",
-            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_data_comment", $table_prefix) : "l",
+            gdFunctions::mysql_pre_4_1() ? sprintf("%sgdsr_data_comment", $table_prefix) : "l",
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
@@ -163,7 +154,7 @@ class GDSRDB {
                 $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
                 break;
         }
-
+        
         if ($row->visitor_voters == 0) {
             $votes_v = '/';
             $count_v = '[ 0 ] ';
@@ -174,7 +165,7 @@ class GDSRDB {
             $votes_v = '<strong><span style="color: red">'.$visitor_rating.'</span></strong>';
             $count_v = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=article&vg=visitors"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $row->visitor_voters);
         }
-
+        
         if ($row->user_voters == 0) {
             $votes_u = '/';
             $count_u = '[ 0 ] ';
@@ -185,13 +176,13 @@ class GDSRDB {
             $votes_u = '<strong><span style="color: red">'.$user_rating.'</span></strong>';
             $count_u = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=article&vg=users"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $row->user_voters);
         }
-
+        
         if ($row->review == -1 || $row->review == '') $row->review = "/";
         $row->review = '<strong><span style="color: blue">'.$row->review.'</span></strong>';
-
+        
         $total_votes = $row->visitor_votes + $row->user_votes;
         $total_voters = $row->visitor_voters + $row->user_voters;
-
+        
         if ($total_voters == 0) {
             $votes_t = '/';
             $count_t = '[ 0 ] ';
@@ -202,12 +193,12 @@ class GDSRDB {
             $votes_t = '<strong><span style="color: red">'.$total_rating.'</span></strong>';
             $count_t = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=article&vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $total_voters);
         }
-
+        
         $row->total = $count_t.__("rating", "gd-star-rating").': <strong>'.$votes_t.'</strong><br />[ '.$row->views.' ] '.__("views", "gd-star-rating");
         $row->votes = $count_v.__("visitors", "gd-star-rating").': <strong>'.$votes_v.'</strong><br />'.$count_u.__("users", "gd-star-rating").': <strong>'.$votes_u.'</strong>';
-
+        
         $row->title = sprintf('<a href="./post.php?action=edit&post=%s">%s</a>', $row->pid, $row->post_title);
-
+        
         return $row;
     }
 
@@ -297,7 +288,7 @@ class GDSRDB {
             $votes_v = '<strong><span style="color: red">'.$visitor_rating.'</span></strong>';
             $count_v = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=comment&vg=visitors"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $row->visitor_voters);
         }
-
+        
         if ($row->user_voters == 0) {
             $votes_u = '/';
             $count_u = '[ 0 ] ';
@@ -311,7 +302,7 @@ class GDSRDB {
 
         $total_votes = $row->visitor_votes + $row->user_votes;
         $total_voters = $row->visitor_voters + $row->user_voters;
-
+        
         if ($total_voters == 0) {
             $votes_t = '/';
             $count_t = '[ 0 ] ';
@@ -328,7 +319,7 @@ class GDSRDB {
 
         if ($row->review == -1) $row->review = "/";
         $row->review = '<strong><span style="color: blue">'.$row->review.'</span></strong>';
-
+        
         return $row;
     }
     // conversion
@@ -336,7 +327,7 @@ class GDSRDB {
     // moderation
     function moderation_approve($ids, $ids_array) {
         global $wpdb, $table_prefix;
-
+        
         $sql = sprintf("select * from %s where record_id in %s", $table_prefix."gdsr_moderate", $ids);
         $rows = $wpdb->get_results($sql);
         foreach ($rows as $row) {
@@ -345,26 +336,24 @@ class GDSRDB {
             if ($row->vote_type == "comment")
                 GDSRDatabase::add_vote_comment($row->id, $row->user_id, $row->ip, $row->user_agent, $row->vote);
         }
-
+        
         GDSRDB::moderation_delete($ids);
     }
 
     function moderation_delete($ids) {
         global $wpdb, $table_prefix;
-
+        
         $sql = sprintf("delete from %s where record_id in %s", $table_prefix."gdsr_moderate", $ids);
         $wpdb->query($sql);
     }
     // moderation
 
     // templates
-    function get_templates($section = '', $default_sort = false) {
+    function get_templates($section = '') {
         global $wpdb, $table_prefix;
         if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
-        if ($default_sort) $default_sort = "preinstalled desc, ";
-        else $default_sort = "";
-
-        $sql = sprintf("select * from %sgdsr_templates%s order by %stemplate_id asc", $table_prefix, $section, $default_sort);
+        
+        $sql = sprintf("select * from %sgdsr_templates%s order by template_id asc", $table_prefix, $section);
         return $wpdb->get_results($sql);
     }
 
@@ -377,8 +366,8 @@ class GDSRDB {
 
     function edit_template($general, $elements) {
         global $wpdb, $table_prefix;
-        $sql = sprintf("UPDATE %sgdsr_templates SET `section` = '%s', `name` = '%s', `description` = '%s', `elements` = '%s', `dependencies` = '%s', `preinstalled` = '%s' WHERE `template_id` = %s",
-            $table_prefix, $general["section"], $general["name"], $general["description"], serialize($elements), serialize($general["dependencies"]), $general["preinstalled"], $general["id"]);
+        $sql = sprintf("UPDATE %sgdsr_templates SET `section` = '%s', `name` = '%s', `description` = '%s', `elements` = '%s', `preinstalled` = '%s' WHERE `template_id` = %s",
+            $table_prefix, $general["section"], $general["name"], $general["description"], serialize($elements), $general["preinstalled"], $general["id"]);
         $wpdb->query($sql);
         return $general["id"];
     }
@@ -392,48 +381,10 @@ class GDSRDB {
 
     function add_template($general, $elements) {
         global $wpdb, $table_prefix;
-        $sql = sprintf("INSERT INTO %sgdsr_templates (`section`, `name`, `description`, `elements`, `dependencies`, `preinstalled`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
-            $table_prefix, $general["section"], $general["name"], $general["description"], serialize($elements), serialize($general["dependencies"]), $general["preinstalled"]);
+        $sql = sprintf("INSERT INTO %sgdsr_templates (`section`, `name`, `description`, `elements`, `preinstalled`) VALUES ('%s', '%s', '%s', '%s', '%s')",
+            $table_prefix, $general["section"], $general["name"], $general["description"], serialize($elements), $general["preinstalled"]);
         $wpdb->query($sql);
         return $wpdb->insert_id;
-    }
-
-    function insert_default_templates($path) {
-        global $wpdb, $table_prefix;
-        $path.= "install/data/gdsr_templates.txt";
-        $templates = array();
-        if (file_exists($path)) {
-            $tpls = file($path);
-            foreach ($tpls as $tpl) {
-                $tpl_check = substr($tpl, 0, 3);
-                $tpl_insert = substr($tpl, 4);
-                $sql = sprintf("select template_id from %sgdsr_templates where section = '%s' and preinstalled = '1'", $table_prefix, $tpl_check);
-                $tpl_id = intval($wpdb->get_var($sql));
-                if ($tpl_id == 0) {
-                    $sql = str_replace("%sgdsr_templates", $table_prefix."gdsr_templates", $tpl_insert);
-                    $wpdb->query($sql);
-                    $tpl_id = $wpdb->insert_id;
-                }
-                $templates[$tpl_check] = sprintf("%s", $tpl_id);
-            }
-        }
-        if (count($templates) > 0) {
-            include($this->plugin_path.'templates/tpl_list.php');
-            foreach ($tpls->tpls as $tpl) {
-                $depend = array();
-                foreach ($tpl->elements as $el) {
-                    if ($el->tpl > -1) {
-                        $section = $tpl->tpls[$el->tpl]->code;
-                        $depend[$section] = $templates[$section];
-                    }
-                }
-                if (count($depend) > 0) {
-                    $sql = sprintf("update %sgdsr_templates set dependencies = '%s' where template_id = %s",
-                        $table_prefix, serialize($depend), $templates[$tpl->code]);
-                    $wpdb->query($sql);
-                }
-            }
-        }
     }
     // templates
 

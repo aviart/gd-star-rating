@@ -1,6 +1,8 @@
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Voting", "gd-star-rating"); ?></th>
     <td>
+        <input type="checkbox" name="gdsr_ajax" id="gdsr_ajax"<?php if ($gdsr_options["ajax"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ajax"><?php _e("AJAX enabled rating.", "gd-star-rating"); ?></label>
+        <br />
         <input type="checkbox" name="gdsr_use_nonce" id="gdsr_use_nonce"<?php if ($gdsr_options["use_nonce"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ajax"><?php _e("Use Nonce with AJAX for improved security.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
         <input type="checkbox" name="gdsr_ip_filtering" id="gdsr_ip_filtering"<?php if ($gdsr_options["ip_filtering"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ip_filtering"><?php _e("Use banned IP's lists to filter out visitors.", "gd-star-rating"); ?></label>
@@ -11,8 +13,6 @@
 <tr><th scope="row"><?php _e("Plugin Features", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_external_javascript" id="gdsr_external_javascript"<?php if ($gdsr_options["external_javascript"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_javascript"><?php _e("Link external javascript rating code, instead of embeding it into the page.", "gd-star-rating"); ?></label>
-        <br />
-        <input type="checkbox" name="gdsr_external_rating_css" id="gdsr_external_rating_css"<?php if ($gdsr_options["external_rating_css"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_rating_css"><?php _e("Link external CSS rating code, uncheck to embed all the CSS into the page.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_external_css" id="gdsr_external_css"<?php if ($gdsr_options["external_css"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_css"><?php _e("Link additional css file", "gd-star-rating"); ?>: <strong>'wp-content/gd-star-rating/css/rating.css'</strong></label>
         <div class="gdsr-table-split"></div>
@@ -61,6 +61,8 @@
 </tr>
 <tr><th scope="row"><?php _e("Internet Explorer", "gd-star-rating"); ?></th>
     <td>
+        <input type="checkbox" name="gdsr_iepngfix" id="gdsr_iepngfix"<?php if ($gdsr_options["ie_png_fix"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_iepngfix"><?php _e("Use IE6 PNG transparency fix.", "gd-star-rating"); ?></label>
+        <br />
         <input type="checkbox" name="gdsr_ieopacityfix" id="gdsr_ieopacityfix"<?php if ($gdsr_options["ie_opacity_fix"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ieopacityfix"><?php _e("Use IE opacity fix for multi ratings.", "gd-star-rating"); ?></label>
     </td>
 </tr>

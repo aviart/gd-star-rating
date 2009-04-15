@@ -1,4 +1,3 @@
-
 function multi_rating_vote(block) {
     var el = block.split("_");
     var post_id = el[0];

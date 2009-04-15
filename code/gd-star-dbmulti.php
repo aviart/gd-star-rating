@@ -1,239 +1,6 @@
 <?php
 
 class GDSRDBMulti {
-    function recalculate_trend_averages($trend_id, $set) {
-        global $wpdb, $table_prefix;
-
-        $multi_data = GDSRDBMulti::get_trend_values($trend_id);
-        $weight_norm = array_sum($set->weight);
-        $total_users = $total_visitors = $total_votes = 0;
-        $user_weighted = $visitors_weighted = $weighted = 0;
-        $i = 0;
-        foreach ($multi_data as $md) {
-            $v_user = $v_visitor = $s_user = $s_visitor = $r_user = $r_visitor = 0;
-
-            $v_visitor = $md->visitor_voters;
-            $s_visitor = $md->visitor_votes;
-            $v_user = $md->user_voters;
-            $s_user = $md->user_votes;
-
-            if ($v_visitor > 0) $r_visitor = $s_visitor / $v_visitor;
-            if ($v_user > 0) $r_user = $s_user / $v_user;
-            if ($r_visitor > $set->stars) $r_visitor = $set->stars;
-            if ($r_user > $set->stars) $r_user = $set->stars;
-
-            $r_visitor = @number_format($r_visitor, 1);
-            $r_user = @number_format($r_user, 1);
-            $visitors_weighted += ($r_visitor * $set->weight[$i]) / $weight_norm;
-            $user_weighted += ($r_user * $set->weight[$i]) / $weight_norm;
-            $total_visitors += $v_visitor;
-            $total_users += $v_user;
-
-            $i++;
-        }
-        $rating_users = @number_format($user_weighted, 1);
-        $rating_visitors = @number_format($visitors_weighted, 1);
-        $total_users = @number_format($total_users / $i, 0);
-        $total_visitors = @number_format($total_visitors / $i, 0);
-
-        $sql = sprintf("update %sgdsr_multis_trend set average_rating_users = '%s', average_rating_visitors = '%s', total_votes_users = '%s', total_votes_visitors = '%s' where id = %s",
-            $table_prefix, $rating_users, $rating_visitors, $total_users, $total_visitors, $trend_id);
-        $wpdb->query($sql);
-    }
-
-    function recalculate_all_sets() {
-        global $wpdb, $table_prefix;
-        $set = null;
-        $prev_set = 0;
-
-        $sql = sprintf("select id, post_id, multi_id from %sgdsr_multis_data order by multi_id asc", $table_prefix);
-        $posts = $wpdb->get_results($sql);
-        foreach ($posts as $post) {
-            if ($prev_set != $post->multi_id) $set = gd_get_multi_set($post->multi_id);
-            GDSRDBMulti::recalculate_multi_averages($post->post_id, $post->multi_id, "", $set);
-            GDSRDBMulti::recalculate_multi_review_db($post->post_id, $post->id, $set);
-        }
-
-        $prev_set = 0;
-
-        $sql = sprintf("select id, multi_id from %sgdsr_multis_trend order by multi_id asc", $table_prefix);
-        $ids = $wpdb->get_results($sql);
-        foreach ($ids as $id) {
-            if ($prev_set != $id->multi_id) $set = gd_get_multi_set($id->multi_id);
-            foreach ($ids as $id) GDSRDBMulti::recalculate_trend_averages($id->id, $set);
-        }
-    }
-
-    function recalculate_set($set_id) {
-        global $wpdb, $table_prefix;
-        $set = gd_get_multi_set($set_id);
-
-        $sql = sprintf("select id, post_id from %sgdsr_multis_data where multi_id = %s", $table_prefix, $set_id);
-        $posts = $wpdb->get_results($sql);
-        foreach ($posts as $post) {
-            GDSRDBMulti::recalculate_multi_averages($post->post_id, $set_id, "", $set);
-            GDSRDBMulti::recalculate_multi_review_db($post->post_id, $post->id, $set);
-        }
-
-        $sql = sprintf("select id from %sgdsr_multis_trend where multi_id = %s", $table_prefix, $set_id);
-        $ids = $wpdb->get_results($sql);
-        foreach ($ids as $id) GDSRDBMulti::recalculate_trend_averages($id->id, $set);
-    }
-
-    function recalculate_multi_review_db($post_id, $record_id, $set) {
-        global $wpdb, $table_prefix;
-        $multi_data = GDSRDBMulti::get_values($record_id, 'rvw');
-        if (count($multi_data) == 0) {
-            GDSRDBMulti::add_empty_review_values($record_id, count($set->object));
-            $multi_data = GDSRDBMulti::get_values($record_id, 'rvw');
-        }
-        $review = new GDSRArticleMultiReview($post_id);
-        $review->set = $set;
-        $i = 0;
-        $weighted = 0;
-        $weight_norm = array_sum($set->weight);
-        foreach ($multi_data as $md) {
-            $single_vote = array();
-            $single_vote["votes"] = 1;
-            $single_vote["score"] = $md->user_votes;
-            $single_vote["rating"] = $single_vote["score"];
-            $review->values = $single_vote;
-            $weighted += ( $single_vote["rating"] * $set->weight[$i] ) / $weight_norm;
-            $i++;
-        }
-        $review->rating = @number_format($weighted, 1);
-
-        $sql = sprintf("update %sgdsr_multis_data set average_review = '%s' where id = %s", $table_prefix, $review->rating, $record_id);
-        $wpdb->query($sql);
-
-        return $review;
-    }
-
-    function recalculate_multi_review($record_id, $values, $set) {
-        global $wpdb, $table_prefix;
-
-        $weight_norm = array_sum($set->weight);
-        $overall = 0;
-        for ($i = 0; $i < count($values); $i++) {
-            $overall += ($values[$i] * $set->weight[$i]) / $weight_norm;
-        }
-        $overall = @number_format($overall, 1);
-
-        $sql = sprintf("update %sgdsr_multis_data set average_review = '%s' where id = %s", $table_prefix, $overall, $record_id);
-        $wpdb->query($sql);
-
-        return $overall;
-    }
-
-    function recalculate_multi_averages($post_id, $set_id, $rules = "", $set = null) {
-        global $wpdb, $table_prefix;
-
-        if ($set == null) $set = gd_get_multi_set($set_id);
-        $multi_data = GDSRDBMulti::get_values_join($post_id, $set_id);
-        $votes_js = array();
-        $weight_norm = array_sum($set->weight);
-        $total_users = $total_visitors = $total_votes = 0;
-        $user_weighted = $visitors_weighted = $weighted = 0;
-        $i = 0;
-        foreach ($multi_data as $md) {
-            $votes = $score = $rating = $v_user = $v_visitor = $s_user = $s_visitor = $r_user = $r_visitor = 0;
-
-            $v_visitor = $md->visitor_voters;
-            $s_visitor = $md->visitor_votes;
-            $v_user = $md->user_voters;
-            $s_user = $md->user_votes;
-
-            if ($v_visitor > 0) $r_visitor = $s_visitor / $v_visitor;
-            if ($v_user > 0) $r_user = $s_user / $v_user;
-            if ($r_visitor > $set->stars) $r_visitor = $set->stars;
-            if ($r_user > $set->stars) $r_user = $set->stars;
-
-            $r_visitor = @number_format($r_visitor, 1);
-            $r_user = @number_format($r_user, 1);
-            $visitors_weighted += ($r_visitor * $set->weight[$i]) / $weight_norm;
-            $user_weighted += ($r_user * $set->weight[$i]) / $weight_norm;
-            $total_visitors += $v_visitor;
-            $total_users += $v_user;
-
-            if ($rules != "") {
-                if ($rules == "A" || $rules == "N") {
-                    $votes = $md->user_voters + $md->visitor_voters;
-                    $score = $md->user_votes + $md->visitor_votes;
-                }
-                else if ($rules == "V") {
-                    $votes = $md->visitor_voters;
-                    $score = $md->visitor_votes;
-                }
-                else if ($rules == "U") {
-                    $votes = $md->user_voters;
-                    $score = $md->user_votes;
-                }
-                if ($votes > 0) $rating = $score / $votes;
-                if ($rating > $set->stars) $rating = $set->stars;
-                $rating = @number_format($rating, 1);
-                $votes_js[] = $rating * $this->o["mur_size"];
-                $weighted += ($rating * $set->weight[$i]) / $weight_norm;
-                $total_votes += $votes;
-            }
-            $i++;
-        }
-        $rating_users = @number_format($user_weighted, 1);
-        $rating_visitors = @number_format($visitors_weighted, 1);
-        $total_users = @number_format($total_users / $i, 0);
-        $total_visitors = @number_format($total_visitors / $i, 0);
-
-        if ($rules != "") {
-            $rating = @number_format($weighted, 1);
-            $total_votes = @number_format($total_votes / $i, 0);
-            $output["total"]["rating"] = $rating;
-            $output["total"]["votes"] = $total_votes;
-            $output["json"] = $votes_js;
-        }
-
-        $sql = sprintf("update %sgdsr_multis_data set average_rating_users = '%s', average_rating_visitors = '%s', total_votes_users = '%s', total_votes_visitors = '%s' where post_id = %s and multi_id = %s",
-            $table_prefix, $rating_users, $rating_visitors, $total_users, $total_visitors, $post_id, $set_id);
-        $wpdb->query($sql);
-
-        $output["users"]["rating"] = $rating_users;
-        $output["users"]["votes"] = $total_users;
-        $output["visitors"]["rating"] = $rating_visitors;
-        $output["visitors"]["votes"] = $total_visitors;
-        wp_gdsr_dump("O", $output);
-        return $output;
-    }
-
-    function clean_revision_articles() {
-        global $wpdb, $table_prefix;
-        $sql = sprintf("delete %s from %sgdsr_multis_data l inner join %sposts o on o.ID = l.post_id where o.post_type = 'revision'",
-            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_multis_data", $table_prefix) : "l",
-            $table_prefix, $table_prefix);
-        $wpdb->query($sql);
-        $posts = $wpdb->rows_affected;
-
-        $sql = sprintf("delete %s from %sgdsr_multis_values l left join %sgdsr_multis_data o on o.id = l.id where o.id is null",
-            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_multis_values", $table_prefix) : "l",
-            $table_prefix, $table_prefix);
-        $wpdb->query($sql);
-
-        return $posts;
-    }
-
-    function clean_dead_articles() {
-        global $wpdb, $table_prefix;
-        $sql = sprintf("delete %s from %sgdsr_multis_data l left join %sposts o on o.ID = l.post_id where o.ID is null",
-            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_multis_data", $table_prefix) : "l",
-            $table_prefix, $table_prefix);
-        $wpdb->query($sql);
-        $posts = $wpdb->rows_affected;
-
-        $sql = sprintf("delete %s from %sgdsr_multis_values l left join %sgdsr_multis_data o on o.id = l.id where o.id is null",
-            gdFunctionsGDSR::mysql_pre_4_1() ? sprintf("%sgdsr_multis_values", $table_prefix) : "l",
-            $table_prefix, $table_prefix);
-        $wpdb->query($sql);
-
-        return $posts;
-    }
-
     function get_stats_count($set_id, $dates = "0", $cats = "0", $search = "") {
         global $table_prefix;
         $where = " and ms.multi_id = ".$set_id;
@@ -319,16 +86,13 @@ class GDSRDBMulti {
 
     function add_vote($post_id, $set_id, $user_id, $ip, $ua, $votes) {
         global $wpdb, $table_prefix;
-        $set = gd_get_multi_set($set_id);
         $data = $table_prefix.'gdsr_multis_data';
         $trend = $table_prefix.'gdsr_multis_trend';
 
         $trend_date = date("Y-m-d");
 
         $sql_trend = sprintf("SELECT id FROM %s WHERE vote_date = '%s' and post_id = %s and multi_id = %s", $trend, $trend_date, $post_id, $set_id);
-        wp_gdsr_dump("TREND_CHECK", $sql_trend);
         $trend_data = intval($wpdb->get_var($sql_trend));
-        wp_gdsr_dump("TREND_ID", $trend_data);
         
         $trend_added = false;
         if ($trend_data == 0) {
@@ -340,9 +104,8 @@ class GDSRDBMulti {
         else $trend_id = $trend_data;
 
         GDSRDBMulti::add_values($trend_id, $user_id, $votes, "trd", $trend_added ? "add" : "edit");
-        GDSRDBMulti::recalculate_trend_averages($trend_id, $set);
 
-        $data_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
+        $data_id = GDSRDBMulti::get_vote($post_id, $set_id);
 
         GDSRDBMulti::add_values($data_id, $user_id, $votes);
     }
@@ -363,16 +126,14 @@ class GDSRDBMulti {
         $i = 0;
         foreach ($votes as $vote) {
             $sql_insert = sprintf($sql, $vote, $i);
-            wp_gdsr_dump("SAVE_VOTE", $sql_insert);
             $wpdb->query($sql_insert);
             $i++;
         }
     }
-
+    
     function calculate_set_rating($set, $record_id) {
         $values = GDSRDBMulti::get_values($record_id);
         $weight_norm = array_sum($set->weight);
-        $weighted = array();
         $weighted["users"]["rating"] = 0;
         $weighted["visitors"]["rating"] = 0;
         $weighted["total"]["rating"] = 0;
@@ -416,15 +177,6 @@ class GDSRDBMulti {
         }
     }
 
-    function get_trend_values($id) {
-        global $wpdb, $table_prefix;
-
-        $sql = sprintf("select * from %sgdsr_multis_values where source = 'trd' and id = %s order by item_id asc",
-            $table_prefix, $id);
-        wp_gdsr_dump("TR", $sql);
-        return $wpdb->get_results($sql);
-    }
-
     function get_values_join($post_id, $set_id) {
         global $wpdb, $table_prefix;
 
@@ -433,34 +185,23 @@ class GDSRDBMulti {
         return $wpdb->get_results($sql);
     }
 
-    function get_vote($post_id, $set_id, $values) {
+    function get_vote($post_id, $set_id, $values = 0) {
         global $wpdb, $table_prefix;
+        
+        $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $post_id, $set_id);
+        $row = $wpdb->get_row($sql);
 
-        $sql = sprintf("select id from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $post_id, $set_id);
-        $record_id = intval($wpdb->get_var($sql));
-        wp_gdsr_dump("RID", $record_id);
-
-        if ($record_id == 0) {
-            $sql = sprintf("INSERT INTO %sgdsr_multis_data (post_id, multi_id) VALUES (%s, %s)", $table_prefix, $post_id, $set_id);
+        if (count($row) == 0) {
+            $sql = sprintf("INSERT INTO %sgdsr_multis_data (post_id, multi_id, review, review_text) VALUES (%s, %s, '-1', '')", $table_prefix, $post_id, $set_id);
             $wpdb->query($sql);
             $record_id = $wpdb->insert_id;
-            wp_gdsr_dump("RID", $record_id);
-            wp_gdsr_dump("VLS", $values);
             for ($i = 0; $i < $values; $i++) {
-                $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id) VALUES (%s, 'dta', %s)", $table_prefix, $record_id, $i);
+                $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id) VALUES (%s, 'dta', %s)",
+                    $table_prefix, $record_id, $i);
                 $wpdb->query($sql);
             }
-        } else {
-            $sql = sprintf("SELECT count(*) FROM %sgdsr_multis_values WHERE id = %s AND source = 'dta'", $table_prefix, $record_id);
-            $counter = $wpdb->get_var($sql);
-            if ($counter == 0) {
-                for ($i = 0; $i < $values; $i++) {
-                    $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id) VALUES (%s, 'dta', %s)", $table_prefix, $record_id, $i);
-                    $wpdb->query($sql);
-                }
-            }
         }
-
+        else $record_id = $row->id;
         return $record_id;
     }
 
@@ -468,53 +209,54 @@ class GDSRDBMulti {
         global $wpdb, $table_prefix;
 
         $sql = sprintf("DELETE FROM %sgdsr_multis_values where id = %s and source = 'rvw'", $table_prefix, $record_id);
-        wp_gdsr_dump("DEL", $sql);
         $wpdb->query($sql);
         for ($i = 0; $i < count($values); $i++) {
             $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id, user_voters, user_votes) VALUES (%s, 'rvw', %s, 1, '%s')",
                 $table_prefix, $record_id, $i, $values[$i]);
-            wp_gdsr_dump("INSERT", $sql);
             $wpdb->query($sql);
         }
     }
 
-    function check_vote($id, $user, $set, $type, $ip, $mod_only = false, $mixed = false) {
+    function check_vote($id, $user, $set, $type, $ip, $mod_only = false) {
         $result = true;
 
         if (!$mod_only)
-            $result = GDSRDBMulti::check_vote_logged($id, $user, $set, $type, $ip, $mixed);
+            $result = GDSRDBMulti::check_vote_logged($id, $user, $set, $type, $ip);
         if ($result)
-            $result = GDSRDBMulti::check_vote_moderated($id, $user, $set, $type, $ip, $mixed);
+            $result = GDSRDBMulti::check_vote_moderated($id, $user, $set, $type, $ip);
 
         return $result;
     }
 
-    function check_vote_logged($id, $user, $set, $type, $ip, $mixed = false) {
-        return GDSRDBMulti::check_vote_table('gdsr_votes_log', $id, $user, $set, $type, $ip, $mixed);
+    function check_vote_logged($id, $user, $set, $type, $ip) {
+        return GDSRDBMulti::check_vote_table('gdsr_votes_log', $id, $user, $set, $type, $ip);
     }
 
-    function check_vote_moderated($id, $user, $set, $type, $ip, $mixed = false) {
-        return GDSRDBMulti::check_vote_table('gdsr_moderate', $id, $user, $set, $type, $ip, $mixed);
+    function check_vote_moderated($id, $user, $set, $type, $ip) {
+        return GDSRDBMulti::check_vote_table('gdsr_moderate', $id, $user, $set, $type, $ip);
     }
     
-    function check_vote_table($table, $id, $user, $set, $type, $ip, $mixed = false) {
+    function check_vote_table($table, $id, $user, $set, $type, $ip) {
         global $wpdb, $table_prefix;
 
-        if ($user > 0) {
-            $votes_sql = sprintf("SELECT count(*) FROM %s WHERE vote_type = '%s' and multi_id = %s and id = %s and user_id = %s", $table_prefix.$table, $type, $set, $id, $user);
-            $votes = $wpdb->get_var($votes_sql);
-            return $votes == 0;
-        }
-        else {
-            $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and multi_id = %s and id = %s and ip = '%s'", $table_prefix.$table, $type, $set, $id, $ip);
-            $votes = $wpdb->get_var($votes_sql);
-            if ($votes > 0 && $mixed) {
-                $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and user_id > 0 and multi_id = %s and id = %s and ip = '%s'", $table_prefix.$table, $type, $set, $id, $ip);
-                $votes_mixed = $wpdb->get_var($votes_sql);
-                if ($votes_mixed > 0) $votes = 0;
-            }
-            return $votes == 0;
-        }
+        if ($user > 0)
+            $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and multi_id = %s and id = %s and user_id = %s",
+                $table_prefix.$table, $type, $set, $id, $user
+            );
+        else
+            $votes_sql = sprintf("SELECT * FROM %s WHERE vote_type = '%s' and multi_id = %s and id = %s and ip = '%s'",
+                $table_prefix.$table, $type, $set, $id, $ip
+            );
+
+        $vote_data = $wpdb->get_row($votes_sql);
+
+wp_gdsr_dump("CHECKVOTE_MULTI_sql", $votes_sql);
+wp_gdsr_dump("CHECKVOTE_MULTI", $vote_data);
+
+        if (count($vote_data) == 0)
+            return true;
+        else
+            return false;
     }
 
     function get_usage_count_posts($set_id) {

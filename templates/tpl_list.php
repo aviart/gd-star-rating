@@ -2,13 +2,7 @@
 
 $tpls = new gdTemplates();
 
-$t = new gdTemplate("EWV", __("Element Word Votes", "gd-star-rating"), "%WORD_VOTES%");
-$t->add_part(__("Singular", "gd-star-rating"), "singular", "", "none");
-$t->add_part(__("Plural", "gd-star-rating"), "plural", "", "none");
-$tpls->add_template($t);
-
-$t = new gdTemplate("SRT", __("Standard Ratings Text", "gd-star-rating"), "%RATING_TEXT%");
-$t->add_template("EWV", "%WORD_VOTES%");
+$t = new gdTemplate("SRB", __("Standard Ratings Block", "gd-star-rating"));
 $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
 $t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
 $t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
@@ -30,7 +24,6 @@ $t->add_part(__("Time Restricted Closed", "gd-star-rating"), "time_closed", "", 
 $tpls->add_template($t);
 
 $t = new gdTemplate("SRR", __("Standard Ratings Results", "gd-star-rating"));
-$t->add_template("EWV", "%WORD_VOTES%");
 $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
 $t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
 $t->add_element("%REVIEW%", __("article review", "gd-star-rating"));
@@ -53,8 +46,7 @@ $t->add_part(__("Item", "gd-star-rating"), "item", "", "all", "area");
 $t->add_part(__("Footer", "gd-star-rating"), "footer", "", "none");
 $tpls->add_template($t);
 
-$t = new gdTemplate("CRT", __("Comments Ratings Text", "gd-star-rating"), "%CMM_RATING_TEXT%");
-$t->add_template("EWV", "%WORD_VOTES%");
+$t = new gdTemplate("CRB", __("Comments Ratings Block", "gd-star-rating"));
 $t->add_element("%CMM_RATING%", __("comment rating", "gd-star-rating"));
 $t->add_element("%MAX_CMM_RATING%", __("maximum comment rating value", "gd-star-rating"));
 $t->add_element("%CMM_VOTES%", __("total votes for comment", "gd-star-rating"));
@@ -62,8 +54,7 @@ $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all");
 $tpls->add_template($t);
 
-$t = new gdTemplate("SST", __("Standard RSS Text", "gd-star-rating"), "%RSS_RATING_TEXT%");
-$t->add_template("EWV", "%WORD_VOTES%");
+$t = new gdTemplate("SRS", __("Standard RSS Block", "gd-star-rating"));
 $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
 $t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
 $t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
@@ -73,18 +64,14 @@ $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all");
 $tpls->add_template($t);
 
 $t = new gdTemplate("CAR", __("Comments Aggregated Rating", "gd-star-rating"));
-$t->add_template("EWV", "%WORD_VOTES%");
 $t->add_element("%CMM_RATING%", __("comment rating", "gd-star-rating"));
 $t->add_element("%MAX_CMM_RATING%", __("maximum comment rating value", "gd-star-rating"));
-$t->add_element("%CMM_COUNT%", __("total comments", "gd-star-rating"));
 $t->add_element("%CMM_VOTES%", __("total votes for all comment", "gd-star-rating"));
-$t->add_element("%CMM_STARS%", __("comment rating stars", "gd-star-rating"));
 $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all");
 $tpls->add_template($t);
 
-$t = new gdTemplate("MRT", __("Multi Ratings Text", "gd-star-rating"), "%MUR_RATING_TEXT%");
-$t->add_template("EWV", "%WORD_VOTES%");
+$t = new gdTemplate("MRB", __("Multi Ratings Block", "gd-star-rating"));
 $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
 $t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
 $t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
@@ -103,30 +90,6 @@ $t->add_element("%TOT_MINUTES%", __("total remaining minutes", "gd-star-rating")
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", array("%RATING%", "%MAX_RATING%", "%VOTES%", "%ID%", "%WORD_VOTES%"));
 $t->add_part(__("Time Restricted Active", "gd-star-rating"), "time_active", "", "all");
 $t->add_part(__("Time Restricted Closed", "gd-star-rating"), "time_closed", "", array("%RATING%", "%MAX_RATING%", "%VOTES%", "%ID%", "%WORD_VOTES%"));
-$tpls->add_template($t);
-
-$t = new gdTemplate("SRB", __("Standard Ratings Block", "gd-star-rating"));
-$t->add_template("SRT", "%RATING_TEXT%");
-$t->add_element("%HEADER_TEXT%", __("rating header text", "gd-star-rating"));
-$t->add_element("%RATING_STARS%", __("rating stars", "gd-star-rating"));
-$t->add_element("%RATING_TEXT%", __("rating text", "gd-star-rating"));
-$t->add_element("%CSS_BLOCK%", __("css class for whole block", "gd-star-rating"));
-$t->add_element("%CSS_HEADER%", __("css class for header", "gd-star-rating"));
-$t->add_element("%CSS_STARS%", __("css class for stars", "gd-star-rating"));
-$t->add_element("%CSS_TEXT%", __("css class for rating text", "gd-star-rating"));
-$t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
-$tpls->add_template($t);
-
-$t = new gdTemplate("CRB", __("Comments Ratings Block", "gd-star-rating"));
-$t->add_template("CRT", "%CMM_RATING_TEXT%");
-$t->add_element("%CMM_HEADER_TEXT%", __("rating header text", "gd-star-rating"));
-$t->add_element("%CMM_RATING_STARS%", __("rating stars", "gd-star-rating"));
-$t->add_element("%CMM_RATING_TEXT%", __("rating text", "gd-star-rating"));
-$t->add_element("%CMM_CSS_BLOCK%", __("css class for whole block", "gd-star-rating"));
-$t->add_element("%CMM_CSS_HEADER%", __("css class for header", "gd-star-rating"));
-$t->add_element("%CMM_CSS_STARS%", __("css class for stars", "gd-star-rating"));
-$t->add_element("%CMM_CSS_TEXT%", __("css class for rating text", "gd-star-rating"));
-$t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
 $tpls->add_template($t);
 
 ?>

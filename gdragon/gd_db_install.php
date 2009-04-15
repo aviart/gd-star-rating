@@ -1,8 +1,8 @@
 <?php
 
 /*
-Name:    gdDBInstallGDSR
-Version: 1.0.5
+Name:    gdDBInstall
+Version: 1.0.3
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://wp.gdragon.info/
@@ -26,11 +26,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if (!class_exists('gdDBInstallGDSR')) {
+if (!class_exists('gdDBInstall')) {
     /*
      * Class for installing, droping, populating and upgrading database tables using the file format for each table.
      */
-    class gdDBInstallGDSR {
+    class gdDBInstall {
         /**
          * Drops all tables according to the table names.
          *
@@ -41,7 +41,7 @@ if (!class_exists('gdDBInstallGDSR')) {
         function drop_tables($path) {
             global $wpdb, $table_prefix;
             $path.= "install/tables";
-            $files = gdDBInstallGDSR::scan_folder($path);
+            $files = gdDBInstall::scan_folder($path);
             foreach ($files as $file) {
                 $file_path = $path."/".$file;
                 $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
@@ -49,25 +49,6 @@ if (!class_exists('gdDBInstallGDSR')) {
             }
         }
 
-        /**
-         * Drops the table from the database.
-         *
-         * @global object $wpdb Wordpress DB class
-         * @global string $table_prefix Wordpress table prefix
-         * @param <type> $table_name table to drop without the prefix
-         */
-        function drop_table($table_name) {
-            global $wpdb, $table_prefix;
-            $wpdb->query("drop table ".$table_prefix.$table_name);
-        }
-
-        /**
-         * Executes alert scrips from alert.txt file.
-         *
-         * @global object $wpdb Wordpress DB class
-         * @global string $table_prefix Wordpress table prefix
-         * @param string $path base path to folder where the install folder is located with trailing slash
-         */
         function alter_tables($path) {
             global $wpdb, $table_prefix;
             $path.= "install/alter.txt";
@@ -82,13 +63,6 @@ if (!class_exists('gdDBInstallGDSR')) {
             }
         }
 
-        /**
-         * Executes drop scrips from delete.txt file.
-         *
-         * @global object $wpdb Wordpress DB class
-         * @global string $table_prefix Wordpress table prefix
-         * @param string $path base path to folder where the install folder is located with trailing slash
-         */
         function delete_tables($path) {
             global $wpdb, $table_prefix;
             $path.= "install/delete.txt";
@@ -110,9 +84,9 @@ if (!class_exists('gdDBInstallGDSR')) {
          */
         function upgrade_tables($path) {
             $path.= "install/tables";
-            $files = gdDBInstallGDSR::scan_folder($path);
+            $files = gdDBInstall::scan_folder($path);
             foreach ($files as $file) {
-                gdDBInstallGDSR::upgrade_table($path, $file);
+                gdDBInstall::upgrade_table($path, $file);
             }
         }
 
@@ -148,8 +122,8 @@ if (!class_exists('gdDBInstallGDSR')) {
                 if (substr($f, 0, 1) == "`") {
                     $column = substr($f, 1);
                     $column = substr($column, 0, strpos($column, "`"));
-                    if (!gdDBInstallGDSR::check_column($columns, $column))
-                        gdDBInstallGDSR::add_column($table_name, $f, $after);
+                    if (!gdDBInstall::check_column($columns, $column))
+                        gdDBInstall::add_column($table_name, $f, $after);
                     $after = $column;
                 }
             }
@@ -183,7 +157,7 @@ if (!class_exists('gdDBInstallGDSR')) {
         function create_tables($path) {
             global $wpdb, $table_prefix;
             $path.= "install/tables";
-            $files = gdDBInstallGDSR::scan_folder($path);
+            $files = gdDBInstall::scan_folder($path);
             foreach ($files as $file) {
                 $file_path = $path."/".$file;
                 $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
@@ -213,7 +187,7 @@ if (!class_exists('gdDBInstallGDSR')) {
         function import_data($path) {
             global $wpdb, $table_prefix;
             $path.= "install/data";
-            $files = gdDBInstallGDSR::scan_folder($path);
+            $files = gdDBInstall::scan_folder($path);
             $wpdb->show_errors = true;
             foreach ($files as $file) {
                 if (substr($file, 0, 1) != '.') {

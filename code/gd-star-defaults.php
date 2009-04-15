@@ -1,13 +1,34 @@
 <?php
 
 class GDSRDefaults {
+    var $shortcode_builtin_classes = array(
+        array("name" => "Standard", "class" => "starrating"),
+        array("name" => "Simple", "class" => "starsimple")
+    );
+
+    var $shortcodes = array(
+        "starrating",
+        "starreview",
+        "starrater",
+        "starratingblock",
+        "starratercustom",
+        "starratingmulti",
+        "starreviewmulti",
+        "starcomments"
+    );
+
+    var $default_spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
+    
+    var $default_wpr8 = array(
+        "web_key" => ""
+    );
+
     var $default_options = array(
-        "version" => "1.1.9",
-        "date" => "2009.04.15.",
+        "version" => "1.1.6",
+        "date" => "2009.03.02.",
         "status" => "Stable",
-        "build" => 527,
+        "build" => 502,
         "external_javascript" => 0,
-        "external_rating_css" => 1,
         "external_css" => 1,
         "encoding" => "UTF-8",
         "news_feed_active" => 1,
@@ -24,7 +45,9 @@ class GDSRDefaults {
         "database_cleanup" => '',
         "database_cleanup_msg" => '',
         "mass_lock" => '',
+        "ie_png_fix" => 1,
         "ie_opacity_fix" => 1,
+        "ajax" => 1,
         "ip_filtering" => 1,
         "ip_filtering_restrictive" => 0,
         "save_user_agent" => 0,
@@ -52,7 +75,6 @@ class GDSRDefaults {
         "rss_header" => 0,
         "rss_header_text" => '',
         "style" => 'oxygen',
-        "style_ie6" => 'oxygen_gif',
         "size" => 30,
         "stars" => 10,
         "text" => 'bottom',
@@ -62,7 +84,6 @@ class GDSRDefaults {
         "class_block" => '',
         "class_text" => '',
         "mur_style" => 'oxygen',
-        "mur_style_ie6" => 'oxygen_gif',
         "mur_size" => 20,
         "mur_header" => 0,
         "mur_header_text" => '',
@@ -74,7 +95,6 @@ class GDSRDefaults {
         "mur_button_active" => 1,
         "mur_review_set" => 0,
         "cmm_style" => 'oxygen',
-        "cmm_style_ie6" => 'oxygen_gif',
         "cmm_size" => 12,
         "cmm_stars" => 5,
         "cmm_text" => 'bottom',
@@ -84,14 +104,11 @@ class GDSRDefaults {
         "cmm_class_block" => '',
         "cmm_class_text" => '',
         "cmm_review_style" => 'oxygen',
-        "cmm_review_style_ie6" => 'oxygen_gif',
         "cmm_review_size" => 20,
         "cmm_review_stars" => 5,
         "cmm_aggr_style" => 'oxygen',
-        "cmm_aggr_style_ie6" => 'oxygen_gif',
         "cmm_aggr_size" => 12,
         "review_style" => 'oxygen',
-        "review_style_ie6" => 'oxygen_gif',
         "review_size" => 20,
         "review_stars" => 5,
         "review_align" => 'none',
@@ -112,20 +129,17 @@ class GDSRDefaults {
         "cmm_logged" => 1,
         "admin_width" => 1240,
         "admin_rows" => 20,
-        "admin_advanced" => 1,
-        "admin_placement" => 1,
-        "admin_defaults" => 1,
+        "admin_advanced" => 0,
+        "admin_placement" => 0,
+        "admin_defaults" => 0,
         "admin_category" => 0,
-        "admin_users" => 1,
+        "admin_users" => 0,
         "admin_import" => 1,
         "admin_export" => 1,
         "admin_setup" => 1,
         "admin_ips" => 0,
-        "author_vote" => 0,
-        "cmm_author_vote" => 0,
-        "allow_mixed_ip_votes" => 0,
-        "cmm_allow_mixed_ip_votes" => 0,
-        "mur_allow_mixed_ip_votes" => 0,
+        "author_vote" => 1,
+        "cmm_author_vote" => 1,
         "default_moderation_articles" => 'N',
         "default_moderation_comments" => 'N',
         "default_voterules_articles" => 'A',
@@ -153,28 +167,6 @@ class GDSRDefaults {
         "wait_loader_multis" => 'flower',
         "wait_show_multis" => 0,
         "wait_class_multis" => ''
-    );
-
-    var $shortcode_builtin_classes = array(
-        array("name" => "Standard", "class" => "starrating"),
-        array("name" => "Simple", "class" => "starsimple")
-    );
-
-    var $shortcodes = array(
-        "starrating",
-        "starreview",
-        "starrater",
-        "starratingblock",
-        "starratercustom",
-        "starratingmulti",
-        "starreviewmulti",
-        "starcomments"
-    );
-
-    var $default_spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
-
-    var $default_wpr8 = array(
-        "web_key" => ""
     );
 
     var $default_import = array(
@@ -258,10 +250,6 @@ class GDSRDefaults {
     var $default_shortcode_starratingmulti = array(
         'id' => 1,
         'read_only' => 0
-    );
-
-    var $default_shortcode_starreviewmulti = array(
-        'id' => 1
     );
 
     var $default_templates = array(

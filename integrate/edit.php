@@ -1,3 +1,5 @@
+    <script>
+    </script>
     <input type="hidden" id="gdsr_post_edit" name="gdsr_post_edit" value="edit" />
     <h4 class="gdsr-section-title"><?php _e("Post Review", "gd-star-rating"); ?>:</h4>
     <table width="<?php echo $box_width; ?>"><tr>
