@@ -466,17 +466,35 @@ if (!class_exists('GDStarRating')) {
          * @param bool $review if set to true average of review will be rendered
          * @param array $settings override settings for rendering the block
          */
-        function get_multi_review($post_id, $settings = array()) {
+        function get_multi_average_rendered($post_id, $settings = array()) {
             if ($settings["id"] == "") $multi_id = $this->o["mur_review_set"];
             else $multi_id = $settings["id"];
             if ($multi_id > 0 && $post_id > 0) {
                 $set = gd_get_multi_set($multi_id);
-                $record_id = GDSRDBMulti::get_vote($post_id, $multi_id, count($set->object));
-                $review = GDSRDBMulti::recalculate_multi_review_db($post_id, $record_id, $set);
-                $review->rendered = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $review->rating);
-                return $review;
+                $data = GDSRDBMulti::get_averages($post_id, $multi_id);
+                if ($settings["render"] == "review") {
+                    $review = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $data->average_review);
+                    return $review;
+                }
+                else {
+                    switch ($settings["show"]) {
+                        case "visitors":
+                            $rating = $data->average_rating_visitors;
+                            break;
+                        case "users":
+                            $rating = $data->average_rating_users;
+                            break;
+                        case "total":
+                            $sum = $data->average_rating_users * $data->total_votes_users + $data->average_rating_visitors * $data->total_votes_visitors;
+                            $sum = $sum / ($data->total_votes_users + $data->total_votes_visitors);
+                            $rating = number_format($sum, 1);
+                            break;
+                    }
+                    $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $rating);
+                    return $rating;
+                }
             }
-            else return null;
+            else return "";
         }
 
         /**
