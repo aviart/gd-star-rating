@@ -289,6 +289,19 @@ class GDSRHelper {
         echo join(", ", $js);
     }
 
+    function render_custom_fields($name, $selected = "N", $width = 180, $style = '') {
+        $fields = gdWPGDSR::get_all_custom_fieds(false);
+        ?>
+<select style="width: <?php echo $width ?>px; <?php echo $style; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
+        <?php
+            foreach ($fields as $s) {
+                echo sprintf('<option value="%s"%s>%s</option>', $s, ($selected == $s ? ' selected="selected"' : ''),  $s);
+            }
+        ?>
+</select>
+        <?php
+    }
+
     function render_moderation_combo($name, $selected = "N", $width = 180, $style = '', $row_zero = false, $cat = false) {
         ?>
 <select style="width: <?php echo $width ?>px; <?php echo $style; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>">

@@ -243,7 +243,8 @@ class GDSRX {
             if ($widget["publish_days"] > 0)
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
-        
+        if ($widget["image_from"] == "content") $select = "p.post_content, ".$select;
+
         $sql = sprintf("select %s%s from %s%sposts p, %sgdsr_data_article d where %s %s order by %s %s limit 0, %s",
                 $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]
             );

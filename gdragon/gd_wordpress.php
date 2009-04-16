@@ -39,6 +39,17 @@ if (!class_exists('gdWPGDSR')) {
           $wp_user_search = new WP_User_Search("", "", $role);
           return $wp_user_search->get_results();
         }
+
+        function get_all_custom_fieds($underscore = true) {
+            global $wpdb, $table_prefix;
+
+            $sql = sprintf("select distinct meta_key from %spostmeta", $table_prefix);
+            if (!$underscore) $sql.= " where SUBSTR(meta_key, 1, 1) != '_'";
+            $elements = $wpdb->get_results($sql);
+            $result = array();
+            foreach ($elements as $el) $result[] = $el->meta_key;
+            return $result;
+        }
     }
 
     if (!function_exists(wp_redirect_self)) {

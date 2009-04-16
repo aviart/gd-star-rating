@@ -72,6 +72,10 @@
     <td><strong>%STARS%</strong></td><td> : <?php _e("rating stars", "gd-star-rating"); ?></td>
   </tr>
   <tr>
+    <td width="100" valign="top"></td>
+    <td><strong>%BAYES_STARS%</strong></td><td> : <?php _e("bayesian rating stars", "gd-star-rating"); ?></td>
+  </tr>
+  <tr>
     <td width="100"></td>
     <td><strong>%VOTES%</strong></td><td> : <?php _e("total votes for article", "gd-star-rating"); ?></td>
   </tr>
