@@ -4,10 +4,14 @@
 
 === Version: 1.1.9.1 / april 16 2009 ===
   * new: widget template tags for stars and image
+  * new: function to render multi rating average rating
+  * edit: more multi rating optimizations
   * edit: star rating widget cleanup
   * edit: widget publish date now has all dates option
+  * edit: removed some obsolete functions from main class
   * fix: saving posts with no multi rating sets defined
   * fix: reinstalling multi ratings db tables
+  * fix: generating stars for rating results table
 
 === Version: 1.1.9 / april 15 2009 ===
   * new: added average rating columns for multi rating results

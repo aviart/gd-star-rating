@@ -25,7 +25,7 @@
     function wp_gdsr_render_powered_by($echo = true) {
         global $gdsr;
 
-    if ($echo) echo $gdsr->powered_by();
+        if ($echo) echo $gdsr->powered_by();
         else return $gdsr->powered_by();
     }
 
@@ -122,43 +122,46 @@
     }
 
     /**
-     * Renders single rating stars image with average rating for the multi rating post results from rating or review.
+     * Renders single rating stars image with average rating for the multi rating review.
      *
      * @global object $post post data
      * @global GDStarRating $gdsr main rating class instance
-     * @param bool $review if set to true average of review will be rendered
+     * @param int $set_id id of the multi rating set
      * @param int $post_id id of the post rating will be attributed to
-     * @param array $settings override settings for rendering the block
+     * @param string $show what data to use: total, visitors or users votes only
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_multi_review_average($post_id = 0, $settings = array(), $echo = false) {
+    function wp_gdsr_multi_rating_average($set_id, $post_id = 0, $show = "total", $echo = true) {
         global $gdsr;
         if ($post_id == 0) {
             global $post;
             $post_id = $post->ID;
         }
-        $review = $gdsr->get_multi_review($post_id, $settings);
-
-        if ($echo) echo $review->rendered;
-        else return $review->rendered;
+        $rating = $gdsr->get_multi_average_rendered($post_id, array("id" => $set_id, "show" =>$show, "render" => "rating"));
+        if ($echo) echo $rating;
+        else return $rating;
     }
 
     /**
-     * Returns review or rating object results.
+     * Renders single rating stars image with average rating for the multi rating review.
      *
      * @global object $post post data
      * @global GDStarRating $gdsr main rating class instance
+     * @param int $set_id id of the multi rating set
      * @param int $post_id id of the post rating will be attributed to
-     * @return GDSRArticleMultiReview review results
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
      */
-    function wp_gdsr_get_multi_review($post_id = 0, $settings = array()) {
+    function wp_gdsr_multi_review_average($set_id, $post_id = 0, $echo = true) {
         global $gdsr;
         if ($post_id == 0) {
             global $post;
             $post_id = $post->ID;
         }
-        return $gdsr->get_multi_review($post_id, $settings);
+        $review = $gdsr->get_multi_average_rendered($post_id, array("id" => $set_id, "render" => "review"));
+        if ($echo) echo $review;
+        else return $review;
     }
 
     /**

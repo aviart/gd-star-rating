@@ -433,6 +433,13 @@ class GDSRDBMulti {
         return $wpdb->get_results($sql);
     }
 
+    function get_averages($post_id, $set_id) {
+        global $wpdb, $table_prefix;
+        
+        $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $post_id, $set_id);
+        return $wpdb->get_row($sql);
+    }
+
     function get_vote($post_id, $set_id, $values) {
         global $wpdb, $table_prefix;
 
