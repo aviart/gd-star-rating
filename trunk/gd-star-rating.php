@@ -832,16 +832,18 @@ if (!class_exists('GDStarRating')) {
             if ($_POST['gdsr_post_edit'] == "edit") {
 
                 if ($this->o["integrate_post_edit"] == 1) {
-                    $mur = $_POST['gdsrmulti'];
-                    $mur = $mur[$post_id][0];
-                    $values = explode("X", $mur);
                     $set_id = $_POST["gdsrmultiactive"];
-                    $set = gd_get_multi_set($set_id);
-                    $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
-                    GDSRDBMulti::save_review($record_id, $values);
-                    GDSRDBMulti::recalculate_multi_review($record_id, $values, $set);
-                    $this->o["mur_review_set"] = $_POST["gdsrmultiset"];
-                    update_option('gd-star-rating', $this->o);
+                    if ($set_id > 0) {
+                        $mur = $_POST['gdsrmulti'];
+                        $mur = $mur[$post_id][0];
+                        $values = explode("X", $mur);
+                        $set = gd_get_multi_set($set_id);
+                        $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
+                        GDSRDBMulti::save_review($record_id, $values);
+                        GDSRDBMulti::recalculate_multi_review($record_id, $values, $set);
+                        $this->o["mur_review_set"] = $_POST["gdsrmultiset"];
+                        update_option('gd-star-rating', $this->o);
+                    }
                 }
 
                 $old = GDSRDatabase::check_post($post_id);

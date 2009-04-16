@@ -2,6 +2,11 @@
 
 == Change Log ==
 
+=== Version: 1.1.9.1 / april 16 2009 ===
+  * edit: star rating widget cleanup
+  * fix: saving posts with no multi rating sets defined
+  * fix: reinstalling multi ratings db tables
+
 === Version: 1.1.9 / april 15 2009 ===
   * new: added average rating columns for multi rating results
   * new: recalculating average multi ratings for posts
