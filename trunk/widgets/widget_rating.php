@@ -5,6 +5,12 @@ function gdsrChangeDate(el, index) {
     document.getElementById("gdsr-pd-range["+index+"]").style.display = el == "range" ? "block" : "none";
 }
 
+function gdsrChangeImage(el, index) {
+    document.getElementById("gdsr-img-none["+index+"]").style.display = el == "none" ? "block" : "none";
+    document.getElementById("gdsr-img-custom["+index+"]").style.display = el == "custom" ? "block" : "none";
+    document.getElementById("gdsr-img-content["+index+"]").style.display = el == "content" ? "block" : "none";
+}
+
 function gdsrChangeTrend(trend, el, index) {
     document.getElementById("gdsr-"+trend+"-txt["+index+"]").style.display = el == "txt" ? "block" : "none";
     document.getElementById("gdsr-"+trend+"-img["+index+"]").style.display = el == "img" ? "block" : "none";

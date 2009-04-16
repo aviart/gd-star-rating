@@ -28,6 +28,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 if (!class_exists('gdFunctionsGDSR')) {
     class gdFunctionsGDSR {
+        function get_image_from_text($text) {
+            $imageurl = "";
+            preg_match('/<\s*img [^\>]*src\s*=\s*[\""\']?([^\""\'>]*)/i', $text, $matches);
+            $imageurl = $matches[1];
+            return $imageurl;
+        }
+
         function get_folder_files_count($path) {
             if (!file_exists($path))
                 return 0;

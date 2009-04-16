@@ -112,6 +112,7 @@
     <td width="150" nowrap="nowrap"><?php _e("Publish Date", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select name="<?php echo $wpfn; ?>[publish_date]" style="width: 110px" id="gdstarr-publishdate" onchange="gdsrChangeDate(this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
+            <option value="alldt"<?php echo $wpno['publish_date'] == 'alldt' ? ' selected="selected"' : ''; ?>><?php _e("Any date", "gd-star-rating"); ?></option>
             <option value="lastd"<?php echo $wpno['publish_date'] == 'lastd' ? ' selected="selected"' : ''; ?>><?php _e("Last # days", "gd-star-rating"); ?></option>
             <option value="month"<?php echo $wpno['publish_date'] == 'month' ? ' selected="selected"' : ''; ?>><?php _e("Exact month", "gd-star-rating"); ?></option>
             <option value="range"<?php echo $wpno['publish_date'] == 'range' ? ' selected="selected"' : ''; ?>><?php _e("Date range", "gd-star-rating"); ?></option>

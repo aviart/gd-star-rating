@@ -5,7 +5,7 @@ class GDSRDefaults {
         "version" => "1.1.9.1",
         "date" => "2009.04.15.",
         "status" => "Stable",
-        "build" => 528,
+        "build" => 544,
         "external_javascript" => 0,
         "external_rating_css" => 1,
         "external_css" => 1,
@@ -226,7 +226,7 @@ class GDSRDefaults {
         "tpl_footer" => '&lt;/ul&gt;',
         "tpl_title_length" => 0,
         "tpl_encoded" => 1,
-        "publish_date" => 'lastd',
+        "publish_date" => 'alldt',
         "publish_days" => 30,
         "publish_month" => '200808',
         "publish_range_from" => "YYYYMMDD",
@@ -235,6 +235,8 @@ class GDSRDefaults {
         "div_filter" => '0',
         "div_trend" => '0',
         "div_elements" => '0',
+        "div_image" => '0',
+        "div_stars" => '0',
         "grouping" => 'post',
         "trends_rating" => 'txt',
         "trends_rating_rise" => '+',
@@ -246,7 +248,11 @@ class GDSRDefaults {
         "trends_voting_same" => '=',
         "trends_voting_fall" => '-',
         "trends_voting_set" => 'famfamfam',
-        "bayesian_calculation" => '0'
+        "bayesian_calculation" => '0',
+        "image_from" => 'none',
+        "image_custom" => 'Image',
+        "rating_stars" => "oxygen",
+        "rating_size" => 12
     );
 
     var $default_shortcode_starratercustom = array(

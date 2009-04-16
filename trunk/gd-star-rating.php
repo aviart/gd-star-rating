@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.1.9
+Version: 1.1.9.1
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -1604,6 +1604,13 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
                 $new_rows = array();
                 foreach ($all_rows as $row) {
+                    if ($widget["image_from"] == "content") {
+                        $row->image = gdFunctionsGDSR::get_image_from_text($row->post_content);
+                    }
+                    else if ($widget["image_from"] == "custom") {
+                        $row->image = get_post_meta($row->post_id, $widget["image_custom"], true);
+                    }
+                    else $row->image = "";
                     if ($widget['show'] == "total") {
                         $row->votes = $row->user_votes + $row->visitor_votes;
                         $row->voters = $row->user_voters + $row->visitor_voters;
@@ -1736,9 +1743,9 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                     if ($row->voters > 1) $row->tense = $this->x["word_votes_plural"];
                     else $row->tense = $this->x["word_votes_singular"];
 
-                    if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = $this->prepare_stars($widget['rating_size'], $this->o["stars"], $widget['rating_stars'], $row->rating);
-                    if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = $this->prepare_stars($widget['rating_size'], $this->o["stars"], $widget['rating_stars'], $row->bayesian);
-                    if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = $this->prepare_stars($widget['review_size'], $this->o["review_stars"], $widget['review_stars'], $row->review);
+                    if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $this->o["stars"], $row->rating);
+                    if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $this->o["stars"], $row->bayesian);
+                    if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $this->o["stars"], $row->review);
 
                     if ($tr_class == $this->x["table_row_even"])
                         $tr_class = $this->x["table_row_odd"];
@@ -1750,18 +1757,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             }
 
             return $all_rows;
-        }
-
-        function prepare_stars($rating_size, $stars, $rating_stars, $rating) {
-            $full_width = $rating_size * $stars;
-            $rate_width = floor($rating_size * $rating);
-            $gfx = $this->g->find_stars($rating_stars);
-
-            $star_path = $gfx->get_url($rating_size);
-            return sprintf('<div style="%s" class="ratertbl"><div style="%s" class="ratertbl"></div></div>',
-                        sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $rating_size, $full_width),
-                        sprintf('background: url(%s) bottom left; height: %spx; width: %spx;', $star_path, $rating_size, $rate_width)
-                   );
         }
 
         function prepare_row($row, $template) {
@@ -1785,6 +1780,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $template = str_replace('%RATE_TREND%', $row->item_trend_rating, $template);
             $template = str_replace('%VOTE_TREND%', $row->item_trend_voting, $template);
             $template = str_replace('%TABLE_ROW_CLASS%', $row->table_row_class, $template);
+            $template = str_replace('%IMAGE%', $row->image, $template);
             return $template;
         }
 
@@ -2335,6 +2331,13 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                     $options['div_filter'] = $posted['div_filter'];
                     $options['div_trend'] = $posted['div_trend'];
                     $options['div_elements'] = $posted['div_elements'];
+                    $options['div_image'] = $posted['div_image'];
+                    $options['div_stars'] = $posted['div_stars'];
+
+                    $options['image_from'] = $posted['image_from'];
+                    $options['image_custom'] = $posted['image_custom'];
+                    $options['rating_stars'] = $posted['rating_stars'];
+                    $options['rating_size'] = $posted['rating_size'];
 
                     $options['trends_rating'] = $posted['trends_rating'];
                     $options['trends_rating_set'] = $posted['trends_rating_set'];
@@ -2368,6 +2371,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
             $wpfn = 'gdstarr['.$wpnm.']';
             $wptr = $this->g->trend;
+            $wpst = $this->g->stars;;
 
             include($this->plugin_path."widgets/widget_rating.php");
         }
