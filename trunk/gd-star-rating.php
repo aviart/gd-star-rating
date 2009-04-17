@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.1.9.1
+Version: 1.2.0
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -1597,7 +1597,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $t_vote = !(strpos($template, "%VOTE_TREND%") === false);
 
             if ($widget["column"] == "bayes" && !$bayesian_calculated) $widget["column"] == "rating";
-            $sql = GDSRX::get_widget($widget, $this->o["bayesian_minimal"]);
+            $sql = GDSRX::get_widget_standard($widget, $this->o["bayesian_minimal"]);
             $all_rows = $wpdb->get_results($sql);
 
             if (count($all_rows) > 0) {
@@ -1810,7 +1810,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         function prepare_blog_rating($widget) {
             global $wpdb;
 
-            $sql = GDSRX::get_totals($widget);
+            $sql = GDSRX::get_totals_standard($widget);
             $data = $wpdb->get_row($sql);
 
             $data->max_rating = $this->o["stars"];
@@ -1894,6 +1894,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
         function star_multi_results() {
             $options = $this->o;
+            $wpv = $this->wp_version;
             include($this->plugin_path.'options/multis/results.php');
         }
 
@@ -1917,6 +1918,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $gdsr_wpr8 = $this->wpr8_available;
             $extra_folders = $this->extra_folders;
             $safe_mode = $this->safe_mode;
+            $wpv = $this->wp_version;
 
             $wpr8 = $this->wpr8;
 
@@ -1938,12 +1940,14 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         function star_menu_templates() {
             $gdsr_options = $this->x;
             $options = $this->o;
+            $wpv = $this->wp_version;
             include($this->plugin_path.'templates/templates.php');
         }
 
         function star_menu_t2() {
             $gdsr_options = $this->x;
             $options = $this->o;
+            $wpv = $this->wp_version;
 
             include($this->plugin_path.'templates/tpl_list.php');
 
@@ -1963,11 +1967,13 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         }
 
         function star_menu_setup() {
+            $wpv = $this->wp_version;
             include($this->plugin_path.'options/setup.php');
         }
 
         function star_menu_ips() {
             $options = $this->o;
+            $wpv = $this->wp_version;
             include($this->plugin_path.'options/ips.php');
         }
 
@@ -1978,6 +1984,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $gdsr_styles = $this->styles;
             $gdsr_trends = $this->trends;
             $gdsr_gfx = $this->g;
+            $wpv = $this->wp_version;
 
             include($this->plugin_path.'options/tools.php');
         }
@@ -1985,11 +1992,13 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         function star_menu_import() {
             $options = $this->o;
             $imports = $this->i;
+            $wpv = $this->wp_version;
             include($this->plugin_path.'options/import.php');
         }
 
         function star_menu_export() {
             $options = $this->o;
+            $wpv = $this->wp_version;
             include($this->plugin_path.'options/export.php');
         }
 
@@ -2018,6 +2027,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
         function star_menu_users(){
             $options = $this->o;
+            $wpv = $this->wp_version;
             if ($_GET["gdsr"] == "userslog")
                 include($this->plugin_path.'options/users_log.php');
             else
@@ -2026,6 +2036,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
         function star_menu_cats(){
             $options = $this->o;
+            $wpv = $this->wp_version;
             include($this->plugin_path.'options/categories.php');
         }
         // menues
@@ -2329,10 +2340,14 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                     $options = array();
 
                     $options['title'] = strip_tags(stripslashes($posted['title']));
+
                     $options['tpl_header'] = stripslashes(htmlentities($posted['tpl_header'], ENT_QUOTES, STARRATING_ENCODING));
                     $options['tpl_item'] = stripslashes(htmlentities($posted['tpl_item'], ENT_QUOTES, STARRATING_ENCODING));
                     $options['tpl_footer'] = stripslashes(htmlentities($posted['tpl_footer'], ENT_QUOTES, STARRATING_ENCODING));
                     $options['tpl_title_length'] = $posted['title_max'];
+
+                    $options['source'] = $posted['source'];
+                    $options['source_set'] = $posted['source_set'];
 
                     $options['rows'] = $posted['rows'];
                     $options['min_votes'] = $posted['min_votes'];
@@ -2394,7 +2409,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
             $wpfn = 'gdstarr['.$wpnm.']';
             $wptr = $this->g->trend;
-            $wpst = $this->g->stars;;
+            $wpst = $this->g->stars;
+            $wpml = GDSRDBMulti::get_multis_tinymce();
 
             include($this->plugin_path."widgets/widget_rating.php");
         }
@@ -2531,24 +2547,31 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         function display_comment($content) {
             global $post, $comment, $userdata;
 
-            if ($comment->comment_type == "pingback" && $this->o["display_trackback"] == 0)
-                return $content;
+            if (is_admin()) return $content;
+            if ($comment->comment_type == "pingback" && $this->o["display_trackback"] == 0) return $content;
 
-            if ((is_single() && !is_admin() && $this->o["display_comment"] == 1) ||
-                (is_page() && !is_admin() && $this->o["display_comment_page"] == 1))
-                $content .= $this->render_comment($post, $comment, $userdata);
+            if (!is_feed()) {
+                if ((is_single() && !is_admin() && $this->o["display_comment"] == 1) ||
+                    (is_page() && !is_admin() && $this->o["display_comment_page"] == 1)
+                ) {
+                    $rendered = $this->render_comment($post, $comment, $userdata);
+                    if ($this->o["auto_display_comment_position"] == "top" || $this->o["auto_display_comment_position"] == "both")
+                        $content = $rendered.$content;
+                    if ($this->o["auto_display_comment_position"] == "bottom" || $this->o["auto_display_comment_position"] == "both")
+                        $content = $content.$rendered;
+                }
+            }
+
             return $content;
         }
 
         function display_article($content) {
             global $post, $userdata;
 
-            if (is_admin())
-                return $content;
+            if (is_admin()) return $content;
 
             if (!is_feed()) {
-                if (is_single() || is_page())
-                    GDSRDatabase::add_new_view($post->ID);
+                if (is_single() || is_page()) GDSRDatabase::add_new_view($post->ID);
 
                 if ((is_single() && $this->o["display_posts"] == 1) ||
                     (is_page() && $this->o["display_pages"] == 1) ||
@@ -2556,7 +2579,11 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                     (is_archive() && $this->o["display_archive"] == 1) ||
                     (is_search() && $this->o["display_search"] == 1)
                 ) {
-                    $content .= $this->render_article($post, $userdata);
+                    $rendered = $this->render_article($post, $userdata);
+                    if ($this->o["auto_display_position"] == "top" || $this->o["auto_display_position"] == "both")
+                        $content = $rendered.$content;
+                    if ($this->o["auto_display_position"] == "bottom" || $this->o["auto_display_position"] == "both")
+                        $content = $content.$rendered;
                 }
             }
 

@@ -94,7 +94,8 @@ function checkAll(form) {
 }
 </script>
 
-<div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px"><h2 class="gdptlogopage">GD Star Rating: <?php _e("Voters Log", "gd-star-rating"); ?></h2>
+<?php if ($wpv < 27) { ?><div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
+<?php } else { ?><div class="wrap"><?php } ?>
 <form id="gdsr-comments" method="post" action="">
 <p><strong><?php _e("Vote log for post", "gd-star-rating"); ?>: 
     <?php echo sprintf('<a href="./post.php?action=edit&post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $post_id, GDSRDB::get_post_title($post_id), get_permalink($post_id)); ?>

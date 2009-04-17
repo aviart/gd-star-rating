@@ -341,7 +341,7 @@ class GDSRHelper {
 </select>
         <?php
     } 
-    
+
     function render_timer_combo($name, $selected = "N", $width = 180, $style = '', $row_zero = false, $onchange = '', $cat = false) {
         if ($onchange != '') $onchange = ' onchange="'.$onchange.'"';
         ?>
@@ -354,6 +354,16 @@ class GDSRHelper {
 </select>
         <?php
     } 
+
+    function render_insert_position($name, $selected = "bottom", $width = 180, $style = '') {
+        ?>
+<select style="width: <?php echo $width ?>px; <?php echo $style; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
+    <option value="bottom"<?php echo $selected == 'bottom' ? ' selected="selected"' : ''; ?>><?php _e("Bottom", "gd-star-rating"); ?></option>
+    <option value="top"<?php echo $selected == 'top' ? ' selected="selected"' : ''; ?>><?php _e("Top", "gd-star-rating"); ?></option>
+    <option value="both"<?php echo $selected == 'both' ? ' selected="selected"' : ''; ?>><?php _e("Top and Bottom", "gd-star-rating"); ?></option>
+</select>
+        <?php
+    }
 
     function render_countdown_combo($name, $selected = "H", $width = 180, $style = '', $row_zero = false, $cat = false) {
         ?>
