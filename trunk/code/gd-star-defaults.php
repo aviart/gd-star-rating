@@ -2,10 +2,10 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.1.9.1",
-        "date" => "2009.04.15.",
+        "version" => "1.2.0",
+        "date" => "2009.04.21.",
         "status" => "Stable",
-        "build" => 544,
+        "build" => 545,
         "external_javascript" => 0,
         "external_rating_css" => 1,
         "external_css" => 1,
@@ -211,6 +211,8 @@ class GDSRDefaults {
 
     var $default_widget = array(
         "title" => "Rating",
+        "source" => "standard",
+        "multi_id" => 0,
         "display" => "all",
         "rows" => 10,
         "min_votes" => 5,

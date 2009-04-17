@@ -16,6 +16,6 @@
     header("Cache-Control: no-cache, must-revalidate");
     header('Content-Type: text/javascript');
 
-    include ($gdsr->plugin_path."code/gd-star-js.php");
+    include ($gdsr->plugin_path."code/js/gd-star-js.php");
 
 ?>
