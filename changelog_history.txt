@@ -2,6 +2,12 @@
 
 == Change Log ==
 
+=== Version: 1.2.0 / april 21 2009 ===
+  * new: referer protection for graphics generator to prevent leeching
+  * new: redesigned plugin front panel
+  * edit: even more code reorganization and cleanup
+  * fix: multi rating average rating breaks for empty rating request
+
 === Version: 1.1.9.1 / april 16 2009 ===
   * new: widget template tags for stars and image
   * new: function to render multi rating average rating

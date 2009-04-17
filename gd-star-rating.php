@@ -35,10 +35,10 @@ require_once(dirname(__FILE__)."/code/gd-star-dbone.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbtwo.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbx.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbmulti.php");
-require_once(dirname(__FILE__)."/code/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gd-star-import.php");
-require_once(dirname(__FILE__)."/code/gd-star-chart.php");
-require_once(dirname(__FILE__)."/code/gd-star-generator.php");
+require_once(dirname(__FILE__)."/code/gfx/gd-star-chart.php");
+require_once(dirname(__FILE__)."/code/gfx/gd-star-gfx.php");
+require_once(dirname(__FILE__)."/code/gfx/gd-star-generator.php");
 require_once(dirname(__FILE__)."/templates/tpl_init.php");
 require_once(dirname(__FILE__)."/gdragon/gd_functions.php");
 require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
@@ -494,7 +494,10 @@ if (!class_exists('GDStarRating')) {
                     return $rating;
                 }
             }
-            else return "";
+            else {
+                $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, 0);
+                return $rating;
+            }
         }
 
         /**
@@ -662,7 +665,7 @@ if (!class_exists('GDStarRating')) {
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>';
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
                 if ($this->admin_plugin_page == "t2") {
-                    include(STARRATING_PATH."code/gd-star-jsf.php");
+                    include(STARRATING_PATH."code/js/gd-star-jsf.php");
                 }
             }
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
@@ -678,21 +681,21 @@ if (!class_exists('GDStarRating')) {
             echo("\r\n");
             echo('<script type="text/javascript">jQuery(document).ready(function() {');
                 echo("\r\n");
-                if ($this->admin_page == "edit-comments.php") include ($this->plugin_path."code/gd-star-jsx.php");
+                if ($this->admin_page == "edit-comments.php") include ($this->plugin_path."code/js/gd-star-jsx.php");
                 if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
                 if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
                 if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
-                if ($this->admin_plugin_page == "settings-page") include(STARRATING_PATH."code/gd-star-jsa.php");
+                if ($this->admin_plugin_page == "settings-page") include(STARRATING_PATH."code/js/gd-star-jsa.php");
                 if ($this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) {
                     echo("\r\n");
-                    include(STARRATING_PATH."code/gd-star-jsma.php");
+                    include(STARRATING_PATH."code/js/gd-star-jsma.php");
                 }
             echo('});');
             if ($this->admin_page == "edit.php") {
                 $edit_std = $this->o["integrate_post_edit_mur"] == 1;
                 $edit_mur = $this->o["integrate_post_edit"] == 1;
                 echo("\r\n");
-                include(STARRATING_PATH."code/gd-star-jse.php");
+                include(STARRATING_PATH."code/js/gd-star-jse.php");
             }
             echo('</script>');
             if ($this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) {
@@ -1380,7 +1383,7 @@ if (!class_exists('GDStarRating')) {
                 else $nonce = "";
                 $button_active = $this->o["mur_button_active"] == 1;
                 echo('//<![CDATA[');
-                include ($this->plugin_path."code/gd-star-js.php");
+                include ($this->plugin_path."code/js/gd-star-js.php");
                 echo('// ]]>');
                 echo('</script>');
             }
