@@ -77,6 +77,9 @@
         $gdsr_options["bayesian_minimal"] = $_POST['gdsr_bayesian_minimal'];
         $gdsr_options["bayesian_mean"] = $_POST['gdsr_bayesian_mean'];
 
+        $gdsr_options["auto_display_position"] = $_POST['gdsr_auto_display_position'];
+        $gdsr_options["auto_display_comment_position"] = $_POST['gdsr_auto_display_comment_position'];
+
         $gdsr_options["default_timer_type"] = $_POST['gdsr_default_timer_type'];
         $gdsr_options["default_timer_countdown_value"] = $_POST['default_timer_countdown_value'];
         $gdsr_options["default_timer_countdown_type"] = $_POST['default_timer_countdown_type'];

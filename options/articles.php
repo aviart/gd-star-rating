@@ -107,7 +107,8 @@ function gdsrTimerChange() {
 }
 </script>
 
-<div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
+<?php if ($wpv < 27) { ?><div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
+<?php } else { ?><div class="wrap"><?php } ?>
 <form id="gdsr-articles" method="post" action="">
 <h2 class="gdptlogopage">GD Star Rating: <?php _e("Articles", "gd-star-rating"); ?></h2>
 <ul class="subsubsub">

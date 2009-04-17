@@ -43,7 +43,8 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
 
 ?>
 
-<div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
+<?php if ($wpv < 27) { ?><div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
+<?php } else { ?><div class="wrap"><?php } ?>
 <form id="gdsr-articles" method="post" action="">
 <h2 class="gdptlogopage">GD Star Rating: <?php _e("Users", "gd-star-rating"); ?></h2>
 <div class="tablenav">

@@ -95,6 +95,13 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                 </td>
             </tr>
         </table>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150" valign="top"><?php _e("Auto insert location", "gd-star-rating"); ?>:</td>
+                <td width="200" valign="top"><?php GDSRHelper::render_insert_position("gdsr_auto_display_comment_position", $gdsr_options["auto_display_comment_position"]); ?></td>
+            </tr>
+        </table>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Aggregated Rating", "gd-star-rating"); ?></th>

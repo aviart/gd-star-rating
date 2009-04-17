@@ -11,6 +11,7 @@
         gdDBInstallGDSR::drop_table("gdsr_multis_trend");
         gdDBInstallGDSR::drop_table("gdsr_multis_values");
         gdDBInstallGDSR::create_tables(STARRATING_PATH);
+        GDSRDB::insert_default_templates(STARRATING_PATH);
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Multi rating tables reinstalled.", "gd-star-rating"); ?></strong></p></div> <?php
     }
     if ($_POST["gdsr_remove_settings"] == __("Remove Settings", "gd-star-rating")) {

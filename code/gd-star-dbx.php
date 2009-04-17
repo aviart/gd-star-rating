@@ -42,7 +42,7 @@ class GDSRX {
             );
         return $wpdb->get_results($sql);
     }
-    
+
     function get_trend_calculation($ids, $grouping = "post", $show = "total", $last = 1, $over = 30) {
         global $wpdb, $table_prefix;
 
@@ -125,14 +125,14 @@ class GDSRX {
         
         return $trends;
     }
-    
-    function get_totals($widget, $min = 0) {
+
+    function get_totals_standard($widget, $min = 0) {
         global $table_prefix;
         $where = array();
 
         $where[] = "p.id = d.post_id";
         $where[] = "p.post_status = 'publish'";
-        
+
         if ($widget["show"] == "total") {
             $select = "sum(d.user_voters) + sum(d.visitor_voters) as voters, sum(d.user_votes) + sum(d.visitor_votes) as votes";
             $where[] = "(d.user_voters + d.visitor_voters) > ".$min;
@@ -145,19 +145,17 @@ class GDSRX {
             $select = "sum(d.user_voters) as voters, sum(d.user_votes) as votes";
             $where[] = "d.user_voters > ".$min;
         }
-        
+
         $select.= ", count(*) as count, 0 as rating, 0 as bayes_rating, 0 as max_rating, 0 as percentage";
-        
+
         if ($widget["select"] != "" && $widget["select"] != "postpage") 
             $where[] = "p.post_type = '".$widget["select"]."'";
-            
-        $sql = sprintf("select %s from %sposts p, %sgdsr_data_article d where %s", 
-                $select, $table_prefix, $table_prefix, join(" and ", $where)
-            );
+
+        $sql = sprintf("select %s from %sposts p, %sgdsr_data_article d where %s", $select, $table_prefix, $table_prefix, join(" and ", $where));
         return $sql;
     }
-    
-    function get_widget($widget, $min = 0) {
+
+    function get_widget_standard($widget, $min = 0) {
         global $table_prefix;
         $grouping = $widget["grouping"];
         $cats = $widget["category"];
@@ -255,34 +253,33 @@ wp_gdsr_dump("WIDGET", $sql);
     }
 }
 
-class TrendValue
-{
+class TrendValue {
     var $votes_last = 0;
     var $voters_last = 0;
     var $rating_last = 0;
     var $votes_over = 0;
     var $voters_over = 0;
     var $rating_over = 0;
-    
+
     var $trend_rating = 0;
     var $trend_voting = 0;
     var $day_rate_voters = 0;
-    
+
     function TrendValue($v_last, $r_last, $v_over, $r_over, $last = 1, $over = 30) {
         $this->votes_last = $v_last;
         $this->voters_last = $r_last;
         $this->votes_over = $v_over;
         $this->voters_over = $r_over;
-        
+
         $this->day_rate_voters = $last / $over;
-        
+
         $this->Calculate();
     }
-    
+
     function Calculate() {
         if ($this->voters_last > 0) $this->rating_last = @number_format($this->votes_last / $this->voters_last, 1);
         if ($this->voters_over > 0) $this->rating_over = @number_format($this->votes_over / $this->voters_over, 1);
-        
+
         if ($this->rating_last > $this->rating_over ) $this->trend_rating = 1;
         else if ($this->rating_last < $this->rating_over ) $this->trend_rating = -1;
 

@@ -5,7 +5,10 @@
 === Version: 1.2.0 / april 21 2009 ===
   * new: referer protection for graphics generator to prevent leeching
   * new: redesigned plugin front panel
+  * new: auto insertion of rating block on top of the article
+  * edit: for wp newer than 2.7 tables don't have width set
   * edit: even more code reorganization and cleanup
+  * fix: full db tables reinstall doesn't insert templates
   * fix: multi rating average breaks for empty rating request
   * fix: multi rating average breaks with no multi sets
 
@@ -19,23 +22,3 @@
   * fix: saving posts with no multi rating sets defined
   * fix: reinstalling multi ratings db tables
   * fix: generating stars for rating results table
-
-=== Version: 1.1.9 / april 15 2009 ===
-  * new: added average rating columns for multi rating results
-  * new: recalculating average multi ratings for posts
-  * new: recalculating average multi ratings trends for posts
-  * new: tool to recalculate multi ratings
-  * new: t2 templates system expanded with co-dependent templates
-  * new: t2 templates for rating and comment rating blocks
-  * new: t2 template for element word votes
-  * new: jquery datepicker polish translation
-  * edit: expanded functions for multi review integration
-  * edit: improved multi review average calculations
-  * edit: improved insertion of default templates into database
-  * edit: multi rating ajax call improved
-  * edit: database tables expanded for multi ratings
-  * edit: few css and javascript layout improvements
-  * fix: critical error in saving multi rating votes
-  * fix: some problems with database table upgrading
-  * fix: some of the custom functions missing elements
-  * fix: various small bugs

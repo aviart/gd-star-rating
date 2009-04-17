@@ -11,6 +11,10 @@ function gdsrChangeImage(el, index) {
     document.getElementById("gdsr-img-content["+index+"]").style.display = el == "content" ? "block" : "none";
 }
 
+function gdsrChangeSource(el, index) {
+    document.getElementById("gdsr-src-multi["+index+"]").style.display = el == "multis" ? "block" : "none";
+}
+
 function gdsrChangeTrend(trend, el, index) {
     document.getElementById("gdsr-"+trend+"-txt["+index+"]").style.display = el == "txt" ? "block" : "none";
     document.getElementById("gdsr-"+trend+"-img["+index+"]").style.display = el == "img" ? "block" : "none";
