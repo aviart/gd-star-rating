@@ -125,7 +125,7 @@ class GDSRDBMulti {
         return $overall;
     }
 
-    function recalculate_multi_averages($post_id, $set_id, $rules = "", $set = null) {
+    function recalculate_multi_averages($post_id, $set_id, $rules = "", $set = null, $last_voted = false) {
         global $wpdb, $table_prefix;
 
         if ($set == null) $set = gd_get_multi_set($set_id);
@@ -190,8 +190,10 @@ class GDSRDBMulti {
             $output["json"] = $votes_js;
         }
 
-        $sql = sprintf("update %sgdsr_multis_data set average_rating_users = '%s', average_rating_visitors = '%s', total_votes_users = '%s', total_votes_visitors = '%s' where post_id = %s and multi_id = %s",
-            $table_prefix, $rating_users, $rating_visitors, $total_users, $total_visitors, $post_id, $set_id);
+        $lastv = $last_voted ? ", last_voted = CURRENT_TIMESTAMP" : "";
+
+        $sql = sprintf("update %sgdsr_multis_data set average_rating_users = '%s', average_rating_visitors = '%s', total_votes_users = '%s', total_votes_visitors = '%s'%s where post_id = %s and multi_id = %s",
+            $table_prefix, $rating_users, $rating_visitors, $total_users, $total_visitors, $lastv, $post_id, $set_id);
         $wpdb->query($sql);
 
         $output["users"]["rating"] = $rating_users;

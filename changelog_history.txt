@@ -6,6 +6,7 @@
   * new: referer protection for graphics generator to prevent leeching
   * new: redesigned plugin front panel
   * new: auto insertion of rating block on top of the article
+  * new: saving last voted timestamp for articles, comments and multi rating results
   * edit: for wp newer than 2.7 tables don't have width set
   * edit: even more code reorganization and cleanup
   * fix: full db tables reinstall doesn't insert templates

@@ -12,4 +12,5 @@ CREATE TABLE `%sgdsr_data_comment` (
   `user_recc_minus` int(11) DEFAULT '0',
   `visitor_recc_plus` int(11) DEFAULT '0',
   `visitor_recc_minus` int(11) DEFAULT '0',
+  `last_voted` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`comment_id`));

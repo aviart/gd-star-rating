@@ -175,5 +175,4 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 == Thanx To ==
 1. Ryan Masuga (http://www.masugadesign.com) for Unobtusive AJAX Rating Bars
-2. Angus Turnbull (http://www.twinhelix.com) for IE PNG Alpha Fix
-3. Jean-Damien Pogolotti (http://pchart.sourceforge.net/) for pChart
+2. Jean-Damien Pogolotti (http://pchart.sourceforge.net/) for pChart
