@@ -6,7 +6,8 @@
   * new: referer protection for graphics generator to prevent leeching
   * new: redesigned plugin front panel
   * edit: even more code reorganization and cleanup
-  * fix: multi rating average rating breaks for empty rating request
+  * fix: multi rating average breaks for empty rating request
+  * fix: multi rating average breaks with no multi sets
 
 === Version: 1.1.9.1 / april 16 2009 ===
   * new: widget template tags for stars and image
