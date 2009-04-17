@@ -7,5 +7,6 @@ CREATE TABLE `%sgdsr_multis_data` (
   `total_votes_users` int(11) NOT NULL DEFAULT '0',
   `total_votes_visitors` int(11) NOT NULL DEFAULT '0',
   `average_review` decimal(3,1) NOT NULL DEFAULT '0.0',
+  `last_voted` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `post_id` (`post_id`));

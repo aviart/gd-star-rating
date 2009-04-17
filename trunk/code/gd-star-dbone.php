@@ -512,7 +512,7 @@ wp_gdsr_dump("SAVEVOTE_CMM_trend_insert_error", $wpdb->last_error);
         }
 
         if ($user > 0) {
-            $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE comment_id = %s",
+            $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s, last_voted = CURRENT_TIMESTAMP WHERE comment_id = %s",
                 $comments, $vote, $id);
             $wpdb->query($sql);
 
@@ -530,7 +530,7 @@ wp_gdsr_dump("SAVEVOTE_CMM_trend_update_user_error", $wpdb->last_error);
             }
         }
         else {
-            $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE comment_id = %s",
+            $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s, last_voted = CURRENT_TIMESTAMP WHERE comment_id = %s",
                 $comments, $vote, $id);
             $wpdb->query($sql);
 
@@ -593,7 +593,7 @@ wp_gdsr_dump("SAVEVOTE_trend_insert_error", $wpdb->last_error);
         }
 
         if ($user > 0) {
-            $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE post_id = %s",
+            $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s, last_voted = CURRENT_TIMESTAMP WHERE post_id = %s",
                 $articles, $vote, $id);
             $wpdb->query($sql);
 
@@ -611,7 +611,7 @@ wp_gdsr_dump("SAVEVOTE_trend_update_user_error", $wpdb->last_error);
             }
         }
         else {
-            $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE post_id = %s",
+            $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s, last_voted = CURRENT_TIMESTAMP WHERE post_id = %s",
                 $articles, $vote, $id);
             $wpdb->query($sql);
 

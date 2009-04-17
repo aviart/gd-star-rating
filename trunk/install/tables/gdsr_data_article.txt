@@ -18,4 +18,5 @@ CREATE TABLE `%sgdsr_data_article` (
   `visitor_recc_minus` int(11) DEFAULT '0',
   `expiry_type` char(1) NOT NULL DEFAULT 'N',
   `expiry_value` varchar(32) NOT NULL DEFAULT '',
+  `last_voted` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`post_id`));
