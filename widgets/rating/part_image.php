@@ -25,7 +25,7 @@
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100" valign="top"></td>
-    <td align="left"><?php _e("If you use %IMAGE% tag in template and this option is selected, image will not be rendered."); ?></td>
+    <td align="left"><?php _e("If you use %IMAGE% tag in template and this option is selected, image will not be rendered.", "gd-star-rating"); ?></td>
   </tr>
 </table>
 </div>
@@ -42,7 +42,7 @@
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100" valign="top"></td>
-    <td align="left"><?php _e("First image from post content will be used for %IMAGE% tag."); ?></td>
+    <td align="left"><?php _e("First image from post content will be used for %IMAGE% tag.", "gd-star-rating"); ?></td>
   </tr>
 </table>
 </div>

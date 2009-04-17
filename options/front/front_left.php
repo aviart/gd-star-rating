@@ -18,7 +18,7 @@
 ?>
 
 <div id="gdpt_server" class="postbox gdrgrid frontleft">
-    <h3 class="hndle"><span><?php _e("Quick Rating Facts", "gd-press-tools"); ?></span></h3>
+    <h3 class="hndle"><span><?php _e("Quick Rating Facts", "gd-star-rating"); ?></span></h3>
     <div class="inside">
         <p class="gdptyouhave" style="font-size:13px;">
         <?php
@@ -45,7 +45,7 @@
         <small style="float: right; margin-right:6px; margin-top:6px;">
             <a target="_blank" href="http://www.gdstarrating.com/"><?php _e("See All", "gd-star-rating"); ?></a> | <a href="http://feeds2.feedburner.com/GdStarRating">RSS</a>
         </small>
-        <h3 class="hndle"><span><?php _e("Latest News", "gd-press-tools"); ?></span></h3>
+        <h3 class="hndle"><span><?php _e("Latest News", "gd-star-rating"); ?></span></h3>
         <div class="gdsrclear"></div>
     <div class="inside">
         <?php

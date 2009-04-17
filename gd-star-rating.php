@@ -472,32 +472,34 @@ if (!class_exists('GDStarRating')) {
             if ($multi_id > 0 && $post_id > 0) {
                 $set = gd_get_multi_set($multi_id);
                 $data = GDSRDBMulti::get_averages($post_id, $multi_id);
-                if ($settings["render"] == "review") {
-                    $review = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $data->average_review);
-                    return $review;
-                }
-                else {
-                    switch ($settings["show"]) {
-                        case "visitors":
-                            $rating = $data->average_rating_visitors;
-                            break;
-                        case "users":
-                            $rating = $data->average_rating_users;
-                            break;
-                        case "total":
-                            $sum = $data->average_rating_users * $data->total_votes_users + $data->average_rating_visitors * $data->total_votes_visitors;
-                            $sum = $sum / ($data->total_votes_users + $data->total_votes_visitors);
-                            $rating = number_format($sum, 1);
-                            break;
+                if ($set != null) {
+                    if ($settings["render"] == "review") {
+                        $review = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $data->average_review);
+                        return $review;
                     }
-                    $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $rating);
-                    return $rating;
+                    else {
+                        switch ($settings["show"]) {
+                            case "visitors":
+                                $rating = $data->average_rating_visitors;
+                                break;
+                            case "users":
+                                $rating = $data->average_rating_users;
+                                break;
+                            case "total":
+                                $sum = $data->average_rating_users * $data->total_votes_users + $data->average_rating_visitors * $data->total_votes_visitors;
+                                $votes = $data->total_votes_users + $data->total_votes_visitors;
+                                $sum = $votes == 0 ? 0 : $sum / $votes;
+                                $rating = number_format($sum, 1);
+                                break;
+                        }
+                        $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $rating);
+                        return $rating;
+                    }
                 }
             }
-            else {
-                $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, 0);
-                return $rating;
-            }
+            $max = is_null($set) ? 10 : $set->stars;
+            $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $max, 0);
+            return $rating;
         }
 
         /**
