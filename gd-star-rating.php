@@ -1785,6 +1785,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                 }
             }
 
+            $all_rows = apply_filters('gdsr_widget_data_prepare', $all_rows);
             return $all_rows;
         }
 
