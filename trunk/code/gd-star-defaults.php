@@ -215,7 +215,6 @@ class GDSRDefaults {
         "title" => "Rating",
         "source" => "standard",
         "source_set" => 0,
-        "multi_id" => 0,
         "display" => "all",
         "rows" => 10,
         "min_votes" => 5,
@@ -295,8 +294,10 @@ class GDSRDefaults {
     );
 
     var $default_shortcode_starrating = array(
+        'source' => 'standard',
+        'source_set' => 0,
         'rows' => 10,
-        "min_votes" => 5,
+        'min_votes' => 5,
         'select' => 'postpage',
         'column' => 'rating',
         'order' => 'desc',
@@ -322,6 +323,8 @@ class GDSRDefaults {
         'trends_voting_same' => '=',
         'trends_voting_fall' => '-',
         'trends_voting_set' => 'famfamfam',
+        'image_from' => 'none',
+        'image_custom' => 'Image',
         'rating_stars' => 'oxygen',
         'rating_size' => 20,
         'review_stars' => 'oxygen',
