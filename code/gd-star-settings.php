@@ -108,10 +108,19 @@
         $gdsr_options["size"] = $_POST['gdsr_size'];
         $gdsr_options["text"] = $_POST['gdsr_text'];
         $gdsr_options["align"] = $_POST['gdsr_align'];
-        $gdsr_options["header"] = isset($_POST['gdsr_header']) ? 1 : 0;
         $gdsr_options["header_text"] = stripslashes(htmlentities($_POST['gdsr_header_text'], ENT_QUOTES, STARRATING_ENCODING));
-        $gdsr_options["class_block"] = $_POST['gdsr_classblock'];
-        $gdsr_options["class_text"] = $_POST['gdsr_classtext'];
+
+        $gdsr_options["default_srb_template"] = $_POST['gdsr_default_srb_template'];
+        $gdsr_options["default_crb_template"] = $_POST['gdsr_default_crb_template'];
+
+        $gdsr_options["srb_class_block"] = $_POST['gdsr_classblock'];
+        $gdsr_options["srb_class_text"] = $_POST['gdsr_classtext'];
+        $gdsr_options["srb_class_header"] = $_POST['gdsr_classheader'];
+        $gdsr_options["srb_class_stars"] = $_POST['gdsr_classstars'];
+        $gdsr_options["cmm_class_block"] = $_POST['gdsr_cmm_classblock'];
+        $gdsr_options["cmm_class_text"] = $_POST['gdsr_cmm_classtext'];
+        $gdsr_options["cmm_class_header"] = $_POST['gdsr_cmm_classheader'];
+        $gdsr_options["cmm_class_stars"] = $_POST['gdsr_cmm_classstars'];
 
         $gdsr_options["mur_style"] = $_POST['gdsr_mur_style'];
         $gdsr_options["mur_style_ie6"] = $_POST['gdsr_mur_style_ie6'];
@@ -133,10 +142,7 @@
         $gdsr_options["cmm_size"] = $_POST['gdsr_cmm_size'];
         $gdsr_options["cmm_text"] = $_POST['gdsr_cmm_text'];
         $gdsr_options["cmm_align"] = $_POST['gdsr_cmm_align'];
-        $gdsr_options["cmm_header"] = isset($_POST['gdsr_cmm_header']) ? 1 : 0;
         $gdsr_options["cmm_header_text"] = stripslashes(htmlentities($_POST['gdsr_cmm_header_text'], ENT_QUOTES, STARRATING_ENCODING));
-        $gdsr_options["cmm_class_block"] = $_POST['gdsr_cmm_classblock'];
-        $gdsr_options["cmm_class_text"] = $_POST['gdsr_cmm_classtext'];
 
         $gdsr_options["review_style"] = $_POST['gdsr_review_style'];
         $gdsr_options["review_style_ie6"] = $_POST['gdsr_review_style_ie6'];
