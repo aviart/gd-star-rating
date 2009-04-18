@@ -41,13 +41,13 @@ $default_preview_class.= $gdsr_options["wait_class_multis"];
                 </td>
                 <td width="10"></td>
                 <td width="150"><?php _e("Text to display", "gd-star-rating"); ?>:</td>
-                <td>
-                    <input type="text" name="gdsr_mur_header_text" id="gdsr_mur_header_text" value="<?php echo wp_specialchars($gdsr_options["mur_header_text"]); ?>" style="width: 170px" />
-                </td>
+                <td><input type="text" name="gdsr_mur_header_text" id="gdsr_mur_header_text" value="<?php echo wp_specialchars($gdsr_options["mur_header_text"]); ?>" style="width: 170px" /></td>
             </tr>
         </table>
-        <?php if ($gdsr_options["admin_advanced"] == 1) { ?>
-        <div class="gdsr-table-split"></div>
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("Defaults", "gd-star-rating"); ?></th>
+    <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="150"><?php _e("Rating block CSS class", "gd-star-rating"); ?>:</td>
@@ -72,7 +72,6 @@ $default_preview_class.= $gdsr_options["wait_class_multis"];
                 </td>
             </tr>
         </table>
-        <?php } ?>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Submit Button", "gd-star-rating"); ?></th>

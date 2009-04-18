@@ -30,6 +30,8 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                 </select>
                 </td>
             </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="150">MSIE 6:</td>
                 <td width="200" align="left" colspan="6">
@@ -37,6 +39,8 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                 <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["cmm_style_ie6"]); ?>
                 </select>
                 </td>
+                <td width="150"><?php _e("Rating header", "gd-star-rating"); ?>:</td>
+                <td><input type="text" name="gdsr_cmm_header_text" id="gdsr_cmm_header_text" value="<?php echo wp_specialchars($gdsr_options["cmm_header_text"]); ?>" style="width: 170px" /></td>
             </tr>
         </table>
         <div class="gdsr-table-split"></div>
@@ -64,6 +68,57 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
         </table>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Defaults", "gd-star-rating"); ?></th>
+    <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Vote rule", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <?php GDSRHelper::render_rules_combo("gdsr_default_vote_comments", $gdsr_options["default_voterules_comments"]); ?>
+                </td>
+                <td width="10"></td>
+            <?php if ($gdsr_options["moderation_active"] == 1) { ?>
+                <td width="150"><?php _e("Moderation rule", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <?php GDSRHelper::render_moderation_combo("gdsr_default_mod_comments", $gdsr_options["default_moderation_comments"]); ?>
+                </td>
+            <?php } ?>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Rating block CSS class", "gd-star-rating"); ?>:</td>
+                <td width="200">
+                    <input type="text" name="gdsr_cmm_classblock" value="<?php echo wp_specialchars($gdsr_options["cmm_class_block"]); ?>" style="width: 170px" />
+                </td>
+                <td width="10"></td>
+                <td width="150"><?php _e("Rating text CSS class", "gd-star-rating"); ?>:</td>
+                <td>
+                    <input type="text" name="gdsr_cmm_classtext" value="<?php echo wp_specialchars($gdsr_options["cmm_class_text"]); ?>" style="width: 170px" />
+                </td>
+            </tr>
+            <tr>
+                <td width="150"><?php _e("Rating header CSS class", "gd-star-rating"); ?>:</td>
+                <td width="200">
+                    <input type="text" name="gdsr_cmm_classheader" value="<?php echo wp_specialchars($gdsr_options["cmm_class_header"]); ?>" style="width: 170px" />
+                </td>
+                <td width="10"></td>
+                <td width="150"><?php _e("Rating stars CSS class", "gd-star-rating"); ?>:</td>
+                <td>
+                    <input type="text" name="gdsr_cmm_classstars" value="<?php echo wp_specialchars($gdsr_options["cmm_class_stars"]); ?>" style="width: 170px" />
+                </td>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Rating Template", "gd-star-rating"); ?>:</td>
+                <td align="left"><?php GDSRHelper::render_templates_section("CRB", "gdsr_default_crb_template", $gdsr_options["default_crb_template"], 350); ?></td>
+            </tr>
+        </table>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Aggregated Rating", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
@@ -86,32 +141,6 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                 <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["cmm_aggr_style_ie6"]); ?>
                 </select>
                 </td>
-            </tr>
-        </table>
-    </td>
-</tr>
-<tr><th scope="row"><?php _e("Defaults", "gd-star-rating"); ?></th>
-    <td>
-        <table cellpadding="0" cellspacing="0" class="previewtable">
-            <tr>
-                <td width="150"><?php _e("Vote rule", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left">
-                <?php GDSRHelper::render_rules_combo("gdsr_default_vote_comments", $gdsr_options["default_voterules_comments"]); ?>
-                </td>
-                <td width="10"></td>
-            <?php if ($gdsr_options["moderation_active"] == 1) { ?>
-                <td width="150"><?php _e("Moderation rule", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left">
-                <?php GDSRHelper::render_moderation_combo("gdsr_default_mod_comments", $gdsr_options["default_moderation_comments"]); ?>
-                </td>
-            <?php } ?>
-            </tr>
-        </table>
-        <div class="gdsr-table-split"></div>
-        <table cellpadding="0" cellspacing="0" class="previewtable">
-            <tr>
-                <td width="150"><?php _e("Rating header", "gd-star-rating"); ?>:</td>
-                <td width="200"><input type="text" name="gdsr_cmm_header_text" id="gdsr_cmm_header_text" value="<?php echo wp_specialchars($gdsr_options["cmm_header_text"]); ?>" style="width: 170px" /></td>
             </tr>
         </table>
     </td>

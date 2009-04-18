@@ -136,6 +136,19 @@ class gdTemplates {
     }
 }
 
+class gdTemplateRender {
+    var $tpl;
+    var $dep;
+
+    function gdTemplateRender($id) {
+        $this->tpl = wp_gdsr_get_template($id);
+        $this->dep = array();
+
+        $dependencies = unserialize($this->tpl->dependencies);
+        foreach ($dependencies as $key => $value) $this->dep[$key] = wp_gdsr_get_template($value);
+    }
+}
+
 function wp_gdsr_get_template($template_id) {
     return GDSRDB::get_template($template_id);
 }

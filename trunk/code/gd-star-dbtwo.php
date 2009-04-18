@@ -358,6 +358,12 @@ class GDSRDB {
     // moderation
 
     // templates
+    function get_render_template($template_id) {
+        global $wpdb, $table_prefix;
+
+        
+    }
+
     function get_templates($section = '', $default_sort = false) {
         global $wpdb, $table_prefix;
         if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
