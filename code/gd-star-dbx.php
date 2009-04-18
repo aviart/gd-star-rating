@@ -226,9 +226,13 @@ class GDSRX {
             }
             else $col = "p.id";
         }
-        
+
+        if ($widget["last_voted_days"] > 0) {
+            $where[] = "TO_DAYS(CURDATE()) - ".$widget["last_voted_days"]." <= TO_DAYS(d.last_voted)";
+        }
+
         if ($widget["publish_date"] == "range") {
-            $where[] = "post_date >+ '".$widget["publish_range_from"]."' and post_date <= '".$widget["publish_range_to"]."'";
+            $where[] = "p.post_date >= '".$widget["publish_range_from"]."' and p.post_date <= '".$widget["publish_range_to"]."'";
         }
         else if ($widget["publish_date"] == "month") {
             $month = $widget["publish_month"];

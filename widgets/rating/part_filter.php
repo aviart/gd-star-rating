@@ -96,7 +96,7 @@
   </tr>
   <tr>
     <td width="100"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Category", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Article Category", "gd-star-rating"); ?>:</td>
     <td align="right">
         <label><?php GDSRDatabase::get_combo_categories($wpno['category'], $wpfn.'[category]'); ?></label>
     </td>
@@ -105,11 +105,25 @@
     <td width="100"></td>
     <td nowrap="nowrap" colspan="2">
         <div class="gdsr-table-split-filter"></div>
+        <?php _e("Use only articles voted for in last # days.", "gd-star-rating") ?>
+    </td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td width="150" nowrap="nowrap"><?php _e("Enter 0 for all", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[last_voted_days]" id="gdstarr-lastvoteddays" value="<?php echo $wpno["last_voted_days"]; ?>" />
     </td>
   </tr>
   <tr>
     <td width="100"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Publish Date", "gd-star-rating"); ?>:</td>
+    <td colspan="2">
+        <div class="gdsr-table-split-filter"></div>
+    </td>
+  </tr>
+  <tr>
+    <td width="100"></td>
+    <td width="150" nowrap="nowrap"><?php _e("Article Publish Date", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select name="<?php echo $wpfn; ?>[publish_date]" style="width: 110px" id="gdstarr-publishdate" onchange="gdsrChangeDate(this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
             <option value="alldt"<?php echo $wpno['publish_date'] == 'alldt' ? ' selected="selected"' : ''; ?>><?php _e("Any date", "gd-star-rating"); ?></option>
