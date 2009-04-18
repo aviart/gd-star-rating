@@ -227,7 +227,7 @@ class GDSRDefaults {
         "hide_empty" => 1,
         "hide_noreview" => 0,
         "tpl_header" => '&lt;ul&gt;',
-        "tpl_item" => '&lt;li&gt;&lt;strong&gt;%RATING%&lt;/strong&gt; : &lt;a href=&quot;%PERMALINK%&quot;&gt;%TITLE%&lt;/a&gt; (%VOTES% %WORD_VOTES%)&lt;/li&gt;',
+        "tpl_item" => '&lt;li&gt;%STARS%&lt;br/&gt;&lt;a href=&quot;%PERMALINK%&quot;&gt;%TITLE%&lt;/a&gt; (%VOTES% %WORD_VOTES%)&lt;/li&gt;',
         "tpl_footer" => '&lt;/ul&gt;',
         "tpl_title_length" => 0,
         "tpl_encoded" => 1,
@@ -257,7 +257,8 @@ class GDSRDefaults {
         "image_from" => 'none',
         "image_custom" => 'Image',
         "rating_stars" => "oxygen",
-        "rating_size" => 12
+        "rating_size" => 12,
+        "last_voted_days" => 0
     );
 
     var $default_shortcode_starratercustom = array(

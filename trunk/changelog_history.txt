@@ -7,6 +7,7 @@
   * new: redesigned plugin front panel
   * new: auto insertion of rating block on top of the article
   * new: saving last voted timestamp for articles, comments and multi rating results
+  * new: widget limit articles voted for in the last number of days
   * edit: for wp newer than 2.7 tables don't have width set
   * edit: even more code reorganization and cleanup
   * fix: full db tables reinstall doesn't insert templates

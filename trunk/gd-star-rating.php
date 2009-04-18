@@ -2358,6 +2358,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                     $options['category'] = $posted['category'];
                     $options['show'] = $posted['show'];
                     $options['display'] = $posted['display'];
+                    $options['last_voted_days'] = $posted['last_voted_days'];
 
                     $options['publish_date'] = $posted['publish_date'];
                     $options['publish_month'] = $posted['publish_month'];
