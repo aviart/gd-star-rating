@@ -231,7 +231,7 @@ class GDSRRender {
         $rater_text.= '</div>';
         return $rater_text;
     }
-    
+
     function rating_block($id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $align, $text, $header, $header_text, $custom_css_block = "", $custom_css_text = "", $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
         $template = get_option('gd-star-rating-templates');
         if ($votes == 1) $tense = $template["word_votes_singular"];

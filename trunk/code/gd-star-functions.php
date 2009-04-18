@@ -434,6 +434,8 @@ class GDSRHelper {
     <option value="flower"<?php echo $selected == 'flower' ? ' selected="selected"' : ''; ?>>Flower [15x15]</option>
     <option value="gauge"<?php echo $selected == 'gauge' ? ' selected="selected"' : ''; ?>>Gauge [128x15]</option>
     <option value="squares"<?php echo $selected == 'squares' ? ' selected="selected"' : ''; ?>>Squares [43x11]</option>
+    <option value="fountain"<?php echo $selected == 'fountain' ? ' selected="selected"' : ''; ?>>Fountain [128x16]</option>
+    <option value="broken"<?php echo $selected == 'broken' ? ' selected="selected"' : ''; ?>>Broken [16x16]</option>
 </select>
         <?php
     }

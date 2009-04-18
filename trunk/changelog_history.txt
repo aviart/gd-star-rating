@@ -6,11 +6,15 @@
   * new: star rating widget support for multi rating data
   * new: star rating widget support for multiple categories
   * new: star rating widget support for subcategories
+  * new: wp filter for widget data prepare
   * new: redesigned plugin front panel
+  * new: two new animated loaders
   * new: auto insertion of rating block on top of the article
   * new: saving last voted timestamp for articles, comments and multi rating results
   * new: widget limit articles voted for in the last number of days
   * new: referer protection for graphics generator to prevent leeching
+  * edit: removed obsolete articles and comments options
+  * edit: removed options for hiding parts of settings tab
   * edit: trend calculations updated to support multi ratings
   * edit: for wp newer than 2.7 tables don't have width set
   * edit: even more code reorganization and cleanup

@@ -164,8 +164,8 @@ h2.gdptlogopage {
 }
 
 .gdsr-table-split {
-	margin-top: 10px; 
-	padding-top: 10px;
+	margin-top: 7px;
+	padding-top: 7px;
 }
 
 .gdsr-table-split-edit {
@@ -492,7 +492,7 @@ a.rssurl:hover { color: white; }
 }
 
 .loader.flower {
-    background: url(../../gfx/loader/flower.gif) no-repeat left;
+   background: url(../../gfx/loader/flower.gif) no-repeat left;
 	padding-left: 18px;
 }
 
@@ -504,7 +504,7 @@ a.rssurl:hover { color: white; }
 }
 
 .loader.gauge {
-    background: url(../../gfx/loader/gauge.gif) no-repeat left;
+   background: url(../../gfx/loader/gauge.gif) no-repeat left;
 	padding-left: 134px;
 }
 
@@ -516,12 +516,36 @@ a.rssurl:hover { color: white; }
 }
 
 .loader.squares {
-    background: url(../../gfx/loader/squares.gif) no-repeat left;
+	background: url(../../gfx/loader/squares.gif) no-repeat left;
 	padding-left: 43px;
 }
 
 .loader.squares.width {
     width: 43px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
+}
+
+.loader.fountain {
+   background: url(../../gfx/loader/fountain.gif) no-repeat left;
+	padding-left: 134px;
+}
+
+.loader.fountain.width {
+    width: 128px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
+}
+
+.loader.broken {
+    background: url(../../gfx/loader/broken.gif) no-repeat left;
+	padding-left: 18px;
+}
+
+.loader.broken.width {
+    width: 16px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0px;

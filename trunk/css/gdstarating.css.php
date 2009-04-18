@@ -280,6 +280,12 @@ get_class_head($head, ""); ?> {
 .loader.squares { background: url(<?php echo $base_url_local;?>gfx/loader/squares.gif) no-repeat left; padding-left: 43px; }
 .loader.squares.width { width: 43px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
+.loader.fountain { background: url(<?php echo $base_url_local;?>gfx/loader/fountain.gif) no-repeat left; padding-left: 134px; }
+.loader.fountain.width { width: 128px; margin-left: auto; margin-right: auto; padding-left: 0px; }
+
+.loader.broken { background: url(<?php echo $base_url_local;?>gfx/loader/broken.gif) no-repeat left; padding-left: 18px; }
+.loader.broken.width { width: 16px; margin-left: auto; margin-right: auto; padding-left: 0px; }
+
 /* top rating widget */
 .trw-title {
 	text-align: center;
