@@ -103,6 +103,12 @@
   </tr>
   <tr>
     <td width="100"></td>
+    <td nowrap="nowrap" colspan="2" height="25">
+        <label for="gdstarr-categorytoponly" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['category_toponly'] ? 'checked="checked"' : ''; ?> id="gdstarr-categorytoponly" name="<?php echo $wpfn; ?>[category_toponly]" /> <?php _e("Only selected category, no subcategories.", "gd-star-rating"); ?></label>
+    </td>
+  </tr>
+  <tr>
+    <td width="100"></td>
     <td nowrap="nowrap" colspan="2">
         <div class="gdsr-table-split-filter"></div>
         <?php _e("Use only articles voted for in last # days.", "gd-star-rating") ?>

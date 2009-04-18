@@ -2398,6 +2398,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                     $options['hide_empty'] = isset($posted['hidempty']) ? 1 : 0;
                     $options['hide_noreview'] = isset($posted['hidenoreview']) ? 1 : 0;
                     $options['bayesian_calculation'] = isset($posted['bayesian_calculation']) ? 1 : 0;
+                    $options['category_toponly'] = isset($posted['category_toponly']) ? 1 : 0;
 
                     $options_all[$widget_number] = $options;
                 }
