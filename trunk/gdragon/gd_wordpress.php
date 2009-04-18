@@ -40,6 +40,13 @@ if (!class_exists('gdWPGDSR')) {
           return $wp_user_search->get_results();
         }
 
+        function get_subcategories_ids($cat, $hide_empty = true) {
+            $categories = get_categories(array("child_of" => $cat, "hide_empty" => $hide_empty));
+            $results = array();
+            foreach ($categories as $c) $results[] = $c->cat_ID;
+            return $results;
+        }
+
         function get_all_custom_fieds($underscore = true) {
             global $wpdb, $table_prefix;
 

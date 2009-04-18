@@ -5,7 +5,7 @@ class GDSRX {
         global $wpdb, $table_prefix;
         $mysql4_strtodate = "date_add(d.vote_date, interval 0 day)";
         $mysql5_strtodate = "str_to_date(d.vote_date, '%Y-%m-%d')";
-        
+
         switch(gdFunctionsGDSR::mysql_version()) {
             case "4":
                 $strtodate = $mysql4_strtodate;
@@ -182,8 +182,19 @@ class GDSRX {
 
     function get_widget_multis($widget, $min = 0) {
         global $table_prefix;
+
         $grouping = $widget["grouping"];
         $cats = $widget["category"];
+        $cats_in = $widget["category_toponly"] == 0;
+        if ($cats_in) {
+            $subs = gdWPGDSR::get_subcategories_ids($widget["category"]);
+            $subs[] = $cats;
+            $cats = join(",", $subs);
+        }
+        if ($widget["categories"] != "") {
+            $cats = $widget["categories"];
+            $cats_in = true;
+        }
         $where = array();
         $select = "";
         if ($widget["bayesian_calculation"] == "0") $min = 0;
@@ -195,13 +206,16 @@ class GDSRX {
         $where[] = "p.post_status = 'publish'";
 
         $extras = ", 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars";
-        
+
         if (($cats != "" && $cats != "0") || $grouping == 'category'){
             $from = sprintf("%sterm_taxonomy t, %sterm_relationships r, ", $table_prefix, $table_prefix);
             $where[] = "t.term_taxonomy_id = r.term_taxonomy_id";
             $where[] = "r.object_id = p.id";
         }
-        if ($cats != "" && $cats != "0") $where[] = "t.term_id = ".$cats;
+        if ($cats != "" && $cats != "0") {
+            if ($cats_in) $where[] = "t.term_id in (".$cats.")";
+            else $where[] = "t.term_id = ".$cats;
+        }
 
         if ($grouping == 'category') {
             $from.= sprintf("%sterms x, ", $table_prefix);
@@ -283,8 +297,19 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
 
     function get_widget_standard($widget, $min = 0) {
         global $table_prefix;
+
         $grouping = $widget["grouping"];
         $cats = $widget["category"];
+        $cats_in = $widget["category_toponly"] == 0;
+        if ($cats_in) {
+            $subs = gdWPGDSR::get_subcategories_ids($widget["category"]);
+            $subs[] = $cats;
+            $cats = join(",", $subs);
+        }
+        if ($widget["categories"] != "") {
+            $cats = $widget["categories"];
+            $cats_in = true;
+        }
         $where = array();
         $select = "";
         if ($widget["bayesian_calculation"] == "0") $min = 0;
@@ -293,15 +318,18 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
 
         $where[] = "p.id = d.post_id";
         $where[] = "p.post_status = 'publish'";
-        
+
         $extras = ", 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars";
-        
+
         if (($cats != "" && $cats != "0") || $grouping == 'category'){
             $from = sprintf("%sterm_taxonomy t, %sterm_relationships r, ", $table_prefix, $table_prefix);
             $where[] = "t.term_taxonomy_id = r.term_taxonomy_id";
             $where[] = "r.object_id = p.id";
         }
-        if ($cats != "" && $cats != "0") $where[] = "t.term_id = ".$cats;
+        if ($cats != "" && $cats != "0") {
+            if ($cats_in) $where[] = "t.term_id in (".$cats.")";
+            else $where[] = "t.term_id = ".$cats;
+        }
 
         if ($grouping == 'category') {
             $from.= sprintf("%sterms x, ", $table_prefix);
