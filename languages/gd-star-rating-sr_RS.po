@@ -1722,7 +1722,6 @@ msgstr "Графикони"
 
 #: options/categories.php:83
 #: tinymce3/panels/advanced.php:126
-#: widgets/rating/part_filter.php:98
 msgid "Category"
 msgstr "Категорија"
 
@@ -2789,37 +2788,36 @@ msgid "Ascending"
 msgstr "Растући"
 
 #: tinymce3/panels/advanced.php:169
-#: widgets/rating/part_filter.php:111
 msgid "Publish Date"
 msgstr "Датум објављивања"
 
 #: tinymce3/panels/advanced.php:172
-#: widgets/rating/part_filter.php:115
+#: widgets/rating/part_filter.php:129
 msgid "Last # days"
 msgstr "Последњих # дана"
 
 #: tinymce3/panels/advanced.php:173
-#: widgets/rating/part_filter.php:116
+#: widgets/rating/part_filter.php:130
 msgid "Exact month"
 msgstr "Тачно месец"
 
 #: tinymce3/panels/advanced.php:174
-#: widgets/rating/part_filter.php:117
+#: widgets/rating/part_filter.php:131
 msgid "Date range"
 msgstr "Распон датума"
 
 #: tinymce3/panels/advanced.php:182
-#: widgets/rating/part_filter.php:126
+#: widgets/rating/part_filter.php:140
 msgid "Number Of Days"
 msgstr "Број дана"
 
 #: tinymce3/panels/advanced.php:192
-#: widgets/rating/part_filter.php:137
+#: widgets/rating/part_filter.php:151
 msgid "Month"
 msgstr "Месец"
 
 #: tinymce3/panels/advanced.php:202
-#: widgets/rating/part_filter.php:148
+#: widgets/rating/part_filter.php:162
 msgid "Range"
 msgstr "Опсег"
 
@@ -3001,7 +2999,25 @@ msgstr "Колона За Сортирање"
 msgid "Sorting Order"
 msgstr "Редослед Сортирања"
 
-#: widgets/rating/part_filter.php:114
+#: widgets/rating/part_filter.php:98
+#, fuzzy
+msgid "Article Category"
+msgstr "Гласови Чланака"
+
+#: widgets/rating/part_filter.php:107
+msgid "Use only articles voted for in last # days."
+msgstr ""
+
+#: widgets/rating/part_filter.php:112
+msgid "Enter 0 for all"
+msgstr ""
+
+#: widgets/rating/part_filter.php:125
+#, fuzzy
+msgid "Article Publish Date"
+msgstr "Датум објављивања"
+
+#: widgets/rating/part_filter.php:128
 msgid "Any date"
 msgstr "Сви датуми"
 
@@ -3018,9 +3034,8 @@ msgid "Custom field"
 msgstr ""
 
 #: widgets/rating/part_image.php:18
-#, fuzzy
 msgid "Post content"
-msgstr "Само садржај чланака"
+msgstr "Садржај чланака"
 
 #: widgets/rating/part_image.php:27
 msgid "If you use %IMAGE% tag in template and this option is selected, image will not be rendered."
@@ -3134,7 +3149,7 @@ msgstr "мртвих чланака из мулти рејтинг табела"
 msgid "post revisions records from multi ratings tables."
 msgstr "ревизија из мулти рејтинг табела."
 
-#: gd-star-rating.php:1786
+#: gd-star-rating.php:1792
 msgid "(no title)"
 msgstr "(без имена)"
 
@@ -3282,8 +3297,6 @@ msgstr "(без имена)"
 #~ msgstr ""
 #~ "Да би видели листу гласова, изаберите чланка или коментар са одговарајуће "
 #~ "стране."
-#~ msgid "Article Votes"
-#~ msgstr "Гласови Чланака"
 #~ msgid "RESET ALL SETTINGS"
 #~ msgstr "РЕСЕТУЈ СВА ПОДЕШАВАЊА"
 #~ msgid "Only Visitor Votes"

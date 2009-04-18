@@ -1711,7 +1711,6 @@ msgstr ""
 
 #: options/categories.php:83
 #: tinymce3/panels/advanced.php:126
-#: widgets/rating/part_filter.php:98
 msgid "Category"
 msgstr ""
 
@@ -2779,37 +2778,36 @@ msgid "Ascending"
 msgstr ""
 
 #: tinymce3/panels/advanced.php:169
-#: widgets/rating/part_filter.php:111
 msgid "Publish Date"
 msgstr ""
 
 #: tinymce3/panels/advanced.php:172
-#: widgets/rating/part_filter.php:115
+#: widgets/rating/part_filter.php:129
 msgid "Last # days"
 msgstr ""
 
 #: tinymce3/panels/advanced.php:173
-#: widgets/rating/part_filter.php:116
+#: widgets/rating/part_filter.php:130
 msgid "Exact month"
 msgstr ""
 
 #: tinymce3/panels/advanced.php:174
-#: widgets/rating/part_filter.php:117
+#: widgets/rating/part_filter.php:131
 msgid "Date range"
 msgstr ""
 
 #: tinymce3/panels/advanced.php:182
-#: widgets/rating/part_filter.php:126
+#: widgets/rating/part_filter.php:140
 msgid "Number Of Days"
 msgstr ""
 
 #: tinymce3/panels/advanced.php:192
-#: widgets/rating/part_filter.php:137
+#: widgets/rating/part_filter.php:151
 msgid "Month"
 msgstr ""
 
 #: tinymce3/panels/advanced.php:202
-#: widgets/rating/part_filter.php:148
+#: widgets/rating/part_filter.php:162
 msgid "Range"
 msgstr ""
 
@@ -2989,7 +2987,23 @@ msgstr ""
 msgid "Sorting Order"
 msgstr ""
 
-#: widgets/rating/part_filter.php:114
+#: widgets/rating/part_filter.php:98
+msgid "Article Category"
+msgstr ""
+
+#: widgets/rating/part_filter.php:107
+msgid "Use only articles voted for in last # days."
+msgstr ""
+
+#: widgets/rating/part_filter.php:112
+msgid "Enter 0 for all"
+msgstr ""
+
+#: widgets/rating/part_filter.php:125
+msgid "Article Publish Date"
+msgstr ""
+
+#: widgets/rating/part_filter.php:128
 msgid "Any date"
 msgstr ""
 
@@ -3121,7 +3135,7 @@ msgstr ""
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1786
+#: gd-star-rating.php:1792
 msgid "(no title)"
 msgstr ""
 

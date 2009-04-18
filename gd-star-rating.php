@@ -1589,16 +1589,22 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             return @number_format($WR, 1);
         }
 
-        function prepare_data($widget, $template) {
+        function prepare_data_retrieve($widget, $min = 0) {
             global $wpdb;
+            if ($widget["source"] == "standard")
+                $sql = GDSRX::get_widget_standard($widget, $this->o["bayesian_minimal"]);
+            else
+                $sql = GDSRX::get_widget_multis($widget, $this->o["bayesian_minimal"]);
+            return $wpdb->get_results($sql);
+        }
 
+        function prepare_data($widget, $template) {
             $bayesian_calculated = !(strpos($template, "%BAYES_RATING%") === false);
             $t_rate = !(strpos($template, "%RATE_TREND%") === false);
             $t_vote = !(strpos($template, "%VOTE_TREND%") === false);
 
             if ($widget["column"] == "bayes" && !$bayesian_calculated) $widget["column"] == "rating";
-            $sql = GDSRX::get_widget_standard($widget, $this->o["bayesian_minimal"]);
-            $all_rows = $wpdb->get_results($sql);
+            $all_rows = $this->prepare_data_retrieve($widget, $this->o["bayesian_minimal"]);
 
             if (count($all_rows) > 0) {
                 if ($t_rate || $t_vote) {

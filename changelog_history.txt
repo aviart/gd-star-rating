@@ -3,13 +3,16 @@
 == Change Log ==
 
 === Version: 1.2.0 / april 21 2009 ===
-  * new: referer protection for graphics generator to prevent leeching
+  * new: star rating widget support for mulit rating data
   * new: redesigned plugin front panel
   * new: auto insertion of rating block on top of the article
   * new: saving last voted timestamp for articles, comments and multi rating results
   * new: widget limit articles voted for in the last number of days
+  * new: referer protection for graphics generator to prevent leeching
+  * edit: trend calculations updated to support multi ratings
   * edit: for wp newer than 2.7 tables don't have width set
   * edit: even more code reorganization and cleanup
+  * fix: sql query for widget with ranged dates
   * fix: full db tables reinstall doesn't insert templates
   * fix: multi rating average breaks for empty rating request
   * fix: multi rating average breaks with no multi sets
