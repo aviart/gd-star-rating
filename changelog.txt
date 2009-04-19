@@ -18,6 +18,7 @@
   * edit: trend calculations updated to support multi ratings
   * edit: for wp newer than 2.7 tables don't have width set
   * edit: even more code reorganization and cleanup
+  * edit: changed loading of javascript code for widgets panel
   * fix: sql query for widget with ranged dates
   * fix: full db tables reinstall doesn't insert templates
   * fix: multi rating average breaks for empty rating request
