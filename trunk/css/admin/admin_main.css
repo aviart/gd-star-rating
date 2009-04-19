@@ -591,7 +591,6 @@ span.rss-date {
 }
 
 /* front grid */
-
 .frontleft { width: 500px; }
 .frontright { width: 500px; }
 
@@ -601,7 +600,7 @@ span.rss-date {
 	border-top: 1px solid #ECECEC;
 	margin: 0 -9px 10px;
 	padding: 0 10px;
-        table-layout: fixed;
+    table-layout: fixed;
 }
 
 .gdrgrid p.sub {
@@ -641,16 +640,6 @@ span.rss-date {
     text-align: right;
 }
 
-.gdrgrid table { width: 100%; }
-.gdrgrid table tr.first th, .gdrgrid table tr.first td { border-top: medium none; }
-.gdrgrid td.first, .gdrgrid td.last { width: 1px; }
-.gdrgrid td.options { text-align: right; white-space: normal; }
-
-.gdrgrid table tr.first th {
-    color: #990000;
-    font-weight: bold;
-}
-
 p.sub {
     color: #777777;
     font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
@@ -660,4 +649,10 @@ p.sub {
     margin: -12px;
 }
 
+.gdrgrid table { width: 100%; }
+.gdrgrid table tr.first th, .gdrgrid table tr.first td { border-top: medium none; }
+.gdrgrid td.first, .gdrgrid td.last { width: 1px; }
+.gdrgrid td.options { text-align: right; white-space: normal; }
+.gdrgrid table tr.first th { color: #990000; font-weight: bold; }
+.gdrgrid div.inside { margin: 10px; }
 /* front grid */
