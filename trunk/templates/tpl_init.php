@@ -139,13 +139,22 @@ class gdTemplates {
 class gdTemplateRender {
     var $tpl;
     var $dep;
+    var $elm;
+    var $tag;
 
     function gdTemplateRender($id) {
         $this->tpl = wp_gdsr_get_template($id);
         $this->dep = array();
 
         $dependencies = unserialize($this->tpl->dependencies);
-        foreach ($dependencies as $key => $value) $this->dep[$key] = wp_gdsr_get_template($value);
+        if (is_array($dependencies)) {
+            foreach ($dependencies as $key => $value) $this->dep[$key] = new gdTemplateRender($value);
+        }
+        $this->elm = unserialize($this->tpl->elements);
+        foreach($this->elm as $key => $value) {
+            preg_match_all('(%.+?%)', $value, $matches, PREG_PATTERN_ORDER);
+            $this->tag[$key] = $matches[0];
+        }
     }
 }
 
