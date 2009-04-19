@@ -79,13 +79,13 @@
   <tr>
     <td width="100"></td>
     <td nowrap="nowrap" colspan="2" height="25">
-        <label for="gdstarr-hidempty" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_empty'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidempty" name="<?php echo $wpfn; ?>[hidempty]" /> <?php _e("Hide articles with no recorded votes.", "gd-star-rating"); ?></label>
+        <label for="gdstarr-hidempty" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_empty'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidempty" name="<?php echo $wpfn; ?>[hide_empty]" /> <?php _e("Hide articles with no recorded votes.", "gd-star-rating"); ?></label>
     </td>
   </tr>
   <tr>
     <td width="100"></td>
     <td nowrap="nowrap" colspan="2" height="25">
-        <label for="gdstarr-hidenoreview" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_noreview'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidenoreview" name="<?php echo $wpfn; ?>[hidenoreview]" /> <?php _e("Hide articles with no review values.", "gd-star-rating"); ?></label>
+        <label for="gdstarr-hidenoreview" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_noreview'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidenoreview" name="<?php echo $wpfn; ?>[hide_noreview]" /> <?php _e("Hide articles with no review values.", "gd-star-rating"); ?></label>
     </td>
   </tr>
   <tr>

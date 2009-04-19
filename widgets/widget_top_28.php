@@ -42,7 +42,7 @@ if (class_exists("WP_Widget")) {
             include(STARRATING_PATH.'widgets/top_28/part_filter.php');
             include(STARRATING_PATH.'widgets/top_28/part_template.php');
         }
-   }
+    }
 }
 
 ?>

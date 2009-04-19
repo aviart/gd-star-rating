@@ -1,18 +1,18 @@
-<input type="hidden" id="gdstarr-divtemplate[<?php echo $wpnm; ?>]" name="<?php echo $wpfn; ?>[div_template]" value="<?php echo $wpno['div_template'] ?>" />
-<div id="gdstarr-divtemplate-off[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_template'] == '1' ? 'none' : 'block' ?>">
+<input type="hidden" id="<?php echo $this->get_field_id('div_template'); ?>" name="<?php echo $wpfn; ?>[div_template]" value="<?php echo $instance['div_template'] ?>" />
+<div id="<?php echo $this->get_field_id('div_template'); ?>-off" style="display: <?php echo $instance['div_template'] == '1' ? 'none' : 'block' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%" style="margin-bottom: 10px">
   <tr>
-    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divtemplate', '<?php echo $wpnm; ?>')"><?php _e("Template", "gd-star-rating"); ?></a></strong></td>
+    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('<?php echo $this->get_field_id('div_template'); ?>')"><?php _e("Template", "gd-star-rating"); ?></a></strong></td>
     <td align="right"><?php _e("Click on the header title to display the options.", "gd-star-rating"); ?></td>
   </tr>
 </table>
 </div>
-<div id="gdstarr-divtemplate-on[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_template'] == '1' ? 'block' : 'none' ?>">
+<div id="<?php echo $this->get_field_id('div_template'); ?>-on" style="display: <?php echo $instance['div_template'] == '1' ? 'block' : 'none' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
-    <td width="100"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divtemplate', '<?php echo $wpnm; ?>')"><?php _e("Template", "gd-star-rating"); ?></a></strong></td>
+    <td width="100"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('<?php echo $this->get_field_id('div_template'); ?>')"><?php _e("Template", "gd-star-rating"); ?></a></strong></td>
     <td nowrap="nowrap"><?php _e("Maximal character length for title", "gd-star-rating"); ?>:</td>
-    <td align="right"><input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[title_max]" id="gdstarr-titlemax" value="<?php echo $wpno["tpl_title_length"]; ?>" /></td>
+    <td align="right"><input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $this->get_field_name('tpl_title_length'); ?>" id="<?php echo $this->get_field_id('tpl_title_length'); ?>" value="<?php echo $instance["tpl_title_length"]; ?>" /></td>
   </tr>
 </table>
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
@@ -25,17 +25,17 @@
   <tr>
     <td width="100" valign="top"></td>
     <td width="80" nowrap="nowrap"><?php _e("Header", "gd-star-rating"); ?>:</td>
-    <td align="right"><input class="widefat" style="width: 200px" type="text" name="<?php echo $wpfn; ?>[tpl_header]" id="gdstarr-tplheader" value="<?php echo wp_specialchars($wpno["tpl_header"]); ?>" /></td>
+    <td align="right"><input class="widefat" style="width: 200px" type="text" name="<?php echo $this->get_field_name('tpl_header'); ?>" id="<?php echo $this->get_field_id('tpl_header'); ?>" value="<?php echo wp_specialchars($instance["tpl_header"]); ?>" /></td>
   </tr>
   <tr>
     <td width="100"></td>
     <td width="80" nowrap="nowrap"><?php _e("Item", "gd-star-rating"); ?>:</td>
-    <td align="right"><input class="widefat" style="width: 200px" type="text" name="<?php echo $wpfn; ?>[tpl_item]" id="gdstarr-tplitem" value="<?php echo wp_specialchars($wpno["tpl_item"]); ?>" /></td>
+    <td align="right"><input class="widefat" style="width: 200px" type="text" name="<?php echo $this->get_field_name('tpl_item'); ?>" id="<?php echo $this->get_field_id('tpl_item'); ?>" value="<?php echo wp_specialchars($instance["tpl_item"]); ?>" /></td>
   </tr>
   <tr>
     <td width="100"></td>
     <td width="80" nowrap="nowrap"><?php _e("Footer", "gd-star-rating"); ?>:</td>
-    <td align="right"><input class="widefat" style="width: 200px" type="text" name="<?php echo $wpfn; ?>[tpl_footer]" id="gdstarr-tplfooter" value="<?php echo wp_specialchars($wpno["tpl_footer"]); ?>" /></td>
+    <td align="right"><input class="widefat" style="width: 200px" type="text" name="<?php echo $this->get_field_name('tpl_footer'); ?>" id="<?php echo $this->get_field_id('tpl_footer'); ?>" value="<?php echo wp_specialchars($instance["tpl_footer"]); ?>" /></td>
   </tr>
 </table>
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
@@ -44,19 +44,20 @@
     <td colspan="2"><div class="gdsr-table-split-filter"></div></td>
   </tr>
 </table>
-<input type="hidden" id="gdstarr-divelemets[<?php echo $wpnm; ?>]" name="<?php echo $wpfn; ?>[div_elements]" value="<?php echo $wpno['div_elements'] ?>" />
-<div id="gdstarr-divelemets-off[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_elements'] == '1' ? 'none' : 'block' ?>">
+
+<input type="hidden" id="<?php echo $this->get_field_id('div_elements'); ?>" name="<?php echo $wpfn; ?>[div_elements]" value="<?php echo $instance['div_elements'] ?>" />
+<div id="<?php echo $this->get_field_id('div_elements'); ?>-off" style="display: <?php echo $instance['div_elements'] == '1' ? 'none' : 'block' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%" style="margin-bottom: 10px">
   <tr>
-    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divelemets', '<?php echo $wpnm; ?>')"><?php _e("Elements", "gd-star-rating"); ?></a></strong></td>
+    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('<?php echo $this->get_field_id('div_elements'); ?>')"><?php _e("Elements", "gd-star-rating"); ?></a></strong></td>
     <td align="right"><?php _e("Click on the header title to display the options.", "gd-star-rating"); ?></td>
   </tr>
 </table>
 </div>
-<div id="gdstarr-divelemets-on[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_elements'] == '1' ? 'block' : 'none' ?>">
+<div id="<?php echo $this->get_field_id('div_elements'); ?>-on" style="display: <?php echo $instance['div_elements'] == '1' ? 'block' : 'none' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%" style="margin-bottom: 10px">
   <tr>
-    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divelemets', '<?php echo $wpnm; ?>')"><?php _e("Elements", "gd-star-rating"); ?></a></strong></td>
+    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('<?php echo $this->get_field_id('div_elements'); ?>')"><?php _e("Elements", "gd-star-rating"); ?></a></strong></td>
     <td><strong>%RATING%</strong></td><td> : <?php _e("article rating", "gd-star-rating"); ?></td>
   </tr>
   <tr>
