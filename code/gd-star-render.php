@@ -237,11 +237,10 @@ class GDSRRender {
         if ($votes == 1) $tense = $template["word_votes_singular"];
         else $tense = $template["word_votes_plural"];
 
-        $rater = '';
-        if ($votes > 0) $rating2 = $score / $votes;
-        else $rating2 = 0;
+        $rating2 = $votes > 0 ? $score / $votes : 0;
         if ($rating2 > $unit_count) $rating2 = $unit_count;
-        $rating1 = @number_format($rating2, 1);
+        $rating = @number_format($rating2, 1);
+
         $rating_width = $rating2 * $unit_width;
         $rater_length = $unit_width * $unit_count; 
         $rater_id = $typecls."_rater_".$id;
@@ -279,7 +278,7 @@ class GDSRRender {
                             $tpl = $template["article_rating_text"];
                         $rt = html_entity_decode($tpl);
                     }
-                    $rt = str_replace('%RATING%', $rating1, $rt);
+                    $rt = str_replace('%RATING%', $rating, $rt);
                     $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
                     $rt = str_replace('%VOTES%', $votes, $rt);
                     $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
@@ -289,7 +288,7 @@ class GDSRRender {
                 case 'c':
                     $tpl = $template["cmm_rating_text"];
                     $rt = html_entity_decode($tpl);
-                    $rt = str_replace('%CMM_RATING%', $rating1, $rt);
+                    $rt = str_replace('%CMM_RATING%', $rating, $rt);
                     $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
                     $rt = str_replace('%CMM_VOTES%', $votes, $rt);
                     $rt = str_replace('%WORD_VOTES%', __($tense), $rt);

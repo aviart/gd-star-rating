@@ -40,6 +40,7 @@ require_once(dirname(__FILE__)."/code/gfx/gd-star-chart.php");
 require_once(dirname(__FILE__)."/code/gfx/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gfx/gd-star-generator.php");
 require_once(dirname(__FILE__)."/templates/tpl_init.php");
+require_once(dirname(__FILE__)."/code/gd-star-render-t2.php");
 require_once(dirname(__FILE__)."/gdragon/gd_functions.php");
 require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
 require_once(dirname(__FILE__)."/gdragon/gd_db_install.php");
@@ -299,7 +300,7 @@ if (!class_exists('GDStarRating')) {
         *
         * @param array $atts
         */
-	function shortcode_starreview($atts = array()) {
+        function shortcode_starreview($atts = array()) {
             global $post;
             $rating = GDSRDatabase::get_review($post->ID);
             if ($rating > -1) {
@@ -1607,6 +1608,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $all_rows = $this->prepare_data_retrieve($widget, $this->o["bayesian_minimal"]);
 
             if (count($all_rows) > 0) {
+                $trends = array();
+                $trends_calculated = false;
                 if ($t_rate || $t_vote) {
                     $idx = array();
                     foreach ($all_rows as $row) {
@@ -1625,10 +1628,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                     }
                     $trends = GDSRX::get_trend_calculation(join(", ", $idx), $widget["grouping"], $widget['show'], $this->o["trend_last"], $this->o["trend_over"]);
                     $trends_calculated = true;
-                }
-                else {
-                    $trends = array();
-                    $trends_calculated = false;
                 }
 
                 $new_rows = array();
@@ -2852,7 +2851,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            GDSRRenderT2::render_srb(0, $rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote);
+            GDSRRenderT2::render_srb(8, $rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article");
             $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
             return $rating_block;
         }
