@@ -44,6 +44,7 @@
     <td colspan="2"><div class="gdsr-table-split-filter"></div></td>
   </tr>
 </table>
+
 <input type="hidden" id="gdstarr-divelemets[<?php echo $wpnm; ?>]" name="<?php echo $wpfn; ?>[div_elements]" value="<?php echo $wpno['div_elements'] ?>" />
 <div id="gdstarr-divelemets-off[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_elements'] == '1' ? 'none' : 'block' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%" style="margin-bottom: 10px">

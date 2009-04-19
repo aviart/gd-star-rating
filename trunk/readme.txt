@@ -4,7 +4,7 @@ Donate link: http://www.gdstarrating.com/donate/
 Version: 1.2.0
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review, multi
 Requires at least: 2.5.0
-Tested up to: 2.7.1
+Tested up to: 2.8.0
 Stable tag: trunk
 
 GD Star Rating plugin allows you to set up rating and review system for pages, posts and comments in your blog.
@@ -128,7 +128,7 @@ Plugin administration consist of 12 panels:
 = WordPress 2.5 =
 * plugin doesn't require any more changes.
 
-= WordPress 2.6 / 2.7 =
+= WordPress 2.6 / 2.7 / 2.8 =
 * if you don't change location of `wp-content` folder, then you don't need to make any more changes.
 * if your `wp-content` folder is moved out of WordPress web location, then you must edit `gd-star-config.php` file and set value with exact location of `wp-content` file for `STARRATING_WPCONFIG` in line 3. Without this some plugin feature will not work.
 

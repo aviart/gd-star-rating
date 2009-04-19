@@ -3,9 +3,9 @@
 if (class_exists("WP_Widget")) {
     class gdsrWidgetRating extends WP_Widget {
         function gdsrWidgetRating() {
-            $widget_ops = array('classname' => 'widget_gd_linkedin_badge', 'description' => __("Add simple link to LinkedIn Profile page.", "gd-linkedin-badge"));
+            $widget_ops = array('classname' => 'widget_gdstarrating_star', 'description' => __("Customized rating results list.", "gd-linkedin-badge"));
             $control_ops = array('width' => 440);
-            $this->WP_Widget('gdlb_widget', 'GD LinkedIn Badge', $widget_ops, $control_ops);
+            $this->WP_Widget('gdstarrmulti', 'GD Star Rating', $widget_ops, $control_ops);
         }
 
         function widget($args, $instance) {
@@ -27,7 +27,7 @@ if (class_exists("WP_Widget")) {
             $instance['tpl_header'] = stripslashes(htmlentities($new_instance['tpl_header'], ENT_QUOTES, STARRATING_ENCODING));
             $instance['tpl_item'] = stripslashes(htmlentities($new_instance['tpl_item'], ENT_QUOTES, STARRATING_ENCODING));
             $instance['tpl_footer'] = stripslashes(htmlentities($new_instance['tpl_footer'], ENT_QUOTES, STARRATING_ENCODING));
-            $instance['tpl_title_length'] = $new_instance['title_max'];
+            $instance['tpl_title_length'] = $new_instance['tpl_title_length'];
 
             $instance['source'] = $new_instance['source'];
             $instance['source_set'] = $new_instance['source_set'];
@@ -72,12 +72,28 @@ if (class_exists("WP_Widget")) {
             $instance['trends_voting_same'] = strip_tags(stripslashes($new_instance['trends_voting_same']));
             $instance['trends_voting_fall'] = strip_tags(stripslashes($new_instance['trends_voting_fall']));
 
-            $instance['hide_empty'] = isset($new_instance['hidempty']) ? 1 : 0;
-            $instance['hide_noreview'] = isset($new_instance['hidenoreview']) ? 1 : 0;
+            $instance['hide_empty'] = isset($new_instance['hide_empty']) ? 1 : 0;
+            $instance['hide_noreview'] = isset($new_instance['hide_noreview']) ? 1 : 0;
             $instance['bayesian_calculation'] = isset($new_instance['bayesian_calculation']) ? 1 : 0;
             $instance['category_toponly'] = isset($new_instance['category_toponly']) ? 1 : 0;
 
             return $instance;
+        }
+
+        function form($instance) {
+            global $gdsr;
+            $instance = wp_parse_args((array)$instance, $gdsr->default_widget);
+
+            $wptr = $gdsr->g->trend;
+            $wpst = $gdsr->g->stars;
+            $wpml = GDSRDBMulti::get_multis_tinymce();
+
+            include(STARRATING_PATH.'widgets/rating_28/part_basic.php');
+            include(STARRATING_PATH.'widgets/rating_28/part_trend.php');
+            include(STARRATING_PATH.'widgets/rating_28/part_filter.php');
+            include(STARRATING_PATH.'widgets/rating_28/part_image.php');
+            include(STARRATING_PATH.'widgets/rating_28/part_stars.php');
+            include(STARRATING_PATH.'widgets/rating_28/part_template.php');
         }
     }
 }

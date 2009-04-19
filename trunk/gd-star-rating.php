@@ -2407,8 +2407,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                     $options['trends_voting_same'] = strip_tags(stripslashes($posted['trends_voting_same']));
                     $options['trends_voting_fall'] = strip_tags(stripslashes($posted['trends_voting_fall']));
 
-                    $options['hide_empty'] = isset($posted['hidempty']) ? 1 : 0;
-                    $options['hide_noreview'] = isset($posted['hidenoreview']) ? 1 : 0;
+                    $options['hide_empty'] = isset($posted['hide_empty']) ? 1 : 0;
+                    $options['hide_noreview'] = isset($posted['hide_noreview']) ? 1 : 0;
                     $options['bayesian_calculation'] = isset($posted['bayesian_calculation']) ? 1 : 0;
                     $options['category_toponly'] = isset($posted['category_toponly']) ? 1 : 0;
 

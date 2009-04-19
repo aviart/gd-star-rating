@@ -1,62 +1,62 @@
-<input type="hidden" id="gdstarr-divfilter[<?php echo $wpnm; ?>]" name="<?php echo $wpfn; ?>[div_filter]" value="<?php echo $wpno['div_filter'] ?>" />
-<div id="gdstarr-divfilter-off[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_filter'] == '1' ? 'none' : 'block' ?>">
+<input type="hidden" id="<?php echo $this->get_field_id('div_filter'); ?>" name="<?php echo $this->get_field_name('div_filter'); ?>" value="<?php echo $instance['div_filter'] ?>" />
+<div id="<?php echo $this->get_field_id('div_filter'); ?>-off" style="display: <?php echo $instance['div_filter'] == '1' ? 'none' : 'block' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
-    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divfilter', '<?php echo $wpnm; ?>')"><?php _e("Filter", "gd-star-rating"); ?></a></strong></td>
+    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('<?php echo $this->get_field_id('div_filter'); ?>')"><?php _e("Filter", "gd-star-rating"); ?></a></strong></td>
     <td align="right"><?php _e("Click on the header title to display the options.", "gd-star-rating"); ?></td>
   </tr>
 </table>
 </div>
-<div id="gdstarr-divfilter-on[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['div_filter'] == '1' ? 'block' : 'none' ?>">
+<div id="<?php echo $this->get_field_id('div_filter'); ?>-on" style="display: <?php echo $instance['div_filter'] == '1' ? 'block' : 'none' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
-    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divfilter', '<?php echo $wpnm; ?>')"><?php _e("Filter", "gd-star-rating"); ?></a></strong></td>
+    <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('<?php echo $this->get_field_id('div_filter'); ?>')"><?php _e("Filter", "gd-star-rating"); ?></a></strong></td>
     <td width="150" nowrap="nowrap"><?php _e("Include Articles", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <label><select class="widefat" name="<?php echo $wpfn; ?>[select]" id="gdstarr-select" style="width: 110px">
-            <option value="postpage"<?php echo $wpno['select'] == 'postpage' ? ' selected="selected"' : ''; ?>><?php _e("Posts & Pages", "gd-star-rating"); ?></option>
-            <option value="post"<?php echo $wpno['select'] == 'post' ? ' selected="selected"' : ''; ?>><?php _e("Posts Only", "gd-star-rating"); ?></option>
-            <option value="page"<?php echo $wpno['select'] == 'page' ? ' selected="selected"' : ''; ?>><?php _e("Pages Only", "gd-star-rating"); ?></option>
-        </select></label>
+        <select class="widefat" name="<?php echo $this->get_field_name('select'); ?>" id="<?php echo $this->get_field_id('select'); ?>" style="width: 110px">
+            <option value="postpage"<?php echo $instance['select'] == 'postpage' ? ' selected="selected"' : ''; ?>><?php _e("Posts & Pages", "gd-star-rating"); ?></option>
+            <option value="post"<?php echo $instance['select'] == 'post' ? ' selected="selected"' : ''; ?>><?php _e("Posts Only", "gd-star-rating"); ?></option>
+            <option value="page"<?php echo $instance['select'] == 'page' ? ' selected="selected"' : ''; ?>><?php _e("Pages Only", "gd-star-rating"); ?></option>
+        </select>
     </td>
   </tr>
   <tr>
     <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Display Votes From", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <label><select name="<?php echo $wpfn; ?>[show]" id="gdstarr-show" style="width: 110px">
-            <option value="total"<?php echo $wpno['show'] == 'all' ? ' selected="selected"' : ''; ?>><?php _e("Everyone", "gd-star-rating"); ?></option>
-            <option value="visitors"<?php echo $wpno['show'] == 'visitors' ? ' selected="selected"' : ''; ?>><?php _e("Visitors Only", "gd-star-rating"); ?></option>
-            <option value="users"<?php echo $wpno['show'] == 'users' ? ' selected="selected"' : ''; ?>><?php _e("Users Only", "gd-star-rating"); ?></option>
-        </select></label>
+        <select name="<?php echo $this->get_field_name('show'); ?>" id="<?php echo $this->get_field_id('show'); ?>" style="width: 110px">
+            <option value="total"<?php echo $instance['show'] == 'all' ? ' selected="selected"' : ''; ?>><?php _e("Everyone", "gd-star-rating"); ?></option>
+            <option value="visitors"<?php echo $instance['show'] == 'visitors' ? ' selected="selected"' : ''; ?>><?php _e("Visitors Only", "gd-star-rating"); ?></option>
+            <option value="users"<?php echo $instance['show'] == 'users' ? ' selected="selected"' : ''; ?>><?php _e("Users Only", "gd-star-rating"); ?></option>
+        </select>
     </td>
   </tr>
   <tr>
     <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Number Of Posts", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[rows]" id="gdstarr-rows" value="<?php echo $wpno["rows"]; ?>" />
+        <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $this->get_field_name('rows'); ?>" id="<?php echo $this->get_field_id('rows'); ?>" value="<?php echo $instance["rows"]; ?>" />
     </td>
   </tr>
   <tr>
     <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[min_votes]" id="gdstarr-minvotes" value="<?php echo $wpno["min_votes"]; ?>" />
+        <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $this->get_field_name('min_votes'); ?>" id="<?php echo $this->get_field_id('min_votes'); ?>" value="<?php echo $instance["min_votes"]; ?>" />
     </td>
   </tr>
   <tr>
     <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Sorting Column", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <select name="<?php echo $wpfn; ?>[column]" id="gdstarr-column" style="width: 110px">
-            <option value="rating"<?php echo $wpno['column'] == 'rating' ? ' selected="selected"' : ''; ?>><?php _e("Rating", "gd-star-rating"); ?></option>
-            <option value="votes"<?php echo $wpno['column'] == 'votes' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
-            <option value="id"<?php echo $wpno['column'] == 'id' ? ' selected="selected"' : ''; ?>><?php _e("ID", "gd-star-rating"); ?></option>
-            <option value="post_title"<?php echo $wpno['column'] == 'post_title' ? ' selected="selected"' : ''; ?>><?php _e("Title", "gd-star-rating"); ?></option>
-            <option value="review"<?php echo $wpno['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Review", "gd-star-rating"); ?></option>
-            <option value="count"<?php echo $wpno['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
-            <option value="bayes"<?php echo $wpno['column'] == 'bayes' ? ' selected="selected"' : ''; ?>><?php _e("Bayesian Rating", "gd-star-rating"); ?></option>
+        <select name="<?php echo $this->get_field_name('column'); ?>" id="<?php echo $this->get_field_id('column'); ?>" style="width: 110px">
+            <option value="rating"<?php echo $instance['column'] == 'rating' ? ' selected="selected"' : ''; ?>><?php _e("Rating", "gd-star-rating"); ?></option>
+            <option value="votes"<?php echo $instance['column'] == 'votes' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
+            <option value="id"<?php echo $instance['column'] == 'id' ? ' selected="selected"' : ''; ?>><?php _e("ID", "gd-star-rating"); ?></option>
+            <option value="post_title"<?php echo $instance['column'] == 'post_title' ? ' selected="selected"' : ''; ?>><?php _e("Title", "gd-star-rating"); ?></option>
+            <option value="review"<?php echo $instance['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Review", "gd-star-rating"); ?></option>
+            <option value="count"<?php echo $instance['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
+            <option value="bayes"<?php echo $instance['column'] == 'bayes' ? ' selected="selected"' : ''; ?>><?php _e("Bayesian Rating", "gd-star-rating"); ?></option>
         </select>
     </td>
   </tr>
@@ -64,28 +64,28 @@
     <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Sorting Order", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <select name="<?php echo $wpfn; ?>[order]" id="gdstarr-order" style="width: 110px">
-            <option value="desc"<?php echo $wpno['order'] == 'desc' ? ' selected="selected"' : ''; ?>><?php _e("Descending", "gd-star-rating"); ?></option>
-            <option value="asc"<?php echo $wpno['order'] == 'asc' ? ' selected="selected"' : ''; ?>><?php _e("Ascending", "gd-star-rating"); ?></option>
+        <select name="<?php echo $this->get_field_name('order'); ?>" id="<?php echo $this->get_field_id('order'); ?>" style="width: 110px">
+            <option value="desc"<?php echo $instance['order'] == 'desc' ? ' selected="selected"' : ''; ?>><?php _e("Descending", "gd-star-rating"); ?></option>
+            <option value="asc"<?php echo $instance['order'] == 'asc' ? ' selected="selected"' : ''; ?>><?php _e("Ascending", "gd-star-rating"); ?></option>
         </select>
     </td>
   </tr>
   <tr>
     <td width="100"></td>
     <td nowrap="nowrap" colspan="2" height="25">
-        <label for="gdstarr-bayesiancalculation" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['bayesian_calculation'] ? 'checked="checked"' : ''; ?> id="gdstarr-bayesiancalculation" name="<?php echo $wpfn; ?>[bayesian_calculation]" /> <?php _e("Bayesian minumum votes required.", "gd-star-rating"); ?></label>
+        <label for="gdstarr-bayesiancalculation" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $instance['bayesian_calculation'] ? 'checked="checked"' : ''; ?> id="<?php echo $this->get_field_id('bayesian_calculation'); ?>" name="<?php echo $this->get_field_name('bayesian_calculation'); ?>" /> <?php _e("Bayesian minumum votes required.", "gd-star-rating"); ?></label>
     </td>
   </tr>
   <tr>
     <td width="100"></td>
     <td nowrap="nowrap" colspan="2" height="25">
-        <label for="gdstarr-hidempty" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_empty'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidempty" name="<?php echo $wpfn; ?>[hidempty]" /> <?php _e("Hide articles with no recorded votes.", "gd-star-rating"); ?></label>
+        <label for="gdstarr-hidempty" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $instance['hide_empty'] ? 'checked="checked"' : ''; ?> id="<?php echo $this->get_field_id('hide_empty'); ?>" name="<?php echo $this->get_field_name('hide_empty'); ?>" /> <?php _e("Hide articles with no recorded votes.", "gd-star-rating"); ?></label>
     </td>
   </tr>
   <tr>
     <td width="100"></td>
     <td nowrap="nowrap" colspan="2" height="25">
-        <label for="gdstarr-hidenoreview" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_noreview'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidenoreview" name="<?php echo $wpfn; ?>[hidenoreview]" /> <?php _e("Hide articles with no review values.", "gd-star-rating"); ?></label>
+        <label for="gdstarr-hidenoreview" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $instance['hide_noreview'] ? 'checked="checked"' : ''; ?> id="<?php echo $this->get_field_id('hide_noreview'); ?>" name="<?php echo $this->get_field_name('hide_noreview'); ?>" /> <?php _e("Hide articles with no review values.", "gd-star-rating"); ?></label>
     </td>
   </tr>
   <tr>
@@ -98,13 +98,13 @@
     <td width="100"></td>
     <td width="150" nowrap="nowrap"><?php _e("Article Category", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <label><?php GDSRDatabase::get_combo_categories($wpno['category'], $wpfn.'[category]'); ?></label>
+        <label><?php GDSRDatabase::get_combo_categories($instance['category'], $this->get_field_name('category')); ?></label>
     </td>
   </tr>
   <tr>
     <td width="100"></td>
     <td nowrap="nowrap" colspan="2" height="25">
-        <label for="gdstarr-categorytoponly" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['category_toponly'] ? 'checked="checked"' : ''; ?> id="gdstarr-categorytoponly" name="<?php echo $wpfn; ?>[category_toponly]" /> <?php _e("Only selected category, no subcategories.", "gd-star-rating"); ?></label>
+        <label for="gdstarr-categorytoponly" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $instance['category_toponly'] ? 'checked="checked"' : ''; ?> id="<?php echo $this->get_field_id('category_toponly'); ?>" name="<?php echo $this->get_field_id('category_toponly'); ?>" /> <?php _e("Only selected category, no subcategories.", "gd-star-rating"); ?></label>
     </td>
   </tr>
   <tr>
@@ -118,7 +118,7 @@
     <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Enter 0 for all", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[last_voted_days]" id="gdstarr-lastvoteddays" value="<?php echo $wpno["last_voted_days"]; ?>" />
+        <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $this->get_field_name('last_voted_days'); ?>" id="<?php echo $this->get_field_id('last_voted_days'); ?>" value="<?php echo $instance["last_voted_days"]; ?>" />
     </td>
   </tr>
   <tr>
@@ -131,45 +131,45 @@
     <td width="100"></td>
     <td width="150" nowrap="nowrap"><?php _e("Article Publish Date", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <select name="<?php echo $wpfn; ?>[publish_date]" style="width: 110px" id="gdstarr-publishdate" onchange="gdsrChangeDate(this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
-            <option value="alldt"<?php echo $wpno['publish_date'] == 'alldt' ? ' selected="selected"' : ''; ?>><?php _e("Any date", "gd-star-rating"); ?></option>
-            <option value="lastd"<?php echo $wpno['publish_date'] == 'lastd' ? ' selected="selected"' : ''; ?>><?php _e("Last # days", "gd-star-rating"); ?></option>
-            <option value="month"<?php echo $wpno['publish_date'] == 'month' ? ' selected="selected"' : ''; ?>><?php _e("Exact month", "gd-star-rating"); ?></option>
-            <option value="range"<?php echo $wpno['publish_date'] == 'range' ? ' selected="selected"' : ''; ?>><?php _e("Date range", "gd-star-rating"); ?></option>
+        <select name="<?php echo $this->get_field_name('publish_date'); ?>" style="width: 110px" id="<?php echo $this->get_field_id('publish_date'); ?>" onchange="gdsrChangeDate('<?php echo $this->get_field_name('publish_date'); ?>', this.options[this.selectedIndex].value)">
+            <option value="alldt"<?php echo $instance['publish_date'] == 'alldt' ? ' selected="selected"' : ''; ?>><?php _e("Any date", "gd-star-rating"); ?></option>
+            <option value="lastd"<?php echo $instance['publish_date'] == 'lastd' ? ' selected="selected"' : ''; ?>><?php _e("Last # days", "gd-star-rating"); ?></option>
+            <option value="month"<?php echo $instance['publish_date'] == 'month' ? ' selected="selected"' : ''; ?>><?php _e("Exact month", "gd-star-rating"); ?></option>
+            <option value="range"<?php echo $instance['publish_date'] == 'range' ? ' selected="selected"' : ''; ?>><?php _e("Date range", "gd-star-rating"); ?></option>
         </select>
     </td>
   </tr>
 </table>
-<div id="gdsr-pd-lastd[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['publish_date'] == 'lastd' ? 'block' : 'none' ?>">
+<div id="<?php echo $this->get_field_name('publish_date'); ?>-lastd" style="display: <?php echo $instance['publish_date'] == 'lastd' ? 'block' : 'none' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100"></td>
     <td width="150" nowrap="nowrap"><?php _e("Number Of Days", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <input class="widefat" style="text-align: right; width: 102px" type="text" name="<?php echo $wpfn; ?>[publish_days]" id="gdstarr-publishdays" value="<?php echo $wpno["publish_days"]; ?>" />
+        <input class="widefat" style="text-align: right; width: 102px" type="text" name="<?php echo $this->get_field_name('publish_days'); ?>" id="<?php echo $this->get_field_id('publish_days'); ?>" value="<?php echo $instance["publish_days"]; ?>" />
     </td>
   </tr>
 </table>
 </div>
-<div id="gdsr-pd-month[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['publish_date'] == 'month' ? 'block' : 'none' ?>">
+<div id="<?php echo $this->get_field_name('publish_date'); ?>-month" style="display: <?php echo $instance['publish_date'] == 'month' ? 'block' : 'none' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100"></td>
     <td width="150" nowrap="nowrap"><?php _e("Month", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <?php GDSRDatabase::get_combo_months($wpno['publish_month'], $wpfn."[publish_month]"); ?>
+        <?php GDSRDatabase::get_combo_months($instance['publish_month'], $this->get_field_name('publish_month')); ?>
     </td>
   </tr>
 </table>
 </div>
-<div id="gdsr-pd-range[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['publish_date'] == 'range' ? 'block' : 'none' ?>">
+<div id="<?php echo $this->get_field_name('publish_date'); ?>-range" style="display: <?php echo $instance['publish_date'] == 'range' ? 'block' : 'none' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100"></td>
     <td nowrap="nowrap"><?php _e("Range", "gd-star-rating"); ?>:</td>
-    <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="<?php echo $wpfn; ?>[publish_range_from]" id="gdstarr-publishrangefrom" value="<?php echo $wpno["publish_range_from"]; ?>" /></td>
+    <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="<?php echo $this->get_field_name('publish_range_from'); ?>" id="<?php echo $this->get_field_id('publish_range_from'); ?>" value="<?php echo $instance["publish_range_from"]; ?>" /></td>
     <td align="center" width="10">-</td>
-    <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="<?php echo $wpfn; ?>[publish_range_to]" id="gdstarr-publishrangeto" value="<?php echo $wpno["publish_range_to"]; ?>" /></td>
+    <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="<?php echo $this->get_field_name('publish_range_o'); ?>" id="<?php echo $this->get_field_id('publish_range_to'); ?>" value="<?php echo $instance["publish_range_to"]; ?>" /></td>
   </tr>
 </table>
 </div>
