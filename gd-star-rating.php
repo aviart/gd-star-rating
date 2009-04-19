@@ -1454,7 +1454,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
             }
         }
 
-        function vote_article_ajax($votes, $id) {
+        function vote_article_ajax($votes, $id, $tpl_id) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
@@ -1472,9 +1472,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
             if ($allow_vote) {
                 GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
                 $this->save_cookie($id);
-                $msg = '%STATUS_OK_VOTED%';
             }
-            else $msg = '%STATUS_ERROR_VOTED%';
 
             $data = GDSRDatabase::get_post_data($id);
 
@@ -1497,25 +1495,20 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
                 $score = $data->user_votes;
             }
 
-            if ($votes == 1) $tense = $this->x["word_votes_singular"];
-            else $tense = $this->x["word_votes_plural"];
-
             if ($votes > 0) $rating2 = $score / $votes;
             else $rating2 = 0;
             $rating1 = @number_format($rating2, 1);
             $rating_width = $rating2 * $unit_width;
 
-            $tpl = $this->x["article_rating_text"];
-            $rt = html_entity_decode($tpl);
-            $rt = str_replace('%RATING%', $rating1, $rt);
-            $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-            $rt = str_replace('%VOTES%', $votes, $rt);
-            $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+            include($this->plugin_path.'templates/tpl_list.php');
+
+            $template = new gdTemplateRender($tpl_id);
+            $rt = GDSRRenderT2::render_srt($template->dep["SRT"], $rating1, $unit_count, $votes, $post_id);
 
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
 
-        function vote_comment_ajax($votes, $id) {
+        function vote_comment_ajax($votes, $id, $tpl_id) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
@@ -2862,8 +2855,16 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            GDSRRenderT2::render_srb(8, $rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article");
-            $rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
+
+            $tags_css = array();
+            $tags_css["CSS_BLOCK"] = $this->o["srb_class_block"];
+            $tags_css["CSS_HEADER"] = $this->o["srb_class_header"];
+            $tags_css["CSS_STARS"] = $this->o["srb_class_stars"];
+            $tags_css["CSS_TEXT"] = $this->o["srb_class_text"];
+            $template_id = $this->o["default_srb_template"];
+
+            $rating_block = GDSRRenderT2::render_srb($template_id, $rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $tags_css, $this->o["header_text"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
+            //$rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
             return $rating_block;
         }
 

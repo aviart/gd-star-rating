@@ -1,6 +1,28 @@
 <?php
 
 class GDSRRender {
+    function rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg = '', $template_id = 0) {
+        $rater = '<div id="'.$rater_id.'" class="'.$class.'"><div class="starsbar">';
+        $rater.= '<div class="gdouter" align="left"><div id="gdr_vote_'.$type.$id.'" style="width: '.$rating_width.'px;" class="gdinner"></div>';
+        if ($allow_vote) {
+            $rater.= '<div id="gdr_stars_'.$type.$id.'" class="gdsr_rating_as">';
+            for ($ic = 0; $ic < $unit_count; $ic++) {
+                $ncount = $unit_count - $ic;
+                $url = $_SERVER['REQUEST_URI'];
+                $url_pos = strpos($url, "?");
+                if ($url_pos === false) $first_char = '?';
+                else $first_char = '&amp;';
+                $ajax_id = sprintf("gdsrX%sX%sX%sX%sX%sX%sX%s", $id, $ncount, $user_id, $type, $rater_id, $loader_id, $template_id);
+                $rater.='<a id="'.$ajax_id.'" title="'.$ncount.' out of '.$unit_count.'" class="s'.$ncount.'" rel="nofollow"></a>';
+            }
+            $rater.= '</div>';
+        }
+        $rater.= '</div></div></div>';
+        if ($allow_vote) $rater.= GDSRRender::rating_wait($loader_id, $rater_length."px", $typecls, $wait_msg);
+        return $rater;
+    }
+
+    // old functions
     function render_static_stars($star_style, $star_size, $star_max, $rating) {
         switch (STARRATING_STARS_GENERATOR) {
             case "GFX":
@@ -111,27 +133,6 @@ class GDSRRender {
         return $rater;
     }
     
-    function rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg = '') {
-        $rater = '<div id="'.$rater_id.'" class="'.$class.'"><div class="starsbar">';
-        $rater.= '<div class="gdouter" align="left"><div id="gdr_vote_'.$type.$id.'" style="width: '.$rating_width.'px;" class="gdinner"></div>';
-        if ($allow_vote) {
-            $rater.= '<div id="gdr_stars_'.$type.$id.'" class="gdsr_rating_as">';
-            for ($ic = 0; $ic < $unit_count; $ic++) {
-                $ncount = $unit_count - $ic;
-                $url = $_SERVER['REQUEST_URI'];
-                $url_pos = strpos($url, "?");
-                if ($url_pos === false) $first_char = '?';
-                else $first_char = '&amp;';
-                $ajax_id = sprintf("gdsrX%sX%sX%sX%sX%sX%s", $id, $ncount, $user_id, $type, $rater_id, $loader_id);
-                $rater.='<a id="'.$ajax_id.'" title="'.$ncount.' out of '.$unit_count.'" class="s'.$ncount.'" rel="nofollow"></a>';
-            }
-            $rater.= '</div>';
-        }
-        $rater.= '</div></div></div>';
-        if ($allow_vote) $rater.= GDSRRender::rating_wait($loader_id, $rater_length."px", $typecls, $wait_msg);
-        return $rater;
-    }
-
     function rating_wait($loader_id, $rater_length, $typecls, $wait_msg = '') {
         $loader = '<div id="'.$loader_id.'" style="display: none; width:'.$rater_length.';" class="ratingloader'.$typecls.'">';
         $loader.= $wait_msg;

@@ -4,6 +4,8 @@
 
 === Version: 1.2.0 / april 21 2009 ===
   * new: widgets fully support wordpress 2.8
+  * new: t2 rendering of standard rating block
+  * new: t2 rendering of comment rating block
   * new: star rating widget support for multi rating data
   * new: star rating widget support for multiple categories
   * new: star rating widget support for subcategories
