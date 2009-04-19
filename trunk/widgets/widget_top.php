@@ -1,22 +1,3 @@
-<script>
-function gdsrShowHidePreview(gdid, index) {
-    var preview = document.getElementById(gdid+'-on['+index+']');
-    var message = document.getElementById(gdid+'-off['+index+']');
-    var hidden = document.getElementById(gdid+'['+index+']');
-
-    if (preview.style.display == "block") {
-        preview.style.display = "none";
-        message.style.display = "block";
-        hidden.value = "0";
-    }
-    else {
-        preview.style.display = "block";
-        message.style.display = "none";
-        hidden.value = "1";
-    }
-}
-</script>
-
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td nowrap="nowrap" width="140"><?php _e("Title", "gd-star-rating"); ?>:</td>

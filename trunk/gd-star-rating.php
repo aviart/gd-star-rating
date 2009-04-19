@@ -708,8 +708,10 @@ if (!class_exists('GDStarRating')) {
                 echo("\r\n");
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
             }
-
-            if ($this->admin_page == "themes.php") echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />');
+            if ($this->admin_page == "widgets.php" || $this->admin_page == "themes.php") {
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-widgets.js"></script>');
+                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />');
+            }
 
             if ($this->admin_page == "edit-comments.php" || $this->admin_page == "comment.php") {
                 $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
@@ -2160,7 +2162,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             if (!$options = get_option('widget_gdstarrating_top'))
                 $options = array();
 
-            $widget_ops = array('classname' => 'widget_gdstarrating_top', 'description' => 'GD Blog Rating');
+            $widget_ops = array('classname' => 'widget_gdstarrating_top', 'description' => 'Overall blog rating results.');
             $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstartop');
             $name = 'GD Blog Rating';
 
@@ -2291,7 +2293,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             if (!$options = get_option('widget_gdstarrating'))
                 $options = array();
 
-            $widget_ops = array('classname' => 'widget_gdstarrating', 'description' => 'GD Star Rating');
+            $widget_ops = array('classname' => 'widget_gdstarrating', 'description' => 'Customized rating results list.');
             $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstarrmulti');
             $name = 'GD Star Rating';
 
