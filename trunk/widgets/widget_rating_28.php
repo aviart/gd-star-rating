@@ -2,7 +2,7 @@
 
 if (class_exists("WP_Widget")) {
     class gdsrWidgetRating extends WP_Widget {
-        function gdlbWidget() {
+        function gdsrWidgetRating() {
             $widget_ops = array('classname' => 'widget_gd_linkedin_badge', 'description' => __("Add simple link to LinkedIn Profile page.", "gd-linkedin-badge"));
             $control_ops = array('width' => 440);
             $this->WP_Widget('gdlb_widget', 'GD LinkedIn Badge', $widget_ops, $control_ops);

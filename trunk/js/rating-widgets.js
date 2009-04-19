@@ -1,3 +1,20 @@
+function gdsrShowHidePreview(gdid, index) {
+    var preview = document.getElementById(gdid+'-on['+index+']');
+    var message = document.getElementById(gdid+'-off['+index+']');
+    var hidden = document.getElementById(gdid+'['+index+']');
+
+    if (preview.style.display == "block") {
+        preview.style.display = "none";
+        message.style.display = "block";
+        hidden.value = "0";
+    }
+    else {
+        preview.style.display = "block";
+        message.style.display = "none";
+        hidden.value = "1";
+    }
+}
+
 function gdsrChangeDate(el, index) {
     document.getElementById("gdsr-pd-lastd["+index+"]").style.display = el == "lastd" ? "block" : "none";
     document.getElementById("gdsr-pd-month["+index+"]").style.display = el == "month" ? "block" : "none";
@@ -17,21 +34,4 @@ function gdsrChangeSource(el, index) {
 function gdsrChangeTrend(trend, el, index) {
     document.getElementById("gdsr-"+trend+"-txt["+index+"]").style.display = el == "txt" ? "block" : "none";
     document.getElementById("gdsr-"+trend+"-img["+index+"]").style.display = el == "img" ? "block" : "none";
-}
-
-function gdsrShowHidePreview(gdid, index) {
-    var preview = document.getElementById(gdid+'-on['+index+']');
-    var message = document.getElementById(gdid+'-off['+index+']');
-    var hidden = document.getElementById(gdid+'['+index+']');
-
-    if (preview.style.display == "block") {
-        preview.style.display = "none";
-        message.style.display = "block";
-        hidden.value = "0";
-    }
-    else {
-        preview.style.display = "block";
-        message.style.display = "none";
-        hidden.value = "1";
-    }
 }
