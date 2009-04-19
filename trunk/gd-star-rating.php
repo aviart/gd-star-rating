@@ -10,7 +10,7 @@ Author URI: http://www.dev4press.com/
 
 == Copyright ==
 
-Copyright 2008 Milan Petrovic (email : milan@gdragon.info)
+Copyright 2008-2009 Milan Petrovic (email: milan@gdragon.info)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -41,8 +41,7 @@ require_once(dirname(__FILE__)."/code/gfx/gd-star-chart.php");
 require_once(dirname(__FILE__)."/code/gfx/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gfx/gd-star-generator.php");
 require_once(dirname(__FILE__)."/code/gd-star-render-t2.php");
-require_once(dirname(__FILE__)."/widgets/widget_rating_28.php");
-require_once(dirname(__FILE__)."/widgets/widget_top_28.php");
+require_once(dirname(__FILE__)."/code/gd-star-widgets.php");
 require_once(dirname(__FILE__)."/gdragon/gd_functions.php");
 require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
 require_once(dirname(__FILE__)."/gdragon/gd_db_install.php");
