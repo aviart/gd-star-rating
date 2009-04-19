@@ -3,6 +3,7 @@
 == Change Log ==
 
 === Version: 1.2.0 / april 21 2009 ===
+  * new: widgets fully support wordpress 2.8
   * new: star rating widget support for multi rating data
   * new: star rating widget support for multiple categories
   * new: star rating widget support for subcategories
@@ -13,6 +14,7 @@
   * new: saving last voted timestamp for articles, comments and multi rating results
   * new: widget limit articles voted for in the last number of days
   * new: referer protection for graphics generator to prevent leeching
+  * edit: css changes for better wp 2.8 compatibility
   * edit: removed obsolete articles and comments options
   * edit: removed options for hiding parts of settings tab
   * edit: trend calculations updated to support multi ratings

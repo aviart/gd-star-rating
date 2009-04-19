@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 require_once(dirname(__FILE__)."/gd-star-config.php");
+require_once(dirname(__FILE__)."/templates/tpl_init.php");
 require_once(dirname(__FILE__)."/code/gd-star-defaults.php");
 require_once(dirname(__FILE__)."/code/gd-star-functions.php");
 require_once(dirname(__FILE__)."/code/gd-star-render.php");
@@ -39,8 +40,9 @@ require_once(dirname(__FILE__)."/code/gd-star-import.php");
 require_once(dirname(__FILE__)."/code/gfx/gd-star-chart.php");
 require_once(dirname(__FILE__)."/code/gfx/gd-star-gfx.php");
 require_once(dirname(__FILE__)."/code/gfx/gd-star-generator.php");
-require_once(dirname(__FILE__)."/templates/tpl_init.php");
 require_once(dirname(__FILE__)."/code/gd-star-render-t2.php");
+require_once(dirname(__FILE__)."/widgets/widget_rating_28.php");
+require_once(dirname(__FILE__)."/widgets/widget_top_28.php");
 require_once(dirname(__FILE__)."/gdragon/gd_functions.php");
 require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
 require_once(dirname(__FILE__)."/gdragon/gd_db_install.php");
@@ -709,7 +711,8 @@ if (!class_exists('GDStarRating')) {
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
             }
             if ($this->admin_page == "widgets.php" || $this->admin_page == "themes.php") {
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-widgets.js"></script>');
+                if ($this->wp_version < 28) echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-widgets.js"></script>');
+                else echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-widgets-28.js"></script>');
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />');
             }
 
@@ -2051,9 +2054,16 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
         // widgets
         function widget_init() {
-            if ($this->o["widget_articles"] == 1) $this->widget_articles_init();
-            if ($this->o["widget_top"] == 1) $this->widget_top_init();
-            if ($this->o["widget_comments"] == 1) $this->widget_comments_init();
+            if ($this->wp_version < 28) {
+                if ($this->o["widget_articles"] == 1) $this->widget_articles_init();
+                if ($this->o["widget_top"] == 1) $this->widget_top_init();
+                // if ($this->o["widget_comments"] == 1) $this->widget_comments_init();
+            }
+            else {
+                if ($this->o["widget_articles"] == 1) register_widget("gdsrWidgetRating");
+                if ($this->o["widget_top"] == 1) register_widget("gdsrWidgetTop");
+                // if ($this->o["widget_comments"] == 1) $this->widget_comments_init();
+            }
         }
 
         function widget_comments_init() {
@@ -2164,7 +2174,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
             $widget_ops = array('classname' => 'widget_gdstarrating_top', 'description' => 'Overall blog rating results.');
             $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstartop');
-            $name = 'GD Blog Rating';
+            $name = 'GD Blog Top Rating';
 
             $registered = false;
             foreach (array_keys($options) as $o) {
@@ -2249,7 +2259,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
         function widget_top_display($args, $widget_args = 1) {
             extract($args);
-            global $wpdb, $userdata;
+            global $userdata;
 
             if (is_numeric($widget_args))
                 $widget_args = array('number' => $widget_args);
