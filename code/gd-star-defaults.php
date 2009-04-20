@@ -194,6 +194,10 @@ class GDSRDefaults {
         "show" => "total"
     );
 
+    var $default_shortcode_starrater = array(
+        "tpl" => 0
+    );
+
     var $default_widget_comments = array(
         "title" => "Blog Rating",
         "display" => "all",

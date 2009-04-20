@@ -67,7 +67,8 @@ function insertStarRatingCode() {
         tagtext = tagtext + "]";
     }
     else if (shortcode == 'starrater') {
-        tagtext = "[starrater";
+        tagtext = "[starrater tpl=";
+        tagtext = tagtext + document.getElementById('srRatingBlockTemplate').value;
         tagtext = tagtext + "]";
     }
     else if (shortcode == 'starreviewmulti') {
@@ -98,7 +99,7 @@ function insertStarRatingCode() {
             tagtext = tagtext + " grouping='" + document.getElementById('srGrouping').value + "'";
         if (document.getElementById('srShow').value != 'total')
             tagtext = tagtext + " show='" + document.getElementById('srShow').value + "'";
-        
+
         if (document.getElementById('trendRating').value != 'txt') {
             tagtext = tagtext + " trends_rating='" + document.getElementById('trendRating').value + "'";
             if (document.getElementById('trendRatingSet').value != '+')
@@ -112,7 +113,7 @@ function insertStarRatingCode() {
             if (document.getElementById('trendRatingFall').value != '-')
                 tagtext = tagtext + " trends_rating_fall='" + document.getElementById('trendRatingFall').value + "'";
         }
-        
+
         if (document.getElementById('trendVoting').value != 'txt') {
             tagtext = tagtext + " trends_voting='" + document.getElementById('trendVoting').value + "'";
             if (document.getElementById('trendVotingSet').value != '+')
@@ -126,7 +127,7 @@ function insertStarRatingCode() {
             if (document.getElementById('trendVotingFall').value != '-')
                 tagtext = tagtext + " trends_voting_fall='" + document.getElementById('trendVotingFall').value + "'";
         }
-        
+
         if (!document.getElementById('srHidempty').checked)
            tagtext = tagtext + " hide_empty=0";
         if (document.getElementById('srHidemptyReview').checked)
@@ -150,7 +151,7 @@ function insertStarRatingCode() {
             tagtext = tagtext + " publish_range_from='" + document.getElementById('publishRangeFrom').value + "'";
             tagtext = tagtext + " publish_range_to='" + document.getElementById('publishRangeTo').value + "'";
         }
-        
+
         if (document.getElementById('srSType').value == 'built') {
             tagtext = tagtext + " div_class='" + document.getElementById('srClassBuild').value + "'";
         }
@@ -162,7 +163,7 @@ function insertStarRatingCode() {
             tagtext = tagtext + " rating_stars='" + document.getElementById('srStarsStyle').value + "'";
         if (document.getElementById('srStarsSize').value != '20')
             tagtext = tagtext + " rating_size='" + document.getElementById('srStarsSize').value + "'";
-        
+
         if (document.getElementById('srReviewStarsStyle').value != 'oxygen')
             tagtext = tagtext + " review_stars='" + document.getElementById('srReviewStarsStyle').value + "'";
         if (document.getElementById('srReviewStarsSize').value != '20')
@@ -170,7 +171,7 @@ function insertStarRatingCode() {
 
         tagtext = tagtext + "]";
 	}
-    
+
 	if (window.tinyMCE) {
 		window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tagtext);
 		tinyMCEPopup.editor.execCommand('mceRepaint');

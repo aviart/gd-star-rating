@@ -37,6 +37,42 @@ class GDSRRenderT2 {
         return $tpl_render;
     }
 
+    function render_crb($template_id, $cmm_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '') {
+        include($this->plugin_path.'templates/tpl_list.php');
+
+        $template = new gdTemplateRender($template_id);
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+        foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
+        $tpl_render = str_replace("%CMM_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+
+        $rating2 = $votes > 0 ? $score / $votes : 0;
+        if ($rating2 > $unit_count) $rating2 = $unit_count;
+        $rating = @number_format($rating2, 1);
+
+        $rating_width = $rating2 * $unit_width;
+        $rater_length = $unit_width * $unit_count;
+        $rater_id = $typecls."_rater_".$cmm_id;
+        $loader_id = $typecls."_loader_".$cmm_id;
+
+        if (in_array("%CMM_RATING_STARS%", $template->tag["normal"])) {
+            $rating_stars = GDSRRender::rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $cmm_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
+            $tpl_render = str_replace("%CMM_RATING_STARS%", $rating_stars, $tpl_render);
+        }
+
+        if (in_array("%CMM_RATING_TEXT%", $template->tag["normal"])) {
+            $rating_text = GDSRRenderT2::render_crt($template->dep["CRT"], $rating, $unit_count, $votes, $cmm_id);
+            $rating_text = '<div id="gdr_text_'.$type.$cmm_id.'">'.$rating_text.'</div>';
+            $tpl_render = str_replace("%CMM_RATING_TEXT%", $rating_text, $tpl_render);
+        }
+
+        $tpl_render = '<div class="ratingblock">'.$tpl_render;
+        if ($debug != '') $tpl_render = '<div style="display: none">'.$debug.'</div>'.$tpl_render;
+        $tpl_render.= '</div>';
+
+        return $tpl_render;
+    }
+
     function render_srt($template, $rating, $unit_count, $votes, $id, $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
         if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
             $time_parts = GDSRHelper::remaining_time_parts($time_remaining);

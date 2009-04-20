@@ -61,6 +61,7 @@ function gdsrAddNewMulti() {
             <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>
             <th scope="col" width="33"><?php _e("ID", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Name", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Auto Insert", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Description", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Stars", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Ratings", "gd-star-rating"); ?></th>
@@ -80,6 +81,8 @@ function gdsrAddNewMulti() {
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->multi_id.'" type="checkbox"></th>';
         echo '<td>'.$row->multi_id.'</td>';
         echo '<td><a href="'.$url_edit.'muedit&id='.$row->multi_id.'"><strong>'.$row->name.'</strong></a></td>';
+        echo '<td>';
+        echo '</td>';
         echo '<td>'.$row->description.'</td>';
         echo '<td><strong>'.$row->stars.'</strong></td>';
         echo '<td>';

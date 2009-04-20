@@ -31,6 +31,11 @@ $review_set = $options["mur_review_set"];
         <input maxlength="256" type="text" name="gdsr_ms_description" id="gdsr_ms_description" value="<?php echo html_entity_decode($set->description, ENT_QUOTES, STARRATING_ENCODING); ?>" style="width: 700px" />
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Auto Insertion", "gd-star-rating"); ?></th>
+    <td>
+        
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Number Of Stars", "gd-star-rating"); ?></th>
     <td>
         <select<?php if ($gdsr_page == "muedit") echo ' disabled="disabled"'; ?> style="width: 70px;" name="gdsr_ms_stars" id="gdsr_ms_stars">

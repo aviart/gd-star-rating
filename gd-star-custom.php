@@ -35,14 +35,15 @@
      * @global object $post post data
      * @global object $userdata user data
      * @global GDStarRating $gdsr main rating class instance
+     * @param int $template_id standard rating block template id
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_render_article($echo = true) {
+    function wp_gdsr_render_article($template_id = 0, $echo = true) {
         global $post, $userdata, $gdsr;
 
-        if ($echo) echo $gdsr->render_article($post, $userdata);
-        else return $gdsr->render_article($post, $userdata);
+        if ($echo) echo $gdsr->render_article($post, $userdata, array("tpl" => $template_id));
+        else return $gdsr->render_article($post, $userdata, array("tpl" => $template_id));
     }
 
     /**
@@ -174,10 +175,10 @@
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_render_comment($echo = true) {
+    function wp_gdsr_render_comment($template_id = 0, $echo = true) {
         global $comment, $userdata, $gdsr, $post;
-        if ($echo) echo $gdsr->render_comment($post, $comment, $userdata);
-        else return $gdsr->render_comment($post, $comment, $userdata);
+        if ($echo) echo $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id));
+        else return $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id));
     }
     
     /**
