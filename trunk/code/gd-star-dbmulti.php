@@ -383,9 +383,9 @@ class GDSRDBMulti {
         $weighted["total"]["votes"] = 0;
         $votes = false;
         foreach ($values as $row) {
-            $weighted["users"]["rating"] += ( ( $row->user_votes / $row->user_voters ) * $set->weight[$row->item_id] ) / $weight_norm;
-            $weighted["visitors"]["rating"] += ( ( $row->visitor_votes / $row->visitor_voters ) * $set->weight[$row->item_id] ) / $weight_norm;
-            $weighted["total"]["rating"] += ( ( ($row->visitor_votes + $row->user_votes) / ($row->visitor_voters + $row->user_voters) ) * $set->weight[$row->item_id] ) / $weight_norm;
+            if ($row->user_voters > 0) $weighted["users"]["rating"] += ( ( $row->user_votes / $row->user_voters ) * $set->weight[$row->item_id] ) / $weight_norm;
+            if ($row->visitor_voters > 0) $weighted["visitors"]["rating"] += ( ( $row->visitor_votes / $row->visitor_voters ) * $set->weight[$row->item_id] ) / $weight_norm;
+            if ($row->visitor_voters + $row->user_voters > 0) $weighted["total"]["rating"] += ( ( ($row->visitor_votes + $row->user_votes) / ($row->visitor_voters + $row->user_voters) ) * $set->weight[$row->item_id] ) / $weight_norm;
             if (!$votes) {
                 $votes = true;
                 $weighted["users"]["votes"] = $row->user_voters;
