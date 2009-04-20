@@ -25,7 +25,7 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 * Auto inserting rating code
 * Moderation of votes
 * Multi language support
-* Advanced templates support
+* Advanced T2 templates system
 * Charting support with pChart library
 * Administration dasboard widget
 * Post and comments based votes administration
@@ -163,10 +163,11 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 == Support ==
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
+* Twitter: http://twitter.com/gdstarrating
 * PDF User Guide: http://www.gdstarrating.com/downloads/user-guide/
 * Tutorials: http://www.gdstarrating.com/category/tutorials/
 * Database Layout: http://code.google.com/p/gd-star-rating/wiki/DatabaseTablesFormat
-* Email: starrating@gdragon.info
+* Email: gdstarrating@gdragon.info
 
 == Communities ==
 * Google Code: http://code.google.com/p/gd-star-rating/

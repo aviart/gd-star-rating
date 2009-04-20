@@ -2,7 +2,7 @@
 
 class GDSRRenderT2 {
     function render_srb($template_id, $post_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
-        include($this->plugin_path.'templates/tpl_list.php');
+        include(STARRATING_PATH.'code/t2/gd-star-t2-templates.php');
 
         $template = new gdTemplateRender($template_id);
         $tpl_render = $template->elm["normal"];
@@ -38,7 +38,7 @@ class GDSRRenderT2 {
     }
 
     function render_crb($template_id, $cmm_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '') {
-        include($this->plugin_path.'templates/tpl_list.php');
+        include(STARRATING_PATH.'code/t2/gd-star-t2-templates.php');
 
         $template = new gdTemplateRender($template_id);
         $tpl_render = $template->elm["normal"];

@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 require_once(dirname(__FILE__)."/gd-star-config.php");
-require_once(dirname(__FILE__)."/templates/tpl_init.php");
+require_once(dirname(__FILE__)."/code/t2/gd-star-t2-classes.php");
 require_once(dirname(__FILE__)."/code/gd-star-defaults.php");
 require_once(dirname(__FILE__)."/code/gd-star-functions.php");
 require_once(dirname(__FILE__)."/code/gd-star-render.php");
@@ -1509,7 +1509,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
             $rating1 = @number_format($rating2, 1);
             $rating_width = $rating2 * $unit_width;
 
-            include($this->plugin_path.'templates/tpl_list.php');
+            include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
 
             $template = new gdTemplateRender($tpl_id);
             $rt = GDSRRenderT2::render_srt($template->dep["SRT"], $rating1, $unit_count, $votes, $post_id);
@@ -1964,20 +1964,20 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $options = $this->o;
             $wpv = $this->wp_version;
 
-            include($this->plugin_path.'templates/tpl_list.php');
+            include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
 
             if (isset($_GET["tplid"])) {
                 $id = $_GET["tplid"];
                 $mode = $_GET["mode"];
-                include($this->plugin_path.'templates/tpl_panel_editor.php');
+                include($this->plugin_path.'options/templates/templates_editor.php');
             }
             else if (isset($_POST["gdsr_create"])) {
                 $id = 0;
                 $mode = "new";
-                include($this->plugin_path.'templates/tpl_panel_editor.php');
+                include($this->plugin_path.'options/templates/templates_editor.php');
             }
             else {
-                include($this->plugin_path.'templates/tpl_panel_list.php');
+                include($this->plugin_path.'options/templates/templates_list.php');
             }
         }
 

@@ -26,6 +26,11 @@
                     <td class="t options"><a href="http://code.google.com/p/gd-star-rating" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
                 <tr>
+                    <td class="first b">Twitter</td>
+                    <td class="t"><?php _e("development progress", "gd-star-rating"); ?></td>
+                    <td class="t options"><a href="http://twitter.com/gdstarrating" target="_blank"><?php _e("follow", "gd-star-rating"); ?></a></td>
+                </tr>
+                <tr>
                     <td class="first b">Google Groups</td>
                     <td class="t"><?php _e("discussions group", "gd-star-rating"); ?></td>
                     <td class="t options"><a href="http://groups.google.com/group/gd-star-rating" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
