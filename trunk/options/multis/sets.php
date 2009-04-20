@@ -100,6 +100,18 @@ function gdsrAddNewMulti() {
                 _e("All Posts & Pages", "gd-star-rating");
                 break;
         }
+        if ($row->auto_insert != "none") {
+            echo '<br />[';
+            switch ($row->auto_location) {
+                case "top":
+                    _e("Top", "gd-star-rating");
+                    break;
+                case "bottom":
+                    _e("Bottom", "gd-star-rating");
+                    break;
+            }
+            echo ']';
+        }
         echo '</td>';
         echo '<td>'.$row->description.'</td>';
         echo '<td><strong>'.$row->stars.'</strong></td>';
