@@ -283,8 +283,17 @@ get_class_head($head, ""); ?> {
 .loader.fountain { background: url(<?php echo $base_url_local;?>gfx/loader/fountain.gif) no-repeat left; padding-left: 134px; }
 .loader.fountain.width { width: 128px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
+.loader.lines { background: url(<?php echo $base_url_local;?>gfx/loader/lines.gif) no-repeat left; padding-left: 102px; }
+.loader.lines.width { width: 96px; margin-left: auto; margin-right: auto; padding-left: 0px; }
+
 .loader.broken { background: url(<?php echo $base_url_local;?>gfx/loader/broken.gif) no-repeat left; padding-left: 18px; }
 .loader.broken.width { width: 16px; margin-left: auto; margin-right: auto; padding-left: 0px; }
+
+.loader.snake { background: url(<?php echo $base_url_local;?>gfx/loader/snake.gif) no-repeat left; padding-left: 14px; }
+.loader.snake.width { width: 12px; margin-left: auto; margin-right: auto; padding-left: 0px; }
+
+.loader.triangles { background: url(<?php echo $base_url_local;?>gfx/loader/triangles.gif) no-repeat left; padding-left: 14px; }
+.loader.triangles.width { width: 12px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
 /* top rating widget */
 .trw-title {

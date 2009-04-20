@@ -436,6 +436,9 @@ class GDSRHelper {
     <option value="squares"<?php echo $selected == 'squares' ? ' selected="selected"' : ''; ?>>Squares [43x11]</option>
     <option value="fountain"<?php echo $selected == 'fountain' ? ' selected="selected"' : ''; ?>>Fountain [128x16]</option>
     <option value="broken"<?php echo $selected == 'broken' ? ' selected="selected"' : ''; ?>>Broken [16x16]</option>
+    <option value="lines"<?php echo $selected == 'lines' ? ' selected="selected"' : ''; ?>>Lines [96x12]</option>
+    <option value="snake"<?php echo $selected == 'snake' ? ' selected="selected"' : ''; ?>>Snake [12x12]</option>
+    <option value="triangles"<?php echo $selected == 'triangles' ? ' selected="selected"' : ''; ?>>Triangles [12x12]</option>
 </select>
         <?php
     }
