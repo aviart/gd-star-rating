@@ -103,6 +103,7 @@ if (!class_exists('GDStarRating')) {
         var $default_shortcode_starratingmulti;
         var $default_shortcode_starreviewmulti;
         var $default_shortcode_starcomments;
+        var $default_shortcode_starrater;
         var $default_templates;
         var $default_options;
         var $default_import;
@@ -126,6 +127,7 @@ if (!class_exists('GDStarRating')) {
             $this->default_shortcode_starratingmulti = $gdd->default_shortcode_starratingmulti;
             $this->default_shortcode_starreviewmulti = $gdd->default_shortcode_starreviewmulti;
             $this->default_shortcode_starcomments = $gdd->default_shortcode_starcomments;
+            $this->default_shortcode_starrater = $gdd->default_shortcode_starrater;
             $this->default_templates = $gdd->default_templates;
             $this->default_options = $gdd->default_options;
             $this->default_import = $gdd->default_import;
@@ -182,16 +184,6 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
-        * Code for StarRater shortcode implementation
-        *
-        * @param array $atts
-        */
-		function shortcode_starrater($atts = array()) {
-            global $post, $userdata;
-            return $this->render_article($post, $userdata);
-		}
-
-        /**
         * Code for StarRaterCustom shortcode implementation
         *
         * @param array $atts
@@ -203,13 +195,23 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
+        * Code for StarRater shortcode implementation
+        *
+        * @param array $atts
+        */
+		function shortcode_starrater($atts = array()) {
+            return $this->shortcode_starratingblock($atts);
+		}
+
+        /**
         * Code for StarRatingBlock shortcode implementation
         *
         * @param array $atts
         */
         function shortcode_starratingblock($atts = array()) {
             global $post, $userdata;
-            return $this->render_article($post, $userdata);
+            $override = shortcode_atts($this->default_shortcode_starrater, $atts);
+            return $this->render_article($post, $userdata, $override);
         }
 
         /**
@@ -2639,7 +2641,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             echo GDSRRender::rating_text($rd_post_id, "a", $votes, $score, $this->o["stars"], "article", $cls == "" ? $this->o["class_text"] : $cls);
         }
 
-        function render_comment($post, $comment, $user) {
+        function render_comment($post, $comment, $user, $override = array()) {
             if ($this->o["comments_active"] != 1) return "";
             if ($this->is_bot) return "";
 
@@ -2728,7 +2730,18 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $comment->user_id ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            return GDSRRender::rating_block($rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $this->o["cmm_align"], $this->o["cmm_text"], $this->o["cmm_header"], $this->o["cmm_header_text"], $this->o["cmm_class_block"], $this->o["cmm_class_text"], $debug, $this->loader_comment);
+
+            $tags_css = array();
+            $tags_css["CMM_CSS_BLOCK"] = $this->o["cmm_class_block"];
+            $tags_css["CMM_CSS_HEADER"] = $this->o["srb_class_header"];
+            $tags_css["CMM_CSS_STARS"] = $this->o["cmm_class_stars"];
+            $tags_css["CMM_CSS_TEXT"] = $this->o["cmm_class_text"];
+
+            if ($override["tpl"] > 0) $template_id = $override["tpl"];
+            else $template_id = $this->o["default_crb_template"];
+
+            $rating_block = GDSRRenderT2::render_crb($template_id, $rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $tags_css, $this->o["cmm_header_text"], $debug);
+            return $rating_block;
         }
 
         function render_article_rss() {
@@ -2767,8 +2780,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                 $dbg_allow = "B";
             }
 
-            if (is_single() || (is_page() && $this->o["display_comment_page"] == 1))
-                $this->init_post();
+            if (is_single() || (is_page() && $this->o["display_comment_page"] == 1)) $this->init_post();
 
             $rd_unit_width = $this->o["size"];
             $rd_unit_count = $this->o["stars"];
@@ -2785,6 +2797,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                     $post_data = GDSRDatabase::get_post_data($rd_post_id);
                 }
             }
+
             if ($post_data->rules_articles == "H") return "";
 
             if ($allow_vote) {
@@ -2861,10 +2874,11 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $tags_css["CSS_HEADER"] = $this->o["srb_class_header"];
             $tags_css["CSS_STARS"] = $this->o["srb_class_stars"];
             $tags_css["CSS_TEXT"] = $this->o["srb_class_text"];
-            $template_id = $this->o["default_srb_template"];
+
+            if ($override["tpl"] > 0) $template_id = $override["tpl"];
+            else $template_id = $this->o["default_srb_template"];
 
             $rating_block = GDSRRenderT2::render_srb($template_id, $rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $tags_css, $this->o["header_text"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
-            //$rating_block = GDSRRender::rating_block($rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $this->o["align"], $this->o["text"], $this->o["header"], $this->o["header_text"], $this->o["class_block"], $this->o["class_text"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
             return $rating_block;
         }
 

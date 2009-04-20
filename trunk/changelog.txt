@@ -16,6 +16,7 @@
   * new: saving last voted timestamp for articles, comments and multi rating results
   * new: widget limit articles voted for in the last number of days
   * new: referer protection for graphics generator to prevent leeching
+  * edit: shortcode and functions expanded for t2 standard rating block
   * edit: css changes for better wp 2.8 compatibility
   * edit: removed obsolete articles and comments options
   * edit: removed options for hiding parts of settings tab
@@ -27,6 +28,7 @@
   * fix: full db tables reinstall doesn't insert templates
   * fix: multi rating average breaks for empty rating request
   * fix: multi rating average breaks with no multi sets
+  * fix: shortcode form review and rating tabs crossed
 
 === Version: 1.1.9.1 / april 16 2009 ===
   * new: widget template tags for stars and image

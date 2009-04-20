@@ -5,7 +5,7 @@
       <tr>
         <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <label><select id="srMultiRatingSet" name="srsrMultiRatingSet" style="width: 200px">
+            <label><select id="srMultiRatingSet" name="srMultiRatingSet" style="width: 200px">
                 <?php GDSRHelper::render_styles_select($gdst_multis, 1); ?>
             </select></label>
         </td>
