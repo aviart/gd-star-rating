@@ -667,7 +667,8 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin) {
                 wp_admin_css('css/dashboard');
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_main.css" type="text/css" media="screen" />');
-                if ($this->wp_version >= 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />');
+                if ($this->wp_version >= 27 && $this->wp_version < 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />');
+                if ($this->wp_version >= 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp28.css" type="text/css" media="screen" />');
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>';
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>';
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
