@@ -5,4 +5,6 @@ CREATE TABLE `%sgdsr_multis` (
   `stars` int(11) NOT NULL DEFAULT '10',
   `object` text NOT NULL,
   `weight` text NOT NULL,
+  `auto_insert` varchar(4) NOT NULL DEFAULT 'no',
+  `auto_categories` text NOT NULL,
   PRIMARY KEY (`multi_id`));

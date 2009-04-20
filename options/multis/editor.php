@@ -12,7 +12,11 @@ else {
 $review_set = $options["mur_review_set"];
 
 ?>
-
+<script>
+    function gdsrMultiCats(el) {
+        document.getElementById("gdsr_ms_autocats").style.display = el == "cats" ? "block" : "none";
+    }
+</script>
 <div class="wrap">
 <form method="post">
 <input type="hidden" id="gdsr_action" name="gdsr_action" value="save" />
@@ -33,7 +37,25 @@ $review_set = $options["mur_review_set"];
 </tr>
 <tr><th scope="row"><?php _e("Auto Insertion", "gd-star-rating"); ?></th>
     <td>
-        
+        <select name="gdsr_ms_autoinsert" id="gdsr_ms_autoinsert" style="width: 150px"  onchange="gdsrMultiCats(this.options[this.selectedIndex].value)">
+            <option value="none"<?php echo $set->auto_insert == 'none' ? ' selected="selected"' : ''; ?>><?php _e("No", "gd-star-rating"); ?></option>
+            <option value="cats"<?php echo $set->auto_insert == 'cats' ? ' selected="selected"' : ''; ?>><?php _e("Category Based", "gd-star-rating"); ?></option>
+            <option value="apst"<?php echo $set->auto_insert == 'apst' ? ' selected="selected"' : ''; ?>><?php _e("All Posts", "gd-star-rating"); ?></option>
+            <option value="apgs"<?php echo $set->auto_insert == 'apgs' ? ' selected="selected"' : ''; ?>><?php _e("All Pages", "gd-star-rating"); ?></option>
+            <option value="allp"<?php echo $set->auto_insert == 'allp' ? ' selected="selected"' : ''; ?>><?php _e("All Posts & Pages", "gd-star-rating"); ?></option>
+        </select>
+        <div id="gdsr_ms_autocats" style="display: <?php echo $set->auto_insert == 'cats' ? "block" : "none"; ?>">
+            <div class="gdsr-table-split"></div>
+            <table cellpadding="0" cellspacing="0" class="previewtable">
+                <tr>
+                    <td style="width: 150px"><?php _e("Categories", "gd-star-rating"); ?>:</td>
+                    <td>
+                        <input type="text" name="gdsr_ms_autocategories" id="gdsr_ms_autocategories" value="<?php echo $set->auto_categories; ?>" style="width: 400px" />
+                         [comma separated list of category ID's]
+                    </td>
+                </tr>
+            </table>
+        </div>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Number Of Stars", "gd-star-rating"); ?></th>

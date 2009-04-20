@@ -6,12 +6,13 @@
   * new: widgets fully support wordpress 2.8
   * new: t2 rendering of standard rating block
   * new: t2 rendering of comment rating block
+  * new: multi ratings auto insertion
   * new: star rating widget support for multi rating data
   * new: star rating widget support for multiple categories
   * new: star rating widget support for subcategories
   * new: wp filter for widget data prepare
   * new: redesigned plugin front panel
-  * new: two new animated loaders
+  * new: five new animated loaders
   * new: auto insertion of rating block on top of the article
   * new: saving last voted timestamp for articles, comments and multi rating results
   * new: widget limit articles voted for in the last number of days

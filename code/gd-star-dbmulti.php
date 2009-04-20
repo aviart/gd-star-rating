@@ -568,8 +568,8 @@ class GDSRDBMulti {
     
     function add_multi_set($set) {
         global $wpdb, $table_prefix;
-        $sql = sprintf("insert into %sgdsr_multis (`name`, `description`, `stars`, `object`, `weight`) values ('%s', '%s', %s, '%s', '%s')",
-                $table_prefix, $set->name, $set->description, $set->stars, serialize($set->object), serialize($set->weight)
+        $sql = sprintf("insert into %sgdsr_multis (`name`, `description`, `stars`, `object`, `weight`, `auto_insert`, `auto_categories`) values ('%s', '%s', %s, '%s', '%s')",
+                $table_prefix, $set->name, $set->description, $set->stars, serialize($set->object), serialize($set->weight, $set->auto_insert, $set->auto_categories)
             );
         $wpdb->query($sql);
         return $wpdb->insert_id;
@@ -578,8 +578,8 @@ class GDSRDBMulti {
     function edit_multi_set($set) {
         global $wpdb, $table_prefix;
         
-        $sql = sprintf("update %sgdsr_multis set `name` = '%s', `description` = '%s', `object` = '%s', `weight` = '%s' where multi_id = %s",
-                $table_prefix, $set->name, $set->description, serialize($set->object), serialize($set->weight), $set->multi_id
+        $sql = sprintf("update %sgdsr_multis set `name` = '%s', `description` = '%s', `object` = '%s', `weight` = '%s', `auto_insert` = '%s', `auto_categories` = '%s' where multi_id = %s",
+                $table_prefix, $set->name, $set->description, serialize($set->object), serialize($set->weight), $set->auto_insert, $set->auto_categories, $set->multi_id
             );
         $wpdb->query($sql);
     }
@@ -592,7 +592,7 @@ class GDMultiSingle {
     var $multi_id = 0;
     var $name = "";
     var $description = "";
-    var $stars = 5;
+    var $stars = 10;
     var $object = array();
     var $weight = array();
 

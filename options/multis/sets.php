@@ -82,6 +82,24 @@ function gdsrAddNewMulti() {
         echo '<td>'.$row->multi_id.'</td>';
         echo '<td><a href="'.$url_edit.'muedit&id='.$row->multi_id.'"><strong>'.$row->name.'</strong></a></td>';
         echo '<td>';
+        switch ($row->auto_insert) {
+            default:
+            case "none":
+                _e("No", "gd-star-rating");
+                break;
+            case "cats":
+                _e("Category Based", "gd-star-rating");
+                break;
+            case "apst":
+                _e("All Posts", "gd-star-rating");
+                break;
+            case "apgs":
+                _e("All Pages", "gd-star-rating");
+                break;
+            case "allp":
+                _e("All Posts & Pages", "gd-star-rating");
+                break;
+        }
         echo '</td>';
         echo '<td>'.$row->description.'</td>';
         echo '<td><strong>'.$row->stars.'</strong></td>';

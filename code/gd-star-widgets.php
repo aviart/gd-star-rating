@@ -3,7 +3,7 @@
 if (class_exists("WP_Widget")) {
     class gdsrWidgetRating extends WP_Widget {
         function gdsrWidgetRating() {
-            $widget_ops = array('classname' => 'widget_gdstarrating_star', 'description' => __("Customized rating results list.", "gd-linkedin-badge"));
+            $widget_ops = array('classname' => 'widget_gdstarrating_star', 'description' => __("Customized rating results list.", "gd-star-rating"));
             $control_ops = array('width' => 440);
             $this->WP_Widget('gdstarrmulti', 'GD Star Rating', $widget_ops, $control_ops);
         }
