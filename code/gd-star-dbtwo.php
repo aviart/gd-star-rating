@@ -424,7 +424,7 @@ class GDSRDB {
             }
         }
         if (count($templates) > 0) {
-            include($this->plugin_path.'templates/tpl_list.php');
+            include(STARRATING_PATH.'code/t2/gd-star-t2-templates.php');
             foreach ($tpls->tpls as $tpl) {
                 $depend = array();
                 foreach ($tpl->elements as $el) {

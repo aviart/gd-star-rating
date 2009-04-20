@@ -26,6 +26,7 @@
   * edit: for wp newer than 2.7 tables don't have width set
   * edit: even more code reorganization and cleanup
   * edit: changed loading of javascript code for widgets panel
+  * edit: updated readme and added twitter url
   * edit: removed obsolete css styles
   * edit: number of small all over changes
   * fix: sql query for widget with ranged dates
