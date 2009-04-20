@@ -670,7 +670,8 @@ if (!class_exists('GDStarRating')) {
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>';
                 echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>';
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
-                if ($this->admin_plugin_page == "t2") {
+                if ($this->admin_plugin_page == "t2" ||
+                    $this->admin_plugin_page == "multi-sets") {
                     include(STARRATING_PATH."code/js/gd-star-jsf.php");
                 }
             }
@@ -1859,6 +1860,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                 $eset->name = stripslashes(htmlentities($_POST["gdsr_ms_name"], ENT_QUOTES, STARRATING_ENCODING));
                 $eset->description = stripslashes(htmlentities($_POST["gdsr_ms_description"], ENT_QUOTES, STARRATING_ENCODING));
                 $eset->stars = $_POST["gdsr_ms_stars"];
+                $eset->auto_insert = $_POST["gdsr_ms_autoinsert"];
+                $eset->auto_categories = $_POST["gdsr_ms_autocategories"];
                 $elms = $_POST["gdsr_ms_element"];
                 $elwe = $_POST["gdsr_ms_weight"];
                 $i = 0;
