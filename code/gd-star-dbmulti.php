@@ -1,6 +1,13 @@
 <?php
 
 class GDSRDBMulti {
+    function get_multisets_for_auto_insert() {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("select * from %sgdsr_multis where auto_insert != 'none'", $table_prefix);
+        return $wpdb->get_results($sql);
+    }
+
     function recalculate_trend_averages($trend_id, $set) {
         global $wpdb, $table_prefix;
 
@@ -568,8 +575,8 @@ class GDSRDBMulti {
     
     function add_multi_set($set) {
         global $wpdb, $table_prefix;
-        $sql = sprintf("insert into %sgdsr_multis (`name`, `description`, `stars`, `object`, `weight`, `auto_insert`, `auto_categories`) values ('%s', '%s', %s, '%s', '%s')",
-                $table_prefix, $set->name, $set->description, $set->stars, serialize($set->object), serialize($set->weight, $set->auto_insert, $set->auto_categories)
+        $sql = sprintf("insert into %sgdsr_multis (`name`, `description`, `stars`, `object`, `weight`, `auto_insert`, `auto_location`, `auto_categories`) values ('%s', '%s', %s, '%s', '%s', '%s', '%s')",
+                $table_prefix, $set->name, $set->description, $set->stars, serialize($set->object), serialize($set->weight), $set->auto_insert, $set->auto_location, $set->auto_categories
             );
         $wpdb->query($sql);
         return $wpdb->insert_id;
@@ -578,8 +585,8 @@ class GDSRDBMulti {
     function edit_multi_set($set) {
         global $wpdb, $table_prefix;
         
-        $sql = sprintf("update %sgdsr_multis set `name` = '%s', `description` = '%s', `object` = '%s', `weight` = '%s', `auto_insert` = '%s', `auto_categories` = '%s' where multi_id = %s",
-                $table_prefix, $set->name, $set->description, serialize($set->object), serialize($set->weight), $set->auto_insert, $set->auto_categories, $set->multi_id
+        $sql = sprintf("update %sgdsr_multis set `name` = '%s', `description` = '%s', `object` = '%s', `weight` = '%s', `auto_insert` = '%s', `auto_location` = '%s', `auto_categories` = '%s' where multi_id = %s",
+                $table_prefix, $set->name, $set->description, serialize($set->object), serialize($set->weight), $set->auto_insert, $set->auto_location, $set->auto_categories, $set->multi_id
             );
         $wpdb->query($sql);
     }

@@ -35,15 +35,38 @@ $review_set = $options["mur_review_set"];
         <input maxlength="256" type="text" name="gdsr_ms_description" id="gdsr_ms_description" value="<?php echo html_entity_decode($set->description, ENT_QUOTES, STARRATING_ENCODING); ?>" style="width: 700px" />
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Number Of Stars", "gd-star-rating"); ?></th>
+    <td>
+        <select<?php if ($gdsr_page == "muedit") echo ' disabled="disabled"'; ?> style="width: 70px;" name="gdsr_ms_stars" id="gdsr_ms_stars">
+            <?php GDSRHelper::render_stars_select($set->stars); ?>
+        </select>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Auto Insertion", "gd-star-rating"); ?></th>
     <td>
-        <select name="gdsr_ms_autoinsert" id="gdsr_ms_autoinsert" style="width: 150px"  onchange="gdsrMultiCats(this.options[this.selectedIndex].value)">
-            <option value="none"<?php echo $set->auto_insert == 'none' ? ' selected="selected"' : ''; ?>><?php _e("No", "gd-star-rating"); ?></option>
-            <option value="cats"<?php echo $set->auto_insert == 'cats' ? ' selected="selected"' : ''; ?>><?php _e("Category Based", "gd-star-rating"); ?></option>
-            <option value="apst"<?php echo $set->auto_insert == 'apst' ? ' selected="selected"' : ''; ?>><?php _e("All Posts", "gd-star-rating"); ?></option>
-            <option value="apgs"<?php echo $set->auto_insert == 'apgs' ? ' selected="selected"' : ''; ?>><?php _e("All Pages", "gd-star-rating"); ?></option>
-            <option value="allp"<?php echo $set->auto_insert == 'allp' ? ' selected="selected"' : ''; ?>><?php _e("All Posts & Pages", "gd-star-rating"); ?></option>
-        </select>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td style="width: 150px"><?php _e("Insertion", "gd-star-rating"); ?>:</td>
+                <td>
+                    <select name="gdsr_ms_autoinsert" id="gdsr_ms_autoinsert" style="width: 150px" onchange="gdsrMultiCats(this.options[this.selectedIndex].value)">
+                        <option value="none"<?php echo $set->auto_insert == 'none' ? ' selected="selected"' : ''; ?>><?php _e("No", "gd-star-rating"); ?></option>
+                        <option value="cats"<?php echo $set->auto_insert == 'cats' ? ' selected="selected"' : ''; ?>><?php _e("Category Based", "gd-star-rating"); ?></option>
+                        <option value="apst"<?php echo $set->auto_insert == 'apst' ? ' selected="selected"' : ''; ?>><?php _e("All Posts", "gd-star-rating"); ?></option>
+                        <option value="apgs"<?php echo $set->auto_insert == 'apgs' ? ' selected="selected"' : ''; ?>><?php _e("All Pages", "gd-star-rating"); ?></option>
+                        <option value="allp"<?php echo $set->auto_insert == 'allp' ? ' selected="selected"' : ''; ?>><?php _e("All Posts & Pages", "gd-star-rating"); ?></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 150px"><?php _e("Location", "gd-star-rating"); ?>:</td>
+                <td>
+                    <select name="gdsr_ms_autolocation" id="gdsr_ms_autolocation" style="width: 150px">
+                        <option value="bottom"<?php echo $set->auto_location == 'bottom' ? ' selected="selected"' : ''; ?>><?php _e("Bottom", "gd-star-rating"); ?></option>
+                        <option value="top"<?php echo $set->auto_location == 'top' ? ' selected="selected"' : ''; ?>><?php _e("Top", "gd-star-rating"); ?></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
         <div id="gdsr_ms_autocats" style="display: <?php echo $set->auto_insert == 'cats' ? "block" : "none"; ?>">
             <div class="gdsr-table-split"></div>
             <table cellpadding="0" cellspacing="0" class="previewtable">
@@ -56,13 +79,6 @@ $review_set = $options["mur_review_set"];
                 </tr>
             </table>
         </div>
-    </td>
-</tr>
-<tr><th scope="row"><?php _e("Number Of Stars", "gd-star-rating"); ?></th>
-    <td>
-        <select<?php if ($gdsr_page == "muedit") echo ' disabled="disabled"'; ?> style="width: 70px;" name="gdsr_ms_stars" id="gdsr_ms_stars">
-            <?php GDSRHelper::render_stars_select($set->stars); ?>
-        </select>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Elements", "gd-star-rating"); ?></th>

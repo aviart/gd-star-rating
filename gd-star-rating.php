@@ -71,6 +71,7 @@ if (!class_exists('GDStarRating')) {
         var $active_wp_page;
         var $wp_version;
         var $vote_status;
+        var $rendering_sets;
 
         var $plugin_url;
         var $plugin_ajax;
@@ -1140,6 +1141,10 @@ if (!class_exists('GDStarRating')) {
                     update_option('gd-star-rating', $this->o);
                 }
             }
+
+            if (!is_admin() && !is_feed()) {
+                $this->rendering_sets = GDSRDBMulti::get_multisets_for_auto_insert();
+            } else $this->rendering_sets = array();
         }
 
         function cache_cleanup() {
@@ -1862,6 +1867,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                 $eset->stars = $_POST["gdsr_ms_stars"];
                 $eset->auto_insert = $_POST["gdsr_ms_autoinsert"];
                 $eset->auto_categories = $_POST["gdsr_ms_autocategories"];
+                $eset->auto_location = $_POST["gdsr_ms_autolocation"];
                 $elms = $_POST["gdsr_ms_element"];
                 $elwe = $_POST["gdsr_ms_weight"];
                 $i = 0;
@@ -2586,7 +2592,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             global $post, $userdata;
 
             if (is_admin()) return $content;
-
             if (!is_feed()) {
                 if (is_single() || is_page()) GDSRDatabase::add_new_view($post->ID);
 
@@ -2602,9 +2607,32 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                     if ($this->o["auto_display_position"] == "bottom" || $this->o["auto_display_position"] == "both")
                         $content = $content.$rendered;
                 }
+                $content = $this->display_multi_rating("top", $post, $userdata).$content;
+                $content = $content.$this->display_multi_rating("bottom", $post, $userdata);
             }
 
             return $content;
+        }
+
+        function display_multi_rating($location, $post, $user) {
+            $sets = $this->rendering_sets;
+            $rendered = "";
+            foreach ($sets as $set) {
+                if ($set->auto_location == $location) {
+                    $insert = false;
+                    $auto = $set->auto_insert;
+
+                    if (is_single() && ($auto == "apst" || $auto == "allp")) $insert = true;
+                    if (!$insert && is_page() && ($auto == "apgs" || $auto == "allp")) $insert = true;
+                    if (!$insert && is_single() && in_category($set->categories, $post->ID) && $auto == "cats") $insert = true;
+
+                    if ($insert) {
+                        $settings = array('id' => $set->multi_id, 'read_only' => 0);
+                        $rendered.= $this->render_multi_rating($post, $user, $settings);
+                    }
+                }
+            }
+            return $rendered;
         }
 
         function get_article_rating($post_id, $is_page = '') {
@@ -2631,7 +2659,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             }
             $out[] = $votes;
             $out[] = $score;
-
             return $out;
         }
 
@@ -2885,7 +2912,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             return $rating_block;
         }
 
-        function render_multi_rating($post, $user, $settings, $override = array()) {
+        function render_multi_rating($post, $user, $settings) {
             if ($this->is_bot) return "";
             if (is_feed()) return "";
 
