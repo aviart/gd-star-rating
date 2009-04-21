@@ -358,20 +358,25 @@ class GDSRDB {
     // moderation
 
     // templates
-    function get_render_template($template_id) {
-        global $wpdb, $table_prefix;
-
-        
-    }
-
     function get_templates($section = '', $default_sort = false) {
         global $wpdb, $table_prefix;
         if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
-        if ($default_sort) $default_sort = "preinstalled desc, ";
+        if ($default_sort) $default_sort = "`default` desc, preinstalled desc, ";
         else $default_sort = "";
 
         $sql = sprintf("select * from %sgdsr_templates%s order by %stemplate_id asc", $table_prefix, $section, $default_sort);
         return $wpdb->get_results($sql);
+    }
+
+    function set_templates_defaults($post) {
+        global $wpdb, $table_prefix;
+
+        foreach ($post as $code => $value) {
+            $sql = sprintf("update %sgdsr_templates set `default` = '0' where section = '%s'", $table_prefix, $code);
+            $wpdb->query($sql);
+            $sql = sprintf("update %sgdsr_templates set `default` = '1' where template_id = %s", $table_prefix, $value);
+            $wpdb->query($sql);
+        }
     }
 
     function get_template($id) {

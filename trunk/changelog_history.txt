@@ -6,6 +6,7 @@
   * new: widgets fully support wordpress 2.8
   * new: t2 rendering of standard rating block
   * new: t2 rendering of comment rating block
+  * new: t2 system supports setting of default templates for each template type
   * new: multi ratings auto insertion
   * new: star rating widget support for multi rating data
   * new: star rating widget support for multiple categories

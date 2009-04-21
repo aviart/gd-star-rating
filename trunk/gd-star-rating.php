@@ -1971,10 +1971,17 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                 $mode = $_GET["mode"];
                 include($this->plugin_path.'options/templates/templates_editor.php');
             }
+            else if (isset($_POST["gdsr_defaults"])) {
+                include($this->plugin_path.'options/templates/templates_defaults.php');
+            }
             else if (isset($_POST["gdsr_create"])) {
                 $id = 0;
                 $mode = "new";
                 include($this->plugin_path.'options/templates/templates_editor.php');
+            }
+            else if (isset($_POST["gdsr_setdefaults"])) {
+                GDSRDB::set_templates_defaults($_POST["gdsr_section"]);
+                include($this->plugin_path.'options/templates/templates_list.php');
             }
             else {
                 include($this->plugin_path.'options/templates/templates_list.php');
