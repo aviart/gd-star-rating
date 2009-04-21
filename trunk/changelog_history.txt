@@ -29,6 +29,7 @@
   * edit: updated readme and added twitter url
   * edit: removed obsolete css styles
   * edit: number of small all over changes
+  * fix: duplicated results in sidebard widget
   * fix: sql query for widget with ranged dates
   * fix: multi rating calculation division by zero
   * fix: full db tables reinstall doesn't insert templates
