@@ -6,4 +6,5 @@ CREATE TABLE `%sgdsr_templates` (
   `elements` text NOT NULL,
   `dependencies` text NOT NULL,
   `preinstalled` varchar(1) NOT NULL DEFAULT '0',
+  `default` varchar(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`template_id`));
