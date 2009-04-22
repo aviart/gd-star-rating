@@ -125,19 +125,6 @@ class GDSRHelper {
     }
 
     /**
-     * Adding elements for IE PNG fix
-     */
-    function ie_png_fix() {
-        echo('<!--[if lte IE 6]>');
-        echo('<style type="text/css">');
-        echo('.ratertbl, .gdouter, .gdinner, .starsbar a:hover { behavior: url('.STARRATING_URL.'iepngfix/iepngfix.php) }');
-        echo('</style>');
-        echo('<script type="text/javascript" src="'.STARRATING_URL.'iepngfix/iepngfix_tilebg.js"></script>');
-        echo('<![endif]-->');
-        echo("\r\n");
-    }
-
-    /**
      * Adding elements for IE Opacity fix
      */
     function ie_opacity_fix() {
