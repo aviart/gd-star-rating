@@ -188,9 +188,9 @@ get_class_head($head, ""); ?> {
 }
 
 .ratingtext {
-	padding-bottom: 4px;
-	margin-bottom: 4px;
-	margin-top: 8px;
+	padding-bottom: 2px;
+	margin-bottom: 2px;
+	margin-top: 0px;
 }
 
 /* table class: starrating */
