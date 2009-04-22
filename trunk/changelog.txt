@@ -2,7 +2,7 @@
 
 == Change Log ==
 
-=== Version: 1.2.0 / april 21 2009 ===
+=== Version: 1.2.0 / april 22 2009 ===
   * new: widgets fully support wordpress 2.8
   * new: t2 rendering of standard rating block
   * new: t2 rendering of comment rating block
@@ -19,6 +19,7 @@
   * new: saving last voted timestamp for articles, comments and multi rating results
   * new: referer protection for graphics generator to offsite prevent leeching
   * edit: shortcode and functions expanded for t2 standard rating block
+  * edit: widgets code moved to separrate file and class
   * edit: css changes for better wp 2.8 compatibility
   * edit: few more minor chnages for better wp 2.8 compatibility
   * edit: removed obsolete articles and comments options

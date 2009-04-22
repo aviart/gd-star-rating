@@ -1,143 +1,381 @@
 <?php
 
-if (class_exists("WP_Widget")) {
-    class gdsrWidgetRating extends WP_Widget {
-        function gdsrWidgetRating() {
-            $widget_ops = array('classname' => 'widget_gdstarrating_star', 'description' => __("Customized rating results list.", "gd-star-rating"));
-            $control_ops = array('width' => 440);
-            $this->WP_Widget('gdstarrmulti', 'GD Star Rating', $widget_ops, $control_ops);
+class gdsrWidgets {
+    var $w;
+    var $g;
+
+    var $default_widget_comments;
+    var $default_widget_top;
+    var $default_widget;
+
+    function gdsrWidgets($g, $dw_c, $dw_t, $dw_s) {
+        $this->g = $g;
+        $this->default_widget_comments = $dw_c;
+        $this->default_widget_top = $dw_t;
+        $this->default_widget = $dw_s;
+    }
+
+    function widget_comments_init() {
+        if (!$options = get_option('widget_gdstarrating_comments'))
+            $options = array();
+
+        $widget_ops = array('classname' => 'widget_gdstarrating_comments', 'description' => 'GD Comments Rating');
+        $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstarcmm');
+        $name = 'GD Comments Rating';
+
+        $registered = false;
+        foreach (array_keys($options) as $o) {
+            if (!isset($options[$o]['title']))
+                continue;
+
+            $id = "gdstarcmm-$o";
+            $registered = true;
+            wp_register_sidebar_widget($id, $name, array(&$this, 'widget_comments_display'), $widget_ops, array('number' => $o));
+            wp_register_widget_control($id, $name, array(&$this, 'widget_comments_control'), $control_ops, array('number' => $o));
         }
-
-        function widget($args, $instance) {
-            global $gdsr, $userdata;
-            extract($args, EXTR_SKIP);
-
-            if ($instance["display"] == "hide" || ($instance["display"] == "users" && $userdata->ID == 0) || ($instance["display"] == "visitors" && $userdata->ID > 0)) return;
-
-            echo $before_widget.$before_title.$instance['title'].$after_title;
-            echo $gdsr->render_articles_widget($instance);
-            echo $after_widget;
-        }
-
-        function update($new_instance, $old_instance) {
-            $instance = $old_instance;
-
-            $instance['title'] = strip_tags(stripslashes($new_instance['title']));
-
-            $instance['tpl_header'] = stripslashes(htmlentities($new_instance['tpl_header'], ENT_QUOTES, STARRATING_ENCODING));
-            $instance['tpl_item'] = stripslashes(htmlentities($new_instance['tpl_item'], ENT_QUOTES, STARRATING_ENCODING));
-            $instance['tpl_footer'] = stripslashes(htmlentities($new_instance['tpl_footer'], ENT_QUOTES, STARRATING_ENCODING));
-            $instance['tpl_title_length'] = $new_instance['tpl_title_length'];
-
-            $instance['source'] = $new_instance['source'];
-            $instance['source_set'] = $new_instance['source_set'];
-
-            $instance['rows'] = $new_instance['rows'];
-            $instance['min_votes'] = $new_instance['min_votes'];
-            $instance['select'] = $new_instance['select'];
-            $instance['grouping'] = $new_instance['grouping'];
-            $instance['column'] = $new_instance['column'];
-            $instance['order'] = $new_instance['order'];
-            $instance['category'] = $new_instance['category'];
-            $instance['show'] = $new_instance['show'];
-            $instance['display'] = $new_instance['display'];
-            $instance['last_voted_days'] = $new_instance['last_voted_days'];
-
-            $instance['publish_date'] = $new_instance['publish_date'];
-            $instance['publish_month'] = $new_instance['publish_month'];
-            $instance['publish_days'] = $new_instance['publish_days'];
-            $instance['publish_range_from'] = $new_instance['publish_range_from'];
-            $instance['publish_range_to'] = $new_instance['publish_range_to'];
-
-            $instance['div_template'] = $new_instance['div_template'];
-            $instance['div_filter'] = $new_instance['div_filter'];
-            $instance['div_trend'] = $new_instance['div_trend'];
-            $instance['div_elements'] = $new_instance['div_elements'];
-            $instance['div_image'] = $new_instance['div_image'];
-            $instance['div_stars'] = $new_instance['div_stars'];
-
-            $instance['image_from'] = $new_instance['image_from'];
-            $instance['image_custom'] = $new_instance['image_custom'];
-            $instance['rating_stars'] = $new_instance['rating_stars'];
-            $instance['rating_size'] = $new_instance['rating_size'];
-
-            $instance['trends_rating'] = $new_instance['trends_rating'];
-            $instance['trends_rating_set'] = $new_instance['trends_rating_set'];
-            $instance['trends_rating_rise'] = strip_tags(stripslashes($new_instance['trends_rating_rise']));
-            $instance['trends_rating_same'] = strip_tags(stripslashes($new_instance['trends_rating_same']));
-            $instance['trends_rating_fall'] = strip_tags(stripslashes($new_instance['trends_rating_fall']));
-            $instance['trends_voting'] = $new_instance['trends_voting'];
-            $instance['trends_voting_set'] = $new_instance['trends_voting_set'];
-            $instance['trends_voting_rise'] = strip_tags(stripslashes($new_instance['trends_voting_rise']));
-            $instance['trends_voting_same'] = strip_tags(stripslashes($new_instance['trends_voting_same']));
-            $instance['trends_voting_fall'] = strip_tags(stripslashes($new_instance['trends_voting_fall']));
-
-            $instance['hide_empty'] = isset($new_instance['hide_empty']) ? 1 : 0;
-            $instance['hide_noreview'] = isset($new_instance['hide_noreview']) ? 1 : 0;
-            $instance['bayesian_calculation'] = isset($new_instance['bayesian_calculation']) ? 1 : 0;
-            $instance['category_toponly'] = isset($new_instance['category_toponly']) ? 1 : 0;
-
-            return $instance;
-        }
-
-        function form($instance) {
-            global $gdsr;
-            $instance = wp_parse_args((array)$instance, $gdsr->default_widget);
-
-            $wptr = $gdsr->g->trend;
-            $wpst = $gdsr->g->stars;
-            $wpml = GDSRDBMulti::get_multis_tinymce();
-
-            include(STARRATING_PATH.'widgets/rating_28/part_basic.php');
-            include(STARRATING_PATH.'widgets/rating_28/part_trend.php');
-            include(STARRATING_PATH.'widgets/rating_28/part_filter.php');
-            include(STARRATING_PATH.'widgets/rating_28/part_image.php');
-            include(STARRATING_PATH.'widgets/rating_28/part_stars.php');
-            include(STARRATING_PATH.'widgets/rating_28/part_template.php');
+        if (!$registered) {
+            wp_register_sidebar_widget('gdstarcmm-1', $name, array(&$this, 'widget_comments_display'), $widget_ops, array('number' => -1));
+            wp_register_widget_control('gdstarcmm-1', $name, array(&$this, 'widget_comments_control'), $control_ops, array('number' => -1));
         }
     }
 
-    class gdsrWidgetTop extends WP_Widget {
-        function gdsrWidgetTop() {
-            $widget_ops = array('classname' => 'widget_gdstarrating_top', 'description' => __("Overall blog rating results.", "gd-star-rating"));
-            $control_ops = array('width' => 440);
-            $this->WP_Widget('gdstartop', 'GD Blog Rating', $widget_ops, $control_ops);
+    function widget_comments_control($widget_args = 1) {
+        global $wp_registered_widgets;
+        static $updated = false;
+
+        if ( is_numeric($widget_args) )
+            $widget_args = array('number' => $widget_args);
+
+        $widget_args = wp_parse_args($widget_args, array('number' => -1));
+        extract($widget_args, EXTR_SKIP);
+        $options_all = get_option('widget_gdstarrating_comments');
+        if (!is_array($options_all))
+            $options_all = array();
+
+        if (!$updated && !empty($_POST['sidebar'])) {
+            $sidebar = (string)$_POST['sidebar'];
+
+            $sidebars_widgets = wp_get_sidebars_widgets();
+            if (isset($sidebars_widgets[$sidebar]))
+                $this_sidebar =& $sidebars_widgets[$sidebar];
+            else
+                $this_sidebar = array();
+
+            foreach ($this_sidebar as $_widget_id) {
+                if ('widget_gdstarrating_comments' == $wp_registered_widgets[$_widget_id]['callback'] && isset($wp_registered_widgets[$_widget_id]['params'][0]['number'])) {
+                    $widget_number = $wp_registered_widgets[$_widget_id]['params'][0]['number'];
+                    if (!in_array("gdstarcmm-$widget_number", $_POST['widget-id']))
+                        unset($options_all[$widget_number]);
+                }
+            }
+            foreach ((array)$_POST['gdstart'] as $widget_number => $posted) {
+                if (!isset($posted['title']) && isset($options_all[$widget_number]))
+                    continue;
+                $options = array();
+
+                $options['title'] = strip_tags(stripslashes($posted['title']));
+
+                $options_all[$widget_number] = $options;
+            }
+            update_option('widget_gdstarrating_comments', $options_all);
+            $updated = true;
         }
 
-        function widget($args, $instance) {
-            global $gdsr, $userdata;
-            extract($args, EXTR_SKIP);
-
-            if ($instance["display"] == "hide" || ($instance["display"] == "users" && $userdata->ID == 0) || ($instance["display"] == "visitors" && $userdata->ID > 0)) return;
-
-            echo $before_widget.$before_title.$instance['title'].$after_title;
-            echo $gdsr->render_top_widget($instance);
-            echo $after_widget;
+        if (-1 == $number) {
+            $wpnm = '%i%';
+            $wpno = $this->default_widget_comments;
+        }
+        else {
+            $wpnm = $number;
+            $wpno = $options_all[$number];
         }
 
-        function update($new_instance, $old_instance) {
-            $instance = $old_instance;
+        $wpfn = 'gdstart['.$wpnm.']';
 
-            $instance['title'] = strip_tags(stripslashes($new_instance['title']));
-            $instance['display'] = $new_instance['display'];
-            $instance['select'] = $new_instance['select'];
-            $instance['show'] = $new_instance['show'];
-            $instance['div_template'] = $new_instance['div_template'];
-            $instance['div_filter'] = $new_instance['div_filter'];
-            $instance['div_elements'] = $new_instance['div_elements'];
-            $instance['template'] = stripslashes(htmlentities($new_instance['template'], ENT_QUOTES, STARRATING_ENCODING));
+        include(STARRATING_PATH."widgets/widget_comments.php");
+    }
 
-            return $instance;
+    function widget_comments_display($args, $widget_args = 1) {
+        extract($args);
+        global $gdsr, $wpdb, $userdata;
+
+        if (is_numeric($widget_args))
+            $widget_args = array('number' => $widget_args);
+        $widget_args = wp_parse_args($widget_args, array( 'number' => -1 ));
+        extract($widget_args, EXTR_SKIP);
+        $options_all = get_option('widget_gdstarrating_comments');
+        if (!isset($options_all[$number]))
+            return;
+        $this->w = $options_all[$number];
+
+        echo $before_widget.$before_title.$this->w['title'].$after_title;
+        echo $gdsr->render_comments_widget($this->w);
+        echo $after_widget;
+    }
+
+    function widget_top_init() {
+        if (!$options = get_option('widget_gdstarrating_top'))
+            $options = array();
+
+        $widget_ops = array('classname' => 'widget_gdstarrating_top', 'description' => 'Overall blog rating results.');
+        $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstartop');
+        $name = 'GD Blog Top Rating';
+
+        $registered = false;
+        foreach (array_keys($options) as $o) {
+            if (!isset($options[$o]['title']))
+                continue;
+
+            $id = "gdstartop-$o";
+            $registered = true;
+            wp_register_sidebar_widget($id, $name, array(&$this, 'widget_top_display'), $widget_ops, array( 'number' => $o ) );
+            wp_register_widget_control($id, $name, array(&$this, 'widget_top_control'), $control_ops, array( 'number' => $o ) );
+        }
+        if (!$registered) {
+            wp_register_sidebar_widget('gdstartop-1', $name, array(&$this, 'widget_top_display'), $widget_ops, array( 'number' => -1 ) );
+            wp_register_widget_control('gdstartop-1', $name, array(&$this, 'widget_top_control'), $control_ops, array( 'number' => -1 ) );
+        }
+    }
+
+    function widget_top_control($widget_args = 1) {
+        global $wp_registered_widgets;
+        static $updated = false;
+
+        if ( is_numeric($widget_args) )
+            $widget_args = array('number' => $widget_args);
+
+        $widget_args = wp_parse_args($widget_args, array('number' => -1));
+        extract($widget_args, EXTR_SKIP);
+        $options_all = get_option('widget_gdstarrating_top');
+        if (!is_array($options_all))
+            $options_all = array();
+
+        if (!$updated && !empty($_POST['sidebar'])) {
+            $sidebar = (string)$_POST['sidebar'];
+
+            $sidebars_widgets = wp_get_sidebars_widgets();
+            if (isset($sidebars_widgets[$sidebar]))
+                $this_sidebar =& $sidebars_widgets[$sidebar];
+            else
+                $this_sidebar = array();
+
+            foreach ($this_sidebar as $_widget_id) {
+                if ('widget_gdstarrating_top' == $wp_registered_widgets[$_widget_id]['callback'] && isset($wp_registered_widgets[$_widget_id]['params'][0]['number'])) {
+                    $widget_number = $wp_registered_widgets[$_widget_id]['params'][0]['number'];
+                    if (!in_array("gdstartop-$widget_number", $_POST['widget-id']))
+                        unset($options_all[$widget_number]);
+                }
+            }
+            foreach ((array)$_POST['gdstart'] as $widget_number => $posted) {
+                if (!isset($posted['title']) && isset($options_all[$widget_number]))
+                    continue;
+                $options = array();
+
+                $options['title'] = strip_tags(stripslashes($posted['title']));
+                $options['display'] = $posted['display'];
+                $options['select'] = $posted['select'];
+                $options['show'] = $posted['show'];
+
+                $options['div_template'] = $posted['div_template'];
+                $options['div_filter'] = $posted['div_filter'];
+                $options['div_elements'] = $posted['div_elements'];
+
+                $options['template'] = stripslashes(htmlentities($posted['template'], ENT_QUOTES, STARRATING_ENCODING));
+
+                $options_all[$widget_number] = $options;
+            }
+            update_option('widget_gdstarrating_top', $options_all);
+            $updated = true;
         }
 
-        function form($instance) {
-            global $gdsr;
-            $instance = wp_parse_args((array)$instance, $gdsr->default_widget_top);
-
-            include(STARRATING_PATH.'widgets/top_28/part_basic.php');
-            include(STARRATING_PATH.'widgets/top_28/part_filter.php');
-            include(STARRATING_PATH.'widgets/top_28/part_template.php');
+        if (-1 == $number) {
+            $wpnm = '%i%';
+            $wpno = $this->default_widget_top;
         }
+        else {
+            $wpnm = $number;
+            $wpno = $options_all[$number];
+        }
+
+        $wpfn = 'gdstart['.$wpnm.']';
+
+        include(STARRATING_PATH."widgets/widget_top.php");
+    }
+
+    function widget_top_display($args, $widget_args = 1) {
+        extract($args);
+        global $gdsr, $userdata;
+
+        if (is_numeric($widget_args))
+            $widget_args = array('number' => $widget_args);
+        $widget_args = wp_parse_args($widget_args, array( 'number' => -1 ));
+        extract($widget_args, EXTR_SKIP);
+        $options_all = get_option('widget_gdstarrating_top');
+        if (!isset($options_all[$number]))
+            return;
+        $this->w = $options_all[$number];
+
+        if ($this->w["display"] == "hide" || ($this->w["display"] == "users" && $userdata->ID == 0) || ($this->w["display"] == "visitors" && $userdata->ID > 0)) return;
+
+        echo $before_widget.$before_title.$this->w['title'].$after_title;
+        echo $gdsr->render_top_widget($this->w);
+        echo $after_widget;
+    }
+
+    function widget_articles_init() {
+        if (!$options = get_option('widget_gdstarrating'))
+            $options = array();
+
+        $widget_ops = array('classname' => 'widget_gdstarrating', 'description' => 'Customized rating results list.');
+        $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstarrmulti');
+        $name = 'GD Star Rating';
+
+        $registered = false;
+        foreach (array_keys($options) as $o) {
+            if (!isset($options[$o]['title']))
+                continue;
+
+            $id = "gdstarrmulti-$o";
+            $registered = true;
+            wp_register_sidebar_widget($id, $name, array(&$this, 'widget_articles_display'), $widget_ops, array( 'number' => $o ) );
+            wp_register_widget_control($id, $name, array(&$this, 'widget_articles_control'), $control_ops, array( 'number' => $o ) );
+        }
+        if (!$registered) {
+            wp_register_sidebar_widget('gdstarrmulti-1', $name, array(&$this, 'widget_articles_display'), $widget_ops, array( 'number' => -1 ) );
+            wp_register_widget_control('gdstarrmulti-1', $name, array(&$this, 'widget_articles_control'), $control_ops, array( 'number' => -1 ) );
+        }
+    }
+
+    function widget_articles_control($widget_args = 1) {
+        global $wp_registered_widgets;
+        static $updated = false;
+
+        if ( is_numeric($widget_args) )
+            $widget_args = array('number' => $widget_args);
+
+        $widget_args = wp_parse_args($widget_args, array('number' => -1));
+        extract($widget_args, EXTR_SKIP);
+        $options_all = get_option('widget_gdstarrating');
+        if (!is_array($options_all))
+            $options_all = array();
+
+        if (!$updated && !empty($_POST['sidebar'])) {
+            $sidebar = (string)$_POST['sidebar'];
+
+            $sidebars_widgets = wp_get_sidebars_widgets();
+            if (isset($sidebars_widgets[$sidebar]))
+                $this_sidebar =& $sidebars_widgets[$sidebar];
+            else
+                $this_sidebar = array();
+
+            foreach ($this_sidebar as $_widget_id) {
+                if ('widget_gdstarrating' == $wp_registered_widgets[$_widget_id]['callback'] && isset($wp_registered_widgets[$_widget_id]['params'][0]['number'])) {
+                    $widget_number = $wp_registered_widgets[$_widget_id]['params'][0]['number'];
+                    if (!in_array("gdstarrmulti-$widget_number", $_POST['widget-id']))
+                        unset($options_all[$widget_number]);
+                }
+            }
+            foreach ((array)$_POST['gdstarr'] as $widget_number => $posted) {
+                if (!isset($posted['title']) && isset($options_all[$widget_number]))
+                    continue;
+                $options = array();
+
+                $options['title'] = strip_tags(stripslashes($posted['title']));
+
+                $options['tpl_header'] = stripslashes(htmlentities($posted['tpl_header'], ENT_QUOTES, STARRATING_ENCODING));
+                $options['tpl_item'] = stripslashes(htmlentities($posted['tpl_item'], ENT_QUOTES, STARRATING_ENCODING));
+                $options['tpl_footer'] = stripslashes(htmlentities($posted['tpl_footer'], ENT_QUOTES, STARRATING_ENCODING));
+                $options['tpl_title_length'] = $posted['title_max'];
+
+                $options['source'] = $posted['source'];
+                $options['source_set'] = $posted['source_set'];
+
+                $options['rows'] = $posted['rows'];
+                $options['min_votes'] = $posted['min_votes'];
+                $options['select'] = $posted['select'];
+                $options['grouping'] = $posted['grouping'];
+                $options['column'] = $posted['column'];
+                $options['order'] = $posted['order'];
+                $options['category'] = $posted['category'];
+                $options['show'] = $posted['show'];
+                $options['display'] = $posted['display'];
+                $options['last_voted_days'] = $posted['last_voted_days'];
+
+                $options['publish_date'] = $posted['publish_date'];
+                $options['publish_month'] = $posted['publish_month'];
+                $options['publish_days'] = $posted['publish_days'];
+                $options['publish_range_from'] = $posted['publish_range_from'];
+                $options['publish_range_to'] = $posted['publish_range_to'];
+
+                $options['div_template'] = $posted['div_template'];
+                $options['div_filter'] = $posted['div_filter'];
+                $options['div_trend'] = $posted['div_trend'];
+                $options['div_elements'] = $posted['div_elements'];
+                $options['div_image'] = $posted['div_image'];
+                $options['div_stars'] = $posted['div_stars'];
+
+                $options['image_from'] = $posted['image_from'];
+                $options['image_custom'] = $posted['image_custom'];
+                $options['rating_stars'] = $posted['rating_stars'];
+                $options['rating_size'] = $posted['rating_size'];
+
+                $options['trends_rating'] = $posted['trends_rating'];
+                $options['trends_rating_set'] = $posted['trends_rating_set'];
+                $options['trends_rating_rise'] = strip_tags(stripslashes($posted['trends_rating_rise']));
+                $options['trends_rating_same'] = strip_tags(stripslashes($posted['trends_rating_same']));
+                $options['trends_rating_fall'] = strip_tags(stripslashes($posted['trends_rating_fall']));
+                $options['trends_voting'] = $posted['trends_voting'];
+                $options['trends_voting_set'] = $posted['trends_voting_set'];
+                $options['trends_voting_rise'] = strip_tags(stripslashes($posted['trends_voting_rise']));
+                $options['trends_voting_same'] = strip_tags(stripslashes($posted['trends_voting_same']));
+                $options['trends_voting_fall'] = strip_tags(stripslashes($posted['trends_voting_fall']));
+
+                $options['hide_empty'] = isset($posted['hide_empty']) ? 1 : 0;
+                $options['hide_noreview'] = isset($posted['hide_noreview']) ? 1 : 0;
+                $options['bayesian_calculation'] = isset($posted['bayesian_calculation']) ? 1 : 0;
+                $options['category_toponly'] = isset($posted['category_toponly']) ? 1 : 0;
+
+                $options_all[$widget_number] = $options;
+            }
+            update_option('widget_gdstarrating', $options_all);
+            $updated = true;
+        }
+
+        if (-1 == $number) {
+            $wpnm = '%i%';
+            $wpno = $this->default_widget;
+        }
+        else {
+            $wpnm = $number;
+            $wpno = $options_all[$number];
+        }
+
+        $wpfn = 'gdstarr['.$wpnm.']';
+        $wptr = $this->g->trend;
+        $wpst = $this->g->stars;
+        $wpml = GDSRDBMulti::get_multis_tinymce();
+
+        include(STARRATING_PATH."widgets/widget_rating.php");
+    }
+
+    function widget_articles_display($args, $widget_args = 1) {
+        extract($args);
+        global $gdsr, $wpdb, $userdata;
+
+        if (is_numeric($widget_args))
+            $widget_args = array('number' => $widget_args);
+        $widget_args = wp_parse_args($widget_args, array( 'number' => -1 ));
+        extract($widget_args, EXTR_SKIP);
+        $options_all = get_option('widget_gdstarrating');
+        if (!isset($options_all[$number]))
+            return;
+        $this->w = $options_all[$number];
+
+        if ($this->w["display"] == "hide" || ($this->w["display"] == "users" && $userdata->ID == 0) || ($this->w["display"] == "visitors" && $userdata->ID > 0)) return;
+
+        echo $before_widget.$before_title.$this->w['title'].$after_title;
+        echo $gdsr->render_articles_widget($this->w);
+        echo $after_widget;
     }
 }
 
