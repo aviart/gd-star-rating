@@ -38,6 +38,7 @@
   * fix: multi rating average breaks for empty rating request
   * fix: multi rating average breaks with no multi sets
   * fix: shortcode form review and rating tabs crossed
+  * fix: rendering with t2 template setting missing
   * fix: number of strings missing for translation
   * fix: few small typos
 

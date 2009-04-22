@@ -4,6 +4,11 @@ class GDSRRenderT2 {
     function render_srb($template_id, $post_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
         include(STARRATING_PATH.'code/t2/gd-star-t2-templates.php');
 
+        if (intval($template_id) == 0) {
+            $t = GDSRDB::get_templates("SRB", true, true);
+            $template_id = $t->template_id;
+        }
+
         $template = new gdTemplateRender($template_id);
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -39,6 +44,11 @@ class GDSRRenderT2 {
 
     function render_crb($template_id, $cmm_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '') {
         include(STARRATING_PATH.'code/t2/gd-star-t2-templates.php');
+
+        if (intval($template_id) == 0) {
+            $t = GDSRDB::get_templates("CRB", true, true);
+            $template_id = $t->template_id;
+        }
 
         $template = new gdTemplateRender($template_id);
         $tpl_render = $template->elm["normal"];

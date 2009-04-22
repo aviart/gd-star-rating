@@ -358,13 +358,14 @@ class GDSRDB {
     // moderation
 
     // templates
-    function get_templates($section = '', $default_sort = false) {
+    function get_templates($section = '', $default_sort = false, $only_default = false) {
         global $wpdb, $table_prefix;
         if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
-        if ($default_sort) $default_sort = "`default` desc, preinstalled desc, ";
-        else $default_sort = "";
+        $default_sort = $default_sort ? "`default` desc, preinstalled desc, " : "";
+        $default_limit = $only_default ? " LIMIT 0, 1" : "";
 
-        $sql = sprintf("select * from %sgdsr_templates%s order by %stemplate_id asc", $table_prefix, $section, $default_sort);
+        $sql = sprintf("select * from %sgdsr_templates%s order by %stemplate_id asc%s", $table_prefix, $section, $default_sort, $default_limit);
+        if ($only_default) return $wpdb->get_row($sql);
         return $wpdb->get_results($sql);
     }
 
