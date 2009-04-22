@@ -65,7 +65,7 @@ class gdTemplate {
     function add_element($t, $d) {
         $tpl = new gdTemplateElement($t, $d);
         if (in_array($t, $this->tpls_tags)) {
-            $k = array_keys($this->tpls_tags, $t, true);
+            $k = array_keys($this->tpls_tags, $t);
             if (count($k) == 1) $tpl->tpl = $k[0];
         }
         $this->elements[] = $tpl;

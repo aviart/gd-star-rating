@@ -7,6 +7,11 @@ $t->add_part(__("Singular", "gd-star-rating"), "singular", "", "none");
 $t->add_part(__("Plural", "gd-star-rating"), "plural", "", "none");
 $tpls->add_template($t);
 
+$t = new gdTemplate("ETR", __("Element For Alternating Table Rows", "gd-star-rating"), "%TABLE_ROW_CLASS%");
+$t->add_part(__("Odd", "gd-star-rating"), "odd", "", "none");
+$t->add_part(__("Even", "gd-star-rating"), "even", "", "none");
+$tpls->add_template($t);
+
 $t = new gdTemplate("SRT", __("Standard Ratings Text", "gd-star-rating"), "%RATING_TEXT%");
 $t->add_template("EWV", "%WORD_VOTES%");
 $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
@@ -31,6 +36,7 @@ $tpls->add_template($t);
 
 $t = new gdTemplate("SRR", __("Standard Ratings Results", "gd-star-rating"));
 $t->add_template("EWV", "%WORD_VOTES%");
+$t->add_template("ETR", "%TABLE_ROW_CLASS%");
 $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
 $t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
 $t->add_element("%REVIEW%", __("article review", "gd-star-rating"));
@@ -46,6 +52,7 @@ $t->add_element("%VOTE_TREND%", __("article voting trend", "gd-star-rating"));
 $t->add_element("%REVIEW_STARS%", __("article review stars", "gd-star-rating"));
 $t->add_element("%COUNT%", __("number of posts/pages", "gd-star-rating"));
 $t->add_element("%ID%", __("post/page id", "gd-star-rating"));
+$t->add_element("%IMAGE%", __("image for the post/page", "gd-star-rating"));
 $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
 $t->add_element("%TABLE_ROW_CLASS%", __("class for alternating table rows", "gd-star-rating"));
 $t->add_part(__("Header", "gd-star-rating"), "header", "", "none");
@@ -127,6 +134,51 @@ $t->add_element("%CMM_CSS_HEADER%", __("css class for header", "gd-star-rating")
 $t->add_element("%CMM_CSS_STARS%", __("css class for stars", "gd-star-rating"));
 $t->add_element("%CMM_CSS_TEXT%", __("css class for rating text", "gd-star-rating"));
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
+$tpls->add_template($t);
+
+$t = new gdTemplate("WSR", __("Widget Star Rating", "gd-star-rating"));
+$t->add_template("EWV", "%WORD_VOTES%");
+$t->add_template("ETR", "%TABLE_ROW_CLASS%");
+$t->add_element("%RATING%", __("article rating", "gd-star-rating"));
+$t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
+$t->add_element("%REVIEW%", __("article review", "gd-star-rating"));
+$t->add_element("%MAX_REVIEW%", __("maximum review value", "gd-star-rating"));
+$t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
+$t->add_element("%TITLE%", __("post/page title", "gd-star-rating"));
+$t->add_element("%PERMALINK%", __("url to post/page", "gd-star-rating"));
+$t->add_element("%STARS%", __("rating stars", "gd-star-rating"));
+$t->add_element("%BAYES_RATING%", __("bayesian estimate mean rating", "gd-star-rating"));
+$t->add_element("%BAYES_STARS%", __("bayesian estimate mean rating stars", "gd-star-rating"));
+$t->add_element("%RATE_TREND%", __("article rating trend", "gd-star-rating"));
+$t->add_element("%VOTE_TREND%", __("article voting trend", "gd-star-rating"));
+$t->add_element("%REVIEW_STARS%", __("article review stars", "gd-star-rating"));
+$t->add_element("%COUNT%", __("number of posts/pages", "gd-star-rating"));
+$t->add_element("%ID%", __("post/page id", "gd-star-rating"));
+$t->add_element("%IMAGE%", __("image for the post/page", "gd-star-rating"));
+$t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
+$t->add_element("%TABLE_ROW_CLASS%", __("class for alternating table rows", "gd-star-rating"));
+$t->add_part(__("Header", "gd-star-rating"), "header", "", "none");
+$t->add_part(__("Item", "gd-star-rating"), "item", "", "all", "area");
+$t->add_part(__("Footer", "gd-star-rating"), "footer", "", "none");
+$tpls->add_template($t);
+
+$t = new gdTemplate("WBR", __("Widget Blog Rating", "gd-star-rating"));
+$t->add_template("EWV", "%WORD_VOTES%");
+$t->add_element("%RATING%", __("article rating", "gd-star-rating"));
+$t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
+$t->add_element("%BAYES_RATING%", __("bayesian estimate mean rating", "gd-star-rating"));
+$t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
+$t->add_element("%COUNT%", __("number of posts/pages", "gd-star-rating"));
+$t->add_element("%PERCENTAGE%", __("article percentage rating", "gd-star-rating"));
+$t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
+$t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
+$tpls->add_template($t);
+
+$t = new gdTemplate("WCR", __("Widget Comments Rating", "gd-star-rating"));
+$t->add_template("EWV", "%WORD_VOTES%");
+$t->add_part(__("Header", "gd-star-rating"), "header", "", "none");
+$t->add_part(__("Item", "gd-star-rating"), "item", "", "all", "area");
+$t->add_part(__("Footer", "gd-star-rating"), "footer", "", "none");
 $tpls->add_template($t);
 
 ?>
