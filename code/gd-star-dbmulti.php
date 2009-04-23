@@ -575,10 +575,11 @@ class GDSRDBMulti {
     
     function add_multi_set($set) {
         global $wpdb, $table_prefix;
-        $sql = sprintf("insert into %sgdsr_multis (`name`, `description`, `stars`, `object`, `weight`, `auto_insert`, `auto_location`, `auto_categories`) values ('%s', '%s', %s, '%s', '%s', '%s', '%s')",
+        $sql = sprintf("insert into %sgdsr_multis (`name`, `description`, `stars`, `object`, `weight`, `auto_insert`, `auto_location`, `auto_categories`) values ('%s', '%s', %s, '%s', '%s', '%s', '%s', '%s')",
                 $table_prefix, $set->name, $set->description, $set->stars, serialize($set->object), serialize($set->weight), $set->auto_insert, $set->auto_location, $set->auto_categories
             );
         $wpdb->query($sql);
+        print_r($sql);
         return $wpdb->insert_id;
     }
     
