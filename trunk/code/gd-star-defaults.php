@@ -5,7 +5,7 @@ class GDSRDefaults {
         "version" => "1.2.1",
         "date" => "2009.04.26.",
         "status" => "Stable",
-        "build" => 566,
+        "build" => 567,
         "external_javascript" => 0,
         "external_rating_css" => 1,
         "external_css" => 1,
