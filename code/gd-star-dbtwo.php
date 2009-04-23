@@ -410,10 +410,58 @@ class GDSRDB {
         return $wpdb->insert_id;
     }
 
+    function insert_extras_templates($path) {
+        global $wpdb, $table_prefix;
+        $templates = array();
+        $path.= "install/data/gdsr_templates_xtra.txt";
+        if (file_exists($path)) {
+            $tpls = file($path);
+            foreach ($tpls as $tpl) {
+                $pipe = strpos($tpl, "|");
+                $tpl_check = substr($tpl, 0, $pipe);
+                $tpl_section = substr($tpl, $pipe + 1, 3);
+                $tpl_insert = substr($tpl, $pipe + 5);
+                $sql = sprintf("select template_id from %sgdsr_templates where name = '%s' and preinstalled = '1'", $table_prefix, $tpl_check);
+                $tpl_id = intval($wpdb->get_var($sql));
+                if ($tpl_id == 0) {
+                    $sql = str_replace("%sgdsr_templates", $table_prefix."gdsr_templates", $tpl_insert);
+                    $wpdb->query($sql);
+                    $tpl_id = $wpdb->insert_id;
+                }
+                $template["section"] = $tpl_section;
+                $template["tpl_id"] = sprintf("%s", $tpl_id);
+                $templates[] = $template;
+            }
+        }
+        if (count($templates) > 0) {
+            include(STARRATING_PATH.'code/t2/gd-star-t2-templates.php');
+            $depend = array();
+            foreach ($tpls->tpls as $tpl) {
+                $section = $tpl->code;
+                $sql = sprintf("select template_id from %sgdsr_templates where section = '%s' and preinstalled = '1'", $table_prefix, $section);
+                $tpl_id = intval($wpdb->get_var($sql));
+                $depend[$section] = $tpl_id;
+            }
+            foreach ($templates as $tpl) {
+                $dep = array();
+                $t = $tpls->get_list($tpl["section"]);
+                foreach ($t->tpls as $tag) {
+                    $s = $tag->code;
+                    $dep[$s] = sprintf("%s", $depend[$s]);
+                }
+                if (count($dep) > 0) {
+                    $sql = sprintf("update %sgdsr_templates set dependencies = '%s' where template_id = %s",
+                        $table_prefix, serialize($dep), $tpl["tpl_id"]);
+                    $wpdb->query($sql);
+                }
+            }
+        }
+    }
+
     function insert_default_templates($path) {
         global $wpdb, $table_prefix;
-        $path.= "install/data/gdsr_templates.txt";
         $templates = array();
+        $path.= "install/data/gdsr_templates_main.txt";
         if (file_exists($path)) {
             $tpls = file($path);
             foreach ($tpls as $tpl) {
