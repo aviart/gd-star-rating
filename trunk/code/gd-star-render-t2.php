@@ -1,7 +1,7 @@
 <?php
 
 class GDSRRenderT2 {
-    function render_srb($template_id, $post_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+    function get_template($template_id, $section) {
         include(STARRATING_PATH.'code/t2/gd-star-t2-templates.php');
 
         if (intval($template_id) == 0) {
@@ -9,7 +9,31 @@ class GDSRRenderT2 {
             $template_id = $t->template_id;
         }
 
-        $template = new gdTemplateRender($template_id);
+        return new gdTemplateRender($template_id);
+    }
+
+    function prepare_wbr($widget) {
+        global $gdsr, $wpdb;
+
+        $sql = GDSRX::get_totals_standard($widget);
+        $data = $wpdb->get_row($sql);
+
+        $data->max_rating = $gdsr->o["stars"];
+        if ($data->votes == null) {
+            $data->votes = 0;
+            $data->voters = 0;
+        }
+        if ($data->votes > 0) {
+            $data->rating = @number_format($data->votes / $data->voters, 1);
+            $data->bayes_rating = $gdsr->bayesian_estimate($data->voters, $data->rating);
+            $data->percentage = floor((100 / $data->max_rating) * $data->rating);
+        }
+
+        return $data;
+    }
+
+    function render_srb($template_id, $post_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+        $template = GDSRRenderT2::get_template($template_id, "SRB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
@@ -43,14 +67,7 @@ class GDSRRenderT2 {
     }
 
     function render_crb($template_id, $cmm_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '') {
-        include(STARRATING_PATH.'code/t2/gd-star-t2-templates.php');
-
-        if (intval($template_id) == 0) {
-            $t = GDSRDB::get_templates("CRB", true, true);
-            $template_id = $t->template_id;
-        }
-
-        $template = new gdTemplateRender($template_id);
+        $template = GDSRRenderT2::get_template($template_id, "CRB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
@@ -130,6 +147,26 @@ class GDSRRenderT2 {
 
         $word_votes = $template->dep["EWV"];
         $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+        return $rt;
+    }
+
+    function render_wbr($widget) {
+        $template = GDSRRenderT2::get_template($widget["template_id"], "WBR");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+        $data = GDSRRenderT2::prepare_wbr($widget);
+        
+        $rt = str_replace('%PERCENTAGE%', $data->percentage, $tpl_render);
+        $rt = str_replace('%RATING%', $data->rating, $rt);
+        $rt = str_replace('%MAX_RATING%', $data->max_rating, $rt);
+        $rt = str_replace('%VOTES%', $data->voters, $rt);
+        $rt = str_replace('%COUNT%', $data->count, $rt);
+        $rt = str_replace('%BAYES_RATING%', $data->bayes_rating, $rt);
+
+        $word_votes = $template->dep["EWV"];
+        $tense = $data->voters == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
         $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
 
         return $rt;

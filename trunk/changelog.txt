@@ -5,60 +5,8 @@
 === Version: 1.2.1 / april 26 2009 ===
   * new: post comments widget
   * new: t2 templates for widgets and alternating row class
-  * new: t2 default templates inserted into
+  * new: t2 default templates inserted into widget
   * new: inserting extra templates for each template type
   * fix: adding new multi rating sets
   * fix: removed obsolete code for ie6 png fix
   * fix: small PHP4 incompatibility
-
-=== Version: 1.2.0 / april 22 2009 ===
-  * new: widgets fully support wordpress 2.8
-  * new: t2 rendering of standard rating block
-  * new: t2 rendering of comment rating block
-  * new: t2 system supports setting of default templates for each template type
-  * new: multi ratings auto insertion
-  * new: star rating widget support for multi rating data
-  * new: star rating widget support for multiple categories
-  * new: star rating widget support for subcategories
-  * new: star rating widget limit articles voted for in the last number of days
-  * new: redesigned plugin front panel
-  * new: five new animated loaders
-  * new: auto insertion of rating block on top of the article
-  * new: wp filter for widget data prepare
-  * new: saving last voted timestamp for articles, comments and multi rating results
-  * new: referer protection for graphics generator to offsite prevent leeching
-  * edit: shortcode and functions expanded for t2 standard rating block
-  * edit: widgets code moved to separrate file and class
-  * edit: css changes for better wp 2.8 compatibility
-  * edit: few more minor chnages for better wp 2.8 compatibility
-  * edit: removed obsolete articles and comments options
-  * edit: removed options for hiding parts of settings tab
-  * edit: trend calculations updated to support multi ratings
-  * edit: for wp newer than 2.7 tables don't have width set
-  * edit: even more code reorganization and cleanup
-  * edit: changed loading of javascript code for widgets panel
-  * edit: updated readme and added twitter url
-  * edit: removed obsolete css styles
-  * edit: number of small all over changes
-  * fix: duplicated results in sidebard widget
-  * fix: sql query for widget with ranged dates
-  * fix: multi rating calculation division by zero
-  * fix: full db tables reinstall doesn't insert templates
-  * fix: multi rating average breaks for empty rating request
-  * fix: multi rating average breaks with no multi sets
-  * fix: shortcode form review and rating tabs crossed
-  * fix: rendering with t2 template setting missing
-  * fix: few minor css problems
-  * fix: number of strings missing for translation
-  * fix: few small typos
-
-=== Version: 1.1.9.1 / april 16 2009 ===
-  * new: widget template tags for stars and image
-  * new: function to render multi rating average rating
-  * edit: more multi rating optimizations
-  * edit: star rating widget cleanup
-  * edit: widget publish date now has all dates option
-  * edit: removed some obsolete functions from main class
-  * fix: saving posts with no multi rating sets defined
-  * fix: reinstalling multi ratings db tables
-  * fix: generating stars for rating results table

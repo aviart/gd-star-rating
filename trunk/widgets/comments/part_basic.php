@@ -6,6 +6,11 @@
 </table>
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
+    <td width="140" nowrap="nowrap"><?php _e("Template", "gd-star-rating"); ?>:</td>
+    <td align="right"><?php GDSRHelper::render_templates_section("WCR", $wpfn."[template_id]", $wpno["template_id"], 260); ?>
+    </td>
+  </tr>
+  <tr>
     <td width="140" nowrap="nowrap"><?php _e("Show Widget To", "gd-star-rating"); ?>:</td>
     <td align="right">
         <label><select name="<?php echo $wpfn; ?>[display]" id="gdstarr-display" style="width: 110px">
