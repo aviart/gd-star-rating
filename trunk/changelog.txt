@@ -8,5 +8,6 @@
   * new: t2 default templates inserted into widget
   * new: inserting extra templates for each template type
   * fix: adding new multi rating sets
+  * fix: star rating widget small rendering echo bug
   * fix: removed obsolete code for ie6 png fix
   * fix: small PHP4 incompatibility

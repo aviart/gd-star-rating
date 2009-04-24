@@ -370,7 +370,7 @@ class gdsrWidgets {
         if ($this->w["display"] == "hide" || ($this->w["display"] == "users" && $userdata->ID == 0) || ($this->w["display"] == "visitors" && $userdata->ID > 0)) return;
 
         echo $before_widget.$before_title.$this->w['title'].$after_title;
-        echo $gdsr->render_articles_widget($this->w);
+        echo GDSRRenderT2::render_wsr($this->w);
         echo $after_widget;
     }
 }
