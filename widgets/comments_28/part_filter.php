@@ -46,8 +46,7 @@
         <select name="<?php echo $this->get_field_name('column'); ?>" id="<?php echo $this->get_field_id('column'); ?>" style="width: 110px">
             <option value="rating"<?php echo $instance['column'] == 'rating' ? ' selected="selected"' : ''; ?>><?php _e("Rating", "gd-star-rating"); ?></option>
             <option value="votes"<?php echo $instance['column'] == 'votes' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
-            <option value="id"<?php echo $instance['column'] == 'id' ? ' selected="selected"' : ''; ?>><?php _e("ID", "gd-star-rating"); ?></option>
-            <option value="count"<?php echo $instance['column'] == 'count' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
+            <option value="id"<?php echo $instance['column'] == 'id' ? ' selected="selected"' : ''; ?>><?php _e("Comment ID", "gd-star-rating"); ?></option>
         </select>
     </td>
   </tr>

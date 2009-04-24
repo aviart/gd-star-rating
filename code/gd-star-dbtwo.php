@@ -421,7 +421,7 @@ class GDSRDB {
                 $tpl_check = substr($tpl, 0, $pipe);
                 $tpl_section = substr($tpl, $pipe + 1, 3);
                 $tpl_insert = substr($tpl, $pipe + 5);
-                $sql = sprintf("select template_id from %sgdsr_templates where name = '%s' and preinstalled = '1'", $table_prefix, $tpl_check);
+                $sql = sprintf("select template_id from %sgdsr_templates where name = '%s' and preinstalled = '2'", $table_prefix, $tpl_check);
                 $tpl_id = intval($wpdb->get_var($sql));
                 if ($tpl_id == 0) {
                     $sql = str_replace("%sgdsr_templates", $table_prefix."gdsr_templates", $tpl_insert);
