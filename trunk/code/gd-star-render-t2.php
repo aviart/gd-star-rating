@@ -239,8 +239,9 @@ class GDSRRenderT2 {
         return $all_rows;
     }
 
-    function render_sst($template_id, $post_id, $votes, $score, $unit_set, $unit_width, $unit_count, $header_text) {
-        $template = GDSRRenderT2::get_template($template_id, "SST");
+    function render_ssb($template_id, $post_id, $votes, $score, $unit_set, $unit_width, $unit_count, $header_text) {
+        $template = GDSRRenderT2::get_template($template_id, "SSB");
+        wp_gdsr_dump("TMPL", $template);
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
@@ -254,7 +255,7 @@ class GDSRRenderT2 {
         $rt = str_replace('%RATING%', $rating, $tpl_render);
         $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
         $rt = str_replace('%VOTES%', $votes, $rt);
-        $rt = str_replace('%STARS%', $rater_stars, $rt);
+        $rt = str_replace('%RATING_STARS%', $rater_stars, $rt);
         $rt = str_replace('%ID%', $post_id, $rt);
 
         $word_votes = $template->dep["EWV"];

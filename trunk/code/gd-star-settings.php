@@ -109,7 +109,7 @@
 
         $gdsr_options["default_srb_template"] = $_POST['gdsr_default_srb_template'];
         $gdsr_options["default_crb_template"] = $_POST['gdsr_default_crb_template'];
-        $gdsr_options["default_sst_template"] = $_POST['gdsr_default_sst_template'];
+        $gdsr_options["default_ssb_template"] = $_POST['gdsr_default_ssb_template'];
 
         $gdsr_options["srb_class_block"] = $_POST['gdsr_classblock'];
         $gdsr_options["srb_class_text"] = $_POST['gdsr_classtext'];

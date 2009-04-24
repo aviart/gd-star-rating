@@ -65,7 +65,7 @@ class GDSRDefaults {
         "cmm_class_stars" => '',
         "default_srb_template" => 0,
         "default_crb_template" => 0,
-        "default_sst_template" => 0,
+        "default_ssb_template" => 0,
         "mur_style" => 'oxygen',
         "mur_style_ie6" => 'oxygen_gif',
         "mur_size" => 20,

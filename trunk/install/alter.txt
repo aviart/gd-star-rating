@@ -3,3 +3,4 @@ ALTER TABLE `%sgdsr_multis` CHANGE `multi_id` `multi_id` INT(10) UNSIGNED NOT NU
 ALTER TABLE `%sgdsr_multis` CHANGE `description` `description` text NOT NULL default ''
 ALTER TABLE `%sgdsr_multis_data` DROP `review`
 ALTER TABLE `%sgdsr_multis_data` DROP `review_text`
+DELETE FROM `%sgdsr_templates` WHERE `section` = 'SST'
