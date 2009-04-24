@@ -199,11 +199,12 @@ class GDSRDefaults {
     );
 
     var $default_widget_comments = array(
-        "title" => "Blog Rating",
+        "title" => "Comments Rating",
         "display" => "all",
         "template_id" => 0,
         "rows" => 5,
         "min_votes" => 3,
+        "select" => "post",
         "column" => "rating",
         "order" => "desc",
         "hide_empty" => 1

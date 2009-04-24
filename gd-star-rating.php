@@ -796,10 +796,12 @@ if (!class_exists('GDStarRating')) {
                 $this->widgets = new gdsrWidgets($this->g, $this->default_widget_comments, $this->default_widget_top, $this->default_widget);
                 if ($this->o["widget_articles"] == 1) $this->widgets->widget_articles_init();
                 if ($this->o["widget_top"] == 1) $this->widgets->widget_top_init();
+                if ($this->o["widget_comments"] == 1) $this->widgets->widget_comments_init();
             }
             else {
                 if ($this->o["widget_articles"] == 1) register_widget("gdsrWidgetRating");
                 if ($this->o["widget_top"] == 1) register_widget("gdsrWidgetTop");
+                if ($this->o["widget_comments"] == 1) register_widget("gdsrWidgetComments");
             }
         }
 
@@ -1663,6 +1665,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $bayesian_calculated = !(strpos($template, "%BAYES_RATING%") === false);
             $t_rate = !(strpos($template, "%RATE_TREND%") === false);
             $t_vote = !(strpos($template, "%VOTE_TREND%") === false);
+            $a_name = !(strpos($template, "%AUTHOR_NAME%") === false);
+            $a_link = !(strpos($template, "%AUTHOR_LINK%") === false);
 
             if ($widget["column"] == "bayes" && !$bayesian_calculated) $widget["column"] == "rating";
             $all_rows = $this->prepare_data_retrieve($widget, $this->o["bayesian_minimal"]);
@@ -1736,6 +1740,12 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                     $row->table_row_class = $tr_class;
                     if (strlen($row->title) > $widget["tpl_title_length"] - 3 && $widget["tpl_title_length"] > 0)
                         $row->title = substr($row->title, 0, $widget["tpl_title_length"] - 3)." ...";
+
+                    if ($a_link || $a_name && intval($row->author) > 0) {
+                        $user = get_userdata($row->author);
+                        $row->author_name = $user->display_name;
+                        $row->author_url = get_bloginfo("url")."/author/".$user->user_login;
+                    }
 
                     if ($trends_calculated) {
                         $empty = $this->e;
@@ -1870,6 +1880,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $template = str_replace('%VOTE_TREND%', $row->item_trend_voting, $template);
             $template = str_replace('%TABLE_ROW_CLASS%', $row->table_row_class, $template);
             $template = str_replace('%IMAGE%', $row->image, $template);
+            $template = str_replace('%AUTHOR_NAME%', $row->author_name, $template);
+            $template = str_replace('%AUTHOR_LINK%', $row->author_url, $template);
             return $template;
         }
 

@@ -346,7 +346,7 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
             $group = "group by u.id";
         }
         else {
-            $select = "p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter";
+            $select = "p.id as post_id, p.post_author as author, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter";
         }
 
         if ($widget["select"] != "" && $widget["select"] != "postpage") 
