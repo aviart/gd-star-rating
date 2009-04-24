@@ -54,50 +54,6 @@ class GDSRRender {
         return sprintf('<img src="%s" />', $url);
     }
 
-    function rss_rating_block($id, $votes, $score, $unit_set, $unit_width, $unit_count, $render, $text, $header, $header_text) {
-        $template = get_option('gd-star-rating-templates');
-        if ($votes == 1) $tense = $template["word_votes_singular"];
-        else $tense = $template["word_votes_plural"];
-
-        if ($votes > 0) $rating2 = $score / $votes;
-        else $rating2 = 0;
-        if ($rating2 > $unit_count) $rating2 = $unit_count;
-        $rating = @number_format($rating2, 1);
-
-        $rater = GDSRRender::rating_header($header, $header_text);
-        if ($rater != '') $rater.= "<br />";
-
-        if ($render == "stars") $rater_text = "";
-        else {
-            if ($text == 'hide' || ($text == 'top_hidden' && $votes == 0) || ($text == 'bottom_hidden' && $votes == 0) || ($text == 'left_hidden' && $votes == 0) || ($text == 'right_hidden' && $votes == 0))
-                $rater_text = "";
-            else {
-                $tpl = $template["rss_article_rating_text"];
-                $rt = html_entity_decode($tpl);
-                $rt = str_replace('%RATING%', $rating, $rt);
-                $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-                $rt = str_replace('%VOTES%', $votes, $rt);
-                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-                $rt = str_replace('%ID%', $id, $rt);
-                $rater_text = $rt;
-            }
-        }
-        if ($render != "text") {
-            $url = STARRATING_URL.sprintf("gfx.php?value=%s", $rating);
-            $rater_stars = '<img src="'.$url.'" />';
-        }
-        
-        if ($rater_text == "" || $text == "hide" || $text == "top" || $text == "top_hidden" || $text == "bottom" || $text == "bottom_hidden" || $rater_text == '') {
-            $rater.= $rater_stars;
-            if ($rater_text != "") $rater.= '<br />'.$rater_text;
-        }
-        else {
-            if ($text == "left" || $text == "left_hidden") $rater.= $rater_text.$rater_stars;
-            else $rater.= $rater_stars.$rater_text;
-        }
-        return $rater;
-    }
-
     function rating_stars_multi($post_id, $set_id, $id, $height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '', $review_mode = false) {
         if ($review_mode) $current = $value;
         else $current = 0;
