@@ -205,7 +205,16 @@ class GDSRDefaults {
         "select" => "post",
         "column" => "rating",
         "order" => "desc",
-        "hide_empty" => 1
+        "hide_empty" => 1,
+        "div_filter" => 0,
+        "div_image" => 0,
+        "div_stars" => 0,
+        "text_max" => 50,
+        "rating_stars" => "oxygen",
+        "rating_size" => 12,
+        "last_voted_days" => 0,
+        "avatar_x" => 36,
+        "avatar_y" => 36
     );
 
     var $default_widget_top = array(
