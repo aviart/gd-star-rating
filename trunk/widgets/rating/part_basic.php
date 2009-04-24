@@ -27,6 +27,11 @@
     </td>
   </tr>
   <tr>
+    <td width="140" nowrap="nowrap"><?php _e("Template", "gd-star-rating"); ?>:</td>
+    <td align="right"><?php GDSRHelper::render_templates_section("WSR", $wpfn."[template_id]", $wpno["template_id"], 260); ?>
+    </td>
+  </tr>
+  <tr>
     <td width="140" nowrap="nowrap"><?php _e("Data Source", "gd-star-rating"); ?>:</td>
     <td align="right">
         <label><select name="<?php echo $wpfn; ?>[source]" id="gdstarr-source" style="width: 130px" onchange="gdsrChangeSource(this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">

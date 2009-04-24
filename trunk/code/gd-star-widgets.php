@@ -119,7 +119,7 @@ class gdsrWidgets {
 
         $widget_ops = array('classname' => 'widget_gdstarrating_top', 'description' => 'Overall blog rating results.');
         $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstartop');
-        $name = 'GD Blog Top Rating';
+        $name = 'GD Blog Rating';
 
         $registered = false;
         foreach (array_keys($options) as $o) {
@@ -173,14 +173,12 @@ class gdsrWidgets {
 
                 $options['title'] = strip_tags(stripslashes($posted['title']));
                 $options['display'] = $posted['display'];
+                $options['template_id'] = $posted['template_id'];
                 $options['select'] = $posted['select'];
                 $options['show'] = $posted['show'];
 
-                $options['div_template'] = $posted['div_template'];
                 $options['div_filter'] = $posted['div_filter'];
                 $options['div_elements'] = $posted['div_elements'];
-
-                $options['template'] = stripslashes(htmlentities($posted['template'], ENT_QUOTES, STARRATING_ENCODING));
 
                 $options_all[$widget_number] = $options;
             }
@@ -282,10 +280,8 @@ class gdsrWidgets {
 
                 $options['title'] = strip_tags(stripslashes($posted['title']));
 
-                $options['tpl_header'] = stripslashes(htmlentities($posted['tpl_header'], ENT_QUOTES, STARRATING_ENCODING));
-                $options['tpl_item'] = stripslashes(htmlentities($posted['tpl_item'], ENT_QUOTES, STARRATING_ENCODING));
-                $options['tpl_footer'] = stripslashes(htmlentities($posted['tpl_footer'], ENT_QUOTES, STARRATING_ENCODING));
                 $options['tpl_title_length'] = $posted['title_max'];
+                $options['template_id'] = $posted['template_id'];
 
                 $options['source'] = $posted['source'];
                 $options['source_set'] = $posted['source_set'];
