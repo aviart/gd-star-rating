@@ -249,6 +249,19 @@ class GDSRRenderT2 {
         if ($rating2 > $unit_count) $rating2 = $unit_count;
         $rating = @number_format($rating2, 1);
 
+        $rater_stars = '<img src="'.STARRATING_URL.sprintf("gfx.php?value=%s", $rating).'" />';
+
+        $rt = str_replace('%RATING%', $rating, $tpl_render);
+        $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
+        $rt = str_replace('%VOTES%', $votes, $rt);
+        $rt = str_replace('%STARS%', $rater_stars, $rt);
+        $rt = str_replace('%ID%', $post_id, $rt);
+
+        $word_votes = $template->dep["EWV"];
+        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+        return $rt;
     }
 
     function render_srb($template_id, $post_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {

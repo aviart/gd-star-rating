@@ -2,11 +2,15 @@
 
 == Change Log ==
 
-=== Version: 1.2.1 / april 26 2009 ===
+=== Version: 1.2.1 / april 24 2009 ===
   * new: post comments widget
+  * new: t2 rendering of rss rating block
+  * new: t2 rendering of widgets
   * new: t2 templates for widgets and alternating row class
   * new: t2 default templates inserted into widget
   * new: inserting extra templates for each template type
+  * edit: many more widgets changes
+  * edit: few more wp28 improvements
   * fix: adding new multi rating sets
   * fix: star rating widget small rendering echo bug
   * fix: removed obsolete code for ie6 png fix
