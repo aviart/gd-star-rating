@@ -75,6 +75,28 @@ class gdsrWidgets {
 
                 $options['title'] = strip_tags(stripslashes($posted['title']));
 
+                $options['text_max'] = $posted['text_max'];
+                $options['template_id'] = $posted['template_id'];
+
+                $options['rows'] = $posted['rows'];
+                $options['min_votes'] = $posted['min_votes'];
+                $options['column'] = $posted['column'];
+                $options['order'] = $posted['order'];
+                $options['show'] = $posted['show'];
+                $options['display'] = $posted['display'];
+                $options['last_voted_days'] = $posted['last_voted_days'];
+
+                $options['avatar_y'] = $posted['avatar_y'];
+                $options['avatar_x'] = $posted['avatar_x'];
+                $options['rating_stars'] = $posted['rating_stars'];
+                $options['rating_size'] = $posted['rating_size'];
+
+                $options['div_filter'] = $posted['div_filter'];
+                $options['div_image'] = $posted['div_image'];
+                $options['div_stars'] = $posted['div_stars'];
+
+                $options['hide_empty'] = isset($posted['hide_empty']) ? 1 : 0;
+
                 $options_all[$widget_number] = $options;
             }
             update_option('widget_gdstarrating_comments', $options_all);
@@ -305,10 +327,9 @@ class gdsrWidgets {
                 $options['publish_range_from'] = $posted['publish_range_from'];
                 $options['publish_range_to'] = $posted['publish_range_to'];
 
-                $options['div_template'] = $posted['div_template'];
-                $options['div_filter'] = $posted['div_filter'];
                 $options['div_trend'] = $posted['div_trend'];
                 $options['div_elements'] = $posted['div_elements'];
+                $options['div_filter'] = $posted['div_filter'];
                 $options['div_image'] = $posted['div_image'];
                 $options['div_stars'] = $posted['div_stars'];
 

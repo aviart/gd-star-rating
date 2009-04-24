@@ -182,11 +182,11 @@ $tpls->add_template($t);
 
 $t = new gdTemplate("WCR", __("Widget Comments Rating", "gd-star-rating"));
 $t->add_template("EWV", "%WORD_VOTES%");
-$t->add_element("%RATING%", __("article rating", "gd-star-rating"));
-$t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
-$t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
-$t->add_element("%COMMENT%", __("url to post/page", "gd-star-rating"));
-$t->add_element("%PERMALINK%", __("url to post/page", "gd-star-rating"));
+$t->add_element("%CMM_RATING%", __("article rating", "gd-star-rating"));
+$t->add_element("%MAX_CMM_RATING%", __("maximum rating value", "gd-star-rating"));
+$t->add_element("%CMM_VOTES%", __("total votes for article", "gd-star-rating"));
+$t->add_element("%COMMENT%", __("comment contents", "gd-star-rating"));
+$t->add_element("%PERMALINK%", __("url to comment", "gd-star-rating"));
 $t->add_element("%STARS%", __("rating stars", "gd-star-rating"));
 $t->add_element("%WIDGET_TITLE%", __("widget title", "gd-star-rating"));
 $t->add_element("%POST_TITLE%", __("post title", "gd-star-rating"));

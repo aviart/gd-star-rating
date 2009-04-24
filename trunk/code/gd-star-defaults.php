@@ -3,12 +3,13 @@
 class GDSRDefaults {
     var $default_options = array(
         "version" => "1.2.1",
-        "date" => "2009.04.24.",
+        "date" => "2009.04.25.",
         "status" => "Stable",
-        "build" => 572,
+        "build" => 586,
         "external_javascript" => 0,
         "external_rating_css" => 1,
         "external_css" => 1,
+        "widgets_hidempty" => 0,
         "encoding" => "UTF-8",
         "news_feed_active" => 1,
         "gfx_generator_auto" => 0,

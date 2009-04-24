@@ -2,7 +2,7 @@
 
 == Change Log ==
 
-=== Version: 1.2.1 / april 24 2009 ===
+=== Version: 1.2.1 / april 25 2009 ===
   * new: post comments widget
   * new: t2 rendering of rss rating block
   * new: t2 rendering of widgets
@@ -14,6 +14,7 @@
   * fix: adding new multi rating sets
   * fix: star rating widget small rendering echo bug
   * fix: removed obsolete code for ie6 png fix
+  * fix: invalid widget sort column order
   * fix: small PHP4 incompatibility
 
 === Version: 1.2.0 / april 22 2009 ===
