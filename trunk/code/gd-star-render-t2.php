@@ -110,7 +110,7 @@ class GDSRRenderT2 {
             if ($widget["column"] == "bayes" && $bayesian_calculated)
                 usort($new_rows, "gd_sort_bayesian_".$widget["order"]);
 
-            $tr_class = $gdsr->x["table_row_even"];
+            $tr_class = "odd";
             if ($trends_calculated) {
                 $set_rating = $gdsr->g->find_trend($widget["trends_rating_set"]);
                 $set_voting = $gdsr->g->find_trend($widget["trends_voting_set"]);
@@ -219,23 +219,63 @@ class GDSRRenderT2 {
                         break;
                 }
 
-                if ($row->voters > 1) $row->tense = $gdsr->x["word_votes_plural"];
-                else $row->tense = $gdsr->x["word_votes_singular"];
-
                 if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["stars"], $row->rating);
                 if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["stars"], $row->bayesian);
                 if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["stars"], $row->review);
 
-                if ($tr_class == $gdsr->x["table_row_even"])
-                    $tr_class = $gdsr->x["table_row_odd"];
-                else
-                    $tr_class = $gdsr->x["table_row_even"];
+                if ($tr_class == "odd") $tr_class = "even";
+                else $tr_class = "odd";
 
                 $all_rows[] = $row;
             }
         }
 
         $all_rows = apply_filters('gdsr_widget_data_prepare', $all_rows);
+        return $all_rows;
+    }
+
+    function prepare_wcr($widget, $template) {
+        global $gdsr, $wpdb, $post;
+
+        $sql = GDSRX::get_widget_comments($widget, $post->ID);
+        $all_rows = $wpdb->get_results($sql);
+
+        if (count($all_rows) > 0) {
+            $new_rows = array();
+            foreach ($all_rows as $row) {
+                if ($widget['show'] == "total") {
+                    $row->votes = $row->user_votes + $row->visitor_votes;
+                    $row->voters = $row->user_voters + $row->visitor_voters;
+                }
+                if ($widget['show'] == "visitors") {
+                    $row->votes = $row->visitor_votes;
+                    $row->voters = $row->visitor_voters;
+                }
+                if ($widget['show'] == "users") {
+                    $row->votes = $row->user_votes ;
+                    $row->voters = $row->user_voters;
+                }
+                if ($row->voters == 0) $row->rating = 0;
+                else $row->rating = @number_format($row->votes / $row->voters, 1);
+                $new_rows[] = $row;
+            }
+
+            $tr_class = "odd";
+            $all_rows = array();
+            foreach ($new_rows as $row) {
+                $row->table_row_class = $tr_class;
+                if (strlen($row->comment_content) > $widget["text_max"] - 3 && $widget["text_max"] > 0)
+                    $row->comment_content = substr($row->comment_content, 0, $widget["text_max"] - 3)." ...";
+
+                if (!(strpos($template, "%CMM_STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["cmm_stars"], $row->rating);
+
+                if ($tr_class == "odd") $tr_class = "even";
+                else $tr_class = "odd";
+
+                $all_rows[] = $row;
+            }
+        }
+
         return $all_rows;
     }
 
@@ -385,6 +425,41 @@ class GDSRRenderT2 {
         return $rt;
     }
 
+    function render_wcr($widget) {
+        global $gdsr;
+        $template = GDSRRenderT2::get_template($widget["template_id"], "WBR");
+        $tpl_render = html_entity_decode($template->elm["header"]);
+        $rt = html_entity_decode($template->elm["item"]);
+        $all_rows = GDSRRenderT2::prepare_wcr($widget, $rt);
+
+        if (count($all_rows) > 0) {
+            foreach ($all_rows as $row) {
+                $rt = html_entity_decode($template->elm["item"]);
+                $rt = str_replace('%CMM_RATING%', $row->rating, $rt);
+                $rt = str_replace('%MAX_RATING%', $gdsr->o["cmm_stars"], $rt);
+                $rt = str_replace('%CMM_VOTES%', $row->voters, $rt);
+                $rt = str_replace('%COMMENT%', $row->comment_content, $rt);
+                $rt = str_replace('%PERMALINK%', $row->permalink, $rt);
+                $rt = str_replace('%ID%', $row->comment_id, $rt);
+                $rt = str_replace('%CMM_STARS%', $row->rating_stars, $rt);
+
+                $word_votes = $template->dep["EWV"];
+                $tense = $row->voters == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+                $table_row = $template->dep["ETR"];
+                $row_css = $row->table_row_class == "odd" ? $table_row->elm["odd"] : $table_row->elm["even"];
+                $rt = str_replace('%TABLE_ROW_CLASS%', $row_css, $rt);
+
+                $tpl_render.= $rt;
+            }
+        }
+
+        $tpl_render.= html_entity_decode($template->elm["footer"]);
+
+        return $tpl_render;
+    }
+
     function render_wbr($widget) {
         $template = GDSRRenderT2::get_template($widget["template_id"], "WBR");
         $tpl_render = $template->elm["normal"];
@@ -406,6 +481,7 @@ class GDSRRenderT2 {
     }
 
     function render_wsr($widget) {
+        global $gdsr;
         $template = GDSRRenderT2::get_template($widget["template_id"], "WBR");
         $tpl_render = html_entity_decode($template->elm["header"]);
         $rt = html_entity_decode($template->elm["item"]);
@@ -413,31 +489,39 @@ class GDSRRenderT2 {
 
         if (count($all_rows) > 0) {
             foreach ($all_rows as $row) {
+                $rt = html_entity_decode($template->elm["item"]);
                 $title = $row->title;
                 if (strlen($title) == 0) $title = __("(no title)", "gd-star-rating");
 
                 $rt = str_replace('%RATING%', $row->rating, $rt);
-                $rt = str_replace('%MAX_RATING%', $this->o["stars"], $rt);
+                $rt = str_replace('%MAX_RATING%', $gdsr->o["stars"], $rt);
                 $rt = str_replace('%VOTES%', $row->voters, $rt);
                 $rt = str_replace('%REVIEW%', $row->review, $rt);
-                $rt = str_replace('%MAX_REVIEW%', $this->o["review_stars"], $rt);
+                $rt = str_replace('%MAX_REVIEW%', $gdsr->o["review_stars"], $rt);
                 $rt = str_replace('%TITLE%', __($title), $rt);
                 $rt = str_replace('%PERMALINK%', $row->permalink, $rt);
                 $rt = str_replace('%ID%', $row->post_id, $rt);
                 $rt = str_replace('%COUNT%', $row->counter, $rt);
-                $rt = str_replace('%WORD_VOTES%', __($row->tense), $rt);
                 $rt = str_replace('%BAYES_RATING%', $row->bayesian, $rt);
                 $rt = str_replace('%BAYES_STARS%', $row->bayesian_stars, $rt);
                 $rt = str_replace('%STARS%', $row->rating_stars, $rt);
                 $rt = str_replace('%REVIEW_STARS%', $row->review_stars, $rt);
                 $rt = str_replace('%RATE_TREND%', $row->item_trend_rating, $rt);
                 $rt = str_replace('%VOTE_TREND%', $row->item_trend_voting, $rt);
-                $rt = str_replace('%TABLE_ROW_CLASS%', $row->table_row_class, $rt);
                 $rt = str_replace('%IMAGE%', $row->image, $rt);
                 $rt = str_replace('%AUTHOR_NAME%', $row->author_name, $rt);
                 $rt = str_replace('%AUTHOR_LINK%', $row->author_url, $rt);
+
+                $word_votes = $template->dep["EWV"];
+                $tense = $row->voters == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+                $table_row = $template->dep["ETR"];
+                $row_css = $row->table_row_class == "odd" ? $table_row->elm["odd"] : $table_row->elm["even"];
+                $rt = str_replace('%TABLE_ROW_CLASS%', $row_css, $rt);
+
+                $tpl_render.= $rt;
             }
-            $tpl_render.= $rt;
         }
 
         $tpl_render.= html_entity_decode($template->elm["footer"]);

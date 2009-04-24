@@ -296,6 +296,58 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
         return $sql;
     }
 
+    function get_widget_comments($widget, $post_id) {
+        global $table_prefix;
+
+        $where = array();
+        $select = "p.comment_id, p.comment_author, p.comment_author_email, p.comment_author_url, p.comment_date, p.comment_content, p.user_id, d.*";
+        $extras = ", 0 as votes, 0 as voters, 0 as rating, '' as permalink, '' as tense, '' as rating_stars";
+        $min = $widget["min_votes"];
+        if ($min == 0 && $widget["hide_empty"] == "1") $min = 1;
+
+        $where[] = "d.post_id = ".$post_id;
+        $where[] = "p.comment_id = d.comment_id";
+
+        if ($min > 0) {
+            if ($widget["show"] == "total") $where[] = "(d.user_voters + d.visitor_voters) >= ".$min;
+            if ($widget["show"] == "visitors") $where[] = "d.visitor_voters >= ".$min;
+            if ($widget["show"] == "users") $where[] = "d.user_voters >= ".$min;
+        }
+
+        if ($widget["order"] == "desc" || $widget["order"] == "asc")
+            $sort = $widget["order"];
+        else
+            $sort = "desc";
+
+        if ($col == "id")
+            $col = "p.comment_id";
+        else {
+            if ($col == "rating") {
+                if ($widget["show"] == "total") $col = "(d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters)";
+                if ($widget["show"] == "visitors") $col = "d.visitor_votes/d.visitor_voters";
+                if ($widget["show"] == "users") $col = "d.user_votes/d.user_voters";
+            }
+            else if ($col == "votes") {
+                if ($widget["show"] == "total") $col = "d.user_votes + d.visitor_votes";
+                if ($widget["show"] == "visitors") $col = "d.visitor_votes";
+                if ($widget["show"] == "users") $col = "d.user_votes";
+            }
+            else $col = "p.comment_id";
+        }
+
+        if ($widget["last_voted_days"] == "") $widget["last_voted_days"] = 0;
+        if ($widget["last_voted_days"] > 0) {
+            $where[] = "TO_DAYS(CURDATE()) - ".$widget["last_voted_days"]." <= TO_DAYS(d.last_voted)";
+        }
+
+        $sql = sprintf("select distinct %s%s from %s%scomments p, %sgdsr_data_comment d where %s order by %s %s limit 0, %s",
+                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $col, $sort, $widget["rows"]);
+
+wp_gdsr_dump("WIDGET_COMMENTS", $sql);
+
+        return $sql;
+    }
+
     function get_widget_standard($widget, $min = 0) {
         global $table_prefix;
 

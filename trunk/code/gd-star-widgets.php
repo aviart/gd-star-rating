@@ -121,7 +121,7 @@ class gdsrWidgets {
 
     function widget_comments_display($args, $widget_args = 1) {
         extract($args);
-        global $gdsr, $wpdb, $userdata;
+        global $gdsr, $userdata;
 
         if (is_numeric($widget_args))
             $widget_args = array('number' => $widget_args);
@@ -132,8 +132,10 @@ class gdsrWidgets {
             return;
         $this->w = $options_all[$number];
 
+        if ($this->w["display"] == "hide" || ($this->w["display"] == "users" && $userdata->ID == 0) || ($this->w["display"] == "visitors" && $userdata->ID > 0)) return;
+
         echo $before_widget.$before_title.$this->w['title'].$after_title;
-        echo $gdsr->render_comments_widget($this->w);
+        echo GDSRRenderT2::render_wcr($this->w);
         echo $after_widget;
     }
 
