@@ -6,6 +6,11 @@
 </table>
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
+    <td width="140" nowrap="nowrap"><?php _e("Template", "gd-star-rating"); ?>:</td>
+    <td align="right"><?php GDSRHelper::render_templates_section("WBR", $wpfn."[template_id]", $wpno["template_id"], 260); ?>
+    </td>
+  </tr>
+  <tr>
     <td width="140" nowrap="nowrap"><?php _e("Show Widget To", "gd-star-rating"); ?>:</td>
     <td align="right">
         <label><select name="<?php echo $wpfn; ?>[display]" id="gdstarr-display" style="width: 110px">
@@ -14,11 +19,6 @@
             <option value="users"<?php echo $wpno['display'] == 'users' ? ' selected="selected"' : ''; ?>><?php _e("Users Only", "gd-star-rating"); ?></option>
             <option value="hide"<?php echo $wpno['display'] == 'hide' ? ' selected="selected"' : ''; ?>><?php _e("Hide Widget", "gd-star-rating"); ?></option>
         </select></label>
-    </td>
-  </tr>
-  <tr>
-    <td width="140" nowrap="nowrap"><?php _e("Template", "gd-star-rating"); ?>:</td>
-    <td align="right"><?php GDSRHelper::render_templates_section("WBR", $wpfn."[template_id]", $wpno["template_id"], 260); ?>
     </td>
   </tr>
 </table>

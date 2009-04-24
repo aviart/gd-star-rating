@@ -24,10 +24,8 @@ if (class_exists("WP_Widget")) {
 
             $instance['title'] = strip_tags(stripslashes($new_instance['title']));
 
-            $instance['tpl_header'] = stripslashes(htmlentities($new_instance['tpl_header'], ENT_QUOTES, STARRATING_ENCODING));
-            $instance['tpl_item'] = stripslashes(htmlentities($new_instance['tpl_item'], ENT_QUOTES, STARRATING_ENCODING));
-            $instance['tpl_footer'] = stripslashes(htmlentities($new_instance['tpl_footer'], ENT_QUOTES, STARRATING_ENCODING));
             $instance['tpl_title_length'] = $new_instance['tpl_title_length'];
+            $instance['template_id'] = $new_instance['template_id'];
 
             $instance['source'] = $new_instance['source'];
             $instance['source_set'] = $new_instance['source_set'];
@@ -111,7 +109,7 @@ if (class_exists("WP_Widget")) {
             if ($instance["display"] == "hide" || ($instance["display"] == "users" && $userdata->ID == 0) || ($instance["display"] == "visitors" && $userdata->ID > 0)) return;
 
             echo $before_widget.$before_title.$instance['title'].$after_title;
-            echo $gdsr->render_top_widget($instance);
+            echo GDSRRenderT2::render_wbr($instance);
             echo $after_widget;
         }
 
@@ -122,10 +120,9 @@ if (class_exists("WP_Widget")) {
             $instance['display'] = $new_instance['display'];
             $instance['select'] = $new_instance['select'];
             $instance['show'] = $new_instance['show'];
-            $instance['div_template'] = $new_instance['div_template'];
+            $instance['template_id'] = $new_instance['template_id'];
             $instance['div_filter'] = $new_instance['div_filter'];
             $instance['div_elements'] = $new_instance['div_elements'];
-            $instance['template'] = stripslashes(htmlentities($new_instance['template'], ENT_QUOTES, STARRATING_ENCODING));
 
             return $instance;
         }

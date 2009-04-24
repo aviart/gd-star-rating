@@ -809,22 +809,6 @@ if (!class_exists('GDStarRating')) {
 
         }
 
-        function render_top_widget($widget) {
-            $data = $this->prepare_blog_rating($widget);
-
-            if ($data->voters == 1) $tense = $this->x["word_votes_singular"];
-            else $tense = $this->x["word_votes_plural"];
-            $template = html_entity_decode($widget["template"]);
-            $rt = str_replace('%PERCENTAGE%', $data->percentage, $template);
-            $rt = str_replace('%RATING%', $data->rating, $rt);
-            $rt = str_replace('%MAX_RATING%', $data->max_rating, $rt);
-            $rt = str_replace('%VOTES%', $data->voters, $rt);
-            $rt = str_replace('%COUNT%', $data->count, $rt);
-            $rt = str_replace('%BAYES_RATING%', $data->bayes_rating, $rt);
-            $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-            return $rt;
-        }
-
         function render_articles_widget($widget) {
             global $wpdb;
             echo html_entity_decode($widget["tpl_header"]);
@@ -1883,26 +1867,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $template = str_replace('%AUTHOR_NAME%', $row->author_name, $template);
             $template = str_replace('%AUTHOR_LINK%', $row->author_url, $template);
             return $template;
-        }
-
-        function prepare_blog_rating($widget) {
-            global $wpdb;
-
-            $sql = GDSRX::get_totals_standard($widget);
-            $data = $wpdb->get_row($sql);
-
-            $data->max_rating = $this->o["stars"];
-            if ($data->votes == null) {
-                $data->votes = 0;
-                $data->voters = 0;
-            }
-            if ($data->votes > 0) {
-                $data->rating = @number_format($data->votes / $data->voters, 1);
-                $data->bayes_rating = $this->bayesian_estimate($data->voters, $data->rating);
-                $data->percentage = floor((100 / $data->max_rating) * $data->rating);
-            }
-
-            return $data;
         }
 
         function get_ratings_post($post_id) {

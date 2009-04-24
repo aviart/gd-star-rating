@@ -5,7 +5,7 @@
 === Version: 1.2.1 / april 26 2009 ===
   * new: post comments widget
   * new: t2 templates for widgets and alternating row class
-  * new: t2 default templates inserted into
+  * new: t2 default templates inserted into widget
   * new: inserting extra templates for each template type
   * fix: adding new multi rating sets
   * fix: removed obsolete code for ie6 png fix
