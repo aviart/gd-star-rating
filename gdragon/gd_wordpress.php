@@ -40,6 +40,14 @@ if (!class_exists('gdWPGDSR')) {
           return $wp_user_search->get_results();
         }
 
+        function get_current_category_id() {
+            global $wp_query;
+
+            if (!$wp_query->is_category) return 0;
+            $cat_obj = $wp_query->get_queried_object();
+            return $cat_obj->term_id;
+        }
+
         function get_subcategories_ids($cat, $hide_empty = true) {
             $categories = get_categories(array("child_of" => $cat, "hide_empty" => $hide_empty));
             $results = array();

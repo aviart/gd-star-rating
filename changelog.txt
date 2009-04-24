@@ -11,6 +11,7 @@
   * new: inserting extra templates for each template type
   * edit: many more widgets changes
   * edit: few more wp28 improvements
+  * edit: some more settings panel reorganization
   * fix: adding new multi rating sets
   * fix: star rating widget small rendering echo bug
   * fix: removed obsolete code for ie6 png fix
