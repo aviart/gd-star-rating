@@ -91,7 +91,6 @@ if (class_exists("WP_Widget")) {
             include(STARRATING_PATH.'widgets/rating_28/part_filter.php');
             include(STARRATING_PATH.'widgets/rating_28/part_image.php');
             include(STARRATING_PATH.'widgets/rating_28/part_stars.php');
-            include(STARRATING_PATH.'widgets/rating_28/part_template.php');
         }
     }
 
@@ -133,7 +132,6 @@ if (class_exists("WP_Widget")) {
 
             include(STARRATING_PATH.'widgets/top_28/part_basic.php');
             include(STARRATING_PATH.'widgets/top_28/part_filter.php');
-            include(STARRATING_PATH.'widgets/top_28/part_template.php');
         }
     }
 
