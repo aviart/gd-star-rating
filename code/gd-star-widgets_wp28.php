@@ -157,7 +157,28 @@ if (class_exists("WP_Widget")) {
             $instance = $old_instance;
 
             $instance['title'] = strip_tags(stripslashes($new_instance['title']));
+
+            $instance['text_max'] = $new_instance['text_max'];
+            $instance['template_id'] = $new_instance['template_id'];
+
+            $instance['rows'] = $new_instance['rows'];
+            $instance['min_votes'] = $new_instance['min_votes'];
+            $instance['column'] = $new_instance['column'];
+            $instance['order'] = $new_instance['order'];
+            $instance['show'] = $new_instance['show'];
             $instance['display'] = $new_instance['display'];
+            $instance['last_voted_days'] = $new_instance['last_voted_days'];
+
+            $instance['avatar_y'] = $new_instance['avatar_y'];
+            $instance['avatar_x'] = $new_instance['avatar_x'];
+            $instance['rating_stars'] = $new_instance['rating_stars'];
+            $instance['rating_size'] = $new_instance['rating_size'];
+
+            $instance['div_filter'] = $new_instance['div_filter'];
+            $instance['div_image'] = $new_instance['div_image'];
+            $instance['div_stars'] = $new_instance['div_stars'];
+
+            $instance['hide_empty'] = isset($new_instance['hide_empty']) ? 1 : 0;
 
             return $instance;
         }
@@ -166,9 +187,13 @@ if (class_exists("WP_Widget")) {
             global $gdsr;
             $instance = wp_parse_args((array)$instance, $gdsr->default_widget_comments);
 
+            $wptr = $gdsr->g->trend;
+            $wpst = $gdsr->g->stars;
+
             include(STARRATING_PATH.'widgets/comments_28/part_basic.php');
-            //include(STARRATING_PATH.'widgets/comments_28/part_filter.php');
-            //include(STARRATING_PATH.'widgets/comments_28/part_template.php');
+            include(STARRATING_PATH.'widgets/comments_28/part_filter.php');
+            include(STARRATING_PATH.'widgets/comments_28/part_image.php');
+            include(STARRATING_PATH.'widgets/comments_28/part_stars.php');
         }
     }
 }

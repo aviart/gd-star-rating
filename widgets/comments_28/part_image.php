@@ -21,5 +21,4 @@
   </tr>
 </table>
 </div>
-</div>
 <div class="gdsr-table-split"></div>

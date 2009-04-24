@@ -37,6 +37,7 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 * Saving IP and user agent data for each vote
 * Widget with list of ratings
 * Widget with top blog rating
+* Widget with post comments ratings
 * Widgets with multi instance support
 * Widgets support templates
 * WordPress shortcode support
