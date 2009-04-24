@@ -91,6 +91,8 @@ class gdsrWidgets {
         }
 
         $wpfn = 'gdstart['.$wpnm.']';
+        $wptr = $this->g->trend;
+        $wpst = $this->g->stars;
 
         include(STARRATING_PATH."widgets/widget_comments.php");
     }
