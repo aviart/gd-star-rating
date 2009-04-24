@@ -47,7 +47,7 @@
             <option value="rating"<?php echo $wpno['column'] == 'rating' ? ' selected="selected"' : ''; ?>><?php _e("Rating", "gd-star-rating"); ?></option>
             <option value="votes"<?php echo $wpno['column'] == 'votes' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
             <option value="id"<?php echo $wpno['column'] == 'id' ? ' selected="selected"' : ''; ?>><?php _e("ID", "gd-star-rating"); ?></option>
-            <option value="count"<?php echo $wpno['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
+            <option value="count"<?php echo $wpno['column'] == 'count' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
         </select>
     </td>
   </tr>
@@ -64,14 +64,14 @@
   <tr>
     <td width="100"></td>
     <td nowrap="nowrap" colspan="2" height="25">
-        <label for="gdstarr-hidempty" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_empty'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidempty" name="<?php echo $wpfn; ?>[hide_empty]" /> <?php _e("Hide articles with no recorded votes.", "gd-star-rating"); ?></label>
+        <label for="gdstarr-hidempty" style="text-align:right;"><input class="checkbox" type="checkbox" <?php echo $wpno['hide_empty'] ? 'checked="checked"' : ''; ?> id="gdstarr-hidempty" name="<?php echo $wpfn; ?>[hide_empty]" /> <?php _e("Hide comments with no recorded votes.", "gd-star-rating"); ?></label>
     </td>
   </tr>
   <tr>
     <td width="100"></td>
     <td nowrap="nowrap" colspan="2">
         <div class="gdsr-table-split-filter"></div>
-        <?php _e("Use only articles voted for in last # days.", "gd-star-rating") ?>
+        <?php _e("Use only comments voted for in last # days.", "gd-star-rating") ?>
     </td>
   </tr>
   <tr>

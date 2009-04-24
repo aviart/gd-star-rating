@@ -60,7 +60,7 @@
             <option value="id"<?php echo $instance['column'] == 'id' ? ' selected="selected"' : ''; ?>><?php _e("ID", "gd-star-rating"); ?></option>
             <option value="post_title"<?php echo $instance['column'] == 'post_title' ? ' selected="selected"' : ''; ?>><?php _e("Title", "gd-star-rating"); ?></option>
             <option value="review"<?php echo $instance['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Review", "gd-star-rating"); ?></option>
-            <option value="count"<?php echo $instance['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
+            <option value="count"<?php echo $instance['column'] == 'count' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
             <option value="bayes"<?php echo $instance['column'] == 'bayes' ? ' selected="selected"' : ''; ?>><?php _e("Bayesian Rating", "gd-star-rating"); ?></option>
         </select>
     </td>

@@ -11,6 +11,8 @@
         <input type="checkbox" name="gdsr_widget_top" id="gdsr_widget_top"<?php if ($gdsr_options["widget_top"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_widget_top"><?php _e("GD Blog Rating: Blog average rating.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_widget_comments" id="gdsr_widget_comments"<?php if ($gdsr_options["widget_comments"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_widget_comments"><?php _e("GD Comments Rating: Per post comments rating.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_widgets_hidempty" id="gdsr_widgets_hidempty"<?php if ($gdsr_options["widgets_hidempty"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_widget_comments"><?php _e("Don't render the widget if there are no results to display.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Post Edit", "gd-star-rating"); ?></th>
