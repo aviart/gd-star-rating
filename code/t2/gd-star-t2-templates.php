@@ -71,8 +71,9 @@ $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all");
 $tpls->add_template($t);
 
-$t = new gdTemplate("SST", __("Standard RSS Text", "gd-star-rating"), "%RSS_RATING_TEXT%");
+$t = new gdTemplate("SSB", __("Standard RSS Rating Block", "gd-star-rating"));
 $t->add_template("EWV", "%WORD_VOTES%");
+$t->add_element("%RATING_STARS%", __("rating stars", "gd-star-rating"));
 $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
 $t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
 $t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
