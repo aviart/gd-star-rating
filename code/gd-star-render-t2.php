@@ -239,6 +239,18 @@ class GDSRRenderT2 {
         return $all_rows;
     }
 
+    function render_sst($template_id, $post_id, $votes, $score, $unit_set, $unit_width, $unit_count, $header_text) {
+        $template = GDSRRenderT2::get_template($template_id, "SST");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+
+        $rating2 = $votes > 0 ? $score / $votes : 0;
+        if ($rating2 > $unit_count) $rating2 = $unit_count;
+        $rating = @number_format($rating2, 1);
+
+    }
+
     function render_srb($template_id, $post_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
         $template = GDSRRenderT2::get_template($template_id, "SRB");
         $tpl_render = $template->elm["normal"];
