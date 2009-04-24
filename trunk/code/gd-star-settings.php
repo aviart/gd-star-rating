@@ -98,9 +98,6 @@
 
         $gdsr_options["rss_style"] = $_POST['gdsr_rss_style'];
         $gdsr_options["rss_size"] = $_POST['gdsr_rss_size'];
-        $gdsr_options["rss_text"] = $_POST['gdsr_rss_text'];
-        $gdsr_options["rss_render"] = $_POST['gdsr_rss_render'];
-        $gdsr_options["rss_header"] = isset($_POST['gdsr_rss_header']) ? 1 : 0;
         $gdsr_options["rss_header_text"] = stripslashes(htmlentities($_POST['gdsr_rss_header_text'], ENT_QUOTES, STARRATING_ENCODING));
 
         $gdsr_options["style"] = $_POST['gdsr_style'];
@@ -112,6 +109,7 @@
 
         $gdsr_options["default_srb_template"] = $_POST['gdsr_default_srb_template'];
         $gdsr_options["default_crb_template"] = $_POST['gdsr_default_crb_template'];
+        $gdsr_options["default_sst_template"] = $_POST['gdsr_default_sst_template'];
 
         $gdsr_options["srb_class_block"] = $_POST['gdsr_classblock'];
         $gdsr_options["srb_class_text"] = $_POST['gdsr_classtext'];

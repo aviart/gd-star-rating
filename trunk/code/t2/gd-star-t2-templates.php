@@ -77,6 +77,7 @@ $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
 $t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
 $t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
 $t->add_element("%ID%", __("post/page id", "gd-star-rating"));
+$t->add_element("%HEADER_TEXT%", __("rating header text", "gd-star-rating"));
 $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all");
 $tpls->add_template($t);

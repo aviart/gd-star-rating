@@ -37,7 +37,6 @@
     <li><a href="#fragment-1"><span><?php _e("Standard Elements", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-5"><span><?php _e("Custom Elements", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-2"><span><?php _e("Posts And Pages", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-3"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li>
     <?php if ($options["multis_active"] == 1) { ?><li><a href="#fragment-6"><span><?php _e("Multis", "gd-star-rating"); ?></span></a></li><?php } ?>
     <?php if ($options["rss_active"] == 1) { ?><li><a href="#fragment-4"><span><?php _e("RSS", "gd-star-rating"); ?></span></a></li><?php } ?>
 </ul>
@@ -53,10 +52,6 @@
 
 <div id="fragment-2">
     <?php include(STARRATING_PATH."templates/templates_articles.php"); ?>
-</div>
-
-<div id="fragment-3">
-    <?php include(STARRATING_PATH."templates/templates_comments.php"); ?>
 </div>
 
 <?php if ($options["multis_active"] == 1) { ?><div id="fragment-6">
