@@ -3,6 +3,5 @@
 <?php include(STARRATING_PATH.'widgets/rating/part_filter.php'); ?>
 <?php include(STARRATING_PATH.'widgets/rating/part_image.php'); ?>
 <?php include(STARRATING_PATH.'widgets/rating/part_stars.php'); ?>
-<?php include(STARRATING_PATH.'widgets/rating/part_template.php'); ?>
 
 <input type="hidden" id="gdstarr-submit" name="<?php echo $wpfn; ?>[submit]" value="1" />

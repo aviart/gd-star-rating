@@ -39,6 +39,11 @@
     </td>
   </tr>
   <tr>
+    <td width="100"></td>
+    <td nowrap="nowrap"><?php _e("Maximal character length for title", "gd-star-rating"); ?>:</td>
+    <td align="right"><input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[title_max]" id="gdstarr-titlemax" value="<?php echo $wpno["tpl_title_length"]; ?>" /></td>
+  </tr>
+  <tr>
     <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
     <td align="right">

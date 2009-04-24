@@ -16,5 +16,10 @@
         </select></label>
     </td>
   </tr>
+  <tr>
+    <td width="140" nowrap="nowrap"><?php _e("Template", "gd-star-rating"); ?>:</td>
+    <td align="right"><?php GDSRHelper::render_templates_section("WBR", $wpfn."[template_id]", $wpno["template_id"], 260); ?>
+    </td>
+  </tr>
 </table>
 <div class="gdsr-table-split"></div>
