@@ -288,8 +288,15 @@ class GDSRX {
         }
         if ($widget["image_from"] == "content") $select = "p.post_content, ".$select;
 
-        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_multis_data d where %s %s order by %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]);
+        $ordering = sprintf("order by %s %s", $col, $sort);
+        if ($widget["column"] == "rating") {
+            if ($widget["show"] == "total") $ordering.= ", d.total_votes_users + d.total_votes_visitors desc";
+            if ($widget["show"] == "visitors") $ordering.= ", d.total_votes_visitors desc";
+            if ($widget["show"] == "users") $ordering.= ", d.total_votes_users desc";
+        }
+
+        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_multis_data d where %s %s %s limit 0, %s",
+                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $ordering, $widget["rows"]);
 
 wp_gdsr_dump("WIDGET_MULTIS", $sql);
 
@@ -340,8 +347,15 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
             $where[] = "TO_DAYS(CURDATE()) - ".$widget["last_voted_days"]." <= TO_DAYS(d.last_voted)";
         }
 
-        $sql = sprintf("select distinct %s%s from %s%scomments p, %sgdsr_data_comment d where %s order by %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $col, $sort, $widget["rows"]);
+        $ordering = sprintf("order by %s %s", $col, $sort);
+        if ($widget["column"] == "rating") {
+            if ($widget["show"] == "total") $ordering.= ", d.user_votes + d.visitor_votes desc";
+            if ($widget["show"] == "visitors") $ordering.= ", d.visitor_votes desc";
+            if ($widget["show"] == "users") $ordering.= ", d.user_votes desc";
+        }
+
+        $sql = sprintf("select distinct %s%s from %s%scomments p, %sgdsr_data_comment d where %s %s limit 0, %s",
+                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $ordering, $widget["rows"]);
 
 wp_gdsr_dump("WIDGET_COMMENTS", $sql);
 
@@ -455,8 +469,15 @@ wp_gdsr_dump("WIDGET_COMMENTS", $sql);
         }
         if ($widget["image_from"] == "content") $select = "p.post_content, ".$select;
 
-        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_data_article d where %s %s order by %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $col, $sort, $widget["rows"]);
+        $ordering = sprintf("order by %s %s", $col, $sort);
+        if ($widget["column"] == "rating") {
+            if ($widget["show"] == "total") $ordering.= ", d.user_votes + d.visitor_votes desc";
+            if ($widget["show"] == "visitors") $ordering.= ", d.visitor_votes desc";
+            if ($widget["show"] == "users") $ordering.= ", d.user_votes desc";
+        }
+
+        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_data_article d where %s %s %s limit 0, %s",
+                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $ordering, $widget["rows"]);
 
 wp_gdsr_dump("WIDGET_STANDARD", $sql);
 
