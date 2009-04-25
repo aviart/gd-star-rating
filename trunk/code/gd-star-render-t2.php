@@ -264,7 +264,6 @@ class GDSRRenderT2 {
             $tr_class = "odd";
             $all_rows = array();
             $pl = get_permalink($post_id);
-            if (substr($pl, -1) == "/") $pl = substr($pl, 0, strlen($pl) - 1);
             foreach ($new_rows as $row) {
                 $row->table_row_class = $tr_class;
                 if (strlen($row->comment_content) > $widget["text_max"] - 3 && $widget["text_max"] > 0)
