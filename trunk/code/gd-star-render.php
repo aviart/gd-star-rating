@@ -22,7 +22,13 @@ class GDSRRender {
         return $rater;
     }
 
-    // old functions
+    function rating_wait($loader_id, $rater_length, $typecls, $wait_msg = '') {
+        $loader = '<div id="'.$loader_id.'" style="display: none; width:'.$rater_length.';" class="ratingloader'.$typecls.'">';
+        $loader.= $wait_msg;
+        $loader.= '</div>';
+        return $loader;
+    }
+
     function render_static_stars($star_style, $star_size, $star_max, $rating) {
         switch (STARRATING_STARS_GENERATOR) {
             case "GFX":
@@ -54,6 +60,7 @@ class GDSRRender {
         return sprintf('<img src="%s" />', $url);
     }
 
+    // old functions
     function rating_stars_multi($post_id, $set_id, $id, $height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '', $review_mode = false) {
         if ($review_mode) $current = $value;
         else $current = 0;
@@ -72,7 +79,7 @@ class GDSRRender {
         $rater.= '</div></div></div>';
         return $rater;
     }
-    
+
     function rating_stars_local($height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '') {
         $rater = '<input type="hidden" id="gdsr_cmm_review" name="gdsr_cmm_review" value="0" />';
         $rater.= '<div id="gdsr_cmm_stars" class="reviewcmm"><div class="starsbar">';
@@ -87,62 +94,6 @@ class GDSRRender {
         }
         $rater.= '</div></div></div>';
         return $rater;
-    }
-    
-    function rating_wait($loader_id, $rater_length, $typecls, $wait_msg = '') {
-        $loader = '<div id="'.$loader_id.'" style="display: none; width:'.$rater_length.';" class="ratingloader'.$typecls.'">';
-        $loader.= $wait_msg;
-        $loader.= '</div>';
-        return $loader;
-    }
-
-    function rating_block_div($rater_stars, $rater_text, $rater_header, $text, $align, $custom_class = "", $debug = "") {
-        if ($align != 'none')
-            $rater_align = ' align="'.$align.'"';
-        else
-            $rater_align = '';
-                  
-        $rater = '<div class="ratingblock '.$custom_class.'"'.$rater_align.'>';
-        if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
-        if ($rater_header != '')
-            $rater.= '<div class="ratingheader">'.$rater_header.'</div>';
-        
-        if ($text == 'top' || $text == 'top_hidden')
-            $rater.= $rater_text;
-
-        $rater.= $rater_stars;
-
-        if ($text == 'bottom' || $text == 'bottom_hidden')
-            $rater.= $rater_text;
-        
-        $rater.= '</div>';
-        return $rater;
-    }
-
-    function rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_class = "", $debug = "") {
-        if ($align != 'none') {
-            $rater_header_align = ' style="text-align: '.$align.';"';
-            $rater_align = ' align="'.$align.'"';
-        }
-        else {
-            $rater_header_align = '';
-            $rater_align = '';
-        }
-
-        $rater = '<div class="ratingblock '.$custom_class.'"'.$rater_align.'>';
-        if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
-        $rater.= '<table cellpadding="0" cellspacing="0">';
-        if ($rater_header != "") 
-            $rater.= '<tr><td colspan="2"'.$rater_header_align.'>'.$rater_header.'</td></tr>';
-        if (substr($text, 0, 4) == 'left')
-            $rater.= '<tr><td>'.$rater_text.'</td><td>'.$rater_stars.'</td></tr>';
-        else
-            $rater.= '<tr><td>'.$rater_stars.'</td><td>'.$rater_text.'</td></tr>';
-            
-        $rater.= '</table>';
-        $rater.= '</div>';
-        return $rater;
-        
     }
 
     function rating_header($header, $header_text = '') {
@@ -187,83 +138,6 @@ class GDSRRender {
         }
         $rater_text.= '</div>';
         return $rater_text;
-    }
-
-    function rating_block($id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $align, $text, $header, $header_text, $custom_css_block = "", $custom_css_text = "", $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
-        $template = get_option('gd-star-rating-templates');
-        if ($votes == 1) $tense = $template["word_votes_singular"];
-        else $tense = $template["word_votes_plural"];
-
-        $rating2 = $votes > 0 ? $score / $votes : 0;
-        if ($rating2 > $unit_count) $rating2 = $unit_count;
-        $rating = @number_format($rating2, 1);
-
-        $rating_width = $rating2 * $unit_width;
-        $rater_length = $unit_width * $unit_count; 
-        $rater_id = $typecls."_rater_".$id;
-        $loader_id = $typecls."_loader_".$id;
-
-        if ($text == 'hide' || ($text == 'top_hidden' && $votes == 0) || ($text == 'bottom_hidden' && $votes == 0) || ($text == 'left_hidden' && $votes == 0) || ($text == 'right_hidden' && $votes == 0))
-            $rater_text = "";
-        else {
-            $rater_text = '<div id="gdr_text_'.$type.$id.'" class="'.$custom_css_text.' '.$typecls;
-            if (!$allow_vote) $rater_text.=' voted';
-            $rater_text.= '">';
-            switch ($type)
-            {
-                case 'a':
-                    if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
-                        $time_parts = GDSRHelper::remaining_time_parts($time_remaining);
-                        $time_total = GDSRHelper::remaining_time_total($time_remaining);
-                        $tpl = $template["time_restricted_active"];
-                        $rt = html_entity_decode($tpl);
-                        $rt = str_replace('%TR_DATE%', $time_date, $rt);
-                        $rt = str_replace('%TR_YEARS%', $time_parts["year"], $rt);
-                        $rt = str_replace('%TR_MONTHS%', $time_parts["month"], $rt);
-                        $rt = str_replace('%TR_DAYS%', $time_parts["day"], $rt);
-                        $rt = str_replace('%TR_HOURS%', $time_parts["hour"], $rt);
-                        $rt = str_replace('%TR_MINUTES%', $time_parts["minute"], $rt);
-                        $rt = str_replace('%TR_SECONDS%', $time_parts["second"], $rt);
-                        $rt = str_replace('%TOT_DAYS%', $time_total["day"], $rt);
-                        $rt = str_replace('%TOT_HOURS%', $time_total["hour"], $rt);
-                        $rt = str_replace('%TOT_MINUTES%', $time_total["minute"], $rt);
-                    }
-                    else {
-                        if ($time_restirctions == 'D' || $time_restirctions == 'T')
-                            $tpl = $template["time_restricted_closed"];
-                        else
-                            $tpl = $template["article_rating_text"];
-                        $rt = html_entity_decode($tpl);
-                    }
-                    $rt = str_replace('%RATING%', $rating, $rt);
-                    $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-                    $rt = str_replace('%VOTES%', $votes, $rt);
-                    $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-                    $rt = str_replace('%ID%', $id, $rt);
-                    $rater_text.= $rt;
-                    break;
-                case 'c':
-                    $tpl = $template["cmm_rating_text"];
-                    $rt = html_entity_decode($tpl);
-                    $rt = str_replace('%CMM_RATING%', $rating, $rt);
-                    $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
-                    $rt = str_replace('%CMM_VOTES%', $votes, $rt);
-                    $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-                    $rt = str_replace('%ID%', $id, $rt);
-                    $rater_text.= $rt;
-                    break;
-            }
-            $rater_text.= '</div>';
-        }
-
-        $rater_stars = GDSRRender::rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg);
-
-        $rater_header = GDSRRender::rating_header($header, $header_text);
-
-        if ($text == "hide" || $text == "top" || $text == "top_hidden" || $text == "bottom" || $text == "bottom_hidden" || $rater_text == '')
-            return GDSRRender::rating_block_div($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block, $debug);
-        else
-            return GDSRRender::rating_block_table($rater_stars, $rater_text, $rater_header, $text, $align, $custom_css_block, $debug);
     }
 
     function multi_rating_review($votes, $post_id, $set, $height, $allow_vote = true, $class_block = "gdsr-review-block", $class_table = "gdsr-review-table") {

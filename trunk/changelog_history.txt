@@ -12,6 +12,8 @@
   * edit: many more widgets changes
   * edit: few more wp28 improvements
   * edit: some more settings panel reorganization
+  * edit: removed old rendering functions
+  * edit: results sorting improved
   * fix: adding new multi rating sets
   * fix: few small widget rendering problems
   * fix: star rating widget small rendering echo bug
