@@ -214,8 +214,7 @@ class GDSRDefaults {
         "rating_stars" => "oxygen",
         "rating_size" => 12,
         "last_voted_days" => 0,
-        "avatar_x" => 36,
-        "avatar_y" => 36
+        "avatar" => 36
     );
 
     var $default_widget_top = array(
