@@ -234,10 +234,11 @@ class GDSRRenderT2 {
         return $all_rows;
     }
 
-    function prepare_wcr($widget, $template, $post) {
+    function prepare_wcr($widget, $template) {
         global $gdsr, $wpdb;
 
-        $sql = GDSRX::get_widget_comments($widget, $post->ID);
+        $post_id = $gdsr->widget_post_id;
+        $sql = GDSRX::get_widget_comments($widget, $post_id);
         $all_rows = $wpdb->get_results($sql);
 
         if (count($all_rows) > 0) {
@@ -262,6 +263,8 @@ class GDSRRenderT2 {
 
             $tr_class = "odd";
             $all_rows = array();
+            $pl = get_permalink($post_id);
+            if (substr($pl, -1) == "/") $pl = substr($pl, 0, strlen($pl) - 1);
             foreach ($new_rows as $row) {
                 $row->table_row_class = $tr_class;
                 if (strlen($row->comment_content) > $widget["text_max"] - 3 && $widget["text_max"] > 0)
@@ -270,7 +273,7 @@ class GDSRRenderT2 {
                 $row->comment_author_email = get_avatar($row->comment_author_email, $widget["avatar"]);
 
                 if (!(strpos($template, "%CMM_STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["cmm_stars"], $row->rating);
-                $row->permalink = "#comment-".$row->comment_id;
+                $row->permalink = $pl."#comment-".$row->comment_id;
 
                 if ($tr_class == "odd") $tr_class = "even";
                 else $tr_class = "odd";
@@ -429,11 +432,11 @@ class GDSRRenderT2 {
     }
 
     function render_wcr($widget) {
-        global $gdsr, $post;
+        global $gdsr;
         $template = GDSRRenderT2::get_template($widget["template_id"], "WBR");
         $tpl_render = html_entity_decode($template->elm["header"]);
         $rt = html_entity_decode($template->elm["item"]);
-        $all_rows = GDSRRenderT2::prepare_wcr($widget, $rt, $post);
+        $all_rows = GDSRRenderT2::prepare_wcr($widget, $rt);
 
         if (count($all_rows) > 0) {
             foreach ($all_rows as $row) {

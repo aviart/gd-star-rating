@@ -326,6 +326,7 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
         else
             $sort = "desc";
 
+        $col = $widget["column"];
         if ($col == "id")
             $col = "p.comment_id";
         else {
