@@ -60,6 +60,7 @@ if (!class_exists('GDStarRating')) {
         var $extra_folders = false;
         var $safe_mode = false;
         var $is_cached = false;
+        var $widget_post_id;
 
         var $loader_article = "";
         var $loader_comment = "";
@@ -1966,7 +1967,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
             if (is_admin()) return $content;
             if (!is_feed()) {
-                if (is_single() || is_page()) GDSRDatabase::add_new_view($post->ID);
+                if (is_single() || is_page()) {
+                    GDSRDatabase::add_new_view($post->ID);
+                    $this->widget_post_id = $post->ID;
+                }
 
                 if ((is_single() && $this->o["display_posts"] == 1) ||
                     (is_page() && $this->o["display_pages"] == 1) ||
