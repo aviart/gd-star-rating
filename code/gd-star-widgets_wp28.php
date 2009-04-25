@@ -144,13 +144,16 @@ if (class_exists("WP_Widget")) {
 
         function widget($args, $instance) {
             global $gdsr, $userdata;
-            extract($args, EXTR_SKIP);
 
-            if ($instance["display"] == "hide" || ($instance["display"] == "users" && $userdata->ID == 0) || ($instance["display"] == "visitors" && $userdata->ID > 0)) return;
+            if (is_single() || is_page()) {
+                extract($args, EXTR_SKIP);
 
-            echo $before_widget.$before_title.$instance['title'].$after_title;
-            echo $gdsr->render_comments_widget($instance);
-            echo $after_widget;
+                if ($instance["display"] == "hide" || ($instance["display"] == "users" && $userdata->ID == 0) || ($instance["display"] == "visitors" && $userdata->ID > 0)) return;
+
+                echo $before_widget.$before_title.$instance['title'].$after_title;
+                echo GDSRRenderT2::render_wcr($instance);
+                echo $after_widget;
+            }
         }
 
         function update($new_instance, $old_instance) {
@@ -169,8 +172,7 @@ if (class_exists("WP_Widget")) {
             $instance['display'] = $new_instance['display'];
             $instance['last_voted_days'] = $new_instance['last_voted_days'];
 
-            $instance['avatar_y'] = $new_instance['avatar_y'];
-            $instance['avatar_x'] = $new_instance['avatar_x'];
+            $instance['avatar'] = $new_instance['avatar'];
             $instance['rating_stars'] = $new_instance['rating_stars'];
             $instance['rating_size'] = $new_instance['rating_size'];
 

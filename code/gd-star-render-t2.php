@@ -234,8 +234,8 @@ class GDSRRenderT2 {
         return $all_rows;
     }
 
-    function prepare_wcr($widget, $template) {
-        global $gdsr, $wpdb, $post;
+    function prepare_wcr($widget, $template, $post) {
+        global $gdsr, $wpdb;
 
         $sql = GDSRX::get_widget_comments($widget, $post->ID);
         $all_rows = $wpdb->get_results($sql);
@@ -267,7 +267,10 @@ class GDSRRenderT2 {
                 if (strlen($row->comment_content) > $widget["text_max"] - 3 && $widget["text_max"] > 0)
                     $row->comment_content = substr($row->comment_content, 0, $widget["text_max"] - 3)." ...";
 
+                $row->comment_author_email = get_avatar($row->comment_author_email, $widget["avatar"]);
+
                 if (!(strpos($template, "%CMM_STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["cmm_stars"], $row->rating);
+                $row->permalink = "#comment-".$row->comment_id;
 
                 if ($tr_class == "odd") $tr_class = "even";
                 else $tr_class = "odd";
@@ -426,11 +429,11 @@ class GDSRRenderT2 {
     }
 
     function render_wcr($widget) {
-        global $gdsr;
+        global $gdsr, $post;
         $template = GDSRRenderT2::get_template($widget["template_id"], "WBR");
         $tpl_render = html_entity_decode($template->elm["header"]);
         $rt = html_entity_decode($template->elm["item"]);
-        $all_rows = GDSRRenderT2::prepare_wcr($widget, $rt);
+        $all_rows = GDSRRenderT2::prepare_wcr($widget, $rt, $post);
 
         if (count($all_rows) > 0) {
             foreach ($all_rows as $row) {
@@ -440,7 +443,11 @@ class GDSRRenderT2 {
                 $rt = str_replace('%CMM_VOTES%', $row->voters, $rt);
                 $rt = str_replace('%COMMENT%', $row->comment_content, $rt);
                 $rt = str_replace('%PERMALINK%', $row->permalink, $rt);
+                $rt = str_replace('%AUTHOR_NAME%', $row->comment_author, $rt);
+                $rt = str_replace('%AUTHOR_AVATAR%', $row->comment_author_email, $rt);
+                $rt = str_replace('%AUTHOR_LINK%', $row->comment_author_url, $rt);
                 $rt = str_replace('%ID%', $row->comment_id, $rt);
+                $rt = str_replace('%POST_ID%', $post->ID, $rt);
                 $rt = str_replace('%CMM_STARS%', $row->rating_stars, $rt);
 
                 $word_votes = $template->dep["EWV"];

@@ -86,8 +86,7 @@ class gdsrWidgets {
                 $options['display'] = $posted['display'];
                 $options['last_voted_days'] = $posted['last_voted_days'];
 
-                $options['avatar_y'] = $posted['avatar_y'];
-                $options['avatar_x'] = $posted['avatar_x'];
+                $options['avatar'] = $posted['avatar'];
                 $options['rating_stars'] = $posted['rating_stars'];
                 $options['rating_size'] = $posted['rating_size'];
 
@@ -123,20 +122,22 @@ class gdsrWidgets {
         extract($args);
         global $gdsr, $userdata;
 
-        if (is_numeric($widget_args))
-            $widget_args = array('number' => $widget_args);
-        $widget_args = wp_parse_args($widget_args, array( 'number' => -1 ));
-        extract($widget_args, EXTR_SKIP);
-        $options_all = get_option('widget_gdstarrating_comments');
-        if (!isset($options_all[$number]))
-            return;
-        $this->w = $options_all[$number];
+        if (is_single() || is_page()) {
+            if (is_numeric($widget_args))
+                $widget_args = array('number' => $widget_args);
+            $widget_args = wp_parse_args($widget_args, array( 'number' => -1 ));
+            extract($widget_args, EXTR_SKIP);
+            $options_all = get_option('widget_gdstarrating_comments');
+            if (!isset($options_all[$number]))
+                return;
+            $this->w = $options_all[$number];
 
-        if ($this->w["display"] == "hide" || ($this->w["display"] == "users" && $userdata->ID == 0) || ($this->w["display"] == "visitors" && $userdata->ID > 0)) return;
+            if ($this->w["display"] == "hide" || ($this->w["display"] == "users" && $userdata->ID == 0) || ($this->w["display"] == "visitors" && $userdata->ID > 0)) return;
 
-        echo $before_widget.$before_title.$this->w['title'].$after_title;
-        echo GDSRRenderT2::render_wcr($this->w);
-        echo $after_widget;
+            echo $before_widget.$before_title.$this->w['title'].$after_title;
+            echo GDSRRenderT2::render_wcr($this->w);
+            echo $after_widget;
+        }
     }
 
     function widget_top_init() {
