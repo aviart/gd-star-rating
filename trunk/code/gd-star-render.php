@@ -103,43 +103,6 @@ class GDSRRender {
             return '';
     }
 
-    function rating_text($id, $type, $votes, $score, $unit_count, $typecls, $custom_css_text = "") {
-        $template = get_option('gd-star-rating-templates');
-        if ($votes == 1) $tense = $template["word_votes_singular"];
-        else $tense = $template["word_votes_plural"];
-        
-        if ($votes > 0) $rating2 = $score / $votes;
-        else $rating2 = 0;
-        $rating1 = @number_format($rating2, 1);
-        if ($custom_css_text != "") $custom_css_text = $custom_css_text.' ';
-
-        $rater_text = '<div id="gdr_text_'.$type.$id.'" class="'.$custom_css_text.$typecls.'">';
-        switch ($type) {
-            case 'a':
-                $tpl = $template["article_rating_text"];
-                $rt = html_entity_decode($tpl);
-                $rt = str_replace('%RATING%', $rating1, $rt);
-                $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-                $rt = str_replace('%VOTES%', $votes, $rt);
-                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-                $rt = str_replace('%ID%', $id, $rt);
-                $rater_text.= $rt;
-                break;
-            case 'c':
-                $tpl = $template["cmm_rating_text"];
-                $rt = html_entity_decode($tpl);
-                $rt = str_replace('%CMM_RATING%', $rating1, $rt);
-                $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
-                $rt = str_replace('%CMM_VOTES%', $votes, $rt);
-                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-                $rt = str_replace('%ID%', $id, $rt);
-                $rater_text.= $rt;
-                break;
-        }
-        $rater_text.= '</div>';
-        return $rater_text;
-    }
-
     function multi_rating_review($votes, $post_id, $set, $height, $allow_vote = true, $class_block = "gdsr-review-block", $class_table = "gdsr-review-table") {
         return GDSRRender::multi_rating_block("", $allow_vote, $votes, false, $post_id, $set, $height, 0, "", $class_block, "", $class_table, "", "N", 0, "", false, "", true);
     }

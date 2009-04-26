@@ -116,6 +116,29 @@ $t->add_part(__("Time Restricted Active", "gd-star-rating"), "time_active", "", 
 $t->add_part(__("Time Restricted Closed", "gd-star-rating"), "time_closed", "", array("%RATING%", "%MAX_RATING%", "%VOTES%", "%ID%", "%WORD_VOTES%"));
 $tpls->add_template($t);
 
+$t = new gdTemplate("MRS", __("Multi Ratings Stars", "gd-star-rating"), "%MUR_RATING_STARS%");
+$t->add_template("ETR", "%TABLE_ROW_CLASS%");
+$t->add_element("%ELEMENT_NAME%", __("single element name", "gd-star-rating"));
+$t->add_element("%ELEMENT_STARS%", __("single element stars", "gd-star-rating"));
+$t->add_element("%TABLE_ROW_CLASS%", __("class for alternating row class", "gd-star-rating"));
+$t->add_part(__("Item", "gd-star-rating"), "item", "", "all", "area");
+$tpls->add_template($t);
+
+$t = new gdTemplate("MRB", __("Multi Ratings Block", "gd-star-rating"));
+$t->add_template("MRT", "%MUR_RATING_TEXT%");
+$t->add_template("MRS", "%MUR_RATING_STARS%");
+$t->add_element("%MUR_HEADER_TEXT%", __("mulit rating header text", "gd-star-rating"));
+$t->add_element("%MUR_RATING_TEXT%", __("multi rating text", "gd-star-rating"));
+$t->add_element("%MUR_RATING_STARS%", __("multi rating stars", "gd-star-rating"));
+$t->add_element("%MUR_CSS_BLOCK%", __("css class for whole block", "gd-star-rating"));
+$t->add_element("%MUR_CSS_HEADER%", __("css class for header", "gd-star-rating"));
+$t->add_element("%MUR_CSS_STARS%", __("css class for stars", "gd-star-rating"));
+$t->add_element("%MUR_CSS_TEXT%", __("css class for rating text", "gd-star-rating"));
+$t->add_element("%MUR_CSS_BUTTON%", __("css class for rating text", "gd-star-rating"));
+$t->add_element("%BUTTON%", __("rating button", "gd-star-rating"));
+$t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
+$tpls->add_template($t);
+
 $t = new gdTemplate("SRB", __("Standard Ratings Block", "gd-star-rating"));
 $t->add_template("SRT", "%RATING_TEXT%");
 $t->add_element("%HEADER_TEXT%", __("rating header text", "gd-star-rating"));
