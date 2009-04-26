@@ -5,11 +5,11 @@ class GDSRRenderT2 {
         include(STARRATING_PATH.'code/t2/gd-star-t2-templates.php');
 
         if (intval($template_id) == 0) {
-            $t = GDSRDB::get_templates("SRB", true, true);
+            $t = GDSRDB::get_templates($section, true, true);
             $template_id = $t->template_id;
         }
 
-        return new gdTemplateRender($template_id);
+        return new gdTemplateRender($template_id, $section);
     }
 
     function prepare_wbr($widget) {
@@ -432,7 +432,7 @@ class GDSRRenderT2 {
 
     function render_wcr($widget) {
         global $gdsr;
-        $template = GDSRRenderT2::get_template($widget["template_id"], "WBR");
+        $template = GDSRRenderT2::get_template($widget["template_id"], "WCR");
         $tpl_render = html_entity_decode($template->elm["header"]);
         $rt = html_entity_decode($template->elm["item"]);
         $all_rows = GDSRRenderT2::prepare_wcr($widget, $rt);
@@ -491,7 +491,7 @@ class GDSRRenderT2 {
 
     function render_wsr($widget) {
         global $gdsr;
-        $template = GDSRRenderT2::get_template($widget["template_id"], "WBR");
+        $template = GDSRRenderT2::get_template($widget["template_id"], "WSR");
         $tpl_render = html_entity_decode($template->elm["header"]);
         $rt = html_entity_decode($template->elm["item"]);
         $all_rows = GDSRRenderT2::prepare_wsr($widget, $rt);

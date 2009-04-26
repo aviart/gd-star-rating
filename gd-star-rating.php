@@ -1535,7 +1535,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
 
             include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
 
-            $template = new gdTemplateRender($tpl_id);
+            $template = new gdTemplateRender($tpl_id, "SRT");
             $rt = GDSRRenderT2::render_srt($template->dep["SRT"], $rating1, $unit_count, $votes, $post_id);
 
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";

@@ -142,13 +142,18 @@ class gdTemplateRender {
     var $elm;
     var $tag;
 
-    function gdTemplateRender($id) {
+    function gdTemplateRender($id, $section) {
         $this->tpl = wp_gdsr_get_template($id);
+        if (!is_object($this->tpl)) {
+            $t = GDSRDB::get_templates($section, true, true);
+            $id = $t->template_id;
+            $this->tpl = wp_gdsr_get_template($id);
+        }
         $this->dep = array();
 
         $dependencies = unserialize($this->tpl->dependencies);
         if (is_array($dependencies)) {
-            foreach ($dependencies as $key => $value) $this->dep[$key] = new gdTemplateRender($value);
+            foreach ($dependencies as $key => $value) $this->dep[$key] = new gdTemplateRender($value, $key);
         }
         $this->elm = unserialize($this->tpl->elements);
         foreach($this->elm as $key => $value) {
