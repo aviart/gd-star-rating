@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.2.1
+Version: 1.2.2
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review, multi
 Requires at least: 2.5.0
 Tested up to: 2.8.0
@@ -65,7 +65,6 @@ Plugin can import data from different rating plugins:
 * WP Post Rating [http://wordpress.org/extend/plugins/wp-postratings/]
 
 == Planned Features ==
-* Comments Widget
 * Reccomendation ratings
 * WP Super Cache support
 * WordPress MU support
@@ -102,8 +101,8 @@ Plugin administration consist of 12 panels:
   Various tools for cleanup and global updates
 * IP:
   Banning IP addresses
-* Templates:
-  Rating text and shortcode templates
+* T2:
+  Advananced templates systetm
 * Import:
   Import voting data from other rating plugins
 * Export:
@@ -125,6 +124,7 @@ Plugin administration consist of 12 panels:
 * Plugin folder in the WordPress plugins folder must be `gd-star-rating`.
 * Upload `gd-star-rating` folder to the `/wp-content/plugins/` directory
 * Activate the plugin through the 'Plugins' menu in WordPress
+* Check all the plugin settings before using the plugin.
 
 = WordPress 2.5 =
 * plugin doesn't require any more changes.
@@ -134,6 +134,9 @@ Plugin administration consist of 12 panels:
 * if your `wp-content` folder is moved out of WordPress web location, then you must edit `gd-star-config.php` file and set value with exact location of `wp-content` file for `STARRATING_WPCONFIG` in line 3. Without this some plugin feature will not work.
 
 == Frequently Asked Questions ==
+
+= Plugin is nit showing rating stars after update? =
+Check all plugin and plugins widgets settings after update and save them.
 
 = Where can I see an example of the plugin? =
 My Wordpress blog has this plugin installed, so you can see it in action there.
