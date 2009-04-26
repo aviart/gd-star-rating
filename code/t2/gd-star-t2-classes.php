@@ -144,7 +144,7 @@ class gdTemplateRender {
 
     function gdTemplateRender($id, $section) {
         $this->tpl = wp_gdsr_get_template($id);
-        if (!is_object($this->tpl)) {
+        if (!is_object($this->tpl) || $this->tpl->section != $section) {
             $t = GDSRDB::get_templates($section, true, true);
             $id = $t->template_id;
             $this->tpl = wp_gdsr_get_template($id);

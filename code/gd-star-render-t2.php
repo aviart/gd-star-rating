@@ -489,9 +489,13 @@ class GDSRRenderT2 {
         return $rt;
     }
 
-    function render_wsr($widget) {
+    function render_srr($widget) {
+        return GDSRRenderT2::render_wsr($widget, "SRR");
+    }
+
+    function render_wsr($widget, $section = "WSR") {
         global $gdsr;
-        $template = GDSRRenderT2::get_template($widget["template_id"], "WSR");
+        $template = GDSRRenderT2::get_template($widget["template_id"], $section);
         $tpl_render = html_entity_decode($template->elm["header"]);
         $rt = html_entity_decode($template->elm["item"]);
         $all_rows = GDSRRenderT2::prepare_wsr($widget, $rt);

@@ -102,7 +102,7 @@ Plugin administration consist of 12 panels:
 * IP:
   Banning IP addresses
 * T2:
-  Advananced templates systetm
+  Advananced templates system
 * Import:
   Import voting data from other rating plugins
 * Export:
@@ -135,7 +135,7 @@ Plugin administration consist of 12 panels:
 
 == Frequently Asked Questions ==
 
-= Plugin is nit showing rating stars after update? =
+= Plugin is not showing rating stars or rating widgets after update? =
 Check all plugin and plugins widgets settings after update and save them.
 
 = Where can I see an example of the plugin? =

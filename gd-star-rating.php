@@ -343,18 +343,7 @@ if (!class_exists('GDStarRating')) {
         */
         function shortcode_starrating($atts = array()) {
             $sett = shortcode_atts($this->default_shortcode_starrating, $atts);
-            if ($sett["div_class"] != "") $rating = '<div class="'.$sett["div_class"].'">';
-            else $rating = "<div>";
-            $rating.= html_entity_decode($this->x["shortcode_starrating_header"]);
-            $template = html_entity_decode($this->x["shortcode_starrating_item"]);
-
-            $all_rows = $this->prepare_data($sett, $template);
-            foreach ($all_rows as $row) {
-                $rating.= $this->prepare_row($row, $template);
-            }
-
-            $rating.= html_entity_decode($this->x["shortcode_starrating_footer"]);
-            $rating.= "</div>";
+            $rating = GDSRRenderT2::render_srr($sett);
             return $rating;
         }
         // shortcodes

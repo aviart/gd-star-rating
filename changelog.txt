@@ -3,10 +3,10 @@
 == Change Log ==
 
 === Version: 1.2.2 / april 26 2009 ===
-  * new: t2 templates for reviews
   * new: extra comments widget template
   * new: updating default templates
   * new: rating results rendering using t2
+  * new: t2 templates for reviews
   * edit: updated readme file
   * edit: few improvements to t2 base classes
   * edit: few improvements to tinymce plugin
