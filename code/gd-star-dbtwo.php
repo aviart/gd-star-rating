@@ -495,6 +495,20 @@ class GDSRDB {
             }
         }
     }
+
+    function update_default_templates($path) {
+        global $wpdb, $table_prefix;
+        $path.= "install/data/gdsr_templates_rplc.txt";
+        if (file_exists($path)) {
+            $tpls = file($path);
+            foreach ($tpls as $tpl) {
+                $tpl_check = substr($tpl, 0, 3);
+                $tpl_value = substr($tpl, 4);
+                $sql = sprintf("update %sgdsr_templates set elements = '%s' where section = '%s' and preinstalled = '1'", $table_prefix, $tpl_value, $tpl_check);
+                $wpdb->query($sql);
+            }
+        }
+    }
     // templates
 
     // totals
