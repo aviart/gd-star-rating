@@ -6,8 +6,10 @@
   * new: t2 templates for reviews
   * new: extra comments widget template
   * new: updating default templates
+  * new: rating results rendering using t2
   * edit: updated readme file
   * edit: few improvements to t2 base classes
+  * edit: few improvements to tinymce plugin
   * fix: missing files for comments widget
   * fix: small problem with rendering of static stars using divs
   * fix: t2 widget rendering call with invalid default type

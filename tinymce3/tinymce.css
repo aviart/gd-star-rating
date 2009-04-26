@@ -1,6 +1,7 @@
 td.gdsrright, td.gdsrleft, td.gdsrreg {
 	vertical-align: top;
-	height:24px;
+	height: 20px;
+    padding: 1px;
 }
 
 td.gdsrright { text-align: right; }
@@ -15,5 +16,5 @@ p {
 }
 
 .panel_wrapper {
-    height: 275px;
+    height: 320px;
 }
