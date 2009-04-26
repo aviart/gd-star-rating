@@ -31,7 +31,7 @@
             <li id="shortcode_tab" class="current"><span><a href="javascript:mcTabs.displayTab('shortcode_tab','shortcode_panel');" onmousedown="return false;"><?php _e("Insert", "gd-star-rating"); ?></a></span></li>
             <li id="general_tab"><span><a href="javascript:mcTabs.displayTab('general_tab','general_panel');" onmousedown="return false;"><?php _e("General", "gd-star-rating"); ?></a></span></li>
             <li id="filter_tab"><span><a href="javascript:mcTabs.displayTab('filter_tab','filter_panel');" onmousedown="return false;"><?php _e("Filter", "gd-star-rating"); ?></a></span></li>
-            <li id="styles_tab"><span><a href="javascript:mcTabs.displayTab('styles_tab','styles_panel');" onmousedown="return false;"><?php _e("Render", "gd-star-rating"); ?></a></span></li>
+            <li id="styles_tab"><span><a href="javascript:mcTabs.displayTab('styles_tab','styles_panel');" onmousedown="return false;"><?php _e("Graphics", "gd-star-rating"); ?></a></span></li>
             <li style="display: none" id="multis_tab"><span><a href="javascript:mcTabs.displayTab('multis_tab','multis_panel');" onmousedown="return false;"><?php _e("Multi Rating", "gd-star-rating"); ?></a></span></li>
             <li style="display: none" id="multisreview_tab"><span><a href="javascript:mcTabs.displayTab('multisreview_tab','multisreview_panel');" onmousedown="return false;"><?php _e("Multi Review", "gd-star-rating"); ?></a></span></li>
             <li style="display: none" id="articlesreview_tab"><span><a href="javascript:mcTabs.displayTab('articlesreview_tab','articlesreview_panel');" onmousedown="return false;"><?php _e("Articles Review", "gd-star-rating"); ?></a></span></li>

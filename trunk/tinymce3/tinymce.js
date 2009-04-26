@@ -37,15 +37,20 @@ function gdsrChangeTrend(trend, el, index) {
     document.getElementById("gdsr-"+trend+"-img["+index+"]").style.display = el == "img" ? "block" : "none";
 }
 
-function gdsrChangeStyles(el, index) {
-    document.getElementById("gdsr-styles-built["+index+"]").style.display = el == "built" ? "block" : "none";
-    document.getElementById("gdsr-styles-external["+index+"]").style.display = el == "external" ? "block" : "none";
+function gdsrChangeSource(el, index) {
+    document.getElementById("gdsr-src-multi["+index+"]").style.display = el == "multis" ? "block" : "none";
 }
 
 function gdsrChangeDate(el, index) {
     document.getElementById("gdsr-pd-lastd["+index+"]").style.display = el == "lastd" ? "block" : "none";
     document.getElementById("gdsr-pd-month["+index+"]").style.display = el == "month" ? "block" : "none";
     document.getElementById("gdsr-pd-range["+index+"]").style.display = el == "range" ? "block" : "none";
+}
+
+function gdsrChangeImage(el, index) {
+    document.getElementById("gdsr-pi-none["+index+"]").style.display = el == "none" ? "block" : "none";
+    document.getElementById("gdsr-pi-custom["+index+"]").style.display = el == "custom" ? "block" : "none";
+    document.getElementById("gdsr-pi-content["+index+"]").style.display = el == "content" ? "block" : "none";
 }
 
 function init() {
@@ -85,14 +90,17 @@ function insertStarRatingCode() {
     }
     else {
         tagtext = "[starrating";
+        tagtext = tagtext + " template_id=" + document.getElementById('srTemplateSRR').value
         if (document.getElementById('srRows').value != 10)
-            tagtext = tagtext + " rows=" + document.getElementById('srRows').value
+            tagtext = tagtext + " rows=" + document.getElementById('srRows').value;
         if (document.getElementById('srSelect').value != 'postpage')
             tagtext = tagtext + " select='" + document.getElementById('srSelect').value + "'";
         if (document.getElementById('srColumn').value != 'rating')
             tagtext = tagtext + " column='" + document.getElementById('srColumn').value + "'";
         if (document.getElementById('srOrder').value != 'desc')
             tagtext = tagtext + " order='" + document.getElementById('srOrder').value + "'";
+        if (document.getElementById('srLastDate').value != 0)
+            tagtext = tagtext + " last_voted_days=" + document.getElementById('srLastDate').value;
         if (document.getElementById('srCategory').value != '0')
             tagtext = tagtext + " category=" + document.getElementById('srCategory').value;
         if (document.getElementById('srGrouping').value != 'post')
@@ -137,6 +145,17 @@ function insertStarRatingCode() {
         if (document.getElementById('srMinVotes').value != 5)
             tagtext = tagtext + " min_votes=" + document.getElementById('srMinVotes').value
 
+        if (document.getElementById('srDataSource').value != 'standard') {
+            tagtext = tagtext + " source='" + document.getElementById('srDataSource').value + "'";
+            tagtext = tagtext + " source_set=" + document.getElementById('srMultiSet').value;
+        }
+
+        if (document.getElementById('srImageFrom').value != 'none') {
+            tagtext = tagtext + " image_from='" + document.getElementById('srImageFrom').value + "'";
+            if (document.getElementById('srImageFrom').value == 'custom')
+                tagtext = tagtext + " image_custom='" + document.getElementById('srImageCustom').value + "'";
+        }
+
         if (document.getElementById('publishDate').value == 'lastd') {
             if (document.getElementById('publishDays').value > 0) {
                 tagtext = tagtext + " publish_days=" + document.getElementById('publishDays').value;
@@ -150,13 +169,6 @@ function insertStarRatingCode() {
             tagtext = tagtext + " publish_date='range'";
             tagtext = tagtext + " publish_range_from='" + document.getElementById('publishRangeFrom').value + "'";
             tagtext = tagtext + " publish_range_to='" + document.getElementById('publishRangeTo').value + "'";
-        }
-
-        if (document.getElementById('srSType').value == 'built') {
-            tagtext = tagtext + " div_class='" + document.getElementById('srClassBuild').value + "'";
-        }
-        else if (document.getElementById('srSType').value == 'external') {
-            tagtext = tagtext + " div_class='" + document.getElementById('srClass').value + "'";
         }
 
         if (document.getElementById('srStarsStyle').value != 'oxygen')

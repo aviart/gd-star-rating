@@ -214,7 +214,7 @@ class GDSRDefaults {
         "rating_stars" => "oxygen",
         "rating_size" => 12,
         "last_voted_days" => 0,
-        "avatar" => 36
+        "avatar" => 40
     );
 
     var $default_widget_top = array(
@@ -275,8 +275,8 @@ class GDSRDefaults {
         "image_custom" => 'Image',
         "rating_stars" => "oxygen",
         "rating_size" => 20,
-        'review_stars' => 'oxygen',
-        'review_size' => 20,
+        "review_stars" => 'oxygen',
+        "review_size" => 20,
         "last_voted_days" => 0
     );
 
@@ -314,6 +314,7 @@ class GDSRDefaults {
     );
 
     var $default_shortcode_starrating = array(
+        'template_id' => 0,
         'source' => 'standard',
         'source_set' => 0,
         'rows' => 10,
@@ -350,7 +351,8 @@ class GDSRDefaults {
         'rating_stars' => 'oxygen',
         'rating_size' => 20,
         'review_stars' => 'oxygen',
-        'review_size' => 20
+        'review_size' => 20,
+        'last_voted_days' => 0
     );
 
     function GDSRDefaults() { }

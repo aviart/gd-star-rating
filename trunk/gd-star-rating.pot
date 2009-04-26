@@ -36,7 +36,6 @@ msgstr ""
 #: code/t2/gd-star-t2-templates.php:98
 #: code/t2/gd-star-t2-templates.php:145
 #: code/t2/gd-star-t2-templates.php:172
-#: code/t2/gd-star-t2-templates.php:184
 #: templates/templates_standard.php:6
 msgid "article rating"
 msgstr ""
@@ -47,7 +46,7 @@ msgstr ""
 #: code/t2/gd-star-t2-templates.php:99
 #: code/t2/gd-star-t2-templates.php:146
 #: code/t2/gd-star-t2-templates.php:173
-#: code/t2/gd-star-t2-templates.php:185
+#: code/t2/gd-star-t2-templates.php:186
 #: templates/templates_standard.php:9
 msgid "maximum rating value"
 msgstr ""
@@ -58,7 +57,6 @@ msgstr ""
 #: code/t2/gd-star-t2-templates.php:100
 #: code/t2/gd-star-t2-templates.php:149
 #: code/t2/gd-star-t2-templates.php:175
-#: code/t2/gd-star-t2-templates.php:186
 #: templates/templates_standard.php:20
 msgid "total votes for article"
 msgstr ""
@@ -79,7 +77,7 @@ msgstr ""
 #: code/t2/gd-star-t2-templates.php:102
 #: code/t2/gd-star-t2-templates.php:163
 #: code/t2/gd-star-t2-templates.php:178
-#: code/t2/gd-star-t2-templates.php:197
+#: code/t2/gd-star-t2-templates.php:196
 msgid "singular/plural word votes"
 msgstr ""
 
@@ -151,6 +149,8 @@ msgstr ""
 #: code/t2/gd-star-t2-templates.php:127
 #: code/t2/gd-star-t2-templates.php:139
 #: code/t2/gd-star-t2-templates.php:179
+#: code/t2/gd-star-t2-templates.php:209
+#: code/t2/gd-star-t2-templates.php:216
 msgid "Normal"
 msgstr ""
 
@@ -197,7 +197,13 @@ msgstr ""
 #: code/t2/gd-star-t2-templates.php:121
 #: code/t2/gd-star-t2-templates.php:133
 #: code/t2/gd-star-t2-templates.php:152
-#: code/t2/gd-star-t2-templates.php:189
+#: code/t2/gd-star-t2-templates.php:190
+#: code/t2/gd-star-t2-templates.php:206
+#: code/t2/gd-star-t2-templates.php:207
+#: code/t2/gd-star-t2-templates.php:208
+#: code/t2/gd-star-t2-templates.php:213
+#: code/t2/gd-star-t2-templates.php:214
+#: code/t2/gd-star-t2-templates.php:215
 #: templates/templates_standard.php:30
 #: templates/templates_standard.php:78
 msgid "rating stars"
@@ -260,27 +266,27 @@ msgstr ""
 
 #: code/t2/gd-star-t2-templates.php:58
 #: code/t2/gd-star-t2-templates.php:164
-#: code/t2/gd-star-t2-templates.php:198
-msgid "class for alternating table rows"
+#: code/t2/gd-star-t2-templates.php:197
+msgid "class for alternating row class"
 msgstr ""
 
 #: code/t2/gd-star-t2-templates.php:59
 #: code/t2/gd-star-t2-templates.php:165
-#: code/t2/gd-star-t2-templates.php:200
+#: code/t2/gd-star-t2-templates.php:198
 #: templates/templates_articles.php:5
 msgid "Header"
 msgstr ""
 
 #: code/t2/gd-star-t2-templates.php:60
 #: code/t2/gd-star-t2-templates.php:166
-#: code/t2/gd-star-t2-templates.php:201
+#: code/t2/gd-star-t2-templates.php:199
 #: templates/templates_articles.php:10
 msgid "Item"
 msgstr ""
 
 #: code/t2/gd-star-t2-templates.php:61
 #: code/t2/gd-star-t2-templates.php:167
-#: code/t2/gd-star-t2-templates.php:202
+#: code/t2/gd-star-t2-templates.php:200
 #: templates/templates_articles.php:15
 msgid "Footer"
 msgstr ""
@@ -291,6 +297,7 @@ msgstr ""
 
 #: code/t2/gd-star-t2-templates.php:66
 #: code/t2/gd-star-t2-templates.php:87
+#: code/t2/gd-star-t2-templates.php:185
 #: templates/templates_standard.php:68
 msgid "comment rating"
 msgstr ""
@@ -302,6 +309,7 @@ msgid "maximum comment rating value"
 msgstr ""
 
 #: code/t2/gd-star-t2-templates.php:68
+#: code/t2/gd-star-t2-templates.php:187
 #: templates/templates_standard.php:75
 msgid "total votes for comment"
 msgstr ""
@@ -313,6 +321,8 @@ msgstr ""
 #: code/t2/gd-star-t2-templates.php:80
 #: code/t2/gd-star-t2-templates.php:120
 #: code/t2/gd-star-t2-templates.php:132
+#: code/t2/gd-star-t2-templates.php:204
+#: code/t2/gd-star-t2-templates.php:205
 msgid "rating header text"
 msgstr ""
 
@@ -385,55 +395,40 @@ msgstr ""
 msgid "Widget Comments Rating"
 msgstr ""
 
-#: code/t2/gd-star-t2-templates.php:187
+#: code/t2/gd-star-t2-templates.php:188
 msgid "comment contents"
 msgstr ""
 
-#: code/t2/gd-star-t2-templates.php:188
+#: code/t2/gd-star-t2-templates.php:189
 msgid "url to comment"
 msgstr ""
 
-#: code/t2/gd-star-t2-templates.php:190
-msgid "widget title"
-msgstr ""
-
 #: code/t2/gd-star-t2-templates.php:191
-msgid "post title"
-msgstr ""
-
-#: code/t2/gd-star-t2-templates.php:192
 msgid "post id"
 msgstr ""
 
-#: code/t2/gd-star-t2-templates.php:193
+#: code/t2/gd-star-t2-templates.php:192
 msgid "comment id"
 msgstr ""
 
-#: code/t2/gd-star-t2-templates.php:194
+#: code/t2/gd-star-t2-templates.php:193
 msgid "name of the comments author"
 msgstr ""
 
-#: code/t2/gd-star-t2-templates.php:195
+#: code/t2/gd-star-t2-templates.php:194
 msgid "authors url"
 msgstr ""
 
-#: code/t2/gd-star-t2-templates.php:196
+#: code/t2/gd-star-t2-templates.php:195
 msgid "authors avatar"
 msgstr ""
 
-#: code/t2/gd-star-t2-templates.php:199
-#: options/multis/results_post.php:116
-#: options/articles.php:147
-#: tinymce3/panels/advanced.php:146
-#: widgets/comments/part_basic.php:2
-#: widgets/comments_28/part_basic.php:2
-#: widgets/rating/part_basic.php:2
-#: widgets/rating/part_filter.php:60
-#: widgets/rating_28/part_basic.php:2
-#: widgets/rating_28/part_filter.php:60
-#: widgets/top/part_basic.php:2
-#: widgets/top_28/part_basic.php:2
-msgid "Title"
+#: code/t2/gd-star-t2-templates.php:203
+msgid "Standard Review Rating Block"
+msgstr ""
+
+#: code/t2/gd-star-t2-templates.php:212
+msgid "Comments Review Rating Block"
 msgstr ""
 
 #: code/gd-star-dbone.php:1028
@@ -789,7 +784,7 @@ msgstr ""
 msgid "Data imported."
 msgstr ""
 
-#: code/gd-star-render-t2.php:416
+#: code/gd-star-render-t2.php:502
 msgid "(no title)"
 msgstr ""
 
@@ -797,11 +792,11 @@ msgstr ""
 msgid "Customized rating results list."
 msgstr ""
 
-#: code/gd-star-widgets_wp28.php:98
+#: code/gd-star-widgets_wp28.php:100
 msgid "Overall blog rating results."
 msgstr ""
 
-#: code/gd-star-widgets_wp28.php:139
+#: code/gd-star-widgets_wp28.php:141
 msgid "Current post comments rating."
 msgstr ""
 
@@ -867,8 +862,8 @@ msgstr ""
 #: tinymce3/panels/multi.php:25
 #: widgets/comments/part_stars.php:13
 #: widgets/comments_28/part_stars.php:13
-#: widgets/rating/part_stars.php:13
 #: widgets/rating_28/part_stars.php:13
+#: widgets/rating_28/part_stars.php:23
 msgid "Set"
 msgstr ""
 
@@ -1152,8 +1147,8 @@ msgstr ""
 #: options/settings/settings_administration.php:40
 #: options/articles.php:157
 #: options/categories.php:70
-#: gd-star-rating.php:650
-#: gd-star-rating.php:650
+#: gd-star-rating.php:651
+#: gd-star-rating.php:651
 msgid "Categories"
 msgstr ""
 
@@ -1191,8 +1186,8 @@ msgstr ""
 #: templates/templates_standard.php:1
 #: tinymce3/window.php:56
 #: tinymce3/window.php:57
-#: gd-star-rating.php:649
-#: gd-star-rating.php:649
+#: gd-star-rating.php:650
+#: gd-star-rating.php:650
 msgid "Articles"
 msgstr ""
 
@@ -1232,6 +1227,20 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
+#: options/multis/results_post.php:116
+#: options/articles.php:147
+#: tinymce3/panels/advanced.php:146
+#: widgets/comments/part_basic.php:2
+#: widgets/comments_28/part_basic.php:2
+#: widgets/rating/part_basic.php:2
+#: widgets/rating/part_filter.php:60
+#: widgets/rating_28/part_basic.php:2
+#: widgets/rating_28/part_filter.php:60
+#: widgets/top/part_basic.php:2
+#: widgets/top_28/part_basic.php:2
+msgid "Title"
+msgstr ""
+
 #: options/multis/results_post.php:117
 #: options/articles.php:148
 msgid "View"
@@ -1268,8 +1277,8 @@ msgid "Voters"
 msgstr ""
 
 #: options/multis/sets.php:45
-#: gd-star-rating.php:653
-#: gd-star-rating.php:653
+#: gd-star-rating.php:654
+#: gd-star-rating.php:654
 msgid "Multi Sets"
 msgstr ""
 
@@ -1283,8 +1292,6 @@ msgstr ""
 #: options/users.php:62
 #: options/voters.php:142
 #: tinymce3/panels/advanced.php:145
-#: widgets/comments/part_filter.php:48
-#: widgets/comments_28/part_filter.php:48
 #: widgets/rating/part_filter.php:59
 #: widgets/rating_28/part_filter.php:59
 msgid "ID"
@@ -1300,10 +1307,10 @@ msgstr ""
 #: options/settings/settings_comments.php:14
 #: options/settings/settings_comments.php:125
 #: options/settings/settings_comments.php:194
+#: options/settings/settings_integration.php:39
 #: options/settings/settings_multis.php:14
 #: options/settings/settings_preview.php:39
 #: options/settings/settings_preview.php:43
-#: options/settings/settings_rss.php:5
 #: widgets/comments/part_stars.php:4
 #: widgets/comments/part_stars.php:12
 #: widgets/comments_28/part_stars.php:4
@@ -1316,7 +1323,7 @@ msgid "Stars"
 msgstr ""
 
 #: options/multis/sets.php:68
-#: options/settings.php:50
+#: options/settings.php:48
 msgid "Statistics"
 msgstr ""
 
@@ -1330,7 +1337,6 @@ msgstr ""
 
 #: options/multis/sets.php:134
 #: options/multis/sets.php:143
-#: options/settings/settings_rss.php:1
 #: options/tools/tools_bulk.php:22
 #: options/categories.php:92
 msgid "Posts"
@@ -1352,8 +1358,8 @@ msgstr ""
 #: options/settings/settings_administration.php:30
 #: options/settings.php:37
 #: tinymce3/panels/multi.php:15
-#: gd-star-rating.php:654
-#: gd-star-rating.php:654
+#: gd-star-rating.php:655
+#: gd-star-rating.php:655
 msgid "Settings"
 msgstr ""
 
@@ -1376,8 +1382,8 @@ msgstr ""
 #: options/categories.php:225
 #: options/comments.php:140
 #: options/users.php:48
-#: gd-star-rating.php:651
-#: gd-star-rating.php:651
+#: gd-star-rating.php:652
+#: gd-star-rating.php:652
 msgid "Users"
 msgstr ""
 
@@ -1387,8 +1393,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:44
 #: options/setup.php:42
-#: gd-star-rating.php:662
-#: gd-star-rating.php:662
+#: gd-star-rating.php:663
+#: gd-star-rating.php:663
 msgid "Setup"
 msgstr ""
 
@@ -1397,8 +1403,8 @@ msgid "Uninstall and maintenance."
 msgstr ""
 
 #: options/settings/settings_administration.php:48
-#: gd-star-rating.php:659
-#: gd-star-rating.php:659
+#: gd-star-rating.php:660
+#: gd-star-rating.php:660
 msgid "Import"
 msgstr ""
 
@@ -1407,8 +1413,8 @@ msgid "Importing data for other rating plugins."
 msgstr ""
 
 #: options/settings/settings_administration.php:50
-#: gd-star-rating.php:660
-#: gd-star-rating.php:660
+#: gd-star-rating.php:661
+#: gd-star-rating.php:661
 msgid "Export"
 msgstr ""
 
@@ -1419,13 +1425,70 @@ msgstr ""
 #: options/settings/settings_administration.php:52
 #: options/ips.php:67
 #: options/users_log.php:178
-#: gd-star-rating.php:658
-#: gd-star-rating.php:658
+#: gd-star-rating.php:659
+#: gd-star-rating.php:659
 msgid "IP's"
 msgstr ""
 
 #: options/settings/settings_administration.php:52
 msgid "IP addresses managment."
+msgstr ""
+
+#: options/settings/settings_advanced.php:3
+msgid "PHP is working in the safe mode. Plugin can't create folders for caching. You need to do it manually if you want to use cache."
+msgstr ""
+
+#: options/settings/settings_advanced.php:4
+msgid "For cache to work, plugin must be able to access cache folder. Plugin has tried to create folders needed and failed. Until you resolved this issue cache feature can't be used."
+msgstr ""
+
+#: options/settings/settings_advanced.php:5
+msgid "Either make <strong>wp-content</strong> folder writeable or create <strong>gd-star-rating</strong> folder in <strong>wp-content</strong> and make it writeable. Use 0755 chmod setting."
+msgstr ""
+
+#: options/settings/settings_advanced.php:10
+msgid "Cache Activation"
+msgstr ""
+
+#: options/settings/settings_advanced.php:12
+msgid "Cache enabled."
+msgstr ""
+
+#: options/settings/settings_advanced.php:15
+msgid "Cache Cleanup"
+msgstr ""
+
+#: options/settings/settings_advanced.php:19
+msgid "Auto cleanup cache"
+msgstr ""
+
+#: options/settings/settings_advanced.php:20
+msgid "Enabled."
+msgstr ""
+
+#: options/settings/settings_advanced.php:23
+msgid "Cleanup cache every"
+msgstr ""
+
+#: options/settings/settings_advanced.php:29
+msgid "Inline Debug Info"
+msgstr ""
+
+#: options/settings/settings_advanced.php:31
+msgid "Add small block with essential debug info into each rating block."
+msgstr ""
+
+#: options/settings/settings_advanced.php:33
+#: options/settings/settings_advanced.php:40
+msgid "Important"
+msgstr ""
+
+#: options/settings/settings_advanced.php:36
+msgid "Log Into File"
+msgstr ""
+
+#: options/settings/settings_advanced.php:38
+msgid "Log into file various debug information."
 msgstr ""
 
 #: options/settings/settings_articles.php:10
@@ -1533,7 +1596,7 @@ msgstr ""
 
 #: options/settings/settings_articles.php:135
 #: options/settings/settings_comments.php:115
-#: options/settings/settings_rss.php:24
+#: options/settings/settings_integration.php:58
 msgid "Rating Template"
 msgstr ""
 
@@ -1580,7 +1643,7 @@ msgstr ""
 #: options/settings/settings_articles.php:159
 #: options/settings/settings_comments.php:165
 #: options/settings/settings_multis.php:97
-#: options/settings.php:51
+#: options/settings.php:49
 msgid "Preview"
 msgstr ""
 
@@ -1603,44 +1666,6 @@ msgstr ""
 msgid "Hide text and show only animation image."
 msgstr ""
 
-#: options/settings/settings_cache.php:3
-msgid "PHP is working in the safe mode. Plugin can't create folders for caching. You need to do it manually if you want to use cache."
-msgstr ""
-
-#: options/settings/settings_cache.php:4
-msgid "For cache to work, plugin must be able to access cache folder. Plugin has tried to create folders needed and failed. Until you resolved this issue cache feature can't be used."
-msgstr ""
-
-#: options/settings/settings_cache.php:5
-msgid "Either make <strong>wp-content</strong> folder writeable or create <strong>gd-star-rating</strong> folder in <strong>wp-content</strong> and make it writeable. Use 0755 chmod setting."
-msgstr ""
-
-#: options/settings/settings_cache.php:10
-msgid "Activation"
-msgstr ""
-
-#: options/settings/settings_cache.php:12
-msgid "Cache enabled."
-msgstr ""
-
-#: options/settings/settings_cache.php:15
-#: options/tools/tools_cache.php:1
-#: options/tools/tools_db.php:11
-msgid "Cleanup"
-msgstr ""
-
-#: options/settings/settings_cache.php:19
-msgid "Auto cleanup cache"
-msgstr ""
-
-#: options/settings/settings_cache.php:20
-msgid "Enabled."
-msgstr ""
-
-#: options/settings/settings_cache.php:23
-msgid "Cleanup cache every"
-msgstr ""
-
 #: options/settings/settings_comments.php:50
 msgid "For comments for posts."
 msgstr ""
@@ -1655,27 +1680,6 @@ msgstr ""
 
 #: options/settings/settings_comments.php:149
 msgid "Prevent comment author to vote."
-msgstr ""
-
-#: options/settings/settings_debug.php:1
-msgid "Inline Debug Info"
-msgstr ""
-
-#: options/settings/settings_debug.php:3
-msgid "Add small block with essential debug info into each rating block."
-msgstr ""
-
-#: options/settings/settings_debug.php:5
-#: options/settings/settings_debug.php:12
-msgid "Important"
-msgstr ""
-
-#: options/settings/settings_debug.php:8
-msgid "Log Into File"
-msgstr ""
-
-#: options/settings/settings_debug.php:10
-msgid "Log into file various debug information."
 msgstr ""
 
 #: options/settings/settings_features.php:1
@@ -1842,6 +1846,10 @@ msgstr ""
 msgid "Add ratings to posts in RSS feeds."
 msgstr ""
 
+#: options/settings/settings_integration.php:54
+msgid "Rating Header"
+msgstr ""
+
 #: options/settings/settings_multis.php:39
 msgid "Display header text."
 msgstr ""
@@ -1869,20 +1877,18 @@ msgstr ""
 #: options/settings/settings_preview.php:73
 #: tinymce3/panels/advanced.php:225
 #: tinymce3/panels/advanced.php:250
+#: widgets/comments/part_image.php:13
 #: widgets/comments/part_stars.php:18
+#: widgets/comments_28/part_image.php:13
 #: widgets/comments_28/part_stars.php:18
-#: widgets/rating/part_stars.php:18
 #: widgets/rating_28/part_stars.php:18
+#: widgets/rating_28/part_stars.php:28
 msgid "Size"
 msgstr ""
 
 #: options/settings/settings_preview.php:81
 #: options/settings/settings_preview.php:85
 msgid "Trends"
-msgstr ""
-
-#: options/settings/settings_rss.php:20
-msgid "Rating Header"
 msgstr ""
 
 #: options/settings/settings_statistics.php:1
@@ -1976,7 +1982,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1194
+#: gd-star-rating.php:1192
 msgid "UNINSTALL"
 msgstr ""
 
@@ -2051,8 +2057,8 @@ msgstr ""
 
 #: options/templates/templates_list.php:12
 #: templates/templates.php:26
-#: gd-star-rating.php:656
-#: gd-star-rating.php:656
+#: gd-star-rating.php:657
+#: gd-star-rating.php:657
 msgid "Templates"
 msgstr ""
 
@@ -2120,7 +2126,7 @@ msgstr ""
 #: options/categories.php:216
 #: options/charts.php:7
 #: options/comments.php:44
-#: options/settings.php:47
+#: options/settings.php:46
 #: options/users.php:66
 #: templates/templates_standard.php:63
 #: tinymce3/window.php:59
@@ -2157,6 +2163,11 @@ msgstr ""
 
 #: options/tools/tools_bulk.php:82
 msgid "Depending on the number of posts, this operation can take a while to complete. Be patient."
+msgstr ""
+
+#: options/tools/tools_cache.php:1
+#: options/tools/tools_db.php:11
+msgid "Cleanup"
 msgstr ""
 
 #: options/tools/tools_cache.php:4
@@ -2532,38 +2543,30 @@ msgid "Administration"
 msgstr ""
 
 #: options/settings.php:43
-msgid "Debug"
+#: tinymce3/window.php:51
+msgid "Advanced"
 msgstr ""
 
 #: options/settings.php:44
-#: options/tools.php:8
-msgid "Cache"
-msgstr ""
-
-#: options/settings.php:45
 msgid "Integration"
 msgstr ""
 
-#: options/settings.php:46
+#: options/settings.php:45
 #: templates/templates.php:33
 #: tinymce3/panels/advanced.php:111
 msgid "Posts And Pages"
 msgstr ""
 
-#: options/settings.php:48
+#: options/settings.php:47
 #: templates/templates.php:34
 msgid "Multis"
 msgstr ""
 
-#: options/settings.php:49
-msgid "RSS"
-msgstr ""
-
-#: options/settings.php:52
+#: options/settings.php:50
 msgid "BOT List"
 msgstr ""
 
-#: options/settings.php:93
+#: options/settings.php:85
 #: templates/templates.php:55
 msgid "Save Settings"
 msgstr ""
@@ -2605,8 +2608,8 @@ msgid "Full Uninstall"
 msgstr ""
 
 #: options/tools.php:0
-#: gd-star-rating.php:655
-#: gd-star-rating.php:655
+#: gd-star-rating.php:656
+#: gd-star-rating.php:656
 msgid "Tools"
 msgstr ""
 
@@ -2620,6 +2623,10 @@ msgstr ""
 
 #: options/tools.php:7
 msgid "Bulk"
+msgstr ""
+
+#: options/tools.php:8
+msgid "Cache"
 msgstr ""
 
 #: options/tools.php:9
@@ -2903,7 +2910,7 @@ msgid "Bayesian minumum votes required."
 msgstr ""
 
 #: tinymce3/panels/advanced.php:98
-#: widgets/comments_28/part_filter.php:66
+#: widgets/comments_28/part_filter.php:65
 #: widgets/rating/part_filter.php:86
 #: widgets/rating_28/part_filter.php:86
 msgid "Hide articles with no recorded votes."
@@ -3012,8 +3019,6 @@ msgid "Total Votes"
 msgstr ""
 
 #: tinymce3/panels/advanced.php:148
-#: widgets/comments/part_filter.php:49
-#: widgets/comments_28/part_filter.php:49
 #: widgets/rating/part_filter.php:62
 #: widgets/rating_28/part_filter.php:62
 msgid "Count"
@@ -3030,16 +3035,16 @@ msgid "Order"
 msgstr ""
 
 #: tinymce3/panels/advanced.php:157
-#: widgets/comments/part_filter.php:58
-#: widgets/comments_28/part_filter.php:58
+#: widgets/comments/part_filter.php:57
+#: widgets/comments_28/part_filter.php:57
 #: widgets/rating/part_filter.php:72
 #: widgets/rating_28/part_filter.php:72
 msgid "Descending"
 msgstr ""
 
 #: tinymce3/panels/advanced.php:158
-#: widgets/comments/part_filter.php:59
-#: widgets/comments_28/part_filter.php:59
+#: widgets/comments/part_filter.php:58
+#: widgets/comments_28/part_filter.php:58
 #: widgets/rating/part_filter.php:73
 #: widgets/rating_28/part_filter.php:73
 msgid "Ascending"
@@ -3197,10 +3202,6 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: tinymce3/window.php:51
-msgid "Advanced"
-msgstr ""
-
 #: tinymce3/window.php:53
 #: tinymce3/window.php:54
 msgid "Multi"
@@ -3272,24 +3273,29 @@ msgstr ""
 msgid "Sorting Column"
 msgstr ""
 
-#: widgets/comments/part_filter.php:55
-#: widgets/comments_28/part_filter.php:55
+#: widgets/comments/part_filter.php:48
+#: widgets/comments_28/part_filter.php:48
+msgid "Comment ID"
+msgstr ""
+
+#: widgets/comments/part_filter.php:54
+#: widgets/comments_28/part_filter.php:54
 #: widgets/rating/part_filter.php:69
 #: widgets/rating_28/part_filter.php:69
 msgid "Sorting Order"
 msgstr ""
 
-#: widgets/comments/part_filter.php:66
+#: widgets/comments/part_filter.php:65
 msgid "Hide comments with no recorded votes."
 msgstr ""
 
-#: widgets/comments/part_filter.php:73
-#: widgets/comments_28/part_filter.php:73
+#: widgets/comments/part_filter.php:72
+#: widgets/comments_28/part_filter.php:72
 msgid "Use only comments voted for in last # days."
 msgstr ""
 
-#: widgets/comments/part_filter.php:78
-#: widgets/comments_28/part_filter.php:78
+#: widgets/comments/part_filter.php:77
+#: widgets/comments_28/part_filter.php:77
 #: widgets/rating/part_filter.php:123
 #: widgets/rating_28/part_filter.php:123
 msgid "Enter 0 for all"
@@ -3300,16 +3306,6 @@ msgstr ""
 #: widgets/comments_28/part_image.php:4
 #: widgets/comments_28/part_image.php:12
 msgid "Avatar"
-msgstr ""
-
-#: widgets/comments/part_image.php:13
-#: widgets/comments_28/part_image.php:13
-msgid "Width"
-msgstr ""
-
-#: widgets/comments/part_image.php:18
-#: widgets/comments_28/part_image.php:18
-msgid "Height"
 msgstr ""
 
 #: widgets/rating/part_basic.php:34
@@ -3399,61 +3395,77 @@ msgstr ""
 msgid "First image from post content will be used for %IMAGE% tag."
 msgstr ""
 
+#: widgets/rating/part_stars.php:13
+msgid "Rating Set"
+msgstr ""
+
+#: widgets/rating/part_stars.php:18
+msgid "Rating Size"
+msgstr ""
+
+#: widgets/rating/part_stars.php:23
+msgid "Review Set"
+msgstr ""
+
+#: widgets/rating/part_stars.php:28
+msgid "Review Size"
+msgstr ""
+
 #: wpr8/settings.php:1
 #: wpr8/settings.php:6
 msgid "Web Key"
 msgstr ""
 
-#: gd-star-rating.php:629
 #: gd-star-rating.php:630
-#: gd-star-rating.php:640
+#: gd-star-rating.php:631
 #: gd-star-rating.php:641
+#: gd-star-rating.php:642
 msgid "Multi Ratings Review"
 msgstr ""
 
-#: gd-star-rating.php:648
-#: gd-star-rating.php:648
+#: gd-star-rating.php:649
+#: gd-star-rating.php:649
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:657
-#: gd-star-rating.php:657
+#: gd-star-rating.php:658
+#: gd-star-rating.php:658
 msgid "T2"
 msgstr ""
 
-#: gd-star-rating.php:1275
+#: gd-star-rating.php:1273
 msgid "articles records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1277
+#: gd-star-rating.php:1275
 msgid "comments records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1281
+#: gd-star-rating.php:1279
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1283
+#: gd-star-rating.php:1281
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1287
+#: gd-star-rating.php:1285
 msgid "dead articles records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1289
+#: gd-star-rating.php:1287
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1291
+#: gd-star-rating.php:1289
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: gd-star-rating.php:1295
+#: gd-star-rating.php:1293
 msgid "dead articles records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1297
+#: gd-star-rating.php:1295
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 

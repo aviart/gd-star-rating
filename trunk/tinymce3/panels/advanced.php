@@ -8,13 +8,36 @@
       </tr>
       <tr>
         <td class="gdsrleft"><?php _e("Items Grouping", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright"><label><select name="srGrouping" id="srGrouping" style="width: 110px">
+        <td class="gdsrright"><label><select name="srGrouping" id="srGrouping" style="width: 130px">
             <option value="post"<?php echo $wpno['grouping'] == 'post' ? ' selected="selected"' : ''; ?>><?php _e("No grouping", "gd-star-rating"); ?></option>
             <option value="user"<?php echo $wpno['grouping'] == 'user' ? ' selected="selected"' : ''; ?>><?php _e("User based", "gd-star-rating"); ?></option>
             <option value="category"<?php echo $wpno['grouping'] == 'category' ? ' selected="selected"' : ''; ?>><?php _e("Category based", "gd-star-rating"); ?></option>
         </select></label></td>
       </tr>
     </table>
+</fieldset>
+
+<fieldset>
+<legend><?php _e("Source", "gd-star-rating"); ?></legend>
+    <table border="0" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+        <td class="gdsrleft"><?php _e("Data Source", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <select name="srDataSource" style="width: 130px" id="srDataSource" onchange="gdsrChangeSource(this.options[this.selectedIndex].value, 'tinymce')">
+                <option value="standard"><?php _e("Standard Rating", "gd-star-rating"); ?></option>
+                <?php if (count($gdst_multis) > 0) { ?><option value="multis"><?php _e("Multi Rating", "gd-star-rating"); ?></option><?php } ?>
+            </select>
+        </td>
+      </tr>
+    </table>
+    <div id="gdsr-src-multi[tinymce]" style="display: none">
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
+      <tr>
+        <td class="gdsrleft"><?php _e("Multi Set", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright"><select name="srMultiSet" id="srMultiSet"><?php GDSRHelper::render_styles_select($gdst_multis); ?></select></td>
+      </tr>
+    </table>
+    </div>
 </fieldset>
 
 <fieldset>
@@ -129,7 +152,7 @@
       </tr>
       <tr>
         <td class="gdsrleft"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright"><input type="text" size="8" id="srMinVotes" name="srMinVotes" value="5" /></td>
+        <td class="gdsrright"><input style="text-align: right;" type="text" size="8" id="srMinVotes" name="srMinVotes" value="5" /></td>
       </tr>
     </table>
 </fieldset>
@@ -164,6 +187,17 @@
 </fieldset>
 
 <fieldset>
+<legend><?php _e("Last Voted", "gd-star-rating"); ?></legend>
+<?php _e("Use only articles voted for in last # days.", "gd-star-rating") ?>
+    <table border="0" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+        <td class="gdsrleft"><?php _e("Enter 0 for all", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright"><input style="text-align: right;" size="8" type="text" name="srLastDate" id="srLastDate" value="0" /></td>
+      </tr>
+    </table>
+</fieldset>
+
+<fieldset>
 <legend><?php _e("Date", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="3" cellspacing="0" width="100%">
       <tr>
@@ -177,12 +211,12 @@
         </td>
       </tr>
     </table>
-<div id="gdsr-pd-lastd[tinymce]" style="display: block">
+    <div id="gdsr-pd-lastd[tinymce]" style="display: block">
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrleft"><?php _e("Number Of Days", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <input class="widefat" style="text-align: right; width: 102px" type="text" name="publishDays" id="publishDays" value="0" />
+            <input style="text-align: right;" size="8" type="text" name="publishDays" id="publishDays" value="0" />
         </td>
       </tr>
     </table>
@@ -206,11 +240,48 @@
         <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="publishRangeTo" id="publishRangeTo" value="YYYYMMDD" /></td>
       </tr>
     </table>
-</div>
+    </div>
 </fieldset>
 </div>
 
 <div id="styles_panel" class="panel">
+<fieldset>
+<legend><?php _e("Template", "gd-star-rating"); ?></legend>
+    <?php GDSRHelper::render_templates_section("SRR", "srTemplateSRR", 0, 300); ?>
+</fieldset>
+
+<fieldset>
+<legend><?php _e("Post Image", "gd-star-rating"); ?></legend>
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
+      <tr>
+        <td class="gdsrleft"><?php _e("Get Image From", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <label><select id="srImageFrom" name="srImageFrom" onchange="gdsrChangeImage(this.options[this.selectedIndex].value, 'tinymce')">
+            <option value="none"><?php _e("No image", "gd-star-rating"); ?></option>
+            <option value="custom"><?php _e("Custom field", "gd-star-rating"); ?></option>
+            <option value="content"><?php _e("Post content", "gd-star-rating"); ?></option>
+            </select></label>
+        </td>
+      </tr>
+    </table>
+    <div id="gdsr-pi-none[tinymce]" style="display: block">
+    <?php _e("If you use %IMAGE% tag in template and this option is selected, image will not be rendered.", "gd-star-rating"); ?>
+    </div>
+    <div id="gdsr-pi-custom[tinymce]" style="display: none">
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
+      <tr>
+        <td class="gdsrleft"><?php _e("Custom Field", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <?php GDSRHelper::render_custom_fields("srImageCustom", "", 200); ?>
+        </td>
+      </tr>
+    </table>
+    </div>
+    <div id="gdsr-pi-content[tinymce]" style="display: none">
+    <?php _e("First image from post content will be used for %IMAGE% tag.", "gd-star-rating"); ?>
+    </div>
+</fieldset>
+
 <fieldset>
 <legend><?php _e("Rating Stars", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
@@ -259,41 +330,5 @@
         </td>
       </tr>
     </table>
-</fieldset>
-
-<fieldset>
-<legend><?php _e("Additional Style", "gd-star-rating"); ?></legend>
-    <table border="0" cellpadding="2" cellspacing="0" width="100%">
-      <tr>
-        <td class="gdsrleft"><?php _e("Style Class", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright">
-            <label><select id="srSType" name="srSType" style="width: 130px" onchange="gdsrChangeStyles(this.options[this.selectedIndex].value, 'tinymce')">
-                <option value="none"><?php _e("Don't Add", "gd-star-rating"); ?></option>
-                <option value="built"><?php _e("Built In", "gd-star-rating"); ?></option>
-                <option value="external"><?php _e("External", "gd-star-rating"); ?></option>
-            </select></label>
-        </td>
-      </tr>
-    </table>
-<div id="gdsr-styles-built[tinymce]" style="display: none">
-    <table border="0" cellpadding="2" cellspacing="0" width="100%">
-      <tr>
-        <td class="gdsrleft"><?php _e("Built In Class", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright">
-            <label><select id="srClassBuild" name="srClassBuild" style="width: 130px">
-                <?php GDSRHelper::render_class_select($gdsr_classes); ?>
-            </select></label>
-        </td>
-      </tr>
-    </table>
-</div>
-<div id="gdsr-styles-external[tinymce]" style="display: none">
-    <table border="0" cellpadding="2" cellspacing="0" width="100%">
-      <tr>
-        <td class="gdsrleft"><?php _e("External Class", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright"><input type="text" style="width: 130px" size="15" id="srClass" name="srClass" value="starrating" /></td>
-      </tr>
-    </table>
-</div>
 </fieldset>
 </div>
