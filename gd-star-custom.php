@@ -246,8 +246,8 @@
     function wp_gdsr_render_widget($widget = array(), $echo = true) {
         global $gdsr;
 
-        if ($echo) echo $gdsr->render_articles_widget($widget);
-        else return $gdsr->render_articles_widget($widget);
+        if ($echo) echo GDSRRenderT2::render_wsr($widget);
+        else return GDSRRenderT2::render_wsr($widget);
     }
 
     /**
@@ -261,40 +261,8 @@
     function wp_gdsr_render_blog_rating_widget($widget = array(), $echo = true) {
         global $gdsr;
 
-        if ($echo) echo $gdsr->render_top_widget($widget);
-        else return $gdsr->render_top_widget($widget);
-    }
-
-    /**
-     * Renders only rating text part of the rating block
-     *
-     * @global object $post post data
-     * @global GDStarRating $gdsr main rating class instance
-     * @param string $cls CSS class to ad to rendered block
-     * @param bool $echo echo results or return it as a string
-     * @return string html with rendered contents
-     */
-    function wp_gdsr_rating_text_article($cls = "", $echo = true) {
-        global $post, $gdsr;
-        if ($echo) echo $gdsr->render_rating_text_article($post, $cls);
-        else return $gdsr->render_rating_text_article($post, $cls);
-    }
-
-    /**
-     * Renders the rating stars. This function call must be withing the post loop.
-     *
-     * @global object $post post data
-     * @global object $userdata user data
-     * @global GDStarRating $gdsr main rating class instance
-     * @param array $override paramters for overriding defulat rating block behavior
-     * @param bool $echo echo results or return it as a string
-     * @return string html with rendered contents
-     */
-    function wp_gdsr_render_article_custom($override = array(), $echo = true) {
-        global $post, $userdata, $gdsr;
-
-        if ($echo) echo $gdsr->render_article($post, $userdata, $override);
-        else return $gdsr->render_article($post, $userdata, $override);
+        if ($echo) echo GDSRRenderT2::render_wbr($widget);
+        else return GDSRRenderT2::render_wbr($widget);
     }
     
     /**

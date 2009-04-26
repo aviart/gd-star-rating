@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.2.1
+Version: 1.2.2
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 

@@ -201,4 +201,20 @@ $t->add_part(__("Item", "gd-star-rating"), "item", "", "all", "area");
 $t->add_part(__("Footer", "gd-star-rating"), "footer", "", "none");
 $tpls->add_template($t);
 
+$t = new gdTemplate("RSB", __("Standard Review Rating Block", "gd-star-rating"));
+$t->add_element("%CSS_BLOCK%", __("rating header text", "gd-star-rating"));
+$t->add_element("%HEADER_TEXT%", __("rating header text", "gd-star-rating"));
+$t->add_element("%RATING_STARS%", __("rating stars", "gd-star-rating"));
+$t->add_element("%RATING%", __("rating stars", "gd-star-rating"));
+$t->add_element("%MAX_RATING%", __("rating stars", "gd-star-rating"));
+$t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
+$tpls->add_template($t);
+
+$t = new gdTemplate("RCB", __("Comments Review Rating Block", "gd-star-rating"));
+$t->add_element("%CMM_RATING_STARS%", __("rating stars", "gd-star-rating"));
+$t->add_element("%CMM_RATING%", __("rating stars", "gd-star-rating"));
+$t->add_element("%MAX_CMM_RATING%", __("rating stars", "gd-star-rating"));
+$t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
+$tpls->add_template($t);
+
 ?>
