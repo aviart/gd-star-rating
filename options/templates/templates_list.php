@@ -44,10 +44,11 @@ $all_sections = $tpls->list_sections_assoc();
 
     $tr_class = "";
     foreach ($templates as $t) {
+        $mode = $t->preinstalled == "0" ? "edit" : "copy";
         $url = "admin.php?page=gd-star-rating-t2&";
         echo '<tr id="post-'.$t->template_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<td><strong>'.$t->template_id.'</strong></td>';
-        echo '<td><strong><a href="'.$url.'mode=copy&tplid='.$t->template_id.'">'.$t->name.'</a></strong></td>';
+        echo '<td><strong><a href="'.$url.'mode='.$mode.'&tplid='.$t->template_id.'">'.$t->name.'</a></strong></td>';
         echo '<td>'.$all_sections[$t->section].'</td>';
         echo '<td>'.$t->description.'</td>';
         echo '<td>'.$tpls->find_template_tag($t->section).'</td>';

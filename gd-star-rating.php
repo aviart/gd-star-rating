@@ -644,8 +644,7 @@ if (!class_exists('GDStarRating')) {
                 add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Sets", "gd-star-rating"), __("Multi Sets", "gd-star-rating"), 10, "gd-star-rating-multi-sets", array(&$this,"star_multi_sets"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Templates", "gd-star-rating"), __("Templates", "gd-star-rating"), 10, "gd-star-rating-templates", array(&$this,"star_menu_templates"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("T2", "gd-star-rating"), __("T2", "gd-star-rating"), 10, "gd-star-rating-t2", array(&$this,"star_menu_t2"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("T2 Templates", "gd-star-rating"), __("T2 Templates", "gd-star-rating"), 10, "gd-star-rating-t2", array(&$this,"star_menu_t2"));
             if ($this->o["admin_ips"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), 10, "gd-star-rating-ips", array(&$this,"star_menu_ips"));
             if ($this->o["admin_import"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), 10, "gd-star-rating-import", array(&$this,"star_menu_import"));
             if ($this->o["admin_export"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), 10, "gd-star-rating-export", array(&$this,"star_menu_export"));
@@ -1524,7 +1523,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
 
             include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
 
-            $template = new gdTemplateRender($tpl_id, "SRT");
+            $template = new gdTemplateRender($tpl_id, "SRB");
             $rt = GDSRRenderT2::render_srt($template->dep["SRT"], $rating1, $unit_count, $votes, $post_id);
 
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
@@ -1548,48 +1547,41 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             if ($allow_vote) {
                 GDSRDatabase::save_vote_comment($id, $user, $ip, $ua, $votes);
                 $this->save_cookie($id, 'comment');
-                $data = GDSRDatabase::get_comment_data($id);
-                $post_data = GDSRDatabase::get_post_data($data->post_id);
+            }
 
-                $unit_width = $this->o["cmm_size"];
-                $unit_count = $this->o["cmm_stars"];
+            $data = GDSRDatabase::get_comment_data($id);
+            $post_data = GDSRDatabase::get_post_data($data->post_id);
 
-                $votes = 0;
-                $score = 0;
+            $unit_width = $this->o["cmm_size"];
+            $unit_count = $this->o["cmm_stars"];
 
-                if ($post_data->rules_comments == "A" || $post_data->rules_comments == "N") {
-                    $votes = $data->user_voters + $data->visitor_voters;
-                    $score = $data->user_votes + $data->visitor_votes;
-                }
-                else if ($post_data->rules_comments == "V") {
-                    $votes = $data->visitor_voters;
-                    $score = $data->visitor_votes;
-                }
-                else {
-                    $votes = $data->user_voters;
-                    $score = $data->user_votes;
-                }
+            $votes = 0;
+            $score = 0;
 
-                if ($votes == 1) $tense = $this->x["word_votes_singular"];
-                else $tense = $this->x["word_votes_plural"];
-
-                if ($votes > 0) $rating2 = $score / $votes;
-                else $rating2 = 0;
-                $rating1 = @number_format($rating2, 1);
-                $rating_width = $rating2 * $unit_width;
-
-                $tpl = $this->x["cmm_rating_text"];
-                $rt = html_entity_decode($tpl);
-                $rt = str_replace('%CMM_RATING%', $rating1, $rt);
-                $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
-                $rt = str_replace('%CMM_VOTES%', $votes, $rt);
-                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-
-                return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
+            if ($post_data->rules_comments == "A" || $post_data->rules_comments == "N") {
+                $votes = $data->user_voters + $data->visitor_voters;
+                $score = $data->user_votes + $data->visitor_votes;
+            }
+            else if ($post_data->rules_comments == "V") {
+                $votes = $data->visitor_voters;
+                $score = $data->visitor_votes;
             }
             else {
-                return "{ status: 'error' }";
+                $votes = $data->user_voters;
+                $score = $data->user_votes;
             }
+
+            if ($votes > 0) $rating2 = $score / $votes;
+            else $rating2 = 0;
+            $rating1 = @number_format($rating2, 1);
+            $rating_width = $rating2 * $unit_width;
+
+            include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
+
+            $template = new gdTemplateRender($tpl_id, "CRB");
+            $rt = GDSRRenderT2::render_crt($template->dep["CRT"], $rating1, $unit_count, $votes, $post_id);
+
+            return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
         // vote
 
@@ -2023,15 +2015,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $out[] = $votes;
             $out[] = $score;
             return $out;
-        }
-
-        function render_rating_text_article($post, $cls = "") {
-            $rd_post_id = intval($post->ID);
-            $rd_is_page = $post->post_type == "page" ? "1" : "0";
-
-            list($votes, $score) = $this->get_article_rating($rd_post_id, $rd_is_page);
-
-            echo GDSRRender::rating_text($rd_post_id, "a", $votes, $score, $this->o["stars"], "article", $cls == "" ? $this->o["class_text"] : $cls);
         }
 
         function render_comment($post, $comment, $user, $override = array()) {
