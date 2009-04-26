@@ -11,13 +11,23 @@
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divstars', '<?php echo $wpnm; ?>')"><?php _e("Stars", "gd-star-rating"); ?></a></strong></td>
-    <td width="100" nowrap="nowrap"><?php _e("Set", "gd-star-rating"); ?>:</td>
+    <td width="100" nowrap="nowrap"><?php _e("Rating Set", "gd-star-rating"); ?>:</td>
     <td align="right"><select style="width: 200px" name="<?php echo $wpfn; ?>[rating_stars]"><?php GDSRHelper::render_styles_select($wpst, $wpno['rating_stars']); ?></select></td>
   </tr>
   <tr>
     <td width="100" valign="top"></td>
-    <td width="100" nowrap="nowrap"><?php _e("Size", "gd-star-rating"); ?>:</td>
+    <td width="100" nowrap="nowrap"><?php _e("Rating Size", "gd-star-rating"); ?>:</td>
     <td align="right"><?php GDSRHelper::render_star_sizes($wpfn."[rating_size]", $wpno['rating_size'], 200); ?></td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td width="100" nowrap="nowrap"><?php _e("Review Set", "gd-star-rating"); ?>:</td>
+    <td align="right"><select style="width: 200px" name="<?php echo $wpfn; ?>[review_stars]"><?php GDSRHelper::render_styles_select($wpst, $wpno['review_stars']); ?></select></td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td width="100" nowrap="nowrap"><?php _e("Review Size", "gd-star-rating"); ?>:</td>
+    <td align="right"><?php GDSRHelper::render_star_sizes($wpfn."[review_size]", $wpno['review_size'], 200); ?></td>
   </tr>
 </table>
 </div>

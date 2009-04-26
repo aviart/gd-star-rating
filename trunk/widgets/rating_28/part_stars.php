@@ -19,6 +19,16 @@
     <td width="100" nowrap="nowrap"><?php _e("Size", "gd-star-rating"); ?>:</td>
     <td align="right"><?php GDSRHelper::render_star_sizes($this->get_field_name('rating_size'), $instance['rating_size'], 200); ?></td>
   </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td width="100" nowrap="nowrap"><?php _e("Set", "gd-star-rating"); ?>:</td>
+    <td align="right"><select style="width: 200px" name="<?php echo $this->get_field_name('review_stars'); ?>"><?php GDSRHelper::render_styles_select($wpst, $instance['review_stars']); ?></select></td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td width="100" nowrap="nowrap"><?php _e("Size", "gd-star-rating"); ?>:</td>
+    <td align="right"><?php GDSRHelper::render_star_sizes($this->get_field_name('review_size'), $instance['review_size'], 200); ?></td>
+  </tr>
 </table>
 </div>
 <div class="gdsr-table-split"></div>

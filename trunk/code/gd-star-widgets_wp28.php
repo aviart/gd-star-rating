@@ -58,6 +58,8 @@ if (class_exists("WP_Widget")) {
             $instance['image_custom'] = $new_instance['image_custom'];
             $instance['rating_stars'] = $new_instance['rating_stars'];
             $instance['rating_size'] = $new_instance['rating_size'];
+            $instance['review_stars'] = $new_instance['review_stars'];
+            $instance['review_size'] = $new_instance['review_size'];
 
             $instance['trends_rating'] = $new_instance['trends_rating'];
             $instance['trends_rating_set'] = $new_instance['trends_rating_set'];

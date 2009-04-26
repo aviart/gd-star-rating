@@ -806,10 +806,6 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
-        function render_comments_widget($widget) {
-
-        }
-
         function rss_filter($content) {
             if ($this->o["rss_active"] == 1) $content.= "<br />".$this->render_article_rss();
             if ($this->o["integrate_rss_powered"] == 1) $content.= "<br />".$this->powered_by();
