@@ -1,0 +1,1 @@
+SRB|a:1:{s:6:"normal";s:300:"&lt;div class=&quot;ratingblock %CSS_BLOCK%&quot;&gt;&lt;div class=&quot;ratingheader %CSS_HEADER%&quot;&gt;%HEADER_TEXT%&lt;/div&gt;&lt;div class=&quot;ratingstars %CSS_STARS%&quot;&gt;%RATING_STARS%&lt;/div&gt;&lt;div class=&quot;ratingtext %CSS_TEXT%&quot;&gt;%RATING_TEXT%&lt;/div&gt;&lt;/div&gt;";}

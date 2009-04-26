@@ -4,6 +4,7 @@
 
 === Version: 1.2.2 / april 28 2009 ===
   * new: t2 templates for reviews
+  * new: updating default templates
   * edit: updated readme file
   * fix: invalid calls for some of the custom functions
 
