@@ -50,8 +50,8 @@ class GDSRRender {
         $rate_width = $star_size * $rating;
         
         return sprintf('<div style="%s"><div style="%s"></div></div>',
-            sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $star_size, $full_width),
-            sprintf('background: url(%s) bottom left; height: %spx; width: %spx;', $star_path, $star_size, $rate_width)
+            sprintf('text-align:left; padding: 0; margin: 0; background: url(%s); height: %spx; width: %spx;', $star_path, $star_size, $full_width),
+            sprintf('background: url(%s) bottom left; padding: 0; margin: 0; height: %spx; width: %spx;', $star_path, $star_size, $rate_width)
         );
     }
 

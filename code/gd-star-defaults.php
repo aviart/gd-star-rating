@@ -3,7 +3,7 @@
 class GDSRDefaults {
     var $default_options = array(
         "version" => "1.2.2",
-        "date" => "2009.04.28.",
+        "date" => "2009.04.26.",
         "status" => "Stable",
         "build" => 596,
         "external_javascript" => 0,
@@ -274,7 +274,9 @@ class GDSRDefaults {
         "image_from" => 'none',
         "image_custom" => 'Image',
         "rating_stars" => "oxygen",
-        "rating_size" => 12,
+        "rating_size" => 20,
+        'review_stars' => 'oxygen',
+        'review_size' => 20,
         "last_voted_days" => 0
     );
 

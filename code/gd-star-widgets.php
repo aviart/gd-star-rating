@@ -340,6 +340,8 @@ class gdsrWidgets {
                 $options['image_custom'] = $posted['image_custom'];
                 $options['rating_stars'] = $posted['rating_stars'];
                 $options['rating_size'] = $posted['rating_size'];
+                $options['review_stars'] = $posted['review_stars'];
+                $options['review_size'] = $posted['review_size'];
 
                 $options['trends_rating'] = $posted['trends_rating'];
                 $options['trends_rating_set'] = $posted['trends_rating_set'];

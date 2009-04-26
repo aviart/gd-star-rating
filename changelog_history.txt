@@ -2,9 +2,13 @@
 
 == Change Log ==
 
-=== Version: 1.2.2 / april 28 2009 ===
+=== Version: 1.2.2 / april 6 2009 ===
   * new: t2 templates for reviews
+  * new: extra comments widget template
+  * new: updating default templates
   * edit: updated readme file
+  * fix: missing files for comments widget
+  * fix: small problem with rendering of static stars using divs
   * fix: invalid calls for some of the custom functions
 
 === Version: 1.2.1 / april 25 2009 ===
