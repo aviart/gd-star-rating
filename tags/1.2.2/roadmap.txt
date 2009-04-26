@@ -1,0 +1,14 @@
+= GD Star Rating =
+
+== Roadmap ==
+
+=== 1.3.0 ===
+  * completed t2 templates system
+
+=== 1.4.0 ===
+  * reccomendation ratings
+
+=== 1.5.0 ===
+  * changing vote (like wordpress extend website)
+  * customization of bot filter
+  * more export data options
