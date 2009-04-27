@@ -290,5 +290,9 @@ if (!class_exists('gdFunctionsGDSR')) {
             else return addslashes($input);
         }
     }
+
+    function is_odd($number) {
+        return $number&1;
+    }
 }
 ?>

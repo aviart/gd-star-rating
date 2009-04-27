@@ -284,9 +284,58 @@ class GDSRRenderT2 {
         return $all_rows;
     }
 
+    function render_mrb($template_id, $allow_vote, $votes, $post_id, $set, $height, $header_text, $tags_css, $time_restirctions = "N", $time_remaining = 0, $time_date = "", $button_active = true, $button_text = "Submit", $debug = '', $wait_msg = '') {
+        $template = GDSRRenderT2::get_template($template_id, "MRB");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+        foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
+        $tpl_render = str_replace("%MUR_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+        $rater = "";
+
+        $empty_value = str_repeat("0X", count($set->object));
+        $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
+        if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
+        if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$empty_value.'" />';
+
+        $i = 0;
+        $weighted = 0;
+        $total_votes = 0;
+        $weight_norm = array_sum($set->weight);
+        $rating_stars = "";
+        $table_row_class = $template->dep["ETR"];
+        foreach ($set->object as $el) {
+            $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
+            $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
+            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"]), $single_row);
+            $row_css = is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"];
+            $single_row = str_replace('%TABLE_ROW_CLASS%', $row_css, $single_row);
+            $rating_stars.= $single_row;
+
+            $weighted += ($votes[$i]["rating"] * $set->weight[$i]) / $weight_norm;
+            $total_votes += $votes[$i]["votes"];
+            $i++;
+        }
+        $rating = @number_format($weighted, 1);
+        $total_votes = @number_format($total_votes / $i, 0);
+        if (in_array("%MUR_RATING_TEXT%", $template->tag["normal"])) {
+            $rating_text = GDSRRenderT2::render_mrt($template->dep["MRT"], $rating, $set->stars, $votes, $post_id, $time_restirctions, $time_remaining, $time_date);
+            $rating_text = '<div id="gdr_text_'.$type.$post_id.'">'.$rating_text.'</div>';
+            $tpl_render = str_replace("%MUR_RATING_TEXT%", $rating_text, $tpl_render);
+        }
+
+        if (in_array("%BUTTON%", $template->tag["normal"])) {
+            $rating_button = '';
+            $tpl_render = str_replace("%BUTTON%", $rating_button, $tpl_render);
+        }
+
+        $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
+        $rater.= $tpl_render;
+
+        return $rater;
+    }
+
     function render_ssb($template_id, $post_id, $votes, $score, $unit_set, $unit_width, $unit_count, $header_text) {
         $template = GDSRRenderT2::get_template($template_id, "SSB");
-        wp_gdsr_dump("TMPL", $template);
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
@@ -376,6 +425,10 @@ class GDSRRenderT2 {
         $tpl_render.= '</div>';
 
         return $tpl_render;
+    }
+
+    function render_mrt($template, $rating, $unit_count, $votes, $id, $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+        return GDSRRenderT2::render_srt($template, $rating, $unit_count, $votes, $id, $time_restirctions, $time_remaining, $time_date);
     }
 
     function render_srt($template, $rating, $unit_count, $votes, $id, $time_restirctions = "N", $time_remaining = 0, $time_date = '') {

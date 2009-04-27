@@ -60,7 +60,6 @@ class GDSRRender {
         return sprintf('<img src="%s" />', $url);
     }
 
-    // old functions
     function rating_stars_multi($post_id, $set_id, $id, $height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '', $review_mode = false) {
         if ($review_mode) $current = $value;
         else $current = 0;
@@ -80,6 +79,7 @@ class GDSRRender {
         return $rater;
     }
 
+    // old functions
     function rating_stars_local($height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '') {
         $rater = '<input type="hidden" id="gdsr_cmm_review" name="gdsr_cmm_review" value="0" />';
         $rater.= '<div id="gdsr_cmm_stars" class="reviewcmm"><div class="starsbar">';
