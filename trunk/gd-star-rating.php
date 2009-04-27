@@ -2377,7 +2377,20 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $debug = $rd_user_id == 0 ? "V" : "U";
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
-            return GDSRRender::multi_rating_block($this->loader_article, $allow_vote, $votes, $debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"], $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"]);
+
+            $tags_css = array();
+            $tags_css["MUR_CSS_BLOCK"] = $this->o["mrb_class_block"];
+            $tags_css["MUR_CSS_HEADER"] = $this->o["mrb_class_header"];
+            $tags_css["MUR_CSS_STARS"] = $this->o["mrb_class_stars"];
+            $tags_css["MUR_CSS_TEXT"] = $this->o["mrb_class_text"];
+            $tags_css["MUR_CSS_BUTTON"] = $this->o["mrb_class_button"];
+
+            if ($settings["tpl"] > 0) $template_id = $settings["tpl"];
+            else $template_id = $this->o["default_mrb_template"];
+
+            $rdr = GDSRRenderT2::render_mrb($template_id, $allow_vote, $votes, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header_text"], $tags_css, $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"], $debug, $this->loader_multis);
+print_r($rdr);
+            return GDSRRender::multi_rating_block($this->loader_multis, $allow_vote, $votes, $debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"], $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"]);
         }
         // rendering
     }
