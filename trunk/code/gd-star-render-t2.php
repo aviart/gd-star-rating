@@ -290,7 +290,7 @@ class GDSRRenderT2 {
         $tpl_render = html_entity_decode($tpl_render);
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
         $tpl_render = str_replace("%MUR_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
-        $rater = "";
+        $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti '.$tags_css["MUR_CSS_BLOCK"].'">';;
 
         $empty_value = str_repeat("0X", count($set->object));
         $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
@@ -302,13 +302,12 @@ class GDSRRenderT2 {
         $total_votes = 0;
         $weight_norm = array_sum($set->weight);
         $rating_stars = "";
-        $table_row_class = $template->dep["ETR"];
+        $table_row_class = $template->dep["MRS"]->dep["ETR"];
         foreach ($set->object as $el) {
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
             $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"]), $single_row);
-            $row_css = is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"];
-            $single_row = str_replace('%TABLE_ROW_CLASS%', $row_css, $single_row);
+            $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
 
             $weighted += ($votes[$i]["rating"] * $set->weight[$i]) / $weight_norm;
@@ -318,19 +317,19 @@ class GDSRRenderT2 {
         $rating = @number_format($weighted, 1);
         $total_votes = @number_format($total_votes / $i, 0);
         if (in_array("%MUR_RATING_TEXT%", $template->tag["normal"])) {
-            $rating_text = GDSRRenderT2::render_mrt($template->dep["MRT"], $rating, $set->stars, $votes, $post_id, $time_restirctions, $time_remaining, $time_date);
-            $rating_text = '<div id="gdr_text_'.$type.$post_id.'">'.$rating_text.'</div>';
+            $rating_text = GDSRRenderT2::render_mrt($template->dep["MRT"], $rating, $set->stars, $total_votes, $post_id, $time_restirctions, $time_remaining, $time_date);
+            if ($allow_vote) $rating_wait = GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", $typecls, $wait_msg);
+            $rating_text = $rating_wait.'<div id="gdsr_mur_text_'.$post_id.'_'.$set->multi_id.'">'.$rating_text.'</div>';
             $tpl_render = str_replace("%MUR_RATING_TEXT%", $rating_text, $tpl_render);
         }
 
         if (in_array("%BUTTON%", $template->tag["normal"])) {
-            $rating_button = '';
+            $rating_button = '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$tags_css["MUR_CSS_BUTTON"].'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'"><a rel="nofollow">'.$button_text.'</a></div>';
             $tpl_render = str_replace("%BUTTON%", $rating_button, $tpl_render);
         }
 
         $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
-        $rater.= $tpl_render;
-
+        $rater.= $tpl_render."</div>";
         return $rater;
     }
 

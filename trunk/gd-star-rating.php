@@ -1452,27 +1452,19 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
                 GDSRDBMulti::save_vote($post_id, $set_id, $user, $ip, $ua, $values, $data);
                 $summary = GDSRDBMulti::recalculate_multi_averages($post_id, $set_id, $data->rules_articles, $set, true);
                 $this->save_cookie($post_id."#".$set_id, "multis");
-                $msg = 'VOTED';
-
-                $rating = $summary["total"]["rating"];
-                $total_votes = $summary["total"]["votes"];
-                if ($total_votes == 1) $tense = $this->x["word_votes_singular"];
-                else $tense = $this->x["word_votes_plural"];
-
-                $tpl = $this->x["multis_rating_text"];
-                $rt = html_entity_decode($tpl);
-                $rt = str_replace('%RATING%', $rating, $rt);
-                $rt = str_replace('%MAX_RATING%', $set->stars, $rt);
-                $rt = str_replace('%VOTES%', $total_votes, $rt);
-                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-                $rt = str_replace('%ID%', $post_id, $rt);
-
-                return "{ status: 'ok', values: ".json_encode($summary["json"]).", rater: '".$rt."', msg: '".$msg."' }";
             }
-            else {
-                $msg = 'NOTALLOWED';
-                return "{ status: 'voted', msg: '".$msg."' }";
-            }
+
+            $rating = $summary["total"]["rating"];
+            $total_votes = $summary["total"]["votes"];
+            if ($total_votes == 1) $tense = $this->x["word_votes_singular"];
+            else $tense = $this->x["word_votes_plural"];
+
+            include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
+
+            $template = new gdTemplateRender($tpl_id, "MRB");
+            $rt = GDSRRenderT2::render_srt($template->dep["MRT"], $rating, $set->stars, $total_votes, $post_id);
+
+            return "{ status: 'ok', values: ".json_encode($summary["json"]).", rater: '".$rt."' }";
         }
 
         function vote_article_ajax($votes, $id, $tpl_id) {
@@ -2388,9 +2380,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             if ($settings["tpl"] > 0) $template_id = $settings["tpl"];
             else $template_id = $this->o["default_mrb_template"];
 
-            $rdr = GDSRRenderT2::render_mrb($template_id, $allow_vote, $votes, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header_text"], $tags_css, $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"], $debug, $this->loader_multis);
-print_r($rdr);
-            return GDSRRender::multi_rating_block($this->loader_multis, $allow_vote, $votes, $debug, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header"], $this->o["mur_header_text"], $this->o["mur_class_block"], $this->o["mur_class_text"], $this->o["mur_class_table"], $this->o["mur_class_button"], $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"]);
+            return GDSRRenderT2::render_mrb($template_id, $allow_vote, $votes, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header_text"], $tags_css, $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"], $debug, $this->loader_multis);
         }
         // rendering
     }

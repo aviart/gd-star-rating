@@ -155,9 +155,10 @@ get_class_head($head, ""); ?> {
     cursor: pointer;
 }
 
-.ratingbutton a { line-height:14px; }
+.ratingbutton a { line-height: 14px; text-decoration: none !important; }
 
-.ratingbutton.gdactive a { color: #ad1b1b; }
+.ratingbutton.gdactive { cursor: pointer; }
+.ratingbutton.gdactive a { color: #ad1b1b; cursor: pointer; }
 .ratingbutton.gdinactive a { color: gray; cursor: default; }
 
 .gdmultitable {
