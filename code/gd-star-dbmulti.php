@@ -87,6 +87,10 @@ class GDSRDBMulti {
         foreach ($ids as $id) GDSRDBMulti::recalculate_trend_averages($id->id, $set);
     }
 
+    function get_multi_rating_data($post_id, $multi_id) {
+        global $wpdb, $table_prefix;
+    }
+
     function recalculate_multi_review_db($post_id, $record_id, $set) {
         global $wpdb, $table_prefix;
         $multi_data = GDSRDBMulti::get_values($record_id, 'rvw');
