@@ -47,6 +47,22 @@
     }
 
     /**
+     * Manual render of comment rating
+     *
+     * @global object $comment comment data
+     * @global object $post post data
+     * @global object $userdata user data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_render_comment($template_id = 0, $echo = true) {
+        global $comment, $userdata, $gdsr, $post;
+        if ($echo) echo $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id));
+        else return $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id));
+    }
+
+    /**
      * Renders multi rating block. This function call must be withing the post loop.
      *
      * @global object $post post data
@@ -57,13 +73,13 @@
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_render_multi($multi_set_id, $post_id = 0, $echo = true) {
+    function wp_gdsr_render_multi($multi_set_id, $template_id = 0, $post_id = 0, $echo = true) {
         global $userdata, $gdsr;
         if ($post_id == 0) global $post;
         else $post = get_post($post_id);
 
-        if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id));
-        else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id));
+        if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "tpl" => $template_id));
+        else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "tpl" => $template_id));
     }
 
     /**
@@ -164,22 +180,6 @@
         if ($echo) echo $review;
         else return $review;
     }
-
-    /**
-     * Manual render of comment rating
-     *
-     * @global object $comment comment data
-     * @global object $post post data
-     * @global object $userdata user data
-     * @global GDStarRating $gdsr main rating class instance
-     * @param bool $echo echo results or return it as a string
-     * @return string html with rendered contents
-     */
-    function wp_gdsr_render_comment($template_id = 0, $echo = true) {
-        global $comment, $userdata, $gdsr, $post;
-        if ($echo) echo $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id));
-        else return $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id));
-    }
     
     /**
      * Returns object with all needed rating properties for post or page.
@@ -207,6 +207,21 @@
         global $comment, $gdsr;
         if ($comment_id < 1) $comment_id = $comment->comment_ID;
         return $gdsr->get_ratings_comment($comment_id);
+    }
+
+    /**
+     * Returns object with all needed multi rating properties for post or page.
+     *
+     * @global object $post post data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param int $set_id id of the multi rating set
+     * @param int $post_id post to get rating for, leave 0 to get post from loop
+     * @return object rating post properties
+     */
+    function wp_gdsr_rating_multi($set_id, $post_id = 0) {
+        global $post, $gdsr;
+        if ($post_id < 1) $post_id = $post->ID;
+        return $gdsr->get_ratings_multi($set_id, $post_id);
     }
 
     /**
@@ -238,14 +253,11 @@
     /**
      * Renders widget-like element based on the $widget settings array
      *
-     * @global GDStarRating $gdsr main rating class instance
      * @param array $widget settings to use for rendering
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_render_widget($widget = array(), $echo = true) {
-        global $gdsr;
-
+    function wp_gdsr_render_star_rating_widget($widget = array(), $echo = true) {
         if ($echo) echo GDSRRenderT2::render_wsr($widget);
         else return GDSRRenderT2::render_wsr($widget);
     }
@@ -253,18 +265,27 @@
     /**
      * Renders blog rating widget element based on the $widget settings array
      *
-     * @global GDStarRating $gdsr main rating class instance
      * @param array $widget settings to use for rendering
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
     function wp_gdsr_render_blog_rating_widget($widget = array(), $echo = true) {
-        global $gdsr;
-
         if ($echo) echo GDSRRenderT2::render_wbr($widget);
         else return GDSRRenderT2::render_wbr($widget);
     }
-    
+
+    /**
+     * Renders comments rating widget element based on the $widget settings array
+     *
+     * @param array $widget settings to use for rendering
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_render_comments_rating_widget($widget = array(), $echo = true) {
+        if ($echo) echo GDSRRenderT2::render_wcr($widget);
+        else return GDSRRenderT2::render_wcr($widget);
+    }
+
     /**
      * Renders stars for comment review used in the comment form for the comment author to place it's review rating.
      *

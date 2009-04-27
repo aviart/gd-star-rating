@@ -5,6 +5,7 @@
 === Version: 1.2.3 / april 30 2009 ===
   * edit: ajax voting comment returns new t2 rendered text
   * edit: removed some more old code
+  * edit: many imporvements and changes to custom functions
   * edit: small improvements to t2 panel
   * edit: old templates panel and settings removed
   * fix: small bugs with multi rating css and javascript

@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
-Version: 1.2.2
+Version: 1.2.3
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -459,7 +459,7 @@ if (!class_exists('GDStarRating')) {
         function get_blog_rating($select = "postpage", $show = "total") {
             $widget["select"] = $select;
             $widget["show"] = $show;
-            return $this->prepare_blog_rating($widget);
+            return GDSRRenderT2::prepare_wbr($widget);
         }
 
         /**
@@ -780,6 +780,9 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
+        /**
+         * WordPress widgets init action
+         */
         function widgets_init() {
             if ($this->wp_version < 28) {
                 $this->widgets = new gdsrWidgets($this->g, $this->default_widget_comments, $this->default_widget_top, $this->default_widget);
@@ -794,6 +797,9 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
+        /**
+         * WordPress rss content filter
+         */
         function rss_filter($content) {
             if ($this->o["rss_active"] == 1) $content.= "<br />".$this->render_article_rss();
             if ($this->o["integrate_rss_powered"] == 1) $content.= "<br />".$this->powered_by();
@@ -1161,6 +1167,9 @@ if (!class_exists('GDStarRating')) {
             } else $this->rendering_sets = array();
         }
 
+        /**
+         * Method executing cleanup of the cache files
+         */
         function cache_cleanup() {
             if ($this->o["cache_cleanup_auto"] == 1) {
                 $clean = false;
@@ -1604,6 +1613,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $comment_data = GDSRDatabase::get_comment_data($comment_id);
             if (count($comment_data) == 0) return null;
             return new GDSRCommentRating($comment_data);
+        }
+
+        function get_ratings_multi($set_id, $post_id) {
+
         }
         // calculations
 
