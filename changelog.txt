@@ -7,4 +7,5 @@
   * edit: removed some more old code
   * edit: small improvements to t2 panel
   * edit: old templates panel and settings removed
+  * fix: small bugs with multi rating css and javascript
   * fix: ajax voting rating text result
