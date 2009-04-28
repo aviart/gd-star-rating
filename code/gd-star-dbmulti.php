@@ -87,8 +87,10 @@ class GDSRDBMulti {
         foreach ($ids as $id) GDSRDBMulti::recalculate_trend_averages($id->id, $set);
     }
 
-    function get_multi_rating_data($post_id, $multi_id) {
+    function get_multi_rating_data($post_id) {
         global $wpdb, $table_prefix;
+        $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $post_id, $set_id);
+        return $wpdb->get_row($sql);
     }
 
     function recalculate_multi_review_db($post_id, $record_id, $set) {
@@ -211,7 +213,7 @@ class GDSRDBMulti {
         $output["users"]["votes"] = $total_users;
         $output["visitors"]["rating"] = $rating_visitors;
         $output["visitors"]["votes"] = $total_visitors;
-        wp_gdsr_dump("O", $output);
+
         return $output;
     }
 
@@ -450,6 +452,7 @@ class GDSRDBMulti {
         global $wpdb, $table_prefix;
         
         $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $post_id, $set_id);
+        echo $sql;
         return $wpdb->get_row($sql);
     }
 

@@ -84,6 +84,7 @@ function insertStarRatingCode() {
     else if (shortcode == 'starratingmulti') {
         tagtext = '[starratingmulti id=';
         tagtext = tagtext + document.getElementById('srMultiRatingSet').value;
+        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateMRB').value
         if (document.getElementById('srMultiRead').checked)
            tagtext = tagtext + " read_only=1";
         tagtext = tagtext + "]";
