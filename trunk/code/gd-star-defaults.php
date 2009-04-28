@@ -170,7 +170,6 @@ class GDSRDefaults {
         "starreview",
         "starrater",
         "starratingblock",
-        "starratercustom",
         "starratingmulti",
         "starreviewmulti",
         "starcomments"
@@ -280,14 +279,9 @@ class GDSRDefaults {
         "last_voted_days" => 0
     );
 
-    var $default_shortcode_starratercustom = array(
-        'allow_voting' => 0,
-        'rating_header' => 0,
-        'rating_text' => 0
-    );
-
     var $default_shortcode_starratingmulti = array(
         'id' => 1,
+        'tpl' => 0,
         'read_only' => 0
     );
 
@@ -300,10 +294,7 @@ class GDSRDefaults {
         "word_votes_plural" => "votes",
         "table_row_even" => "even",
         "table_row_odd" => "odd",
-        "multis_rating_text" => "Rating: %RATING%/&lt;strong&gt;%MAX_RATING%&lt;/strong&gt; (%VOTES% %WORD_VOTES% cast)",
-        "cmm_rating_text" => "Rating: %CMM_RATING%/&lt;strong&gt;%MAX_CMM_RATING%&lt;/strong&gt; (%CMM_VOTES% %WORD_VOTES% cast)",
-        "multis_time_restricted_active" => "Rating: %RATING%/&lt;strong&gt;%MAX_RATING%&lt;/strong&gt; (%VOTES% %WORD_VOTES% cast)<br />%TR_MONTHS% months, %TR_DAYS% days, %TR_HOURS% hours, %TR_MINUTES% minutes remaining.",
-        "multis_time_restricted_closed" => "&lt;strong&gt;Voting Closed.&lt;/strong&gt; Rating: %RATING%/&lt;strong&gt;%MAX_RATING%&lt;/strong&gt; (%VOTES% %WORD_VOTES% cast)"
+        "multis_rating_text" => "Rating: %RATING%/&lt;strong&gt;%MAX_RATING%&lt;/strong&gt; (%VOTES% %WORD_VOTES% cast)"
     );
 
     var $default_shortcode_starrating = array(

@@ -438,15 +438,15 @@ msgstr ""
 msgid "Comments Review Rating Block"
 msgstr ""
 
-#: code/gd-star-dbone.php:1028
+#: code/gd-star-dbone.php:1000
 msgid "Show all dates"
 msgstr ""
 
-#: code/gd-star-dbone.php:1056
+#: code/gd-star-dbone.php:1028
 msgid "All users and visitors"
 msgstr ""
 
-#: code/gd-star-dbone.php:1057
+#: code/gd-star-dbone.php:1029
 #: tinymce3/panels/advanced.php:144
 #: tinymce3/panels/comments.php:8
 #: widgets/comments/part_basic.php:17
@@ -464,11 +464,11 @@ msgstr ""
 msgid "Visitors Only"
 msgstr ""
 
-#: code/gd-star-dbone.php:1058
+#: code/gd-star-dbone.php:1030
 msgid "All Users"
 msgstr ""
 
-#: code/gd-star-dbone.php:1074
+#: code/gd-star-dbone.php:1046
 msgid "All categories"
 msgstr ""
 
@@ -608,172 +608,172 @@ msgstr ""
 msgid "votes"
 msgstr ""
 
-#: code/gd-star-functions.php:295
+#: code/gd-star-functions.php:217
 msgid "No moderation"
 msgstr ""
 
-#: code/gd-star-functions.php:296
+#: code/gd-star-functions.php:218
 msgid "Moderate visitors"
 msgstr ""
 
-#: code/gd-star-functions.php:297
+#: code/gd-star-functions.php:219
 msgid "Moderate users"
 msgstr ""
 
-#: code/gd-star-functions.php:298
+#: code/gd-star-functions.php:220
 msgid "Moderate all"
 msgstr ""
 
-#: code/gd-star-functions.php:299
-#: code/gd-star-functions.php:326
-#: code/gd-star-functions.php:339
-#: code/gd-star-functions.php:361
+#: code/gd-star-functions.php:221
+#: code/gd-star-functions.php:248
+#: code/gd-star-functions.php:261
+#: code/gd-star-functions.php:283
 msgid "Inherit from Category"
 msgstr ""
 
-#: code/gd-star-functions.php:321
+#: code/gd-star-functions.php:243
 msgid "Everyone can vote"
 msgstr ""
 
-#: code/gd-star-functions.php:322
+#: code/gd-star-functions.php:244
 msgid "Only visitors"
 msgstr ""
 
-#: code/gd-star-functions.php:323
+#: code/gd-star-functions.php:245
 msgid "Only users"
 msgstr ""
 
-#: code/gd-star-functions.php:324
+#: code/gd-star-functions.php:246
 msgid "Locked"
 msgstr ""
 
-#: code/gd-star-functions.php:325
+#: code/gd-star-functions.php:247
 msgid "Locked and hidden"
 msgstr ""
 
-#: code/gd-star-functions.php:336
+#: code/gd-star-functions.php:258
 msgid "No timer"
 msgstr ""
 
-#: code/gd-star-functions.php:337
+#: code/gd-star-functions.php:259
 msgid "Countdown timer"
 msgstr ""
 
-#: code/gd-star-functions.php:338
+#: code/gd-star-functions.php:260
 msgid "Date limited"
 msgstr ""
 
-#: code/gd-star-functions.php:347
-#: code/gd-star-functions.php:438
+#: code/gd-star-functions.php:269
+#: code/gd-star-functions.php:360
 #: options/multis/editor.php:63
 #: options/multis/sets.php:109
 msgid "Bottom"
 msgstr ""
 
-#: code/gd-star-functions.php:348
-#: code/gd-star-functions.php:436
+#: code/gd-star-functions.php:270
+#: code/gd-star-functions.php:358
 #: options/multis/editor.php:64
 #: options/multis/sets.php:106
 msgid "Top"
 msgstr ""
 
-#: code/gd-star-functions.php:349
+#: code/gd-star-functions.php:271
 msgid "Top and Bottom"
 msgstr ""
 
-#: code/gd-star-functions.php:358
+#: code/gd-star-functions.php:280
 #: options/articles.php:205
 #: options/categories.php:113
 msgid "Hours"
 msgstr ""
 
-#: code/gd-star-functions.php:359
+#: code/gd-star-functions.php:281
 #: options/articles.php:208
 #: options/categories.php:116
 msgid "Days"
 msgstr ""
 
-#: code/gd-star-functions.php:360
+#: code/gd-star-functions.php:282
 #: options/articles.php:211
 #: options/categories.php:119
 msgid "Months"
 msgstr ""
 
-#: code/gd-star-functions.php:384
+#: code/gd-star-functions.php:306
 #: tinymce3/panels/advanced.php:299
 #: tinymce3/panels/advanced.php:324
 msgid "Mini"
 msgstr ""
 
-#: code/gd-star-functions.php:385
+#: code/gd-star-functions.php:307
 #: tinymce3/panels/advanced.php:300
 #: tinymce3/panels/advanced.php:325
 msgid "Small"
 msgstr ""
 
-#: code/gd-star-functions.php:386
+#: code/gd-star-functions.php:308
 #: tinymce3/panels/advanced.php:301
 #: tinymce3/panels/advanced.php:326
 msgid "Medium"
 msgstr ""
 
-#: code/gd-star-functions.php:387
+#: code/gd-star-functions.php:309
 #: tinymce3/panels/advanced.php:302
 #: tinymce3/panels/advanced.php:327
 msgid "Big"
 msgstr ""
 
-#: code/gd-star-functions.php:395
+#: code/gd-star-functions.php:317
 msgid "Stars and text"
 msgstr ""
 
-#: code/gd-star-functions.php:396
+#: code/gd-star-functions.php:318
 msgid "Stars only"
 msgstr ""
 
-#: code/gd-star-functions.php:397
+#: code/gd-star-functions.php:319
 msgid "Text only"
 msgstr ""
 
-#: code/gd-star-functions.php:405
+#: code/gd-star-functions.php:327
 msgid "No alignment"
 msgstr ""
 
-#: code/gd-star-functions.php:406
-#: code/gd-star-functions.php:440
+#: code/gd-star-functions.php:328
+#: code/gd-star-functions.php:362
 msgid "Left"
 msgstr ""
 
-#: code/gd-star-functions.php:407
+#: code/gd-star-functions.php:329
 msgid "Center"
 msgstr ""
 
-#: code/gd-star-functions.php:408
-#: code/gd-star-functions.php:442
+#: code/gd-star-functions.php:330
+#: code/gd-star-functions.php:364
 msgid "Right"
 msgstr ""
 
-#: code/gd-star-functions.php:416
+#: code/gd-star-functions.php:338
 msgid "No Animation"
 msgstr ""
 
-#: code/gd-star-functions.php:435
+#: code/gd-star-functions.php:357
 msgid "Always hide"
 msgstr ""
 
-#: code/gd-star-functions.php:437
+#: code/gd-star-functions.php:359
 msgid "Top (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:439
+#: code/gd-star-functions.php:361
 msgid "Bottom (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:441
+#: code/gd-star-functions.php:363
 msgid "Left (hide if empty)"
 msgstr ""
 
-#: code/gd-star-functions.php:443
+#: code/gd-star-functions.php:365
 msgid "Right (hide if empty)"
 msgstr ""
 
@@ -791,7 +791,7 @@ msgstr ""
 msgid "Data imported."
 msgstr ""
 
-#: code/gd-star-render-t2.php:559
+#: code/gd-star-render-t2.php:558
 msgid "(no title)"
 msgstr ""
 
@@ -1987,7 +1987,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1180
+#: gd-star-rating.php:1189
 msgid "UNINSTALL"
 msgstr ""
 
@@ -3335,39 +3335,39 @@ msgstr ""
 msgid "T2 Templates"
 msgstr ""
 
-#: gd-star-rating.php:1261
+#: gd-star-rating.php:1270
 msgid "articles records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1263
+#: gd-star-rating.php:1272
 msgid "comments records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1267
+#: gd-star-rating.php:1276
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1269
+#: gd-star-rating.php:1278
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1273
+#: gd-star-rating.php:1282
 msgid "dead articles records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1275
+#: gd-star-rating.php:1284
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1277
+#: gd-star-rating.php:1286
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: gd-star-rating.php:1281
+#: gd-star-rating.php:1290
 msgid "dead articles records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1283
+#: gd-star-rating.php:1292
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 

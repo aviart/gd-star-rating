@@ -7,6 +7,7 @@
   * edit: removed some more old code
   * edit: many imporvements and changes to custom functions
   * edit: small improvements to t2 panel
+  * edit: few more tinymce plugin improvements
   * edit: old templates panel and settings removed
   * fix: small bugs with multi rating css and javascript
   * fix: ajax voting rating text result

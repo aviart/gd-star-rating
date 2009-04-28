@@ -1,5 +1,10 @@
 <div id="multis_panel" class="panel">
 <fieldset>
+<legend><?php _e("Template", "gd-star-rating"); ?></legend>
+    <?php GDSRHelper::render_templates_section("MRB", "srTemplateMRB", 0, 300); ?>
+</fieldset>
+
+<fieldset>
 <legend><?php _e("Multi Ratings", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
@@ -12,6 +17,7 @@
       </tr>
     </table>
 </fieldset>
+
 <fieldset>
 <legend><?php _e("Settings", "gd-star-rating"); ?></legend>
     <input type="checkbox" size="5" id="srMultiRead" name="srMultiRead" /><label for="srMultiRead"> <?php _e("Display rating block as read only.", "gd-star-rating"); ?></label><br />

@@ -73,7 +73,7 @@
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_render_multi($multi_set_id, $template_id = 0, $post_id = 0, $echo = true) {
+    function wp_gdsr_render_multi($multi_set_id, $post_id = 0, $template_id = 0, $echo = true) {
         global $userdata, $gdsr;
         if ($post_id == 0) global $post;
         else $post = get_post($post_id);
@@ -155,7 +155,7 @@
             global $post;
             $post_id = $post->ID;
         }
-        $rating = $gdsr->get_multi_average_rendered($post_id, array("id" => $set_id, "show" =>$show, "render" => "rating"));
+        $rating = $gdsr->get_multi_average_rendered($post_id, array("id" => $set_id, "show" => $show, "render" => "rating"));
         if ($echo) echo $rating;
         else return $rating;
     }

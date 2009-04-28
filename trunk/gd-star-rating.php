@@ -188,17 +188,6 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
-        * Code for StarRaterCustom shortcode implementation
-        *
-        * @param array $atts
-        */
-        function shortcode_starratercustom($atts = array()) {
-            global $post, $userdata;
-            $override = shortcode_atts($this->default_shortcode_starratercustom, $atts);
-            return $this->render_article($post, $userdata, $override);
-        }
-
-        /**
         * Code for StarRater shortcode implementation
         *
         * @param array $atts
@@ -1616,7 +1605,9 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         }
 
         function get_ratings_multi($set_id, $post_id) {
-
+            $multis_data = GDSRDBMulti::get_multi_rating_data($post_id);
+            if (count($multis_data) == 0) return null;
+            return new GDSRArticleMultiRating($multis_data, $set_id);
         }
         // calculations
 

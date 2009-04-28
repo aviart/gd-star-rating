@@ -647,30 +647,17 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
 wp_gdsr_dump("ADD_DEFAULT_is_page", $is_page);
 
         $dbt_data_article = $table_prefix.'gdsr_data_article';
-        $sql = sprintf(
-                "INSERT INTO %s (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (%s, '%s', '%s', '%s', '%s', '%s', 0, 0, 0, 0, %s, '%s', '%s')",
-                $dbt_data_article, $post_id, $options["default_voterules_articles"], $options["default_voterules_comments"], $options["default_moderation_articles"], $options["default_moderation_comments"], $is_page, $review, $options["default_timer_type"], $options["default_timer_value"]
-                );
+        $sql = sprintf("INSERT INTO %s (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (%s, '%s', '%s', '%s', '%s', '%s', 0, 0, 0, 0, %s, '%s', '%s')",
+                $dbt_data_article, $post_id, $options["default_voterules_articles"], $options["default_voterules_comments"], $options["default_moderation_articles"], $options["default_moderation_comments"], $is_page, $review, $options["default_timer_type"], $options["default_timer_value"]);
         $wpdb->query($sql);
-
-wp_gdsr_dump("ADD_DEFAULT_sql", $sql);
-wp_gdsr_dump("ADD_DEFAULT_error", $wpdb->last_error);
     }
 
     function add_empty_comment($comment_id, $post_id, $review = -1) {
         global $wpdb, $table_prefix;
         $dbt_data_comment = $table_prefix.'gdsr_data_comment';
-        $sql = sprintf(
-                "INSERT INTO %s (comment_id, post_id, is_locked, user_voters, user_votes, visitor_voters, visitor_votes, review) VALUES (%s, %s, '0', '0', '0', '0', '0', %s)",
-                    $dbt_data_comment, 
-                    $comment_id, 
-                    $post_id,
-                    $review
-                );
+        $sql = sprintf("INSERT INTO %s (comment_id, post_id, is_locked, user_voters, user_votes, visitor_voters, visitor_votes, review) VALUES (%s, %s, '0', '0', '0', '0', '0', %s)",
+                $dbt_data_comment, $comment_id, $post_id, $review);
         $wpdb->query($sql);
-
-wp_gdsr_dump("ADD_DEFAULT_CMM_sql", $sql);
-wp_gdsr_dump("ADD_DEFAULT_CMM_error", $wpdb->last_error);
     }
 
     function add_empty_comments($post_id) {
@@ -678,10 +665,7 @@ wp_gdsr_dump("ADD_DEFAULT_CMM_error", $wpdb->last_error);
         $dbt_data_comment = $table_prefix.'gdsr_data_comment';
 
         $sql = sprintf("select c.comment_ID from %s c left join %s g on c.comment_ID = g.comment_ID where (isnull(g.post_id) or g.post_id < 1) and c.comment_approved = 1 and c.comment_type = '' and c.comment_post_id = %s",
-            $wpdb->comments,
-            $dbt_data_comment,
-            $post_id
-        );
+                $wpdb->comments, $dbt_data_comment, $post_id);
         $cmms = $wpdb->get_results($sql);
         foreach ($cmms as $c)
             GDSRDatabase::add_empty_comment($c->comment_ID, $post_id);
@@ -718,27 +702,15 @@ wp_gdsr_dump("ADD_DEFAULT_CMM_error", $wpdb->last_error);
 
     function get_post_data($post_id) {
         global $wpdb, $table_prefix;
-        $articles = $table_prefix.'gdsr_data_article';
-        $sql = "select * from ".$articles." WHERE post_id = ".$post_id;
+        $sql = "select * from ".$table_prefix."gdsr_data_article WHERE post_id = ".$post_id;
         $results = $wpdb->get_row($sql, OBJECT);
-
-wp_gdsr_dump("GET_POSTDATA_sql", $sql);
-wp_gdsr_dump("GET_POSTDATA_results", $results);
-wp_gdsr_dump("GET_POSTDATA_error", $wpdb->last_error);
-
         return $results;
     }
 
     function get_comment_data($comment_id) {
         global $wpdb, $table_prefix;
-        $comments = $table_prefix.'gdsr_data_comment';
-        $sql = "select * from ".$comments." WHERE comment_id = ".$comment_id;
+        $sql = "select * from ".$table_prefix."gdsr_data_comment WHERE comment_id = ".$comment_id;
         $results = $wpdb->get_row($sql, OBJECT);
-
-wp_gdsr_dump("GET_COMMENTDATA_sql", $sql);
-wp_gdsr_dump("GET_COMMENTDATA_results", $results);
-wp_gdsr_dump("GET_COMMENTDATA_error", $wpdb->last_error);
-
         return $results;
     }
 

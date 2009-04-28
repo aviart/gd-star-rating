@@ -21,9 +21,24 @@ class GDSRArticleMultiReview {
 class GDSRArticleMultiRating {
     var $post_id;
     var $set;
-    
-    function GDSRArticleMultiRating($post_data) {
-        
+    var $review;
+    var $user_votes;
+    var $visitor_votes;
+    var $votes;
+    var $user_rating = 0;
+    var $visitor_rating = 0;
+    var $rating = 0;
+
+    function GDSRArticleMultiRating($post_data, $set_id) {
+        $this->set = gd_get_multi_set($set_id);
+        $this->review = $post_data->average_review;
+        $this->user_votes = $post_data->total_votes_users;
+        $this->visitor_votes = $post_data->total_votes_visitors;
+        $this->votes = $this->total_votes_users + $this->total_votes_visitors;
+        $this->user_rating = $post_data->average_rating_users;
+        $this->visitor_rating = $post_data->average_rating_visitors;
+        $totals = $this->user_rating * $this->user_votes + $this->visitor_rating * $this->visitor_votes;
+        $this->rating = number_format($totals / $this->votes, 1);
     }
 }
 
