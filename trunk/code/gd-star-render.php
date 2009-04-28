@@ -79,7 +79,6 @@ class GDSRRender {
         return $rater;
     }
 
-    // old functions
     function rating_stars_local($height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '') {
         $rater = '<input type="hidden" id="gdsr_cmm_review" name="gdsr_cmm_review" value="0" />';
         $rater.= '<div id="gdsr_cmm_stars" class="reviewcmm"><div class="starsbar">';
@@ -96,6 +95,7 @@ class GDSRRender {
         return $rater;
     }
 
+    // old functions
     function rating_header($header, $header_text = '') {
         if ($header == 1)
             return '<div class="ratingheader">'.html_entity_decode($header_text).'</div>';

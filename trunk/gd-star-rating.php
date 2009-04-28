@@ -208,6 +208,16 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
+        * Code for StarRating shortcode implementation
+        *
+        * @param array $atts
+        */
+        function shortcode_starrating($atts = array()) {
+            $sett = shortcode_atts($this->default_shortcode_starrating, $atts);
+            return GDSRRenderT2::render_srr($sett);
+        }
+
+        /**
         * Code for StarRatingMulti shortcode implementation
         *
         * @param array $atts
@@ -324,17 +334,6 @@ if (!class_exists('GDStarRating')) {
             else
                 return '';
 		}
-
-        /**
-        * Code for StarRating shortcode implementation
-        *
-        * @param array $atts
-        */
-        function shortcode_starrating($atts = array()) {
-            $sett = shortcode_atts($this->default_shortcode_starrating, $atts);
-            $rating = GDSRRenderT2::render_srr($sett);
-            return $rating;
-        }
         // shortcodes
 
         // various rendering
@@ -351,35 +350,6 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
-        * Renders the rating stars for given parameters
-        *
-        * @param string $style folder name of the stars set to use
-        * @param int $stars number of rating stars, maximal rating value
-        * @param int $size stars size 12, 20, 30, 46
-        * @param bool $zero_render if set to false and $value is 0 then nothing will be rendered
-        * @param decimal $value rating value to show
-        * @return string rendered html
-        */
-        function get_rating_stars($style, $stars, $size, $zero_render, $value) {
-            if ($value <= 0) {
-                if ($zero_render) $value = 0;
-                else return '';
-            }
-
-            $full_width = $size * $stars;
-            $rate_width = $size * $value;
-
-            $gfx = $this->g->find_stars($style);
-            $star_path = $gfx->get_url($size);
-
-            $render = sprintf('<div style="%s"><div style="%s"></div></div>',
-                sprintf('text-align:left; background: url(%s); height: %spx; width: %spx;', $star_path, $size, $full_width),
-                sprintf('background: url(%s) bottom left; height: %spx; width: %spx;', $star_path, $size, $rate_width)
-            );
-            return $render;
-        }
-
-        /**
          * Renders comment review stars for selected comment
          *
          * @param int $comment_id id of the comment you want displayed
@@ -389,15 +359,16 @@ if (!class_exists('GDStarRating')) {
          * @param int $size stars size 12, 20, 30, 46
          * @return string rendered stars for comment review
          */
-        function display_comment_review($comment_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
+        function display_comment_review($comment_id, $use_default = true, $style = "oxygen", $size = 20) {
             if ($use_default) {
                 $style = ($this->is_ie6 ? $this->o["cmm_review_style_ie6"] : $this->o["cmm_review_style"]);
                 $size = $this->o["cmm_review_size"];
             }
             $stars = $this->o["cmm_review_stars"];
             $review = GDSRDatabase::get_comment_review($comment_id);
+            if ($review < 0) $review = 0;
 
-            return $this->get_rating_stars($style, $stars, $size, $zero_render, $review);
+            return GDSRRender::render_static_stars($style, $size, $stars, $review);
         }
 
         /**
@@ -410,15 +381,16 @@ if (!class_exists('GDStarRating')) {
          * @param int $size stars size 12, 20, 30, 46
          * @return string rendered stars for article review
          */
-        function display_article_review($post_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
+        function display_article_review($post_id, $use_default = true, $style = "oxygen", $size = 20) {
             if ($use_default) {
                 $style = ($this->is_ie6 ? $this->o["review_style_ie6"] : $this->o["review_style"]);
                 $size = $this->o["review_size"];
             }
             $stars = $this->o["review_stars"];
             $review = GDSRDatabase::get_review($post_id);
+            if ($review < 0) $review = 0;
 
-            return $this->get_rating_stars($style, $stars, $size, $zero_render, $review);
+            return GDSRRender::render_static_stars($style, $size, $stars, $review);
         }
 
         /**
@@ -431,7 +403,7 @@ if (!class_exists('GDStarRating')) {
          * @param int $size stars size 12, 20, 30, 46
          * @return string rendered stars for article rating
          */
-        function display_article_rating($post_id, $zero_render = true, $use_default = true, $style = "oxygen", $size = 20) {
+        function display_article_rating($post_id, $use_default = true, $style = "oxygen", $size = 20) {
             if ($use_default) {
                 $style = ($this->is_ie6 ? $this->o["style_ie6"] : $this->o["style"]);
                 $size = $this->o["size"];
@@ -442,13 +414,7 @@ if (!class_exists('GDStarRating')) {
             else $rating = 0;
             $rating = @number_format($rating, 1);
 
-            return $this->get_rating_stars($style, $stars, $size, $zero_render, $rating);
-        }
-
-        function get_blog_rating($select = "postpage", $show = "total") {
-            $widget["select"] = $select;
-            $widget["show"] = $show;
-            return GDSRRenderT2::prepare_wbr($widget);
+            return GDSRRender::render_static_stars($style, $size, $stars, $rating);
         }
 
         /**
@@ -1575,7 +1541,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         }
         // vote
 
-        // calculations
         /**
         * Calculates Bayesian Estimate Mean value for given number of votes and rating
         *
@@ -1609,7 +1574,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             if (count($multis_data) == 0) return null;
             return new GDSRArticleMultiRating($multis_data, $set_id);
         }
-        // calculations
 
         // menues
         function star_multi_sets() {
@@ -1708,13 +1672,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
             if ($recalculate_cmm_reviews)
                 GDSRDB::recalculate_comments_reviews($gdsr_cmm_review_oldstars, $gdsr_cmm_review_newstars);
-        }
-
-        function star_menu_templates() {
-            $gdsr_options = $this->x;
-            $options = $this->o;
-            $wpv = $this->wp_version;
-            include($this->plugin_path.'templates/templates.php');
         }
 
         function star_menu_t2() {
