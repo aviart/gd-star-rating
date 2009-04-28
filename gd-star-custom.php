@@ -63,6 +63,20 @@
     }
 
     /**
+     * Renders stars for comment review used in the comment form for the comment author to place it's review rating.
+     *
+     * @global GDStarRating $gdsr main rating class instance
+     * @param int $value inital value for the review
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_new_comment_review($value = 0, $echo = true) {
+        global $gdsr;
+        if ($echo) echo $gdsr->comment_review($value);
+        else return $gdsr->comment_review($value);
+    }
+
+    /**
      * Renders multi rating block. This function call must be withing the post loop.
      *
      * @global object $post post data
@@ -233,8 +247,9 @@
      * @return object with average blog rating values
      */
     function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
-        global $gdsr;
-        return $gdsr->get_blog_rating($select, $show);
+            $widget["select"] = $select;
+            $widget["show"] = $show;
+            return GDSRRenderT2::prepare_wbr($widget);
     }
 
     /**
@@ -287,37 +302,22 @@
     }
 
     /**
-     * Renders stars for comment review used in the comment form for the comment author to place it's review rating.
-     *
-     * @global GDStarRating $gdsr main rating class instance
-     * @param int $value inital value for the review
-     * @param bool $echo echo results or return it as a string
-     * @return string html with rendered contents
-     */
-    function wp_gdsr_new_comment_review($value = 0, $echo = true) {
-        global $gdsr;
-        if ($echo) echo $gdsr->comment_review($value);
-        else return $gdsr->comment_review($value);
-    }
-
-    /**
      * Shows stars with review rating of a comment.
      *
      * @global object $comment comment data
      * @global GDStarRating $gdsr main rating class instance
      * @param int $comment_id ID for the comment to display rating from. If this is set to 0, than it must be used within the comment loop, and id of current comment will be used.
-     * @param bool $zero_render set to true will render empty stars if no rating saved, if this is false than function will return empty string.
      * @param bool $use_default set to true tell this function to render stars using default settings for stars set on settings panel, false tells to use $size and $style parameters.
      * @param int $size size of the stars to render, must be valid value: 12, 20, 30, 46
      * @param string $style name of the stars set to use, name of the folder for the set
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_show_comment_review($comment_id = 0, $zero_render = true, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
+    function wp_gdsr_show_comment_review($comment_id = 0, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
         global $comment, $gdsr;
         if ($comment_id < 1) $comment_id = $comment->comment_ID;
-        if ($echo) echo $gdsr->display_comment_review($comment_id, $zero_render, $use_default, $style, $size);
-        else return $gdsr->display_comment_review($comment, $zero_render, $use_default, $style, $size);
+        if ($echo) echo $gdsr->display_comment_review($comment_id, $use_default, $style, $size);
+        else return $gdsr->display_comment_review($comment, $use_default, $style, $size);
     }
     
     /**
@@ -326,18 +326,17 @@
      * @global object $post post data
      * @global GDStarRating $gdsr main rating class instance
      * @param int $post_id ID for the article to display rating from. If this is set to 0, than it must be used within the loop, and id of current article will be used.
-     * @param bool $zero_render set to true will render empty stars if no rating saved, if this is false than function will return empty string.
      * @param bool $use_default set to true tell this function to render stars using default settings for stars set on settings panel, false tells to use $size and $style parameters.
      * @param int $size size of the stars to render, must be valid value: 12, 20, 30, 46
      * @param string $style name of the stars set to use, name of the folder for the set
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_show_article_review($post_id = 0, $zero_render = true, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
+    function wp_gdsr_show_article_review($post_id = 0, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
         global $post, $gdsr;
         if ($post_id < 1) $post_id = $post->ID;
-        if ($echo) echo $gdsr->display_article_review($post_id, $zero_render, $use_default, $style, $size);
-        else return $gdsr->display_article_review($post_id, $zero_render, $use_default, $style, $size);
+        if ($echo) echo $gdsr->display_article_review($post_id, $use_default, $style, $size);
+        else return $gdsr->display_article_review($post_id, $use_default, $style, $size);
     }
 
     /**
@@ -346,18 +345,17 @@
      * @global object $post post data
      * @global GDStarRating $gdsr main rating class instance
      * @param int $post_id ID for the article to display rating from. If this is set to 0, than it must be used within the loop, and id of current article will be used.
-     * @param bool $zero_render set to true will render empty stars if no rating saved, if this is false than function will return empty string.
      * @param bool $use_default set to true tell this function to render stars using default settings for stars set on settings panel, false tells to use $size and $style parameters.
      * @param int $size size of the stars to render, must be valid value: 12, 20, 30, 46
      * @param string $style name of the stars set to use, name of the folder for the set
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_show_article_rating($post_id = 0, $zero_render = true, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
+    function wp_gdsr_show_article_rating($post_id = 0, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
         global $post, $gdsr;
         if ($post_id < 1) $post_id = $post->ID;
-        if ($echo) echo $gdsr->display_article_rating($post_id, $zero_render, $use_default, $style, $size);
-        else return $gdsr->display_article_rating($post_id, $zero_render, $use_default, $style, $size);
+        if ($echo) echo $gdsr->display_article_rating($post_id, $use_default, $style, $size);
+        else return $gdsr->display_article_rating($post_id, $use_default, $style, $size);
     }
 
 ?>

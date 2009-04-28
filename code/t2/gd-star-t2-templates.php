@@ -234,10 +234,20 @@ $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
 $tpls->add_template($t);
 
 $t = new gdTemplate("RCB", __("Comments Review Rating Block", "gd-star-rating"));
-$t->add_element("%CMM_RATING_STARS%", __("rating stars", "gd-star-rating"));
-$t->add_element("%CMM_RATING%", __("rating stars", "gd-star-rating"));
-$t->add_element("%MAX_CMM_RATING%", __("rating stars", "gd-star-rating"));
+$t->add_element("%CMM_RATING_STARS%", __("comment rating stars", "gd-star-rating"));
+$t->add_element("%CMM_RATING%", __("comment rating", "gd-star-rating"));
+$t->add_element("%MAX_CMM_RATING%", __("maximum comment rating value", "gd-star-rating"));
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
+$tpls->add_template($t);
+
+$t = new gdTemplate("ACR", __("Aggregated Comments Review Rating", "gd-star-rating"));
+$t->add_template("EWV", "%WORD_VOTES%");
+$t->add_element("%CMM_RATING%", __("comment rating", "gd-star-rating"));
+$t->add_element("%MAX_CMM_RATING%", __("maximum comment rating value", "gd-star-rating"));
+$t->add_element("%CMM_VOTES%", __("total votes for all comment", "gd-star-rating"));
+$t->add_element("%CMM_STARS%", __("comment rating stars", "gd-star-rating"));
+$t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
+$t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all");
 $tpls->add_template($t);
 
 ?>
