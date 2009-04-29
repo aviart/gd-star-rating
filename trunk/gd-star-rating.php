@@ -477,10 +477,8 @@ if (!class_exists('GDStarRating')) {
                 $single_vote["rating"] = $md->user_votes;
                 $votes[] = $single_vote;
             }
-            if ($admin) {
-                include($this->plugin_path.'integrate/edit_multi.php');
-            }
-            else return GDSRRender::multi_rating_review($votes, $post_id, $set, 20, $allow_vote);
+            if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
+            else return GDSRRenderT2::render_mre(0, $allow_vote, $votes, $post_id, $set, 20);
         }
         // various rendering
 

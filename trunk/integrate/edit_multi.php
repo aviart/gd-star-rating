@@ -37,7 +37,7 @@
 <?php
 
         echo '</td><td width="65%" class="gdsr-mur-review-stars">';
-        echo GDSRRender::multi_rating_review($votes, $post_id, $set, 20);
+        echo GDSRRenderT2::render_mre(0, true, $votes, $post_id, $set, 20);
         echo '</td></tr></table>';
     }
     
