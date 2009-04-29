@@ -94,46 +94,6 @@ class GDSRRender {
         $rater.= '</div></div></div>';
         return $rater;
     }
-
-    // old functions
-    function multi_rating_review($votes, $post_id, $set, $height, $allow_vote = true, $class_block = "gdsr-review-block", $class_table = "gdsr-review-table") {
-        return GDSRRender::multi_rating_block("", $allow_vote, $votes, false, $post_id, $set, $height, 0, "", $class_block, "", $class_table, "", "N", 0, "", false, "", true);
-    }
-
-    function multi_rating_block($wait_msg, $allow_vote, $votes, $debug, $post_id, $set, $height, $header, $header_text, $custom_class_block = "", $custom_class_text = "", $custom_class_table = "", $custom_class_button = "", $time_restirctions = "N", $time_remaining = 0, $time_date = "", $button_active = true, $button_text = "Submit", $review_mode = false) {
-        $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti '.$custom_class_block.'">';
-        if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
-
-        $empty_value = str_repeat("0X", count($set->object));
-        $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
-
-        if ($review_mode) {
-            $original_value = "";
-            foreach($votes as $vote) $original_value.= number_format($vote["rating"], 0)."X";
-            $original_value = substr($original_value, 0, strlen($original_value) - 1);
-            $rater.= '<input type="hidden" id="gdsr_mur_review_'.$post_id.'_'.$set->multi_id.'" name="gdsrmurreview['.$post_id.']['.$set->id.']" value="'.$original_value.'" />';
-            $empty_value = $original_value;
-        }
-        if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$empty_value.'" />';
-        $rater.= '<table class="gdmultitable '.$custom_class_table.'" cellpadding="0" cellspacing="0">';
-        $tr_class = "mtrow";
-        $i = 0;
-        $weighted = 0;
-        $total_votes = 0;
-        $weight_norm = array_sum($set->weight);
-        foreach ($set->object as $el) {
-            $rater.= '<tr class="'.$tr_class.'"><td>'.$el.':</td><td>';
-            $rater.= GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"], "", $review_mode);
-            $rater.= '</td></tr>';
-            if ($tr_class == "mtrow") $tr_class.= " alternate";
-            else $tr_class = "mtrow";
-            $weighted += ( $votes[$i]["rating"] * $set->weight[$i] ) / $weight_norm;
-            $total_votes += $votes[$i]["votes"];
-            $i++;
-        }
-        $rater.= '</table></div>';
-        return $rater;
-    }
 }
 
 ?>

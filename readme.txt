@@ -124,12 +124,12 @@ Plugin administration consist of 12 panels:
 * Plugin folder in the WordPress plugins folder must be `gd-star-rating`.
 * Upload `gd-star-rating` folder to the `/wp-content/plugins/` directory
 * Activate the plugin through the 'Plugins' menu in WordPress
-* Check all the plugin settings before using the plugin.
+* Check all the plugin and plugin widgets settings before using the plugin.
 
-= WordPress 2.5 =
+= WordPress 2.5.x =
 * plugin doesn't require any more changes.
 
-= WordPress 2.6 / 2.7 / 2.8 =
+= WordPress 2.6.x and newer  =
 * if you don't change location of `wp-content` folder, then you don't need to make any more changes.
 * if your `wp-content` folder is moved out of WordPress web location, then you must edit `gd-star-config.php` file and set value with exact location of `wp-content` file for `STARRATING_WPCONFIG` in line 3. Without this some plugin feature will not work.
 

@@ -81,6 +81,7 @@ function insertStarRatingCode() {
     else if (shortcode == 'starreviewmulti') {
         tagtext = "[starreviewmulti id=";
         tagtext = tagtext + document.getElementById('srMultiRatingSet').value;
+        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRMB').value
         tagtext = tagtext + "]";
     }
     else if (shortcode == 'starratingmulti') {

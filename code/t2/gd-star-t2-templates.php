@@ -239,6 +239,12 @@ $t->add_element("%MAX_CMM_RATING%", __("maximum comment rating value", "gd-star-
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
 $tpls->add_template($t);
 
+$t = new gdTemplate("RMB", __("Multi Review Rating Block", "gd-star-rating"));
+$t->add_template("MRS", "%MUR_RATING_STARS%");
+$t->add_element("%MUR_RATING_STARS%", __("multi rating stars", "gd-star-rating"));
+$t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
+$tpls->add_template($t);
+
 $t = new gdTemplate("ACR", __("Aggregated Comments Review Rating", "gd-star-rating"));
 $t->add_template("EWV", "%WORD_VOTES%");
 $t->add_element("%CMM_RATING%", __("comment rating", "gd-star-rating"));

@@ -185,21 +185,6 @@ class GDSRDefaults {
         "star_rating_for_reviews" => 0,
     );
 
-    var $default_shortcode_starcomments = array(
-        "post" => 0,
-        "show" => "total",
-        "tpl" => 0
-    );
-
-    var $default_shortcode_starreview = array(
-        "post" => 0,
-        "tpl" => 0
-    );
-
-    var $default_shortcode_starrater = array(
-        "tpl" => 0
-    );
-
     var $default_widget_comments = array(
         "title" => "Comments Rating",
         "display" => "all",
@@ -283,6 +268,21 @@ class GDSRDefaults {
         "last_voted_days" => 0
     );
 
+    var $default_shortcode_starcomments = array(
+        "post" => 0,
+        "show" => "total",
+        "tpl" => 0
+    );
+
+    var $default_shortcode_starreview = array(
+        "post" => 0,
+        "tpl" => 0
+    );
+
+    var $default_shortcode_starrater = array(
+        "tpl" => 0
+    );
+
     var $default_shortcode_starratingmulti = array(
         'id' => 1,
         'tpl' => 0,
@@ -292,14 +292,6 @@ class GDSRDefaults {
     var $default_shortcode_starreviewmulti = array(
         'id' => 1,
         'tpl' => 0
-    );
-
-    var $default_templates = array(
-        "word_votes_singular" => "vote",
-        "word_votes_plural" => "votes",
-        "table_row_even" => "even",
-        "table_row_odd" => "odd",
-        "multis_rating_text" => "Rating: %RATING%/&lt;strong&gt;%MAX_RATING%&lt;/strong&gt; (%VOTES% %WORD_VOTES% cast)"
     );
 
     var $default_shortcode_starrating = array(
