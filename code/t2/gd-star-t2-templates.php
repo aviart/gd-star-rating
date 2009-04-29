@@ -132,7 +132,6 @@ $t->add_element("%MUR_RATING_TEXT%", __("multi rating text", "gd-star-rating"));
 $t->add_element("%MUR_RATING_STARS%", __("multi rating stars", "gd-star-rating"));
 $t->add_element("%MUR_CSS_BLOCK%", __("css class for whole block", "gd-star-rating"));
 $t->add_element("%MUR_CSS_HEADER%", __("css class for header", "gd-star-rating"));
-$t->add_element("%MUR_CSS_STARS%", __("css class for stars", "gd-star-rating"));
 $t->add_element("%MUR_CSS_TEXT%", __("css class for rating text", "gd-star-rating"));
 $t->add_element("%MUR_CSS_BUTTON%", __("css class for rating text", "gd-star-rating"));
 $t->add_element("%BUTTON%", __("rating button", "gd-star-rating"));
@@ -248,6 +247,13 @@ $t->add_element("%CMM_VOTES%", __("total votes for all comment", "gd-star-rating
 $t->add_element("%CMM_STARS%", __("comment rating stars", "gd-star-rating"));
 $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all");
+$tpls->add_template($t);
+
+$t = new gdTemplate("MRE", __("Multi Review Editor", "gd-star-rating"));
+$t->add_template("MRS", "%MUR_RATING_STARS%");
+$t->add_element("%MUR_RATING_STARS%", __("multi rating stars", "gd-star-rating"));
+$t->add_element("%MUR_CSS_BLOCK%", __("css class for whole block", "gd-star-rating"));
+$t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
 $tpls->add_template($t);
 
 ?>
