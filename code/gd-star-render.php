@@ -96,13 +96,6 @@ class GDSRRender {
     }
 
     // old functions
-    function rating_header($header, $header_text = '') {
-        if ($header == 1)
-            return '<div class="ratingheader">'.html_entity_decode($header_text).'</div>';
-        else
-            return '';
-    }
-
     function multi_rating_review($votes, $post_id, $set, $height, $allow_vote = true, $class_block = "gdsr-review-block", $class_table = "gdsr-review-table") {
         return GDSRRender::multi_rating_block("", $allow_vote, $votes, false, $post_id, $set, $height, 0, "", $class_block, "", $class_table, "", "N", 0, "", false, "", true);
     }
@@ -122,7 +115,6 @@ class GDSRRender {
             $empty_value = $original_value;
         }
         if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$empty_value.'" />';
-        $rater.= GDSRRender::rating_header($header, $header_text);
         $rater.= '<table class="gdmultitable '.$custom_class_table.'" cellpadding="0" cellspacing="0">';
         $tr_class = "mtrow";
         $i = 0;
