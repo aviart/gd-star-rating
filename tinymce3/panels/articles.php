@@ -2,7 +2,11 @@
 <fieldset>
 <legend><?php _e("Articles Review Rating", "gd-star-rating"); ?></legend>
 <p><?php _e("StarReview will render stars representing review value assigned to the post or page.", "gd-star-rating"); ?></p>
-<p><?php _e("There are no settings for this shortcode yet. This will be updated soon.", "gd-star-rating"); ?></p>
+</fieldset>
+
+<fieldset>
+<legend><?php _e("Template", "gd-star-rating"); ?></legend>
+    <?php GDSRHelper::render_templates_section("RSB", "srTemplateRSB", 0, 300); ?>
 </fieldset>
 </div>
 

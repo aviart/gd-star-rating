@@ -1,5 +1,10 @@
 <div id="commentsaggr_panel" class="panel">
 <fieldset>
+<legend><?php _e("Template", "gd-star-rating"); ?></legend>
+    <?php GDSRHelper::render_templates_section("CAR", "srTemplateCAR", 0, 300); ?>
+</fieldset>
+
+<fieldset>
 <legend><?php _e("Aggregated Comments Ratings", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="3" cellspacing="0" width="100%">
       <tr>
