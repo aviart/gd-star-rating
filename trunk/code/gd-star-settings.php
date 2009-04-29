@@ -111,6 +111,7 @@
         $gdsr_options["default_srb_template"] = $_POST['gdsr_default_srb_template'];
         $gdsr_options["default_crb_template"] = $_POST['gdsr_default_crb_template'];
         $gdsr_options["default_ssb_template"] = $_POST['gdsr_default_ssb_template'];
+        $gdsr_options["default_mrb_template"] = $_POST['gdsr_default_mrb_template'];
 
         $gdsr_options["srb_class_block"] = $_POST['gdsr_classblock'];
         $gdsr_options["srb_class_text"] = $_POST['gdsr_classtext'];
@@ -124,11 +125,10 @@
         $gdsr_options["mur_style"] = $_POST['gdsr_mur_style'];
         $gdsr_options["mur_style_ie6"] = $_POST['gdsr_mur_style_ie6'];
         $gdsr_options["mur_size"] = $_POST['gdsr_mur_size'];
-        $gdsr_options["mur_header"] = isset($_POST['gdsr_mur_header']) ? 1 : 0;
         $gdsr_options["mur_header_text"] = stripslashes(htmlentities($_POST['gdsr_mur_header_text'], ENT_QUOTES, STARRATING_ENCODING));
         $gdsr_options["mur_class_block"] = $_POST['gdsr_mur_classblock'];
         $gdsr_options["mur_class_text"] = $_POST['gdsr_mur_classtext'];
-        $gdsr_options["mur_class_table"] = $_POST['gdsr_mur_classtable'];
+        $gdsr_options["mur_class_header"] = $_POST['gdsr_mur_classheader'];
         $gdsr_options["mur_class_button"] = $_POST['gdsr_mur_classbutton'];
         $gdsr_options["mur_button_text"] = $_POST['gdsr_mur_submittext'];
         $gdsr_options["mur_button_active"] = isset($_POST['gdsr_mur_submitactive']) ? 1 : 0;

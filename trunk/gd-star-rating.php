@@ -3,7 +3,7 @@
 /*
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
-Description: Star Rating plugin allows you to set up rating system for pages and/or posts in your blog.
+Description: Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
 Version: 1.2.3
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
@@ -684,6 +684,7 @@ if (!class_exists('GDStarRating')) {
             add_action('widgets_init', array(&$this, 'widgets_init'));
             add_action('admin_menu', array(&$this, 'admin_menu'));
             add_action('admin_head', array(&$this, 'admin_head'));
+            add_filter('plugin_action_links', array(&$this, 'plugin_links'), 10, 2 );
             if ($this->o["integrate_post_edit"] == 1) {
                 if ($this->wp_version < 27) {
                     add_action('submitpost_box', array(&$this, 'editbox_post'));
@@ -739,6 +740,20 @@ if (!class_exists('GDStarRating')) {
                 if ($this->o["widget_top"] == 1) register_widget("gdsrWidgetTop");
                 if ($this->o["widget_comments"] == 1) register_widget("gdsrWidgetComments");
             }
+        }
+
+        /**
+         * Adds Settings link to plugins panel grid
+         */
+        function plugin_links($links, $file) {
+            static $this_plugin;
+            if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
+
+            if ( $file == $this_plugin ){
+                $settings_link = '<a href="admin.php?page=gd-star-rating-settings-page">'.__("Settings", "gd-star-rating").'</a>';
+                array_unshift($links, $settings_link);
+            }
+            return $links;
         }
 
         /**
@@ -2321,11 +2336,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
             $tags_css = array();
-            $tags_css["MUR_CSS_BLOCK"] = $this->o["mrb_class_block"];
-            $tags_css["MUR_CSS_HEADER"] = $this->o["mrb_class_header"];
-            $tags_css["MUR_CSS_STARS"] = $this->o["mrb_class_stars"];
-            $tags_css["MUR_CSS_TEXT"] = $this->o["mrb_class_text"];
-            $tags_css["MUR_CSS_BUTTON"] = $this->o["mrb_class_button"];
+            $tags_css["MUR_CSS_BLOCK"] = $this->o["mur_class_block"];
+            $tags_css["MUR_CSS_HEADER"] = $this->o["mur_class_header"];
+            $tags_css["MUR_CSS_TEXT"] = $this->o["mur_class_text"];
+            $tags_css["MUR_CSS_BUTTON"] = $this->o["mur_class_button"];
 
             if ($settings["tpl"] > 0) $template_id = $settings["tpl"];
             else $template_id = $this->o["default_mrb_template"];
