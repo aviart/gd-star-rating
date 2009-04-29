@@ -649,6 +649,58 @@ class GDSRRenderT2 {
         return $tpl_render;
     }
 
+    function render_rcb($template_id, $rating, $star_style, $star_size, $star_max) {
+        $template = GDSRRenderT2::get_template($template_id, "RCB");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+
+        $tpl_render = str_replace("%MAX_MM_RATING%", $star_max, $tpl_render);
+        $tpl_render = str_replace("%CMM_RATING%", $rating, $tpl_render);
+
+        $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
+        $tpl_render = str_replace("%CMM_RATING_STARS%", $rating_stars, $tpl_render);
+
+        return $tpl_render;
+    }
+
+    function render_rmb($template_id, $votes, $post_id, $set, $height) {
+        $template = GDSRRenderT2::get_template($template_id, "RMB");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+        $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti gdsr-review-block">';
+
+        $empty_value = str_repeat("0X", count($set->object));
+        $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
+
+        $original_value = "";
+        foreach($votes as $vote) $original_value.= number_format($vote["rating"], 0)."X";
+        $original_value = substr($original_value, 0, strlen($original_value) - 1);
+        $rater.= '<input type="hidden" id="gdsr_mur_review_'.$post_id.'_'.$set->multi_id.'" name="gdsrmurreview['.$post_id.']['.$set->id.']" value="'.$original_value.'" />';
+        $empty_value = $original_value;
+
+        $i = 0;
+        $weighted = 0;
+        $total_votes = 0;
+        $weight_norm = array_sum($set->weight);
+        $rating_stars = "";
+        $table_row_class = $template->dep["MRS"]->dep["ETR"];
+        foreach ($set->object as $el) {
+            $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
+            $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
+            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, $set->stars, false, $votes[$i]["rating"], "", true), $single_row);
+            $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
+            $rating_stars.= $single_row;
+
+            $weighted += ($votes[$i]["rating"] * $set->weight[$i]) / $weight_norm;
+            $total_votes += $votes[$i]["votes"];
+            $i++;
+        }
+
+        $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
+        $rater.= $tpl_render."</div>";
+        return $rater;
+    }
+
     function render_car($template_id, $votes, $rating, $comments, $star_style, $star_size, $star_max) {
         $template = GDSRRenderT2::get_template($template_id, "CAR");
         $tpl_render = $template->elm["normal"];

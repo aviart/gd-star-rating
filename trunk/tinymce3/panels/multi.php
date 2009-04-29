@@ -26,6 +26,11 @@
 
 <div id="multisreview_panel" class="panel">
 <fieldset>
+<legend><?php _e("Template", "gd-star-rating"); ?></legend>
+    <?php GDSRHelper::render_templates_section("RMB", "srTemplateRMB", 0, 300); ?>
+</fieldset>
+
+<fieldset>
 <legend><?php _e("Multi Reviews", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>

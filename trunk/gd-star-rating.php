@@ -91,7 +91,6 @@ if (!class_exists('GDStarRating')) {
         var $w; // widget options
         var $t; // database tables
         var $p; // post data
-        var $x; // template
         var $e; // blank image
         var $i; // import
         var $g; // gfx
@@ -109,7 +108,6 @@ if (!class_exists('GDStarRating')) {
         var $default_shortcode_starcomments;
         var $default_shortcode_starrater;
         var $default_shortcode_starreview;
-        var $default_templates;
         var $default_options;
         var $default_import;
         var $default_widget_comments;
@@ -134,7 +132,6 @@ if (!class_exists('GDStarRating')) {
             $this->default_shortcode_starcomments = $gdd->default_shortcode_starcomments;
             $this->default_shortcode_starrater = $gdd->default_shortcode_starrater;
             $this->default_shortcode_starreview = $gdd->default_shortcode_starreview;
-            $this->default_templates = $gdd->default_templates;
             $this->default_options = $gdd->default_options;
             $this->default_import = $gdd->default_import;
             $this->default_widget_comments = $gdd->default_widget_comments;
@@ -305,7 +302,7 @@ if (!class_exists('GDStarRating')) {
                     $single_vote["rating"] = $md->user_votes;
                     $votes[] = $single_vote;
                 }
-                return GDSRRender::multi_rating_review($votes, $post_id, $set, $this->o["mur_size"], false, "", "");
+                return GDSRRenderT2::render_rmb($settings["tpl"], $votes, $post_id, $set, $this->o["mur_size"]);
             }
             else return '';
         }
@@ -478,7 +475,7 @@ if (!class_exists('GDStarRating')) {
                 $votes[] = $single_vote;
             }
             if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
-            else return GDSRRenderT2::render_mre(0, $allow_vote, $votes, $post_id, $set, 20);
+            else return GDSRRenderT2::render_mre(intavl($settings["tpl"]), $allow_vote, $votes, $post_id, $set, 20);
         }
         // various rendering
 
@@ -881,7 +878,6 @@ if (!class_exists('GDStarRating')) {
          */
         function install_plugin() {
             $this->o = get_option('gd-star-rating');
-            $this->x = get_option('gd-star-rating-templates');
             $this->i = get_option('gd-star-rating-import');
             $this->g = get_option('gd-star-rating-gfx');
             $this->wpr8 = get_option('gd-star-rating-wpr8');
@@ -916,15 +912,6 @@ if (!class_exists('GDStarRating')) {
                 update_option('gd-star-rating', $this->default_options);
                 $this->o = get_option('gd-star-rating');
                 gdDBInstallGDSR::create_tables(STARRATING_PATH);
-            }
-
-            if (!is_array($this->x)) {
-                update_option('gd-star-rating-templates', $this->default_templates);
-                $this->x = get_option('gd-star-rating-templates');
-            }
-            else {
-                $this->x = gdFunctionsGDSR::upgrade_settings($this->x, $this->default_templates);
-                update_option('gd-star-rating-templates', $this->x);
             }
 
             if (!is_array($this->i)) {
@@ -1422,8 +1409,6 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
 
             $rating = $summary["total"]["rating"];
             $total_votes = $summary["total"]["votes"];
-            if ($total_votes == 1) $tense = $this->x["word_votes_singular"];
-            else $tense = $this->x["word_votes_plural"];
 
             include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
 
@@ -1677,7 +1662,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         }
 
         function star_menu_t2() {
-            $gdsr_options = $this->x;
             $options = $this->o;
             $wpv = $this->wp_version;
 
