@@ -28,6 +28,7 @@ CREATE TABLE `wp_gdsr_data_article` (
   `visitor_recc_minus` int(11) DEFAULT '0',
   `expiry_type` char(1) NOT NULL DEFAULT 'N',
   `expiry_value` varchar(32) NOT NULL DEFAULT '',
+  `last_voted` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`post_id`)
 );
 }}}
@@ -64,6 +65,7 @@ CREATE TABLE `wp_gdsr_data_comment` (
   `user_recc_minus` int(11) DEFAULT '0',
   `visitor_recc_plus` int(11) DEFAULT '0',
   `visitor_recc_minus` int(11) DEFAULT '0',
+  `last_voted` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`comment_id`)
 );
 }}}
@@ -108,6 +110,9 @@ CREATE TABLE `wp_gdsr_multis` (
   `stars` int(11) NOT NULL DEFAULT '10',
   `object` text NOT NULL,
   `weight` text NOT NULL,
+  `auto_insert` varchar(4) NOT NULL DEFAULT 'no',
+  `auto_location` varchar(8) NOT NULL DEFAULT 'bottom',
+  `auto_categories` text NOT NULL,
   PRIMARY KEY (`multi_id`)
 );
 }}}
@@ -119,8 +124,12 @@ CREATE TABLE `wp_gdsr_multis_data` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `post_id` int(11) NOT NULL,
   `multi_id` int(11) NOT NULL,
-  `review` decimal(3,1) NOT NULL DEFAULT '-1.0',
-  `review_text` varchar(255) DEFAULT NULL,
+  `average_rating_users` decimal(3,1) NOT NULL DEFAULT '0.0',
+  `average_rating_visitors` decimal(3,1) NOT NULL DEFAULT '0.0',
+  `total_votes_users` int(11) NOT NULL DEFAULT '0',
+  `total_votes_visitors` int(11) NOT NULL DEFAULT '0',
+  `average_review` decimal(3,1) NOT NULL DEFAULT '0.0',
+  `last_voted` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `post_id` (`post_id`)
 );
@@ -134,6 +143,10 @@ CREATE TABLE `wp_gdsr_multis_trend` (
   `post_id` int(11) NOT NULL,
   `multi_id` int(11) NOT NULL,
   `vote_date` varchar(10) DEFAULT NULL,
+  `average_rating_users` decimal(3,1) NOT NULL DEFAULT '0.0',
+  `average_rating_visitors` decimal(3,1) NOT NULL DEFAULT '0.0',
+  `total_votes_users` int(11) NOT NULL DEFAULT '0',
+  `total_votes_visitors` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 );
 }}}
@@ -163,7 +176,9 @@ CREATE TABLE `wp_gdsr_templates` (
   `name` varchar(128) NOT NULL,
   `description` text NOT NULL,
   `elements` text NOT NULL,
+  `dependencies` text NOT NULL,
   `preinstalled` varchar(1) NOT NULL DEFAULT '0',
+  `default` varchar(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`template_id`)
 );
 }}}
