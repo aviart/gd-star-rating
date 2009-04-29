@@ -97,11 +97,8 @@ class GDSRDefaults {
         "review_style_ie6" => 'oxygen_gif',
         "review_size" => 20,
         "review_stars" => 5,
-        "review_align" => 'none',
-        "review_header" => 0,
         "review_header_text" => '',
         "review_class_block" => '',
-        "review_class_text" => '',
         "display_comment" => 1,
         "display_comment_page" => 0,
         "display_posts" => 1,
@@ -189,7 +186,13 @@ class GDSRDefaults {
 
     var $default_shortcode_starcomments = array(
         "post" => 0,
-        "show" => "total"
+        "show" => "total",
+        "tpl" => 0
+    );
+
+    var $default_shortcode_starreview = array(
+        "post" => 0,
+        "tpl" => 0
     );
 
     var $default_shortcode_starrater = array(
@@ -286,7 +289,8 @@ class GDSRDefaults {
     );
 
     var $default_shortcode_starreviewmulti = array(
-        'id' => 1
+        'id' => 1,
+        'tpl' => 0
     );
 
     var $default_templates = array(

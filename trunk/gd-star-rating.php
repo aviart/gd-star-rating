@@ -108,6 +108,7 @@ if (!class_exists('GDStarRating')) {
         var $default_shortcode_starreviewmulti;
         var $default_shortcode_starcomments;
         var $default_shortcode_starrater;
+        var $default_shortcode_starreview;
         var $default_templates;
         var $default_options;
         var $default_import;
@@ -132,6 +133,7 @@ if (!class_exists('GDStarRating')) {
             $this->default_shortcode_starreviewmulti = $gdd->default_shortcode_starreviewmulti;
             $this->default_shortcode_starcomments = $gdd->default_shortcode_starcomments;
             $this->default_shortcode_starrater = $gdd->default_shortcode_starrater;
+            $this->default_shortcode_starreview = $gdd->default_shortcode_starreview;
             $this->default_templates = $gdd->default_templates;
             $this->default_options = $gdd->default_options;
             $this->default_import = $gdd->default_import;
@@ -218,20 +220,6 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
-        * Code for StarRatingMulti shortcode implementation
-        *
-        * @param array $atts
-        */
-        function shortcode_starratingmulti($atts = array()) {
-            if ($this->o["multis_active"] == 1) {
-                global $post, $userdata;
-                $settings = shortcode_atts($this->default_shortcode_starratingmulti, $atts);
-                return $this->render_multi_rating($post, $userdata, $settings);
-            }
-            else return '';
-        }
-
-        /**
         * Code for StarComments shortcode implementation
         *
         * @param array $atts
@@ -242,6 +230,10 @@ if (!class_exists('GDStarRating')) {
             if ($sett["post"] == 0) {
                 global $post;
                 $sett["post"] = $post->ID;
+                $sett["comments"] = $post->comment_count;
+            } else {
+                $post = get_post($sett["post"]);
+                $sett["comments"] = $post->comment_count;
             }
             if ($post->ID > 0) {
                 $rows = GDSRDatabase::get_comments_aggregation($sett["post"], $sett["show"]);
@@ -268,10 +260,27 @@ if (!class_exists('GDStarRating')) {
                 }
                 if ($total_voters > 0) $calc_rating = $total_votes / $total_voters;
                 $calc_rating = number_format($calc_rating, 1);
-                $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["cmm_aggr_style_ie6"] : $this->o["cmm_aggr_style"]), $this->o['cmm_aggr_size'], $this->o["cmm_stars"], $calc_rating);
+                $rating = GDSRRenderT2::render_car($sett["tpl"], $total_voters, $calc_rating, $sett["comments"], ($this->is_ie6 ? $this->o["cmm_aggr_style_ie6"] : $this->o["cmm_aggr_style"]), $this->o['cmm_aggr_size'], $this->o["cmm_stars"]);
             }
             return $rating;
         }
+
+        /**
+        * Code for StarReview shortcode implementation
+        *
+        * @param array $atts
+        */
+        function shortcode_starreview($atts = array()) {
+            $sett = shortcode_atts($this->default_shortcode_starreview, $atts);
+            if ($sett["post"] == 0) {
+                global $post;
+                $sett["post"] = $post->ID;
+            }
+
+            $rating = GDSRDatabase::get_review($sett["post"]);
+            if ($rating < 0) $rating = 0;
+            return GDSRRenderT2::render_rsb($sett["tpl"], $rating, ($this->is_ie6 ? $this->o["review_style_ie6"] : $this->o["review_style"]), $this->o['review_size'], $this->o["review_stars"], $this->o["review_header_text"], $this->o["review_class_block"]);
+		}
 
         /**
         * Code for StarReviewMulti shortcode implementation
@@ -302,38 +311,18 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
-        * Code for StarReview shortcode implementation
+        * Code for StarRatingMulti shortcode implementation
         *
         * @param array $atts
         */
-        function shortcode_starreview($atts = array()) {
-            global $post;
-            $rating = GDSRDatabase::get_review($post->ID);
-            if ($rating > -1) {
-                if ($this->o['review_class_block'] != '')
-                    $css_class = ' class="'.$this->o['review_class_block'].'"';
-                else
-                    $css_class = '';
-
-                if ($this->o['review_align'] != 'none')
-                    $rater_align = ' align="'.$this->o['review_align'].'"';
-                else
-                    $rater_align = '';
-
-                if ($this->o['review_header'] == 1)
-                    $rater_header = '<div class="ratingreviewheader">'.$this->o['review_header_text'].'</div>';
-                else
-                    $rater_header = '';
-
-                $review_stars = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["review_style_ie6"] : $this->o["review_style"]), $this->o['review_size'], $this->o["review_stars"], $rating);
-                $review = sprintf('<div%s%s>%s%s</div>',
-                    $css_class, $rater_align, $rater_header, $review_stars
-                );
-                return $review;
+        function shortcode_starratingmulti($atts = array()) {
+            if ($this->o["multis_active"] == 1) {
+                global $post, $userdata;
+                $settings = shortcode_atts($this->default_shortcode_starratingmulti, $atts);
+                return $this->render_multi_rating($post, $userdata, $settings);
             }
-            else
-                return '';
-		}
+            else return '';
+        }
         // shortcodes
 
         // various rendering

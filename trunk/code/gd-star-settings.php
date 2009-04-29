@@ -146,10 +146,7 @@
         $gdsr_options["review_style"] = $_POST['gdsr_review_style'];
         $gdsr_options["review_style_ie6"] = $_POST['gdsr_review_style_ie6'];
         $gdsr_options["review_size"] = $_POST['gdsr_review_size'];
-        $gdsr_options["review_text"] = $_POST['gdsr_review_text'];
-        $gdsr_options["review_align"] = $_POST['gdsr_review_align'];
-        $gdsr_options["review_header"] = isset($_POST['gdsr_review_header']) ? 1 : 0;
-
+        $gdsr_options["review_stars"] = $_POST['gdsr_review_stars'];
         $gdsr_options["review_header_text"] = stripslashes(htmlentities($_POST['gdsr_review_header_text'], ENT_QUOTES, STARRATING_ENCODING));
         $gdsr_options["review_class_block"] = $_POST['gdsr_review_classblock'];
 

@@ -482,6 +482,55 @@ class GDSRRenderT2 {
         return $rt;
     }
 
+    function render_wsr($widget, $section = "WSR") {
+        global $gdsr;
+        $template = GDSRRenderT2::get_template($widget["template_id"], $section);
+        $tpl_render = html_entity_decode($template->elm["header"]);
+        $rt = html_entity_decode($template->elm["item"]);
+        $all_rows = GDSRRenderT2::prepare_wsr($widget, $rt);
+
+        if (count($all_rows) > 0) {
+            foreach ($all_rows as $row) {
+                $rt = html_entity_decode($template->elm["item"]);
+                $title = $row->title;
+                if (strlen($title) == 0) $title = __("(no title)", "gd-star-rating");
+
+                $rt = str_replace('%RATING%', $row->rating, $rt);
+                $rt = str_replace('%MAX_RATING%', $gdsr->o["stars"], $rt);
+                $rt = str_replace('%VOTES%', $row->voters, $rt);
+                $rt = str_replace('%REVIEW%', $row->review, $rt);
+                $rt = str_replace('%MAX_REVIEW%', $gdsr->o["review_stars"], $rt);
+                $rt = str_replace('%TITLE%', __($title), $rt);
+                $rt = str_replace('%PERMALINK%', $row->permalink, $rt);
+                $rt = str_replace('%ID%', $row->post_id, $rt);
+                $rt = str_replace('%COUNT%', $row->counter, $rt);
+                $rt = str_replace('%BAYES_RATING%', $row->bayesian, $rt);
+                $rt = str_replace('%BAYES_STARS%', $row->bayesian_stars, $rt);
+                $rt = str_replace('%STARS%', $row->rating_stars, $rt);
+                $rt = str_replace('%REVIEW_STARS%', $row->review_stars, $rt);
+                $rt = str_replace('%RATE_TREND%', $row->item_trend_rating, $rt);
+                $rt = str_replace('%VOTE_TREND%', $row->item_trend_voting, $rt);
+                $rt = str_replace('%IMAGE%', $row->image, $rt);
+                $rt = str_replace('%AUTHOR_NAME%', $row->author_name, $rt);
+                $rt = str_replace('%AUTHOR_LINK%', $row->author_url, $rt);
+
+                $word_votes = $template->dep["EWV"];
+                $tense = $row->voters == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+                $table_row = $template->dep["ETR"];
+                $row_css = $row->table_row_class == "odd" ? $table_row->elm["odd"] : $table_row->elm["even"];
+                $rt = str_replace('%TABLE_ROW_CLASS%', $row_css, $rt);
+
+                $tpl_render.= $rt;
+            }
+        }
+
+        $tpl_render.= html_entity_decode($template->elm["footer"]);
+
+        return $tpl_render;
+    }
+
     function render_wcr($widget) {
         global $gdsr;
         $template = GDSRRenderT2::get_template($widget["template_id"], "WCR");
@@ -545,51 +594,38 @@ class GDSRRenderT2 {
         return GDSRRenderT2::render_wsr($widget, "SRR");
     }
 
-    function render_wsr($widget, $section = "WSR") {
-        global $gdsr;
-        $template = GDSRRenderT2::get_template($widget["template_id"], $section);
-        $tpl_render = html_entity_decode($template->elm["header"]);
-        $rt = html_entity_decode($template->elm["item"]);
-        $all_rows = GDSRRenderT2::prepare_wsr($widget, $rt);
+    function render_rsb($template_id, $rating, $star_style, $star_size, $star_max, $header_text, $css) {
+        $template = GDSRRenderT2::get_template($template_id, "RSB");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
 
-        if (count($all_rows) > 0) {
-            foreach ($all_rows as $row) {
-                $rt = html_entity_decode($template->elm["item"]);
-                $title = $row->title;
-                if (strlen($title) == 0) $title = __("(no title)", "gd-star-rating");
+        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+        $tpl_render = str_replace("%CSS_BLOCK%", $css, $tpl_render);
+        $tpl_render = str_replace("%MAX_RATING%", $star_max, $tpl_render);
+        $tpl_render = str_replace("%RATING%", $rating, $tpl_render);
 
-                $rt = str_replace('%RATING%', $row->rating, $rt);
-                $rt = str_replace('%MAX_RATING%', $gdsr->o["stars"], $rt);
-                $rt = str_replace('%VOTES%', $row->voters, $rt);
-                $rt = str_replace('%REVIEW%', $row->review, $rt);
-                $rt = str_replace('%MAX_REVIEW%', $gdsr->o["review_stars"], $rt);
-                $rt = str_replace('%TITLE%', __($title), $rt);
-                $rt = str_replace('%PERMALINK%', $row->permalink, $rt);
-                $rt = str_replace('%ID%', $row->post_id, $rt);
-                $rt = str_replace('%COUNT%', $row->counter, $rt);
-                $rt = str_replace('%BAYES_RATING%', $row->bayesian, $rt);
-                $rt = str_replace('%BAYES_STARS%', $row->bayesian_stars, $rt);
-                $rt = str_replace('%STARS%', $row->rating_stars, $rt);
-                $rt = str_replace('%REVIEW_STARS%', $row->review_stars, $rt);
-                $rt = str_replace('%RATE_TREND%', $row->item_trend_rating, $rt);
-                $rt = str_replace('%VOTE_TREND%', $row->item_trend_voting, $rt);
-                $rt = str_replace('%IMAGE%', $row->image, $rt);
-                $rt = str_replace('%AUTHOR_NAME%', $row->author_name, $rt);
-                $rt = str_replace('%AUTHOR_LINK%', $row->author_url, $rt);
+        $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
+        $tpl_render = str_replace("%RATING_STARS%", $rating_stars, $tpl_render);
 
-                $word_votes = $template->dep["EWV"];
-                $tense = $row->voters == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
-                $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+        return $tpl_render;
+    }
 
-                $table_row = $template->dep["ETR"];
-                $row_css = $row->table_row_class == "odd" ? $table_row->elm["odd"] : $table_row->elm["even"];
-                $rt = str_replace('%TABLE_ROW_CLASS%', $row_css, $rt);
+    function render_car($template_id, $votes, $rating, $comments, $star_style, $star_size, $star_max) {
+        $template = GDSRRenderT2::get_template($template_id, "CAR");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
 
-                $tpl_render.= $rt;
-            }
-        }
+        $tpl_render = str_replace("%CMM_COUNT%", $comments, $tpl_render);
+        $tpl_render = str_replace("%CMM_VOTES%", $votes, $tpl_render);
+        $tpl_render = str_replace("%MAX_CMM_RATING%", $star_max, $tpl_render);
+        $tpl_render = str_replace("%CMM_RATING%", $rating, $tpl_render);
 
-        $tpl_render.= html_entity_decode($template->elm["footer"]);
+        $word_votes = $template->dep["EWV"];
+        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+        $tpl_render = str_replace('%WORD_VOTES%', __($tense), $tpl_render);
+
+        $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
+        $tpl_render = str_replace("%CMM_STARS%", $rating_stars, $tpl_render);
 
         return $tpl_render;
     }

@@ -63,10 +63,12 @@ function insertStarRatingCode() {
     
     if (shortcode == 'starreview') {
         tagtext = "[starreview";
+        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRSB').value
         tagtext = tagtext + "]";
     }
     else if (shortcode == 'starcomments') {
         tagtext = "[starcomments";
+        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateCAR').value
         if (document.getElementById('srCagShow').value != 'total')
             tagtext = tagtext + " show='" + document.getElementById('srCagShow').value + "'";
         tagtext = tagtext + "]";
