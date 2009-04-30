@@ -11,6 +11,8 @@
   * edit: small improvements to t2 panel
   * edit: few more tinymce plugin improvements
   * edit: old templates panel and settings removed
+  * edit: updated plugin requirements
+  * fix: number of minor bugs and typos
   * fix: recalculating multi rating data into objects
   * fix: small bugs with multi rating css and javascript
   * fix: ajax voting rating text result
