@@ -87,7 +87,7 @@ class GDSRDBMulti {
         foreach ($ids as $id) GDSRDBMulti::recalculate_trend_averages($id->id, $set);
     }
 
-    function get_multi_rating_data($post_id) {
+    function get_multi_rating_data($set_id, $post_id) {
         global $wpdb, $table_prefix;
         $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $post_id, $set_id);
         return $wpdb->get_row($sql);
@@ -436,7 +436,6 @@ class GDSRDBMulti {
 
         $sql = sprintf("select * from %sgdsr_multis_values where source = 'trd' and id = %s order by item_id asc",
             $table_prefix, $id);
-        wp_gdsr_dump("TR", $sql);
         return $wpdb->get_results($sql);
     }
 
@@ -452,7 +451,6 @@ class GDSRDBMulti {
         global $wpdb, $table_prefix;
         
         $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $post_id, $set_id);
-        echo $sql;
         return $wpdb->get_row($sql);
     }
 
@@ -461,14 +459,11 @@ class GDSRDBMulti {
 
         $sql = sprintf("select id from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $post_id, $set_id);
         $record_id = intval($wpdb->get_var($sql));
-        wp_gdsr_dump("RID", $record_id);
 
         if ($record_id == 0) {
             $sql = sprintf("INSERT INTO %sgdsr_multis_data (post_id, multi_id) VALUES (%s, %s)", $table_prefix, $post_id, $set_id);
             $wpdb->query($sql);
             $record_id = $wpdb->insert_id;
-            wp_gdsr_dump("RID", $record_id);
-            wp_gdsr_dump("VLS", $values);
             for ($i = 0; $i < $values; $i++) {
                 $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id) VALUES (%s, 'dta', %s)", $table_prefix, $record_id, $i);
                 $wpdb->query($sql);
@@ -491,7 +486,6 @@ class GDSRDBMulti {
         global $wpdb, $table_prefix;
 
         $sql = sprintf("DELETE FROM %sgdsr_multis_values where id = %s and source = 'rvw'", $table_prefix, $record_id);
-        wp_gdsr_dump("DEL", $sql);
         $wpdb->query($sql);
         for ($i = 0; $i < count($values); $i++) {
             $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id, user_voters, user_votes) VALUES (%s, 'rvw', %s, 1, '%s')",
@@ -586,7 +580,6 @@ class GDSRDBMulti {
                 $table_prefix, $set->name, $set->description, $set->stars, serialize($set->object), serialize($set->weight), $set->auto_insert, $set->auto_location, $set->auto_categories
             );
         $wpdb->query($sql);
-        print_r($sql);
         return $wpdb->insert_id;
     }
     
