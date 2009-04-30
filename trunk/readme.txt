@@ -112,10 +112,18 @@ Plugin administration consist of 12 panels:
 
 == Installation ==
 
-= Requirements =
+= Minimal Requirements =
 * PHP: 4.4.x or 5.x.x
 * mySQL: 4.0, 4.1 or 5.x
-* WordPress: 2.5.0 or newer
+* WordPress: 2.5 or newer
+
+= Reccomended Requirements =
+* PHP: 5.2.x or newer
+* mySQL: 5.x
+* WordPress: 2.7 or newer
+
+= PHP 4, PHP 5.0.x, PHP 5.1.x Notice =
+* In order for plugin to return ajax response after voting you need a PEAR package with json support functions. This package is build in PHP from version 5.2.
 
 = Browser Notice =
 * Multi review feature on administration Post Edit page will not work properly with IE6 browsers.
@@ -171,7 +179,6 @@ Plugin has debug into log file feature built in. Information on activating this 
 * PDF User Guide: http://www.gdstarrating.com/downloads/user-guide/
 * Tutorials: http://www.gdstarrating.com/category/tutorials/
 * Database Layout: http://code.google.com/p/gd-star-rating/wiki/DatabaseTablesFormat
-* Email: gdstarrating@gdragon.info
 
 == Communities ==
 * Google Code: http://code.google.com/p/gd-star-rating/

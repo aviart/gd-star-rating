@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 require_once(dirname(__FILE__)."/gd-star-config.php");
 require_once(dirname(__FILE__)."/code/t2/gd-star-t2-classes.php");
 require_once(dirname(__FILE__)."/code/gd-star-defaults.php");
+require_once(dirname(__FILE__)."/code/gd-star-classes.php");
 require_once(dirname(__FILE__)."/code/gd-star-functions.php");
 require_once(dirname(__FILE__)."/code/gd-star-render.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbone.php");
@@ -475,7 +476,7 @@ if (!class_exists('GDStarRating')) {
                 $votes[] = $single_vote;
             }
             if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
-            else return GDSRRenderT2::render_mre(intavl($settings["tpl"]), $allow_vote, $votes, $post_id, $set, 20);
+            else return GDSRRenderT2::render_mre(intval($settings["tpl"]), $allow_vote, $votes, $post_id, $set, 20);
         }
         // various rendering
 
@@ -1557,7 +1558,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         }
 
         function get_ratings_multi($set_id, $post_id) {
-            $multis_data = GDSRDBMulti::get_multi_rating_data($post_id);
+            $multis_data = GDSRDBMulti::get_multi_rating_data($set_id, $post_id);
             if (count($multis_data) == 0) return null;
             return new GDSRArticleMultiRating($multis_data, $set_id);
         }
