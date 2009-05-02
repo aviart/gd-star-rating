@@ -541,7 +541,7 @@ class GDSRDBMulti {
 
     function get_usage_count_post_reviews($set_id) {
         global $wpdb, $table_prefix;
-        return $wpdb->get_var(sprintf("select count(*) from %sgdsr_multis_data where review > 0 and multi_id = %s", $table_prefix, $set_id));
+        return $wpdb->get_var(sprintf("select count(*) from %sgdsr_multis_data where average_review > 0 and multi_id = %s", $table_prefix, $set_id));
     }
 
     function get_usage_count_voters($set_id) {

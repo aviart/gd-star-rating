@@ -2,8 +2,8 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.2.3",
-        "date" => "2009.04.30.",
+        "version" => "1.3.0",
+        "date" => "2009.05.05.",
         "status" => "Stable",
         "build" => 620,
         "external_javascript" => 0,
