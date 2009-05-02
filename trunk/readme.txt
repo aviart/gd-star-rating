@@ -122,9 +122,6 @@ Plugin administration consist of 12 panels:
 * mySQL: 5.x
 * WordPress: 2.7 or newer
 
-= PHP 4, PHP 5.0.x, PHP 5.1.x Notice =
-* In order for plugin to return ajax response after voting you need a PEAR package with json support functions. This package is build in PHP from version 5.2.
-
 = Browser Notice =
 * Multi review feature on administration Post Edit page will not work properly with IE6 browsers.
 
