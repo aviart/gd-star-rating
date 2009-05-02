@@ -1415,8 +1415,9 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
 
             $template = new gdTemplateRender($tpl_id, "MRB");
             $rt = GDSRRenderT2::render_srt($template->dep["MRT"], $rating, $set->stars, $total_votes, $post_id);
+            $enc_values = "[".join(",", $summary["json"])."]";
 
-            return "{ status: 'ok', values: ".json_encode($summary["json"]).", rater: '".$rt."' }";
+            return "{ status: 'ok', values: ".$enc_values.", rater: '".$rt."' }";
         }
 
         function vote_article_ajax($votes, $id, $tpl_id) {

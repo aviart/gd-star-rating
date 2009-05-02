@@ -156,9 +156,11 @@ class gdTemplateRender {
             foreach ($dependencies as $key => $value) $this->dep[$key] = new gdTemplateRender($value, $key);
         }
         $this->elm = unserialize($this->tpl->elements);
-        foreach($this->elm as $key => $value) {
-            preg_match_all('(%.+?%)', $value, $matches, PREG_PATTERN_ORDER);
-            $this->tag[$key] = $matches[0];
+        if (is_array($this->elm)) {
+            foreach($this->elm as $key => $value) {
+                preg_match_all('(%.+?%)', $value, $matches, PREG_PATTERN_ORDER);
+                $this->tag[$key] = $matches[0];
+            }
         }
     }
 }
