@@ -56,12 +56,12 @@
     <td align="right">
         <select name="<?php echo $this->get_field_name('column'); ?>" id="<?php echo $this->get_field_id('column'); ?>" style="width: 110px">
             <option value="rating"<?php echo $instance['column'] == 'rating' ? ' selected="selected"' : ''; ?>><?php _e("Rating", "gd-star-rating"); ?></option>
-            <option value="votes"<?php echo $instance['column'] == 'votes' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
-            <option value="id"<?php echo $instance['column'] == 'id' ? ' selected="selected"' : ''; ?>><?php _e("ID", "gd-star-rating"); ?></option>
-            <option value="post_title"<?php echo $instance['column'] == 'post_title' ? ' selected="selected"' : ''; ?>><?php _e("Title", "gd-star-rating"); ?></option>
+            <option value="voters"<?php echo $instance['column'] == 'voters' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
+            <option value="post_id"<?php echo $instance['column'] == 'post_id' ? ' selected="selected"' : ''; ?>><?php _e("ID", "gd-star-rating"); ?></option>
+            <option value="title"<?php echo $instance['column'] == 'title' ? ' selected="selected"' : ''; ?>><?php _e("Title", "gd-star-rating"); ?></option>
             <option value="review"<?php echo $instance['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Review", "gd-star-rating"); ?></option>
-            <option value="count"<?php echo $instance['column'] == 'count' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
-            <option value="bayes"<?php echo $instance['column'] == 'bayes' ? ' selected="selected"' : ''; ?>><?php _e("Bayesian Rating", "gd-star-rating"); ?></option>
+            <option value="counter"<?php echo $instance['column'] == 'counter' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
+            <option value="bayesian"<?php echo $instance['column'] == 'bayesian' ? ' selected="selected"' : ''; ?>><?php _e("Bayesian Rating", "gd-star-rating"); ?></option>
         </select>
     </td>
   </tr>

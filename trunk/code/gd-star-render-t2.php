@@ -107,9 +107,6 @@ class GDSRRenderT2 {
                 $new_rows[] = $row;
             }
 
-            if ($widget["column"] == "bayes" && $bayesian_calculated)
-                usort($new_rows, "gd_sort_bayesian_".$widget["order"]);
-
             $tr_class = "odd";
             if ($trends_calculated) {
                 $set_rating = $gdsr->g->find_trend($widget["trends_rating_set"]);
@@ -230,6 +227,18 @@ class GDSRRenderT2 {
             }
         }
 
+        if ($widget["column"] == "votes") $widget["column"] = "voters";
+        if ($widget["column"] == "post_title") $widget["column"] = "title";
+        if ($widget["column"] == "count") $widget["column"] = "counter";
+        if ($widget["column"] == "bayes") $widget["column"] = "bayesian";
+        if ($widget["column"] == "id") $widget["column"] = "post_id";
+
+        $properties[] = array("property" => $widget["column"], "order" => $widget["order"]);
+        if ($widget["column"] == "rating")
+            $properties[] = array("property" => "voters", "order" => $widget["order"]);
+        $sort = new gdSortObjectsArray($all_rows, $properties);
+        $all_rows = $sort->sorted;
+
         $all_rows = apply_filters('gdsr_widget_data_prepare', $all_rows);
         return $all_rows;
     }
@@ -266,6 +275,7 @@ class GDSRRenderT2 {
             $pl = get_permalink($post_id);
             foreach ($new_rows as $row) {
                 $row->table_row_class = $tr_class;
+                $row->comment_content = strip_tags($row->comment_content);
                 if (strlen($row->comment_content) > $widget["text_max"] - 3 && $widget["text_max"] > 0)
                     $row->comment_content = substr($row->comment_content, 0, $widget["text_max"] - 3)." ...";
 
@@ -281,6 +291,16 @@ class GDSRRenderT2 {
             }
         }
 
+        if ($widget["column"] == "votes") $widget["column"] = "voters";
+        if ($widget["column"] == "id") $widget["column"] = "comment_id";
+
+        $properties[] = array("property" => $widget["column"], "order" => $widget["order"]);
+        if ($widget["column"] == "rating")
+            $properties[] = array("property" => "voters", "order" => $widget["order"]);
+        $sort = new gdSortObjectsArray($all_rows, $properties);
+        $all_rows = $sort->sorted;
+
+        $all_rows = apply_filters('gdsr_comments_widget_data_prepare', $all_rows);
         return $all_rows;
     }
 

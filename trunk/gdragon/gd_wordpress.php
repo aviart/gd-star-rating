@@ -67,7 +67,7 @@ if (!class_exists('gdWPGDSR')) {
         }
     }
 
-    if (!function_exists(wp_redirect_self)) {
+    if (!function_exists("wp_redirect_self")) {
         function wp_redirect_self() {
             wp_redirect($_SERVER['REQUEST_URI']);
         }
