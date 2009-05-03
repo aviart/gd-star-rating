@@ -454,30 +454,6 @@ class GDSRHelper {
     }
 }
 
-/**
- * Array sort method, ascending bayesian value.
- *
- * @param object $a first object
- * @param object $b second object
- * @return bool order
- */
-function gd_sort_bayesian_asc($a, $b) {
-    if ($a->bayesian == $b->bayesian) return 0;
-    return ($a->bayesian < $b->bayesian) ? -1 : 1;
-}
-
-/**
- * Array sort method, descending bayesian value.
- *
- * @param object $a first object
- * @param object $b second object
- * @return bool order
- */
-function gd_sort_bayesian_desc($a, $b) {
-    if ($a->bayesian == $b->bayesian) return 0;
-    return ($a->bayesian > $b->bayesian) ? -1 : 1;
-}
-
 function is_msie6() {
     $agent = $_SERVER['HTTP_USER_AGENT'];
     if(eregi("msie",$agent) && !eregi("opera",$agent)) {

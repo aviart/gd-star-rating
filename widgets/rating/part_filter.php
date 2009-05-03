@@ -56,12 +56,12 @@
     <td align="right">
         <select name="<?php echo $wpfn; ?>[column]" id="gdstarr-column" style="width: 110px">
             <option value="rating"<?php echo $wpno['column'] == 'rating' ? ' selected="selected"' : ''; ?>><?php _e("Rating", "gd-star-rating"); ?></option>
-            <option value="votes"<?php echo $wpno['column'] == 'votes' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
+            <option value="voters"<?php echo $wpno['column'] == 'voters' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
             <option value="id"<?php echo $wpno['column'] == 'id' ? ' selected="selected"' : ''; ?>><?php _e("ID", "gd-star-rating"); ?></option>
-            <option value="post_title"<?php echo $wpno['column'] == 'post_title' ? ' selected="selected"' : ''; ?>><?php _e("Title", "gd-star-rating"); ?></option>
+            <option value="title"<?php echo $wpno['column'] == 'title' ? ' selected="selected"' : ''; ?>><?php _e("Title", "gd-star-rating"); ?></option>
             <option value="review"<?php echo $wpno['column'] == 'review' ? ' selected="selected"' : ''; ?>><?php _e("Review", "gd-star-rating"); ?></option>
-            <option value="count"<?php echo $wpno['column'] == 'count' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
-            <option value="bayes"<?php echo $wpno['column'] == 'bayes' ? ' selected="selected"' : ''; ?>><?php _e("Bayesian Rating", "gd-star-rating"); ?></option>
+            <option value="counter"<?php echo $wpno['column'] == 'counter' ? ' selected="selected"' : ''; ?>><?php _e("Count", "gd-star-rating"); ?></option>
+            <option value="bayesian"<?php echo $wpno['column'] == 'bayesian' ? ' selected="selected"' : ''; ?>><?php _e("Bayesian Rating", "gd-star-rating"); ?></option>
         </select>
     </td>
   </tr>

@@ -45,8 +45,8 @@
     <td align="right">
         <select name="<?php echo $wpfn; ?>[column]" id="gdstarr-column" style="width: 110px">
             <option value="rating"<?php echo $wpno['column'] == 'rating' ? ' selected="selected"' : ''; ?>><?php _e("Rating", "gd-star-rating"); ?></option>
-            <option value="votes"<?php echo $wpno['column'] == 'votes' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
-            <option value="id"<?php echo $wpno['column'] == 'id' ? ' selected="selected"' : ''; ?>><?php _e("Comment ID", "gd-star-rating"); ?></option>
+            <option value="voters"<?php echo $wpno['column'] == 'voters' ? ' selected="selected"' : ''; ?>><?php _e("Total Votes", "gd-star-rating"); ?></option>
+            <option value="comment_id"<?php echo $wpno['column'] == 'comment_id' ? ' selected="selected"' : ''; ?>><?php _e("Comment ID", "gd-star-rating"); ?></option>
         </select>
     </td>
   </tr>

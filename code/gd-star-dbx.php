@@ -249,24 +249,6 @@ class GDSRX {
         else
             $sort = "desc";
 
-        $col = $widget["column"];
-        if ($col == "id" || $col == "post_title")
-            $col = "p.".$col;
-        else {
-            if ($col == "review") $col = "d.".$col;
-            else if ($col == "rating") {
-                if ($widget["show"] == "total") $col = "(d.average_rating_users * d.total_votes_users + d.average_rating_visitors * d.total_votes_visitors)/(d.total_votes_users + d.total_votes_visitors)";
-                if ($widget["show"] == "visitors") $col = "(d.average_rating_visitors * d.total_votes_visitors)/d.total_votes_visitors";
-                if ($widget["show"] == "users") $col = "(d.average_rating_users * d.total_votes_users)/d.total_votes_users";
-            }
-            else if ($col == "votes") {
-                if ($widget["show"] == "total") $col = "d.total_votes_users + d.total_votes_visitors";
-                if ($widget["show"] == "visitors") $col = "d.total_votes_visitors";
-                if ($widget["show"] == "users") $col = "d.total_votes_users";
-            }
-            else $col = "p.id";
-        }
-
         if ($widget["last_voted_days"] == "") $widget["last_voted_days"] = 0;
         if ($widget["last_voted_days"] > 0) {
             $where[] = "TO_DAYS(CURDATE()) - ".$widget["last_voted_days"]." <= TO_DAYS(d.last_voted)";
@@ -288,15 +270,8 @@ class GDSRX {
         }
         if ($widget["image_from"] == "content") $select = "p.post_content, ".$select;
 
-        $ordering = sprintf("order by %s %s", $col, $sort);
-        if ($widget["column"] == "rating") {
-            if ($widget["show"] == "total") $ordering.= ", d.total_votes_users + d.total_votes_visitors desc";
-            if ($widget["show"] == "visitors") $ordering.= ", d.total_votes_visitors desc";
-            if ($widget["show"] == "users") $ordering.= ", d.total_votes_users desc";
-        }
-
-        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_multis_data d where %s %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $ordering, $widget["rows"]);
+        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_multis_data d where %s %s limit 0, %s",
+                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $widget["rows"]);
 
 wp_gdsr_dump("WIDGET_MULTIS", $sql);
 
@@ -326,37 +301,13 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
         else
             $sort = "desc";
 
-        $col = $widget["column"];
-        if ($col == "id")
-            $col = "p.comment_id";
-        else {
-            if ($col == "rating") {
-                if ($widget["show"] == "total") $col = "(d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters)";
-                if ($widget["show"] == "visitors") $col = "d.visitor_votes/d.visitor_voters";
-                if ($widget["show"] == "users") $col = "d.user_votes/d.user_voters";
-            }
-            else if ($col == "votes") {
-                if ($widget["show"] == "total") $col = "d.user_votes + d.visitor_votes";
-                if ($widget["show"] == "visitors") $col = "d.visitor_votes";
-                if ($widget["show"] == "users") $col = "d.user_votes";
-            }
-            else $col = "p.comment_id";
-        }
-
         if ($widget["last_voted_days"] == "") $widget["last_voted_days"] = 0;
         if ($widget["last_voted_days"] > 0) {
             $where[] = "TO_DAYS(CURDATE()) - ".$widget["last_voted_days"]." <= TO_DAYS(d.last_voted)";
         }
 
-        $ordering = sprintf("order by %s %s", $col, $sort);
-        if ($widget["column"] == "rating") {
-            if ($widget["show"] == "total") $ordering.= ", d.user_votes + d.visitor_votes desc";
-            if ($widget["show"] == "visitors") $ordering.= ", d.visitor_votes desc";
-            if ($widget["show"] == "users") $ordering.= ", d.user_votes desc";
-        }
-
-        $sql = sprintf("select distinct %s%s from %s%scomments p, %sgdsr_data_comment d where %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $ordering, $widget["rows"]);
+        $sql = sprintf("select distinct %s%s from %s%scomments p, %sgdsr_data_comment d where %s limit 0, %s",
+                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $widget["rows"]);
 
 wp_gdsr_dump("WIDGET_COMMENTS", $sql);
 
@@ -431,24 +382,6 @@ wp_gdsr_dump("WIDGET_COMMENTS", $sql);
         else
             $sort = "desc";
         
-        $col = $widget["column"];
-        if ($col == "id" || $col == "post_title") 
-            $col = "p.".$col;
-        else {
-            if ($col == "review") $col = "d.".$col;
-            else if ($col == "rating") {
-                if ($widget["show"] == "total") $col = "(d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters)";
-                if ($widget["show"] == "visitors") $col = "d.visitor_votes/d.visitor_voters";
-                if ($widget["show"] == "users") $col = "d.user_votes/d.user_voters";
-            }
-            else if ($col == "votes") {
-                if ($widget["show"] == "total") $col = "d.user_votes + d.visitor_votes";
-                if ($widget["show"] == "visitors") $col = "d.visitor_votes";
-                if ($widget["show"] == "users") $col = "d.user_votes";
-            }
-            else $col = "p.id";
-        }
-
         if ($widget["last_voted_days"] == "") $widget["last_voted_days"] = 0;
         if ($widget["last_voted_days"] > 0) {
             $where[] = "TO_DAYS(CURDATE()) - ".$widget["last_voted_days"]." <= TO_DAYS(d.last_voted)";
@@ -470,15 +403,8 @@ wp_gdsr_dump("WIDGET_COMMENTS", $sql);
         }
         if ($widget["image_from"] == "content") $select = "p.post_content, ".$select;
 
-        $ordering = sprintf("order by %s %s", $col, $sort);
-        if ($widget["column"] == "rating") {
-            if ($widget["show"] == "total") $ordering.= ", d.user_votes + d.visitor_votes desc";
-            if ($widget["show"] == "visitors") $ordering.= ", d.visitor_votes desc";
-            if ($widget["show"] == "users") $ordering.= ", d.user_votes desc";
-        }
-
-        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_data_article d where %s %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $ordering, $widget["rows"]);
+        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_data_article d where %s %s limit 0, %s",
+                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $widget["rows"]);
 
 wp_gdsr_dump("WIDGET_STANDARD", $sql);
 
