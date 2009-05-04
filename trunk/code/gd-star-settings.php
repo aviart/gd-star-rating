@@ -85,6 +85,10 @@
         $gdsr_options["default_timer_countdown_value"] = $_POST['default_timer_countdown_value'];
         $gdsr_options["default_timer_countdown_type"] = $_POST['default_timer_countdown_type'];
         $gdsr_options["default_timer_value"] = $_POST['default_timer_countdown_type'].$_POST['default_timer_countdown_value'];
+        $gdsr_options["default_mur_timer_type"] = $_POST['gdsr_default_mur_timer_type'];
+        $gdsr_options["default_mur_timer_countdown_value"] = $_POST['default_mur_timer_countdown_value'];
+        $gdsr_options["default_mur_timer_countdown_type"] = $_POST['gdsr_mur_timer_countdown_type'];
+        $gdsr_options["default_mur_timer_value"] = $_POST['gdsr_mur_timer_countdown_type'].$_POST['default_mur_timer_countdown_value'];
 
         $gdsr_options["review_active"] = isset($_POST['gdsr_reviewactive']) ? 1 : 0;
         $gdsr_options["comments_active"] = isset($_POST['gdsr_commentsactive']) ? 1 : 0;
@@ -154,8 +158,10 @@
         $gdsr_options["cmm_review_style_ie6"] = $_POST['gdsr_cmm_review_style_ie6'];
         $gdsr_options["cmm_review_size"] = $_POST['gdsr_cmm_review_size'];
 
+        $gdsr_options["default_voterules_multis"] = $_POST['gdsr_default_vote_multis'];
         $gdsr_options["default_voterules_articles"] = $_POST['gdsr_default_vote_articles'];
         $gdsr_options["default_voterules_comments"] = $_POST['gdsr_default_vote_comments'];
+        $gdsr_options["default_moderation_multis"] = $_POST['gdsr_default_mod_multies'];
         $gdsr_options["default_moderation_articles"] = $_POST['gdsr_default_mod_articles'];
         $gdsr_options["default_moderation_comments"] = $_POST['gdsr_default_mod_comments'];
 

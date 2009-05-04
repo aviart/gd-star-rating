@@ -2,10 +2,15 @@
 
 == Change Log ==
 
-=== Version: 1.3.0 / may 5 2009 ===
+=== Version: 1.3.0 / may 10 2009 ===
+  * new: multi ratings have own restriction rules
+  * new: multi sets based default rules
   * new: improved sorting of data for t2 rendering
+  * new: few more extra templates
   * edit: removed use of json_encode function
   * edit: small update to gdragon base classes
+  * edit: better optimization of multi rating database queries
+  * edit: improved database tables defaults
   * fix: rare case of invalid sorting of widget data
   * fix: comments widget comment text contains html tags
   * fix: displaying multi review count for sets

@@ -42,6 +42,10 @@ $review_set = $options["mur_review_set"];
         </select>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Defaults", "gd-star-rating"); ?></th>
+    <td>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Auto Insertion", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
