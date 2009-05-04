@@ -62,7 +62,7 @@ function gdsrAddNewMulti() {
             <th scope="col" width="33"><?php _e("ID", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Name", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Auto Insert", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Description", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Defaults", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Stars", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Ratings", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Review", "gd-star-rating"); ?></th>
