@@ -3,8 +3,7 @@
 == Change Log ==
 
 === Version: 1.3.0 / may 7 2009 ===
-  * new: multi ratings have own restriction rules
-  * new: multi sets based default rules
+  * new: multi ratings partial support for own restriction rules
   * new: improved sorting of data for t2 rendering
   * new: few more extra templates
   * edit: removed use of json_encode function
@@ -18,6 +17,7 @@
   * fix: tinymce plugin javascript missing semicolons
   * fix: comments widget comment text contains html tags
   * fix: displaying multi review count for sets
+  * fix: saving some of the settings
   * fix: few more minor t2 bugs
 
 === Version: 1.2.3 / april 30 2009 ===
