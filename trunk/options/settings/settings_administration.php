@@ -48,8 +48,6 @@
                 <td valign="top">
                     <input type="checkbox" name="gdsr_admin_import" id="gdsr_admin_import"<?php if ($gdsr_options["admin_import"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_import"><strong><?php _e("Import", "gd-star-rating"); ?></strong>: <?php _e("Importing data for other rating plugins.", "gd-star-rating"); ?></label>
                     <br />
-                    <input type="checkbox" name="gdsr_admin_export" id="gdsr_admin_export"<?php if ($gdsr_options["admin_export"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_export"><strong><?php _e("Export", "gd-star-rating"); ?></strong>: <?php _e("Exporting rating data.", "gd-star-rating"); ?></label>
-                    <br />
                     <input type="checkbox" name="gdsr_admin_ips" id="gdsr_admin_ips"<?php if ($gdsr_options["admin_ips"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_ips"><strong><?php _e("IP's", "gd-star-rating"); ?></strong>: <?php _e("IP addresses managment.", "gd-star-rating"); ?></label>
                 </td>
             </tr>

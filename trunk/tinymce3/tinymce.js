@@ -63,12 +63,12 @@ function insertStarRatingCode() {
     
     if (shortcode == 'starreview') {
         tagtext = "[starreview";
-        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRSB').value
+        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRSB').value;
         tagtext = tagtext + "]";
     }
     else if (shortcode == 'starcomments') {
         tagtext = "[starcomments";
-        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateCAR').value
+        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateCAR').value;
         if (document.getElementById('srCagShow').value != 'total')
             tagtext = tagtext + " show='" + document.getElementById('srCagShow').value + "'";
         tagtext = tagtext + "]";
@@ -81,20 +81,32 @@ function insertStarRatingCode() {
     else if (shortcode == 'starreviewmulti') {
         tagtext = "[starreviewmulti id=";
         tagtext = tagtext + document.getElementById('srMultiRatingSet').value;
-        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRMB').value
+        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRMB').value;
+        if (document.getElementById('srStarsStyleMRREl').value != 'oxygen')
+            tagtext = tagtext + " element_stars='" + document.getElementById('srStarsStyleMRREl').value + "'";
+        if (document.getElementById('srStarsSizeMRREl').value != '20')
+            tagtext = tagtext + " element_size='" + document.getElementById('srStarsSizeMRREl').value + "'";
+        if (document.getElementById('srStarsStyleMRRAv').value != 'oxygen')
+            tagtext = tagtext + " average_stars='" + document.getElementById('srStarsStyleMRRAv').value + "'";
+        if (document.getElementById('srStarsSizeMRRAv').value != '30')
+            tagtext = tagtext + " average_size='" + document.getElementById('srStarsSizeMRRAv').value + "'";
         tagtext = tagtext + "]";
     }
     else if (shortcode == 'starratingmulti') {
         tagtext = '[starratingmulti id=';
         tagtext = tagtext + document.getElementById('srMultiRatingSet').value;
-        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateMRB').value
+        tagtext = tagtext + " tpl=" + document.getElementById('srTemplateMRB').value;
         if (document.getElementById('srMultiRead').checked)
            tagtext = tagtext + " read_only=1";
+        if (document.getElementById('srStarsStyleMURAv').value != 'oxygen')
+            tagtext = tagtext + " average_stars='" + document.getElementById('srStarsStyleMURAv').value + "'";
+        if (document.getElementById('srStarsSizeMURAv').value != '30')
+            tagtext = tagtext + " average_size='" + document.getElementById('srStarsSizeMURAv').value + "'";
         tagtext = tagtext + "]";
     }
     else {
         tagtext = "[starrating";
-        tagtext = tagtext + " template_id=" + document.getElementById('srTemplateSRR').value
+        tagtext = tagtext + " template_id=" + document.getElementById('srTemplateSRR').value;
         if (document.getElementById('srRows').value != 10)
             tagtext = tagtext + " rows=" + document.getElementById('srRows').value;
         if (document.getElementById('srSelect').value != 'postpage')
@@ -147,7 +159,7 @@ function insertStarRatingCode() {
         if (document.getElementById('srHidemptyBayes').checked)
            tagtext = tagtext + " bayesian_calculation=1";
         if (document.getElementById('srMinVotes').value != 5)
-            tagtext = tagtext + " min_votes=" + document.getElementById('srMinVotes').value
+            tagtext = tagtext + " min_votes=" + document.getElementById('srMinVotes').value;
 
         if (document.getElementById('srDataSource').value != 'standard') {
             tagtext = tagtext + " source='" + document.getElementById('srDataSource').value + "'";

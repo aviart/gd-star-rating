@@ -683,4 +683,5 @@ p.sub {
 .gdrgrid td.options { text-align: right; white-space: normal; }
 .gdrgrid table tr.first th { color: #990000; font-weight: bold; }
 .gdrgrid div.inside { margin: 10px; }
+.gdrgrid td.t { white-space: normal; }
 /* front grid */

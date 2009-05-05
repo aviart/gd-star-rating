@@ -14,6 +14,9 @@
             case "user":
                 $export_name = $export_type.'_'.$_GET["de"];
                 break;
+            case "t2":
+                $export_name = 't2';
+                break;
         }
 
         header('Content-type: text/csv');
@@ -21,14 +24,19 @@
 
         switch($export_type) {
             case "user":
-                $sql = GDSERExport::export_users($_GET["us"], $_GET["de"], $get_data);
+                $sql = GDSRExport::export_users($_GET["us"], $_GET["de"], $get_data);
+                break;
+            case "t2":
+                $sql = GDSRExport::export_t2();
                 break;
         }
         
         $rows = $wpdb->get_results($sql, ARRAY_N);
-        foreach ($rows as $row) {
-            echo '"'.join('", "', $row).'"';
-            echo "\r\n";
+        if (count($rows) > 0) {
+            foreach ($rows as $row) {
+                echo '"'.join('", "', $row).'"';
+                echo "\r\n";
+            }
         }
     }
 ?>
