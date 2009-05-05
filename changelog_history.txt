@@ -8,10 +8,13 @@
   * new: improved sorting of data for t2 rendering
   * new: few more extra templates
   * edit: removed use of json_encode function
+  * edit: more settings for rendering multi review blocks
+  * edit: expanded t2 template for multi review block
   * edit: small update to gdragon base classes
   * edit: better optimization of multi rating database queries
   * edit: improved database tables defaults
   * fix: rare case of invalid sorting of widget data
+  * fix: tinymce plugin javascript missing semicolons
   * fix: comments widget comment text contains html tags
   * fix: displaying multi review count for sets
   * fix: few more minor t2 bugs

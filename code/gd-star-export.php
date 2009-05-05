@@ -1,13 +1,19 @@
 <?php
 
-class GDSERExport {
+class GDSRExport {
+    function export_t2() {
+        global $table_prefix;
+        $sql = sprintf("select section, name, description, elements from %sgdsr_templates where preinstalled = '0'", $table_prefix);
+        return $sql;
+    }
+
     function export_users($user_data = "min", $data_export = "article", $get_data = array()) {
         global $table_prefix;
         $columns = array();
         $select = array();
         $where = array();
         $tables = array();
-        
+
         $tables[] = $table_prefix."gdsr_votes_log v";
         $tables[] = $table_prefix."users u";
         $tables[] = $table_prefix."posts p";

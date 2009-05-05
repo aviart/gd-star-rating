@@ -121,7 +121,6 @@ class GDSRDefaults {
         "admin_category" => 1,
         "admin_users" => 1,
         "admin_import" => 1,
-        "admin_export" => 1,
         "admin_setup" => 1,
         "admin_ips" => 0,
         "author_vote" => 0,
@@ -292,12 +291,18 @@ class GDSRDefaults {
     var $default_shortcode_starratingmulti = array(
         'id' => 1,
         'tpl' => 0,
-        'read_only' => 0
+        'read_only' => 0,
+        "average_stars" => "oxygen",
+        "average_size" => 30
     );
 
     var $default_shortcode_starreviewmulti = array(
         'id' => 1,
-        'tpl' => 0
+        'tpl' => 0,
+        "element_stars" => "oxygen",
+        "element_size" => 20,
+        "average_stars" => "oxygen",
+        "average_size" => 30
     );
 
     var $default_shortcode_starrating = array(
