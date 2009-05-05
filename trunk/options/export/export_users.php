@@ -45,7 +45,7 @@ function gdsrGetExportUser() {
         <?php _e("This will export voters data file.", "gd-star-rating"); ?><br />
         <div class="inputbutton"><a href="javascript:gdsrGetExportUser()"><?php _e("Export", "gd-star-rating"); ?></a></div>
         <div class="gdsr-table-split"></div>
-        <?php _e("Exported file will contain names, descriptions and contents of templates. File will be in CSV format.", "gd-star-rating"); ?>
+        <?php _e("Exported file will contain all the users ratings. File will be in CSV format.", "gd-star-rating"); ?>
     </td>
 </tr>
 </tbody></table>

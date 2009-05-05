@@ -10,6 +10,9 @@ function multi_rating_vote(block) {
         jQuery("#gdsr_mur_block_" + post_id + "_" + set_id + " .gdcurrent").remove();
         jQuery("#gdsr_mur_block_" + post_id + "_" + set_id + " input").remove();
         jQuery("#gdsr_mur_block_" + post_id + "_" + set_id + " .ratingbutton").remove();
+        var height = jQuery("#gdsr_mur_avgstars_" + post_id + "_" + set_id + " div").css("height");
+        if (height > 0)
+            jQuery("#gdsr_mur_avgstars_" + post_id + "_" + set_id + " div").css("width", json.average * height.substring(0, 2));
         for (var i = 0; i < json.values.length; i++)
             jQuery("#gdsr_mur_stars_rated_" + post_id + "_" + set_id + "_" + i).css("width", json.values[i]);
         jQuery("#gdsr_mur_text_" + post_id + "_" + set_id).html(json.rater).addClass("voted");

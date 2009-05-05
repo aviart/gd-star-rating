@@ -482,6 +482,12 @@ class GDSRDBMulti {
         return $record_id;
     }
 
+    function get_multi_review_average($record_id) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select average_review from %sgdsr_multis_data where id = %s", $table_prefix, $record_id);
+        return $wpdb->get_var($sql);
+    }
+
     function save_review($record_id, $values) {
         global $wpdb, $table_prefix;
 

@@ -29,19 +29,20 @@ class GDSRRender {
         return $loader;
     }
 
-    function render_static_stars($star_style, $star_size, $star_max, $rating) {
-        switch (STARRATING_STARS_GENERATOR) {
+    function render_static_stars($star_style, $star_size, $star_max, $rating, $id = "", $rendering = "") {
+        if ($rendering == "") $rendering = STARRATING_STARS_GENERATOR;
+        switch ($rendering) {
             case "GFX":
-                return GDSRRender::render_static_stars_gfx($star_style, $star_size, $star_max, $rating);
+                return GDSRRender::render_static_stars_gfx($star_style, $star_size, $star_max, $rating, $id);
                 break;
             default:
             case "DIV":
-                return GDSRRender::render_static_stars_div($star_style, $star_size, $star_max, $rating);
+                return GDSRRender::render_static_stars_div($star_style, $star_size, $star_max, $rating, $id);
                 break;
         }
     }
 
-    function render_static_stars_div($star_style, $star_size, $star_max, $rating) {
+    function render_static_stars_div($star_style, $star_size, $star_max, $rating, $id = "") {
         global $gdsr;
 
         $gfx = $gdsr->g->find_stars($star_style);
@@ -49,15 +50,16 @@ class GDSRRender {
         $full_width = $star_size * $star_max;
         $rate_width = $star_size * $rating;
         
-        return sprintf('<div style="%s"><div style="%s"></div></div>',
+        return sprintf('<div%s style="%s"><div style="%s"></div></div>',
+            $id == "" ? '' : ' id="'.$id.'"',
             sprintf('text-align:left; padding: 0; margin: 0; background: url(%s); height: %spx; width: %spx;', $star_path, $star_size, $full_width),
             sprintf('background: url(%s) bottom left; padding: 0; margin: 0; height: %spx; width: %spx;', $star_path, $star_size, $rate_width)
         );
     }
 
-    function render_static_stars_gfx($star_style, $star_size, $star_max, $rating) {
+    function render_static_stars_gfx($star_style, $star_size, $star_max, $rating, $id = "") {
         $url = STARRATING_URL.sprintf("gfx.php?value=%s&set=%s&size=%s&max=%s", $rating, $star_style, $star_size, $star_max);
-        return sprintf('<img src="%s" />', $url);
+        return sprintf('<img%s src="%s" />', $id == "" ? '' : ' id="'.$id.'"', $url);
     }
 
     function rating_stars_multi($post_id, $set_id, $id, $height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '', $review_mode = false) {

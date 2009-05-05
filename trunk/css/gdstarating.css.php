@@ -169,11 +169,23 @@ get_class_head($head, ""); ?> {
 
 .gdtblbottom td { padding-top: 4px; }
 
-.gdtblbottom { margin-top: 2px; }
+.gdtblbottom {
+    margin-top: 2px;
+    background-color: #fffcf4;
+}
 
 .mtrow { background-color: #fffcf4; }
 
+.mtrow td.mtstars { text-align: right; }
+
 .mtrow.alternate { background-color: #f7f4ea; }
+
+.gdtblmuravg { background-color: #fffcf4; }
+
+.gdtblmuravg td {
+    border-top: 2px solid #dcdcdc;
+    text-align: center; 
+}
 
 .gdmultitable td {
     vertical-align: middle;

@@ -303,7 +303,8 @@ if (!class_exists('GDStarRating')) {
                     $single_vote["rating"] = $md->user_votes;
                     $votes[] = $single_vote;
                 }
-                return GDSRRenderT2::render_rmb($settings["tpl"], $votes, $post_id, $set, $this->o["mur_size"]);
+                $avg_rating = GDSRDBMulti::get_multi_review_average($vote_id);
+                return GDSRRenderT2::render_rmb($settings["tpl"], $votes, $post_id, $set, $avg_rating, $settings["element_stars"], $settings["element_size"], $settings["average_stars"], $settings["average_size"]);
             }
             else return '';
         }
@@ -1417,7 +1418,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
             $rt = GDSRRenderT2::render_srt($template->dep["MRT"], $rating, $set->stars, $total_votes, $post_id);
             $enc_values = "[".join(",", $summary["json"])."]";
 
-            return "{ status: 'ok', values: ".$enc_values.", rater: '".$rt."' }";
+            return "{ status: 'ok', values: ".$enc_values.", rater: '".$rt."', average: '".$rating."' }";
         }
 
         function vote_article_ajax($votes, $id, $tpl_id) {
@@ -2328,7 +2329,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             if ($settings["tpl"] > 0) $template_id = $settings["tpl"];
             else $template_id = $this->o["default_mrb_template"];
 
-            return GDSRRenderT2::render_mrb($template_id, $allow_vote, $votes, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header_text"], $tags_css, $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"], $debug, $this->loader_multis);
+            return GDSRRenderT2::render_mrb($template_id, $allow_vote, $votes, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header_text"], $tags_css, $settings["average_stars"], $settings["average_size"], $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"], $debug, $this->loader_multis);
         }
         // rendering
     }
