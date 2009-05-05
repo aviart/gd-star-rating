@@ -304,7 +304,7 @@ class GDSRRenderT2 {
         return $all_rows;
     }
 
-    function render_mrb($template_id, $allow_vote, $votes, $post_id, $set, $height, $header_text, $tags_css, $time_restirctions = "N", $time_remaining = 0, $time_date = "", $button_active = true, $button_text = "Submit", $debug = '', $wait_msg = '') {
+    function render_mrb($template_id, $allow_vote, $votes, $post_id, $set, $height, $header_text, $tags_css, $avg_style, $avg_size, $time_restirctions = "N", $time_remaining = 0, $time_date = "", $button_active = true, $button_text = "Submit", $debug = '', $wait_msg = '') {
         $template = GDSRRenderT2::get_template($template_id, "MRB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -349,6 +349,11 @@ class GDSRRenderT2 {
         }
 
         $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
+        $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
+        if (in_array("%AVG_RATING_STARS%", $template->tag["normal"])) {
+            $avg_id = "gdsr_mur_avgstars_".$post_id."_".$set->multi_id;
+            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars, $rating, $avg_id, "DIV"), $tpl_render);
+        }
         $rater.= $tpl_render."</div>";
         return $rater;
     }
@@ -683,20 +688,11 @@ class GDSRRenderT2 {
         return $tpl_render;
     }
 
-    function render_rmb($template_id, $votes, $post_id, $set, $height) {
+    function render_rmb($template_id, $votes, $post_id, $set, $avg_rating, $style, $size, $avg_style, $avg_size) {
         $template = GDSRRenderT2::get_template($template_id, "RMB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
-        $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti gdsr-review-block">';
-
-        $empty_value = str_repeat("0X", count($set->object));
-        $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
-
-        $original_value = "";
-        foreach($votes as $vote) $original_value.= number_format($vote["rating"], 0)."X";
-        $original_value = substr($original_value, 0, strlen($original_value) - 1);
-        $rater.= '<input type="hidden" id="gdsr_mur_review_'.$post_id.'_'.$set->multi_id.'" name="gdsrmurreview['.$post_id.']['.$set->id.']" value="'.$original_value.'" />';
-        $empty_value = $original_value;
+        $rater = '<div id="gdsr_mureview_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti gdsr-review-block">';
 
         $i = 0;
         $weighted = 0;
@@ -707,7 +703,7 @@ class GDSRRenderT2 {
         foreach ($set->object as $el) {
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
-            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, $set->stars, false, $votes[$i]["rating"], "", true), $single_row);
+            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::render_static_stars($style, $size, $set->stars, $votes[$i]["rating"]), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
 
@@ -717,6 +713,8 @@ class GDSRRenderT2 {
         }
 
         $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
+        $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
+        $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars, $avg_rating), $tpl_render);
         $rater.= $tpl_render."</div>";
         return $rater;
     }
