@@ -99,8 +99,8 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
                 <td width="10"></td>
                 <td width="150"><?php _e("Countdown value", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
-                <input type="text" value="<?php echo $gdsr_options["default_timer_countdown_value"]; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 80px; text-align: right;" />
-                <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $gdsr_options["default_timer_countdown_type"], 85); ?>
+                <input type="text" value="<?php echo $gdsr_options["default_timer_countdown_value"]; ?>" id="gdsr_default_timer_countdown_value" name="gdsr_default_timer_countdown_value" style="width: 80px; text-align: right;" />
+                <?php GDSRHelper::render_countdown_combo("gdsr_default_timer_countdown_type", $gdsr_options["default_timer_countdown_type"], 85); ?>
                 </td>
             </tr>
         </table>

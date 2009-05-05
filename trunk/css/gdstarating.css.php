@@ -193,7 +193,6 @@ get_class_head($head, ""); ?> {
 }
 
 .ratingblock {
-	display: block;
 	padding-bottom: 4px;
 	margin-bottom: 4px;
 	margin-top: 8px;
