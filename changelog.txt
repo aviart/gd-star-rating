@@ -11,13 +11,16 @@
   * edit: removed use of json_encode function
   * edit: expanded static stars rendering with id and type
   * edit: more settings for rendering multi review blocks
-  * edit: expanded t2 template for multi review block
+  * edit: expanded t2 template for multi ratings with new tag elements
   * edit: small update to gdragon base classes
   * edit: better optimization of multi rating database queries
   * edit: improved database tables defaults
+  * edit: many minor rendering tweaks
   * fix: rare case of invalid sorting of widget data
   * fix: tinymce plugin javascript missing semicolons
   * fix: comments widget comment text contains html tags
+  * fix: multi rating autoinsert generates warning with no auto insert sets
+  * fix: borders, paddings and margins around images in static multi ratings
   * fix: adding new template sets default flag wrong
   * fix: displaying multi review count for sets
   * fix: saving some of the settings

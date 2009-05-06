@@ -482,6 +482,9 @@ if (!class_exists('GDStarRating')) {
         // various rendering
 
         // edit boxes
+        /**
+         * Insert edit box for a comment on edit comment panel.
+         */
         function editbox_comment() {
             if ($this->wp_version < 27)
                 include($this->plugin_path.'integrate/editcomment26.php');
@@ -491,12 +494,18 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
+        /**
+         * Insert box multi review on post edit panel.
+         */
         function editbox_post_mur() {
             global $post;
             $post_id = $post->ID;
             $this->blog_multi_review_editor($post_id);
         }
 
+        /**
+         * Insert plugin box on post edit panel.
+         */
         function editbox_post() {
             global $post;
 
@@ -762,6 +771,11 @@ if (!class_exists('GDStarRating')) {
             return $content."<br />";
         }
 
+        /**
+         * Renders tag with link and powered by button
+         *
+         * @return string rendered content
+         */
         function powered_by() {
             return '<a target="_blank" href="http://www.gdstarrating.com/"><img src="'.STARRATING_URL.'gfx/powered.png" border="0" width="80" height="15" /></a>';
         }
@@ -1111,6 +1125,7 @@ if (!class_exists('GDStarRating')) {
 
             if (!is_admin() && !is_feed()) {
                 $this->rendering_sets = GDSRDBMulti::get_multisets_for_auto_insert();
+                if (!is_array($this->rendering_sets)) $this->rendering_sets = array();
             } else $this->rendering_sets = array();
         }
 
