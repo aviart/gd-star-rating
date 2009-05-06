@@ -1177,6 +1177,12 @@ if (!class_exists('GDStarRating')) {
                 exit;
             }
 
+            if (isset($_POST['gdsr_debug_clean'])) {
+                wp_gdsr_debug_clean();
+                wp_redirect_self();
+                exit;
+            }
+
             if (isset($_POST['gdsr_cache_clean'])) {
                 GDSRHelper::clean_cache(substr(STARRATING_CACHE_PATH, 0, strlen(STARRATING_CACHE_PATH) - 1));
                 $this->o["cache_cleanup_last"] = date("r");

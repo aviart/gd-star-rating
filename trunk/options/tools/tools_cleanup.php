@@ -16,7 +16,7 @@
     <td>
         <form method="post">
         <?php _e("Empty the debug file", "gd-star-rating"); ?> <strong>'<?php echo STARRATING_LOG_PATH; ?>'</strong>:<br />
-        <input type="submit" class="inputbutton" value="<?php _e("Clean", "gd-star-rating"); ?>" name="gdsr_cache_clean" id="gdsr_cache_clean" />
+        <input type="submit" class="inputbutton" value="<?php _e("Clean", "gd-star-rating"); ?>" name="gdsr_debug_clean" id="gdsr_debug_clean" />
         <div class="gdsr-table-split"></div>
         </form>
         <?php _e("Total size of debug file", "gd-star-rating"); ?>: <strong><?php echo filesize(STARRATING_LOG_PATH); ?> bytes</strong>

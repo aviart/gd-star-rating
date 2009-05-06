@@ -404,7 +404,7 @@ class GDSRDB {
 
     function add_template($general, $elements) {
         global $wpdb, $table_prefix;
-        $sql = sprintf("INSERT INTO %sgdsr_templates (`section`, `name`, `description`, `elements`, `dependencies`, `preinstalled`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+        $sql = sprintf("INSERT INTO %sgdsr_templates (`section`, `name`, `description`, `elements`, `dependencies`, `preinstalled`, `default`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '0')",
             $table_prefix, $general["section"], $general["name"], $general["description"], serialize($elements), serialize($general["dependencies"]), $general["preinstalled"]);
         $wpdb->query($sql);
         return $wpdb->insert_id;
