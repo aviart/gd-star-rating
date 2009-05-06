@@ -898,6 +898,7 @@ if (!class_exists('GDStarRating')) {
 
                 GDSRDB::insert_default_templates(STARRATING_PATH);
                 GDSRDB::insert_extras_templates(STARRATING_PATH);
+                GDSRDB::insert_extras_templates(STARRATING_XTRA_PATH, false);
                 GDSRDB::update_default_templates(STARRATING_PATH);
 
                 $this->o = gdFunctionsGDSR::upgrade_settings($this->o, $this->default_options);
@@ -1194,6 +1195,12 @@ if (!class_exists('GDStarRating')) {
             if (isset($_POST['gdsr_preview_scan'])) {
                 $this->g = $this->gfx_scan();
                 update_option('gd-star-rating-gfx', $this->g);
+                wp_redirect_self();
+                exit;
+            }
+
+            if (isset($_POST['gdsr_t2_import'])) {
+                GDSRDB::insert_extras_templates(STARRATING_XTRA_PATH, false);
                 wp_redirect_self();
                 exit;
             }

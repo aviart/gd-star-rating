@@ -13,6 +13,7 @@
         gdDBInstallGDSR::create_tables(STARRATING_PATH);
         GDSRDB::insert_default_templates(STARRATING_PATH);
         GDSRDB::insert_extras_templates(STARRATING_PATH);
+        GDSRDB::insert_extras_templates(STARRATING_XTRA_PATH, false);
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Multi rating tables reinstalled.", "gd-star-rating"); ?></strong></p></div> <?php
     }
     if ($_POST["gdsr_remove_settings"] == __("Remove Settings", "gd-star-rating")) {
@@ -25,6 +26,7 @@
         gdDBInstallGDSR::create_tables(STARRATING_PATH);
         GDSRDB::insert_default_templates(STARRATING_PATH);
         GDSRDB::insert_extras_templates(STARRATING_PATH);
+        GDSRDB::insert_extras_templates(STARRATING_XTRA_PATH, false);
         delete_option('gd-star-rating-templates');
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Plugins default templates are reinstalled.", "gd-star-rating"); ?></strong></p></div> <?php
     }
