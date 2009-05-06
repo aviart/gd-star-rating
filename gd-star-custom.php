@@ -16,6 +16,14 @@
     }
 
     /**
+    * Truncates log file to zero lenght deleting all data inside.
+    */
+    function wp_gdsr_debug_clean() {
+        global $gd_debug;
+        $gd_debug->truncate();
+    }
+
+    /**
      * Renders small 80x15 powered by GD Star Rating button.
      *
      * @global GDStarRating $gdsr main rating class instance

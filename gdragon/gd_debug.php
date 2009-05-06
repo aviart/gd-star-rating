@@ -50,6 +50,14 @@ if (!class_exists('gdDebugGDSR')) {
         }
 
         /**
+         * Truncates log file to zero lenght deleting all data inside.
+         */
+        function truncate() {
+            $f = fopen($this->log_file, "w+");
+            fclose($f);
+        }
+
+        /**
         * Writes a object dump into the log file
         *
         * @param string $msg log entry message
