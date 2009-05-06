@@ -326,3 +326,9 @@ get_class_head($head, ""); ?> {
 	font-size: 11px;
 	font-family: "Century Gothic", Geneva, Arial, Helvetica, sans-serif;
 }
+
+.ratingmulti img {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}

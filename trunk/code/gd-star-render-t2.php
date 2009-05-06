@@ -326,6 +326,7 @@ class GDSRRenderT2 {
         foreach ($set->object as $el) {
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
+            $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
             $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"]), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
@@ -383,6 +384,7 @@ class GDSRRenderT2 {
         foreach ($set->object as $el) {
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
+            $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
             $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($post_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"], "", true), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
@@ -703,6 +705,7 @@ class GDSRRenderT2 {
         foreach ($set->object as $el) {
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
+            $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
             $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::render_static_stars($style, $size, $set->stars, $votes[$i]["rating"]), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
@@ -714,7 +717,11 @@ class GDSRRenderT2 {
 
         $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
         $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
-        $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars, $avg_rating), $tpl_render);
+        $tpl_render = str_replace("%MAX_RATING%", $set->stars, $tpl_render);
+
+        if (in_array("%AVG_RATING_STARS%", $template->tag["normal"]))
+            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars, $avg_rating), $tpl_render);
+
         $rater.= $tpl_render."</div>";
         return $rater;
     }
