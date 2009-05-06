@@ -410,10 +410,13 @@ class GDSRDB {
         return $wpdb->insert_id;
     }
 
-    function insert_extras_templates($path) {
+    function insert_extras_templates($path, $default = true) {
         global $wpdb, $table_prefix;
         $templates = array();
-        $path.= "install/data/gdsr_templates_xtra.txt";
+
+        if ($default) $path.= "install/data/gdsr_templates_xtra.txt";
+        else $path.= "data/gdsr_templates_cstm.txt";
+
         if (file_exists($path)) {
             $tpls = file($path);
             foreach ($tpls as $tpl) {
