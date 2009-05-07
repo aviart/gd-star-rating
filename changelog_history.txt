@@ -7,6 +7,7 @@
   * new: few more extra templates
   * new: multi ratings partial support for own restriction rules
   * new: import t2 templates from alternative location
+  * new: export own t2 templates into csv file
   * new: cleanup of the debug file
   * edit: removed use of json_encode function
   * edit: expanded static stars rendering with id and type
