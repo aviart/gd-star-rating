@@ -13,7 +13,7 @@ class GDSRRender {
                 if ($url_pos === false) $first_char = '?';
                 else $first_char = '&amp;';
                 $ajax_id = sprintf("gdsrX%sX%sX%sX%sX%sX%sX%s", $id, $ncount, $user_id, $type, $rater_id, $loader_id, $template_id);
-                $rater.='<a id="'.$ajax_id.'" title="'.$ncount.' out of '.$unit_count.'" class="s'.$ncount.'" rel="nofollow"></a>';
+                $rater.='<a id="'.$ajax_id.'" title="'.$ncount.' / '.$unit_count.'" class="s'.$ncount.'" rel="nofollow"></a>';
             }
             $rater.= '</div>';
         }

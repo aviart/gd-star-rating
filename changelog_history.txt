@@ -18,6 +18,7 @@
   * edit: many minor rendering tweaks
   * fix: rare case of invalid sorting of widget data
   * fix: tinymce plugin javascript missing semicolons
+  * fix: multi review restirctions in the rating widget
   * fix: comments widget comment text contains html tags
   * fix: multi rating autoinsert generates warning with no auto insert sets
   * fix: borders, paddings and margins around images in static multi ratings
