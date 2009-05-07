@@ -200,6 +200,7 @@ class GDSRX {
         if ($widget["bayesian_calculation"] == "0") $min = 0;
         if ($widget["min_votes"] > $min) $min = $widget["min_votes"];
         if ($min == 0 && $widget["hide_empty"] == "1") $min = 1;
+        if ($widget["hide_noreview"] == "1") $where[] = "d.average_review > 0";
 
         $where[] = "p.id = d.post_id";
         $where[] = "d.multi_id = ".$widget["source_set"];
@@ -242,7 +243,6 @@ class GDSRX {
             if ($widget["show"] == "visitors") $where[] = "d.total_votes_visitors >= ".$min;
             if ($widget["show"] == "users") $where[] = "d.total_votes_users >= ".$min;
         }
-        if ($widget["hide_noreview"] == "1") $where[] = "d.review > -1";
 
         if ($widget["order"] == "desc" || $widget["order"] == "asc")
             $sort = $widget["order"];
@@ -269,47 +269,12 @@ class GDSRX {
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
         if ($widget["image_from"] == "content") $select = "p.post_content, ".$select;
+        $select.= ", d.average_review as review";
 
         $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_multis_data d where %s %s limit 0, %s",
                 $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $widget["rows"]);
 
 wp_gdsr_dump("WIDGET_MULTIS", $sql);
-
-        return $sql;
-    }
-
-    function get_widget_comments($widget, $post_id) {
-        global $table_prefix;
-
-        $where = array();
-        $select = "p.comment_id, p.comment_author, p.comment_author_email, p.comment_author_url, p.comment_date, p.comment_content, p.user_id, d.*";
-        $extras = ", 0 as votes, 0 as voters, 0 as rating, '' as permalink, '' as tense, '' as rating_stars";
-        $min = $widget["min_votes"];
-        if ($min == 0 && $widget["hide_empty"] == "1") $min = 1;
-
-        $where[] = "d.post_id = ".$post_id;
-        $where[] = "p.comment_id = d.comment_id";
-
-        if ($min > 0) {
-            if ($widget["show"] == "total") $where[] = "(d.user_voters + d.visitor_voters) >= ".$min;
-            if ($widget["show"] == "visitors") $where[] = "d.visitor_voters >= ".$min;
-            if ($widget["show"] == "users") $where[] = "d.user_voters >= ".$min;
-        }
-
-        if ($widget["order"] == "desc" || $widget["order"] == "asc")
-            $sort = $widget["order"];
-        else
-            $sort = "desc";
-
-        if ($widget["last_voted_days"] == "") $widget["last_voted_days"] = 0;
-        if ($widget["last_voted_days"] > 0) {
-            $where[] = "TO_DAYS(CURDATE()) - ".$widget["last_voted_days"]." <= TO_DAYS(d.last_voted)";
-        }
-
-        $sql = sprintf("select distinct %s%s from %s%scomments p, %sgdsr_data_comment d where %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $widget["rows"]);
-
-wp_gdsr_dump("WIDGET_COMMENTS", $sql);
 
         return $sql;
     }
@@ -407,6 +372,42 @@ wp_gdsr_dump("WIDGET_COMMENTS", $sql);
                 $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $widget["rows"]);
 
 wp_gdsr_dump("WIDGET_STANDARD", $sql);
+
+        return $sql;
+    }
+
+    function get_widget_comments($widget, $post_id) {
+        global $table_prefix;
+
+        $where = array();
+        $select = "p.comment_id, p.comment_author, p.comment_author_email, p.comment_author_url, p.comment_date, p.comment_content, p.user_id, d.*";
+        $extras = ", 0 as votes, 0 as voters, 0 as rating, '' as permalink, '' as tense, '' as rating_stars";
+        $min = $widget["min_votes"];
+        if ($min == 0 && $widget["hide_empty"] == "1") $min = 1;
+
+        $where[] = "d.post_id = ".$post_id;
+        $where[] = "p.comment_id = d.comment_id";
+
+        if ($min > 0) {
+            if ($widget["show"] == "total") $where[] = "(d.user_voters + d.visitor_voters) >= ".$min;
+            if ($widget["show"] == "visitors") $where[] = "d.visitor_voters >= ".$min;
+            if ($widget["show"] == "users") $where[] = "d.user_voters >= ".$min;
+        }
+
+        if ($widget["order"] == "desc" || $widget["order"] == "asc")
+            $sort = $widget["order"];
+        else
+            $sort = "desc";
+
+        if ($widget["last_voted_days"] == "") $widget["last_voted_days"] = 0;
+        if ($widget["last_voted_days"] > 0) {
+            $where[] = "TO_DAYS(CURDATE()) - ".$widget["last_voted_days"]." <= TO_DAYS(d.last_voted)";
+        }
+
+        $sql = sprintf("select distinct %s%s from %s%scomments p, %sgdsr_data_comment d where %s limit 0, %s",
+                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $widget["rows"]);
+
+wp_gdsr_dump("WIDGET_COMMENTS", $sql);
 
         return $sql;
     }
