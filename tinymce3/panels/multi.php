@@ -37,12 +37,7 @@
       <tr>
         <td class="gdsrleft"><?php _e("Size", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <label><select id="srStarsSizeMURAv" name="srStarsSizeMURAv" style="width: 130px">
-                <option value="12"><?php _e("Mini", "gd-star-rating"); ?></option>
-                <option value="20" selected="selected"><?php _e("Small", "gd-star-rating"); ?></option>
-                <option value="30"><?php _e("Medium", "gd-star-rating"); ?></option>
-                <option value="46"><?php _e("Big", "gd-star-rating"); ?></option>
-            </select></label>
+            <label><?php GDSRHelper::render_star_sizes_tinymce("srStarsSizeMURAv"); ?></label>
         </td>
       </tr>
     </table>
@@ -84,12 +79,7 @@
       <tr>
         <td class="gdsrleft"><?php _e("Size", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <label><select id="srStarsSizeMRREl" name="srStarsSizeMRREl" style="width: 130px">
-                <option value="12"><?php _e("Mini", "gd-star-rating"); ?></option>
-                <option value="20" selected="selected"><?php _e("Small", "gd-star-rating"); ?></option>
-                <option value="30"><?php _e("Medium", "gd-star-rating"); ?></option>
-                <option value="46"><?php _e("Big", "gd-star-rating"); ?></option>
-            </select></label>
+            <label><?php GDSRHelper::render_star_sizes_tinymce("srStarsSizeMRREl"); ?></label>
         </td>
       </tr>
     </table>
@@ -109,12 +99,7 @@
       <tr>
         <td class="gdsrleft"><?php _e("Size", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <label><select id="srStarsSizeMRRAv" name="srStarsSizeMRRAv" style="width: 130px">
-                <option value="12"><?php _e("Mini", "gd-star-rating"); ?></option>
-                <option value="20"><?php _e("Small", "gd-star-rating"); ?></option>
-                <option value="30" selected="selected"><?php _e("Medium", "gd-star-rating"); ?></option>
-                <option value="46"><?php _e("Big", "gd-star-rating"); ?></option>
-            </select></label>
+            <label><?php GDSRHelper::render_star_sizes_tinymce("srStarsSizeMRRAv"); ?></label>
         </td>
       </tr>
     </table>
