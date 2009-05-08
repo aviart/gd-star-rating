@@ -230,18 +230,24 @@ class GDSRX {
             else $where[] = "t.term_id = ".$cats;
         }
 
+        $col_id = "p.id";
+        $col_title = "p.post_title";
         if ($grouping == 'category') {
             $from.= sprintf("%sterms x, ", $table_prefix);
             $where[] = "t.taxonomy = 'category'";
             $where[] = "t.term_id = x.term_id";
             $select = "x.name as title, t.term_id, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters";
             $group = "group by t.term_id";
+            $col_id = "t.term_id";
+            $col_title = "x.name";
         }
         else if ($grouping == 'user') {
             $from.= sprintf("%susers u, ", $table_prefix);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.id, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters";
             $group = "group by u.id";
+            $col_id = "u.id";
+            $col_title = "u.display_name";
         }
         else {
             $select = "p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, d.average_rating_users * d.total_votes_users as user_votes, d.average_rating_visitors * d.total_votes_visitors as visitor_votes, d.total_votes_users as user_voters, d.total_votes_visitors as visitor_voters";
@@ -283,8 +289,25 @@ class GDSRX {
         if ($widget["image_from"] == "content") $select = "p.post_content, ".$select;
         $select.= ", d.average_review as review";
 
-        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_multis_data d where %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $widget["rows"]);
+        $col = $widget["column"];
+        if ($col == "title") $col = $col_title;
+        else if ($col == "review") $col = "d.average_review";
+        else if ($col == "rating" || $col == "bayesian") {
+            if ($widget["show"] == "total") $col = "(d.average_rating_users * d.total_votes_users + d.average_rating_visitors * d.total_votes_visitors)/(d.total_votes_users + d.total_votes_visitors)";
+            if ($widget["show"] == "visitors") $col = "(d.average_rating_visitors * d.total_votes_visitors)/d.total_votes_visitors";
+            if ($widget["show"] == "users") $col = "(d.average_rating_users * d.total_votes_users)/d.total_votes_users";
+        }
+        else if ($col == "voters") {
+            if ($widget["show"] == "total") $col = "d.total_votes_users + d.total_votes_visitors";
+            if ($widget["show"] == "visitors") $col = "d.total_votes_visitors";
+            if ($widget["show"] == "users") $col = "d.total_votes_users";
+        }
+        else if ($col == "counter" && $grouping != "post") $col = "count(*)";
+        else $col = $col_id;
+        $ordering = sprintf("order by %s %s", $col, $sort);
+
+        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_multis_data d where %s %s %s limit 0, %s",
+                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $ordering, $widget["rows"]);
 
 wp_gdsr_dump("WIDGET_MULTIS", $sql);
 
@@ -297,7 +320,7 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
         $grouping = $widget["grouping"];
         $cats = $widget["category"];
         $cats_in = $widget["category_toponly"] == 0;
-        if ($cats_in) {
+        if ($cats_in && $cats != "0") {
             $subs = gdWPGDSR::get_subcategories_ids($widget["category"]);
             $subs[] = $cats;
             $cats = join(",", $subs);
@@ -330,18 +353,24 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
             else $where[] = "t.term_id = ".$cats;
         }
 
+        $col_id = "p.id";
+        $col_title = "p.post_title";
         if ($grouping == 'category') {
             $from.= sprintf("%sterms x, ", $table_prefix);
             $where[] = "t.taxonomy = 'category'";
             $where[] = "t.term_id = x.term_id";
             $select = "x.name as title, t.term_id, count(*) as counter, sum(d.user_votes) as user_votes, sum(d.visitor_votes) as visitor_votes, sum(d.user_voters) as user_voters, sum(d.visitor_voters) as visitor_voters";
             $group = "group by t.term_id";
+            $col_id = "t.term_id";
+            $col_title = "x.name";
         }
         else if ($grouping == 'user') {
             $from.= sprintf("%susers u, ", $table_prefix);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.id, count(*) as counter, sum(d.user_votes) as user_votes, sum(d.visitor_votes) as visitor_votes, sum(d.user_voters) as user_voters, sum(d.visitor_voters) as visitor_voters";
             $group = "group by u.id";
+            $col_id = "u.id";
+            $col_title = "u.display_name";
         }
         else {
             $select = "p.id as post_id, p.post_author as author, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter";
@@ -349,19 +378,19 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
 
         if ($widget["select"] != "" && $widget["select"] != "postpage") 
             $where[] = "p.post_type = '".$widget["select"]."'";
-        
+
         if ($min > 0) {
             if ($widget["show"] == "total") $where[] = "(d.user_voters + d.visitor_voters) >= ".$min;
             if ($widget["show"] == "visitors") $where[] = "d.visitor_voters >= ".$min;
             if ($widget["show"] == "users") $where[] = "d.user_voters >= ".$min;
         }
         if ($widget["hide_noreview"] == "1") $where[] = "d.review > -1";
-        
+
         if ($widget["order"] == "desc" || $widget["order"] == "asc")
             $sort = $widget["order"];
         else
             $sort = "desc";
-        
+
         if ($widget["last_voted_days"] == "") $widget["last_voted_days"] = 0;
         if ($widget["last_voted_days"] > 0) {
             $where[] = "TO_DAYS(CURDATE()) - ".$widget["last_voted_days"]." <= TO_DAYS(d.last_voted)";
@@ -383,8 +412,25 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
         }
         if ($widget["image_from"] == "content") $select = "p.post_content, ".$select;
 
-        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_data_article d where %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $widget["rows"]);
+        $col = $widget["column"];
+        if ($col == "title") $col = $col_title;
+        else if ($col == "review") $col = "d.review";
+        else if ($col == "rating" || $col == "bayesian") {
+            if ($widget["show"] == "total") $col = "(d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters)";
+            if ($widget["show"] == "visitors") $col = "d.visitor_votes/d.visitor_voters";
+            if ($widget["show"] == "users") $col = "d.user_votes/d.user_voters";
+        }
+        else if ($col == "voters") {
+            if ($widget["show"] == "total") $col = "d.user_votes + d.visitor_votes";
+            if ($widget["show"] == "visitors") $col = "d.visitor_votes";
+            if ($widget["show"] == "users") $col = "d.user_votes";
+        }
+        else if ($col == "counter" && $grouping != "post") $col = "count(*)";
+        else $col = $col_id;
+        $ordering = sprintf("order by %s %s", $col, $sort);
+
+        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_data_article d where %s %s %s limit 0, %s",
+                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $ordering, $widget["rows"]);
 
 wp_gdsr_dump("WIDGET_STANDARD", $sql);
 
