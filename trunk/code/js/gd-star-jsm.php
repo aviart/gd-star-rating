@@ -27,8 +27,9 @@
             }
         }
         jQuery(input_id).val(rating_values.join("X"));
+        var button_block = el[1] + '_' + el[2] + '_' + el[6];
 <?php if ($button_active) { ?>
-        var button_id = '#gdsr_button_' + el[1] + '_' + el[2];
+        var button_id = '#gdsr_button_' + button_block;
         if (active) {
             jQuery(button_id).removeClass('gdinactive');
             jQuery(button_id).addClass('gdactive');
@@ -40,6 +41,6 @@
             jQuery(button_id + " a").removeClass('active');
         }
 <?php } else { ?>
-        if (active) multi_rating_vote(el[1] + "_" + el[2]);
+        if (active) multi_rating_vote(button_block);
 <?php } ?>
     });
