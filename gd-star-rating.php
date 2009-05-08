@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.3.0
+Version: 1.3.1
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -175,13 +175,11 @@ if (!class_exists('GDStarRating')) {
         * @param string|array $scode one or more shortcode names
         */
         function shortcode_action($scode) {
+            $sc_name = $scode;
+            $sc_method = "shortcode_".$scode;
             if (is_array($scode)) {
                 $sc_name = $scode["name"];
                 $sc_method = $scode["method"];
-            }
-            else {
-                $sc_name = $scode;
-                $sc_method = "shortcode_".$scode;
             }
             add_shortcode(strtolower($sc_name), array(&$this, $sc_method));
             add_shortcode(strtoupper($sc_name), array(&$this, $sc_method));
@@ -298,6 +296,7 @@ if (!class_exists('GDStarRating')) {
                 $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
                 $votes = array();
                 foreach ($multi_data as $md) {
+                    $single_vote = array();
                     $single_vote["votes"] = 1;
                     $single_vote["score"] = $md->user_votes;
                     $single_vote["rating"] = $md->user_votes;
@@ -609,6 +608,7 @@ if (!class_exists('GDStarRating')) {
             global $parent_file;
             $this->admin_page = $parent_file;
             $tabs_extras = "";
+            $datepicker_date = "";
 
             if ($this->admin_plugin_page == "ips" && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
             if ($this->admin_plugin) {
@@ -1165,6 +1165,7 @@ if (!class_exists('GDStarRating')) {
         }
 
         function init_operations() {
+            $msg = "";
             if ($_POST["gdsr_multi_review_form"] == "review") {
                 $mur_all = $_POST['gdsrmulti'];
                 $set_id = $this->o["mur_review_set"];
@@ -1297,6 +1298,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             if (isset($_POST["gdsr_save_tpl"])) {
+                $general = array();
                 $general["name"] = stripslashes(htmlentities($_POST['tpl_gen_name'], ENT_QUOTES, STARRATING_ENCODING));
                 $general["desc"] = stripslashes(htmlentities($_POST['tpl_gen_desc'], ENT_QUOTES, STARRATING_ENCODING));
                 $general["section"] = $_POST["tpl_section"];
@@ -1408,7 +1410,7 @@ if (!class_exists('GDStarRating')) {
         // install
 
         // vote
-        function vote_multi_rating($votes, $post_id, $set_id) {
+        function vote_multi_rating($votes, $post_id, $set_id, $tpl_id) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
@@ -1431,20 +1433,24 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
             if ($allow_vote) $allow_vote = $this->check_cookie($post_id."#".$set_id, "multis");
             if ($allow_vote) $allow_vote = GDSRDBMulti::check_vote($post_id, $user, $set_id, 'multis', $ip, $this->o["logged"] != 1, $this->o["mur_allow_mixed_ip_votes"] == 1);
 
+            $rating = 0;
+            $total_votes = 0;
+            $json = array();
+
             if ($allow_vote) {
                 GDSRDBMulti::save_vote($post_id, $set_id, $user, $ip, $ua, $values, $data);
                 $summary = GDSRDBMulti::recalculate_multi_averages($post_id, $set_id, $data->rules_articles, $set, true);
                 $this->save_cookie($post_id."#".$set_id, "multis");
+                $rating = $summary["total"]["rating"];
+                $total_votes = $summary["total"]["votes"];
+                $json = $summary["json"];
             }
-
-            $rating = $summary["total"]["rating"];
-            $total_votes = $summary["total"]["votes"];
 
             include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
 
             $template = new gdTemplateRender($tpl_id, "MRB");
             $rt = GDSRRenderT2::render_srt($template->dep["MRT"], $rating, $set->stars, $total_votes, $post_id);
-            $enc_values = "[".join(",", $summary["json"])."]";
+            $enc_values = "[".join(",", $json)."]";
 
             return "{ status: 'ok', values: ".$enc_values.", rater: '".$rt."', average: '".$rating."' }";
         }
@@ -1982,6 +1988,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                 $votes = $post_data->user_voters;
                 $score = $post_data->user_votes;
             }
+
+            $out = array();
             $out[] = $votes;
             $out[] = $score;
             return $out;
@@ -2004,6 +2012,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $rd_post_id = intval($post->ID);
             $rd_user_id = intval($user->ID);
             $rd_comment_id = intval($comment->comment_ID);
+            $rd_is_page = $post->post_type == "page" ? "1" : "0";
 
             if ($this->p)
                 $post_data = $this->p;
@@ -2117,7 +2126,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             return $rating_block;
         }
 
-        function render_article($post, $user, $override = array()) {
+        function render_article($post, $user, $override = array("tpl" => 0)) {
             if ($this->is_bot) return "";
 
             $dbg_allow = "F";
@@ -2169,6 +2178,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             }
 
             $remaining = 0;
+            $deadline = '';
             if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T')) {
                 switch($post_data->expiry_type) {
                     case "D":
@@ -2289,6 +2299,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             }
 
             if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T')) {
+                $remaining = 1;
                 switch($post_data->expiry_type) {
                     case "D":
                         $remaining = GDSRHelper::expiration_date($post_data->expiry_value);
@@ -2321,6 +2332,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
             $votes = array();
             foreach ($multi_data as $md) {
+                $single_vote = array();
                 $single_vote["votes"] = 0;
                 $single_vote["score"] = 0;
 

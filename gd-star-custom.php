@@ -255,8 +255,7 @@
      * @return object with average blog rating values
      */
     function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
-        $widget["select"] = $select;
-        $widget["show"] = $show;
+        $widget = array("select" => $select, "show" => $show);
         return GDSRRenderT2::prepare_wbr($widget);
     }
 

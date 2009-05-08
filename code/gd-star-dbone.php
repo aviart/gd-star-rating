@@ -70,6 +70,8 @@ class GDSRDatabase {
 
     function get_user_log($user_id, $vote_type, $vote_value = 0, $start = 0, $limit = 20) {
         global $wpdb, $table_prefix;
+        $join = "";
+        $select = "";
         if ($vote_type == "article") {
             $join = sprintf("%sposts o on o.ID = l.id", $table_prefix); 
             $select = "o.post_title, o.ID as post_id, o.ID as control_id";
@@ -218,10 +220,11 @@ class GDSRDatabase {
 
         if ($delete == "") return;
 
+        $delstring = "";
+        $dellog = "";
         switch (substr($delete, 1, 1)) {
             case "A":
                 $delstring = "user_votes = 0, user_voters = 0, visitor_votes = 0, visitor_voters = 0";
-                $dellog = "";
                 break;
             case "V":
                 $delstring = "visitor_votes = 0, visitor_voters = 0";
@@ -683,6 +686,7 @@ wp_gdsr_dump("ADD_DEFAULT_is_page", $is_page);
     function get_comments_aggregation($post_id, $filter_show = "total") {
         global $wpdb, $table_prefix;
 
+        $where = "";
         switch ($filter_show) {
             default:
             case "total":

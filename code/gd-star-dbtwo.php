@@ -164,22 +164,18 @@ class GDSRDB {
                 break;
         }
 
-        if ($row->visitor_voters == 0) {
-            $votes_v = '/';
-            $count_v = '[ 0 ] ';
-        }
-        else {
+        $votes_v = '/';
+        $count_v = '[ 0 ] ';
+        if ($row->visitor_voters > 0) {
             $visitor_rating = @number_format($row->visitor_votes / $row->visitor_voters, 1);
             $row->rating_visitors = $visitor_rating;
             $votes_v = '<strong><span style="color: red">'.$visitor_rating.'</span></strong>';
             $count_v = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=article&vg=visitors"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $row->visitor_voters);
         }
 
-        if ($row->user_voters == 0) {
-            $votes_u = '/';
-            $count_u = '[ 0 ] ';
-        }
-        else {
+        $votes_u = '/';
+        $count_u = '[ 0 ] ';
+        if ($row->user_voters > 0) {
             $user_rating = @number_format($row->user_votes / $row->user_voters, 1);
             $row->rating_users = $user_rating;
             $votes_u = '<strong><span style="color: red">'.$user_rating.'</span></strong>';
@@ -192,11 +188,9 @@ class GDSRDB {
         $total_votes = $row->visitor_votes + $row->user_votes;
         $total_voters = $row->visitor_voters + $row->user_voters;
 
-        if ($total_voters == 0) {
-            $votes_t = '/';
-            $count_t = '[ 0 ] ';
-        }
-        else {
+        $votes_t = '/';
+        $count_t = '[ 0 ] ';
+        if ($total_voters > 0) {
             $total_rating =  @number_format($total_votes / $total_voters, 1);
             $row->rating_total = $total_rating;
             $votes_t = '<strong><span style="color: red">'.$total_rating.'</span></strong>';
@@ -287,22 +281,18 @@ class GDSRDB {
     }
 
     function convert_comment_row($row) {
-        if ($row->visitor_voters == 0) {
-            $votes_v = '/';
-            $count_v = '[ 0 ] ';
-        }
-        else {
+        $votes_v = '/';
+        $count_v = '[ 0 ] ';
+        if ($row->visitor_voters > 0) {
             $visitor_rating = @number_format($row->visitor_votes / $row->visitor_voters, 1);
             $row->rating_visitors = $visitor_rating;
             $votes_v = '<strong><span style="color: red">'.$visitor_rating.'</span></strong>';
             $count_v = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=comment&vg=visitors"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $row->visitor_voters);
         }
 
-        if ($row->user_voters == 0) {
-            $votes_u = '/';
-            $count_u = '[ 0 ] ';
-        }
-        else {
+        $votes_u = '/';
+        $count_u = '[ 0 ] ';
+        if ($row->user_voters > 0) {
             $user_rating = @number_format($row->user_votes / $row->user_voters, 1);
             $row->rating_users = $user_rating;
             $votes_u = '<strong><span style="color: red">'.$user_rating.'</span></strong>';
@@ -312,11 +302,9 @@ class GDSRDB {
         $total_votes = $row->visitor_votes + $row->user_votes;
         $total_voters = $row->visitor_voters + $row->user_voters;
 
-        if ($total_voters == 0) {
-            $votes_t = '/';
-            $count_t = '[ 0 ] ';
-        }
-        else {
+        $votes_t = '/';
+        $count_t = '[ 0 ] ';
+        if ($total_voters > 0) {
             $total_rating = @number_format($total_votes / $total_voters, 1);
             $row->rating_total = $total_rating;
             $votes_t = '<strong><span style="color: red">'.$total_rating.'</span></strong>';

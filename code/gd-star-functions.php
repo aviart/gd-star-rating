@@ -90,6 +90,7 @@ class GDSRHelper {
         $period = substr($value, 0, 1);
         $value = substr($value, 1);
         $pdate = strtotime($post_date);
+        $expiry = 0;
         switch ($period) {
             case 'H':
                 $expiry = mktime(date("H", $pdate) + $value, date("i", $pdate), date("s", $pdate), date("m", $pdate),          date("j", $pdate),          date("Y", $pdate));
@@ -149,7 +150,7 @@ class GDSRHelper {
         $parts = array();
 
         foreach ($times AS $key => $value) {
-            $parts[$value] = floor($secs / $key);
+            $parts[$value] = floor($timestamp / $key);
         }
 
         return $parts;

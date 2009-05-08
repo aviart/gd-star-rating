@@ -6,6 +6,7 @@ class GDSRX {
         $mysql4_strtodate = "date_add(d.vote_date, interval 0 day)";
         $mysql5_strtodate = "str_to_date(d.vote_date, '%Y-%m-%d')";
 
+        $strtodate = "";
         switch(gdFunctionsGDSR::mysql_version()) {
             case "4":
                 $strtodate = $mysql4_strtodate;
@@ -19,6 +20,7 @@ class GDSRX {
         if ($period == "over") $where = sprintf("%s BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND DATE_SUB(NOW(), INTERVAL %s DAY)", $strtodate, $last + $over, $last);
         else $where = sprintf("%s BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND NOW()", $strtodate, $last);
 
+        $from = $join = "";
         switch ($grouping) {
             case "post":
                 $select = "d.id";
@@ -71,6 +73,8 @@ class GDSRX {
     function get_trend_calculation($ids, $grouping = "post", $show = "total", $last = 1, $over = 30) {
         global $wpdb, $table_prefix;
 
+        $data_over = array();
+        $data_last = array();
         switch ($grouping) {
             case "post":
                 $data_last = GDSRX::get_trend_data($ids, $grouping, "article", "last", $last, $over);
@@ -85,24 +89,26 @@ class GDSRX {
                 $data_over = GDSRX::get_trend_data($ids, $grouping, "article", "over", $last);
                 break;
         }
-       
+
+        $votes_over = array();
+        $voters_over = array();
         for ($i = 0; $i < count($data_over); $i++) {
             $row_over = $data_over[$i];
 
             if ($show == "total") {
                 $votes_over[$row_over->id] = $row_over->user_votes + $row_over->visitor_votes;
                 $voters_over[$row_over->id] = $row_over->user_voters + $row_over->visitor_voters;
-            }                
+            }
             if ($show == "visitors") {
                 $votes_over[$row_over->id] = $row_over->visitor_votes;
                 $voters_over[$row_over->id] = $row_over->visitor_voters;
-            }                
+            }
             if ($show == "users") {
                 $votes_over[$row_over->id] = $row_over->user_votes ;
                 $voters_over[$row_over->id] = $row_over->user_voters;
             }
         }
-        
+
         if (count($data_last) == 0) {
             $votes_last = array();
             $voters_last = array();
@@ -112,18 +118,20 @@ class GDSRX {
             $votes_over = array();
             $voters_over = array();
         }
-        
+
+        $votes_last = array();
+        $voters_last = array();
         for ($i = 0; $i < count($data_last); $i++) {
             $row_last = $data_last[$i];
             
             if ($show == "total") {
                 $votes_last[$row_last->id] = $row_last->user_votes + $row_last->visitor_votes;
                 $voters_last[$row_last->id] = $row_last->user_voters + $row_last->visitor_voters;
-            }                
+            }
             if ($show == "visitors") {
                 $votes_last[$row_last->id] = $row_last->visitor_votes;
                 $voters_last[$row_last->id] = $row_last->visitor_voters;
-            }                
+            }
             if ($show == "users") {
                 $votes_last[$row_last->id] = $row_last->user_votes ;
                 $voters_last[$row_last->id] = $row_last->user_voters;
@@ -136,14 +144,15 @@ class GDSRX {
                 $voters_over[$key] = 0;
             }
         }
-        
+
         foreach ($votes_over as $key => $value) {
             if (!isset($votes_last[$key])) {
                 $votes_last[$key] = 0;
                 $voters_last[$key] = 0;
             }
         }
-        
+
+        $trends = array();
         foreach ($votes_last as $key => $value) {
             $trends[$key] = new TrendValue($votes_last[$key], $voters_last[$key], $votes_over[$key], $voters_over[$key], $last, $over);
         }
@@ -197,6 +206,9 @@ class GDSRX {
         }
         $where = array();
         $select = "";
+        $from = "";
+        $group = "";
+
         if ($widget["bayesian_calculation"] == "0") $min = 0;
         if ($widget["min_votes"] > $min) $min = $widget["min_votes"];
         if ($min == 0 && $widget["hide_empty"] == "1") $min = 1;
@@ -296,6 +308,9 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
         }
         $where = array();
         $select = "";
+        $from = "";
+        $group = "";
+
         if ($widget["bayesian_calculation"] == "0") $min = 0;
         if ($widget["min_votes"] > $min) $min = $widget["min_votes"];
         if ($min == 0 && $widget["hide_empty"] == "1") $min = 1;
@@ -404,8 +419,8 @@ wp_gdsr_dump("WIDGET_STANDARD", $sql);
             $where[] = "TO_DAYS(CURDATE()) - ".$widget["last_voted_days"]." <= TO_DAYS(d.last_voted)";
         }
 
-        $sql = sprintf("select distinct %s%s from %s%scomments p, %sgdsr_data_comment d where %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $widget["rows"]);
+        $sql = sprintf("select distinct %s%s from %scomments p, %sgdsr_data_comment d where %s limit 0, %s",
+                $select, $extras, $table_prefix, $table_prefix, join(" and ", $where), $widget["rows"]);
 
 wp_gdsr_dump("WIDGET_COMMENTS", $sql);
 
