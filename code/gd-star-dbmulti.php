@@ -616,7 +616,7 @@ class GDMultiSingle {
      * @param bool $fill_empty prefill set with empty elements
      * @param int $count number of elements in the set
      */
-    function GDMultiSingle($fill_empty = true, $count = 10) {
+    function GDMultiSingle($fill_empty = true, $count = 20) {
         if ($fill_empty) {
             for ($i = 0; $i < $count; $i++) {
                 $this->object[] = "";

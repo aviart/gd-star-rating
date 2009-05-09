@@ -1337,7 +1337,9 @@ if (!class_exists('GDStarRating')) {
             $presizes.= "m".gdFunctionsGDSR::prefill_zeros(20, 2);
             $presizes.= "c".gdFunctionsGDSR::prefill_zeros($this->o["cmm_stars"], 2);
             $presizes.= "r".gdFunctionsGDSR::prefill_zeros($this->o["cmm_review_stars"], 2);
+            $sizes = array(16, 20, 24, 30);
             $elements[] = $presizes;
+            $elements[] = join("", $sizes);
             foreach($this->g->stars as $s) $elements[] = $s->primary.substr($s->type, 0, 1).$s->folder;
             $url = $this->plugin_url.'css/gdsr.css.php?s='.urlencode(join("#", $elements));
             echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
@@ -1393,7 +1395,7 @@ if (!class_exists('GDStarRating')) {
 
             if ($this->o["external_rating_css"] == 1) $this->include_rating_css();
             else $this->include_rating_css(false);
-            //$this->include_rating_css_xtra();
+            $this->include_rating_css_xtra();
 
             echo("\r\n");
             if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
