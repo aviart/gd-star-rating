@@ -100,7 +100,6 @@ if (!class_exists('GDStarRating')) {
 
         var $post_comment;
 
-        var $shortcode_builtin_classes;
         var $shortcodes;
         var $default_shortcode_starrating;
         var $default_shortcode_starratercustom;
@@ -122,7 +121,6 @@ if (!class_exists('GDStarRating')) {
         */
         function GDStarRating() {
             $gdd = new GDSRDefaults();
-            $this->shortcode_builtin_classes = $gdd->shortcode_builtin_classes;
             $this->shortcodes = $gdd->shortcodes;
             $this->default_spiders = $gdd->default_spiders;
             $this->default_wpr8 = $gdd->default_wpr8;
@@ -1333,6 +1331,18 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
+        function include_rating_css_xtra() {
+            $elements = array();
+            $presizes = "a".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
+            $presizes.= "m".gdFunctionsGDSR::prefill_zeros(20, 2);
+            $presizes.= "c".gdFunctionsGDSR::prefill_zeros($this->o["cmm_stars"], 2);
+            $presizes.= "r".gdFunctionsGDSR::prefill_zeros($this->o["cmm_review_stars"], 2);
+            $elements[] = $presizes;
+            foreach($this->g->stars as $s) $elements[] = $s->primary.substr($s->type, 0, 1).$s->folder;
+            $url = $this->plugin_url.'css/gdsr.css.php?s='.urlencode(join("#", $elements));
+            echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
+        }
+
         function include_rating_css($external = true) {
             $include_cmm_review = false;
             $include_mur_rating = false;
@@ -1383,6 +1393,7 @@ if (!class_exists('GDStarRating')) {
 
             if ($this->o["external_rating_css"] == 1) $this->include_rating_css();
             else $this->include_rating_css(false);
+            //$this->include_rating_css_xtra();
 
             echo("\r\n");
             if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {

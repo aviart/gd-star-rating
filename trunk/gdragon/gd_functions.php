@@ -28,6 +28,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 if (!class_exists('gdFunctionsGDSR')) {
     class gdFunctionsGDSR {
+        function prefill_zeros($text, $len) {
+            $count = strlen($text);
+            $zeros = "";
+            for ($i = 0; $i < $len - $count; $i++) $zeros.= "0";
+            return $zeros.$text;
+        }
+
+        function split_by_length($string, $chunkLength = 1) {
+            $result = array();
+            $strLength = strlen($string);
+            $x = 0;
+
+            while($x < ($strLength / $chunkLength)){
+                $result[] = substr($string, ($x * $chunkLength), $chunkLength);
+                $x++;
+            }
+            return $result;
+        }
+
         function get_image_from_text($text) {
             $imageurl = "";
             preg_match('/<\s*img [^\>]*src\s*=\s*[\""\']?([^\""\'>]*)/i', $text, $matches);
