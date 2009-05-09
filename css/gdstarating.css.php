@@ -24,8 +24,7 @@ function insert_styles($css, $base_url_local, $base_url_extra) {
         echo '.'.$css["name"].' { width: '.($stars * $size).'px; }';
         echo "\r\n";
     }
-    echo '.'.$css["name"].' .starsbar { height: '.$size.'px; }';
-    echo "\r\n";
+
     if ($css["name"] != "ratemulti") echo ".".$css["name"]." .starsbar .gdouter { width: ".($stars * $size)."px; height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }";
     else echo ".".$css["name"]." .starsbar .gdouter { height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }";
     echo "\r\n";
@@ -90,40 +89,14 @@ foreach ($q as $cs) {
 
 foreach ($csss as $css) insert_styles($css, $base_url_local, $base_url_extra);
 
-get_class_head($head, ""); ?> {
-  position: relative;
-  display: block;
-}
+?>
 
-<?php get_class_head($head, ".starsbar .gdinner"); ?> {
-  width: 0;
-}
-
-<?php get_class_head($head, ".starsbar a:active"); ?> {
-  text-decoration: none;
-  border: 0 !important;
-}
-
-<?php get_class_head($head, ".starsbar a:visited"); ?> {
-  text-decoration: none;
-  border: 0 !important;
-}
-
-<?php get_class_head($head, ".starsbar a:hover"); ?> {
-  text-decoration: none;
-  border: 0 !important;
-}
-
-<?php get_class_head($head, ".starsbar a"); ?> {
-  position: absolute;
-  display: block;
-  left: 0;
-  top: 0;
-  text-decoration: none;
-  border: 0 !important;
-  cursor: pointer;
-  background: none !important;
-}
+<?php get_class_head($head, ""); ?> { position: relative; display: block; }
+<?php get_class_head($head, ".starsbar .gdinner"); ?> { width: 0; }
+<?php get_class_head($head, ".starsbar a:active"); ?> { text-decoration: none; border: 0 !important; }
+<?php get_class_head($head, ".starsbar a:visited"); ?> { text-decoration: none; border: 0 !important; }
+<?php get_class_head($head, ".starsbar a:hover"); ?> { text-decoration: none; border: 0 !important; }
+<?php get_class_head($head, ".starsbar a"); ?> { position: absolute; display: block; left: 0; top: 0; text-decoration: none; border: 0 !important; cursor: pointer; background: none !important; }
 
 .ratemulti .starsbar .gdcurrent { width: 0; top: 0; position: absolute; opacity: 0.7; }
 .ratingblockarticle { font-size: 1em; }
@@ -141,135 +114,25 @@ get_class_head($head, ""); ?> {
 .rater { top: 0; }
 
 .ratingtextmulti { float: left; }
-
 .ratingbutton { float: right; padding: 1px 6px; }
-
-.ratingbutton.gdinactive {
-    border: 1px solid #9c5f5f;
-    background-color: #e9e4d4;
-}
-
-.ratingbutton.gdactive {
-    border: 1px solid black;
-    background-color: #f1ede5;
-    cursor: pointer;
-}
-
+.ratingbutton.gdinactive { border: 1px solid #9c5f5f; background-color: #e9e4d4; }
+.ratingbutton.gdactive { border: 1px solid black; background-color: #f1ede5; cursor: pointer; }
 .ratingbutton a { line-height: 14px; text-decoration: none !important; }
-
 .ratingbutton.gdactive { cursor: pointer; }
 .ratingbutton.gdactive a { color: #ad1b1b; cursor: pointer; }
 .ratingbutton.gdinactive a { color: gray; cursor: default; }
-
-.gdmultitable {
-    padding: 3px;
-    margin: 3px;
-    border: 1px solid #999999;
-}
-
+.gdmultitable { padding: 3px; margin: 3px; border: 1px solid #999999; }
 .gdtblbottom td { padding-top: 4px; }
-
-.gdtblbottom {
-    margin-top: 2px;
-    background-color: #fffcf4;
-}
-
+.gdtblbottom { margin-top: 2px; background-color: #fffcf4; }
 .mtrow { background-color: #fffcf4; }
-
 .mtrow td.mtstars { text-align: right; }
-
 .mtrow.alternate { background-color: #f7f4ea; }
-
 .gdtblmuravg { background-color: #fffcf4; }
-
-.gdtblmuravg td {
-    border-top: 2px solid #dcdcdc;
-    text-align: center; 
-}
-
-.gdmultitable td {
-    vertical-align: middle;
-    padding: 2px 4px;
-}
-
-.ratingblock {
-	padding-bottom: 4px;
-	margin-bottom: 4px;
-	margin-top: 8px;
-	font-size: 12px;
-}
-
-.ratingtext {
-	padding-bottom: 2px;
-	margin-bottom: 2px;
-	margin-top: 0px;
-}
-
-/* table class: starrating */
-.starrating { width: 100%; }
-
-.starrating thead {
-	background-color: #696969;
-	color: yellow;
-}
-
-.starrating thead td { font-weight: bold; }
-
-.starrating td {
-	padding: 2px 5px 2px 5px;
-	height: 24px;
-	vertical-align: middle;
-}
-
-.starrating tr.even { background-color: #fffff0; }
-
-.starrating tr.odd { background-color: #f0f8ff; }
-
-.starrating tbody td.rating {
-	text-align: right;
-	color: red;
-	font-weight: bold;
-	width: 40px;
-}
-
-.starrating tbody td.votes {
-	text-align: right;
-	font-weight: bold;
-	width: 30px;
-}
-
-/* table class: starsimple */
-.starsimple { width: 100%; }
-
-.starsimple thead {
-	background-color: gray;
-	color: yellow;
-}
-
-.starsimple thead td { font-weight: bold; }
-
-.starsimple td {
-	padding: 2px 5px 2px 5px;
-	height: 24px;
-	vertical-align: middle;
-}
-
-.starsimple tr.even { }
-
-.starsimple tr.odd { }
-
-.starsimple tbody td.rating {
-	text-align: right;
-	color: red;
-	font-weight: bold;
-	width: 40px;
-}
-
-.starsimple tbody td.votes {
-	text-align: right;
-	font-weight: bold;
-	width: 30px;
-}
+.gdtblmuravg td { border-top: 2px solid #dcdcdc; text-align: center; }
+.gdmultitable td { vertical-align: middle; padding: 2px 4px; }
+.ratingblock { padding-bottom: 4px; margin-bottom: 4px; margin-top: 8px; font-size: 12px; }
+.ratingtext { padding-bottom: 2px; margin-bottom: 2px; margin-top: 0px; }
+.ratingmulti img { border: 0; padding: 0; margin: 0; }
 
 /* loading indicators */
 .loader { margin-left: auto; margin-right: auto; text-align: left; }
@@ -308,27 +171,6 @@ get_class_head($head, ""); ?> {
 .loader.triangles.width { width: 12px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
 /* top rating widget */
-.trw-title {
-	text-align: center;
-	font-size: 16px;
-	font-family: "Century Gothic", Arial, Helvetica, sans-serif;
-}
-
-.trw-rating {
-	font-size: 44px;
-	font-family: "Century Gothic", Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	text-align: center;
-}
-
-.trw-footer {
-	text-align: center;
-	font-size: 11px;
-	font-family: "Century Gothic", Geneva, Arial, Helvetica, sans-serif;
-}
-
-.ratingmulti img {
-    border: 0;
-    padding: 0;
-    margin: 0;
-}
+.trw-title { text-align: center; font-size: 16px; font-family: "Century Gothic", Arial, Helvetica, sans-serif; }
+.trw-rating { font-size: 44px; font-family: "Century Gothic", Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; }
+.trw-footer { text-align: center; font-size: 11px; font-family: "Century Gothic", Geneva, Arial, Helvetica, sans-serif; }

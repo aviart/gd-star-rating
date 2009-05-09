@@ -163,11 +163,6 @@ class GDSRDefaults {
         "wait_class_multis" => ''
     );
 
-    var $shortcode_builtin_classes = array(
-        array("name" => "Standard", "class" => "starrating"),
-        array("name" => "Simple", "class" => "starsimple")
-    );
-
     var $shortcodes = array(
         "starrating",
         "starreview",

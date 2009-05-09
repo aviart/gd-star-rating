@@ -8,7 +8,6 @@
 
     $gdsr_styles = $gdsr->g->stars;
     $gdsr_trends = $gdsr->g->trend;
-    $gdsr_classes = $gdsr->shortcode_builtin_classes;
     $gdst_multis = GDSRDBMulti::get_multis_tinymce();
 
 ?>
