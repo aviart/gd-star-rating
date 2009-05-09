@@ -2022,6 +2022,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
             $rd_unit_width = $this->o["cmm_size"];
             $rd_unit_count = $this->o["cmm_stars"];
+            $rd_unit_style = $this->is_ie6 ? $this->o["cmm_style_ie6"] : $this->o["cmm_style"];
             $rd_post_id = intval($post->ID);
             $rd_user_id = intval($user->ID);
             $rd_comment_id = intval($comment->comment_ID);
@@ -2108,7 +2109,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_crb_template"];
 
-            $rating_block = GDSRRenderT2::render_crb($template_id, $rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $tags_css, $this->o["cmm_header_text"], $debug, $this->loader_comment);
+            $rating_block = GDSRRenderT2::render_crb($template_id, $rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_style, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $tags_css, $this->o["cmm_header_text"], $debug, $this->loader_comment);
             return $rating_block;
         }
 
@@ -2154,6 +2155,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
             $rd_unit_width = $this->o["size"];
             $rd_unit_count = $this->o["stars"];
+            $rd_unit_style = $this->is_ie6 ? $this->o["style_ie6"] : $this->o["style"];
             $rd_post_id = intval($post->ID);
             $rd_user_id = intval($user->ID);
             $rd_is_page = $post->post_type == "page" ? "1" : "0";
@@ -2249,7 +2251,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_srb_template"];
 
-            $rating_block = GDSRRenderT2::render_srb($template_id, $rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $tags_css, $this->o["header_text"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
+            $rating_block = GDSRRenderT2::render_srb($template_id, $rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_style, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $tags_css, $this->o["header_text"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
             return $rating_block;
         }
 
