@@ -426,7 +426,7 @@ class GDSRRenderT2 {
         return $rt;
     }
 
-    function render_srb($template_id, $post_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+    function render_srb($template_id, $post_id, $class, $type, $votes, $score, $style, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
         $template = GDSRRenderT2::get_template($template_id, "SRB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -443,7 +443,7 @@ class GDSRRenderT2 {
         $loader_id = $typecls."_loader_".$post_id;
 
         if (in_array("%RATING_STARS%", $template->tag["normal"])) {
-            $rating_stars = GDSRRender::rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $post_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
+            $rating_stars = GDSRRender::rating_stars($style, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $post_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
             $tpl_render = str_replace("%RATING_STARS%", $rating_stars, $tpl_render);
         }
 
@@ -460,7 +460,7 @@ class GDSRRenderT2 {
         return $tpl_render;
     }
 
-    function render_crb($template_id, $cmm_id, $class, $type, $votes, $score, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '') {
+    function render_crb($template_id, $cmm_id, $class, $type, $votes, $score, $style, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '') {
         $template = GDSRRenderT2::get_template($template_id, "CRB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -477,7 +477,7 @@ class GDSRRenderT2 {
         $loader_id = $typecls."_loader_".$cmm_id;
 
         if (in_array("%CMM_RATING_STARS%", $template->tag["normal"])) {
-            $rating_stars = GDSRRender::rating_stars($rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $cmm_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
+            $rating_stars = GDSRRender::rating_stars($style, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $cmm_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
             $tpl_render = str_replace("%CMM_RATING_STARS%", $rating_stars, $tpl_render);
         }
 
