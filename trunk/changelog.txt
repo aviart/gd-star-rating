@@ -6,6 +6,7 @@
   * new: added two more stars sizes, 16px and 24px
   * edit: extensive code cleanup eliminating editor warnings
   * edit: optimization of rating css file
+  * edit: max number of elements in multi set increased to 20
   * edit: removed more of the obsolete unused code
   * fix: invalid results in the rating widgets
   * fix: small problem in widget results sql query with all categories selected

@@ -19,34 +19,19 @@ function insert_styles($css, $base_url_local, $base_url_extra) {
     if ($loc == 1) $url = $base_url_local."stars/".$style."/stars".$size.".".$type;
     else $url = $base_url_extra."stars/".$style."/stars".$size.".".$type;
 
-    echo "\r\n\r\n";
-    if ($css["name"] != "ratemulti") {
-        echo '.'.$css["name"].' { width: '.($stars * $size).'px; }';
-        echo "\r\n";
-    }
+    echo "\r\n";
+    if ($css["name"] != "ratemulti") echo ".".$css["name"]." { width: ".($stars * $size)."px; }\r\n";
 
-    if ($css["name"] != "ratemulti") echo ".".$css["name"]." .starsbar .gdouter { width: ".($stars * $size)."px; height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }";
-    else echo ".".$css["name"]." .starsbar .gdouter { height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }";
-    echo "\r\n";
-    echo ".".$css["name"]." .starsbar .gdinner { height: ".$size."px; background: url('".$url."') repeat-x 0px -".(2 * $size)."px; }";
-    echo "\r\n";
-    if ($css["name"] == "ratemulti") {
-        echo ".".$css["name"]." .starsbar .gdcurrent { height: ".$size."px; background: url('".$url."') repeat-x 0px -".($size)."px; }";
-        echo "\r\n";
-    }
-    echo ".".$css["name"]." .starsbar a:hover { background: url('".$url."') repeat-x 0px -".$size."px !important; }";
-    echo "\r\n";
-    echo '.'.$css["name"].' .starsbar a { height: '.$size.'px; }';
-    echo "\r\n";
+    if ($css["name"] != "ratemulti") echo ".".$css["name"]." .starsbar .gdouter { width: ".($stars * $size)."px; height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }\r\n";
+    else echo ".".$css["name"]." .starsbar .gdouter { height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }\r\n";
 
-    for ($i = 1; $i < $stars + 1; $i++) {
-        echo '.'.$css["name"].' .starsbar a.s'.$i.' { width: '.($i * $size).'px; }';
-        echo "\r\n";
-    }
+    echo ".".$css["name"]." .starsbar .gdinner { height: ".$size."px; background: url('".$url."') repeat-x 0px -".(2 * $size)."px; }\r\n";
+    if ($css["name"] == "ratemulti") echo ".".$css["name"]." .starsbar .gdcurrent { height: ".$size."px; background: url('".$url."') repeat-x 0px -".($size)."px; }\r\n";
 
-    if ($css["type"] == "a") echo '.ratingloaderarticle { height: '.$size.'px; }';
-    echo "\r\n";
-    if ($css["type"] == "c") echo '.ratingloadercomment { height: '.$size.'px; }';
+    echo ".".$css["name"]." .starsbar a:hover { background: url('".$url."') repeat-x 0px -".$size."px !important; }\r\n";
+    echo ".".$css["name"]." .starsbar a { height: ".$size."px; }\r\n";
+
+    for ($i = 1; $i < $stars + 1; $i++) echo ".".$css["name"]." .starsbar a.s".$i." { width: ".($i * $size)."px; }\r\n";
 }
 
 function get_class_head($head, $element) {
@@ -99,10 +84,6 @@ foreach ($csss as $css) insert_styles($css, $base_url_local, $base_url_extra);
 <?php get_class_head($head, ".starsbar a"); ?> { position: absolute; display: block; left: 0; top: 0; text-decoration: none; border: 0 !important; cursor: pointer; background: none !important; }
 
 .ratemulti .starsbar .gdcurrent { width: 0; top: 0; position: absolute; opacity: 0.7; }
-.ratingblockarticle { font-size: 1em; }
-.ratingblockcomment { font-size: 0.8em; }
-.ratingloaderarticle, .ratingloadercomment { font-size: 12px; text-align: center; vertical-align: middle; }
-
 .starsbar .gdinner { padding: 0; }
 .ratingblock td { vertical-align: middle; }
 .raterclear { clear: both; }
@@ -133,6 +114,10 @@ foreach ($csss as $css) insert_styles($css, $base_url_local, $base_url_extra);
 .ratingblock { padding-bottom: 4px; margin-bottom: 4px; margin-top: 8px; font-size: 12px; }
 .ratingtext { padding-bottom: 2px; margin-bottom: 2px; margin-top: 0px; }
 .ratingmulti img { border: 0; padding: 0; margin: 0; }
+
+.ratingblockarticle { font-size: 1em; }
+.ratingblockcomment { font-size: 0.8em; }
+.ratingloaderarticle, .ratingloadercomment { font-size: 12px; text-align: center; vertical-align: middle; }
 
 /* loading indicators */
 .loader { margin-left: auto; margin-right: auto; text-align: left; }
