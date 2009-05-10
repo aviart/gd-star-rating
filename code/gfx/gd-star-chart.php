@@ -12,14 +12,14 @@ class GDSRChart {
         $mysql4_strtodate = "date_add(vote_date, interval 0 day)";
         $mysql5_strtodate = "str_to_date(vote_date, '%Y-%m-%d')";
 
-        switch(gdFunctionsGDSR::mysql_version())
-        {
+        $strtodate = "";
+        switch(gdFunctionsGDSR::mysql_version()) {
             case "4":
                 $strtodate = $mysql4_strtodate;
                 break;
             case "5":
             default:
-                $strtodate = $mysql4_strtodate;
+                $strtodate = $mysql5_strtodate;
                 break;
         }
         $sql = sprintf("SELECT user_voters, user_votes, visitor_voters, visitor_votes, %s as vote_date FROM %sgdsr_votes_trend where vote_type = '%s' and id = %s and %s between DATE_SUB(NOW(), INTERVAL %s DAY) AND NOW() order by vote_date asc",

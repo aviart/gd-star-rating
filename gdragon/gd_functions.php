@@ -90,6 +90,7 @@ if (!class_exists('gdFunctionsGDSR')) {
             }
             else {
                 $dh = opendir($path);
+                $files = array();
                 while (false !== ($filename = readdir($dh))) {
                     $files[] = $filename;
                 }
