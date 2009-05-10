@@ -474,7 +474,7 @@ if (!class_exists('GDStarRating')) {
                 $votes[] = $single_vote;
             }
             if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
-            else return GDSRRenderT2::render_mre(intval($settings["tpl"]), $allow_vote, $votes, $post_id, $set, 20);
+            else return GDSRRenderT2::render_mre("oxygen", intval($settings["tpl"]), $allow_vote, $votes, $post_id, $set, 20);
         }
         // various rendering
 
@@ -1331,7 +1331,7 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
-        function include_rating_css_xtra() {
+        function include_rating_css_xtra($external = true) {
             $elements = array();
             $presizes = "a".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
             $presizes.= "m".gdFunctionsGDSR::prefill_zeros(20, 2);
@@ -1341,8 +1341,17 @@ if (!class_exists('GDStarRating')) {
             $elements[] = $presizes;
             $elements[] = join("", $sizes);
             foreach($this->g->stars as $s) $elements[] = $s->primary.substr($s->type, 0, 1).$s->folder;
-            $url = $this->plugin_url.'css/gdsr.css.php?s='.urlencode(join("#", $elements));
-            echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
+            $q = join("#", $elements);
+            $url = $this->plugin_url.'css/gdsr.css.php?s='.urlencode($q);
+            if ($external) echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
+            else {
+                echo('<style type="text/css" media=screen>');
+                $inclusion = "internal";
+                $base_url_local = $this->plugin_url;
+                $base_url_extra = $this->plugin_xtra_url;
+                include ($this->plugin_path."css/gdsr.css.php");
+                echo('</style>');
+            }
         }
 
         function include_rating_css($external = true) {
@@ -1395,7 +1404,8 @@ if (!class_exists('GDStarRating')) {
 
             if ($this->o["external_rating_css"] == 1) $this->include_rating_css();
             else $this->include_rating_css(false);
-            $this->include_rating_css_xtra();
+            //if ($this->o["external_rating_css"] == 1) $this->include_rating_css_xtra();
+            //else $this->include_rating_css_xtra(false);
 
             echo("\r\n");
             if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
@@ -2384,7 +2394,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             if ($settings["tpl"] > 0) $template_id = $settings["tpl"];
             else $template_id = $this->o["default_mrb_template"];
 
-            return GDSRRenderT2::render_mrb($template_id, $allow_vote, $votes, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header_text"], $tags_css, $settings["average_stars"], $settings["average_size"], $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"], $debug, $this->loader_multis);
+            return GDSRRenderT2::render_mrb($this->o["mur_style"], $template_id, $allow_vote, $votes, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header_text"], $tags_css, $settings["average_stars"], $settings["average_size"], $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"], $debug, $this->loader_multis);
         }
         // rendering
     }

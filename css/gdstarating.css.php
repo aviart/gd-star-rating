@@ -1,6 +1,6 @@
 <?php
 
-if ($inclusion != "internal") {
+if (!isset($inclusion)) {
     $base_url_local = "../";
     $base_url_extra = "../../../gd-star-rating/";
     header('Content-Type: text/css');

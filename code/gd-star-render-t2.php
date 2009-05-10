@@ -304,7 +304,7 @@ class GDSRRenderT2 {
         return $all_rows;
     }
 
-    function render_mrb($template_id, $allow_vote, $votes, $post_id, $set, $height, $header_text, $tags_css, $avg_style, $avg_size, $time_restirctions = "N", $time_remaining = 0, $time_date = "", $button_active = true, $button_text = "Submit", $debug = '', $wait_msg = '') {
+    function render_mrb($style, $template_id, $allow_vote, $votes, $post_id, $set, $height, $header_text, $tags_css, $avg_style, $avg_size, $time_restirctions = "N", $time_remaining = 0, $time_date = "", $button_active = true, $button_text = "Submit", $debug = '', $wait_msg = '') {
         $template = GDSRRenderT2::get_template($template_id, "MRB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -327,7 +327,7 @@ class GDSRRenderT2 {
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
             $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
-            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($post_id, $template_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"]), $single_row);
+            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"]), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
 
@@ -361,7 +361,7 @@ class GDSRRenderT2 {
         return $rater;
     }
 
-    function render_mre($template_id, $allow_vote, $votes, $post_id, $set, $height) {
+    function render_mre($style, $template_id, $allow_vote, $votes, $post_id, $set, $height) {
         $template = GDSRRenderT2::get_template($template_id, "MRE");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -387,7 +387,7 @@ class GDSRRenderT2 {
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
             $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
-            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($post_id, $template_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"], "", true), $single_row);
+            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"], "", true), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
 
@@ -443,7 +443,7 @@ class GDSRRenderT2 {
         $loader_id = $typecls."_loader_".$post_id;
 
         if (in_array("%RATING_STARS%", $template->tag["normal"])) {
-            $rating_stars = GDSRRender::rating_stars($style, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $post_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
+            $rating_stars = GDSRRender::rating_stars($style, $unit_width,$rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $post_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
             $tpl_render = str_replace("%RATING_STARS%", $rating_stars, $tpl_render);
         }
 
@@ -477,7 +477,7 @@ class GDSRRenderT2 {
         $loader_id = $typecls."_loader_".$cmm_id;
 
         if (in_array("%CMM_RATING_STARS%", $template->tag["normal"])) {
-            $rating_stars = GDSRRender::rating_stars($style, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $cmm_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
+            $rating_stars = GDSRRender::rating_stars($style, $unit_width, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $cmm_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
             $tpl_render = str_replace("%CMM_RATING_STARS%", $rating_stars, $tpl_render);
         }
 
