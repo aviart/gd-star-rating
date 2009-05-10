@@ -1,11 +1,8 @@
 <?php
 
-// http://celestial-star.net/tutorials/49-check-referrer/
-
     require_once("./gd-star-config.php");
     $wpconfig = get_wpconfig();
     require($wpconfig);
-
     global $gdsr;
 
     $input["value"] = $_GET["value"];

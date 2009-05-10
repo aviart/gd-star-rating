@@ -108,6 +108,7 @@ class GDSRRenderT2 {
             }
 
             $tr_class = "odd";
+            $set_rating = $set_voting = null;
             if ($trends_calculated) {
                 $set_rating = $gdsr->g->find_trend($widget["trends_rating_set"]);
                 $set_voting = $gdsr->g->find_trend($widget["trends_voting_set"]);
@@ -143,6 +144,7 @@ class GDSRRenderT2 {
                     switch ($widget["trends_rating"]) {
                         case "img":
                             $rate_url = $set_rating->get_url();
+                            $image_loc = "center";
                             switch ($t->trend_rating) {
                                 case -1:
                                     $image_loc = "bottom";
@@ -174,6 +176,7 @@ class GDSRRenderT2 {
                     switch ($widget["trends_voting"]) {
                         case "img":
                             $vote_url = $set_voting->get_url();
+                            $image_loc = "center";
                             switch ($t->trend_voting) {
                                 case -1:
                                     $image_loc = "bottom";
@@ -233,6 +236,7 @@ class GDSRRenderT2 {
         if ($widget["column"] == "bayes") $widget["column"] = "bayesian";
         if ($widget["column"] == "id") $widget["column"] = "post_id";
 
+        $properties = array();
         $properties[] = array("property" => $widget["column"], "order" => $widget["order"]);
         if ($widget["column"] == "rating")
             $properties[] = array("property" => "voters", "order" => $widget["order"]);
@@ -294,6 +298,7 @@ class GDSRRenderT2 {
         if ($widget["column"] == "votes") $widget["column"] = "voters";
         if ($widget["column"] == "id") $widget["column"] = "comment_id";
 
+        $properties = array();
         $properties[] = array("property" => $widget["column"], "order" => $widget["order"]);
         if ($widget["column"] == "rating")
             $properties[] = array("property" => "voters", "order" => $widget["order"]);
