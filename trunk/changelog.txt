@@ -6,6 +6,7 @@
   * new: added two more stars sizes, 16px and 24px
   * edit: extensive code cleanup eliminating editor warnings
   * edit: optimization of rating css file
+  * edit: expanded some of the rendering functions
   * edit: max number of elements in multi set increased to 20
   * edit: removed more of the obsolete unused code
   * fix: rare problem with external css file in firefox

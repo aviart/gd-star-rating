@@ -101,7 +101,7 @@ class GDSRRender {
         return $rater;
     }
 
-    function rating_stars($style, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg = '', $template_id = 0) {
+    function rating_stars($style, $unit_width, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg = '', $template_id = 0) {
         $rater = '<div id="'.$rater_id.'" class="'.$class.'"><div class="starsbar">';
         $rater.= '<div class="gdouter" align="left"><div id="gdr_vote_'.$type.$id.'" style="width: '.$rating_width.'px;" class="gdinner"></div>';
         if ($allow_vote) {
