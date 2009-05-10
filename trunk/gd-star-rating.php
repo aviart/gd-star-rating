@@ -2291,6 +2291,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $rd_post_id = intval($post->ID);
             $rd_user_id = intval($user->ID);
             $rd_is_page = $post->post_type == "page" ? "1" : "0";
+            $remaining = 0;
+            $deadline = "";
 
             if ($this->p)
                 $post_data = $this->p;
@@ -2324,7 +2326,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             }
 
             if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T')) {
-                $remaining = 1;
                 switch($post_data->expiry_type) {
                     case "D":
                         $remaining = GDSRHelper::expiration_date($post_data->expiry_value);
