@@ -448,7 +448,7 @@ class GDSRRenderT2 {
         $loader_id = $typecls."_loader_".$post_id;
 
         if (in_array("%RATING_STARS%", $template->tag["normal"])) {
-            $rating_stars = GDSRRender::rating_stars($style, $unit_width,$rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $post_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
+            $rating_stars = GDSRRender::rating_stars($style, $unit_width, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $post_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
             $tpl_render = str_replace("%RATING_STARS%", $rating_stars, $tpl_render);
         }
 
