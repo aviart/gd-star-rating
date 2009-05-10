@@ -614,8 +614,8 @@ if (!class_exists('GDStarRating')) {
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_main.css" type="text/css" media="screen" />');
                 if ($this->wp_version >= 27 && $this->wp_version < 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />');
                 if ($this->wp_version >= 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp28.css" type="text/css" media="screen" />');
-                echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>';
-                echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>';
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>');
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>');
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
                 if ($this->admin_plugin_page == "t2" ||
                     $this->admin_plugin_page == "multi-sets") {
@@ -626,7 +626,7 @@ if (!class_exists('GDStarRating')) {
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.core.css" type="text/css" media="screen" />');
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.theme.css" type="text/css" media="screen" />');
                 $datepicker_date = date("Y, n, j");
-                echo '<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>';
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>');
                 if(!empty($this->l)) {
                     $jsFile = $this->plugin_path.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js';
                     if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js"></script>';
@@ -751,9 +751,9 @@ if (!class_exists('GDStarRating')) {
          */
         function plugin_links($links, $file) {
             static $this_plugin;
-            if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
+            if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
 
-            if ( $file == $this_plugin ){
+            if ($file == $this_plugin){
                 $settings_link = '<a href="admin.php?page=gd-star-rating-settings-page">'.__("Settings", "gd-star-rating").'</a>';
                 array_unshift($links, $settings_link);
             }
@@ -1037,8 +1037,7 @@ if (!class_exists('GDStarRating')) {
             $this->plugin_chart_path = $this->plugin_path."charts/";
             $this->plugin_chart_url = $this->plugin_url."charts/";
 
-            if (is_dir($this->plugin_wpr8_path))
-                $this->wpr8_available = true;
+            if (is_dir($this->plugin_wpr8_path)) $this->wpr8_available = true;
 
             define('STARRATING_URL', $this->plugin_url);
             define('STARRATING_AJAX', $this->plugin_ajax);
