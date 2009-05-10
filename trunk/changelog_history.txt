@@ -8,6 +8,7 @@
   * edit: optimization of rating css file
   * edit: max number of elements in multi set increased to 20
   * edit: removed more of the obsolete unused code
+  * fix: rare problem with external css file in firefox
   * fix: invalid results in the rating widgets
   * fix: small problem in widget results sql query with all categories selected
   * fix: multi rating block shows button even if the button is disabled

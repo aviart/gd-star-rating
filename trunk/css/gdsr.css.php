@@ -22,11 +22,13 @@ function get_class_head($head, $element) {
     echo $result;
 }
 
-header('Content-Type: text/css');
+if (!isset($inclusion)) {
+    $base_url_local = "../";
+    $base_url_extra = "../../../gd-star-rating/";
+    header('Content-Type: text/css');
+    $q = urldecode($_GET["s"]);
+}
 
-$base_url_local = "../";
-$base_url_extra = "../../../gd-star-rating/";
-$q = urldecode($_GET["s"]);
 $raw = explode("#", $q);
 $raw_blocks = split_by_length($raw[0], 3);
 $sizes = split_by_length($raw[1], 2);

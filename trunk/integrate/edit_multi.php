@@ -1,10 +1,8 @@
 <?php 
-    
-    if ($multi_id == 0)
-        _e("You don't have any multi rating sets defined. Create at least one set.", "gd-star-rating");
+    if ($multi_id == 0) _e("You don't have any multi rating sets defined. Create at least one set.", "gd-star-rating");
     else {
         $gdsr_multis = GDSRDBMulti::get_multis_tinymce();
-    ?>
+?>
     <div class="gdsr-mur-sets-background">
     <input type="hidden" name="gdsrmultiactive" value="<?php echo $multi_id; ?>" />
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
@@ -23,22 +21,17 @@
       </tr>
     </table>
     </div>
-    <?php
+<?php
         echo '<table width="100%" cellspacing="0" cellpadding="0"><tr><td width="35%" class="gdsr-mur-review-info">';
         echo __("Set ID", "gd-star-rating").": <strong>".$multi_id."</strong><br />";
         echo __("Set Name", "gd-star-rating").": <strong>".$set->name."</strong>";
         echo '<div class="gdsr-table-split-edit"></div>';
-
 ?>
-
         <input onclick="gdsrMultiClear(<?php echo $multi_id; ?>, <?php echo $post_id; ?>, <?php echo count($set->object); ?>)" type="button" class="gdsr-input-button" value="<?php _e("Clear", "gd-star-rating"); ?>" />
         <input onclick="gdsrMultiRevert(<?php echo $multi_id; ?>, <?php echo $post_id; ?>, <?php echo count($set->object); ?>)" type="button" class="gdsr-input-button" value="<?php _e("Revert", "gd-star-rating"); ?>" />
-
 <?php
-
         echo '</td><td width="65%" class="gdsr-mur-review-stars">';
-        echo GDSRRenderT2::render_mre(0, true, $votes, $post_id, $set, 20);
+        echo GDSRRenderT2::render_mre("oxygen", 0, true, $votes, $post_id, $set, 20);
         echo '</td></tr></table>';
     }
-    
 ?>

@@ -1,6 +1,6 @@
 <?php
-global $comment, $gdsr;
-$review = GDSRDatabase::get_comment_review($comment->comment_ID); 
+    global $comment, $gdsr;
+    $review = GDSRDatabase::get_comment_review($comment->comment_ID);
 ?>
 <div id="gdsrreviewdiv" class="stuffbox">
     <h3>GD Star Rating</h3>
