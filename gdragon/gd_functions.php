@@ -311,8 +311,10 @@ if (!class_exists('gdFunctionsGDSR')) {
         }
     }
 
-    function is_odd($number) {
-        return $number&1;
+    if (!function_exists("is_odd")) {
+        function is_odd($number) {
+            return $number&1;
+        }
     }
 }
 
