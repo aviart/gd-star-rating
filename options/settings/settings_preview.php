@@ -2,10 +2,10 @@
 function gdsrStyleSelection(preview) {
     var gdsrImages = { <?php GDSRHelper::render_gfx_js($gdsr_gfx->stars); ?> };
     var gdsrTrends = { <?php GDSRHelper::render_gfx_js($gdsr_gfx->trend); ?> };
-
     var gdsrImagesExt = { <?php GDSRHelper::render_ext_gfx_js($gdsr_gfx->stars); ?> };
     var gdsrTrendsExt = { <?php GDSRHelper::render_ext_gfx_js($gdsr_gfx->trend); ?> };
-    
+    var gdsrAuthors = { <?php GDSRHelper::render_authors_gfx_js($gdsr_gfx->stars); ?> };
+
     var gdsrBase = "#gdsr_preview";
     var gdsrStyle = "";
     var gdsrSize = "";
@@ -44,11 +44,11 @@ function gdsrStyleSelection(preview) {
                 <td width="150" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Stars", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
                     <select style="width: 180px;" name="gdsr_style_preview" id="gdsr_style_preview" onchange="gdsrStyleSelection('stars')">
-                        <?php GDSRHelper::render_styles_select($gdsr_gfx->stars); ?>
+                        <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, "", true); ?>
                     </select>
                 </td>
                 <td width="20" style="padding: 0; border: 0; vertical-align: top;" rowspan="2"></td>
-                <td style="padding: 0; border: 0; vertical-align: top;" rowspan="2">
+                <td style="padding: 0; border: 0; vertical-align: top;" rowspan="3">
                     <table cellpadding="0" width="400" cellspacing="0" class="previewtable">
                         <tr>
                             <td class="gdsr-preview" style="background-color: black;"><img src="#" id="gdsr_preview_black" /></td>
@@ -71,9 +71,14 @@ function gdsrStyleSelection(preview) {
                 </td>
             </tr>
             <tr valign="top">
-                <td width="150" style="padding: 0; border: 0; vertical-align: top;"><?php _e("Size", "gd-star-rating"); ?>:</td>
+                <td width="150" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Size", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
                     <?php GDSRHelper::render_star_sizes("gdsr_size_preview", 30, 180, ' onchange="gdsrStyleSelection(\'stars\')"'); ?>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td width="150" style="padding: 0; border: 0; vertical-align: top;"><?php _e("Author", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
                 </td>
             </tr>
         </table>

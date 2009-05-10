@@ -156,11 +156,12 @@ class GDSRHelper {
         return $parts;
     }
 
-    function render_styles_select($styles, $selected = '') { 
+    function render_styles_select($styles, $selected = '', $version = false) {
         foreach ($styles as $style) {
+            $title = $version ? $style->name." ".$style->version : $style->name;
             if ($selected == $style->folder) $current = ' selected="selected"';
             else $current = '';
-            echo "\t<option value='".$style->folder."'".$current.">".$style->name."</option>\r\n";
+            echo "\t<option value='".$style->folder."'".$current.">".$title."</option>\r\n";
         }
     }
 
@@ -196,6 +197,17 @@ class GDSRHelper {
         $js = array();
         foreach ($styles as $style)
             $js[] = '"'.$style->folder.'": "'.$style->type.'"';
+        echo join(", ", $js);
+    }
+
+    function render_authors_gfx_js($styles) {
+        $js = array();
+        foreach ($styles as $style) {
+            $info = '"name": "'.$style->author.'", ';
+            $info.= '"email": "'.$style->email.'", ';
+            $info.= '"url": "'.$style->url.'"';
+            $js[] = '"'.$style->folder.'": { '.$info.' }';
+        }
         echo join(", ", $js);
     }
 

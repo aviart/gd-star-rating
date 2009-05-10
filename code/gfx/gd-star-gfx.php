@@ -60,6 +60,7 @@ class GDgfxBase {
     var $name = "";
     var $folder = "";
     var $type = "png";
+    var $version = "1.0";
     var $author = "";
     var $email = "";
     var $url = "";
@@ -93,6 +94,7 @@ class GDgfxBase {
         if ($data != null) {
             $this->name = $data["name"];
             if (isset($data["type"])) $this->type = $data["type"];
+            if (isset($data["version"])) $this->version = $data["version"];
             if (isset($data["author"])) $this->author = $data["author"];
             if (isset($data["email"])) $this->email = $data["email"];
             if (isset($data["url"])) $this->url = $data["url"];
