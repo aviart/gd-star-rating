@@ -75,7 +75,7 @@ if (!class_exists('GDStarRating')) {
         var $active_wp_page;
         var $wp_version;
         var $vote_status;
-        var $rendering_sets;
+        var $rendering_sets = null;
 
         var $plugin_url;
         var $plugin_ajax;
@@ -1120,10 +1120,12 @@ if (!class_exists('GDStarRating')) {
                 }
             }
 
-            if (!is_admin() && !is_feed()) {
-                $this->rendering_sets = GDSRDBMulti::get_multisets_for_auto_insert();
-                if (!is_array($this->rendering_sets)) $this->rendering_sets = array();
-            } else $this->rendering_sets = array();
+            if (!is_admin() && !is_feed()) $this->prepare_multiset();
+        }
+
+        function prepare_multiset() {
+            $this->rendering_sets = GDSRDBMulti::get_multisets_for_auto_insert();
+            if (!is_array($this->rendering_sets)) $this->rendering_sets = array();
         }
 
         /**
@@ -1968,20 +1970,23 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         }
 
         function display_multi_rating($location, $post, $user) {
+            if ($this->rendering_sets == null) $this->prepare_multiset();
             $sets = $this->rendering_sets;
             $rendered = "";
-            foreach ($sets as $set) {
-                if ($set->auto_location == $location) {
-                    $insert = false;
-                    $auto = $set->auto_insert;
+            if (is_array($sets) && count($sets) > 0) {
+                foreach ($sets as $set) {
+                    if ($set->auto_location == $location) {
+                        $insert = false;
+                        $auto = $set->auto_insert;
 
-                    if (is_single() && ($auto == "apst" || $auto == "allp")) $insert = true;
-                    if (!$insert && is_page() && ($auto == "apgs" || $auto == "allp")) $insert = true;
-                    if (!$insert && is_single() && in_category($set->categories, $post->ID) && $auto == "cats") $insert = true;
+                        if (is_single() && ($auto == "apst" || $auto == "allp")) $insert = true;
+                        if (!$insert && is_page() && ($auto == "apgs" || $auto == "allp")) $insert = true;
+                        if (!$insert && is_single() && in_category($set->categories, $post->ID) && $auto == "cats") $insert = true;
 
-                    if ($insert) {
-                        $settings = array('id' => $set->multi_id, 'read_only' => 0);
-                        $rendered.= $this->render_multi_rating($post, $user, $settings);
+                        if ($insert) {
+                            $settings = array('id' => $set->multi_id, 'read_only' => 0);
+                            $rendered.= $this->render_multi_rating($post, $user, $settings);
+                        }
                     }
                 }
             }
