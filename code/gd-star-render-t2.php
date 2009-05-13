@@ -487,7 +487,7 @@ class GDSRRenderT2 {
         }
 
         if (in_array("%CMM_RATING_TEXT%", $template->tag["normal"])) {
-            $rating_text = GDSRRenderT2::render_crt($template->dep["CRT"], $rating, $unit_count, $votes, $cmm_id);
+            $rating_text = GDSRRenderT2::render_crt($template->dep["CRT"], $rating, $unit_count, $votes);
             $rating_text = '<div id="gdr_text_'.$type.$cmm_id.'">'.$rating_text.'</div>';
             $tpl_render = str_replace("%CMM_RATING_TEXT%", $rating_text, $tpl_render);
         }
@@ -501,6 +501,22 @@ class GDSRRenderT2 {
 
     function render_mrt($template, $rating, $unit_count, $votes, $id, $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
         return GDSRRenderT2::render_srt($template, $rating, $unit_count, $votes, $id, $time_restirctions, $time_remaining, $time_date);
+    }
+
+    function render_srt_voted($template, $rating, $unit_count, $votes, $id, $vote) {
+        $tpl = $template->elm["vote_saved"];
+        $rt = html_entity_decode($tpl);
+        $rt = str_replace('%RATING%', $rating, $rt);
+        $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
+        $rt = str_replace('%VOTES%', $votes, $rt);
+        $rt = str_replace('%ID%', $id, $rt);
+        $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
+
+        $word_votes = $template->dep["EWV"];
+        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+        return $rt;
     }
 
     function render_srt($template, $rating, $unit_count, $votes, $id, $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
@@ -539,14 +555,15 @@ class GDSRRenderT2 {
         return $rt;
     }
 
-    function render_crt($template, $rating, $unit_count, $votes, $id) {
+    function render_crt($template, $rating, $unit_count, $votes, $vote_value = -1) {
         $tpl = $template->elm["normal"];
+        if ($vote_value > -1) $tpl = $template->elm["vote_saved"];
 
         $rt = html_entity_decode($tpl);
         $rt = str_replace('%CMM_RATING%', $rating, $rt);
         $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
         $rt = str_replace('%CMM_VOTES%', $votes, $rt);
-        $rt = str_replace('%ID%', $id, $rt);
+        if ($vote_value > -1) $rt = str_replace('%CMM_VOTE_VALUE%', $vote_value, $rt);
 
         $word_votes = $template->dep["EWV"];
         $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];

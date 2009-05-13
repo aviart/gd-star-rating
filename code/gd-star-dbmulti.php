@@ -138,6 +138,17 @@ class GDSRDBMulti {
         return $overall;
     }
 
+    function recalculate_multi_vote($values, $set) {
+        $weight_norm = array_sum($set->weight);
+        $weight = $i = 0;
+        foreach ($values as $value) {
+            $weight+= ($value * $set->weight[$i]) / $weight_norm;
+            $i++;
+        }
+        $rating = @number_format($weight, 1);
+        return $rating;
+    }
+
     function recalculate_multi_averages($post_id, $set_id, $rules = "", $set = null, $last_voted = false) {
         global $wpdb, $table_prefix;
 
