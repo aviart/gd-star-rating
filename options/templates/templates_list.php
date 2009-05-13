@@ -1,10 +1,27 @@
 <?php
 
+$posts_per_page = 20;
+
+$url = $_SERVER['REQUEST_URI'];
+$url_pos = strpos($url, "&gdsr=");
+if (!($url_pos === false))
+    $url = substr($url, 0, $url_pos);
+
+$url.= "&gdsr=t2";
+
 $filter_section = "";
+$page_id = 1;
+if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 
 if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     $filter_section = $_POST["filter_section"];
+    $page_id = 1;
 }
+
+$number_posts = GDSRDB::get_templates_count($filter_section);
+$max_page = floor($number_posts / $posts_per_page);
+if ($max_page * $posts_per_page != $number_posts) $max_page++;
+if ($max_page > 1) $pager = GDSRHelper::draw_pager($max_page, $page_id, $url, "pg");
 
 $all_sections = $tpls->list_sections_assoc();
 
@@ -20,8 +37,7 @@ $all_sections = $tpls->list_sections_assoc();
             <input class="button-secondary delete" type="submit" name="gdsr_filter" value="<?php _e("Filter", "gd-star-rating"); ?>" />
         </form>
     </div>
-    <div class="tablenav-pages">
-    </div>
+    <div class="tablenav-pages"><?php echo $pager; ?></div>
 </div>
 <br class="clear"/>
 
@@ -31,7 +47,6 @@ $all_sections = $tpls->list_sections_assoc();
             <th scope="col" width="33"><?php _e("ID", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Name", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Section / Type", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Description", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Tag", "gd-star-rating"); ?></th>
             <th scope="col" style="text-align: right"><?php _e("Options", "gd-star-rating"); ?></th>
         </tr>
@@ -40,7 +55,7 @@ $all_sections = $tpls->list_sections_assoc();
 
 <?php
 
-    $templates = GDSRDB::get_templates($filter_section);
+    $templates = GDSRDB::get_templates_paged($filter_section, ($page_id - 1) * $posts_per_page, $posts_per_page);
 
     $tr_class = "";
     foreach ($templates as $t) {
@@ -50,7 +65,6 @@ $all_sections = $tpls->list_sections_assoc();
         echo '<td><strong>'.$t->template_id.'</strong></td>';
         echo '<td><strong><a href="'.$url.'mode='.$mode.'&tplid='.$t->template_id.'">'.$t->name.'</a></strong></td>';
         echo '<td>'.$all_sections[$t->section].' ['.$t->section.']'.'</td>';
-        echo '<td>'.$t->description.'</td>';
         echo '<td>'.$tpls->find_template_tag($t->section).'</td>';
         echo '<td style="text-align: right">';
         if ($t->preinstalled == "0") {
