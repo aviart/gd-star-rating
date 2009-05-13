@@ -29,9 +29,11 @@ $t->add_element("%TR_DATE%", __("end voting date", "gd-star-rating"));
 $t->add_element("%TOT_DAYS%", __("total remaining days", "gd-star-rating"));
 $t->add_element("%TOT_HOURS%", __("total remaining hours", "gd-star-rating"));
 $t->add_element("%TOT_MINUTES%", __("total remaining minutes", "gd-star-rating"));
+$t->add_element("%VOTE_VALUE%", __("saved vote value", "gd-star-rating"));
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", array("%RATING%", "%MAX_RATING%", "%VOTES%", "%ID%", "%WORD_VOTES%"));
 $t->add_part(__("Time Restricted Active", "gd-star-rating"), "time_active", "", "all");
 $t->add_part(__("Time Restricted Closed", "gd-star-rating"), "time_closed", "", array("%RATING%", "%MAX_RATING%", "%VOTES%", "%ID%", "%WORD_VOTES%"));
+$t->add_part(__("Vote Saved", "gd-star-rating"), "vote_saved", "", array("%RATING%", "%MAX_RATING%", "%VOTES%", "%ID%", "%WORD_VOTES%", "%VOTE_VALUE%"));
 $tpls->add_template($t);
 
 $t = new gdTemplate("SRR", __("Standard Ratings Results", "gd-star-rating"));
@@ -68,7 +70,9 @@ $t->add_element("%CMM_RATING%", __("comment rating", "gd-star-rating"));
 $t->add_element("%MAX_CMM_RATING%", __("maximum comment rating value", "gd-star-rating"));
 $t->add_element("%CMM_VOTES%", __("total votes for comment", "gd-star-rating"));
 $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
-$t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all");
+$t->add_element("%CMM_VOTE_VALUE%", __("saved vote value", "gd-star-rating"));
+$t->add_part(__("Normal", "gd-star-rating"), "normal", "", array("%CMM_RATING%", "%MAX_CMM_RATING%", "%CMM_VOTES%", "%WORD_VOTES%"));
+$t->add_part(__("Vote Saved", "gd-star-rating"), "vote_saved", "", "all");
 $tpls->add_template($t);
 
 $t = new gdTemplate("SSB", __("Standard RSS Rating Block", "gd-star-rating"));
@@ -111,9 +115,11 @@ $t->add_element("%TR_DATE%", __("end voting date", "gd-star-rating"));
 $t->add_element("%TOT_DAYS%", __("total remaining days", "gd-star-rating"));
 $t->add_element("%TOT_HOURS%", __("total remaining hours", "gd-star-rating"));
 $t->add_element("%TOT_MINUTES%", __("total remaining minutes", "gd-star-rating"));
+$t->add_element("%VOTE_VALUE%", __("saved vote value", "gd-star-rating"));
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", array("%RATING%", "%MAX_RATING%", "%VOTES%", "%ID%", "%WORD_VOTES%"));
 $t->add_part(__("Time Restricted Active", "gd-star-rating"), "time_active", "", "all");
 $t->add_part(__("Time Restricted Closed", "gd-star-rating"), "time_closed", "", array("%RATING%", "%MAX_RATING%", "%VOTES%", "%ID%", "%WORD_VOTES%"));
+$t->add_part(__("Vote Saved", "gd-star-rating"), "vote_saved", "", array("%RATING%", "%MAX_RATING%", "%VOTES%", "%ID%", "%WORD_VOTES%", "%VOTE_VALUE%"));
 $tpls->add_template($t);
 
 $t = new gdTemplate("MRS", __("Multi Ratings Stars", "gd-star-rating"), "%MUR_RATING_STARS%");

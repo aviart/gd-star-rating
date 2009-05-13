@@ -1454,6 +1454,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
                 }
             }
 
+            $vote_value = GDSRDBMulti::recalculate_multi_vote($values, $set);
             if ($allow_vote) $allow_vote = $this->check_cookie($post_id."#".$set_id, "multis");
             if ($allow_vote) $allow_vote = GDSRDBMulti::check_vote($post_id, $user, $set_id, 'multis', $ip, $this->o["logged"] != 1, $this->o["mur_allow_mixed_ip_votes"] == 1);
 
@@ -1473,7 +1474,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
             include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
 
             $template = new gdTemplateRender($tpl_id, "MRB");
-            $rt = GDSRRenderT2::render_srt($template->dep["MRT"], $rating, $set->stars, $total_votes, $post_id);
+            $rt = GDSRRenderT2::render_srt_voted($template->dep["MRT"], $rating, $set->stars, $total_votes, $post_id, $vote_value);
             $enc_values = "[".join(",", $json)."]";
 
             return "{ status: 'ok', values: ".$enc_values.", rater: '".$rt."', average: '".$rating."' }";
@@ -1485,6 +1486,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
             else $ua = "";
             $user = intval($userdata->ID);
+            $vote_value = $votes;
 
 wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
 
@@ -1528,7 +1530,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
             include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
 
             $template = new gdTemplateRender($tpl_id, "SRB");
-            $rt = GDSRRenderT2::render_srt($template->dep["SRT"], $rating1, $unit_count, $votes, $post_id);
+            $rt = GDSRRenderT2::render_srt_voted($template->dep["SRT"], $rating1, $unit_count, $votes, $post_id, $vote_value);
 
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
@@ -1539,6 +1541,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
             else $ua = "";
             $user = intval($userdata->ID);
+            $vote_value = $votes;
 
 wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
@@ -1583,7 +1586,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
 
             $template = new gdTemplateRender($tpl_id, "CRB");
-            $rt = GDSRRenderT2::render_crt($template->dep["CRT"], $rating1, $unit_count, $votes, $post_id);
+            $rt = GDSRRenderT2::render_crt($template->dep["CRT"], $rating1, $unit_count, $votes, $vote_value);
 
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
