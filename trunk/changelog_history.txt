@@ -4,6 +4,7 @@
 
 === Version: 1.3.2 / may 17 2009 ===
   * new: rating text template expanded with element displayed after voting
+  * edit: t2 templates list now paged
   * edit: updated stars set format file with version
   * edit: star rating set 2.0
   * edit: plain stars set 2.0

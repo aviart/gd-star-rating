@@ -357,6 +357,22 @@ class GDSRDB {
         return $wpdb->get_results($sql);
     }
 
+    function get_templates_paged($section = '', $start = 0, $limit = 20) {
+        global $wpdb, $table_prefix;
+        if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
+
+        $sql = sprintf("select * from %sgdsr_templates%s limit %s, %s", $table_prefix, $section, $start, $limit);
+         return $wpdb->get_results($sql);
+    }
+
+    function get_templates_count($section = '') {
+        global $wpdb, $table_prefix;
+        if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
+
+        $sql = sprintf("select count(*) from %sgdsr_templates%s", $table_prefix, $section);
+        return $wpdb->get_var($sql);
+    }
+
     function set_templates_defaults($post) {
         global $wpdb, $table_prefix;
 
