@@ -632,7 +632,7 @@ wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_error", $wpdb->last_error);
 
         }
 
-        $logsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'article', %s, %s, '%s', '%s', '%s')",
+        $logsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, object, voted, ip, user_agent) VALUES (%s, 'article', %s, %s, '', '%s', '%s', '%s')",
             $stats, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
         $wpdb->query($logsql);
 
