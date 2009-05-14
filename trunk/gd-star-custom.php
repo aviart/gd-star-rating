@@ -92,16 +92,18 @@
      * @global GDStarRating $gdsr main rating class instance
      * @param int $multi_set_id id of the multi rating set to use
      * @param int $post_id id of the post rating will be attributed to
+     * @param int $template_id id of the template to use
+     * @param bool $read_only render block as a read only, voting not allowed
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_render_multi($multi_set_id, $post_id = 0, $template_id = 0, $echo = true) {
+    function wp_gdsr_render_multi($multi_set_id, $post_id = 0, $template_id = 0, $read_only = false, $echo = true) {
         global $userdata, $gdsr;
         if ($post_id == 0) global $post;
         else $post = get_post($post_id);
 
-        if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "tpl" => $template_id));
-        else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "tpl" => $template_id));
+        if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "read_only" => $read_only, "tpl" => $template_id));
+        else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "read_only" => $read_only, "tpl" => $template_id));
     }
 
     /**
