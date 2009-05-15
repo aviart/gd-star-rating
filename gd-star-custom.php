@@ -24,6 +24,41 @@
     }
 
     /**
+     * Integrate multi set post rating into the comment form.
+     *
+     * @global object $post post data
+     * @global object $userdata user data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param int $multi_set_id id of the multi rating set to use
+     * @param int $template_id id of the template to use
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_comment_integrate_multi_rating($multi_set_id, $template_id = 0, $echo = true) {
+        global $post, $userdata, $gdsr;
+
+        if ($echo) echo $gdsr->wp_gdsr_comment_integrate_multi_rating($post, $userdata, $multi_set_id, $template_id);
+        else return $gdsr->wp_gdsr_comment_integrate_multi_rating($post, $userdata, $multi_set_id, $template_id);
+    }
+
+    /**
+     * Integrate standard post rating into the comment form.
+     *
+     * @global object $post post data
+     * @global object $userdata user data
+     * @global GDStarRating $gdsr main rating class instance
+     * @param int $template_id id of the template to use
+     * @param bool $echo echo results or return it as a string
+     * @return string html with rendered contents
+     */
+    function wp_gdsr_comment_integrate_standard_rating($template_id = 0, $echo = true) {
+        global $post, $userdata, $gdsr;
+
+        if ($echo) echo $gdsr->comment_integrate_standard_rating($post, $userdata, $template_id);
+        else return $gdsr->comment_integrate_standard_rating($post, $userdata, $template_id);
+    }
+
+    /**
      * Renders small 80x15 powered by GD Star Rating button.
      *
      * @global GDStarRating $gdsr main rating class instance
