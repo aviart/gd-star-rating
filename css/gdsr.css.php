@@ -63,22 +63,27 @@ foreach($raw_blocks as $r) {
     $block["size"] = intval(substr($r, 1));
     switch ($block["type"]) {
         case "a":
-            $block["name"] = "ratepost";
-            $head[] = "ratepost";
+            $value = "ratepost";
+            break;
+        case "i":
+            $value = "rcmmpost";
+            break;
+        case "k":
+            $value = "rcmmmulti";
             break;
         case "c":
-            $block["name"] = "ratecmm";
-            $head[] = "ratecmm";
+            $value = "ratecmm";
             break;
         case "r":
-            $block["name"] = "reviewcmm";
-            $head[] = "reviewcmm";
+            $value = "reviewcmm";
             break;
         case "m":
-            $block["name"] = "ratemulti";
-            $head[] = "ratemulti";
+            $value = "ratemulti";
             break;
     }
+    $block["name"] = $value;
+    $head[] = $value;
+
     $blocks[] = $block;
 }
 

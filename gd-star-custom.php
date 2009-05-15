@@ -31,14 +31,15 @@
      * @global GDStarRating $gdsr main rating class instance
      * @param int $multi_set_id id of the multi rating set to use
      * @param int $template_id id of the template to use
+     * @param int $value inital value for the review
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_comment_integrate_multi_rating($multi_set_id, $template_id = 0, $echo = true) {
+    function wp_gdsr_comment_integrate_multi_rating($multi_set_id, $template_id = 0, $value = 0, $echo = true) {
         global $post, $userdata, $gdsr;
 
-        if ($echo) echo $gdsr->wp_gdsr_comment_integrate_multi_rating($post, $userdata, $multi_set_id, $template_id);
-        else return $gdsr->wp_gdsr_comment_integrate_multi_rating($post, $userdata, $multi_set_id, $template_id);
+        if ($echo) echo $gdsr->wp_gdsr_comment_integrate_multi_rating($value, $post, $userdata, $multi_set_id, $template_id);
+        else return $gdsr->wp_gdsr_comment_integrate_multi_rating($value, $post, $userdata, $multi_set_id, $template_id);
     }
 
     /**
@@ -48,14 +49,15 @@
      * @global object $userdata user data
      * @global GDStarRating $gdsr main rating class instance
      * @param int $template_id id of the template to use
+     * @param int $value inital value for the review
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_comment_integrate_standard_rating($template_id = 0, $echo = true) {
+    function wp_gdsr_comment_integrate_standard_rating($template_id = 0, $value = 0, $echo = true) {
         global $post, $userdata, $gdsr;
 
-        if ($echo) echo $gdsr->comment_integrate_standard_rating($post, $userdata, $template_id);
-        else return $gdsr->comment_integrate_standard_rating($post, $userdata, $template_id);
+        if ($echo) echo $gdsr->comment_integrate_standard_rating($value, $post, $userdata, $template_id);
+        else return $gdsr->comment_integrate_standard_rating($value, $post, $userdata, $template_id);
     }
 
     /**
