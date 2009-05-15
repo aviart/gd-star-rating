@@ -704,13 +704,11 @@ if (!class_exists('GDStarRating')) {
             }
             add_filter('comment_text', array(&$this, 'display_comment'));
             add_filter('the_content', array(&$this, 'display_article'));
+            add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
+            add_filter('comment_post', array(&$this, 'comment_save_review'));
             if ($this->o["comments_review_active"] == 1) {
-                add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
-                add_filter('comment_post', array(&$this, 'comment_save_review'));
                 if ($this->o["integrate_comment_edit"] == 1) {
-                    if ($this->wp_version < 27)
-                        add_action('submitcomment_box', array(&$this, 'editbox_comment'));
-
+                    if ($this->wp_version < 27) add_action('submitcomment_box', array(&$this, 'editbox_comment'));
                     add_filter('comment_save_pre', array(&$this, 'comment_edit_review'));
                 }
             }
@@ -724,9 +722,7 @@ if (!class_exists('GDStarRating')) {
                 add_filter('the_content_rss', array(&$this, 'rss_filter'));
             }
 
-            foreach ($this->shortcodes as $code) {
-                $this->shortcode_action($code);
-            }
+            foreach ($this->shortcodes as $code) $this->shortcode_action($code);
         }
 
         /**
@@ -800,36 +796,32 @@ if (!class_exists('GDStarRating')) {
                 echo $before_widget.$before_title.$widget_name.$after_title;
             }
             include($this->plugin_path.'integrate/dashboard.php');
-            if (!function_exists('wp_add_dashboard_widget')) {
-                echo $after_widget;
-            }
+            if (!function_exists('wp_add_dashboard_widget')) echo $after_widget;
         }
 
         function comment_read_post($comment) {
-			if (isset($_POST["gdsr_cmm_review"]))
-				$this->post_comment["review"] = $_POST["gdsr_cmm_review"];
-			else
-				$this->post_comment["review"] = -1;
             $this->post_comment["post_id"] = $_POST["comment_post_ID"];
+            $this->post_comment["review"] = isset($_POST["gdsr_cmm_review"]) ? intval($_POST["gdsr_cmm_review"]) : -1;
+
             return $comment;
         }
 
         function comment_save_review($comment_id) {
-            $comment_data = GDSRDatabase::get_comment_data($comment_id);
-            if (count($comment_data) == 0)
-                GDSRDatabase::add_empty_comment($comment_id, $this->post_comment["post_id"], $this->post_comment["review"]);
-            else
-                GDSRDatabase::save_comment_review($comment_id, $this->post_comment["review"]);
+            if ($this->post_comment["review"] > -1) {
+                $comment_data = GDSRDatabase::get_comment_data($comment_id);
+                if (count($comment_data) == 0)
+                    GDSRDatabase::add_empty_comment($comment_id, $this->post_comment["post_id"], $this->post_comment["review"]);
+                else
+                    GDSRDatabase::save_comment_review($comment_id, $this->post_comment["review"]);
+            }
         }
 
         function comment_edit_review($comment_content) {
             if ($_POST['gdsr_comment_edit'] == "edit") {
                 $post_id = $_POST["comment_post_ID"];
                 $comment_id = $_POST["comment_ID"];
-				if (isset($_POST["gdsr_cmm_review"]))
-					$value = $_POST["gdsr_cmm_review"];
-				else
-					$value = -1;
+				if (isset($_POST["gdsr_cmm_review"])) $value = $_POST["gdsr_cmm_review"];
+				else $value = -1;
                 $comment_data = GDSRDatabase::get_comment_data($comment_id);
                 if (count($comment_data) == 0)
                     GDSRDatabase::add_empty_comment($comment_id, $post_id, $value);
@@ -2405,6 +2397,16 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             return GDSRRenderT2::render_mrb($this->o["mur_style"], $template_id, $allow_vote, $votes, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header_text"], $tags_css, $settings["average_stars"], $settings["average_size"], $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"], $debug, $this->loader_multis);
         }
         // rendering
+
+        // comment rating
+        function comment_integrate_standard_rating($post, $userdata, $template_id) {
+
+        }
+
+        function wp_gdsr_comment_integrate_multi_rating($post, $userdata, $multi_set_id, $template_id) {
+
+        }
+        // comment rating
     }
 
     $gd_debug = new gdDebugGDSR(STARRATING_LOG_PATH);
