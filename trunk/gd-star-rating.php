@@ -323,18 +323,6 @@ if (!class_exists('GDStarRating')) {
 
         // various rendering
         /**
-        * Renders comment review stars
-        *
-        * @param int $value initial rating value
-        * @param bool $allow_vote render stars to support rendering or not to
-        */
-        function comment_review($value = 0, $allow_vote = true) {
-            $stars = $this->o["cmm_review_stars"];
-            $size = $this->o["cmm_review_size"];
-            return GDSRRender::rating_stars_local($size, $stars, $allow_vote, $value * $size);
-        }
-
-        /**
          * Renders comment review stars for selected comment
          *
          * @param int $comment_id id of the comment you want displayed
@@ -802,17 +790,15 @@ if (!class_exists('GDStarRating')) {
         function comment_read_post($comment) {
             $this->post_comment["post_id"] = $_POST["comment_post_ID"];
             $this->post_comment["review"] = isset($_POST["gdsr_cmm_review"]) ? intval($_POST["gdsr_cmm_review"]) : -1;
-
+            $this->post_comment["standard_rating"] = isset($_POST["gdsr_int_rating"]) ? intval($_POST["gdsr_int_rating"]) : -1;
             return $comment;
         }
 
         function comment_save_review($comment_id) {
             if ($this->post_comment["review"] > -1) {
                 $comment_data = GDSRDatabase::get_comment_data($comment_id);
-                if (count($comment_data) == 0)
-                    GDSRDatabase::add_empty_comment($comment_id, $this->post_comment["post_id"], $this->post_comment["review"]);
-                else
-                    GDSRDatabase::save_comment_review($comment_id, $this->post_comment["review"]);
+                if (count($comment_data) == 0) GDSRDatabase::add_empty_comment($comment_id, $this->post_comment["post_id"], $this->post_comment["review"]);
+                else GDSRDatabase::save_comment_review($comment_id, $this->post_comment["review"]);
             }
         }
 
@@ -1327,10 +1313,12 @@ if (!class_exists('GDStarRating')) {
         function include_rating_css_xtra($external = true) {
             $elements = array();
             $presizes = "a".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
+            $presizes = "i".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
             $presizes.= "m".gdFunctionsGDSR::prefill_zeros(20, 2);
+            $presizes.= "k".gdFunctionsGDSR::prefill_zeros(20, 2);
             $presizes.= "c".gdFunctionsGDSR::prefill_zeros($this->o["cmm_stars"], 2);
             $presizes.= "r".gdFunctionsGDSR::prefill_zeros($this->o["cmm_review_stars"], 2);
-            $sizes = array(16, 20, 24, 30);
+            $sizes = array(12, 16, 20, 24, 30, 46);
             $elements[] = $presizes;
             $elements[] = join("", $sizes);
             foreach($this->g->stars as $s) $elements[] = $s->primary.substr($s->type, 0, 1).$s->folder;
@@ -1343,41 +1331,6 @@ if (!class_exists('GDStarRating')) {
                 $base_url_local = $this->plugin_url;
                 $base_url_extra = $this->plugin_xtra_url;
                 include ($this->plugin_path."css/gdsr.css.php");
-                echo('</style>');
-            }
-        }
-
-        function include_rating_css($external = true) {
-            $include_cmm_review = false;
-            $include_mur_rating = false;
-
-            $gfx_a = $this->g->find_stars($this->is_ie6 ? $this->o["style_ie6"] : $this->o["style"]);
-            $css_string = "a".($this->is_ie6 ? $this->o["style_ie6"] : $this->o["style"])."|".$this->o["size"]."|".$this->o["stars"]."|".$gfx_a->type."|".$gfx_a->primary;
-            if ($this->o["multis_active"] == 1) {
-                $gfx_m = $this->g->find_stars($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]);
-                $css_string.= "#m".($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"])."|".$this->o["mur_size"]."|20|".$gfx_m->type."|".$gfx_m->primary;
-                $include_mur_rating = true;
-            }
-            if (is_single() || is_page()) {
-                if ($this->o["comments_active"] == 1) {
-                    $gfx_c = $this->g->find_stars($this->is_ie6 ? $this->o["cmm_style_ie6"] : $this->o["cmm_style"]);
-                    $css_string.= "#c".($this->is_ie6 ? $this->o["cmm_style_ie6"] : $this->o["cmm_style"])."|".$this->o["cmm_size"]."|".$this->o["cmm_stars"]."|".$gfx_c->type."|".$gfx_c->primary;
-                }
-
-                if ($this->o["comments_review_active"] == 1) {
-                    $gfx_r = $this->g->find_stars($this->is_ie6 ? $this->o["cmm_review_style_ie6"] : $this->o["cmm_review_style"]);
-                    $css_string.= "#r".($this->is_ie6 ? $this->o["cmm_review_style_ie6"] : $this->o["cmm_review_style"])."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary;
-                    $include_cmm_review = true;
-                }
-            }
-            if ($external) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
-            else {
-                echo('<style type="text/css" media=screen>');
-                $inclusion = "internal";
-                $base_url_local = $this->plugin_url;
-                $base_url_extra = $this->plugin_xtra_url;
-                $q = $css_string;
-                include ($this->plugin_path."css/gdstarating.css.php");
                 echo('</style>');
             }
         }
@@ -1395,10 +1348,8 @@ if (!class_exists('GDStarRating')) {
             $include_mur_rating = $this->o["multis_active"] == 1;
             if (is_feed()) return;
 
-            if ($this->o["external_rating_css"] == 1) $this->include_rating_css();
-            else $this->include_rating_css(false);
-            //if ($this->o["external_rating_css"] == 1) $this->include_rating_css_xtra();
-            //else $this->include_rating_css_xtra(false);
+            if ($this->o["external_rating_css"] == 1) $this->include_rating_css_xtra();
+            else $this->include_rating_css_xtra(false);
 
             echo("\r\n");
             if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
@@ -2399,11 +2350,46 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         // rendering
 
         // comment rating
-        function comment_integrate_standard_rating($post, $userdata, $template_id) {
-
+        /**
+        * Renders comment review stars
+        *
+        * @param int $value initial rating value
+        * @param bool $allow_vote render stars to support rendering or not to
+        */
+        function comment_review($value = 0, $allow_vote = true) {
+            $style = $this->o["cmm_review_style"];
+            $stars = $this->o["cmm_review_stars"];
+            $size = $this->o["cmm_review_size"];
+            return GDSRRender::rating_stars_local($style, $size, $stars, $allow_vote, $value * $size);
         }
 
-        function wp_gdsr_comment_integrate_multi_rating($post, $userdata, $multi_set_id, $template_id) {
+        /**
+        * Renders comment integration of standard rating
+        *
+        * @param int $value initial rating value
+        * @param object $post post data
+        * @param object $userdata user data
+        * @param int $template_id id of the template to use
+        * @param bool $allow_vote render stars to support rendering or not to
+        */
+        function comment_integrate_standard_rating($value, $post, $userdata, $template_id) {
+            $style = $this->o["style"];
+            $stars = $this->o["stars"];
+            $size = $this->o["size"];
+            return GDSRRender::rating_stars_local($style, $size, $stars, true, $value * $size, "gdsr_int", "rating");
+        }
+
+        /**
+        * Renders comment integration of multi rating
+        *
+        * @param int $value initial rating value
+        * @param object $post post data
+        * @param object $userdata user data
+        * @param int $multi_set_id id of the multi rating set to use
+        * @param int $template_id id of the template to use
+        * @param bool $allow_vote render stars to support rendering or not to
+        */
+        function wp_gdsr_comment_integrate_multi_rating($value, $post, $userdata, $multi_set_id, $template_id) {
 
         }
         // comment rating
