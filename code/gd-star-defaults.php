@@ -5,7 +5,7 @@ class GDSRDefaults {
         "version" => "1.3.2",
         "date" => "2009.05.17.",
         "status" => "Stable",
-        "build" => 659,
+        "build" => 661,
         "external_javascript" => 0,
         "external_rating_css" => 1,
         "external_css" => 1,
@@ -280,7 +280,8 @@ class GDSRDefaults {
     );
 
     var $default_shortcode_starrater = array(
-        "tpl" => 0
+        "tpl" => 0,
+        "read_only" => 0
     );
 
     var $default_shortcode_starratingmulti = array(

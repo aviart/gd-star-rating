@@ -77,14 +77,14 @@
      * @global object $userdata user data
      * @global GDStarRating $gdsr main rating class instance
      * @param int $template_id standard rating block template id
+     * @param bool $read_only render block as a read only, voting not allowed
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_render_article($template_id = 0, $echo = true) {
+    function wp_gdsr_render_article($template_id = 0, $read_only = false, $echo = true) {
         global $post, $userdata, $gdsr;
-
-        if ($echo) echo $gdsr->render_article($post, $userdata, array("tpl" => $template_id));
-        else return $gdsr->render_article($post, $userdata, array("tpl" => $template_id));
+        if ($echo) echo $gdsr->render_article($post, $userdata, array("tpl" => $template_id, "read_only" => $read_only ? 1 : 0));
+        else return $gdsr->render_article($post, $userdata, array("tpl" => $template_id, "read_only" => $read_only ? 1 : 0));
     }
 
     /**
@@ -94,13 +94,14 @@
      * @global object $post post data
      * @global object $userdata user data
      * @global GDStarRating $gdsr main rating class instance
+     * @param bool $read_only render block as a read only, voting not allowed
      * @param bool $echo echo results or return it as a string
      * @return string html with rendered contents
      */
-    function wp_gdsr_render_comment($template_id = 0, $echo = true) {
+    function wp_gdsr_render_comment($template_id = 0, $read_only = false, $echo = true) {
         global $comment, $userdata, $gdsr, $post;
-        if ($echo) echo $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id));
-        else return $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id));
+        if ($echo) echo $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id, "read_only" => $read_only ? 1 : 0));
+        else return $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id, "read_only" => $read_only ? 1 : 0));
     }
 
     /**

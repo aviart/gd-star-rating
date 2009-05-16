@@ -318,29 +318,37 @@ class GDSRDBMulti {
         $wpdb->query($sql);
     }
 
-    function save_vote($post_id, $set_id, $user_id, $ip, $ua, $values, $post_data) {
+    function save_vote($post_id, $set_id, $user_id, $ip, $ua, $values, $post_data, $comment_id = 0) {
         global $wpdb, $table_prefix;
         $ua = str_replace("'", "''", $ua);
         $ua = substr($ua, 0, 250);
 
         if ($post_data->moderate_articles == "" || $post_data->moderate_articles == "N" || ($post_data->moderate_articles == "V" && $user > 0) || ($post_data->moderate_articles == "U" && $user == 0)) {
             GDSRDBMulti::add_vote($post_id, $set_id, $user_id, $ip, $ua, $values);
-            GDSRDBMulti::add_to_log($post_id, $set_id, $user_id, $ip, $ua, $values);
+            GDSRDBMulti::add_to_log($post_id, $set_id, $user_id, $ip, $ua, $values, $comment_id);
         }
         else {
             $modsql = sprintf("INSERT INTO %sgdsr_moderate (id, vote_type, multi_id, user_id, object, voted, ip, user_agent) VALUES (%s, 'multis', %s, %s, '%s', '%s', '%s', '%s')",
                 $table_prefix, $post_id, $set_id, $user_id, serialize($values), str_replace("'", "''", current_time('mysql')), $ip, $ua);
-            wp_gdsr_dump("MOD", $modsql);
             $wpdb->query($modsql);
         }
     }
 
-    function add_to_log($post_id, $set_id, $user_id, $ip, $ua, $values) {
+    function add_to_log($post_id, $set_id, $user_id, $ip, $ua, $values, $comment_id = 0) {
         global $wpdb, $table_prefix;
-            $modsql = sprintf("INSERT INTO %sgdsr_votes_log (id, vote_type, multi_id, user_id, object, voted, ip, user_agent) VALUES (%s, 'multis', %s, %s, '%s', '%s', '%s', '%s')",
-                $table_prefix, $post_id, $set_id, $user_id, serialize($values), str_replace("'", "''", current_time('mysql')), $ip, $ua);
+            $modsql = sprintf("INSERT INTO %sgdsr_votes_log (id, vote_type, multi_id, user_id, object, voted, ip, user_agent, comment_id) VALUES (%s, 'multis', %s, %s, '%s', '%s', '%s', '%s', %s)",
+                $table_prefix, $post_id, $set_id, $user_id, serialize($values), str_replace("'", "''", current_time('mysql')), $ip, $ua, $comment_id);
             wp_gdsr_dump("LOG", $modsql);
             $wpdb->query($modsql);
+    }
+
+    function delete_by_comment($comment_id) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select * from %sgdsr_votes_log where vote_type = 'multis' and comment_id = %s", $table_prefix, $comment_id);
+        $row = $wpdb->get_row($sql);
+        if (count($row) > 0) {
+
+        }
     }
 
     function add_vote($post_id, $set_id, $user_id, $ip, $ua, $votes) {
