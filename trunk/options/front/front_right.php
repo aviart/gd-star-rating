@@ -11,9 +11,9 @@
                     <td class="b options" style="color: red; font-weight: bold;"><?php echo $options["version"]; ?></td>
                 </tr>
                 <tr>
-                    <td class="first b" style="width: 133px;"><?php _e("Change Log", "gd-press-tools"); ?></td>
-                    <td class="t"><?php _e("detailed list of changes", "gd-press-tools"); ?></td>
-                    <td class="t options"><a href="<?php echo STARRATING_URL; ?>info/changelog.html" target="_blank"><?php _e("show", "gd-press-tools"); ?></a></td>
+                    <td class="first b" style="width: 133px;"><?php _e("Change Log", "gd-star-rating"); ?></td>
+                    <td class="t"><?php _e("detailed list of changes", "gd-star-rating"); ?></td>
+                    <td class="t options"><a href="<?php echo STARRATING_URL; ?>info/changelog.html" target="_blank"><?php _e("show", "gd-star-rating"); ?></a></td>
                 </tr>
             </tbody></table>
         </div>

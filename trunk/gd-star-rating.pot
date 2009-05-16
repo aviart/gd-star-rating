@@ -149,6 +149,7 @@ msgstr ""
 #: code/t2/gd-star-t2-templates.php:256
 #: code/t2/gd-star-t2-templates.php:266
 #: code/t2/gd-star-t2-templates.php:273
+#: code/t2/gd-star-t2-templates.php:280
 msgid "Normal"
 msgstr ""
 
@@ -368,6 +369,7 @@ msgstr ""
 #: code/t2/gd-star-t2-templates.php:138
 #: code/t2/gd-star-t2-templates.php:252
 #: code/t2/gd-star-t2-templates.php:271
+#: code/t2/gd-star-t2-templates.php:278
 msgid "multi rating stars"
 msgstr ""
 
@@ -375,6 +377,7 @@ msgstr ""
 #: code/t2/gd-star-t2-templates.php:154
 #: code/t2/gd-star-t2-templates.php:166
 #: code/t2/gd-star-t2-templates.php:272
+#: code/t2/gd-star-t2-templates.php:279
 msgid "css class for whole block"
 msgstr ""
 
@@ -487,15 +490,19 @@ msgstr ""
 msgid "Multi Review Editor"
 msgstr ""
 
-#: code/gd-star-dbone.php:1004
+#: code/t2/gd-star-t2-templates.php:276
+msgid "Multi Rating Integration"
+msgstr ""
+
+#: code/gd-star-dbone.php:1018
 msgid "Show all dates"
 msgstr ""
 
-#: code/gd-star-dbone.php:1032
+#: code/gd-star-dbone.php:1046
 msgid "All users and visitors"
 msgstr ""
 
-#: code/gd-star-dbone.php:1033
+#: code/gd-star-dbone.php:1047
 #: tinymce3/panels/advanced.php:144
 #: tinymce3/panels/comments.php:13
 #: widgets/comments/part_basic.php:17
@@ -513,11 +520,11 @@ msgstr ""
 msgid "Visitors Only"
 msgstr ""
 
-#: code/gd-star-dbone.php:1034
+#: code/gd-star-dbone.php:1048
 msgid "All Users"
 msgstr ""
 
-#: code/gd-star-dbone.php:1050
+#: code/gd-star-dbone.php:1064
 msgid "All categories"
 msgstr ""
 
@@ -841,7 +848,7 @@ msgstr ""
 msgid "Data imported."
 msgstr ""
 
-#: code/gd-star-render-t2.php:585
+#: code/gd-star-render-t2.php:617
 msgid "(no title)"
 msgstr ""
 
@@ -961,8 +968,8 @@ msgstr ""
 #: options/export/export_t2.php:4
 #: options/export/export_users.php:42
 #: options/export/export_users.php:45
-#: gd-star-rating.php:596
-#: gd-star-rating.php:596
+#: gd-star-rating.php:584
+#: gd-star-rating.php:584
 msgid "Export"
 msgstr ""
 
@@ -1065,7 +1072,7 @@ msgid "An error occured while loading newsfeed. Go to the %sfront page%s to chec
 msgstr ""
 
 #: options/front/front_right.php:4
-msgid "Plugin Info"
+msgid "Info"
 msgstr ""
 
 #: options/front/front_right.php:8
@@ -1076,42 +1083,46 @@ msgstr ""
 msgid "release date"
 msgstr ""
 
+#: options/front/front_right.php:13
+msgid "Change Log"
+msgstr ""
+
 #: options/front/front_right.php:14
-msgid "Links"
+msgid "detailed list of changes"
+msgstr ""
+
+#: options/front/front_right.php:15
+msgid "show"
 msgstr ""
 
 #: options/front/front_right.php:19
-#: options/front/front_right.php:68
-msgid "official plugin page"
-msgstr ""
-
-#: options/front/front_right.php:20
-#: options/front/front_right.php:25
-#: options/front/front_right.php:35
-#: options/front/front_right.php:40
-#: options/front/front_right.php:50
-#: options/front/front_right.php:55
-#: options/front/front_right.php:69
-#: options/front/front_right.php:74
-#: options/front/front_right.php:79
-#: options/front/front_right.php:84
-#: options/front/front_right.php:98
-#: options/front/front_right.php:103
-#: options/front/front_right.php:108
-#: options/front/front_right.php:113
-msgid "visit"
+msgid "Links"
 msgstr ""
 
 #: options/front/front_right.php:24
-msgid "development home with svn"
+#: options/front/front_right.php:73
+msgid "official plugin page"
+msgstr ""
+
+#: options/front/front_right.php:25
+#: options/front/front_right.php:30
+#: options/front/front_right.php:35
+#: options/front/front_right.php:40
+#: options/front/front_right.php:55
+#: options/front/front_right.php:60
+#: options/front/front_right.php:74
+#: options/front/front_right.php:79
+#: options/front/front_right.php:84
+#: options/front/front_right.php:89
+#: options/front/front_right.php:103
+#: options/front/front_right.php:108
+#: options/front/front_right.php:113
+#: options/front/front_right.php:118
+msgid "visit"
 msgstr ""
 
 #: options/front/front_right.php:29
-msgid "development progress"
-msgstr ""
-
-#: options/front/front_right.php:30
-msgid "follow"
+msgid "development home with svn"
 msgstr ""
 
 #: options/front/front_right.php:34
@@ -1123,62 +1134,70 @@ msgid "wordpress plugin page"
 msgstr ""
 
 #: options/front/front_right.php:44
-msgid "Extra"
+msgid "development progress"
 msgstr ""
 
-#: options/front/front_right.php:48
-msgid "Premium Support"
+#: options/front/front_right.php:45
+msgid "follow"
 msgstr ""
 
 #: options/front/front_right.php:49
-msgid "special plugin customizations"
+msgid "Extra"
 msgstr ""
 
 #: options/front/front_right.php:53
-msgid "Donate"
+msgid "Premium Support"
 msgstr ""
 
 #: options/front/front_right.php:54
+msgid "special plugin customizations"
+msgstr ""
+
+#: options/front/front_right.php:58
+msgid "Donate"
+msgstr ""
+
+#: options/front/front_right.php:59
 msgid "help further development"
 msgstr ""
 
-#: options/front/front_right.php:62
+#: options/front/front_right.php:67
 msgid "GD WordPress Plugins"
 msgstr ""
 
-#: options/front/front_right.php:73
+#: options/front/front_right.php:78
 msgid "advanced pages widget"
 msgstr ""
 
-#: options/front/front_right.php:78
+#: options/front/front_right.php:83
 msgid "widget to add linkedin badge"
 msgstr ""
 
-#: options/front/front_right.php:83
+#: options/front/front_right.php:88
 msgid "basic plugin class and wizard"
 msgstr ""
 
-#: options/front/front_right.php:96
+#: options/front/front_right.php:101
 msgid "Official Website"
 msgstr ""
 
-#: options/front/front_right.php:97
+#: options/front/front_right.php:102
 msgid "golden dragon official web portal"
 msgstr ""
 
-#: options/front/front_right.php:101
+#: options/front/front_right.php:106
 msgid "Support Forum"
 msgstr ""
 
-#: options/front/front_right.php:102
+#: options/front/front_right.php:107
 msgid "development discussion forum"
 msgstr ""
 
-#: options/front/front_right.php:107
+#: options/front/front_right.php:112
 msgid "wordpress development"
 msgstr ""
 
-#: options/front/front_right.php:112
+#: options/front/front_right.php:117
 msgid "announcements and theme demo"
 msgstr ""
 
@@ -1244,7 +1263,7 @@ msgstr ""
 #: options/multis/editor.php:93
 #: options/multis/sets.php:62
 #: options/templates/templates_editor.php:38
-#: options/templates/templates_list.php:31
+#: options/templates/templates_list.php:47
 #: options/users.php:61
 #: options/voters.php:143
 msgid "Name"
@@ -1253,7 +1272,6 @@ msgstr ""
 #: options/multis/editor.php:32
 #: options/templates/templates_editor.php:40
 #: options/templates/templates_editor.php:53
-#: options/templates/templates_list.php:33
 msgid "Description"
 msgstr ""
 
@@ -1311,8 +1329,8 @@ msgstr ""
 #: options/settings/settings_administration.php:40
 #: options/articles.php:157
 #: options/categories.php:70
-#: gd-star-rating.php:587
-#: gd-star-rating.php:587
+#: gd-star-rating.php:575
+#: gd-star-rating.php:575
 msgid "Categories"
 msgstr ""
 
@@ -1349,8 +1367,8 @@ msgstr ""
 #: options/users.php:65
 #: tinymce3/window.php:55
 #: tinymce3/window.php:56
-#: gd-star-rating.php:586
-#: gd-star-rating.php:586
+#: gd-star-rating.php:574
+#: gd-star-rating.php:574
 msgid "Articles"
 msgstr ""
 
@@ -1366,8 +1384,8 @@ msgstr ""
 #: options/multis/results_post.php:98
 #: options/multis/results_post.php:25
 #: options/multis/results_set.php:22
-#: options/templates/templates_list.php:19
-#: options/templates/templates_list.php:4
+#: options/templates/templates_list.php:36
+#: options/templates/templates_list.php:15
 #: options/articles.php:130
 #: options/articles.php:23
 #: options/users_log.php:95
@@ -1440,8 +1458,8 @@ msgid "Voters"
 msgstr ""
 
 #: options/multis/sets.php:45
-#: gd-star-rating.php:590
-#: gd-star-rating.php:590
+#: gd-star-rating.php:578
+#: gd-star-rating.php:578
 msgid "Multi Sets"
 msgstr ""
 
@@ -1451,7 +1469,7 @@ msgstr ""
 
 #: options/multis/sets.php:61
 #: options/templates/templates_defaults.php:7
-#: options/templates/templates_list.php:30
+#: options/templates/templates_list.php:46
 #: options/users.php:62
 #: options/voters.php:142
 #: tinymce3/panels/advanced.php:168
@@ -1519,10 +1537,11 @@ msgstr ""
 
 #: options/settings/settings_administration.php:30
 #: options/settings.php:37
+#: tinymce3/panels/articles.php:24
 #: tinymce3/panels/multi.php:21
-#: gd-star-rating.php:591
-#: gd-star-rating.php:591
-#: gd-star-rating.php:756
+#: gd-star-rating.php:579
+#: gd-star-rating.php:579
+#: gd-star-rating.php:743
 msgid "Settings"
 msgstr ""
 
@@ -1545,8 +1564,8 @@ msgstr ""
 #: options/categories.php:225
 #: options/comments.php:140
 #: options/users.php:48
-#: gd-star-rating.php:588
-#: gd-star-rating.php:588
+#: gd-star-rating.php:576
+#: gd-star-rating.php:576
 msgid "Users"
 msgstr ""
 
@@ -1556,8 +1575,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:44
 #: options/setup.php:44
-#: gd-star-rating.php:598
-#: gd-star-rating.php:598
+#: gd-star-rating.php:586
+#: gd-star-rating.php:586
 msgid "Setup"
 msgstr ""
 
@@ -1567,8 +1586,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:48
 #: options/tools/tools_t2.php:6
-#: gd-star-rating.php:595
-#: gd-star-rating.php:595
+#: gd-star-rating.php:583
+#: gd-star-rating.php:583
 msgid "Import"
 msgstr ""
 
@@ -1579,8 +1598,8 @@ msgstr ""
 #: options/settings/settings_administration.php:50
 #: options/ips.php:67
 #: options/users_log.php:178
-#: gd-star-rating.php:594
-#: gd-star-rating.php:594
+#: gd-star-rating.php:582
+#: gd-star-rating.php:582
 msgid "IP's"
 msgstr ""
 
@@ -2134,7 +2153,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1150
+#: gd-star-rating.php:1169
 msgid "UNINSTALL"
 msgstr ""
 
@@ -2143,7 +2162,7 @@ msgid "Default Templates"
 msgstr ""
 
 #: options/templates/templates_defaults.php:8
-#: options/templates/templates_list.php:32
+#: options/templates/templates_list.php:48
 msgid "Section / Type"
 msgstr ""
 
@@ -2165,7 +2184,7 @@ msgid "Template"
 msgstr ""
 
 #: options/templates/templates_defaults.php:10
-#: options/templates/templates_list.php:35
+#: options/templates/templates_list.php:50
 msgid "Options"
 msgstr ""
 
@@ -2206,23 +2225,23 @@ msgstr ""
 msgid "Allowed elements"
 msgstr ""
 
-#: options/templates/templates_list.php:12
+#: options/templates/templates_list.php:29
 msgid "Templates"
 msgstr ""
 
-#: options/templates/templates_list.php:34
+#: options/templates/templates_list.php:49
 msgid "Tag"
 msgstr ""
 
-#: options/templates/templates_list.php:76
+#: options/templates/templates_list.php:90
 msgid "Set Default Templates"
 msgstr ""
 
-#: options/templates/templates_list.php:82
+#: options/templates/templates_list.php:96
 msgid "New template for:"
 msgstr ""
 
-#: options/templates/templates_list.php:84
+#: options/templates/templates_list.php:98
 msgid "Create"
 msgstr ""
 
@@ -2552,8 +2571,8 @@ msgstr ""
 
 #: options/export.php:7
 #: options/tools.php:8
-#: gd-star-rating.php:593
-#: gd-star-rating.php:593
+#: gd-star-rating.php:581
+#: gd-star-rating.php:581
 msgid "T2 Templates"
 msgstr ""
 
@@ -2731,8 +2750,8 @@ msgid "Full Uninstall"
 msgstr ""
 
 #: options/tools.php:0
-#: gd-star-rating.php:592
-#: gd-star-rating.php:592
+#: gd-star-rating.php:580
+#: gd-star-rating.php:580
 msgid "Tools"
 msgstr ""
 
@@ -3243,6 +3262,11 @@ msgstr ""
 msgid "StarRater will render actual rating block if you choose not to have it automatically inserted. This way you can position it wherever you want in the contnents."
 msgstr ""
 
+#: tinymce3/panels/articles.php:25
+#: tinymce3/panels/multi.php:22
+msgid "Display rating block as read only."
+msgstr ""
+
 #: tinymce3/panels/comments.php:7
 msgid "Aggregated Comments Ratings"
 msgstr ""
@@ -3253,10 +3277,6 @@ msgstr ""
 
 #: tinymce3/panels/multi.php:7
 msgid "Multi Ratings"
-msgstr ""
-
-#: tinymce3/panels/multi.php:22
-msgid "Display rating block as read only."
 msgstr ""
 
 #: tinymce3/panels/multi.php:26
@@ -3449,51 +3469,51 @@ msgstr ""
 msgid "Web Key"
 msgstr ""
 
+#: gd-star-rating.php:554
+#: gd-star-rating.php:555
+#: gd-star-rating.php:565
 #: gd-star-rating.php:566
-#: gd-star-rating.php:567
-#: gd-star-rating.php:577
-#: gd-star-rating.php:578
 msgid "Multi Ratings Review"
 msgstr ""
 
-#: gd-star-rating.php:585
-#: gd-star-rating.php:585
+#: gd-star-rating.php:573
+#: gd-star-rating.php:573
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:1244
+#: gd-star-rating.php:1263
 msgid "articles records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1246
+#: gd-star-rating.php:1265
 msgid "comments records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1250
+#: gd-star-rating.php:1269
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1252
+#: gd-star-rating.php:1271
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1256
+#: gd-star-rating.php:1275
 msgid "dead articles records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1258
+#: gd-star-rating.php:1277
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1260
+#: gd-star-rating.php:1279
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: gd-star-rating.php:1264
+#: gd-star-rating.php:1283
 msgid "dead articles records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1266
+#: gd-star-rating.php:1285
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 
