@@ -693,7 +693,7 @@ if (!class_exists('GDStarRating')) {
             add_filter('comment_text', array(&$this, 'display_comment'));
             add_filter('the_content', array(&$this, 'display_article'));
             add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
-            add_filter('comment_post', array(&$this, 'comment_save_review'));
+            add_filter('comment_post', array(&$this, 'comment_save'));
             if ($this->o["comments_review_active"] == 1) {
                 if ($this->o["integrate_comment_edit"] == 1) {
                     if ($this->wp_version < 27) add_action('submitcomment_box', array(&$this, 'editbox_comment'));
@@ -709,6 +709,9 @@ if (!class_exists('GDStarRating')) {
                 add_filter('the_excerpt_rss', array(&$this, 'rss_filter'));
                 add_filter('the_content_rss', array(&$this, 'rss_filter'));
             }
+
+            add_action('delete_comment', array(&$this, 'comment_delete'));
+            add_action('delete_post', array(&$this, 'post_delete'));
 
             foreach ($this->shortcodes as $code) $this->shortcode_action($code);
         }
@@ -791,11 +794,14 @@ if (!class_exists('GDStarRating')) {
             $this->post_comment["post_id"] = $_POST["comment_post_ID"];
             $this->post_comment["review"] = isset($_POST["gdsr_cmm_value"]) ? intval($_POST["gdsr_cmm_value"]) : -1;
             $this->post_comment["standard_rating"] = isset($_POST["gdsr_int_value"]) ? intval($_POST["gdsr_int_value"]) : -1;
-            $this->post_comment["multi_rating"] = isset($_POST["gdsr_mur_value"]) ? intval($_POST["gdsr_mur_value"]) : "";
+            $this->post_comment["multi_rating"] = isset($_POST["gdsr_mur_value"]) ? $_POST["gdsr_mur_value"] : "";
+            $this->post_comment["multi_id"] = isset($_POST["gdsr_mur_set"]) ? intval($_POST["gdsr_mur_set"]) : 0;
             return $comment;
         }
 
-        function comment_save_review($comment_id) {
+        function comment_save($comment_id) {
+            global $userdata;
+
             if ($this->post_comment["review"] > -1) {
                 $comment_data = GDSRDatabase::get_comment_data($comment_id);
                 if (count($comment_data) == 0) GDSRDatabase::add_empty_comment($comment_id, $this->post_comment["post_id"], $this->post_comment["review"]);
@@ -803,12 +809,40 @@ if (!class_exists('GDStarRating')) {
             }
 
             if ($this->post_comment["standard_rating"] > 0) {
-                global $userdata;
                 $ip = $_SERVER["REMOTE_ADDR"];
                 $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
                 $user = intval($userdata->ID);
-                GDSRDatabase::save_vote($this->post_comment["post_id"], $user, $ip, $ua, $this->post_comment["standard_rating"]);
+                GDSRDatabase::save_vote($this->post_comment["post_id"], $user, $ip, $ua, $this->post_comment["standard_rating"], $comment_id);
             }
+
+            if ($this->post_comment["multi_id"] > 0 && $this->post_comment["multi_rating"] != "") {
+                $set = gd_get_multi_set($this->post_comment["multi_id"]);
+                $values = explode("X", $this->post_comment["multi_rating"]);
+                $allow_vote = true;
+                foreach ($values as $v) {
+                    if ($v > $set->stars) {
+                        $allow_vote = false;
+                        break;
+                    }
+                }
+                if ($allow_vote) {
+                    $ip = $_SERVER["REMOTE_ADDR"];
+                    $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
+                    $user = intval($userdata->ID);
+                    $data = GDSRDatabase::get_post_data($this->post_comment["post_id"]);
+                    GDSRDBMulti::save_vote($this->post_comment["post_id"], $set->multi_id, $user, $ip, $ua, $values, $data, $comment_id);
+                    GDSRDBMulti::recalculate_multi_averages($this->post_comment["post_id"], $set->multi_id, "", $set, true);
+                }
+            }
+        }
+
+        function comment_delete($comment_id) {
+            GDSRDatabase::delete_by_comment($comment_id);
+            GDSRDBMulti::delete_by_comment($comment_id);
+        }
+
+        function post_delete($post_id) {
+
         }
 
         function comment_edit_review($comment_content) {
@@ -1343,7 +1377,7 @@ if (!class_exists('GDStarRating')) {
         }
 
         function multi_rating_header($external_css = true) {
-            $this->include_rating_css($external_css);
+            $this->include_rating_css_xtra($external_css);
             echo('<script type="text/javascript" src="'.$this->plugin_url.'script.js.php"></script>');
         }
 
@@ -1974,12 +2008,12 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             return $out;
         }
 
-        function render_comment($post, $comment, $user, $override = array()) {
+        function render_comment($post, $comment, $user, $override = array("tpl" => 0, "read_only" => 0)) {
             if ($this->o["comments_active"] != 1) return "";
             if ($this->is_bot) return "";
 
             $dbg_allow = "F";
-            $allow_vote = true;
+            $allow_vote = $override["read_only"] == 0;
             if ($this->is_ban && $this->o["ip_filtering"] == 1) {
                 if ($this->o["ip_filtering_restrictive"] == 1) return "";
                 else $allow_vote = false;
@@ -2106,11 +2140,11 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             return $rating_block;
         }
 
-        function render_article($post, $user, $override = array("tpl" => 0)) {
+        function render_article($post, $user, $override = array("tpl" => 0, "read_only" => 0)) {
             if ($this->is_bot) return "";
 
             $dbg_allow = "F";
-            $allow_vote = true;
+            $allow_vote = $override["read_only"] == 0;
             if ($this->is_ban && $this->o["ip_filtering"] == 1) {
                 if ($this->o["ip_filtering_restrictive"] == 1) return "";
                 else $allow_vote = false;

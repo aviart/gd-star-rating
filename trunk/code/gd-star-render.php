@@ -67,14 +67,18 @@ class GDSRRender {
     function rating_stars_multi($style, $post_id, $tpl_id, $set_id, $id, $height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '', $review_mode = false) {
         $css_style = " gdsr-".$style;
         $css_sizes = " gdsr-size-".$height;
-        if ($review_mode) $current = $value;
+        $vote_class = "gdsr_multis_as";
+        if ($review_mode) {
+            $current = $value;
+            $vote_class = "gdsr_mur_static";
+        }
         else $current = 0;
         $rater.= '<div id="gdsr_mur_stars_'.$post_id.'_'.$set_id.'_'.$id.'" class="ratemulti'.$css_style.$css_sizes.'"><div class="starsbar'.$css_sizes.'">';
         $rater.= '<div class="gdouter" align="left" style="width: '.($unit_count * $height).'px">';
         $rater.= '<div id="gdsr_mur_stars_rated_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($value * $height).'px;" class="gdinner"></div>';
         if ($allow_vote) {
             $rater.= '<div id="gdsr_mur_stars_current_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($current * $height).'px;" class="gdcurrent"></div>';
-            $rater.= '<div id="gdr_stars_mur_rating_'.$post_id.'_'.$set_id.'_'.$id.'" class="gdsr_multis_as">';
+            $rater.= '<div id="gdr_stars_mur_rating_'.$post_id.'_'.$set_id.'_'.$id.'" class="'.$vote_class.'">';
             for ($ic = 0; $ic < $unit_count; $ic++) {
                 $ncount = $unit_count - $ic;
                 $rater.='<a id="gdsrX'.$post_id.'X'.$set_id.'X'.$id.'X'.$ncount.'X'.$height.'X'.$tpl_id.'" title="'.$ncount.' / '.$unit_count.'" class="s'.$ncount.' '.$xtra_cls.'" rel="nofollow"></a>';

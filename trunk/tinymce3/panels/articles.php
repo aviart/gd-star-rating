@@ -20,4 +20,9 @@
 <legend><?php _e("Template", "gd-star-rating"); ?></legend>
     <?php GDSRHelper::render_templates_section("SRB", "srRatingBlockTemplate", 0, 300); ?>
 </fieldset>
+
+<fieldset>
+<legend><?php _e("Settings", "gd-star-rating"); ?></legend>
+    <input type="checkbox" size="5" id="srArticleRead" name="srArticleRead" /><label for="srArticleRead"> <?php _e("Display rating block as read only.", "gd-star-rating"); ?></label><br />
+</fieldset>
 </div>

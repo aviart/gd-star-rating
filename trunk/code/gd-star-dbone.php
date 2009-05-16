@@ -277,10 +277,8 @@ class GDSRDatabase {
 
         if (count($del) > 0) {
             foreach ($del as $d) {
-                if ($d->user == 0)
-                    $update = sprintf("user_voters = user_voters - %s, user_votes = user_votes - %s", $d->count, $d->votes);
-                else 
-                    $update = sprintf("visitor_voters = visitor_voters - %s, visitor_votes = visitor_votes - %s", $d->count, $d->votes);
+                if ($d->user == 0) $update = sprintf("user_voters = user_voters - %s, user_votes = user_votes - %s", $d->count, $d->votes);
+                else $update = sprintf("visitor_voters = visitor_voters - %s, visitor_votes = visitor_votes - %s", $d->count, $d->votes);
                 
                 $sql = sprintf("update %s set %s where post_id = %s", $delfrom, $update, $d->id);
                 $wpdb->query($sql);
@@ -360,7 +358,7 @@ class GDSRDatabase {
             if (!in_array($id, $rows)) GDSRDatabase::add_default_vote($id);
     }
 
-    function save_vote($id, $user, $ip, $ua, $vote) {
+    function save_vote($id, $user, $ip, $ua, $vote, $comment_id = 0) {
         global $wpdb, $table_prefix;
         $ua = str_replace("'", "''", $ua);
         $ua = substr($ua, 0, 250);
@@ -375,11 +373,11 @@ wp_gdsr_dump("SAVEVOTE_post_data_sql_error", $wpdb->last_error);
 wp_gdsr_dump("SAVEVOTE_post_data", $post_data);
 
         if ($post_data->moderate_articles == "" || $post_data->moderate_articles == "N" || ($post_data->moderate_articles == "V" && $user > 0) || ($post_data->moderate_articles == "U" && $user == 0)) {
-            GDSRDatabase::add_vote($id, $user, $ip, $ua, $vote);
+            GDSRDatabase::add_vote($id, $user, $ip, $ua, $vote, $comment_id);
         }
         else {
-            $modsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'article', %s, %s, '%s', '%s', '%s')",
-                $moderate, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
+            $modsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent, comment_id) VALUES (%s, 'article', %s, %s, '%s', '%s', '%s', %s)",
+                $moderate, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua, $comment_id);
             $wpdb->query($modsql);
 
 wp_gdsr_dump("SAVEVOTE_moderate_sql", $modsql);
@@ -561,7 +559,7 @@ wp_gdsr_dump("SAVEVOTE_CMM_insert_stats_error", $wpdb->last_error);
 
     }
 
-    function add_vote($id, $user, $ip, $ua, $vote) {
+    function add_vote($id, $user, $ip, $ua, $vote, $comment_id = 0) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
         $stats = $table_prefix.'gdsr_votes_log';
@@ -627,18 +625,34 @@ wp_gdsr_dump("SAVEVOTE_trend_update_visitor_error", $wpdb->last_error);
                 $wpdb->query($sql);
             }
 
-wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_sql", $sql);
-wp_gdsr_dump("SAVEVOTE_CMM_trend_update_visitor_error", $wpdb->last_error);
+wp_gdsr_dump("SAVEVOTE_trend_update_visitor_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_trend_update_visitor_error", $wpdb->last_error);
 
         }
 
-        $logsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, object, voted, ip, user_agent) VALUES (%s, 'article', %s, %s, '', '%s', '%s', '%s')",
-            $stats, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
+        $logsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, object, voted, ip, user_agent, comment_id) VALUES (%s, 'article', %s, %s, '', '%s', '%s', '%s', %s)",
+            $stats, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua, $comment_id);
         $wpdb->query($logsql);
 
 wp_gdsr_dump("SAVEVOTE_insert_stats_sql", $sql);
 wp_gdsr_dump("SAVEVOTE_insert_stats_id", $wpdb->insert_id);
 wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
+
+    }
+
+    function delete_by_comment($comment_id) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select * from %sgdsr_votes_log where vote_type = 'article' and comment_id = %s", $table_prefix, $comment_id);
+        $row = $wpdb->get_row($sql);
+        if (count($row) > 0) {
+            if ($row->user_id == 0) $delstring = sprintf("visitor_votes = visitor_votes - %s, visitor_voters = visitor_voters - 1", $row->vote);
+            else $delstring = sprintf("user_votes = user_votes - %s, user_voters = user_voters - 1", $row->vote);
+
+            $sql = sprintf("update %sgdsr_data_article set %s where post_id = %s", $table_prefix, $delstring, $row->id);
+            $wpdb->query($sql);
+            $sql = sprintf("delete from %sgdsr_votes_log where record_id = %s", $table_prefix, $row->record_id);
+            $wpdb->query($sql);
+        }
     }
 
     function add_default_vote($post_id, $is_page = '', $review = -1) {

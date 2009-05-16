@@ -76,6 +76,8 @@ function insertStarRatingCode() {
     else if (shortcode == 'starrater') {
         tagtext = "[starrater tpl=";
         tagtext = tagtext + document.getElementById('srRatingBlockTemplate').value;
+        if (document.getElementById('srArticleRead').checked)
+           tagtext = tagtext + " read_only=1";
         tagtext = tagtext + "]";
     }
     else if (shortcode == 'starreviewmulti') {
@@ -88,7 +90,7 @@ function insertStarRatingCode() {
             tagtext = tagtext + " element_size='" + document.getElementById('srStarsSizeMRREl').value + "'";
         if (document.getElementById('srStarsStyleMRRAv').value != 'oxygen')
             tagtext = tagtext + " average_stars='" + document.getElementById('srStarsStyleMRRAv').value + "'";
-        if (document.getElementById('srStarsSizeMRRAv').value != '30')
+        if (document.getElementById('srStarsSizeMRRAv').value != '20')
             tagtext = tagtext + " average_size='" + document.getElementById('srStarsSizeMRRAv').value + "'";
         tagtext = tagtext + "]";
     }
