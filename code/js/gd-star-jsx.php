@@ -4,5 +4,5 @@
         var pid = "#" + jQuery(this).parent().attr("id");
         var new_width = el[1] * el[2];
         jQuery(pid + "_stars_rated").css("width", new_width + "px");
-        jQuery(pid + "_review").val(el[1]);
+        jQuery(pid + "_value").val(el[1]);
     });

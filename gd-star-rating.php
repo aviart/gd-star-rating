@@ -789,8 +789,9 @@ if (!class_exists('GDStarRating')) {
 
         function comment_read_post($comment) {
             $this->post_comment["post_id"] = $_POST["comment_post_ID"];
-            $this->post_comment["review"] = isset($_POST["gdsr_cmm_review"]) ? intval($_POST["gdsr_cmm_review"]) : -1;
-            $this->post_comment["standard_rating"] = isset($_POST["gdsr_int_rating"]) ? intval($_POST["gdsr_int_rating"]) : -1;
+            $this->post_comment["review"] = isset($_POST["gdsr_cmm_value"]) ? intval($_POST["gdsr_cmm_value"]) : -1;
+            $this->post_comment["standard_rating"] = isset($_POST["gdsr_int_value"]) ? intval($_POST["gdsr_int_value"]) : -1;
+            $this->post_comment["multi_rating"] = isset($_POST["gdsr_mur_value"]) ? intval($_POST["gdsr_mur_value"]) : "";
             return $comment;
         }
 
@@ -799,6 +800,14 @@ if (!class_exists('GDStarRating')) {
                 $comment_data = GDSRDatabase::get_comment_data($comment_id);
                 if (count($comment_data) == 0) GDSRDatabase::add_empty_comment($comment_id, $this->post_comment["post_id"], $this->post_comment["review"]);
                 else GDSRDatabase::save_comment_review($comment_id, $this->post_comment["review"]);
+            }
+
+            if ($this->post_comment["standard_rating"] > 0) {
+                global $userdata;
+                $ip = $_SERVER["REMOTE_ADDR"];
+                $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
+                $user = intval($userdata->ID);
+                GDSRDatabase::save_vote($this->post_comment["post_id"], $user, $ip, $ua, $this->post_comment["standard_rating"]);
             }
         }
 
@@ -809,10 +818,8 @@ if (!class_exists('GDStarRating')) {
 				if (isset($_POST["gdsr_cmm_review"])) $value = $_POST["gdsr_cmm_review"];
 				else $value = -1;
                 $comment_data = GDSRDatabase::get_comment_data($comment_id);
-                if (count($comment_data) == 0)
-                    GDSRDatabase::add_empty_comment($comment_id, $post_id, $value);
-                else
-                    GDSRDatabase::save_comment_review($comment_id, $value);
+                if (count($comment_data) == 0) GDSRDatabase::add_empty_comment($comment_id, $post_id, $value);
+                else GDSRDatabase::save_comment_review($comment_id, $value);
             }
             return $comment_content;
         }
@@ -1313,7 +1320,7 @@ if (!class_exists('GDStarRating')) {
         function include_rating_css_xtra($external = true) {
             $elements = array();
             $presizes = "a".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
-            $presizes = "i".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
+            $presizes.= "i".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
             $presizes.= "m".gdFunctionsGDSR::prefill_zeros(20, 2);
             $presizes.= "k".gdFunctionsGDSR::prefill_zeros(20, 2);
             $presizes.= "c".gdFunctionsGDSR::prefill_zeros($this->o["cmm_stars"], 2);
@@ -1426,8 +1433,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
         function vote_article_ajax($votes, $id, $tpl_id) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
-            if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
-            else $ua = "";
+            $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
             $user = intval($userdata->ID);
             $vote_value = $votes;
 
@@ -2367,16 +2373,13 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         * Renders comment integration of standard rating
         *
         * @param int $value initial rating value
-        * @param object $post post data
-        * @param object $userdata user data
-        * @param int $template_id id of the template to use
         * @param bool $allow_vote render stars to support rendering or not to
         */
-        function comment_integrate_standard_rating($value, $post, $userdata, $template_id) {
+        function comment_integrate_standard_rating($value = 0) {
             $style = $this->o["style"];
             $stars = $this->o["stars"];
             $size = $this->o["size"];
-            return GDSRRender::rating_stars_local($style, $size, $stars, true, $value * $size, "gdsr_int", "rating");
+            return GDSRRender::rating_stars_local($style, $size, $stars, true, $value * $size, "gdsr_int", "rcmmpost");
         }
 
         /**
@@ -2389,8 +2392,17 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         * @param int $template_id id of the template to use
         * @param bool $allow_vote render stars to support rendering or not to
         */
-        function wp_gdsr_comment_integrate_multi_rating($value, $post, $userdata, $multi_set_id, $template_id) {
-
+        function comment_integrate_multi_rating($value, $post_id, $multi_set_id, $template_id) {
+            $set = gd_get_multi_set($multi_set_id);
+            $votes = array();
+            for ($i = 0; $i < count($set->object); $i++) {
+                $single_vote = array();
+                $single_vote["votes"] = 0;
+                $single_vote["score"] = 0;
+                $single_vote["rating"] = 0;
+                $votes[] = $single_vote;
+            }
+            return GDSRRenderT2::render_mri("oxygen", $template_id, $post_id, $set, 20);
         }
         // comment rating
     }

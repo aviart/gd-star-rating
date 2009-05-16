@@ -366,7 +366,37 @@ class GDSRRenderT2 {
         return $rater;
     }
 
-    function render_mre($style, $template_id, $allow_vote, $votes, $post_id, $set, $height) {
+    function render_mri($style, $template_id, $post_id, $set, $height, $css = "") {
+        $template = GDSRRenderT2::get_template($template_id, "MRI");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+        
+        $empty_value = str_repeat("0X", count($set->object));
+        $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
+
+        $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti gdsr-rating-block">';
+        $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsr_mur_value" value="'.$empty_value.'" />';
+
+        $i = 0;
+        $rating_stars = "";
+        $table_row_class = $template->dep["MRS"]->dep["ETR"];
+        foreach ($set->object as $el) {
+            $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
+            $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
+            $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
+            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars, true, 0, "", true), $single_row);
+            $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
+            $rating_stars.= $single_row;
+            $i++;
+        }
+
+        $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
+        $tpl_render = str_replace("%MUR_CSS_BLOCK%", $css, $tpl_render);
+        $rater.= $tpl_render."</div>";
+        return $rater;
+    }
+
+    function render_mre($style, $template_id, $allow_vote, $votes, $post_id, $set, $height, $css = "") {
         $template = GDSRRenderT2::get_template($template_id, "MRE");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -402,6 +432,7 @@ class GDSRRenderT2 {
         }
 
         $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
+        $tpl_render = str_replace("%MUR_CSS_BLOCK%", $css, $tpl_render);
         $rater.= $tpl_render."</div>";
         return $rater;
     }

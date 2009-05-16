@@ -85,18 +85,18 @@ class GDSRRender {
         return $rater;
     }
 
-    function rating_stars_local($style, $height, $unit_count, $allow_vote = true, $value = 0, $class_base = 'gdsr_cmm', $class_type = "review") {
+    function rating_stars_local($style, $height, $unit_count, $allow_vote = true, $value = 0, $class_base = 'gdsr_cmm', $main_class = "reviewcmm") {
         $css_style = " gdsr-".$style;
         $css_sizes = " gdsr-size-".$height;
 
-        $rater = '<input type="hidden" id="'.$class_base.'_'.$class_type.'" name="'.$class_base.'_'.$class_type.'" value="0" />';
-        $rater.= '<div id="'.$class_base.'_stars" class="reviewcmm'.$css_style.$css_sizes.'"><div class="starsbar'.$css_sizes.'">';
+        $rater = '<input type="hidden" id="'.$class_base.'_value" name="'.$class_base.'_value" value="0" />';
+        $rater.= '<div id="'.$class_base.'_stars" class="'.$main_class.$css_style.$css_sizes.'"><div class="starsbar'.$css_sizes.'">';
         $rater.= '<div class="gdouter" align="left"><div id="'.$class_base.'_stars_rated" style="width: '.$value.'px;" class="gdinner"></div>';
         if ($allow_vote) {
             $rater.= '<div id="'.$class_base.'" class="gdsr_integration">';
             for ($ic = 0; $ic < $unit_count; $ic++) {
                 $ncount = $unit_count - $ic;
-                $rater.='<a id="gdsrX'.$ncount.'X'.$height.'" title="'.$ncount.' out of '.$unit_count.'" class="s'.$ncount.' '.$xtra_cls.'" rel="nofollow"></a>';
+                $rater.='<a id="gdsrX'.$ncount.'X'.$height.'" title="'.$ncount.' / '.$unit_count.'" class="s'.$ncount.'" rel="nofollow"></a>';
             }
             $rater.= '</div>';
         }

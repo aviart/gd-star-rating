@@ -274,4 +274,11 @@ $t->add_element("%MUR_CSS_BLOCK%", __("css class for whole block", "gd-star-rati
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
 $tpls->add_template($t);
 
+$t = new gdTemplate("MRI", __("Multi Rating Integration", "gd-star-rating"));
+$t->add_template("MRS", "%MUR_RATING_STARS%");
+$t->add_element("%MUR_RATING_STARS%", __("multi rating stars", "gd-star-rating"));
+$t->add_element("%MUR_CSS_BLOCK%", __("css class for whole block", "gd-star-rating"));
+$t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
+$tpls->add_template($t);
+
 ?>
