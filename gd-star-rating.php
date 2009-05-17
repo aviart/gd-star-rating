@@ -76,6 +76,8 @@ if (!class_exists('GDStarRating')) {
         var $wp_version;
         var $vote_status;
         var $rendering_sets = null;
+        var $override_readonly_standard = false;
+        var $override_readonly_multis = false;
 
         var $plugin_url;
         var $plugin_ajax;
@@ -86,6 +88,8 @@ if (!class_exists('GDStarRating')) {
         var $plugin_chart_path;
         var $plugin_cache_path;
         var $plugin_wpr8_path;
+        var $post_comment;
+        var $wpr8;
 
         var $l; // language
         var $o; // options
@@ -95,10 +99,6 @@ if (!class_exists('GDStarRating')) {
         var $e; // blank image
         var $i; // import
         var $g; // gfx
-
-        var $wpr8;
-
-        var $post_comment;
 
         var $shortcodes;
         var $default_shortcode_starrating;
@@ -140,6 +140,7 @@ if (!class_exists('GDStarRating')) {
 
             $this->tabpage = "front";
             $this->log_file = STARRATING_LOG_PATH;
+
             $this->active_wp_page();
             $this->plugin_path_url();
             $this->install_plugin();
@@ -2145,11 +2146,14 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
+            if ($this->override_readonly_standard) $allow_vote = false;
             if ($this->is_ban && $this->o["ip_filtering"] == 1) {
                 if ($this->o["ip_filtering_restrictive"] == 1) return "";
                 else $allow_vote = false;
                 $dbg_allow = "B";
             }
+
+            if ($override["read_only"] == 1) $dbg_allow = "RO";
 
             if (is_single() || (is_page() && $this->o["display_comment_page"] == 1)) $this->init_post();
 
@@ -2255,25 +2259,23 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             return $rating_block;
         }
 
-        function render_multi_rating($post, $user, $settings) {
+        function render_multi_rating($post, $user, $override = array("id" => 0, "tpl" => 0, "read_only" => 0)) {
             if ($this->is_bot) return "";
             if (is_feed()) return "";
 
-            $set = gd_get_multi_set($settings["id"]);
+            $set = gd_get_multi_set($override["id"]);
             if ($set == null) return "";
 
             $dbg_allow = "F";
-            $allow_vote = true;
+            $allow_vote = $override["read_only"] == 0;
+            if ($this->override_readonly_multis) $allow_vote = false;
             if ($this->is_ban && $this->o["ip_filtering"] == 1) {
                 if ($this->o["ip_filtering_restrictive"] == 1) return "";
                 else $allow_vote = false;
                 $dbg_allow = "B";
             }
 
-            if ($settings["read_only"] == 1) {
-                $dbg_allow = "RO";
-                $allow_vote = false;
-            }
+            if ($override["read_only"] == 1) $dbg_allow = "RO";
 
             if (is_single() || (is_page() && $this->o["display_comment_page"] == 1))
                 $this->init_post();
@@ -2382,10 +2384,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $tags_css["MUR_CSS_TEXT"] = $this->o["mur_class_text"];
             $tags_css["MUR_CSS_BUTTON"] = $this->o["mur_class_button"];
 
-            if ($settings["tpl"] > 0) $template_id = $settings["tpl"];
+            if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_mrb_template"];
 
-            return GDSRRenderT2::render_mrb($this->o["mur_style"], $template_id, $allow_vote, $votes, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header_text"], $tags_css, $settings["average_stars"], $settings["average_size"], $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"], $debug, $this->loader_multis);
+            return GDSRRenderT2::render_mrb($this->o["mur_style"], $template_id, $allow_vote, $votes, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header_text"], $tags_css, $override["average_stars"], $override["average_size"], $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"], $debug, $this->loader_multis);
         }
         // rendering
 

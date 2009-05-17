@@ -347,7 +347,24 @@ class GDSRDBMulti {
         $sql = sprintf("select * from %sgdsr_votes_log where vote_type = 'multis' and comment_id = %s", $table_prefix, $comment_id);
         $row = $wpdb->get_row($sql);
         if (count($row) > 0) {
+            $votes = unserialize($row->object);
+            $sql = sprintf("select id from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $row->id, $row->multi_id);
+            $id = $wpdb->get_var($sql);
 
+            if ($row->user_id == 0) $delstring = "visitor_votes = visitor_votes - %s, visitor_voters = visitor_voters - 1";
+            else $delstring = "user_votes = user_votes - %s, user_voters = user_voters - 1";
+
+            $i = 0;
+            foreach ($votes as $vote) {
+                $sql_set = sprintf($delstring, $vote);
+                $sql = sprintf("update %sgdsr_multis_values set %s where source = 'dta' and id = %s and item_id = %s", $table_prefix, $delstring, $id, $i);
+                $wpdb->query($sql);
+            }
+            $set = gd_get_multi_set($row->multi_id);
+            GDSRDBMulti::recalculate_multi_averages($row->id, $row->multi_id, "", $set, true);
+
+            $sql = sprintf("delete from %sgdsr_votes_log where record_id = %s", $table_prefix, $row->record_id);
+            $wpdb->query($sql);
         }
     }
 
@@ -363,7 +380,7 @@ class GDSRDBMulti {
         wp_gdsr_dump("TREND_CHECK", $sql_trend);
         $trend_data = intval($wpdb->get_var($sql_trend));
         wp_gdsr_dump("TREND_ID", $trend_data);
-        
+
         $trend_added = false;
         if ($trend_data == 0) {
             $trend_added = true;
@@ -435,7 +452,7 @@ class GDSRDBMulti {
 
     function get_values($id, $source = 'dta') {
         global $wpdb, $table_prefix;
-        
+
         $sql = sprintf("SELECT * FROM %sgdsr_multis_values WHERE source = '%s' and id = %s ORDER BY item_id ASC", $table_prefix, $source, $id);
         return $wpdb->get_results($sql);
     }
@@ -468,7 +485,7 @@ class GDSRDBMulti {
 
     function get_averages($post_id, $set_id) {
         global $wpdb, $table_prefix;
-        
+
         $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s and multi_id = %s", $table_prefix, $post_id, $set_id);
         return $wpdb->get_row($sql);
     }
@@ -538,7 +555,7 @@ class GDSRDBMulti {
     function check_vote_moderated($id, $user, $set, $type, $ip, $mixed = false) {
         return GDSRDBMulti::check_vote_table('gdsr_moderate', $id, $user, $set, $type, $ip, $mixed);
     }
-    
+
     function check_vote_table($table, $id, $user, $set, $type, $ip, $mixed = false) {
         global $wpdb, $table_prefix;
 
@@ -586,19 +603,19 @@ class GDSRDBMulti {
         $sql = sprintf("select multi_id as folder, name from %sgdsr_multis", $table_prefix);
         return $wpdb->get_results($sql);
     }
-    
+
     function get_multis($start = 0, $limit = 20) {
         global $wpdb, $table_prefix;
         $sql = sprintf("select * from %sgdsr_multis limit %s, %s", $table_prefix, $start, $limit);
         return $wpdb->get_results($sql);
     }
-    
+
     function get_multi_set($id) {
         global $wpdb, $table_prefix;
         $sql = sprintf("select * from %sgdsr_multis where multi_id = %s", $table_prefix, $id);
         return $wpdb->get_row($sql);
     }
-    
+
     function add_multi_set($set) {
         global $wpdb, $table_prefix;
         $sql = sprintf("insert into %sgdsr_multis (`name`, `description`, `stars`, `object`, `weight`, `auto_insert`, `auto_location`, `auto_categories`) values ('%s', '%s', %s, '%s', '%s', '%s', '%s', '%s')",
@@ -607,7 +624,7 @@ class GDSRDBMulti {
         $wpdb->query($sql);
         return $wpdb->insert_id;
     }
-    
+
     function edit_multi_set($set) {
         global $wpdb, $table_prefix;
         

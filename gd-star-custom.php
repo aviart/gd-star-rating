@@ -57,6 +57,19 @@
     }
 
     /**
+     * Makes rating blocks readonly regardless of other settings.
+     *
+     * @global GDStarRating $gdsr main rating class instance
+     * @param bool $standard standard ratings will be read only
+     * @param bool $multis multi ratings will be read only
+     */
+    function wp_gdsr_integration_readonly($standard = false, $multis = false) {
+        global $gdsr;
+        $gdsr->override_readonly_multis = $multis;
+        $gdsr->override_readonly_standard = $standard;
+    }
+
+    /**
      * Renders small 80x15 powered by GD Star Rating button.
      *
      * @global GDStarRating $gdsr main rating class instance
