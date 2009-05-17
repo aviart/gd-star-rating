@@ -114,8 +114,8 @@ Plugin has debug into log file feature built in. Information on activating this 
 * Dev4Press: http://www.dev4press.com/
 
 == Support ==
-* Forum: http://forum.gdragon.info/viewforum.php?f=9
 * Twitter: http://twitter.com/gdstarrating
+* Forum: http://forum.gdragon.info/viewforum.php?f=9
 * PDF User Guide: http://www.gdstarrating.com/downloads/user-guide/
 * Tutorials: http://www.gdstarrating.com/category/tutorials/
 * Plugin Infos: http://info.dev4press.com/gd-star-rating/
