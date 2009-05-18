@@ -671,9 +671,8 @@ wp_gdsr_dump("ADD_DEFAULT_is_page", $is_page);
 
     function add_empty_comment($comment_id, $post_id, $review = -1) {
         global $wpdb, $table_prefix;
-        $dbt_data_comment = $table_prefix.'gdsr_data_comment';
-        $sql = sprintf("INSERT INTO %s (comment_id, post_id, is_locked, user_voters, user_votes, visitor_voters, visitor_votes, review) VALUES (%s, %s, '0', '0', '0', '0', '0', %s)",
-                $dbt_data_comment, $comment_id, $post_id, $review);
+        $sql = sprintf("INSERT INTO %sgdsr_data_comment (comment_id, post_id, is_locked, user_voters, user_votes, visitor_voters, visitor_votes, review) VALUES (%s, %s, '0', '0', '0', '0', '0', %s)",
+                $table_prefix, $comment_id, $post_id, $review);
         $wpdb->query($sql);
     }
 

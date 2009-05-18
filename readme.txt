@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.3.2
+Version: 1.3.3
 Tags: vote, ratings, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review, multi
 Requires at least: 2.5.0
 Tested up to: 2.8.0
@@ -14,6 +14,7 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 
 [List Of Features](http://info.dev4press.com/gd-star-rating/features.html) |
 [Change Log](http://info.dev4press.com/gd-star-rating/changelog.html) |
+[Integration Functions](http://info.dev4press.com/gd-star-rating/functions.html) |
 [Translations](http://info.dev4press.com/gd-star-rating/languages.html)
 
 = Planned Features =

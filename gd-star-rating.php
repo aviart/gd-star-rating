@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.3.2
+Version: 1.3.3
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -642,11 +642,7 @@ if (!class_exists('GDStarRating')) {
             }
             echo('</script>');
             if ($this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) {
-                $review_stars = "oxygen";
-                $gfx_m = $this->g->find_stars($review_stars);
-                $css_string = "#m".$review_stars."|20|20|".$gfx_m->type."|".$gfx_m->primary;
-                echo("\r\n");
-                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/gdstarating.css.php?s='.urlencode($css_string).'" type="text/css" media="screen" />');
+                $this->include_rating_css_admin();
             }
             if ($this->admin_page == "widgets.php" || $this->admin_page == "themes.php") {
                 if ($this->wp_version < 28) echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-widgets.js"></script>');
@@ -868,7 +864,6 @@ if (!class_exists('GDStarRating')) {
             $post_id = $_POST["post_ID"];
 
             if ($_POST['gdsr_post_edit'] == "edit") {
-
                 if ($this->o["integrate_post_edit"] == 1) {
                     $set_id = $_POST["gdsrmultiactive"];
                     if ($set_id > 0) {
@@ -1352,7 +1347,19 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
-        function include_rating_css_xtra($external = true) {
+        function include_rating_css_admin() {
+            $elements = array();
+            $presizes = "m".gdFunctionsGDSR::prefill_zeros(20, 2);
+            $sizes = array(20);
+            $elements[] = $presizes;
+            $elements[] = join("", $sizes);
+            $elements[] = "1poxygen";
+            $q = join("#", $elements);
+            $url = $this->plugin_url.'css/gdsr.css.php?s='.urlencode($q);
+            echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
+        }
+
+        function include_rating_css($external = true) {
             $elements = array();
             $presizes = "a".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
             $presizes.= "i".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
@@ -1365,8 +1372,10 @@ if (!class_exists('GDStarRating')) {
             $elements[] = join("", $sizes);
             foreach($this->g->stars as $s) $elements[] = $s->primary.substr($s->type, 0, 1).$s->folder;
             $q = join("#", $elements);
-            $url = $this->plugin_url.'css/gdsr.css.php?s='.urlencode($q);
-            if ($external) echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
+            if ($external) {
+                $url = $this->plugin_url.'css/gdsr.css.php?s='.urlencode($q);
+                echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
+            }
             else {
                 echo('<style type="text/css" media=screen>');
                 $inclusion = "internal";
@@ -1378,7 +1387,7 @@ if (!class_exists('GDStarRating')) {
         }
 
         function multi_rating_header($external_css = true) {
-            $this->include_rating_css_xtra($external_css);
+            $this->include_rating_css($external_css);
             echo('<script type="text/javascript" src="'.$this->plugin_url.'script.js.php"></script>');
         }
 
@@ -1390,8 +1399,8 @@ if (!class_exists('GDStarRating')) {
             $include_mur_rating = $this->o["multis_active"] == 1;
             if (is_feed()) return;
 
-            if ($this->o["external_rating_css"] == 1) $this->include_rating_css_xtra();
-            else $this->include_rating_css_xtra(false);
+            if ($this->o["external_rating_css"] == 1) $this->include_rating_css();
+            else $this->include_rating_css(false);
 
             echo("\r\n");
             if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
