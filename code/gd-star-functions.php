@@ -58,8 +58,7 @@ class GDSRHelper {
         echo("\r\n");
     }
 
-    function detect_bot($str) {
-        $spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
+    function detect_bot($str, $spiders = array()) {
         foreach($spiders as $spider) {
         if (ereg($spider, $str)) 
             return true;

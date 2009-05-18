@@ -48,7 +48,6 @@
     <?php if ($gdsr_options["multis_active"] == 1) { ?><li><a href="#fragment-8"><span><?php _e("Multis", "gd-star-rating"); ?></span></a></li><?php } ?>
     <li><a href="#fragment-4"><span><?php _e("Statistics", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-5"><span><?php _e("Graphics", "gd-star-rating"); ?></span></a></li>
-    <!-- <li><a href="#fragment-11"><span><?php _e("BOT List", "gd-star-rating"); ?></span></a></li> -->
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-11">
@@ -59,6 +58,7 @@
 </div>
 <div id="fragment-9">
 <?php include STARRATING_PATH."options/settings/settings_advanced.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_bots.php"; ?>
 </div>
 <div id="fragment-6">
 <?php include STARRATING_PATH."options/settings/settings_integration.php"; ?>
@@ -76,12 +76,9 @@
 <?php include STARRATING_PATH."options/settings/settings_statistics.php"; ?>
 </div>
 <div id="fragment-5">
-<?php include STARRATING_PATH."options/settings/settings_preview.php"; ?>
 <?php include STARRATING_PATH."options/settings/settings_gfx.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_preview.php"; ?>
 </div>
-<!-- <div id="fragment-8">
-<?php include STARRATING_PATH."options/settings/settings_bots.php"; ?>
-</div> -->
 </div>
 
 <p class="submit"><input type="submit" class="inputbutton" value="<?php _e("Save Settings", "gd-star-rating"); ?>" name="gdsr_saving"/></p>

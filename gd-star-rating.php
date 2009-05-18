@@ -100,6 +100,7 @@ if (!class_exists('GDStarRating')) {
         var $i; // import
         var $g; // gfx
         var $ginc;
+        var $bots;
 
         var $shortcodes;
         var $stars_sizes;
@@ -115,7 +116,7 @@ if (!class_exists('GDStarRating')) {
         var $default_widget_comments;
         var $default_widget_top;
         var $default_widget;
-        var $default_spiders;
+        var $default_spider_bots;
         var $default_wpr8;
 
         /**
@@ -125,7 +126,7 @@ if (!class_exists('GDStarRating')) {
             $gdd = new GDSRDefaults();
             $this->shortcodes = $gdd->shortcodes;
             $this->stars_sizes = $gdd->stars_sizes;
-            $this->default_spiders = $gdd->default_spiders;
+            $this->default_spider_bots = $gdd->default_spider_bots;
             $this->default_wpr8 = $gdd->default_wpr8;
             $this->default_shortcode_starrating = $gdd->default_shortcode_starrating;
             $this->default_shortcode_starratercustom = $gdd->default_shortcode_starratercustom;
@@ -914,6 +915,7 @@ if (!class_exists('GDStarRating')) {
             $this->g = get_option('gd-star-rating-gfx');
             $this->wpr8 = get_option('gd-star-rating-wpr8');
             $this->ginc = get_option('gd-star-rating-inc');
+            $this->bots = get_option('gd-star-rating-bots');
 
             if ($this->o["build"] < $this->default_options["build"]) {
                 if (is_object($this->g)) {
@@ -967,6 +969,11 @@ if (!class_exists('GDStarRating')) {
             } else {
                 $this->wpr8 = gdFunctionsGDSR::upgrade_settings($this->wpr8, $this->default_wpr8);
                 update_option('gd-star-rating-wpr8', $this->wpr8);
+            }
+
+            if (!is_array($this->bots)) {
+                $this->bots = $this->default_spider_bots;
+                update_option('gd-star-rating-bots', $this->bots);
             }
 
             if (!is_array($this->ginc)) {
@@ -1104,7 +1111,7 @@ if (!class_exists('GDStarRating')) {
             $this->init_operations();
 
             if (!is_admin()) {
-                $this->is_bot = GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT']);
+                $this->is_bot = GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT'], $this->bots);
                 $this->is_ban = GDSRHelper::detect_ban();
                 $this->render_wait_article();
                 if ($this->o["comments_active"] == 1) $this->render_wait_comment();
@@ -1711,6 +1718,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $gdsr_styles = $this->styles;
             $gdsr_trends = $this->trends;
             $gdsr_options = $this->o;
+            $gdsr_bots = $this->bots;
             $gdsr_root_url = $this->plugin_url;
             $gdsr_gfx = $this->g;
             $gdsr_wpr8 = $this->wpr8_available;

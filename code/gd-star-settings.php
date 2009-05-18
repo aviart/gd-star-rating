@@ -1,6 +1,15 @@
 <?php 
 
     if ($_POST['gdsr_action'] == 'save') {
+        $bots = explode("\r\n", $_POST["gdsr_bots"]);
+
+        foreach($bots as $key => $value) {
+            if(trim($value) == "") unset($bots[$key]);
+        }
+        $bots = array_values($bots);
+
+        update_option("gd-star-rating-bots", $bots);
+
         $sizes = $_POST["gdsr_inc_size"];
         $stars = $_POST["gdsr_inc_star"];
         $ginc_sizes = array();
@@ -14,7 +23,6 @@
         update_option("gd-star-rating-inc", $ginc);
 
         $gdsr_options["news_feed_active"] = isset($_POST['gdsr_news_feed_active']) ? 1 : 0;
-
         $gdsr_options["widgets_hidempty"] = $_POST['gdsr_widgets_hidempty'];
         $gdsr_options["encoding"] = $_POST['gdsr_encoding'];
         $gdsr_options["admin_width"] = $_POST['gdsr_admin_width'];
@@ -36,7 +44,6 @@
         $gdsr_options["allow_mixed_ip_votes"] = isset($_POST['gdsr_allow_mixed_ip_votes']) ? 1 : 0;
         $gdsr_options["cmm_allow_mixed_ip_votes"] = isset($_POST['gdsr_cmm_allow_mixed_ip_votes']) ? 1 : 0;
         $gdsr_options["mur_allow_mixed_ip_votes"] = isset($_POST['gdsr_mur_allow_mixed_ip_votes']) ? 1 : 0;
-
         $gdsr_options["cache_active"] = isset($_POST['gdsr_cache_active']) ? 1 : 0;
         $gdsr_options["cache_cleanup_auto"] = isset($_POST['gdsr_cache_cleanup_auto']) ? 1 : 0;
         $gdsr_options["cache_cleanup_days"] = $_POST['gdsr_cache_cleanup_days'];
@@ -88,7 +95,6 @@
         $gdsr_options["trend_over"] = $_POST['gdsr_trend_over'];
         $gdsr_options["bayesian_minimal"] = $_POST['gdsr_bayesian_minimal'];
         $gdsr_options["bayesian_mean"] = $_POST['gdsr_bayesian_mean'];
-
         $gdsr_options["auto_display_position"] = $_POST['gdsr_auto_display_position'];
         $gdsr_options["auto_display_comment_position"] = $_POST['gdsr_auto_display_comment_position'];
 
@@ -115,7 +121,6 @@
         $gdsr_options["rss_style"] = $_POST['gdsr_rss_style'];
         $gdsr_options["rss_size"] = $_POST['gdsr_rss_size'];
         $gdsr_options["rss_header_text"] = stripslashes(htmlentities($_POST['gdsr_rss_header_text'], ENT_QUOTES, STARRATING_ENCODING));
-
         $gdsr_options["style"] = $_POST['gdsr_style'];
         $gdsr_options["style_ie6"] = $_POST['gdsr_style_ie6'];
         $gdsr_options["size"] = $_POST['gdsr_size'];
@@ -127,7 +132,6 @@
         $gdsr_options["default_crb_template"] = $_POST['gdsr_default_crb_template'];
         $gdsr_options["default_ssb_template"] = $_POST['gdsr_default_ssb_template'];
         $gdsr_options["default_mrb_template"] = $_POST['gdsr_default_mrb_template'];
-
         $gdsr_options["srb_class_block"] = $_POST['gdsr_classblock'];
         $gdsr_options["srb_class_text"] = $_POST['gdsr_classtext'];
         $gdsr_options["srb_class_header"] = $_POST['gdsr_classheader'];
@@ -164,7 +168,6 @@
         $gdsr_options["review_stars"] = $_POST['gdsr_review_stars'];
         $gdsr_options["review_header_text"] = stripslashes(htmlentities($_POST['gdsr_review_header_text'], ENT_QUOTES, STARRATING_ENCODING));
         $gdsr_options["review_class_block"] = $_POST['gdsr_review_classblock'];
-
         $gdsr_options["cmm_review_style"] = $_POST['gdsr_cmm_review_style'];
         $gdsr_options["cmm_review_style_ie6"] = $_POST['gdsr_cmm_review_style_ie6'];
         $gdsr_options["cmm_review_size"] = $_POST['gdsr_cmm_review_size'];

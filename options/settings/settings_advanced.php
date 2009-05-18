@@ -41,4 +41,3 @@
         <strong><?php _e("Important", "gd-star-rating"); ?>: </strong><?php _e(sprintf("Plugin must have write access to a text file. Path to this file needs to be set in %s file.", '<em style="color:red">gd-star-config.php</em>'), "gd-star-rating"); ?>
     </td>
 </tr>
-</tbody></table>
