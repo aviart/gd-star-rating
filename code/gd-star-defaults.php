@@ -163,6 +163,8 @@ class GDSRDefaults {
         "wait_class_multis" => ''
     );
 
+    var $stars_sizes = array("12" => 1, "16" => 1, "20" => 1, "24" => 1, "30" => 1, "46" => 1);
+
     var $shortcodes = array(
         "starrating",
         "starreview",

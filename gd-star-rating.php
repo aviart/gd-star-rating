@@ -99,8 +99,10 @@ if (!class_exists('GDStarRating')) {
         var $e; // blank image
         var $i; // import
         var $g; // gfx
+        var $ginc;
 
         var $shortcodes;
+        var $stars_sizes;
         var $default_shortcode_starrating;
         var $default_shortcode_starratercustom;
         var $default_shortcode_starratingmulti;
@@ -122,6 +124,7 @@ if (!class_exists('GDStarRating')) {
         function GDStarRating() {
             $gdd = new GDSRDefaults();
             $this->shortcodes = $gdd->shortcodes;
+            $this->stars_sizes = $gdd->stars_sizes;
             $this->default_spiders = $gdd->default_spiders;
             $this->default_wpr8 = $gdd->default_wpr8;
             $this->default_shortcode_starrating = $gdd->default_shortcode_starrating;
@@ -910,6 +913,7 @@ if (!class_exists('GDStarRating')) {
             $this->i = get_option('gd-star-rating-import');
             $this->g = get_option('gd-star-rating-gfx');
             $this->wpr8 = get_option('gd-star-rating-wpr8');
+            $this->ginc = get_option('gd-star-rating-inc');
 
             if ($this->o["build"] < $this->default_options["build"]) {
                 if (is_object($this->g)) {
@@ -947,8 +951,7 @@ if (!class_exists('GDStarRating')) {
             if (!is_array($this->i)) {
                 update_option('gd-star-rating-import', $this->default_import);
                 $this->i = get_option('gd-star-rating-import');
-            }
-            else {
+            } else {
                 $this->i = gdFunctionsGDSR::upgrade_settings($this->i, $this->default_import);
                 update_option('gd-star-rating-import', $this->i);
             }
@@ -958,13 +961,19 @@ if (!class_exists('GDStarRating')) {
                 update_option('gd-star-rating-gfx', $this->g);
             }
 
-            if (!is_object($this->wpr8)) {
+            if (!is_array($this->wpr8)) {
                 update_option('gd-star-rating-wpr8', $this->default_wpr8);
                 $this->wpr8 = get_option('gd-star-rating-wpr8');
-            }
-            else {
+            } else {
                 $this->wpr8 = gdFunctionsGDSR::upgrade_settings($this->wpr8, $this->default_wpr8);
                 update_option('gd-star-rating-wpr8', $this->wpr8);
+            }
+
+            if (!is_array($this->ginc)) {
+                $this->ginc = array();
+                $this->ginc[] = $this->stars_sizes;
+                $this->ginc[] = $this->g->get_list();
+                update_option('gd-star-rating-inc', $this->ginc);
             }
 
             $this->use_nonce = $this->o["use_nonce"] == 1;
@@ -1105,8 +1114,10 @@ if (!class_exists('GDStarRating')) {
 
             if ($this->admin_plugin_page == "settings-page") {
                 $gdsr_options = $this->o;
+                $ginc = $this->ginc;
                 include ($this->plugin_path."code/gd-star-settings.php");
                 $this->o = $gdsr_options;
+                $this->ginc = $ginc;
             }
 
             wp_enqueue_script('jquery');
@@ -1166,9 +1177,9 @@ if (!class_exists('GDStarRating')) {
             if ($_POST["gdsr_full_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
                 delete_option('gd-star-rating');
                 delete_option('widget_gdstarrating');
-                delete_option('gd-star-rating-templates');
                 delete_option('gd-star-rating-import');
                 delete_option('gd-star-rating-gfx');
+                delete_option('gd-star-rating-inc');
 
                 gdDBInstallGDSR::drop_tables(STARRATING_PATH);
                 GDSRHelper::deactivate_plugin();
@@ -1367,10 +1378,16 @@ if (!class_exists('GDStarRating')) {
             $presizes.= "k".gdFunctionsGDSR::prefill_zeros(20, 2);
             $presizes.= "c".gdFunctionsGDSR::prefill_zeros($this->o["cmm_stars"], 2);
             $presizes.= "r".gdFunctionsGDSR::prefill_zeros($this->o["cmm_review_stars"], 2);
-            $sizes = array(12, 16, 20, 24, 30, 46);
+            $sizes = array();
+            foreach ($this->ginc[0] as $size => $var) {
+                if ($var == 1) $sizes[] = $size;
+            }
             $elements[] = $presizes;
             $elements[] = join("", $sizes);
-            foreach($this->g->stars as $s) $elements[] = $s->primary.substr($s->type, 0, 1).$s->folder;
+            foreach($this->g->stars as $s) {
+                if (in_array($s->folder, $this->ginc[1]))
+                    $elements[] = $s->primary.substr($s->type, 0, 1).$s->folder;
+            }
             $q = join("#", $elements);
             if ($external) {
                 $url = $this->plugin_url.'css/gdsr.css.php?s='.urlencode($q);
@@ -1700,7 +1717,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $extra_folders = $this->extra_folders;
             $safe_mode = $this->safe_mode;
             $wpv = $this->wp_version;
-
+            $ginc_sizes = $this->ginc[0];
+            $ginc_stars = $this->ginc[1];
             $wpr8 = $this->wpr8;
 
             include($this->plugin_path.'options/settings.php');
