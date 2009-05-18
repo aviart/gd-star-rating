@@ -38,6 +38,7 @@ unset($raw[1]);
 $sets = array();
 $blocks = array();
 $head = array();
+$folders = array();
 foreach($raw as $r) {
     $set = array();
     $set["location"] = substr($r, 0, 1);
@@ -54,8 +55,12 @@ foreach($raw as $r) {
             break;
     }
     $set["folder"] = substr($r, 2);
+    $folders[] = substr($r, 2);
     $sets[] = $set;
 }
+
+echo "/*".join(", ", $sizes) ."*/\r\n";
+echo "/*".join(", ", $folders) ."*/\r\n\r\n";
 
 foreach($raw_blocks as $r) {
     $block = array();

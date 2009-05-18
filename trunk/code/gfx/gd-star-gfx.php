@@ -4,19 +4,25 @@ class GDgfxLib {
     var $stars = array();
     var $trend = array();
     var $last_scan = "";
-    
+
     function GDgfxLib() {
         $this->last_scan = date("r");
     }
-    
+
     function add_stars($star) {
         $this->stars[] = $star;
     }
-    
+
     function add_trends($tr) {
         $this->trend[] = $tr;
     }
-    
+
+    function get_list() {
+        $results = array();
+        foreach ($this->stars as $set) $results[] = $set->folder;
+        return $results;
+    }
+
     function find_gfx($gfx, $folder) {
         $result = null;
         foreach ($gfx as $s) {
@@ -27,7 +33,7 @@ class GDgfxLib {
         }
         return $result;
     }
-    
+
     function find_stars($folder) {
         return $this->find_gfx($this->stars, $folder);
     }
@@ -71,7 +77,7 @@ class GDgfxBase {
     var $gfx_path = "";
     var $gfx_url = "";
     var $primary = 1;
-    
+
     var $imported = false;
 
     function GDgfxBase($folder, $primary = true) {
@@ -104,7 +110,7 @@ class GDgfxBase {
         }
         return null;
     }
-    
+
     function load_info_file() {
         $path = $this->gfx_path.$this->info_file.".gdsr";
         if (file_exists($path)) {
@@ -139,13 +145,13 @@ class GDgfxStar extends GDgfxBase {
 
 class GDgfxTrend extends GDgfxBase {
     var $size = 16;
-    
+
     function GDgfxTrend($folder, $primary = true) {
         $this->info_file = "trend";
         $this->info_folder = "trends";
         parent::GDgfxBase($folder, $primary);
     }
-    
+
     function import() {
         $data = parent::import();
         if ($data != null) {

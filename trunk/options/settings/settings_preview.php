@@ -120,4 +120,3 @@ function gdsrStyleSelection(preview) {
         </table>
     </td>
 </tr>
-</tbody></table>

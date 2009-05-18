@@ -18,7 +18,8 @@
     }
     if ($_POST["gdsr_remove_settings"] == __("Remove Settings", "gd-star-rating")) {
         delete_option('gd-star-rating');
-        delete_option('widget_gdstarrating');
+        delete_option('gd-star-rating-gfx');
+        delete_option('gd-star-rating-inc');
         ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Settings are removed from WordPress installation.", "gd-star-rating"); ?></strong></p></div> <?php
     }
     if ($_POST["gdsr_remove_templates"] == __("Reinstall Templates", "gd-star-rating")) {

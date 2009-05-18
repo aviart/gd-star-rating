@@ -1,6 +1,18 @@
 <?php 
 
     if ($_POST['gdsr_action'] == 'save') {
+        $sizes = $_POST["gdsr_inc_size"];
+        $stars = $_POST["gdsr_inc_star"];
+        $ginc_sizes = array();
+        foreach ($this->stars_sizes as $key => $size) {
+            $ginc_sizes[$key] = in_array($key, $sizes) ? 1 : 0;
+        }
+
+        $ginc = array();
+        $ginc[] = $ginc_sizes;
+        $ginc[] = $stars;
+        update_option("gd-star-rating-inc", $ginc);
+
         $gdsr_options["news_feed_active"] = isset($_POST['gdsr_news_feed_active']) ? 1 : 0;
 
         $gdsr_options["widgets_hidempty"] = $_POST['gdsr_widgets_hidempty'];
