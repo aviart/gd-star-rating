@@ -36,8 +36,7 @@ function gdsrStyleSelection(preview) {
 <input type="hidden" id="gdsr_preview_stars" name="gdsr_preview_stars" value="<?php echo $gdsr_options["preview_active"]; ?>" />
 <input type="hidden" id="gdsr_preview_trends" name="gdsr_preview_trends" value="<?php echo $gdsr_options["preview_trends_active"]; ?>" />
 
-<table class="form-table"><tbody>
-<tr><th scope="row"><?php _e("Stars", "gd-star-rating"); ?></th>
+<tr><th scope="row"><?php _e("Stars Preview", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0">
             <tr>
@@ -84,7 +83,7 @@ function gdsrStyleSelection(preview) {
         </table>
     </td>
 </tr>
-<tr><th scope="row"><?php _e("Trends", "gd-star-rating"); ?></th>
+<tr><th scope="row"><?php _e("Trends Preview", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0">
             <tr>
@@ -120,3 +119,4 @@ function gdsrStyleSelection(preview) {
         </table>
     </td>
 </tr>
+</tbody></table>

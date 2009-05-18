@@ -1,3 +1,4 @@
+<table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Stars Sizes", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
@@ -54,4 +55,3 @@
         <?php _e("Only stars set checked here will be included in the css file for the active rating blocks.", "gd-star-rating"); ?>
     </td>
 </tr>
-</tbody></table>

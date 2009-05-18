@@ -165,6 +165,15 @@ class GDSRDefaults {
 
     var $stars_sizes = array("12" => 1, "16" => 1, "20" => 1, "24" => 1, "30" => 1, "46" => 1);
 
+    var $default_spider_bots = array(
+        "Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", 
+        "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", 
+        "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", 
+        "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", 
+        "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", 
+        "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", 
+        "Sogou web spider", "WebAlta Crawler");
+
     var $shortcodes = array(
         "starrating",
         "starreview",
@@ -174,8 +183,6 @@ class GDSRDefaults {
         "starreviewmulti",
         "starcomments"
     );
-
-    var $default_spiders = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", "Sogou web spider", "WebAlta Crawler");
 
     var $default_wpr8 = array(
         "web_key" => ""
