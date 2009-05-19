@@ -1,10 +1,10 @@
 <?php
 
-    require_once("../gd-star-config.php");
+    require_once("../config.php");
     $wpconfig = get_wpconfig();
     require($wpconfig);
     global $gdsr;
-    require_once(STARRATING_PATH."code/gd-star-functions.php");
+    require_once(STARRATING_PATH."code/helpers.php");
 
     $gdsr_styles = $gdsr->g->stars;
     $gdsr_trends = $gdsr->g->trend;

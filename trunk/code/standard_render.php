@@ -68,16 +68,18 @@ class GDSRRender {
         $css_style = " gdsr-".$style;
         $css_sizes = " gdsr-size-".$height;
         $vote_class = "gdsr_multis_as";
+        $vote_current = "gdsr_mur_stars_current_";
         if ($review_mode) {
             $current = $value;
             $vote_class = "gdsr_mur_static";
+            $vote_current = "gdsr_murvw_stars_current_";
         }
         else $current = 0;
         $rater.= '<div id="gdsr_mur_stars_'.$post_id.'_'.$set_id.'_'.$id.'" class="ratemulti'.$css_style.$css_sizes.'"><div class="starsbar'.$css_sizes.'">';
         $rater.= '<div class="gdouter" align="left" style="width: '.($unit_count * $height).'px">';
         $rater.= '<div id="gdsr_mur_stars_rated_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($value * $height).'px;" class="gdinner"></div>';
         if ($allow_vote) {
-            $rater.= '<div id="gdsr_mur_stars_current_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($current * $height).'px;" class="gdcurrent"></div>';
+            $rater.= '<div id="'.$vote_current.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($current * $height).'px;" class="gdcurrent"></div>';
             $rater.= '<div id="gdr_stars_mur_rating_'.$post_id.'_'.$set_id.'_'.$id.'" class="'.$vote_class.'">';
             for ($ic = 0; $ic < $unit_count; $ic++) {
                 $ncount = $unit_count - $ic;

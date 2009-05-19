@@ -71,10 +71,11 @@ function wp_gdsr_render_powered_by($echo = true) {
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_render_article($template_id = 0, $read_only = false, $echo = true) {
+function wp_gdsr_render_article($template_id = 0, $read_only = false, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
     global $post, $userdata, $gdsr;
-    if ($echo) echo $gdsr->render_article($post, $userdata, array("tpl" => $template_id, "read_only" => $read_only ? 1 : 0));
-    else return $gdsr->render_article($post, $userdata, array("tpl" => $template_id, "read_only" => $read_only ? 1 : 0));
+    $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
+    if ($echo) echo $gdsr->render_article($post, $userdata, $override);
+    else return $gdsr->render_article($post, $userdata, $override);
 }
 
 /**
@@ -88,24 +89,11 @@ function wp_gdsr_render_article($template_id = 0, $read_only = false, $echo = tr
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_render_comment($template_id = 0, $read_only = false, $echo = true) {
+function wp_gdsr_render_comment($template_id = 0, $read_only = false, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
     global $comment, $userdata, $gdsr, $post;
-    if ($echo) echo $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id, "read_only" => $read_only ? 1 : 0));
-    else return $gdsr->render_comment($post, $comment, $userdata, array("tpl" => $template_id, "read_only" => $read_only ? 1 : 0));
-}
-
-/**
- * Renders stars for comment review used in the comment form for the comment author to place it's review rating.
- *
- * @global GDStarRating $gdsr main rating class instance
- * @param int $value inital value for the review
- * @param bool $echo echo results or return it as a string
- * @return string html with rendered contents
- */
-function wp_gdsr_new_comment_review($value = 0, $echo = true) {
-    global $gdsr;
-    if ($echo) echo $gdsr->comment_review($value);
-    else return $gdsr->comment_review($value);
+    $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
+    if ($echo) echo $gdsr->render_comment($post, $comment, $userdata, $override);
+    else return $gdsr->render_comment($post, $comment, $userdata, $override);
 }
 
 /**
@@ -121,13 +109,27 @@ function wp_gdsr_new_comment_review($value = 0, $echo = true) {
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_render_multi($multi_set_id, $post_id = 0, $template_id = 0, $read_only = false, $echo = true) {
+function wp_gdsr_render_multi($multi_set_id, $post_id = 0, $template_id = 0, $read_only = false, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
     global $userdata, $gdsr;
     if ($post_id == 0) global $post;
     else $post = get_post($post_id);
+    if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id));
+    else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id));
+}
 
-    if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "read_only" => $read_only, "tpl" => $template_id));
-    else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "read_only" => $read_only, "tpl" => $template_id));
+/**
+ * Renders stars for comment review used in the comment form for the comment author to place it's review rating.
+ *
+ * @global GDStarRating $gdsr main rating class instance
+ * @param int $value inital value for the review
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
+function wp_gdsr_new_comment_review($value = 0, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
+    global $gdsr;
+    $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size);
+    if ($echo) echo $gdsr->comment_review($value, $override);
+    else return $gdsr->comment_review($value, $override);
 }
 
 /**
@@ -171,6 +173,7 @@ function wp_gdsr_multi_review_editor_header($echo = true) {
  * @global object $post post data
  * @global GDStarRating $gdsr main rating class instance
  * @param int $post_id id of the post rating will be attributed to
+ * @param int $template_id id of the template to use
  * @param array $settings override settings for rendering the block
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
@@ -286,16 +289,18 @@ function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
 }
 
 /**
- *
+ * Renders standard review for a post.
  *
  * @global GDStarRating $gdsr main rating class instance
+ * @param int $post_id post to get review for
+ * @param int $template_id id of the template to use
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_render_review($echo = true) {
+function wp_gdsr_render_review($post_id = 0, $template_id = 0, $echo = true) {
     global $gdsr;
-    if ($echo) echo $gdsr->shortcode_starreview();
-    else return $gdsr->shortcode_starreview();
+    if ($echo) echo $gdsr->shortcode_starreview(array("post" => $post_id, "tpl" => $template_id));
+    else return $gdsr->shortcode_starreview(array("post" => $post_id, "tpl" => $template_id));
 }
 
 /**
