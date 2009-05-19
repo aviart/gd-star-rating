@@ -386,58 +386,6 @@ class GDSRHelper {
         <?php
     }
    
-    function draw_pager($total_pages, $current_page, $url, $query = "page") {
-        $pages = array();
-        $break_first = -1;
-        $break_last = -1;
-        if ($total_pages < 10) for ($i = 0; $i < $total_pages; $i++) $pages[] = $i + 1;
-        else {
-            
-            $island_start = $current_page - 1;
-            $island_end = $current_page + 1;
-            
-            if ($current_page == 1) $island_end = 3;
-            if ($current_page == $total_pages) $island_start = $island_start - 1;
-            
-            if ($island_start > 4) {
-                for ($i = 0; $i < 3; $i++) $pages[] = $i + 1;
-                $break_first = 3;
-            }
-            else {
-                for ($i = 0; $i < $island_end; $i++) $pages[] = $i + 1;
-            }
-            
-            if ($island_end < $total_pages - 4) {
-                for ($i = 0; $i < 3; $i++) $pages[] = $i + $total_pages - 2;
-                $break_last = $total_pages - 2;
-            }
-            else {
-                for ($i = 0; $i < $total_pages - $island_start + 1; $i++) $pages[] = $island_start + $i;
-            }
-            
-            if ($island_start > 4 && $island_end < $total_pages - 4) {
-                for ($i = 0; $i < 3; $i++) $pages[] = $island_start + $i;
-            }
-        }
-        sort($pages, SORT_NUMERIC);
-        $render = '';
-        foreach ($pages as $page) {
-            if ($page == $break_last)
-                $render.= "... ";
-            if ($page == $current_page) 
-                $render.= sprintf('<span class="page-numbers current">%s</span>', $page);
-            else
-                $render.= sprintf('<a class="page-numbers" href="%s&%s=%s">%s</a>', $url, $query, $page, $page);
-            if ($page == $break_first)
-                $render.= "... ";
-        }
-        
-        if ($current_page > 1) $render.= sprintf('<a class="next page-numbers" href="%s&%s=%s">Previous</a>', $url, $query, $current_page - 1);
-        if ($current_page < $total_pages) $render.= sprintf('<a class="next page-numbers" href="%s&%s=%s">Next</a>', $url, $query, $current_page + 1);
-        
-        return $render;
-    }
-
     function timer_value($t_type, $t_date = '', $t_count_value = 0, $t_count_type = 'D') {
         $value = '';
         switch ($t_type) {
@@ -472,13 +420,4 @@ class GDSRHelper {
     }
 }
 
-function is_msie6() {
-    $agent = $_SERVER['HTTP_USER_AGENT'];
-    if(eregi("msie",$agent) && !eregi("opera",$agent)) {
-        $val = explode(" ", stristr($agent, "msie"));
-        $version = substr($val[1], 0, 1);
-        if ($version < 7) return true;
-        else return false;
-    }
-    return false;
-}
+?>

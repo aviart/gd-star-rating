@@ -80,7 +80,7 @@ Plugin administration consist of 12 panels:
 
 = WordPress 2.6.x and newer  =
 * if you don't change location of `wp-content` folder, then you don't need to make any more changes.
-* if your `wp-content` folder is moved out of WordPress web location, then you must edit `gd-star-config.php` file and set value with exact location of `wp-content` file for `STARRATING_WPCONFIG` in line 3. Without this some plugin feature will not work.
+* if your `wp-content` folder is moved out of WordPress web location, then you must edit `config.php` file and set value with exact location of `wp-content` file for `STARRATING_WPCONFIG` in line 3. Without this some plugin feature will not work.
 
 == Frequently Asked Questions ==
 
@@ -128,5 +128,4 @@ Plugin has debug into log file feature built in. Information on activating this 
 * WordPress Extend: http://wordpress.org/extend/plugins/gd-star-rating/
 
 == Thanx To ==
-1. Ryan Masuga (http://www.masugadesign.com) for Unobtusive AJAX Rating Bars
-2. Jean-Damien Pogolotti (http://pchart.sourceforge.net/) for pChart
+* Jean-Damien Pogolotti (http://pchart.sourceforge.net/) for pChart

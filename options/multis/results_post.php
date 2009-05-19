@@ -57,7 +57,7 @@ $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
 
 if ($max_page > 1)
-    $pager = GDSRHelper::draw_pager($max_page, $page_id, $url, "pg");
+    $pager = gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg");
 
 $set = gd_get_multi_set($set_id);
 
