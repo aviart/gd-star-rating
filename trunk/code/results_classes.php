@@ -10,6 +10,11 @@ class GDSRArticleMultiReview {
     var $set;
     var $rendered;
 
+    /**
+     * Class constructor.
+     *
+     * @param int $post_id post for the results
+     */
     function GDSRArticleMultiReview($post_id) {
         $this->post_id = $post_id;
     }
@@ -29,6 +34,12 @@ class GDSRArticleMultiRating {
     var $visitor_rating = 0;
     var $rating = 0;
 
+    /**
+     * Class constructor.
+     *
+     * @param object $post_data multi rating results from the database
+     * @param int $set_id multi rating set id
+     */
     function GDSRArticleMultiRating($post_data, $set_id) {
         $this->set = gd_get_multi_set($set_id);
         $this->review = $post_data->average_review;

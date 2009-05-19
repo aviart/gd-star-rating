@@ -20,8 +20,11 @@ function gdsrStyleSelection(preview) {
         gdsrStyle = jQuery("#gdsr_style_preview").val();
         gdsrSize = jQuery("#gdsr_size_preview").val();
         gdsrImage = gdsrImages[gdsrStyle] + "stars" + gdsrSize + "." + gdsrImagesExt[gdsrStyle];
+        jQuery("#gdsrauthorname").html(gdsrAuthors[gdsrStyle]["name"]);
+        jQuery("#gdsrauthoremail").html(gdsrAuthors[gdsrStyle]["email"]);
+        jQuery("#gdsrauthorurl").html(gdsrAuthors[gdsrStyle]["url"]);
     }
-    
+
     jQuery(gdsrBase+"_black").attr("src", gdsrImage);
     jQuery(gdsrBase+"_red").attr("src", gdsrImage);
     jQuery(gdsrBase+"_green").attr("src", gdsrImage);
@@ -40,8 +43,8 @@ function gdsrStyleSelection(preview) {
     <td>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <td width="150" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Stars", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
+                <td width="100" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Stars", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top; text-align: right;">
                     <select style="width: 180px;" name="gdsr_style_preview" id="gdsr_style_preview" onchange="gdsrStyleSelection('stars')">
                         <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, "", true); ?>
                     </select>
@@ -70,14 +73,17 @@ function gdsrStyleSelection(preview) {
                 </td>
             </tr>
             <tr valign="top">
-                <td width="150" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Size", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
+                <td width="100" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Size", "gd-star-rating"); ?>:</td>
+                <td width="250" align="left" style="padding: 0; border: 0; vertical-align: top; text-align: right;">
                     <?php GDSRHelper::render_star_sizes("gdsr_size_preview", 30, 180, ' onchange="gdsrStyleSelection(\'stars\')"'); ?>
                 </td>
             </tr>
             <tr valign="top">
-                <td width="150" style="padding: 0; border: 0; vertical-align: top;"><?php _e("Author", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
+                <td width="100" style="padding: 0; border: 0; vertical-align: top;"><?php _e("Author", "gd-star-rating"); ?>:</td>
+                <td width="250" align="left" style="padding: 0; border: 0; vertical-align: top;">
+                    <div id="gdsrauthorname" style="text-align: right;"></div>
+                    <div id="gdsrauthoremail" style="text-align: right;"></div>
+                    <div id="gdsrauthorurl" style="text-align: right;"></div>
                 </td>
             </tr>
         </table>
@@ -88,7 +94,7 @@ function gdsrStyleSelection(preview) {
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td width="150" style="padding: 0; border: 0; height: 28px; vertical-align: top;"><?php _e("Trends", "gd-star-rating"); ?>:</td>
-                <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top;">
+                <td width="200" align="left" style="padding: 0; border: 0; vertical-align: top; text-align: right;">
                     <select style="width: 180px;" name="gdsr_style_preview_trends" id="gdsr_style_preview_trends" onchange="gdsrStyleSelection('trends')">
                         <?php GDSRHelper::render_styles_select($gdsr_gfx->trend); ?>
                     </select>

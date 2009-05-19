@@ -2,7 +2,7 @@
 
 class GDSRRenderT2 {
     function get_template($template_id, $section) {
-        include(STARRATING_PATH.'code/t2/gd-star-t2-templates.php');
+        include(STARRATING_PATH.'code/t2/templates.php');
 
         if (intval($template_id) == 0) {
             $t = GDSRDB::get_templates($section, true, true);

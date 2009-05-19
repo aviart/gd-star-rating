@@ -662,20 +662,4 @@ class GDMultiSingle {
     }
 }
 
-/**
- * Gets the multi rating set.
- *
- * @param int $id set id
- * @return GDMultiSingle multi rating set
- */
-function gd_get_multi_set($id) {
-    $set = GDSRDBMulti::get_multi_set($id);
-    if (count($set) > 0) {
-        $set->object = unserialize($set->object);
-        $set->weight = unserialize($set->weight);
-        return $set;
-    }
-    else return null;
-}
-
 ?>

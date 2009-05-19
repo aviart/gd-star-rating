@@ -27,10 +27,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-require_once(dirname(__FILE__)."/gd-star-config.php");
-require_once(dirname(__FILE__)."/code/t2/gd-star-t2-classes.php");
-require_once(dirname(__FILE__)."/code/gd-star-defaults.php");
-require_once(dirname(__FILE__)."/code/gd-star-classes.php");
+require_once(dirname(__FILE__)."/config.php");
+require_once(dirname(__FILE__)."/code/defaults.php");
+require_once(dirname(__FILE__)."/code/t2/classes.php");
+require_once(dirname(__FILE__)."/code/results_classes.php");
 require_once(dirname(__FILE__)."/code/gd-star-functions.php");
 require_once(dirname(__FILE__)."/code/gd-star-render.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbone.php");
@@ -38,12 +38,12 @@ require_once(dirname(__FILE__)."/code/gd-star-dbtwo.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbx.php");
 require_once(dirname(__FILE__)."/code/gd-star-dbmulti.php");
 require_once(dirname(__FILE__)."/code/gd-star-import.php");
-require_once(dirname(__FILE__)."/code/gfx/gd-star-chart.php");
-require_once(dirname(__FILE__)."/code/gfx/gd-star-gfx.php");
-require_once(dirname(__FILE__)."/code/gfx/gd-star-generator.php");
+require_once(dirname(__FILE__)."/code/gfx/charting.php");
+require_once(dirname(__FILE__)."/code/gfx/gfx_lib.php");
+require_once(dirname(__FILE__)."/code/gfx/generator.php");
+require_once(dirname(__FILE__)."/code/widgets.php");
+require_once(dirname(__FILE__)."/code/widgets_wp28.php");
 require_once(dirname(__FILE__)."/code/gd-star-render-t2.php");
-require_once(dirname(__FILE__)."/code/gd-star-widgets.php");
-require_once(dirname(__FILE__)."/code/gd-star-widgets_wp28.php");
 require_once(dirname(__FILE__)."/gdragon/gd_functions.php");
 require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
 require_once(dirname(__FILE__)."/gdragon/gd_db_install.php");
@@ -1489,7 +1489,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
                 $json = $summary["json"];
             }
 
-            include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
+            include($this->plugin_path.'code/t2/templates.php');
 
             $template = new gdTemplateRender($tpl_id, "MRB");
             $rt = GDSRRenderT2::render_srt_voted($template->dep["MRT"], $rating, $set->stars, $total_votes, $post_id, $vote_value);
@@ -1544,7 +1544,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
             $rating1 = @number_format($rating2, 1);
             $rating_width = $rating2 * $unit_width;
 
-            include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
+            include($this->plugin_path.'code/t2/templates.php');
 
             $template = new gdTemplateRender($tpl_id, "SRB");
             $rt = GDSRRenderT2::render_srt_voted($template->dep["SRT"], $rating1, $unit_count, $votes, $post_id, $vote_value);
@@ -1600,7 +1600,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $rating1 = @number_format($rating2, 1);
             $rating_width = $rating2 * $unit_width;
 
-            include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
+            include($this->plugin_path.'code/t2/templates.php');
 
             $template = new gdTemplateRender($tpl_id, "CRB");
             $rt = GDSRRenderT2::render_crt($template->dep["CRT"], $rating1, $unit_count, $votes, $vote_value);
@@ -1748,7 +1748,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $options = $this->o;
             $wpv = $this->wp_version;
 
-            include($this->plugin_path.'code/t2/gd-star-t2-templates.php');
+            include($this->plugin_path.'code/t2/templates.php');
 
             if (isset($_GET["tplid"])) {
                 $id = $_GET["tplid"];
@@ -2481,5 +2481,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
     $gd_debug = new gdDebugGDSR(STARRATING_LOG_PATH);
     $gdsr = new GDStarRating();
 
-    include(STARRATING_PATH."gd-star-custom.php");
+    include(STARRATING_PATH."functions_helpers.php");
+    include(STARRATING_PATH."functions_integration.php");
 }

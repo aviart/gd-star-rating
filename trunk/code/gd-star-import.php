@@ -58,6 +58,7 @@ class GDSRImport {
         }
         else return GDSRImport::import_check(true);
     }
+    // import star rating for review
 
     // import post star rating
     function import_psr() {
