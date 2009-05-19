@@ -1,6 +1,6 @@
 <?php
 
-    require_once("./gd-star-config.php");
+    require_once("./config.php");
     $wpconfig = get_wpconfig();
     require($wpconfig);
 
@@ -16,6 +16,6 @@
     header("Cache-Control: no-cache, must-revalidate");
     header('Content-Type: text/javascript');
 
-    include ($gdsr->plugin_path."code/js/gd-star-js.php");
+    include ($gdsr->plugin_path."code/js/main.php");
 
 ?>

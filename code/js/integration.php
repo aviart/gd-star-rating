@@ -1,4 +1,5 @@
-    if (jQuery.browser.msie) jQuery(".gdsr_review_as > a").attr("href", "javascript:gdsrEmpty()");
+
+if (jQuery.browser.msie) jQuery(".gdsr_integration > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_integration > a").click(function() {
         var el = jQuery(this).attr("id").split("X");
         var pid = "#" + jQuery(this).parent().attr("id");

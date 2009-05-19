@@ -29,21 +29,20 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 require_once(dirname(__FILE__)."/config.php");
 require_once(dirname(__FILE__)."/code/defaults.php");
-require_once(dirname(__FILE__)."/code/t2/classes.php");
 require_once(dirname(__FILE__)."/code/results_classes.php");
-require_once(dirname(__FILE__)."/code/gd-star-functions.php");
-require_once(dirname(__FILE__)."/code/gd-star-render.php");
-require_once(dirname(__FILE__)."/code/gd-star-dbone.php");
-require_once(dirname(__FILE__)."/code/gd-star-dbtwo.php");
-require_once(dirname(__FILE__)."/code/gd-star-dbx.php");
-require_once(dirname(__FILE__)."/code/gd-star-dbmulti.php");
-require_once(dirname(__FILE__)."/code/gd-star-import.php");
+require_once(dirname(__FILE__)."/code/standard_render.php");
+require_once(dirname(__FILE__)."/code/helpers.php");
+require_once(dirname(__FILE__)."/code/db/main.php");
+require_once(dirname(__FILE__)."/code/db/operations.php");
+require_once(dirname(__FILE__)."/code/db/widgetizer.php");
+require_once(dirname(__FILE__)."/code/db/multi.php");
 require_once(dirname(__FILE__)."/code/gfx/charting.php");
 require_once(dirname(__FILE__)."/code/gfx/gfx_lib.php");
 require_once(dirname(__FILE__)."/code/gfx/generator.php");
+require_once(dirname(__FILE__)."/code/t2/classes.php");
+require_once(dirname(__FILE__)."/code/t2/render.php");
 require_once(dirname(__FILE__)."/code/widgets.php");
 require_once(dirname(__FILE__)."/code/widgets_wp28.php");
-require_once(dirname(__FILE__)."/code/gd-star-render-t2.php");
 require_once(dirname(__FILE__)."/gdragon/gd_functions.php");
 require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
 require_once(dirname(__FILE__)."/gdragon/gd_db_install.php");
@@ -612,7 +611,7 @@ if (!class_exists('GDStarRating')) {
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
                 if ($this->admin_plugin_page == "t2" ||
                     $this->admin_plugin_page == "multi-sets") {
-                    include(STARRATING_PATH."code/js/gd-star-jsf.php");
+                    include(STARRATING_PATH."code/js/corrections.php");
                 }
             }
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
@@ -628,21 +627,21 @@ if (!class_exists('GDStarRating')) {
             echo("\r\n");
             echo('<script type="text/javascript">jQuery(document).ready(function() {');
                 echo("\r\n");
-                if ($this->admin_page == "edit-comments.php") include ($this->plugin_path."code/js/gd-star-jsx.php");
+                if ($this->admin_page == "edit-comments.php") include ($this->plugin_path."code/js/integration.php");
                 if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
                 if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
                 if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
-                if ($this->admin_plugin_page == "settings-page") include(STARRATING_PATH."code/js/gd-star-jsa.php");
+                if ($this->admin_plugin_page == "settings-page") include(STARRATING_PATH."code/js/loaders.php");
                 if ($this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) {
                     echo("\r\n");
-                    include(STARRATING_PATH."code/js/gd-star-jsma.php");
+                    include(STARRATING_PATH."code/js/multi_in.php");
                 }
             echo('});');
             if ($this->admin_page == "edit.php") {
                 $edit_std = $this->o["integrate_post_edit_mur"] == 1;
                 $edit_mur = $this->o["integrate_post_edit"] == 1;
                 echo("\r\n");
-                include(STARRATING_PATH."code/js/gd-star-jse.php");
+                include(STARRATING_PATH."code/js/editors.php");
             }
             echo('</script>');
             if ($this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) {
@@ -1122,7 +1121,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin_page == "settings-page") {
                 $gdsr_options = $this->o;
                 $ginc = $this->ginc;
-                include ($this->plugin_path."code/gd-star-settings.php");
+                include ($this->plugin_path."code/save_settings.php");
                 $this->o = $gdsr_options;
                 $this->ginc = $ginc;
             }
@@ -1439,7 +1438,7 @@ if (!class_exists('GDStarRating')) {
                 else $nonce = "";
                 $button_active = $this->o["mur_button_active"] == 1;
                 echo('//<![CDATA[');
-                include ($this->plugin_path."code/js/gd-star-js.php");
+                include ($this->plugin_path."code/js/main.php");
                 echo('// ]]>');
                 echo('</script>');
             }
@@ -2044,7 +2043,40 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             return $out;
         }
 
-        function render_comment($post, $comment, $user, $override = array("tpl" => 0, "read_only" => 0)) {
+        function render_article_rss() {
+            global $post;
+            $rd_post_id = intval($post->ID);
+            $post_data = GDSRDatabase::get_post_data($rd_post_id);
+
+            $votes = 0;
+            $score = 0;
+
+            if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
+                $votes = $post_data->user_voters + $post_data->visitor_voters;
+                $score = $post_data->user_votes + $post_data->visitor_votes;
+            }
+            else if ($post_data->rules_articles == "V") {
+                $votes = $post_data->visitor_voters;
+                $score = $post_data->visitor_votes;
+            }
+            else {
+                $votes = $post_data->user_voters;
+                $score = $post_data->user_votes;
+            }
+
+            $template_id = $this->o["default_ssb_template"];
+
+            $rating_block = GDSRRenderT2::render_ssb($template_id, $rd_post_id, $votes, $score, $this->o["rss_style"], $this->o["rss_size"], $this->o["stars"], $this->o["rss_header_text"]);
+            return $rating_block;
+        }
+
+        function render_comment($post, $comment, $user, $override = array()) {
+            $default_settings = array("style" => $this->o["cmm_style"], "style_ie6" => $this->o["cmm_style_ie6"], "size" => $this->o["cmm_size"], "tpl" => 0, "read_only" => 0);
+            $override = shortcode_atts($default_settings, $override);
+            if ($override["style"] == "") $override["style"] = $this->o["cmm_style"];
+            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["cmm_style_ie6"];
+            if ($override["size"] == "") $override["size"] = $this->o["cmm_size"];
+
             if ($this->o["comments_active"] != 1) return "";
             if ($this->is_bot) return "";
 
@@ -2056,9 +2088,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                 $dbg_allow = "B";
             }
 
-            $rd_unit_width = $this->o["cmm_size"];
             $rd_unit_count = $this->o["cmm_stars"];
-            $rd_unit_style = $this->is_ie6 ? $this->o["cmm_style_ie6"] : $this->o["cmm_style"];
+            $rd_unit_width = $override["size"];
+            $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
+
             $rd_post_id = intval($post->ID);
             $rd_user_id = intval($user->ID);
             $rd_comment_id = intval($comment->comment_ID);
@@ -2149,34 +2182,13 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             return $rating_block;
         }
 
-        function render_article_rss() {
-            global $post;
-            $rd_post_id = intval($post->ID);
-            $post_data = GDSRDatabase::get_post_data($rd_post_id);
+        function render_article($post, $user, $override = array()) {
+            $default_settings = array("style" => $this->o["style"], "style_ie6" => $this->o["style_ie6"], "size" => $this->o["size"], "tpl" => 0, "read_only" => 0);
+            $override = shortcode_atts($default_settings, $override);
+            if ($override["style"] == "") $override["style"] = $this->o["style"];
+            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["style_ie6"];
+            if ($override["size"] == "") $override["size"] = $this->o["size"];
 
-            $votes = 0;
-            $score = 0;
-
-            if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
-                $votes = $post_data->user_voters + $post_data->visitor_voters;
-                $score = $post_data->user_votes + $post_data->visitor_votes;
-            }
-            else if ($post_data->rules_articles == "V") {
-                $votes = $post_data->visitor_voters;
-                $score = $post_data->visitor_votes;
-            }
-            else {
-                $votes = $post_data->user_voters;
-                $score = $post_data->user_votes;
-            }
-
-            $template_id = $this->o["default_ssb_template"];
-
-            $rating_block = GDSRRenderT2::render_ssb($template_id, $rd_post_id, $votes, $score, $this->o["rss_style"], $this->o["rss_size"], $this->o["stars"], $this->o["rss_header_text"]);
-            return $rating_block;
-        }
-
-        function render_article($post, $user, $override = array("tpl" => 0, "read_only" => 0)) {
             if ($this->is_bot) return "";
 
             $dbg_allow = "F";
@@ -2192,9 +2204,9 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
 
             if (is_single() || (is_page() && $this->o["display_comment_page"] == 1)) $this->init_post();
 
-            $rd_unit_width = $this->o["size"];
             $rd_unit_count = $this->o["stars"];
-            $rd_unit_style = $this->is_ie6 ? $this->o["style_ie6"] : $this->o["style"];
+            $rd_unit_width = $override["size"];
+            $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
             $rd_post_id = intval($post->ID);
             $rd_user_id = intval($user->ID);
             $rd_is_page = $post->post_type == "page" ? "1" : "0";
@@ -2294,12 +2306,21 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             return $rating_block;
         }
 
-        function render_multi_rating($post, $user, $override = array("id" => 0, "tpl" => 0, "read_only" => 0)) {
+        function render_multi_rating($post, $user, $override = array()) {
+            $default_settings = array("id" => 0, "style" => $this->o["mur_style"], "style_ie6" => $this->o["mur_style_ie6"], "size" => $this->o["mur_size"], "average_stars" => "oxygen", "average_size" => 30, "tpl" => 0, "read_only" => 0);
+            $override = shortcode_atts($default_settings, $override);
+            if ($override["style"] == "") $override["style"] = $this->o["mur_style"];
+            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["mur_style_ie6"];
+            if ($override["size"] == "") $override["size"] = $this->o["mur_size"];
+
             if ($this->is_bot) return "";
             if (is_feed()) return "";
 
             $set = gd_get_multi_set($override["id"]);
             if ($set == null) return "";
+
+            $rd_unit_width = $override["size"];
+            $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
 
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
@@ -2422,7 +2443,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_mrb_template"];
 
-            return GDSRRenderT2::render_mrb($this->o["mur_style"], $template_id, $allow_vote, $votes, $rd_post_id, $set, $this->o["mur_size"], $this->o["mur_header_text"], $tags_css, $override["average_stars"], $override["average_size"], $post_data->expiry_type, $remaining, $deadline, $this->o["mur_button_active"] == 1, $this->o["mur_button_text"], $debug, $this->loader_multis);
+            $mur_button = $this->o["mur_button_active"] == 1;
+            if (!$allow_vote) $mur_button = false;
+
+            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, $allow_vote, $votes, $rd_post_id, $set, $rd_unit_width, $this->o["mur_header_text"], $tags_css, $override["average_stars"], $override["average_size"], $post_data->expiry_type, $remaining, $deadline, $mur_button, $this->o["mur_button_text"], $debug, $this->loader_multis);
         }
         // rendering
 
@@ -2433,10 +2457,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         * @param int $value initial rating value
         * @param bool $allow_vote render stars to support rendering or not to
         */
-        function comment_review($value = 0, $allow_vote = true) {
-            $style = $this->o["cmm_review_style"];
+        function comment_review($value = 0, $allow_vote = true, $override = array()) {
             $stars = $this->o["cmm_review_stars"];
-            $size = $this->o["cmm_review_size"];
+            $style = $override["style"] == "" ? $this->o["cmm_review_style"] : $override["style"];
+            $size = $override["size"] == 0 ? $this->o["cmm_review_size"] : $override["size"];
             return GDSRRender::rating_stars_local($style, $size, $stars, $allow_vote, $value * $size);
         }
 
@@ -2484,3 +2508,5 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
     include(STARRATING_PATH."functions_helpers.php");
     include(STARRATING_PATH."functions_integration.php");
 }
+
+?>

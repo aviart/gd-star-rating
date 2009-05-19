@@ -1,5 +1,7 @@
 <?php
 
+    require_once(STARRATING_PATH."code/import.php");
+
     if ($_POST["gdsr_import_psr"] == __("Import Data", "gd-star-rating")) {
         GDSRImport::import_psr();
         $imports["post_star_rating"] = $imports["post_star_rating"] + 1;

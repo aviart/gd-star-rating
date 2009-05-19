@@ -8,9 +8,7 @@ function gdsrTimerChange() {
     if (timer == "D") jQuery("#gdsr_timer_date").css("display", "block");
     if (timer == "T") jQuery("#gdsr_timer_countdown").css("display", "block");
 }
-<?php }
-
-if ($edit_mur) { ?>
+<?php } if ($edit_mur) { ?>
 function repeat(str, i) {
    if (isNaN(i) || i <= 0) return "";
    return str + repeat(str, i-1);

@@ -51,7 +51,7 @@ class GDSRDefaults {
         "rss_header_text" => '',
         "style" => 'oxygen',
         "style_ie6" => 'oxygen_gif',
-        "size" => 30,
+        "size" => 24,
         "stars" => 10,
         "text" => 'bottom',
         "align" => 'none',
@@ -82,7 +82,7 @@ class GDSRDefaults {
         "mur_review_set" => 0,
         "cmm_style" => 'oxygen',
         "cmm_style_ie6" => 'oxygen_gif',
-        "cmm_size" => 12,
+        "cmm_size" => 16,
         "cmm_stars" => 5,
         "cmm_text" => 'bottom',
         "cmm_align" => 'none',
@@ -93,7 +93,7 @@ class GDSRDefaults {
         "cmm_review_stars" => 5,
         "cmm_aggr_style" => 'oxygen',
         "cmm_aggr_style_ie6" => 'oxygen_gif',
-        "cmm_aggr_size" => 12,
+        "cmm_aggr_size" => 16,
         "review_style" => 'oxygen',
         "review_style_ie6" => 'oxygen_gif',
         "review_size" => 20,
@@ -290,13 +290,19 @@ class GDSRDefaults {
 
     var $default_shortcode_starrater = array(
         "tpl" => 0,
-        "read_only" => 0
+        "read_only" => 0,
+        "style" => "oxygen",
+        "style_ie6" => "oxygen_gif",
+        "size" => 20
     );
 
     var $default_shortcode_starratingmulti = array(
         'id' => 1,
         'tpl' => 0,
         'read_only' => 0,
+        "style" => "oxygen",
+        "style_ie6" => "oxygen_gif",
+        "size" => 20,
         "average_stars" => "oxygen",
         "average_size" => 30
     );

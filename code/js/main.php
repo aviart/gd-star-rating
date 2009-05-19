@@ -7,7 +7,7 @@ function gdsrWait(rater, loader) {
 
 function gdsrEmpty() { }
 
-<?php if ($include_mur_rating) include(STARRATING_PATH.'code/js/gd-star-jsmf.php'); ?>
+<?php if ($include_mur_rating) include(STARRATING_PATH.'code/js/multi_fn.php'); ?>
 jQuery(document).ready(function() {
     if (jQuery.browser.msie) jQuery(".gdsr_rating_as > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_rating_as > a").click(function() {
@@ -23,10 +23,10 @@ jQuery(document).ready(function() {
             }
         });
     });
-    <?php if ($include_cmm_review) include(STARRATING_PATH.'code/js/gd-star-jsx.php'); ?>
+    <?php if ($include_cmm_review) include(STARRATING_PATH.'code/js/integration.php'); ?>
     <?php if ($include_mur_rating) {
-        include(STARRATING_PATH.'code/js/gd-star-jsm.php');
-        include(STARRATING_PATH.'code/js/gd-star-jsma.php');
+        include(STARRATING_PATH.'code/js/multi_rt.php');
+        include(STARRATING_PATH.'code/js/multi_in.php');
     } ?>
 });
 

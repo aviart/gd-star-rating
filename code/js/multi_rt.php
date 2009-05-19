@@ -1,3 +1,4 @@
+
     if (jQuery.browser.msie) jQuery(".gdsr_multisbutton_as > a").attr("href", "javascript:gdsrEmpty()");
 <?php if ($button_active) { ?>
     jQuery(".gdsr_multisbutton_as > a").click(function() {

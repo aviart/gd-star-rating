@@ -39,1185 +39,3453 @@
 </div>
 <div id="content">
 <h1>GD Star Rating</h1>
-    <h2>custom functions</h2>
-
-        <div class="contents">
-            <table border="0" cellpadding="0" cellspacing="0">
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#3a356a0bc44ed59414d2ef4353e4dc57">wp_gdsr_dump</a> ($msg, $obj, $block=&quot;none&quot;, $mode=&quot;a+&quot;)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Writes a object dump into the log file.  <a href="#3a356a0bc44ed59414d2ef4353e4dc57"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#dfcd3f886fe3ef5220102e858580b5ee">wp_gdsr_debug_clean</a> ()</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Truncates log file to zero lenght deleting all data inside.  <a href="#dfcd3f886fe3ef5220102e858580b5ee"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#f26b862a531b88da54c9d9381de08727">wp_gdsr_comment_integrate_multi_rating</a> ($multi_set_id=1, $template_id=0, $value=0, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Integrate multi set post rating into the comment form.  <a href="#f26b862a531b88da54c9d9381de08727"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#466bff283f3f4029d5e0a592648c5a07">wp_gdsr_comment_integrate_standard_rating</a> ($value=0, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Integrate standard post rating into the comment form.  <a href="#466bff283f3f4029d5e0a592648c5a07"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#5660a926030ecf5c201e90a85dc7f1a0">wp_gdsr_integration_readonly</a> ($standard=false, $multis=false)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Makes rating blocks readonly regardless of other settings.  <a href="#5660a926030ecf5c201e90a85dc7f1a0"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92649ce0d715cb966ac2c34c22d7933">wp_gdsr_render_powered_by</a> ($echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders small 80x15 powered by GD Star Rating button.  <a href="#a92649ce0d715cb966ac2c34c22d7933"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#1a7d3e51d359262acd4db438abe9f30e">wp_gdsr_render_article</a> ($template_id=0, $read_only=false, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders the rating stars.  <a href="#1a7d3e51d359262acd4db438abe9f30e"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#c782602a980b8285eb80556d66f66212">wp_gdsr_render_comment</a> ($template_id=0, $read_only=false, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Manual render of comment rating.  <a href="#c782602a980b8285eb80556d66f66212"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#40a27b11df6552df3c9fcee2a5ee017e">wp_gdsr_new_comment_review</a> ($value=0, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders stars for comment review used in the comment form for the comment author to place it's review rating.  <a href="#40a27b11df6552df3c9fcee2a5ee017e"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#19f911416fb6c4f1c62beee4108ff844">wp_gdsr_render_multi</a> ($multi_set_id, $post_id=0, $template_id=0, $read_only=false, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders multi rating block.  <a href="#19f911416fb6c4f1c62beee4108ff844"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3241074417c5afa68f2216e9a088a80">wp_gdsr_multi_review_editor</a> ($multi_set_id, $post_id=0, $template_id=0, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders multi rating review editor block.  <a href="#a3241074417c5afa68f2216e9a088a80"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#4d3413f49adaee0204c584f8d91dfc76">wp_gdsr_multi_review_editor_header</a> ($echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders multi rating review header elements css and javascript.  <a href="#4d3413f49adaee0204c584f8d91dfc76"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#6dee7cdb02653695387382e0dadd1b87">wp_gdsr_show_multi_review</a> ($multi_set_id, $post_id=0, $template_id=0, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders multi rating review for a post.  <a href="#6dee7cdb02653695387382e0dadd1b87"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#8ad6b0a2d599cf70269dd8a668154e3c">wp_gdsr_multi_rating_average</a> ($multi_set_id, $post_id=0, $show=&quot;total&quot;, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders single rating stars image with average rating for the multi rating review.  <a href="#8ad6b0a2d599cf70269dd8a668154e3c"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#cae1e65ca4e27d065beba5bf00b621fb">wp_gdsr_multi_review_average</a> ($multi_set_id, $post_id=0, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders single rating stars image with average rating for the multi rating review.  <a href="#cae1e65ca4e27d065beba5bf00b621fb"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#e919f122bdf5322920d66d299e011562">wp_gdsr_rating_article</a> ($post_id=0)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns object with all needed rating properties for post or page.  <a href="#e919f122bdf5322920d66d299e011562"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#457832f0c4972ef9da59b340e39db3e4">wp_gdsr_rating_comment</a> ($comment_id=0)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns object with all needed rating properties for comment.  <a href="#457832f0c4972ef9da59b340e39db3e4"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#b862b074956e771c9afcb84f105e40a4">wp_gdsr_rating_multi</a> ($multi_set_id, $post_id=0)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns object with all needed multi rating properties for post or page.  <a href="#b862b074956e771c9afcb84f105e40a4"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#5600ba1d236af9c50cf65186ae5cafe0">wp_gdsr_blog_rating</a> ($select=&quot;postpage&quot;, $show=&quot;total&quot;)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns calculated data for average blog rating including bayesian estimate mean.  <a href="#5600ba1d236af9c50cf65186ae5cafe0"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#97d7a2eadeb3e42f0cbd146718035d29">wp_gdsr_render_review</a> ($echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">GDStarRating $gdsr main rating class instance  <a href="#97d7a2eadeb3e42f0cbd146718035d29"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#18fad33a043c3397c56d544d47182fc8">wp_gdsr_render_star_rating_widget</a> ($widget=array(), $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders widget-like element based on the $widget settings array.  <a href="#18fad33a043c3397c56d544d47182fc8"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#81994d3887c8c25d0b556a614d0520f3">wp_gdsr_render_blog_rating_widget</a> ($widget=array(), $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders blog rating widget element based on the $widget settings array.  <a href="#81994d3887c8c25d0b556a614d0520f3"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#817bdf6e36f4348d60e8d2182a5d7fe0">wp_gdsr_render_comments_rating_widget</a> ($widget=array(), $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renders comments rating widget element based on the $widget settings array.  <a href="#817bdf6e36f4348d60e8d2182a5d7fe0"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#7a18e089352f1e1aa741ccd1e05435ab">wp_gdsr_show_comment_review</a> ($comment_id=0, $use_default=true, $size=20, $style=&quot;oxygen&quot;, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Shows stars with review rating of a comment.  <a href="#7a18e089352f1e1aa741ccd1e05435ab"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#228dc0f5120ba3c39ecdff4687e45cc3">wp_gdsr_show_article_review</a> ($post_id=0, $use_default=true, $size=20, $style=&quot;oxygen&quot;, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Shows review rating for the post with stars.  <a href="#228dc0f5120ba3c39ecdff4687e45cc3"></a><br></td></tr>
-                <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="#176d5eaa2d3977bf59f48a412fdff878">wp_gdsr_show_article_rating</a> ($post_id=0, $use_default=true, $size=20, $style=&quot;oxygen&quot;, $echo=true)</td></tr>
-
-                <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Shows rating for the post with stars.  <a href="#176d5eaa2d3977bf59f48a412fdff878"></a><br></td></tr>
-            </table>
-            <a class="anchor" name="5600ba1d236af9c50cf65186ae5cafe0"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_blog_rating" ref="5600ba1d236af9c50cf65186ae5cafe0" args="($select=&quot;postpage&quot;, $show=&quot;total&quot;)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_blog_rating           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>select</em> = <code>&quot;postpage&quot;</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>show</em> = <code>&quot;total&quot;</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Returns calculated data for average blog rating including bayesian estimate mean.
-                    <p>
-                    class $gdsr <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>string</em>&nbsp;</td><td>$select articles to select postpage|post|page </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>string</em>&nbsp;</td><td>$show votes to use: total|users|visitors </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>object with average blog rating values </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="f26b862a531b88da54c9d9381de08727"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_comment_integrate_multi_rating" ref="f26b862a531b88da54c9d9381de08727" args="($multi_set_id=1, $template_id=0, $value=0, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_comment_integrate_multi_rating           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>multi_set_id</em> = <code>1</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>template_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>value</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Integrate multi set post rating into the comment form.
-                    <p>
-                    GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$multi_set_id id of the multi rating set to use </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$template_id id of the template to use </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$value inital value for the review </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="466bff283f3f4029d5e0a592648c5a07"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_comment_integrate_standard_rating" ref="466bff283f3f4029d5e0a592648c5a07" args="($value=0, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_comment_integrate_standard_rating           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>value</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Integrate standard post rating into the comment form.
-                    <p>
-                    GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$template_id id of the template to use </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$value inital value for the review </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="dfcd3f886fe3ef5220102e858580b5ee"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_debug_clean" ref="dfcd3f886fe3ef5220102e858580b5ee" args="()" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_debug_clean           </td>
-                            <td>(</td>
-                            <td class="paramname">          </td>
-                            <td>&nbsp;)&nbsp;</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Truncates log file to zero lenght deleting all data inside.
-                    <p>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="3a356a0bc44ed59414d2ef4353e4dc57"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_dump" ref="3a356a0bc44ed59414d2ef4353e4dc57" args="($msg, $obj, $block=&quot;none&quot;, $mode=&quot;a+&quot;)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_dump           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>msg</em>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>obj</em>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>block</em> = <code>&quot;none&quot;</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>mode</em> = <code>&quot;a+&quot;</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Writes a object dump into the log file.
-                    <p>
-                    <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>string</em>&nbsp;</td><td>$msg log entry message </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>mixed</em>&nbsp;</td><td>$object object to dump </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>string</em>&nbsp;</td><td>$block adds start or end dump limiters { none | start | end } </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>string</em>&nbsp;</td><td>$mode file open mode </td></tr>
-                        </table>
-                    </dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="5660a926030ecf5c201e90a85dc7f1a0"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_integration_readonly" ref="5660a926030ecf5c201e90a85dc7f1a0" args="($standard=false, $multis=false)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_integration_readonly           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>standard</em> = <code>false</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>multis</em> = <code>false</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Makes rating blocks readonly regardless of other settings.
-                    <p>
-                    GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$standard standard ratings will be read only </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$multis multi ratings will be read only </td></tr>
-                        </table>
-                    </dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="8ad6b0a2d599cf70269dd8a668154e3c"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_multi_rating_average" ref="8ad6b0a2d599cf70269dd8a668154e3c" args="($multi_set_id, $post_id=0, $show=&quot;total&quot;, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_multi_rating_average           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>multi_set_id</em>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>post_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>show</em> = <code>&quot;total&quot;</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders single rating stars image with average rating for the multi rating review.
-                    <p>
-                    object $post post data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$set_id id of the multi rating set </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$post_id id of the post rating will be attributed to </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>string</em>&nbsp;</td><td>$show what data to use: total, visitors or users votes only </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="cae1e65ca4e27d065beba5bf00b621fb"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_multi_review_average" ref="cae1e65ca4e27d065beba5bf00b621fb" args="($multi_set_id, $post_id=0, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_multi_review_average           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>multi_set_id</em>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>post_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders single rating stars image with average rating for the multi rating review.
-                    <p>
-                    object $post post data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$set_id id of the multi rating set </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$post_id id of the post rating will be attributed to </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="a3241074417c5afa68f2216e9a088a80"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_multi_review_editor" ref="a3241074417c5afa68f2216e9a088a80" args="($multi_set_id, $post_id=0, $template_id=0, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_multi_review_editor           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>multi_set_id</em>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>post_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>template_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders multi rating review editor block.
-                    <p>
-                    object $post post data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$post_id id of the post rating will be attributed to </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>array</em>&nbsp;</td><td>$settings override settings for rendering the block </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="4d3413f49adaee0204c584f8d91dfc76"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_multi_review_editor_header" ref="4d3413f49adaee0204c584f8d91dfc76" args="($echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_multi_review_editor_header           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code>          </td>
-                            <td>&nbsp;)&nbsp;</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders multi rating review header elements css and javascript.
-                    <p>
-                    GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="40a27b11df6552df3c9fcee2a5ee017e"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_new_comment_review" ref="40a27b11df6552df3c9fcee2a5ee017e" args="($value=0, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_new_comment_review           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>value</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders stars for comment review used in the comment form for the comment author to place it's review rating.
-                    <p>
-                    GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$value inital value for the review </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="e919f122bdf5322920d66d299e011562"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_rating_article" ref="e919f122bdf5322920d66d299e011562" args="($post_id=0)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_rating_article           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>post_id</em> = <code>0</code>          </td>
-                            <td>&nbsp;)&nbsp;</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Returns object with all needed rating properties for post or page.
-                    <p>
-                    object $post post data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$post_id post to get rating for, leave 0 to get post from loop </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>object rating post properties </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="457832f0c4972ef9da59b340e39db3e4"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_rating_comment" ref="457832f0c4972ef9da59b340e39db3e4" args="($comment_id=0)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_rating_comment           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>comment_id</em> = <code>0</code>          </td>
-                            <td>&nbsp;)&nbsp;</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Returns object with all needed rating properties for comment.
-                    <p>
-                    object $comment comment data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$post_id post to get rating for, leave 0 to get post from loop </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>object rating post properties </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="b862b074956e771c9afcb84f105e40a4"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_rating_multi" ref="b862b074956e771c9afcb84f105e40a4" args="($multi_set_id, $post_id=0)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_rating_multi           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>multi_set_id</em>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>post_id</em> = <code>0</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Returns object with all needed multi rating properties for post or page.
-                    <p>
-                    object $post post data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$set_id id of the multi rating set </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$post_id post to get rating for, leave 0 to get post from loop </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>object rating post properties </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="1a7d3e51d359262acd4db438abe9f30e"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_render_article" ref="1a7d3e51d359262acd4db438abe9f30e" args="($template_id=0, $read_only=false, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_render_article           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>template_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>read_only</em> = <code>false</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders the rating stars.
-                    <p>
-                    This function call must be withing the post loop.<p>
-                    object $post post data  object $userdata user data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$template_id standard rating block template id </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$read_only render block as a read only, voting not allowed </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="81994d3887c8c25d0b556a614d0520f3"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_render_blog_rating_widget" ref="81994d3887c8c25d0b556a614d0520f3" args="($widget=array(), $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_render_blog_rating_widget           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>widget</em> = <code>array()</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders blog rating widget element based on the $widget settings array.
-                    <p>
-                    <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>array</em>&nbsp;</td><td>$widget settings to use for rendering </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="c782602a980b8285eb80556d66f66212"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_render_comment" ref="c782602a980b8285eb80556d66f66212" args="($template_id=0, $read_only=false, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_render_comment           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>template_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>read_only</em> = <code>false</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Manual render of comment rating.
-                    <p>
-                    object $comment comment data  object $post post data  object $userdata user data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$read_only render block as a read only, voting not allowed </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="817bdf6e36f4348d60e8d2182a5d7fe0"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_render_comments_rating_widget" ref="817bdf6e36f4348d60e8d2182a5d7fe0" args="($widget=array(), $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_render_comments_rating_widget           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>widget</em> = <code>array()</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders comments rating widget element based on the $widget settings array.
-                    <p>
-                    <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>array</em>&nbsp;</td><td>$widget settings to use for rendering </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="19f911416fb6c4f1c62beee4108ff844"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_render_multi" ref="19f911416fb6c4f1c62beee4108ff844" args="($multi_set_id, $post_id=0, $template_id=0, $read_only=false, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_render_multi           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>multi_set_id</em>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>post_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>template_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>read_only</em> = <code>false</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders multi rating block.
-                    <p>
-                    This function call must be withing the post loop.<p>
-                    object $post post data  object $userdata user data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$multi_set_id id of the multi rating set to use </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$post_id id of the post rating will be attributed to </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$template_id id of the template to use </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$read_only render block as a read only, voting not allowed </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="a92649ce0d715cb966ac2c34c22d7933"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_render_powered_by" ref="a92649ce0d715cb966ac2c34c22d7933" args="($echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_render_powered_by           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code>          </td>
-                            <td>&nbsp;)&nbsp;</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders small 80x15 powered by GD Star Rating button.
-                    <p>
-                    GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="97d7a2eadeb3e42f0cbd146718035d29"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_render_review" ref="97d7a2eadeb3e42f0cbd146718035d29" args="($echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_render_review           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code>          </td>
-                            <td>&nbsp;)&nbsp;</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    GDStarRating $gdsr main rating class instance
-                    <p>
-                    <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="18fad33a043c3397c56d544d47182fc8"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_render_star_rating_widget" ref="18fad33a043c3397c56d544d47182fc8" args="($widget=array(), $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_render_star_rating_widget           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>widget</em> = <code>array()</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders widget-like element based on the $widget settings array.
-                    <p>
-                    <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>array</em>&nbsp;</td><td>$widget settings to use for rendering </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="176d5eaa2d3977bf59f48a412fdff878"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_show_article_rating" ref="176d5eaa2d3977bf59f48a412fdff878" args="($post_id=0, $use_default=true, $size=20, $style=&quot;oxygen&quot;, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_show_article_rating           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>post_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>use_default</em> = <code>true</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>size</em> = <code>20</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>style</em> = <code>&quot;oxygen&quot;</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Shows rating for the post with stars.
-                    <p>
-                    object $post post data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$post_id ID for the article to display rating from. If this is set to 0, than it must be used within the loop, and id of current article will be used. </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$use_default set to true tell this function to render stars using default settings for stars set on settings panel, false tells to use $size and $style parameters. </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$size size of the stars to render, must be valid value: 12, 20, 30, 46 </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>string</em>&nbsp;</td><td>$style name of the stars set to use, name of the folder for the set </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="228dc0f5120ba3c39ecdff4687e45cc3"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_show_article_review" ref="228dc0f5120ba3c39ecdff4687e45cc3" args="($post_id=0, $use_default=true, $size=20, $style=&quot;oxygen&quot;, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_show_article_review           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>post_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>use_default</em> = <code>true</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>size</em> = <code>20</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>style</em> = <code>&quot;oxygen&quot;</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Shows review rating for the post with stars.
-                    <p>
-                    object $post post data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$post_id ID for the article to display rating from. If this is set to 0, than it must be used within the loop, and id of current article will be used. </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$use_default set to true tell this function to render stars using default settings for stars set on settings panel, false tells to use $size and $style parameters. </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$size size of the stars to render, must be valid value: 12, 20, 30, 46 </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>string</em>&nbsp;</td><td>$style name of the stars set to use, name of the folder for the set </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="7a18e089352f1e1aa741ccd1e05435ab"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_show_comment_review" ref="7a18e089352f1e1aa741ccd1e05435ab" args="($comment_id=0, $use_default=true, $size=20, $style=&quot;oxygen&quot;, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_show_comment_review           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>comment_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>use_default</em> = <code>true</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>size</em> = <code>20</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>style</em> = <code>&quot;oxygen&quot;</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Shows stars with review rating of a comment.
-                    <p>
-                    object $comment comment data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$comment_id ID for the comment to display rating from. If this is set to 0, than it must be used within the comment loop, and id of current comment will be used. </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$use_default set to true tell this function to render stars using default settings for stars set on settings panel, false tells to use $size and $style parameters. </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$size size of the stars to render, must be valid value: 12, 20, 30, 46 </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>string</em>&nbsp;</td><td>$style name of the stars set to use, name of the folder for the set </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div><p>
-            <a class="anchor" name="6dee7cdb02653695387382e0dadd1b87"></a><!-- doxytag: member="gd&#45;star&#45;custom.php::wp_gdsr_show_multi_review" ref="6dee7cdb02653695387382e0dadd1b87" args="($multi_set_id, $post_id=0, $template_id=0, $echo=true)" -->
-            <div class="memitem">
-                <div class="memproto">
-                    <table class="memname">
-                        <tr>
-                            <td class="memname">wp_gdsr_show_multi_review           </td>
-                            <td>(</td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>multi_set_id</em>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>post_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>template_id</em> = <code>0</code>, </td>
-                        </tr>
-                        <tr>
-                            <td class="paramkey"></td>
-                            <td></td>
-                            <td class="paramtype">$&nbsp;</td>
-                            <td class="paramname"> <em>echo</em> = <code>true</code></td><td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>)</td>
-                            <td></td><td></td><td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="memdoc">
-
-                    <p>
-                    Renders multi rating review for a post.
-                    <p>
-                    object $post post data  GDStarRating $gdsr main rating class instance <dl compact><dt><b>Parameters:</b></dt><dd>
-                        <table border="0" cellspacing="2" cellpadding="0">
-                            <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>$post_id id of the post rating will be attributed to </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>array</em>&nbsp;</td><td>$settings override settings for rendering the block </td></tr>
-                            <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>$echo echo results or return it as a string </td></tr>
-                        </table>
-                    </dl>
-                    <dl class="return" compact><dt><b>Returns:</b></dt><dd>string html with rendered contents </dd></dl>
-
-                </div>
-            </div>
+    <h2>integration functions</h2>
+
+    <div class="contents">
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#f26b862a531b88da54c9d9381de08727">
+            wp_gdsr_comment_integrate_multi_rating</a> ($multi_set_id=1,
+            $template_id=0, $value=0, $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Integrate multi set post rating into the comment form. <a href=
+            "#f26b862a531b88da54c9d9381de08727"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#466bff283f3f4029d5e0a592648c5a07">
+            wp_gdsr_comment_integrate_standard_rating</a> ($value=0,
+            $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Integrate standard post rating into the comment form. <a href=
+            "#466bff283f3f4029d5e0a592648c5a07"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#5660a926030ecf5c201e90a85dc7f1a0">
+            wp_gdsr_integration_readonly</a> ($standard=false, $multis=false)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Makes rating blocks readonly regardless of other settings. <a href=
+            "#5660a926030ecf5c201e90a85dc7f1a0"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#a92649ce0d715cb966ac2c34c22d7933">
+            wp_gdsr_render_powered_by</a> ($echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders small 80x15 powered by GD Star Rating button. <a href=
+            "#a92649ce0d715cb966ac2c34c22d7933"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#d7c90dffa0817a757a6f7da1c0a52f39">
+            wp_gdsr_render_article</a> ($template_id=0, $read_only=false,
+            $stars_set="", $stars_size=0, $stars_set_ie6="", $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders the rating stars. <a href=
+            "#d7c90dffa0817a757a6f7da1c0a52f39"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#149ce422f600ab1b15e22cc7ab69054e">
+            wp_gdsr_render_comment</a> ($template_id=0, $read_only=false,
+            $stars_set="", $stars_size=0, $stars_set_ie6="", $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Manual render of comment rating. <a href=
+            "#149ce422f600ab1b15e22cc7ab69054e"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#6f55cb3fcc6cf000e2f5b80bb2d64a0a">
+            wp_gdsr_render_multi</a> ($multi_set_id, $post_id=0,
+            $template_id=0, $read_only=false, $stars_set="", $stars_size=0,
+            $stars_set_ie6="", $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders multi rating block. <a href=
+            "#6f55cb3fcc6cf000e2f5b80bb2d64a0a"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#7637790ee7973eee49223c72b18b1c2e">
+            wp_gdsr_new_comment_review</a> ($value=0, $stars_set="",
+            $stars_size=0, $stars_set_ie6="", $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders stars for comment review used in the comment form for the
+            comment author to place it's review rating. <a href=
+            "#7637790ee7973eee49223c72b18b1c2e"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#a3241074417c5afa68f2216e9a088a80">
+            wp_gdsr_multi_review_editor</a> ($multi_set_id, $post_id=0,
+            $template_id=0, $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders multi rating review editor block. <a href=
+            "#a3241074417c5afa68f2216e9a088a80"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#4d3413f49adaee0204c584f8d91dfc76">
+            wp_gdsr_multi_review_editor_header</a> ($echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders multi rating review header elements css and javascript.
+            <a href="#4d3413f49adaee0204c584f8d91dfc76"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#6dee7cdb02653695387382e0dadd1b87">
+            wp_gdsr_show_multi_review</a> ($multi_set_id, $post_id=0,
+            $template_id=0, $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders multi rating review for a post. <a href=
+            "#6dee7cdb02653695387382e0dadd1b87"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#8ad6b0a2d599cf70269dd8a668154e3c">
+            wp_gdsr_multi_rating_average</a> ($multi_set_id, $post_id=0,
+            $show="total", $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders single rating stars image with average rating for the multi
+            rating review. <a href="#8ad6b0a2d599cf70269dd8a668154e3c"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#cae1e65ca4e27d065beba5bf00b621fb">
+            wp_gdsr_multi_review_average</a> ($multi_set_id, $post_id=0,
+            $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders single rating stars image with average rating for the multi
+            rating review. <a href="#cae1e65ca4e27d065beba5bf00b621fb"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#e919f122bdf5322920d66d299e011562">
+            wp_gdsr_rating_article</a> ($post_id=0)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Returns object with all needed rating properties for post or page.
+            <a href="#e919f122bdf5322920d66d299e011562"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#457832f0c4972ef9da59b340e39db3e4">
+            wp_gdsr_rating_comment</a> ($comment_id=0)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Returns object with all needed rating properties for comment.
+            <a href="#457832f0c4972ef9da59b340e39db3e4"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#b862b074956e771c9afcb84f105e40a4">
+            wp_gdsr_rating_multi</a> ($multi_set_id, $post_id=0)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Returns object with all needed multi rating properties for post or
+            page. <a href="#b862b074956e771c9afcb84f105e40a4"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#5600ba1d236af9c50cf65186ae5cafe0">
+            wp_gdsr_blog_rating</a> ($select="postpage", $show="total")
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Returns calculated data for average blog rating including bayesian
+            estimate mean. <a href="#5600ba1d236af9c50cf65186ae5cafe0"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#69188475538ae1bedd11deebf5e876dd">
+            wp_gdsr_render_review</a> ($post_id=0, $template_id=0, $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders standard review for a post. <a href=
+            "#69188475538ae1bedd11deebf5e876dd"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#18fad33a043c3397c56d544d47182fc8">
+            wp_gdsr_render_star_rating_widget</a> ($widget=array(), $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders widget-like element based on the $widget settings array.
+            <a href="#18fad33a043c3397c56d544d47182fc8"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#81994d3887c8c25d0b556a614d0520f3">
+            wp_gdsr_render_blog_rating_widget</a> ($widget=array(), $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders blog rating widget element based on the $widget settings
+            array. <a href="#81994d3887c8c25d0b556a614d0520f3"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#817bdf6e36f4348d60e8d2182a5d7fe0">
+            wp_gdsr_render_comments_rating_widget</a> ($widget=array(),
+            $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders comments rating widget element based on the $widget
+            settings array. <a href=
+            "#817bdf6e36f4348d60e8d2182a5d7fe0"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#7a18e089352f1e1aa741ccd1e05435ab">
+            wp_gdsr_show_comment_review</a> ($comment_id=0, $use_default=true,
+            $size=20, $style="oxygen", $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Shows stars with review rating of a comment. <a href=
+            "#7a18e089352f1e1aa741ccd1e05435ab"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#228dc0f5120ba3c39ecdff4687e45cc3">
+            wp_gdsr_show_article_review</a> ($post_id=0, $use_default=true,
+            $size=20, $style="oxygen", $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Shows review rating for the post with stars. <a href=
+            "#228dc0f5120ba3c39ecdff4687e45cc3"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#176d5eaa2d3977bf59f48a412fdff878">
+            wp_gdsr_show_article_rating</a> ($post_id=0, $use_default=true,
+            $size=20, $style="oxygen", $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Shows rating for the post with stars. <a href=
+            "#176d5eaa2d3977bf59f48a412fdff878"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#f7ce8e1c75b73cb15c08b7fb1b2cc9fd">
+            wp_gdsr_dump</a> ($msg, $obj, $block="none", $mode="a+",
+            $force=false)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Writes a object dump into the log file. <a href=
+            "#f7ce8e1c75b73cb15c08b7fb1b2cc9fd"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#dfcd3f886fe3ef5220102e858580b5ee">
+            wp_gdsr_debug_clean</a> ()
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Truncates log file to zero lenght deleting all data inside.
+            <a href="#dfcd3f886fe3ef5220102e858580b5ee"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#7f49bcf3b92e7566949c3cd3f07ebb27">
+            gd_get_multi_set</a> ($id)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Gets the multi rating set. <a href=
+            "#7f49bcf3b92e7566949c3cd3f07ebb27"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href=
+            "#907dd82f355a345433f5f6cb33bede12">
+            is_msie6</a> ()
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Determines if the browser accessing the page is MS Internet
+            Explorer 6. <a href="#907dd82f355a345433f5f6cb33bede12"></a><br>
+          </td>
+        </tr>
+      </table><a class="anchor" name="5600ba1d236af9c50cf65186ae5cafe0"></a>
+      <!-- doxytag: member="functions_integration.php::wp_gdsr_blog_rating" ref="5600ba1d236af9c50cf65186ae5cafe0" args="($select=&quot;postpage&quot;, $show=&quot;total&quot;)" -->
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_blog_rating
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>select</em> = <code>"postpage"</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>show</em> = <code>"total"</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
         </div>
+        <div class="memdoc">
+          <p>
+            Returns calculated data for average blog rating including bayesian
+            estimate mean.
+          </p>
+          <p>
+            class $gdsr
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $select articles to select postpage|post|page
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $show votes to use: total|users|visitors
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              object with average blog rating values
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="f26b862a531b88da54c9d9381de08727" id=
+        "f26b862a531b88da54c9d9381de08727"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_comment_integrate_multi_rating" ref="f26b862a531b88da54c9d9381de08727" args="($multi_set_id=1, $template_id=0, $value=0, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_comment_integrate_multi_rating
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>multi_set_id</em> = <code>1</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>template_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>value</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Integrate multi set post rating into the comment form.
+          </p>
+          <p>
+            GDStarRating $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $multi_set_id id of the multi rating set to use
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $template_id id of the template to use
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $value inital value for the review
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="466bff283f3f4029d5e0a592648c5a07"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_comment_integrate_standard_rating" ref="466bff283f3f4029d5e0a592648c5a07" args="($value=0, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_comment_integrate_standard_rating
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>value</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Integrate standard post rating into the comment form.
+          </p>
+          <p>
+            GDStarRating $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $template_id id of the template to use
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $value inital value for the review
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="5660a926030ecf5c201e90a85dc7f1a0"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_integration_readonly" ref="5660a926030ecf5c201e90a85dc7f1a0" args="($standard=false, $multis=false)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_integration_readonly
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>standard</em> = <code>false</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>multis</em> = <code>false</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Makes rating blocks readonly regardless of other settings.
+          </p>
+          <p>
+            GDStarRating $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $standard standard ratings will be read only
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $multis multi ratings will be read only
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="8ad6b0a2d599cf70269dd8a668154e3c"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_multi_rating_average" ref="8ad6b0a2d599cf70269dd8a668154e3c" args="($multi_set_id, $post_id=0, $show=&quot;total&quot;, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_multi_rating_average
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>multi_set_id</em>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>post_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>show</em> = <code>"total"</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders single rating stars image with average rating for the multi
+            rating review.
+          </p>
+          <p>
+            object $post post data GDStarRating $gdsr main rating class
+            instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $set_id id of the multi rating set
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id id of the post rating will be attributed to
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $show what data to use: total, visitors or users votes only
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="cae1e65ca4e27d065beba5bf00b621fb" id=
+        "cae1e65ca4e27d065beba5bf00b621fb"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_multi_review_average" ref="cae1e65ca4e27d065beba5bf00b621fb" args="($multi_set_id, $post_id=0, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_multi_review_average
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>multi_set_id</em>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>post_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders single rating stars image with average rating for the multi
+            rating review.
+          </p>
+          <p>
+            object $post post data GDStarRating $gdsr main rating class
+            instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $set_id id of the multi rating set
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id id of the post rating will be attributed to
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="a3241074417c5afa68f2216e9a088a80" id=
+        "a3241074417c5afa68f2216e9a088a80"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_multi_review_editor" ref="a3241074417c5afa68f2216e9a088a80" args="($multi_set_id, $post_id=0, $template_id=0, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_multi_review_editor
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>multi_set_id</em>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>post_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>template_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders multi rating review editor block.
+          </p>
+          <p>
+            object $post post data GDStarRating $gdsr main rating class
+            instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id id of the post rating will be attributed to
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>array</em> 
+                  </td>
+                  <td>
+                    $settings override settings for rendering the block
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="4d3413f49adaee0204c584f8d91dfc76"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_multi_review_editor_header" ref="4d3413f49adaee0204c584f8d91dfc76" args="($echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_multi_review_editor_header
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 ) 
+              </td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders multi rating review header elements css and javascript.
+          </p>
+          <p>
+            GDStarRating $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="7637790ee7973eee49223c72b18b1c2e"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_new_comment_review" ref="7637790ee7973eee49223c72b18b1c2e" args="($value=0, $stars_set=&quot;&quot;, $stars_size=0, $stars_set_ie6=&quot;&quot;, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_new_comment_review
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>value</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set</em> = <code>""</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_size</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set_ie6</em> = <code>""</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders stars for comment review used in the comment form for the
+            comment author to place it's review rating.
+          </p>
+          <p>
+            GDStarRating $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $value inital value for the review
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="e919f122bdf5322920d66d299e011562" id=
+        "e919f122bdf5322920d66d299e011562"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_rating_article" ref="e919f122bdf5322920d66d299e011562" args="($post_id=0)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_rating_article
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>post_id</em> = <code>0</code>
+              </td>
+              <td>
+                 ) 
+              </td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Returns object with all needed rating properties for post or page.
+          </p>
+          <p>
+            object $post post data GDStarRating $gdsr main rating class
+            instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id post to get rating for, leave 0 to get post from
+                    loop
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              object rating post properties
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="457832f0c4972ef9da59b340e39db3e4"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_rating_comment" ref="457832f0c4972ef9da59b340e39db3e4" args="($comment_id=0)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_rating_comment
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>comment_id</em> = <code>0</code>
+              </td>
+              <td>
+                 ) 
+              </td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Returns object with all needed rating properties for comment.
+          </p>
+          <p>
+            object $comment comment data GDStarRating $gdsr main rating class
+            instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id post to get rating for, leave 0 to get post from
+                    loop
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              object rating post properties
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="b862b074956e771c9afcb84f105e40a4" id=
+        "b862b074956e771c9afcb84f105e40a4"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_rating_multi" ref="b862b074956e771c9afcb84f105e40a4" args="($multi_set_id, $post_id=0)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_rating_multi
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>multi_set_id</em>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>post_id</em> = <code>0</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Returns object with all needed multi rating properties for post or
+            page.
+          </p>
+          <p>
+            object $post post data GDStarRating $gdsr main rating class
+            instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $set_id id of the multi rating set
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id post to get rating for, leave 0 to get post from
+                    loop
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              object rating post properties
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="d7c90dffa0817a757a6f7da1c0a52f39" id=
+        "d7c90dffa0817a757a6f7da1c0a52f39"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_render_article" ref="d7c90dffa0817a757a6f7da1c0a52f39" args="($template_id=0, $read_only=false, $stars_set=&quot;&quot;, $stars_size=0, $stars_set_ie6=&quot;&quot;, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_render_article
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>template_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>read_only</em> = <code>false</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set</em> = <code>""</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_size</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set_ie6</em> = <code>""</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders the rating stars.
+          </p>
+          <p>
+            This function call must be withing the post loop.
+          </p>
+          <p>
+            object $post post data object $userdata user data GDStarRating
+            $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $template_id standard rating block template id
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $read_only render block as a read only, voting not allowed
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="81994d3887c8c25d0b556a614d0520f3"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_render_blog_rating_widget" ref="81994d3887c8c25d0b556a614d0520f3" args="($widget=array(), $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_render_blog_rating_widget
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>widget</em> = <code>array()</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders blog rating widget element based on the $widget settings
+            array.
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>array</em> 
+                  </td>
+                  <td>
+                    $widget settings to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="149ce422f600ab1b15e22cc7ab69054e"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_render_comment" ref="149ce422f600ab1b15e22cc7ab69054e" args="($template_id=0, $read_only=false, $stars_set=&quot;&quot;, $stars_size=0, $stars_set_ie6=&quot;&quot;, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_render_comment
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>template_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>read_only</em> = <code>false</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set</em> = <code>""</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_size</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set_ie6</em> = <code>""</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Manual render of comment rating.
+          </p>
+          <p>
+            object $comment comment data object $post post data object
+            $userdata user data GDStarRating $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $read_only render block as a read only, voting not allowed
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="817bdf6e36f4348d60e8d2182a5d7fe0"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_render_comments_rating_widget" ref="817bdf6e36f4348d60e8d2182a5d7fe0" args="($widget=array(), $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_render_comments_rating_widget
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>widget</em> = <code>array()</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders comments rating widget element based on the $widget
+            settings array.
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>array</em> 
+                  </td>
+                  <td>
+                    $widget settings to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="6f55cb3fcc6cf000e2f5b80bb2d64a0a"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_render_multi" ref="6f55cb3fcc6cf000e2f5b80bb2d64a0a" args="($multi_set_id, $post_id=0, $template_id=0, $read_only=false, $stars_set=&quot;&quot;, $stars_size=0, $stars_set_ie6=&quot;&quot;, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_render_multi
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>multi_set_id</em>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>post_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>template_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>read_only</em> = <code>false</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set</em> = <code>""</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_size</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set_ie6</em> = <code>""</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders multi rating block.
+          </p>
+          <p>
+            This function call must be withing the post loop.
+          </p>
+          <p>
+            object $post post data object $userdata user data GDStarRating
+            $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $multi_set_id id of the multi rating set to use
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id id of the post rating will be attributed to
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $template_id id of the template to use
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $read_only render block as a read only, voting not allowed
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="a92649ce0d715cb966ac2c34c22d7933" id=
+        "a92649ce0d715cb966ac2c34c22d7933"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_render_powered_by" ref="a92649ce0d715cb966ac2c34c22d7933" args="($echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_render_powered_by
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 ) 
+              </td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders small 80x15 powered by GD Star Rating button.
+          </p>
+          <p>
+            GDStarRating $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="69188475538ae1bedd11deebf5e876dd"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_render_review" ref="69188475538ae1bedd11deebf5e876dd" args="($post_id=0, $template_id=0, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_render_review
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>post_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>template_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders standard review for a post.
+          </p>
+          <p>
+            GDStarRating $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id post to get review for
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $template_id id of the template to use
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="18fad33a043c3397c56d544d47182fc8"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_render_star_rating_widget" ref="18fad33a043c3397c56d544d47182fc8" args="($widget=array(), $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_render_star_rating_widget
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>widget</em> = <code>array()</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders widget-like element based on the $widget settings array.
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>array</em> 
+                  </td>
+                  <td>
+                    $widget settings to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="176d5eaa2d3977bf59f48a412fdff878"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_show_article_rating" ref="176d5eaa2d3977bf59f48a412fdff878" args="($post_id=0, $use_default=true, $size=20, $style=&quot;oxygen&quot;, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_show_article_rating
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>post_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>use_default</em> = <code>true</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>size</em> = <code>20</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>style</em> = <code>"oxygen"</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Shows rating for the post with stars.
+          </p>
+          <p>
+            object $post post data GDStarRating $gdsr main rating class
+            instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id ID for the article to display rating from. If this
+                    is set to 0, than it must be used within the loop, and id
+                    of current article will be used.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $use_default set to true tell this function to render stars
+                    using default settings for stars set on settings panel,
+                    false tells to use $size and $style parameters.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $size size of the stars to render, must be valid value: 12,
+                    20, 30, 46
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $style name of the stars set to use, name of the folder for
+                    the set
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="228dc0f5120ba3c39ecdff4687e45cc3"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_show_article_review" ref="228dc0f5120ba3c39ecdff4687e45cc3" args="($post_id=0, $use_default=true, $size=20, $style=&quot;oxygen&quot;, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_show_article_review
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>post_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>use_default</em> = <code>true</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>size</em> = <code>20</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>style</em> = <code>"oxygen"</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Shows review rating for the post with stars.
+          </p>
+          <p>
+            object $post post data GDStarRating $gdsr main rating class
+            instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id ID for the article to display rating from. If this
+                    is set to 0, than it must be used within the loop, and id
+                    of current article will be used.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $use_default set to true tell this function to render stars
+                    using default settings for stars set on settings panel,
+                    false tells to use $size and $style parameters.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $size size of the stars to render, must be valid value: 12,
+                    20, 30, 46
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $style name of the stars set to use, name of the folder for
+                    the set
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="7a18e089352f1e1aa741ccd1e05435ab"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_show_comment_review" ref="7a18e089352f1e1aa741ccd1e05435ab" args="($comment_id=0, $use_default=true, $size=20, $style=&quot;oxygen&quot;, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_show_comment_review
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>comment_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>use_default</em> = <code>true</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>size</em> = <code>20</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>style</em> = <code>"oxygen"</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Shows stars with review rating of a comment.
+          </p>
+          <p>
+            object $comment comment data GDStarRating $gdsr main rating class
+            instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $comment_id ID for the comment to display rating from. If
+                    this is set to 0, than it must be used within the comment
+                    loop, and id of current comment will be used.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $use_default set to true tell this function to render stars
+                    using default settings for stars set on settings panel,
+                    false tells to use $size and $style parameters.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $size size of the stars to render, must be valid value: 12,
+                    20, 30, 46
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $style name of the stars set to use, name of the folder for
+                    the set
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="6dee7cdb02653695387382e0dadd1b87"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_show_multi_review" ref="6dee7cdb02653695387382e0dadd1b87" args="($multi_set_id, $post_id=0, $template_id=0, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_show_multi_review
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>multi_set_id</em>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>post_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>template_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders multi rating review for a post.
+          </p>
+          <p>
+            object $post post data GDStarRating $gdsr main rating class
+            instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id id of the post rating will be attributed to
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $template_id id of the template to use
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>array</em> 
+                  </td>
+                  <td>
+                    $settings override settings for rendering the block
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+	  <a class="anchor" name="7f49bcf3b92e7566949c3cd3f07ebb27"></a>
+      <!-- doxytag: member="functions_helpers.php::gd_get_multi_set" ref="7f49bcf3b92e7566949c3cd3f07ebb27" args="($id)" -->
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                gd_get_multi_set
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>id</em>
+              </td>
+              <td>
+                 ) 
+              </td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Gets the multi rating set.
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $id set id
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              GDMultiSingle multi rating set
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="907dd82f355a345433f5f6cb33bede12"></a>
+        <!-- doxytag: member="functions_helpers.php::is_msie6" ref="907dd82f355a345433f5f6cb33bede12" args="()" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                is_msie6
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramname"></td>
+              <td>
+                 ) 
+              </td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Determines if the browser accessing the page is MS Internet
+            Explorer 6.
+          </p>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              bool true if the browser is IE6
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="dfcd3f886fe3ef5220102e858580b5ee" id=
+        "dfcd3f886fe3ef5220102e858580b5ee"></a>
+        <!-- doxytag: member="functions_helpers.php::wp_gdsr_debug_clean" ref="dfcd3f886fe3ef5220102e858580b5ee" args="()" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_debug_clean
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramname"></td>
+              <td>
+                 ) 
+              </td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Truncates log file to zero lenght deleting all data inside.
+          </p>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="f7ce8e1c75b73cb15c08b7fb1b2cc9fd" id=
+        "f7ce8e1c75b73cb15c08b7fb1b2cc9fd"></a>
+        <!-- doxytag: member="functions_helpers.php::wp_gdsr_dump" ref="f7ce8e1c75b73cb15c08b7fb1b2cc9fd" args="($msg, $obj, $block=&quot;none&quot;, $mode=&quot;a+&quot;, $force=false)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_dump
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>msg</em>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>obj</em>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>block</em> = <code>"none"</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>mode</em> = <code>"a+"</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>force</em> = <code>false</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Writes a object dump into the log file.
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $msg log entry message
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>mixed</em> 
+                  </td>
+                  <td>
+                    $object object to dump
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $block adds start or end dump limiters { none | start | end
+                    }
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $mode file open mode
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $force force writing into debug file even if the debug
+                    directive is inactive
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
 
 </div>
-  </body>
+</body>
 </html>
