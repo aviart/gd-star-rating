@@ -1062,9 +1062,8 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
 
     function get_combo_categories($selected = '', $name = 'gdsr_categories') {
         $dropdown_options = array('show_option_all' => __("All categories", "gd-star-rating"), 'hide_empty' => 0, 'hierarchical' => 1,
-            'show_count' => 0, 'orderby' => 'ID', 'selected' => $selected, 'name' => $name);
+            'show_count' => 0, 'echo' => 1, 'orderby' => 'name', 'selected' => $selected, 'name' => $name);
         wp_dropdown_categories($dropdown_options);
-        do_action('restrict_manage_posts');
     }
     // combos
 }
