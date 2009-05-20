@@ -15,7 +15,7 @@ if (class_exists("WP_Widget")) {
             if ($instance["display"] == "hide" || ($instance["display"] == "users" && $userdata->ID == 0) || ($instance["display"] == "visitors" && $userdata->ID > 0)) return;
 
             echo $before_widget.$before_title.$instance['title'].$after_title;
-            echo $gdsr->render_articles_widget($instance);
+            echo GDSRRenderT2::render_wsr($instance);
             echo $after_widget;
         }
 
