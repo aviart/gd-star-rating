@@ -12,9 +12,9 @@ Author URI: http://www.dev4press.com/
 
 Copyright 2008-2009 Milan Petrovic (email: milan@gdragon.info)
 
-This program is free software; you can redistribute it and/or modify
+This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
+the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -23,8 +23,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
 require_once(dirname(__FILE__)."/config.php");
@@ -2468,13 +2467,14 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         * Renders comment integration of standard rating
         *
         * @param int $value initial rating value
-        * @param bool $allow_vote render stars to support rendering or not to
+        * @param string $stars_set set to use for rendering
+        * @param int $stars_size set size to use for rendering
+        * @param string $stars_set_ie6 set to use for rendering in ie6
         */
-        function comment_integrate_standard_rating($value = 0) {
-            $style = $this->o["style"];
-            $stars = $this->o["stars"];
-            $size = $this->o["size"];
-            return GDSRRender::rating_stars_local($style, $size, $stars, true, $value * $size, "gdsr_int", "rcmmpost");
+        function comment_integrate_standard_rating($value = 0, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
+            $style = $stars_set == "" ? $this->o["style"] : $stars_set;
+            $style = $this->is_ie6 ? ($stars_set_ie6 == "" ? $this->o["style_ie6"] : $stars_set_ie6) : $style;
+            return GDSRRender::rating_stars_local($style, $stars_size == 0 ? $this->o["size"] : $stars_size, $this->o["stars"], true, $value * $size, "gdsr_int", "rcmmpost");
         }
 
         /**
@@ -2485,9 +2485,11 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         * @param object $userdata user data
         * @param int $multi_set_id id of the multi rating set to use
         * @param int $template_id id of the template to use
-        * @param bool $allow_vote render stars to support rendering or not to
+        * @param string $stars_set set to use for rendering
+        * @param int $stars_size set size to use for rendering
+        * @param string $stars_set_ie6 set to use for rendering in ie6
         */
-        function comment_integrate_multi_rating($value, $post_id, $multi_set_id, $template_id) {
+        function comment_integrate_multi_rating($value, $post_id, $multi_set_id, $template_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
             $set = gd_get_multi_set($multi_set_id);
             $votes = array();
             for ($i = 0; $i < count($set->object); $i++) {
@@ -2497,7 +2499,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                 $single_vote["rating"] = 0;
                 $votes[] = $single_vote;
             }
-            return GDSRRenderT2::render_mri("oxygen", $template_id, $post_id, $set, 20);
+            return GDSRRenderT2::render_mri($this->is_ie6 ? $stars_set_ie6 : $stars_set, $template_id, $post_id, $set, $stars_size);
         }
         // comment rating
     }

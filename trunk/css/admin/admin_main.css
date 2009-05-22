@@ -677,6 +677,7 @@ p.sub {
     margin: -12px;
 }
 
+.postbox .hndle { cursor: default !important; }
 .gdrgrid table { width: 100%; }
 .gdrgrid table tr.first th, .gdrgrid table tr.first td { border-top: medium none; }
 .gdrgrid td.first, .gdrgrid td.last { width: 1px; }
