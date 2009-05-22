@@ -49,9 +49,10 @@
           </td>
           <td class="memItemRight" valign="bottom">
             <a class="el" href=
-            "#f26b862a531b88da54c9d9381de08727">
+            "#cbac80329212e7dbe681ea6c8e700dc4">
             wp_gdsr_comment_integrate_multi_rating</a> ($multi_set_id=1,
-            $template_id=0, $value=0, $echo=true)
+            $template_id=0, $value=0, $stars_set="oxygen", $stars_size=20,
+            $stars_set_ie6="oxygen_gif", $echo=true)
           </td>
         </tr>
         <tr>
@@ -60,7 +61,7 @@
           </td>
           <td class="mdescRight">
             Integrate multi set post rating into the comment form. <a href=
-            "#f26b862a531b88da54c9d9381de08727"></a><br>
+            "#cbac80329212e7dbe681ea6c8e700dc4"></a><br>
           </td>
         </tr>
         <tr>
@@ -69,9 +70,9 @@
           </td>
           <td class="memItemRight" valign="bottom">
             <a class="el" href=
-            "#466bff283f3f4029d5e0a592648c5a07">
+            "#ae25734e36f021acb485d869b92f24e2">
             wp_gdsr_comment_integrate_standard_rating</a> ($value=0,
-            $echo=true)
+            $stars_set="", $stars_size=0, $stars_set_ie6="", $echo=true)
           </td>
         </tr>
         <tr>
@@ -80,7 +81,7 @@
           </td>
           <td class="mdescRight">
             Integrate standard post rating into the comment form. <a href=
-            "#466bff283f3f4029d5e0a592648c5a07"></a><br>
+            "#ae25734e36f021acb485d869b92f24e2"></a><br>
           </td>
         </tr>
         <tr>
@@ -593,7 +594,9 @@
             Explorer 6. <a href="#907dd82f355a345433f5f6cb33bede12"></a><br>
           </td>
         </tr>
-      </table><a class="anchor" name="5600ba1d236af9c50cf65186ae5cafe0"></a>
+      </table>
+
+	  <a class="anchor" name="5600ba1d236af9c50cf65186ae5cafe0"></a>
       <!-- doxytag: member="functions_integration.php::wp_gdsr_blog_rating" ref="5600ba1d236af9c50cf65186ae5cafe0" args="($select=&quot;postpage&quot;, $show=&quot;total&quot;)" -->
       <div class="memitem">
         <div class="memproto">
@@ -682,9 +685,9 @@
         </div>
       </div>
       <p>
-        <a class="anchor" name="f26b862a531b88da54c9d9381de08727" id=
-        "f26b862a531b88da54c9d9381de08727"></a>
-        <!-- doxytag: member="functions_integration.php::wp_gdsr_comment_integrate_multi_rating" ref="f26b862a531b88da54c9d9381de08727" args="($multi_set_id=1, $template_id=0, $value=0, $echo=true)" -->
+        <a class="anchor" name="cbac80329212e7dbe681ea6c8e700dc4" id=
+        "cbac80329212e7dbe681ea6c8e700dc4"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_comment_integrate_multi_rating" ref="cbac80329212e7dbe681ea6c8e700dc4" args="($multi_set_id=1, $template_id=0, $value=0, $stars_set=&quot;oxygen&quot;, $stars_size=20, $stars_set_ie6=&quot;oxygen_gif&quot;, $echo=true)" -->
       </p>
       <div class="memitem">
         <div class="memproto">
@@ -721,6 +724,36 @@
               </td>
               <td class="paramname">
                 <em>value</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set</em> = <code>"oxygen"</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_size</em> = <code>20</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set_ie6</em> = <code>"oxygen_gif"</code>,
               </td>
             </tr>
             <tr>
@@ -790,6 +823,33 @@
                 <tr>
                   <td valign="top"></td>
                   <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set set to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $stars_size set size to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set_ie6 set to use for rendering in ie6
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
                     <em>bool</em> 
                   </td>
                   <td>
@@ -810,8 +870,9 @@
         </div>
       </div>
       <p>
-        <a class="anchor" name="466bff283f3f4029d5e0a592648c5a07"></a>
-        <!-- doxytag: member="functions_integration.php::wp_gdsr_comment_integrate_standard_rating" ref="466bff283f3f4029d5e0a592648c5a07" args="($value=0, $echo=true)" -->
+        <a class="anchor" name="ae25734e36f021acb485d869b92f24e2" id=
+        "ae25734e36f021acb485d869b92f24e2"></a>
+        <!-- doxytag: member="functions_integration.php::wp_gdsr_comment_integrate_standard_rating" ref="ae25734e36f021acb485d869b92f24e2" args="($value=0, $stars_set=&quot;&quot;, $stars_size=0, $stars_set_ie6=&quot;&quot;, $echo=true)" -->
       </p>
       <div class="memitem">
         <div class="memproto">
@@ -828,6 +889,36 @@
               </td>
               <td class="paramname">
                 <em>value</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set</em> = <code>""</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_size</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_set_ie6</em> = <code>""</code>,
               </td>
             </tr>
             <tr>
@@ -883,6 +974,33 @@
                   </td>
                   <td>
                     $value inital value for the review
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set set to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $stars_size set size to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set_ie6 set to use for rendering in ie6
                   </td>
                 </tr>
                 <tr>
@@ -1511,6 +1629,33 @@
                 <tr>
                   <td valign="top"></td>
                   <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set set to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $stars_size set size to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set_ie6 set to use for rendering in ie6
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
                     <em>bool</em> 
                   </td>
                   <td>
@@ -1876,6 +2021,33 @@
                 <tr>
                   <td valign="top"></td>
                   <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set set to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $stars_size set size to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set_ie6 set to use for rendering in ie6
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
                     <em>bool</em> 
                   </td>
                   <td>
@@ -2088,6 +2260,33 @@
                   </td>
                   <td>
                     $read_only render block as a read only, voting not allowed
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set set to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $stars_size set size to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set_ie6 set to use for rendering in ie6
                   </td>
                 </tr>
                 <tr>
@@ -2355,6 +2554,33 @@
                   </td>
                   <td>
                     $read_only render block as a read only, voting not allowed
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set set to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $stars_size set size to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $stars_set_ie6 set to use for rendering in ie6
                   </td>
                 </tr>
                 <tr>
