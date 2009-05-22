@@ -2,7 +2,7 @@
 
 $review_set = $options["mur_review_set"];
 
-if ($_POST["gdsr_operation"] == __("Delete Selected Sets", "gd-star-rating")) {
+if ($_POST["gdsr_operation"] == __("Delete Selected", "gd-star-rating")) {
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
         $ids = "(".join(", ", $gdsr_items).")";
