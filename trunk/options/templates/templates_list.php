@@ -68,10 +68,10 @@ $all_sections = $tpls->list_sections_assoc();
         echo '<td>'.$tpls->find_template_tag($t->section).'</td>';
         echo '<td style="text-align: right">';
         if ($t->preinstalled == "0") {
-            echo '<a href="'.$url.'deltpl='.$t->template_id.'">delete</a> | ';
-            echo '<a href="'.$url.'mode=edit&tplid='.$t->template_id.'">edit</a> | ';
+            echo '<a href="'.$url.'deltpl='.$t->template_id.'">'.__("delete", "gd-star-rating").'</a> | ';
+            echo '<a href="'.$url.'mode=edit&tplid='.$t->template_id.'">'.__("edit", "gd-star-rating").'</a> | ';
         }
-        echo '<a href="'.$url.'mode=copy&tplid='.$t->template_id.'">duplicate</a>';
+        echo '<a href="'.$url.'mode=copy&tplid='.$t->template_id.'">'.__("duplicate", "gd-star-rating").'</a>';
         echo '</td>';
         echo '</tr>';
 
@@ -103,6 +103,7 @@ $all_sections = $tpls->list_sections_assoc();
 </div>
 <br class="clear"/>
 </div>
-
-</div>
+<div class="gdsr-table-split"></div>
+<?php _e("Click to open post with T2 templates map with dependencies for templates", "gd-star-rating"); ?>:<br />
+<a target="_blank" href="<?php echo STARRATING_URL; ?>info/t2map.html"><?php _e("T2 Templates Map", "gd-star-rating") ?></a>
 </div>

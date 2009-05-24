@@ -34,6 +34,13 @@ $template = $tpls->get_list($section);
 </tr><tr>
 <td class="tpl-editor-form-td">
 <table class="form-table"><tbody>
+<tr><th scope="row"><?php _e("Info", "gd-star-rating"); ?></th>
+    <td>
+        <strong><?php echo $section; ?></strong>: <?php echo $template->section; ?>
+        <div class="gdsr-table-split"></div>
+        <?php echo $mode == "edit" ? "Editing: ".$tpl->name : __("Creating new template", "gd-star-rating"); ?>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("General", "gd-star-rating"); ?></th>
     <td>
         <?php _e("Name", "gd-star-rating"); ?>:<br />
