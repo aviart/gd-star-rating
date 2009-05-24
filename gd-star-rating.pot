@@ -1072,6 +1072,7 @@ msgid "An error occured while loading newsfeed. Go to the %sfront page%s to chec
 msgstr ""
 
 #: options/front/front_right.php:4
+#: options/templates/templates_editor.php:36
 msgid "Info"
 msgstr ""
 
@@ -1262,7 +1263,7 @@ msgstr ""
 #: options/multis/editor.php:27
 #: options/multis/editor.php:93
 #: options/multis/sets.php:62
-#: options/templates/templates_editor.php:38
+#: options/templates/templates_editor.php:45
 #: options/templates/templates_list.php:47
 #: options/users.php:61
 #: options/voters.php:143
@@ -1270,8 +1271,8 @@ msgid "Name"
 msgstr ""
 
 #: options/multis/editor.php:32
-#: options/templates/templates_editor.php:40
-#: options/templates/templates_editor.php:53
+#: options/templates/templates_editor.php:47
+#: options/templates/templates_editor.php:60
 msgid "Description"
 msgstr ""
 
@@ -2193,7 +2194,7 @@ msgid "Section / Type"
 msgstr ""
 
 #: options/templates/templates_defaults.php:9
-#: options/templates/templates_editor.php:44
+#: options/templates/templates_editor.php:51
 #: tinymce3/panels/advanced.php:248
 #: tinymce3/panels/articles.php:7
 #: tinymce3/panels/articles.php:19
@@ -2226,28 +2227,32 @@ msgstr ""
 msgid "Editor"
 msgstr ""
 
-#: options/templates/templates_editor.php:36
+#: options/templates/templates_editor.php:43
 #: tinymce3/window.php:30
 msgid "General"
 msgstr ""
 
-#: options/templates/templates_editor.php:62
+#: options/templates/templates_editor.php:69
 msgid "All tag elements"
 msgstr ""
 
-#: options/templates/templates_editor.php:63
+#: options/templates/templates_editor.php:70
 msgid "No tag elements allowed"
 msgstr ""
 
-#: options/templates/templates_editor.php:75
+#: options/templates/templates_editor.php:82
 msgid "Save Template"
 msgstr ""
 
-#: options/templates/templates_editor.php:85
+#: options/templates/templates_editor.php:92
 msgid "Select template to use for this element:"
 msgstr ""
 
-#: options/templates/templates_editor.php:54
+#: options/templates/templates_editor.php:40
+msgid "Creating new template"
+msgstr ""
+
+#: options/templates/templates_editor.php:61
 msgid "Allowed elements"
 msgstr ""
 
@@ -2269,6 +2274,26 @@ msgstr ""
 
 #: options/templates/templates_list.php:98
 msgid "Create"
+msgstr ""
+
+#: options/templates/templates_list.php:106
+msgid "Click to open post with T2 templates map with dependencies for templates"
+msgstr ""
+
+#: options/templates/templates_list.php:107
+msgid "T2 Templates Map"
+msgstr ""
+
+#: options/templates/templates_list.php:70
+msgid "delete"
+msgstr ""
+
+#: options/templates/templates_list.php:71
+msgid "edit"
+msgstr ""
+
+#: options/templates/templates_list.php:73
+msgid "duplicate"
 msgstr ""
 
 #: options/tools/tools_bulk.php:2

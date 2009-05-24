@@ -1082,6 +1082,7 @@ msgid "An error occured while loading newsfeed. Go to the %sfront page%s to chec
 msgstr "Дошло је до грешке приликом учитавања вести. Идите на %сглавну страну%с и проверите статус."
 
 #: options/front/front_right.php:4
+#: options/templates/templates_editor.php:36
 msgid "Info"
 msgstr "Подаци"
 
@@ -1272,7 +1273,7 @@ msgstr "Мулти Сет Едитор"
 #: options/multis/editor.php:27
 #: options/multis/editor.php:93
 #: options/multis/sets.php:62
-#: options/templates/templates_editor.php:38
+#: options/templates/templates_editor.php:45
 #: options/templates/templates_list.php:47
 #: options/users.php:61
 #: options/voters.php:143
@@ -1280,8 +1281,8 @@ msgid "Name"
 msgstr "Назив"
 
 #: options/multis/editor.php:32
-#: options/templates/templates_editor.php:40
-#: options/templates/templates_editor.php:53
+#: options/templates/templates_editor.php:47
+#: options/templates/templates_editor.php:60
 msgid "Description"
 msgstr "Опис"
 
@@ -2195,7 +2196,7 @@ msgid "Section / Type"
 msgstr "Секција / Тип"
 
 #: options/templates/templates_defaults.php:9
-#: options/templates/templates_editor.php:44
+#: options/templates/templates_editor.php:51
 #: tinymce3/panels/advanced.php:248
 #: tinymce3/panels/articles.php:7
 #: tinymce3/panels/articles.php:19
@@ -2228,28 +2229,32 @@ msgstr "Шаблон Едитор"
 msgid "Editor"
 msgstr "Едитор"
 
-#: options/templates/templates_editor.php:36
+#: options/templates/templates_editor.php:43
 #: tinymce3/window.php:30
 msgid "General"
 msgstr "Општа подешавања"
 
-#: options/templates/templates_editor.php:62
+#: options/templates/templates_editor.php:69
 msgid "All tag elements"
 msgstr "Сви таг елементи"
 
-#: options/templates/templates_editor.php:63
+#: options/templates/templates_editor.php:70
 msgid "No tag elements allowed"
 msgstr "нису дозвољени таг елементи"
 
-#: options/templates/templates_editor.php:75
+#: options/templates/templates_editor.php:82
 msgid "Save Template"
 msgstr "Сними Шаблон"
 
-#: options/templates/templates_editor.php:85
+#: options/templates/templates_editor.php:92
 msgid "Select template to use for this element:"
 msgstr "Изабери шаблон за овај елемент:"
 
-#: options/templates/templates_editor.php:54
+#: options/templates/templates_editor.php:40
+msgid "Creating new template"
+msgstr "Креирање новог Шаблона"
+
+#: options/templates/templates_editor.php:61
 msgid "Allowed elements"
 msgstr "Дозвољени елементи"
 
@@ -2272,6 +2277,26 @@ msgstr "Ново шаблон за:"
 #: options/templates/templates_list.php:98
 msgid "Create"
 msgstr "Креирај"
+
+#: options/templates/templates_list.php:106
+msgid "Click to open post with T2 templates map with dependencies for templates"
+msgstr "Кликните да бисте отворили страна су Т2 мапом међузависности."
+
+#: options/templates/templates_list.php:107
+msgid "T2 Templates Map"
+msgstr "T2 Мапа Шаблона"
+
+#: options/templates/templates_list.php:70
+msgid "delete"
+msgstr "обриши"
+
+#: options/templates/templates_list.php:71
+msgid "edit"
+msgstr "иземни"
+
+#: options/templates/templates_list.php:73
+msgid "duplicate"
+msgstr "дуплицирај"
 
 #: options/tools/tools_bulk.php:2
 msgid "Date Based Post Locking"
@@ -3538,4 +3563,7 @@ msgstr "мртвих чланака из мулти рејтинг табела"
 #: gd-star-rating.php:1297
 msgid "post revisions records from multi ratings tables."
 msgstr "ревизија из мулти рејтинг табела."
+
+#~ msgid "New Template"
+#~ msgstr "Нови Шаблон"
 
