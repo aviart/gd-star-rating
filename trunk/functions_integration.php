@@ -1,6 +1,45 @@
 <?php
 
 /**
+ *
+ * @global GDStarRating $gdsr main rating class instance
+ * @param int $comment_id id of the comment
+ * @param int $multi_set_id id of the multi rating set to use
+ * @param int $template_id id of the template to use
+ * @param string $stars_set set to use for rendering
+ * @param int $stars_size set size to use for rendering
+ * @param string $stars_set_ie6 set to use for rendering in ie6
+ * @param string $avg_stars_set set to use for rendering of average value
+ * @param int $avg_stars_size set size to use for rendering of average value
+ * @param string $avg_stars_set_ie6 set to use for rendering of average value in ie6
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
+function wp_gdsr_comment_integrate_multi_result($comment_id, $multi_set_id = 1, $template_id = 0, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif", $echo = true) {
+    global $gdsr, $post;
+
+    if ($echo) echo $gdsr->comment_integrate_multi_result($comment_id, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
+    else return $gdsr->comment_integrate_multi_result($comment_id, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
+}
+
+/**
+ *
+ * @global GDStarRating $gdsr main rating class instance
+ * @param int $comment_id id of the comment
+ * @param string $stars_set set to use for rendering
+ * @param int $stars_size set size to use for rendering
+ * @param string $stars_set_ie6 set to use for rendering in ie6
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
+function wp_gdsr_comment_integrate_standard_result($comment_id, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
+    global $gdsr;
+
+    if ($echo) echo $gdsr->comment_integrate_standard_result($comment_id, $stars_set, $stars_size, $stars_set_ie6);
+    else return $gdsr->comment_integrate_standard_result($comment_id, $stars_set, $stars_size, $stars_set_ie6);
+}
+
+/**
  * Integrate multi set post rating into the comment form.
  *
  * @global GDStarRating $gdsr main rating class instance

@@ -22,6 +22,7 @@
         $ginc[] = $stars;
         update_option("gd-star-rating-inc", $ginc);
 
+        $gdsr_options["disable_ie6_check"] = isset($_POST['gdsr_disable_ie6_check']) ? 1 : 0;
         $gdsr_options["news_feed_active"] = isset($_POST['gdsr_news_feed_active']) ? 1 : 0;
         $gdsr_options["widgets_hidempty"] = $_POST['gdsr_widgets_hidempty'];
         $gdsr_options["encoding"] = $_POST['gdsr_encoding'];

@@ -64,6 +64,8 @@
 <tr><th scope="row"><?php _e("Internet Explorer", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_ieopacityfix" id="gdsr_ieopacityfix"<?php if ($gdsr_options["ie_opacity_fix"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ieopacityfix"><?php _e("Use IE opacity fix for multi ratings.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_disable_ie6_check" id="gdsr_disable_ie6_check"<?php if ($gdsr_options["disable_ie6_check"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_disable_ie6_check"><?php _e("Disable checking for IE6 and IE6 specific settings.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 </tbody></table>

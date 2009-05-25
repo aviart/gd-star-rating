@@ -75,6 +75,11 @@
                     <td class="t options"><a href="http://www.dev4press.com/plugins/gd-press-tools" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
                 <tr>
+                    <td class="first b">GD Simple Widgets</td>
+                    <td class="t"><?php _e("collection of widgets", "gd-star-rating"); ?></td>
+                    <td class="t options"><a href="http://www.dev4press.com/plugins/gd-simple-widgets" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
+                </tr>
+                <tr>
                     <td class="first b">GD Pages Navigator</td>
                     <td class="t"><?php _e("advanced pages widget", "gd-star-rating"); ?></td>
                     <td class="t options"><a href="http://www.dev4press.com/plugins/gd-pages-navigator" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
@@ -83,11 +88,6 @@
                     <td class="first b">GD LinkedIn Badge</td>
                     <td class="t"><?php _e("widget to add linkedin badge", "gd-star-rating"); ?></td>
                     <td class="t options"><a href="http://www.dev4press.com/plugins/gd-linkedin-badge" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
-                </tr>
-                <tr>
-                    <td class="first b">GD Plugin Core</td>
-                    <td class="t"><?php _e("basic plugin class and wizard", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://www.dev4press.com/plugins/gd-plugin-core" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
             </tbody></table>
         </div>
