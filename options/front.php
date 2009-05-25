@@ -2,7 +2,7 @@
 
 <div class="wrap">
     <div id="gdptlogo">
-        <div class="gdpttitle">GD Star Rating<span><?php echo $options["version"]; ?></span></div>
+        <div class="gdpttitle">GD Star Rating<span><?php echo $options["version"]; ?> <?php echo $options["status"] == "Stable" ? "" : $options["status"]; ?></span></div>
         <h3>a wordpress rating system</h3>
     </div>
 
