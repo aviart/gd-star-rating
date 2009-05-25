@@ -2,15 +2,15 @@
 msgid "Chart with votes distribution"
 msgstr ""
 
-#: code/db/main.php:1017
+#: code/db/main.php:1023
 msgid "Show all dates"
 msgstr ""
 
-#: code/db/main.php:1045
+#: code/db/main.php:1051
 msgid "All users and visitors"
 msgstr ""
 
-#: code/db/main.php:1046
+#: code/db/main.php:1052
 #: tinymce3/panels/advanced.php:144
 #: tinymce3/panels/comments.php:13
 #: widgets/comments/part_basic.php:17
@@ -28,11 +28,11 @@ msgstr ""
 msgid "Visitors Only"
 msgstr ""
 
-#: code/db/main.php:1047
+#: code/db/main.php:1053
 msgid "All Users"
 msgstr ""
 
-#: code/db/main.php:1063
+#: code/db/main.php:1069
 msgid "All categories"
 msgstr ""
 
@@ -968,8 +968,8 @@ msgstr ""
 #: options/export/export_t2.php:4
 #: options/export/export_users.php:42
 #: options/export/export_users.php:45
-#: gd-star-rating.php:587
-#: gd-star-rating.php:587
+#: gd-star-rating.php:586
+#: gd-star-rating.php:586
 msgid "Export"
 msgstr ""
 
@@ -1167,15 +1167,15 @@ msgid "GD WordPress Plugins"
 msgstr ""
 
 #: options/front/front_right.php:78
-msgid "advanced pages widget"
+msgid "collection of widgets"
 msgstr ""
 
 #: options/front/front_right.php:83
-msgid "widget to add linkedin badge"
+msgid "advanced pages widget"
 msgstr ""
 
 #: options/front/front_right.php:88
-msgid "basic plugin class and wizard"
+msgid "widget to add linkedin badge"
 msgstr ""
 
 #: options/front/front_right.php:101
@@ -1330,8 +1330,8 @@ msgstr ""
 #: options/settings/settings_administration.php:40
 #: options/articles.php:157
 #: options/categories.php:70
-#: gd-star-rating.php:578
-#: gd-star-rating.php:578
+#: gd-star-rating.php:577
+#: gd-star-rating.php:577
 msgid "Categories"
 msgstr ""
 
@@ -1368,8 +1368,8 @@ msgstr ""
 #: options/users.php:65
 #: tinymce3/window.php:55
 #: tinymce3/window.php:56
-#: gd-star-rating.php:577
-#: gd-star-rating.php:577
+#: gd-star-rating.php:576
+#: gd-star-rating.php:576
 msgid "Articles"
 msgstr ""
 
@@ -1459,8 +1459,8 @@ msgid "Voters"
 msgstr ""
 
 #: options/multis/sets.php:45
-#: gd-star-rating.php:581
-#: gd-star-rating.php:581
+#: gd-star-rating.php:580
+#: gd-star-rating.php:580
 msgid "Multi Sets"
 msgstr ""
 
@@ -1536,9 +1536,9 @@ msgstr ""
 #: options/settings.php:37
 #: tinymce3/panels/articles.php:24
 #: tinymce3/panels/multi.php:21
-#: gd-star-rating.php:582
-#: gd-star-rating.php:582
-#: gd-star-rating.php:742
+#: gd-star-rating.php:581
+#: gd-star-rating.php:581
+#: gd-star-rating.php:741
 msgid "Settings"
 msgstr ""
 
@@ -1561,8 +1561,8 @@ msgstr ""
 #: options/categories.php:225
 #: options/comments.php:140
 #: options/users.php:48
-#: gd-star-rating.php:579
-#: gd-star-rating.php:579
+#: gd-star-rating.php:578
+#: gd-star-rating.php:578
 msgid "Users"
 msgstr ""
 
@@ -1572,8 +1572,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:44
 #: options/setup.php:45
-#: gd-star-rating.php:589
-#: gd-star-rating.php:589
+#: gd-star-rating.php:588
+#: gd-star-rating.php:588
 msgid "Setup"
 msgstr ""
 
@@ -1583,8 +1583,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:48
 #: options/tools/tools_t2.php:6
-#: gd-star-rating.php:586
-#: gd-star-rating.php:586
+#: gd-star-rating.php:585
+#: gd-star-rating.php:585
 msgid "Import"
 msgstr ""
 
@@ -1595,8 +1595,8 @@ msgstr ""
 #: options/settings/settings_administration.php:50
 #: options/ips.php:67
 #: options/users_log.php:178
-#: gd-star-rating.php:585
-#: gd-star-rating.php:585
+#: gd-star-rating.php:584
+#: gd-star-rating.php:584
 msgid "IP's"
 msgstr ""
 
@@ -1958,6 +1958,10 @@ msgstr ""
 msgid "Use IE opacity fix for multi ratings."
 msgstr ""
 
+#: options/settings/settings_features.php:67
+msgid "Disable checking for IE6 and IE6 specific settings."
+msgstr ""
+
 #: options/settings/settings_gfx.php:1
 msgid "Stars Sizes"
 msgstr ""
@@ -2180,7 +2184,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1181
+#: gd-star-rating.php:1180
 msgid "UNINSTALL"
 msgstr ""
 
@@ -2622,8 +2626,8 @@ msgstr ""
 
 #: options/export.php:7
 #: options/tools.php:8
-#: gd-star-rating.php:584
-#: gd-star-rating.php:584
+#: gd-star-rating.php:583
+#: gd-star-rating.php:583
 msgid "T2 Templates"
 msgstr ""
 
@@ -2803,8 +2807,8 @@ msgid "Full Uninstall"
 msgstr ""
 
 #: options/tools.php:0
-#: gd-star-rating.php:583
-#: gd-star-rating.php:583
+#: gd-star-rating.php:582
+#: gd-star-rating.php:582
 msgid "Tools"
 msgstr ""
 
@@ -3517,51 +3521,51 @@ msgstr ""
 msgid "Web Key"
 msgstr ""
 
+#: gd-star-rating.php:556
 #: gd-star-rating.php:557
-#: gd-star-rating.php:558
+#: gd-star-rating.php:567
 #: gd-star-rating.php:568
-#: gd-star-rating.php:569
 msgid "Multi Ratings Review"
 msgstr ""
 
-#: gd-star-rating.php:576
-#: gd-star-rating.php:576
+#: gd-star-rating.php:575
+#: gd-star-rating.php:575
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:1275
+#: gd-star-rating.php:1274
 msgid "articles records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1277
+#: gd-star-rating.php:1276
 msgid "comments records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1281
+#: gd-star-rating.php:1280
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1283
+#: gd-star-rating.php:1282
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1287
+#: gd-star-rating.php:1286
 msgid "dead articles records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1289
+#: gd-star-rating.php:1288
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1291
+#: gd-star-rating.php:1290
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: gd-star-rating.php:1295
+#: gd-star-rating.php:1294
 msgid "dead articles records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1297
+#: gd-star-rating.php:1296
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 

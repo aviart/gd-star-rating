@@ -640,6 +640,12 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
 
     }
 
+    function rating_from_comment($comment_id) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select vote from %sgdsr_votes_log where vote_type = 'article' and comment_id = %s", $table_prefix, $comment_id);
+        return $wpdb->get_var($sql);
+    }
+
     function delete_by_comment($comment_id) {
         global $wpdb, $table_prefix;
         $sql = sprintf("select * from %sgdsr_votes_log where vote_type = 'article' and comment_id = %s", $table_prefix, $comment_id);

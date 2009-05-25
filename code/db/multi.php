@@ -342,6 +342,12 @@ class GDSRDBMulti {
             $wpdb->query($modsql);
     }
 
+    function rating_from_comment($comment_id, $multi_set_id) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select object from %sgdsr_votes_log where vote_type = 'multis' and comment_id = %s and multi_id = %s", $table_prefix, $comment_id, $multi_set_id);
+        return $wpdb->get_var($sql);
+    }
+
     function delete_by_comment($comment_id) {
         global $wpdb, $table_prefix;
         $sql = sprintf("select * from %sgdsr_votes_log where vote_type = 'multis' and comment_id = %s", $table_prefix, $comment_id);

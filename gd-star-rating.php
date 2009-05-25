@@ -342,8 +342,7 @@ if (!class_exists('GDStarRating')) {
             }
             $stars = $this->o["cmm_review_stars"];
             $review = GDSRDatabase::get_comment_review($comment_id);
-            if ($review < 0) $review = 0;
-
+            if ($review < 1) return "";
             return GDSRRender::render_static_stars($style, $size, $stars, $review);
         }
 
@@ -1140,7 +1139,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             $this->is_cached = $this->o["cache_active"];
-            $this->is_ie6 = is_msie6();
+            $this->is_ie6 = $this->o["disable_ie6_check"] == 1 ? false : is_msie6();
             $this->custom_actions('init');
 
             if (is_admin() && $this->o["mur_review_set"] == 0) {
@@ -2464,6 +2463,23 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         }
 
         /**
+        * Renders result of comment integration of standard rating for specific comment
+        *
+        * @param int $comment_id initial rating value
+        * @param string $stars_set set to use for rendering
+        * @param int $stars_size set size to use for rendering
+        * @param string $stars_set_ie6 set to use for rendering in ie6
+        */
+        function comment_integrate_standard_result($comment_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
+            $value = intval(GDSRDatabase::rating_from_comment($comment_id));
+            if ($value > 0) {
+                $style = $stars_set == "" ? $this->o["style"] : $stars_set;
+                $style = $this->is_ie6 ? ($stars_set_ie6 == "" ? $this->o["style_ie6"] : $stars_set_ie6) : $style;
+                return GDSRRender::render_static_stars($style, $stars_size == 0 ? $this->o["size"] : $stars_size, $this->o["stars"], $value);
+            } else return "";
+        }
+
+        /**
         * Renders comment integration of standard rating
         *
         * @param int $value initial rating value
@@ -2478,11 +2494,50 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
         }
 
         /**
+        * Renders result of comment integration of multi rating for specific comment
+        *
+        * @param int $comment_id initial rating value
+        * @param object $post_id post id
+        * @param int $multi_set_id id of the multi rating set to use
+        * @param int $template_id id of the template to use
+        * @param string $stars_set set to use for rendering
+        * @param int $stars_size set size to use for rendering
+        * @param string $stars_set_ie6 set to use for rendering in ie6
+        * @param string $avg_stars_set set to use for rendering of average value
+        * @param int $avg_stars_size set size to use for rendering of average value
+        * @param string $avg_stars_set_ie6 set to use for rendering of average value in ie6
+        */
+        function comment_integrate_multi_result($comment_id, $post_id, $multi_set_id, $template_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif") {
+            $value = GDSRDBMulti::rating_from_comment($comment_id, $multi_set_id);
+            if (is_serialized($value)) {
+                $value = unserialize($value);
+                $set = gd_get_multi_set($multi_set_id);
+                $weight_norm = array_sum($set->weight);
+                $avg_rating = $i = 0;
+                $votes = array();
+                foreach ($value as $md) {
+                    $single_vote = array();
+                    $single_vote["votes"] = 1;
+                    $single_vote["score"] = $md;
+                    $single_vote["rating"] = $md;
+                    $avg_rating += ($md * $set->weight[$i]) / $weight_norm;
+                    $votes[] = $single_vote;
+                    $i++;
+                }
+                $avg_rating = @number_format($avg_rating, 1);
+                if ($avg_rating > 0) {
+                    return GDSRRenderT2::render_rmb($template_id, $votes, $post_id, $set, $avg_rating,
+                        $this->is_ie6 ? $stars_set_ie6 : $stars_set, $stars_size,
+                        $this->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, $avg_stars_size);
+                } else return "";
+            } else return "";
+        }
+
+        /**
         * Renders comment integration of multi rating
         *
         * @param int $value initial rating value
-        * @param object $post post data
-        * @param object $userdata user data
+        * @param object $post_id post id
         * @param int $multi_set_id id of the multi rating set to use
         * @param int $template_id id of the template to use
         * @param string $stars_set set to use for rendering
