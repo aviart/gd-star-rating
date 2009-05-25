@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.3.9
+Version: 1.4.0
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -674,7 +674,7 @@ if (!class_exists('GDStarRating')) {
             add_action('widgets_init', array(&$this, 'widgets_init'));
             add_action('admin_menu', array(&$this, 'admin_menu'));
             add_action('admin_head', array(&$this, 'admin_head'));
-            add_filter('plugin_action_links', array(&$this, 'plugin_links'), 10, 2 );
+
             if ($this->o["integrate_post_edit"] == 1) {
                 if ($this->wp_version < 27) {
                     add_action('submitpost_box', array(&$this, 'editbox_post'));
@@ -710,6 +710,8 @@ if (!class_exists('GDStarRating')) {
 
             add_action('delete_comment', array(&$this, 'comment_delete'));
             add_action('delete_post', array(&$this, 'post_delete'));
+            add_filter('plugin_action_links', array(&$this, 'plugin_links'), 10, 2 );
+            add_action('after_plugin_row_gd-star-rating/gd-star-rating.php', array(&$this,'plugin_check_version'), 10, 2);
 
             foreach ($this->shortcodes as $code) $this->shortcode_action($code);
         }
@@ -743,6 +745,25 @@ if (!class_exists('GDStarRating')) {
                 array_unshift($links, $settings_link);
             }
             return $links;
+        }
+
+        /**
+         * Render update info on the plugins panel if the update is available.
+         *
+         * @param string $file name of the plugin file
+         * @param array $plugin_data plugin info
+         * @return bool false if no update available
+         */
+        function plugin_check_version($file, $plugin_data) {
+            $current = get_option('update_plugins');
+            if (!isset($current->response[$file])) return false;
+
+            $columns = $this->wp_version < 28 ? 5 : 3;
+            $url = gdFunctionsGDPT::get_update_url($this->o, get_option('home'));
+            $update = wp_remote_fopen($url);
+            echo '<td colspan="'.$columns.'" class="gdr-plugin-update">';
+            echo $update;
+            echo '</td>';
         }
 
         /**
