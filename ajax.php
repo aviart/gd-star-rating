@@ -28,6 +28,8 @@
             $result = $gdsr->vote_multi_rating($vote_value, $vote_id, $vote_set, $vote_tpl);
             break;
     }
-    echo $result;
+    
+    if (isset($_GET["callback"])) echo $_GET["callback"].'('.$result.');';
+    else echo $result;
 
 ?>

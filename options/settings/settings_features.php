@@ -1,7 +1,9 @@
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Voting", "gd-star-rating"); ?></th>
     <td>
-        <input type="checkbox" name="gdsr_use_nonce" id="gdsr_use_nonce"<?php if ($gdsr_options["use_nonce"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ajax"><?php _e("Use Nonce with AJAX for improved security.", "gd-star-rating"); ?></label>
+        <input type="checkbox" name="gdsr_use_nonce" id="gdsr_use_nonce"<?php if ($gdsr_options["use_nonce"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="use_nonce"><?php _e("Use Nonce with AJAX for improved security.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_ajax_jsonp" id="gdsr_ajax_jsonp"<?php if ($gdsr_options["ajax_jsonp"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ajax_jsonp"><?php _e("Use AJAX cross-domain calls. Enable only if your website URL is different from actual URL.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
         <input type="checkbox" name="gdsr_ip_filtering" id="gdsr_ip_filtering"<?php if ($gdsr_options["ip_filtering"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ip_filtering"><?php _e("Use banned IP's lists to filter out visitors.", "gd-star-rating"); ?></label>
         <br />
