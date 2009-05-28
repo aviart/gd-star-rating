@@ -169,6 +169,7 @@ foreach ($blocks as $block) {
 .ratingblock { padding-bottom: 4px; margin-bottom: 4px; margin-top: 8px; font-size: 12px; }
 .ratingtext { padding-bottom: 2px; margin-bottom: 2px; margin-top: 0px; }
 .ratingmulti img { border: 0; padding: 0; margin: 0; }
+.gdouter { text-align: left; }
 
 .ratingblockarticle { font-size: 1em; }
 .ratingblockcomment { font-size: 0.8em; }
