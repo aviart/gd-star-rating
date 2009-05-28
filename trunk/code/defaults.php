@@ -7,6 +7,7 @@ class GDSRDefaults {
         "status" => "Stable",
         "product_id" => "gd-star-rating",
         "build" => 681,
+        "ajax_jsonp" => 0,
         "external_javascript" => 0,
         "external_rating_css" => 1,
         "external_css" => 1,

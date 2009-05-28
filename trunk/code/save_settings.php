@@ -65,6 +65,7 @@
         $gdsr_options["debug_active"] = isset($_POST['gdsr_debug_active']) ? 1 : 0;
         $gdsr_options["debug_inline"] = isset($_POST['gdsr_debug_inline']) ? 1 : 0;
         $gdsr_options["use_nonce"] = isset($_POST['gdsr_use_nonce']) ? 1 : 0;
+        $gdsr_options["ajax_jsonp"] = isset($_POST['gdsr_ajax_jsonp']) ? 1 : 0;
         $gdsr_options["ip_filtering"] = isset($_POST['gdsr_ip_filtering']) ? 1 : 0;
         $gdsr_options["ip_filtering_restrictive"] = isset($_POST['gdsr_ip_filtering_restrictive']) ? 1 : 0;
         $gdsr_options["widget_articles"] = isset($_POST['gdsr_widget_articles']) ? 1 : 0;

@@ -147,6 +147,9 @@ if (!class_exists('GDStarRating')) {
             $this->plugin_path_url();
             $this->install_plugin();
             $this->actions_filters();
+
+            if ($this->o["ajax_jsonp"] == 1) $this->plugin_ajax.= "?callback=?";
+            define('STARRATING_AJAX', $this->plugin_ajax);
         }
 
         // shortcodes
@@ -1089,7 +1092,6 @@ if (!class_exists('GDStarRating')) {
             if (is_dir($this->plugin_wpr8_path)) $this->wpr8_available = true;
 
             define('STARRATING_URL', $this->plugin_url);
-            define('STARRATING_AJAX', $this->plugin_ajax);
             define('STARRATING_PATH', $this->plugin_path);
             define('STARRATING_XTRA_URL', $this->plugin_xtra_url);
             define('STARRATING_XTRA_PATH', $this->plugin_xtra_path);
