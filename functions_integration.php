@@ -63,7 +63,6 @@ function wp_gdsr_comment_integrate_multi_rating($multi_set_id = 1, $template_id 
  * Integrate standard post rating into the comment form.
  *
  * @global GDStarRating $gdsr main rating class instance
- * @param int $template_id id of the template to use
  * @param int $value inital value for the review
  * @param string $stars_set set to use for rendering
  * @param int $stars_size set size to use for rendering
