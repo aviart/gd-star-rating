@@ -979,7 +979,7 @@ msgstr "Ово ће извести све шаблоне које сте кре�
 #: options/export/export_t2.php:4
 #: options/export/export_users.php:42
 #: options/export/export_users.php:45
-#: gd-star-rating.php:586
+#: gd-star-rating.php:589
 msgid "Export"
 msgstr "Извоз"
 
@@ -1340,7 +1340,7 @@ msgstr "Локација"
 #: options/settings/settings_administration.php:40
 #: options/articles.php:157
 #: options/categories.php:70
-#: gd-star-rating.php:577
+#: gd-star-rating.php:580
 msgid "Categories"
 msgstr "Категорије"
 
@@ -1377,7 +1377,7 @@ msgstr "Мулти Сет Резултати"
 #: options/users.php:65
 #: tinymce3/window.php:55
 #: tinymce3/window.php:56
-#: gd-star-rating.php:576
+#: gd-star-rating.php:579
 msgid "Articles"
 msgstr "Чланци"
 
@@ -1467,7 +1467,7 @@ msgid "Voters"
 msgstr "Гласачи"
 
 #: options/multis/sets.php:45
-#: gd-star-rating.php:580
+#: gd-star-rating.php:583
 msgid "Multi Sets"
 msgstr "Мулти Сетови"
 
@@ -1543,8 +1543,8 @@ msgstr "Редови за приказ"
 #: options/settings.php:37
 #: tinymce3/panels/articles.php:24
 #: tinymce3/panels/multi.php:21
-#: gd-star-rating.php:581
-#: gd-star-rating.php:741
+#: gd-star-rating.php:584
+#: gd-star-rating.php:746
 msgid "Settings"
 msgstr "Подешавања"
 
@@ -1567,7 +1567,7 @@ msgstr "Контрола подешавања."
 #: options/categories.php:225
 #: options/comments.php:140
 #: options/users.php:48
-#: gd-star-rating.php:578
+#: gd-star-rating.php:581
 msgid "Users"
 msgstr "Корисници"
 
@@ -1577,7 +1577,7 @@ msgstr "Контрола корисника."
 
 #: options/settings/settings_administration.php:44
 #: options/setup.php:45
-#: gd-star-rating.php:588
+#: gd-star-rating.php:591
 msgid "Setup"
 msgstr "Организација"
 
@@ -1587,7 +1587,7 @@ msgstr "Деисталација и одржавање."
 
 #: options/settings/settings_administration.php:48
 #: options/tools/tools_t2.php:6
-#: gd-star-rating.php:585
+#: gd-star-rating.php:588
 msgid "Import"
 msgstr "Увоз"
 
@@ -1598,7 +1598,7 @@ msgstr "Увоз података из других рејтинг плагин�
 #: options/settings/settings_administration.php:50
 #: options/ips.php:67
 #: options/users_log.php:178
-#: gd-star-rating.php:584
+#: gd-star-rating.php:587
 msgid "IP's"
 msgstr "IP"
 
@@ -1869,98 +1869,102 @@ msgid "Use Nonce with AJAX for improved security."
 msgstr "Користи Nonce уз AJAX за повећану сигурност."
 
 #: options/settings/settings_features.php:5
+msgid "Use AJAX cross-domain calls. Enable only if your website URL is different from actual URL."
+msgstr "Користи АЈАКС позиве преко домена. Укључите само ако је адреса вебсајта различита од стварне адресе."
+
+#: options/settings/settings_features.php:7
 msgid "Use banned IP's lists to filter out visitors."
 msgstr "Корисит листу забрањених ИП адреса за филтрирање посетилаца."
 
-#: options/settings/settings_features.php:7
+#: options/settings/settings_features.php:9
 msgid "Don't even show rating stars to visitors comming from banned IP's."
 msgstr "Не приказуј блок за гласање посетиоцима који долазе са забрањених ИП адреса."
 
-#: options/settings/settings_features.php:10
+#: options/settings/settings_features.php:12
 msgid "Plugin Features"
 msgstr "Опције плугина"
 
-#: options/settings/settings_features.php:12
+#: options/settings/settings_features.php:14
 msgid "Link external javascript rating code, instead of embeding it into the page."
 msgstr "Линкуј екстерни јавасцрипт фајл, уместо да се уграђује у страну."
 
-#: options/settings/settings_features.php:14
+#: options/settings/settings_features.php:16
 msgid "Link external CSS rating code, uncheck to embed all the CSS into the page."
 msgstr "Линкуј екстерни ЦСС фајл, ако не код ће се уградити у страну."
 
-#: options/settings/settings_features.php:16
+#: options/settings/settings_features.php:18
 msgid "Link additional css file"
 msgstr "Линкуј додатни ЦСС фајл"
 
-#: options/settings/settings_features.php:21
+#: options/settings/settings_features.php:23
 msgid "Time restriction for rating."
 msgstr "Временска ограничења за рејтинг."
 
-#: options/settings/settings_features.php:23
+#: options/settings/settings_features.php:25
 msgid "Moderation options and handling."
 msgstr "Опције за модерацију."
 
-#: options/settings/settings_features.php:25
+#: options/settings/settings_features.php:27
 msgid "Multiple rating support."
 msgstr "Подршка за вишеструки рејтинг."
 
-#: options/settings/settings_features.php:29
+#: options/settings/settings_features.php:31
 msgid "Post And Page Review Rating."
 msgstr "Рејтинг Критике."
 
-#: options/settings/settings_features.php:31
+#: options/settings/settings_features.php:33
 msgid "Comments Rating."
 msgstr "Оцена Кометара."
 
-#: options/settings/settings_features.php:33
+#: options/settings/settings_features.php:35
 msgid "Comments Review Rating."
 msgstr "Оцена Autora Кометара."
 
-#: options/settings/settings_features.php:38
+#: options/settings/settings_features.php:40
 msgid "Use graphics generator to generate and display static stars images."
 msgstr "Користи генератор слика за статичке слике звезда."
 
-#: options/settings/settings_features.php:40
+#: options/settings/settings_features.php:42
 msgid "Prevent outside access to graphics generator. Graphics integrated into RSS is not affected."
 msgstr "Спречите спољни приступ генератору слика. Слике интегрисане у РСС неће бити погођене."
 
-#: options/settings/settings_features.php:42
+#: options/settings/settings_features.php:44
 msgid "This leeching prevention will only work if a referer is sent and your server is set up correctly with proper server name variable."
 msgstr "Ово ће радити само ако је реферер података послате и ако је сервер подешен исправно."
 
-#: options/settings/settings_features.php:45
+#: options/settings/settings_features.php:47
 msgid "Charset"
 msgstr "Карактер сет"
 
-#: options/settings/settings_features.php:49
+#: options/settings/settings_features.php:51
 msgid "Character encoding"
 msgstr "Карактер кодирање"
 
-#: options/settings/settings_features.php:53
+#: options/settings/settings_features.php:55
 msgid "For list of supported charsets visit: "
 msgstr "За листу подржаних карактер сетова посети:"
 
-#: options/settings/settings_features.php:56
+#: options/settings/settings_features.php:58
 msgid "Rating Log"
 msgstr "Листа Рејтинга"
 
-#: options/settings/settings_features.php:58
+#: options/settings/settings_features.php:60
 msgid "Log user agent (browser) information."
 msgstr "Памти податке о програму корисника."
 
-#: options/settings/settings_features.php:60
+#: options/settings/settings_features.php:62
 msgid "Save cookies with ratings."
 msgstr "Сними колачић за рејтинг."
 
-#: options/settings/settings_features.php:63
+#: options/settings/settings_features.php:65
 msgid "Internet Explorer"
 msgstr "Интернет Експлорер"
 
-#: options/settings/settings_features.php:65
+#: options/settings/settings_features.php:67
 msgid "Use IE opacity fix for multi ratings."
 msgstr "Додај ИЕ фикс за провидност мулти рејтинга."
 
-#: options/settings/settings_features.php:67
+#: options/settings/settings_features.php:69
 msgid "Disable checking for IE6 and IE6 specific settings."
 msgstr "Исључи проверу ИЕ6 претраживача и подешавања за ИЕ6."
 
@@ -2186,7 +2190,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr "После брисања, плугин ће бити искључен. "
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1180
+#: gd-star-rating.php:1203
 msgid "UNINSTALL"
 msgstr "ДЕИНСТАЛИРАЈ"
 
@@ -2628,7 +2632,7 @@ msgstr "Подаци Корисника"
 
 #: options/export.php:7
 #: options/tools.php:8
-#: gd-star-rating.php:583
+#: gd-star-rating.php:586
 msgid "T2 Templates"
 msgstr "T2 Шаблони"
 
@@ -2808,7 +2812,7 @@ msgid "Full Uninstall"
 msgstr "Пуна Деинсталација"
 
 #: options/tools.php:0
-#: gd-star-rating.php:582
+#: gd-star-rating.php:585
 msgid "Tools"
 msgstr "Алати"
 
@@ -3521,50 +3525,50 @@ msgstr "Критика Величина"
 msgid "Web Key"
 msgstr "Веб Кључ"
 
-#: gd-star-rating.php:556
-#: gd-star-rating.php:557
-#: gd-star-rating.php:567
-#: gd-star-rating.php:568
+#: gd-star-rating.php:559
+#: gd-star-rating.php:560
+#: gd-star-rating.php:570
+#: gd-star-rating.php:571
 msgid "Multi Ratings Review"
 msgstr "Мулти Рејтинг Критика"
 
-#: gd-star-rating.php:575
+#: gd-star-rating.php:578
 msgid "Front Page"
 msgstr "Главна Страна"
 
-#: gd-star-rating.php:1274
+#: gd-star-rating.php:1297
 msgid "articles records from log table removed."
 msgstr "чланка из лог табеле је уклоњено."
 
-#: gd-star-rating.php:1276
+#: gd-star-rating.php:1299
 msgid "comments records from log table removed."
 msgstr "коментара из лог табеле је уклоњено."
 
-#: gd-star-rating.php:1280
+#: gd-star-rating.php:1303
 msgid "articles records from trends log table removed."
 msgstr "чланака из тренд табеле је уклоњено."
 
-#: gd-star-rating.php:1282
+#: gd-star-rating.php:1305
 msgid "comments records from trends log table removed."
 msgstr "коментара је уклоњено из тренд лог табеле."
 
-#: gd-star-rating.php:1286
+#: gd-star-rating.php:1309
 msgid "dead articles records from articles table."
 msgstr "мртвих чланака из рејтинг табела"
 
-#: gd-star-rating.php:1288
+#: gd-star-rating.php:1311
 msgid "post revisions records from articles table."
 msgstr "ревизија чланак је уклоњено из табеле чланака."
 
-#: gd-star-rating.php:1290
+#: gd-star-rating.php:1313
 msgid "dead comments records from comments table."
 msgstr "мртвих коментара уклоњено из табеле коментара."
 
-#: gd-star-rating.php:1294
+#: gd-star-rating.php:1317
 msgid "dead articles records from multi ratings tables."
 msgstr "мртвих чланака из мулти рејтинг табела"
 
-#: gd-star-rating.php:1296
+#: gd-star-rating.php:1319
 msgid "post revisions records from multi ratings tables."
 msgstr "ревизија из мулти рејтинг табела."
 
