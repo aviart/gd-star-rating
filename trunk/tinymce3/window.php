@@ -25,19 +25,20 @@
 </head>
 <body onload="tinyMCEPopup.executeOnLoad('init();');document.body.style.display=''" style="display: none">
 <form name="StarRating" action="#">
-    <div class="tabs">
-        <ul>
-            <li id="shortcode_tab" class="current"><span><a href="javascript:mcTabs.displayTab('shortcode_tab','shortcode_panel');" onmousedown="return false;"><?php _e("Insert", "gd-star-rating"); ?></a></span></li>
-            <li id="general_tab"><span><a href="javascript:mcTabs.displayTab('general_tab','general_panel');" onmousedown="return false;"><?php _e("General", "gd-star-rating"); ?></a></span></li>
-            <li id="filter_tab"><span><a href="javascript:mcTabs.displayTab('filter_tab','filter_panel');" onmousedown="return false;"><?php _e("Filter", "gd-star-rating"); ?></a></span></li>
-            <li id="styles_tab"><span><a href="javascript:mcTabs.displayTab('styles_tab','styles_panel');" onmousedown="return false;"><?php _e("Graphics", "gd-star-rating"); ?></a></span></li>
-            <li style="display: none" id="multis_tab"><span><a href="javascript:mcTabs.displayTab('multis_tab','multis_panel');" onmousedown="return false;"><?php _e("Multi Rating", "gd-star-rating"); ?></a></span></li>
-            <li style="display: none" id="multisreview_tab"><span><a href="javascript:mcTabs.displayTab('multisreview_tab','multisreview_panel');" onmousedown="return false;"><?php _e("Multi Review", "gd-star-rating"); ?></a></span></li>
-            <li style="display: none" id="articlesreview_tab"><span><a href="javascript:mcTabs.displayTab('articlesreview_tab','articlesreview_panel');" onmousedown="return false;"><?php _e("Articles Review", "gd-star-rating"); ?></a></span></li>
-            <li style="display: none" id="articlesrater_tab"><span><a href="javascript:mcTabs.displayTab('articlesrater_tab','articlesrater_panel');" onmousedown="return false;"><?php _e("Articles Rating Block", "gd-star-rating"); ?></a></span></li>
-            <li style="display: none" id="commentsaggr_tab"><span><a href="javascript:mcTabs.displayTab('commentsaggr_tab','commentsaggr_panel');" onmousedown="return false;"><?php _e("Aggregated Comments", "gd-star-rating"); ?></a></span></li>
-        </ul>
-    </div>
+<div class="tabs">
+    <ul>
+        <li id="shortcode_tab" class="current"><span><a href="javascript:mcTabs.displayTab('shortcode_tab','shortcode_panel');" onmousedown="return false;"><?php _e("Insert", "gd-star-rating"); ?></a></span></li>
+        <li id="general_tab"><span><a href="javascript:mcTabs.displayTab('general_tab','general_panel');" onmousedown="return false;"><?php _e("General", "gd-star-rating"); ?></a></span></li>
+        <li id="filter_tab"><span><a href="javascript:mcTabs.displayTab('filter_tab','filter_panel');" onmousedown="return false;"><?php _e("Filter", "gd-star-rating"); ?></a></span></li>
+        <li id="styles_tab"><span><a href="javascript:mcTabs.displayTab('styles_tab','styles_panel');" onmousedown="return false;"><?php _e("Graphics", "gd-star-rating"); ?></a></span></li>
+        <li style="display: none" id="multis_tab"><span><a href="javascript:mcTabs.displayTab('multis_tab','multis_panel');" onmousedown="return false;"><?php _e("Multi Rating", "gd-star-rating"); ?></a></span></li>
+        <li style="display: none" id="multisreview_tab"><span><a href="javascript:mcTabs.displayTab('multisreview_tab','multisreview_panel');" onmousedown="return false;"><?php _e("Multi Review", "gd-star-rating"); ?></a></span></li>
+        <li style="display: none" id="articlesreview_tab"><span><a href="javascript:mcTabs.displayTab('articlesreview_tab','articlesreview_panel');" onmousedown="return false;"><?php _e("Articles Review", "gd-star-rating"); ?></a></span></li>
+        <li style="display: none" id="articlesrater_tab"><span><a href="javascript:mcTabs.displayTab('articlesrater_tab','articlesrater_panel');" onmousedown="return false;"><?php _e("Articles Rating Block", "gd-star-rating"); ?></a></span></li>
+        <li style="display: none" id="commentsaggr_tab"><span><a href="javascript:mcTabs.displayTab('commentsaggr_tab','commentsaggr_panel');" onmousedown="return false;"><?php _e("Aggregated Comments", "gd-star-rating"); ?></a></span></li>
+    </ul>
+</div>
+
 <div class="panel_wrapper">
 
 <div id="shortcode_panel" class="panel current">
@@ -47,7 +48,7 @@
       <tr>
         <td class="gdsrright">
             <label>
-                <select onchange="gdsrChangeShortcode()" id="srShortcode" name="srShortcode" style="width: 200px">
+                <select onchange="gdsrChangeShortcode('tinymce')" id="srShortcode" name="srShortcode" style="width: 200px">
                     <option value="starrating"><?php _e("Advanced", "gd-star-rating"); ?>: StarRating</option>
                     <option value="starrating">--------------------</option>
                     <option value="starratingmulti"><?php _e("Multi", "gd-star-rating"); ?>: StarRatingMulti</option>
@@ -69,10 +70,33 @@
 </fieldset>
 </div>
 
-<?php include(dirname(__FILE__)."/panels/advanced.php"); ?>
-<?php include(dirname(__FILE__)."/panels/multi.php"); ?>
-<?php include(dirname(__FILE__)."/panels/articles.php"); ?>
-<?php include(dirname(__FILE__)."/panels/comments.php"); ?>
+<div id="general_panel" class="panel">
+<?php include(dirname(__FILE__)."/panels/general.php"); ?>
+</div>
+<div id="filter_panel" class="panel">
+<?php include(dirname(__FILE__)."/panels/filter.php"); ?>
+</div>
+<div id="styles_panel" class="panel">
+<?php include(dirname(__FILE__)."/panels/styles.php"); ?>
+</div>
+
+<div id="multis_panel" class="panel">
+<?php include(dirname(__FILE__)."/panels/multis.php"); ?>
+</div>
+<div id="multisreview_panel" class="panel">
+<?php include(dirname(__FILE__)."/panels/multisreview.php"); ?>
+</div>
+
+<div id="articlesreview_panel" class="panel">
+<?php include(dirname(__FILE__)."/panels/articlesreview.php"); ?>
+</div>
+<div id="articlesrater_panel" class="panel">
+<?php include(dirname(__FILE__)."/panels/articlesrater.php"); ?>
+</div>
+
+<div id="commentsaggr_panel" class="panel">
+<?php include(dirname(__FILE__)."/panels/commentsaggr.php"); ?>
+</div>
 
 </div>
 

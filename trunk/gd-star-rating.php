@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.4.0
+Version: 1.4.1
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -577,6 +577,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 10, __FILE__, array(&$this,"star_menu_front"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Builder", "gd-star-rating"), __("Builder", "gd-star-rating"), 10, "gd-star-rating-builder", array(&$this,"star_menu_builder"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), 10, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
             if ($this->o["admin_category"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), 10, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
             if ($this->o["admin_users"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), 10, "gd-star-rating-users", array(&$this,"star_menu_users"));
@@ -664,6 +665,9 @@ if (!class_exists('GDStarRating')) {
 
             if ($this->admin_plugin && $this->wp_version < 26)
                 echo('<link rel="stylesheet" href="'.get_option('home').'/wp-includes/js/thickbox/thickbox.css" type="text/css" media="screen" />');
+
+            if ($this->admin_plugin_page == "builder")
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'tinymce3/tinymce.js"></script>');
 
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_post.css" type="text/css" media="screen" />');
         }
@@ -1864,6 +1868,15 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $options = $this->o;
             $wpv = $this->wp_version;
             include($this->plugin_path.'options/categories.php');
+        }
+
+        function star_menu_builder(){
+            $options = $this->o;
+            $wpv = $this->wp_version;
+            $gdsr_styles = $this->g->stars;
+            $gdsr_trends = $this->g->trend;
+            $gdst_multis = GDSRDBMulti::get_multis_tinymce();
+            include($this->plugin_path.'options/builder.php');
         }
         // menues
 

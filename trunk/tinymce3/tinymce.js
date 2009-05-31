@@ -1,5 +1,6 @@
-function gdsrChangeShortcode() {
+function gdsrChangeShortcode(calledfrom) {
     var shortcode = document.getElementById("srShortcode").selectedIndex;
+    var adminIndex = 0;
     document.getElementById("general_tab").style.display = "none";
     document.getElementById("filter_tab").style.display = "none";
     document.getElementById("styles_tab").style.display = "none";
@@ -16,20 +17,26 @@ function gdsrChangeShortcode() {
             break;
         case 2:
             document.getElementById("multis_tab").style.display = "block";
+            adminIndex = 3;
             break;
         case 3:
             document.getElementById("multisreview_tab").style.display = "block";
+            adminIndex = 4;
             break;
         case 5:
             document.getElementById("articlesreview_tab").style.display = "block";
+            adminIndex = 5;
             break;
         case 6:
             document.getElementById("articlesrater_tab").style.display = "block";
+            adminIndex = 6;
             break;
         case 8:
             document.getElementById("commentsaggr_tab").style.display = "block";
+            adminIndex = 7;
             break;
     }
+    if (calledfrom == 'admin') jQuery("#gdsr_tabs > ul").tabs("select", adminIndex);
 }
 
 function gdsrChangeTrend(trend, el, index) {
@@ -206,6 +213,6 @@ function insertStarRatingCode() {
 		window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tagtext);
 		tinyMCEPopup.editor.execCommand('mceRepaint');
 		tinyMCEPopup.close();
-	}
-	return;
+        return;
+	} else return tagtext;
 }
