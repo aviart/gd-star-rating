@@ -23,7 +23,7 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 * More charts and chart caching
 * Reccomendation ratings
 * WP Super Cache support
-* WordPress MU support
+* Full WordPress MU support
 
 == Configuration ==
 Plugin administration consist of 12 panels:

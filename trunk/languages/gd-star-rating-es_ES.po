@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GD Star Rating 1.3.4 (SVN Revision 676)\n"
+"Project-Id-Version: GD Star Rating 1.4.0 (SVN Revision 684)\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ángel Guzmán Maeso <shakaran@gmail.com>\n"
@@ -16,15 +16,15 @@ msgstr ""
 msgid "Chart with votes distribution"
 msgstr "Gráfica con distribución de votos"
 
-#: code/db/main.php:1017
+#: code/db/main.php:1023
 msgid "Show all dates"
 msgstr "Mostrar todas las fechas"
 
-#: code/db/main.php:1045
+#: code/db/main.php:1051
 msgid "All users and visitors"
 msgstr "Todos los usuarios y visitantes"
 
-#: code/db/main.php:1046
+#: code/db/main.php:1052
 #: tinymce3/panels/advanced.php:144
 #: tinymce3/panels/comments.php:13
 #: widgets/comments/part_basic.php:17
@@ -42,11 +42,11 @@ msgstr "Todos los usuarios y visitantes"
 msgid "Visitors Only"
 msgstr "Visitantes sólo"
 
-#: code/db/main.php:1047
+#: code/db/main.php:1053
 msgid "All Users"
 msgstr "Todos los usuarios"
 
-#: code/db/main.php:1063
+#: code/db/main.php:1069
 msgid "All categories"
 msgstr "Todas las categorí­as"
 
@@ -982,7 +982,7 @@ msgstr "Esto exportará todas las plantillas que creaste en un archivo."
 #: options/export/export_t2.php:4
 #: options/export/export_users.php:42
 #: options/export/export_users.php:45
-#: gd-star-rating.php:587
+#: gd-star-rating.php:589
 msgid "Export"
 msgstr "Exportar"
 
@@ -1085,6 +1085,7 @@ msgid "An error occured while loading newsfeed. Go to the %sfront page%s to chec
 msgstr "Ocurrio un error mientras se cargaba el feed de noticias. Dirí­jase a la %sportada%s para comprobar actualizaciones."
 
 #: options/front/front_right.php:4
+#: options/templates/templates_editor.php:36
 msgid "Info"
 msgstr "Información"
 
@@ -1179,16 +1180,16 @@ msgid "GD WordPress Plugins"
 msgstr "Plugin wordpress GD"
 
 #: options/front/front_right.php:78
+msgid "collection of widgets"
+msgstr "colección de widgets"
+
+#: options/front/front_right.php:83
 msgid "advanced pages widget"
 msgstr "Widget de páginas avanzadas"
 
-#: options/front/front_right.php:83
+#: options/front/front_right.php:88
 msgid "widget to add linkedin badge"
 msgstr "widget para añadir el enlace de linkedin"
-
-#: options/front/front_right.php:88
-msgid "basic plugin class and wizard"
-msgstr "clase básica de plugin y asistente"
 
 #: options/front/front_right.php:101
 msgid "Official Website"
@@ -1275,7 +1276,7 @@ msgstr "Editor multi conjuntos"
 #: options/multis/editor.php:27
 #: options/multis/editor.php:93
 #: options/multis/sets.php:62
-#: options/templates/templates_editor.php:38
+#: options/templates/templates_editor.php:45
 #: options/templates/templates_list.php:47
 #: options/users.php:61
 #: options/voters.php:143
@@ -1283,8 +1284,8 @@ msgid "Name"
 msgstr "Nombre"
 
 #: options/multis/editor.php:32
-#: options/templates/templates_editor.php:40
-#: options/templates/templates_editor.php:53
+#: options/templates/templates_editor.php:47
+#: options/templates/templates_editor.php:60
 msgid "Description"
 msgstr "Descripción"
 
@@ -1342,7 +1343,7 @@ msgstr "Ubicación"
 #: options/settings/settings_administration.php:40
 #: options/articles.php:157
 #: options/categories.php:70
-#: gd-star-rating.php:578
+#: gd-star-rating.php:580
 msgid "Categories"
 msgstr "Categorí­as"
 
@@ -1379,7 +1380,7 @@ msgstr "Resultados multi conjuntos"
 #: options/users.php:65
 #: tinymce3/window.php:55
 #: tinymce3/window.php:56
-#: gd-star-rating.php:577
+#: gd-star-rating.php:579
 msgid "Articles"
 msgstr "Artí­culos"
 
@@ -1469,7 +1470,7 @@ msgid "Voters"
 msgstr "Votantes"
 
 #: options/multis/sets.php:45
-#: gd-star-rating.php:581
+#: gd-star-rating.php:583
 msgid "Multi Sets"
 msgstr "Multi conjuntos"
 
@@ -1545,8 +1546,8 @@ msgstr "Filas para mostrar"
 #: options/settings.php:37
 #: tinymce3/panels/articles.php:24
 #: tinymce3/panels/multi.php:21
-#: gd-star-rating.php:582
-#: gd-star-rating.php:742
+#: gd-star-rating.php:584
+#: gd-star-rating.php:746
 msgid "Settings"
 msgstr "Configuraciones"
 
@@ -1569,7 +1570,7 @@ msgstr "Administración para configuraciones por defecto."
 #: options/categories.php:225
 #: options/comments.php:140
 #: options/users.php:48
-#: gd-star-rating.php:579
+#: gd-star-rating.php:581
 msgid "Users"
 msgstr "Usuarios"
 
@@ -1579,7 +1580,7 @@ msgstr "Administración de votación de usuarios."
 
 #: options/settings/settings_administration.php:44
 #: options/setup.php:45
-#: gd-star-rating.php:589
+#: gd-star-rating.php:591
 msgid "Setup"
 msgstr "Instalación"
 
@@ -1589,7 +1590,7 @@ msgstr "Desinstalar y mantenimiento."
 
 #: options/settings/settings_administration.php:48
 #: options/tools/tools_t2.php:6
-#: gd-star-rating.php:586
+#: gd-star-rating.php:588
 msgid "Import"
 msgstr "Importar"
 
@@ -1600,7 +1601,7 @@ msgstr "Importando datos desde otros plugins de votación."
 #: options/settings/settings_administration.php:50
 #: options/ips.php:67
 #: options/users_log.php:178
-#: gd-star-rating.php:585
+#: gd-star-rating.php:587
 msgid "IP's"
 msgstr "IP's"
 
@@ -1871,96 +1872,104 @@ msgid "Use Nonce with AJAX for improved security."
 msgstr "Usar Nonce con AJAX para mejorar la seguridad."
 
 #: options/settings/settings_features.php:5
+msgid "Use AJAX cross-domain calls. Enable only if your website URL is different from actual URL."
+msgstr "Usar llamadas AJAX inter-dominios. Activar solo si tla url de tu sitio web es diferente a la URL actual."
+
+#: options/settings/settings_features.php:7
 msgid "Use banned IP's lists to filter out visitors."
 msgstr "Usar listas de IP's baneadas para filtrar visitantes exteriores."
 
-#: options/settings/settings_features.php:7
+#: options/settings/settings_features.php:9
 msgid "Don't even show rating stars to visitors comming from banned IP's."
 msgstr "No mostrar incluso las votaciones de estrellas a visitantes que vengan desde IP's baneadas."
 
-#: options/settings/settings_features.php:10
+#: options/settings/settings_features.php:12
 msgid "Plugin Features"
 msgstr "Caracterí­sticas del plugin"
 
-#: options/settings/settings_features.php:12
+#: options/settings/settings_features.php:14
 msgid "Link external javascript rating code, instead of embeding it into the page."
 msgstr "Código de votación enlazado externamente en javascript, en lugar de embeber en la página."
 
-#: options/settings/settings_features.php:14
+#: options/settings/settings_features.php:16
 msgid "Link external CSS rating code, uncheck to embed all the CSS into the page."
 msgstr "Código de votación de enlace CSS externo, no comprobar para embeber todo el CSS en la página."
 
-#: options/settings/settings_features.php:16
+#: options/settings/settings_features.php:18
 msgid "Link additional css file"
 msgstr "Archivo css de enlace adicional"
 
-#: options/settings/settings_features.php:21
+#: options/settings/settings_features.php:23
 msgid "Time restriction for rating."
 msgstr "Restricción temporal para la calificación."
 
-#: options/settings/settings_features.php:23
+#: options/settings/settings_features.php:25
 msgid "Moderation options and handling."
 msgstr "Opciones de moderación y controles."
 
-#: options/settings/settings_features.php:25
+#: options/settings/settings_features.php:27
 msgid "Multiple rating support."
 msgstr "Soporte de multiples votaciones"
 
-#: options/settings/settings_features.php:29
+#: options/settings/settings_features.php:31
 msgid "Post And Page Review Rating."
 msgstr "Resumen de votación de entradas y páginas."
 
-#: options/settings/settings_features.php:31
+#: options/settings/settings_features.php:33
 msgid "Comments Rating."
 msgstr "Votación de comentarios."
 
-#: options/settings/settings_features.php:33
+#: options/settings/settings_features.php:35
 msgid "Comments Review Rating."
 msgstr "Resumen de votación de comentarios."
 
-#: options/settings/settings_features.php:38
+#: options/settings/settings_features.php:40
 msgid "Use graphics generator to generate and display static stars images."
 msgstr "Usar generador de gráficos para generar y mostrar imágenes de estrellas estáticas."
 
-#: options/settings/settings_features.php:40
+#: options/settings/settings_features.php:42
 msgid "Prevent outside access to graphics generator. Graphics integrated into RSS is not affected."
 msgstr "Prevenir el acceso exterior a generador de gráficos. Los gráficos integrados en el RSS no están afectados."
 
-#: options/settings/settings_features.php:42
+#: options/settings/settings_features.php:44
 msgid "This leeching prevention will only work if a referer is sent and your server is set up correctly with proper server name variable."
 msgstr "Esta prevención leeching sólo funcionará si el referer es enviado y  tu servidor está configurado correctamente  con la variable adecuada de nombre del servidor."
 
-#: options/settings/settings_features.php:45
+#: options/settings/settings_features.php:47
 msgid "Charset"
 msgstr "Conjunto de caracteres"
 
-#: options/settings/settings_features.php:49
+#: options/settings/settings_features.php:51
 msgid "Character encoding"
 msgstr "Codificación del conjunto de caracteres"
 
-#: options/settings/settings_features.php:53
+#: options/settings/settings_features.php:55
 msgid "For list of supported charsets visit: "
 msgstr "Para una lista de todos los conjuntos de caracteres soportados visitar:"
 
-#: options/settings/settings_features.php:56
+#: options/settings/settings_features.php:58
 msgid "Rating Log"
 msgstr "Log de votación"
 
-#: options/settings/settings_features.php:58
+#: options/settings/settings_features.php:60
 msgid "Log user agent (browser) information."
 msgstr "Almacenar información de user agent (navegador)"
 
-#: options/settings/settings_features.php:60
+#: options/settings/settings_features.php:62
 msgid "Save cookies with ratings."
 msgstr "Guardar cookies con votaciones."
 
-#: options/settings/settings_features.php:63
+#: options/settings/settings_features.php:65
 msgid "Internet Explorer"
 msgstr "Internet Explorer"
 
-#: options/settings/settings_features.php:65
+#: options/settings/settings_features.php:67
 msgid "Use IE opacity fix for multi ratings."
 msgstr "Usar arreglo de opacidad de IE para multi votaciones."
+
+#: options/settings/settings_features.php:69
+msgid "Disable checking for IE6 and IE6 specific settings."
+msgstr "Deshabilitar comprobación para IE6 y configuraciones específicas IE6."
 
 #: options/settings/settings_gfx.php:1
 msgid "Stars Sizes"
@@ -2184,7 +2193,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr "Después de la eliminación, el plugin será deshabilitado. Todos los datos grabados por el plugin serán perdidos."
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1181
+#: gd-star-rating.php:1203
 msgid "UNINSTALL"
 msgstr "DESINSTALAR"
 
@@ -2198,7 +2207,7 @@ msgid "Section / Type"
 msgstr "Sección / Tipo"
 
 #: options/templates/templates_defaults.php:9
-#: options/templates/templates_editor.php:44
+#: options/templates/templates_editor.php:51
 #: tinymce3/panels/advanced.php:248
 #: tinymce3/panels/articles.php:7
 #: tinymce3/panels/articles.php:19
@@ -2231,28 +2240,32 @@ msgstr "Editor de plantilla"
 msgid "Editor"
 msgstr "Editor"
 
-#: options/templates/templates_editor.php:36
+#: options/templates/templates_editor.php:43
 #: tinymce3/window.php:30
 msgid "General"
 msgstr "General"
 
-#: options/templates/templates_editor.php:62
+#: options/templates/templates_editor.php:69
 msgid "All tag elements"
 msgstr "Todos los elementos de etiqueta"
 
-#: options/templates/templates_editor.php:63
+#: options/templates/templates_editor.php:70
 msgid "No tag elements allowed"
 msgstr "Elementos de etiqueta no permitidos"
 
-#: options/templates/templates_editor.php:75
+#: options/templates/templates_editor.php:82
 msgid "Save Template"
 msgstr "Guardar plantilla"
 
-#: options/templates/templates_editor.php:85
+#: options/templates/templates_editor.php:92
 msgid "Select template to use for this element:"
 msgstr "Seleccionar una plantilla para usar en este elemento:"
 
-#: options/templates/templates_editor.php:54
+#: options/templates/templates_editor.php:40
+msgid "Creating new template"
+msgstr "Creando una nueva plantilla"
+
+#: options/templates/templates_editor.php:61
 msgid "Allowed elements"
 msgstr "Permitir elementos"
 
@@ -2275,6 +2288,26 @@ msgstr "Nueva plantilla para:"
 #: options/templates/templates_list.php:98
 msgid "Create"
 msgstr "Crear"
+
+#: options/templates/templates_list.php:106
+msgid "Click to open post with T2 templates map with dependencies for templates"
+msgstr "Click para abrir entrada con el mapa de plantillas T2 con las dependencias para plantillas"
+
+#: options/templates/templates_list.php:107
+msgid "T2 Templates Map"
+msgstr "Mapa de plantillas T2"
+
+#: options/templates/templates_list.php:70
+msgid "delete"
+msgstr "Borrar"
+
+#: options/templates/templates_list.php:71
+msgid "edit"
+msgstr "editar"
+
+#: options/templates/templates_list.php:73
+msgid "duplicate"
+msgstr "duplicado"
 
 #: options/tools/tools_bulk.php:2
 msgid "Date Based Post Locking"
@@ -2602,7 +2635,7 @@ msgstr "Datos de usuarios"
 
 #: options/export.php:7
 #: options/tools.php:8
-#: gd-star-rating.php:584
+#: gd-star-rating.php:586
 msgid "T2 Templates"
 msgstr "Plantillas T2"
 
@@ -2782,7 +2815,7 @@ msgid "Full Uninstall"
 msgstr "Desinstalación completa"
 
 #: options/tools.php:0
-#: gd-star-rating.php:583
+#: gd-star-rating.php:585
 msgid "Tools"
 msgstr "Herramientas"
 
@@ -3495,53 +3528,55 @@ msgstr "Resumen de tamaño"
 msgid "Web Key"
 msgstr "Clave web"
 
-#: gd-star-rating.php:557
-#: gd-star-rating.php:558
-#: gd-star-rating.php:568
-#: gd-star-rating.php:569
+#: gd-star-rating.php:559
+#: gd-star-rating.php:560
+#: gd-star-rating.php:570
+#: gd-star-rating.php:571
 msgid "Multi Ratings Review"
 msgstr "Multi resumen de votaciones"
 
-#: gd-star-rating.php:576
+#: gd-star-rating.php:578
 msgid "Front Page"
 msgstr "Portada"
 
-#: gd-star-rating.php:1275
+#: gd-star-rating.php:1297
 msgid "articles records from log table removed."
 msgstr "Los registros de articulos de la tabla de sucesos eliminados."
 
-#: gd-star-rating.php:1277
+#: gd-star-rating.php:1299
 msgid "comments records from log table removed."
 msgstr "Registros de comentarios desde la tabla de sucesos eliminados."
 
-#: gd-star-rating.php:1281
+#: gd-star-rating.php:1303
 msgid "articles records from trends log table removed."
 msgstr "Registros de artículos desde la tabla de sucesos de tendencias eliminados."
 
-#: gd-star-rating.php:1283
+#: gd-star-rating.php:1305
 msgid "comments records from trends log table removed."
 msgstr "Registros de comentarios desde la tabla de sucesos de tendencias eliminados."
 
-#: gd-star-rating.php:1287
+#: gd-star-rating.php:1309
 msgid "dead articles records from articles table."
 msgstr "Registros de artículos muertos desde la tabla de artículos."
 
-#: gd-star-rating.php:1289
+#: gd-star-rating.php:1311
 msgid "post revisions records from articles table."
 msgstr "Registros de revisiones de entrada desde la tabla de artículos."
 
-#: gd-star-rating.php:1291
+#: gd-star-rating.php:1313
 msgid "dead comments records from comments table."
 msgstr "Registros de comentarios muertos desde la tabla de comentarios."
 
-#: gd-star-rating.php:1295
+#: gd-star-rating.php:1317
 msgid "dead articles records from multi ratings tables."
 msgstr "Registros de artículos muertos desde la tabla de multi votaciones."
 
-#: gd-star-rating.php:1297
+#: gd-star-rating.php:1319
 msgid "post revisions records from multi ratings tables."
 msgstr "Registros de revisiones de entrada desde la tabla de multi votaciones."
 
+#~ msgid "basic plugin class and wizard"
+#~ msgstr "clase básica de plugin y asistente"
 #~ msgid ""
 #~ "You first need to select which multi set you want to use for review "
 #~ "rating."
