@@ -19,7 +19,7 @@
 <div class="gdsr-table-split"></div>
 <table cellpadding="0" cellspacing="0" class="previewtable" style="width: 100%">
     <tr>
-        <td><?php _e("Shortcode Result:", "gd-star-rating"); ?></td>
+        <td><?php _e("Shortcode:", "gd-star-rating"); ?></td>
     </tr>
     <tr>
         <td><textarea id="gdsr-builder-shortcode" class="gdsr-builder-area"></textarea></td>
@@ -28,7 +28,7 @@
 <div class="gdsr-table-split"></div>
 <table cellpadding="0" cellspacing="0" class="previewtable" style="width: 100%; margin-bottom: 10px;">
     <tr>
-        <td><?php _e("Function Result:", "gd-star-rating"); ?></td>
+        <td><?php _e("Function:", "gd-star-rating"); ?></td>
     </tr>
     <tr>
         <td><textarea id="gdsr-builder-function" class="gdsr-builder-area"></textarea></td>
