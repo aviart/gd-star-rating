@@ -81,7 +81,7 @@
 </div>
 </div>
 
-<p class="submit"><input type="submit" class="inputbutton" value="<?php _e("Save Settings", "gd-star-rating"); ?>" name="gdsr_saving"/></p>
+<div style="margin-top: 10px"><input type="submit" class="inputbutton" value="<?php _e("Save Settings", "gd-star-rating"); ?>" name="gdsr_saving"/></div>
 </div>
 </form>
 </div>

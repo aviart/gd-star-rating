@@ -177,6 +177,11 @@ h2.gdptlogopage {
 	text-align: center;
 }
 
+.inputfilter {
+	padding: 2px 5px; 
+	width: 80px;
+}
+
 .inputred {
     color: red !important;
     font-weight: bold;

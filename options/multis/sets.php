@@ -47,7 +47,7 @@ function gdsrAddNewMulti() {
 
 <div class="tablenav">
     <div class="alignleft">
-        <input onclick="gdsrAddNewMulti()" class="button-secondary delete" type="button" name="gdsr_filter" value="<?php _e("Add New Multi Rating Set", "gd-star-rating"); ?>" />
+        <input onclick="gdsrAddNewMulti()" class="inputbutton" style="width: 200px" type="button" name="gdsr_filter" value="<?php _e("Add New Multi Rating Set", "gd-star-rating"); ?>" />
     </div>
     <div class="tablenav-pages">
         <?php echo $pager; ?>
@@ -160,7 +160,7 @@ function gdsrAddNewMulti() {
 
 <div class="tablenav">
     <div class="alignleft">
-        <input class="button-secondary delete" type="submit" name="gdsr_operation" value="<?php _e("Delete Selected", "gd-star-rating"); ?>" />
+        <input class="inputbutton" type="submit" name="gdsr_operation" value="<?php _e("Delete Selected", "gd-star-rating"); ?>" />
     </div>
     <div class="tablenav-pages">
         <?php echo $pager; ?>

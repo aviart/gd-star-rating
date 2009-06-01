@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * This will render aggregated comments rating for the post.
+ *
+ * @param int $post_id post to get review for
+ * @param int $template_id id of the template to use
+ * @param string $show votes to show: total, users, visitors
+ * @param bool $echo echo results or return it as a string
+ */
+function wp_gdsr_render_comment_aggregation($post_id = 0, $template_id = 0, $show = "total", $echo = true) {
+    
+}
+
+/**
  *
  * @global GDStarRating $gdsr main rating class instance
  * @param int $comment_id id of the comment
@@ -354,7 +366,8 @@ function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
  * @return string html with rendered contents
  */
 function wp_gdsr_render_review($post_id = 0, $template_id = 0, $echo = true) {
-    global $gdsr;
+    global $gdsr, $post;
+    if ($post_id == 0) $post_id = $post->ID;
     if ($echo) echo $gdsr->shortcode_starreview(array("post" => $post_id, "tpl" => $template_id));
     else return $gdsr->shortcode_starreview(array("post" => $post_id, "tpl" => $template_id));
 }

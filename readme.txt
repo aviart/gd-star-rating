@@ -30,6 +30,8 @@ Plugin administration consist of 12 panels:
 
 * Front Page:
   General info about the plugin and links
+* Builder:
+  Building shortcodes and integration functions
 * Articles:
   Votes and ratings for each post and page
 * Categories:
