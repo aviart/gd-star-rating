@@ -3,7 +3,7 @@
     <table border="0" cellpadding="3" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrleft"><?php _e("Number Of Posts", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright"><input class="widefat" type="text" size="8" id="srRows" name="srRows" value="10" /></td>
+        <td class="gdsrright"><input class="widefat widnumb" type="text" size="8" id="srRows" name="srRows" value="10" /></td>
       </tr>
       <tr>
         <td class="gdsrleft"><?php _e("Items Grouping", "gd-star-rating"); ?>:</td>

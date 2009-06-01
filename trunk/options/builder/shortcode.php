@@ -3,7 +3,8 @@
         <td><?php _e("Select code:", "gd-star-rating"); ?></td>
         <td style="text-align: right">
             <select onchange="gdsrChangeShortcode('admin')" id="srShortcode" name="srShortcode" style="width: 200px">
-                <option value="starrating"><?php _e("Advanced", "gd-star-rating"); ?>: StarRating</option>
+                <option value="starrating"><?php _e("Results", "gd-star-rating"); ?>: StarRating</option>
+                <option value="blograting"><?php _e("Results", "gd-star-rating"); ?>: BlogRating</option>
                 <option value="starrating">--------------------</option>
                 <option value="starratingmulti"><?php _e("Multi", "gd-star-rating"); ?>: StarRatingMulti</option>
                 <option value="starreviewmulti"><?php _e("Multi", "gd-star-rating"); ?>: StarReviewMulti</option>

@@ -8,6 +8,7 @@
     <li style="display: none" id="articlesreview_tab"><a href="#fragment-6"><span><?php _e("Articles Review", "gd-star-rating"); ?></span></a></li>
     <li style="display: none" id="articlesrater_tab"><a href="#fragment-7"><span><?php _e("Articles Rating Block", "gd-star-rating"); ?></span></a></li>
     <li style="display: none" id="commentsaggr_tab"><a href="#fragment-8"><span><?php _e("Aggregated Comments", "gd-star-rating"); ?></span></a></li>
+    <li style="display: none" id="blograting_tab"><a href="#fragment-9"><span><?php _e("Blog Rating", "gd-star-rating"); ?></span></a></li>
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-1">
@@ -33,5 +34,8 @@
 </div>
 <div id="fragment-8">
 <?php include(STARRATING_PATH."tinymce3/panels/commentsaggr.php"); ?>
+</div>
+<div id="fragment-9">
+<?php include(STARRATING_PATH."tinymce3/panels/blograting.php"); ?>
 </div>
 </div>
