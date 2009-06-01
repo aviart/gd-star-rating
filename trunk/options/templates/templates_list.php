@@ -34,7 +34,7 @@ $all_sections = $tpls->list_sections_assoc();
     <div class="alignleft">
         <form method="post">
             <?php GDSRHelper::render_templates_sections("filter_section", $tpls->list_sections(), true, $filter_section) ?>
-            <input class="button-secondary delete" type="submit" name="gdsr_filter" value="<?php _e("Filter", "gd-star-rating"); ?>" />
+            <input class="inputbutton inputfilter" type="submit" name="gdsr_filter" value="<?php _e("Filter", "gd-star-rating"); ?>" />
         </form>
     </div>
     <div class="tablenav-pages"><?php echo $pager; ?></div>
@@ -88,7 +88,7 @@ $all_sections = $tpls->list_sections_assoc();
 <div class="tablenav">
     <div class="alignleft">
         <form method="post">
-            <input class="button-secondary delete" type="submit" name="gdsr_defaults" value="<?php _e("Set Default Templates", "gd-star-rating"); ?>" />
+            <input class="inputbutton" style="width: 200px" type="submit" name="gdsr_defaults" value="<?php _e("Set Default Templates", "gd-star-rating"); ?>" />
         </form>
     </div>
     <div class="tablenav-pages">
@@ -96,11 +96,12 @@ $all_sections = $tpls->list_sections_assoc();
             <table cellpadding="0" cellspacing="0"><tr><td>
             <?php _e("New template for:", "gd-star-rating"); ?> </td><td>
             <?php GDSRHelper::render_templates_sections("tpl_section", $tpls->list_sections(), false) ?>
-            <input class="button-secondary delete" type="submit" name="gdsr_create" value="<?php _e("Create", "gd-star-rating"); ?>" />
+            <input class="inputbutton inputfilter" type="submit" name="gdsr_create" value="<?php _e("Create", "gd-star-rating"); ?>" />
             </td></tr></table>
         </form>
     </div>
 </div>
+
 <br class="clear"/>
 </div>
 <div class="gdsr-table-split"></div>

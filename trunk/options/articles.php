@@ -369,7 +369,7 @@ function gdsrTimerChange() {
         </td>
         <td style="width: 10px;"></td>
         <td class="gdsr-vertical-line">
-            <input class="button-secondary delete" type="submit" name="gdsr_update" value="<?php _e("Update", "gd-star-rating"); ?>" />
+            <input class="inputbutton" type="submit" name="gdsr_update" value="<?php _e("Update", "gd-star-rating"); ?>" />
         </td>
         </tr>
         </table>

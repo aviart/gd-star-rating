@@ -22,15 +22,16 @@
         <td><?php _e("Shortcode Result:", "gd-star-rating"); ?></td>
     </tr>
     <tr>
-        <td><textarea class="gdsr-builder-area"></textarea></td>
+        <td><textarea id="gdsr-builder-shortcode" class="gdsr-builder-area"></textarea></td>
     </tr>
 </table>
 <div class="gdsr-table-split"></div>
-<table cellpadding="0" cellspacing="0" class="previewtable" style="width: 100%">
+<table cellpadding="0" cellspacing="0" class="previewtable" style="width: 100%; margin-bottom: 10px;">
     <tr>
         <td><?php _e("Function Result:", "gd-star-rating"); ?></td>
     </tr>
     <tr>
-        <td><textarea class="gdsr-builder-area"></textarea></td>
+        <td><textarea id="gdsr-builder-function" class="gdsr-builder-area"></textarea></td>
     </tr>
 </table>
+<input type="button" onclick="gdsrAdminGetShortcode()" class="inputbutton" value="<?php _e("Rebuild", "gd-star-rating"); ?>" />
