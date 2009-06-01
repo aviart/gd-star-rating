@@ -9,7 +9,7 @@
       <tr>
         <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <select id="srMultiRatingSet" name="srsrMultiRatingSet" style="width: 200px">
+            <select id="srMultiReviewSet" name="srMultiReviewSet" style="width: 200px">
                 <option value="0"><?php _e("Default", "gd-star-rating"); ?></option>
                 <?php GDSRHelper::render_styles_select($gdst_multis, 1); ?>
             </select>
