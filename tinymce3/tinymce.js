@@ -9,31 +9,36 @@ function gdsrChangeShortcode(calledfrom) {
     document.getElementById("articlesreview_tab").style.display = "none";
     document.getElementById("articlesrater_tab").style.display = "none";
     document.getElementById("commentsaggr_tab").style.display = "none";
+    document.getElementById("blograting_tab").style.display = "none";
     switch (shortcode) {
         case 0:
             document.getElementById("general_tab").style.display = "block";
             document.getElementById("filter_tab").style.display = "block";
             document.getElementById("styles_tab").style.display = "block";
             break;
-        case 2:
+        case 3:
             document.getElementById("multis_tab").style.display = "block";
             adminIndex = 3;
             break;
-        case 3:
+        case 4:
             document.getElementById("multisreview_tab").style.display = "block";
             adminIndex = 4;
             break;
-        case 5:
+        case 56:
             document.getElementById("articlesreview_tab").style.display = "block";
             adminIndex = 5;
             break;
-        case 6:
+        case 7:
             document.getElementById("articlesrater_tab").style.display = "block";
             adminIndex = 6;
             break;
-        case 8:
+        case 9:
             document.getElementById("commentsaggr_tab").style.display = "block";
             adminIndex = 7;
+            break;
+        case 1:
+            document.getElementById("blograting_tab").style.display = "block";
+            adminIndex = 8;
             break;
     }
     if (calledfrom == 'admin') jQuery("#gdsr_tabs > ul").tabs("select", adminIndex);
@@ -75,7 +80,23 @@ function insertStarRatingCode() {
     var funtext = "";
     var shortcode = document.getElementById('srShortcode').value;
     
-    if (shortcode == 'starreview') {
+    if (shortcode == 'blograting') {
+        tagtext = "[blograting";
+        tagtext = tagtext + " template_id=" + document.getElementById('srTemplateWBR').value;
+        funa = new Array();
+        funtext = "wp_gdsr_render_blog_rating_widget(array(";
+        funa.push("'template_id' => " + document.getElementById('srTemplateWBR').value);
+        if (document.getElementById('srSelectBR').value != 'postpage') {
+            tagtext = tagtext + " select='" + document.getElementById('srSelectBR').value + "'";
+            funa.push("'select' => '" + document.getElementById('srSelectBR').value + "'");
+        }
+        if (document.getElementById('srShowBR').value != 'total') {
+            tagtext = tagtext + " show='" + document.getElementById('srShowBR').value + "'";
+            funa.push("'show' => '" + document.getElementById('srShowBR').value + "'");
+        }
+        tagtext = tagtext + "]";
+        funtext = funtext + funa.join(", ") + "));"
+    } else if (shortcode == 'starreview') {
         tagtext = "[starreview";
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRSB').value;
         tagtext = tagtext + "]";
@@ -159,121 +180,160 @@ function insertStarRatingCode() {
         funtext = funtext + ");"
     } else {
         tagtext = "[starrating";
-        funtext = "wp_gdsr_render_blog_rating_widget(array(";
+        funtext = "wp_gdsr_render_star_rating_widget(array(";
+        funa = new Array();
         tagtext = tagtext + " template_id=" + document.getElementById('srTemplateSRR').value;
+        funa.push("'template_id' => " + document.getElementById('srTemplateSRR').value);
         if (document.getElementById('srRows').value != 10) {
             tagtext = tagtext + " rows=" + document.getElementById('srRows').value;
+            funa.push("'rows' => " + document.getElementById('srRows').value);
         }
         if (document.getElementById('srSelect').value != 'postpage') {
             tagtext = tagtext + " select='" + document.getElementById('srSelect').value + "'";
+            funa.push("'select' => '" + document.getElementById('srSelect').value + "'");
         }
         if (document.getElementById('srColumn').value != 'rating') {
             tagtext = tagtext + " column='" + document.getElementById('srColumn').value + "'";
+            funa.push("'column' => '" + document.getElementById('srColumn').value + "'");
         }
         if (document.getElementById('srOrder').value != 'desc') {
             tagtext = tagtext + " order='" + document.getElementById('srOrder').value + "'";
+            funa.push("'order' => '" + document.getElementById('srOrder').value + "'");
         }
         if (document.getElementById('srLastDate').value != 0) {
             tagtext = tagtext + " last_voted_days=" + document.getElementById('srLastDate').value;
+            funa.push("'last_voted_days' => " + document.getElementById('srLastDate').value);
         }
         if (document.getElementById('srCategory').value != '0') {
             tagtext = tagtext + " category=" + document.getElementById('srCategory').value;
+            funa.push("'category' => " + document.getElementById('srCategory').value);
         }
         if (document.getElementById('srGrouping').value != 'post') {
             tagtext = tagtext + " grouping='" + document.getElementById('srGrouping').value + "'";
+            funa.push("'grouping' => '" + document.getElementById('srGrouping').value + "'");
         }
         if (document.getElementById('srShow').value != 'total') {
             tagtext = tagtext + " show='" + document.getElementById('srShow').value + "'";
+            funa.push("'show' => '" + document.getElementById('srShow').value + "'");
         }
         if (document.getElementById('trendRating').value != 'txt') {
             tagtext = tagtext + " trends_rating='" + document.getElementById('trendRating').value + "'";
+            funa.push("'trends_rating' => '" + document.getElementById('trendRating').value + "'");
             if (document.getElementById('trendRatingSet').value != '+') {
                 tagtext = tagtext + " trends_rating_set='" + document.getElementById('trendRatingSet').value + "'";
+                funa.push("'trends_rating_set' => '" + document.getElementById('trendRatingSet').value + "'");
             }
         }
         else {
             if (document.getElementById('trendRatingRise').value != '+') {
                 tagtext = tagtext + " trends_rating_rise='" + document.getElementById('trendRatingRise').value + "'";
+                funa.push("'trends_rating_rise' => '" + document.getElementById('trendRatingRise').value + "'");
             }
             if (document.getElementById('trendRatingSame').value != '=') {
                 tagtext = tagtext + " trends_rating_same='" + document.getElementById('trendRatingSame').value + "'";
+                funa.push("'trends_rating_same' => '" + document.getElementById('trendRatingSame').value + "'");
             }
             if (document.getElementById('trendRatingFall').value != '-') {
                 tagtext = tagtext + " trends_rating_fall='" + document.getElementById('trendRatingFall').value + "'";
+                funa.push("'trends_rating_fall' => '" + document.getElementById('trendRatingFall').value + "'");
             }
         }
 
         if (document.getElementById('trendVoting').value != 'txt') {
             tagtext = tagtext + " trends_voting='" + document.getElementById('trendVoting').value + "'";
+            funa.push("'trends_voting' => '" + document.getElementById('trendVoting').value + "'");
             if (document.getElementById('trendVotingSet').value != '+') {
                 tagtext = tagtext + " trends_voting_set='" + document.getElementById('trendVotingSet').value + "'";
+                funa.push("'trends_voting_set' => '" + document.getElementById('trendVotingSet').value + "'");
             }
         }
         else {
             if (document.getElementById('trendVotingRise').value != '+') {
                 tagtext = tagtext + " trends_voting_rise='" + document.getElementById('trendVotingRise').value + "'";
+                funa.push("'trends_voting_rise' => '" + document.getElementById('trendVotingRise').value + "'");
             }
             if (document.getElementById('trendVotingSame').value != '=') {
                 tagtext = tagtext + " trends_voting_same='" + document.getElementById('trendVotingSame').value + "'";
+                funa.push("'trends_voting_same' => '" + document.getElementById('trendVotingSame').value + "'");
             }
             if (document.getElementById('trendVotingFall').value != '-') {
                 tagtext = tagtext + " trends_voting_fall='" + document.getElementById('trendVotingFall').value + "'";
+                funa.push("'trends_voting_fall' => '" + document.getElementById('trendVotingFall').value + "'");
             }
         }
 
         if (!document.getElementById('srHidempty').checked) {
-           tagtext = tagtext + " hide_empty=0";
+            tagtext = tagtext + " hide_empty=0";
+            funa.push("'hide_empty' => false");
         }
         if (document.getElementById('srHidemptyReview').checked) {
-           tagtext = tagtext + " hide_noreview=1";
+            tagtext = tagtext + " hide_noreview=1";
+            funa.push("'hide_noreview' => true");
         }
         if (document.getElementById('srHidemptyBayes').checked) {
-           tagtext = tagtext + " bayesian_calculation=1";
+            tagtext = tagtext + " bayesian_calculation=1";
+            funa.push("'bayesian_calculation' => true");
         }
         if (document.getElementById('srMinVotes').value != 5) {
             tagtext = tagtext + " min_votes=" + document.getElementById('srMinVotes').value;
+            funa.push("'min_votes' => " + document.getElementById('srMinVotes').value);
         }
         if (document.getElementById('srDataSource').value != 'standard') {
             tagtext = tagtext + " source='" + document.getElementById('srDataSource').value + "'";
             tagtext = tagtext + " source_set=" + document.getElementById('srMultiSet').value;
+            funa.push("'source' => '" + document.getElementById('srDataSource').value + "'");
+            funa.push("'source_set' => " + document.getElementById('srMultiSet').value);
         }
 
         if (document.getElementById('srImageFrom').value != 'none') {
             tagtext = tagtext + " image_from='" + document.getElementById('srImageFrom').value + "'";
+            funa.push("'image_from' => '" + document.getElementById('srImageFrom').value + "'");
             if (document.getElementById('srImageFrom').value == 'custom') {
                 tagtext = tagtext + " image_custom='" + document.getElementById('srImageCustom').value + "'";
+                funa.push("'image_custom' => '" + document.getElementById('srImageCustom').value + "'");
             }
         }
 
         if (document.getElementById('publishDate').value == 'lastd') {
             if (document.getElementById('publishDays').value > 0) {
                 tagtext = tagtext + " publish_days=" + document.getElementById('publishDays').value;
+                funa.push("'publish_days' => " + document.getElementById('publishDays').value);
             }
         }
         else if (document.getElementById('publishDate').value == 'month') {
             tagtext = tagtext + " publish_date='month'";
             tagtext = tagtext + " publish_month='" + document.getElementById('publishMonth').value + "'";
+            funa.push("'publish_date' => 'month'");
+            funa.push("'publish_month' => '" + document.getElementById('publishMonth').value + "'");
         }
         else {
             tagtext = tagtext + " publish_date='range'";
             tagtext = tagtext + " publish_range_from='" + document.getElementById('publishRangeFrom').value + "'";
             tagtext = tagtext + " publish_range_to='" + document.getElementById('publishRangeTo').value + "'";
+            funa.push("'publish_date' => 'range'");
+            funa.push("'publish_range_from' => '" + document.getElementById('publishRangeFrom').value + "'");
+            funa.push("'publish_range_to' => '" + document.getElementById('publishRangeTo').value + "'");
         }
 
         if (document.getElementById('srStarsStyle').value != 'oxygen') {
             tagtext = tagtext + " rating_stars='" + document.getElementById('srStarsStyle').value + "'";
+            funa.push("'rating_stars' => '" + document.getElementById('srStarsStyle').value + "'");
         }
         if (document.getElementById('srStarsSize').value != '20') {
             tagtext = tagtext + " rating_size='" + document.getElementById('srStarsSize').value + "'";
+            funa.push("'rating_size' => '" + document.getElementById('srStarsSize').value + "'");
         }
         if (document.getElementById('srReviewStarsStyle').value != 'oxygen') {
             tagtext = tagtext + " review_stars='" + document.getElementById('srReviewStarsStyle').value + "'";
+            funa.push("'review_stars' => '" + document.getElementById('srReviewStarsStyle').value + "'");
         }
         if (document.getElementById('srReviewStarsSize').value != '20') {
             tagtext = tagtext + " review_size='" + document.getElementById('srReviewStarsSize').value + "'";
+            funa.push("'review_size' => '" + document.getElementById('srReviewStarsSize').value + "'");
         }
 
         tagtext = tagtext + "]";
+        funtext = funtext + funa.join(", ") + "));"
 	}
 
 	if (window.tinyMCE) {

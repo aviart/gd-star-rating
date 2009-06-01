@@ -36,6 +36,7 @@
         <li style="display: none" id="articlesreview_tab"><span><a href="javascript:mcTabs.displayTab('articlesreview_tab','articlesreview_panel');" onmousedown="return false;"><?php _e("Articles Review", "gd-star-rating"); ?></a></span></li>
         <li style="display: none" id="articlesrater_tab"><span><a href="javascript:mcTabs.displayTab('articlesrater_tab','articlesrater_panel');" onmousedown="return false;"><?php _e("Articles Rating Block", "gd-star-rating"); ?></a></span></li>
         <li style="display: none" id="commentsaggr_tab"><span><a href="javascript:mcTabs.displayTab('commentsaggr_tab','commentsaggr_panel');" onmousedown="return false;"><?php _e("Aggregated Comments", "gd-star-rating"); ?></a></span></li>
+        <li style="display: none" id="blograting_tab"><span><a href="javascript:mcTabs.displayTab('blograting_tab','blograting_panel');" onmousedown="return false;"><?php _e("Blog Rating", "gd-star-rating"); ?></a></span></li>
     </ul>
 </div>
 
@@ -49,7 +50,8 @@
         <td class="gdsrright">
             <label>
                 <select onchange="gdsrChangeShortcode('tinymce')" id="srShortcode" name="srShortcode" style="width: 200px">
-                    <option value="starrating"><?php _e("Advanced", "gd-star-rating"); ?>: StarRating</option>
+                    <option value="starrating"><?php _e("Results", "gd-star-rating"); ?>: StarRating</option>
+                    <option value="blograting"><?php _e("Results", "gd-star-rating"); ?>: BlogRating</option>
                     <option value="starrating">--------------------</option>
                     <option value="starratingmulti"><?php _e("Multi", "gd-star-rating"); ?>: StarRatingMulti</option>
                     <option value="starreviewmulti"><?php _e("Multi", "gd-star-rating"); ?>: StarReviewMulti</option>
@@ -96,6 +98,10 @@
 
 <div id="commentsaggr_panel" class="panel">
 <?php include(dirname(__FILE__)."/panels/commentsaggr.php"); ?>
+</div>
+
+<div id="blograting_panel" class="panel">
+<?php include(dirname(__FILE__)."/panels/blograting.php"); ?>
 </div>
 
 </div>

@@ -25,7 +25,7 @@
       </tr>
       <tr>
         <td class="gdsrleft"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright"><input class="widefat" style="text-align: right;" type="text" size="8" id="srMinVotes" name="srMinVotes" value="5" /></td>
+        <td class="gdsrright"><input class="widefat widnumb" style="text-align: right;" type="text" size="8" id="srMinVotes" name="srMinVotes" value="5" /></td>
       </tr>
     </table>
 </fieldset>
@@ -65,7 +65,7 @@
     <table border="0" cellpadding="3" cellspacing="0" width="100%">
       <tr>
         <td class="gdsrleft"><?php _e("Enter 0 for all", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright"><input class="widefat" style="text-align: right;" size="8" type="text" name="srLastDate" id="srLastDate" value="0" /></td>
+        <td class="gdsrright"><input class="widefat widnumb" style="text-align: right;" size="8" type="text" name="srLastDate" id="srLastDate" value="0" /></td>
       </tr>
     </table>
 </fieldset>
@@ -89,7 +89,7 @@
       <tr>
         <td class="gdsrleft"><?php _e("Number Of Days", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <input class="widefat" style="text-align: right;" size="8" type="text" name="publishDays" id="publishDays" value="0" />
+            <input class="widefat widnumb" style="text-align: right;" size="8" type="text" name="publishDays" id="publishDays" value="0" />
         </td>
       </tr>
     </table>
