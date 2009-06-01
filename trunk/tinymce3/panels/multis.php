@@ -23,6 +23,26 @@
 </fieldset>
 
 <fieldset>
+<legend><?php _e("Elements Stars", "gd-star-rating"); ?></legend>
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
+      <tr>
+        <td class="gdsrleft"><?php _e("Set", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <select id="srStarsStyleMUREl" name="srStarsStyleMUREl">
+                <?php GDSRHelper::render_styles_select($gdsr_styles, 'oxygen'); ?>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="gdsrleft"><?php _e("Size", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright">
+            <?php GDSRHelper::render_star_sizes_tinymce("srStarsSizeMUREl"); ?>
+        </td>
+      </tr>
+    </table>
+</fieldset>
+
+<fieldset>
 <legend><?php _e("Average Stars", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>

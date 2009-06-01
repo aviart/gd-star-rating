@@ -79,33 +79,33 @@ function insertStarRatingCode() {
         tagtext = "[starreview";
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRSB').value;
         tagtext = tagtext + "]";
-        funtext = "wp_gdsr_render_review($post_id = 0, ";
-        funtext = funtext + " $template_id = " + document.getElementById('srTemplateRSB').value;
-        funtext = funtext + ");"
+        funtext = "wp_gdsr_render_review(0, ";
+        funtext = funtext + document.getElementById('srTemplateRSB').value + ");"
     } else if (shortcode == 'starcomments') {
         tagtext = "[starcomments";
-        funtext = "wp_gdsr_render_comment_aggregation($post_id = 0, ";
-        funtext = funtext + " $template_id = " + document.getElementById('srTemplateCAR').value;
+        funtext = "wp_gdsr_render_comment_aggregation(0, " + document.getElementById('srTemplateCAR').value;
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateCAR').value;
         if (document.getElementById('srCagShow').value != 'total') {
             tagtext = tagtext + " show='" + document.getElementById('srCagShow').value + "'";
-            funtext = funtext + ", $show = '" + document.getElementById('srCagShow').value + "'";
+            funtext = funtext + ", '" + document.getElementById('srCagShow').value + "'";
         }
         tagtext = tagtext + "]";
         funtext = funtext + ");"
     } else if (shortcode == 'starrater') {
         tagtext = "[starrater tpl=";
-        funtext = "wp_gdsr_render_article($template_id = " + document.getElementById('srRatingBlockTemplate').value;
+        funtext = "wp_gdsr_render_article(" + document.getElementById('srRatingBlockTemplate').value;
         tagtext = tagtext + document.getElementById('srRatingBlockTemplate').value;
         if (document.getElementById('srArticleRead').checked) {
            tagtext = tagtext + " read_only=1";
-           funtext = funtext + " $read_only = true";
-         }
+           funtext = funtext + ", true";
+        }
         tagtext = tagtext + "]";
         funtext = funtext + ");"
     } else if (shortcode == 'starreviewmulti') {
         tagtext = "[starreviewmulti id=";
-        tagtext = tagtext + document.getElementById('srMultiRatingSet').value;
+        funtext = "wp_gdsr_show_multi_review(" + document.getElementById('srMultiReviewSet').value;
+        funtext = funtext + ", " + document.getElementById('srRatingBlockTemplate').value;
+        tagtext = tagtext + document.getElementById('srMultiReviewSet').value;
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRMB').value;
         if (document.getElementById('srStarsStyleMRREl').value != 'oxygen') {
             tagtext = tagtext + " element_stars='" + document.getElementById('srStarsStyleMRREl').value + "'";
@@ -119,13 +119,35 @@ function insertStarRatingCode() {
         if (document.getElementById('srStarsSizeMRRAv').value != '20') {
             tagtext = tagtext + " average_size='" + document.getElementById('srStarsSizeMRRAv').value + "'";
         }
+        funtext = funtext + ", '" + document.getElementById('srStarsStyleMRREl').value;
+        funtext = funtext + "', " + document.getElementById('srStarsSizeMRREl').value;
+        funtext = funtext + ", 'oxygen_gif'";
+        funtext = funtext + ", '" + document.getElementById('srStarsStyleMRRAv').value;
+        funtext = funtext + "', " + document.getElementById('srStarsSizeMRRAv').value;
+        funtext = funtext + ", 'oxygen_gif'";
         tagtext = tagtext + "]";
+        funtext = funtext + ");"
     } else if (shortcode == 'starratingmulti') {
         tagtext = '[starratingmulti id=';
+        funtext = "wp_gdsr_render_multi(" + document.getElementById('srMultiRatingSet').value;
+        funtext = funtext + ", " + document.getElementById('srTemplateMRB').value;
         tagtext = tagtext + document.getElementById('srMultiRatingSet').value;
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateMRB').value;
         if (document.getElementById('srMultiRead').checked) {
-           tagtext = tagtext + " read_only=1";
+            tagtext = tagtext + " read_only=1";
+            funtext = funtext + ", true";
+        } else funtext = funtext + ", false";
+        funtext = funtext + "', 0, '" + document.getElementById('srStarsStyleMUREl').value;
+        funtext = funtext + "', " + document.getElementById('srStarsSizeMUREl').value;
+        funtext = funtext + ", 'oxygen_gif'";
+        funtext = funtext + ", '" + document.getElementById('srStarsStyleMURAv').value;
+        funtext = funtext + "', " + document.getElementById('srStarsSizeMURAv').value;
+        funtext = funtext + ", 'oxygen_gif'";
+        if (document.getElementById('srStarsStyleMUREl').value != 'oxygen') {
+            tagtext = tagtext + " element_stars='" + document.getElementById('srStarsStyleMUREl').value + "'";
+        }
+        if (document.getElementById('srStarsSizeMUREl').value != '20') {
+            tagtext = tagtext + " element_size='" + document.getElementById('srStarsSizeMUREl').value + "'";
         }
         if (document.getElementById('srStarsStyleMURAv').value != 'oxygen') {
             tagtext = tagtext + " average_stars='" + document.getElementById('srStarsStyleMURAv').value + "'";
@@ -134,6 +156,7 @@ function insertStarRatingCode() {
             tagtext = tagtext + " average_size='" + document.getElementById('srStarsSizeMURAv').value + "'";
         }
         tagtext = tagtext + "]";
+        funtext = funtext + ");"
     } else {
         tagtext = "[starrating";
         funtext = "wp_gdsr_render_blog_rating_widget(array(";
