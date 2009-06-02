@@ -635,3 +635,5 @@ p.sub {
 .tpl-editor-settin-td .gdsrright { text-align: right; height: 25px; }
 .tpl-editor-settin-td .widefat { border-color:#8CBDD5; }
 .tpl-editor-settin-td .widnumb { width: 80px; }
+.tpl-editor-settin-td .gdsrspc { width: 15px; }
+.tpl-editor-settin-td .gdsrreg { width: 90px; }

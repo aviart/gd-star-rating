@@ -23,7 +23,7 @@ jQuery(document).ready(function() {
             }
         });
     });
-    <?php if ($include_cmm_review) include(STARRATING_PATH.'code/js/integration.php'); ?>
+    <?php include(STARRATING_PATH.'code/js/integration.php'); ?>
     <?php if ($include_mur_rating) {
         include(STARRATING_PATH.'code/js/multi_rt.php');
         include(STARRATING_PATH.'code/js/multi_in.php');
