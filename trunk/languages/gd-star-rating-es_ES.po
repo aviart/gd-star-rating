@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GD Star Rating 1.4.0 (SVN Revision 684)\n"
+"Project-Id-Version: GD Star Rating 1.4.1 (SVN Revision 694) - es_ES\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ángel Guzmán Maeso <shakaran@gmail.com>\n"
@@ -25,8 +25,8 @@ msgid "All users and visitors"
 msgstr "Todos los usuarios y visitantes"
 
 #: code/db/main.php:1052
-#: tinymce3/panels/advanced.php:144
-#: tinymce3/panels/comments.php:13
+#: tinymce3/panels/commentsaggr.php:17
+#: tinymce3/panels/filter.php:17
 #: widgets/comments/part_basic.php:17
 #: widgets/comments/part_filter.php:17
 #: widgets/comments_28/part_basic.php:17
@@ -917,7 +917,7 @@ msgstr "Restricción"
 #: integrate/edit.php:57
 #: options/articles.php:316
 #: options/categories.php:200
-#: tinymce3/panels/advanced.php:200
+#: tinymce3/panels/filter.php:73
 msgid "Date"
 msgstr "Fecha"
 
@@ -933,13 +933,14 @@ msgstr "No tienes ningún conjunto de multi votación definido. Crea al menos un
 
 #: integrate/edit_multi.php:9
 #: options/tools/tools_bulk.php:77
-#: tinymce3/panels/advanced.php:288
-#: tinymce3/panels/advanced.php:308
-#: tinymce3/panels/multi.php:10
-#: tinymce3/panels/multi.php:29
-#: tinymce3/panels/multi.php:56
-#: tinymce3/panels/multi.php:71
-#: tinymce3/panels/multi.php:91
+#: tinymce3/panels/multis.php:9
+#: tinymce3/panels/multis.php:28
+#: tinymce3/panels/multis.php:48
+#: tinymce3/panels/multisreview.php:9
+#: tinymce3/panels/multisreview.php:24
+#: tinymce3/panels/multisreview.php:44
+#: tinymce3/panels/styles.php:41
+#: tinymce3/panels/styles.php:61
 #: widgets/comments/part_stars.php:13
 #: widgets/comments_28/part_stars.php:13
 #: widgets/rating_28/part_stars.php:13
@@ -971,6 +972,106 @@ msgstr "Establecer ID"
 msgid "Set Name"
 msgstr "Establecer Nombre"
 
+#: options/builder/settings.php:2
+#: options/templates/templates_editor.php:43
+#: tinymce3/window.php:30
+msgid "General"
+msgstr "General"
+
+#: options/builder/settings.php:3
+msgid "Filter    "
+msgstr "Filtrar"
+
+#: options/builder/settings.php:4
+#: options/settings.php:49
+#: options/tools.php:9
+#: tinymce3/window.php:32
+msgid "Graphics"
+msgstr "Gráficos"
+
+#: options/builder/settings.php:5
+#: tinymce3/panels/general.php:26
+#: tinymce3/window.php:33
+#: widgets/rating/part_basic.php:39
+#: widgets/rating_28/part_basic.php:38
+msgid "Multi Rating"
+msgstr "Multi votación"
+
+#: options/builder/settings.php:6
+#: tinymce3/window.php:34
+msgid "Multi Review"
+msgstr "Multi resumen"
+
+#: options/builder/settings.php:7
+#: tinymce3/window.php:35
+msgid "Articles Review"
+msgstr "Resumen de artículos"
+
+#: options/builder/settings.php:8
+#: tinymce3/panels/articlesrater.php:1
+#: tinymce3/window.php:36
+msgid "Articles Rating Block"
+msgstr "Bloqueador de votación de artí­culos"
+
+#: options/builder/settings.php:9
+#: tinymce3/window.php:37
+msgid "Aggregated Comments"
+msgstr "Comentarios agregados"
+
+#: options/builder/shortcode.php:2
+msgid "Select code:"
+msgstr "Seleccionar código:"
+
+#: options/builder/shortcode.php:5
+#: options/settings.php:43
+#: tinymce3/window.php:51
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: options/builder/shortcode.php:7
+#: options/builder/shortcode.php:8
+#: tinymce3/window.php:53
+#: tinymce3/window.php:54
+msgid "Multi"
+msgstr "Multi"
+
+#: options/builder/shortcode.php:10
+#: options/builder/shortcode.php:11
+#: options/multis/results_post.php:80
+#: options/articles.php:112
+#: options/articles.php:260
+#: options/categories.php:159
+#: options/users.php:65
+#: tinymce3/window.php:56
+#: tinymce3/window.php:57
+#: gd-star-rating.php:580
+msgid "Articles"
+msgstr "Artí­culos"
+
+#: options/builder/shortcode.php:13
+#: options/tools/tools_bulk.php:60
+#: options/articles.php:330
+#: options/categories.php:216
+#: options/charts.php:7
+#: options/comments.php:44
+#: options/settings.php:46
+#: options/users.php:66
+#: tinymce3/window.php:59
+msgid "Comments"
+msgstr "Comentarios"
+
+#: options/builder/shortcode.php:21
+msgid "Shortcode:"
+msgstr "Código abreviado:"
+
+#: options/builder/shortcode.php:30
+msgid "Function:"
+msgstr "Función:"
+
+#: options/builder/shortcode.php:36
+msgid "Rebuild"
+msgstr "Reconstruir"
+
 #: options/export/export_t2.php:1
 msgid "Export Templates"
 msgstr "Exportar plantillas"
@@ -982,7 +1083,7 @@ msgstr "Esto exportará todas las plantillas que creaste en un archivo."
 #: options/export/export_t2.php:4
 #: options/export/export_users.php:42
 #: options/export/export_users.php:45
-#: gd-star-rating.php:589
+#: gd-star-rating.php:590
 msgid "Export"
 msgstr "Exportar"
 
@@ -1343,7 +1444,7 @@ msgstr "Ubicación"
 #: options/settings/settings_administration.php:40
 #: options/articles.php:157
 #: options/categories.php:70
-#: gd-star-rating.php:580
+#: gd-star-rating.php:581
 msgid "Categories"
 msgstr "Categorí­as"
 
@@ -1373,17 +1474,6 @@ msgstr "Guardar multi conjunto"
 msgid "Multi Set Results"
 msgstr "Resultados multi conjuntos"
 
-#: options/multis/results_post.php:80
-#: options/articles.php:112
-#: options/articles.php:260
-#: options/categories.php:159
-#: options/users.php:65
-#: tinymce3/window.php:55
-#: tinymce3/window.php:56
-#: gd-star-rating.php:579
-msgid "Articles"
-msgstr "Artí­culos"
-
 #: options/multis/results_post.php:90
 #: options/multis/results_post.php:92
 #: options/multis/results_post.php:30
@@ -1404,6 +1494,7 @@ msgstr "Buscar entradas"
 #: options/users_log.php:23
 #: options/voters.php:117
 #: options/voters.php:32
+#: tinymce3/panels/commentsaggr.php:11
 #: tinymce3/window.php:31
 #: widgets/comments/part_filter.php:4
 #: widgets/comments/part_filter.php:12
@@ -1422,7 +1513,7 @@ msgstr "Filtro"
 
 #: options/multis/results_post.php:116
 #: options/articles.php:147
-#: tinymce3/panels/advanced.php:169
+#: tinymce3/panels/filter.php:42
 #: widgets/comments/part_basic.php:2
 #: widgets/comments_28/part_basic.php:2
 #: widgets/rating/part_basic.php:2
@@ -1458,7 +1549,7 @@ msgstr "Total"
 #: options/articles.php:161
 #: options/articles.php:295
 #: options/comments.php:96
-#: tinymce3/panels/advanced.php:170
+#: tinymce3/panels/filter.php:43
 #: widgets/rating/part_filter.php:61
 #: widgets/rating_28/part_filter.php:61
 msgid "Review"
@@ -1470,7 +1561,7 @@ msgid "Voters"
 msgstr "Votantes"
 
 #: options/multis/sets.php:45
-#: gd-star-rating.php:583
+#: gd-star-rating.php:584
 msgid "Multi Sets"
 msgstr "Multi conjuntos"
 
@@ -1483,7 +1574,7 @@ msgstr "Añadir nuevo conjunto de multi votación"
 #: options/templates/templates_list.php:46
 #: options/users.php:62
 #: options/voters.php:142
-#: tinymce3/panels/advanced.php:168
+#: tinymce3/panels/filter.php:41
 #: widgets/rating/part_filter.php:59
 #: widgets/rating_28/part_filter.php:59
 msgid "ID"
@@ -1530,7 +1621,7 @@ msgid "Posts"
 msgstr "Entradas"
 
 #: options/settings/settings_administration.php:1
-#: tinymce3/panels/advanced.php:2
+#: tinymce3/panels/general.php:1
 msgid "Display"
 msgstr "Mostrar"
 
@@ -1543,11 +1634,12 @@ msgid "Rows for display"
 msgstr "Filas para mostrar"
 
 #: options/settings/settings_administration.php:30
+#: options/builder.php:7
 #: options/settings.php:37
-#: tinymce3/panels/articles.php:24
-#: tinymce3/panels/multi.php:21
-#: gd-star-rating.php:584
-#: gd-star-rating.php:746
+#: tinymce3/panels/articlesrater.php:11
+#: tinymce3/panels/multis.php:20
+#: gd-star-rating.php:585
+#: gd-star-rating.php:750
 msgid "Settings"
 msgstr "Configuraciones"
 
@@ -1570,7 +1662,7 @@ msgstr "Administración para configuraciones por defecto."
 #: options/categories.php:225
 #: options/comments.php:140
 #: options/users.php:48
-#: gd-star-rating.php:581
+#: gd-star-rating.php:582
 msgid "Users"
 msgstr "Usuarios"
 
@@ -1580,7 +1672,7 @@ msgstr "Administración de votación de usuarios."
 
 #: options/settings/settings_administration.php:44
 #: options/setup.php:45
-#: gd-star-rating.php:591
+#: gd-star-rating.php:592
 msgid "Setup"
 msgstr "Instalación"
 
@@ -1590,7 +1682,7 @@ msgstr "Desinstalar y mantenimiento."
 
 #: options/settings/settings_administration.php:48
 #: options/tools/tools_t2.php:6
-#: gd-star-rating.php:588
+#: gd-star-rating.php:589
 msgid "Import"
 msgstr "Importar"
 
@@ -1601,7 +1693,7 @@ msgstr "Importando datos desde otros plugins de votación."
 #: options/settings/settings_administration.php:50
 #: options/ips.php:67
 #: options/users_log.php:178
-#: gd-star-rating.php:587
+#: gd-star-rating.php:588
 msgid "IP's"
 msgstr "IP's"
 
@@ -1669,7 +1761,7 @@ msgstr "Registrar información de depuración en varios archivos."
 #: options/settings/settings_articles.php:10
 #: options/settings/settings_comments.php:10
 #: options/settings/settings_multis.php:10
-#: tinymce3/panels/advanced.php:166
+#: tinymce3/panels/filter.php:39
 #: widgets/comments/part_filter.php:46
 #: widgets/comments_28/part_filter.php:46
 #: widgets/rating/part_filter.php:57
@@ -2076,11 +2168,12 @@ msgid "Stars Preview"
 msgstr "Estrellas anteriores"
 
 #: options/settings/settings_preview.php:75
-#: tinymce3/panels/advanced.php:296
-#: tinymce3/panels/advanced.php:316
-#: tinymce3/panels/multi.php:37
-#: tinymce3/panels/multi.php:79
-#: tinymce3/panels/multi.php:99
+#: tinymce3/panels/multis.php:36
+#: tinymce3/panels/multis.php:56
+#: tinymce3/panels/multisreview.php:32
+#: tinymce3/panels/multisreview.php:52
+#: tinymce3/panels/styles.php:49
+#: tinymce3/panels/styles.php:69
 #: widgets/comments/part_image.php:13
 #: widgets/comments/part_stars.php:18
 #: widgets/comments_28/part_image.php:13
@@ -2193,7 +2286,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr "Después de la eliminación, el plugin será deshabilitado. Todos los datos grabados por el plugin serán perdidos."
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1203
+#: gd-star-rating.php:1207
 msgid "UNINSTALL"
 msgstr "DESINSTALAR"
 
@@ -2208,12 +2301,12 @@ msgstr "Sección / Tipo"
 
 #: options/templates/templates_defaults.php:9
 #: options/templates/templates_editor.php:51
-#: tinymce3/panels/advanced.php:248
-#: tinymce3/panels/articles.php:7
-#: tinymce3/panels/articles.php:19
-#: tinymce3/panels/comments.php:2
-#: tinymce3/panels/multi.php:2
-#: tinymce3/panels/multi.php:48
+#: tinymce3/panels/articlesrater.php:6
+#: tinymce3/panels/articlesreview.php:6
+#: tinymce3/panels/commentsaggr.php:6
+#: tinymce3/panels/multis.php:1
+#: tinymce3/panels/multisreview.php:1
+#: tinymce3/panels/styles.php:1
 #: widgets/comments/part_basic.php:8
 #: widgets/comments_28/part_basic.php:8
 #: widgets/rating/part_basic.php:9
@@ -2239,11 +2332,6 @@ msgstr "Editor de plantilla"
 #: options/templates/templates_editor.php:29
 msgid "Editor"
 msgstr "Editor"
-
-#: options/templates/templates_editor.php:43
-#: tinymce3/window.php:30
-msgid "General"
-msgstr "General"
 
 #: options/templates/templates_editor.php:69
 msgid "All tag elements"
@@ -2289,11 +2377,11 @@ msgstr "Nueva plantilla para:"
 msgid "Create"
 msgstr "Crear"
 
-#: options/templates/templates_list.php:106
+#: options/templates/templates_list.php:107
 msgid "Click to open post with T2 templates map with dependencies for templates"
 msgstr "Click para abrir entrada con el mapa de plantillas T2 con las dependencias para plantillas"
 
-#: options/templates/templates_list.php:107
+#: options/templates/templates_list.php:108
 msgid "T2 Templates Map"
 msgstr "Mapa de plantillas T2"
 
@@ -2358,17 +2446,6 @@ msgstr "Reglas de voto"
 #: options/settings.php:47
 msgid "Multis"
 msgstr "Multis"
-
-#: options/tools/tools_bulk.php:60
-#: options/articles.php:330
-#: options/categories.php:216
-#: options/charts.php:7
-#: options/comments.php:44
-#: options/settings.php:46
-#: options/users.php:66
-#: tinymce3/window.php:58
-msgid "Comments"
-msgstr "Comentarios"
 
 #: options/tools/tools_bulk.php:79
 msgid "This will update all posts and comments with previously saved ratings."
@@ -2584,8 +2661,18 @@ msgstr "sí­n limite"
 msgid "Charts"
 msgstr "Gráficos"
 
+#: options/builder.php:2
+#: gd-star-rating.php:579
+msgid "Builder"
+msgstr "Constructor"
+
+#: options/builder.php:6
+#: tinymce3/window.php:45
+msgid "Shortcode"
+msgstr "Código abreviado"
+
 #: options/categories.php:83
-#: tinymce3/panels/advanced.php:149
+#: tinymce3/panels/filter.php:22
 msgid "Category"
 msgstr "Categorí­a"
 
@@ -2635,7 +2722,7 @@ msgstr "Datos de usuarios"
 
 #: options/export.php:7
 #: options/tools.php:8
-#: gd-star-rating.php:586
+#: gd-star-rating.php:587
 msgid "T2 Templates"
 msgstr "Plantillas T2"
 
@@ -2754,25 +2841,14 @@ msgstr "Caracterí­sticas"
 msgid "Administration"
 msgstr "Administración"
 
-#: options/settings.php:43
-#: tinymce3/window.php:50
-msgid "Advanced"
-msgstr "Avanzado"
-
 #: options/settings.php:44
 msgid "Integration"
 msgstr "Integración"
 
 #: options/settings.php:45
-#: tinymce3/panels/advanced.php:134
+#: tinymce3/panels/filter.php:7
 msgid "Posts And Pages"
 msgstr "Entradas y páginas"
-
-#: options/settings.php:49
-#: options/tools.php:9
-#: tinymce3/window.php:32
-msgid "Graphics"
-msgstr "Gráficos"
 
 #: options/settings.php:83
 msgid "Save Settings"
@@ -2815,7 +2891,7 @@ msgid "Full Uninstall"
 msgstr "Desinstalación completa"
 
 #: options/tools.php:0
-#: gd-star-rating.php:585
+#: gd-star-rating.php:586
 msgid "Tools"
 msgstr "Herramientas"
 
@@ -2904,206 +2980,37 @@ msgstr "Borrado completo"
 msgid "Vote log for post"
 msgstr "Log de votos para entradas"
 
-#: tinymce3/panels/advanced.php:5
-#: widgets/rating/part_filter.php:35
-#: widgets/rating_28/part_filter.php:35
-msgid "Number Of Posts"
-msgstr "Número de entradas"
+#: tinymce3/panels/articlesrater.php:2
+msgid "StarRater will render actual rating block if you choose not to have it automatically inserted. This way you can position it wherever you want in the contnents."
+msgstr "StarRater renderizará el bloque de calificación actual bloque si elige no tener que insertarlo automáticamente. De esta manera puedes posicionarlo siempre que lo desee en los contenidos."
 
-#: tinymce3/panels/advanced.php:9
-#: widgets/rating/part_basic.php:24
-#: widgets/rating_28/part_basic.php:24
-msgid "Items Grouping"
-msgstr "Agrupación de los artí­culos"
+#: tinymce3/panels/articlesrater.php:12
+#: tinymce3/panels/multis.php:21
+msgid "Display rating block as read only."
+msgstr "Mostrar bloque de votación como sólo lectura."
 
-#: tinymce3/panels/advanced.php:11
-#: widgets/rating/part_basic.php:27
-#: widgets/rating_28/part_basic.php:27
-msgid "No grouping"
-msgstr "Sin agrupación"
+#: tinymce3/panels/articlesreview.php:1
+msgid "Articles Review Rating"
+msgstr "Resumen de votación de artículos"
 
-#: tinymce3/panels/advanced.php:12
-#: widgets/rating/part_basic.php:28
-#: widgets/rating_28/part_basic.php:28
-msgid "User based"
-msgstr "Usuario basado"
+#: tinymce3/panels/articlesreview.php:2
+msgid "StarReview will render stars representing review value assigned to the post or page."
+msgstr "StarReview renderizará estrellas en representación del valor resumen asignado a la entrada o la página."
 
-#: tinymce3/panels/advanced.php:13
-#: widgets/rating/part_basic.php:29
-#: widgets/rating_28/part_basic.php:29
-msgid "Category based"
-msgstr "Categorí­a basada"
+#: tinymce3/panels/commentsaggr.php:1
+msgid "Aggregated Comments Ratings"
+msgstr "Comentarios agregados de votaciones"
 
-#: tinymce3/panels/advanced.php:20
-msgid "Source"
-msgstr "Código fuente"
+#: tinymce3/panels/commentsaggr.php:2
+msgid "This will render aggregated comments rating for the post."
+msgstr "Esto renderizara votaciones de comentarios añadidos para la entrada."
 
-#: tinymce3/panels/advanced.php:23
-#: widgets/rating/part_basic.php:34
-#: widgets/rating_28/part_basic.php:34
-msgid "Data Source"
-msgstr "Datos fuente."
+#: tinymce3/panels/commentsaggr.php:14
+msgid "Calculate Votes From"
+msgstr "Calcular votos desde"
 
-#: tinymce3/panels/advanced.php:26
-#: widgets/rating/part_basic.php:37
-#: widgets/rating_28/part_basic.php:37
-msgid "Standard Rating"
-msgstr "Votación estándar"
-
-#: tinymce3/panels/advanced.php:27
-#: tinymce3/window.php:33
-#: widgets/rating/part_basic.php:39
-#: widgets/rating_28/part_basic.php:38
-msgid "Multi Rating"
-msgstr "Multi votación"
-
-#: tinymce3/panels/advanced.php:35
-#: widgets/rating/part_basic.php:48
-#: widgets/rating_28/part_basic.php:46
-msgid "Multi Set"
-msgstr "Multi conjunto"
-
-#: tinymce3/panels/advanced.php:43
-#: widgets/rating/part_trend.php:4
-#: widgets/rating/part_trend.php:12
-#: widgets/rating_28/part_trend.php:4
-#: widgets/rating_28/part_trend.php:12
-msgid "Trend"
-msgstr "Tendencia"
-
-#: tinymce3/panels/advanced.php:46
-#: widgets/rating/part_trend.php:13
-#: widgets/rating_28/part_trend.php:13
-msgid "Rating trend display as"
-msgstr "Tendencia de votación mostrada como"
-
-#: tinymce3/panels/advanced.php:49
-#: tinymce3/panels/advanced.php:85
-#: widgets/rating/part_trend.php:16
-#: widgets/rating/part_trend.php:54
-#: widgets/rating_28/part_trend.php:16
-#: widgets/rating_28/part_trend.php:54
-msgid "Text"
-msgstr "Texto"
-
-#: tinymce3/panels/advanced.php:50
-#: tinymce3/panels/advanced.php:86
-#: widgets/rating/part_image.php:4
-#: widgets/rating/part_image.php:12
-#: widgets/rating/part_trend.php:17
-#: widgets/rating/part_trend.php:55
-#: widgets/rating_28/part_image.php:4
-#: widgets/rating_28/part_image.php:12
-#: widgets/rating_28/part_trend.php:17
-#: widgets/rating_28/part_trend.php:55
-msgid "Image"
-msgstr "Imagen"
-
-#: tinymce3/panels/advanced.php:59
-#: tinymce3/panels/advanced.php:95
-#: widgets/rating/part_trend.php:26
-#: widgets/rating/part_trend.php:64
-#: widgets/rating_28/part_trend.php:26
-#: widgets/rating_28/part_trend.php:64
-msgid "Up"
-msgstr "Arriba"
-
-#: tinymce3/panels/advanced.php:61
-#: tinymce3/panels/advanced.php:97
-#: widgets/rating/part_trend.php:28
-#: widgets/rating/part_trend.php:66
-#: widgets/rating_28/part_trend.php:28
-#: widgets/rating_28/part_trend.php:66
-msgid "Equal"
-msgstr "Igual"
-
-#: tinymce3/panels/advanced.php:63
-#: tinymce3/panels/advanced.php:99
-#: widgets/rating/part_trend.php:30
-#: widgets/rating/part_trend.php:68
-#: widgets/rating_28/part_trend.php:30
-#: widgets/rating_28/part_trend.php:68
-msgid "Down"
-msgstr "Abajo"
-
-#: tinymce3/panels/advanced.php:71
-#: tinymce3/panels/advanced.php:107
-#: widgets/rating/part_trend.php:39
-#: widgets/rating/part_trend.php:77
-#: widgets/rating_28/part_trend.php:39
-#: widgets/rating_28/part_trend.php:77
-msgid "Image set"
-msgstr "Establecer imagen"
-
-#: tinymce3/panels/advanced.php:82
-#: widgets/rating/part_trend.php:51
-#: widgets/rating_28/part_trend.php:51
-msgid "Voting trend display as"
-msgstr "Tendencia de la votación mostrada como"
-
-#: tinymce3/panels/advanced.php:119
-msgid "Hiding"
-msgstr "Ocultando"
-
-#: tinymce3/panels/advanced.php:120
-#: widgets/rating/part_filter.php:80
-#: widgets/rating_28/part_filter.php:80
-msgid "Bayesian minumum votes required."
-msgstr "Mí­nimo de votos Bayesianos requeridos."
-
-#: tinymce3/panels/advanced.php:121
-#: widgets/comments_28/part_filter.php:65
-#: widgets/rating/part_filter.php:86
-#: widgets/rating_28/part_filter.php:86
-msgid "Hide articles with no recorded votes."
-msgstr "Esconder artí­culos sin votos registrados."
-
-#: tinymce3/panels/advanced.php:122
-#: widgets/rating/part_filter.php:92
-#: widgets/rating_28/part_filter.php:92
-msgid "Hide articles with no review values."
-msgstr "Esconder artí­culos sin valores resumen."
-
-#: tinymce3/panels/advanced.php:128
-msgid "Basic"
-msgstr "Básico"
-
-#: tinymce3/panels/advanced.php:131
-#: widgets/rating/part_filter.php:13
-#: widgets/rating_28/part_filter.php:13
-#: widgets/top/part_filter.php:13
-#: widgets/top_28/part_filter.php:13
-msgid "Include Articles"
-msgstr "Incluir artí­culos"
-
-#: tinymce3/panels/advanced.php:135
-#: widgets/rating/part_filter.php:17
-#: widgets/rating_28/part_filter.php:17
-#: widgets/top/part_filter.php:17
-#: widgets/top_28/part_filter.php:17
-msgid "Posts Only"
-msgstr "Sólo entradas"
-
-#: tinymce3/panels/advanced.php:136
-#: widgets/rating/part_filter.php:18
-#: widgets/rating_28/part_filter.php:18
-#: widgets/top/part_filter.php:18
-#: widgets/top_28/part_filter.php:18
-msgid "Pages Only"
-msgstr "Sólo páginas"
-
-#: tinymce3/panels/advanced.php:141
-#: widgets/comments/part_filter.php:13
-#: widgets/comments_28/part_filter.php:13
-#: widgets/rating/part_filter.php:24
-#: widgets/rating_28/part_filter.php:24
-#: widgets/top/part_filter.php:24
-#: widgets/top_28/part_filter.php:24
-msgid "Display Votes From"
-msgstr "Mostrar votos desde"
-
-#: tinymce3/panels/advanced.php:143
-#: tinymce3/panels/comments.php:12
+#: tinymce3/panels/commentsaggr.php:16
+#: tinymce3/panels/filter.php:16
 #: widgets/comments/part_basic.php:16
 #: widgets/comments/part_filter.php:16
 #: widgets/comments_28/part_basic.php:16
@@ -3119,8 +3026,8 @@ msgstr "Mostrar votos desde"
 msgid "Everyone"
 msgstr "Todo el mundo"
 
-#: tinymce3/panels/advanced.php:145
-#: tinymce3/panels/comments.php:14
+#: tinymce3/panels/commentsaggr.php:18
+#: tinymce3/panels/filter.php:18
 #: widgets/comments/part_basic.php:18
 #: widgets/comments/part_filter.php:18
 #: widgets/comments_28/part_basic.php:18
@@ -3136,7 +3043,45 @@ msgstr "Todo el mundo"
 msgid "Users Only"
 msgstr "Usuarios sólo"
 
-#: tinymce3/panels/advanced.php:153
+#: tinymce3/panels/filter.php:1
+msgid "Basic"
+msgstr "Básico"
+
+#: tinymce3/panels/filter.php:4
+#: widgets/rating/part_filter.php:13
+#: widgets/rating_28/part_filter.php:13
+#: widgets/top/part_filter.php:13
+#: widgets/top_28/part_filter.php:13
+msgid "Include Articles"
+msgstr "Incluir artí­culos"
+
+#: tinymce3/panels/filter.php:8
+#: widgets/rating/part_filter.php:17
+#: widgets/rating_28/part_filter.php:17
+#: widgets/top/part_filter.php:17
+#: widgets/top_28/part_filter.php:17
+msgid "Posts Only"
+msgstr "Sólo entradas"
+
+#: tinymce3/panels/filter.php:9
+#: widgets/rating/part_filter.php:18
+#: widgets/rating_28/part_filter.php:18
+#: widgets/top/part_filter.php:18
+#: widgets/top_28/part_filter.php:18
+msgid "Pages Only"
+msgstr "Sólo páginas"
+
+#: tinymce3/panels/filter.php:14
+#: widgets/comments/part_filter.php:13
+#: widgets/comments_28/part_filter.php:13
+#: widgets/rating/part_filter.php:24
+#: widgets/rating_28/part_filter.php:24
+#: widgets/top/part_filter.php:24
+#: widgets/top_28/part_filter.php:24
+msgid "Display Votes From"
+msgstr "Mostrar votos desde"
+
+#: tinymce3/panels/filter.php:26
 #: widgets/comments/part_filter.php:36
 #: widgets/comments_28/part_filter.php:36
 #: widgets/rating/part_filter.php:47
@@ -3144,15 +3089,15 @@ msgstr "Usuarios sólo"
 msgid "Minimum Votes"
 msgstr "Mí­nimo de votos"
 
-#: tinymce3/panels/advanced.php:160
+#: tinymce3/panels/filter.php:33
 msgid "Sorting"
 msgstr "Ordenación"
 
-#: tinymce3/panels/advanced.php:163
+#: tinymce3/panels/filter.php:36
 msgid "Column"
 msgstr "Columna"
 
-#: tinymce3/panels/advanced.php:167
+#: tinymce3/panels/filter.php:40
 #: widgets/comments/part_filter.php:47
 #: widgets/comments_28/part_filter.php:47
 #: widgets/rating/part_filter.php:58
@@ -3160,23 +3105,23 @@ msgstr "Columna"
 msgid "Total Votes"
 msgstr "Votos totales"
 
-#: tinymce3/panels/advanced.php:171
+#: tinymce3/panels/filter.php:44
 #: widgets/rating/part_filter.php:62
 #: widgets/rating_28/part_filter.php:62
 msgid "Count"
 msgstr "Contador"
 
-#: tinymce3/panels/advanced.php:172
+#: tinymce3/panels/filter.php:45
 #: widgets/rating/part_filter.php:63
 #: widgets/rating_28/part_filter.php:63
 msgid "Bayesian Rating"
 msgstr "Clasificación bayesiana"
 
-#: tinymce3/panels/advanced.php:177
+#: tinymce3/panels/filter.php:50
 msgid "Order"
 msgstr "Orden"
 
-#: tinymce3/panels/advanced.php:180
+#: tinymce3/panels/filter.php:53
 #: widgets/comments/part_filter.php:57
 #: widgets/comments_28/part_filter.php:57
 #: widgets/rating/part_filter.php:72
@@ -3184,7 +3129,7 @@ msgstr "Orden"
 msgid "Descending"
 msgstr "Descendiente"
 
-#: tinymce3/panels/advanced.php:181
+#: tinymce3/panels/filter.php:54
 #: widgets/comments/part_filter.php:58
 #: widgets/comments_28/part_filter.php:58
 #: widgets/rating/part_filter.php:73
@@ -3192,17 +3137,17 @@ msgstr "Descendiente"
 msgid "Ascending"
 msgstr "Ascendente"
 
-#: tinymce3/panels/advanced.php:189
+#: tinymce3/panels/filter.php:62
 msgid "Last Voted"
 msgstr "Último voto"
 
-#: tinymce3/panels/advanced.php:190
+#: tinymce3/panels/filter.php:63
 #: widgets/rating/part_filter.php:118
 #: widgets/rating_28/part_filter.php:118
 msgid "Use only articles voted for in last # days."
 msgstr "Usar sólo artículos votados  los últimos # días."
 
-#: tinymce3/panels/advanced.php:193
+#: tinymce3/panels/filter.php:66
 #: widgets/comments/part_filter.php:77
 #: widgets/comments_28/part_filter.php:77
 #: widgets/rating/part_filter.php:123
@@ -3210,186 +3155,289 @@ msgstr "Usar sólo artículos votados  los últimos # días."
 msgid "Enter 0 for all"
 msgstr "Introduce 0 para todo"
 
-#: tinymce3/panels/advanced.php:203
+#: tinymce3/panels/filter.php:76
 msgid "Publish Date"
 msgstr "Fecha de publicación"
 
-#: tinymce3/panels/advanced.php:206
+#: tinymce3/panels/filter.php:79
 #: widgets/rating/part_filter.php:140
 #: widgets/rating_28/part_filter.php:140
 msgid "Last # days"
 msgstr "Ultimos # dí­as"
 
-#: tinymce3/panels/advanced.php:207
+#: tinymce3/panels/filter.php:80
 #: widgets/rating/part_filter.php:141
 #: widgets/rating_28/part_filter.php:141
 msgid "Exact month"
 msgstr "Mes exacto"
 
-#: tinymce3/panels/advanced.php:208
+#: tinymce3/panels/filter.php:81
 #: widgets/rating/part_filter.php:142
 #: widgets/rating_28/part_filter.php:142
 msgid "Date range"
 msgstr "Rango de fecha"
 
-#: tinymce3/panels/advanced.php:216
+#: tinymce3/panels/filter.php:89
 #: widgets/rating/part_filter.php:151
 #: widgets/rating_28/part_filter.php:151
 msgid "Number Of Days"
 msgstr "Número de dí­as"
 
-#: tinymce3/panels/advanced.php:226
+#: tinymce3/panels/filter.php:99
 #: widgets/rating/part_filter.php:162
 #: widgets/rating_28/part_filter.php:162
 msgid "Month"
 msgstr "Mes"
 
-#: tinymce3/panels/advanced.php:236
+#: tinymce3/panels/filter.php:109
 #: widgets/rating/part_filter.php:173
 #: widgets/rating_28/part_filter.php:173
 msgid "Range"
 msgstr "Rango"
 
-#: tinymce3/panels/advanced.php:253
+#: tinymce3/panels/general.php:4
+#: widgets/rating/part_filter.php:35
+#: widgets/rating_28/part_filter.php:35
+msgid "Number Of Posts"
+msgstr "Número de entradas"
+
+#: tinymce3/panels/general.php:8
+#: widgets/rating/part_basic.php:24
+#: widgets/rating_28/part_basic.php:24
+msgid "Items Grouping"
+msgstr "Agrupación de los artí­culos"
+
+#: tinymce3/panels/general.php:10
+#: widgets/rating/part_basic.php:27
+#: widgets/rating_28/part_basic.php:27
+msgid "No grouping"
+msgstr "Sin agrupación"
+
+#: tinymce3/panels/general.php:11
+#: widgets/rating/part_basic.php:28
+#: widgets/rating_28/part_basic.php:28
+msgid "User based"
+msgstr "Usuario basado"
+
+#: tinymce3/panels/general.php:12
+#: widgets/rating/part_basic.php:29
+#: widgets/rating_28/part_basic.php:29
+msgid "Category based"
+msgstr "Categorí­a basada"
+
+#: tinymce3/panels/general.php:19
+msgid "Source"
+msgstr "Código fuente"
+
+#: tinymce3/panels/general.php:22
+#: widgets/rating/part_basic.php:34
+#: widgets/rating_28/part_basic.php:34
+msgid "Data Source"
+msgstr "Datos fuente."
+
+#: tinymce3/panels/general.php:25
+#: widgets/rating/part_basic.php:37
+#: widgets/rating_28/part_basic.php:37
+msgid "Standard Rating"
+msgstr "Votación estándar"
+
+#: tinymce3/panels/general.php:34
+#: widgets/rating/part_basic.php:48
+#: widgets/rating_28/part_basic.php:46
+msgid "Multi Set"
+msgstr "Multi conjunto"
+
+#: tinymce3/panels/general.php:42
+#: widgets/rating/part_trend.php:4
+#: widgets/rating/part_trend.php:12
+#: widgets/rating_28/part_trend.php:4
+#: widgets/rating_28/part_trend.php:12
+msgid "Trend"
+msgstr "Tendencia"
+
+#: tinymce3/panels/general.php:45
+#: widgets/rating/part_trend.php:13
+#: widgets/rating_28/part_trend.php:13
+msgid "Rating trend display as"
+msgstr "Tendencia de votación mostrada como"
+
+#: tinymce3/panels/general.php:48
+#: tinymce3/panels/general.php:84
+#: widgets/rating/part_trend.php:16
+#: widgets/rating/part_trend.php:54
+#: widgets/rating_28/part_trend.php:16
+#: widgets/rating_28/part_trend.php:54
+msgid "Text"
+msgstr "Texto"
+
+#: tinymce3/panels/general.php:49
+#: tinymce3/panels/general.php:85
+#: widgets/rating/part_image.php:4
+#: widgets/rating/part_image.php:12
+#: widgets/rating/part_trend.php:17
+#: widgets/rating/part_trend.php:55
+#: widgets/rating_28/part_image.php:4
+#: widgets/rating_28/part_image.php:12
+#: widgets/rating_28/part_trend.php:17
+#: widgets/rating_28/part_trend.php:55
+msgid "Image"
+msgstr "Imagen"
+
+#: tinymce3/panels/general.php:58
+#: tinymce3/panels/general.php:94
+#: widgets/rating/part_trend.php:26
+#: widgets/rating/part_trend.php:64
+#: widgets/rating_28/part_trend.php:26
+#: widgets/rating_28/part_trend.php:64
+msgid "Up"
+msgstr "Arriba"
+
+#: tinymce3/panels/general.php:60
+#: tinymce3/panels/general.php:96
+#: widgets/rating/part_trend.php:28
+#: widgets/rating/part_trend.php:66
+#: widgets/rating_28/part_trend.php:28
+#: widgets/rating_28/part_trend.php:66
+msgid "Equal"
+msgstr "Igual"
+
+#: tinymce3/panels/general.php:62
+#: tinymce3/panels/general.php:98
+#: widgets/rating/part_trend.php:30
+#: widgets/rating/part_trend.php:68
+#: widgets/rating_28/part_trend.php:30
+#: widgets/rating_28/part_trend.php:68
+msgid "Down"
+msgstr "Abajo"
+
+#: tinymce3/panels/general.php:70
+#: tinymce3/panels/general.php:106
+#: widgets/rating/part_trend.php:39
+#: widgets/rating/part_trend.php:77
+#: widgets/rating_28/part_trend.php:39
+#: widgets/rating_28/part_trend.php:77
+msgid "Image set"
+msgstr "Establecer imagen"
+
+#: tinymce3/panels/general.php:81
+#: widgets/rating/part_trend.php:51
+#: widgets/rating_28/part_trend.php:51
+msgid "Voting trend display as"
+msgstr "Tendencia de la votación mostrada como"
+
+#: tinymce3/panels/general.php:118
+msgid "Hiding"
+msgstr "Ocultando"
+
+#: tinymce3/panels/general.php:119
+#: widgets/rating/part_filter.php:80
+#: widgets/rating_28/part_filter.php:80
+msgid "Bayesian minumum votes required."
+msgstr "Mí­nimo de votos Bayesianos requeridos."
+
+#: tinymce3/panels/general.php:120
+#: widgets/comments_28/part_filter.php:65
+#: widgets/rating/part_filter.php:86
+#: widgets/rating_28/part_filter.php:86
+msgid "Hide articles with no recorded votes."
+msgstr "Esconder artí­culos sin votos registrados."
+
+#: tinymce3/panels/general.php:121
+#: widgets/rating/part_filter.php:92
+#: widgets/rating_28/part_filter.php:92
+msgid "Hide articles with no review values."
+msgstr "Esconder artí­culos sin valores resumen."
+
+#: tinymce3/panels/multis.php:6
+msgid "Multi Ratings"
+msgstr "Multi votaciones"
+
+#: tinymce3/panels/multis.php:25
+#: tinymce3/panels/multisreview.php:21
+msgid "Elements Stars"
+msgstr "Elementos de estrellas"
+
+#: tinymce3/panels/multis.php:45
+#: tinymce3/panels/multisreview.php:41
+msgid "Average Stars"
+msgstr "Media de estrellas"
+
+#: tinymce3/panels/multisreview.php:6
+msgid "Multi Reviews"
+msgstr "Multi resumenes"
+
+#: tinymce3/panels/multisreview.php:12
+msgid "Default"
+msgstr "Predefinido"
+
+#: tinymce3/panels/styles.php:6
 msgid "Post Image"
 msgstr "Imagen de entrada"
 
-#: tinymce3/panels/advanced.php:256
+#: tinymce3/panels/styles.php:9
 #: widgets/rating/part_image.php:13
 #: widgets/rating_28/part_image.php:13
 msgid "Get Image From"
 msgstr "Conseguir imagen desde"
 
-#: tinymce3/panels/advanced.php:259
+#: tinymce3/panels/styles.php:12
 #: widgets/rating/part_image.php:16
 #: widgets/rating_28/part_image.php:16
 msgid "No image"
 msgstr "Sin imagen"
 
-#: tinymce3/panels/advanced.php:260
+#: tinymce3/panels/styles.php:13
 #: widgets/rating/part_image.php:17
 #: widgets/rating_28/part_image.php:17
 msgid "Custom field"
 msgstr "Campo personalizado"
 
-#: tinymce3/panels/advanced.php:261
+#: tinymce3/panels/styles.php:14
 #: widgets/rating/part_image.php:18
 #: widgets/rating_28/part_image.php:18
 msgid "Post content"
 msgstr "Contenido de entrada"
 
-#: tinymce3/panels/advanced.php:267
+#: tinymce3/panels/styles.php:20
 #: widgets/rating/part_image.php:27
 #: widgets/rating_28/part_image.php:27
 msgid "If you use %IMAGE% tag in template and this option is selected, image will not be rendered."
 msgstr "Si usas la etiqueta %IMAGE% en la plantilla y esta opción esta seleccionada, la imagen no será renderizada."
 
-#: tinymce3/panels/advanced.php:272
+#: tinymce3/panels/styles.php:25
 #: widgets/rating/part_image.php:35
 #: widgets/rating_28/part_image.php:35
 msgid "Custom Field"
 msgstr "Campos personalizado"
 
-#: tinymce3/panels/advanced.php:280
+#: tinymce3/panels/styles.php:33
 #: widgets/rating/part_image.php:44
 #: widgets/rating_28/part_image.php:44
 msgid "First image from post content will be used for %IMAGE% tag."
 msgstr "La primera imagen del contenido de la entrada será usada para la etiqueta %IMAGE%."
 
-#: tinymce3/panels/advanced.php:285
+#: tinymce3/panels/styles.php:38
 msgid "Rating Stars"
 msgstr "Estrellas votadas"
 
-#: tinymce3/panels/advanced.php:305
+#: tinymce3/panels/styles.php:58
 msgid "Review Stars"
 msgstr "Resumen de estrellas"
 
-#: tinymce3/panels/articles.php:2
-msgid "Articles Review Rating"
-msgstr "Resumen de votación de artículos"
-
-#: tinymce3/panels/articles.php:3
-msgid "StarReview will render stars representing review value assigned to the post or page."
-msgstr "StarReview renderizará estrellas en representación del valor resumen asignado a la entrada o la página."
-
-#: tinymce3/panels/articles.php:14
-#: tinymce3/window.php:36
-msgid "Articles Rating Block"
-msgstr "Bloqueador de votación de artí­culos"
-
-#: tinymce3/panels/articles.php:15
-msgid "StarRater will render actual rating block if you choose not to have it automatically inserted. This way you can position it wherever you want in the contnents."
-msgstr "StarRater renderizará el bloque de calificación actual bloque si elige no tener que insertarlo automáticamente. De esta manera puedes posicionarlo siempre que lo desee en los contenidos."
-
-#: tinymce3/panels/articles.php:25
-#: tinymce3/panels/multi.php:22
-msgid "Display rating block as read only."
-msgstr "Mostrar bloque de votación como sólo lectura."
-
-#: tinymce3/panels/comments.php:7
-msgid "Aggregated Comments Ratings"
-msgstr "Comentarios agregados de votaciones"
-
-#: tinymce3/panels/comments.php:10
-msgid "Calculate Votes From"
-msgstr "Calcular votos desde"
-
-#: tinymce3/panels/multi.php:7
-msgid "Multi Ratings"
-msgstr "Multi votaciones"
-
-#: tinymce3/panels/multi.php:26
-#: tinymce3/panels/multi.php:88
-msgid "Average Stars"
-msgstr "Media de estrellas"
-
-#: tinymce3/panels/multi.php:53
-msgid "Multi Reviews"
-msgstr "Multi resumenes"
-
-#: tinymce3/panels/multi.php:59
-msgid "Default"
-msgstr "Predefinido"
-
-#: tinymce3/panels/multi.php:68
-msgid "Elements Stars"
-msgstr "Elementos de estrellas"
-
 #: tinymce3/window.php:29
-#: tinymce3/window.php:84
+#: tinymce3/window.php:108
 msgid "Insert"
 msgstr "Insertar"
 
-#: tinymce3/window.php:34
-msgid "Multi Review"
-msgstr "Multi resumen"
-
-#: tinymce3/window.php:35
-msgid "Articles Review"
-msgstr "Resumen de artículos"
-
-#: tinymce3/window.php:37
-msgid "Aggregated Comments"
-msgstr "Comentarios agregados"
-
-#: tinymce3/window.php:44
-msgid "Shortcode"
-msgstr "Código abreviado"
-
-#: tinymce3/window.php:52
-#: tinymce3/window.php:53
-msgid "Multi"
-msgstr "Multi"
-
-#: tinymce3/window.php:66
+#: tinymce3/window.php:67
 msgid "Shortcode Info"
 msgstr "Información de código abreviado"
 
-#: tinymce3/window.php:67
+#: tinymce3/window.php:68
 msgid "Change shortcode to see additional options you can set."
 msgstr "Cambiar el código abreviado para ver las opciones adicionales que puedes configurar."
 
-#: tinymce3/window.php:80
+#: tinymce3/window.php:104
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -3539,39 +3587,39 @@ msgstr "Multi resumen de votaciones"
 msgid "Front Page"
 msgstr "Portada"
 
-#: gd-star-rating.php:1297
+#: gd-star-rating.php:1301
 msgid "articles records from log table removed."
 msgstr "Los registros de articulos de la tabla de sucesos eliminados."
 
-#: gd-star-rating.php:1299
+#: gd-star-rating.php:1303
 msgid "comments records from log table removed."
 msgstr "Registros de comentarios desde la tabla de sucesos eliminados."
 
-#: gd-star-rating.php:1303
+#: gd-star-rating.php:1307
 msgid "articles records from trends log table removed."
 msgstr "Registros de artículos desde la tabla de sucesos de tendencias eliminados."
 
-#: gd-star-rating.php:1305
+#: gd-star-rating.php:1309
 msgid "comments records from trends log table removed."
 msgstr "Registros de comentarios desde la tabla de sucesos de tendencias eliminados."
 
-#: gd-star-rating.php:1309
+#: gd-star-rating.php:1313
 msgid "dead articles records from articles table."
 msgstr "Registros de artículos muertos desde la tabla de artículos."
 
-#: gd-star-rating.php:1311
+#: gd-star-rating.php:1315
 msgid "post revisions records from articles table."
 msgstr "Registros de revisiones de entrada desde la tabla de artículos."
 
-#: gd-star-rating.php:1313
+#: gd-star-rating.php:1317
 msgid "dead comments records from comments table."
 msgstr "Registros de comentarios muertos desde la tabla de comentarios."
 
-#: gd-star-rating.php:1317
+#: gd-star-rating.php:1321
 msgid "dead articles records from multi ratings tables."
 msgstr "Registros de artículos muertos desde la tabla de multi votaciones."
 
-#: gd-star-rating.php:1319
+#: gd-star-rating.php:1323
 msgid "post revisions records from multi ratings tables."
 msgstr "Registros de revisiones de entrada desde la tabla de multi votaciones."
 
