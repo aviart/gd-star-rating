@@ -55,11 +55,12 @@
     <div id="gdsr-tr-txt[tinymce]" style="display: block">
         <table border="0" cellpadding="3" cellspacing="0" width="100%">
           <tr>
-            <td class="gdsrleft"></td>
             <td class="gdsrreg"><?php _e("Up", "gd-star-rating"); ?>:</td>
             <td width="40" class="gdsrright"><input class="widefat" style="width: 35px" type="text" name="trendRatingRise" id="trendRatingRise" value="+" /></td>
+            <td class="gdsrspc"></td>
             <td class="gdsrreg"><?php _e("Equal", "gd-star-rating"); ?>:</td>
             <td width="40" class="gdsrright"><input class="widefat" style="width: 35px" type="text" name="trendRatingSame" id="trendRatingSame" value="=" /></td>
+            <td class="gdsrspc"></td>
             <td class="gdsrreg"><?php _e("Down", "gd-star-rating"); ?>:</td>
             <td width="40" class="gdsrright"><input class="widefat" style="width: 35px" type="text" name="trendRatingFall" id="trendRatingFall" value="-" /></td>
           </tr>
@@ -91,11 +92,12 @@
     <div id="gdsr-tv-txt[tinymce]" style="display: block">
         <table border="0" cellpadding="3" cellspacing="0" width="100%">
           <tr>
-            <td class="gdsrleft"></td>
             <td class="gdsrreg"><?php _e("Up", "gd-star-rating"); ?>:</td>
             <td width="40" class="gdsrright"><input class="widefat" style="width: 35px" type="text" name="trendVotingRise" id="trendVotingRise" value="+" /></td>
+            <td class="gdsrspc"></td>
             <td class="gdsrreg"><?php _e("Equal", "gd-star-rating"); ?>:</td>
             <td width="40" class="gdsrright"><input class="widefat" style="width: 35px" type="text" name="trendVotingSame" id="trendVotingSame" value="=" /></td>
+            <td class="gdsrspc"></td>
             <td class="gdsrreg"><?php _e("Down", "gd-star-rating"); ?>:</td>
             <td width="40" class="gdsrright"><input class="widefat" style="width: 35px" type="text" name="trendVotingFall" id="trendVotingFall" value="-" /></td>
           </tr>
