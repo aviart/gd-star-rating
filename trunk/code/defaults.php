@@ -2,11 +2,11 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.4.2",
-        "date" => "2009.06.03.",
+        "version" => "1.4.3",
+        "date" => "2009.06.07.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 694,
+        "build" => 697,
         "ajax_jsonp" => 0,
         "external_javascript" => 0,
         "external_rating_css" => 1,
