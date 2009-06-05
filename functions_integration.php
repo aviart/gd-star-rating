@@ -184,8 +184,8 @@ function wp_gdsr_render_multi($multi_set_id, $template_id = 0, $read_only = fals
     global $userdata, $gdsr;
     if ($post_id == 0) global $post;
     else $post = get_post($post_id);
-    if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id));
-    else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id));
+    if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
+    else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
 }
 
 /**
