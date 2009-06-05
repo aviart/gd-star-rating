@@ -158,7 +158,7 @@ function insertStarRatingCode() {
             tagtext = tagtext + " read_only=1";
             funtext = funtext + ", true";
         } else funtext = funtext + ", false";
-        funtext = funtext + "', 0, '" + document.getElementById('srStarsStyleMUREl').value;
+        funtext = funtext + ", 0, '" + document.getElementById('srStarsStyleMUREl').value;
         funtext = funtext + "', " + document.getElementById('srStarsSizeMUREl').value;
         funtext = funtext + ", 'oxygen_gif'";
         funtext = funtext + ", '" + document.getElementById('srStarsStyleMURAv').value;
