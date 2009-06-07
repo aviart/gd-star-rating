@@ -4,7 +4,7 @@
 
 <table cellpadding="0" cellspacing="7">
     <tr>
-        <td class="tpl-editor-title"><h3><?php _e("Shortcode", "gd-star-rating"); ?></h3></td>
+        <td class="tpl-editor-title"><h3><?php _e("Shortcode/Functions", "gd-star-rating"); ?></h3></td>
         <td class="tpl-editor-title"><h3><?php _e("Settings", "gd-star-rating"); ?></h3></td>
     </tr><tr>
         <td class="tpl-editor-select-td">
