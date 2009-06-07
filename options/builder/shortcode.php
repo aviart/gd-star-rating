@@ -36,3 +36,6 @@
     </tr>
 </table>
 <input type="button" onclick="gdsrAdminGetShortcode()" class="inputbutton" value="<?php _e("Rebuild", "gd-star-rating"); ?>" />
+<div class="gdsr-table-split"></div>
+<?php _e("List of all functions with additional parameters", "gd-star-rating"); ?>:<br />
+<a target="_blank" href="<?php echo STARRATING_URL; ?>info/functions.html"><?php _e("Functions", "gd-star-rating") ?></a>
