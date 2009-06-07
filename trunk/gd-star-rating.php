@@ -1485,7 +1485,7 @@ if (!class_exists('GDStarRating')) {
             $data = GDSRDatabase::get_post_data($post_id);
             $set = gd_get_multi_set($set_id);
 
-wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [".$user."]");
+wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [".$user."] ".$unit_width."px");
 
             $values = explode("X", $votes);
             $allow_vote = true;
@@ -1529,7 +1529,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
             $user = intval($userdata->ID);
             $vote_value = $votes;
 
-wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
+wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."px");
 
             $allow_vote = intval($votes) <= $this->o["stars"];
 
@@ -1583,7 +1583,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
             $user = intval($userdata->ID);
             $vote_value = $votes;
 
-wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
+wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_width."px");
 
             $allow_vote = intval($votes) <= $this->o["cmm_stars"];
 
