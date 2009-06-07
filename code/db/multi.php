@@ -149,7 +149,7 @@ class GDSRDBMulti {
         return $rating;
     }
 
-    function recalculate_multi_averages($post_id, $set_id, $rules = "", $set = null, $last_voted = false) {
+    function recalculate_multi_averages($post_id, $set_id, $rules = "", $set = null, $last_voted = false, $size = 20) {
         global $wpdb, $table_prefix;
 
         if ($set == null) $set = gd_get_multi_set($set_id);
@@ -195,7 +195,7 @@ class GDSRDBMulti {
                 if ($votes > 0) $rating = $score / $votes;
                 if ($rating > $set->stars) $rating = $set->stars;
                 $rating = @number_format($rating, 1);
-                $votes_js[] = $rating * $this->o["mur_size"];
+                $votes_js[] = $rating * $size;
                 $weighted += ($rating * $set->weight[$i]) / $weight_norm;
                 $total_votes += $votes;
             }

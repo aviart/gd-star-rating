@@ -350,7 +350,7 @@ class GDSRRenderT2 {
         }
 
         if (in_array("%BUTTON%", $template->tag["normal"])) {
-            if ($button_active) $rating_button = '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$tags_css["MUR_CSS_BUTTON"].'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'_'.$template_id.'"><a rel="nofollow">'.$button_text.'</a></div>';
+            if ($button_active) $rating_button = '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$tags_css["MUR_CSS_BUTTON"].'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'_'.$template_id.'_'.$height.'"><a rel="nofollow">'.$button_text.'</a></div>';
             else $rating_button = "";
 
             $tpl_render = str_replace("%BUTTON%", $rating_button, $tpl_render);
