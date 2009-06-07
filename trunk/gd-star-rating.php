@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.4.2
+Version: 1.4.3
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -1476,7 +1476,7 @@ if (!class_exists('GDStarRating')) {
         // install
 
         // vote
-        function vote_multi_rating($votes, $post_id, $set_id, $tpl_id) {
+        function vote_multi_rating($votes, $post_id, $set_id, $tpl_id, $size) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
@@ -1506,7 +1506,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
 
             if ($allow_vote) {
                 GDSRDBMulti::save_vote($post_id, $set_id, $user, $ip, $ua, $values, $data);
-                $summary = GDSRDBMulti::recalculate_multi_averages($post_id, $set_id, $data->rules_articles, $set, true);
+                $summary = GDSRDBMulti::recalculate_multi_averages($post_id, $set_id, $data->rules_articles, $set, true, $size);
                 $this->save_cookie($post_id."#".$set_id, "multis");
                 $rating = $summary["total"]["rating"];
                 $total_votes = $summary["total"]["votes"];
@@ -1522,7 +1522,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
             return "{ status: 'ok', values: ".$enc_values.", rater: '".$rt."', average: '".$rating."' }";
         }
 
-        function vote_article_ajax($votes, $id, $tpl_id) {
+        function vote_article_ajax($votes, $id, $tpl_id, $unit_width) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
@@ -1544,7 +1544,6 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
 
             $data = GDSRDatabase::get_post_data($id);
 
-            $unit_width = $this->o["size"];
             $unit_count = $this->o["stars"];
 
             $votes = 0;
@@ -1576,7 +1575,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."]");
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
 
-        function vote_comment_ajax($votes, $id, $tpl_id) {
+        function vote_comment_ajax($votes, $id, $tpl_id, $unit_width) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
@@ -1600,7 +1599,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $data = GDSRDatabase::get_comment_data($id);
             $post_data = GDSRDatabase::get_post_data($data->post_id);
 
-            $unit_width = $this->o["cmm_size"];
             $unit_count = $this->o["cmm_stars"];
 
             $votes = 0;

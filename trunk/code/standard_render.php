@@ -14,7 +14,7 @@ class GDSRRender {
                 $url_pos = strpos($url, "?");
                 if ($url_pos === false) $first_char = '?';
                 else $first_char = '&amp;';
-                $ajax_id = sprintf("gdsrX%sX%sX%sX%sX%sX%sX%s", $id, $ncount, $user_id, $type, $rater_id, $loader_id, $template_id);
+                $ajax_id = sprintf("gdsrX%sX%sX%sX%sX%sX%sX%sX%s", $id, $ncount, $user_id, $type, $rater_id, $loader_id, $template_id, $unit_width);
                 $rater.='<a id="'.$ajax_id.'" title="'.$ncount.' / '.$unit_count.'" class="s'.$ncount.'" rel="nofollow"></a>';
             }
             $rater.= '</div>';

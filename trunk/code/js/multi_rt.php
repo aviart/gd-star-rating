@@ -28,7 +28,7 @@
             }
         }
         jQuery(input_id).val(rating_values.join("X"));
-        var button_block = el[1] + '_' + el[2] + '_' + el[6];
+        var button_block = el[1] + '_' + el[2] + '_' + el[6] + '_' + size;
 <?php if ($button_active) { ?>
         var button_id = '#gdsr_button_' + button_block;
         if (active) {
