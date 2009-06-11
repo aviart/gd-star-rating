@@ -16,7 +16,7 @@ class gdTemplateDB {
         $default_sort = $default_sort ? "`default` desc, preinstalled desc, " : "";
         $default_limit = $only_default ? " LIMIT 0, 1" : "";
 
-        $sql = sprintf("select * from %s%s%s order by %stemplate_id asc%s", $table_prefix, GDTPLT2_TABLE, $section, $default_sort, $default_limit);
+        $sql = sprintf("select * from %s%s%s order by %stemplate_id asc%s", $table_prefix, STARRATING_TPLT2_TABLE, $section, $default_sort, $default_limit);
         if ($only_default) return $wpdb->get_row($sql);
         return $wpdb->get_results($sql);
     }
@@ -24,7 +24,7 @@ class gdTemplateDB {
     function get_template($id) {
         global $wpdb, $table_prefix;
         $sql = sprintf("SELECT * FROM %s%s WHERE `template_id` = %s",
-            $table_prefix, GDTPLT2_TABLE, $id);
+            $table_prefix, STARRATING_TPLT2_TABLE, $id);
         return $wpdb->get_row($sql);
     }
 
@@ -32,7 +32,7 @@ class gdTemplateDB {
         global $wpdb, $table_prefix;
         if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
 
-        $sql = sprintf("select * from %s%s%s limit %s, %s", $table_prefix, GDTPLT2_TABLE, $section, $start, $limit);
+        $sql = sprintf("select * from %s%s%s limit %s, %s", $table_prefix, STARRATING_TPLT2_TABLE, $section, $start, $limit);
          return $wpdb->get_results($sql);
     }
 
@@ -40,7 +40,7 @@ class gdTemplateDB {
         global $wpdb, $table_prefix;
         if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
 
-        $sql = sprintf("select count(*) from %s%s%s", $table_prefix, GDTPLT2_TABLE, $section);
+        $sql = sprintf("select count(*) from %s%s%s", $table_prefix, STARRATING_TPLT2_TABLE, $section);
         return $wpdb->get_var($sql);
     }
 
@@ -48,9 +48,9 @@ class gdTemplateDB {
         global $wpdb, $table_prefix;
 
         foreach ($post as $code => $value) {
-            $sql = sprintf("update %s%s set `default` = '0' where section = '%s'", $table_prefix, GDTPLT2_TABLE, $code);
+            $sql = sprintf("update %s%s set `default` = '0' where section = '%s'", $table_prefix, STARRATING_TPLT2_TABLE, $code);
             $wpdb->query($sql);
-            $sql = sprintf("update %s%s set `default` = '1' where template_id = %s", $table_prefix, GDTPLT2_TABLE, $value);
+            $sql = sprintf("update %s%s set `default` = '1' where template_id = %s", $table_prefix, STARRATING_TPLT2_TABLE, $value);
             $wpdb->query($sql);
         }
     }
@@ -58,7 +58,7 @@ class gdTemplateDB {
     function edit_template($general, $elements) {
         global $wpdb, $table_prefix;
         $sql = sprintf("UPDATE %s%s SET `section` = '%s', `name` = '%s', `description` = '%s', `elements` = '%s', `dependencies` = '%s', `preinstalled` = '%s' WHERE `template_id` = %s",
-            $table_prefix, GDTPLT2_TABLE, $general["section"], $general["name"], $general["description"], serialize($elements), serialize($general["dependencies"]), $general["preinstalled"], $general["id"]);
+            $table_prefix, STARRATING_TPLT2_TABLE, $general["section"], $general["name"], $general["description"], serialize($elements), serialize($general["dependencies"]), $general["preinstalled"], $general["id"]);
         $wpdb->query($sql);
         return $general["id"];
     }
@@ -66,14 +66,14 @@ class gdTemplateDB {
     function delete_template($id) {
         global $wpdb, $table_prefix;
         $sql = sprintf("DELETE FROM %s%s WHERE `template_id` = %s",
-            $table_prefix, GDTPLT2_TABLE, $id);
+            $table_prefix, STARRATING_TPLT2_TABLE, $id);
         return $wpdb->query($sql);
     }
 
     function add_template($general, $elements) {
         global $wpdb, $table_prefix;
         $sql = sprintf("INSERT INTO %s%s (`section`, `name`, `description`, `elements`, `dependencies`, `preinstalled`, `default`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '0')",
-            $table_prefix, GDTPLT2_TABLE, $general["section"], $general["name"], $general["description"], serialize($elements), serialize($general["dependencies"]), $general["preinstalled"]);
+            $table_prefix, STARRATING_TPLT2_TABLE, $general["section"], $general["name"], $general["description"], serialize($elements), serialize($general["dependencies"]), $general["preinstalled"]);
         $wpdb->query($sql);
         return $wpdb->insert_id;
     }
