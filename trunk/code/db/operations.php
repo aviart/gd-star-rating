@@ -362,10 +362,10 @@ class GDSRDB {
                 $tpl_check = substr($tpl, 0, $pipe);
                 $tpl_section = substr($tpl, $pipe + 1, 3);
                 $tpl_insert = substr($tpl, $pipe + 5);
-                $sql = sprintf("select template_id from %s%s where name = '%s' and preinstalled = '%s'", $table_prefix, GDTPLT2_TABLE, $tpl_check, $preinstalled);
+                $sql = sprintf("select template_id from %s%s where name = '%s' and preinstalled = '%s'", $table_prefix, STARRATING_TPLT2_TABLE, $tpl_check, $preinstalled);
                 $tpl_id = intval($wpdb->get_var($sql));
                 if ($tpl_id == 0) {
-                    $sql = str_replace("%s%s", $table_prefix.GDTPLT2_TABLE, $tpl_insert);
+                    $sql = str_replace("%s%s", $table_prefix.STARRATING_TPLT2_TABLE, $tpl_insert);
                     $wpdb->query($sql);
                     $tpl_id = $wpdb->insert_id;
                 }
@@ -379,7 +379,7 @@ class GDSRDB {
             $depend = array();
             foreach ($tpls->tpls as $tpl) {
                 $section = $tpl->code;
-                $sql = sprintf("select template_id from %s%s where section = '%s' and preinstalled = '1'", $table_prefix, GDTPLT2_TABLE, $section);
+                $sql = sprintf("select template_id from %s%s where section = '%s' and preinstalled = '1'", $table_prefix, STARRATING_TPLT2_TABLE, $section);
                 $tpl_id = intval($wpdb->get_var($sql));
                 $depend[$section] = $tpl_id;
             }
@@ -392,7 +392,7 @@ class GDSRDB {
                 }
                 if (count($dep) > 0) {
                     $sql = sprintf("update %s%s set dependencies = '%s' where template_id = %s",
-                        $table_prefix, GDTPLT2_TABLE, serialize($dep), $tpl["tpl_id"]);
+                        $table_prefix, STARRATING_TPLT2_TABLE, serialize($dep), $tpl["tpl_id"]);
                     $wpdb->query($sql);
                 }
             }
@@ -408,10 +408,10 @@ class GDSRDB {
             foreach ($tpls as $tpl) {
                 $tpl_check = substr($tpl, 0, 3);
                 $tpl_insert = substr($tpl, 4);
-                $sql = sprintf("select template_id from %s%s where section = '%s' and preinstalled = '1'", $table_prefix, GDTPLT2_TABLE, $tpl_check);
+                $sql = sprintf("select template_id from %s%s where section = '%s' and preinstalled = '1'", $table_prefix, STARRATING_TPLT2_TABLE, $tpl_check);
                 $tpl_id = intval($wpdb->get_var($sql));
                 if ($tpl_id == 0) {
-                    $sql = str_replace("%s%s", $table_prefix.GDTPLT2_TABLE, $tpl_insert);
+                    $sql = str_replace("%s%s", $table_prefix.STARRATING_TPLT2_TABLE, $tpl_insert);
                     $wpdb->query($sql);
                     $tpl_id = $wpdb->insert_id;
                 }
@@ -430,7 +430,7 @@ class GDSRDB {
                 }
                 if (count($depend) > 0) {
                     $sql = sprintf("update %s%s set dependencies = '%s' where template_id = %s",
-                        $table_prefix, GDTPLT2_TABLE, serialize($depend), $templates[$tpl->code]);
+                        $table_prefix, STARRATING_TPLT2_TABLE, serialize($depend), $templates[$tpl->code]);
                     $wpdb->query($sql);
                 }
             }
@@ -445,7 +445,7 @@ class GDSRDB {
             foreach ($tpls as $tpl) {
                 $tpl_check = substr($tpl, 0, 3);
                 $tpl_value = substr($tpl, 4);
-                $sql = sprintf("update %s%s set elements = '%s' where section = '%s' and preinstalled = '1'", $table_prefix, GDTPLT2_TABLE, $tpl_value, $tpl_check);
+                $sql = sprintf("update %s%s set elements = '%s' where section = '%s' and preinstalled = '1'", $table_prefix, STARRATING_TPLT2_TABLE, $tpl_value, $tpl_check);
                 $wpdb->query($sql);
             }
         }
