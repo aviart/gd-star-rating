@@ -8,7 +8,7 @@
   <tr>
   <tr>
     <td width="140" nowrap="nowrap"><?php _e("Template", "gd-star-rating"); ?>:</td>
-    <td align="right"><?php GDSRHelper::render_templates_section("WSR", $wpfn."[template_id]", $wpno["template_id"], 260); ?>
+    <td align="right"><?php gdTemplateHelper::render_templates_section("WSR", $wpfn."[template_id]", $wpno["template_id"], 260); ?>
     </td>
   </tr>
     <td width="140" nowrap="nowrap"><?php _e("Show Widget To", "gd-star-rating"); ?>:</td>

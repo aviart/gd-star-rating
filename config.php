@@ -11,6 +11,11 @@ define('STARRATING_WPCONFIG', '');
 define('STARRATING_LOG_PATH', dirname(__FILE__).'/debug.txt');
 
 /**
+ * Full path to a text file used to save debug info. File must be writeable.
+ */
+define('GDTPLT2_TABLE', 'gdsr_templates');
+
+/**
  * Returns the path to wp-config.php file
  * 
  * @return string wp-config.php path

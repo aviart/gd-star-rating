@@ -57,7 +57,7 @@
             </tr>
             <tr>
                 <td width="150"><?php _e("Rating Template", "gd-star-rating"); ?>:</td>
-                <td align="left"><?php GDSRHelper::render_templates_section("SSB", "gdsr_default_ssb_template", $gdsr_options["default_ssb_template"], 350); ?></td>
+                <td align="left"><?php gdTemplateHelper::render_templates_section("SSB", "gdsr_default_ssb_template", $gdsr_options["default_ssb_template"], 350); ?></td>
             </tr>
         </table>
     </td>

@@ -3,11 +3,11 @@
 $posts_per_page = 20;
 
 $url = $_SERVER['REQUEST_URI'];
-$url_pos = strpos($url, "&gdsr=");
+$url_pos = strpos($url, "&gdt=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url.= "&gdsr=t2";
+$url.= "&gdt=t2";
 
 $filter_section = "";
 $page_id = 1;
@@ -18,7 +18,7 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     $page_id = 1;
 }
 
-$number_posts = GDSRDB::get_templates_count($filter_section);
+$number_posts = gdTemplateDB::get_templates_count($filter_section);
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
 if ($max_page > 1) $pager = gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg");
@@ -33,7 +33,7 @@ $all_sections = $tpls->list_sections_assoc();
 <div class="tablenav">
     <div class="alignleft">
         <form method="post">
-            <?php GDSRHelper::render_templates_sections("filter_section", $tpls->list_sections(), true, $filter_section) ?>
+            <?php gdTemplateHelper::render_templates_sections("filter_section", $tpls->list_sections(), true, $filter_section) ?>
             <input class="inputbutton inputfilter" type="submit" name="gdsr_filter" value="<?php _e("Filter", "gd-star-rating"); ?>" />
         </form>
     </div>
@@ -55,7 +55,7 @@ $all_sections = $tpls->list_sections_assoc();
 
 <?php
 
-    $templates = GDSRDB::get_templates_paged($filter_section, ($page_id - 1) * $posts_per_page, $posts_per_page);
+    $templates = gdTemplateDB::get_templates_paged($filter_section, ($page_id - 1) * $posts_per_page, $posts_per_page);
 
     $tr_class = "";
     foreach ($templates as $t) {
@@ -95,7 +95,7 @@ $all_sections = $tpls->list_sections_assoc();
         <form method="post">
             <table cellpadding="0" cellspacing="0"><tr><td>
             <?php _e("New template for:", "gd-star-rating"); ?> </td><td>
-            <?php GDSRHelper::render_templates_sections("tpl_section", $tpls->list_sections(), false) ?>
+            <?php gdTemplateHelper::render_templates_sections("tpl_section", $tpls->list_sections(), false) ?>
             <input class="inputbutton inputfilter" type="submit" name="gdsr_create" value="<?php _e("Create", "gd-star-rating"); ?>" />
             </td></tr></table>
         </form>
