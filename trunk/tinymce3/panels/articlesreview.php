@@ -5,5 +5,5 @@
 
 <fieldset>
 <legend><?php _e("Template", "gd-star-rating"); ?></legend>
-    <?php GDSRHelper::render_templates_section("RSB", "srTemplateRSB", 0, 300); ?>
+    <?php gdTemplateHelper::render_templates_section("RSB", "srTemplateRSB", 0, 300); ?>
 </fieldset>

@@ -2,7 +2,7 @@
 
 if ($id == 0) $section = $_POST["tpl_section"];
 else {
-    $tpl = GDSRDB::get_template($id);
+    $tpl = wp_gdtpl_get_template($id);
 
     $section = $tpl->section;
     $elements = unserialize($tpl->elements);
@@ -93,7 +93,7 @@ foreach ($template->elements as $el) {
         _e("Select template to use for this element:", "gd-star-rating");
         $section = $template->tpls[$el->tpl]->code;
         echo '</p>';
-        GDSRHelper::render_templates_section($section, "tpl_tpl[".$section."]", $dependencies[$section]);
+        gdTemplateHelper::render_templates_section($section, "tpl_tpl[".$section."]", $dependencies[$section]);
         echo '</div>';
     }
     echo '</div>';

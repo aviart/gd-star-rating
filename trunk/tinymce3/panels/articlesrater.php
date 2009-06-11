@@ -5,7 +5,7 @@
 
 <fieldset>
 <legend><?php _e("Template", "gd-star-rating"); ?></legend>
-    <?php GDSRHelper::render_templates_section("SRB", "srRatingBlockTemplate", 0, 300); ?>
+    <?php gdTemplateHelper::render_templates_section("SRB", "srRatingBlockTemplate", 0, 300); ?>
 </fieldset>
 
 <fieldset>

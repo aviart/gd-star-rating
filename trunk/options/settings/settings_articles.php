@@ -134,7 +134,7 @@ $default_preview_class.= $gdsr_options["wait_class_article"];
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="150"><?php _e("Rating Template", "gd-star-rating"); ?>:</td>
-                <td align="left"><?php GDSRHelper::render_templates_section("SRB", "gdsr_default_srb_template", $gdsr_options["default_srb_template"], 350); ?></td>
+                <td align="left"><?php gdTemplateHelper::render_templates_section("SRB", "gdsr_default_srb_template", $gdsr_options["default_srb_template"], 350); ?></td>
             </tr>
         </table>
     </td>

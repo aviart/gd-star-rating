@@ -171,7 +171,7 @@ class GDSRHelper {
         }
     }
 
-	function render_stars_select($selected = 10) {
+    function render_stars_select($selected = 10) {
         GDSRHelper::render_stars_select_full($selected);
     }
 
@@ -236,19 +236,6 @@ class GDSRHelper {
         <?php
     }	
 
-    function render_templates_sections($name, $section, $empty = true, $selected = "") {
-        ?>
-<select name="<?php echo $name; ?>" id="<?php echo $name; ?>">
-<?php if ($empty) { ?><option value=""<?php echo $selected == '' ? ' selected="selected"' : ''; ?>>All Sections</option><?php } ?>
-        <?php
-            foreach ($section as $s) {
-                echo sprintf('<option value="%s"%s>%s</option>', $s["code"], ($selected == $s["code"] ? ' selected="selected"' : ''),  $s["name"]);
-            }
-        ?>
-</select>
-        <?php
-    }
-
     function render_rules_combo($name, $selected = "A", $width = 180, $style = '', $row_zero = false, $cat = false) {
         ?>
 <select style="width: <?php echo $width ?>px; <?php echo $style; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
@@ -297,21 +284,6 @@ class GDSRHelper {
 </select>
         <?php
     } 
-
-    function render_templates_section($section, $name, $selected = "0", $width = 205) {
-        $templates = GDSRDB::get_templates($section, true);
-        ?>
-<select style="width: <?php echo $width ?>px;" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
-        <?php
-        foreach ($templates as $t) {
-            if ($t->template_id == $selected) $select = ' selected="selected"';
-            else $select = '';
-            echo sprintf('<option value="%s"%s>%s</option>', $t->template_id, $select, $t->name);
-        }
-        ?>
-</select>
-        <?php
-    }
 
     function render_star_sizes($name, $selected = 20, $width = 120, $extraSel = "") {
         ?>

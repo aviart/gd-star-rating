@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.4.3
+Version: 1.4.4
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -38,7 +38,7 @@ require_once(dirname(__FILE__)."/code/db/multi.php");
 require_once(dirname(__FILE__)."/code/gfx/charting.php");
 require_once(dirname(__FILE__)."/code/gfx/gfx_lib.php");
 require_once(dirname(__FILE__)."/code/gfx/generator.php");
-require_once(dirname(__FILE__)."/code/t2/classes.php");
+require_once(dirname(__FILE__)."/gdt2/classes.php");
 require_once(dirname(__FILE__)."/code/t2/render.php");
 require_once(dirname(__FILE__)."/code/widgets.php");
 require_once(dirname(__FILE__)."/code/widgets_wp28.php");
@@ -1347,7 +1347,7 @@ if (!class_exists('GDStarRating')) {
 
             if (isset($_GET["deltpl"])) {
                 $del_id = $_GET["deltpl"];
-                GDSRDB::delete_template($del_id);
+                gdTemplateDB::delete_template($del_id);
                 $url = remove_query_arg("deltpl");
                 wp_redirect($url);
                 exit;
@@ -1365,8 +1365,8 @@ if (!class_exists('GDStarRating')) {
                 $elements = array();
                 foreach ($tpl_input as $key => $value)
                     $elements[$key] = stripslashes(htmlentities($value, ENT_QUOTES, STARRATING_ENCODING));
-                if ($general["id"] == 0) GDSRDB::add_template($general, $elements);
-                else GDSRDB::edit_template($general, $elements);
+                if ($general["id"] == 0) gdTemplateDB::add_template($general, $elements);
+                else gdTemplateDB::edit_template($general, $elements);
                 $url = remove_query_arg("tplid");
                 $url = remove_query_arg("mode", $url);
                 wp_redirect($url);
@@ -1775,22 +1775,22 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if (isset($_GET["tplid"])) {
                 $id = $_GET["tplid"];
                 $mode = $_GET["mode"];
-                include($this->plugin_path.'options/templates/templates_editor.php');
+                include($this->plugin_path.'gdt2/form_editor.php');
             }
             else if (isset($_POST["gdsr_defaults"])) {
-                include($this->plugin_path.'options/templates/templates_defaults.php');
+                include($this->plugin_path.'gdt2/form_defaults.php');
             }
             else if (isset($_POST["gdsr_create"])) {
                 $id = 0;
                 $mode = "new";
-                include($this->plugin_path.'options/templates/templates_editor.php');
+                include($this->plugin_path.'gdt2/form_editor.php');
             }
             else if (isset($_POST["gdsr_setdefaults"])) {
-                GDSRDB::set_templates_defaults($_POST["gdsr_section"]);
-                include($this->plugin_path.'options/templates/templates_list.php');
+                gdTemplateDB::set_templates_defaults($_POST["gdsr_section"]);
+                include($this->plugin_path.'gdt2/form_list.php');
             }
             else {
-                include($this->plugin_path.'options/templates/templates_list.php');
+                include($this->plugin_path.'gdt2/form_list.php');
             }
         }
 

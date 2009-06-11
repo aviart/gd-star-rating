@@ -21,7 +21,7 @@
         echo '<td>'.$t->code.'</td>';
         echo '<td><strong>'.$t->section.'</strong></td>';
         echo '<td>';
-            GDSRHelper::render_templates_section($t->code, "gdsr_section[".$t->code."]", 0, 350);
+            gdTemplateHelper::render_templates_section($t->code, "gdsr_section[".$t->code."]", 0, 350);
         echo '</td>';
         echo '<td></td>';
         echo '</tr>';

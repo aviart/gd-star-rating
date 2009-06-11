@@ -5,7 +5,7 @@ class GDSRRenderT2 {
         include(STARRATING_PATH.'code/t2/templates.php');
 
         if (intval($template_id) == 0) {
-            $t = GDSRDB::get_templates($section, true, true);
+            $t = gdTemplateDB::get_templates($section, true, true);
             $template_id = $t->template_id;
         }
 

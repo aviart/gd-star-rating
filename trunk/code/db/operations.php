@@ -345,75 +345,7 @@ class GDSRDB {
     }
     // moderation
 
-    // templates
-    function get_templates($section = '', $default_sort = false, $only_default = false) {
-        global $wpdb, $table_prefix;
-        if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
-        $default_sort = $default_sort ? "`default` desc, preinstalled desc, " : "";
-        $default_limit = $only_default ? " LIMIT 0, 1" : "";
-
-        $sql = sprintf("select * from %sgdsr_templates%s order by %stemplate_id asc%s", $table_prefix, $section, $default_sort, $default_limit);
-        if ($only_default) return $wpdb->get_row($sql);
-        return $wpdb->get_results($sql);
-    }
-
-    function get_templates_paged($section = '', $start = 0, $limit = 20) {
-        global $wpdb, $table_prefix;
-        if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
-
-        $sql = sprintf("select * from %sgdsr_templates%s limit %s, %s", $table_prefix, $section, $start, $limit);
-         return $wpdb->get_results($sql);
-    }
-
-    function get_templates_count($section = '') {
-        global $wpdb, $table_prefix;
-        if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
-
-        $sql = sprintf("select count(*) from %sgdsr_templates%s", $table_prefix, $section);
-        return $wpdb->get_var($sql);
-    }
-
-    function set_templates_defaults($post) {
-        global $wpdb, $table_prefix;
-
-        foreach ($post as $code => $value) {
-            $sql = sprintf("update %sgdsr_templates set `default` = '0' where section = '%s'", $table_prefix, $code);
-            $wpdb->query($sql);
-            $sql = sprintf("update %sgdsr_templates set `default` = '1' where template_id = %s", $table_prefix, $value);
-            $wpdb->query($sql);
-        }
-    }
-
-    function get_template($id) {
-        global $wpdb, $table_prefix;
-        $sql = sprintf("SELECT * FROM %sgdsr_templates WHERE `template_id` = %s",
-            $table_prefix, $id);
-        return $wpdb->get_row($sql);
-    }
-
-    function edit_template($general, $elements) {
-        global $wpdb, $table_prefix;
-        $sql = sprintf("UPDATE %sgdsr_templates SET `section` = '%s', `name` = '%s', `description` = '%s', `elements` = '%s', `dependencies` = '%s', `preinstalled` = '%s' WHERE `template_id` = %s",
-            $table_prefix, $general["section"], $general["name"], $general["description"], serialize($elements), serialize($general["dependencies"]), $general["preinstalled"], $general["id"]);
-        $wpdb->query($sql);
-        return $general["id"];
-    }
-
-    function delete_template($id) {
-        global $wpdb, $table_prefix;
-        $sql = sprintf("DELETE FROM %sgdsr_templates WHERE `template_id` = %s",
-            $table_prefix, $id);
-        return $wpdb->query($sql);
-    }
-
-    function add_template($general, $elements) {
-        global $wpdb, $table_prefix;
-        $sql = sprintf("INSERT INTO %sgdsr_templates (`section`, `name`, `description`, `elements`, `dependencies`, `preinstalled`, `default`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '0')",
-            $table_prefix, $general["section"], $general["name"], $general["description"], serialize($elements), serialize($general["dependencies"]), $general["preinstalled"]);
-        $wpdb->query($sql);
-        return $wpdb->insert_id;
-    }
-
+    // insert templates
     function insert_extras_templates($path, $default = true) {
         global $wpdb, $table_prefix;
         $templates = array();
@@ -430,10 +362,10 @@ class GDSRDB {
                 $tpl_check = substr($tpl, 0, $pipe);
                 $tpl_section = substr($tpl, $pipe + 1, 3);
                 $tpl_insert = substr($tpl, $pipe + 5);
-                $sql = sprintf("select template_id from %sgdsr_templates where name = '%s' and preinstalled = '%s'", $table_prefix, $tpl_check, $preinstalled);
+                $sql = sprintf("select template_id from %s%s where name = '%s' and preinstalled = '%s'", $table_prefix, GDTPLT2_TABLE, $tpl_check, $preinstalled);
                 $tpl_id = intval($wpdb->get_var($sql));
                 if ($tpl_id == 0) {
-                    $sql = str_replace("%sgdsr_templates", $table_prefix."gdsr_templates", $tpl_insert);
+                    $sql = str_replace("%s%s", $table_prefix.GDTPLT2_TABLE, $tpl_insert);
                     $wpdb->query($sql);
                     $tpl_id = $wpdb->insert_id;
                 }
@@ -447,7 +379,7 @@ class GDSRDB {
             $depend = array();
             foreach ($tpls->tpls as $tpl) {
                 $section = $tpl->code;
-                $sql = sprintf("select template_id from %sgdsr_templates where section = '%s' and preinstalled = '1'", $table_prefix, $section);
+                $sql = sprintf("select template_id from %s%s where section = '%s' and preinstalled = '1'", $table_prefix, GDTPLT2_TABLE, $section);
                 $tpl_id = intval($wpdb->get_var($sql));
                 $depend[$section] = $tpl_id;
             }
@@ -459,8 +391,8 @@ class GDSRDB {
                     $dep[$s] = sprintf("%s", $depend[$s]);
                 }
                 if (count($dep) > 0) {
-                    $sql = sprintf("update %sgdsr_templates set dependencies = '%s' where template_id = %s",
-                        $table_prefix, serialize($dep), $tpl["tpl_id"]);
+                    $sql = sprintf("update %s%s set dependencies = '%s' where template_id = %s",
+                        $table_prefix, GDTPLT2_TABLE, serialize($dep), $tpl["tpl_id"]);
                     $wpdb->query($sql);
                 }
             }
@@ -476,10 +408,10 @@ class GDSRDB {
             foreach ($tpls as $tpl) {
                 $tpl_check = substr($tpl, 0, 3);
                 $tpl_insert = substr($tpl, 4);
-                $sql = sprintf("select template_id from %sgdsr_templates where section = '%s' and preinstalled = '1'", $table_prefix, $tpl_check);
+                $sql = sprintf("select template_id from %s%s where section = '%s' and preinstalled = '1'", $table_prefix, GDTPLT2_TABLE, $tpl_check);
                 $tpl_id = intval($wpdb->get_var($sql));
                 if ($tpl_id == 0) {
-                    $sql = str_replace("%sgdsr_templates", $table_prefix."gdsr_templates", $tpl_insert);
+                    $sql = str_replace("%s%s", $table_prefix.GDTPLT2_TABLE, $tpl_insert);
                     $wpdb->query($sql);
                     $tpl_id = $wpdb->insert_id;
                 }
@@ -497,8 +429,8 @@ class GDSRDB {
                     }
                 }
                 if (count($depend) > 0) {
-                    $sql = sprintf("update %sgdsr_templates set dependencies = '%s' where template_id = %s",
-                        $table_prefix, serialize($depend), $templates[$tpl->code]);
+                    $sql = sprintf("update %s%s set dependencies = '%s' where template_id = %s",
+                        $table_prefix, GDTPLT2_TABLE, serialize($depend), $templates[$tpl->code]);
                     $wpdb->query($sql);
                 }
             }
@@ -513,12 +445,12 @@ class GDSRDB {
             foreach ($tpls as $tpl) {
                 $tpl_check = substr($tpl, 0, 3);
                 $tpl_value = substr($tpl, 4);
-                $sql = sprintf("update %sgdsr_templates set elements = '%s' where section = '%s' and preinstalled = '1'", $table_prefix, $tpl_value, $tpl_check);
+                $sql = sprintf("update %s%s set elements = '%s' where section = '%s' and preinstalled = '1'", $table_prefix, GDTPLT2_TABLE, $tpl_value, $tpl_check);
                 $wpdb->query($sql);
             }
         }
     }
-    // templates
+    // insert templates
 
     // totals
     function front_page_article_totals() {
