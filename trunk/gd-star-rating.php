@@ -1133,6 +1133,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             $this->init_operations();
+            $this->init_templates();
 
             if (!is_admin()) {
                 $this->is_bot = GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT'], $this->bots);
@@ -1344,7 +1345,9 @@ if (!class_exists('GDStarRating')) {
                 wp_redirect_self();
                 exit;
             }
+        }
 
+        function init_templates() {
             if (isset($_GET["deltpl"])) {
                 $del_id = $_GET["deltpl"];
                 gdTemplateDB::delete_template($del_id);
