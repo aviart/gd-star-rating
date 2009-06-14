@@ -375,7 +375,7 @@ class GDSRRenderT2 {
         $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
 
         $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti gdsr-rating-block">';
-        $rater.= '<input type="hidden" id="gdsr_int_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsr_mur_value" value="'.$empty_value.'" />';
+        $rater.= '<input class="gdsr-mur-cls-rt" type="hidden" id="gdsr_int_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsr_mur_value" value="'.$empty_value.'" />';
         $rater.= '<input type="hidden" name="gdsr_mur_set" value="'.$set->multi_id.'" />';
 
         $i = 0;

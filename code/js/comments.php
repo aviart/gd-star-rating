@@ -26,3 +26,34 @@ jQuery(document).ready(function() {
         hideshowCmmInt();
     });
 });
+
+function is_cmm_rated_multis() {
+    var value = value_cmm_rated_multis();
+    var rated = true;
+    for (var i = 0; i < value.length; i++) {
+        if (value[i] == 0) rated = false;
+    }
+    return rated;
+}
+
+function is_cmm_rated_standard() {
+    return value_cmm_rated_standard() > 0;
+}
+
+function is_cmm_rated_review() {
+    return value_cmm_rated_review() > 0;
+}
+
+function value_cmm_rated_multis() {
+    var value = jQuery(".gdsr-mur-cls-rt").val();
+    return value.split("X");
+}
+
+function value_cmm_rated_standard() {
+    return jQuery(".gdsr-int-cls-rt").val();
+}
+
+function value_cmm_rated_review() {
+    return jQuery(".gdsr-cmm-cls-rt").val();
+}
+
