@@ -1467,6 +1467,8 @@ if (!class_exists('GDStarRating')) {
                 $button_active = $this->o["mur_button_active"] == 1;
                 echo('//<![CDATA[');
                 include ($this->plugin_path."code/js/main.php");
+                if ($this->o["cmm_integration_replay_hide_review"] == 1)
+                    include ($gdsr->plugin_path."code/js/comments.php");
                 echo('// ]]>');
                 echo('</script>');
             }

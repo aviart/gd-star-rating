@@ -11,6 +11,7 @@ class GDSRDefaults {
         "external_javascript" => 0,
         "external_rating_css" => 1,
         "external_css" => 1,
+        "cmm_integration_replay_hide_review" => 0,
         "disable_ie6_check" => 0,
         "widgets_hidempty" => 0,
         "encoding" => "UTF-8",
