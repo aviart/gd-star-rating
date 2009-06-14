@@ -94,8 +94,9 @@ class GDSRRender {
     function rating_stars_local($style, $height, $unit_count, $allow_vote = true, $value = 0, $class_base = 'gdsr_cmm', $main_class = "reviewcmm") {
         $css_style = " gdsr-".$style;
         $css_sizes = " gdsr-size-".$height;
+        $css_input = str_replace("_", "-", $class_base)."-cls-rt";
 
-        $rater = '<input type="hidden" id="'.$class_base.'_value" name="'.$class_base.'_value" value="0" />';
+        $rater = '<input class="'.$css_input.'" type="hidden" id="'.$class_base.'_value" name="'.$class_base.'_value" value="0" />';
         $rater.= '<div id="'.$class_base.'_stars" class="'.$main_class.$css_style.$css_sizes.'"><div class="starsbar'.$css_sizes.'">';
         $rater.= '<div class="gdouter"><div id="'.$class_base.'_stars_rated" style="width: '.$value.'px;" class="gdinner"></div>';
         if ($allow_vote) {
