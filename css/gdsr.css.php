@@ -175,6 +175,8 @@ foreach ($blocks as $block) {
 .ratingblockcomment { font-size: 0.8em; }
 .ratingloaderarticle, .ratingloadercomment { font-size: 12px; text-align: center; vertical-align: middle; }
 
+.cmminthide { display: none; }
+
 /* loading indicators */
 .loader { margin-left: auto; margin-right: auto; text-align: left; }
 
