@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.4.4
+Version: 1.4.5
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -718,7 +718,7 @@ if (!class_exists('GDStarRating')) {
             add_action('delete_comment', array(&$this, 'comment_delete'));
             add_action('delete_post', array(&$this, 'post_delete'));
             add_filter('plugin_action_links', array(&$this, 'plugin_links'), 10, 2 );
-            add_action('after_plugin_row_gd-star-rating/gd-star-rating.php', array(&$this,'plugin_check_version'), 10, 2);
+            add_action('after_plugin_row', array(&$this,'plugin_check_version'), 10, 2);
 
             foreach ($this->shortcodes as $code) $this->shortcode_action($code);
         }
@@ -762,15 +762,20 @@ if (!class_exists('GDStarRating')) {
          * @return bool false if no update available
          */
         function plugin_check_version($file, $plugin_data) {
-            $current = get_option('update_plugins');
-            if (!isset($current->response[$file])) return false;
+            static $this_plugin;
+            if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
 
-            $columns = $this->wp_version < 28 ? 5 : 3;
-            $url = gdFunctionsGDSR::get_update_url($this->o, get_option('home'));
-            $update = wp_remote_fopen($url);
-            echo '<td colspan="'.$columns.'" class="gdr-plugin-update">';
-            echo $update;
-            echo '</td>';
+            if ($file == $this_plugin){
+                $current = $this->wp_version < 28 ? get_option('update_plugins') : get_transient('update_plugins');
+                if (!isset($current->response[$file])) return false;
+
+                $columns = $this->wp_version < 28 ? 5 : 3;
+                $url = gdFunctionsGDSR::get_update_url($this->o, get_option('home'));
+                $update = wp_remote_fopen($url);
+                echo '<td colspan="'.$columns.'" class="gdr-plugin-update"><div class="gdr-plugin-update-message">';
+                echo $update;
+                echo '</div></td>';
+            }
         }
 
         /**
