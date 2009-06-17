@@ -60,7 +60,7 @@ class GDSRRender {
     }
 
     function render_static_stars_gfx($star_style, $star_size, $star_max, $rating, $id = "") {
-        $url = STARRATING_URL.sprintf("gfx.php?value=%s&set=%s&size=%s&max=%s", $rating, $star_style, $star_size, $star_max);
+        $url = STARRATING_URL.sprintf("gfx.php?value=%s&amp;set=%s&amp;size=%s&amp;max=%s", $rating, $star_style, $star_size, $star_max);
         return sprintf('<img%s src="%s" />', $id == "" ? '' : ' id="'.$id.'"', $url);
     }
 
