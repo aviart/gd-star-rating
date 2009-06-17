@@ -6,4 +6,5 @@ CREATE TABLE `%sgdsr_data_category` (
   `moderate_comments` char(1) DEFAULT '0',
   `expiry_type` char(1) NOT NULL DEFAULT 'N',
   `expiry_value` varchar(32) NOT NULL DEFAULT '',
+  `cmm_integration_set` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`category_id`));

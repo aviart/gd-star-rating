@@ -90,6 +90,7 @@ function gdsrTimerChange() {
                 <th scope="col"><?php _e("Time Restrictions", "gd-star-rating"); ?></th>
             <?php } ?>
             <th scope="col"><?php _e("Vote Rules", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Integration", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Posts", "gd-star-rating"); ?></th>
         </tr>
     </thead>
@@ -135,6 +136,8 @@ function gdsrTimerChange() {
         if ($options["timer_active"] == 1)
             echo '<td>'.$timer_info.'</td>';
         echo '<td nowrap="nowrap">'.$row->rules_articles.'<br />'.$row->rules_comments.'</td>';
+        echo '<td>';
+        echo '</td>';
         echo '<td>'.$row->count.'</td>';
         echo '</tr>';
         
@@ -175,14 +178,14 @@ function gdsrTimerChange() {
                     <span class="paneltext"><?php _e("Moderation", "gd-star-rating"); ?>:</span>
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                <?php GDSRHelper::render_moderation_combo("gdsr_article_moderation", "/", 120, "", true, true); ?>
+                <?php GDSRHelper::render_moderation_combo("gdsr_article_moderation", "/", 120, "", true, true, true); ?>
                 </td><td style="width: 10px"></td>
                 <?php } ?>
                 <td style="width: 80px; height: 29px;">
                     <span class="paneltext"><?php _e("Vote Rules", "gd-star-rating"); ?>:</span>
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                <?php GDSRHelper::render_rules_combo("gdsr_article_voterules", "/", 120, "", true, true); ?>
+                <?php GDSRHelper::render_rules_combo("gdsr_article_voterules", "/", 120, "", true, true, true); ?>
                 </td>
             </tr>
             </table>
@@ -194,7 +197,7 @@ function gdsrTimerChange() {
                     <span class="paneltext"><?php _e("Restriction", "gd-star-rating"); ?>:</span>
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                <?php GDSRHelper::render_timer_combo("gdsr_timer_type", $timer_restrictions, 120, '', true, 'gdsrTimerChange()', true); ?>
+                <?php GDSRHelper::render_timer_combo("gdsr_timer_type", $timer_restrictions, 120, '', true, 'gdsrTimerChange()', true, true); ?>
                 </td><td style="width: 10px"></td>
                 <td style="width: 80px; height: 29px;">
                     <div id="gdsr_timer_countdown_text" style="display: none"><span class="paneltext"><?php _e("Countdown", "gd-star-rating"); ?>:</span></div>
@@ -232,14 +235,14 @@ function gdsrTimerChange() {
                     <span class="paneltext"><?php _e("Moderation", "gd-star-rating"); ?>:</span>
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                <?php GDSRHelper::render_moderation_combo("gdsr_comments_moderation", "/", 120, "", true, true); ?>
+                <?php GDSRHelper::render_moderation_combo("gdsr_comments_moderation", "/", 120, "", true, true, true); ?>
                 </td><td style="width: 10px"></td>
                 <?php } ?>
                 <td style="width: 80px; height: 29px;">
                     <span class="paneltext"><?php _e("Vote Rules", "gd-star-rating"); ?>:</span>
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                <?php GDSRHelper::render_rules_combo("gdsr_comments_voterules", "/", 120, "", true, true); ?>
+                <?php GDSRHelper::render_rules_combo("gdsr_comments_voterules", "/", 120, "", true, true, true); ?>
                 </td>
             </tr>
             </table>

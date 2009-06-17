@@ -223,7 +223,7 @@ class GDSRHelper {
         <?php
     }
 
-    function render_moderation_combo($name, $selected = "N", $width = 180, $style = '', $row_zero = false, $cat = false) {
+    function render_moderation_combo($name, $selected = "N", $width = 180, $style = '', $row_zero = false, $cat = false, $parent = false) {
         ?>
 <select style="width: <?php echo $width ?>px; <?php echo $style; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
     <?php if ($row_zero) { ?> <option value=""<?php echo $selected == '/' ? ' selected="selected"' : ''; ?>>/</option> <?php } ?>
@@ -232,11 +232,12 @@ class GDSRHelper {
     <option value="U"<?php echo $selected == 'U' ? ' selected="selected"' : ''; ?>><?php _e("Moderate users", "gd-star-rating"); ?></option>
     <option value="A"<?php echo $selected == 'A' ? ' selected="selected"' : ''; ?>><?php _e("Moderate all", "gd-star-rating"); ?></option>
     <?php if (!$cat) { ?><option value="I"<?php echo $selected == 'I' ? ' selected="selected"' : ''; ?>><?php _e("Inherit from Category", "gd-star-rating"); ?></option><?php } ?>
+    <?php if ($parent) { ?><option value="P"<?php echo $selected == 'P' ? ' selected="selected"' : ''; ?>><?php _e("Inherit from Parent", "gd-star-rating"); ?></option><?php } ?>
 </select>
         <?php
     }	
 
-    function render_rules_combo($name, $selected = "A", $width = 180, $style = '', $row_zero = false, $cat = false) {
+    function render_rules_combo($name, $selected = "A", $width = 180, $style = '', $row_zero = false, $cat = false, $parent = false) {
         ?>
 <select style="width: <?php echo $width ?>px; <?php echo $style; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
     <?php if ($row_zero) { ?> <option value=""<?php echo $selected == '/' ? ' selected="selected"' : ''; ?>>/</option> <?php } ?>
@@ -246,11 +247,12 @@ class GDSRHelper {
     <option value="N"<?php echo $selected == 'N' ? ' selected="selected"' : ''; ?>><?php _e("Locked", "gd-star-rating"); ?></option>
     <option value="H"<?php echo $selected == 'H' ? ' selected="selected"' : ''; ?>><?php _e("Locked and hidden", "gd-star-rating"); ?></option>
     <?php if (!$cat) { ?><option value="I"<?php echo $selected == 'I' ? ' selected="selected"' : ''; ?>><?php _e("Inherit from Category", "gd-star-rating"); ?></option><?php } ?>
+    <?php if ($parent) { ?><option value="P"<?php echo $selected == 'P' ? ' selected="selected"' : ''; ?>><?php _e("Inherit from Parent", "gd-star-rating"); ?></option><?php } ?>
 </select>
         <?php
     } 
 
-    function render_timer_combo($name, $selected = "N", $width = 180, $style = '', $row_zero = false, $onchange = '', $cat = false) {
+    function render_timer_combo($name, $selected = "N", $width = 180, $style = '', $row_zero = false, $onchange = '', $cat = false, $parent = false) {
         if ($onchange != '') $onchange = ' onchange="'.$onchange.'"';
         ?>
 <select<?php echo $onchange; ?> style="width: <?php echo $width ?>px; <?php echo $style; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>">
@@ -259,6 +261,7 @@ class GDSRHelper {
     <option value="T"<?php echo $selected == 'T' ? ' selected="selected"' : ''; ?>><?php _e("Countdown timer", "gd-star-rating"); ?></option>
     <option value="D"<?php echo $selected == 'D' ? ' selected="selected"' : ''; ?>><?php _e("Date limited", "gd-star-rating"); ?></option>
     <?php if (!$cat) { ?><option value="I"<?php echo $selected == 'I' ? ' selected="selected"' : ''; ?>><?php _e("Inherit from Category", "gd-star-rating"); ?></option><?php } ?>
+    <?php if ($parent) { ?><option value="P"<?php echo $selected == 'P' ? ' selected="selected"' : ''; ?>><?php _e("Inherit from Parent", "gd-star-rating"); ?></option><?php } ?>
 </select>
         <?php
     } 

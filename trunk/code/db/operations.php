@@ -365,7 +365,7 @@ class GDSRDB {
                 $sql = sprintf("select template_id from %s%s where name = '%s' and preinstalled = '%s'", $table_prefix, STARRATING_TPLT2_TABLE, $tpl_check, $preinstalled);
                 $tpl_id = intval($wpdb->get_var($sql));
                 if ($tpl_id == 0) {
-                    $sql = str_replace("%s%s", $table_prefix.STARRATING_TPLT2_TABLE, $tpl_insert);
+                    $sql = str_replace("%s", $table_prefix, $tpl_insert);
                     $wpdb->query($sql);
                     $tpl_id = $wpdb->insert_id;
                 }
@@ -409,9 +409,10 @@ class GDSRDB {
                 $tpl_check = substr($tpl, 0, 3);
                 $tpl_insert = substr($tpl, 4);
                 $sql = sprintf("select template_id from %s%s where section = '%s' and preinstalled = '1'", $table_prefix, STARRATING_TPLT2_TABLE, $tpl_check);
+
                 $tpl_id = intval($wpdb->get_var($sql));
                 if ($tpl_id == 0) {
-                    $sql = str_replace("%s%s", $table_prefix.STARRATING_TPLT2_TABLE, $tpl_insert);
+                    $sql = str_replace("%s", $table_prefix, $tpl_insert);
                     $wpdb->query($sql);
                     $tpl_id = $wpdb->insert_id;
                 }
