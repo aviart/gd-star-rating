@@ -14,7 +14,8 @@
     $button_active = $gdsr->o["mur_button_active"] == 1;
 
     header("Cache-Control: no-cache, must-revalidate");
-    header('Content-Type: text/javascript');
+    header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+    header("Content-Type: text/javascript");
 
     include ($gdsr->plugin_path."code/js/main.php");
 

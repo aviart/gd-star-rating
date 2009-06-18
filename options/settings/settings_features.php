@@ -14,12 +14,6 @@
 </tr>
 <tr><th scope="row"><?php _e("Plugin Features", "gd-star-rating"); ?></th>
     <td>
-        <input type="checkbox" name="gdsr_external_javascript" id="gdsr_external_javascript"<?php if ($gdsr_options["external_javascript"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_javascript"><?php _e("Link external javascript rating code, instead of embeding it into the page.", "gd-star-rating"); ?></label>
-        <br />
-        <input type="checkbox" name="gdsr_external_rating_css" id="gdsr_external_rating_css"<?php if ($gdsr_options["external_rating_css"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_rating_css"><?php _e("Link external CSS rating code, uncheck to embed all the CSS into the page.", "gd-star-rating"); ?></label>
-        <br />
-        <input type="checkbox" name="gdsr_external_css" id="gdsr_external_css"<?php if ($gdsr_options["external_css"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_css"><?php _e("Link additional CSS file", "gd-star-rating"); ?>: <strong>'wp-content/gd-star-rating/css/rating.css'</strong></label>
-        <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="350" valign="top">
@@ -45,6 +39,17 @@
         <input type="checkbox" name="gdsr_gfx_prevent_leeching" id="gdsr_gfx_prevent_leeching"<?php if ($gdsr_options["gfx_prevent_leeching"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_gfx_prevent_leeching"><?php _e("Prevent outside access to graphics generator. Graphics integrated into RSS is not affected.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
         <?php _e("This leeching prevention will only work if a referer is sent and your server is set up correctly with proper server name variable.", "gd-star-rating"); ?>
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("JS and CSS files", "gd-star-rating"); ?></th>
+    <td>
+        <input type="checkbox" name="gdsr_external_javascript" id="gdsr_external_javascript"<?php if ($gdsr_options["external_javascript"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_javascript"><?php _e("Link external javascript rating code, instead of embeding it into the page.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_external_rating_css" id="gdsr_external_rating_css"<?php if ($gdsr_options["external_rating_css"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_rating_css"><?php _e("Link external CSS rating code, uncheck to embed all the CSS into the page.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_external_css" id="gdsr_external_css"<?php if ($gdsr_options["external_css"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_css"><?php _e("Link additional CSS file", "gd-star-rating"); ?>: <strong>'wp-content/gd-star-rating/css/rating.css'</strong></label>
+        <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_css_cache_active" id="gdsr_css_cache_active"<?php if ($gdsr_options["css_cache_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_css_cache_active"><?php _e("Auto cache of the main CSS file enabled.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Charset", "gd-star-rating"); ?></th>
