@@ -177,6 +177,9 @@ function wp_gdsr_render_comment($template_id = 0, $read_only = false, $stars_set
  * @param string $stars_set set to use for rendering
  * @param int $stars_size set size to use for rendering
  * @param string $stars_set_ie6 set to use for rendering in ie6
+ * @param string $avg_stars_set set to use for rendering of average element
+ * @param int $avg_stars_size set size to use for rendering of average element
+ * @param string $avg_stars_set_ie6 set to use for rendering in ie6 of average element
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
@@ -244,17 +247,21 @@ function wp_gdsr_multi_review_editor_header($echo = true) {
  * @global object $post post data
  * @global GDStarRating $gdsr main rating class instance
  * @param int $post_id id of the post rating will be attributed to
- * @param int $template_id id of the template to use
- * @param array $settings override settings for rendering the block
+ * @param int $template_id id of the template to use [RMB]
+ * @param string $stars_set set to use for rendering
+ * @param int $stars_size set size to use for rendering
+ * @param string $stars_set_ie6 set to use for rendering in ie6
+ * @param string $avg_stars_set set to use for rendering of average element
+ * @param int $avg_stars_size set size to use for rendering of average element
+ * @param string $avg_stars_set_ie6 set to use for rendering in ie6 of average element
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_show_multi_review($multi_set_id, $template_id = 0, $post_id = 0, $echo = true) {
-    global $gdsr, $post;
-    if ($post_id == 0) $post_id = $post->ID;
+function wp_gdsr_show_multi_review($multi_set_id, $template_id = 0, $post_id = 0, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif", $echo = true) {
+    global $gdsr;
 
-    if ($echo) echo $gdsr->blog_multi_review_editor($post_id, array("id" => $multi_set_id, "tpl" => $template_id), false, false);
-    else return $gdsr->blog_multi_review_editor($post_id, array("id" => $multi_set_id, "tpl" => $template_id), false, false);
+    if ($echo) echo $gdsr->shortcode_starreviewmulti(array("post_id" => $post_id, "id" => $multi_set_id, "tpl" => $template_id, "element_stars" => $stars_set, "element_stars_ie6" => $stars_set_ie6, "element_size" => $stars_size, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
+    else return $gdsr->shortcode_starreviewmulti(array("post_id" => $post_id, "id" => $multi_set_id, "tpl" => $template_id, "element_stars" => $stars_set, "element_stars_ie6" => $stars_set_ie6, "element_size" => $stars_size, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
 }
 
 /**
