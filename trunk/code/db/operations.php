@@ -451,6 +451,19 @@ class GDSRDB {
             }
         }
     }
+
+    function update_extras_templates($path) {
+        global $wpdb, $table_prefix;
+        $path.= "install/data/gdsr_templates_xtrp.txt";
+        if (file_exists($path)) {
+            $tpls = file($path);
+            foreach ($tpls as $tpl) {
+                $parts = explode("|", $tpl, 3);
+                $sql = sprintf("update %s%s set elements = '%s' where section = '%s' and name = '%s' and preinstalled = '2'", $table_prefix, STARRATING_TPLT2_TABLE, $parts[2], $parts[1], $parts[0]);
+                $wpdb->query($sql);
+            }
+        }
+    }
     // insert templates
 
     // totals
