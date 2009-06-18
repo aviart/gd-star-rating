@@ -288,10 +288,12 @@ if (!class_exists('GDStarRating')) {
         * @param array $atts
         */
         function shortcode_starreviewmulti($atts = array()) {
-            global $post;
             $settings = shortcode_atts($this->default_shortcode_starreviewmulti, $atts);
-
-            $post_id = $post->ID;
+            $post_id = $settings["post_id"];
+            if ($post_id == 0) {
+                global $post;
+                $post_id = $post->ID;
+            }
             if ($settings["id"] == 0) $multi_id = $this->o["mur_review_set"];
             else $multi_id = $settings["id"];
             $set = gd_get_multi_set($multi_id);
@@ -467,6 +469,7 @@ if (!class_exists('GDStarRating')) {
                 $votes[] = $single_vote;
             }
             if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
+            else if ($allow_vote) GDSRRenderT2::render_mrb($this->is_ie6 ? $settings["style_ie6"] : $settings["style"], intval($settings["tpl"]), false, $votes, $post_id, $set, $settings["size"], '', array(), $this->is_ie6 ? $settings["avg_style_ie6"] : $settings["avg_style"], $settings["avg_size"], "N", 0, "", false);
             else return GDSRRenderT2::render_mre("oxygen", intval($settings["tpl"]), $allow_vote, $votes, $post_id, $set, 20);
         }
         // various rendering
@@ -616,7 +619,7 @@ if (!class_exists('GDStarRating')) {
                     include(STARRATING_PATH."code/js/corrections.php");
                 }
             }
-            if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
+            if ($this->admin_plugin || $this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.core.css" type="text/css" media="screen" />');
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.theme.css" type="text/css" media="screen" />');
                 $datepicker_date = date("Y, n, j");
@@ -625,6 +628,9 @@ if (!class_exists('GDStarRating')) {
                     $jsFile = $this->plugin_path.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js';
                     if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js"></script>';
                 }
+            }
+            if ($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php") {
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'code/js/editors.php"></script>');
             }
             echo("\r\n");
             echo('<script type="text/javascript">jQuery(document).ready(function() {');
@@ -639,14 +645,14 @@ if (!class_exists('GDStarRating')) {
                     include(STARRATING_PATH."code/js/multi_in.php");
                 }
             echo('});');
-            if ($this->admin_page == "edit.php") {
+            if ($this->admin_page == "post-new.php" || $this->admin_page == "edit-pages.php" ||$this->admin_page == "edit.php") {
                 $edit_std = $this->o["integrate_post_edit_mur"] == 1;
                 $edit_mur = $this->o["integrate_post_edit"] == 1;
                 echo("\r\n");
                 include(STARRATING_PATH."code/js/editors.php");
             }
             echo('</script>');
-            if ($this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) {
+            if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") && $this->o["integrate_post_edit_mur"] == 1) {
                 $this->include_rating_css_admin();
             }
             if ($this->admin_page == "widgets.php" || $this->admin_page == "themes.php") {

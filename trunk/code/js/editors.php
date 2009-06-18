@@ -1,6 +1,5 @@
 function gdsrEmpty() { }
 
-<?php if ($edit_std) { ?>
 function gdsrTimerChange() {
     var timer = jQuery("#gdsr_timer_type").val();
     jQuery("#gdsr_timer_date").css("display", "none");
@@ -8,7 +7,7 @@ function gdsrTimerChange() {
     if (timer == "D") jQuery("#gdsr_timer_date").css("display", "block");
     if (timer == "T") jQuery("#gdsr_timer_countdown").css("display", "block");
 }
-<?php } if ($edit_mur) { ?>
+
 function repeat(str, i) {
    if (isNaN(i) || i <= 0) return "";
    return str + repeat(str, i-1);
@@ -28,4 +27,3 @@ function gdsrMultiClear(sid, pid, slc) {
     empty = empty.substr(empty, empty.length - 1);
     jQuery('#gdsr_int_multi_' + pid + '_' + sid).val(empty);
 }
-<?php } ?>
