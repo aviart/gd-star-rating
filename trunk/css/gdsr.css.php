@@ -25,8 +25,27 @@ function get_class_head($head, $element) {
 if (!isset($inclusion)) {
     $base_url_local = "../";
     $base_url_extra = "../../../gd-star-rating/";
-    header('Content-Type: text/css');
     $q = urldecode($_GET["s"]);
+    $t = urldecode($_GET["t"]);
+    header("Content-Type: text/css");
+
+    if ($t > 0) {
+        $gmt_mtime = gmdate('D, d M Y H:i:s', $t).' GMT';
+        header("Last-Modified: ".$gmt_mtime);
+        header('Etag: '.md5($t));
+
+        if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+            $head_mod = strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']);
+            if ($head_mod >= $t) {
+                if (php_sapi_name() == 'CGI') {
+                    Header("Status: 304 Not Modified");
+                } else {
+                    Header("HTTP/1.0 304 Not Modified");
+                }
+                exit;
+            }
+        }
+    }
 }
 
 $raw = explode("#", $q);

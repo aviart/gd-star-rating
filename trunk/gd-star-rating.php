@@ -970,7 +970,8 @@ if (!class_exists('GDStarRating')) {
                 $this->o["date"] = $this->default_options["date"];
                 $this->o["status"] = $this->default_options["status"];
                 $this->o["build"] = $this->default_options["build"];
-                
+                if ($this->o["css_last_changed"] == 0) $this->o["css_last_changed"] = time();
+
                 update_option('gd-star-rating', $this->o);
             }
 
@@ -1152,6 +1153,8 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin_page == "settings-page") {
                 $gdsr_options = $this->o;
                 $ginc = $this->ginc;
+                $ginc_sizes = $this->ginc[0];
+                $ginc_stars = $this->ginc[1];
                 include ($this->plugin_path."code/save_settings.php");
                 $this->o = $gdsr_options;
                 $this->ginc = $ginc;
@@ -1428,8 +1431,9 @@ if (!class_exists('GDStarRating')) {
                     $elements[] = $s->primary.substr($s->type, 0, 1).$s->folder;
             }
             $q = join("#", $elements);
+            $t = $this->o["css_cache_active"] == 1 ? $this->o["css_last_changed"] : 0;
             if ($external) {
-                $url = $this->plugin_url.'css/gdsr.css.php?s='.urlencode($q);
+                $url = $this->plugin_url.'css/gdsr.css.php?t='.urlencode($t).'&amp;s='.urlencode($q);
                 echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
             }
             else {

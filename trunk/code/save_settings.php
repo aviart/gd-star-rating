@@ -11,16 +11,29 @@
         update_option("gd-star-rating-bots", $bots);
 
         $sizes = $_POST["gdsr_inc_size"];
-        $stars = $_POST["gdsr_inc_star"];
-        $ginc_sizes = array();
+        $new_stars = $_POST["gdsr_inc_star"];
+        $new_sizes = array();
         foreach ($this->stars_sizes as $key => $size) {
-            $ginc_sizes[$key] = in_array($key, $sizes) ? 1 : 0;
+            $new_sizes[$key] = in_array($key, $sizes) ? 1 : 0;
         }
 
         $ginc = array();
-        $ginc[] = $ginc_sizes;
-        $ginc[] = $stars;
+        $ginc[] = $new_sizes;
+        $ginc[] = $new_stars;
         update_option("gd-star-rating-inc", $ginc);
+
+        $new_change = true;
+        foreach ($new_sizes as $size => $value) {
+            if ($ginc_sizes[$size] != $value) $new_change = false;
+        }
+        if (count($new_stars) != count($ginc_stars)) $new_change = false;
+        else {
+            foreach ($new_stars as $size => $value) {
+                if ($ginc_stars[$size] != $value) $new_change = false;
+            }
+        }
+
+        if (!$new_change) $gdsr_options["css_last_changed"] = time();
 
         $gdsr_options["disable_ie6_check"] = isset($_POST['gdsr_disable_ie6_check']) ? 1 : 0;
         $gdsr_options["news_feed_active"] = isset($_POST['gdsr_news_feed_active']) ? 1 : 0;
@@ -32,6 +45,7 @@
         $gdsr_options["gfx_prevent_leeching"] = isset($_POST['gdsr_gfx_prevent_leeching']) ? 1 : 0;
         $gdsr_options["external_javascript"] = isset($_POST['gdsr_external_javascript']) ? 1 : 0;
         $gdsr_options["external_rating_css"] = isset($_POST['gdsr_external_rating_css']) ? 1 : 0;
+        $gdsr_options["css_cache_active"] = isset($_POST['gdsr_css_cache_active']) ? 1 : 0;
         $gdsr_options["external_css"] = isset($_POST['gdsr_external_css']) ? 1 : 0;
         $gdsr_options["cmm_integration_replay_hide_review"] = isset($_POST['gdsr_cmm_integration_replay_hide_review']) ? 1 : 0;
         $gdsr_options["admin_advanced"] = isset($_POST['gdsr_admin_advanced']) ? 1 : 0;

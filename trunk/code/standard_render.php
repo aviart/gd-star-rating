@@ -61,7 +61,7 @@ class GDSRRender {
 
     function render_static_stars_gfx($star_style, $star_size, $star_max, $rating, $id = "") {
         $url = STARRATING_URL.sprintf("gfx.php?value=%s&amp;set=%s&amp;size=%s&amp;max=%s", $rating, $star_style, $star_size, $star_max);
-        return sprintf('<img%s src="%s" />', $id == "" ? '' : ' id="'.$id.'"', $url);
+        return sprintf('<img%s src="%s" alt="%s/%s" />', $id == "" ? '' : ' id="'.$id.'"', $url, $rating, $star_max);
     }
 
     function rating_stars_multi($style, $post_id, $tpl_id, $set_id, $id, $height, $unit_count, $allow_vote = true, $value = 0, $xtra_cls = '', $review_mode = false) {
