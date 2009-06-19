@@ -38,8 +38,6 @@
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="350" valign="top">
-                    <input type="checkbox" name="gdsr_admin_category" id="gdsr_admin_category"<?php if ($gdsr_options["admin_category"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_category"><strong><?php _e("Categories", "gd-star-rating"); ?></strong>: <?php _e("Managment for default settings.", "gd-star-rating"); ?></label>
-                    <br />
                     <input type="checkbox" name="gdsr_admin_users" id="gdsr_admin_users"<?php if ($gdsr_options["admin_users"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_users"><strong><?php _e("Users", "gd-star-rating"); ?></strong>: <?php _e("Users rating managment.", "gd-star-rating"); ?></label>
                     <br />
                     <input type="checkbox" name="gdsr_admin_setup" id="gdsr_admin_setup"<?php if ($gdsr_options["admin_setup"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_setup"><strong><?php _e("Setup", "gd-star-rating"); ?></strong>: <?php _e("Uninstall and maintenance.", "gd-star-rating"); ?></label>

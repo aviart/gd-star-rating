@@ -1,6 +1,20 @@
 <?php
 
 /**
+ * Get multi set id based on global and categoires rules.
+ *
+ * @global GDStarRating $gdsr main rating class instance
+ * @global object $post post data
+ * @param int $post_id post to get review for
+ */
+function wp_gdsr_get_multi_set($post_id = 0) {
+    global $gdsr, $post;
+    if ($post_id == 0) $post_id = $post->ID;
+
+    return 0;
+}
+
+/**
  * This will render aggregated comments rating for the post.
  *
  * @param int $post_id post to get review for
@@ -32,9 +46,10 @@ function wp_gdsr_render_comment_aggregation($post_id = 0, $template_id = 0, $sho
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_comment_integrate_multi_result($comment_id, $multi_set_id = 1, $template_id = 0, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif", $echo = true) {
+function wp_gdsr_comment_integrate_multi_result($comment_id, $multi_set_id = 0, $template_id = 0, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif", $echo = true) {
     global $gdsr, $post;
 
+    $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post->ID) : $multi_set_id;
     if ($echo) echo $gdsr->comment_integrate_multi_result($comment_id, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
     else return $gdsr->comment_integrate_multi_result($comment_id, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
 }
@@ -70,9 +85,10 @@ function wp_gdsr_comment_integrate_standard_result($comment_id, $stars_set = "",
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_comment_integrate_multi_rating($multi_set_id = 1, $template_id = 0, $value = 0, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif", $echo = true) {
+function wp_gdsr_comment_integrate_multi_rating($multi_set_id = 0, $template_id = 0, $value = 0, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif", $echo = true) {
     global $gdsr, $post;
 
+    $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post->ID) : $multi_set_id;
     if ($echo) echo $gdsr->comment_integrate_multi_rating($value, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6);
     else return $gdsr->comment_integrate_multi_rating($value, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6);
 }
@@ -183,10 +199,12 @@ function wp_gdsr_render_comment($template_id = 0, $read_only = false, $stars_set
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_render_multi($multi_set_id, $template_id = 0, $read_only = false, $post_id = 0, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif", $echo = true) {
+function wp_gdsr_render_multi($multi_set_id = 0, $template_id = 0, $read_only = false, $post_id = 0, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif", $echo = true) {
     global $userdata, $gdsr;
     if ($post_id == 0) global $post;
     else $post = get_post($post_id);
+
+    $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post->ID) : $multi_set_id;
     if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
     else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
 }
@@ -219,10 +237,11 @@ function wp_gdsr_new_comment_review($value = 0, $stars_set = "", $stars_size = 0
  * @param array $settings override settings for rendering the block
  * @return string html with rendered contents
  */
-function wp_gdsr_multi_review_editor($multi_set_id, $post_id = 0, $template_id = 0, $echo = true) {
+function wp_gdsr_multi_review_editor($multi_set_id = 0, $post_id = 0, $template_id = 0, $echo = true) {
     global $gdsr, $post;
     if ($post_id == 0) $post_id = $post->ID;
 
+    $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post_id) : $multi_set_id;
     if ($echo) echo $gdsr->blog_multi_review_editor($post_id, array("id" => $multi_set_id, "tpl" => $template_id), false);
     else return $gdsr->blog_multi_review_editor($post_id, array("id" => $multi_set_id, "tpl" => $template_id), false);
 }
@@ -257,9 +276,11 @@ function wp_gdsr_multi_review_editor_header($echo = true) {
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_show_multi_review($multi_set_id, $template_id = 0, $post_id = 0, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif", $echo = true) {
-    global $gdsr;
+function wp_gdsr_show_multi_review($multi_set_id = 0, $template_id = 0, $post_id = 0, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif", $echo = true) {
+    global $gdsr, $post;
+    if ($post_id == 0) $post_id = $post->ID;
 
+    $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post_id) : $multi_set_id;
     if ($echo) echo $gdsr->shortcode_starreviewmulti(array("post_id" => $post_id, "id" => $multi_set_id, "tpl" => $template_id, "element_stars" => $stars_set, "element_stars_ie6" => $stars_set_ie6, "element_size" => $stars_size, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
     else return $gdsr->shortcode_starreviewmulti(array("post_id" => $post_id, "id" => $multi_set_id, "tpl" => $template_id, "element_stars" => $stars_set, "element_stars_ie6" => $stars_set_ie6, "element_size" => $stars_size, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
 }
@@ -275,10 +296,11 @@ function wp_gdsr_show_multi_review($multi_set_id, $template_id = 0, $post_id = 0
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_multi_rating_average($multi_set_id, $post_id = 0, $show = "total", $echo = true) {
+function wp_gdsr_multi_rating_average($multi_set_id = 0, $post_id = 0, $show = "total", $echo = true) {
     global $gdsr, $post;
     if ($post_id == 0) $post_id = $post->ID;
 
+    $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post_id) : $multi_set_id;
     $rating = $gdsr->get_multi_average_rendered($post_id, array("id" => $multi_set_id, "show" => $show, "render" => "rating"));
     if ($echo) echo $rating;
     else return $rating;
@@ -294,10 +316,11 @@ function wp_gdsr_multi_rating_average($multi_set_id, $post_id = 0, $show = "tota
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_multi_review_average($multi_set_id, $post_id = 0, $echo = true) {
+function wp_gdsr_multi_review_average($multi_set_id = 0, $post_id = 0, $echo = true) {
     global $gdsr, $post;
     if ($post_id == 0) $post_id = $post->ID;
 
+    $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post_id) : $multi_set_id;
     $review = $gdsr->get_multi_average_rendered($post_id, array("id" => $multi_set_id, "render" => "review"));
     if ($echo) echo $review;
     else return $review;
@@ -340,9 +363,11 @@ function wp_gdsr_rating_comment($comment_id = 0) {
  * @param int $post_id post to get rating for, leave 0 to get post from loop
  * @return object rating post properties
  */
-function wp_gdsr_rating_multi($multi_set_id, $post_id = 0) {
+function wp_gdsr_rating_multi($multi_set_id = 0, $post_id = 0) {
     global $post, $gdsr;
-    if ($post_id < 1) $post_id = $post->ID;
+    if ($post_id == 0) $post_id = $post->ID;
+
+    $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post_id) : $multi_set_id;
     return $gdsr->get_ratings_multi($multi_set_id, $post_id);
 }
 
@@ -371,6 +396,7 @@ function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
 function wp_gdsr_render_review($post_id = 0, $template_id = 0, $echo = true) {
     global $gdsr, $post;
     if ($post_id == 0) $post_id = $post->ID;
+
     if ($echo) echo $gdsr->shortcode_starreview(array("post" => $post_id, "tpl" => $template_id));
     else return $gdsr->shortcode_starreview(array("post" => $post_id, "tpl" => $template_id));
 }
