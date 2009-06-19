@@ -1,5 +1,7 @@
 .gdsrclear { height: 0; clear: both; }
 
+.regular-text { border: 1px solid #8CBDD5; }
+
 .gderror {
     padding: 12px;
     background-color: #FFEBE8;
