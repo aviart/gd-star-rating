@@ -10,8 +10,7 @@
 function wp_gdsr_get_multi_set($post_id = 0) {
     global $gdsr, $post;
     if ($post_id == 0) $post_id = $post->ID;
-
-    return 0;
+    return $gdsr->get_multi_set($post_id);
 }
 
 /**

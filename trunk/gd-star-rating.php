@@ -1413,6 +1413,35 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
+        function get_multi_set($post_id) {
+            $cats = wp_get_post_categories($post_id);
+            $cats = GDSRDatabase::get_categories_data($cats);
+
+            $set = $prn = 0;
+            foreach ($cats as $cat) {
+                if ($cat->parent > 0 && $prn == 0) $prn = $cat->parent;
+                if ($cat->cmm_integration_set > 0 && $set == 0) $set = $cat->cmm_integration_set;
+                if ($set > 0 || ($set > 0 && $prn > 0)) break;
+            }
+
+            if ($set > 0) return $set;
+            if ($prn > 0) {
+                $set = $this->get_multi_set_recursion($prn);
+                if ($set > 0) return $set;
+                $first = GDSRDBMulti::get_first_multi_set();
+                return $first->multi_set;
+            } else return 0;
+        }
+
+        function get_multi_set_recursion($cat_id) {
+            $cats = GDSRDatabase::get_categories_data(array($cat_id));
+            if (count($cats) == 0) return 0;
+            $cat = $cats[0];
+            if ($cat->cmm_integration_set > 0) return $cat->cmm_integration_set;
+            if ($cat->parent > 0) return $this->get_multi_set_recursion($cat->parent);
+            return 0;
+        }
+
         function include_rating_css_admin() {
             $elements = array();
             $presizes = "m".gdFunctionsGDSR::prefill_zeros(20, 2);

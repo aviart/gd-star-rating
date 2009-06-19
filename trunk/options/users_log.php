@@ -29,18 +29,19 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
 if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $ips = $_POST["gdsr_item"];
     if (count($ips) > 0) {
-		$filter_vote = 0;
-		$page_id = 1;
         if (isset($_POST["gdsr_ip_ban"])) {
             $all_banned = GDSRDatabase::get_all_banned_ips();
             $banned_ips = array();
-            foreach ($all_banned as $ip) {
-                $banned_ips[] = $ip->ip;
-            }
+            foreach ($all_banned as $ip) $banned_ips[] = $ip->ip;
             foreach ($ips as $ip) {
                 if (!in_array($ip, $banned_ips)) GDSRDatabase::ban_ip($ip);
             }
         }
+        if (isset($_POST["gdsr_delete_articles"])) {
+
+        }
+        $filter_vote = 0;
+        $page_id = 1;
     }
 }
 
@@ -189,8 +190,8 @@ function checkAll(form) {
                 <td style="width: 80px; height: 29px;">
                     <span class="paneltext"><?php _e("Delete", "gd-star-rating"); ?>:</span>
                 </td>
-                <td style="width: 140px; height: 29px;" align="right">
-                    <select id="gdsr_delete_articles" name="gdsr_delete_articles" style="width: 120px;">
+                <td style="width: 160px; height: 29px;" align="right">
+                    <select id="gdsr_delete_articles" name="gdsr_delete_articles" style="width: 140px;">
                         <option value="">/</option>
                         <option value="OI"><?php _e("Only Invalid", "gd-star-rating"); ?></option>
                         <option value="LO"><?php _e("From Log Only", "gd-star-rating"); ?></option>
