@@ -15,8 +15,14 @@ if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
-        $ids = "(".join(", ", $gdsr_items).")";
-        GDSRDatabase::update_category_settings($ids, $_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"], $gdsr_items);
+        $items = array();
+        $ids = array();
+        foreach ($gdsr_items as $it) {
+            $parts = explode(",", $it);
+            $ids[] = $parts[1];
+            $items[$parts[1]] = $parts[0];
+        }
+        GDSRDatabase::update_category_settings("(".join(", ", $gdsr_items).")", $ids, $items, $_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"]);
     }
 }
 
@@ -126,7 +132,7 @@ function gdsrTimerChange() {
         }
 
         echo '<tr id="post-'.$row->term_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
-        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->term_id.'" type="checkbox"></th>';
+        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->parent.','.$row->term_id.'" type="checkbox"></th>';
         echo '<td><strong><a href="./admin.php?page=gd-star-rating-stats&gdsr=articles&cat='.$row->term_id.'">';
         echo str_repeat("― ", $row->depth).$row->name;
         echo '</a></strong></td>';

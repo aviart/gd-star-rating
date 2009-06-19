@@ -959,6 +959,8 @@ if (!class_exists('GDStarRating')) {
                     update_option('gd-star-rating-gfx', $this->g);
                 }
 
+                GDSRDatabase::init_categories_data();
+
                 gdDBInstallGDSR::delete_tables(STARRATING_PATH);
                 gdDBInstallGDSR::create_tables(STARRATING_PATH);
                 gdDBInstallGDSR::upgrade_tables(STARRATING_PATH);
