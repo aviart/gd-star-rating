@@ -167,9 +167,9 @@ class GDSRDatabase {
     // ip
 
     // categories
-    function update_category_settings($ids, $upd_am, $upd_ar, $upd_cm, $upd_cr, $ids_array) {
+    function update_category_settings($ids, $ids_array, $items, $upd_am, $upd_ar, $upd_cm, $upd_cr) {
         global $wpdb, $table_prefix;
-        GDSRDatabase::add_category_defaults($ids, $ids_array);
+        GDSRDatabase::add_category_defaults($ids, $ids_array, $items);
         $dbt_data_cats = $table_prefix.'gdsr_data_category';
 
         $update = array();
@@ -184,20 +184,37 @@ class GDSRDatabase {
         }
     }
 
-    function add_category_defaults($ids, $ids_array) {
+    function add_category_defaults($ids, $ids_array, $items) {
         global $wpdb, $table_prefix;
         $rows = $wpdb->get_results(sprintf("select category_id from %sgdsr_data_category where category_id in %s", $table_prefix, $ids), ARRAY_N);
         if (count($rows) == 0) $rows = array();
-        foreach ($ids_array as $id)
-            if (!in_array($id, $rows)) GDSRDatabase::add_category_default($id);
+        foreach ($ids_array as $id) {
+            if (!in_array($id, $rows)) 
+                GDSRDatabase::add_category_default($id, $items[$id] > 0);
+        }
     }
 
-    function add_category_default($id) {
+    function add_category_default($id, $parented = false) {
         global $wpdb, $table_prefix;
 
-        $sql = sprintf("INSERT INTO %sgdsr_data_category (category_id, rules_articles, rules_comments, moderate_articles, moderate_comments, expiry_type, expiry_value, cmm_integration_set) VALUES (%s, 'P', 'P', 'P', 'P', 'P', '', 0)",
-                $table_prefix, $id);
+        $values = $parented ? "'P', 'P', 'P', 'P', 'P'" : "'A', 'A', 'N', 'N', 'N'";
+
+        $sql = sprintf("INSERT INTO %sgdsr_data_category (category_id, rules_articles, rules_comments, moderate_articles, moderate_comments, expiry_type, expiry_value, cmm_integration_set) VALUES (%s, %s, '', 0)",
+                $table_prefix, $id, $values);
         $wpdb->query($sql);
+    }
+
+    function init_categories_data() {
+        $all_cats = GDSRDatabase::get_all_categories();
+        $categories = GDSRHelper::get_categories_hierarchy($all_cats);
+
+        $ids_array = $items = array();
+        foreach ($categories as $cat) {
+            $items[$cat->term_id] = $cat->parent;
+            $ids_array[] = $cat->term_id;
+        }
+
+        GDSRDatabase::add_category_defaults("(".join(", ", $ids_array).")", $ids_array, $items);
     }
 
     function get_all_categories() {

@@ -207,6 +207,9 @@ class GDSRDB {
 
     function convert_category_row($row) {
         switch ($row->moderate_articles) {
+            case 'P':
+                $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: blue">'.__("parent", "gd-star-rating").'</span></strong>';
+                break;
             case 'A':
                 $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("all", "gd-star-rating").'</span></strong>';
                 break;
@@ -216,11 +219,15 @@ class GDSRDB {
             case 'U':
                 $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
                 break;
+            case 'N':
             default:
                 $row->moderate_articles = __("articles", "gd-star-rating").': <strong>'.__("free", "gd-star-rating").'</strong>';
                 break;
         }
         switch ($row->moderate_comments) {
+            case 'P':
+                $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: blue">'.__("parent", "gd-star-rating").'</span></strong>';
+                break;
             case 'A':
                 $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("all", "gd-star-rating").'</span></strong>';
                 break;
@@ -230,11 +237,15 @@ class GDSRDB {
             case 'U':
                 $row->moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
                 break;
+            case 'N':
             default:
                 $row->moderate_comments = __("comments", "gd-star-rating").': <strong>'.__("free", "gd-star-rating").'</strong>';
                 break;
         }
         switch ($row->rules_articles) {
+            case 'P':
+                $row->rules_articles = __("articles", "gd-star-rating").': <strong><span style="color: blue">'.__("parent", "gd-star-rating").'</span></strong>';
+                break;
             case 'H':
                 $row->rules_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("hidden", "gd-star-rating").'</span></strong>';
                 break;
@@ -247,11 +258,15 @@ class GDSRDB {
             case 'U':
                 $row->rules_articles = __("articles", "gd-star-rating").': <strong>'.__("users", "gd-star-rating").'</strong>';
                 break;
+            case 'A':
             default:
                 $row->rules_articles = __("articles", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
                 break;
         }
         switch ($row->rules_comments) {
+            case 'P':
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: blue">'.__("parent", "gd-star-rating").'</span></strong>';
+                break;
             case 'H':
                 $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("hidden", "gd-star-rating").'</span></strong>';
                 break;
@@ -264,6 +279,7 @@ class GDSRDB {
             case 'U':
                 $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("users", "gd-star-rating").'</strong>';
                 break;
+            case 'A':
             default:
                 $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
                 break;
