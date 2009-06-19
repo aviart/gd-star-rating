@@ -1,6 +1,13 @@
 <?php
 
 class GDSRDBMulti {
+    function get_first_multi_set() {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("select * from %sgdsr_multis order by multi_id limit 0, 1", $table_prefix);
+        return $wpdb->get_row($sql);
+    }
+
     function get_multisets_for_auto_insert() {
         global $wpdb, $table_prefix;
 
