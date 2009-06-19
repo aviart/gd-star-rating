@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.4.5
+Version: 1.4.6
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -582,18 +582,22 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 10, __FILE__, array(&$this,"star_menu_front"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Builder", "gd-star-rating"), __("Builder", "gd-star-rating"), 10, "gd-star-rating-builder", array(&$this,"star_menu_builder"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), 10, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
-            if ($this->o["admin_category"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), 10, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
-            if ($this->o["admin_users"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), 10, "gd-star-rating-users", array(&$this,"star_menu_users"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), 10, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
+            if ($this->o["admin_users"] == 1)
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), 10, "gd-star-rating-users", array(&$this,"star_menu_users"));
             if ($this->o["multis_active"] == 1)
                 add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Sets", "gd-star-rating"), __("Multi Sets", "gd-star-rating"), 10, "gd-star-rating-multi-sets", array(&$this,"star_multi_sets"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("T2 Templates", "gd-star-rating"), __("T2 Templates", "gd-star-rating"), 10, "gd-star-rating-t2", array(&$this,"star_menu_t2"));
-            if ($this->o["admin_ips"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), 10, "gd-star-rating-ips", array(&$this,"star_menu_ips"));
-            if ($this->o["admin_import"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), 10, "gd-star-rating-import", array(&$this,"star_menu_import"));
+            if ($this->o["admin_ips"] == 1)
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), 10, "gd-star-rating-ips", array(&$this,"star_menu_ips"));
+            if ($this->o["admin_import"] == 1)
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), 10, "gd-star-rating-import", array(&$this,"star_menu_import"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), 10, "gd-star-rating-export", array(&$this,"star_menu_export"));
             $this->custom_actions('admin_menu');
-            if ($this->o["admin_setup"] == 1) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), 10, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
+            if ($this->o["admin_setup"] == 1)
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), 10, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
         }
 
         /**

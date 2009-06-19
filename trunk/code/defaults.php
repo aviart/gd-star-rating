@@ -2,11 +2,11 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.4.5",
-        "date" => "2009.06.17.",
+        "version" => "1.4.6",
+        "date" => "2009.06.21.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 718,
+        "build" => 720,
         "ajax_jsonp" => 0,
         "external_javascript" => 0,
         "external_rating_css" => 1,
@@ -124,7 +124,6 @@ class GDSRDefaults {
         "admin_advanced" => 1,
         "admin_placement" => 1,
         "admin_defaults" => 1,
-        "admin_category" => 1,
         "admin_users" => 1,
         "admin_import" => 1,
         "admin_setup" => 1,
