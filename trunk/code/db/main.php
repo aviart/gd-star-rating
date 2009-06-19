@@ -36,10 +36,8 @@ class GDSRDatabase {
     function check_vote($id, $user, $type, $ip, $mod_only = false, $mixed = false) {
         $result = true;
 
-        if (!$mod_only)
-            $result = GDSRDatabase::check_vote_logged($id, $user, $type, $ip, $mixed);
-        if ($result) 
-            $result = GDSRDatabase::check_vote_moderated($id, $user, $type, $ip, $mixed);
+        if (!$mod_only) $result = GDSRDatabase::check_vote_logged($id, $user, $type, $ip, $mixed);
+        if ($result) $result = GDSRDatabase::check_vote_moderated($id, $user, $type, $ip, $mixed);
 
         return $result;
     }
@@ -56,14 +54,15 @@ class GDSRDatabase {
     //users
     function get_valid_users() {
         global $wpdb, $table_prefix;
+
         $sql = sprintf("SELECT l.user_id, l.vote_type, count(*) as voters, sum(l.vote) as votes, count(distinct ip) as ips, u.display_name, u.user_email, u.user_url FROM %sgdsr_votes_log l left join %susers u on u.id = l.user_id group by user_id, vote_type order by user_id, vote_type",
-                $table_prefix, $table_prefix
-            );
+                $table_prefix, $table_prefix);
         return $wpdb->get_results($sql);
     }
 
     function get_valid_users_count() {
         global $wpdb, $table_prefix;
+
         $sql = sprintf("SELECT count(distinct user_id) from %sgdsr_votes_log", $table_prefix);
         return $wpdb->get_var($sql);
     }
@@ -93,8 +92,7 @@ class GDSRDatabase {
         if ($vote_value > 0) $vote_value = ' and vote = '.$vote_value;
         else $vote_value = '';
         $sql = sprintf("SELECT count(*) from %sgdsr_votes_log where user_id = %s and vote_type = '%s'%s",
-                $table_prefix, $user_id, $vote_type, $vote_value
-            );
+                $table_prefix, $user_id, $vote_type, $vote_value);
         return $wpdb->get_var($sql);
     }
     //users
@@ -196,18 +194,18 @@ class GDSRDatabase {
 
     function add_category_default($id) {
         global $wpdb, $table_prefix;
-        $sql = sprintf(
-                "INSERT INTO %sgdsr_data_category (category_id, rules_articles, rules_comments, moderate_articles, moderate_comments, expiry_type, expiry_value) VALUES (%s, '%s', '%s', '%s', '%s', '%s', '%s')",
-                $table_prefix, $id, 'A', 'A', 'N', 'N', 'N', ''
-                );
+
+        $sql = sprintf("INSERT INTO %sgdsr_data_category (category_id, rules_articles, rules_comments, moderate_articles, moderate_comments, expiry_type, expiry_value, cmm_integration_set) VALUES (%s, 'P', 'P', 'P', 'P', 'P', '', 0)",
+                $table_prefix, $id);
         $wpdb->query($sql);
     }
 
     function get_all_categories() {
         global $wpdb, $table_prefix;
-        return $wpdb->get_results(sprintf("SELECT 0 as depth, x.term_id, t.name, t.slug, x.parent, x.count, d.* FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id left join %sgdsr_data_category d on d.category_id = x.term_id where taxonomy = 'category' order by x.parent, t.name asc", 
-                $table_prefix, $table_prefix, $table_prefix
-            ));
+
+        $sql = sprintf("SELECT 0 as depth, x.term_id, t.name, t.slug, x.parent, x.count, d.* FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id left join %sgdsr_data_category d on d.category_id = x.term_id where taxonomy = 'category' order by x.parent, t.name asc",
+                $table_prefix, $table_prefix, $table_prefix);
+        return $wpdb->get_results($sql);
     }
     // categories
 
@@ -337,8 +335,7 @@ class GDSRDatabase {
         global $wpdb, $table_prefix;
 
         $sql = sprintf("update %sgdsr_data_article a inner join %sposts p on a.post_id = p.id set a.rules_articles = 'N', a.rules_comments = 'N' where p.post_date < '%s'",
-            $table_prefix, $table_prefix, $date
-        );
+            $table_prefix, $table_prefix, $date);
         $wpdb->query($sql);
     }
 
@@ -440,33 +437,28 @@ wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
         if ($rating < 0) $rating = -1;
-        if (!$old) 
-            GDSRDatabase::add_default_vote($post_id, '', $rating);
-        else 
-            $wpdb->query("update ".$articles." set review = ".$rating." where post_id = ".$post_id);
+        if (!$old) GDSRDatabase::add_default_vote($post_id, '', $rating);
+        else $wpdb->query("update ".$articles." set review = ".$rating." where post_id = ".$post_id);
     }
 
     function save_comment_rules($post_id, $comment_vote, $comment_moderation, $old = true) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
-        if (!$old) 
-            GDSRDatabase::add_default_vote($post_id);
+        if (!$old) GDSRDatabase::add_default_vote($post_id);
         $wpdb->query("update ".$articles." set rules_comments = '".$comment_vote."', moderate_comments = '".$comment_moderation."' where post_id = ".$post_id);
     }
 
     function save_article_rules($post_id, $article_vote, $article_moderation, $old = true) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
-        if (!$old)
-            GDSRDatabase::add_default_vote($post_id);
+        if (!$old) GDSRDatabase::add_default_vote($post_id);
         $wpdb->query("update ".$articles." set rules_articles = '".$article_vote."', moderate_articles = '".$article_moderation."' where post_id = ".$post_id);
     }
 
     function save_timer_rules($post_id, $timer_type, $timer_value, $old = true) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
-        if (!$old) 
-            GDSRDatabase::add_default_vote($post_id);
+        if (!$old) GDSRDatabase::add_default_vote($post_id);
         $wpdb->query("update ".$articles." set expiry_type = '".$timer_type."', expiry_value = '".$timer_value."' where post_id = ".$post_id);
     }
 
@@ -785,11 +777,7 @@ wp_gdsr_dump("ADD_DEFAULT_is_page", $is_page);
             $users = ' and user_id = '.$user;
 
         $sql = sprintf("select count(*) from %s where id = %s and vote_type = '%s'%s", 
-            $table_prefix."gdsr_moderate", 
-            $id, 
-            $vote_type, 
-            $users
-        );
+            $table_prefix."gdsr_moderate", $id, $vote_type, $users);
         return $wpdb->get_var($sql);
     }
 
@@ -806,11 +794,7 @@ wp_gdsr_dump("ADD_DEFAULT_is_page", $is_page);
             $users = ' and m.user_id = '.$user;
 
         $sql = sprintf("select count(*) from %s c inner join %s m on m.id = c.comment_ID where c.comment_post_ID = %s and m.vote_type = 'comment'%s",
-            $wpdb->comments,
-            $table_prefix."gdsr_moderate",
-            $post_id,
-            $users
-        );
+            $wpdb->comments, $table_prefix."gdsr_moderate", $post_id, $users);
         return $wpdb->get_var($sql);
     }
 
