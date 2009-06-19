@@ -22,7 +22,10 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
             $ids[] = $parts[1];
             $items[$parts[1]] = $parts[0];
         }
-        GDSRDatabase::update_category_settings("(".join(", ", $gdsr_items).")", $ids, $items, $_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"]);
+        GDSRDatabase::update_category_settings("(".join(", ", $gdsr_items).")", $ids, $items,
+            $_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"],
+            $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"],
+            $_POST["gdsr_integration_mur"]);
     }
 }
 
@@ -143,6 +146,8 @@ function gdsrTimerChange() {
             echo '<td>'.$timer_info.'</td>';
         echo '<td nowrap="nowrap">'.$row->rules_articles.'<br />'.$row->rules_comments.'</td>';
         echo '<td>';
+        if ($row->multi_set != '') echo __("multi set", "gd-star-rating").': <strong>'.$row->multi_set.'</strong>';
+        else if ($row->parent > 0) echo '<strong style="color: blue">'.__("inhert from parent", "gd-star-rating").'</strong>';
         echo '</td>';
         echo '<td>'.$row->count.'</td>';
         echo '</tr>';
@@ -194,11 +199,21 @@ function gdsrTimerChange() {
                 <?php GDSRHelper::render_rules_combo("gdsr_article_voterules", "/", 120, "", true, true, true); ?>
                 </td>
             </tr>
-            </table>
-            <table cellpadding="0" cellspacing="0">
             <tr>
-                <td style="width: 120px; height: 29px;">
+                <td style="width: 120px; height: 29px;"></td>
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Multi Set", "gd-star-rating"); ?>:</span>
                 </td>
+                <td style="width: 230px; height: 29px;" align="right" colspan="3">
+                    <select id="gdsr_integration_mur" name="gdsr_integration_mur" style="width: 210px">
+                        <option value="0">/</option>
+                        <?php GDSRHelper::render_styles_select(GDSRDBMulti::get_multis_tinymce(), 0); ?>
+                    </select>
+                </td>
+                <td colspan="4" align="right"><?php _e("(this multi set is used for comment integration)", "gd-star-rating"); ?></td>
+            </tr>
+            <tr>
+                <td style="width: 120px; height: 29px;"></td>
                 <td style="width: 80px; height: 29px;">
                     <span class="paneltext"><?php _e("Restriction", "gd-star-rating"); ?>:</span>
                 </td>
@@ -210,12 +225,11 @@ function gdsrTimerChange() {
                     <div id="gdsr_timer_date_text" style="display: none"><span class="paneltext"><?php _e("Date", "gd-star-rating"); ?>:</span></div>
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                    <div id="gdsr_timer_countdown" style="display: none"><input type="text" value="<?php echo $countdown_value; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 35px; text-align: right; padding: 2px;" />
+                    <div id="gdsr_timer_countdown" style="display: none"><input class="regular-text" type="text" value="<?php echo $countdown_value; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 35px; text-align: right; padding: 2px;" />
                     <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $countdown_type, 70); ?></div>
-                    <div id="gdsr_timer_date" style="display: none"><input type="text" value="<?php echo $timer_date_value; ?>" id="gdsr_timer_date_value" name="gdsr_timer_date_value" style="width: 110px; padding: 2px;" /></div>
+                    <div id="gdsr_timer_date" style="display: none"><input class="regular-text" type="text" value="<?php echo $timer_date_value; ?>" id="gdsr_timer_date_value" name="gdsr_timer_date_value" style="width: 110px; padding: 2px;" /></div>
                 </td>
-                <td></td>
-                <td></td>
+                <td colspan="3"></td>
             </tr>
             </table>
             <div class="gdsr-table-split"></div>

@@ -167,12 +167,13 @@ class GDSRDatabase {
     // ip
 
     // categories
-    function update_category_settings($ids, $ids_array, $items, $upd_am, $upd_ar, $upd_cm, $upd_cr) {
+    function update_category_settings($ids, $ids_array, $items, $upd_am, $upd_ar, $upd_cm, $upd_cr, $upd_ms) {
         global $wpdb, $table_prefix;
         GDSRDatabase::add_category_defaults($ids, $ids_array, $items);
         $dbt_data_cats = $table_prefix.'gdsr_data_category';
 
         $update = array();
+        $update[] = "cmm_integration_set = '".$upd_ms."'";
         if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
         if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
         if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
@@ -220,8 +221,8 @@ class GDSRDatabase {
     function get_all_categories() {
         global $wpdb, $table_prefix;
 
-        $sql = sprintf("SELECT 0 as depth, x.term_id, t.name, t.slug, x.parent, x.count, d.* FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id left join %sgdsr_data_category d on d.category_id = x.term_id where taxonomy = 'category' order by x.parent, t.name asc",
-                $table_prefix, $table_prefix, $table_prefix);
+        $sql = sprintf("SELECT 0 as depth, x.term_id, t.name, t.slug, x.parent, x.count, ms.name as multi_set, d.* FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id left join %sgdsr_data_category d on d.category_id = x.term_id left join %sgdsr_multis ms on ms.multi_id = d.cmm_integration_set where taxonomy = 'category' order by x.parent, t.name asc",
+                $table_prefix, $table_prefix, $table_prefix, $table_prefix);
         return $wpdb->get_results($sql);
     }
     // categories
