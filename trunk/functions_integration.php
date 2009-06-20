@@ -54,6 +54,27 @@ function wp_gdsr_comment_integrate_multi_result($comment_id, $multi_set_id = 0, 
 }
 
 /**
+ * Integrate average multi rating result into the comment.
+ *
+ * @global GDStarRating $gdsr main rating class instance
+ * @param int $comment_id id of the comment
+ * @param int $multi_set_id id of the multi rating set to use
+ * @param int $template_id id of the template to use
+ * @param string $avg_stars_set set to use for rendering of average value
+ * @param int $avg_stars_size set size to use for rendering of average value
+ * @param string $avg_stars_set_ie6 set to use for rendering of average value in ie6
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
+function wp_gdsr_comment_integrate_multi_result_average($comment_id, $multi_set_id = 0, $template_id = 0, $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif", $echo = true) {
+    global $gdsr, $post;
+
+    $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post->ID) : $multi_set_id;
+    if ($echo) echo $gdsr->comment_integrate_multi_result_average($comment_id, $post->ID, $multi_set_id, $template_id, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
+    else return $gdsr->comment_integrate_multi_result_average($comment_id, $post->ID, $multi_set_id, $template_id, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
+}
+
+/**
  * Integrate standard rating result into the comment.
  *
  * @global GDStarRating $gdsr main rating class instance

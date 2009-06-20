@@ -745,6 +745,10 @@ class GDSRRenderT2 {
         return $tpl_render;
     }
 
+    function render_mcr($template_id, $votes, $post_id, $set, $avg_rating, $avg_style, $avg_size) {
+
+    }
+
     function render_rmb($template_id, $votes, $post_id, $set, $avg_rating, $style, $size, $avg_style, $avg_size) {
         $template = GDSRRenderT2::get_template($template_id, "RMB");
         $tpl_render = $template->elm["normal"];
