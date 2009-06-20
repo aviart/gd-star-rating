@@ -1100,7 +1100,7 @@ if (!class_exists('GDStarRating')) {
             }
             else {
                 $this->plugin_url = WP_PLUGIN_URL.'/gd-star-rating/';
-                $this->plugin_ajax = get_option('siteurl').'/wp-content/plugins/gd-star-rating/ajax.php';
+                $this->plugin_ajax = $this->plugin_url.'ajax.php';
                 $this->plugin_xtra_url = WP_CONTENT_URL.'/gd-star-rating/';
                 $this->plugin_xtra_path = WP_CONTENT_DIR.'/gd-star-rating/';
                 $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
