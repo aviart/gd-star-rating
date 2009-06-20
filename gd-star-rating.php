@@ -2090,7 +2090,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
 
                         if (is_single() && ($auto == "apst" || $auto == "allp")) $insert = true;
                         if (!$insert && is_page() && ($auto == "apgs" || $auto == "allp")) $insert = true;
-                        if (!$insert && is_single() && in_category($set->categories, $post->ID) && $auto == "cats") $insert = true;
+                        if (!$insert && is_single() && in_category(explode(",", $set->auto_categories), $post->ID) && $auto == "cats") $insert = true;
 
                         if ($insert) {
                             $settings = array('id' => $set->multi_id, 'read_only' => 0);
