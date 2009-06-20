@@ -37,11 +37,24 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
                 if (!in_array($ip, $banned_ips)) GDSRDatabase::ban_ip($ip);
             }
         }
-        if (isset($_POST["gdsr_delete_articles"])) {
 
+        if (isset($_POST["gdsr_delete_articles"])) {
+            $page_id = 1;
+            $xips = array();
+            $del = $_POST["gdsr_delete_articles"];
+            foreach ($ips as $ip) $xips[] = "'".$ip."'";
+            $log = GDSRDatabase::get_user_log($user_id, $vote_type, $filter_vote, 0, 0, join(",", $xips));
+            foreach ($log as $l) {
+                if ($del == "OI" && $l->id != $l->control_id)
+                    GDSRDatabase::delete_voters_log("(".$l->record_id.")");
+                if ($del == "LO" && $l->id == $l->control_id)
+                    GDSRDatabase::delete_voters_log("(".$l->record_id.")");
+                if ($del == "FD" && $l->id == $l->control_id) {
+                    GDSRDatabase::delete_voters_log("(".$l->record_id.")");
+                    GDSRDatabase::delete_voters_main($l->id, $l->vote, $l->vote_type == "article", $user_id > 0);
+                }
+            }
         }
-        $filter_vote = 0;
-        $page_id = 1;
     }
 }
 
@@ -180,7 +193,7 @@ function checkAll(form) {
                     <span class="paneltext"><strong><?php _e("IP's", "gd-star-rating"); ?>:</strong></span>
                 </td>
                 <td colspan="3" style="height: 29px;">
-                    <input type="checkbox" name="gdsr_ip_ban" id="gdsr_ip_ban" checked="checked" /><label style="margin-left: 5px;" for="gdsr_ip_ban"><?php _e("Add selected IP's to ban IP's list.", "gd-star-rating"); ?></label>
+                    <input type="checkbox" name="gdsr_ip_ban" id="gdsr_ip_ban" /><label style="margin-left: 5px;" for="gdsr_ip_ban"><?php _e("Add selected IP's to ban IP's list.", "gd-star-rating"); ?></label>
                 </td>
             </tr>
             <tr>

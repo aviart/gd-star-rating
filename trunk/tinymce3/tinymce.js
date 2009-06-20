@@ -125,7 +125,7 @@ function insertStarRatingCode() {
     } else if (shortcode == 'starreviewmulti') {
         tagtext = "[starreviewmulti id=";
         funtext = "wp_gdsr_show_multi_review(" + document.getElementById('srMultiReviewSet').value;
-        funtext = funtext + ", " + document.getElementById('srRatingBlockTemplate').value;
+        funtext = funtext + ", " + document.getElementById('srTemplateRMB').value;
         tagtext = tagtext + document.getElementById('srMultiReviewSet').value;
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRMB').value;
         if (document.getElementById('srStarsStyleMRREl').value != 'oxygen') {
