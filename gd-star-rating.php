@@ -2624,6 +2624,36 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         }
 
         /**
+        * Renders average result of comment integration of multi rating for specific comment
+        *
+        * @param int $comment_id initial rating value
+        * @param object $post_id post id
+        * @param int $multi_set_id id of the multi rating set to use
+        * @param int $template_id id of the template to use
+        * @param string $avg_stars_set set to use for rendering of average value
+        * @param int $avg_stars_size set size to use for rendering of average value
+        * @param string $avg_stars_set_ie6 set to use for rendering of average value in ie6
+        */
+        function comment_integrate_multi_result_average($comment_id, $post_id, $multi_set_id, $template_id, $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif") {
+            $value = GDSRDBMulti::rating_from_comment($comment_id, $multi_set_id);
+            if (is_serialized($value)) {
+                $value = unserialize($value);
+                $set = gd_get_multi_set($multi_set_id);
+                $weight_norm = array_sum($set->weight);
+                $avg_rating = $i = 0;
+                foreach ($value as $md) {
+                    $avg_rating += ($md * $set->weight[$i]) / $weight_norm;
+                    $i++;
+                }
+                $avg_rating = @number_format($avg_rating, 1);
+                if ($avg_rating > 0) {
+                    return GDSRRenderT2::render_mcr($template_id, $votes, $post_id, $set, $avg_rating,
+                        $this->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, $avg_stars_size);
+                } else return "";
+            } else return "";
+        }
+
+        /**
         * Renders comment integration of multi rating
         *
         * @param int $value initial rating value
