@@ -2647,7 +2647,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 }
                 $avg_rating = @number_format($avg_rating, 1);
                 if ($avg_rating > 0) {
-                    return GDSRRenderT2::render_mcr($template_id, $votes, $post_id, $set, $avg_rating,
+                    return GDSRRenderT2::render_mcr($template_id, $post_id, $set, $avg_rating,
                         $this->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, $avg_stars_size);
                 } else return "";
             } else return "";

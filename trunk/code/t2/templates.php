@@ -282,11 +282,8 @@ $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
 $tpls->add_template($t);
 
 $t = new gdTemplate("MCR", __("Multi Rating Comment Integration Result", "gd-star-rating"));
-$t->add_template("EWV", "%WORD_VOTES%");
-$t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
-$t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
 $t->add_element("%ID%", __("post/page id", "gd-star-rating"));
-$t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
+$t->add_element("%MAX_RATING%", __("maximum rating value", "gd-star-rating"));
 $t->add_element("%AVG_RATING%", __("average rating", "gd-star-rating"));
 $t->add_element("%AVG_RATING_STARS%", __("average rating stars", "gd-star-rating"));
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
