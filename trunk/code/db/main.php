@@ -389,8 +389,10 @@ class GDSRDatabase {
         global $wpdb, $table_prefix;
         $rows = $wpdb->get_results(sprintf("select post_id from %sgdsr_data_article where post_id in %s", $table_prefix, $ids), ARRAY_N);
         if (count($rows) == 0) $rows = array();
+        $found = array();
+        foreach ($rows as $r) $found[] = $r[0];
         foreach ($ids_array as $id)
-            if (!in_array($id, $rows)) GDSRDatabase::add_default_vote($id);
+            if (!in_array($id, $found)) GDSRDatabase::add_default_vote($id);
     }
 
     function save_vote($id, $user, $ip, $ua, $vote, $comment_id = 0) {
@@ -696,8 +698,6 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
         $options = get_option('gd-star-rating');
         if ($is_page == '')
             $is_page = GDSRDatabase::get_post_type($post_id) == 'page' ? '1' : '0';
-
-wp_gdsr_dump("ADD_DEFAULT_is_page", $is_page);
 
         $dbt_data_article = $table_prefix.'gdsr_data_article';
         $sql = sprintf("INSERT INTO %s (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (%s, '%s', '%s', '%s', '%s', '%s', 0, 0, 0, 0, %s, '%s', '%s')",
