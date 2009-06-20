@@ -67,10 +67,15 @@ class GDSRDatabase {
         return $wpdb->get_var($sql);
     }
 
-    function get_user_log($user_id, $vote_type, $vote_value = 0, $start = 0, $limit = 20) {
+    function get_user_log($user_id, $vote_type, $vote_value = 0, $start = 0, $limit = 20, $ip = "") {
         global $wpdb, $table_prefix;
-        $join = "";
-        $select = "";
+
+        $join = $select = "";
+
+        $vote_value = $vote_value > 0 ? ' and vote = '.$vote_value : '';
+        $range = $limit > 0 ? sprintf("limit %s, %s", $start, $limit) : "";
+        $ip = $ip != '' ? ' and l.ip in ('.$ip.')' : "";
+
         if ($vote_type == "article") {
             $join = sprintf("%sposts o on o.ID = l.id", $table_prefix); 
             $select = "o.post_title, o.ID as post_id, o.ID as control_id";
@@ -79,11 +84,8 @@ class GDSRDatabase {
             $join = sprintf("%scomments o on o.comment_ID = l.id left join %sposts p on p.ID = o.comment_post_ID", $table_prefix, $table_prefix); 
             $select = "o.comment_content, o.comment_author as author, o.comment_ID as control_id, p.post_title, p.ID as post_id";
         }
-        if ($vote_value > 0) $vote_value = ' and vote = '.$vote_value;
-        else $vote_value = '';
-        $sql = sprintf("SELECT 1 as span, l.*, i.status, %s from %sgdsr_votes_log l left join %s left join %sgdsr_ips i on i.ip = l.ip where l.user_id = %s and l.vote_type = '%s'%s order by l.ip asc, l.voted desc limit %s, %s",
-                $select, $table_prefix, $join, $table_prefix, $user_id, $vote_type, $vote_value, $start, $limit
-            );
+        $sql = sprintf("SELECT 1 as span, l.*, i.status, %s from %sgdsr_votes_log l left join %s left join %sgdsr_ips i on i.ip = l.ip where l.user_id = %s and l.vote_type = '%s'%s%s order by l.ip asc, l.voted desc %s",
+                $select, $table_prefix, $join, $table_prefix, $user_id, $vote_type, $vote_value, $ip, $range);
         return $wpdb->get_results($sql);
     }
 
@@ -289,6 +291,16 @@ class GDSRDatabase {
         global $wpdb, $table_prefix;
 
         $sql = sprintf("delete from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
+        $wpdb->query($sql);
+    }
+
+    function delete_voters_main($id, $value, $article = true, $user = true) {
+        global $wpdb, $table_prefix;
+        $mod = $user ? "user_voters = user_voters - 1, user_votes = user_votes - 1" :
+                "visitor_voters = visitor_voters - 1, visitor_votes = visitor_votes - ".$value;
+
+        $sql = sprintf("update %sgdsr_data_%s set %s where %s_id = %s", $table_prefix,
+                $article ? "article" : "comment", $mod, $article ? "post" : "comment", $id);
         $wpdb->query($sql);
     }
 
