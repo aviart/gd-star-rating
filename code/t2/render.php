@@ -745,8 +745,19 @@ class GDSRRenderT2 {
         return $tpl_render;
     }
 
-    function render_mcr($template_id, $votes, $post_id, $set, $avg_rating, $avg_style, $avg_size) {
+    function render_mcr($template_id, $post_id, $set, $avg_rating, $avg_style, $avg_size) {
+        $template = GDSRRenderT2::get_template($template_id, "MCR");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
 
+                $rt = str_replace('%ID%', $post_id, $rt);
+        $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
+        $tpl_render = str_replace("%MAX_RATING%", $set->stars, $tpl_render);
+
+        if (in_array("%AVG_RATING_STARS%", $template->tag["normal"]))
+            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars, $avg_rating), $tpl_render);
+
+        return $tpl_render;
     }
 
     function render_rmb($template_id, $votes, $post_id, $set, $avg_rating, $style, $size, $avg_style, $avg_size) {
