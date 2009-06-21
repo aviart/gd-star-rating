@@ -24,7 +24,7 @@ function gdsrChangeShortcode(calledfrom) {
             document.getElementById("multisreview_tab").style.display = "block";
             adminIndex = 4;
             break;
-        case 56:
+        case 6:
             document.getElementById("articlesreview_tab").style.display = "block";
             adminIndex = 5;
             break;
