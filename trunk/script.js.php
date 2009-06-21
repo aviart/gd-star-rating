@@ -6,8 +6,7 @@
 
     global $gdsr;
 
-    if ($gdsr->use_nonce) $nonce = wp_create_nonce('gdsr_ajax_r8');
-    else $nonce = "";
+    $nonce = $gdsr->use_nonce ? wp_create_nonce('gdsr_ajax_r8') : "";
 
     $include_mur_rating = $gdsr->o["multis_active"] == 1;
     $include_cmm_review = $gdsr->o["comments_review_active"] == 1;

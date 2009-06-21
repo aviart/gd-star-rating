@@ -1513,8 +1513,7 @@ if (!class_exists('GDStarRating')) {
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'script.js.php"></script>');
             else {
                 echo('<script type="text/javascript">');
-                if ($this->use_nonce) $nonce = wp_create_nonce('gdsr_ajax_r8');
-                else $nonce = "";
+                $nonce = $this->use_nonce ? wp_create_nonce('gdsr_ajax_r8') : "";
                 $button_active = $this->o["mur_button_active"] == 1;
                 echo('//<![CDATA[');
                 include ($this->plugin_path."code/js/main.php");
@@ -1621,7 +1620,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
             if ($votes > 0) $rating2 = $score / $votes;
             else $rating2 = 0;
             $rating1 = @number_format($rating2, 1);
-            $rating_width = $rating2 * $unit_width;
+            $rating_width = @number_format($rating2 * $unit_width, 0);
 
             include($this->plugin_path.'code/t2/templates.php');
 
@@ -1676,7 +1675,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if ($votes > 0) $rating2 = $score / $votes;
             else $rating2 = 0;
             $rating1 = @number_format($rating2, 1);
-            $rating_width = $rating2 * $unit_width;
+            $rating_width = number_format($rating2 * $unit_width, 0);
 
             include($this->plugin_path.'code/t2/templates.php');
 
