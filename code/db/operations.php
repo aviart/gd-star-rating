@@ -86,6 +86,10 @@ class GDSRDB {
     }
 
     // conversion
+    function convert_multi_row($row) {
+        
+    }
+
     function convert_row($row) {
         switch ($row->moderate_articles) {
             case 'I':
