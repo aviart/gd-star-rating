@@ -91,7 +91,7 @@ if (isset($id)) {
             <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-moderation'));"/></th>
             <th scope="col"><?php _e("Comment", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("User", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Date And Time", "gd-star-rating"); ?></th>
+            <th scope="col" width="120"><?php _e("Date And Time", "gd-star-rating"); ?></th>
             <th scope="col" width="120"><?php _e("Votes", "gd-star-rating"); ?></th>
             <th scope="col" width="120"><?php _e("Total", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Review", "gd-star-rating"); ?></th>

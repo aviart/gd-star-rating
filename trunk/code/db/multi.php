@@ -433,36 +433,6 @@ class GDSRDBMulti {
         }
     }
 
-    function calculate_set_rating($set, $record_id) {
-        $values = GDSRDBMulti::get_values($record_id);
-        $weight_norm = array_sum($set->weight);
-        $weighted = array();
-        $weighted["users"]["rating"] = 0;
-        $weighted["visitors"]["rating"] = 0;
-        $weighted["total"]["rating"] = 0;
-        $weighted["users"]["votes"] = 0;
-        $weighted["visitors"]["votes"] = 0;
-        $weighted["total"]["votes"] = 0;
-        $votes = false;
-        foreach ($values as $row) {
-            if ($row->user_voters > 0) $weighted["users"]["rating"] += ( ( $row->user_votes / $row->user_voters ) * $set->weight[$row->item_id] ) / $weight_norm;
-            if ($row->visitor_voters > 0) $weighted["visitors"]["rating"] += ( ( $row->visitor_votes / $row->visitor_voters ) * $set->weight[$row->item_id] ) / $weight_norm;
-            if ($row->visitor_voters + $row->user_voters > 0) $weighted["total"]["rating"] += ( ( ($row->visitor_votes + $row->user_votes) / ($row->visitor_voters + $row->user_voters) ) * $set->weight[$row->item_id] ) / $weight_norm;
-            if (!$votes) {
-                $votes = true;
-                $weighted["users"]["votes"] = $row->user_voters;
-                $weighted["visitors"]["votes"] = $row->visitor_voters;
-                $weighted["total"]["votes"] = $row->visitor_voters + $row->user_voters;
-            }
-        }
-
-        $weighted["users"]["rating"] = @number_format($weighted["users"]["rating"], 1);
-        $weighted["visitors"]["rating"] = @number_format($weighted["visitors"]["rating"], 1);
-        $weighted["total"]["rating"] = @number_format($weighted["total"]["rating"], 1);
-
-        return $weighted;
-    }
-
     function get_values($id, $source = 'dta') {
         global $wpdb, $table_prefix;
 
