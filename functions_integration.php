@@ -471,7 +471,8 @@ function wp_gdsr_render_comments_rating_widget($widget = array(), $echo = true) 
  */
 function wp_gdsr_show_comment_review($comment_id = 0, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
     global $comment, $gdsr;
-    if ($comment_id < 1) $comment_id = $comment->comment_ID;
+    if ($comment_id == 0) $comment_id = $comment->comment_ID;
+
     if ($echo) echo $gdsr->display_comment_review($comment_id, $use_default, $style, $size);
     else return $gdsr->display_comment_review($comment, $use_default, $style, $size);
 }
@@ -490,7 +491,8 @@ function wp_gdsr_show_comment_review($comment_id = 0, $use_default = true, $size
  */
 function wp_gdsr_show_article_review($post_id = 0, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
     global $post, $gdsr;
-    if ($post_id < 1) $post_id = $post->ID;
+    if ($post_id == 0) $post_id = $post->ID;
+
     if ($echo) echo $gdsr->display_article_review($post_id, $use_default, $style, $size);
     else return $gdsr->display_article_review($post_id, $use_default, $style, $size);
 }
@@ -509,7 +511,8 @@ function wp_gdsr_show_article_review($post_id = 0, $use_default = true, $size = 
  */
 function wp_gdsr_show_article_rating($post_id = 0, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
     global $post, $gdsr;
-    if ($post_id < 1) $post_id = $post->ID;
+    if ($post_id == 0) $post_id = $post->ID;
+
     if ($echo) echo $gdsr->display_article_rating($post_id, $use_default, $style, $size);
     else return $gdsr->display_article_rating($post_id, $use_default, $style, $size);
 }
