@@ -593,9 +593,10 @@ class GDSRDBMulti {
         return $wpdb->get_results($sql);
     }
 
-    function get_multi_set($id) {
+    function get_multi_set($id = 0) {
         global $wpdb, $table_prefix;
-        $sql = sprintf("select * from %sgdsr_multis where multi_id = %s", $table_prefix, $id);
+        $where = $id > 0 ? " where multi_id = ".$id : "";
+        $sql = sprintf("select * from %sgdsr_multis%s limit 0, 1", $table_prefix, $where);
         return $wpdb->get_row($sql);
     }
 
