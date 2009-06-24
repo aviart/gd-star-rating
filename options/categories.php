@@ -206,7 +206,9 @@ function gdsrTimerChange() {
                 </td>
                 <td style="width: 230px; height: 29px;" align="right" colspan="3">
                     <select id="gdsr_integration_mur" name="gdsr_integration_mur" style="width: 210px">
-                        <option value="0">/</option>
+                        <option value="">/</option>
+                        <option value="0"><?php _e("Inherit from Parent", "gd-star-rating"); ?></option>
+                        <option value="">------------------------</option>
                         <?php GDSRHelper::render_styles_select(GDSRDBMulti::get_multis_tinymce(), 0); ?>
                     </select>
                 </td>

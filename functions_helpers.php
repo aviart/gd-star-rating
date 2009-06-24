@@ -30,7 +30,7 @@ function wp_gdsr_debug_clean() {
  * @param int $id set id
  * @return GDMultiSingle multi rating set
  */
-function gd_get_multi_set($id) {
+function gd_get_multi_set($id = 0) {
     $set = GDSRDBMulti::get_multi_set($id);
     if (count($set) > 0) {
         $set->object = unserialize($set->object);

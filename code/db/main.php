@@ -175,7 +175,7 @@ class GDSRDatabase {
         $dbt_data_cats = $table_prefix.'gdsr_data_category';
 
         $update = array();
-        $update[] = "cmm_integration_set = '".$upd_ms."'";
+        if ($upd_ms != '') $update[] = "cmm_integration_set = '".$upd_ms."'";
         if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
         if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
         if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
