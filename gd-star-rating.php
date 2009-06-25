@@ -1454,7 +1454,8 @@ if (!class_exists('GDStarRating')) {
             $elements[] = join("", $sizes);
             $elements[] = "1poxygen";
             $q = join("#", $elements);
-            $url = $this->plugin_url.'css/gdsr.css.php?s='.urlencode($q);
+            $t = $this->o["css_cache_active"] == 1 ? $this->o["css_last_changed"] : 0;
+            $url = $this->plugin_url.'css/gdsr.css.php?t='.urlencode($t).'&amp;s='.urlencode($q);
             echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
         }
 

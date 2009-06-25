@@ -25,8 +25,8 @@ function get_class_head($head, $element) {
 if (!isset($inclusion)) {
     $base_url_local = "../";
     $base_url_extra = "../../../gd-star-rating/";
+    $t = isset($_GET["t"]) ? urldecode($_GET["t"]) : 0;
     $q = urldecode($_GET["s"]);
-    $t = urldecode($_GET["t"]);
     header("Content-Type: text/css");
 
     if ($t > 0) {

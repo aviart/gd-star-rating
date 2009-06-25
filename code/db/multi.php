@@ -440,9 +440,10 @@ class GDSRDBMulti {
         return $wpdb->get_results($sql);
     }
 
-    function add_empty_review_values($id, $values = 0) {
+    function add_empty_review_values($id, $values = array()) {
         global $wpdb, $table_prefix;
 
+        if (!is_array($values)) return;
         for ($i = 0; $i < $values; $i++) {
             $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id) VALUES (%s, 'rvw', %s)",
                 $table_prefix, $id, $i);
@@ -507,9 +508,10 @@ class GDSRDBMulti {
         return $wpdb->get_var($sql);
     }
 
-    function save_review($record_id, $values) {
+    function save_review($record_id, $values = array()) {
         global $wpdb, $table_prefix;
 
+        if (!is_array($values)) return;
         $sql = sprintf("DELETE FROM %sgdsr_multis_values where id = %s and source = 'rvw'", $table_prefix, $record_id);
         $wpdb->query($sql);
         for ($i = 0; $i < count($values); $i++) {

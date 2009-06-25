@@ -110,6 +110,10 @@ Plugin has debug into log file feature built in. Information on activating this 
 6. Example rating stars
 7. Example multi rating block
 
+== Changelog ==
+= 1.4.7 =
+* Several minor (and not so minor) bugs fixed
+
 == Source SVN ==
 * svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only
 
