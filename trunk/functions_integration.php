@@ -296,7 +296,7 @@ function wp_gdsr_multi_review_editor_header($echo = true) {
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_show_multi_review($multi_set_id = 0, $template_id = 0, $post_id = 0, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif", $echo = true) {
+function wp_gdsr_show_multi_review($multi_set_id = 0, $template_id = 0, $post_id = 0, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif", $echo = true) {
     global $gdsr, $post;
     if ($post_id == 0) $post_id = $post->ID;
 
