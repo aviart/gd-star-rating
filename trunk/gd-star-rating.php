@@ -447,7 +447,7 @@ if (!class_exists('GDStarRating')) {
          * @param bool $admin wheter the rendering is for admin edit post page or not
          * @return string rendered result
          */
-        function blog_multi_review_editor($post_id, $settings = array(), $admin = true, $allow_vote = true) {
+        function blog_multi_review_editor($post_id, $settings = array(), $admin = true) {
             if ($settings["id"] == "") $multi_id = $this->o["mur_review_set"];
             else $multi_id = $settings["id"];
             $set = gd_get_multi_set($multi_id);
@@ -473,7 +473,6 @@ if (!class_exists('GDStarRating')) {
                 $votes[] = $single_vote;
             }
             if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
-            else if ($allow_vote) GDSRRenderT2::render_mrb($this->is_ie6 ? $settings["style_ie6"] : $settings["style"], intval($settings["tpl"]), false, $votes, $post_id, $set, $settings["size"], '', array(), $this->is_ie6 ? $settings["avg_style_ie6"] : $settings["avg_style"], $settings["avg_size"], "N", 0, "", false);
             else return GDSRRenderT2::render_mre("oxygen", intval($settings["tpl"]), $allow_vote, $votes, $post_id, $set, 20);
         }
         // various rendering

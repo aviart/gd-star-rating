@@ -440,10 +440,10 @@ class GDSRDBMulti {
         return $wpdb->get_results($sql);
     }
 
-    function add_empty_review_values($id, $values = array()) {
+    function add_empty_review_values($id, $values) {
         global $wpdb, $table_prefix;
 
-        if (!is_array($values)) return;
+        $values = intval($values);
         for ($i = 0; $i < $values; $i++) {
             $sql = sprintf("INSERT INTO %sgdsr_multis_values (id, source, item_id) VALUES (%s, 'rvw', %s)",
                 $table_prefix, $id, $i);
