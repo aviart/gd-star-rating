@@ -473,7 +473,7 @@ if (!class_exists('GDStarRating')) {
                 $votes[] = $single_vote;
             }
             if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
-            else return GDSRRenderT2::render_mre("oxygen", intval($settings["tpl"]), $allow_vote, $votes, $post_id, $set, 20);
+            else return GDSRRenderT2::render_mre("oxygen", intval($settings["tpl"]), true, $votes, $post_id, $set, 20);
         }
         // various rendering
 
