@@ -17,19 +17,19 @@
     }
 ?>
 
-<div id="gdpt_server" class="postbox gdrgrid frontleft">
+<div class="postbox gdrgrid frontleft">
     <h3 class="hndle"><span><?php _e("Quick Rating Facts", "gd-star-rating"); ?></span></h3>
     <div class="inside">
         <p class="gdptyouhave" style="font-size:13px;">
         <?php
             printf(__("Registered users rated %s articles with average rating of %s and %s comments with average rating of %s. Visitors rated %s articles with average rating of %s and %s comments with average rating of %s.", "gd-star-rating"),
-                '<strong>'.$votes_articles->votersu.'</strong>',
+                '<strong>'.intval($votes_articles->votersu).'</strong>',
                 '<strong><span style="color: red">'.@number_format($votes_articles->votesu / $votes_articles->votersu, 1).'</span></strong>',
-                '<strong>'.$votes_comments->votersu.'</strong>',
+                '<strong>'.intval($votes_comments->votersu).'</strong>',
                 '<strong><span style="color: red">'.@number_format($votes_comments->votesu / $votes_comments->votersu, 1).'</span></strong>',
-                '<strong>'.$votes_articles->votersv.'</strong>',
+                '<strong>'.intval($votes_articles->votersv).'</strong>',
                 '<strong><span style="color: red">'.@number_format($votes_articles->votesv / $votes_articles->votersv, 1).'</span></strong>',
-                '<strong>'.$votes_comments->votersv.'</strong>',
+                '<strong>'.intval($votes_comments->votersv).'</strong>',
                 '<strong><span style="color: red">'.@number_format($votes_comments->votesv / $votes_comments->votersv, 1).'</span></strong>'
             );
             if ($options["moderation_active"] == 1)
@@ -41,7 +41,7 @@
         </p>
     </div>
 </div>
-<div id="gdpt_server" class="postbox gdrgrid frontleft">
+<div class="postbox gdrgrid frontleft">
         <small style="float: right; margin-right:6px; margin-top:6px;">
             <a target="_blank" href="http://www.gdstarrating.com/"><?php _e("See All", "gd-star-rating"); ?></a> | <a href="http://feeds2.feedburner.com/GdStarRating">RSS</a>
         </small>

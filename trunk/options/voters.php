@@ -10,7 +10,7 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url.= "&gdsr=voters";
+$url.= "&amp;gdsr=voters";
 
 $select = "";
 $post_id = -1;
@@ -46,12 +46,12 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     }
 }
 
-$url.= "&pid=".$post_id;
-if ($filter_date != '' || $filter_date != '0') $url.= "&date=".$filter_date;
-if ($filter_vote > 0) $url.= "&vote=".$filter_vote;
-if ($select != '') $url.= "&vg=".$select;
+$url.= "&amp;pid=".$post_id;
+if ($filter_date != '' || $filter_date != '0') $url.= "&amp;date=".$filter_date;
+if ($filter_vote > 0) $url.= "&amp;vote=".$filter_vote;
+if ($select != '') $url.= "&amp;vg=".$select;
 $b_url = $url;
-if ($sort_colum != '') $url.= '&sc='.$sort_colum.'&so='.$sort_order;
+if ($sort_colum != '') $url.= '&amp;sc='.$sort_colum.'&amp;so='.$sort_order;
 
 $sql_count = GDSRDatabase::get_voters_count($post_id, $filter_date, $vote_type, $filter_vote);
 $np = $wpdb->get_results($sql_count);
@@ -81,7 +81,7 @@ else
 
 ?>
 
-<script>
+<script type="text/javascript">
 function checkAll(form) {
     for (i = 0, n = form.elements.length; i < n; i++) {
         if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick', 2))) {
@@ -98,15 +98,15 @@ function checkAll(form) {
 <?php } else { ?><div class="wrap"><?php } ?>
 <form id="gdsr-comments" method="post" action="">
 <p><strong><?php _e("Vote log for post", "gd-star-rating"); ?>: 
-    <?php echo sprintf('<a href="./post.php?action=edit&post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $post_id, GDSRDB::get_post_title($post_id), get_permalink($post_id)); ?>
+    <?php echo sprintf('<a href="./post.php?action=edit&amp;post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $post_id, GDSRDB::get_post_title($post_id), get_permalink($post_id)); ?>
 </strong></p>
 <ul class="subsubsub">
-    <li><a<?php echo $select == "total" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&vg=total">All Votes (<?php echo $number_posts_all; ?>)</a> |</li>
-    <li><a<?php echo $select == "users" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&vg=users">Users (<?php echo $number_posts_users; ?>)</a> |</li>
-    <li><a<?php echo $select == "visitors" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&vg=visitors">Visitors (<?php echo $number_posts_visitors; ?>)</a></li>
+    <li><a<?php echo $select == "total" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&amp;vg=total">All Votes (<?php echo $number_posts_all; ?>)</a> |</li>
+    <li><a<?php echo $select == "users" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&amp;vg=users">Users (<?php echo $number_posts_users; ?>)</a> |</li>
+    <li><a<?php echo $select == "visitors" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&amp;vg=visitors">Visitors (<?php echo $number_posts_visitors; ?>)</a></li>
 </ul>
 <?php
-    if ($select != '') $url.= "&vg=".$select;
+    if ($select != '') $url.= "&amp;vg=".$select;
 ?>
 <div class="tablenav">
     <div class="alignleft">

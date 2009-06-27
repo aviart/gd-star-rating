@@ -206,7 +206,6 @@ class GDSRDatabase {
 
         $sql = sprintf("INSERT INTO %sgdsr_data_category (category_id, rules_articles, rules_comments, moderate_articles, moderate_comments, expiry_type, expiry_value, cmm_integration_set) VALUES (%s, %s, '', 0)",
                 $table_prefix, $id, $values);
-        print_r($sql);
         $wpdb->query($sql);
     }
 

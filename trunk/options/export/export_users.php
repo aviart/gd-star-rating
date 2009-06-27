@@ -1,17 +1,17 @@
-<script>
+<script type="text/javascript">
 function gdsrGetExportUser() {
     var us = jQuery("input[@name='gdsr_export_user']:checked").val();
     var de = jQuery("input[@name='gdsr_export_data']:checked").val();
     var ip = jQuery("input[@name='gdsr_export_ip']:checked").val();
     var ua = jQuery("input[@name='gdsr_export_agent']:checked").val();
-    var url = "<?php echo STARRATING_URL; ?>/export.php?ex=user&us=" + us + "&de=" + de;
-    if (jQuery("input[@name='gdsr_export_ip']:checked").val() == "on") url = url + "&ip=on";
-    if (jQuery("input[@name='gdsr_export_agent']:checked").val() == "on") url = url + "&ua=on";
-    if (jQuery("input[@name='gdsr_export_post_title']:checked").val() == "on") url = url + "&pt=on";
-    if (jQuery("input[@name='gdsr_export_post_author']:checked").val() == "on") url = url + "&pa=on";
-    if (jQuery("input[@name='gdsr_export_post-date']:checked").val() == "on") url = url + "&pd=on";
-    if (jQuery("input[@name='gdsr_export_comment_author']:checked").val() == "on") url = url + "&ca=on";
-    if (jQuery("input[@name='gdsr_export_comment-date']:checked").val() == "on") url = url + "&cd=on";
+    var url = "<?php echo STARRATING_URL; ?>/export.php?ex=user&amp;us=" + us + "&amp;de=" + de;
+    if (jQuery("input[@name='gdsr_export_ip']:checked").val() == "on") url = url + "&amp;ip=on";
+    if (jQuery("input[@name='gdsr_export_agent']:checked").val() == "on") url = url + "&amp;ua=on";
+    if (jQuery("input[@name='gdsr_export_post_title']:checked").val() == "on") url = url + "&amp;pt=on";
+    if (jQuery("input[@name='gdsr_export_post_author']:checked").val() == "on") url = url + "&amp;pa=on";
+    if (jQuery("input[@name='gdsr_export_post-date']:checked").val() == "on") url = url + "&amp;pd=on";
+    if (jQuery("input[@name='gdsr_export_comment_author']:checked").val() == "on") url = url + "&amp;ca=on";
+    if (jQuery("input[@name='gdsr_export_comment-date']:checked").val() == "on") url = url + "&amp;cd=on";
     window.location = url;
 }
 </script>

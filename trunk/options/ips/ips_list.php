@@ -7,8 +7,8 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$log_url = $url."&gdsr=iplist";
-$url.= "&gdsr=iplist";
+$log_url = $url."&amp;gdsr=iplist";
+$url.= "&amp;gdsr=iplist";
 
 $page_id = 1;
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
@@ -23,7 +23,7 @@ if ($max_page > 1)
 
 ?>
 
-<script>
+<script type="text/javascript">
 function checkAll(form) {
     for (i = 0, n = form.elements.length; i < n; i++) {
         if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick', 2))) {

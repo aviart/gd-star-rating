@@ -8,7 +8,7 @@ if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
 $log_url = $url."&gdsr=userslog";
-$url.= "&gdsr=users";
+$url.= "&amp;gdsr=users";
 
 $page_id = 1;
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
@@ -97,10 +97,10 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
         echo '<td>'.$row["id"].'</td>';
         echo '<td>'.$row["email"].'</td>';
         echo '<td>'.$row["url"].'</td>';
-        echo '<td>'.__("votes", "gd-star-rating").': <strong><a href="'.$log_url.'&ui='.$row["id"].'&vt=article&un='.urlencode($row["name"]).'">'.$row["article"]["voters"].'</a></strong><br />';
+        echo '<td>'.__("votes", "gd-star-rating").': <strong><a href="'.$log_url.'&amp;ui='.$row["id"].'&amp;vt=article&amp;un='.urlencode($row["name"]).'">'.$row["article"]["voters"].'</a></strong><br />';
         echo __("rating", "gd-star-rating").': <strong style="color: red">'.$r_pst.'</strong><br />';
         echo __("unique ip's", "gd-star-rating").': <strong>'.$ip_pst.'</strong></td>';
-        echo '<td>'.__("votes", "gd-star-rating").': <strong><a href="'.$log_url.'&ui='.$row["id"].'&vt=comment&un='.urlencode($row["name"]).'">'.$row["comment"]["voters"].'</a></strong><br />';
+        echo '<td>'.__("votes", "gd-star-rating").': <strong><a href="'.$log_url.'&amp;ui='.$row["id"].'&amp;vt=comment&amp;un='.urlencode($row["name"]).'">'.$row["comment"]["voters"].'</a></strong><br />';
         echo __("rating", "gd-star-rating").': <strong style="color: red">'.$r_cmm.'</strong><br />';
         echo __("unique ip's", "gd-star-rating").': <strong>'.$ip_cmm.'</strong></td>';
         echo '</tr>';

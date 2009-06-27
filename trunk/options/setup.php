@@ -37,7 +37,7 @@
     }
 
 ?>
-<script>
+<script type="text/javascript">
     function areYouSure() {
         return confirm("<?php _e("Are you sure? Operation is not reversible.", "gd-star-rating"); ?>");
     }

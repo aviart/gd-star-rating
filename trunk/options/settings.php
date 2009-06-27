@@ -32,8 +32,48 @@
 
 <?php } ?>
 
+<script type="text/javascript">
+function gdsrStyleSelection(preview) {
+    var gdsrImages = { <?php GDSRHelper::render_gfx_js($gdsr_gfx->stars); ?> };
+    var gdsrTrends = { <?php GDSRHelper::render_gfx_js($gdsr_gfx->trend); ?> };
+    var gdsrImagesExt = { <?php GDSRHelper::render_ext_gfx_js($gdsr_gfx->stars); ?> };
+    var gdsrTrendsExt = { <?php GDSRHelper::render_ext_gfx_js($gdsr_gfx->trend); ?> };
+    var gdsrAuthors = { <?php GDSRHelper::render_authors_gfx_js($gdsr_gfx->stars); ?> };
+
+    var gdsrBase = "#gdsr_preview";
+    var gdsrStyle = "";
+    var gdsrSize = "";
+    var gdsrImage = "";
+
+    if (preview == "trends") {
+        gdsrBase = gdsrBase + "_trends";
+        gdsrStyle = jQuery("#gdsr_style_preview_trends").val();
+        gdsrImage = gdsrTrends[gdsrStyle] + "trend." + gdsrTrendsExt[gdsrStyle];
+    }
+    else {
+        gdsrStyle = jQuery("#gdsr_style_preview").val();
+        gdsrSize = jQuery("#gdsr_size_preview").val();
+        gdsrImage = gdsrImages[gdsrStyle] + "stars" + gdsrSize + "." + gdsrImagesExt[gdsrStyle];
+        jQuery("#gdsrauthorname").html(gdsrAuthors[gdsrStyle]["name"]);
+        jQuery("#gdsrauthoremail").html(gdsrAuthors[gdsrStyle]["email"]);
+        jQuery("#gdsrauthorurl").html(gdsrAuthors[gdsrStyle]["url"]);
+    }
+
+    jQuery(gdsrBase+"_black").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_red").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_green").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_white").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_blue").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_yellow").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_gray").attr("src", gdsrImage);
+    jQuery(gdsrBase+"_picture").attr("src", gdsrImage);
+}
+</script>
+
 <div class="gdsr">
 <form method="post">
+<input type="hidden" id="gdsr_preview_stars" name="gdsr_preview_stars" value="<?php echo $gdsr_options["preview_active"]; ?>" />
+<input type="hidden" id="gdsr_preview_trends" name="gdsr_preview_trends" value="<?php echo $gdsr_options["preview_trends_active"]; ?>" />
 <input type="hidden" id="gdsr_action" name="gdsr_action" value="save" />
 <div class="wrap"><h2 class="gdptlogopage">GD Star Rating: <?php _e("Settings", "gd-star-rating"); ?></h2>
 
@@ -86,7 +126,7 @@
 </form>
 </div>
 
-<script>
+<script type="text/javascript">
     gdsrStyleSelection('stars');
     gdsrStyleSelection('trends');
 </script>

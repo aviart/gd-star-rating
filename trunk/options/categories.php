@@ -7,7 +7,7 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url.= "&gdsr=categories";
+$url.= "&amp;gdsr=categories";
 
 $page_id = 1;
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
@@ -46,7 +46,7 @@ if ($cat_to > $number_posts) $cat_to = $number_posts;
     
 ?>
 
-<script>
+<script type="text/javascript">
 function checkAll(form) {
     for (i = 0, n = form.elements.length; i < n; i++) {
         if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick', 2))) {
@@ -135,8 +135,8 @@ function gdsrTimerChange() {
         }
 
         echo '<tr id="post-'.$row->term_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
-        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->parent.','.$row->term_id.'" type="checkbox"></th>';
-        echo '<td><strong><a href="./admin.php?page=gd-star-rating-stats&gdsr=articles&cat='.$row->term_id.'">';
+        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->parent.','.$row->term_id.'" type="checkbox" /></th>';
+        echo '<td><strong><a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=articles&amp;cat='.$row->term_id.'">';
         echo str_repeat("― ", $row->depth).$row->name;
         echo '</a></strong></td>';
         echo '<td><a href="'.get_category_link($row->term_id).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a></td>';
@@ -245,7 +245,7 @@ function gdsrTimerChange() {
                     <span class="paneltext"><?php _e("Delete", "gd-star-rating"); ?>:</span>
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                    <select id="gdsr_delete_articles" name="gdsr_delete_comments" style="margin-top: -4px; width: 120px;">
+                    <select id="gdsr_delete_comments" name="gdsr_delete_comments" style="margin-top: -4px; width: 120px;">
                         <option value="">/</option>
                         <option value="CV"><?php _e("Visitors", "gd-star-rating"); ?></option>
                         <option value="CU"><?php _e("Users", "gd-star-rating"); ?></option>

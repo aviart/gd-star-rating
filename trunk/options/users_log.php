@@ -7,7 +7,7 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url.= "&gdsr=userslog";
+$url.= "&amp;gdsr=userslog";
 
 $page_id = 1;
 $user_id = 0;
@@ -58,8 +58,8 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     }
 }
 
-if ($filter_vote > 0) $url.= "&vote=".$filter_vote;
-$url.= "&ui=".$user_id."&vt=".$vote_type."&un=".$user_name;
+if ($filter_vote > 0) $url.= "&amp;vote=".$filter_vote;
+$url.= "&amp;ui=".$user_id."&amp;vt=".$vote_type."&amp;un=".$user_name;
 
 $number_posts = GDSRDatabase::get_count_user_log($user_id, $vote_type, $filter_vote);
 
@@ -76,7 +76,7 @@ else
 
 ?>
 
-<script>
+<script type="text/javascript">
 function checkAll(form) {
     for (i = 0, n = form.elements.length; i < n; i++) {
         if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick', 2))) {

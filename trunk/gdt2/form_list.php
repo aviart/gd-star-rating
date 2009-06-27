@@ -7,7 +7,7 @@ $url_pos = strpos($url, "&gdt=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url.= "&gdt=t2";
+$url.= "&amp;gdt=t2";
 
 $filter_section = "";
 $page_id = 1;
@@ -60,18 +60,18 @@ $all_sections = $tpls->list_sections_assoc();
     $tr_class = "";
     foreach ($templates as $t) {
         $mode = $t->preinstalled == "0" ? "edit" : "copy";
-        $url = "admin.php?page=gd-star-rating-t2&";
+        $url = "admin.php?page=gd-star-rating-t2&amp;";
         echo '<tr id="post-'.$t->template_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<td><strong>'.$t->template_id.'</strong></td>';
-        echo '<td><strong><a href="'.$url.'mode='.$mode.'&tplid='.$t->template_id.'">'.$t->name.'</a></strong></td>';
+        echo '<td><strong><a href="'.$url.'mode='.$mode.'&amp;tplid='.$t->template_id.'">'.$t->name.'</a></strong></td>';
         echo '<td>'.$all_sections[$t->section].' ['.$t->section.']'.'</td>';
         echo '<td>'.$tpls->find_template_tag($t->section).'</td>';
         echo '<td style="text-align: right">';
         if ($t->preinstalled == "0") {
             echo '<a href="'.$url.'deltpl='.$t->template_id.'">'.__("delete", "gd-star-rating").'</a> | ';
-            echo '<a href="'.$url.'mode=edit&tplid='.$t->template_id.'">'.__("edit", "gd-star-rating").'</a> | ';
+            echo '<a href="'.$url.'mode=edit&amp;tplid='.$t->template_id.'">'.__("edit", "gd-star-rating").'</a> | ';
         }
-        echo '<a href="'.$url.'mode=copy&tplid='.$t->template_id.'">'.__("duplicate", "gd-star-rating").'</a>';
+        echo '<a href="'.$url.'mode=copy&amp;tplid='.$t->template_id.'">'.__("duplicate", "gd-star-rating").'</a>';
         echo '</td>';
         echo '</tr>';
 

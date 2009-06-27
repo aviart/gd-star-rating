@@ -7,7 +7,7 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url.= "&gdsr=moderation";
+$url.= "&amp;gdsr=moderation";
 
 if (isset($_GET["pid"])) {
     $id = $_GET["pid"];
@@ -16,7 +16,7 @@ if (isset($_GET["pid"])) {
 
 ?>
 
-<script>
+<script type="text/javascript">
 function checkAll(form) {
     for (i = 0, n = form.elements.length; i < n; i++) {
         if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick',2))) {
@@ -47,7 +47,7 @@ function checkAll(form) {
 <?php
 
 if (isset($id)) {
-    $url.= "&gdsr=moderate";
+    $url.= "&amp;gdsr=moderate";
     
     $page_id = 1;
     if (isset($_GET["pg"])) $page_id = $_GET["pg"];
@@ -59,7 +59,7 @@ if (isset($id)) {
     else
         $filter_user = 'all';
     
-    $url.= "&usr=".$filter_user;    
+    $url.= "&amp;usr=".$filter_user;
     
     if ($_POST["gdsr_update"] == "Update") {
         $gdsr_items = $_POST["gdsr_item"];

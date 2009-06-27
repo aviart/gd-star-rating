@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.5.0
+Version: 1.4.8
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -617,6 +617,7 @@ if (!class_exists('GDStarRating')) {
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_main.css" type="text/css" media="screen" />');
                 if ($this->wp_version >= 27 && $this->wp_version < 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />');
                 if ($this->wp_version >= 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp28.css" type="text/css" media="screen" />');
+                if ($this->wp_version < 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp26.css" type="text/css" media="screen" />');
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>');
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>');
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');

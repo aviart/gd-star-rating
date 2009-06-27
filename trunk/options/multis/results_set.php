@@ -9,7 +9,7 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url.= "&gdsr=murset";
+$url.= "&amp;gdsr=murset";
 
 ?>
 

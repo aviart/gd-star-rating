@@ -9,7 +9,7 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url.= "&gdsr=murpost";
+$url.= "&amp;gdsr=murpost";
 
 $set_id = $_GET["sid"];
 $set = gd_get_multi_set($set_id);
@@ -33,11 +33,11 @@ if ($_POST["gdsr_search"] == __("Search Posts", "gd-star-rating")) {
     $search = apply_filters('get_search_query', stripslashes($_POST["s"]));
 }
 
-$url.= "&sid=".$set_id;
-if ($filter_cats != '' || $filter_cats != '0') $url.= "&cat=".$filter_cats;
-if ($filter_date != '' || $filter_date != '0') $url.= "&date=".$filter_date;
-if ($search != '') $url.= "&s=".$search;
-if ($select != '') $url.= "&select=".$select;
+$url.= "&amp;sid=".$set_id;
+if ($filter_cats != '' || $filter_cats != '0') $url.= "&amp;cat=".$filter_cats;
+if ($filter_date != '' || $filter_date != '0') $url.= "&amp;date=".$filter_date;
+if ($search != '') $url.= "&amp;s=".$search;
+if ($select != '') $url.= "&amp;select=".$select;
 
 $sql_count = GDSRDBMulti::get_stats_count($set_id, $filter_date, $filter_cats, $search);
 $np = $wpdb->get_results($sql_count);
@@ -64,7 +64,7 @@ $set = gd_get_multi_set($set_id);
 
 ?>
 
-<script>
+<script type="text/javascript">
 function checkAll(form) {
     for (i = 0, n = form.elements.length; i < n; i++) {
         if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick', 2))) {
@@ -98,11 +98,11 @@ function gdsrTimerChange() {
 <h3 class="gdsetname"><?php _e("Set Name", "gd-star-rating"); ?>: <span style="color: red;"><?php echo $set->name; ?></span></h3>
 <ul class="subsubsub">
     <li><a<?php echo $select == "" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>">All Articles (<?php echo $number_posts_all; ?>)</a> |</li>
-    <li><a<?php echo $select == "post" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&select=post">Posts (<?php echo $number_posts_post; ?>)</a> |</li>
-    <li><a<?php echo $select == "page" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&select=page">Pages (<?php echo $number_posts_page; ?>)</a></li>
+    <li><a<?php echo $select == "post" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&amp;select=post">Posts (<?php echo $number_posts_post; ?>)</a> |</li>
+    <li><a<?php echo $select == "page" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&amp;select=page">Pages (<?php echo $number_posts_page; ?>)</a></li>
 </ul>
 <?php
-    if ($select != '') $url.= "&select=".$select;
+    if ($select != '') $url.= "&amp;select=".$select;
 ?>
 <p id="post-search">
     <label class="hidden" for="post-search-input"><?php _e("Search Posts", "gd-star-rating"); ?>:</label>
@@ -151,20 +151,20 @@ function gdsrTimerChange() {
 
         echo '<tr id="post-'.$row->pid.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->pid.'" type="checkbox"></th>';
-        echo '<td><strong>'.sprintf('<a href="./post.php?action=edit&post=%s">%s</a>', $row->pid, $row->post_title).'</strong></td>';
+        echo '<td><strong>'.sprintf('<a href="./post.php?action=edit&amp;post=%s">%s</a>', $row->pid, $row->post_title).'</strong></td>';
         echo '<td nowrap="nowrap" style="text-align: center;">';
             echo '<a href="'.get_permalink($row->pid).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a>&nbsp;';
         echo '</td>';
         echo '<td>'.GDSRDatabase::get_categories($row->pid).'</td>';
         echo '<td>';
             if ($row->total_votes_visitors == 0) echo sprintf("[ 0 ] %s: /<br />", __("visitors", "gd-star-rating"));
-            else echo sprintf('[ <a href="./admin.php?page=gd-star-rating-multi-sets&gdsr=murset&sid=%s&pid=%s&filter=visitor"><strong style="color: red;">%s</strong></a> ] %s: <strong style="color: red;">%s</strong><br />', $set_id, $row->pid, $row->total_votes_visitors, __("visitors", "gd-star-rating"), $row->average_rating_visitors);
+            else echo sprintf('[ <a href="./admin.php?page=gd-star-rating-multi-sets&amp;gdsr=murset&amp;sid=%s&amp;pid=%s&amp;filter=visitor"><strong style="color: red;">%s</strong></a> ] %s: <strong style="color: red;">%s</strong><br />', $set_id, $row->pid, $row->total_votes_visitors, __("visitors", "gd-star-rating"), $row->average_rating_visitors);
             if ($row->total_votes_users == 0) echo sprintf("[ 0 ] %s: /<br />", __("users", "gd-star-rating"));
-            else echo sprintf('[ <a href="./admin.php?page=gd-star-rating-multi-sets&gdsr=murset&sid=%s&pid=%s&filter=user"><strong style="color: red;">%s</strong></a> ] %s: <strong style="color: red;">%s</strong>', $set_id, $row->pid, $row->total_votes_users, __("users", "gd-star-rating"), $row->average_rating_users);
+            else echo sprintf('[ <a href="./admin.php?page=gd-star-rating-multi-sets&amp;gdsr=murset&amp;sid=%s&amp;pid=%s&amp;filter=user"><strong style="color: red;">%s</strong></a> ] %s: <strong style="color: red;">%s</strong>', $set_id, $row->pid, $row->total_votes_users, __("users", "gd-star-rating"), $row->average_rating_users);
         echo '</td>';
         echo '<td>';
             if ($total_votes == 0) echo sprintf("[ 0 ] %s: /", __("rating", "gd-star-rating"));
-            else echo sprintf('[ <a href="./admin.php?page=gd-star-rating-multi-sets&gdsr=murset&sid=%s&pid=%s"><strong style="color: red;">%s</strong></a> ] %s: <strong style="color: red;">%s</strong><br />', $set_id, $row->pid, $total_votes, __("rating", "gd-star-rating"), $total_rating);
+            else echo sprintf('[ <a href="./admin.php?page=gd-star-rating-multi-sets&amp;gdsr=murset&amp;sid=%s&amp;pid=%s"><strong style="color: red;">%s</strong></a> ] %s: <strong style="color: red;">%s</strong><br />', $set_id, $row->pid, $total_votes, __("rating", "gd-star-rating"), $total_rating);
         echo '</td>';
         if ($options["review_active"] == 1) {
             echo '<td style="text-align: right">';

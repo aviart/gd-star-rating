@@ -9,7 +9,7 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url.= "&gdsr=articles";
+$url.= "&amp;gdsr=articles";
 
 $select = "";
 $page_id = 1;
@@ -53,10 +53,10 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     }
 }
 
-if ($filter_cats != '' || $filter_cats != '0') $url.= "&cat=".$filter_cats;
-if ($filter_date != '' || $filter_date != '0') $url.= "&date=".$filter_date;
-if ($search != '') $url.= "&s=".$search;
-if ($select != '') $url.= "&select=".$select;
+if ($filter_cats != '' || $filter_cats != '0') $url.= "&amp;cat=".$filter_cats;
+if ($filter_date != '' || $filter_date != '0') $url.= "&amp;date=".$filter_date;
+if ($search != '') $url.= "&amp;s=".$search;
+if ($select != '') $url.= "&amp;select=".$select;
 
 $sql_count = GDSRDatabase::get_stats_count($filter_date, $filter_cats, $search);
 $np = $wpdb->get_results($sql_count);
@@ -81,7 +81,7 @@ if ($max_page > 1)
 
 ?>
 
-<script>
+<script type="text/javascript">
 function checkAll(form) {
     for (i = 0, n = form.elements.length; i < n; i++) {
         if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick', 2))) {
@@ -115,8 +115,8 @@ function gdsrTimerChange() {
 <h2 class="gdptlogopage">GD Star Rating: <?php _e("Articles", "gd-star-rating"); ?></h2>
 <ul class="subsubsub">
     <li><a<?php echo $select == "" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>">All Articles (<?php echo $number_posts_all; ?>)</a> |</li>
-    <li><a<?php echo $select == "post" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&select=post">Posts (<?php echo $number_posts_post; ?>)</a> |</li>
-    <li><a<?php echo $select == "page" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&select=page">Pages (<?php echo $number_posts_page; ?>)</a></li>
+    <li><a<?php echo $select == "post" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&amp;select=post">Posts (<?php echo $number_posts_post; ?>)</a> |</li>
+    <li><a<?php echo $select == "page" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&amp;select=page">Pages (<?php echo $number_posts_page; ?>)</a></li>
 </ul>
 <?php
     if ($select != '') $url.= "&select=".$select;
@@ -178,18 +178,18 @@ function gdsrTimerChange() {
         if ($moderate_articles == 0)
             $moderate_articles = "[ <strong>0</strong> ] ";
         else
-            $moderate_articles = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&gdsr=moderation&pid=%s&vt=article"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_articles);
+            $moderate_articles = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=moderation&amp;pid=%s&amp;vt=article"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_articles);
 
         if ($moderate_comments == 0)
             $moderate_comments = "[ <strong>0</strong> ] ";
         else
-            $moderate_comments = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&gdsr=moderation&pid=%s&vt=post"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_comments);
+            $moderate_comments = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=moderation&amp;pid=%s&amp;vt=post"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_comments);
             
         $comment_count = GDSRDatabase::get_comments_count($row->pid);
         if ($comment_count == 0)
             $comment_count = '<a class="post-com-count" title="0"><span class="comment-count">0</span></a>';
         else
-            $comment_count = sprintf('<a class="post-com-count" title="%s" href="./admin.php?page=gd-star-rating-stats&gdsr=comments&postid=%s"><span class="comment-count">%s</span></a>',
+            $comment_count = sprintf('<a class="post-com-count" title="%s" href="./admin.php?page=gd-star-rating-stats&amp;gdsr=comments&amp;postid=%s"><span class="comment-count">%s</span></a>',
                 $comment_count,
                 $row->pid,
                 $comment_count
@@ -222,11 +222,11 @@ function gdsrTimerChange() {
             $tr_class.=" invalidarticle";
 
         echo '<tr id="post-'.$row->pid.'" class="'.$tr_class.' author-self status-publish" valign="top">';
-        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->pid.'" type="checkbox"></th>';
+        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->pid.'" type="checkbox"/></th>';
         echo '<td><strong>'.$row->title.'</strong></td>';
         echo '<td nowrap="nowrap">';
             echo '<a href="'.get_permalink($row->pid).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a>&nbsp;';
-            echo '<a onclick="generateUrl('.$row->pid.')" href="#TB_inline?height=520&width=950&inlineId=gdsrchart" title="'.__("Charts", "gd-star-rating").'" class="thickbox"><img src="'.STARRATING_URL.'gfx/chart.png" border="0" /></a>';
+            echo '<a onclick="generateUrl('.$row->pid.')" href="#TB_inline?height=520&amp;width=950&amp;inlineId=gdsrchart" title="'.__("Charts", "gd-star-rating").'" class="thickbox"><img src="'.STARRATING_URL.'gfx/chart.png" border="0" /></a>';
         echo '</td>';
         echo '<td class="num"><div class="post-com-count-wrapper">'.$comment_count.'</div></td>';
         echo '<td>'.GDSRDatabase::get_categories($row->pid).'</td>';
