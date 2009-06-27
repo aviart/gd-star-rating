@@ -9,7 +9,7 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url.= "&gdsr=comments";
+$url.= "&amp;gdsr=comments";
 
 if (isset($_GET["postid"])) {
     $id = $_GET["postid"];
@@ -26,7 +26,7 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
 
 ?>
 
-<script>
+<script type="text/javascript">
 function checkAll(form) {
     for (i = 0, n = form.elements.length; i < n; i++) {
         if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick',2))) {
@@ -46,12 +46,12 @@ function checkAll(form) {
 <div>
 <p><strong><?php _e("Comments for post", "gd-star-rating"); ?>:
     <?php echo ''; ?>
-    <?php echo sprintf('<a href="./post.php?action=edit&post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $id, GDSRDB::get_post_title($id), get_permalink($id)); ?>
+    <?php echo sprintf('<a href="./post.php?action=edit&amp;post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $id, GDSRDB::get_post_title($id), get_permalink($id)); ?>
 </strong></p>
 <?php
 
 if (isset($id)) {
-    $url.= "&gdsr=comments";
+    $url.= "&amp;gdsr=comments";
 
     $page_id = 1;
     if (isset($_GET["pg"])) $page_id = $_GET["pg"];
@@ -108,7 +108,7 @@ if (isset($id)) {
             $tr_class.=" invalidarticle";
 
         echo '<tr id="post-'.$row->comment_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
-        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->comment_id.'" type="checkbox"></th>';
+        echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->comment_id.'" type="checkbox"/></th>';
         echo '<td>'.$row->comment_content.'</td>';
         echo '<td><strong>'.$row->comment_author.'</strong></td>';
         echo '<td>'.$row->comment_date.'</td>';

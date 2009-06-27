@@ -17,8 +17,8 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url_edit = $url."&gdsr=";
-$url.= "&gdsr=mulist";
+$url_edit = $url."&amp;gdsr=";
+$url.= "&amp;gdsr=mulist";
 
 $page_id = 1;
 
@@ -33,7 +33,7 @@ if ($max_page > 1)
 
 ?>
 
-<script>
+<script type="text/javascript">
 function gdsrAddNewMulti() {
     window.location = "<?php echo $url_edit."munew"; ?>";
 }
@@ -80,7 +80,7 @@ function gdsrAddNewMulti() {
         echo '<tr id="multi-'.$row->multi_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->multi_id.'" type="checkbox"></th>';
         echo '<td>'.$row->multi_id.'</td>';
-        echo '<td><a href="'.$url_edit.'muedit&id='.$row->multi_id.'"><strong>'.$row->name.'</strong></a></td>';
+        echo '<td><a href="'.$url_edit.'muedit&amp;id='.$row->multi_id.'"><strong>'.$row->name.'</strong></a></td>';
         echo '<td>';
         switch ($row->auto_insert) {
             default:
@@ -97,7 +97,7 @@ function gdsrAddNewMulti() {
                 _e("All Pages", "gd-star-rating");
                 break;
             case "allp":
-                _e("All Posts & Pages", "gd-star-rating");
+                _e("All Posts &amp; Pages", "gd-star-rating");
                 break;
         }
         if ($row->auto_insert != "none") {
@@ -131,16 +131,16 @@ function gdsrAddNewMulti() {
         echo '<td>';
             $rvw_counter = intval(GDSRDBMulti::get_usage_count_post_reviews($row->multi_id));
             if ($rvw_counter > 0)
-                $rvw_counter = sprintf('<a href="./admin.php?page=gd-star-rating-multi-sets&gdsr=murpost&sid=%s"><strong style="color: red;">%s</strong></a>', $row->multi_id, $rvw_counter);
+                $rvw_counter = sprintf('<a href="./admin.php?page=gd-star-rating-multi-sets&amp;gdsr=murpost&amp;sid=%s"><strong style="color: red;">%s</strong></a>', $row->multi_id, $rvw_counter);
             echo sprintf("[ <strong>%s</strong> ] %s", $rvw_counter, __("Posts", "gd-star-rating"));
         echo '</td>';
         echo '<td>';
             $usg_counter = intval(GDSRDBMulti::get_usage_count_posts($row->multi_id));
             $vtr_counter = intval(GDSRDBMulti::get_usage_count_voters($row->multi_id));
             if ($usg_counter > 0)
-                $usg_counter = sprintf('<a href="./admin.php?page=gd-star-rating-multi-sets&gdsr=murpost&sid=%s"><strong style="color: red;">%s</strong></a>', $row->multi_id, $usg_counter);
+                $usg_counter = sprintf('<a href="./admin.php?page=gd-star-rating-multi-sets&amp;gdsr=murpost&amp;sid=%s"><strong style="color: red;">%s</strong></a>', $row->multi_id, $usg_counter);
             if ($vtr_counter > 0)
-                $vtr_counter = sprintf('<a href="./admin.php?page=gd-star-rating-multi-sets&gdsr=murset&sid=%s"><strong style="color: red;">%s</strong></a>', $row->multi_id, $vtr_counter);
+                $vtr_counter = sprintf('<a href="./admin.php?page=gd-star-rating-multi-sets&amp;gdsr=murset&amp;sid=%s"><strong style="color: red;">%s</strong></a>', $row->multi_id, $vtr_counter);
             echo sprintf("[ <strong>%s</strong> ] %s<br />", $usg_counter, __("Posts", "gd-star-rating"));
             echo sprintf("[ <strong>%s</strong> ] %s", $vtr_counter, __("Voters", "gd-star-rating"));
         echo '</td>';

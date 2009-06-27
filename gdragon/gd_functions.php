@@ -30,7 +30,7 @@ if (!class_exists('gdFunctionsGDSR')) {
     class gdFunctionsGDSR {
         function get_update_url($options, $url) {
             global $wp_version;
-            $url = sprintf("http://info.dev4press.com/update/index.php?ver=%s&pdt=%s&blg=%s&wpv=%s",
+            $url = sprintf("http://info.dev4press.com/update/index.php?ver=%s&amp;pdt=%s&amp;blg=%s&amp;wpv=%s",
                 $options["version"], urlencode($options["product_id"]), urlencode($url), urlencode($wp_version));
             return $url;
         }
@@ -243,31 +243,31 @@ if (!class_exists('gdFunctionsGDSR')) {
                 if ($page == $current_page)
                     $render.= sprintf('<span class="page-numbers current">%s</span>', $page);
                 else
-                    $render.= sprintf('<a class="page-numbers" href="%s&%s=%s">%s</a>', $url, $query, $page, $page);
+                    $render.= sprintf('<a class="page-numbers" href="%s&amp;%s=%s">%s</a>', $url, $query, $page, $page);
                 if ($page == $break_first)
                     $render.= "... ";
             }
 
-            if ($current_page > 1) $render.= sprintf('<a class="next page-numbers" href="%s&%s=%s">Previous</a>', $url, $query, $current_page - 1);
-            if ($current_page < $total_pages) $render.= sprintf('<a class="next page-numbers" href="%s&%s=%s">Next</a>', $url, $query, $current_page + 1);
+            if ($current_page > 1) $render.= sprintf('<a class="next page-numbers" href="%s&amp;%s=%s">Previous</a>', $url, $query, $current_page - 1);
+            if ($current_page < $total_pages) $render.= sprintf('<a class="next page-numbers" href="%s&amp;%s=%s">Next</a>', $url, $query, $current_page + 1);
 
             return $render;
         }
 
         function column_sort_vars($column, $sort_order, $sort_column) {
-            $col["url"] = '&sc='.$column;
+            $col["url"] = '&amp;sc='.$column;
             $col["cls"] = '';
             if ($sort_column == $column) {
                 if ($sort_order == "asc") {
-                    $col["url"].= '&so=desc';
+                    $col["url"].= '&amp;so=desc';
                     $col["cls"] = ' class="sort-order-up"';
                 }
                 else {
-                    $col["url"].= '&so=asc';
+                    $col["url"].= '&amp;so=asc';
                     $col["cls"] = ' class="sort-order-down"';
                 }
             }
-            else $col["url"].= '&so=asc';
+            else $col["url"].= '&amp;so=asc';
             return $col;
         }
 

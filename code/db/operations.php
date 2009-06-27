@@ -174,7 +174,7 @@ class GDSRDB {
             $visitor_rating = @number_format($row->visitor_votes / $row->visitor_voters, 1);
             $row->rating_visitors = $visitor_rating;
             $votes_v = '<strong><span style="color: red">'.$visitor_rating.'</span></strong>';
-            $count_v = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=article&vg=visitors"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $row->visitor_voters);
+            $count_v = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=article&amp;vg=visitors"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $row->visitor_voters);
         }
 
         $votes_u = '/';
@@ -183,7 +183,7 @@ class GDSRDB {
             $user_rating = @number_format($row->user_votes / $row->user_voters, 1);
             $row->rating_users = $user_rating;
             $votes_u = '<strong><span style="color: red">'.$user_rating.'</span></strong>';
-            $count_u = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=article&vg=users"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $row->user_voters);
+            $count_u = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=article&amp;vg=users"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $row->user_voters);
         }
 
         if ($row->review == -1 || $row->review == '') $row->review = "/";
@@ -198,13 +198,13 @@ class GDSRDB {
             $total_rating =  @number_format($total_votes / $total_voters, 1);
             $row->rating_total = $total_rating;
             $votes_t = '<strong><span style="color: red">'.$total_rating.'</span></strong>';
-            $count_t = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=article&vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $total_voters);
+            $count_t = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=article&amp;vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $total_voters);
         }
 
         $row->total = $count_t.__("rating", "gd-star-rating").': <strong>'.$votes_t.'</strong><br />[ '.$row->views.' ] '.__("views", "gd-star-rating");
         $row->votes = $count_v.__("visitors", "gd-star-rating").': <strong>'.$votes_v.'</strong><br />'.$count_u.__("users", "gd-star-rating").': <strong>'.$votes_u.'</strong>';
 
-        $row->title = sprintf('<a href="./post.php?action=edit&post=%s">%s</a>', $row->pid, $row->post_title);
+        $row->title = sprintf('<a href="./post.php?action=edit&amp;post=%s">%s</a>', $row->pid, $row->post_title);
 
         return $row;
     }
@@ -307,7 +307,7 @@ class GDSRDB {
             $visitor_rating = @number_format($row->visitor_votes / $row->visitor_voters, 1);
             $row->rating_visitors = $visitor_rating;
             $votes_v = '<strong><span style="color: red">'.$visitor_rating.'</span></strong>';
-            $count_v = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=comment&vg=visitors"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $row->visitor_voters);
+            $count_v = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=comment&amp;vg=visitors"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $row->visitor_voters);
         }
 
         $votes_u = '/';
@@ -316,7 +316,7 @@ class GDSRDB {
             $user_rating = @number_format($row->user_votes / $row->user_voters, 1);
             $row->rating_users = $user_rating;
             $votes_u = '<strong><span style="color: red">'.$user_rating.'</span></strong>';
-            $count_u = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=comment&vg=users"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $row->user_voters);
+            $count_u = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=comment&amp;vg=users"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $row->user_voters);
         }
 
         $total_votes = $row->visitor_votes + $row->user_votes;
@@ -328,7 +328,7 @@ class GDSRDB {
             $total_rating = @number_format($total_votes / $total_voters, 1);
             $row->rating_total = $total_rating;
             $votes_t = '<strong><span style="color: red">'.$total_rating.'</span></strong>';
-            $count_t = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=comment&vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $total_voters);
+            $count_t = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=comment&amp;vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $total_voters);
         }
 
         $row->total = $count_t.__("votes", "gd-star-rating").': <strong>'.$votes_t.'</strong>';

@@ -1,13 +1,13 @@
 <?php
 
     if ($use_nonce)
-        $nonce = sprintf("&_wpnonce=%s", wp_create_nonce('gdsr_chart_l8'));
+        $nonce = sprintf("&amp;_wpnonce=%s", wp_create_nonce('gdsr_chart_l8'));
     else
         $nonce = "";
 
 ?>
 
-<script>
+<script type="text/javascript">
 function generateUrl(id) {
     var chartUrl = '<?php echo STARRATING_CHART_URL."chart_line_articles.php"; ?>';
     var chartNon = '<?php echo $nonce; ?>';

@@ -1,5 +1,5 @@
 
-<div id="gdpt_server" class="postbox gdrgrid frontright">
+<div class="postbox gdrgrid frontright">
     <h3 class="hndle"><span>GD Star Rating</span></h3>
     <div class="inside">
         <p class="sub"><?php _e("Info", "gd-star-rating"); ?></p>
@@ -64,7 +64,7 @@
         </div>
     </div>
 </div>
-<div id="gdpt_server" class="postbox gdrgrid frontright">
+<div class="postbox gdrgrid frontright">
     <h3 class="hndle"><span><?php _e("GD WordPress Plugins", "gd-star-rating"); ?></span></h3>
     <div class="inside">
         <div class="table">
@@ -93,7 +93,7 @@
         </div>
     </div>
 </div>
-<div id="gdpt_server" class="postbox gdrgrid frontright">
+<div class="postbox gdrgrid frontright">
     <h3 class="hndle"><span>Golden Dragon</span></h3>
     <div class="inside">
         <div class="table">

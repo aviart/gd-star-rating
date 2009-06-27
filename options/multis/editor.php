@@ -12,7 +12,7 @@ else {
 $review_set = $options["mur_review_set"];
 
 ?>
-<script>
+<script type="text/javascript">
     function gdsrMultiCats(el) {
         document.getElementById("gdsr_ms_autocats").style.display = el == "cats" ? "block" : "none";
     }
@@ -57,7 +57,7 @@ $review_set = $options["mur_review_set"];
                         <option value="cats"<?php echo $set->auto_insert == 'cats' ? ' selected="selected"' : ''; ?>><?php _e("Category Based", "gd-star-rating"); ?></option>
                         <option value="apst"<?php echo $set->auto_insert == 'apst' ? ' selected="selected"' : ''; ?>><?php _e("All Posts", "gd-star-rating"); ?></option>
                         <option value="apgs"<?php echo $set->auto_insert == 'apgs' ? ' selected="selected"' : ''; ?>><?php _e("All Pages", "gd-star-rating"); ?></option>
-                        <option value="allp"<?php echo $set->auto_insert == 'allp' ? ' selected="selected"' : ''; ?>><?php _e("All Posts & Pages", "gd-star-rating"); ?></option>
+                        <option value="allp"<?php echo $set->auto_insert == 'allp' ? ' selected="selected"' : ''; ?>><?php _e("All Posts &amp; Pages", "gd-star-rating"); ?></option>
                     </select>
                 </td>
             </tr>
