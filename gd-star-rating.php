@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.4.7
+Version: 1.5.0
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -143,7 +143,6 @@ if (!class_exists('GDStarRating')) {
             $this->tabpage = "front";
             $this->log_file = STARRATING_LOG_PATH;
 
-            $this->active_wp_page();
             $this->plugin_path_url();
             $this->install_plugin();
             $this->actions_filters();
@@ -960,13 +959,11 @@ if (!class_exists('GDStarRating')) {
             $this->ginc = get_option('gd-star-rating-inc');
             $this->bots = get_option('gd-star-rating-bots');
 
-            if ($this->o["build"] < $this->default_options["build"]) {
+            if ($this->o["build"] < $this->default_options["build"] || !is_array($this->o)) {
                 if (is_object($this->g)) {
                     $this->g = $this->gfx_scan();
                     update_option('gd-star-rating-gfx', $this->g);
                 }
-
-                GDSRDatabase::init_categories_data();
 
                 gdDBInstallGDSR::delete_tables(STARRATING_PATH);
                 gdDBInstallGDSR::create_tables(STARRATING_PATH);
@@ -987,6 +984,8 @@ if (!class_exists('GDStarRating')) {
                 $this->o["status"] = $this->default_options["status"];
                 $this->o["build"] = $this->default_options["build"];
                 if ($this->o["css_last_changed"] == 0) $this->o["css_last_changed"] = time();
+
+                GDSRDatabase::init_categories_data();
 
                 update_option('gd-star-rating', $this->o);
             }
@@ -1074,16 +1073,6 @@ if (!class_exists('GDStarRating')) {
                 }
             }
             return $data;
-        }
-
-        /**
-         * Gest the name of active plugin page
-         */
-        function active_wp_page() {
-            if (stripos($_GET["page"], "gd-star-rating") === false)
-                $this->active_wp_page = false;
-            else
-                $this->active_wp_page = true;
         }
 
         /**

@@ -189,11 +189,13 @@ class GDSRDatabase {
 
     function add_category_defaults($ids, $ids_array, $items) {
         global $wpdb, $table_prefix;
-        $rows = $wpdb->get_results(sprintf("select category_id from %sgdsr_data_category where category_id in %s", $table_prefix, $ids), ARRAY_N);
+        $sql = sprintf("select category_id from %sgdsr_data_category where category_id in %s", $table_prefix, $ids);
+        $rows = $wpdb->get_results($sql, ARRAY_N);
         if (count($rows) == 0) $rows = array();
         foreach ($ids_array as $id) {
-            if (!in_array($id, $rows)) 
+            if (!in_array($id, $rows)) {
                 GDSRDatabase::add_category_default($id, $items[$id] > 0);
+            }
         }
     }
 
@@ -204,6 +206,7 @@ class GDSRDatabase {
 
         $sql = sprintf("INSERT INTO %sgdsr_data_category (category_id, rules_articles, rules_comments, moderate_articles, moderate_comments, expiry_type, expiry_value, cmm_integration_set) VALUES (%s, %s, '', 0)",
                 $table_prefix, $id, $values);
+        print_r($sql);
         $wpdb->query($sql);
     }
 
