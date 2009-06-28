@@ -112,8 +112,9 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 == Changelog ==
 = 1.4.8 =
-* Plugins admin pages code cleanup
-* Installation and upgrade bugs fixed
+* Extended rendering templates, excerpt supported for results
+* Plugins admin pages HTML and JavaScript code cleanup
+* Several reported, installation and upgrade bugs fixed
 
 = 1.4.7 =
 * Several minor (and not so minor) bugs fixed

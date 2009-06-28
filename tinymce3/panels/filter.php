@@ -27,6 +27,10 @@
         <td class="gdsrleft"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
         <td class="gdsrright"><input class="widefat widnumb" style="text-align: right;" type="text" size="8" id="srMinVotes" name="srMinVotes" value="5" /></td>
       </tr>
+      <tr>
+        <td class="gdsrleft"><?php _e("Excerpt words", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright"><input class="widefat widnumb" style="text-align: right;" type="text" size="8" id="srMinExcerpt" name="srMinExcerpt" value="10" /></td>
+      </tr>
     </table>
 </fieldset>
 
