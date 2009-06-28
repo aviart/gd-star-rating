@@ -125,7 +125,7 @@ function insertStarRatingCode() {
     } else if (shortcode == 'starreviewmulti') {
         tagtext = "[starreviewmulti id=";
         funtext = "wp_gdsr_show_multi_review(" + document.getElementById('srMultiReviewSet').value;
-        funtext = funtext + ", " + document.getElementById('srTemplateRMB').value;
+        funtext = funtext + ", " + document.getElementById('srTemplateRMB').value + ", 0";
         tagtext = tagtext + document.getElementById('srMultiReviewSet').value;
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRMB').value;
         if (document.getElementById('srStarsStyleMRREl').value != 'oxygen') {
@@ -277,6 +277,10 @@ function insertStarRatingCode() {
         if (document.getElementById('srMinVotes').value != 5) {
             tagtext = tagtext + " min_votes=" + document.getElementById('srMinVotes').value;
             funa.push("'min_votes' => " + document.getElementById('srMinVotes').value);
+        }
+        if (document.getElementById('srMinExcerpt').value != 10) {
+            tagtext = tagtext + " excerpt_words=" + document.getElementById('srMinExcerpt').value;
+            funa.push("'excerpt_words' => " + document.getElementById('srMinExcerpt').value);
         }
         if (document.getElementById('srDataSource').value != 'standard') {
             tagtext = tagtext + " source='" + document.getElementById('srDataSource').value + "'";

@@ -195,7 +195,7 @@ class GDSRX {
         $grouping = $widget["grouping"];
         $cats = $widget["category"];
         $cats_in = $widget["category_toponly"] == 0;
-        if ($cats_in) {
+        if ($cats_in && $cats != "0" && $cats != "") {
             $subs = gdWPGDSR::get_subcategories_ids($widget["category"]);
             $subs[] = $cats;
             $cats = join(",", $subs);
