@@ -2532,7 +2532,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, $allow_vote, $votes, $rd_post_id, $set, $rd_unit_width, $this->o["mur_header_text"], $tags_css, $rd_unit_style_avg, $rd_unit_width_avg, $post_data->expiry_type, $remaining, $deadline, $mur_button, $this->o["mur_button_text"], $debug, $this->loader_multis);
         }
 
-        function render_multi_custom_values($template_id, $multi_set_id, $custom_id, $values, $header_text = '', $override = array(), $tags_css = array()) {
+        function render_multi_custom_values($template_id, $multi_set_id, $custom_id, $votes, $header_text = '', $override = array(), $tags_css = array()) {
             $set = gd_get_multi_set($multi_set_id);
 
             $rd_unit_width = $override["size"];
