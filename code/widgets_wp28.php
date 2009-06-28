@@ -24,13 +24,13 @@ if (class_exists("WP_Widget")) {
 
             $instance['title'] = strip_tags(stripslashes($new_instance['title']));
 
-            $instance['tpl_title_length'] = $new_instance['tpl_title_length'];
             $instance['template_id'] = $new_instance['template_id'];
-
             $instance['source'] = $new_instance['source'];
             $instance['source_set'] = $new_instance['source_set'];
 
-            $instance['rows'] = $new_instance['rows'];
+            $instance['tpl_title_length'] = intval($new_instance['tpl_title_length']);
+            $instance['excerpt_words'] = intval($new_instance['excerpt_words']);
+            $instance['rows'] = intval($new_instance['rows']);
             $instance['min_votes'] = $new_instance['min_votes'];
             $instance['select'] = $new_instance['select'];
             $instance['grouping'] = $new_instance['grouping'];

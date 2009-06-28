@@ -286,7 +286,7 @@ class GDSRX {
             if ($widget["publish_days"] > 0)
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
-        if ($widget["image_from"] == "content") $select = "p.post_content, ".$select;
+        $select = "p.post_content, p.post_excerpt, '' as excerpt, ".$select;
         $select.= ", d.average_review as review";
 
         $col = $widget["column"];
@@ -410,7 +410,7 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
             if ($widget["publish_days"] > 0)
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
-        if ($widget["image_from"] == "content") $select = "p.post_content, ".$select;
+        $select = "p.post_content, p.post_excerpt, '' as excerpt, ".$select;
 
         $col = $widget["column"];
         if ($col == "title") $col = $col_title;
