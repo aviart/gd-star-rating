@@ -128,6 +128,7 @@ $t->add_template("ETR", "%TABLE_ROW_CLASS%");
 $t->add_element("%ELEMENT_NAME%", __("single element name", "gd-star-rating"));
 $t->add_element("%ELEMENT_ID%", __("single element id", "gd-star-rating"));
 $t->add_element("%ELEMENT_STARS%", __("single element stars", "gd-star-rating"));
+$t->add_element("%ELEMENT_VALUE%", __("single element value", "gd-star-rating"));
 $t->add_element("%TABLE_ROW_CLASS%", __("class for alternating row class", "gd-star-rating"));
 $t->add_part(__("Item", "gd-star-rating"), "item", "", "all", "area");
 $tpls->add_template($t);

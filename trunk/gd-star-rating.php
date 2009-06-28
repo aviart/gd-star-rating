@@ -2402,6 +2402,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
 
             $rd_unit_width = $override["size"];
             $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
+            $rd_unit_width_avg = $override["average_size"];
+            $rd_unit_style_avg = $this->is_ie6 ? $override["average_stars_ie6"] : $override["average_stars"];
 
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
@@ -2527,7 +2529,18 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $mur_button = $this->o["mur_button_active"] == 1;
             if (!$allow_vote) $mur_button = false;
 
-            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, $allow_vote, $votes, $rd_post_id, $set, $rd_unit_width, $this->o["mur_header_text"], $tags_css, $override["average_stars"], $override["average_size"], $post_data->expiry_type, $remaining, $deadline, $mur_button, $this->o["mur_button_text"], $debug, $this->loader_multis);
+            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, $allow_vote, $votes, $rd_post_id, $set, $rd_unit_width, $this->o["mur_header_text"], $tags_css, $rd_unit_style_avg, $rd_unit_width_avg, $post_data->expiry_type, $remaining, $deadline, $mur_button, $this->o["mur_button_text"], $debug, $this->loader_multis);
+        }
+
+        function render_multi_custom_values($template_id, $multi_set_id, $custom_id, $values, $header_text = '', $override = array(), $tags_css = array()) {
+            $set = gd_get_multi_set($multi_set_id);
+
+            $rd_unit_width = $override["size"];
+            $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
+            $rd_unit_width_avg = $override["average_size"];
+            $rd_unit_style_avg = $this->is_ie6 ? $override["average_stars_ie6"] : $override["average_stars"];
+
+            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, false, $votes, $custom_id, $set, $rd_unit_width, $header_text, $tags_css, $rd_unit_style_avg, $rd_unit_width_avg);
         }
         // rendering
 

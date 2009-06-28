@@ -313,7 +313,8 @@ class gdsrWidgets {
                 $options['source'] = $posted['source'];
                 $options['source_set'] = $posted['source_set'];
 
-                $options['rows'] = $posted['rows'];
+                $options['excerpt_words'] = intval($posted['excerpt_words']);
+                $options['rows'] = intval($posted['rows']);
                 $options['min_votes'] = $posted['min_votes'];
                 $options['select'] = $posted['select'];
                 $options['grouping'] = $posted['grouping'];

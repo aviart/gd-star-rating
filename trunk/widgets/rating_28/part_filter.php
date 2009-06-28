@@ -44,6 +44,11 @@
     <td align="right"><input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $this->get_field_name('tpl_title_length'); ?>" id="<?php echo $this->get_field_id('tpl_title_length'); ?>" value="<?php echo $instance["tpl_title_length"]; ?>" /></td>
   </tr>
   <tr>
+    <td width="100"></td>
+    <td nowrap="nowrap"><?php _e("Number of words for excerpt", "gd-star-rating"); ?>:</td>
+    <td align="right"><input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $this->get_field_name('excerpt_words'); ?>" id="<?php echo $this->get_field_id('excerpt_words'); ?>" value="<?php echo $instance["excerpt_words"]; ?>" /></td>
+  </tr>
+  <tr>
     <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
     <td align="right">

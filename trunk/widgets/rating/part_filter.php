@@ -44,6 +44,11 @@
     <td align="right"><input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[title_max]" id="gdstarr-titlemax" value="<?php echo $wpno["tpl_title_length"]; ?>" /></td>
   </tr>
   <tr>
+    <td width="100"></td>
+    <td nowrap="nowrap"><?php _e("Number of words for excerpt", "gd-star-rating"); ?>:</td>
+    <td align="right"><input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[excerpt_words]" id="gdstarr-excerptwords" value="<?php echo $wpno["excerpt_words"]; ?>" /></td>
+  </tr>
+  <tr>
     <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
     <td align="right">

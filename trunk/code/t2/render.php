@@ -41,6 +41,16 @@ class GDSRRenderT2 {
         return $wpdb->get_results($sql);
     }
 
+    function prepare_excerpt($length, $r) {
+        $text = trim($r->post_excerpt);
+        if ($text == "") {
+            $text = str_replace(']]>', ']]&gt;', $r->post_content);
+            $text = strip_tags($text);
+        }
+        $text = gdFunctionsGDSR::trim_to_words($text, $length);
+        return $text;
+    }
+
     function prepare_wsr($widget, $template) {
         global $gdsr;
         $bayesian_calculated = !(strpos($template, "%BAYES_RATING%") === false);
@@ -117,6 +127,7 @@ class GDSRRenderT2 {
             $all_rows = array();
             foreach ($new_rows as $row) {
                 $row->table_row_class = $tr_class;
+                $row->excerpt = GDSRRenderT2::prepare_excerpt($widget["excerpt_words"], $row);
                 if (strlen($row->title) > $widget["tpl_title_length"] - 3 && $widget["tpl_title_length"] > 0)
                     $row->title = substr($row->title, 0, $widget["tpl_title_length"] - 3)." ...";
 
@@ -332,6 +343,7 @@ class GDSRRenderT2 {
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
             $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
+            $single_row = str_replace('%ELEMENT_VALUE%', $votes[$i]["rating"], $single_row);
             $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"]), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
@@ -385,6 +397,7 @@ class GDSRRenderT2 {
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
             $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
+            $single_row = str_replace('%ELEMENT_VALUE%', 0, $single_row);
             $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars, true, 0, "", true), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
@@ -422,6 +435,7 @@ class GDSRRenderT2 {
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
             $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
+            $single_row = str_replace('%ELEMENT_VALUE%', $votes[$i]["rating"], $single_row);
             $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"], "", true), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
@@ -618,6 +632,7 @@ class GDSRRenderT2 {
 
                 $rt = str_replace('%RATING%', $row->rating, $rt);
                 $rt = str_replace('%MAX_RATING%', $gdsr->o["stars"], $rt);
+                $rt = str_replace('%EXCERPT%', $row->excerpt, $rt);
                 $rt = str_replace('%VOTES%', $row->voters, $rt);
                 $rt = str_replace('%REVIEW%', $row->review, $rt);
                 $rt = str_replace('%MAX_REVIEW%', $gdsr->o["review_stars"], $rt);
@@ -776,6 +791,7 @@ class GDSRRenderT2 {
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
             $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
+            $single_row = str_replace('%ELEMENT_VALUE%', $votes[$i]["rating"], $single_row);
             $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::render_static_stars($style, $size, $set->stars, $votes[$i]["rating"]), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
