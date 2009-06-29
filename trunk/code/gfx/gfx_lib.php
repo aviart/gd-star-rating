@@ -31,6 +31,7 @@ class GDgfxLib {
                 break;
             }
         }
+        if (is_null($result)) wp_gdsr_dump("INVALID_SET_REQUEST", "Requested set name: ".$folder);
         return $result;
     }
 
