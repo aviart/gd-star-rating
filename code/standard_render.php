@@ -48,7 +48,7 @@ class GDSRRender {
         global $gdsr;
 
         $gfx = $gdsr->g->find_stars($star_style);
-        $star_path = $gfx->get_url($star_size);
+        $star_path = is_null($gfx) ? "" : $gfx->get_url($star_size);
         $full_width = $star_size * $star_max;
         $rate_width = $star_size * $rating;
         

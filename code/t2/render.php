@@ -154,7 +154,7 @@ class GDSRRenderT2 {
                     $t = $trends[$id];
                     switch ($widget["trends_rating"]) {
                         case "img":
-                            $rate_url = $set_rating->get_url();
+                            $rate_url = is_null($set_rating) ? "" : $set_rating->get_url();
                             $image_loc = "center";
                             switch ($t->trend_rating) {
                                 case -1:
@@ -186,7 +186,7 @@ class GDSRRenderT2 {
                     }
                     switch ($widget["trends_voting"]) {
                         case "img":
-                            $vote_url = $set_voting->get_url();
+                            $vote_url = is_null($set_voting) ? "" : $set_voting->get_url();
                             $image_loc = "center";
                             switch ($t->trend_voting) {
                                 case -1:

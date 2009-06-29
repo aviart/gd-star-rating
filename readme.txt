@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.4.8
+Version: 1.5.0
 Tags: vote, ratings, integration, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review, multi
 Requires at least: 2.5
 Tested up to: 2.8.1
@@ -111,6 +111,9 @@ Plugin has debug into log file feature built in. Information on activating this 
 7. Example multi rating block
 
 == Changelog ==
+= 1.5.0 =
+* Few more bugs fixed
+
 = 1.4.8 =
 * Extended rendering templates, excerpt supported for results
 * Plugins admin pages HTML and JavaScript code cleanup
