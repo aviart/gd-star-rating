@@ -222,11 +222,12 @@ class GDSRDatabase {
         GDSRDatabase::add_category_defaults("(".join(", ", $ids_array).")", $ids_array, $items);
     }
 
-    function get_categories_data($cats) {
+    function get_categories_data($cats = array()) {
         global $wpdb, $table_prefix;
 
-        $sql = sprintf("SELECT x.parent, d.* FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id left join %sgdsr_data_category d on d.category_id = x.term_id left join %sgdsr_multis ms on ms.multi_id = d.cmm_integration_set where taxonomy = 'category' and x.term_id in (%s) order by x.parent desc, d.cmm_integration_set desc, x.term_id asc",
-                $table_prefix, $table_prefix, $table_prefix, $table_prefix, join(", ", $cats));
+        $where = count($cats) > 0 ? sprintf(" and x.term_id in (%s)", join(", ", $cats)) : "";
+        $sql = sprintf("SELECT x.parent, d.* FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id left join %sgdsr_data_category d on d.category_id = x.term_id left join %sgdsr_multis ms on ms.multi_id = d.cmm_integration_set where taxonomy = 'category'%s order by x.parent desc, d.cmm_integration_set desc, x.term_id asc",
+                $table_prefix, $table_prefix, $table_prefix, $table_prefix, $where);
         return $wpdb->get_results($sql);
     }
 

@@ -60,6 +60,7 @@ if (!class_exists('GDStarRating')) {
         var $safe_mode = false;
         var $is_cached = false;
         var $widget_post_id;
+        var $all_cats_data = array();
 
         var $loader_article = "";
         var $loader_comment = "";
@@ -1146,6 +1147,7 @@ if (!class_exists('GDStarRating')) {
 
             $this->init_operations();
             $this->init_templates();
+            wp_enqueue_script('jquery');
 
             if (!is_admin()) {
                 $this->is_bot = GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT'], $this->bots);
@@ -1153,6 +1155,16 @@ if (!class_exists('GDStarRating')) {
                 $this->render_wait_article();
                 if ($this->o["comments_active"] == 1) $this->render_wait_comment();
                 if ($this->o["multis_active"] == 1) $this->render_wait_multis();
+
+                if ($this->o["external_javascript"] == 1) {
+                    wp_enqueue_script("gdsr_script", plugins_url('gd-star-rating/script.js.php'), array(), $this->o["version"]);
+                }
+                if ($this->o["external_rating_css"] == 1) {
+                    wp_enqueue_style("gdsr_style_main", $this->include_rating_css(true, true), array(), $this->o["version"]);
+                }
+                if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
+                    wp_enqueue_style("gdsr_style_xtra", $this->plugin_xtra_url."css/rating.css", array(), $this->o["version"]);
+                }
             }
             else $this->cache_cleanup();
 
@@ -1166,7 +1178,6 @@ if (!class_exists('GDStarRating')) {
                 $this->ginc = $ginc;
             }
 
-            wp_enqueue_script('jquery');
             if ($this->admin_plugin) {
                 if ($this->wp_version >= 26) add_thickbox();
                 else wp_enqueue_script("thickbox");
@@ -1174,10 +1185,13 @@ if (!class_exists('GDStarRating')) {
                 if (!$this->safe_mode)
                     $this->extra_folders = GDSRHelper::create_folders($this->wp_version);
             }
-            $this->l = get_locale();
-            if(!empty($this->l)) {
-                $moFile = dirname(__FILE__)."/languages/gd-star-rating-".$this->l.".mo";
-                if (@file_exists($moFile) && is_readable($moFile)) load_textdomain('gd-star-rating', $moFile);
+
+            if (is_admin) {
+                $this->l = get_locale();
+                if(!empty($this->l)) {
+                    $moFile = dirname(__FILE__)."/languages/gd-star-rating-".$this->l.".mo";
+                    if (@file_exists($moFile) && is_readable($moFile)) load_textdomain('gd-star-rating', $moFile);
+                }
             }
 
             $this->is_cached = $this->o["cache_active"];
@@ -1448,7 +1462,7 @@ if (!class_exists('GDStarRating')) {
             echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
         }
 
-        function include_rating_css($external = true) {
+        function include_rating_css($external = true, $return = false) {
             $elements = array();
             $presizes = "a".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
             $presizes.= "i".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
@@ -1470,7 +1484,8 @@ if (!class_exists('GDStarRating')) {
             $t = $this->o["css_cache_active"] == 1 ? $this->o["css_last_changed"] : 0;
             if ($external) {
                 $url = $this->plugin_url.'css/gdsr.css.php?t='.urlencode($t).'&amp;s='.urlencode($q);
-                echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
+                if ($return) return $url;
+                else echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
             }
             else {
                 echo('<style type="text/css" media=screen>');
@@ -1491,21 +1506,14 @@ if (!class_exists('GDStarRating')) {
          * WordPress action for adding blog header contents
          */
         function wp_head() {
-            $include_cmm_review = $this->o["comments_review_active"] == 1;
-            $include_mur_rating = $this->o["multis_active"] == 1;
             if (is_feed()) return;
 
-            if ($this->o["external_rating_css"] == 1) $this->include_rating_css();
-            else $this->include_rating_css(false);
+            $include_cmm_review = $this->o["comments_review_active"] == 1;
+            $include_mur_rating = $this->o["multis_active"] == 1;
 
-            echo("\r\n");
-            if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
-                echo('<link rel="stylesheet" href="'.$this->plugin_xtra_url.'css/rating.css" type="text/css" media="screen" />');
+            if ($this->o["external_rating_css"] == 0) $this->include_rating_css(false);
+            if ($this->o["external_javascript"] == 0) {
                 echo("\r\n");
-            }
-            if ($this->o["external_javascript"] == 1)
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'script.js.php"></script>');
-            else {
                 echo('<script type="text/javascript">');
                 $nonce = $this->use_nonce ? wp_create_nonce('gdsr_ajax_r8') : "";
                 $button_active = $this->o["mur_button_active"] == 1;
@@ -1515,11 +1523,10 @@ if (!class_exists('GDStarRating')) {
                     include ($gdsr->plugin_path."code/js/comments.php");
                 echo('// ]]>');
                 echo('</script>');
+                echo("\r\n");
             }
-            echo("\r\n");
 
             $this->custom_actions('wp_head');
-
             if ($this->o["ie_opacity_fix"] == 1) GDSRHelper::ie_opacity_fix();
         }
         // install
