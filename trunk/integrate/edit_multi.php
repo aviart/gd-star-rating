@@ -5,6 +5,7 @@
 ?>
     <div class="gdsr-mur-sets-background">
     <input type="hidden" name="gdsrmultiactive" value="<?php echo $multi_id; ?>" />
+    <input type="hidden" id="gdsr_post_edit_mur" name="gdsr_post_edit_mur" value="edit" />
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
         <td style="padding-top: 3px;"><?php _e("Set", "gd-star-rating"); ?>:</td>

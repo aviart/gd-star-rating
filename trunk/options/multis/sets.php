@@ -17,7 +17,7 @@ $url_pos = strpos($url, "&gdsr=");
 if (!($url_pos === false))
     $url = substr($url, 0, $url_pos);
 
-$url_edit = $url."&amp;gdsr=";
+$url_edit = $url."&gdsr=";
 $url.= "&amp;gdsr=mulist";
 
 $page_id = 1;

@@ -910,7 +910,7 @@ if (!class_exists('GDStarRating')) {
         function saveedit_post($post_id) {
             $post_id = $_POST["post_ID"];
 
-            if ($_POST['gdsr_post_edit'] == "edit") {
+            if ($_POST['gdsr_post_edit'] == "edit" || $_POST['gdsr_post_edit_mur'] == "edit") {
                 if ($this->o["integrate_post_edit"] == 1) {
                     $set_id = $_POST["gdsrmultiactive"];
                     if ($set_id > 0) {
