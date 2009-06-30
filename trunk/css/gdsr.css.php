@@ -27,10 +27,13 @@ if (!isset($inclusion)) {
     $base_url_extra = "../../../gd-star-rating/";
     $t = isset($_GET["t"]) ? urldecode($_GET["t"]) : 0;
     $q = urldecode($_GET["s"]);
-    header("Content-Type: text/css");
+    ob_start ("ob_gzhandler");
+    header("Content-Type: text/css; charset: UTF-8");
 
     if ($t > 0) {
         $gmt_mtime = gmdate('D, d M Y H:i:s', $t).' GMT';
+        header("Cache-control: must-revalidate");
+        header("Expires: ".gmdate("D, d M Y H:i:s", time() + 7*24*3600)." GMT");
         header("Last-Modified: ".$gmt_mtime);
         header('Etag: '.md5($t));
 

@@ -279,7 +279,7 @@ if (!class_exists('GDStarRating')) {
             $rating = GDSRDatabase::get_review($sett["post"]);
             if ($rating < 0) $rating = 0;
             return GDSRRenderT2::render_rsb($sett["tpl"], $rating, ($this->is_ie6 ? $this->o["review_style_ie6"] : $this->o["review_style"]), $this->o['review_size'], $this->o["review_stars"], $this->o["review_header_text"], $this->o["review_class_block"]);
-		}
+	}
 
         /**
         * Code for StarReviewMulti shortcode implementation
