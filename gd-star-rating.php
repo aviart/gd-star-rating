@@ -195,7 +195,7 @@ if (!class_exists('GDStarRating')) {
         *
         * @param array $atts
         */
-		function shortcode_starrater($atts = array()) {
+	function shortcode_starrater($atts = array()) {
             return $this->shortcode_starratingblock($atts);
 		}
 
