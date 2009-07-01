@@ -38,6 +38,7 @@ require_once(dirname(__FILE__)."/code/db/multi.php");
 require_once(dirname(__FILE__)."/code/gfx/charting.php");
 require_once(dirname(__FILE__)."/code/gfx/gfx_lib.php");
 require_once(dirname(__FILE__)."/code/gfx/generator.php");
+require_once(dirname(__FILE__)."/code/query.php");
 require_once(dirname(__FILE__)."/gdt2/classes.php");
 require_once(dirname(__FILE__)."/code/t2/render.php");
 require_once(dirname(__FILE__)."/code/widgets.php");
@@ -99,6 +100,7 @@ if (!class_exists('GDStarRating')) {
         var $e; // blank image
         var $i; // import
         var $g; // gfx
+        var $q; // query class instance
         var $ginc;
         var $bots;
 
@@ -141,6 +143,8 @@ if (!class_exists('GDStarRating')) {
             $this->default_widget_top = $gdd->default_widget_top;
             $this->default_widget = $gdd->default_widget;
             define('STARRATING_INSTALLED', $this->default_options["version"]." ".$this->default_options["status"]);
+
+            $this->q = new GDSRQuery();
 
             $this->tabpage = "front";
             $this->log_file = STARRATING_LOG_PATH;
@@ -696,6 +700,9 @@ if (!class_exists('GDStarRating')) {
             add_action('widgets_init', array(&$this, 'widgets_init'));
             add_action('admin_menu', array(&$this, 'admin_menu'));
             add_action('admin_head', array(&$this, 'admin_head'));
+
+            add_filter('query_vars', array($this->q, 'query_vars'));
+            add_action('pre_get_posts', array($this->q, 'pre_get_posts'));
 
             if ($this->o["integrate_post_edit"] == 1) {
                 if ($this->wp_version < 27) {

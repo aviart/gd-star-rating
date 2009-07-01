@@ -1,4 +1,9 @@
 <table class="form-table"><tbody>
+<tr><th scope="row"><?php _e("WP Query Object", "gd-star-rating"); ?></th>
+    <td>
+        <input type="checkbox" name="gdsr_wp_query_handler" id="gdsr_wp_query_handler"<?php if ($gdsr_options["wp_query_handler"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_wp_query_handler"><?php _e("Expand WP Query with new rating specific sorting and filtering.", "gd-star-rating"); ?></label>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Dashboard", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_integrate_dashboard" id="gdsr_integrate_dashboard"<?php if ($gdsr_options["integrate_dashboard"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard"><?php _e("Add summary rating widget to the administration dashboard.", "gd-star-rating"); ?></label>
