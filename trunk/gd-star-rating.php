@@ -60,7 +60,8 @@ if (!class_exists('GDStarRating')) {
         var $safe_mode = false;
         var $is_cached = false;
         var $widget_post_id;
-        var $all_cats_data = array();
+        var $cats_data_posts = array();
+        var $cats_data_cats = array();
 
         var $loader_article = "";
         var $loader_comment = "";
@@ -1420,12 +1421,53 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
+        function init_post_categories_data($post_id) {
+            if (count($this->cats_data_posts[$post_id]) == 0) {
+                $cats = wp_get_post_categories($post_id);
+                $this->cats_data_posts[$post_id] = GDSRDatabase::get_categories_data($cats);
+            }
+        }
+
+        function init_cats_categories_data($cat_id) {
+            if (count($this->cats_data_cats[$cat_id]) == 0) {
+                $this->cats_data_cats[$cat_id] = GDSRDatabase::get_categories_data(array($cat_id));
+            }
+        }
+
+        function get_post_rule_value($post_id, $rule = "rules_articles", $default = "default_voterules_articles") {
+            $this->init_post_categories_data($post_id);
+
+            $prn = 0;
+            $value = "";
+            foreach ($this->cats_data_posts[$post_id] as $cat) {
+                if ($cat->parent > 0 && $prn == 0) $prn = $cat->parent;
+                if ($cat->$rule != "" && $value == "") $value = $cat->$rule;
+                if ($value != "" || ($value != "" && $prn > 0)) break;
+            }
+
+            if ($value != "P") return $value;
+            if ($prn > 0) {
+                $value = $this->get_post_rule_value_recursion($prn, $rule);
+                if ($value != "P" && $value != "") return $value;
+            }
+            return $this->o[$default];
+        }
+
+        function get_post_rule_value_recursion($cat_id, $rule = "rules_articles") {
+            $this->init_cats_categories_data($cat_id);
+
+            if (count($this->cats_data_cats[$cat_id]) == 0) return 0;
+            $cat = $this->cats_data_cats[$cat_id][0];
+            if ($cat->$rule != "P" && $cat->$rule != "") return $cat->$rule;
+            if ($cat->parent > 0) return $this->get_post_rule_value_recursion($cat->parent, $rule);
+            return "";
+        }
+
         function get_multi_set($post_id) {
-            $cats = wp_get_post_categories($post_id);
-            $cats = GDSRDatabase::get_categories_data($cats);
+            $this->init_post_categories_data($post_id);
 
             $set = $prn = 0;
-            foreach ($cats as $cat) {
+            foreach ($this->cats_data_posts[$post_id] as $cat) {
                 if ($cat->parent > 0 && $prn == 0) $prn = $cat->parent;
                 if ($cat->cmm_integration_set > 0 && $set == 0) $set = $cat->cmm_integration_set;
                 if ($set > 0 || ($set > 0 && $prn > 0)) break;
@@ -1441,9 +1483,10 @@ if (!class_exists('GDStarRating')) {
         }
 
         function get_multi_set_recursion($cat_id) {
-            $cats = GDSRDatabase::get_categories_data(array($cat_id));
-            if (count($cats) == 0) return 0;
-            $cat = $cats[0];
+            $this->init_cats_categories_data($cat_id);
+
+            if (count($this->cats_data_cats[$cat_id]) == 0) return 0;
+            $cat = $this->cats_data_cats[$cat_id][0];
             if ($cat->cmm_integration_set > 0) return $cat->cmm_integration_set;
             if ($cat->parent > 0) return $this->get_multi_set_recursion($cat->parent);
             return 0;
@@ -1982,6 +2025,146 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         }
         // ccookies
 
+        // comment rating
+        /**
+        * Renders comment review stars
+        *
+        * @param int $value initial rating value
+        * @param bool $allow_vote render stars to support rendering or not to
+        */
+        function comment_review($value = 0, $allow_vote = true, $override = array()) {
+            $stars = $this->o["cmm_review_stars"];
+            $style = $override["style"] == "" ? $this->o["cmm_review_style"] : $override["style"];
+            $size = $override["size"] == 0 ? $this->o["cmm_review_size"] : $override["size"];
+            return GDSRRender::rating_stars_local($style, $size, $stars, $allow_vote, $value * $size);
+        }
+
+        /**
+        * Renders result of comment integration of standard rating for specific comment
+        *
+        * @param int $comment_id initial rating value
+        * @param string $stars_set set to use for rendering
+        * @param int $stars_size set size to use for rendering
+        * @param string $stars_set_ie6 set to use for rendering in ie6
+        */
+        function comment_integrate_standard_result($comment_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
+            $value = intval(GDSRDatabase::rating_from_comment($comment_id));
+            if ($value > 0) {
+                $style = $stars_set == "" ? $this->o["style"] : $stars_set;
+                $style = $this->is_ie6 ? ($stars_set_ie6 == "" ? $this->o["style_ie6"] : $stars_set_ie6) : $style;
+                return GDSRRender::render_static_stars($style, $stars_size == 0 ? $this->o["size"] : $stars_size, $this->o["stars"], $value);
+            } else return "";
+        }
+
+        /**
+        * Renders comment integration of standard rating
+        *
+        * @param int $value initial rating value
+        * @param string $stars_set set to use for rendering
+        * @param int $stars_size set size to use for rendering
+        * @param string $stars_set_ie6 set to use for rendering in ie6
+        */
+        function comment_integrate_standard_rating($value = 0, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
+            $style = $stars_set == "" ? $this->o["style"] : $stars_set;
+            $style = $this->is_ie6 ? ($stars_set_ie6 == "" ? $this->o["style_ie6"] : $stars_set_ie6) : $style;
+            return GDSRRender::rating_stars_local($style, $stars_size == 0 ? $this->o["size"] : $stars_size, $this->o["stars"], true, $value * $size, "gdsr_int", "rcmmpost");
+        }
+
+        /**
+        * Renders result of comment integration of multi rating for specific comment
+        *
+        * @param int $comment_id initial rating value
+        * @param object $post_id post id
+        * @param int $multi_set_id id of the multi rating set to use
+        * @param int $template_id id of the template to use
+        * @param string $stars_set set to use for rendering
+        * @param int $stars_size set size to use for rendering
+        * @param string $stars_set_ie6 set to use for rendering in ie6
+        * @param string $avg_stars_set set to use for rendering of average value
+        * @param int $avg_stars_size set size to use for rendering of average value
+        * @param string $avg_stars_set_ie6 set to use for rendering of average value in ie6
+        */
+        function comment_integrate_multi_result($comment_id, $post_id, $multi_set_id, $template_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif") {
+            $value = GDSRDBMulti::rating_from_comment($comment_id, $multi_set_id);
+            if (is_serialized($value)) {
+                $value = unserialize($value);
+                $set = gd_get_multi_set($multi_set_id);
+                $weight_norm = array_sum($set->weight);
+                $avg_rating = $i = 0;
+                $votes = array();
+                foreach ($value as $md) {
+                    $single_vote = array();
+                    $single_vote["votes"] = 1;
+                    $single_vote["score"] = $md;
+                    $single_vote["rating"] = $md;
+                    $avg_rating += ($md * $set->weight[$i]) / $weight_norm;
+                    $votes[] = $single_vote;
+                    $i++;
+                }
+                $avg_rating = @number_format($avg_rating, 1);
+                if ($avg_rating > 0) {
+                    return GDSRRenderT2::render_rmb($template_id, $votes, $post_id, $set, $avg_rating,
+                        $this->is_ie6 ? $stars_set_ie6 : $stars_set, $stars_size,
+                        $this->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, $avg_stars_size);
+                } else return "";
+            } else return "";
+        }
+
+        /**
+        * Renders average result of comment integration of multi rating for specific comment
+        *
+        * @param int $comment_id initial rating value
+        * @param object $post_id post id
+        * @param int $multi_set_id id of the multi rating set to use
+        * @param int $template_id id of the template to use
+        * @param string $avg_stars_set set to use for rendering of average value
+        * @param int $avg_stars_size set size to use for rendering of average value
+        * @param string $avg_stars_set_ie6 set to use for rendering of average value in ie6
+        */
+        function comment_integrate_multi_result_average($comment_id, $post_id, $multi_set_id, $template_id, $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif") {
+            $value = GDSRDBMulti::rating_from_comment($comment_id, $multi_set_id);
+            if (is_serialized($value)) {
+                $value = unserialize($value);
+                $set = gd_get_multi_set($multi_set_id);
+                $weight_norm = array_sum($set->weight);
+                $avg_rating = $i = 0;
+                foreach ($value as $md) {
+                    $avg_rating += ($md * $set->weight[$i]) / $weight_norm;
+                    $i++;
+                }
+                $avg_rating = @number_format($avg_rating, 1);
+                if ($avg_rating > 0) {
+                    return GDSRRenderT2::render_mcr($template_id, $post_id, $set, $avg_rating,
+                        $this->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, $avg_stars_size);
+                } else return "";
+            } else return "";
+        }
+
+        /**
+        * Renders comment integration of multi rating
+        *
+        * @param int $value initial rating value
+        * @param object $post_id post id
+        * @param int $multi_set_id id of the multi rating set to use
+        * @param int $template_id id of the template to use
+        * @param string $stars_set set to use for rendering
+        * @param int $stars_size set size to use for rendering
+        * @param string $stars_set_ie6 set to use for rendering in ie6
+        */
+        function comment_integrate_multi_rating($value, $post_id, $multi_set_id, $template_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
+            $set = gd_get_multi_set($multi_set_id);
+            $votes = array();
+            for ($i = 0; $i < count($set->object); $i++) {
+                $single_vote = array();
+                $single_vote["votes"] = 0;
+                $single_vote["score"] = 0;
+                $single_vote["rating"] = 0;
+                $votes[] = $single_vote;
+            }
+            return GDSRRenderT2::render_mri($this->is_ie6 ? $stars_set_ie6 : $stars_set, $template_id, $post_id, $set, $stars_size);
+        }
+        // comment rating
+
         // rendering
         function render_wait_article() {
             $cls = "loader ".$this->o["wait_loader_article"]." ";
@@ -2198,9 +2381,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                     $post_data = GDSRDatabase::get_post_data($rd_post_id);
                 }
             }
-            if ($post_data->rules_comments == "H")
-                return "";
 
+            $rules_comments = $post_data->rules_comments != "I" ? $post_data->rules_comments : $this->get_post_rule_value($rd_post_id, "rules_comments", "default_voterules_comments");
+
+            if ($rules_comments == "H") return "";
             $comment_data = GDSRDatabase::get_comment_data($rd_comment_id);
             if (count($comment_data) == 0) {
                 GDSRDatabase::add_empty_comment($rd_comment_id, $rd_post_id);
@@ -2215,15 +2399,14 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             }
 
             if ($allow_vote) {
-                if (
-                    ($post_data->rules_comments == "") ||
-                    ($post_data->rules_comments == "A") ||
-                    ($post_data->rules_comments == "U" && $rd_user_id > 0) ||
-                    ($post_data->rules_comments == "V" && $rd_user_id == 0)
+                if (($rules_comments == "") ||
+                    ($rules_comments == "A") ||
+                    ($rules_comments == "U" && $rd_user_id > 0) ||
+                    ($rules_comments == "V" && $rd_user_id == 0)
                 ) $allow_vote = true;
                 else {
                     $allow_vote = false;
-                    $dbg_allow = "R_".$post_data->rules_comments;
+                    $dbg_allow = "R_".$rules_comments;
                 }
             }
 
@@ -2240,11 +2423,11 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $votes = 0;
             $score = 0;
 
-            if ($post_data->rules_comments == "A" || $post_data->rules_comments == "N") {
+            if ($rules_comments == "A" || $rules_comments == "N") {
                 $votes = $comment_data->user_voters + $comment_data->visitor_voters;
                 $score = $comment_data->user_votes + $comment_data->visitor_votes;
             }
-            else if ($post_data->rules_comments == "V") {
+            else if ($rules_comments == "V") {
                 $votes = $comment_data->visitor_voters;
                 $score = $comment_data->visitor_votes;
             }
@@ -2309,7 +2492,20 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 }
             }
 
-            if ($post_data->rules_articles == "H") return "";
+            $rules_articles = $post_data->rules_articles != "I" ? $post_data->rules_articles : $this->get_post_rule_value($rd_post_id, "rules_articles", "default_voterules_articles");
+
+            if ($rules_articles == "H") return "";
+            if ($allow_vote) {
+                if (($rules_articles == "") ||
+                    ($rules_articles == "A") ||
+                    ($rules_articles == "U" && $rd_user_id > 0) ||
+                    ($rules_articles == "V" && $rd_user_id == 0)
+                ) $allow_vote = true;
+                else {
+                    $allow_vote = false;
+                    $dbg_allow = "R_".$rules_articles;
+                }
+            }
 
             if ($allow_vote) {
                 if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author) {
@@ -2318,29 +2514,18 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 }
             }
 
-            if ($allow_vote) {
-                if (
-                    ($post_data->rules_articles == "") ||
-                    ($post_data->rules_articles == "A") ||
-                    ($post_data->rules_articles == "U" && $rd_user_id > 0) ||
-                    ($post_data->rules_articles == "V" && $rd_user_id == 0)
-                ) $allow_vote = true;
-                else {
-                    $allow_vote = false;
-                    $dbg_allow = "R_".$post_data->rules_articles;
-                }
-            }
-
             $remaining = 0;
             $deadline = '';
-            if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T')) {
-                switch($post_data->expiry_type) {
+            if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T' || $post_data->expiry_type == 'I')) {
+                $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
+                $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");
+                switch($expiry_type) {
                     case "D":
-                        $remaining = GDSRHelper::expiration_date($post_data->expiry_value);
-                        $deadline = $post_data->expiry_value;
+                        $remaining = GDSRHelper::expiration_date($expiry_value);
+                        $deadline = $expiry_value;
                         break;
                     case "T":
-                        $remaining = GDSRHelper::expiration_countdown($post->post_date, $post_data->expiry_value);
+                        $remaining = GDSRHelper::expiration_countdown($post->post_date, $expiry_value);
                         $deadline = GDSRHelper::calculate_deadline($remaining);
                         break;
                 }
@@ -2364,11 +2549,11 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $votes = 0;
             $score = 0;
 
-            if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
+            if ($rules_articles == "A" || $rules_articles == "N") {
                 $votes = $post_data->user_voters + $post_data->visitor_voters;
                 $score = $post_data->user_votes + $post_data->visitor_votes;
             }
-            else if ($post_data->rules_articles == "V") {
+            else if ($rules_articles == "V") {
                 $votes = $post_data->visitor_voters;
                 $score = $post_data->visitor_votes;
             }
@@ -2390,7 +2575,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_srb_template"];
 
-            $rating_block = GDSRRenderT2::render_srb($template_id, $rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_style, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $tags_css, $this->o["header_text"], $debug, $this->loader_article, $post_data->expiry_type, $remaining, $deadline);
+            $rating_block = GDSRRenderT2::render_srb($template_id, $rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_style, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $tags_css, $this->o["header_text"], $debug, $this->loader_article, $expiry_type, $remaining, $deadline);
             return $rating_block;
         }
 
@@ -2441,8 +2626,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                     $post_data = GDSRDatabase::get_post_data($rd_post_id);
                 }
             }
-            if ($post_data->rules_articles == "H") return "";
 
+            $rules_articles = $post_data->rules_articles != "I" ? $post_data->rules_articles : $this->get_post_rule_value($rd_post_id, "rules_articles", "default_voterules_articles");
+
+            if ($rules_articles == "H") return "";
             if ($allow_vote) {
                 if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author) {
                     $allow_vote = false;
@@ -2451,26 +2638,27 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             }
 
             if ($allow_vote) {
-                if (
-                    ($post_data->rules_articles == "") ||
-                    ($post_data->rules_articles == "A") ||
-                    ($post_data->rules_articles == "U" && $rd_user_id > 0) ||
-                    ($post_data->rules_articles == "V" && $rd_user_id == 0)
+                if (($rules_articles == "") ||
+                    ($rules_articles == "A") ||
+                    ($rules_articles == "U" && $rd_user_id > 0) ||
+                    ($rules_articles == "V" && $rd_user_id == 0)
                 ) $allow_vote = true;
                 else {
                     $allow_vote = false;
-                    $dbg_allow = "R_".$post_data->rules_articles;
+                    $dbg_allow = "R_".$rules_articles;
                 }
             }
 
-            if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T')) {
-                switch($post_data->expiry_type) {
+            if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T' || $post_data->expiry_type == 'I')) {
+                $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
+                $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");
+                switch($expiry_type) {
                     case "D":
-                        $remaining = GDSRHelper::expiration_date($post_data->expiry_value);
-                        $deadline = $post_data->expiry_value;
+                        $remaining = GDSRHelper::expiration_date($expiry_value);
+                        $deadline = $expiry_value;
                         break;
                     case "T":
-                        $remaining = GDSRHelper::expiration_countdown($post->post_date, $post_data->expiry_value);
+                        $remaining = GDSRHelper::expiration_countdown($post->post_date, $expiry_value);
                         $deadline = GDSRHelper::calculate_deadline($remaining);
                         break;
                 }
@@ -2500,11 +2688,11 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 $single_vote["votes"] = 0;
                 $single_vote["score"] = 0;
 
-                if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
+                if ($rules_articles == "A" || $rules_articles == "N") {
                     $single_vote["votes"] = $md->user_voters + $md->visitor_voters;
                     $single_vote["score"] = $md->user_votes + $md->visitor_votes;
                 }
-                else if ($post_data->rules_articles == "V") {
+                else if ($rules_articles == "V") {
                     $single_vote["votes"] = $md->visitor_voters;
                     $single_vote["score"] = $md->visitor_votes;
                 }
@@ -2536,7 +2724,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $mur_button = $this->o["mur_button_active"] == 1;
             if (!$allow_vote) $mur_button = false;
 
-            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, $allow_vote, $votes, $rd_post_id, $set, $rd_unit_width, $this->o["mur_header_text"], $tags_css, $rd_unit_style_avg, $rd_unit_width_avg, $post_data->expiry_type, $remaining, $deadline, $mur_button, $this->o["mur_button_text"], $debug, $this->loader_multis);
+            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, $allow_vote, $votes, $rd_post_id, $set, $rd_unit_width, $this->o["mur_header_text"], $tags_css, $rd_unit_style_avg, $rd_unit_width_avg, $expiry_type, $remaining, $deadline, $mur_button, $this->o["mur_button_text"], $debug, $this->loader_multis);
         }
 
         function render_multi_custom_values($template_id, $multi_set_id, $custom_id, $votes, $header_text = '', $override = array(), $tags_css = array()) {
@@ -2550,146 +2738,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, false, $votes, $custom_id, $set, $rd_unit_width, $header_text, $tags_css, $rd_unit_style_avg, $rd_unit_width_avg);
         }
         // rendering
-
-        // comment rating
-        /**
-        * Renders comment review stars
-        *
-        * @param int $value initial rating value
-        * @param bool $allow_vote render stars to support rendering or not to
-        */
-        function comment_review($value = 0, $allow_vote = true, $override = array()) {
-            $stars = $this->o["cmm_review_stars"];
-            $style = $override["style"] == "" ? $this->o["cmm_review_style"] : $override["style"];
-            $size = $override["size"] == 0 ? $this->o["cmm_review_size"] : $override["size"];
-            return GDSRRender::rating_stars_local($style, $size, $stars, $allow_vote, $value * $size);
-        }
-
-        /**
-        * Renders result of comment integration of standard rating for specific comment
-        *
-        * @param int $comment_id initial rating value
-        * @param string $stars_set set to use for rendering
-        * @param int $stars_size set size to use for rendering
-        * @param string $stars_set_ie6 set to use for rendering in ie6
-        */
-        function comment_integrate_standard_result($comment_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
-            $value = intval(GDSRDatabase::rating_from_comment($comment_id));
-            if ($value > 0) {
-                $style = $stars_set == "" ? $this->o["style"] : $stars_set;
-                $style = $this->is_ie6 ? ($stars_set_ie6 == "" ? $this->o["style_ie6"] : $stars_set_ie6) : $style;
-                return GDSRRender::render_static_stars($style, $stars_size == 0 ? $this->o["size"] : $stars_size, $this->o["stars"], $value);
-            } else return "";
-        }
-
-        /**
-        * Renders comment integration of standard rating
-        *
-        * @param int $value initial rating value
-        * @param string $stars_set set to use for rendering
-        * @param int $stars_size set size to use for rendering
-        * @param string $stars_set_ie6 set to use for rendering in ie6
-        */
-        function comment_integrate_standard_rating($value = 0, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
-            $style = $stars_set == "" ? $this->o["style"] : $stars_set;
-            $style = $this->is_ie6 ? ($stars_set_ie6 == "" ? $this->o["style_ie6"] : $stars_set_ie6) : $style;
-            return GDSRRender::rating_stars_local($style, $stars_size == 0 ? $this->o["size"] : $stars_size, $this->o["stars"], true, $value * $size, "gdsr_int", "rcmmpost");
-        }
-
-        /**
-        * Renders result of comment integration of multi rating for specific comment
-        *
-        * @param int $comment_id initial rating value
-        * @param object $post_id post id
-        * @param int $multi_set_id id of the multi rating set to use
-        * @param int $template_id id of the template to use
-        * @param string $stars_set set to use for rendering
-        * @param int $stars_size set size to use for rendering
-        * @param string $stars_set_ie6 set to use for rendering in ie6
-        * @param string $avg_stars_set set to use for rendering of average value
-        * @param int $avg_stars_size set size to use for rendering of average value
-        * @param string $avg_stars_set_ie6 set to use for rendering of average value in ie6
-        */
-        function comment_integrate_multi_result($comment_id, $post_id, $multi_set_id, $template_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif") {
-            $value = GDSRDBMulti::rating_from_comment($comment_id, $multi_set_id);
-            if (is_serialized($value)) {
-                $value = unserialize($value);
-                $set = gd_get_multi_set($multi_set_id);
-                $weight_norm = array_sum($set->weight);
-                $avg_rating = $i = 0;
-                $votes = array();
-                foreach ($value as $md) {
-                    $single_vote = array();
-                    $single_vote["votes"] = 1;
-                    $single_vote["score"] = $md;
-                    $single_vote["rating"] = $md;
-                    $avg_rating += ($md * $set->weight[$i]) / $weight_norm;
-                    $votes[] = $single_vote;
-                    $i++;
-                }
-                $avg_rating = @number_format($avg_rating, 1);
-                if ($avg_rating > 0) {
-                    return GDSRRenderT2::render_rmb($template_id, $votes, $post_id, $set, $avg_rating,
-                        $this->is_ie6 ? $stars_set_ie6 : $stars_set, $stars_size,
-                        $this->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, $avg_stars_size);
-                } else return "";
-            } else return "";
-        }
-
-        /**
-        * Renders average result of comment integration of multi rating for specific comment
-        *
-        * @param int $comment_id initial rating value
-        * @param object $post_id post id
-        * @param int $multi_set_id id of the multi rating set to use
-        * @param int $template_id id of the template to use
-        * @param string $avg_stars_set set to use for rendering of average value
-        * @param int $avg_stars_size set size to use for rendering of average value
-        * @param string $avg_stars_set_ie6 set to use for rendering of average value in ie6
-        */
-        function comment_integrate_multi_result_average($comment_id, $post_id, $multi_set_id, $template_id, $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif") {
-            $value = GDSRDBMulti::rating_from_comment($comment_id, $multi_set_id);
-            if (is_serialized($value)) {
-                $value = unserialize($value);
-                $set = gd_get_multi_set($multi_set_id);
-                $weight_norm = array_sum($set->weight);
-                $avg_rating = $i = 0;
-                foreach ($value as $md) {
-                    $avg_rating += ($md * $set->weight[$i]) / $weight_norm;
-                    $i++;
-                }
-                $avg_rating = @number_format($avg_rating, 1);
-                if ($avg_rating > 0) {
-                    return GDSRRenderT2::render_mcr($template_id, $post_id, $set, $avg_rating,
-                        $this->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, $avg_stars_size);
-                } else return "";
-            } else return "";
-        }
-
-        /**
-        * Renders comment integration of multi rating
-        *
-        * @param int $value initial rating value
-        * @param object $post_id post id
-        * @param int $multi_set_id id of the multi rating set to use
-        * @param int $template_id id of the template to use
-        * @param string $stars_set set to use for rendering
-        * @param int $stars_size set size to use for rendering
-        * @param string $stars_set_ie6 set to use for rendering in ie6
-        */
-        function comment_integrate_multi_rating($value, $post_id, $multi_set_id, $template_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
-            $set = gd_get_multi_set($multi_set_id);
-            $votes = array();
-            for ($i = 0; $i < count($set->object); $i++) {
-                $single_vote = array();
-                $single_vote["votes"] = 0;
-                $single_vote["score"] = 0;
-                $single_vote["rating"] = 0;
-                $votes[] = $single_vote;
-            }
-            return GDSRRenderT2::render_mri($this->is_ie6 ? $stars_set_ie6 : $stars_set, $template_id, $post_id, $set, $stars_size);
-        }
-        // comment rating
     }
 
     $gd_debug = new gdDebugGDSR(STARRATING_LOG_PATH);

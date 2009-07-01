@@ -30,7 +30,7 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 * Full WordPress MU support
 
 == Configuration ==
-Plugin administration consist of 13 panels:
+Plugin administration consist of 13 main panels:
 
 * Front Page:
   General info about the plugin and links
