@@ -35,6 +35,7 @@
 
         if (!$new_change) $gdsr_options["css_last_changed"] = time();
 
+        $gdsr_options["wp_query_handler"] = isset($_POST['gdsr_wp_query_handler']) ? 1 : 0;
         $gdsr_options["disable_ie6_check"] = isset($_POST['gdsr_disable_ie6_check']) ? 1 : 0;
         $gdsr_options["news_feed_active"] = isset($_POST['gdsr_news_feed_active']) ? 1 : 0;
         $gdsr_options["widgets_hidempty"] = $_POST['gdsr_widgets_hidempty'];
