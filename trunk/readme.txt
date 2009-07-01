@@ -112,8 +112,9 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 == Changelog ==
 = 1.5.0 =
-* JavaScript and CSS gzip compression
-* Few more bugs fixed
+* Category based rules and restrictions
+* JavaScript and CSS gzip compression and optimizations
+* Few more reported bugs fixed
 
 = 1.4.8 =
 * Extended rendering templates, excerpt supported for results
