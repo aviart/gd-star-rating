@@ -974,11 +974,7 @@ if (!class_exists('GDStarRating')) {
                 gdDBInstallGDSR::alter_tables(STARRATING_PATH);
                 $this->o["database_upgrade"] = date("r");
 
-                GDSRDB::insert_default_templates(STARRATING_PATH);
-                GDSRDB::insert_extras_templates(STARRATING_PATH);
-                GDSRDB::insert_extras_templates(STARRATING_XTRA_PATH, false);
-                GDSRDB::update_default_templates(STARRATING_PATH);
-                GDSRDB::update_extras_templates(STARRATING_PATH);
+                GDSRDB::install_all_templates();
 
                 $this->o = gdFunctionsGDSR::upgrade_settings($this->o, $this->default_options);
 

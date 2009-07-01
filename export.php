@@ -4,12 +4,13 @@
     require_once("./config.php");
     $wpconfig = get_wpconfig();
     require($wpconfig);
+
     global $wpdb;
 
     if (isset($_GET["ex"])) {
         $export_type = $_GET["ex"];
         $get_data = $_GET;
-        
+
         switch($export_type) {
             case "user":
                 $export_name = $export_type.'_'.$_GET["de"];
@@ -30,7 +31,7 @@
                 $sql = GDSRExport::export_t2();
                 break;
         }
-        
+
         $rows = $wpdb->get_results($sql, ARRAY_N);
         if (count($rows) > 0) {
             foreach ($rows as $row) {
