@@ -366,6 +366,14 @@ class GDSRDB {
     // moderation
 
     // insert templates
+    function install_all_templates() {
+        GDSRDB::insert_default_templates(STARRATING_PATH);
+        GDSRDB::insert_extras_templates(STARRATING_PATH);
+        GDSRDB::insert_extras_templates(STARRATING_XTRA_PATH, false);
+        GDSRDB::update_default_templates(STARRATING_PATH);
+        GDSRDB::update_extras_templates(STARRATING_PATH);
+    }
+
     function insert_extras_templates($path, $default = true) {
         global $wpdb, $table_prefix;
         $templates = array();

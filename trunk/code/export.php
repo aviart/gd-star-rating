@@ -86,10 +86,8 @@ class GDSRExport {
         $j_where = join(" and ", $where);
         $j_tables = join(", ", $tables);
         
-        $sql = sprintf("select %s from %s where %s order by u.id", 
-            $j_select, $j_tables, $j_where
-            );
-        return $sql;
+        return sprintf("select %s from %s where %s order by u.id",
+            $j_select, $j_tables, $j_where);
     }
 }
 
