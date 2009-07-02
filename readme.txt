@@ -122,9 +122,6 @@ Plugin has debug into log file feature built in. Information on activating this 
 * Plugins admin pages HTML and JavaScript code cleanup
 * Several reported, installation and upgrade bugs fixed
 
-= 1.4.7 =
-* Several minor (and not so minor) bugs fixed
-
 == Source SVN ==
 * svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only
 
@@ -138,8 +135,6 @@ Plugin has debug into log file feature built in. Information on activating this 
 * Twitter: http://twitter.com/gdstarrating
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
 * PDF User Guide: http://www.gdstarrating.com/downloads/user-guide/
-* Tutorials: http://www.gdstarrating.com/category/tutorials/
-* Plugin Infos: http://info.dev4press.com/gd-star-rating/
 * Database Layout: http://code.google.com/p/gd-star-rating/wiki/DatabaseTablesFormat
 
 == Communities ==
