@@ -112,6 +112,7 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 == Changelog ==
 = 1.5.0 =
+* Modifying WP Query to use ratings for sorting
 * Category based rules and restrictions
 * JavaScript and CSS gzip compression and optimizations
 * Few more reported bugs fixed
