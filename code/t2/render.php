@@ -320,7 +320,7 @@ class GDSRRenderT2 {
         return $all_rows;
     }
 
-    function render_mrb($style, $template_id, $allow_vote, $votes, $post_id, $set, $height, $header_text, $tags_css, $avg_style, $avg_size, $time_restirctions = "N", $time_remaining = 0, $time_date = "", $button_active = true, $button_text = "Submit", $debug = '', $wait_msg = '') {
+    function render_mrb($style, $template_id, $allow_vote, $votes, $post_id, $set, $height, $header_text, $tags_css, $avg_style, $avg_size, $star_factor = 1, $time_restirctions = "N", $time_remaining = 0, $time_date = "", $button_active = true, $button_text = "Submit", $debug = '', $wait_msg = '') {
         $template = GDSRRenderT2::get_template($template_id, "MRB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -344,7 +344,7 @@ class GDSRRenderT2 {
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
             $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
             $single_row = str_replace('%ELEMENT_VALUE%', $votes[$i]["rating"], $single_row);
-            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"]), $single_row);
+            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars * $star_factor, $allow_vote, $votes[$i]["rating"] * $star_factor), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
 
@@ -372,7 +372,7 @@ class GDSRRenderT2 {
         $tpl_render = str_replace("%AVG_RATING%", $rating, $tpl_render);
         if (in_array("%AVG_RATING_STARS%", $template->tag["normal"])) {
             $avg_id = "gdsr_mur_avgstars_".$post_id."_".$set->multi_id;
-            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars, $rating, $avg_id, "DIV"), $tpl_render);
+            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars * $star_factor, $rating * $star_factor, $avg_id, "DIV"), $tpl_render);
         }
         $rater.= $tpl_render."</div>";
         return $rater;

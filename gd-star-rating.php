@@ -2732,10 +2732,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $mur_button = $this->o["mur_button_active"] == 1;
             if (!$allow_vote) $mur_button = false;
 
-            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, $allow_vote, $votes, $rd_post_id, $set, $rd_unit_width, $this->o["mur_header_text"], $tags_css, $rd_unit_style_avg, $rd_unit_width_avg, $expiry_type, $remaining, $deadline, $mur_button, $this->o["mur_button_text"], $debug, $this->loader_multis);
+            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, $allow_vote, $votes, $rd_post_id, $set, $rd_unit_width, $this->o["mur_header_text"], $tags_css, $rd_unit_style_avg, $rd_unit_width_avg, 1, $expiry_type, $remaining, $deadline, $mur_button, $this->o["mur_button_text"], $debug, $this->loader_multis);
         }
 
-        function render_multi_custom_values($template_id, $multi_set_id, $custom_id, $votes, $header_text = '', $override = array(), $tags_css = array()) {
+        function render_multi_custom_values($template_id, $multi_set_id, $custom_id, $votes, $header_text = '', $override = array(), $tags_css = array(), $star_factor = 1) {
             $set = gd_get_multi_set($multi_set_id);
 
             $rd_unit_width = $override["size"];
@@ -2743,7 +2743,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $rd_unit_width_avg = $override["average_size"];
             $rd_unit_style_avg = $this->is_ie6 ? $override["average_stars_ie6"] : $override["average_stars"];
 
-            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, false, $votes, $custom_id, $set, $rd_unit_width, $header_text, $tags_css, $rd_unit_style_avg, $rd_unit_width_avg);
+            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, false, $votes, $custom_id, $set, $rd_unit_width, $header_text, $tags_css, $rd_unit_style_avg, $rd_unit_width_avg, $star_factor);
         }
         // rendering
     }
