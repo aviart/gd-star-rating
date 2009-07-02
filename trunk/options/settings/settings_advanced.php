@@ -37,6 +37,8 @@
 <tr><th scope="row"><?php _e("Log Into File", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_debug_active" id="gdsr_debug_active"<?php if ($gdsr_options["debug_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_debug_active"><?php _e("Log into file various debug information.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_debug_wpquery" id="gdsr_debug_wpquery"<?php if ($gdsr_options["debug_wpquery"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_debug_wpquery"><?php _e("Save into debug file each WP Query executed.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
         <strong><?php _e("Important", "gd-star-rating"); ?>: </strong><?php _e(sprintf("Plugin must have write access to a text file. Path to this file needs to be set in %s file.", '<em style="color:red">config.php</em>'), "gd-star-rating"); ?>
     </td>

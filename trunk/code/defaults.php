@@ -28,6 +28,7 @@ class GDSRDefaults {
         "cache_cleanup_last" => 0,
         "debug_active" => 0,
         "debug_inline" => 1,
+        "debug_wpquery" => 0,
         "database_upgrade" => "",
         "database_cleanup" => "",
         "database_cleanup_msg" => "",

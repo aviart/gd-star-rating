@@ -1572,6 +1572,11 @@ if (!class_exists('GDStarRating')) {
                 echo("\r\n");
             }
 
+            if ($this->o["debug_wpquery"] == 1) {
+                global $wp_query;
+                wp_gdsr_dump("WP_QUERY", $wp_query->request);
+            }
+
             $this->custom_actions('wp_head');
             if ($this->o["ie_opacity_fix"] == 1) GDSRHelper::ie_opacity_fix();
         }
