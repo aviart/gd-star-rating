@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.5.1
+Version: 1.5.0
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -27,7 +27,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
 require_once(dirname(__FILE__)."/config.php");
-require_once(dirname(__FILE__)."/code/cache.php");
 require_once(dirname(__FILE__)."/code/defaults.php");
 require_once(dirname(__FILE__)."/code/results_classes.php");
 require_once(dirname(__FILE__)."/code/standard_render.php");
@@ -102,7 +101,6 @@ if (!class_exists('GDStarRating')) {
         var $i; // import
         var $g; // gfx
         var $q; // query class instance
-        var $c; // cached post ids
         var $ginc;
         var $bots;
 
@@ -213,7 +211,6 @@ if (!class_exists('GDStarRating')) {
         function shortcode_starratingblock($atts = array()) {
             global $post, $userdata;
             $override = shortcode_atts($this->default_shortcode_starrater, $atts);
-            $this->cache_posts($userdata->ID);
             return $this->render_article($post, $userdata, $override);
         }
 
@@ -695,35 +692,6 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
-         * WordPress action to get post ID's from active loop
-         *
-         * @param WP_Query $wpq query object
-         * @return WP_Query query object
-         */
-        function loop_start($wpq) {
-            if (!is_admin()) {
-                foreach ($wpq->posts as $p) {
-                    if (!isset($this->c[$p->ID])) $this->c[$p->ID] = 0;
-                }
-            }
-            return $wpq;
-        }
-
-        /**
-         * WordPress action to get and cache comments rating data for a post
-         *
-         * @param array $comments post comments
-         * @param int $post_id post id
-         * @return array post comments
-         */
-        function comments_array($comments, $post_id) {
-            if ((is_single() && !is_admin() && $this->o["display_comment"] == 1) || (is_page() && !is_admin() && $this->o["display_comment_page"] == 1)) {
-                
-            }
-            return $comments;
-        }
-
-        /**
          * Adding WordPress action and filter
          */
         function actions_filters() {
@@ -732,8 +700,6 @@ if (!class_exists('GDStarRating')) {
             add_action('widgets_init', array(&$this, 'widgets_init'));
             add_action('admin_menu', array(&$this, 'admin_menu'));
             add_action('admin_head', array(&$this, 'admin_head'));
-            add_action('loop_start', array(&$this, 'loop_start'));
-            add_filter('comments_array', array(&$this, 'comments_array'), 10, 2);
 
             add_filter('query_vars', array($this->q, 'query_vars'));
             add_action('pre_get_posts', array($this->q, 'pre_get_posts'));
@@ -1440,6 +1406,21 @@ if (!class_exists('GDStarRating')) {
                 $url = remove_query_arg("mode", $url);
                 wp_redirect($url);
                 exit;
+            }
+        }
+
+        /**
+         * Gets rating posts data for the post in the loop, used only when wordpress is rendering page or single post.
+         *
+         * @global object $post post from the loop
+         */
+        function init_post() {
+            global $post;
+
+            $this->p = GDSRDatabase::get_post_data($post->ID);
+            if (count($this->p) == 0) {
+                GDSRDatabase::add_default_vote($post->ID, $post->post_type == "page" ? "1" : "0");
+                $this->p = GDSRDatabase::get_post_data($post->ID);
             }
         }
 
@@ -2238,31 +2219,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $this->loader_comment = $div;
         }
 
-        function cache_posts($user_id) {
-            $to_get = array();
-            foreach ($this->c as $id => $value) {
-                if ($value == 0) $to_get[] = $id;
-            }
-            if (count($to_get) > 0) {
-                global $gdsr_cache_posts_std_data, $gdsr_cache_posts_std_log;
-
-                $data = GDSRDBCache::get_posts($to_get);
-                $logs = GDSRDBCache::get_logs($to_get, $user_id, "article", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
-                foreach ($data as $row) {
-                    $id = $row->post_id;
-                    $this->c[$id] = 1;
-                    $gdsr_cache_posts_std_data->set($id, $row);
-                }
-                foreach ($logs as $id => $value) {
-                    $gdsr_cache_posts_std_log->set($id, $value == 0);
-                }
-            }
-        }
-
-        function cache_comments($post_id) {
-            
-        }
-
         function display_comment($content) {
             global $post, $comment, $userdata;
 
@@ -2300,18 +2256,14 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                     (is_archive() && $this->o["display_archive"] == 1) ||
                     (is_search() && $this->o["display_search"] == 1)
                 ) {
-                    $this->cache_posts($userdata->ID);
                     $rendered = $this->render_article($post, $userdata);
                     if ($this->o["auto_display_position"] == "top" || $this->o["auto_display_position"] == "both")
                         $content = $rendered.$content;
                     if ($this->o["auto_display_position"] == "bottom" || $this->o["auto_display_position"] == "both")
                         $content = $content.$rendered;
                 }
-                if (is_single() || is_page()) {
-                    $this->cache_posts($userdata->ID);
-                    $content = $this->display_multi_rating("top", $post, $userdata).$content;
-                    $content = $content.$this->display_multi_rating("bottom", $post, $userdata);
-                }
+                $content = $this->display_multi_rating("top", $post, $userdata).$content;
+                $content = $content.$this->display_multi_rating("bottom", $post, $userdata);
             }
 
             return $content;
@@ -2424,11 +2376,18 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $rd_comment_id = intval($comment->comment_ID);
             $rd_is_page = $post->post_type == "page" ? "1" : "0";
 
-            $post_data = wp_gdget_post($rd_post_id);
-            if (count($post_data) == 0) {
-                GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
-                $post_data = wp_gdget_post($rd_post_id);
-                $this->c[$rd_post_id] = 1;
+            if ($this->p)
+                $post_data = $this->p;
+            else if (is_single() || is_page()) {
+                $this->init_post();
+                $post_data = $this->p;
+            }
+            else {
+                $post_data = GDSRDatabase::get_post_data($rd_post_id);
+                if (count($post_data) == 0) {
+                    GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
+                    $post_data = GDSRDatabase::get_post_data($rd_post_id);
+                }
             }
 
             $rules_comments = $post_data->rules_comments != "I" ? $post_data->rules_comments : $this->get_post_rule_value($rd_post_id, "rules_comments", "default_voterules_comments");
@@ -2522,6 +2481,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
 
             if ($override["read_only"] == 1) $dbg_allow = "RO";
 
+            if (is_single() || (is_page() && $this->o["display_comment_page"] == 1)) $this->init_post();
+
             $rd_unit_count = $this->o["stars"];
             $rd_unit_width = $override["size"];
             $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
@@ -2529,11 +2490,14 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $rd_user_id = intval($user->ID);
             $rd_is_page = $post->post_type == "page" ? "1" : "0";
 
-            $post_data = wp_gdget_post($rd_post_id);
-            if (count($post_data) == 0) {
-                GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
-                $post_data = wp_gdget_post($rd_post_id);
-                $this->c[$rd_post_id] = 1;
+            if ($this->p)
+                $post_data = $this->p;
+            else {
+                $post_data = GDSRDatabase::get_post_data($rd_post_id);
+                if (count($post_data) == 0) {
+                    GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
+                    $post_data = GDSRDatabase::get_post_data($rd_post_id);
+                }
             }
 
             $rules_articles = $post_data->rules_articles != "I" ? $post_data->rules_articles : $this->get_post_rule_value($rd_post_id, "rules_articles", "default_voterules_articles");
@@ -2581,7 +2545,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             }
 
             if ($allow_vote) {
-                $allow_vote = wp_gdget_postlog($rd_post_id);
+                $allow_vote = GDSRDatabase::check_vote($rd_post_id, $rd_user_id, 'article', $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
                 if (!$allow_vote) $dbg_allow = "D";
             }
 
@@ -2652,17 +2616,23 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
 
             if ($override["read_only"] == 1) $dbg_allow = "RO";
 
+            if (is_single() || (is_page() && $this->o["display_comment_page"] == 1))
+                $this->init_post();
+
             $rd_post_id = intval($post->ID);
             $rd_user_id = intval($user->ID);
             $rd_is_page = $post->post_type == "page" ? "1" : "0";
             $remaining = 0;
             $deadline = "";
 
-            $post_data = wp_gdget_post($rd_post_id);
-            if (count($post_data) == 0) {
-                GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
-                $post_data = wp_gdget_post($rd_post_id);
-                $this->c[$rd_post_id] = 1;
+            if ($this->p)
+                $post_data = $this->p;
+            else {
+                $post_data = GDSRDatabase::get_post_data($rd_post_id);
+                if (count($post_data) == 0) {
+                    GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
+                    $post_data = GDSRDatabase::get_post_data($rd_post_id);
+                }
             }
 
             $rules_articles = $post_data->rules_articles != "I" ? $post_data->rules_articles : $this->get_post_rule_value($rd_post_id, "rules_articles", "default_voterules_articles");
