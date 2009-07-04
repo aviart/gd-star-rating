@@ -20,8 +20,7 @@ class GDSRDatabase {
             $votes_sql = sprintf("SELECT count(*) FROM %s WHERE vote_type = '%s' and id = %s and user_id = %s", $table_prefix.$table, $type, $id, $user);
             $votes = $wpdb->get_var($votes_sql);
             return $votes == 0;
-        }
-        else {
+        } else {
             $votes_sql = sprintf("SELECT count(*) FROM %s WHERE vote_type = '%s' and id = %s and ip = '%s'", $table_prefix.$table, $type, $id, $ip);
             $votes = $wpdb->get_var($votes_sql);
             if ($votes > 0 && $mixed) {
