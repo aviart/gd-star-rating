@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.5.0
+Version: 1.5.1
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -27,6 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
 require_once(dirname(__FILE__)."/config.php");
+require_once(dirname(__FILE__)."/code/cache.php");
 require_once(dirname(__FILE__)."/code/defaults.php");
 require_once(dirname(__FILE__)."/code/results_classes.php");
 require_once(dirname(__FILE__)."/code/standard_render.php");
@@ -101,6 +102,7 @@ if (!class_exists('GDStarRating')) {
         var $i; // import
         var $g; // gfx
         var $q; // query class instance
+        var $c; // cached post ids
         var $ginc;
         var $bots;
 
@@ -692,6 +694,35 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
+         * WordPress action to get post ID's from active loop
+         *
+         * @param WP_Query $wpq query object
+         * @return WP_Query query object
+         */
+        function loop_start($wpq) {
+            if (!is_admin()) {
+                foreach ($wpq->posts as $p) {
+                    if (!isset($this->c[$p->ID])) $this->c[$p->ID] = 0;
+                }
+            }
+            return $wpq;
+        }
+
+        /**
+         * WordPress action to get and cache comments rating data for a post
+         *
+         * @param array $comments post comments
+         * @param int $post_id post id
+         * @return array post comments
+         */
+        function comments_array($comments, $post_id) {
+            if ((is_single() && !is_admin() && $this->o["display_comment"] == 1) || (is_page() && !is_admin() && $this->o["display_comment_page"] == 1)) {
+                
+            }
+            return $comments;
+        }
+
+        /**
          * Adding WordPress action and filter
          */
         function actions_filters() {
@@ -700,6 +731,8 @@ if (!class_exists('GDStarRating')) {
             add_action('widgets_init', array(&$this, 'widgets_init'));
             add_action('admin_menu', array(&$this, 'admin_menu'));
             add_action('admin_head', array(&$this, 'admin_head'));
+            add_action('loop_start', array(&$this, 'loop_start'));
+            add_filter('comments_array', array(&$this, 'comments_array'), 10, 2);
 
             add_filter('query_vars', array($this->q, 'query_vars'));
             add_action('pre_get_posts', array($this->q, 'pre_get_posts'));
@@ -2219,6 +2252,21 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $this->loader_comment = $div;
         }
 
+        function cache_posts($user_id) {
+            $to_get = array();
+            foreach ($this->c as $id => $value) {
+                if ($value == 0) $to_get = $id;
+            }
+            if (count($to_get) > 0) {
+                $data = GDSRDBCache::get_posts($to_get);
+                $logs = GDSRDBCache::get_logs($ids, $user_id, "article", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
+            }
+        }
+
+        function cache_comments($post_id) {
+            
+        }
+
         function display_comment($content) {
             global $post, $comment, $userdata;
 
@@ -2256,14 +2304,17 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                     (is_archive() && $this->o["display_archive"] == 1) ||
                     (is_search() && $this->o["display_search"] == 1)
                 ) {
+                    $this->cache_posts($userdata->ID);
                     $rendered = $this->render_article($post, $userdata);
                     if ($this->o["auto_display_position"] == "top" || $this->o["auto_display_position"] == "both")
                         $content = $rendered.$content;
                     if ($this->o["auto_display_position"] == "bottom" || $this->o["auto_display_position"] == "both")
                         $content = $content.$rendered;
                 }
-                $content = $this->display_multi_rating("top", $post, $userdata).$content;
-                $content = $content.$this->display_multi_rating("bottom", $post, $userdata);
+                if (is_single() || is_page()) {
+                    $content = $this->display_multi_rating("top", $post, $userdata).$content;
+                    $content = $content.$this->display_multi_rating("bottom", $post, $userdata);
+                }
             }
 
             return $content;

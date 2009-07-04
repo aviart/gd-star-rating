@@ -275,7 +275,15 @@ class gdTemplates {
 }
 
 function wp_gdtpl_get_template($template_id) {
-    return gdTemplateDB::get_template($template_id);
+    global $gdsr_cache_templates;
+
+    $tpl = $gdsr_cache_templates->get($template_id);
+    if (!is_null($tpl)) return $tpl;
+    else {
+        $tpl = gdTemplateDB::get_template($template_id);
+        $gdsr_cache_templates->set($template_id, $tpl);
+        return $tpl;
+    }
 }
 
 ?>
