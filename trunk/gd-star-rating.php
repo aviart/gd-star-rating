@@ -27,7 +27,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
 require_once(dirname(__FILE__)."/config.php");
-require_once(dirname(__FILE__)."/code/cache.php");
 require_once(dirname(__FILE__)."/code/defaults.php");
 require_once(dirname(__FILE__)."/code/results_classes.php");
 require_once(dirname(__FILE__)."/code/standard_render.php");
@@ -40,6 +39,7 @@ require_once(dirname(__FILE__)."/code/gfx/charting.php");
 require_once(dirname(__FILE__)."/code/gfx/gfx_lib.php");
 require_once(dirname(__FILE__)."/code/gfx/generator.php");
 require_once(dirname(__FILE__)."/code/query.php");
+require_once(dirname(__FILE__)."/code/cache.php");
 require_once(dirname(__FILE__)."/gdt2/classes.php");
 require_once(dirname(__FILE__)."/code/t2/render.php");
 require_once(dirname(__FILE__)."/code/widgets.php");
