@@ -19,6 +19,7 @@ class GDSRQuery {
         $qvar[] = "gdsr_sort";
         $qvar[] = "gdsr_order";
         $qvar[] = "gdsr_multi";
+        $qvar[] = "gdsr_fvmin";
         return $qvar;
     }
 
@@ -53,7 +54,11 @@ class GDSRQuery {
         return $c;
     }
 
-    function standard_where($c) { return $c; }
+    function standard_where($c) { 
+        $filter_min_votes = intval(trim(addslashes(get_query_var('gdsr_fvmin'))));
+        if ($filter_min_votes > 0) $c.= " AND (gdsra.user_voters + gdsra.visitor_voters) > ".$filter_min_votes;
+        return $c;
+    }
 
     function standard_orderby($default) {
         global $table_prefix;
@@ -98,9 +103,10 @@ class GDSRQuery {
     }
 
     function multis_where($c) {
-        global $table_prefix;
         $set = intval(trim(addslashes(get_query_var('gdsr_multi'))));
         $c.= " AND gdsrm.multi_id = ".$set;
+        $filter_min_votes = intval(trim(addslashes(get_query_var('gdsr_fvmin'))));
+        if ($filter_min_votes > 0) $c.= " AND (gdsrm.total_votes_users + gdsrm.total_votes_visitors) > ".$filter_min_votes;
         return $c;
     }
 
