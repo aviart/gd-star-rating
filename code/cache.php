@@ -1,6 +1,13 @@
 <?php
 
 class GDSRDBCache {
+    function get_comments($post_id) {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("SELECT * FROM %sgdsr_data_comment WHERE post_id = %s", $table_prefix, $post_id);
+        return $wpdb->get_results($sql);
+    }
+
     function get_posts($ids) {
         global $wpdb, $table_prefix;
         
@@ -11,25 +18,28 @@ class GDSRDBCache {
     function get_logs($ids, $user, $type, $ip, $mod_only = false, $mixed = false) {
         global $wpdb, $table_prefix;
 
+        $table = $type == "article" ? "posts" : "comments";
+        $column = $type == "article" ? "ID" : "comment_ID";
+
         if ($user == 0) {
-            $sql = sprintf("select p.ID, count(l.record_id) as counter from %sposts p left join %sgdsr_moderate l on l.id = p.ID and l.vote_type = '%s' and ip = '%s' where p.ID in (%s) group by p.ID",
-                $table_prefix, $table_prefix, $type, $ip, join(", ", $ids));
+            $sql = sprintf("select p.%s as ID, count(l.record_id) as counter from %s%s p left join %sgdsr_moderate l on l.id = p.%s and l.vote_type = '%s' and ip = '%s' where p.%s in (%s) group by p.%s",
+                $column, $table_prefix, $table, $table_prefix, $column, $type, $ip, $column, join(", ", $ids), $column);
             $res_mod = $wpdb->get_results($sql);
 
             if (!$mod_only) {
-                $sql = sprintf("select p.ID, count(l.record_id) as counter from %sposts p left join %sgdsr_votes_log l on l.id = p.ID and l.vote_type = '%s' and ip = '%s' where p.ID in (%s) group by p.ID",
-                    $table_prefix, $table_prefix, $type, $ip, join(", ", $ids));
+                $sql = sprintf("select p.%s as ID, count(l.record_id) as counter from %s%s p left join %sgdsr_votes_log l on l.id = p.%s and l.vote_type = '%s' and ip = '%s' where p.%s in (%s) group by p.%s",
+                    $column, $table_prefix, $table, $table_prefix, $column, $type, $ip, $column, join(", ", $ids), $column);
                 $res_log = $wpdb->get_results($sql);
             } else $res_log = array();
         } else {
-            $sql = sprintf("select p.ID, count(l.record_id) as counter from %sposts p left join %sgdsr_moderate l on l.id = p.ID and l.vote_type = '%s' and user_id = %s where p.ID in (%s) group by p.ID",
-                $table_prefix, $table_prefix, $type, $user, join(", ", $ids));
+            $sql = sprintf("select p.%s as ID, count(l.record_id) as counter from %s%s p left join %sgdsr_moderate l on l.id = p.%s and l.vote_type = '%s' and l.user_id = %s where p.%s in (%s) group by p.%s",
+                $column, $table_prefix, $table, $table_prefix, $column, $type, $user, $column, join(", ", $ids), $column);
             $res_mod = $wpdb->get_results($sql);
 
             if (!$mixed) {
                 if (!$mod_only) {
-                    $sql = sprintf("select p.ID, count(l.record_id) as counter from %sposts p left join %sgdsr_votes_log l on l.id = p.ID and l.vote_type = '%s' and user_id = %s where p.ID in (%s) group by p.ID",
-                        $table_prefix, $table_prefix, $type, $user, join(", ", $ids));
+                    $sql = sprintf("select p.%s as ID, count(l.record_id) as counter from %s%s p left join %sgdsr_votes_log l on l.id = p.%s and l.vote_type = '%s' and l.user_id = %s where p.%s in (%s) group by p.%s",
+                        $column, $table_prefix, $table, $table_prefix, $column, $type, $user, $column, join(", ", $ids), $column);
                     $res_log = $wpdb->get_results($sql);
                 } else $res_log = array();
             } else $res_log = array();
@@ -39,7 +49,7 @@ class GDSRDBCache {
         foreach ($res_mod as $r) $res[$r->ID] = $r->counter;
         if (count($res_log) > 0) {
             foreach ($res_log as $r) {
-                if ($r->counter != 0) $res[$r->ID] = 1;
+                if (intval($r->counter) != 0) $res[$r->ID] = 1;
             }
         }
 
@@ -80,6 +90,26 @@ function wp_gdget_postlog($post_id) {
     global $gdsr_cache_posts_std_log;
 
     $log = $gdsr_cache_posts_std_log->get($post_id);
+    if (!is_null($log)) return $log;
+    else return true;
+}
+
+function wp_gdget_comment($comment_id) {
+    global $gdsr_cache_posts_cmm_data;
+
+    $cmm = $gdsr_cache_posts_cmm_data->get($comment_id);
+    if (!is_null($cmm)) return $cmm;
+    else {
+        $cmm = GDSRDatabase::get_comment_data($comment_id);
+        $gdsr_cache_posts_cmm_data->set($comment_id, $cmm);
+        return $cmm;
+    }
+}
+
+function wp_gdget_commentlog($comment_id) {
+    global $gdsr_cache_posts_cmm_log;
+
+    $log = $gdsr_cache_posts_cmm_log->get($comment_id);
     if (!is_null($log)) return $log;
     else return true;
 }

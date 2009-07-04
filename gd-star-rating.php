@@ -717,8 +717,10 @@ if (!class_exists('GDStarRating')) {
          * @return array post comments
          */
         function comments_array($comments, $post_id) {
-            if ((is_single() && !is_admin() && $this->o["display_comment"] == 1) || (is_page() && !is_admin() && $this->o["display_comment_page"] == 1)) {
-                
+            if (count($comments) > 0 && !is_admin()) {
+                if ((is_single() && $this->o["display_comment"] == 1) || (is_page() && $this->o["display_comment_page"] == 1)) {
+                    $this->cache_comments($post_id);
+                }
             }
             return $comments;
         }
@@ -2260,7 +2262,19 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         }
 
         function cache_comments($post_id) {
-            
+            global $gdsr_cache_posts_cmm_data, $gdsr_cache_posts_cmm_log, $userdata;
+            $to_get = array();
+
+            $data = GDSRDBCache::get_comments($post_id);
+            foreach ($data as $row) {
+                $id = $row->comment_id;
+                $gdsr_cache_posts_cmm_data->set($id, $row);
+                $to_get[] = $id;
+            }
+            $logs = GDSRDBCache::get_logs($to_get, $userdata->ID, "comment", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+            foreach ($logs as $id => $value) {
+                $gdsr_cache_posts_cmm_log->set($id, $value == 0);
+            }
         }
 
         function display_comment($content) {
@@ -2434,10 +2448,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $rules_comments = $post_data->rules_comments != "I" ? $post_data->rules_comments : $this->get_post_rule_value($rd_post_id, "rules_comments", "default_voterules_comments");
 
             if ($rules_comments == "H") return "";
-            $comment_data = GDSRDatabase::get_comment_data($rd_comment_id);
+            $comment_data = wp_gdget_comment($rd_comment_id);
             if (count($comment_data) == 0) {
                 GDSRDatabase::add_empty_comment($rd_comment_id, $rd_post_id);
-                $comment_data = GDSRDatabase::get_comment_data($rd_comment_id);
+                $comment_data = wp_gdget_comment($rd_comment_id);
             }
 
             if ($allow_vote) {
@@ -2460,7 +2474,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             }
 
             if ($allow_vote) {
-                $allow_vote = GDSRDatabase::check_vote($rd_comment_id, $rd_user_id, 'comment', $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+                $allow_vote = wp_gdget_commentlog($rd_comment_id);
                 if (!$allow_vote) $dbg_allow = "D";
             }
 
