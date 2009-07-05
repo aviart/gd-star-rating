@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.4.8
+Version: 1.5.1
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -700,13 +700,14 @@ if (!class_exists('GDStarRating')) {
          * @param WP_Query $wpq query object
          * @return WP_Query query object
          */
-        function loop_start($wpq) {
+        function loop_start($wp_query) {
             if (!is_admin()) {
-                foreach ($wpq->posts as $p) {
+                if ($this->wp_version < 28) global $wp_query;
+                foreach ($wp_query->posts as $p) {
                     if (!isset($this->c[$p->ID])) $this->c[$p->ID] = 0;
                 }
             }
-            return $wpq;
+            if ($this->wp_version >= 28) return $wp_query;
         }
 
         /**
@@ -1251,6 +1252,42 @@ if (!class_exists('GDStarRating')) {
             if (!is_admin() && !is_feed()) $this->prepare_multiset();
         }
 
+        /**
+         * WordPress action for adding blog header contents
+         */
+        function wp_head() {
+            if (is_feed()) return;
+
+            $include_cmm_review = $this->o["comments_review_active"] == 1;
+            $include_mur_rating = $this->o["multis_active"] == 1;
+
+            if ($this->o["external_rating_css"] == 0) $this->include_rating_css(false);
+            if ($this->o["external_javascript"] == 0) {
+                echo("\r\n");
+                echo('<script type="text/javascript">');
+                $nonce = $this->use_nonce ? wp_create_nonce('gdsr_ajax_r8') : "";
+                $button_active = $this->o["mur_button_active"] == 1;
+                echo('//<![CDATA[');
+                include ($this->plugin_path."code/js/main.php");
+                if ($this->o["cmm_integration_replay_hide_review"] == 1)
+                    include ($gdsr->plugin_path."code/js/comments.php");
+                echo('// ]]>');
+                echo('</script>');
+                echo("\r\n");
+            }
+
+            if ($this->o["debug_wpquery"] == 1) {
+                global $wp_query;
+                wp_gdsr_dump("WP_QUERY", $wp_query->request);
+            }
+
+            $this->custom_actions('wp_head');
+            if ($this->o["ie_opacity_fix"] == 1) GDSRHelper::ie_opacity_fix();
+        }
+
+        /**
+         * Prepare multi sets for rendering.
+         */
         function prepare_multiset() {
             $this->rendering_sets = GDSRDBMulti::get_multisets_for_auto_insert();
             if (!is_array($this->rendering_sets)) $this->rendering_sets = array();
@@ -1569,39 +1606,6 @@ if (!class_exists('GDStarRating')) {
         function multi_rating_header($external_css = true) {
             $this->include_rating_css($external_css);
             echo('<script type="text/javascript" src="'.$this->plugin_url.'script.js.php"></script>');
-        }
-
-        /**
-         * WordPress action for adding blog header contents
-         */
-        function wp_head() {
-            if (is_feed()) return;
-
-            $include_cmm_review = $this->o["comments_review_active"] == 1;
-            $include_mur_rating = $this->o["multis_active"] == 1;
-
-            if ($this->o["external_rating_css"] == 0) $this->include_rating_css(false);
-            if ($this->o["external_javascript"] == 0) {
-                echo("\r\n");
-                echo('<script type="text/javascript">');
-                $nonce = $this->use_nonce ? wp_create_nonce('gdsr_ajax_r8') : "";
-                $button_active = $this->o["mur_button_active"] == 1;
-                echo('//<![CDATA[');
-                include ($this->plugin_path."code/js/main.php");
-                if ($this->o["cmm_integration_replay_hide_review"] == 1)
-                    include ($gdsr->plugin_path."code/js/comments.php");
-                echo('// ]]>');
-                echo('</script>');
-                echo("\r\n");
-            }
-
-            if ($this->o["debug_wpquery"] == 1) {
-                global $wp_query;
-                wp_gdsr_dump("WP_QUERY", $wp_query->request);
-            }
-
-            $this->custom_actions('wp_head');
-            if ($this->o["ie_opacity_fix"] == 1) GDSRHelper::ie_opacity_fix();
         }
         // install
 

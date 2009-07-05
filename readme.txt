@@ -112,9 +112,9 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 == Changelog ==
 = 1.5.1 =
-* Number of SQL queries reduced by more than 65%
 * Cachind and prefetch of data to reduce number of sql queries
 * Caching of templates to reduce number of sql queries
+* Number of SQL queries reduced by more than 65%
 * Few bugs causing additional unneeded SQL queries
 
 = 1.5.0 =
