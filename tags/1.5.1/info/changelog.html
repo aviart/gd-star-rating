@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>GD Star Rating: Changelog</title>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--[if IE ]><link rel="stylesheet" href="style_ie.css" type="text/css" media="screen" /><![endif]-->
+</head>
+<body>
+
+<div id="sidebar">
+    <h4>Contents:</h4>
+    <ul>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="functions.html">Functions</a></li>
+        <li><a href="javascript.html">JavaScript</a></li>
+        <li><a href="wpquery.html">WP Query</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="t2map.html">T2 Templates</a></li>
+        <li><a href="languages.html">Translations</a></li>
+    </ul>
+    <h4>Plugin Links:</h4>
+    <ul>
+        <li><a href="http://www.gdstarrating.com/">Home Page</a></li>
+        <li><a href="http://wordpress.org/extend/plugins/gd-star-rating">WordPress Extend</a></li>
+        <li><a href="http://groups.google.com/group/gd-star-rating">Google Groups</a></li>
+        <li><a href="http://twitter.com/gdstarrating">Follow on Twitter</a></li>
+    </ul>
+    <h4>Support:</h4>
+    <ul>
+        <li><a href="http://www.gdstarrating.com/premium/">Premium Support</a></li>
+        <li><a href="http://forum.gdragon.info/">Support Forum</a></li>
+    </ul>
+    <h4>Other Links:</h4>
+    <ul>
+        <li><a href="http://www.dev4press.com/">Dev4Press</a></li>
+    </ul>
+    <h4 class="copyright">Copyright:</h4>
+    <p>
+        &copy; 2009. <a href="http://www.gdragon.info/">Golden Dragon WebStudio</a>
+    </p>
+</div>
+<div id="content">
+<div class="title">
+    <h1>GD Star Rating</h1>
+    <h2>changelog</h2>
+</div>
+
+<div class="contents">
+<h3>Version 1.5.1 / july 5 2009</h3><ul>
+    <li><strong>new</strong> optimized sql queries for getting posts and caching results</li>
+    <li><strong>new</strong> optimized sql queries for getting comments and caching results</li>
+    <li><strong>new</strong> caching of templates to reduce number of queries</li>
+    <li><strong>new</strong> added minimal votes filter for wp query</li>
+    <li><strong>fix</strong> checking for multi sets on non pages or posts</li>
+    <li><strong>fix</strong> checking for logged data even if it's disabled</li>
+    <li><strong>fix</strong> export problem caused by incompatibility with jquery 1.3</li>
+</ul>
+<h3>Version 1.5.0 / july 3 2009</h3><ul>
+    <li><strong>new</strong> modifing WP Query to allow sorting posts using reviews, votes and ratings</li>
+    <li><strong>new</strong> plugin now uses category based voting rules and limitations</li>
+    <li><strong>new</strong> css and javascipt files are loaded using wp enqueue functions</li>
+    <li><strong>new</strong> css and javascipt files are transported using server side gzip compression</li>
+    <li><strong>new</strong> attempts to log the invalid set request, if log into file is active</li>
+    <li><strong>edit</strong> changed some defaults settings values for fresh installations</li>
+    <li><strong>edit</strong> no longer shows the error message when the set is missing</li>
+    <li><strong>fix</strong> after database reinstall default templates are missing</li>
+    <li><strong>fix</strong> exporting data returns no results</li>
+    <li><strong>fix</strong> saving incomplete integration multi rating</li>
+    <li><strong>fix</strong> invalid url for creating multi rating set</li>
+    <li><strong>fix</strong> saving multi review with one of the integration widgets deactivated</li>
+</ul>
+<h3>Version 1.4.8 / june 28 2009</h3><ul>
+    <li><strong>new</strong> added extended multi rating stars template</li>
+    <li><strong>new</strong> rating widget and results can include post excerpt</li>
+    <li><strong>edit</strong> some of the templates expanded with few more tags</li>
+    <li><strong>edit</strong> removed some more obsolete code</li>
+    <li><strong>edit</strong> massive html cleanup on all plugins admin panels</li>
+    <li><strong>fix</strong> adding empty values for multi reviews</li>
+    <li><strong>fix</strong> multi rating results sql had a small category problem</li>
+    <li><strong>fix</strong> missing parameters in builder generated functions results</li>
+    <li><strong>fix</strong> confusing branching in multi review editor code</li>
+    <li><strong>fix</strong> missing default values for multi review function</li>
+    <li><strong>fix</strong> initialization of category during full installation failed</li>
+    <li><strong>fix</strong> minor installation problem with WP 2.6</li>
+    <li><strong>fix</strong> missing visual styles for pre WP 2.7 versions</li>
+    <li><strong>fix</strong> missing script type on all plugins admin panels</li>
+    <li><strong>fix</strong> invalid tags on all plugins admin panels</li>
+</ul>
+<h3>Version 1.4.7 / june 25 2009</h3><ul>
+    <li><strong>fix</strong> loading of main CSS file on the admin pages</li>
+    <li><strong>fix</strong> integration multi set on categories page get deleted</li>
+    <li><strong>fix</strong> multi review on edit page fails when set is not found</li>
+    <li><strong>fix</strong> inserting multi values fails sometimes</li>
+</ul>
+<h3>Version 1.4.6 / june 21 2009</h3><ul>
+    <li><strong>new</strong> enable or disable caching of the main css file</li>
+    <li><strong>new</strong> categories panel is now functional</li>
+    <li><strong>new</strong> template and function to render multi rating average integrated in comment</li>
+    <li><strong>new</strong> additional ajax data validation for better security</li>
+    <li><strong>edit</strong> deleting votes from votes log panel</li>
+    <li><strong>edit</strong> few improvements to some functions and shortcodes</li>
+    <li><strong>edit</strong> changes to some styles and html markup</li>
+    <li><strong>edit</strong> updated integration functions</li>
+    <li><strong>edit</strong> expanded info integration functions file</li>
+    <li><strong>edit</strong> few imporovements to multi sets result panel</li>
+    <li><strong>edit</strong> small changes to ajax rating code</li>
+    <li><strong>fix</strong> missing alt for static stars image</li>
+    <li><strong>fix</strong> invalid rendering for wp_gdsr_show_multi_review function</li>
+    <li><strong>fix</strong> category based multi set auto insertion</li>
+    <li><strong>fix</strong> multi review on the page edit panel broken</li>
+    <li><strong>fix</strong> adding default values into articles table</li>
+    <li><strong>fix</strong> ajax return data for value not integer</li>
+    <li><strong>fix</strong> page/post edit panel sidebar widget selections broken</li>
+    <li><strong>fix</strong> missing alt for images used in preinstalled templates</li>
+    <li><strong>fix</strong> minor problem with ajax url</li>
+    <li><strong>fix</strong> search and filtering on the articles panel</li>
+    <li><strong>fix</strong> builder for multi review</li>
+    <li><strong>fix</strong> one of the builder tabs wasn't displayed</li>
+</ul>
+<h3>Version 1.4.5 / june 17 2009</h3><ul>
+    <li><strong>edit</strong> few changes for better page validation support</li>
+    <li><strong>edit</strong> small improvements to readme file</li>
+    <li><strong>edit</strong> expanding categories support, still a lot to do</li>
+    <li><strong>edit</strong> plugin version checker updated for better WP 2.8 compatibility</li>
+    <li><strong>fix</strong> inserting templates into databse broken</li>
+</ul>
+<h3>Version 1.4.4 / june 14 2009</h3><ul>
+    <li><strong>new</strong> Comment integration expanded with reply support to hide rating</li>
+    <li><strong>new</strong> JavaScript functions for comment integration status and values</li>
+    <li><strong>edit</strong> T2 classes and functions updated and isolated</li>
+    <li><strong>edit</strong> more expansions to info files</li>
+</ul>
+<h3>Version 1.4.3 / june 8 2009</h3><ul>
+    <li><strong>edit</strong> small changes to the builder panel</li>
+    <li><strong>fix</strong> different stars sizes between function call and settings after saving vote</li>
+    <li><strong>fix</strong> few minor problems with multi ratings auto insert</li>
+    <li><strong>fix</strong> rating block function doesn't pass the average stars values</li>
+    <li><strong>fix</strong> small bug with builder multi rating function</li>
+</ul>
+<h3>Version 1.4.2 / june 3 2009</h3><ul>
+    <li><strong>fix</strong> wrong class call for update check function</li>
+</ul>
+<h3>Version 1.4.1 / june 2 2009</h3><ul>
+    <li><strong>new</strong> builder panel for creating function calls and shortcodes</li>
+    <li><strong>new</strong> few more integration functions</li>
+    <li><strong>edit</strong> expanded some of the shortcodes</li>
+    <li><strong>edit</strong> changed few of the integration functions parameter order</li>
+    <li><strong>edit</strong> reorganized tinymce plugin code for reuse</li>
+    <li><strong>edit</strong> cleanup of tinymce plugin html</li>
+    <li><strong>edit</strong> improved tinymce plugin javascript</li>
+    <li><strong>fix</strong> few multi review regression bugs on the post edit page</li>
+    <li><strong>fix</strong> integration problem with standard ratings</li>
+    <li><strong>fix</strong> few minor css problems in tinymce plugin</li>
+    <li><strong>fix</strong> some integration functions missing descriptions</li>
+    <li><strong>fix</strong> minor problem with tinymce plugin javascript</li>
+    <li><strong>fix</strong> bugs in the integration functions descriptions</li>
+</ul>
+<h3>Version 1.4.0 / may 31 2009</h3><ul>
+    <li><strong>new</strong> support for cross-domain ajax calls using jquery jsonp</li>
+    <li><strong>new</strong> templates map as a part of the info pages</li>
+    <li><strong>new</strong> integration functions to show ratings from comment areas</li>
+    <li><strong>new</strong> option to disable check for ie6 browsers</li>
+    <li><strong>new</strong> displaying expanded info about the available update</li>
+    <li><strong>edit</strong> improved template editor</li>
+    <li><strong>edit</strong> more improvements for the info files</li>
+    <li><strong>edit</strong> few more missing strings for translation</li>
+    <li><strong>fix</strong> minor layout problem with t2 editor</li>
+    <li><strong>fix</strong> saving multi rating from comment integration block</li>
+    <li><strong>fix</strong> small problem with inserting additional templates</li>
+    <li><strong>fix</strong> small xhtml validation problems</li>
+    <li><strong>fix</strong> few bugs in the integration functions descriptions</li>
+</ul>
+<h3>Version 1.3.4 / may 22 2009</h3><ul>
+    <li><strong>new</strong> integration functions with star set changing options</li>
+    <li><strong>fix</strong> deleting multi rating sets</li>
+    <li><strong>fix</strong> missing text color for the multi rating block</li>
+    <li><strong>fix</strong> minor problems with rendering widgets</li>
+    <li><strong>fix</strong> rendering list of categories in WP2.8</li>
+    <li><strong>fix</strong> invalid rendering call for widgets for WP2.8</li>
+</ul>
+<h3>Version 1.3.3 / may 19 2009</h3><ul>
+    <li><strong>new</strong> customization of spider bot's filter</li>
+    <li><strong>new</strong> settings for inclusion of stars sets and sizes in css file</li>
+    <li><strong>new</strong> stars preview now shows the stars set author info</li>
+    <li><strong>new</strong> some of the rendering functions expanded with custom style for stars</li>
+    <li><strong>edit</strong> expanded some of the helper custom functions</li>
+    <li><strong>edit</strong> more updates to read me and info files</li>
+    <li><strong>edit</strong> file renaming and reordering</li>
+    <li><strong>edit</strong> partial code refactoring</li>
+    <li><strong>edit</strong> removed some more old and unused code</li>
+    <li><strong>edit</strong> changed default values for some of the settings</li>
+    <li><strong>fix</strong> conflict with multi review and rating ids</li>
+    <li><strong>fix</strong> rendering submit button for multi block even if the rating is not allowed</li>
+    <li><strong>fix</strong> invalid css included on post edit panel</li>
+    <li><strong>fix</strong> saving new empty comment value</li>
+</ul>
+<h3>Version 1.3.2 / may 17 2009</h3><ul>
+    <li><strong>new</strong> rating text template expanded with element displayed after voting</li>
+    <li><strong>new</strong> revised css model for rendering active rating blocks</li>
+    <li><strong>new</strong> integrate standard post rating into comments</li>
+    <li><strong>new</strong> deleting data from integrated ratings if comment is deleted</li>
+    <li><strong>new</strong> custom function to override read only for standard and multi ratings on current post</li>
+    <li><strong>new</strong> documentation with custom functions</li>
+    <li><strong>edit</strong> optimized main rating css file</li>
+    <li><strong>edit</strong> all rating blocks updated to use new css style model</li>
+    <li><strong>edit</strong> t2 templates list now paged</li>
+    <li><strong>edit</strong> added option to make standard rating block read only</li>
+    <li><strong>edit</strong> rewritten integration javascript code</li>
+    <li><strong>edit</strong> rewritten comment integration code</li>
+    <li><strong>edit</strong> multi rating function with read_only parameter</li>
+    <li><strong>edit</strong> updated read me file to support new html info files</li>
+    <li><strong>edit</strong> updated stars set format file with version</li>
+    <li><strong>edit</strong> star rating set 2.0</li>
+    <li><strong>edit</strong> plain stars set 2.0</li>
+    <li><strong>edit</strong> few more missing strings for translation</li>
+    <li><strong>fix</strong> default comments rating block template</li>
+    <li><strong>fix</strong> invalid javascript for multi review block</li>
+    <li><strong>fix</strong> small problem with tinymce plugin default values</li>
+    <li><strong>fix</strong> missing some parts of rendering multi editor block</li>
+    <li><strong>fix</strong> minor problem with adding data to votes log table</li>
+    <li><strong>fix</strong> rare problem with preparation of the multi sets rendering</li>
+</ul>
+<h3>Version 1.3.1 / may 10 2009</h3>
+<ul>
+    <li><strong>new</strong> added two more stars sizes, 16px and 24px</li>
+    <li><strong>edit</strong> extensive code cleanup eliminating editor warnings</li>
+    <li><strong>edit</strong> optimization of rating css file</li>
+    <li><strong>edit</strong> expanded some of the rendering functions</li>
+    <li><strong>edit</strong> max number of elements in multi set increased to 20</li>
+    <li><strong>edit</strong> removed more of the obsolete unused code</li>
+    <li><strong>fix</strong> rare problem with external css file in firefox</li>
+    <li><strong>fix</strong> invalid results in the rating widgets</li>
+    <li><strong>fix</strong> small problem in widget results sql query with all categories selected</li>
+    <li><strong>fix</strong> multi rating block shows button even if the button is disabled</li>
+    <li><strong>fix</strong> widget data sorting problem with grouping active</li>
+    <li><strong>fix</strong> t2 rendering for multi ratings invalid average rating value</li>
+    <li><strong>fix</strong> multi ratings block doesn't contain template info</li>
+    <li><strong>fix</strong> multi ratings vote doesn't receive template used for rendering</li>
+    <li><strong>fix</strong> rare problem with invalid post type in comment rating</li>
+    <li><strong>fix</strong> calculating remaining time parts</li>
+</ul>
+<h3>Version 1.3.0 / may 7 2009</h3>
+<ul>
+
+    <li><strong>new</strong> improved sorting of data for t2 rendering</li>
+    <li><strong>new</strong> few more extra templates</li>
+    <li><strong>new</strong> multi ratings partial support for own restriction rules</li>
+    <li><strong>new</strong> import t2 templates from alternative location</li>
+    <li><strong>new</strong> export own t2 templates into csv file</li>
+    <li><strong>new</strong> cleanup of the debug file</li>
+    <li><strong>edit</strong> removed use of json_encode function</li>
+    <li><strong>edit</strong> expanded static stars rendering with id and type</li>
+    <li><strong>edit</strong> more settings for rendering multi review blocks</li>
+    <li><strong>edit</strong> expanded t2 template for multi ratings with new tag elements</li>
+    <li><strong>edit</strong> small update to gdragon base classes</li>
+    <li><strong>edit</strong> better optimization of multi rating database queries</li>
+    <li><strong>edit</strong> improved database tables defaults</li>
+    <li><strong>edit</strong> many minor rendering tweaks</li>
+    <li><strong>fix</strong> rare case of invalid sorting of widget data</li>
+    <li><strong>fix</strong> tinymce plugin javascript missing semicolons</li>
+    <li><strong>fix</strong> multi review restirctions in the rating widget</li>
+    <li><strong>fix</strong> comments widget comment text contains html tags</li>
+    <li><strong>fix</strong> multi rating autoinsert generates warning with no auto insert sets</li>
+    <li><strong>fix</strong> borders, paddings and margins around images in static multi ratings</li>
+    <li><strong>fix</strong> adding new template sets default flag wrong</li>
+    <li><strong>fix</strong> displaying multi review count for sets</li>
+    <li><strong>fix</strong> saving some of the settings</li>
+    <li><strong>fix</strong> few more minor t2 bugs</li>
+</ul>
+<h3>Version 1.2.3 / april 30 2009</h3>
+<ul>
+    <li><a href="http://code.google.com/p/gd-star-rating/wiki/ChangeLog">http://code.google.com/p/gd-star-rating/wiki/ChangeLog</a></li>
+</ul>
+<h3>Version 0.9.9.6 RC4 / october 28 2008</h3>
+<ul>
+    <li><a href="http://code.google.com/p/gd-star-rating/wiki/ChangeLogDevelopment">http://code.google.com/p/gd-star-rating/wiki/ChangeLogDevelopment</a></li>
+</ul>
+</div>
+</div>
+
+</body>
+</html>
