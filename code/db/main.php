@@ -406,6 +406,10 @@ class GDSRDatabase {
 
         $sql = sprintf("SELECT * FROM %s WHERE post_id = %s", $articles, $id);
         $post_data = $wpdb->get_row($sql);
+        if (count($post_data) == 0) {
+            GDSRDatabase::add_default_vote($id);
+            $post_data = $wpdb->get_row($sql);
+        }
 
 wp_gdsr_dump("SAVEVOTE_post_data_sql", $sql);
 wp_gdsr_dump("SAVEVOTE_post_data_sql_error", $wpdb->last_error);
@@ -632,16 +636,16 @@ wp_gdsr_dump("SAVEVOTE_trend_insert_error", $wpdb->last_error);
                 $articles, $vote, $id);
             $wpdb->query($sql);
 
-wp_gdsr_dump("SAVEVOTE_trend_update_user_sql", $sql);
-wp_gdsr_dump("SAVEVOTE_trend_update_user", $wpdb->last_error);
+wp_gdsr_dump("SAVEVOTE_update_user_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_update_user", $wpdb->last_error);
 
             if (!$trend_added) {
                 $sql = sprintf("UPDATE %s SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE id = %s and vote_type = 'article' and vote_date = '%s'",
                     $trend, $vote, $id, $trend_date);
                 $wpdb->query($sql);
 
-wp_gdsr_dump("SAVEVOTE_trend_update_user_sql", $sql);
-wp_gdsr_dump("SAVEVOTE_trend_update_user_error", $wpdb->last_error);
+wp_gdsr_dump("SAVEVOTE_trend_added_user_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_trend_added_user_error", $wpdb->last_error);
 
             }
         }
@@ -650,8 +654,8 @@ wp_gdsr_dump("SAVEVOTE_trend_update_user_error", $wpdb->last_error);
                 $articles, $vote, $id);
             $wpdb->query($sql);
 
-wp_gdsr_dump("SAVEVOTE_trend_update_visitor_sql", $sql);
-wp_gdsr_dump("SAVEVOTE_trend_update_visitor_error", $wpdb->last_error);
+wp_gdsr_dump("SAVEVOTE_update_visitor_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_update_visitor_error", $wpdb->last_error);
 
             if (!$trend_added) {
                 $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE id = %s and vote_type = 'article' and vote_date = '%s'",
@@ -659,8 +663,8 @@ wp_gdsr_dump("SAVEVOTE_trend_update_visitor_error", $wpdb->last_error);
                 $wpdb->query($sql);
             }
 
-wp_gdsr_dump("SAVEVOTE_trend_update_visitor_sql", $sql);
-wp_gdsr_dump("SAVEVOTE_trend_update_visitor_error", $wpdb->last_error);
+wp_gdsr_dump("SAVEVOTE_trend_added_visitor_sql", $sql);
+wp_gdsr_dump("SAVEVOTE_trend_added_visitor_error", $wpdb->last_error);
 
         }
 
@@ -698,12 +702,12 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
     function add_default_vote($post_id, $is_page = '', $review = -1) {
         global $wpdb, $table_prefix;
         $options = get_option('gd-star-rating');
-        if ($is_page == '')
-            $is_page = GDSRDatabase::get_post_type($post_id) == 'page' ? '1' : '0';
+        if ($is_page == '') $is_page = GDSRDatabase::get_post_type($post_id) == 'page' ? '1' : '0';
 
+        $vote_timer_value = $options["default_timer_type"] == "T" || $options["default_timer_type"] == "D" ? $options["default_timer_value"] : "";
         $dbt_data_article = $table_prefix.'gdsr_data_article';
         $sql = sprintf("INSERT INTO %s (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (%s, '%s', '%s', '%s', '%s', '%s', 0, 0, 0, 0, %s, '%s', '%s')",
-                $dbt_data_article, $post_id, $options["default_voterules_articles"], $options["default_voterules_comments"], $options["default_moderation_articles"], $options["default_moderation_comments"], $is_page, $review, $options["default_timer_type"], $options["default_timer_value"]);
+                $dbt_data_article, $post_id, $options["default_voterules_articles"], $options["default_voterules_comments"], $options["default_moderation_articles"], $options["default_moderation_comments"], $is_page, $review, $options["default_timer_type"], $vote_timer_value);
         $wpdb->query($sql);
     }
 

@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.5.1
+Version: 1.5.2
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -147,6 +147,7 @@ if (!class_exists('GDStarRating')) {
             define('STARRATING_INSTALLED', $this->default_options["version"]." ".$this->default_options["status"]);
 
             $this->q = new GDSRQuery();
+            $this->c = array();
 
             $this->tabpage = "front";
             $this->log_file = STARRATING_LOG_PATH;
@@ -941,8 +942,7 @@ if (!class_exists('GDStarRating')) {
             if ($_POST['gdsr_comment_edit'] == "edit") {
                 $post_id = $_POST["comment_post_ID"];
                 $comment_id = $_POST["comment_ID"];
-				if (isset($_POST["gdsr_cmm_review"])) $value = $_POST["gdsr_cmm_review"];
-				else $value = -1;
+                $value = isset($_POST["gdsr_cmm_review"]) ? $_POST["gdsr_cmm_review"] : -1;
                 $comment_data = GDSRDatabase::get_comment_data($comment_id);
                 if (count($comment_data) == 0) GDSRDatabase::add_empty_comment($comment_id, $post_id, $value);
                 else GDSRDatabase::save_comment_review($comment_id, $value);
@@ -2277,9 +2277,11 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 $gdsr_cache_posts_cmm_data->set($id, $row);
                 $to_get[] = $id;
             }
-            $logs = GDSRDBCache::get_logs($to_get, $userdata->ID, "comment", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
-            foreach ($logs as $id => $value) {
-                $gdsr_cache_posts_cmm_log->set($id, $value == 0);
+            if (count($to_get) > 0) {
+                $logs = GDSRDBCache::get_logs($to_get, $userdata->ID, "comment", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+                foreach ($logs as $id => $value) {
+                    $gdsr_cache_posts_cmm_log->set($id, $value == 0);
+                }
             }
         }
 

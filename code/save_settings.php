@@ -56,6 +56,7 @@
         $gdsr_options["admin_import"] = isset($_POST['gdsr_admin_import']) ? 1 : 0;
         $gdsr_options["admin_setup"] = isset($_POST['gdsr_admin_setup']) ? 1 : 0;
         $gdsr_options["admin_ips"] = isset($_POST['gdsr_admin_ips']) ? 1 : 0;
+        $gdsr_options["prefetch_data"] = isset($_POST['gdsr_prefetch_data']) ? 1 : 0;
 
         $gdsr_options["allow_mixed_ip_votes"] = isset($_POST['gdsr_allow_mixed_ip_votes']) ? 1 : 0;
         $gdsr_options["cmm_allow_mixed_ip_votes"] = isset($_POST['gdsr_cmm_allow_mixed_ip_votes']) ? 1 : 0;
