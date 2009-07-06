@@ -112,7 +112,8 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 == Changelog ==
 = 1.5.2 =
-* Some cache and prefetch problems solved
+* Fixed importing data from other rating plugins
+* Fixed some minor cache and prefetch problems
 
 = 1.5.1 =
 * Cachind and prefetch of data to reduce number of sql queries
