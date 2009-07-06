@@ -370,8 +370,9 @@ class GDSRDBMulti {
             $i = 0;
             foreach ($votes as $vote) {
                 $sql_set = sprintf($delstring, $vote);
-                $sql = sprintf("update %sgdsr_multis_values set %s where source = 'dta' and id = %s and item_id = %s", $table_prefix, $delstring, $id, $i);
+                $sql = sprintf("update %sgdsr_multis_values set %s where source = 'dta' and id = %s and item_id = %s", $table_prefix, $sql_set, $id, $i);
                 $wpdb->query($sql);
+                $i++;
             }
             $set = gd_get_multi_set($row->multi_id);
             GDSRDBMulti::recalculate_multi_averages($row->id, $row->multi_id, "", $set, true);

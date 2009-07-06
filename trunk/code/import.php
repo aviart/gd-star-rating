@@ -87,8 +87,7 @@ class GDSRImport {
         $idlist = join(", ", $idx);
         
         $sql = sprintf("UPDATE %sgdsr_data_article a INNER JOIN %spsr_post p ON p.id = a.post_id set a.visitor_voters = a.visitor_voters + p.votes, a.visitor_votes = a.visitor_votes + p.points WHERE a.post_id in (%s)",
-            $table_prefix, $table_prefix, $idlist
-            );
+            $table_prefix, $table_prefix, $idlist);
         $wpdb->query($sql);
         
         $sql = sprintf("select post_id from %sgdsr_data_article where post_id in (%s)", $table_prefix, $idlist);
@@ -102,7 +101,7 @@ class GDSRImport {
         }
         if (count($idn) > 0) {
             $inlist = join(", ", $idn);
-            $sql = sprintf("INSERT INTO %sgdsr_data_article SELECT p.id, 'A', 'A', 'N', 'N', if (strcmp(w.post_type, 'page'), '0', '1'), 0, 0, p.votes, p.points, -1, '', 0, 0, 0, 0, 0 FROM %spsr_post p INNER JOIN %sposts w ON p.id = w.id WHERE p.id in (%s) ORDER BY p.id",
+            $sql = sprintf("INSERT INTO %sgdsr_data_article SELECT p.id, 'A', 'A', 'N', 'N', if (strcmp(w.post_type, 'page'), '0', '1'), 0, 0, p.votes, p.points, -1, '', 0, 0, 0, 0, 0, 'N', '', null FROM %spsr_post p INNER JOIN %sposts w ON p.id = w.id WHERE p.id in (%s) ORDER BY p.id",
                 $table_prefix, $table_prefix, $table_prefix, $inlist
                 );
             $wpdb->query($sql);
@@ -111,7 +110,7 @@ class GDSRImport {
 
     function import_psr_log() {
         global $wpdb, $table_prefix;
-        $sql = sprintf("INSERT INTO %sgdsr_votes_log SELECT null, post, 'article', 0, points, vote_date, ip, '' FROM %spsr_user ORDER BY vote_date", $table_prefix, $table_prefix);
+        $sql = sprintf("INSERT INTO %sgdsr_votes_log SELECT null, post, 'article', 0, 0, points, '', vote_date, ip, '', 0 FROM %spsr_user ORDER BY vote_date", $table_prefix, $table_prefix);
         $wpdb->query($sql);
     }
 
@@ -140,7 +139,7 @@ class GDSRImport {
     
     function import_wpr_log() {
         global $wpdb, $table_prefix;
-        $sql = sprintf("INSERT INTO %sgdsr_votes_log SELECT null, rating_postid, 'article', rating_userid, rating_rating, FROM_UNIXTIME(rating_timestamp), rating_ip, '' FROM %sratings ORDER BY rating_timestamp asc", $table_prefix, $table_prefix);
+        $sql = sprintf("INSERT INTO %sgdsr_votes_log SELECT null, rating_postid, 'article', 0, rating_userid, rating_rating, '', FROM_UNIXTIME(rating_timestamp), rating_ip, '', 0 FROM %sratings ORDER BY rating_timestamp asc", $table_prefix, $table_prefix);
         $wpdb->query($sql);
     }
     
@@ -173,15 +172,13 @@ class GDSRImport {
         $sqlFull = sprintf("INSERT INTO %sgdsr_votes_trend SELECT * FROM %sgdsrjoin; ", $table_prefix, $table_prefix);
         $wpdb->query($sqlFull);
         $sqlFull = sprintf("UPDATE %sgdsr_data_article a INNER JOIN %sgdsrjoin p ON p.id = a.post_id set a.visitor_voters = a.visitor_voters + p.visitor_voters, a.visitor_votes = a.visitor_votes + p.visitor_votes, a.user_voters = a.user_voters + p.user_voters, a.user_votes = a.user_votes + p.user_votes WHERE a.post_id in (%s)",
-            $table_prefix, $table_prefix, $idlist
-            );
+            $table_prefix, $table_prefix, $idlist);
         $wpdb->query($sqlFull);
 
         if (count($idn) > 0) {
             $inlist = join(", ", $idn);
-            $sqlFull = sprintf("INSERT INTO %sgdsr_data_article SELECT p.id, 'A', 'A', 'N', 'N', if (strcmp(w.post_type, 'page'), '0', '1'), p.user_voters, p.user_votes, p.visitor_voters, p.visitor_votes, -1, '', 0, 0, 0, 0, 0 FROM %sgdsrjoin p INNER JOIN %sposts w ON p.id = w.id WHERE p.id in (%s) ORDER BY p.id",
-                $table_prefix, $table_prefix, $table_prefix, $inlist
-                );
+            $sqlFull = sprintf("INSERT INTO %sgdsr_data_article SELECT p.id, 'A', 'A', 'N', 'N', if (strcmp(w.post_type, 'page'), '0', '1'), p.user_voters, p.user_votes, p.visitor_voters, p.visitor_votes, -1, '', 0, 0, 0, 0, 0, 'N', '', null FROM %sgdsrjoin p INNER JOIN %sposts w ON p.id = w.id WHERE p.id in (%s) ORDER BY p.id",
+                $table_prefix, $table_prefix, $table_prefix, $inlist);
             $wpdb->query($sqlFull);
         }
 
