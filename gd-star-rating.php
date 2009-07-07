@@ -57,10 +57,11 @@ if (!class_exists('GDStarRating')) {
         var $is_bot = false;
         var $is_ban = false;
         var $is_ie6 = false;
+        var $is_cached = false;
+
         var $use_nonce = true;
         var $extra_folders = false;
         var $safe_mode = false;
-        var $is_cached = false;
         var $widget_post_id;
         var $cats_data_posts = array();
         var $cats_data_cats = array();
@@ -204,7 +205,7 @@ if (!class_exists('GDStarRating')) {
         */
 	function shortcode_starrater($atts = array()) {
             return $this->shortcode_starratingblock($atts);
-		}
+	}
 
         /**
         * Code for StarRatingBlock shortcode implementation
@@ -1248,8 +1249,6 @@ if (!class_exists('GDStarRating')) {
                     update_option('gd-star-rating', $this->o);
                 }
             }
-
-            if (!is_admin() && !is_feed()) $this->prepare_multiset();
         }
 
         /**
@@ -2329,7 +2328,9 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                     if ($this->o["auto_display_position"] == "bottom" || $this->o["auto_display_position"] == "both")
                         $content = $content.$rendered;
                 }
-                if (is_single() || is_page()) {
+
+                if ($this->o["multis_active"] && (is_single() || is_page())) {
+                    $this->prepare_multiset();
                     $this->cache_posts($userdata->ID);
                     $content = $this->display_multi_rating("top", $post, $userdata).$content;
                     $content = $content.$this->display_multi_rating("bottom", $post, $userdata);
@@ -2340,7 +2341,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         }
 
         function display_multi_rating($location, $post, $user) {
-            if ($this->rendering_sets == null) $this->prepare_multiset();
             $sets = $this->rendering_sets;
             $rendered = "";
             if (is_array($sets) && count($sets) > 0) {

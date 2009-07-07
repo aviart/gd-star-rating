@@ -1,5 +1,7 @@
 <?php
 
+    $types = array("a", "c", "m", "ra", "rc");
+
     require_once(dirname(__FILE__)."/config.php");
     $wpconfig = get_wpconfig();
     require($wpconfig);
@@ -17,11 +19,18 @@
     $vote_value = $_GET["vote_value"];
     $vote_type = $_GET["vote_type"];
 
-    if ($vote_type != "a" && $vote_type != "c" && $vote_type != "m") $result = "xss_error";
-    else {
+    if (!(in_array($vote_type, $types))) {
+        $result = "xss_error";
+    } else {
         $result = $vote_type."_error";
         if ($vote_type != "m") $vote_value = intval($vote_value);
         switch ($vote_type) {
+            case 'ra':
+                $result = "";
+                break;
+            case 'rc':
+                $result = "";
+                break;
             case 'a':
                 $result = $gdsr->vote_article_ajax($vote_value, $vote_id, $vote_tpl, $vote_size);
                 break;
@@ -39,7 +48,6 @@
     if (isset($_GET["callback"])) {
         $callback = $_GET["callback"];
         echo $callback.'('.$result.');';
-    }
-    else echo $result;
+    } else echo $result;
 
 ?>
