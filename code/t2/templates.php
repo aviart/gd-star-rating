@@ -292,7 +292,7 @@ $t->add_element("%AVG_RATING_STARS%", __("average rating stars", "gd-star-rating
 $t->add_part(__("Normal", "gd-star-rating"), "normal", "", "all", "area");
 $tpls->add_template($t);
 
-$t = new gdTemplate("TRT", __("Thumbs Ratings Text", "gd-star-rating"), "%THUMBS_TEXT%");
+$t = new gdTemplate("TAT", __("Thumbs Article Ratings Text", "gd-star-rating"), "%THUMBS_TEXT%");
 $t->add_template("EWV", "%WORD_VOTES%");
 $t->add_element("%ID%", __("post/page id", "gd-star-rating"));
 $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
@@ -317,8 +317,8 @@ $t->add_part(__("Time Restricted Closed", "gd-star-rating"), "time_closed", "", 
 $t->add_part(__("Vote Saved", "gd-star-rating"), "vote_saved", "", array("%RATING%", "%VOTES_TOTAL%", "%VOTES_UP%", "%VOTES_DOWN%", "%ID%", "%WORD_VOTES%", "%VOTE_VALUE%"));
 $tpls->add_template($t);
 
-$t = new gdTemplate("TRB", __("Thumbs Rating Block", "gd-star-rating"));
-$t->add_template("TRT", "%THUMBS_TEXT%");
+$t = new gdTemplate("TAB", __("Thumbs Article Rating Block", "gd-star-rating"));
+$t->add_template("TAT", "%THUMBS_TEXT%");
 $t->add_element("%TXT_THUMB_DOWN%", __("thumb down text style", "gd-star-rating"));
 $t->add_element("%TXT_THUMB_UP%", __("thumb up text style", "gd-star-rating"));
 $t->add_element("%IMG_THUMB_DOWN%", __("thumb down image style", "gd-star-rating"));
@@ -329,6 +329,35 @@ $t->add_element("%CSS_BLOCK%", __("css class for whole block", "gd-star-rating")
 $t->add_element("%CSS_HEADER%", __("css class for header", "gd-star-rating"));
 $t->add_element("%CSS_THUMBS%", __("css class for stars", "gd-star-rating"));
 $t->add_element("%CSS_TEXT%", __("css class for rating text", "gd-star-rating"));
+$t->add_part(__("Inactive", "gd-star-rating"), "normal", "", "all", "area");
+$t->add_part(__("Active", "gd-star-rating"), "normal", "", "all", "area");
+$tpls->add_template($t);
+
+$t = new gdTemplate("TCT", __("Thumbs Comment Ratings Text", "gd-star-rating"), "%CMM_THUMBS_TEXT%");
+$t->add_template("EWV", "%WORD_VOTES%");
+$t->add_element("%ID%", __("post/page id", "gd-star-rating"));
+$t->add_element("%RATING%", __("article rating", "gd-star-rating"));
+$t->add_element("%VOTES_TOTAL%", __("total votes for article", "gd-star-rating"));
+$t->add_element("%VOTES_UP%", __("total up votes for article", "gd-star-rating"));
+$t->add_element("%VOTES_DOWN%", __("total down votes for article", "gd-star-rating"));
+$t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
+$t->add_element("%VOTE_VALUE%", __("saved vote value", "gd-star-rating"));
+$t->add_part(__("Normal", "gd-star-rating"), "normal", "", array("%RATING%", "%VOTES_TOTAL%", "%VOTES_UP%", "%VOTES_DOWN%", "%ID%", "%WORD_VOTES%"));
+$t->add_part(__("Vote Saved", "gd-star-rating"), "vote_saved", "", "all");
+$tpls->add_template($t);
+
+$t = new gdTemplate("TCB", __("Thumbs Comment Rating Block", "gd-star-rating"));
+$t->add_template("TCT", "%CMM_THUMBS_TEXT%");
+$t->add_element("%TXT_THUMB_DOWN%", __("thumb down text style", "gd-star-rating"));
+$t->add_element("%TXT_THUMB_UP%", __("thumb up text style", "gd-star-rating"));
+$t->add_element("%IMG_THUMB_DOWN%", __("thumb down image style", "gd-star-rating"));
+$t->add_element("%IMG_THUMB_UP%", __("thumb up image style", "gd-star-rating"));
+$t->add_element("%CMM_THUMBS_TEXT%", __("rating text", "gd-star-rating"));
+$t->add_element("%CMM_HEADER_TEXT%", __("rating header text", "gd-star-rating"));
+$t->add_element("%CMM_CSS_BLOCK%", __("css class for whole block", "gd-star-rating"));
+$t->add_element("%CMM_CSS_HEADER%", __("css class for header", "gd-star-rating"));
+$t->add_element("%CMM_CSS_STARS%", __("css class for stars", "gd-star-rating"));
+$t->add_element("%CMM_CSS_TEXT%", __("css class for rating text", "gd-star-rating"));
 $t->add_part(__("Inactive", "gd-star-rating"), "normal", "", "all", "area");
 $t->add_part(__("Active", "gd-star-rating"), "normal", "", "all", "area");
 $tpls->add_template($t);
