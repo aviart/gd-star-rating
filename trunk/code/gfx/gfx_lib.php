@@ -1,6 +1,7 @@
 <?php
 
 class GDgfxLib {
+    var $thumbs = array();
     var $stars = array();
     var $trend = array();
     var $last_scan = "";
@@ -13,8 +14,8 @@ class GDgfxLib {
         $this->stars[] = $star;
     }
 
-    function add_trends($tr) {
-        $this->trend[] = $tr;
+    function add_trends($trend) {
+        $this->trend[] = $trend;
     }
 
     function get_list() {
@@ -35,6 +36,10 @@ class GDgfxLib {
         return $result;
     }
 
+    function find_thumb($folder) {
+        return $this->find_gfx($this->thumbs, $folder);
+    }
+
     function find_stars($folder) {
         return $this->find_gfx($this->stars, $folder);
     }
@@ -52,6 +57,10 @@ class GDgfxLib {
             }
         }
         return $result;
+    }
+
+    function get_thumb_type($folder) {
+        return $this->get_type($this->thumbs, $folder);
     }
 
     function get_stars_type($folder) {
@@ -80,19 +89,21 @@ class GDgfxBase {
     var $primary = 1;
 
     var $imported = false;
+    var $sizes = array();
 
     function GDgfxBase($folder, $primary = true) {
         $this->folder = $folder;
+
         if ($primary) {
             $this->primary = 1;
             $this->gfx_path = STARRATING_PATH.$this->info_folder."/".$folder."/";
             $this->gfx_url = STARRATING_URL.$this->info_folder."/".$folder."/";
-        }
-        else {
+        } else {
             $this->primary = 0;
             $this->gfx_path = STARRATING_XTRA_PATH.$this->info_folder."/".$folder."/";
             $this->gfx_url = STARRATING_XTRA_URL.$this->info_folder."/".$folder."/";
         }
+
         $this->import();
     }
 
@@ -112,6 +123,18 @@ class GDgfxBase {
         return null;
     }
 
+    function scan_folder() {
+        $files = gdFunctionsGDSR::scan_dir($this->gfx_path);
+        $this->sizes = array();
+        foreach ($files as $file) {
+            $fparts = explode(".", $file);
+            if ($fparts[1] == $this->type) {
+                $size = substr($fparts[0], -2);
+                $this->sizes[] = $size;
+            }
+        }
+    }
+
     function load_info_file() {
         $path = $this->gfx_path.$this->info_file.".gdsr";
         if (file_exists($path)) {
@@ -127,6 +150,27 @@ class GDgfxBase {
         }
         else 
             return null;
+    }
+}
+
+class GDgfxThumb extends GDgfxBase {
+    function GDgfxThumb($folder, $primary = true) {
+        $this->info_file = "thumbs";
+        $this->info_folder = "thumbs";
+        parent::GDgfxBase($folder, $primary);
+    }
+
+    function import() {
+        parent::import();
+        parent::scan_folder();
+    }
+
+    function get_url($size = '16') {
+        return $this->gfx_url."thumbs".$size.".".$this->type;
+    }
+
+    function get_path($size = '16') {
+        return $this->gfx_path."thumbs".$size.".".$this->type;
     }
 }
 
