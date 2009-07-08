@@ -1104,6 +1104,7 @@ if (!class_exists('GDStarRating')) {
                         $data->stars[] = $gfx;
                 }
             }
+
             $trend_folders = gdFunctionsGDSR::get_folders($this->plugin_path."trends/");
             foreach ($trend_folders as $f) {
                 $gfx = new GDgfxTrend($f);
@@ -1118,6 +1119,22 @@ if (!class_exists('GDStarRating')) {
                         $data->trend[] = $gfx;
                 }
             }
+
+            $thumbs_folders = gdFunctionsGDSR::get_folders($this->plugin_path."thumbs/");
+            foreach ($thumbs_folders as $f) {
+                $gfx = new GDgfxThumb($f);
+                if ($gfx->imported)
+                    $data->thumbs[] = $gfx;
+            }
+            if (is_dir($this->plugin_xtra_path."thumbs/")) {
+                $thumbs_folders = gdFunctionsGDSR::get_folders($this->plugin_xtra_path."thumbs/");
+                foreach ($thumbs_folders as $f) {
+                    $gfx = new GDgfxThumb($f, false);
+                    if ($gfx->imported)
+                        $data->thumbs[] = $gfx;
+                }
+            }
+
             return $data;
         }
 
