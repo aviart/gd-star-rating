@@ -32,44 +32,6 @@
 
 <?php } ?>
 
-<script type="text/javascript">
-function gdsrStyleSelection(preview) {
-    var gdsrImages = { <?php GDSRHelper::render_gfx_js($gdsr_gfx->stars); ?> };
-    var gdsrTrends = { <?php GDSRHelper::render_gfx_js($gdsr_gfx->trend); ?> };
-    var gdsrImagesExt = { <?php GDSRHelper::render_ext_gfx_js($gdsr_gfx->stars); ?> };
-    var gdsrTrendsExt = { <?php GDSRHelper::render_ext_gfx_js($gdsr_gfx->trend); ?> };
-    var gdsrAuthors = { <?php GDSRHelper::render_authors_gfx_js($gdsr_gfx->stars); ?> };
-
-    var gdsrBase = "#gdsr_preview";
-    var gdsrStyle = "";
-    var gdsrSize = "";
-    var gdsrImage = "";
-
-    if (preview == "trends") {
-        gdsrBase = gdsrBase + "_trends";
-        gdsrStyle = jQuery("#gdsr_style_preview_trends").val();
-        gdsrImage = gdsrTrends[gdsrStyle] + "trend." + gdsrTrendsExt[gdsrStyle];
-    }
-    else {
-        gdsrStyle = jQuery("#gdsr_style_preview").val();
-        gdsrSize = jQuery("#gdsr_size_preview").val();
-        gdsrImage = gdsrImages[gdsrStyle] + "stars" + gdsrSize + "." + gdsrImagesExt[gdsrStyle];
-        jQuery("#gdsrauthorname").html(gdsrAuthors[gdsrStyle]["name"]);
-        jQuery("#gdsrauthoremail").html(gdsrAuthors[gdsrStyle]["email"]);
-        jQuery("#gdsrauthorurl").html(gdsrAuthors[gdsrStyle]["url"]);
-    }
-
-    jQuery(gdsrBase+"_black").attr("src", gdsrImage);
-    jQuery(gdsrBase+"_red").attr("src", gdsrImage);
-    jQuery(gdsrBase+"_green").attr("src", gdsrImage);
-    jQuery(gdsrBase+"_white").attr("src", gdsrImage);
-    jQuery(gdsrBase+"_blue").attr("src", gdsrImage);
-    jQuery(gdsrBase+"_yellow").attr("src", gdsrImage);
-    jQuery(gdsrBase+"_gray").attr("src", gdsrImage);
-    jQuery(gdsrBase+"_picture").attr("src", gdsrImage);
-}
-</script>
-
 <div class="gdsr">
 <form method="post">
 <input type="hidden" id="gdsr_preview_stars" name="gdsr_preview_stars" value="<?php echo $gdsr_options["preview_active"]; ?>" />
@@ -79,25 +41,21 @@ function gdsrStyleSelection(preview) {
 
 <div id="gdsr_tabs" class="gdsrtabs">
 <ul>
-    <li><a href="#fragment-11"><span><?php _e("Features", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-1"><span><?php _e("Administration", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-7"><span><?php _e("Features", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-9"><span><?php _e("Advanced", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-6"><span><?php _e("Integration", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-2"><span><?php _e("Posts And Pages", "gd-star-rating"); ?></span></a></li>
     <?php if ($gdsr_options["comments_active"] == 1) { ?><li><a href="#fragment-3"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li><?php } ?>
     <?php if ($gdsr_options["multis_active"] == 1) { ?><li><a href="#fragment-8"><span><?php _e("Multis", "gd-star-rating"); ?></span></a></li><?php } ?>
     <li><a href="#fragment-4"><span><?php _e("Statistics", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-5"><span><?php _e("Graphics", "gd-star-rating"); ?></span></a></li>
 </ul>
 <div style="clear: both"></div>
-<div id="fragment-11">
+<div id="fragment-7">
 <?php include STARRATING_PATH."options/settings/settings_features.php"; ?>
-</div>
-<div id="fragment-1">
-<?php include STARRATING_PATH."options/settings/settings_administration.php"; ?>
 </div>
 <div id="fragment-9">
 <?php include STARRATING_PATH."options/settings/settings_advanced.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_administration.php"; ?>
 <?php include STARRATING_PATH."options/settings/settings_bots.php"; ?>
 </div>
 <div id="fragment-6">
@@ -115,18 +73,9 @@ function gdsrStyleSelection(preview) {
 <div id="fragment-4">
 <?php include STARRATING_PATH."options/settings/settings_statistics.php"; ?>
 </div>
-<div id="fragment-5">
-<?php include STARRATING_PATH."options/settings/settings_gfx.php"; ?>
-<?php include STARRATING_PATH."options/settings/settings_preview.php"; ?>
-</div>
 </div>
 
 <div style="margin-top: 10px"><input type="submit" class="inputbutton" value="<?php _e("Save Settings", "gd-star-rating"); ?>" name="gdsr_saving"/></div>
 </div>
 </form>
 </div>
-
-<script type="text/javascript">
-    gdsrStyleSelection('stars');
-    gdsrStyleSelection('trends');
-</script>

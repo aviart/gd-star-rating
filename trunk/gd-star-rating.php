@@ -601,6 +601,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->o["multis_active"] == 1)
                 add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Sets", "gd-star-rating"), __("Multi Sets", "gd-star-rating"), 10, "gd-star-rating-multi-sets", array(&$this,"star_multi_sets"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), 10, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Graphics", "gd-star-rating"), __("Graphics", "gd-star-rating"), 10, "gd-star-rating-gfx-page", array(&$this,"star_menu_gfx"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), 10, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("T2 Templates", "gd-star-rating"), __("T2 Templates", "gd-star-rating"), 10, "gd-star-rating-t2", array(&$this,"star_menu_t2"));
             if ($this->o["admin_ips"] == 1)
@@ -1231,10 +1232,16 @@ if (!class_exists('GDStarRating')) {
 
             if ($this->admin_plugin_page == "settings-page") {
                 $gdsr_options = $this->o;
+                include ($this->plugin_path."code/save_settings.php");
+                $this->o = $gdsr_options;
+            }
+
+            if ($this->admin_plugin_page == "gfx-page") {
+                $gdsr_options = $this->o;
                 $ginc = $this->ginc;
                 $ginc_sizes = $this->ginc[0];
                 $ginc_stars = $this->ginc[1];
-                include ($this->plugin_path."code/save_settings.php");
+                include ($this->plugin_path."code/save_gfx.php");
                 $this->o = $gdsr_options;
                 $this->ginc = $ginc;
             }
@@ -1881,6 +1888,29 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             include($this->plugin_path.'options/front.php');
         }
 
+        function star_menu_gfx() {
+            if (isset($_POST['gdsr_preview_scan'])) {
+                $this->g = $this->gfx_scan();
+                update_option('gd-star-rating-gfx', $this->g);
+            }
+            
+            $gdsr_styles = $this->styles;
+            $gdsr_trends = $this->trends;
+            $gdsr_options = $this->o;
+            $gdsr_bots = $this->bots;
+            $gdsr_root_url = $this->plugin_url;
+            $gdsr_gfx = $this->g;
+            $gdsr_wpr8 = $this->wpr8_available;
+            $extra_folders = $this->extra_folders;
+            $safe_mode = $this->safe_mode;
+            $wpv = $this->wp_version;
+            $ginc_sizes = $this->ginc[0];
+            $ginc_stars = $this->ginc[1];
+            $wpr8 = $this->wpr8;
+
+            include($this->plugin_path.'options/gfx.php');
+        }
+
         function star_menu_settings() {
             if (isset($_POST['gdsr_preview_scan'])) {
                 $this->g = $this->gfx_scan();
@@ -2317,6 +2347,16 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                     if ($this->o["auto_display_comment_position"] == "bottom" || $this->o["auto_display_comment_position"] == "both")
                         $content = $content.$rendered;
                 }
+
+                if ((is_single() && !is_admin() && $this->o["thumb_display_comment"] == 1) ||
+                    (is_page() && !is_admin() && $this->o["thumb_display_comment_page"] == 1)
+                ) {
+                    $rendered = $this->render_thumb_comment($post, $comment, $userdata);
+                    if ($this->o["thumb_auto_display_comment_position"] == "top" || $this->o["thumb_auto_display_comment_position"] == "both")
+                        $content = $rendered.$content;
+                    if ($this->o["thumb_auto_display_comment_position"] == "bottom" || $this->o["thumb_auto_display_comment_position"] == "both")
+                        $content = $content.$rendered;
+                }
             }
 
             return $content;
@@ -2332,6 +2372,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                     $this->widget_post_id = $post->ID;
                 }
 
+                // standard rating
                 if ((is_single() && $this->o["display_posts"] == 1) ||
                     (is_page() && $this->o["display_pages"] == 1) ||
                     (is_home() && $this->o["display_home"] == 1) ||
@@ -2346,6 +2387,22 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                         $content = $content.$rendered;
                 }
 
+                // thumbs rating
+                if ((is_single() && $this->o["thumb_display_posts"] == 1) ||
+                    (is_page() && $this->o["thumb_display_pages"] == 1) ||
+                    (is_home() && $this->o["thumb_display_home"] == 1) ||
+                    (is_archive() && $this->o["thumb_display_archive"] == 1) ||
+                    (is_search() && $this->o["thumb_display_search"] == 1)
+                ) {
+                    $this->cache_posts($userdata->ID);
+                    $rendered = $this->render_thumb_article($post, $userdata);
+                    if ($this->o["thumb_auto_display_position"] == "top" || $this->o["thumb_auto_display_position"] == "both")
+                        $content = $rendered.$content;
+                    if ($this->o["thumb_auto_display_position"] == "bottom" || $this->o["thumb_auto_display_position"] == "both")
+                        $content = $content.$rendered;
+                }
+
+                // multis rating
                 if ($this->o["multis_active"] && (is_single() || is_page())) {
                     $this->prepare_multiset();
                     $this->cache_posts($userdata->ID);
@@ -2434,6 +2491,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
 
             $rating_block = GDSRRenderT2::render_ssb($template_id, $rd_post_id, $votes, $score, $this->o["rss_style"], $this->o["rss_size"], $this->o["stars"], $this->o["rss_header_text"]);
             return $rating_block;
+        }
+
+        function render_thumb_comment($post, $comment, $user, $override = array()) {
+            
         }
 
         function render_comment($post, $comment, $user, $override = array()) {
@@ -2539,6 +2600,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
 
             $rating_block = GDSRRenderT2::render_crb($template_id, $rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_style, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $tags_css, $this->o["cmm_header_text"], $debug, $this->loader_comment);
             return $rating_block;
+        }
+
+        function render_thumb_article($post, $user, $override = array()) {
+            
         }
 
         function render_article($post, $user, $override = array()) {
