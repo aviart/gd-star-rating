@@ -57,6 +57,9 @@ $sizes = split_by_length($raw[1], 2);
 unset($raw[0]);
 unset($raw[1]);
 
+$thumb_sets = array("starrating");
+$thumb_sizes = array(12, 16, 20, 24, 32, 40);
+
 $sets = array();
 $blocks = array();
 $head = array();
@@ -81,8 +84,10 @@ foreach($raw as $r) {
     $sets[] = $set;
 }
 
-echo "/*".join(", ", $sizes) ."*/\r\n";
-echo "/*".join(", ", $folders) ."*/\r\n\r\n";
+echo "/*stars sizes: ".join(", ", $sizes) ."*/\r\n";
+echo "/*stars sets: ".join(", ", $folders) ."*/\r\n";
+echo "/*thumbs sizes: ".join(", ", $thumb_sizes) ."*/\r\n";
+echo "/*thumbs sets: ".join(", ", $thumb_sets) ."*/\r\n\r\n";
 
 foreach($raw_blocks as $r) {
     $block = array();
@@ -159,6 +164,39 @@ foreach ($blocks as $block) {
 <?php get_class_head($head, ".starsbar a:visited"); ?> { text-decoration: none; border: 0 !important; }
 <?php get_class_head($head, ".starsbar a:hover"); ?> { text-decoration: none; border: 0 !important; }
 <?php get_class_head($head, ".starsbar a"); ?> { position: absolute; display: block; left: 0; top: 0; text-decoration: none; border: 0 !important; cursor: pointer; background: none !important; }
+
+<?php
+
+foreach ($thumb_sizes as $size) {
+    echo sprintf(".gdt-size-%s.gdthumb, .gdt-size-%s.gdthumb a { width: %spx; height: %spx; }\r\n", $size, $size, $size, $size);
+    echo sprintf(".gdt-size-%s.gdthumb.gddw a { background-position:  0px -%spx !important; }\r\n", $size, $size);
+    echo sprintf(".gdt-size-%s.gdthumb.gdup a:hover { background-position:  0px -%spx; }\r\n", $size, 2 * $size);
+    echo sprintf(".gdt-size-%s.gdthumb.gddw a:hover { background-position:  0px -%spx !important; }\r\n", $size, 3 * $size);
+    foreach ($thumb_sets as $set) {
+        echo sprintf(".gdt-size-%s.gdthumb a.gdt-%s { background: url('../thumbs/%s/thumbs%s.png') repeat-x; }\r\n", $size, $set, $set, $size);
+    }
+}
+
+?>
+
+.gdthumb {
+    position: relative;
+    float: left;
+}
+
+.gdthumb.gdup a {
+    background-position:  0px 0px;
+}
+
+.gdthumb a {
+    border: 0 none !important;
+    cursor: pointer;
+    display: block;
+    left: 0;
+    position: absolute;
+    text-decoration: none;
+    top: 0;
+}
 
 .ratemulti .starsbar .gdcurrent { width: 0; top: 0; position: absolute; opacity: 0.7; }
 .starsbar .gdinner { padding: 0; }

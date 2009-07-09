@@ -109,6 +109,7 @@ if (!class_exists('GDStarRating')) {
 
         var $shortcodes;
         var $stars_sizes;
+        var $thumb_sizes;
         var $default_shortcode_starrating;
         var $default_shortcode_starratercustom;
         var $default_shortcode_starratingmulti;
@@ -131,6 +132,7 @@ if (!class_exists('GDStarRating')) {
             $gdd = new GDSRDefaults();
             $this->shortcodes = $gdd->shortcodes;
             $this->stars_sizes = $gdd->stars_sizes;
+            $this->thumb_sizes = $gdd->thumb_sizes;
             $this->default_spider_bots = $gdd->default_spider_bots;
             $this->default_wpr8 = $gdd->default_wpr8;
             $this->default_shortcode_starrating = $gdd->default_shortcode_starrating;
@@ -1026,6 +1028,7 @@ if (!class_exists('GDStarRating')) {
 
                 $this->o = gdFunctionsGDSR::upgrade_settings($this->o, $this->default_options);
 
+                $this->o["css_last_changed"] = time();
                 $this->o["version"] = $this->default_options["version"];
                 $this->o["date"] = $this->default_options["date"];
                 $this->o["status"] = $this->default_options["status"];
@@ -1072,7 +1075,15 @@ if (!class_exists('GDStarRating')) {
             if (!is_array($this->ginc)) {
                 $this->ginc = array();
                 $this->ginc[] = $this->stars_sizes;
-                $this->ginc[] = $this->g->get_list();
+                $this->ginc[] = $this->g->get_list(true);
+                $this->ginc[] = $this->thumb_sizes;
+                $this->ginc[] = $this->g->get_list(false);
+                update_option('gd-star-rating-inc', $this->ginc);
+            }
+
+            if (count($this->ginc) == 2) {
+                $this->ginc[] = $this->thumb_sizes;
+                $this->ginc[] = $this->g->get_list(false);
                 update_option('gd-star-rating-inc', $this->ginc);
             }
 
@@ -1241,6 +1252,8 @@ if (!class_exists('GDStarRating')) {
                 $ginc = $this->ginc;
                 $ginc_sizes = $this->ginc[0];
                 $ginc_stars = $this->ginc[1];
+                $ginc_sizes_thumb = $this->ginc[2];
+                $ginc_stars_thumb = $this->ginc[3];
                 include ($this->plugin_path."code/save_gfx.php");
                 $this->o = $gdsr_options;
                 $this->ginc = $ginc;
@@ -1906,6 +1919,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $wpv = $this->wp_version;
             $ginc_sizes = $this->ginc[0];
             $ginc_stars = $this->ginc[1];
+            $ginc_sizes_thumb = $this->ginc[2];
+            $ginc_stars_thumb = $this->ginc[3];
             $wpr8 = $this->wpr8;
 
             include($this->plugin_path.'options/gfx.php');
