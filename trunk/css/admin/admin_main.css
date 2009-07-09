@@ -202,6 +202,12 @@ form#gdsr-articles { position: relative; }
 	width: 46px;
 }
 
+.gdsr td.gdsr-preview-thumbs {
+	border: 1px solid black; text-align:center;
+	height: 170px;
+	width: 46px;
+}
+
 .gdsr td.gdsr-preview-trends {
 	border: 1px solid black; text-align:center;
 	height: 54px;

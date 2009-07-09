@@ -301,6 +301,19 @@ class GDSRHelper {
         <?php
     }
 
+    function render_thumbs_sizes($name, $selected = 20, $width = 120, $extraSel = "") {
+        ?>
+<select style="width: <?php echo $width ?>px;" name="<?php echo $name; ?>" id="<?php echo $name; ?>" <?php echo $extraSel; ?>>
+    <option value="12"<?php echo $selected == 12 ? ' selected="selected"' : ''; ?>><?php _e("Mini", "gd-star-rating"); ?> [12px]</option>
+    <option value="16"<?php echo $selected == 16 ? ' selected="selected"' : ''; ?>><?php _e("Icon", "gd-star-rating"); ?> [16px]</option>
+    <option value="20"<?php echo $selected == 20 ? ' selected="selected"' : ''; ?>><?php _e("Small", "gd-star-rating"); ?> [20px]</option>
+    <option value="24"<?php echo $selected == 24 ? ' selected="selected"' : ''; ?>><?php _e("Standard", "gd-star-rating"); ?> [24px]</option>
+    <option value="32"<?php echo $selected == 32 ? ' selected="selected"' : ''; ?>><?php _e("Medium", "gd-star-rating"); ?> [32px]</option>
+    <option value="40"<?php echo $selected == 40 ? ' selected="selected"' : ''; ?>><?php _e("Big", "gd-star-rating"); ?> [40px]</option>
+</select>
+        <?php
+    }
+
     function render_star_sizes_tinymce($name, $selected = "20", $width = 130) {
         GDSRHelper::render_star_sizes($name, $selected, $width);
     }
