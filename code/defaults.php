@@ -6,7 +6,7 @@ class GDSRDefaults {
         "date" => "2009.07.12.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 777,
+        "build" => 779,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,
         "prefetch_data" => 1,
@@ -181,6 +181,8 @@ class GDSRDefaults {
     );
 
     var $stars_sizes = array("12" => 1, "16" => 1, "20" => 1, "24" => 1, "30" => 1, "46" => 1);
+
+    var $thumb_sizes = array("12" => 1, "16" => 1, "20" => 1, "24" => 1, "32" => 1, "40" => 1);
 
     var $default_spider_bots = array(
         "Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", 

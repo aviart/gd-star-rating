@@ -18,9 +18,17 @@ class GDgfxLib {
         $this->trend[] = $trend;
     }
 
-    function get_list() {
+    function get_list($s = true) {
         $results = array();
-        foreach ($this->stars as $set) $results[] = $set->folder;
+        if ($s) {
+            foreach ($this->stars as $set) {
+                $results[] = $set->folder;
+            }
+        } else {
+            foreach ($this->thumbs as $set) {
+                $results[] = $set->folder;
+            }
+        }
         return $results;
     }
 
@@ -158,11 +166,6 @@ class GDgfxThumb extends GDgfxBase {
         $this->info_file = "thumbs";
         $this->info_folder = "thumbs";
         parent::GDgfxBase($folder, $primary);
-    }
-
-    function import() {
-        parent::import();
-        parent::scan_folder();
     }
 
     function get_url($size = '16') {

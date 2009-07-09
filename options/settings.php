@@ -47,6 +47,7 @@
     <li><a href="#fragment-2"><span><?php _e("Posts And Pages", "gd-star-rating"); ?></span></a></li>
     <?php if ($gdsr_options["comments_active"] == 1) { ?><li><a href="#fragment-3"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li><?php } ?>
     <?php if ($gdsr_options["multis_active"] == 1) { ?><li><a href="#fragment-8"><span><?php _e("Multis", "gd-star-rating"); ?></span></a></li><?php } ?>
+    <li><a href="#fragment-1"><span><?php _e("Thumbs Up/Down", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-4"><span><?php _e("Statistics", "gd-star-rating"); ?></span></a></li>
 </ul>
 <div style="clear: both"></div>
@@ -70,6 +71,9 @@
 <?php if ($gdsr_options["multis_active"] == 1) { ?><div id="fragment-8">
 <?php include STARRATING_PATH."options/settings/settings_multis.php"; ?>
 </div><?php } ?>
+<div id="fragment-1">
+<?php include STARRATING_PATH."options/settings/settings_thumbs.php"; ?>
+</div>
 <div id="fragment-4">
 <?php include STARRATING_PATH."options/settings/settings_statistics.php"; ?>
 </div>
