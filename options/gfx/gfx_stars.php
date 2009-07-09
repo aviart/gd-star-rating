@@ -55,3 +55,4 @@
         <?php _e("Only stars set checked here will be included in the css file for the active rating blocks.", "gd-star-rating"); ?>
     </td>
 </tr>
+</tbody></table>

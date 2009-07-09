@@ -39,6 +39,7 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                 <?php GDSRHelper::render_styles_select($gdsr_gfx->stars, $gdsr_options["cmm_style_ie6"]); ?>
                 </select>
                 </td>
+                <td width="10"></td>
                 <td width="150"><?php _e("Rating header", "gd-star-rating"); ?>:</td>
                 <td><input type="text" name="gdsr_cmm_header_text" id="gdsr_cmm_header_text" value="<?php echo wp_specialchars($gdsr_options["cmm_header_text"]); ?>" style="width: 170px" /></td>
             </tr>

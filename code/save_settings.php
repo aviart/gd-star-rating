@@ -10,31 +10,6 @@
 
         update_option("gd-star-rating-bots", $bots);
 
-        $sizes = $_POST["gdsr_inc_size"];
-        $new_stars = $_POST["gdsr_inc_star"];
-        $new_sizes = array();
-        foreach ($this->stars_sizes as $key => $size) {
-            $new_sizes[$key] = in_array($key, $sizes) ? 1 : 0;
-        }
-
-        $ginc = array();
-        $ginc[] = $new_sizes;
-        $ginc[] = $new_stars;
-        update_option("gd-star-rating-inc", $ginc);
-
-        $new_change = true;
-        foreach ($new_sizes as $size => $value) {
-            if ($ginc_sizes[$size] != $value) $new_change = false;
-        }
-        if (count($new_stars) != count($ginc_stars)) $new_change = false;
-        else {
-            foreach ($new_stars as $size => $value) {
-                if ($ginc_stars[$size] != $value) $new_change = false;
-            }
-        }
-
-        if (!$new_change) $gdsr_options["css_last_changed"] = time();
-
         $gdsr_options["wp_query_handler"] = isset($_POST['gdsr_wp_query_handler']) ? 1 : 0;
         $gdsr_options["disable_ie6_check"] = isset($_POST['gdsr_disable_ie6_check']) ? 1 : 0;
         $gdsr_options["news_feed_active"] = isset($_POST['gdsr_news_feed_active']) ? 1 : 0;
@@ -102,7 +77,7 @@
         $gdsr_options["save_user_agent"] = isset($_POST['gdsr_save_user_agent']) ? 1 : 0;
         $gdsr_options["save_cookies"] = isset($_POST['gdsr_save_cookies']) ? 1 : 0;
         $gdsr_options["ie_opacity_fix"] = isset($_POST['gdsr_ieopacityfix']) ? 1 : 0;
-        
+
         $gdsr_options["integrate_dashboard"] = isset($_POST['gdsr_integrate_dashboard']) ? 1 : 0;
         $gdsr_options["integrate_post_edit"] = isset($_POST['gdsr_integrate_post_edit']) ? 1 : 0;
         $gdsr_options["integrate_post_edit_mur"] = isset($_POST['gdsr_integrate_post_edit_mur']) ? 1 : 0;
@@ -197,6 +172,16 @@
         $gdsr_options["default_moderation_multis"] = $_POST['gdsr_default_mod_multies'];
         $gdsr_options["default_moderation_articles"] = $_POST['gdsr_default_mod_articles'];
         $gdsr_options["default_moderation_comments"] = $_POST['gdsr_default_mod_comments'];
+
+        $gdsr_options["thumb_display_pages"] = isset($_POST['gdsr_thumb_pages']) ? 1 : 0;
+        $gdsr_options["thumb_display_posts"] = isset($_POST['gdsr_thumb_posts']) ? 1 : 0;
+        $gdsr_options["thumb_display_archive"] = isset($_POST['gdsr_thumb_archive']) ? 1 : 0;
+        $gdsr_options["thumb_display_home"] = isset($_POST['gdsr_thumb_home']) ? 1 : 0;
+        $gdsr_options["thumb_display_search"] = isset($_POST['gdsr_thumb_search']) ? 1 : 0;
+        $gdsr_options["thumb_display_comment"] = isset($_POST['gdsr_thumb_dispcomment']) ? 1 : 0;
+        $gdsr_options["thumb_display_comment_page"] = isset($_POST['gdsr_thumb_dispcomment_pages']) ? 1 : 0;
+        $gdsr_options["thumb_auto_display_position"] = $_POST['gdsr_thumb_auto_display_position'];
+        $gdsr_options["thumb_auto_display_comment_position"] = $_POST['gdsr_thumb_auto_display_comment_position'];
 
         update_option("gd-star-rating", $gdsr_options);
     }

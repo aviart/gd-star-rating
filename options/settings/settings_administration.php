@@ -1,5 +1,4 @@
-<table class="form-table"><tbody>
-<tr><th scope="row"><?php _e("Display", "gd-star-rating"); ?></th>
+<tr><th scope="row"><?php _e("Admin Display", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -26,14 +25,11 @@
                 </td>
             </tr>
         </table>
+        <div class="gdsr-table-split"></div>
+        <?php _e("Maximum screen width is used only on WP version older than 2.7.", "gd-star-rating"); ?>
     </td>
 </tr>
-<tr><th scope="row"><?php _e("Settings", "gd-star-rating"); ?></th>
-    <td>
-        <input type="checkbox" name="gdsr_news_feed_active" id="gdsr_news_feed_active"<?php if ($gdsr_options["news_feed_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_news_feed_active"><?php _e("Update front page latest news feed.", "gd-star-rating"); ?></label>
-    </td>
-</tr>
-<tr><th scope="row"><?php _e("Panels", "gd-star-rating"); ?></th>
+<tr><th scope="row"><?php _e("Plugin Panels", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -52,4 +48,8 @@
         </table>
     </td>
 </tr>
-</tbody></table>
+<tr><th scope="row"><?php _e("Other Settings", "gd-star-rating"); ?></th>
+    <td>
+        <input type="checkbox" name="gdsr_news_feed_active" id="gdsr_news_feed_active"<?php if ($gdsr_options["news_feed_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_news_feed_active"><?php _e("Update front page latest news feed.", "gd-star-rating"); ?></label>
+    </td>
+</tr>

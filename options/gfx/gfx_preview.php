@@ -1,4 +1,4 @@
-
+<table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Stars Preview", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0">
