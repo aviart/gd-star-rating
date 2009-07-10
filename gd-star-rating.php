@@ -2623,20 +2623,25 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 if (!$allow_vote) $dbg_allow = "C";
             }
 
-            $votes = 0;
-            $score = 0;
+            $votes = $score = $votes_plus = $votes_minus = 0;
 
             if ($rules_articles == "A" || $rules_articles == "N") {
                 $votes = $comment_data->user_recc_plus + $comment_data->user_recc_minus + $comment_data->visitor_recc_plus + $comment_data->visitor_recc_minus;
                 $score = $comment_data->user_recc_plus - $comment_data->user_recc_minus + $comment_data->visitor_recc_plus - $comment_data->visitor_recc_minus;
+                $votes_plus = $comment_data->user_recc_plus + $comment_data->visitor_recc_plus;
+                $votes_plus = $comment_data->user_recc_minus + $comment_data->visitor_recc_minus;
             }
             else if ($rules_articles == "V") {
                 $votes = $comment_data->user_recc_plus + $comment_data->user_recc_minus;
                 $score = $comment_data->user_recc_plus - $comment_data->user_recc_minus;
+                $votes_plus = $comment_data->user_recc_plus;
+                $votes_plus = $comment_data->user_recc_minus;
             }
             else {
                 $votes = $comment_data->visitor_recc_plus + $comment_data->visitor_recc_minus;
                 $score = $comment_data->visitor_recc_plus - $comment_data->visitor_recc_minus;
+                $votes_plus = $comment_data->visitor_recc_plus;
+                $votes_plus = $comment_data->visitor_recc_minus;
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
@@ -2648,7 +2653,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_tcb_template"];
 
-            $rating_block = GDSRRenderT2::render_tcb($template_id, $rd_post_id, $votes, $score, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, '');
+            $rating_block = GDSRRenderT2::render_tcb($template_id, $rd_post_id, $votes, $score, $votes_plus, $votes_minus, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, '');
             return $rating_block;
         }
 
@@ -2842,20 +2847,25 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 if (!$allow_vote) $dbg_allow = "C";
             }
 
-            $votes = 0;
-            $score = 0;
+            $votes = $score = $votes_plus = $votes_minus = 0;
 
             if ($rules_articles == "A" || $rules_articles == "N") {
                 $votes = $post_data->user_recc_plus + $post_data->user_recc_minus + $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
                 $score = $post_data->user_recc_plus - $post_data->user_recc_minus + $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+                $votes_plus = $post_data->user_recc_plus + $post_data->visitor_recc_plus;
+                $votes_plus = $post_data->user_recc_minus + $post_data->visitor_recc_minus;
             }
             else if ($rules_articles == "V") {
                 $votes = $post_data->user_recc_plus + $post_data->user_recc_minus;
                 $score = $post_data->user_recc_plus - $post_data->user_recc_minus;
+                $votes_plus = $post_data->user_recc_plus;
+                $votes_plus = $post_data->user_recc_minus;
             }
             else {
                 $votes = $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
                 $score = $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+                $votes_plus = $post_data->visitor_recc_plus;
+                $votes_plus = $post_data->visitor_recc_minus;
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
@@ -2867,7 +2877,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_tab_template"];
 
-            $rating_block = GDSRRenderT2::render_tab($template_id, $rd_post_id, $votes, $score, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, '', $expiry_type, $remaining, $deadline);
+            $rating_block = GDSRRenderT2::render_tab($template_id, $rd_post_id, $votes, $score, $votes_plus, $votes_minus, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, '', $expiry_type, $remaining, $deadline);
             return $rating_block;
         }
 
