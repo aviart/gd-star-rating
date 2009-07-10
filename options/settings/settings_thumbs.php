@@ -3,6 +3,34 @@
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
+                <td width="150"><?php _e("Thumbs Set", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <select style="width: 180px;" name="gdsr_thumb_style" id="gdsr_thumb_style">
+                <?php GDSRHelper::render_styles_select($gdsr_gfx->thumbs, $gdsr_options["thumb_style"]); ?>
+                </select>
+                </td>
+                <td width="10"></td>
+                <td width="150" align="left">
+                <?php GDSRHelper::render_thumbs_sizes("gdsr_thumb_size", $gdsr_options["thumb_size"]); ?>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150">MSIE 6:</td>
+                <td width="200" align="left">
+                <select style="width: 180px;" name="gdsr_thumb_style_ie6" id="gdsr_thumb_style_ie6">
+                <?php GDSRHelper::render_styles_select($gdsr_gfx->thumbs, $gdsr_options["thumb_style_ie6"]); ?>
+                </select>
+                </td>
+                <td width="10"></td>
+                <td width="150"><?php _e("Rating header", "gd-star-rating"); ?>:</td>
+                <td><input type="text" name="gdsr_thumb_header_text" id="gdsr_thumb_header_text" value="<?php echo wp_specialchars($gdsr_options["thumb_header_text"]); ?>" style="width: 170px" /></td>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
                 <td width="150" valign="top"><?php _e("Auto insert rating code", "gd-star-rating"); ?>:</td>
                 <td width="200" valign="top">
                     <input type="checkbox" name="gdsr_thumb_posts" id="gdsr_thumb_posts"<?php if ($gdsr_options["thumb_display_posts"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_posts"><?php _e("For individual posts.", "gd-star-rating"); ?></label>
@@ -30,6 +58,34 @@
 </tr>
 <tr><th scope="row"><?php _e("Comments", "gd-star-rating"); ?></th>
     <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Thumbs Set", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <select style="width: 180px;" name="gdsr_thumb_cmm_style" id="gdsr_thumb_cmm_style">
+                <?php GDSRHelper::render_styles_select($gdsr_gfx->thumbs, $gdsr_options["thumb_cmm_style"]); ?>
+                </select>
+                </td>
+                <td width="10"></td>
+                <td width="150" align="left">
+                <?php GDSRHelper::render_thumbs_sizes("gdsr_thumb_cmm_size", $gdsr_options["thumb_cmm_size"]); ?>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150">MSIE 6:</td>
+                <td width="200" align="left">
+                <select style="width: 180px;" name="gdsr_thumb_cmm_style_ie6" id="gdsr_thumb_cmm_style_ie6">
+                <?php GDSRHelper::render_styles_select($gdsr_gfx->thumbs, $gdsr_options["thumb_cmm_style_ie6"]); ?>
+                </select>
+                </td>
+                <td width="10"></td>
+                <td width="150"><?php _e("Rating header", "gd-star-rating"); ?>:</td>
+                <td><input type="text" name="gdsr_thumb_cmm_header_text" id="gdsr_thumb_cmm_header_text" value="<?php echo wp_specialchars($gdsr_options["thumb_cmm_header_text"]); ?>" style="width: 170px" /></td>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td width="150" valign="top"><?php _e("Auto insert rating code", "gd-star-rating"); ?>:</td>
