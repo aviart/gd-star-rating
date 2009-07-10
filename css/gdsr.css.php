@@ -174,6 +174,7 @@ foreach ($blocks as $block) {
 <?php
 
 foreach ($thumb_sizes as $size) {
+    echo sprintf(".gdt-size-%s.gdthumbtext { line-height: %spx; }\r\n", $size, $size);
     echo sprintf(".gdt-size-%s.gdthumb, .gdt-size-%s.gdthumb a { width: %spx; height: %spx; }\r\n", $size, $size, $size, $size);
     echo sprintf(".gdt-size-%s.gdthumb.gddw a { background-position:  0px -%spx !important; }\r\n", $size, $size);
     echo sprintf(".gdt-size-%s.gdthumb.gdup a:hover { background-position:  0px -%spx; }\r\n", $size, 2 * $size);
@@ -185,6 +186,11 @@ foreach ($thumb_sizes as $size) {
 }
 
 ?>
+
+.gdthumbtext {
+    float: left;
+    font-size: 12px;
+}
 
 .gdthumb {
     position: relative;

@@ -2350,10 +2350,11 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 if ($value == 0) $to_get[] = $id;
             }
             if (count($to_get) > 0) {
-                global $gdsr_cache_posts_std_data, $gdsr_cache_posts_std_log;
+                global $gdsr_cache_posts_std_data, $gdsr_cache_posts_std_log, $gdsr_cache_posts_std_thumbs_log;
 
                 $data = GDSRDBCache::get_posts($to_get);
                 $logs = GDSRDBCache::get_logs($to_get, $user_id, "article", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
+                $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "artthumb", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
                 foreach ($data as $row) {
                     $id = $row->post_id;
                     $this->c[$id] = 1;
@@ -2362,11 +2363,14 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 foreach ($logs as $id => $value) {
                     $gdsr_cache_posts_std_log->set($id, $value == 0);
                 }
+                foreach ($logs_thumb as $id => $value) {
+                    $gdsr_cache_posts_std_thumbs_log->set($id, $value == 0);
+                }
             }
         }
 
         function cache_comments($post_id) {
-            global $gdsr_cache_posts_cmm_data, $gdsr_cache_posts_cmm_log, $userdata;
+            global $gdsr_cache_posts_cmm_data, $gdsr_cache_posts_cmm_log, $gdsr_cache_posts_cmm_thumbs_log, $userdata;
             $to_get = array();
 
             $data = GDSRDBCache::get_comments($post_id);
@@ -2377,8 +2381,12 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             }
             if (count($to_get) > 0) {
                 $logs = GDSRDBCache::get_logs($to_get, $userdata->ID, "comment", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+                $logs_thumb = GDSRDBCache::get_logs($to_get, $userdata->ID, "cmmthumb", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
                 foreach ($logs as $id => $value) {
                     $gdsr_cache_posts_cmm_log->set($id, $value == 0);
+                }
+                foreach ($logs_thumb as $id => $value) {
+                    $gdsr_cache_posts_cmm_thumbs_log->set($id, $value == 0);
                 }
             }
         }
@@ -2546,7 +2554,102 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         }
 
         function render_thumb_comment($post, $comment, $user, $override = array()) {
-            
+            $default_settings = array("style" => $this->o["thumb_cmm_style"], "style_ie6" => $this->o["thumb_cmm_style_ie6"], "size" => $this->o["thumb_cmm_size"], "tpl" => 0, "read_only" => 0);
+            $override = shortcode_atts($default_settings, $override);
+            if ($override["style"] == "") $override["style"] = $this->o["thumb_cmm_style"];
+            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["thumb_cmm_style_ie6"];
+            if ($override["size"] == "") $override["size"] = $this->o["thumb_cmm_size"];
+
+            if ($this->o["comments_active"] != 1) return "";
+            if ($this->is_bot) return "";
+
+            $dbg_allow = "F";
+            $allow_vote = $override["read_only"] == 0;
+            if ($this->is_ban && $this->o["ip_filtering"] == 1) {
+                if ($this->o["ip_filtering_restrictive"] == 1) return "";
+                else $allow_vote = false;
+                $dbg_allow = "B";
+            }
+
+            $rd_unit_width = $override["size"];
+            $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
+            $rd_post_id = intval($post->ID);
+            $rd_user_id = intval($user->ID);
+            $rd_comment_id = intval($comment->comment_ID);
+            $rd_is_page = $post->post_type == "page" ? "1" : "0";
+
+            $post_data = wp_gdget_post($rd_post_id);
+            if (count($post_data) == 0) {
+                GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
+                $post_data = wp_gdget_post($rd_post_id);
+                $this->c[$rd_post_id] = 1;
+            }
+
+            $rules_comments = $post_data->rules_comments != "I" ? $post_data->rules_comments : $this->get_post_rule_value($rd_post_id, "rules_comments", "default_voterules_comments");
+
+            if ($rules_comments == "H") return "";
+            $comment_data = wp_gdget_comment($rd_comment_id);
+            if (count($comment_data) == 0) {
+                GDSRDatabase::add_empty_comment($rd_comment_id, $rd_post_id);
+                $comment_data = wp_gdget_comment($rd_comment_id);
+            }
+
+            if ($allow_vote) {
+                if ($this->o["cmm_author_vote"] == 1 && $rd_user_id == $comment->user_id && $rd_user_id > 0) {
+                    $allow_vote = false;
+                    $dbg_allow = "A";
+                }
+            }
+
+            if ($allow_vote) {
+                if (($rules_comments == "") ||
+                    ($rules_comments == "A") ||
+                    ($rules_comments == "U" && $rd_user_id > 0) ||
+                    ($rules_comments == "V" && $rd_user_id == 0)
+                ) $allow_vote = true;
+                else {
+                    $allow_vote = false;
+                    $dbg_allow = "R_".$rules_comments;
+                }
+            }
+
+            if ($allow_vote) {
+                $allow_vote = wp_gdget_thumb_commentlog($rd_comment_id);
+                if (!$allow_vote) $dbg_allow = "D";
+            }
+
+            if ($allow_vote) {
+                $allow_vote = $this->check_cookie($rd_comment_id, "cmmthumb");
+                if (!$allow_vote) $dbg_allow = "C";
+            }
+
+            $votes = 0;
+            $score = 0;
+
+            if ($rules_articles == "A" || $rules_articles == "N") {
+                $votes = $comment_data->user_recc_plus + $comment_data->user_recc_minus + $comment_data->visitor_recc_plus + $comment_data->visitor_recc_minus;
+                $score = $comment_data->user_recc_plus - $comment_data->user_recc_minus + $comment_data->visitor_recc_plus - $comment_data->visitor_recc_minus;
+            }
+            else if ($rules_articles == "V") {
+                $votes = $comment_data->user_recc_plus + $comment_data->user_recc_minus;
+                $score = $comment_data->user_recc_plus - $comment_data->user_recc_minus;
+            }
+            else {
+                $votes = $comment_data->visitor_recc_plus + $comment_data->visitor_recc_minus;
+                $score = $comment_data->visitor_recc_plus - $comment_data->visitor_recc_minus;
+            }
+
+            $debug = $rd_user_id == 0 ? "V" : "U";
+            $debug.= $rd_user_id == $comment->user_id ? "A" : "N";
+            $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
+
+            $tags_css = array();
+
+            if ($override["tpl"] > 0) $template_id = $override["tpl"];
+            else $template_id = $this->o["default_tcb_template"];
+
+            $rating_block = GDSRRenderT2::render_tcb($template_id, $rd_post_id, $votes, $score, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, '');
+            return $rating_block;
         }
 
         function render_comment($post, $comment, $user, $override = array()) {
@@ -2570,7 +2673,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $rd_unit_count = $this->o["cmm_stars"];
             $rd_unit_width = $override["size"];
             $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
-
             $rd_post_id = intval($post->ID);
             $rd_user_id = intval($user->ID);
             $rd_comment_id = intval($comment->comment_ID);
@@ -2655,7 +2757,118 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         }
 
         function render_thumb_article($post, $user, $override = array()) {
-            
+            $default_settings = array("style" => $this->o["thumb_style"], "style_ie6" => $this->o["thumb_style_ie6"], "size" => $this->o["thumb_size"], "tpl" => 0, "read_only" => 0);
+            $override = shortcode_atts($default_settings, $override);
+            if ($override["style"] == "") $override["style"] = $this->o["thumb_style"];
+            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["thumb_style_ie6"];
+            if ($override["size"] == "") $override["size"] = $this->o["thumb_size"];
+
+            if ($this->is_bot) return "";
+
+            $dbg_allow = "F";
+            $allow_vote = $override["read_only"] == 0;
+            if ($this->is_ban && $this->o["ip_filtering"] == 1) {
+                if ($this->o["ip_filtering_restrictive"] == 1) return "";
+                else $allow_vote = false;
+                $dbg_allow = "B";
+            }
+
+            if ($override["read_only"] == 1) $dbg_allow = "RO";
+
+            $rd_unit_width = $override["size"];
+            $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
+            $rd_post_id = intval($post->ID);
+            $rd_user_id = intval($user->ID);
+            $rd_is_page = $post->post_type == "page" ? "1" : "0";
+
+            $post_data = wp_gdget_post($rd_post_id);
+            if (count($post_data) == 0) {
+                GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
+                $post_data = wp_gdget_post($rd_post_id);
+                $this->c[$rd_post_id] = 1;
+            }
+
+            $rules_articles = $post_data->rules_articles != "I" ? $post_data->rules_articles : $this->get_post_rule_value($rd_post_id, "rules_articles", "default_voterules_articles");
+
+            if ($rules_articles == "H") return "";
+            if ($allow_vote) {
+                if (($rules_articles == "") ||
+                    ($rules_articles == "A") ||
+                    ($rules_articles == "U" && $rd_user_id > 0) ||
+                    ($rules_articles == "V" && $rd_user_id == 0)
+                ) $allow_vote = true;
+                else {
+                    $allow_vote = false;
+                    $dbg_allow = "R_".$rules_articles;
+                }
+            }
+
+            if ($allow_vote) {
+                if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author) {
+                    $allow_vote = false;
+                    $dbg_allow = "A";
+                }
+            }
+
+            $remaining = 0;
+            $deadline = '';
+            if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T' || $post_data->expiry_type == 'I')) {
+                $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
+                $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");
+                switch($expiry_type) {
+                    case "D":
+                        $remaining = GDSRHelper::expiration_date($expiry_value);
+                        $deadline = $expiry_value;
+                        break;
+                    case "T":
+                        $remaining = GDSRHelper::expiration_countdown($post->post_date, $expiry_value);
+                        $deadline = GDSRHelper::calculate_deadline($remaining);
+                        break;
+                }
+                if ($remaining < 1) {
+                    GDSRDatabase::lock_post($rd_post_id);
+                    $allow_vote = false;
+                    $dbg_allow = "T";
+                }
+            }
+
+            if ($allow_vote) {
+                $allow_vote = wp_gdget_thumb_postlog($rd_post_id);
+                if (!$allow_vote) $dbg_allow = "D";
+            }
+
+            if ($allow_vote) {
+                $allow_vote = $this->check_cookie($rd_post_id, "artthumb");
+                if (!$allow_vote) $dbg_allow = "C";
+            }
+
+            $votes = 0;
+            $score = 0;
+
+            if ($rules_articles == "A" || $rules_articles == "N") {
+                $votes = $post_data->user_recc_plus + $post_data->user_recc_minus + $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
+                $score = $post_data->user_recc_plus - $post_data->user_recc_minus + $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+            }
+            else if ($rules_articles == "V") {
+                $votes = $post_data->user_recc_plus + $post_data->user_recc_minus;
+                $score = $post_data->user_recc_plus - $post_data->user_recc_minus;
+            }
+            else {
+                $votes = $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
+                $score = $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+            }
+
+            $debug = $rd_user_id == 0 ? "V" : "U";
+            $debug.= $rd_user_id == $post->post_author ? "A" : "N";
+            $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
+
+            $tags_css = array();
+
+            if ($override["tpl"] > 0) $template_id = $override["tpl"];
+            else $template_id = $this->o["default_tab_template"];
+
+            $rating_block = GDSRRenderT2::render_tab($template_id, $rd_post_id, $votes, $score, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, '', $expiry_type, $remaining, $deadline);
+            return $rating_block;
         }
 
         function render_article($post, $user, $override = array()) {
