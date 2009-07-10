@@ -319,10 +319,8 @@ $tpls->add_template($t);
 
 $t = new gdTemplate("TAB", __("Thumbs Article Rating Block", "gd-star-rating"));
 $t->add_template("TAT", "%THUMBS_TEXT%");
-$t->add_element("%TXT_THUMB_DOWN%", __("thumb down text style", "gd-star-rating"));
-$t->add_element("%TXT_THUMB_UP%", __("thumb up text style", "gd-star-rating"));
-$t->add_element("%IMG_THUMB_DOWN%", __("thumb down image style", "gd-star-rating"));
-$t->add_element("%IMG_THUMB_UP%", __("thumb up image style", "gd-star-rating"));
+$t->add_element("%THUMB_DOWN%", __("thumb down image style", "gd-star-rating"));
+$t->add_element("%THUMB_UP%", __("thumb up image style", "gd-star-rating"));
 $t->add_element("%HEADER_TEXT%", __("rating header text", "gd-star-rating"));
 $t->add_element("%THUMBS_TEXT%", __("rating text", "gd-star-rating"));
 $t->add_element("%CSS_BLOCK%", __("css class for whole block", "gd-star-rating"));
@@ -348,10 +346,8 @@ $tpls->add_template($t);
 
 $t = new gdTemplate("TCB", __("Thumbs Comment Rating Block", "gd-star-rating"));
 $t->add_template("TCT", "%CMM_THUMBS_TEXT%");
-$t->add_element("%TXT_THUMB_DOWN%", __("thumb down text style", "gd-star-rating"));
-$t->add_element("%TXT_THUMB_UP%", __("thumb up text style", "gd-star-rating"));
-$t->add_element("%IMG_THUMB_DOWN%", __("thumb down image style", "gd-star-rating"));
-$t->add_element("%IMG_THUMB_UP%", __("thumb up image style", "gd-star-rating"));
+$t->add_element("%THUMB_DOWN%", __("thumb down image style", "gd-star-rating"));
+$t->add_element("%THUMB_UP%", __("thumb up image style", "gd-star-rating"));
 $t->add_element("%CMM_THUMBS_TEXT%", __("rating text", "gd-star-rating"));
 $t->add_element("%CMM_HEADER_TEXT%", __("rating header text", "gd-star-rating"));
 $t->add_element("%CMM_CSS_BLOCK%", __("css class for whole block", "gd-star-rating"));

@@ -476,16 +476,72 @@ class GDSRRenderT2 {
         return $rt;
     }
 
-    function render_tat() {
+    function render_tat_voted($template, $votes, $score, $votes_plus, $votes_minus, $id, $vote) {
+        $tpl = $template->elm["vote_saved"];
+        $rt = html_entity_decode($tpl);
+        $rt = str_replace('%RATING%', $score, $rt);
+        $rt = str_replace('%VOTES_TOTAL%', $votes, $rt);
+        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
+        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
+        $rt = str_replace('%ID%', $id, $rt);
+        $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
 
+        $word_votes = $template->dep["EWV"];
+        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+        return $rt;
     }
 
-    function render_tab($template_id, $post_id, $votes, $score, $style, $unit_width, $allow_vote, $user_id, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+    function render_tat($template, $votes, $score, $votes_plus, $votes_minus, $id, $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+        if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
+            $time_parts = GDSRHelper::remaining_time_parts($time_remaining);
+            $time_total = GDSRHelper::remaining_time_total($time_remaining);
+            $tpl = $template->elm["time_active"];
+            $rt = html_entity_decode($tpl);
+            $rt = str_replace('%TR_DATE%', $time_date, $rt);
+            $rt = str_replace('%TR_YEARS%', $time_parts["year"], $rt);
+            $rt = str_replace('%TR_MONTHS%', $time_parts["month"], $rt);
+            $rt = str_replace('%TR_DAYS%', $time_parts["day"], $rt);
+            $rt = str_replace('%TR_HOURS%', $time_parts["hour"], $rt);
+            $rt = str_replace('%TR_MINUTES%', $time_parts["minute"], $rt);
+            $rt = str_replace('%TR_SECONDS%', $time_parts["second"], $rt);
+            $rt = str_replace('%TOT_DAYS%', $time_total["day"], $rt);
+            $rt = str_replace('%TOT_HOURS%', $time_total["hour"], $rt);
+            $rt = str_replace('%TOT_MINUTES%', $time_total["minute"], $rt);
+        }
+        else {
+            if ($time_restirctions == 'D' || $time_restirctions == 'T')
+                $tpl = $template->elm["time_closed"];
+            else
+                $tpl = $template->elm["normal"];
+            $rt = html_entity_decode($tpl);
+        }
+        $rt = str_replace('%RATING%', $score, $rt);
+        $rt = str_replace('%VOTES_TOTAL%', $votes, $rt);
+        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
+        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
+        $rt = str_replace('%ID%', $id, $rt);
+
+        $word_votes = $template->dep["EWV"];
+        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+        return $rt;
+    }
+
+    function render_tab($template_id, $post_id, $votes, $score, $votes_plus, $votes_minus, $style, $unit_width, $allow_vote, $user_id, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
         $template = GDSRRenderT2::get_template($template_id, "TAB");
         $tpl_render = $allow_vote ? $template->elm["active"] : $template->elm["inactive"];
         $tpl_render = html_entity_decode($tpl_render);
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+
+        if (in_array("%THUMBS_TEXT%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
+            $rating_text = GDSRRenderT2::render_tat($template->dep["SRT"], $votes, $score, $votes_plus, $votes_minus, $post_id, $time_restirctions, $time_remaining, $time_date);
+            $rating_text = '<div id="gdsr_thumb_text_'.$post_id.'_a" class="gdt-size-'.$unit_width.' gdthumbtext">'.$rating_text.'</div>';
+            $tpl_render = str_replace("%THUMBS_TEXT%", $rating_text, $tpl_render);
+        }
 
     }
 
@@ -523,11 +579,13 @@ class GDSRRenderT2 {
         return $tpl_render;
     }
 
-    function render_tct() {
+    function render_tct($template, $votes, $score, $votes_plus, $votes_minus, $vote_value = -1) {
+        $tpl = $template->elm["normal"];
+        if ($vote_value > -1) $tpl = $template->elm["vote_saved"];
 
     }
 
-    function render_tcb($template_id, $post_id, $votes, $score, $style, $unit_width, $allow_vote, $user_id, $tags_css, $header_text, $debug = '', $wait_msg = '') {
+    function render_tcb($template_id, $post_id, $votes, $score, $votes_plus, $votes_minus, $style, $unit_width, $allow_vote, $user_id, $tags_css, $header_text, $debug = '', $wait_msg = '') {
         $template = GDSRRenderT2::get_template($template_id, "TCB");
         $tpl_render = $allow_vote ? $template->elm["active"] : $template->elm["inactive"];
         $tpl_render = html_entity_decode($tpl_render);
