@@ -476,6 +476,19 @@ class GDSRRenderT2 {
         return $rt;
     }
 
+    function render_tat() {
+
+    }
+
+    function render_tab($template_id, $post_id, $votes, $score, $style, $unit_width, $allow_vote, $user_id, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+        $template = GDSRRenderT2::get_template($template_id, "TAB");
+        $tpl_render = $allow_vote ? $template->elm["active"] : $template->elm["inactive"];
+        $tpl_render = html_entity_decode($tpl_render);
+        foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
+        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+
+    }
+
     function render_srb($template_id, $post_id, $class, $type, $votes, $score, $style, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
         $template = GDSRRenderT2::get_template($template_id, "SRB");
         $tpl_render = $template->elm["normal"];
@@ -508,6 +521,18 @@ class GDSRRenderT2 {
         $tpl_render.= '</div>';
 
         return $tpl_render;
+    }
+
+    function render_tct() {
+
+    }
+
+    function render_tcb($template_id, $post_id, $votes, $score, $style, $unit_width, $allow_vote, $user_id, $tags_css, $header_text, $debug = '', $wait_msg = '') {
+        $template = GDSRRenderT2::get_template($template_id, "TCB");
+        $tpl_render = $allow_vote ? $template->elm["active"] : $template->elm["inactive"];
+        $tpl_render = html_entity_decode($tpl_render);
+        foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
+        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
     }
 
     function render_crb($template_id, $cmm_id, $class, $type, $votes, $score, $style, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '') {

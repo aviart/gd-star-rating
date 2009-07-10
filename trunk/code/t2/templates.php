@@ -329,8 +329,8 @@ $t->add_element("%CSS_BLOCK%", __("css class for whole block", "gd-star-rating")
 $t->add_element("%CSS_HEADER%", __("css class for header", "gd-star-rating"));
 $t->add_element("%CSS_THUMBS%", __("css class for stars", "gd-star-rating"));
 $t->add_element("%CSS_TEXT%", __("css class for rating text", "gd-star-rating"));
-$t->add_part(__("Inactive", "gd-star-rating"), "normal", "", "all", "area");
-$t->add_part(__("Active", "gd-star-rating"), "normal", "", "all", "area");
+$t->add_part(__("Inactive", "gd-star-rating"), "inactive", "", "all", "area");
+$t->add_part(__("Active", "gd-star-rating"), "active", "", "all", "area");
 $tpls->add_template($t);
 
 $t = new gdTemplate("TCT", __("Thumbs Comment Ratings Text", "gd-star-rating"), "%CMM_THUMBS_TEXT%");
@@ -358,8 +358,8 @@ $t->add_element("%CMM_CSS_BLOCK%", __("css class for whole block", "gd-star-rati
 $t->add_element("%CMM_CSS_HEADER%", __("css class for header", "gd-star-rating"));
 $t->add_element("%CMM_CSS_STARS%", __("css class for stars", "gd-star-rating"));
 $t->add_element("%CMM_CSS_TEXT%", __("css class for rating text", "gd-star-rating"));
-$t->add_part(__("Inactive", "gd-star-rating"), "normal", "", "all", "area");
-$t->add_part(__("Active", "gd-star-rating"), "normal", "", "all", "area");
+$t->add_part(__("Inactive", "gd-star-rating"), "inactive", "", "all", "area");
+$t->add_part(__("Active", "gd-star-rating"), "active", "", "all", "area");
 $tpls->add_template($t);
 
 ?>

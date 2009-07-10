@@ -18,8 +18,8 @@ class GDSRDBCache {
     function get_logs($ids, $user, $type, $ip, $mod_only = false, $mixed = false) {
         global $wpdb, $table_prefix;
 
-        $table = $type == "article" ? "posts" : "comments";
-        $column = $type == "article" ? "ID" : "comment_ID";
+        $table = ($type == "article" || $type == "artthumb") ? "posts" : "comments";
+        $column = ($type == "article" || $type == "artthumb") ? "ID" : "comment_ID";
 
         if ($user == 0) {
             $sql = sprintf("select p.%s as ID, count(l.record_id) as counter from %s%s p left join %sgdsr_moderate l on l.id = p.%s and l.vote_type = '%s' and ip = '%s' where p.%s in (%s) group by p.%s",
@@ -114,12 +114,28 @@ function wp_gdget_commentlog($comment_id) {
     else return true;
 }
 
-$gdsr_cache_templates = new gdsrCache();
+function wp_gdget_thumb_postlog($post_id) {
+    global $gdsr_cache_posts_std_thumbs_log;
 
+    $log = $gdsr_cache_posts_std_thumbs_log->get($post_id);
+    if (!is_null($log)) return $log;
+    else return true;
+}
+
+function wp_gdget_thumb_commentlog($comment_id) {
+    global $gdsr_cache_posts_cmm_thumbs_log;
+
+    $log = $gdsr_cache_posts_cmm_thumbs_log->get($comment_id);
+    if (!is_null($log)) return $log;
+    else return true;
+}
+
+$gdsr_cache_templates = new gdsrCache();
 $gdsr_cache_posts_std_data = new gdsrCache();
 $gdsr_cache_posts_std_log = new gdsrCache();
-
 $gdsr_cache_posts_cmm_data = new gdsrCache();
 $gdsr_cache_posts_cmm_log = new gdsrCache();
+$gdsr_cache_posts_std_thumbs_log = new gdsrCache();
+$gdsr_cache_posts_cmm_thumbs_log = new gdsrCache();
 
 ?>
