@@ -1597,7 +1597,9 @@ if (!class_exists('GDStarRating')) {
             $sizes = array(20);
             $elements[] = $presizes;
             $elements[] = join("", $sizes);
-            $elements[] = "1poxygen";
+            $elements[] = join("", $sizes);
+            $elements[] = "s1poxygen";
+            $elements[] = "t1pstarrating";
             $q = join("#", $elements);
             $t = $this->o["css_cache_active"] == 1 ? $this->o["css_last_changed"] : 0;
             $url = $this->plugin_url.'css/gdsr.css.php?t='.urlencode($t).'&amp;s='.urlencode($q);
@@ -1606,22 +1608,37 @@ if (!class_exists('GDStarRating')) {
 
         function include_rating_css($external = true, $return = false) {
             $elements = array();
+
             $presizes = "a".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
             $presizes.= "i".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
             $presizes.= "m".gdFunctionsGDSR::prefill_zeros(20, 2);
             $presizes.= "k".gdFunctionsGDSR::prefill_zeros(20, 2);
             $presizes.= "c".gdFunctionsGDSR::prefill_zeros($this->o["cmm_stars"], 2);
             $presizes.= "r".gdFunctionsGDSR::prefill_zeros($this->o["cmm_review_stars"], 2);
-            $sizes = array();
-            foreach ($this->ginc[0] as $size => $var) {
-                if ($var == 1) $sizes[] = $size;
-            }
             $elements[] = $presizes;
-            $elements[] = join("", $sizes);
+
+            $star_sizes = array();
+            foreach ($this->ginc[0] as $size => $var) {
+                if ($var == 1) $star_sizes[] = $size;
+            }
+            $elements[] = join("", $star_sizes);
+
+            $thumb_sizes = array();
+            foreach ($this->ginc[2] as $size => $var) {
+                if ($var == 1) $thumb_sizes[] = $size;
+            }
+            $elements[] = join("", $thumb_sizes);
+
             foreach($this->g->stars as $s) {
                 if (in_array($s->folder, $this->ginc[1]))
-                    $elements[] = $s->primary.substr($s->type, 0, 1).$s->folder;
+                    $elements[] = "s".$s->primary.substr($s->type, 0, 1).$s->folder;
             }
+
+            foreach($this->g->thumbs as $s) {
+                if (in_array($s->folder, $this->ginc[3]))
+                    $elements[] = "t".$s->primary.substr($s->type, 0, 1).$s->folder;
+            }
+
             $q = join("#", $elements);
             $t = $this->o["css_cache_active"] == 1 ? $this->o["css_last_changed"] : 0;
             if ($external) {
@@ -1646,7 +1663,27 @@ if (!class_exists('GDStarRating')) {
         // install
 
         // vote
-        function vote_multi_rating($votes, $post_id, $set_id, $tpl_id, $size) {
+        function vote_thumbs_article($vote, $id, $tpl_id, $unit_width) {
+            global $userdata;
+            $ip = $_SERVER["REMOTE_ADDR"];
+            $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
+            $user = intval($userdata->ID);
+
+wp_gdsr_dump("VOTE THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_width."px");
+
+        }
+
+        function vote_thumbs_comment($votes, $id, $tpl_id, $unit_width) {
+            global $userdata;
+            $ip = $_SERVER["REMOTE_ADDR"];
+            $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
+            $user = intval($userdata->ID);
+
+wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_width."px");
+
+        }
+
+        function vote_multis($votes, $post_id, $set_id, $tpl_id, $size) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
@@ -1692,7 +1729,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
             return "{ status: 'ok', values: ".$enc_values.", rater: '".$rt."', average: '".$rating."' }";
         }
 
-        function vote_article_ajax($votes, $id, $tpl_id, $unit_width) {
+        function vote_article($votes, $id, $tpl_id, $unit_width) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
@@ -1745,7 +1782,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
 
-        function vote_comment_ajax($votes, $id, $tpl_id, $unit_width) {
+        function vote_comment($votes, $id, $tpl_id, $unit_width) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             if ($this->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];

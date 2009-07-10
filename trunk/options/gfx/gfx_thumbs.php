@@ -41,7 +41,7 @@
                         if ($i < count($gdsr_gfx->thumbs) - 1) {
                             $i++;
                             $star = $gdsr_gfx->thumbs[$i];
-                            echo '<td style="text-align: left; width: 28px; height: 24px;"><div style="height: 20px; width: 20px; background: url('.$star->get_url('20').') 0px 0px"></div></td>';
+                            echo '<td style="text-align: left; width: 28px; height: 24px;"><div style="height: 20px; width: 20px; background: url('.$star->get_url('20').') 0px -20px"></div></td>';
                             echo '<td style="width: 200px;">'.$star->name.' '.$star->version.'</td>';
                             echo '<td>'.strtoupper($star->type).'</td>';
                             echo '<td style="text-align: right; width: 32px;"><input'.(in_array($star->folder, $ginc_stars_thumb) ? " checked" : "").' type="checkbox" name="gdsr_inc_thumb[]" value="'.$star->folder.'" /></td>';
