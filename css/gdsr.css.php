@@ -54,11 +54,13 @@ if (!isset($inclusion)) {
 $raw = explode("#", $q);
 $raw_blocks = split_by_length($raw[0], 3);
 $sizes = split_by_length($raw[1], 2);
+$thumb_sizes = split_by_length($raw[2], 2);
 unset($raw[0]);
 unset($raw[1]);
+unset($raw[2]);
 
-$thumb_sets = array("starrating");
-$thumb_sizes = array(12, 16, 20, 24, 32, 40);
+$thumb_sets = array();
+$thumb_folders = array();
 
 $sets = array();
 $blocks = array();
@@ -66,8 +68,9 @@ $head = array();
 $folders = array();
 foreach($raw as $r) {
     $set = array();
-    $set["location"] = substr($r, 0, 1);
-    $set["type"] = substr($r, 1, 1);
+    $type = substr($r, 0, 1);;
+    $set["location"] = substr($r, 1, 1);
+    $set["type"] = substr($r, 2, 1);
     switch ($set["type"]) {
         case "p":
             $set["type"] = "png";
@@ -79,15 +82,20 @@ foreach($raw as $r) {
             $set["type"] = "jpg";
             break;
     }
-    $set["folder"] = substr($r, 2);
-    $folders[] = substr($r, 2);
-    $sets[] = $set;
+    $set["folder"] = substr($r, 3);
+    if ($type == "s") {
+        $folders[] = substr($r, 3);
+        $sets[] = $set;
+    } else {
+        $thumb_folders[] = substr($r, 3);
+        $thumb_sets[] = $set;
+    }
 }
 
-echo "/*stars sizes: ".join(", ", $sizes) ."*/\r\n";
-echo "/*stars sets: ".join(", ", $folders) ."*/\r\n";
-echo "/*thumbs sizes: ".join(", ", $thumb_sizes) ."*/\r\n";
-echo "/*thumbs sets: ".join(", ", $thumb_sets) ."*/\r\n\r\n";
+echo "/* stars sizes: ".join(", ", $sizes) ." */\r\n";
+echo "/* stars sets: ".join(", ", $folders) ." */\r\n";
+echo "/* thumbs sizes: ".join(", ", $thumb_sizes) ." */\r\n";
+echo "/* thumbs sets: ".join(", ", $thumb_folders) ." */\r\n\r\n";
 
 foreach($raw_blocks as $r) {
     $block = array();
@@ -145,9 +153,7 @@ foreach ($blocks as $block) {
     foreach ($sets as $set) {
         $class = ".gdsr-".$set["folder"];
         foreach ($sizes as $size) {
-            if ($set["location"] == 1) $url = $base_url_local."stars/".$set["folder"]."/stars".$size.".".$set["type"];
-            else $url = $base_url_extra."stars/".$set["folder"]."/stars".$size.".".$set["type"];
-
+            $url = ($set["location"] == 1 ? $base_url_local : $base_url_extra)."stars/".$set["folder"]."/stars".$size.".".$set["type"];
             echo $class." .starsbar.gdsr-size-".$size." .gdouter { height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }\r\n";
             echo $class." .starsbar.gdsr-size-".$size." .gdinner { height: ".$size."px; background: url('".$url."') repeat-x 0px -".(2 * $size)."px; }\r\n";
             echo $class." .starsbar.gdsr-size-".$size." .gdcurrent { height: ".$size."px; background: url('".$url."') repeat-x 0px -".($size)."px; }\r\n";
@@ -173,7 +179,8 @@ foreach ($thumb_sizes as $size) {
     echo sprintf(".gdt-size-%s.gdthumb.gdup a:hover { background-position:  0px -%spx; }\r\n", $size, 2 * $size);
     echo sprintf(".gdt-size-%s.gdthumb.gddw a:hover { background-position:  0px -%spx !important; }\r\n", $size, 3 * $size);
     foreach ($thumb_sets as $set) {
-        echo sprintf(".gdt-size-%s.gdthumb a.gdt-%s { background: url('../thumbs/%s/thumbs%s.png') repeat-x; }\r\n", $size, $set, $set, $size);
+        $url = ($set["location"] == 1 ? $base_url_local : $base_url_extra)."thumbs/".$set["folder"]."/thumbs".$size.".".$set["type"];
+        echo sprintf(".gdt-size-%s.gdthumb a.gdt-%s { background: url('%s') repeat-x; }\r\n", $size, $set["folder"], $url);
     }
 }
 
