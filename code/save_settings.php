@@ -134,6 +134,8 @@ if ($_POST['gdsr_action'] == 'save') {
     $gdsr_options["default_crb_template"] = $_POST['gdsr_default_crb_template'];
     $gdsr_options["default_ssb_template"] = $_POST['gdsr_default_ssb_template'];
     $gdsr_options["default_mrb_template"] = $_POST['gdsr_default_mrb_template'];
+    $gdsr_options["default_tab_template"] = $_POST['gdsr_default_tab_template'];
+    $gdsr_options["default_tcb_template"] = $_POST['gdsr_default_tcb_template'];
     $gdsr_options["srb_class_block"] = $_POST['gdsr_classblock'];
     $gdsr_options["srb_class_text"] = $_POST['gdsr_classtext'];
     $gdsr_options["srb_class_header"] = $_POST['gdsr_classheader'];

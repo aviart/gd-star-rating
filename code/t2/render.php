@@ -479,8 +479,8 @@ class GDSRRenderT2 {
     function render_tat_voted($template, $votes, $score, $votes_plus, $votes_minus, $id, $vote) {
         $tpl = $template->elm["vote_saved"];
         $rt = html_entity_decode($tpl);
-        $rt = str_replace('%RATING%', $score, $rt);
-        $rt = str_replace('%VOTES_TOTAL%', $votes, $rt);
+        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
+        $rt = str_replace('%VOTES%', $votes, $rt);
         $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
         $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
         $rt = str_replace('%ID%', $id, $rt);
@@ -517,7 +517,7 @@ class GDSRRenderT2 {
                 $tpl = $template->elm["normal"];
             $rt = html_entity_decode($tpl);
         }
-        $rt = str_replace('%RATING%', $score, $rt);
+        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
         $rt = str_replace('%VOTES%', $votes, $rt);
         $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
         $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);

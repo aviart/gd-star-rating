@@ -54,6 +54,13 @@
                 <td width="200" valign="top"><?php GDSRHelper::render_insert_position("gdsr_thumb_auto_display_position", $gdsr_options["thumb_auto_display_position"]); ?></td>
             </tr>
         </table>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Rating Template", "gd-star-rating"); ?>:</td>
+                <td align="left"><?php gdTemplateHelper::render_templates_section("TAB", "gdsr_default_tab_template", $gdsr_options["default_tab_template"], 350); ?></td>
+            </tr>
+        </table>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Comments", "gd-star-rating"); ?></th>
@@ -105,6 +112,13 @@
                 <td width="200" valign="top"><?php GDSRHelper::render_insert_position("gdsr_thumb_auto_display_position", $gdsr_options["thumb_auto_display_position"]); ?></td>
             </tr>
         </table>
-    </td>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Rating Template", "gd-star-rating"); ?>:</td>
+                <td align="left"><?php gdTemplateHelper::render_templates_section("TCB", "gdsr_default_tcb_template", $gdsr_options["default_tcb_template"], 350); ?></td>
+            </tr>
+        </table>
+     </td>
 </tr>
 </tbody></table>
