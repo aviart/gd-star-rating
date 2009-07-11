@@ -602,10 +602,23 @@ class GDSRRenderT2 {
         return $tpl_render;
     }
 
-    function render_tct($template, $votes, $score, $votes_plus, $votes_minus, $vote_value = -1) {
+    function render_tct($template, $votes, $score, $votes_plus, $votes_minus, $vote_value = 0) {
         $tpl = $template->elm["normal"];
-        if ($vote_value > -1) $tpl = $template->elm["vote_saved"];
+        if ($vote_value != 0) $tpl = $template->elm["vote_saved"];
 
+        $rt = html_entity_decode($tpl);
+        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
+        $rt = str_replace('%VOTES%', $votes, $rt);
+        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
+        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
+        $rt = str_replace('%ID%', $id, $rt);
+        $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
+
+        $word_votes = $template->dep["EWV"];
+        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+        return $rt;
     }
 
     function render_tcb($template_id, $post_id, $votes, $score, $votes_plus, $votes_minus, $style, $unit_width, $allow_vote, $user_id, $tags_css, $header_text, $debug = '', $wait_msg = '') {
@@ -613,7 +626,37 @@ class GDSRRenderT2 {
         $tpl_render = $allow_vote ? $template->elm["active"] : $template->elm["inactive"];
         $tpl_render = html_entity_decode($tpl_render);
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
-        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+        $tpl_render = str_replace("%CMM_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+
+        if (in_array("%CMM_THUMBS_TEXT%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
+            $rating_text = GDSRRenderT2::render_tat($template->dep["TCT"], $votes, $score, $votes_plus, $votes_minus, $post_id, $time_restirctions, $time_remaining, $time_date);
+            $rating_text = '<div id="gdsr_thumb_text_'.$post_id.'_c" class="gdt-size-'.$unit_width.($allow_vote ? "" : " voted").' gdthumbtext">'.$rating_text.'</div>';
+            $tpl_render = str_replace("%CMM_THUMBS_TEXT%", $rating_text, $tpl_render);
+        }
+
+        if (in_array("%THUMB_UP%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
+            if ($allow_vote) {
+                $rater = sprintf('<div id="gdsr_thumb_%s_c_up" class="gdt-size-%s gdthumb gdup"><a id="gdsrX%sXupXcX%sX%s" class="gdt-%s"></a></div>',
+                    $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+            } else {
+                $rater = sprintf('<div id="gdsr_thumb_%s_c_up" class="gdt-size-%s gdthumb gdup"><div class="gdt-%s"></div></div>',
+                    $post_id, $unit_width, $style);
+            }
+            $tpl_render = str_replace("%THUMB_UP%", $rater, $tpl_render);
+        }
+        if (in_array("%THUMB_DOWN%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
+            if ($allow_vote) {
+                $rater = sprintf('<div id="gdsr_thumb_%s_c_dw" class="gdt-size-%s gdthumb gddw"><a id="gdsrX%sXdwXcX%sX%s" class="gdt-%s"></a></div>',
+                    $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+            } else {
+                $rater = sprintf('<div id="gdsr_thumb_%s_c_dw" class="gdt-size-%s gdthumb gddw"><div class="gdt-%s"></div></div>',
+                    $post_id, $unit_width, $style);
+            }
+            $tpl_render = str_replace("%THUMB_DOWN%", $rater, $tpl_render);
+        }
+
+        if ($debug != '') $tpl_render = '<div style="display: none">'.$debug.'</div>'.$tpl_render;
+        return $tpl_render;
     }
 
     function render_crb($template_id, $cmm_id, $class, $type, $votes, $score, $style, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '') {

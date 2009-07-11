@@ -159,7 +159,27 @@ function wp_gdsr_render_powered_by($echo = true) {
 }
 
 /**
- * Renders the rating stars. This function call must be withing the post loop.
+ * Renders the rating thumbs for article. This function call must be within the post loop.
+ *
+ * @global object $post post data
+ * @global object $userdata user data
+ * @global GDStarRating $gdsr main rating class instance
+ * @param int $template_id standard rating block template id
+ * @param bool $read_only render block as a read only, voting not allowed
+ * @param string $stars_set set to use for rendering
+ * @param string $stars_set_ie6 set to use for rendering in ie6
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
+function wp_gdsr_render_article_thumbs($template_id = 0, $read_only = false, $stars_set = "", $stars_set_ie6 = "", $echo = true) {
+    global $post, $userdata, $gdsr;
+    $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
+    if ($echo) echo $gdsr->render_thumb_article($post, $userdata, $override);
+    else return $gdsr->render_thumb_article($post, $userdata, $override);
+}
+
+/**
+ * Renders the rating stars for article. This function call must be within the post loop.
  *
  * @global object $post post data
  * @global object $userdata user data
@@ -180,7 +200,27 @@ function wp_gdsr_render_article($template_id = 0, $read_only = false, $stars_set
 }
 
 /**
- * Manual render of comment rating
+ * Manual render of comment thumbs rating. This function call must be within the comment loop.
+ *
+ * @global object $post post data
+ * @global object $userdata user data
+ * @global GDStarRating $gdsr main rating class instance
+ * @param int $template_id standard rating block template id
+ * @param bool $read_only render block as a read only, voting not allowed
+ * @param string $stars_set set to use for rendering
+ * @param string $stars_set_ie6 set to use for rendering in ie6
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
+function wp_gdsr_render_comment_thumbs($template_id = 0, $read_only = false, $stars_set = "", $stars_set_ie6 = "", $echo = true) {
+    global $post, $userdata, $gdsr;
+    $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
+    if ($echo) echo $gdsr->render_thumb_comment($post, $userdata, $override);
+    else return $gdsr->render_thumb_comment($post, $userdata, $override);
+}
+
+/**
+ * Manual render of comment rating. This function call must be within the comment loop.
  *
  * @global object $comment comment data
  * @global object $post post data

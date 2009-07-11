@@ -2640,7 +2640,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 $allow_vote = wp_gdget_thumb_commentlog($rd_comment_id);
                 if (!$allow_vote) $dbg_allow = "D";
             }
-
             if ($allow_vote) {
                 $allow_vote = $this->check_cookie($rd_comment_id, "cmmthumb");
                 if (!$allow_vote) $dbg_allow = "C";
