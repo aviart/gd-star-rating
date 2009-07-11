@@ -112,6 +112,7 @@ Plugin has debug into log file feature built in. Information on activating this 
 == Changelog ==
 = 1.5.3 =
 * First version of thumbs up/down ratings
+* Added German translation
 * Fixed few multi rating init problems
 
 = 1.5.2 =

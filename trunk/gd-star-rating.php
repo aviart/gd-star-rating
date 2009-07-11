@@ -1704,7 +1704,7 @@ wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_wi
             include($this->plugin_path.'code/t2/templates.php');
 
             $template = new gdTemplateRender($tpl_id, "TAB");
-            $rt = GDSRRenderT2::render_tat_voted($template->dep["TAT"], $votes, $score, $votes_plus, $votes_minus, $post_id, $vote_value);
+            $rt = GDSRRenderT2::render_tat_voted($template->dep["TAT"], $votes, $score, $votes_plus, $votes_minus, $id, $vote_value);
 
             return "{ status: 'ok', value: ".$score.", rater: '".$rt."' }";
         }
@@ -1717,6 +1717,44 @@ wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_wi
 
 wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_width."px");
 
+            $allow_vote = $vote == "up" || $vote == "dw";
+            if ($allow_vote) $allow_vote = $this->check_cookie($id, 'cmmthumb');
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'cmmthumb', $ip, $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+
+            $vote_value = $vote == "up" ? 1 : -1;
+            if ($allow_vote) {
+                GDSRDatabase::save_vote_comment_thumb($id, $user, $ip, $ua, $vote_value);
+                $this->save_cookie($id, 'cmmthumb');
+            }
+
+            $data = GDSRDatabase::get_comment_data($id);
+            $post_data = GDSRDatabase::get_post_data($data->post_id);
+
+            $votes = $score = $votes_plus = $votes_minus = 0;
+
+            if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
+                $votes = $data->user_recc_plus + $data->user_recc_minus + $data->visitor_recc_plus + $data->visitor_recc_minus;
+                $score = $data->user_recc_plus - $data->user_recc_minus + $data->visitor_recc_plus - $data->visitor_recc_minus;
+                $votes_plus = $data->user_recc_plus + $data->visitor_recc_plus;
+                $votes_minus = $data->user_recc_minus + $data->visitor_recc_minus;
+            } else if ($post_data->rules_articles == "V") {
+                $votes = $data->user_recc_plus + $data->user_recc_minus;
+                $score = $data->user_recc_plus - $data->user_recc_minus;
+                $votes_plus = $data->user_recc_plus;
+                $votes_minus = $data->user_recc_minus;
+            } else {
+                $votes = $data->visitor_recc_plus + $data->visitor_recc_minus;
+                $score = $data->visitor_recc_plus - $data->visitor_recc_minus;
+                $votes_plus = $data->visitor_recc_plus;
+                $votes_minus = $data->visitor_recc_minus;
+            }
+
+            include($this->plugin_path.'code/t2/templates.php');
+
+            $template = new gdTemplateRender($tpl_id, "TCB");
+            $rt = GDSRRenderT2::render_tct($template->dep["TCT"], $votes, $score, $votes_plus, $votes_minus, $id, $vote_value);
+
+            return "{ status: 'ok', value: ".$score.", rater: '".$rt."' }";
         }
 
         function vote_multis($votes, $post_id, $set_id, $tpl_id, $size) {
@@ -1832,11 +1870,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
 
             $data = GDSRDatabase::get_comment_data($id);
             $post_data = GDSRDatabase::get_post_data($data->post_id);
-
             $unit_count = $this->o["cmm_stars"];
-
-            $votes = 0;
-            $score = 0;
+            $votes = $score = 0;
 
             if ($post_data->rules_comments == "A" || $post_data->rules_comments == "N") {
                 $votes = $data->user_voters + $data->visitor_voters;

@@ -602,7 +602,7 @@ class GDSRRenderT2 {
         return $tpl_render;
     }
 
-    function render_tct($template, $votes, $score, $votes_plus, $votes_minus, $vote_value = 0) {
+    function render_tct($template, $votes, $score, $votes_plus, $votes_minus, $id, $vote_value = 0) {
         $tpl = $template->elm["normal"];
         if ($vote_value != 0) $tpl = $template->elm["vote_saved"];
 
