@@ -296,7 +296,7 @@ $t = new gdTemplate("TAT", __("Thumbs Article Ratings Text", "gd-star-rating"), 
 $t->add_template("EWV", "%WORD_VOTES%");
 $t->add_element("%ID%", __("post/page id", "gd-star-rating"));
 $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
-$t->add_element("%VOTES_TOTAL%", __("total votes for article", "gd-star-rating"));
+$t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
 $t->add_element("%VOTES_UP%", __("total up votes for article", "gd-star-rating"));
 $t->add_element("%VOTES_DOWN%", __("total down votes for article", "gd-star-rating"));
 $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
@@ -335,7 +335,7 @@ $t = new gdTemplate("TCT", __("Thumbs Comment Ratings Text", "gd-star-rating"), 
 $t->add_template("EWV", "%WORD_VOTES%");
 $t->add_element("%ID%", __("post/page id", "gd-star-rating"));
 $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
-$t->add_element("%VOTES_TOTAL%", __("total votes for article", "gd-star-rating"));
+$t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
 $t->add_element("%VOTES_UP%", __("total up votes for article", "gd-star-rating"));
 $t->add_element("%VOTES_DOWN%", __("total down votes for article", "gd-star-rating"));
 $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));

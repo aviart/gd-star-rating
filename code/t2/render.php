@@ -518,7 +518,7 @@ class GDSRRenderT2 {
             $rt = html_entity_decode($tpl);
         }
         $rt = str_replace('%RATING%', $score, $rt);
-        $rt = str_replace('%VOTES_TOTAL%', $votes, $rt);
+        $rt = str_replace('%VOTES%', $votes, $rt);
         $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
         $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
         $rt = str_replace('%ID%', $id, $rt);
@@ -538,11 +538,24 @@ class GDSRRenderT2 {
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
 
         if (in_array("%THUMBS_TEXT%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
-            $rating_text = GDSRRenderT2::render_tat($template->dep["SRT"], $votes, $score, $votes_plus, $votes_minus, $post_id, $time_restirctions, $time_remaining, $time_date);
+            $rating_text = GDSRRenderT2::render_tat($template->dep["TAT"], $votes, $score, $votes_plus, $votes_minus, $post_id, $time_restirctions, $time_remaining, $time_date);
             $rating_text = '<div id="gdsr_thumb_text_'.$post_id.'_a" class="gdt-size-'.$unit_width.' gdthumbtext">'.$rating_text.'</div>';
             $tpl_render = str_replace("%THUMBS_TEXT%", $rating_text, $tpl_render);
         }
 
+        if (in_array("%THUMB_UP%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
+            $rater = sprintf('<div id="gdsr_thumb_%s_a_up" class="gdt-size-%s gdthumb gdup"><a id="gdsrX%sXupXaX%sX%s" class="gdt-%s"></a></div>', 
+                $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+            $tpl_render = str_replace("%THUMB_UP%", $rater, $tpl_render);
+        }
+        if (in_array("%THUMB_DOWN%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
+            $rater = sprintf('<div id="gdsr_thumb_%s_a_dw" class="gdt-size-%s gdthumb gddw"><a id="gdsrX%sXdwXaX%sX%s" class="gdt-%s"></a></div>',
+                $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+            $tpl_render = str_replace("%THUMB_DOWN%", $rater, $tpl_render);
+        }
+
+        if ($debug != '') $tpl_render = '<div style="display: none">'.$debug.'</div>'.$tpl_render;
+        return $tpl_render;
     }
 
     function render_srb($template_id, $post_id, $class, $type, $votes, $score, $style, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
