@@ -2649,6 +2649,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
             $tags_css = array();
+            $tags_css["CMM_CSS_BLOCK"] = $this->o["cmm_class_block"];
+            $tags_css["CMM_CSS_HEADER"] = $this->o["srb_class_header"];
+            $tags_css["CMM_CSS_STARS"] = $this->o["cmm_class_stars"];
+            $tags_css["CMM_CSS_TEXT"] = $this->o["cmm_class_text"];
 
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_tcb_template"];
@@ -2873,6 +2877,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
             $tags_css = array();
+            $tags_css["CSS_BLOCK"] = $this->o["srb_class_block"];
+            $tags_css["CSS_HEADER"] = $this->o["srb_class_header"];
+            $tags_css["CSS_STARS"] = $this->o["srb_class_stars"];
+            $tags_css["CSS_TEXT"] = $this->o["srb_class_text"];
 
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_tab_template"];

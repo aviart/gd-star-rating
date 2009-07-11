@@ -23,7 +23,7 @@
         $result = "xss_error";
     } else {
         $result = $vote_type."_error";
-        if ($vote_type != "m") $vote_value = intval($vote_value);
+        if ($vote_type == "a" || $vote_type == "c") $vote_value = intval($vote_value);
         switch ($vote_type) {
             case 'ra':
                 $result = $gdsr->vote_thumbs_article($vote_value, $vote_id, $vote_tpl, $vote_size);
