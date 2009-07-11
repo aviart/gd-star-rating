@@ -1669,8 +1669,44 @@ if (!class_exists('GDStarRating')) {
             $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
             $user = intval($userdata->ID);
 
-wp_gdsr_dump("VOTE THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_width."px");
+wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_width."px");
 
+            $allow_vote = $vote == "up" || $vote == "dw";
+            if ($allow_vote) $allow_vote = $this->check_cookie($id);
+            if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'artthumb', $ip, $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
+
+            $vote_value = $vote == "up" ? 1 : -1;
+            if ($allow_vote) {
+                GDSRDatabase::add_vote_thumb($id, $user, $ip, $ua, $vote_value);
+                $this->save_cookie($id, "artthumb");
+            }
+
+            $data = GDSRDatabase::get_post_data($id);
+            $votes = $score = $votes_plus = $votes_minus = 0;
+
+            if ($data->rules_articles == "A" || $data->rules_articles == "N") {
+                $votes = $data->user_recc_plus + $data->user_recc_minus + $data->visitor_recc_plus + $data->visitor_recc_minus;
+                $score = $data->user_recc_plus - $data->user_recc_minus + $data->visitor_recc_plus - $data->visitor_recc_minus;
+                $votes_plus = $data->user_recc_plus + $data->visitor_recc_plus;
+                $votes_minus = $data->user_recc_minus + $data->visitor_recc_minus;
+            } else if ($data->rules_articles == "V") {
+                $votes = $data->user_recc_plus + $data->user_recc_minus;
+                $score = $data->user_recc_plus - $data->user_recc_minus;
+                $votes_plus = $data->user_recc_plus;
+                $votes_minus = $data->user_recc_minus;
+            } else {
+                $votes = $data->visitor_recc_plus + $data->visitor_recc_minus;
+                $score = $data->visitor_recc_plus - $data->visitor_recc_minus;
+                $votes_plus = $data->visitor_recc_plus;
+                $votes_minus = $data->visitor_recc_minus;
+            }
+
+            include($this->plugin_path.'code/t2/templates.php');
+
+            $template = new gdTemplateRender($tpl_id, "TAB");
+            $rt = GDSRRenderT2::render_tat_voted($template->dep["TAT"], $votes, $score, $votes_plus, $votes_minus, $post_id, $vote_value);
+
+            return "{ status: 'ok', value: ".$score.", rater: '".$rt."' }";
         }
 
         function vote_thumbs_comment($votes, $id, $tpl_id, $unit_width) {
@@ -1738,10 +1774,8 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
 
 wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."px");
 
-            $allow_vote = intval($votes) <= $this->o["stars"];
-
+            $allow_vote = intval($votes) <= $this->o["stars"] && intval($votes) > 0;
             if ($allow_vote) $allow_vote = $this->check_cookie($id);
-
             if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
 
             if ($allow_vote) {
@@ -1750,21 +1784,16 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
             }
 
             $data = GDSRDatabase::get_post_data($id);
-
             $unit_count = $this->o["stars"];
-
-            $votes = 0;
-            $score = 0;
+            $votes = $score = 0;
 
             if ($data->rules_articles == "A" || $data->rules_articles == "N") {
                 $votes = $data->user_voters + $data->visitor_voters;
                 $score = $data->user_votes + $data->visitor_votes;
-            }
-            else if ($data->rules_articles == "V") {
+            } else if ($data->rules_articles == "V") {
                 $votes = $data->visitor_voters;
                 $score = $data->visitor_votes;
-            }
-            else {
+            } else {
                 $votes = $data->user_voters;
                 $score = $data->user_votes;
             }
@@ -1792,10 +1821,8 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
 
 wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_width."px");
 
-            $allow_vote = intval($votes) <= $this->o["cmm_stars"];
-
+            $allow_vote = intval($votes) <= $this->o["cmm_stars"] && intval($votes) > 0;
             if ($allow_vote) $allow_vote = $this->check_cookie($id, 'comment');
-
             if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip, $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
 
             if ($allow_vote) {
@@ -2510,12 +2537,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
                 $votes = $post_data->user_voters + $post_data->visitor_voters;
                 $score = $post_data->user_votes + $post_data->visitor_votes;
-            }
-            else if ($post_data->rules_articles == "V") {
+            } else if ($post_data->rules_articles == "V") {
                 $votes = $post_data->visitor_voters;
                 $score = $post_data->visitor_votes;
-            }
-            else {
+            } else {
                 $votes = $post_data->user_voters;
                 $score = $post_data->user_votes;
             }
@@ -2537,12 +2562,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
                 $votes = $post_data->user_voters + $post_data->visitor_voters;
                 $score = $post_data->user_votes + $post_data->visitor_votes;
-            }
-            else if ($post_data->rules_articles == "V") {
+            } else if ($post_data->rules_articles == "V") {
                 $votes = $post_data->visitor_voters;
                 $score = $post_data->visitor_votes;
-            }
-            else {
+            } else {
                 $votes = $post_data->user_voters;
                 $score = $post_data->user_votes;
             }
@@ -2629,19 +2652,17 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 $votes = $comment_data->user_recc_plus + $comment_data->user_recc_minus + $comment_data->visitor_recc_plus + $comment_data->visitor_recc_minus;
                 $score = $comment_data->user_recc_plus - $comment_data->user_recc_minus + $comment_data->visitor_recc_plus - $comment_data->visitor_recc_minus;
                 $votes_plus = $comment_data->user_recc_plus + $comment_data->visitor_recc_plus;
-                $votes_plus = $comment_data->user_recc_minus + $comment_data->visitor_recc_minus;
-            }
-            else if ($rules_articles == "V") {
+                $votes_minus = $comment_data->user_recc_minus + $comment_data->visitor_recc_minus;
+            } else if ($rules_articles == "V") {
                 $votes = $comment_data->user_recc_plus + $comment_data->user_recc_minus;
                 $score = $comment_data->user_recc_plus - $comment_data->user_recc_minus;
                 $votes_plus = $comment_data->user_recc_plus;
-                $votes_plus = $comment_data->user_recc_minus;
-            }
-            else {
+                $votes_minus = $comment_data->user_recc_minus;
+            } else {
                 $votes = $comment_data->visitor_recc_plus + $comment_data->visitor_recc_minus;
                 $score = $comment_data->visitor_recc_plus - $comment_data->visitor_recc_minus;
                 $votes_plus = $comment_data->visitor_recc_plus;
-                $votes_plus = $comment_data->visitor_recc_minus;
+                $votes_minus = $comment_data->visitor_recc_minus;
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
@@ -2738,12 +2759,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if ($rules_comments == "A" || $rules_comments == "N") {
                 $votes = $comment_data->user_voters + $comment_data->visitor_voters;
                 $score = $comment_data->user_votes + $comment_data->visitor_votes;
-            }
-            else if ($rules_comments == "V") {
+            } else if ($rules_comments == "V") {
                 $votes = $comment_data->visitor_voters;
                 $score = $comment_data->visitor_votes;
-            }
-            else {
+            } else {
                 $votes = $comment_data->user_voters;
                 $score = $comment_data->user_votes;
             }
@@ -2857,19 +2876,17 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 $votes = $post_data->user_recc_plus + $post_data->user_recc_minus + $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
                 $score = $post_data->user_recc_plus - $post_data->user_recc_minus + $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
                 $votes_plus = $post_data->user_recc_plus + $post_data->visitor_recc_plus;
-                $votes_plus = $post_data->user_recc_minus + $post_data->visitor_recc_minus;
-            }
-            else if ($rules_articles == "V") {
+                $votes_minus = $post_data->user_recc_minus + $post_data->visitor_recc_minus;
+            } else if ($rules_articles == "V") {
                 $votes = $post_data->user_recc_plus + $post_data->user_recc_minus;
                 $score = $post_data->user_recc_plus - $post_data->user_recc_minus;
                 $votes_plus = $post_data->user_recc_plus;
-                $votes_plus = $post_data->user_recc_minus;
-            }
-            else {
+                $votes_minus = $post_data->user_recc_minus;
+            } else {
                 $votes = $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
                 $score = $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
                 $votes_plus = $post_data->visitor_recc_plus;
-                $votes_plus = $post_data->visitor_recc_minus;
+                $votes_minus = $post_data->visitor_recc_minus;
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
@@ -2983,12 +3000,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if ($rules_articles == "A" || $rules_articles == "N") {
                 $votes = $post_data->user_voters + $post_data->visitor_voters;
                 $score = $post_data->user_votes + $post_data->visitor_votes;
-            }
-            else if ($rules_articles == "V") {
+            } else if ($rules_articles == "V") {
                 $votes = $post_data->visitor_voters;
                 $score = $post_data->visitor_votes;
-            }
-            else {
+            } else {
                 $votes = $post_data->user_voters;
                 $score = $post_data->user_votes;
             }
@@ -3116,12 +3131,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 if ($rules_articles == "A" || $rules_articles == "N") {
                     $single_vote["votes"] = $md->user_voters + $md->visitor_voters;
                     $single_vote["score"] = $md->user_votes + $md->visitor_votes;
-                }
-                else if ($rules_articles == "V") {
+                } else if ($rules_articles == "V") {
                     $single_vote["votes"] = $md->visitor_voters;
                     $single_vote["score"] = $md->visitor_votes;
-                }
-                else {
+                } else {
                     $single_vote["votes"] = $md->user_voters;
                     $single_vote["score"] = $md->user_votes;
                 }

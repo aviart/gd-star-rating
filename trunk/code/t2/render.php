@@ -539,18 +539,28 @@ class GDSRRenderT2 {
 
         if (in_array("%THUMBS_TEXT%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
             $rating_text = GDSRRenderT2::render_tat($template->dep["TAT"], $votes, $score, $votes_plus, $votes_minus, $post_id, $time_restirctions, $time_remaining, $time_date);
-            $rating_text = '<div id="gdsr_thumb_text_'.$post_id.'_a" class="gdt-size-'.$unit_width.' gdthumbtext">'.$rating_text.'</div>';
+            $rating_text = '<div id="gdsr_thumb_text_'.$post_id.'_a" class="gdt-size-'.$unit_width.($allow_vote ? "" : " voted").' gdthumbtext">'.$rating_text.'</div>';
             $tpl_render = str_replace("%THUMBS_TEXT%", $rating_text, $tpl_render);
         }
 
         if (in_array("%THUMB_UP%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
-            $rater = sprintf('<div id="gdsr_thumb_%s_a_up" class="gdt-size-%s gdthumb gdup"><a id="gdsrX%sXupXaX%sX%s" class="gdt-%s"></a></div>', 
-                $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+            if ($allow_vote) {
+                $rater = sprintf('<div id="gdsr_thumb_%s_a_up" class="gdt-size-%s gdthumb gdup"><a id="gdsrX%sXupXaX%sX%s" class="gdt-%s"></a></div>',
+                    $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+            } else {
+                $rater = sprintf('<div id="gdsr_thumb_%s_a_up" class="gdt-size-%s gdthumb gdup"><div class="gdt-%s"></div></div>',
+                    $post_id, $unit_width, $style);
+            }
             $tpl_render = str_replace("%THUMB_UP%", $rater, $tpl_render);
         }
         if (in_array("%THUMB_DOWN%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
-            $rater = sprintf('<div id="gdsr_thumb_%s_a_dw" class="gdt-size-%s gdthumb gddw"><a id="gdsrX%sXdwXaX%sX%s" class="gdt-%s"></a></div>',
-                $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+            if ($allow_vote) {
+                $rater = sprintf('<div id="gdsr_thumb_%s_a_dw" class="gdt-size-%s gdthumb gddw"><a id="gdsrX%sXdwXaX%sX%s" class="gdt-%s"></a></div>',
+                    $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+            } else {
+                $rater = sprintf('<div id="gdsr_thumb_%s_a_dw" class="gdt-size-%s gdthumb gddw"><div class="gdt-%s"></div></div>',
+                    $post_id, $unit_width, $style);
+            }
             $tpl_render = str_replace("%THUMB_DOWN%", $rater, $tpl_render);
         }
 
