@@ -621,7 +621,7 @@ class GDSRRenderT2 {
         return $rt;
     }
 
-    function render_tcb($template_id, $post_id, $votes, $score, $votes_plus, $votes_minus, $style, $unit_width, $allow_vote, $user_id, $tags_css, $header_text, $debug = '', $wait_msg = '') {
+    function render_tcb($template_id, $comment_id, $votes, $score, $votes_plus, $votes_minus, $style, $unit_width, $allow_vote, $user_id, $tags_css, $header_text, $debug = '', $wait_msg = '') {
         $template = GDSRRenderT2::get_template($template_id, "TCB");
         $tpl_render = $allow_vote ? $template->elm["active"] : $template->elm["inactive"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -629,28 +629,28 @@ class GDSRRenderT2 {
         $tpl_render = str_replace("%CMM_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
 
         if (in_array("%CMM_THUMBS_TEXT%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
-            $rating_text = GDSRRenderT2::render_tat($template->dep["TCT"], $votes, $score, $votes_plus, $votes_minus, $post_id, $time_restirctions, $time_remaining, $time_date);
-            $rating_text = '<div id="gdsr_thumb_text_'.$post_id.'_c" class="gdt-size-'.$unit_width.($allow_vote ? "" : " voted").' gdthumbtext">'.$rating_text.'</div>';
+            $rating_text = GDSRRenderT2::render_tat($template->dep["TCT"], $votes, $score, $votes_plus, $votes_minus, $comment_id, $time_restirctions, $time_remaining, $time_date);
+            $rating_text = '<div id="gdsr_thumb_text_'.$comment_id.'_c" class="gdt-size-'.$unit_width.($allow_vote ? "" : " voted").' gdthumbtext">'.$rating_text.'</div>';
             $tpl_render = str_replace("%CMM_THUMBS_TEXT%", $rating_text, $tpl_render);
         }
 
         if (in_array("%THUMB_UP%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
             if ($allow_vote) {
                 $rater = sprintf('<div id="gdsr_thumb_%s_c_up" class="gdt-size-%s gdthumb gdup"><a id="gdsrX%sXupXcX%sX%s" class="gdt-%s"></a></div>',
-                    $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+                    $comment_id, $unit_width, $comment_id, $template_id, $unit_width, $style);
             } else {
                 $rater = sprintf('<div id="gdsr_thumb_%s_c_up" class="gdt-size-%s gdthumb gdup"><div class="gdt-%s"></div></div>',
-                    $post_id, $unit_width, $style);
+                    $comment_id, $unit_width, $style);
             }
             $tpl_render = str_replace("%THUMB_UP%", $rater, $tpl_render);
         }
         if (in_array("%THUMB_DOWN%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
             if ($allow_vote) {
                 $rater = sprintf('<div id="gdsr_thumb_%s_c_dw" class="gdt-size-%s gdthumb gddw"><a id="gdsrX%sXdwXcX%sX%s" class="gdt-%s"></a></div>',
-                    $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+                    $comment_id, $unit_width, $comment_id, $template_id, $unit_width, $style);
             } else {
                 $rater = sprintf('<div id="gdsr_thumb_%s_c_dw" class="gdt-size-%s gdthumb gddw"><div class="gdt-%s"></div></div>',
-                    $post_id, $unit_width, $style);
+                    $comment_id, $unit_width, $style);
             }
             $tpl_render = str_replace("%THUMB_DOWN%", $rater, $tpl_render);
         }

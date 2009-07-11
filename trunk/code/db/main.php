@@ -397,6 +397,25 @@ class GDSRDatabase {
             if (!in_array($id, $found)) GDSRDatabase::add_default_vote($id);
     }
 
+    function save_vote_comment_thumb($id, $user, $ip, $ua, $vote) {
+        global $wpdb, $table_prefix;
+        $ua = str_replace("'", "''", $ua);
+        $ua = substr($ua, 0, 250);
+        
+        $post = $wpdb->get_row("select comment_post_ID from $wpdb->comments where comment_ID = ".$id);
+        $post_id = $post->comment_post_ID;
+        $sql = sprintf("SELECT * FROM %sgdsr_data_article WHERE post_id = %s", $table_prefix, $post_id);
+        $post_data = $wpdb->get_row($sql);
+        
+        if ($post_data->moderate_comments == "" || $post_data->moderate_comments == "N" || ($post_data->moderate_comments == "V" && $user > 0) || ($post_data->moderate_comments == "U" && $user == 0)) {
+            GDSRDatabase::add_vote_comment_thumb($id, $user, $ip, $ua, $vote);
+        } else {
+            $modsql = sprintf("INSERT INTO %sgdsr_moderate (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'cmmthumb', %s, %s, '%s', '%s', '%s')",
+                $table_prefix, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
+            $wpdb->query($modsql);
+        }
+    }
+
     function save_vote_thumb($id, $user, $ip, $ua, $vote, $comment_id = 0) {
         global $wpdb, $table_prefix;
         $ua = str_replace("'", "''", $ua);
@@ -501,6 +520,54 @@ class GDSRDatabase {
         $sql = "select review from ".$articles." WHERE post_id = ".$post_id;
         $results = $wpdb->get_row($sql, OBJECT);
         return count($results) > 0;
+    }
+
+    function add_vote_comment_thumb($id, $user, $ip, $ua, $vote) {
+        global $wpdb, $table_prefix;
+        $trend_date = date("Y-m-d");
+        $sql_trend = sprintf("SELECT count(*) FROM %sgdsr_votes_trend WHERE vote_date = '%s' and vote_type = 'cmmthumb' and id = %s", $table_prefix, $trend_date, $id);
+        $trend_data = $wpdb->get_var($sql_trend);
+
+        $trend_added = false;
+        if ($trend_data == 0) {
+            $trend_added = true;
+            if ($user > 0) {
+                $sql = sprintf("INSERT INTO %sgdsr_votes_trend (id, vote_type, user_voters, user_votes, vote_date) VALUES (%s, 'cmmthumb', 1, %s, '%s')",
+                    $table_prefix, $id, $vote, $trend_date);
+                $wpdb->query($sql);
+            }
+            else {
+                $sql = sprintf("INSERT INTO %sgdsr_votes_trend (id, vote_type, visitor_voters, visitor_votes, vote_date) VALUES (%s, 'cmmthumb', 1, %s, '%s')",
+                    $table_prefix, $id, $vote, $trend_date);
+                $wpdb->query($sql);
+            }
+        }
+
+        if ($user > 0) {
+            $part = $vote == 1 ? "user_recc_plus = user_recc_plus + 1" : "user_recc_minus = user_recc_minus + 1";
+
+            if (!$trend_added) {
+                $sql = sprintf("UPDATE %sgdsr_votes_trend SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE id = %s and vote_type = 'cmmthumb' and vote_date = '%s'",
+                    $table_prefix, $vote, $id, $trend_date);
+                $wpdb->query($sql);
+            }
+        } else {
+            $part = $vote == 1 ? "visitor_recc_plus = visitor_recc_plus + 1" : "visitor_recc_minus = visitor_recc_minus + 1";
+
+            if (!$trend_added) {
+                $sql = sprintf("UPDATE %sgdsr_votes_trend SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE id = %s and vote_type = 'cmmthumb' and vote_date = '%s'",
+                    $table_prefix, $vote, $id, $trend_date);
+                $wpdb->query($sql);
+            }
+        }
+
+        $sql = sprintf("UPDATE %sgdsr_data_comment SET %s, last_voted_recc = CURRENT_TIMESTAMP WHERE comment_id = %s",
+            $table_prefix, $part, $id);
+        $wpdb->query($sql);
+
+        $logsql = sprintf("INSERT INTO %sgdsr_votes_log (id, vote_type, user_id, vote, object, voted, ip, user_agent) VALUES (%s, 'cmmthumb', %s, %s, '', '%s', '%s', '%s')",
+            $table_prefix, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
+        $wpdb->query($logsql);
     }
 
     function add_vote_comment($id, $user, $ip, $ua, $vote) {
