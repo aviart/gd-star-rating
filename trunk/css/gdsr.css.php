@@ -197,6 +197,7 @@ foreach ($thumb_sizes as $size) {
     top: 0;
 }
 
+.rtexthumb .gdthumbtext { float: none; }
 .gdthumbtext { float: left; font-size: 12px; }
 .gdthumb { position: relative; float: left; }
 .gdthumb div { opacity: 0.7; }

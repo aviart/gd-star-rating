@@ -515,7 +515,6 @@ class GDSRDatabase {
         $trend_data = $wpdb->get_var($sql_trend);
 
 wp_gdsr_dump("SAVEVOTE_CMM_trend_check_sql", $sql_trend);
-wp_gdsr_dump("SAVEVOTE_CMM_trend_check_data", $trend_data);
 wp_gdsr_dump("SAVEVOTE_CMM_trend_check_error", $wpdb->last_error);
 
         $trend_added = false;
@@ -587,9 +586,10 @@ wp_gdsr_dump("SAVEVOTE_CMM_insert_stats_error", $wpdb->last_error);
     function add_vote_thumb($id, $user, $ip, $ua, $vote, $comment_id = 0) {
         global $wpdb, $table_prefix;
         $trend_date = date("Y-m-d");
-        $sql_trend = sprintf("SELECT count(*) FROM %s WHERE vote_date = '%s' and vote_type = 'artthumb' and id = %s", $trend, $trend_date, $id);
+        $sql_trend = sprintf("SELECT count(*) FROM %sgdsr_votes_trend WHERE vote_date = '%s' and vote_type = 'artthumb' and id = %s", $table_prefix, $trend_date, $id);
+        wp_gdsr_dump("S", $sql_trend);
         $trend_data = $wpdb->get_var($sql_trend);
-
+        wp_gdsr_dump("S", $trend_data);
         $trend_added = false;
         if ($trend_data == 0) {
             $trend_added = true;
@@ -643,7 +643,6 @@ wp_gdsr_dump("SAVEVOTE_CMM_insert_stats_error", $wpdb->last_error);
         $trend_data = $wpdb->get_var($sql_trend);
 
 wp_gdsr_dump("SAVEVOTE_trend_check_sql", $sql_trend);
-wp_gdsr_dump("SAVEVOTE_trend_check_data", $trend_data);
 wp_gdsr_dump("SAVEVOTE_trend_check_error", $wpdb->last_error);
 
         $trend_added = false;
