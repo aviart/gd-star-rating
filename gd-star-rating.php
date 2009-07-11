@@ -1677,7 +1677,7 @@ wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_wi
 
             $vote_value = $vote == "up" ? 1 : -1;
             if ($allow_vote) {
-                GDSRDatabase::add_vote_thumb($id, $user, $ip, $ua, $vote_value);
+                GDSRDatabase::save_vote_thumb($id, $user, $ip, $ua, $vote_value);
                 $this->save_cookie($id, "artthumb");
             }
 
@@ -1709,7 +1709,7 @@ wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_wi
             return "{ status: 'ok', value: ".$score.", rater: '".$rt."' }";
         }
 
-        function vote_thumbs_comment($votes, $id, $tpl_id, $unit_width) {
+        function vote_thumbs_comment($vote, $id, $tpl_id, $unit_width) {
             global $userdata;
             $ip = $_SERVER["REMOTE_ADDR"];
             $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
@@ -2682,12 +2682,12 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
 
             $votes = $score = $votes_plus = $votes_minus = 0;
 
-            if ($rules_articles == "A" || $rules_articles == "N") {
+            if ($rules_comments == "A" || $rules_comments == "N") {
                 $votes = $comment_data->user_recc_plus + $comment_data->user_recc_minus + $comment_data->visitor_recc_plus + $comment_data->visitor_recc_minus;
                 $score = $comment_data->user_recc_plus - $comment_data->user_recc_minus + $comment_data->visitor_recc_plus - $comment_data->visitor_recc_minus;
                 $votes_plus = $comment_data->user_recc_plus + $comment_data->visitor_recc_plus;
                 $votes_minus = $comment_data->user_recc_minus + $comment_data->visitor_recc_minus;
-            } else if ($rules_articles == "V") {
+            } else if ($rules_comments == "V") {
                 $votes = $comment_data->user_recc_plus + $comment_data->user_recc_minus;
                 $score = $comment_data->user_recc_plus - $comment_data->user_recc_minus;
                 $votes_plus = $comment_data->user_recc_plus;
@@ -2712,7 +2712,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_tcb_template"];
 
-            $rating_block = GDSRRenderT2::render_tcb($template_id, $rd_post_id, $votes, $score, $votes_plus, $votes_minus, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, '');
+            $rating_block = GDSRRenderT2::render_tcb($template_id, $rd_comment_id, $votes, $score, $votes_plus, $votes_minus, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, '');
             return $rating_block;
         }
 
