@@ -587,9 +587,8 @@ wp_gdsr_dump("SAVEVOTE_CMM_insert_stats_error", $wpdb->last_error);
         global $wpdb, $table_prefix;
         $trend_date = date("Y-m-d");
         $sql_trend = sprintf("SELECT count(*) FROM %sgdsr_votes_trend WHERE vote_date = '%s' and vote_type = 'artthumb' and id = %s", $table_prefix, $trend_date, $id);
-        wp_gdsr_dump("S", $sql_trend);
         $trend_data = $wpdb->get_var($sql_trend);
-        wp_gdsr_dump("S", $trend_data);
+
         $trend_added = false;
         if ($trend_data == 0) {
             $trend_added = true;
