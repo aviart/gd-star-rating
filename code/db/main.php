@@ -397,78 +397,65 @@ class GDSRDatabase {
             if (!in_array($id, $found)) GDSRDatabase::add_default_vote($id);
     }
 
-    function save_vote($id, $user, $ip, $ua, $vote, $comment_id = 0) {
+    function save_vote_thumb($id, $user, $ip, $ua, $vote, $comment_id = 0) {
         global $wpdb, $table_prefix;
         $ua = str_replace("'", "''", $ua);
         $ua = substr($ua, 0, 250);
-        $articles = $table_prefix.'gdsr_data_article';
-        $moderate = $table_prefix.'gdsr_moderate';
-
-        $sql = sprintf("SELECT * FROM %s WHERE post_id = %s", $articles, $id);
+        
+        $sql = sprintf("SELECT * FROM %sgdsr_data_article WHERE post_id = %s", $table_prefix, $id);
         $post_data = $wpdb->get_row($sql);
         if (count($post_data) == 0) {
             GDSRDatabase::add_default_vote($id);
             $post_data = $wpdb->get_row($sql);
         }
 
-wp_gdsr_dump("SAVEVOTE_post_data_sql", $sql);
-wp_gdsr_dump("SAVEVOTE_post_data_sql_error", $wpdb->last_error);
-wp_gdsr_dump("SAVEVOTE_post_data", $post_data);
+        if ($post_data->moderate_articles == "" || $post_data->moderate_articles == "N" || ($post_data->moderate_articles == "V" && $user > 0) || ($post_data->moderate_articles == "U" && $user == 0)) {
+            GDSRDatabase::add_vote_thumb($id, $user, $ip, $ua, $vote, $comment_id);
+        } else {
+            $modsql = sprintf("INSERT INTO %sgdsr_moderate (id, vote_type, user_id, vote, voted, ip, user_agent, comment_id) VALUES (%s, 'artthumb', %s, %s, '%s', '%s', '%s', %s)",
+                $table_prefix, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua, $comment_id);
+            $wpdb->query($modsql);
+        }
+    }
+
+    function save_vote($id, $user, $ip, $ua, $vote, $comment_id = 0) {
+        global $wpdb, $table_prefix;
+        $ua = str_replace("'", "''", $ua);
+        $ua = substr($ua, 0, 250);
+
+        $sql = sprintf("SELECT * FROM %sgdsr_data_article WHERE post_id = %s", $table_prefix, $id);
+        $post_data = $wpdb->get_row($sql);
+        if (count($post_data) == 0) {
+            GDSRDatabase::add_default_vote($id);
+            $post_data = $wpdb->get_row($sql);
+        }
 
         if ($post_data->moderate_articles == "" || $post_data->moderate_articles == "N" || ($post_data->moderate_articles == "V" && $user > 0) || ($post_data->moderate_articles == "U" && $user == 0)) {
             GDSRDatabase::add_vote($id, $user, $ip, $ua, $vote, $comment_id);
-        }
-        else {
-            $modsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent, comment_id) VALUES (%s, 'article', %s, %s, '%s', '%s', '%s', %s)",
-                $moderate, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua, $comment_id);
+        } else {
+            $modsql = sprintf("INSERT INTO %sgdsr_moderate (id, vote_type, user_id, vote, voted, ip, user_agent, comment_id) VALUES (%s, 'article', %s, %s, '%s', '%s', '%s', %s)",
+                $table_prefix, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua, $comment_id);
             $wpdb->query($modsql);
-
-wp_gdsr_dump("SAVEVOTE_moderate_sql", $modsql);
-wp_gdsr_dump("SAVEVOTE_moderate_sql_error", $wpdb->last_error);
-wp_gdsr_dump("SAVEVOTE_moderate_row_id", $wpdb->insert_id);
-
         }
-
-wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
-
     }
 
     function save_vote_comment($id, $user, $ip, $ua, $vote) {
         global $wpdb, $table_prefix;
         $ua = str_replace("'", "''", $ua);
         $ua = substr($ua, 0, 250);
-        $articles = $table_prefix.'gdsr_data_article';
-        $comments = $table_prefix.'gdsr_data_comment';
-        $moderate = $table_prefix.'gdsr_moderate';
 
         $post = $wpdb->get_row("select comment_post_ID from $wpdb->comments where comment_ID = ".$id);
         $post_id = $post->comment_post_ID;
-
-wp_gdsr_dump("SAVEVOTE_CMM_post_id", $post_id);
-
-        $sql = sprintf("SELECT * FROM %s WHERE post_id = %s", $articles, $post_id);
+        $sql = sprintf("SELECT * FROM %sgdsr_data_article WHERE post_id = %s", $table_prefix, $post_id);
         $post_data = $wpdb->get_row($sql);
-
-wp_gdsr_dump("SAVEVOTE_CMM_post_data_sql", $sql);
-wp_gdsr_dump("SAVEVOTE_CMM_post_data_sql_error", $wpdb->last_error);
-wp_gdsr_dump("SAVEVOTE_CMM_post_data", $post_data);
 
         if ($post_data->moderate_comments == "" || $post_data->moderate_comments == "N" || ($post_data->moderate_comments == "V" && $user > 0) || ($post_data->moderate_comments == "U" && $user == 0)) {
             GDSRDatabase::add_vote_comment($id, $user, $ip, $ua, $vote);
-        }
-        else {
-            $modsql = sprintf("INSERT INTO %s (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'comment', %s, %s, '%s', '%s', '%s')",
-                $moderate, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
+        } else {
+            $modsql = sprintf("INSERT INTO %sgdsr_moderate (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'comment', %s, %s, '%s', '%s', '%s')",
+                $table_prefix, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua);
             $wpdb->query($modsql);
-
-wp_gdsr_dump("SAVEVOTE_CMM_moderate_sql", $modsql);
-wp_gdsr_dump("SAVEVOTE_CMM_moderate_sql_error", $wpdb->last_error);
-wp_gdsr_dump("SAVEVOTE_CMM_moderate_row_id", $wpdb->insert_id);
-
         }
-
-wp_gdsr_dump("SAVEVOTE_completed", '', 'end');
-
     }
 
     function save_comment_review($comment_id, $review) {
@@ -597,6 +584,53 @@ wp_gdsr_dump("SAVEVOTE_CMM_insert_stats_error", $wpdb->last_error);
 
     }
 
+    function add_vote_thumb($id, $user, $ip, $ua, $vote, $comment_id = 0) {
+        global $wpdb, $table_prefix;
+        $trend_date = date("Y-m-d");
+        $sql_trend = sprintf("SELECT count(*) FROM %s WHERE vote_date = '%s' and vote_type = 'artthumb' and id = %s", $trend, $trend_date, $id);
+        $trend_data = $wpdb->get_var($sql_trend);
+
+        $trend_added = false;
+        if ($trend_data == 0) {
+            $trend_added = true;
+            if ($user > 0) {
+                $sql = sprintf("INSERT INTO %sgdsr_votes_trend (id, vote_type, user_voters, user_votes, vote_date) VALUES (%s, 'artthumb', 1, %s, '%s')",
+                        $table_prefix, $id, $vote, $trend_date);
+                $wpdb->query($sql);
+            } else {
+                $sql = sprintf("INSERT INTO %sgdsr_votes_trend (id, vote_type, visitor_voters, visitor_votes, vote_date) VALUES (%s, 'artthumb', 1, %s, '%s')",
+                        $table_prefix, $id, $vote, $trend_date);
+                $wpdb->query($sql);
+            }
+        }
+
+        if ($user > 0) {
+            $part = $vote == 1 ? "user_recc_plus = user_recc_plus + 1" : "user_recc_minus = user_recc_minus + 1";
+
+            if (!$trend_added) {
+                $sql = sprintf("UPDATE %sgdsr_votes_trend SET user_voters = user_voters + 1, user_votes = user_votes + %s WHERE id = %s and vote_type = 'artthumb' and vote_date = '%s'",
+                    $table_prefix, $vote, $id, $trend_date);
+                $wpdb->query($sql);
+            }
+        } else {
+            $part = $vote == 1 ? "visitor_recc_plus = visitor_recc_plus + 1" : "visitor_recc_minus = visitor_recc_minus + 1";
+
+            if (!$trend_added) {
+                $sql = sprintf("UPDATE %sgdsr_votes_trend SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s WHERE id = %s and vote_type = 'artthumb' and vote_date = '%s'",
+                    $table_prefix, $vote, $id, $trend_date);
+                $wpdb->query($sql);
+            }
+        }
+
+        $sql = sprintf("UPDATE %sgdsr_data_article SET %s, last_voted_recc = CURRENT_TIMESTAMP WHERE post_id = %s",
+            $table_prefix, $part, $id);
+        $wpdb->query($sql);
+
+        $logsql = sprintf("INSERT INTO %sgdsr_votes_log (id, vote_type, user_id, vote, object, voted, ip, user_agent, comment_id) VALUES (%s, 'artthumb', %s, %s, '', '%s', '%s', '%s', %s)",
+            $table_prefix, $id, $user, $vote, str_replace("'", "''", current_time('mysql')), $ip, $ua, $comment_id);
+        $wpdb->query($logsql);
+    }
+
     function add_vote($id, $user, $ip, $ua, $vote, $comment_id = 0) {
         global $wpdb, $table_prefix;
         $articles = $table_prefix.'gdsr_data_article';
@@ -619,8 +653,7 @@ wp_gdsr_dump("SAVEVOTE_trend_check_error", $wpdb->last_error);
                 $sql = sprintf("INSERT INTO %s (id, vote_type, user_voters, user_votes, vote_date) VALUES (%s, 'article', 1, %s, '%s')",
                         $trend, $id, $vote, $trend_date);
                 $wpdb->query($sql);
-            }
-            else {
+            } else {
                 $sql = sprintf("INSERT INTO %s (id, vote_type, visitor_voters, visitor_votes, vote_date) VALUES (%s, 'article', 1, %s, '%s')",
                         $trend, $id, $vote, $trend_date);
                 $wpdb->query($sql);
@@ -648,8 +681,7 @@ wp_gdsr_dump("SAVEVOTE_trend_added_user_sql", $sql);
 wp_gdsr_dump("SAVEVOTE_trend_added_user_error", $wpdb->last_error);
 
             }
-        }
-        else {
+        } else {
             $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s, last_voted = CURRENT_TIMESTAMP WHERE post_id = %s",
                 $articles, $vote, $id);
             $wpdb->query($sql);

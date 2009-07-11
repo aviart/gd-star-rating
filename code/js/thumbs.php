@@ -5,8 +5,8 @@ jQuery(".gdthumb > a").click(function() {
         if (json.status == 'ok') {
             jQuery("#gdsr_thumb_" + el[1] + "_" + el[3] + "_" + "up").remove();
             jQuery("#gdsr_thumb_" + el[1] + "_" + el[3] + "_" + "dw").remove();
-            jQuery("#gdsr_thumb_text_" + el[1] + el[3]).addClass("voted");
-            jQuery("#gdsr_thumb_text_" + el[1] + el[3]).html(json.rater);
+            jQuery("#gdsr_thumb_text_" + el[1] + "_" + el[3]).addClass("voted");
+            jQuery("#gdsr_thumb_text_" + el[1] + "_" + el[3]).html(json.rater);
         }
     });
 });
