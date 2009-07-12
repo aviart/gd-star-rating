@@ -21,7 +21,7 @@ class GDSRDBCache {
         $table = ($type == "article" || $type == "artthumb") ? "posts" : "comments";
         $column = ($type == "article" || $type == "artthumb") ? "ID" : "comment_ID";
 
-        if ($user == 0) {
+        if (intval($user) == 0) {
             $sql = sprintf("select p.%s as ID, count(l.record_id) as counter from %s%s p left join %sgdsr_moderate l on l.id = p.%s and l.vote_type = '%s' and ip = '%s' where p.%s in (%s) group by p.%s",
                 $column, $table_prefix, $table, $table_prefix, $column, $type, $ip, $column, join(", ", $ids), $column);
             $res_mod = $wpdb->get_results($sql);
