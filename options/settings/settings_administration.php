@@ -25,6 +25,7 @@
                 </td>
             </tr>
         </table>
+        <input type="checkbox" name="gdsr_admin_views" id="gdsr_admin_views"<?php if ($gdsr_options["admin_views"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_views"><?php _e("Show column with number of views on the plugins articles panel.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
         <?php _e("Maximum screen width is used only on WP version older than 2.7.", "gd-star-rating"); ?>
     </td>
