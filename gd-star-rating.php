@@ -1690,15 +1690,15 @@ wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_wi
                 $votes_plus = $data->user_recc_plus + $data->visitor_recc_plus;
                 $votes_minus = $data->user_recc_minus + $data->visitor_recc_minus;
             } else if ($data->rules_articles == "V") {
-                $votes = $data->user_recc_plus + $data->user_recc_minus;
-                $score = $data->user_recc_plus - $data->user_recc_minus;
-                $votes_plus = $data->user_recc_plus;
-                $votes_minus = $data->user_recc_minus;
-            } else {
                 $votes = $data->visitor_recc_plus + $data->visitor_recc_minus;
                 $score = $data->visitor_recc_plus - $data->visitor_recc_minus;
                 $votes_plus = $data->visitor_recc_plus;
                 $votes_minus = $data->visitor_recc_minus;
+            } else {
+                $votes = $data->user_recc_plus + $data->user_recc_minus;
+                $score = $data->user_recc_plus - $data->user_recc_minus;
+                $votes_plus = $data->user_recc_plus;
+                $votes_minus = $data->user_recc_minus;
             }
 
             include($this->plugin_path.'code/t2/templates.php');
@@ -1738,15 +1738,15 @@ wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_wid
                 $votes_plus = $data->user_recc_plus + $data->visitor_recc_plus;
                 $votes_minus = $data->user_recc_minus + $data->visitor_recc_minus;
             } else if ($post_data->rules_articles == "V") {
-                $votes = $data->user_recc_plus + $data->user_recc_minus;
-                $score = $data->user_recc_plus - $data->user_recc_minus;
-                $votes_plus = $data->user_recc_plus;
-                $votes_minus = $data->user_recc_minus;
-            } else {
                 $votes = $data->visitor_recc_plus + $data->visitor_recc_minus;
                 $score = $data->visitor_recc_plus - $data->visitor_recc_minus;
                 $votes_plus = $data->visitor_recc_plus;
                 $votes_minus = $data->visitor_recc_minus;
+            } else {
+                $votes = $data->user_recc_plus + $data->user_recc_minus;
+                $score = $data->user_recc_plus - $data->user_recc_minus;
+                $votes_plus = $data->user_recc_plus;
+                $votes_minus = $data->user_recc_minus;
             }
 
             include($this->plugin_path.'code/t2/templates.php');
@@ -2433,6 +2433,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
 
         function cache_comments($post_id) {
             global $gdsr_cache_posts_cmm_data, $gdsr_cache_posts_cmm_log, $gdsr_cache_posts_cmm_thumbs_log, $userdata;
+            $user_id = $userdata->ID;
             $to_get = array();
 
             $data = GDSRDBCache::get_comments($post_id);
@@ -2442,8 +2443,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 $to_get[] = $id;
             }
             if (count($to_get) > 0) {
-                $logs = GDSRDBCache::get_logs($to_get, $userdata->ID, "comment", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
-                $logs_thumb = GDSRDBCache::get_logs($to_get, $userdata->ID, "cmmthumb", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+                $logs = GDSRDBCache::get_logs($to_get, $user_id, "comment", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+                $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "cmmthumb", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
                 foreach ($logs as $id => $value) {
                     $gdsr_cache_posts_cmm_log->set($id, $value == 0);
                 }
@@ -2486,6 +2487,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
 
         function display_article($content) {
             global $post, $userdata;
+            $user_id = $userdata->ID;
 
             if (is_admin()) return $content;
             if (!is_feed()) {
@@ -2501,7 +2503,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                     (is_archive() && $this->o["display_archive"] == 1) ||
                     (is_search() && $this->o["display_search"] == 1)
                 ) {
-                    $this->cache_posts($userdata->ID);
+                    $this->cache_posts($user_id);
                     $rendered = $this->render_article($post, $userdata);
                     if ($this->o["auto_display_position"] == "top" || $this->o["auto_display_position"] == "both")
                         $content = $rendered.$content;
@@ -2516,7 +2518,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                     (is_archive() && $this->o["thumb_display_archive"] == 1) ||
                     (is_search() && $this->o["thumb_display_search"] == 1)
                 ) {
-                    $this->cache_posts($userdata->ID);
+                    $this->cache_posts($user_id);
                     $rendered = $this->render_thumb_article($post, $userdata);
                     if ($this->o["thumb_auto_display_position"] == "top" || $this->o["thumb_auto_display_position"] == "both")
                         $content = $rendered.$content;
@@ -2527,7 +2529,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 // multis rating
                 if ($this->o["multis_active"] && (is_single() || is_page())) {
                     $this->prepare_multiset();
-                    $this->cache_posts($userdata->ID);
+                    $this->cache_posts($user_id);
                     $content = $this->display_multi_rating("top", $post, $userdata).$content;
                     $content = $content.$this->display_multi_rating("bottom", $post, $userdata);
                 }
