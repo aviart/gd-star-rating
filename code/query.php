@@ -4,6 +4,7 @@ class GDSRQuery {
     var $keys_sort = array(
         "rating",
         "review",
+        "thumbs",
         "votes",
         "last_voted"
     );
@@ -19,7 +20,8 @@ class GDSRQuery {
         $qvar[] = "gdsr_sort";
         $qvar[] = "gdsr_order";
         $qvar[] = "gdsr_multi";
-        $qvar[] = "gdsr_fvmin";
+        $qvar[] = "gdsr_fsvmin";
+        $qvar[] = "gdsr_ftvmin";
         return $qvar;
     }
 
@@ -42,7 +44,9 @@ class GDSRQuery {
     function standard_fields($c) {
         global $table_prefix;
         $c.= ", (gdsra.user_votes + gdsra.visitor_votes)/(gdsra.user_voters + gdsra.visitor_voters) as gdsr_rating";
+        $c.= ", (gdsra.user_recc_plus - gdsra.user_recc_minus + gdsra.visitor_recc_plus - gdsra.visitor_recc_minus) as gdsr_thumb_score";
         $c.= ", (gdsra.user_voters + gdsra.visitor_voters) as gdsr_votes";
+        $c.= ", (gdsra.user_recc_plus + gdsra.user_recc_minus + gdsra.visitor_recc_plus + gdsra.visitor_recc_minus) as gdsr_thumb_votes";
         $c.= ", gdsra.review as gdsr_review";
         $c.= ", gdsra.last_voted as gdsr_last_voted";
         return $c;
@@ -55,8 +59,10 @@ class GDSRQuery {
     }
 
     function standard_where($c) { 
-        $filter_min_votes = intval(trim(addslashes(get_query_var('gdsr_fvmin'))));
+        $filter_min_votes = intval(trim(addslashes(get_query_var('gdsr_fsvmin'))));
+        $filter_min_votes_thumbs = intval(trim(addslashes(get_query_var('gdsr_ftvmin'))));
         if ($filter_min_votes > 0) $c.= " AND (gdsra.user_voters + gdsra.visitor_voters) > ".$filter_min_votes;
+        if ($filter_min_votes_thumbs > 0) $c.= " AND (gdsra.user_recc_plus + gdsra.user_recc_minus + gdsra.visitor_recc_plus + gdsra.visitor_recc_minus) > ".$filter_min_votes_thumbs;
         return $c;
     }
 
@@ -68,6 +74,9 @@ class GDSRQuery {
         $order = in_array($order, $this->keys_order) ? $order : "desc";
 
         switch ($sort) {
+            case "thumbs":
+                $c = sprintf(" (gdsra.user_recc_plus - gdsra.user_recc_minus + gdsra.visitor_recc_plus - gdsra.visitor_recc_minus) ".$order);
+                break;
             case "rating":
                 $c = sprintf(" (gdsra.user_votes + gdsra.visitor_votes)/(gdsra.user_voters + gdsra.visitor_voters) ".$order);
                 break;
@@ -105,7 +114,7 @@ class GDSRQuery {
     function multis_where($c) {
         $set = intval(trim(addslashes(get_query_var('gdsr_multi'))));
         $c.= " AND gdsrm.multi_id = ".$set;
-        $filter_min_votes = intval(trim(addslashes(get_query_var('gdsr_fvmin'))));
+        $filter_min_votes = intval(trim(addslashes(get_query_var('gdsr_fsvmin'))));
         if ($filter_min_votes > 0) $c.= " AND (gdsrm.total_votes_users + gdsrm.total_votes_visitors) > ".$filter_min_votes;
         return $c;
     }

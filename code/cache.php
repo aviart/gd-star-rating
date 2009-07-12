@@ -24,22 +24,34 @@ class GDSRDBCache {
         if (intval($user) == 0) {
             $sql = sprintf("select p.%s as ID, count(l.record_id) as counter from %s%s p left join %sgdsr_moderate l on l.id = p.%s and l.vote_type = '%s' and ip = '%s' where p.%s in (%s) group by p.%s",
                 $column, $table_prefix, $table, $table_prefix, $column, $type, $ip, $column, join(", ", $ids), $column);
+
+wp_gdsr_dump("PREFETCH_MOD_VST_".strtoupper($type), $sql);
+
             $res_mod = $wpdb->get_results($sql);
 
             if (!$mod_only) {
                 $sql = sprintf("select p.%s as ID, count(l.record_id) as counter from %s%s p left join %sgdsr_votes_log l on l.id = p.%s and l.vote_type = '%s' and ip = '%s' where p.%s in (%s) group by p.%s",
                     $column, $table_prefix, $table, $table_prefix, $column, $type, $ip, $column, join(", ", $ids), $column);
+
+wp_gdsr_dump("PREFETCH_LOG_VST_".strtoupper($type), $sql);
+
                 $res_log = $wpdb->get_results($sql);
             } else $res_log = array();
         } else {
             $sql = sprintf("select p.%s as ID, count(l.record_id) as counter from %s%s p left join %sgdsr_moderate l on l.id = p.%s and l.vote_type = '%s' and l.user_id = %s where p.%s in (%s) group by p.%s",
                 $column, $table_prefix, $table, $table_prefix, $column, $type, $user, $column, join(", ", $ids), $column);
+
+wp_gdsr_dump("PREFETCH_MOD_USR_".strtoupper($type), $sql);
+
             $res_mod = $wpdb->get_results($sql);
 
             if (!$mixed) {
                 if (!$mod_only) {
                     $sql = sprintf("select p.%s as ID, count(l.record_id) as counter from %s%s p left join %sgdsr_votes_log l on l.id = p.%s and l.vote_type = '%s' and l.user_id = %s where p.%s in (%s) group by p.%s",
                         $column, $table_prefix, $table, $table_prefix, $column, $type, $user, $column, join(", ", $ids), $column);
+
+wp_gdsr_dump("PREFETCH_LOG_USR_".strtoupper($type), $sql);
+
                     $res_log = $wpdb->get_results($sql);
                 } else $res_log = array();
             } else $res_log = array();
@@ -52,6 +64,8 @@ class GDSRDBCache {
                 if (intval($r->counter) != 0) $res[$r->ID] = 1;
             }
         }
+
+wp_gdsr_dump("PREFETCH_RESULT_".strtoupper($type), $res);
 
         return $res;
     }

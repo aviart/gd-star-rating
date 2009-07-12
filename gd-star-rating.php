@@ -2431,19 +2431,28 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 global $gdsr_cache_posts_std_data, $gdsr_cache_posts_std_log, $gdsr_cache_posts_std_thumbs_log;
 
                 $data = GDSRDBCache::get_posts($to_get);
-                $logs = GDSRDBCache::get_logs($to_get, $user_id, "article", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
-                $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "artthumb", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
                 foreach ($data as $row) {
                     $id = $row->post_id;
                     $this->c[$id] = 1;
                     $gdsr_cache_posts_std_data->set($id, $row);
                 }
+
+wp_gdsr_dump("CACHE_POSTDATA", $gdsr_cache_posts_std_data);
+
+                $logs = GDSRDBCache::get_logs($to_get, $user_id, "article", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
                 foreach ($logs as $id => $value) {
                     $gdsr_cache_posts_std_log->set($id, $value == 0);
                 }
+
+wp_gdsr_dump("CACHE_POSTLOG", $gdsr_cache_posts_std_log);
+
+                $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "artthumb", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
                 foreach ($logs_thumb as $id => $value) {
                     $gdsr_cache_posts_std_thumbs_log->set($id, $value == 0);
                 }
+
+wp_gdsr_dump("CACHE_POSTTHUMBLOG", $gdsr_cache_posts_std_thumbs_log);
+
             }
         }
 
@@ -2460,13 +2469,19 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             }
             if (count($to_get) > 0) {
                 $logs = GDSRDBCache::get_logs($to_get, $user_id, "comment", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
-                $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "cmmthumb", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
                 foreach ($logs as $id => $value) {
                     $gdsr_cache_posts_cmm_log->set($id, $value == 0);
                 }
+
+wp_gdsr_dump("CACHE_CMMDATA_", $gdsr_cache_posts_cmm_log);
+
+                $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "cmmthumb", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
                 foreach ($logs_thumb as $id => $value) {
                     $gdsr_cache_posts_cmm_thumbs_log->set($id, $value == 0);
                 }
+
+wp_gdsr_dump("CACHE_CMMTHUMBLOG_", $gdsr_cache_posts_cmm_thumbs_log);
+
             }
         }
 
@@ -2706,15 +2721,15 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 $votes_plus = $comment_data->user_recc_plus + $comment_data->visitor_recc_plus;
                 $votes_minus = $comment_data->user_recc_minus + $comment_data->visitor_recc_minus;
             } else if ($rules_comments == "V") {
-                $votes = $comment_data->user_recc_plus + $comment_data->user_recc_minus;
-                $score = $comment_data->user_recc_plus - $comment_data->user_recc_minus;
-                $votes_plus = $comment_data->user_recc_plus;
-                $votes_minus = $comment_data->user_recc_minus;
-            } else {
                 $votes = $comment_data->visitor_recc_plus + $comment_data->visitor_recc_minus;
                 $score = $comment_data->visitor_recc_plus - $comment_data->visitor_recc_minus;
                 $votes_plus = $comment_data->visitor_recc_plus;
                 $votes_minus = $comment_data->visitor_recc_minus;
+            } else {
+                $votes = $comment_data->user_recc_plus + $comment_data->user_recc_minus;
+                $score = $comment_data->user_recc_plus - $comment_data->user_recc_minus;
+                $votes_plus = $comment_data->user_recc_plus;
+                $votes_minus = $comment_data->user_recc_minus;
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
@@ -2930,15 +2945,15 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 $votes_plus = $post_data->user_recc_plus + $post_data->visitor_recc_plus;
                 $votes_minus = $post_data->user_recc_minus + $post_data->visitor_recc_minus;
             } else if ($rules_articles == "V") {
-                $votes = $post_data->user_recc_plus + $post_data->user_recc_minus;
-                $score = $post_data->user_recc_plus - $post_data->user_recc_minus;
-                $votes_plus = $post_data->user_recc_plus;
-                $votes_minus = $post_data->user_recc_minus;
-            } else {
                 $votes = $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
                 $score = $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
                 $votes_plus = $post_data->visitor_recc_plus;
                 $votes_minus = $post_data->visitor_recc_minus;
+            } else {
+                $votes = $post_data->user_recc_plus + $post_data->user_recc_minus;
+                $score = $post_data->user_recc_plus - $post_data->user_recc_minus;
+                $votes_plus = $post_data->user_recc_plus;
+                $votes_minus = $post_data->user_recc_minus;
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
