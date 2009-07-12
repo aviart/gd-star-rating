@@ -150,7 +150,6 @@ function gdsrTimerChange() {
             <th scope="col"><?php _e("Title", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("View", "gd-star-rating"); ?></th>
             <th scope="col" class="num"><div class="vers"><img src="images/comment-grey-bubble.png" alt="Comments"/></div></th>
-            <th scope="col"><?php _e("Categories", "gd-star-rating"); ?></th>
             <?php if ($options["moderation_active"] == 1) { ?>
                 <th scope="col"><?php _e("Moderation", "gd-star-rating"); ?></th>
             <?php } ?>
@@ -158,8 +157,12 @@ function gdsrTimerChange() {
                 <th scope="col"><?php _e("Time", "gd-star-rating"); ?></th>
             <?php } ?>
             <th scope="col"><?php _e("Vote Rules", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Thumbs", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Ratings", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Total", "gd-star-rating"); ?></th>
+            <?php if ($options["admin_views"] == 1) { ?>
+                <th scope="col"><?php _e("Views", "gd-star-rating"); ?></th>
+            <?php } ?>
             <?php if ($options["review_active"] == 1) { ?>
                 <th scope="col"><?php _e("Review", "gd-star-rating"); ?></th>
             <?php } ?>
@@ -175,21 +178,15 @@ function gdsrTimerChange() {
         $moderate_articles = GDSRDatabase::get_moderation_count($row->pid);
         $moderate_comments = GDSRDatabase::get_moderation_count_joined($row->pid);
         
-        if ($moderate_articles == 0)
-            $moderate_articles = "[ <strong>0</strong> ] ";
-        else
-            $moderate_articles = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=moderation&amp;pid=%s&amp;vt=article"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_articles);
+        if ($moderate_articles == 0) $moderate_articles = "[ <strong>0</strong> ] ";
+        else $moderate_articles = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=moderation&amp;pid=%s&amp;vt=article"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_articles);
 
-        if ($moderate_comments == 0)
-            $moderate_comments = "[ <strong>0</strong> ] ";
-        else
-            $moderate_comments = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=moderation&amp;pid=%s&amp;vt=post"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_comments);
+        if ($moderate_comments == 0) $moderate_comments = "[ <strong>0</strong> ] ";
+        else $moderate_comments = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=moderation&amp;pid=%s&amp;vt=post"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_comments);
             
         $comment_count = GDSRDatabase::get_comments_count($row->pid);
-        if ($comment_count == 0)
-            $comment_count = '<a class="post-com-count" title="0"><span class="comment-count">0</span></a>';
-        else
-            $comment_count = sprintf('<a class="post-com-count" title="%s" href="./admin.php?page=gd-star-rating-stats&amp;gdsr=comments&amp;postid=%s"><span class="comment-count">%s</span></a>',
+        if ($comment_count == 0) $comment_count = '<a class="post-com-count" title="0"><span class="comment-count">0</span></a>';
+        else $comment_count = sprintf('<a class="post-com-count" title="%s" href="./admin.php?page=gd-star-rating-stats&amp;gdsr=comments&amp;postid=%s"><span class="comment-count">%s</span></a>',
                 $comment_count,
                 $row->pid,
                 $comment_count
@@ -199,8 +196,7 @@ function gdsrTimerChange() {
             if ($row->expiry_type == "D") {
                 $timer_info = '<strong><span style="color: red">'.__("date limit", "gd-star-rating").'</span></strong><br />';
                 $timer_info.= $row->expiry_value;
-            }
-            else if ($row->expiry_type == "T") {
+            } else if ($row->expiry_type == "T") {
                 $timer_info = '<strong><span style="color: red">'.__("countdown", "gd-star-rating").'</span></strong><br />';
                 $timer_info.= substr($row->expiry_value, 1)." ";
                 switch (substr($row->expiry_value, 0, 1)) {
@@ -214,37 +210,37 @@ function gdsrTimerChange() {
                         $timer_info.= __("Months", "gd-star-rating");
                         break;
                 }
-            }
-            else $timer_info = __("no limit", "gd-star-rating");
+            } else $timer_info = __("no limit", "gd-star-rating");
         }
 
-        if ($row->rating_total > $options["stars"] || $row->rating_visitors > $options["stars"] || $row->rating_users > $options["stars"])
-            $tr_class.=" invalidarticle";
+        if ($row->rating_total > $options["stars"] ||
+            $row->rating_visitors > $options["stars"] ||
+            $row->rating_users > $options["stars"]) $tr_class.=" invalidarticle";
 
         echo '<tr id="post-'.$row->pid.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->pid.'" type="checkbox"/></th>';
-        echo '<td><strong>'.$row->title.'</strong></td>';
+        echo '<td><strong>'.$row->title.'</strong><br />'.GDSRDatabase::get_categories($row->pid).'</td>';
         echo '<td nowrap="nowrap">';
             echo '<a href="'.get_permalink($row->pid).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a>&nbsp;';
             echo '<a onclick="generateUrl('.$row->pid.')" href="#TB_inline?height=520&amp;width=950&amp;inlineId=gdsrchart" title="'.__("Charts", "gd-star-rating").'" class="thickbox"><img src="'.STARRATING_URL.'gfx/chart.png" border="0" /></a>';
         echo '</td>';
         echo '<td class="num"><div class="post-com-count-wrapper">'.$comment_count.'</div></td>';
-        echo '<td>'.GDSRDatabase::get_categories($row->pid).'</td>';
         if ($options["moderation_active"] == 1) 
             echo '<td nowrap="nowrap">'.$moderate_articles.$row->moderate_articles.'<br />'.$moderate_comments.$row->moderate_comments.'</td>';
         if ($options["timer_active"] == 1)
             echo '<td>'.$timer_info.'</td>';
         echo '<td nowrap="nowrap">'.$row->rules_articles.'<br />'.$row->rules_comments.'</td>';
+        echo '<td nowrap="nowrap">'.$row->thumbs.'</td>';
         echo '<td nowrap="nowrap">'.$row->votes.'</td>';
         echo '<td nowrap="nowrap">'.$row->total.'</td>';
+        if ($options["admin_views"] == 1)
+            echo '<td nowrap="nowrap">'.$row->views.'</td>';
         if ($options["review_active"] == 1) 
             echo '<td align="right">'.$row->review.'</td>';
         echo '</tr>';
-        
-        if ($tr_class == "")
-            $tr_class = "alternate ";
-        else
-            $tr_class = "";
+
+        if ($tr_class == "") $tr_class = "alternate ";
+        else $tr_class = "";
     }
 
 ?>
