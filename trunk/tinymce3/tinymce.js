@@ -32,7 +32,11 @@ function gdsrChangeShortcode(calledfrom) {
             document.getElementById("articlesrater_tab").style.display = "block";
             adminIndex = 6;
             break;
-        case 9:
+        case 8:
+            document.getElementById("thumbsrating_tab").style.display = "block";
+            adminIndex = 9;
+            break;
+        case 10:
             document.getElementById("commentsaggr_tab").style.display = "block";
             adminIndex = 7;
             break;
@@ -117,6 +121,16 @@ function insertStarRatingCode() {
         funtext = "wp_gdsr_render_article(" + document.getElementById('srRatingBlockTemplate').value;
         tagtext = tagtext + document.getElementById('srRatingBlockTemplate').value;
         if (document.getElementById('srArticleRead').checked) {
+           tagtext = tagtext + " read_only=1";
+           funtext = funtext + ", true";
+        }
+        tagtext = tagtext + "]";
+        funtext = funtext + ");"
+    } else if (shortcode == 'starthumbsblock') {
+        tagtext = "[starthumbsblock tpl=";
+        funtext = "wp_gdsr_render_article_thumbs(" + document.getElementById('srThumbsTemplate').value;
+        tagtext = tagtext + document.getElementById('srThumbsTemplate').value;
+        if (document.getElementById('srThumbsRead').checked) {
            tagtext = tagtext + " read_only=1";
            funtext = funtext + ", true";
         }

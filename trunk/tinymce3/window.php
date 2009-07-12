@@ -37,6 +37,7 @@
         <li style="display: none" id="articlesrater_tab"><span><a href="javascript:mcTabs.displayTab('articlesrater_tab','articlesrater_panel');" onmousedown="return false;"><?php _e("Articles Rating Block", "gd-star-rating"); ?></a></span></li>
         <li style="display: none" id="commentsaggr_tab"><span><a href="javascript:mcTabs.displayTab('commentsaggr_tab','commentsaggr_panel');" onmousedown="return false;"><?php _e("Aggregated Comments", "gd-star-rating"); ?></a></span></li>
         <li style="display: none" id="blograting_tab"><span><a href="javascript:mcTabs.displayTab('blograting_tab','blograting_panel');" onmousedown="return false;"><?php _e("Blog Rating", "gd-star-rating"); ?></a></span></li>
+        <li style="display: none" id="thumbsrating_tab"><span><a href="javascript:mcTabs.displayTab('thumbsrating_tab','thumbsrating_panel');" onmousedown="return false;"><?php _e("Thumbs Rating", "gd-star-rating"); ?></a></span></li>
     </ul>
 </div>
 
@@ -58,6 +59,7 @@
                     <option value="starrating">--------------------</option>
                     <option value="starreview"><?php _e("Articles", "gd-star-rating"); ?>: StarReview</option>
                     <option value="starrater"><?php _e("Articles", "gd-star-rating"); ?>: StarRater</option>
+                    <option value="starthumbsblock"><?php _e("Articles", "gd-star-rating"); ?>: StarThumbsBlock</option>
                     <option value="starrating">--------------------</option>
                     <option value="starcomments"><?php _e("Comments", "gd-star-rating"); ?>: StarComments</option>
                 </select>
@@ -102,6 +104,10 @@
 
 <div id="blograting_panel" class="panel">
 <?php include(dirname(__FILE__)."/panels/blograting.php"); ?>
+</div>
+
+<div id="thumbsrating_panel" class="panel">
+<?php include(dirname(__FILE__)."/panels/thumbsrating.php"); ?>
 </div>
 
 </div>
