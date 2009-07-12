@@ -2,15 +2,15 @@
 msgid "Chart with votes distribution"
 msgstr ""
 
-#: code/db/main.php:1051
+#: code/db/main.php:1148
 msgid "Show all dates"
 msgstr ""
 
-#: code/db/main.php:1079
+#: code/db/main.php:1176
 msgid "All users and visitors"
 msgstr ""
 
-#: code/db/main.php:1080
+#: code/db/main.php:1177
 #: tinymce3/panels/blograting.php:22
 #: tinymce3/panels/commentsaggr.php:17
 #: tinymce3/panels/filter.php:17
@@ -29,11 +29,11 @@ msgstr ""
 msgid "Visitors Only"
 msgstr ""
 
-#: code/db/main.php:1081
+#: code/db/main.php:1178
 msgid "All Users"
 msgstr ""
 
-#: code/db/main.php:1097
+#: code/db/main.php:1194
 msgid "All categories"
 msgstr ""
 
@@ -184,7 +184,7 @@ msgstr ""
 msgid "votes"
 msgstr ""
 
-#: code/t2/render.php:630
+#: code/t2/render.php:779
 msgid "(no title)"
 msgstr ""
 
@@ -223,7 +223,7 @@ msgstr ""
 #: code/t2/templates.php:178
 #: code/t2/templates.php:206
 #: code/t2/templates.php:297
-#: code/t2/templates.php:338
+#: code/t2/templates.php:336
 msgid "article rating"
 msgstr ""
 
@@ -245,7 +245,7 @@ msgstr ""
 #: code/t2/templates.php:182
 #: code/t2/templates.php:209
 #: code/t2/templates.php:298
-#: code/t2/templates.php:339
+#: code/t2/templates.php:337
 msgid "total votes for article"
 msgstr ""
 
@@ -256,7 +256,7 @@ msgstr ""
 #: code/t2/templates.php:192
 #: code/t2/templates.php:287
 #: code/t2/templates.php:296
-#: code/t2/templates.php:337
+#: code/t2/templates.php:335
 msgid "post/page id"
 msgstr ""
 
@@ -271,7 +271,7 @@ msgstr ""
 #: code/t2/templates.php:230
 #: code/t2/templates.php:268
 #: code/t2/templates.php:301
-#: code/t2/templates.php:342
+#: code/t2/templates.php:340
 msgid "singular/plural word votes"
 msgstr ""
 
@@ -339,7 +339,7 @@ msgstr ""
 #: code/t2/templates.php:73
 #: code/t2/templates.php:118
 #: code/t2/templates.php:312
-#: code/t2/templates.php:343
+#: code/t2/templates.php:341
 msgid "saved vote value"
 msgstr ""
 
@@ -360,7 +360,7 @@ msgstr ""
 #: code/t2/templates.php:283
 #: code/t2/templates.php:291
 #: code/t2/templates.php:313
-#: code/t2/templates.php:344
+#: code/t2/templates.php:342
 msgid "Normal"
 msgstr ""
 
@@ -380,7 +380,7 @@ msgstr ""
 #: code/t2/templates.php:75
 #: code/t2/templates.php:122
 #: code/t2/templates.php:316
-#: code/t2/templates.php:345
+#: code/t2/templates.php:343
 msgid "Vote Saved"
 msgstr ""
 
@@ -532,8 +532,8 @@ msgstr ""
 #: code/t2/templates.php:165
 #: code/t2/templates.php:238
 #: code/t2/templates.php:239
-#: code/t2/templates.php:325
-#: code/t2/templates.php:355
+#: code/t2/templates.php:323
+#: code/t2/templates.php:351
 msgid "rating header text"
 msgstr ""
 
@@ -604,16 +604,16 @@ msgstr ""
 #: code/t2/templates.php:168
 #: code/t2/templates.php:275
 #: code/t2/templates.php:282
-#: code/t2/templates.php:327
-#: code/t2/templates.php:356
+#: code/t2/templates.php:325
+#: code/t2/templates.php:352
 msgid "css class for whole block"
 msgstr ""
 
 #: code/t2/templates.php:142
 #: code/t2/templates.php:157
 #: code/t2/templates.php:169
-#: code/t2/templates.php:328
-#: code/t2/templates.php:357
+#: code/t2/templates.php:326
+#: code/t2/templates.php:353
 msgid "css class for header"
 msgstr ""
 
@@ -621,8 +621,8 @@ msgstr ""
 #: code/t2/templates.php:144
 #: code/t2/templates.php:159
 #: code/t2/templates.php:171
-#: code/t2/templates.php:330
-#: code/t2/templates.php:359
+#: code/t2/templates.php:328
+#: code/t2/templates.php:355
 msgid "css class for rating text"
 msgstr ""
 
@@ -648,15 +648,15 @@ msgstr ""
 
 #: code/t2/templates.php:155
 #: code/t2/templates.php:167
-#: code/t2/templates.php:326
-#: code/t2/templates.php:354
+#: code/t2/templates.php:324
+#: code/t2/templates.php:350
 msgid "rating text"
 msgstr ""
 
 #: code/t2/templates.php:158
 #: code/t2/templates.php:170
-#: code/t2/templates.php:329
-#: code/t2/templates.php:358
+#: code/t2/templates.php:327
+#: code/t2/templates.php:354
 msgid "css class for stars"
 msgstr ""
 
@@ -741,12 +741,12 @@ msgid "Thumbs Article Ratings Text"
 msgstr ""
 
 #: code/t2/templates.php:299
-#: code/t2/templates.php:340
+#: code/t2/templates.php:338
 msgid "total up votes for article"
 msgstr ""
 
 #: code/t2/templates.php:300
-#: code/t2/templates.php:341
+#: code/t2/templates.php:339
 msgid "total down votes for article"
 msgstr ""
 
@@ -755,40 +755,30 @@ msgid "Thumbs Article Rating Block"
 msgstr ""
 
 #: code/t2/templates.php:321
-#: code/t2/templates.php:350
-msgid "thumb down text style"
-msgstr ""
-
-#: code/t2/templates.php:322
-#: code/t2/templates.php:351
-msgid "thumb up text style"
-msgstr ""
-
-#: code/t2/templates.php:323
-#: code/t2/templates.php:352
+#: code/t2/templates.php:348
 msgid "thumb down image style"
 msgstr ""
 
-#: code/t2/templates.php:324
-#: code/t2/templates.php:353
+#: code/t2/templates.php:322
+#: code/t2/templates.php:349
 msgid "thumb up image style"
 msgstr ""
 
-#: code/t2/templates.php:331
-#: code/t2/templates.php:360
+#: code/t2/templates.php:329
+#: code/t2/templates.php:356
 msgid "Inactive"
 msgstr ""
 
-#: code/t2/templates.php:332
-#: code/t2/templates.php:361
+#: code/t2/templates.php:330
+#: code/t2/templates.php:357
 msgid "Active"
 msgstr ""
 
-#: code/t2/templates.php:335
+#: code/t2/templates.php:333
 msgid "Thumbs Comment Ratings Text"
 msgstr ""
 
-#: code/t2/templates.php:348
+#: code/t2/templates.php:346
 msgid "Thumbs Comment Rating Block"
 msgstr ""
 
@@ -1359,7 +1349,7 @@ msgid "Articles"
 msgstr ""
 
 #: options/builder/shortcode.php:14
-#: options/settings/settings_thumbs.php:58
+#: options/settings/settings_thumbs.php:65
 #: options/tools/tools_bulk.php:60
 #: options/articles.php:332
 #: options/categories.php:241
@@ -2180,14 +2170,14 @@ msgstr ""
 #: options/settings/settings_comments.php:42
 #: options/settings/settings_multis.php:33
 #: options/settings/settings_thumbs.php:26
-#: options/settings/settings_thumbs.php:83
+#: options/settings/settings_thumbs.php:90
 msgid "Rating header"
 msgstr ""
 
 #: options/settings/settings_articles.php:49
 #: options/settings/settings_comments.php:49
 #: options/settings/settings_thumbs.php:33
-#: options/settings/settings_thumbs.php:90
+#: options/settings/settings_thumbs.php:97
 msgid "Auto insert rating code"
 msgstr ""
 
@@ -2219,7 +2209,7 @@ msgstr ""
 #: options/settings/settings_articles.php:68
 #: options/settings/settings_comments.php:62
 #: options/settings/settings_thumbs.php:52
-#: options/settings/settings_thumbs.php:103
+#: options/settings/settings_thumbs.php:110
 msgid "Auto insert location"
 msgstr ""
 
@@ -2274,6 +2264,8 @@ msgstr ""
 #: options/settings/settings_comments.php:116
 #: options/settings/settings_integration.php:63
 #: options/settings/settings_multis.php:100
+#: options/settings/settings_thumbs.php:59
+#: options/settings/settings_thumbs.php:117
 msgid "Rating Template"
 msgstr ""
 
@@ -2351,12 +2343,12 @@ msgid "Each line must contain only one BOT name to ensure proper detection of se
 msgstr ""
 
 #: options/settings/settings_comments.php:51
-#: options/settings/settings_thumbs.php:92
+#: options/settings/settings_thumbs.php:99
 msgid "For comments for posts."
 msgstr ""
 
 #: options/settings/settings_comments.php:55
-#: options/settings/settings_thumbs.php:96
+#: options/settings/settings_thumbs.php:103
 msgid "For comments for pages."
 msgstr ""
 
@@ -2609,7 +2601,7 @@ msgid "Posts &amp; Pages"
 msgstr ""
 
 #: options/settings/settings_thumbs.php:5
-#: options/settings/settings_thumbs.php:62
+#: options/settings/settings_thumbs.php:69
 msgid "Thumbs Set"
 msgstr ""
 

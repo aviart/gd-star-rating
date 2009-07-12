@@ -116,6 +116,7 @@ if (!class_exists('GDStarRating')) {
         var $default_shortcode_starreviewmulti;
         var $default_shortcode_starcomments;
         var $default_shortcode_starrater;
+        var $default_shortcode_starthumbsblock;
         var $default_shortcode_starreview;
         var $default_options;
         var $default_import;
@@ -141,6 +142,7 @@ if (!class_exists('GDStarRating')) {
             $this->default_shortcode_starreviewmulti = $gdd->default_shortcode_starreviewmulti;
             $this->default_shortcode_starcomments = $gdd->default_shortcode_starcomments;
             $this->default_shortcode_starrater = $gdd->default_shortcode_starrater;
+            $this->default_shortcode_starthumbsblock = $gdd->default_shortcode_starthumbsblock;
             $this->default_shortcode_starreview = $gdd->default_shortcode_starreview;
             $this->default_options = $gdd->default_options;
             $this->default_import = $gdd->default_import;
@@ -210,6 +212,19 @@ if (!class_exists('GDStarRating')) {
 	}
 
         /**
+        * Code for StarThumbsBlock shortcode implementation
+        *
+        * @param array $atts
+        */
+        function shortcode_starthumbsblock($atts = array()) {
+            global $post, $userdata;
+            $override = shortcode_atts($this->default_shortcode_starthumbsblock, $atts);
+            $user_id = $userdata->ID;
+            $this->cache_posts($user_id);
+            return $this->render_thumb_article($post, $userdata, $override);
+        }
+
+        /**
         * Code for StarRatingBlock shortcode implementation
         *
         * @param array $atts
@@ -217,7 +232,8 @@ if (!class_exists('GDStarRating')) {
         function shortcode_starratingblock($atts = array()) {
             global $post, $userdata;
             $override = shortcode_atts($this->default_shortcode_starrater, $atts);
-            $this->cache_posts($userdata->ID);
+            $user_id = $userdata->ID;
+            $this->cache_posts($user_id);
             return $this->render_article($post, $userdata, $override);
         }
 

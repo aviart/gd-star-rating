@@ -11,6 +11,7 @@
                 <option value="starrating">--------------------</option>
                 <option value="starreview"><?php _e("Articles", "gd-star-rating"); ?>: StarReview</option>
                 <option value="starrater"><?php _e("Articles", "gd-star-rating"); ?>: StarRater</option>
+                <option value="starthumbsblock"><?php _e("Articles", "gd-star-rating"); ?>: StarThumbsBlock</option>
                 <option value="starrating">--------------------</option>
                 <option value="starcomments"><?php _e("Comments", "gd-star-rating"); ?>: StarComments</option>
             </select>

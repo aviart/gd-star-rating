@@ -13,15 +13,15 @@ msgstr ""
 msgid "Chart with votes distribution"
 msgstr "Графикон са дистрибуцијом гласова"
 
-#: code/db/main.php:1051
+#: code/db/main.php:1148
 msgid "Show all dates"
 msgstr "Прикажи све датуме"
 
-#: code/db/main.php:1079
+#: code/db/main.php:1176
 msgid "All users and visitors"
 msgstr "Сви корисници и посетиоци"
 
-#: code/db/main.php:1080
+#: code/db/main.php:1177
 #: tinymce3/panels/blograting.php:22
 #: tinymce3/panels/commentsaggr.php:17
 #: tinymce3/panels/filter.php:17
@@ -40,11 +40,11 @@ msgstr "Сви корисници и посетиоци"
 msgid "Visitors Only"
 msgstr "Само Посетици"
 
-#: code/db/main.php:1081
+#: code/db/main.php:1178
 msgid "All Users"
 msgstr "Сви корисници"
 
-#: code/db/main.php:1097
+#: code/db/main.php:1194
 msgid "All categories"
 msgstr "Све категорије"
 
@@ -195,7 +195,7 @@ msgstr "родитељ"
 msgid "votes"
 msgstr "гласови"
 
-#: code/t2/render.php:630
+#: code/t2/render.php:779
 msgid "(no title)"
 msgstr "(без имена)"
 
@@ -234,7 +234,7 @@ msgstr "Стандарни Рејтинг Текст"
 #: code/t2/templates.php:178
 #: code/t2/templates.php:206
 #: code/t2/templates.php:297
-#: code/t2/templates.php:338
+#: code/t2/templates.php:336
 msgid "article rating"
 msgstr "рејтинг чланка"
 
@@ -256,7 +256,7 @@ msgstr "maximum rating value"
 #: code/t2/templates.php:182
 #: code/t2/templates.php:209
 #: code/t2/templates.php:298
-#: code/t2/templates.php:339
+#: code/t2/templates.php:337
 msgid "total votes for article"
 msgstr "укупно гласова за чланак"
 
@@ -267,7 +267,7 @@ msgstr "укупно гласова за чланак"
 #: code/t2/templates.php:192
 #: code/t2/templates.php:287
 #: code/t2/templates.php:296
-#: code/t2/templates.php:337
+#: code/t2/templates.php:335
 msgid "post/page id"
 msgstr "ид чланка"
 
@@ -282,7 +282,7 @@ msgstr "ид чланка"
 #: code/t2/templates.php:230
 #: code/t2/templates.php:268
 #: code/t2/templates.php:301
-#: code/t2/templates.php:342
+#: code/t2/templates.php:340
 msgid "singular/plural word votes"
 msgstr "једнина/множина речи глас"
 
@@ -350,7 +350,7 @@ msgstr "укупно преосталих минута"
 #: code/t2/templates.php:73
 #: code/t2/templates.php:118
 #: code/t2/templates.php:312
-#: code/t2/templates.php:343
+#: code/t2/templates.php:341
 msgid "saved vote value"
 msgstr "вредност снимљеног гласа"
 
@@ -371,7 +371,7 @@ msgstr "вредност снимљеног гласа"
 #: code/t2/templates.php:283
 #: code/t2/templates.php:291
 #: code/t2/templates.php:313
-#: code/t2/templates.php:344
+#: code/t2/templates.php:342
 msgid "Normal"
 msgstr "Нормалан"
 
@@ -391,7 +391,7 @@ msgstr "Временско Ограничење Затворено"
 #: code/t2/templates.php:75
 #: code/t2/templates.php:122
 #: code/t2/templates.php:316
-#: code/t2/templates.php:345
+#: code/t2/templates.php:343
 msgid "Vote Saved"
 msgstr "Глас Снимљен"
 
@@ -543,8 +543,8 @@ msgstr "Стандардни РСС Рејтинг Блок"
 #: code/t2/templates.php:165
 #: code/t2/templates.php:238
 #: code/t2/templates.php:239
-#: code/t2/templates.php:325
-#: code/t2/templates.php:355
+#: code/t2/templates.php:323
+#: code/t2/templates.php:351
 msgid "rating header text"
 msgstr "заглавље за рејтинг"
 
@@ -615,16 +615,16 @@ msgstr "мулти рејтинг звезде"
 #: code/t2/templates.php:168
 #: code/t2/templates.php:275
 #: code/t2/templates.php:282
-#: code/t2/templates.php:327
-#: code/t2/templates.php:356
+#: code/t2/templates.php:325
+#: code/t2/templates.php:352
 msgid "css class for whole block"
 msgstr "класа за цео блок"
 
 #: code/t2/templates.php:142
 #: code/t2/templates.php:157
 #: code/t2/templates.php:169
-#: code/t2/templates.php:328
-#: code/t2/templates.php:357
+#: code/t2/templates.php:326
+#: code/t2/templates.php:353
 msgid "css class for header"
 msgstr "класа за заглавље"
 
@@ -632,8 +632,8 @@ msgstr "класа за заглавље"
 #: code/t2/templates.php:144
 #: code/t2/templates.php:159
 #: code/t2/templates.php:171
-#: code/t2/templates.php:330
-#: code/t2/templates.php:359
+#: code/t2/templates.php:328
+#: code/t2/templates.php:355
 msgid "css class for rating text"
 msgstr "класа за рејтинг текст"
 
@@ -659,15 +659,15 @@ msgstr "Стандардни Рејтинг Блок"
 
 #: code/t2/templates.php:155
 #: code/t2/templates.php:167
-#: code/t2/templates.php:326
-#: code/t2/templates.php:354
+#: code/t2/templates.php:324
+#: code/t2/templates.php:350
 msgid "rating text"
 msgstr "рејтинг текст"
 
 #: code/t2/templates.php:158
 #: code/t2/templates.php:170
-#: code/t2/templates.php:329
-#: code/t2/templates.php:358
+#: code/t2/templates.php:327
+#: code/t2/templates.php:354
 msgid "css class for stars"
 msgstr "класа за звезде"
 
@@ -748,66 +748,50 @@ msgid "Multi Rating Comment Integration Result"
 msgstr "Мулти Рејтинг Резултат Комент Интеграције"
 
 #: code/t2/templates.php:294
-#, fuzzy
 msgid "Thumbs Article Ratings Text"
-msgstr "Мулти Рејтинг Текст"
+msgstr "Тамб Рејтинг Текст Чланака"
 
 #: code/t2/templates.php:299
-#: code/t2/templates.php:340
-#, fuzzy
+#: code/t2/templates.php:338
 msgid "total up votes for article"
-msgstr "укупно гласова за чланак"
+msgstr "укупно горе гласова за чланак"
 
 #: code/t2/templates.php:300
-#: code/t2/templates.php:341
-#, fuzzy
+#: code/t2/templates.php:339
 msgid "total down votes for article"
-msgstr "укупно гласова за чланак"
+msgstr "укупно доле гласова за чланак"
 
 #: code/t2/templates.php:319
-#, fuzzy
 msgid "Thumbs Article Rating Block"
-msgstr "Рејтинг Блок Чланака"
+msgstr "Тамб Рејтинг Блок Чланака"
 
 #: code/t2/templates.php:321
-#: code/t2/templates.php:350
-msgid "thumb down text style"
-msgstr ""
+#: code/t2/templates.php:348
+msgid "thumb down image style"
+msgstr "тамб доле стил слике"
 
 #: code/t2/templates.php:322
-#: code/t2/templates.php:351
-msgid "thumb up text style"
-msgstr ""
-
-#: code/t2/templates.php:323
-#: code/t2/templates.php:352
-msgid "thumb down image style"
-msgstr ""
-
-#: code/t2/templates.php:324
-#: code/t2/templates.php:353
+#: code/t2/templates.php:349
 msgid "thumb up image style"
-msgstr ""
+msgstr "тамб горе стил слике"
 
-#: code/t2/templates.php:331
-#: code/t2/templates.php:360
+#: code/t2/templates.php:329
+#: code/t2/templates.php:356
 msgid "Inactive"
-msgstr ""
+msgstr "Неактиван"
 
-#: code/t2/templates.php:332
-#: code/t2/templates.php:361
+#: code/t2/templates.php:330
+#: code/t2/templates.php:357
 msgid "Active"
-msgstr ""
+msgstr "Активан"
 
-#: code/t2/templates.php:335
-#, fuzzy
+#: code/t2/templates.php:333
 msgid "Thumbs Comment Ratings Text"
-msgstr "Рејтинг Текст Кометара."
+msgstr "Тамб Рејтинг Текст Кометара"
 
-#: code/t2/templates.php:348
-#, fuzzy
+#: code/t2/templates.php:346
 msgid "Thumbs Comment Rating Block"
-msgstr "Рејтинг Блок Коментара"
+msgstr "Тамб Рејтинг Блок Коментара"
 
 #: code/helpers.php:229
 msgid "No moderation"
@@ -1374,7 +1358,7 @@ msgid "Articles"
 msgstr "Чланци"
 
 #: options/builder/shortcode.php:14
-#: options/settings/settings_thumbs.php:58
+#: options/settings/settings_thumbs.php:65
 #: options/tools/tools_bulk.php:60
 #: options/articles.php:332
 #: options/categories.php:241
@@ -1693,14 +1677,13 @@ msgid "Author"
 msgstr "Аутор"
 
 #: options/gfx/gfx_preview.php:51
-#, fuzzy
 msgid "Thumbs Preview"
-msgstr "Преглед Трендова"
+msgstr "Тамб Преглед"
 
 #: options/gfx/gfx_preview.php:55
 #: options/gfx.php:62
 msgid "Thumbs"
-msgstr ""
+msgstr "Тамбови"
 
 #: options/gfx/gfx_preview.php:101
 msgid "Trends Preview"
@@ -1729,14 +1712,12 @@ msgid "Only stars set checked here will be included in the css file for the acti
 msgstr "Само сетови које су селектовани биће укључени у цсс фајл за активне рејтинг блокове."
 
 #: options/gfx/gfx_thumbs.php:1
-#, fuzzy
 msgid "Thumbs Sizes"
-msgstr "Величине Звезда"
+msgstr "Тамб Величине"
 
 #: options/gfx/gfx_thumbs.php:54
-#, fuzzy
 msgid "Only thumbs set checked here will be included in the css file for the active rating blocks."
-msgstr "Само сетови које су селектовани биће укључени у цсс фајл за активне рејтинг блокове."
+msgstr "Само тамб сетови које су селектовани биће укључени у цсс фајл за активне рејтинг блокове."
 
 #: options/ips/ips_list.php:53
 msgid "Record Id"
@@ -2058,7 +2039,7 @@ msgstr "Редови за приказ"
 
 #: options/settings/settings_administration.php:28
 msgid "Maximum screen width is used only on WP version older than 2.7."
-msgstr ""
+msgstr "Максимална ширина се користи само за WP верзије старије од 2.7."
 
 #: options/settings/settings_administration.php:31
 msgid "Plugin Panels"
@@ -2166,7 +2147,7 @@ msgstr "Логуј различите информације за дебугин
 
 #: options/settings/settings_advanced.php:40
 msgid "Save into debug file each WP Query executed."
-msgstr ""
+msgstr "Сними у дебаг фајл сваки извршени WP упит."
 
 #: options/settings/settings_articles.php:10
 #: options/settings/settings_comments.php:10
@@ -2191,14 +2172,14 @@ msgstr "Број звездица"
 #: options/settings/settings_comments.php:42
 #: options/settings/settings_multis.php:33
 #: options/settings/settings_thumbs.php:26
-#: options/settings/settings_thumbs.php:83
+#: options/settings/settings_thumbs.php:90
 msgid "Rating header"
 msgstr "Заглавље"
 
 #: options/settings/settings_articles.php:49
 #: options/settings/settings_comments.php:49
 #: options/settings/settings_thumbs.php:33
-#: options/settings/settings_thumbs.php:90
+#: options/settings/settings_thumbs.php:97
 msgid "Auto insert rating code"
 msgstr "Ауоматски убаци рејтинг код"
 
@@ -2230,7 +2211,7 @@ msgstr "За чланке приказане на страни са Резулт
 #: options/settings/settings_articles.php:68
 #: options/settings/settings_comments.php:62
 #: options/settings/settings_thumbs.php:52
-#: options/settings/settings_thumbs.php:103
+#: options/settings/settings_thumbs.php:110
 msgid "Auto insert location"
 msgstr "Локација за ауто убацивање"
 
@@ -2285,6 +2266,8 @@ msgstr "CSS класа рејтинг звезда"
 #: options/settings/settings_comments.php:116
 #: options/settings/settings_integration.php:63
 #: options/settings/settings_multis.php:100
+#: options/settings/settings_thumbs.php:59
+#: options/settings/settings_thumbs.php:117
 msgid "Rating Template"
 msgstr "Рејтинг Шаблон"
 
@@ -2362,12 +2345,12 @@ msgid "Each line must contain only one BOT name to ensure proper detection of se
 msgstr "Свака линија мора да садржи само један БОТ да би се осигурала тачна детекција претраживача."
 
 #: options/settings/settings_comments.php:51
-#: options/settings/settings_thumbs.php:92
+#: options/settings/settings_thumbs.php:99
 msgid "For comments for posts."
 msgstr "За коментаре за чланке."
 
 #: options/settings/settings_comments.php:55
-#: options/settings/settings_thumbs.php:96
+#: options/settings/settings_thumbs.php:103
 msgid "For comments for pages."
 msgstr "За коментаре за стране."
 
@@ -2501,11 +2484,11 @@ msgstr "Исључи проверу ИЕ6 претраживача и подеш
 
 #: options/settings/settings_integration.php:1
 msgid "WP Query Object"
-msgstr ""
+msgstr "WP Упит Објекат"
 
 #: options/settings/settings_integration.php:3
 msgid "Expand WP Query with new rating specific sorting and filtering."
-msgstr ""
+msgstr "Прошири WP Упит ојекат новим рејтинг специфичним сортирањем и филтрирањем."
 
 #: options/settings/settings_integration.php:6
 msgid "Dashboard"
@@ -2620,10 +2603,9 @@ msgid "Posts &amp; Pages"
 msgstr "Постови &amp; Стране"
 
 #: options/settings/settings_thumbs.php:5
-#: options/settings/settings_thumbs.php:62
-#, fuzzy
+#: options/settings/settings_thumbs.php:69
 msgid "Thumbs Set"
-msgstr "Величине Звезда"
+msgstr "Тамб Сет"
 
 #: options/setup/setup_database.php:1
 #: options/setup/setup_database.php:5
@@ -3117,7 +3099,7 @@ msgstr "Чланци и Стране"
 
 #: options/settings.php:49
 msgid "Thumbs Up/Down"
-msgstr ""
+msgstr "Тамб Горе/Доле"
 
 #: options/setup.php:6
 msgid "Database tables reinstalled."

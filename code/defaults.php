@@ -210,7 +210,8 @@ class GDSRDefaults {
         "starratingblock",
         "starratingmulti",
         "starreviewmulti",
-        "starcomments"
+        "starcomments",
+        "starthumbsblock"
     );
 
     var $default_wpr8 = array(
@@ -319,6 +320,14 @@ class GDSRDefaults {
     );
 
     var $default_shortcode_starrater = array(
+        "tpl" => 0,
+        "read_only" => 0,
+        "style" => "oxygen",
+        "style_ie6" => "oxygen_gif",
+        "size" => 20
+    );
+
+    var $default_shortcode_starthumbsblock = array(
         "tpl" => 0,
         "read_only" => 0,
         "style" => "oxygen",
