@@ -52,7 +52,8 @@
     <li><strong>gdsr_sort</strong>: data used for sorting results</li>
     <li><strong>gdsr_order</strong>: data sorting order</li>
     <li><strong>gdsr_multi</strong>: standard or multi ratings data to use</li>
-    <li><strong>gdsr_fvmin</strong>: filter to specify minimal number of votes</li>
+    <li><strong>gdsr_fsvmin</strong>: filter to specify minimal number of standard rating votes</li>
+    <li><strong>gdsr_ftvmin</strong>: filter to specify minimal number of thumbs rating votes</li>
 </ul>
 <h3>gdsr_sort</h3>
 <p>Supported values (columns) for sorting data:</p>
@@ -60,6 +61,8 @@
     <li><strong>rating</strong>: post ratings, standard or multi ratings depending on the multi parameter</li>
     <li><strong>review</strong>: post review rating, standard or multi ratings depending on the multi parameter</li>
     <li><strong>votes</strong>: number of votes saved for the post</li>
+    <li><strong>thumbs</strong>: post thumbs rating</li>
+    <li><strong>last_voted</strong>: date of the last vote recorded</li>
 </ul>
 <h3>gdsr_order</h3>
 <p>Ascending or descending order to sort data:</p>
@@ -72,9 +75,13 @@
     For standard rating data, don't use this variable, or set it to zero.<br />
     To get multi ratings data this variable must be set to multi set id to use.
 </p>
-<h3>gdsr_fvmin</h3>
+<h3>gdsr_fsvmin</h3>
 <p>
-    Set to number of votes, and only posts with at least set number of votes will be included.
+    Set to number of votes for standard rating, and only posts with at least set number of votes will be included.
+</p>
+<h3>gdsr_ftvmin</h3>
+<p>
+    Set to number of votes for thumbs rating, and only posts with at least set number of votes will be included.
 </p>
 </div>
 </div>
