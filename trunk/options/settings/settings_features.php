@@ -22,6 +22,8 @@
                     <input type="checkbox" name="gdsr_modactive" id="gdsr_modactive"<?php if ($gdsr_options["moderation_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_modactive"><?php _e("Moderation options and handling.", "gd-star-rating"); ?></label>
                     <br />
                     <input type="checkbox" name="gdsr_multis" id="gdsr_multis"<?php if ($gdsr_options["multis_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_multis"><?php _e("Multiple rating support.", "gd-star-rating"); ?></label>
+                    <br />
+                    <input type="checkbox" name="gdsr_thumbs_act" id="gdsr_thumbs_act"<?php if ($gdsr_options["thumbs_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_thumbs_act"><?php _e("Thumbs up/down rating support.", "gd-star-rating"); ?></label>
                 </td>
                 <td width="10"></td>
                 <td valign="top">
