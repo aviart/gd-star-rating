@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.5.3
+Version: 1.5.4
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -740,7 +740,8 @@ if (!class_exists('GDStarRating')) {
          */
         function comments_array($comments, $post_id) {
             if (count($comments) > 0 && !is_admin()) {
-                if ((is_single() && $this->o["display_comment"] == 1) || (is_page() && $this->o["display_comment_page"] == 1)) {
+                if ((is_single() && ($this->o["display_comment"] == 1 || $this->o["thumb_display_comment"] == 1)) ||
+                    (is_page() && ($this->o["display_comment_page"] == 1 || $this->o["thumb_display_comment_page"] == 1))) {
                     $this->cache_comments($post_id);
                 }
             }
@@ -2199,8 +2200,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         function check_cookie($id, $type = "article") {
             if (
                 ($type == "article" && $this->o["cookies"]) ||
+                ($type == "artthumb" && $this->o["cookies"] == 1) ||
                 ($type == "multis" && $this->o["cookies"] == 1) ||
-                ($type == "comment" && $this->o["cmm_cookies"])
+                ($type == "comment" && $this->o["cmm_cookies"]) ||
+                ($type == "cmmthumb" && $this->o["cmm_cookies"] == 1)
                 ) {
                 if (isset($_COOKIE["wp_gdsr_".$type])) {
                     $cookie = $_COOKIE["wp_gdsr_".$type];
@@ -2222,8 +2225,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         function save_cookie($id, $type = "article") {
             if (
                 ($type == "article" && $this->o["cookies"] == 1) ||
+                ($type == "artthumb" && $this->o["cookies"] == 1) ||
                 ($type == "multis" && $this->o["cookies"] == 1) ||
-                ($type == "comment" && $this->o["cmm_cookies"] == 1)
+                ($type == "comment" && $this->o["cmm_cookies"] == 1) ||
+                ($type == "cmmthumb" && $this->o["cmm_cookies"] == 1)
                 ) {
                 if (isset($_COOKIE["wp_gdsr_".$type])) {
                     $cookie = $_COOKIE["wp_gdsr_".$type];
@@ -2446,13 +2451,15 @@ wp_gdsr_dump("CACHE_POSTDATA", $gdsr_cache_posts_std_data);
 
 wp_gdsr_dump("CACHE_POSTLOG", $gdsr_cache_posts_std_log);
 
-                $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "artthumb", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
-                foreach ($logs_thumb as $id => $value) {
-                    $gdsr_cache_posts_std_thumbs_log->set($id, $value == 0);
-                }
+                if ($this->o["thumbs_active"] == 1) {
+                    $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "artthumb", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
+                    foreach ($logs_thumb as $id => $value) {
+                        $gdsr_cache_posts_std_thumbs_log->set($id, $value == 0);
+                    }
 
 wp_gdsr_dump("CACHE_POSTTHUMBLOG", $gdsr_cache_posts_std_thumbs_log);
 
+                }
             }
         }
 
@@ -2473,15 +2480,17 @@ wp_gdsr_dump("CACHE_POSTTHUMBLOG", $gdsr_cache_posts_std_thumbs_log);
                     $gdsr_cache_posts_cmm_log->set($id, $value == 0);
                 }
 
-wp_gdsr_dump("CACHE_CMMDATA_", $gdsr_cache_posts_cmm_log);
+wp_gdsr_dump("CACHE_CMMDATA", $gdsr_cache_posts_cmm_log);
 
-                $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "cmmthumb", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
-                foreach ($logs_thumb as $id => $value) {
-                    $gdsr_cache_posts_cmm_thumbs_log->set($id, $value == 0);
+                if ($this->o["thumbs_active"] == 1) {
+                    $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "cmmthumb", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+                    foreach ($logs_thumb as $id => $value) {
+                        $gdsr_cache_posts_cmm_thumbs_log->set($id, $value == 0);
+                    }
+
+wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
+
                 }
-
-wp_gdsr_dump("CACHE_CMMTHUMBLOG_", $gdsr_cache_posts_cmm_thumbs_log);
-
             }
         }
 
@@ -2502,14 +2511,16 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG_", $gdsr_cache_posts_cmm_thumbs_log);
                         $content = $content.$rendered;
                 }
 
-                if ((is_single() && !is_admin() && $this->o["thumb_display_comment"] == 1) ||
-                    (is_page() && !is_admin() && $this->o["thumb_display_comment_page"] == 1)
-                ) {
-                    $rendered = $this->render_thumb_comment($post, $comment, $userdata);
-                    if ($this->o["thumb_auto_display_comment_position"] == "top" || $this->o["thumb_auto_display_comment_position"] == "both")
-                        $content = $rendered.$content;
-                    if ($this->o["thumb_auto_display_comment_position"] == "bottom" || $this->o["thumb_auto_display_comment_position"] == "both")
-                        $content = $content.$rendered;
+                if ($this->o["thumbs_active"] == 1) {
+                    if ((is_single() && !is_admin() && $this->o["thumb_display_comment"] == 1) ||
+                        (is_page() && !is_admin() && $this->o["thumb_display_comment_page"] == 1)
+                    ) {
+                        $rendered = $this->render_thumb_comment($post, $comment, $userdata);
+                        if ($this->o["thumb_auto_display_comment_position"] == "top" || $this->o["thumb_auto_display_comment_position"] == "both")
+                            $content = $rendered.$content;
+                        if ($this->o["thumb_auto_display_comment_position"] == "bottom" || $this->o["thumb_auto_display_comment_position"] == "both")
+                            $content = $content.$rendered;
+                    }
                 }
             }
 
@@ -2543,18 +2554,20 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG_", $gdsr_cache_posts_cmm_thumbs_log);
                 }
 
                 // thumbs rating
-                if ((is_single() && $this->o["thumb_display_posts"] == 1) ||
-                    (is_page() && $this->o["thumb_display_pages"] == 1) ||
-                    (is_home() && $this->o["thumb_display_home"] == 1) ||
-                    (is_archive() && $this->o["thumb_display_archive"] == 1) ||
-                    (is_search() && $this->o["thumb_display_search"] == 1)
-                ) {
-                    $this->cache_posts($user_id);
-                    $rendered = $this->render_thumb_article($post, $userdata);
-                    if ($this->o["thumb_auto_display_position"] == "top" || $this->o["thumb_auto_display_position"] == "both")
-                        $content = $rendered.$content;
-                    if ($this->o["thumb_auto_display_position"] == "bottom" || $this->o["thumb_auto_display_position"] == "both")
-                        $content = $content.$rendered;
+                if ($this->o["thumbs_active"] == 1) {
+                    if ((is_single() && $this->o["thumb_display_posts"] == 1) ||
+                        (is_page() && $this->o["thumb_display_pages"] == 1) ||
+                        (is_home() && $this->o["thumb_display_home"] == 1) ||
+                        (is_archive() && $this->o["thumb_display_archive"] == 1) ||
+                        (is_search() && $this->o["thumb_display_search"] == 1)
+                    ) {
+                        $this->cache_posts($user_id);
+                        $rendered = $this->render_thumb_article($post, $userdata);
+                        if ($this->o["thumb_auto_display_position"] == "top" || $this->o["thumb_auto_display_position"] == "both")
+                            $content = $rendered.$content;
+                        if ($this->o["thumb_auto_display_position"] == "bottom" || $this->o["thumb_auto_display_position"] == "both")
+                            $content = $content.$rendered;
+                    }
                 }
 
                 // multis rating

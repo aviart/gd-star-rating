@@ -591,7 +591,8 @@ class GDSRRenderT2 {
 
         if (in_array("%RATING_TEXT%", $template->tag["normal"])) {
             $rating_text = GDSRRenderT2::render_srt($template->dep["SRT"], $rating, $unit_count, $votes, $post_id, $time_restirctions, $time_remaining, $time_date);
-            $rating_text = '<div id="gdr_text_'.$type.$post_id.'">'.$rating_text.'</div>';
+            $voted = $allow_vote ? '' : ' class="voted"';
+            $rating_text = '<div id="gdr_text_'.$type.$post_id.'"'.$voted.'>'.$rating_text.'</div>';
             $tpl_render = str_replace("%RATING_TEXT%", $rating_text, $tpl_render);
         }
 
@@ -682,7 +683,8 @@ class GDSRRenderT2 {
 
         if (in_array("%CMM_RATING_TEXT%", $template->tag["normal"])) {
             $rating_text = GDSRRenderT2::render_crt($template->dep["CRT"], $rating, $unit_count, $votes);
-            $rating_text = '<div id="gdr_text_'.$type.$cmm_id.'">'.$rating_text.'</div>';
+            $voted = $allow_vote ? '' : ' class="voted"';
+            $rating_text = '<div id="gdr_text_'.$type.$cmm_id.'"'.$voted.'>'.$rating_text.'</div>';
             $tpl_render = str_replace("%CMM_RATING_TEXT%", $rating_text, $tpl_render);
         }
 

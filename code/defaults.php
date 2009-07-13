@@ -2,11 +2,11 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.5.3",
-        "date" => "2009.07.13.",
+        "version" => "1.5.4",
+        "date" => "2009.07.15.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 794,
+        "build" => 795,
         "admin_views" => 0,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,
@@ -35,6 +35,7 @@ class GDSRDefaults {
         "database_cleanup" => "",
         "database_cleanup_msg" => "",
         "mass_lock" => "",
+        "thumbs_active" => 1,
         "ie_opacity_fix" => 1,
         "ip_filtering" => 1,
         "ip_filtering_restrictive" => 0,
