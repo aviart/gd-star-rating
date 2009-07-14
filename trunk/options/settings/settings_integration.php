@@ -6,7 +6,37 @@
 </tr>
 <tr><th scope="row"><?php _e("Dashboard", "gd-star-rating"); ?></th>
     <td>
-        <input type="checkbox" name="gdsr_integrate_dashboard" id="gdsr_integrate_dashboard"<?php if ($gdsr_options["integrate_dashboard"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard"><?php _e("Add summary rating widget to the administration dashboard.", "gd-star-rating"); ?></label>
+        <input type="checkbox" name="gdsr_integrate_dashboard" id="gdsr_integrate_dashboard"<?php if ($gdsr_options["integrate_dashboard"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard"><?php _e("Add widgets to the administration dashboard.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_integrate_dashboard_chart" id="gdsr_integrate_dashboard_chart"<?php if ($gdsr_options["integrate_dashboard_chart"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard_chart"><?php _e("Add chart summary rating widget.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td style="width: 310px; vertical-align: top;" rowspan="2">
+                    <input type="checkbox" name="gdsr_integrate_dashboard_latest" id="gdsr_integrate_dashboard_latest"<?php if ($gdsr_options["integrate_dashboard_latest"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard_latest"><?php _e("Add widget with list of latest votes.", "gd-star-rating"); ?></label>
+                </td>
+                <td style="width: 190px">
+                    <?php _e("Votes to display:") ?>
+                </td>
+                <td>
+                    <input type="text" name="gdsr_integrate_dashboard_latest_count" id="gdsr_integrate_dashboard_latest_count" value="<?php echo $gdsr_options["integrate_dashboard_latest_count"]; ?>" style="width: 70px; text-align: right;" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 190px; vertical-align: top;">
+                    <input type="checkbox" name="gdsr_integrate_dashboard_latest_filter_thumb_std" id="gdsr_integrate_dashboard_latest_filter_thumb_std"<?php if ($gdsr_options["integrate_dashboard_latest_filter_thumb_std"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard_latest_filter_thumb_std"><?php _e("Show thumbs for posts.", "gd-star-rating"); ?></label>
+                    <br />
+                    <input type="checkbox" name="gdsr_integrate_dashboard_latest_filter_stars_std" id="gdsr_integrate_dashboard_latest_filter_stars_std"<?php if ($gdsr_options["integrate_dashboard_latest_filter_stars_std"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard_latest_filter_stars_std"><?php _e("Show stars for posts.", "gd-star-rating"); ?></label>
+                    <br />
+                    <input type="checkbox" name="gdsr_integrate_dashboard_latest_filter_stars_mur" id="gdsr_integrate_dashboard_latest_filter_stars_mur"<?php if ($gdsr_options["integrate_dashboard_latest_filter_stars_mur"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard_latest_filter_stars_mur"><?php _e("Show multis for posts.", "gd-star-rating"); ?></label>
+                </td>
+                <td style="vertical-align: top;">
+                    <input type="checkbox" name="gdsr_integrate_dashboard_latest_filter_thumb_cmm" id="gdsr_integrate_dashboard_latest_filter_thumb_cmm"<?php if ($gdsr_options["integrate_dashboard_latest_filter_thumb_cmm"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard_latest_filter_thumb_cmm"><?php _e("Show thumbs for comments.", "gd-star-rating"); ?></label>
+                    <br />
+                    <input type="checkbox" name="gdsr_integrate_dashboard_latest_filter_stars_cmm" id="gdsr_integrate_dashboard_latest_filter_stars_cmm"<?php if ($gdsr_options["integrate_dashboard_latest_filter_stars_cmm"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard_latest_filter_stars_cmm"><?php _e("Show stars for comments.", "gd-star-rating"); ?></label>
+                </td>
+            </tr>
+        </table>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Widgets", "gd-star-rating"); ?></th>
