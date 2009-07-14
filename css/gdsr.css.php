@@ -27,7 +27,7 @@ if (!isset($inclusion)) {
     $base_url_extra = "../../../gd-star-rating/";
     $t = isset($_GET["t"]) ? urldecode($_GET["t"]) : 0;
     $q = urldecode($_GET["s"]);
-    ob_start ("ob_gzhandler");
+    @ob_start ("ob_gzhandler");
     header("Content-Type: text/css; charset: UTF-8");
 
     if ($t > 0) {
