@@ -355,8 +355,32 @@ class GDSRDB {
             $count_t = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=comment&amp;vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $total_voters);
         }
 
-        $row->total = $count_t.__("votes", "gd-star-rating").': <strong>'.$votes_t.'</strong>';
+        $cnt_thumb_v = $cnt_thumb_u = $cnt_thumb_t = '0';
+        $vts_thumb_v = $vts_thumb_u = $vts_thumb_t = '[ 0 ] ';
+        if ($row->user_recc_plus > 0 || $row->user_recc_minus > 0) {
+            $score = $row->user_recc_plus - $row->user_recc_minus;
+            $votes = $row->user_recc_plus + $row->user_recc_minus;
+            $cnt_thumb_u = '<strong><span style="color: red">'.($score > 0 ? "+" : "").$score.'</span></strong>';
+            $vts_thumb_u = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=cmmthumb&amp;vg=users"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $votes);
+        }
+
+        if ($row->visitor_recc_plus > 0 || $row->visitor_recc_minus > 0) {
+            $score = $row->visitor_recc_plus - $row->visitor_recc_minus;
+            $votes = $row->visitor_recc_plus + $row->visitor_recc_minus;
+            $cnt_thumb_v = '<strong><span style="color: red">'.($score > 0 ? "+" : "").$score.'</span></strong>';
+            $vts_thumb_v = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=cmmthumb&amp;vg=visitors"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $votes);
+        }
+
+        if ($row->user_recc_plus > 0 || $row->user_recc_minus > 0 || $row->visitor_recc_plus > 0 || $row->visitor_recc_minus > 0) {
+            $score = $row->user_recc_plus - $row->user_recc_minus + $row->visitor_recc_plus - $row->visitor_recc_minus;
+            $votes = $row->user_recc_plus + $row->user_recc_minus + $row->visitor_recc_plus + $row->visitor_recc_minus;
+            $cnt_thumb_t = '<strong><span style="color: red">'.($score > 0 ? "+" : "").$score.'</span></strong>';
+            $vts_thumb_t = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=cmmthumb&amp;vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->comment_id, $votes);
+        }
+
+        $row->total = $count_t.__("votes", "gd-star-rating").': <strong>'.$votes_t.'</strong><br />'.$vts_thumb_t.__("thumbs", "gd-star-rating").': <strong>'.$cnt_thumb_t.'</strong>';
         $row->votes = $count_v.__("visitors", "gd-star-rating").': <strong>'.$votes_v.'</strong><br />'.$count_u.__("users", "gd-star-rating").': <strong>'.$votes_u.'</strong>';
+        $row->thumbs = $vts_thumb_v.__("visitors", "gd-star-rating").': <strong>'.$cnt_thumb_v.'</strong><br />'.$vts_thumb_u.__("users", "gd-star-rating").': <strong>'.$cnt_thumb_u.'</strong>';
 
         if ($row->review == -1) $row->review = "/";
         $row->review = '<strong><span style="color: blue">'.$row->review.'</span></strong>';

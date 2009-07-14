@@ -30,7 +30,7 @@ function wp_gdsr_render_comment_aggregation($post_id = 0, $template_id = 0, $sho
 }
 
 /**
- * Integrate multi rating result into the comment.
+ * Integrate multi rating result into the comment. Must be within valid comments loop.
  *
  * @global GDStarRating $gdsr main rating class instance
  * @param int $comment_id id of the comment
@@ -75,7 +75,7 @@ function wp_gdsr_comment_integrate_multi_result_average($comment_id, $multi_set_
 }
 
 /**
- * Integrate standard rating result into the comment.
+ * Integrate standard rating result into the comment. Must be within valid comments loop.
  *
  * @global GDStarRating $gdsr main rating class instance
  * @param int $comment_id id of the comment
@@ -86,10 +86,10 @@ function wp_gdsr_comment_integrate_multi_result_average($comment_id, $multi_set_
  * @return string html with rendered contents
  */
 function wp_gdsr_comment_integrate_standard_result($comment_id, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
-    global $gdsr;
+    global $gdsr, $post;
 
-    if ($echo) echo $gdsr->comment_integrate_standard_result($comment_id, $stars_set, $stars_size, $stars_set_ie6);
-    else return $gdsr->comment_integrate_standard_result($comment_id, $stars_set, $stars_size, $stars_set_ie6);
+    if ($echo) echo $gdsr->comment_integrate_standard_result($comment_id, $post->ID, $stars_set, $stars_size, $stars_set_ie6);
+    else return $gdsr->comment_integrate_standard_result($comment_id, $post->ID, $stars_set, $stars_size, $stars_set_ie6);
 }
 
 /**

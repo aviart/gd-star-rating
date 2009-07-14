@@ -59,6 +59,9 @@ if (!class_exists('GDStarRating')) {
         var $is_ie6 = false;
         var $is_cached = false;
 
+        var $is_cached_integration_std = false;
+        var $is_cached_integration_mur = false;
+
         var $use_nonce = true;
         var $extra_folders = false;
         var $safe_mode = false;
@@ -369,14 +372,15 @@ if (!class_exists('GDStarRating')) {
          * @return string rendered stars for comment review
          */
         function display_comment_review($comment_id, $use_default = true, $style = "oxygen", $size = 20) {
-            if ($use_default) {
-                $style = ($this->is_ie6 ? $this->o["cmm_review_style_ie6"] : $this->o["cmm_review_style"]);
-                $size = $this->o["cmm_review_size"];
-            }
-            $stars = $this->o["cmm_review_stars"];
-            $review = GDSRDatabase::get_comment_review($comment_id);
+            $review = wp_gdget_comment_review($comment_id);
             if ($review < 1) return "";
-            return GDSRRender::render_static_stars($style, $size, $stars, $review);
+                else {if ($use_default) {
+                    $style = ($this->is_ie6 ? $this->o["cmm_review_style_ie6"] : $this->o["cmm_review_style"]);
+                    $size = $this->o["cmm_review_size"];
+                }
+                $stars = $this->o["cmm_review_stars"];
+                return GDSRRender::render_static_stars($style, $size, $stars, $review);
+            }
         }
 
         /**
@@ -2263,8 +2267,21 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         * @param int $stars_size set size to use for rendering
         * @param string $stars_set_ie6 set to use for rendering in ie6
         */
-        function comment_integrate_standard_result($comment_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
-            $value = intval(GDSRDatabase::rating_from_comment($comment_id));
+        function comment_integrate_standard_result($comment_id, $post_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
+            if (!$this->is_cached_integration_std) {
+                global $gdsr_cache_integation_std;
+                $data = GDSRDBCache::get_integration($post_id);
+                foreach ($data as $row) {
+                    $id = $row->comment_id;
+                    $gdsr_cache_integation_std->set($id, $row);
+                }
+
+wp_gdsr_dump("CACHE_INT_STD_RESULT", $gdsr_cache_integation_std);
+
+                $this->is_cached_integration_std = true;
+            }
+
+            $value = intval(wp_gdget_integration_std($comment_id));
             if ($value > 0) {
                 $style = $stars_set == "" ? $this->o["style"] : $stars_set;
                 $style = $this->is_ie6 ? ($stars_set_ie6 == "" ? $this->o["style_ie6"] : $stars_set_ie6) : $style;
@@ -2301,8 +2318,21 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         * @param string $avg_stars_set_ie6 set to use for rendering of average value in ie6
         */
         function comment_integrate_multi_result($comment_id, $post_id, $multi_set_id, $template_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif", $avg_stars_set = "oxygen", $avg_stars_size = 20, $avg_stars_set_ie6 = "oxygen_gif") {
-            $value = GDSRDBMulti::rating_from_comment($comment_id, $multi_set_id);
-            if (is_serialized($value)) {
+            if (!$this->is_cached_integration_mur) {
+                global $gdsr_cache_integation_mur;
+                $data = GDSRDBCache::get_integration($post_id, "multis");
+                foreach ($data as $row) {
+                    $id = $row->multi_id."_".$row->comment_id;
+                    $gdsr_cache_integation_mur->set($id, $row);
+                }
+
+wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
+
+                $this->is_cached_integration_mur = true;
+            }
+
+            $value = wp_gdget_integration_mur($comment_id, $multi_set_id);
+            if (is_serialized($value) && !is_null($value)) {
                 $value = unserialize($value);
                 $set = gd_get_multi_set($multi_set_id);
                 $weight_norm = array_sum($set->weight);

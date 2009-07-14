@@ -1,6 +1,17 @@
 <?php
 
 class GDSRDBCache {
+    function get_integration($post_id, $type = "article") {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("SELECT l.%s as vote, l.comment_id, l.multi_id FROM %sgdsr_votes_log l inner join %sgdsr_data_comment c on l.comment_id = c.comment_id WHERE l.comment_id > 0 and c.post_id = %s and l.vote_type = '%s'",
+            $type == "article" ? "vote" : "object", $table_prefix, $table_prefix, $post_id, $type);
+
+wp_gdsr_dump("PREFETCH_INTEGRATION_".strtoupper($type), $sql);
+
+        return $wpdb->get_results($sql);
+    }
+
     function get_comments($post_id) {
         global $wpdb, $table_prefix;
 
@@ -88,6 +99,23 @@ class gdsrCache {
     }
 }
 
+function wp_gdget_integration_std($comment_id) {
+    global $gdsr_cache_integation_std;
+
+    $post = $gdsr_cache_integation_std->get($comment_id);
+    if (!is_null($post)) return $post->vote;
+    else return 0;
+}
+
+function wp_gdget_integration_mur($comment_id, $multi_set_id) {
+    global $gdsr_cache_integation_mur;
+    $id = $multi_set_id."_".$comment_id;
+
+    $post = $gdsr_cache_integation_mur->get($id);
+    if (!is_null($post)) return $post->vote;
+    else return null;
+}
+
 function wp_gdget_post($post_id) {
     global $gdsr_cache_posts_std_data;
 
@@ -106,6 +134,14 @@ function wp_gdget_postlog($post_id) {
     $log = $gdsr_cache_posts_std_log->get($post_id);
     if (!is_null($log)) return $log;
     else return true;
+}
+
+function wp_gdget_comment_review($comment_id) {
+    global $gdsr_cache_posts_cmm_data;
+    
+    $cmm = $gdsr_cache_posts_cmm_data->get($comment_id);
+    if (!is_null($cmm)) return $cmm->review;
+    else return -1;
 }
 
 function wp_gdget_comment($comment_id) {
@@ -151,5 +187,7 @@ $gdsr_cache_posts_cmm_data = new gdsrCache();
 $gdsr_cache_posts_cmm_log = new gdsrCache();
 $gdsr_cache_posts_std_thumbs_log = new gdsrCache();
 $gdsr_cache_posts_cmm_thumbs_log = new gdsrCache();
+$gdsr_cache_integation_std = new gdsrCache();
+$gdsr_cache_integation_mur = new gdsrCache();
 
 ?>

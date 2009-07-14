@@ -345,7 +345,14 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
     function add_category_defaults($ids, $ids_array, $items) {
         global $wpdb, $table_prefix;
         $sql = sprintf("select category_id from %sgdsr_data_category where category_id in %s", $table_prefix, $ids);
+
+wp_gdsr_dump("CAT_DEFAULTS", $sql);
+
         $rows = $wpdb->get_results($sql, ARRAY_N);
+
+wp_gdsr_dump("CAT_DEFAULTS_RESULTS", $rows);
+wp_gdsr_dump("CAT_DEFAULTS_INPUT", $ids_array);
+
         if (count($rows) == 0) $rows = array();
         foreach ($ids_array as $id) {
             if (!in_array($id, $rows)) {
