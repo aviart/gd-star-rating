@@ -346,16 +346,18 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
         global $wpdb, $table_prefix;
         $sql = sprintf("select category_id from %sgdsr_data_category where category_id in %s", $table_prefix, $ids);
 
-wp_gdsr_dump("CAT_DEFAULTS", $sql);
-
-        $rows = $wpdb->get_results($sql, ARRAY_N);
-
-wp_gdsr_dump("CAT_DEFAULTS_RESULTS", $rows);
 wp_gdsr_dump("CAT_DEFAULTS_INPUT", $ids_array);
+wp_gdsr_dump("CAT_DEFAULTS_SQL", $sql);
+
+        $cats = array();
+        $rows = $wpdb->get_results($sql, ARRAY_N);
+        foreach ($rows as $row) $cats[] = $row[0];
+
+wp_gdsr_dump("CAT_DEFAULTS_RESULTS", $cats);
 
         if (count($rows) == 0) $rows = array();
         foreach ($ids_array as $id) {
-            if (!in_array($id, $rows)) {
+            if (!in_array($id, $cats)) {
                 GDSRDatabase::add_category_default($id, $items[$id] > 0);
             }
         }
@@ -368,6 +370,9 @@ wp_gdsr_dump("CAT_DEFAULTS_INPUT", $ids_array);
 
         $sql = sprintf("INSERT INTO %sgdsr_data_category (category_id, rules_articles, rules_comments, moderate_articles, moderate_comments, expiry_type, expiry_value, cmm_integration_set) VALUES (%s, %s, '', 0)",
                 $table_prefix, $id, $values);
+
+wp_gdsr_dump("CAT_DEFAULTS_ADD", $cats);
+
         $wpdb->query($sql);
     }
 

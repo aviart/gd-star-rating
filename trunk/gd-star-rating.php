@@ -58,6 +58,7 @@ if (!class_exists('GDStarRating')) {
         var $is_ban = false;
         var $is_ie6 = false;
         var $is_cached = false;
+        var $is_update = false;
 
         var $is_cached_integration_std = false;
         var $is_cached_integration_mur = false;
@@ -884,27 +885,40 @@ if (!class_exists('GDStarRating')) {
         }
 
         function add_dashboard_widget() {
-            if (!function_exists('wp_add_dashboard_widget'))
-                wp_register_sidebar_widget("dashboard_gdstarrating", "GD Star Rating", array(&$this, 'display_dashboard_widget'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
-            else
-                wp_add_dashboard_widget("dashboard_gdstarrating", "GD Star Rating", array(&$this, 'display_dashboard_widget'));
+            if (!function_exists('wp_add_dashboard_widget')) {
+                wp_register_sidebar_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest"), array(&$this, 'display_dashboard_widget_latest'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
+                wp_register_sidebar_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart"), array(&$this, 'display_dashboard_widget_chart'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
+            } else {
+                wp_add_dashboard_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest"), array(&$this, 'display_dashboard_widget_latest'));
+                wp_add_dashboard_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart"), array(&$this, 'display_dashboard_widget_chart'));
+            }
         }
 
         function add_dashboard_widget_filter($widgets) {
             global $wp_registered_widgets;
 
-            if (!isset($wp_registered_widgets["dashboard_gdstarrating"])) return $widgets;
+            if (!isset($wp_registered_widgets["dashboard_gdstarrating_chart"]) && !isset($wp_registered_widgets["dashboard_gdstarrating_latest"])) return $widgets;
 
-            array_splice($widgets, 2, 0, "dashboard_gdstarrating");
+            array_splice($widgets, 2, 0, "dashboard_gdstarrating_latest");
+            array_splice($widgets, 2, 0, "dashboard_gdstarrating_chart");
             return $widgets;
         }
 
-        function display_dashboard_widget($sidebar_args) {
+        function display_dashboard_widget_chart($sidebar_args) {
             if (!function_exists('wp_add_dashboard_widget')) {
                 extract($sidebar_args, EXTR_SKIP);
                 echo $before_widget.$before_title.$widget_name.$after_title;
             }
-            include($this->plugin_path.'integrate/dashboard.php');
+            include($this->plugin_path.'integrate/dash_chart.php');
+            if (!function_exists('wp_add_dashboard_widget')) echo $after_widget;
+        }
+
+        function display_dashboard_widget_latest($sidebar_args) {
+            if (!function_exists('wp_add_dashboard_widget')) {
+                extract($sidebar_args, EXTR_SKIP);
+                echo $before_widget.$before_title.$widget_name.$after_title;
+            }
+            include($this->plugin_path.'integrate/dash_latest.php');
             if (!function_exists('wp_add_dashboard_widget')) echo $after_widget;
         }
 
@@ -1056,8 +1070,7 @@ if (!class_exists('GDStarRating')) {
                 $this->o["build"] = $this->default_options["build"];
                 if ($this->o["css_last_changed"] == 0) $this->o["css_last_changed"] = time();
 
-                GDSRDatabase::init_categories_data();
-
+                $this->is_update = true;
                 update_option('gd-star-rating', $this->o);
             }
 
@@ -1229,6 +1242,10 @@ if (!class_exists('GDStarRating')) {
          */
         function init() {
             $this->init_uninstall();
+
+            if ($this->is_update) {
+                GDSRDatabase::init_categories_data();
+            }
 
             define('STARRATING_ENCODING', $this->o["encoding"]);
 
