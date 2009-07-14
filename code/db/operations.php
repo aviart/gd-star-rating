@@ -70,7 +70,7 @@ class GDSRDB {
         global $wpdb, $table_prefix;
         $types = array();
 
-        $select = "l.id, l.vote_type, l.voted, l.ip, l.user_id, u.display_name";
+        $select = "l.id, l.vote_type, l.voted, l.vote, l.ip, l.user_id, u.display_name, u.user_email";
         $from = sprintf("%sgdsr_votes_log l left join %susers u on u.ID = l.user_id", $table_prefix, $table_prefix);
 
         if ($o["integrate_dashboard_latest_filter_thumb_std"] == 1) $types[] = "'artthumb'";
@@ -79,7 +79,7 @@ class GDSRDB {
         if ($o["integrate_dashboard_latest_filter_stars_cmm"] == 1) $types[] = "'comment'";
         if ($o["integrate_dashboard_latest_filter_stars_mur"] == 1) {
             $types[] = "'comment'";
-            $select.= ", m.stars, m.weight";
+            $select.= ", m.stars, m.weight, m.name";
             $from.= sprintf(" left join %sgdsr_multis m on m.multi_id = l.multi_id", $table_prefix);
         }
 
