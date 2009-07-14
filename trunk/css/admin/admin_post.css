@@ -84,3 +84,32 @@
     border: 1px solid #CC0000;
     font-size: 11px;
 }
+
+#gdsr-latest-votes {
+	margin: -10px -10px 0;
+	border-bottom: 1px solid #BBD8E7;
+}
+
+#gdsr-latest-votes .gdsr-latest-item .avatar {
+	float: left;
+	margin:0 5px 0 10px;
+}
+
+#gdsr-latest-votes .gdsr-latest-item h5 {
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+
+#gdsr-latest-votes .gdsr-latest-item {
+	padding: 3px 0;
+	border-top: 1px solid #BBD8E7;
+}
+
+#gdsr-latest-votes .gdsr-latest-item .clear {
+	clear: both;
+}
+
+#gdsr-latest-votes .gdsr-latest-item.first {
+	border-top: none;
+}
