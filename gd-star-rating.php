@@ -918,6 +918,7 @@ if (!class_exists('GDStarRating')) {
                 extract($sidebar_args, EXTR_SKIP);
                 echo $before_widget.$before_title.$widget_name.$after_title;
             }
+            $o = $this->o;
             include($this->plugin_path.'integrate/dash_latest.php');
             if (!function_exists('wp_add_dashboard_widget')) echo $after_widget;
         }

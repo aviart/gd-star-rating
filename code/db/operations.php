@@ -66,6 +66,28 @@ class GDSRDBTools {
 }
 
 class GDSRDB {
+    function filter_latest_votes($o) {
+        global $wpdb, $table_prefix;
+        $types = array();
+
+        $select = "l.id, l.vote_type, l.voted, l.ip, l.user_id, u.display_name";
+        $from = sprintf("%sgdsr_votes_log l left join %susers u on u.ID = l.user_id", $table_prefix, $table_prefix);
+
+        if ($o["integrate_dashboard_latest_filter_thumb_std"] == 1) $types[] = "'artthumb'";
+        if ($o["integrate_dashboard_latest_filter_thumb_cmm"] == 1) $types[] = "'cmmthumb'";
+        if ($o["integrate_dashboard_latest_filter_stars_std"] == 1) $types[] = "'article'";
+        if ($o["integrate_dashboard_latest_filter_stars_cmm"] == 1) $types[] = "'comment'";
+        if ($o["integrate_dashboard_latest_filter_stars_mur"] == 1) {
+            $types[] = "'comment'";
+            $select.= ", m.stars, m.weight";
+            $from.= sprintf(" left join %sgdsr_multis m on m.multi_id = l.multi_id", $table_prefix);
+        }
+
+        $sql = sprintf("select %s from %s where vote_type in (%s) order by voted desc limit 0, %s",
+            $select, $from, join(", ", $types), $o["integrate_dashboard_latest_count"]);
+        return $wpdb->get_results($sql);
+    }
+
     function get_database_tables() {
         global $table_prefix;
         $tables = array(

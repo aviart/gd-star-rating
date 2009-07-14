@@ -81,6 +81,15 @@ if ($_POST['gdsr_action'] == 'save') {
     $gdsr_options["ie_opacity_fix"] = isset($_POST['gdsr_ieopacityfix']) ? 1 : 0;
 
     $gdsr_options["integrate_dashboard"] = isset($_POST['gdsr_integrate_dashboard']) ? 1 : 0;
+    $gdsr_options["integrate_dashboard_chart"] = isset($_POST['gdsr_integrate_dashboard_chart']) ? 1 : 0;
+    $gdsr_options["integrate_dashboard_latest"] = isset($_POST['gdsr_integrate_dashboard_latest']) ? 1 : 0;
+    $gdsr_options["integrate_dashboard_latest_filter_thumb_std"] = isset($_POST['gdsr_integrate_dashboard_latest_filter_thumb_std']) ? 1 : 0;
+    $gdsr_options["integrate_dashboard_latest_filter_thumb_cmm"] = isset($_POST['gdsr_integrate_dashboard_latest_filter_thumb_cmm']) ? 1 : 0;
+    $gdsr_options["integrate_dashboard_latest_filter_stars_std"] = isset($_POST['gdsr_integrate_dashboard_latest_filter_stars_std']) ? 1 : 0;
+    $gdsr_options["integrate_dashboard_latest_filter_stars_cmm"] = isset($_POST['gdsr_integrate_dashboard_latest_filter_stars_cmm']) ? 1 : 0;
+    $gdsr_options["integrate_dashboard_latest_filter_stars_mur"] = isset($_POST['gdsr_integrate_dashboard_latest_filter_stars_mur']) ? 1 : 0;
+    $gdsr_options["integrate_dashboard_latest_count"] = $_POST['gdsr_integrate_dashboard_latest_count'];
+
     $gdsr_options["integrate_post_edit"] = isset($_POST['gdsr_integrate_post_edit']) ? 1 : 0;
     $gdsr_options["integrate_post_edit_mur"] = isset($_POST['gdsr_integrate_post_edit_mur']) ? 1 : 0;
     $gdsr_options["integrate_tinymce"] = isset($_POST['gdsr_integrate_tinymce']) ? 1 : 0;
