@@ -11,7 +11,7 @@ if (!($url_pos === false))
 
 $url.= "&amp;gdsr=articles";
 
-$select = "";
+$select = $search = "";
 $page_id = 1;
 $filter_date = "";
 $filter_cats = "";
@@ -21,18 +21,18 @@ if (isset($_GET["date"])) $filter_date = $_GET["date"];
 if (isset($_GET["cat"])) $filter_cats = $_GET["cat"];
 if (isset($_GET["s"])) $search = $_GET["s"];
 
-if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
+if (isset($_POST["gdsr_filter"]) && $_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     $filter_date = $_POST["gdsr_dates"];
     $filter_cats = $_POST["gdsr_categories"];
     $page_id = 1;
 }
 
-if ($_POST["gdsr_search"] == __("Search Posts", "gd-star-rating")) {
+if (isset($_POST["gdsr_search"]) && $_POST["gdsr_search"] == __("Search Posts", "gd-star-rating")) {
     $search = apply_filters('get_search_query', stripslashes($_POST["s"]));
     $page_id = 1;
 }
 
-if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
+if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
         $ids = "(".join(", ", $gdsr_items).")";
@@ -308,7 +308,7 @@ function gdsrTimerChange() {
                     <span class="paneltext"><?php _e("Restriction", "gd-star-rating"); ?>:</span>
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                <?php GDSRHelper::render_timer_combo("gdsr_timer_type", $timer_restrictions, 120, '', true, 'gdsrTimerChange()'); ?>
+                <?php GDSRHelper::render_timer_combo("gdsr_timer_type", 'N', 120, '', true, 'gdsrTimerChange()'); ?>
                 </td><td style="width: 10px"></td>
                 <td style="width: 80px; height: 29px;">
                     <div id="gdsr_timer_countdown_text" style="display: none"><span class="paneltext"><?php _e("Countdown", "gd-star-rating"); ?>:</span></div>
@@ -316,7 +316,7 @@ function gdsrTimerChange() {
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
                     <div id="gdsr_timer_countdown" style="display: none"><input class="regular-text" type="text" value="<?php echo $countdown_value; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 35px; text-align: right; padding: 2px;" />
-                    <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", $countdown_type, 70); ?></div>
+                    <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", 'H', 70); ?></div>
                     <div id="gdsr_timer_date" style="display: none"><input class="regular-text" type="text" value="<?php echo $timer_date_value; ?>" id="gdsr_timer_date_value" name="gdsr_timer_date_value" style="width: 110px; padding: 2px;" /></div>
                 </td>
             </tr>

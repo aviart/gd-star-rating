@@ -356,7 +356,7 @@ class GDSRRenderT2 {
         $total_votes = @number_format($total_votes / $i, 0);
         if (in_array("%MUR_RATING_TEXT%", $template->tag["normal"])) {
             $rating_text = GDSRRenderT2::render_mrt($template->dep["MRT"], $rating, $set->stars, $total_votes, $post_id, $time_restirctions, $time_remaining, $time_date);
-            if ($allow_vote) $rating_wait = GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", "", $wait_msg);
+            $rating_wait = $allow_vote ? GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", "", $wait_msg) : "";
             $rating_text = $rating_wait.'<div id="gdsr_mur_text_'.$post_id.'_'.$set->multi_id.'">'.$rating_text.'</div>';
             $tpl_render = str_replace("%MUR_RATING_TEXT%", $rating_text, $tpl_render);
         }
@@ -613,7 +613,7 @@ class GDSRRenderT2 {
         $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
         $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
         $rt = str_replace('%ID%', $id, $rt);
-        $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
+        $rt = str_replace('%VOTE_VALUE%', $vote_value, $rt);
 
         $word_votes = $template->dep["EWV"];
         $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
@@ -630,7 +630,7 @@ class GDSRRenderT2 {
         $tpl_render = str_replace("%CMM_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
 
         if (in_array("%CMM_THUMBS_TEXT%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
-            $rating_text = GDSRRenderT2::render_tat($template->dep["TCT"], $votes, $score, $votes_plus, $votes_minus, $comment_id, $time_restirctions, $time_remaining, $time_date);
+            $rating_text = GDSRRenderT2::render_tct($template->dep["TCT"], $votes, $score, $votes_plus, $votes_minus, $comment_id);
             $rating_text = '<div id="gdsr_thumb_text_'.$comment_id.'_c" class="gdt-size-'.$unit_width.($allow_vote ? "" : " voted").' gdthumbtext">'.$rating_text.'</div>';
             $tpl_render = str_replace("%CMM_THUMBS_TEXT%", $rating_text, $tpl_render);
         }

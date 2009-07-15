@@ -8,9 +8,9 @@
       <tr>
         <td class="gdsrleft"><?php _e("Items Grouping", "gd-star-rating"); ?>:</td>
         <td class="gdsrright"><select name="srGrouping" id="srGrouping" style="width: 130px">
-            <option value="post"<?php echo $wpno['grouping'] == 'post' ? ' selected="selected"' : ''; ?>><?php _e("No grouping", "gd-star-rating"); ?></option>
-            <option value="user"<?php echo $wpno['grouping'] == 'user' ? ' selected="selected"' : ''; ?>><?php _e("User based", "gd-star-rating"); ?></option>
-            <option value="category"<?php echo $wpno['grouping'] == 'category' ? ' selected="selected"' : ''; ?>><?php _e("Category based", "gd-star-rating"); ?></option>
+            <option value="post"><?php _e("No grouping", "gd-star-rating"); ?></option>
+            <option value="user"><?php _e("User based", "gd-star-rating"); ?></option>
+            <option value="category"><?php _e("Category based", "gd-star-rating"); ?></option>
         </select></td>
       </tr>
     </table>

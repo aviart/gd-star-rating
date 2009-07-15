@@ -73,9 +73,9 @@ class GDSRRender {
             $current = $value;
             $vote_class = "gdsr_mur_static";
             $vote_current = "gdsr_murvw_stars_current_";
-        }
-        else $current = 0;
-        $rater.= '<div id="gdsr_mur_stars_'.$post_id.'_'.$set_id.'_'.$id.'" class="ratemulti'.$css_style.$css_sizes.'"><div class="starsbar'.$css_sizes.'">';
+        } else $current = 0;
+
+        $rater = '<div id="gdsr_mur_stars_'.$post_id.'_'.$set_id.'_'.$id.'" class="ratemulti'.$css_style.$css_sizes.'"><div class="starsbar'.$css_sizes.'">';
         $rater.= '<div class="gdouter" style="width: '.($unit_count * $height).'px">';
         $rater.= '<div id="gdsr_mur_stars_rated_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($value * $height).'px;" class="gdinner"></div>';
         if ($allow_vote) {

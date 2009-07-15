@@ -116,7 +116,7 @@ Plugin has debug into log file feature built in. Information on activating this 
 * Dashboard widget with latest votes
 * Improvements to thumbs up/down ratings
 * Fixed several thumbs up/down related bugs
-* Fixed few more reported bugs
+* Fixed few more reported bugs and php notices
 
 = 1.5.3 =
 * First version of thumbs up/down ratings
