@@ -12,11 +12,11 @@ foreach ($data as $row) {
         $votevl = __("Thumb", "gd-star-rating")." <strong>".($row->vote > 0 ? "UP" : "DOWN")."</strong> ";
     } else if ($row->vote_type == "multis") {
         $set = gd_get_multi_set($row->multi_id);
-        $weighted = 0;
+        $weighted = $i = 0;
         $weight_norm = array_sum($set->weight);
         $multi_data = unserialize($row->object);
         foreach ($multi_data as $md) {
-            $weighted += ( $md * $set->weight[$i] ) / $weight_norm;
+            $weighted += ( intval($md) * $set->weight[$i] ) / $weight_norm;
             $i++;
         }
         $votevl = __("Multi Vote", "gd-star-rating")." <strong>".number_format($weighted, 1)."</strong> ";
@@ -53,7 +53,7 @@ foreach ($data as $row) {
 <div class="gdsr-latest-item<?php echo $first ? " first" : ""; ?><?php echo $row->user_id > 0 ? " user" : ""; ?>">
     <?php echo get_avatar($row->user_email, 32); ?>
     <h5><?php echo '<span style="color: #CC0000">'.$votevl.'</span>'; _e("from", "gd-star-rating"); ?> <strong><?php echo $user; ?></strong> <?php _e("on", "gd-star-rating"); ?> <?php echo $voteon; ?></h5>
-    <?php echo $loguser; ?> | <?php echo $pocmlog; ?> <?php if ($postlog != "") echo " | "; echo $postlog; ?>
+    <p class="linx"><?php echo $loguser; ?> | <?php echo $pocmlog; ?> <?php if ($postlog != "") echo " | "; echo $postlog; ?></p>
     <div class="clear"></div>
 </div>
 
