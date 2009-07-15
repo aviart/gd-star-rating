@@ -113,8 +113,10 @@ Plugin has debug into log file feature built in. Information on activating this 
 
 == Changelog ==
 = 1.5.4 =
+* Dashboard widget with latest votes
 * Improvements to thumbs up/down ratings
 * Fixed several thumbs up/down related bugs
+* Fixed few more reported bugs
 
 = 1.5.3 =
 * First version of thumbs up/down ratings
