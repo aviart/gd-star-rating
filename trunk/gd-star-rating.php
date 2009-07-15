@@ -1719,7 +1719,7 @@ if (!class_exists('GDStarRating')) {
 wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_width."px");
 
             $allow_vote = $vote == "up" || $vote == "dw";
-            if ($allow_vote) $allow_vote = $this->check_cookie($id);
+            if ($allow_vote) $allow_vote = $this->check_cookie($id, "artthumb");
             if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'artthumb', $ip, $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
 
             $vote_value = $vote == "up" ? 1 : -1;

@@ -53,6 +53,7 @@ foreach ($data as $row) {
 <div class="gdsr-latest-item<?php echo $first ? " first" : ""; ?><?php echo $row->user_id > 0 ? " user" : ""; ?>">
     <?php echo get_avatar($row->user_email, 32); ?>
     <h5><?php echo '<span style="color: #CC0000">'.$votevl.'</span>'; _e("from", "gd-star-rating"); ?> <strong><?php echo $user; ?></strong> <?php _e("on", "gd-star-rating"); ?> <?php echo $voteon; ?></h5>
+    <p class="datx"><?php echo $row->voted; ?></p>
     <p class="linx"><?php echo $loguser; ?> | <?php echo $pocmlog; ?> <?php if ($postlog != "") echo " | "; echo $postlog; ?></p>
     <div class="clear"></div>
 </div>
