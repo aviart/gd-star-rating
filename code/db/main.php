@@ -210,7 +210,7 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
     function get_valid_users() {
         global $wpdb, $table_prefix;
 
-        $sql = sprintf("SELECT l.user_id, l.vote_type, count(*) as voters, sum(l.vote) as votes, count(distinct ip) as ips, u.display_name, u.user_email, u.user_url FROM %sgdsr_votes_log l left join %susers u on u.id = l.user_id group by user_id, vote_type order by user_id, vote_type",
+        $sql = sprintf("SELECT l.user_id, l.vote_type, count(*) as voters, sum(l.vote) as votes, count(distinct ip) as ips, u.display_name, u.user_email FROM %sgdsr_votes_log l left join %susers u on u.id = l.user_id group by user_id, vote_type order by user_id, vote_type",
                 $table_prefix, $table_prefix);
         return $wpdb->get_results($sql);
     }
@@ -231,11 +231,11 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
         $range = $limit > 0 ? sprintf("limit %s, %s", $start, $limit) : "";
         $ip = $ip != '' ? ' and l.ip in ('.$ip.')' : "";
 
-        if ($vote_type == "article") {
+        if ($vote_type == "article" || $vote_type == "artthumb") {
             $join = sprintf("%sposts o on o.ID = l.id", $table_prefix); 
             $select = "o.post_title, o.ID as post_id, o.ID as control_id";
         }
-        else if ($vote_type == "comment") {
+        else if ($vote_type == "comment" || $vote_type == "cmmthumb") {
             $join = sprintf("%scomments o on o.comment_ID = l.id left join %sposts p on p.ID = o.comment_post_ID", $table_prefix, $table_prefix); 
             $select = "o.comment_content, o.comment_author as author, o.comment_ID as control_id, p.post_title, p.ID as post_id";
         }

@@ -157,7 +157,10 @@ function checkAll(form) {
                 echo '</td>';
             }
             echo '<td nowrap="nowrap">'.$log[$counter]->voted.'</td>';
-            echo '<td><strong>'.$log[$counter]->vote.'</strong></td>';
+            echo '<td><strong>';
+            if (($vote_type == "artthumb" || $vote_type == "cmmthumb") && $log[$counter]->vote > 0) echo "+";
+            echo $log[$counter]->vote;
+            echo '</strong></td>';
             echo '<td nowrap="nowrap">';
             if ($log[$counter]->id != $log[$counter]->control_id)
                 echo '<strong style="color: red">INVALID VOTE</strong>';
