@@ -1,7 +1,7 @@
 <?php
 
     if ($use_nonce)
-        $nonce = sprintf("&amp;_wpnonce=%s", wp_create_nonce('gdsr_chart_l8'));
+        $nonce = sprintf("&_wpnonce=%s", wp_create_nonce('gdsr_chart_l8'));
     else
         $nonce = "";
 
