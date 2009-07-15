@@ -115,7 +115,6 @@ if (!class_exists('GDStarRating')) {
         var $stars_sizes;
         var $thumb_sizes;
         var $default_shortcode_starrating;
-        var $default_shortcode_starratercustom;
         var $default_shortcode_starratingmulti;
         var $default_shortcode_starreviewmulti;
         var $default_shortcode_starcomments;
@@ -141,7 +140,6 @@ if (!class_exists('GDStarRating')) {
             $this->default_spider_bots = $gdd->default_spider_bots;
             $this->default_wpr8 = $gdd->default_wpr8;
             $this->default_shortcode_starrating = $gdd->default_shortcode_starrating;
-            $this->default_shortcode_starratercustom = $gdd->default_shortcode_starratercustom;
             $this->default_shortcode_starratingmulti = $gdd->default_shortcode_starratingmulti;
             $this->default_shortcode_starreviewmulti = $gdd->default_shortcode_starreviewmulti;
             $this->default_shortcode_starcomments = $gdd->default_shortcode_starcomments;
@@ -814,7 +812,7 @@ if (!class_exists('GDStarRating')) {
          */
         function widgets_init() {
             if ($this->wp_version < 28) {
-                $this->widgets = new gdsrWidgets($this->g, $this->default_widget_comments, $this->default_widget_top, $this->default_widget);
+                $this->widgets = new gdsrWidgets($this->g, $this->default_widget_comments, $this->default_widget_top, $this->default_widget, $this->wp_version < 27);
                 if ($this->o["widget_articles"] == 1) $this->widgets->widget_articles_init();
                 if ($this->o["widget_top"] == 1) $this->widgets->widget_top_init();
                 if ($this->o["widget_comments"] == 1) $this->widgets->widget_comments_init();
@@ -1308,7 +1306,7 @@ if (!class_exists('GDStarRating')) {
                     $this->extra_folders = GDSRHelper::create_folders($this->wp_version);
             }
 
-            if (is_admin) {
+            if (is_admin()) {
                 $this->l = get_locale();
                 if(!empty($this->l)) {
                     $moFile = dirname(__FILE__)."/languages/gd-star-rating-".$this->l.".mo";
@@ -1396,7 +1394,7 @@ if (!class_exists('GDStarRating')) {
         }
 
         function init_uninstall() {
-            if ($_POST["gdsr_full_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
+            if (isset($_POST["gdsr_full_uninstall"]) && $_POST["gdsr_full_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
                 delete_option('gd-star-rating');
                 delete_option('widget_gdstarrating');
                 delete_option('gd-star-rating-import');
@@ -1413,7 +1411,7 @@ if (!class_exists('GDStarRating')) {
 
         function init_operations() {
             $msg = "";
-            if ($_POST["gdsr_multi_review_form"] == "review") {
+            if (isset($_POST["gdsr_multi_review_form"]) && $_POST["gdsr_multi_review_form"] == "review") {
                 $mur_all = $_POST['gdsrmulti'];
                 $set_id = $this->o["mur_review_set"];
                 foreach ($mur_all as $post_id => $data) {
@@ -2174,7 +2172,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         function star_menu_stats() {
             $options = $this->o;
             $wpv = $this->wp_version;
-            $gdsr_page = $_GET["gdsr"];
+            $gdsr_page = isset($_GET["gdsr"]) ? $_GET["gdsr"] : "";
             $use_nonce = $this->use_nonce;
 
             switch ($gdsr_page) {
@@ -2326,7 +2324,8 @@ wp_gdsr_dump("CACHE_INT_STD_RESULT", $gdsr_cache_integation_std);
         function comment_integrate_standard_rating($value = 0, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
             $style = $stars_set == "" ? $this->o["style"] : $stars_set;
             $style = $this->is_ie6 ? ($stars_set_ie6 == "" ? $this->o["style_ie6"] : $stars_set_ie6) : $style;
-            return GDSRRender::rating_stars_local($style, $stars_size == 0 ? $this->o["size"] : $stars_size, $this->o["stars"], true, $value * $size, "gdsr_int", "rcmmpost");
+            $size = $stars_size == 0 ? $this->o["size"] : $stars_size;
+            return GDSRRender::rating_stars_local($style, $size, $this->o["stars"], true, $value * $size, "gdsr_int", "rcmmpost");
         }
 
         /**
@@ -2976,6 +2975,7 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
 
             $remaining = 0;
             $deadline = '';
+            $expiry_type = 'N';
             if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T' || $post_data->expiry_type == 'I')) {
                 $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
                 $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");
@@ -3100,6 +3100,7 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
 
             $remaining = 0;
             $deadline = '';
+            $expiry_type = 'N';
             if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T' || $post_data->expiry_type == 'I')) {
                 $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
                 $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");
@@ -3225,6 +3226,9 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
                 }
             }
 
+            $remaining = 0;
+            $deadline = '';
+            $expiry_type = 'N';
             if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T' || $post_data->expiry_type == 'I')) {
                 $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
                 $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");

@@ -1,6 +1,8 @@
 <?php
 
 class gdsrWidgets {
+    var $wp_old;
+
     var $w;
     var $g;
 
@@ -8,7 +10,8 @@ class gdsrWidgets {
     var $default_widget_top;
     var $default_widget;
 
-    function gdsrWidgets($g, $dw_c, $dw_t, $dw_s) {
+    function gdsrWidgets($g, $dw_c, $dw_t, $dw_s, $wp_o) {
+        $this->wp_old = $wp_o;
         $this->g = $g;
         $this->default_widget_comments = $dw_c;
         $this->default_widget_top = $dw_t;

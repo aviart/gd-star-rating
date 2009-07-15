@@ -36,7 +36,7 @@ foreach ($data as $row) {
         $pocmlog = sprintf("admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=%s&vg=total", $row->id, $row->vote_type);
         $pocmlog = sprintf('<a href="%s">%s</a>', $pocmlog, __("comment log", "gd-star-rating"));
         $pctype = $row->vote_type == "comment" ? "article" : "artthumb";
-        $postlog = sprintf("admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=%s&vg=total", $comment->comment_post_ID, $pc_type);
+        $postlog = sprintf("admin.php?page=gd-star-rating-stats&gdsr=voters&pid=%s&vt=%s&vg=total", $comment->comment_post_ID, $pctype);
         $postlog = sprintf('<a href="%s">%s</a>', $postlog, __("post log", "gd-star-rating"));
     }
 
