@@ -1271,11 +1271,13 @@ if (!class_exists('GDStarRating')) {
                 if ($this->o["external_javascript"] == 1) {
                     wp_enqueue_script("gdsr_script", plugins_url('gd-star-rating/script.js.php'), array(), $this->o["version"]);
                 }
-                if ($this->o["external_rating_css"] == 1) {
-                    wp_enqueue_style("gdsr_style_main", $this->include_rating_css(true, true), array(), $this->o["version"]);
-                }
-                if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
-                    wp_enqueue_style("gdsr_style_xtra", $this->plugin_xtra_url."css/rating.css", array(), $this->o["version"]);
+                if ($this->wp_version >= 27) {
+                    if ($this->o["external_rating_css"] == 1) {
+                        wp_enqueue_style("gdsr_style_main", $this->include_rating_css(true, true), array(), $this->o["version"]);
+                    }
+                    if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
+                        wp_enqueue_style("gdsr_style_xtra", $this->plugin_xtra_url."css/rating.css", array(), $this->o["version"]);
+                    }
                 }
             }
             else $this->cache_cleanup();
@@ -1337,6 +1339,12 @@ if (!class_exists('GDStarRating')) {
             $include_mur_rating = $this->o["multis_active"] == 1;
 
             if ($this->o["external_rating_css"] == 0) $this->include_rating_css(false);
+            else if ($this->wp_version < 27) {
+                $this->include_rating_css(true);
+            }
+            if ($this->wp_version < 27 && $this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
+                echo sprintf('<link rel="stylesheet" href="%s" type="text/css" media="screen" />', $this->plugin_xtra_url."css/rating.css");
+            }
             if ($this->o["external_javascript"] == 0) {
                 echo("\r\n");
                 echo('<script type="text/javascript">');
