@@ -16,7 +16,7 @@
                     <input type="checkbox" name="gdsr_integrate_dashboard_latest" id="gdsr_integrate_dashboard_latest"<?php if ($gdsr_options["integrate_dashboard_latest"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard_latest"><?php _e("Add widget with list of latest votes.", "gd-star-rating"); ?></label>
                 </td>
                 <td style="width: 190px">
-                    <?php _e("Votes to display:") ?>
+                    <?php _e("Votes to display:", "gd-star-rating") ?>
                 </td>
                 <td>
                     <input type="text" name="gdsr_integrate_dashboard_latest_count" id="gdsr_integrate_dashboard_latest_count" value="<?php echo $gdsr_options["integrate_dashboard_latest_count"]; ?>" style="width: 70px; text-align: right;" />

@@ -97,7 +97,8 @@
 
 #gdsr-latest-votes .gdsr-latest-item h5 {
 	font-weight: normal;
-	margin: 0;
+	font-size:0.85em;
+	margin: 1px 0 3px 0;
 	padding: 0;
 }
 
@@ -112,4 +113,13 @@
 
 #gdsr-latest-votes .gdsr-latest-item.first {
 	border-top: none;
+}
+
+#gdsr-latest-votes .gdsr-latest-item.user {
+	background-color: #EDFBFC;
+}
+
+#gdsr-latest-cmds {
+	padding: 10px 0 0 0;
+	text-align: right;
 }

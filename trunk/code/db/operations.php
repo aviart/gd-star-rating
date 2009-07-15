@@ -78,8 +78,8 @@ class GDSRDB {
         if ($o["integrate_dashboard_latest_filter_stars_std"] == 1) $types[] = "'article'";
         if ($o["integrate_dashboard_latest_filter_stars_cmm"] == 1) $types[] = "'comment'";
         if ($o["integrate_dashboard_latest_filter_stars_mur"] == 1) {
-            $types[] = "'comment'";
-            $select.= ", m.stars, m.weight, m.name";
+            $types[] = "'multis'";
+            $select.= ", l.object, m.stars, m.weight, m.name";
             $from.= sprintf(" left join %sgdsr_multis m on m.multi_id = l.multi_id", $table_prefix);
         }
 

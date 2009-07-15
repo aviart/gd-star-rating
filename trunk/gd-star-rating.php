@@ -886,11 +886,11 @@ if (!class_exists('GDStarRating')) {
 
         function add_dashboard_widget() {
             if (!function_exists('wp_add_dashboard_widget')) {
-                wp_register_sidebar_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest"), array(&$this, 'display_dashboard_widget_latest'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
-                wp_register_sidebar_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart"), array(&$this, 'display_dashboard_widget_chart'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
+                wp_register_sidebar_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
+                wp_register_sidebar_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
             } else {
-                wp_add_dashboard_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest"), array(&$this, 'display_dashboard_widget_latest'));
-                wp_add_dashboard_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart"), array(&$this, 'display_dashboard_widget_chart'));
+                wp_add_dashboard_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'));
+                wp_add_dashboard_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'));
             }
         }
 
