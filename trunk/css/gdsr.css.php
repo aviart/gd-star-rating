@@ -272,8 +272,14 @@ foreach ($thumb_sizes as $size) {
 .loader.broken { background: url(<?php echo $base_url_local;?>gfx/loader/broken.gif) no-repeat left; padding-left: 18px; }
 .loader.broken.width { width: 16px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
+.loader.brokenbig { background: url(<?php echo $base_url_local;?>gfx/loader/brokenbig.gif) no-repeat left; padding-left: 26px; }
+.loader.brokenbig.width { width: 24px; margin-left: auto; margin-right: auto; padding-left: 0px; }
+
 .loader.snake { background: url(<?php echo $base_url_local;?>gfx/loader/snake.gif) no-repeat left; padding-left: 14px; }
 .loader.snake.width { width: 12px; margin-left: auto; margin-right: auto; padding-left: 0px; }
+
+.loader.snakebig { background: url(<?php echo $base_url_local;?>gfx/loader/snakebig.gif) no-repeat left; padding-left: 26px; }
+.loader.snakebig.width { width: 24px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
 .loader.triangles { background: url(<?php echo $base_url_local;?>gfx/loader/triangles.gif) no-repeat left; padding-left: 14px; }
 .loader.triangles.width { width: 12px; margin-left: auto; margin-right: auto; padding-left: 0px; }
