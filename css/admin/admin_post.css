@@ -98,17 +98,9 @@
 	padding: 0;
 }
 
-#gdsr-latest-votes .gdsr-latest-item p.linx, #gdsr-latest-votes .gdsr-latest-item p.datx {
-	padding: 0;
-	margin: 0;
-	font-size: 10px;
-}
+#gdsr-latest-votes .gdsr-latest-item p.datx { float: right; margin-right: 5px; font-style: italic; }
 
-#gdsr-latest-votes .gdsr-latest-item p.datx {
-	float: right;
-	margin-right: 5px;
-	font-style: italic;
-}
+#gdsr-latest-votes .gdsr-latest-item p.linx, #gdsr-latest-votes .gdsr-latest-item p.datx { padding: 0; margin: 0; font-size: 10px; }
 
 #gdsr-latest-votes .gdsr-latest-item.first { border-top: none; }
 

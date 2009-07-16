@@ -1,57 +1,46 @@
+div.inside { margin: 0; padding: 0; }
+
+div.postbox div.inside { margin: 10px; position: relative; }
+
 .inside ul {
-    list-style-image:none;
-    list-style-position:outside;
-    list-style-type:none;
-    margin: 0 !important;
-    padding: 0 !important;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
-.metabox-holder {
-    padding-top: 10px;
+.metabox-holder { padding-top: 10px; }
+
+.metabox-holder .postbox { background-color: #FFFFFF; border-color: #E4F2FD; }
+
+.metabox-holder .postbox h3 {
+	background: #E4F2FD repeat-x scroll left top;
+	text-shadow: 0 1px 0 #FFFFFF;
 }
 
-.metabox-holder .postbox {
-    background-color: #FFFFFF;
-    border-color: #E4F2FD;
+.metabox-holder .postbox h3 {
+	-moz-border-radius-bottomleft: 0;
+	-moz-border-radius-bottomright: 0;
+	-moz-border-radius-topleft: 6px;
+	-moz-border-radius-topright: 6px;
 }
 
 .metabox-holder .postbox, #poststuff .postbox, #poststuff .stuffbox {
-    -moz-border-radius-bottomleft: 6px;
-    -moz-border-radius-bottomright: 6px;
-    -moz-border-radius-topleft: 6px;
-    -moz-border-radius-topright: 6px;
-    border-style: solid;
-    border-width: 1px;
-    line-height: 1;
-    margin-bottom: 20px;
-}
-
-.metabox-holder .postbox h3 {
-    background: #E4F2FD repeat-x scroll left top;
-    text-shadow: 0 1px 0 #FFFFFF;
-}
-
-.metabox-holder .postbox h3 {
-    -moz-border-radius-bottomleft: 0;
-    -moz-border-radius-bottomright: 0;
-    -moz-border-radius-topleft: 6px;
-    -moz-border-radius-topright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-topleft: 6px;
+	-moz-border-radius-topright: 6px;
+	border-style: solid;
+	border-width: 1px;
+	line-height: 1;
+	margin-bottom: 20px;
 }
 
 .metabox-holder h3 {
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 1;
-    margin: 0;
-    padding: 7px 9px;
-}
-
-div.postbox div.inside {
-    margin: 10px;
-    position: relative;
-}
-
-div.inside {
-    margin: 0;
-    padding: 0;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 1;
+	margin: 0;
+	padding: 7px 9px;
 }
