@@ -1,8 +1,8 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.5.4
-Tags: vote, ratings, integration, post, page, widget, rating, star, gdragon, ajax, templates, trends, comments, review, multi
+Version: 1.5.5
+Tags: vote, ratings, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi
 Requires at least: 2.5
 Tested up to: 2.8.1
 Stable tag: trunk
@@ -18,15 +18,13 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 [Translations](http://info.dev4press.com/gd-star-rating/languages.html)
 
 = Using the Plugin =
+[FAQ](http://www.gdstarrating.com/faq/) |
 [Tutorials](http://www.gdstarrating.com/category/tutorials/) |
-[Integration Functions](http://info.dev4press.com/gd-star-rating/functions.html)
+[Functions](http://info.dev4press.com/gd-star-rating/functions.html)
 
-= Planned Features =
-* Support for custom modules
-* Expanding export features
-* More charts and chart caching
-* WP Super Cache support
-* Full WordPress MU support
+= Plugin Support =
+* Before asking any question, please read the provided FAQ, user guide and tutorials.
+* I am not going to respond to repeated questions that are already answered or/and explained in tutorials.
 
 == Configuration ==
 Plugin administration consist of 14 main panels:
@@ -102,6 +100,9 @@ Yes, there is a PDF file with detailed explanations on over 30 pages. You can do
 = I have encountered a potential bug? =
 Plugin has debug into log file feature built in. Information on activating this can be found in user guide.
 
+= I have added one of the plugins widgets, and it's not showing anything? =
+Check the widget settings. Most likely problem is with default widget setting to show only posts with 5 votes or more. If you have just set the plugin most likely you still don't have enough votes.
+
 == Screenshots ==
 1. Plugin settings General tab
 2. Post And Pages Voting And Rating statistics
@@ -112,6 +113,9 @@ Plugin has debug into log file feature built in. Information on activating this 
 7. Example multi rating block
 
 == Changelog ==
+= 1.5.5 =
+* Fixed few reported bugs and more php notices
+
 = 1.5.4 =
 * Dashboard widget with latest votes
 * Improvements to thumbs up/down ratings

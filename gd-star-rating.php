@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single and multi ratings.
-Version: 1.5.4
+Version: 1.5.5
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -1672,6 +1672,7 @@ if (!class_exists('GDStarRating')) {
             foreach ($this->ginc[2] as $size => $var) {
                 if ($var == 1) $thumb_sizes[] = $size;
             }
+            if (count($thumb_sizes) == 0) $thumb_sizes[] = 24;
             $elements[] = join("", $thumb_sizes);
 
             foreach($this->g->stars as $s) {
@@ -1679,9 +1680,12 @@ if (!class_exists('GDStarRating')) {
                     $elements[] = "s".$s->primary.substr($s->type, 0, 1).$s->folder;
             }
 
-            foreach($this->g->thumbs as $s) {
-                if (in_array($s->folder, $this->ginc[3]))
-                    $elements[] = "t".$s->primary.substr($s->type, 0, 1).$s->folder;
+            if (!is_array($this->ginc[3])) $elements[] = "tpstarrating";
+            else {
+                foreach($this->g->thumbs as $s) {
+                    if (in_array($s->folder, $this->ginc[3]))
+                        $elements[] = "t".$s->primary.substr($s->type, 0, 1).$s->folder;
+                }
             }
 
             $q = join("#", $elements);
