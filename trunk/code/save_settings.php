@@ -80,6 +80,9 @@ if ($_POST['gdsr_action'] == 'save') {
     $gdsr_options["save_cookies"] = isset($_POST['gdsr_save_cookies']) ? 1 : 0;
     $gdsr_options["ie_opacity_fix"] = isset($_POST['gdsr_ieopacityfix']) ? 1 : 0;
 
+    $gdsr_options["override_display_comment"] = isset($_POST['gdsr_override_display_comment']) ? 1 : 0;
+    $gdsr_options["override_thumb_display_comment"] = isset($_POST['gdsr_override_thumb_display_comment']) ? 1 : 0;
+
     $gdsr_options["integrate_dashboard"] = isset($_POST['gdsr_integrate_dashboard']) ? 1 : 0;
     $gdsr_options["integrate_dashboard_chart"] = isset($_POST['gdsr_integrate_dashboard_chart']) ? 1 : 0;
     $gdsr_options["integrate_dashboard_latest"] = isset($_POST['gdsr_integrate_dashboard_latest']) ? 1 : 0;

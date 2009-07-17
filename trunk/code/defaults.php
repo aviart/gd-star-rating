@@ -128,6 +128,8 @@ class GDSRDefaults {
         "display_home" => 1,
         "display_archive" => 1,
         "display_search" => 1,
+        "override_display_comment" => 1,
+        "override_thumb_display_comment" => 1,
         "auto_display_position" => "bottom",
         "auto_display_comment_position" => "bottom",
         "thumb_style" => "starrating",

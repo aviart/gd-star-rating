@@ -278,6 +278,9 @@ foreach ($thumb_sizes as $size) {
 .loader.triangles { background: url(<?php echo $base_url_local;?>gfx/loader/triangles.gif) no-repeat left; padding-left: 14px; }
 .loader.triangles.width { width: 12px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
+.loader.radar { background: url(<?php echo $base_url_local;?>gfx/loader/radar.gif) no-repeat left; padding-left: 18px; }
+.loader.radar.width { width: 16px; margin-left: auto; margin-right: auto; padding-left: 0px; }
+
 /* top rating widget */
 .trw-title { text-align: center; font-size: 16px; font-family: "Century Gothic", Arial, Helvetica, sans-serif; }
 .trw-rating { font-size: 44px; font-family: "Century Gothic", Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; }
