@@ -56,6 +56,13 @@ $default_preview_class.= $gdsr_options["wait_class_comment"];
                     <input type="checkbox" name="gdsr_dispcomment_pages" id="gdsr_dispcomment_pages"<?php if ($gdsr_options["display_comment_page"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_dispcomment_pages"><?php _e("For comments for pages.", "gd-star-rating"); ?></label>
                 </td>
             </tr>
+            <tr>
+                <td width="150" valign="top">
+                </td>
+                <td valign="top" colspan="3">
+                    <input type="checkbox" name="gdsr_override_display_comment" id="gdsr_override_display_comment"<?php if ($gdsr_options["override_display_comment"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_override_display_comment"><?php _e("Enable auto insert regardless of the single page or post.", "gd-star-rating"); ?></label>
+                </td>
+            </tr>
         </table>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">

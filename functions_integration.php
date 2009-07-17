@@ -229,10 +229,10 @@ function wp_gdsr_render_article($template_id = 0, $read_only = false, $stars_set
  * @return string html with rendered contents
  */
 function wp_gdsr_render_comment_thumbs($template_id = 0, $read_only = false, $stars_set = "", $stars_set_ie6 = "", $echo = true) {
-    global $post, $userdata, $gdsr;
+    global $comment, $post, $userdata, $gdsr;
     $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
-    if ($echo) echo $gdsr->render_thumb_comment($post, $userdata, $override);
-    else return $gdsr->render_thumb_comment($post, $userdata, $override);
+    if ($echo) echo $gdsr->render_thumb_comment($post, $comment, $userdata, $override);
+    else return $gdsr->render_thumb_comment($post, $comment, $userdata, $override);
 }
 
 /**

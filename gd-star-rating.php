@@ -747,6 +747,7 @@ if (!class_exists('GDStarRating')) {
             if (count($comments) > 0 && !is_admin()) {
                 if ((is_single() && ($this->o["display_comment"] == 1 || $this->o["thumb_display_comment"] == 1)) ||
                     (is_page() && ($this->o["display_comment_page"] == 1 || $this->o["thumb_display_comment_page"] == 1)) ||
+                    $this->o["override_thumb_display_comment"] == 1 || $this->o["override_display_comment"] == 1 ||
                     $this->qc->is_active) {
                         $this->cache_comments($post_id);
                 }
@@ -2577,8 +2578,9 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
             if ($comment->comment_type == "pingback" && $this->o["display_trackback"] == 0) return $content;
 
             if (!is_feed()) {
-                if ((is_single() && !is_admin() && $this->o["display_comment"] == 1) ||
-                    (is_page() && !is_admin() && $this->o["display_comment_page"] == 1)
+                if ((is_single() && $this->o["display_comment"] == 1) ||
+                    (is_page() && $this->o["display_comment_page"] == 1) ||
+                    $this->o["override_display_comment"] == 1
                 ) {
                     $rendered = $this->render_comment($post, $comment, $userdata);
                     if ($this->o["auto_display_comment_position"] == "top" || $this->o["auto_display_comment_position"] == "both")
@@ -2588,8 +2590,9 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
                 }
 
                 if ($this->o["thumbs_active"] == 1) {
-                    if ((is_single() && !is_admin() && $this->o["thumb_display_comment"] == 1) ||
-                        (is_page() && !is_admin() && $this->o["thumb_display_comment_page"] == 1)
+                    if ((is_single() && $this->o["thumb_display_comment"] == 1) ||
+                        (is_page() && $this->o["thumb_display_comment_page"] == 1) ||
+                        $this->o["override_thumb_display_comment"] == 1
                     ) {
                         $rendered = $this->render_thumb_comment($post, $comment, $userdata);
                         if ($this->o["thumb_auto_display_comment_position"] == "top" || $this->o["thumb_auto_display_comment_position"] == "both")

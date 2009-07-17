@@ -398,6 +398,13 @@ span.rss-date {
 
 .loader.flower.width { width: 15px; }
 
+.loader.radar {
+	background: url(../../gfx/loader/radar.gif) no-repeat left;
+	padding-left: 18px;
+}
+
+.loader.radar.width { width: 16px; }
+
 .loader.fountain {
 	background: url(../../gfx/loader/fountain.gif) no-repeat left;
 	padding-left: 134px;

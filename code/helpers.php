@@ -354,6 +354,7 @@ class GDSRHelper {
     <option value="brokenbig"<?php echo $selected == 'brokenbig' ? ' selected="selected"' : ''; ?>>Broken Big [24x24]</option>
     <option value="lines"<?php echo $selected == 'lines' ? ' selected="selected"' : ''; ?>>Lines [96x12]</option>
     <option value="snake"<?php echo $selected == 'snake' ? ' selected="selected"' : ''; ?>>Snake [12x12]</option>
+    <option value="radar"<?php echo $selected == 'radar' ? ' selected="selected"' : ''; ?>>Radar [16x16]</option>
     <option value="snakebig"<?php echo $selected == 'snakebig' ? ' selected="selected"' : ''; ?>>Snake Big [24x24]</option>
     <option value="triangles"<?php echo $selected == 'triangles' ? ' selected="selected"' : ''; ?>>Triangles [12x12]</option>
 </select>
