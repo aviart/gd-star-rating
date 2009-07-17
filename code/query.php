@@ -58,7 +58,7 @@ class GDSRQuery {
         return $c;
     }
 
-    function standard_where($c) { 
+    function standard_where($c) {
         $filter_min_votes = intval(trim(addslashes(get_query_var('gdsr_fsvmin'))));
         $filter_min_votes_thumbs = intval(trim(addslashes(get_query_var('gdsr_ftvmin'))));
         if ($filter_min_votes > 0) $c.= " AND (gdsra.user_voters + gdsra.visitor_voters) > ".$filter_min_votes;
@@ -144,6 +144,39 @@ class GDSRQuery {
                 break;
         }
         return $c != "" ? $c : $default;
+    }
+}
+
+class GDSRQueryComments {
+    var $keys_sort = array(
+        "rating",
+        "review",
+        "thumbs",
+        "votes",
+        "last_voted"
+    );
+
+    var $keys_order = array(
+        "desc",
+        "asc"
+    );
+
+    var $p = array();
+    var $is_active = false;
+
+    function GDSRQueryComments() { }
+
+    function set($params = array()) {
+        if (count($params) > 0) {
+            $this->p = $params;
+            $this->is_active = true;
+        }
+    }
+
+    function reorder($comments) {
+        if (!$this->is_active) return $comments;
+
+        return $comments;
     }
 }
 
