@@ -5,7 +5,7 @@ class GDSRRender {
         $css_style = " gdsr-".$style;
         $css_sizes = " gdsr-size-".$unit_width;
         $rater = '<div id="'.$rater_id.'" class="'.$class.$css_style.$css_sizes.'"><div class="starsbar'.$css_sizes.'">';
-        $rater.= '<div class="gdouter"><div id="gdr_vote_'.$type.$id.'" style="width: '.$rating_width.'px;" class="gdinner"></div>';
+        $rater.= '<div class="gdouter gdheight"><div id="gdr_vote_'.$type.$id.'" style="width: '.$rating_width.'px;" class="gdinner gdheight"></div>';
         if ($allow_vote) {
             $rater.= '<div id="gdr_stars_'.$type.$id.'" class="gdsr_rating_as">';
             for ($ic = 0; $ic < $unit_count; $ic++) {
@@ -76,10 +76,10 @@ class GDSRRender {
         } else $current = 0;
 
         $rater = '<div id="gdsr_mur_stars_'.$post_id.'_'.$set_id.'_'.$id.'" class="ratemulti'.$css_style.$css_sizes.'"><div class="starsbar'.$css_sizes.'">';
-        $rater.= '<div class="gdouter" style="width: '.($unit_count * $height).'px">';
-        $rater.= '<div id="gdsr_mur_stars_rated_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($value * $height).'px;" class="gdinner"></div>';
+        $rater.= '<div class="gdouter gdheight" style="width: '.($unit_count * $height).'px">';
+        $rater.= '<div id="gdsr_mur_stars_rated_'.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($value * $height).'px;" class="gdinner gdheight"></div>';
         if ($allow_vote) {
-            $rater.= '<div id="'.$vote_current.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($current * $height).'px;" class="gdcurrent"></div>';
+            $rater.= '<div id="'.$vote_current.$post_id.'_'.$set_id.'_'.$id.'" style="width: '.($current * $height).'px;" class="gdcurrent gdheight"></div>';
             $rater.= '<div id="gdr_stars_mur_rating_'.$post_id.'_'.$set_id.'_'.$id.'" class="'.$vote_class.'">';
             for ($ic = 0; $ic < $unit_count; $ic++) {
                 $ncount = $unit_count - $ic;
@@ -98,7 +98,7 @@ class GDSRRender {
 
         $rater = '<input class="'.$css_input.'" type="hidden" id="'.$class_base.'_value" name="'.$class_base.'_value" value="0" />';
         $rater.= '<div id="'.$class_base.'_stars" class="'.$main_class.$css_style.$css_sizes.'"><div class="starsbar'.$css_sizes.'">';
-        $rater.= '<div class="gdouter"><div id="'.$class_base.'_stars_rated" style="width: '.$value.'px;" class="gdinner"></div>';
+        $rater.= '<div class="gdouter gdheight"><div id="'.$class_base.'_stars_rated" style="width: '.$value.'px;" class="gdinner gdheight"></div>';
         if ($allow_vote) {
             $rater.= '<div id="'.$class_base.'" class="gdsr_integration">';
             for ($ic = 0; $ic < $unit_count; $ic++) {

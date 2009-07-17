@@ -1,6 +1,22 @@
 <?php
 
 class GDSRDBMulti {
+    function recalculate_multi_rating_log() {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("select * from %sgdsr_votes_log where vote_type = 'multis' and vote = 0", $table_prefix);
+        $rows = $wpdb->get_results($sql);
+
+        foreach ($rows as $row) {
+            $set = wp_gdget_multi_set($row->multi_id);
+            if (!is_null($set)) {
+                $vote = intval(10 * GDSRDBMulti::get_multi_rating_from_single_object($set, unserialize($row->object)));
+                $sql = sprintf("update %sgdsr_votes_log set `vote` = %s where record_id = %s", $table_prefix, $vote, $row->record_id);
+                $wpdb->query($sql);
+            }
+        }
+    }
+
     function get_multi_rating_from_single_object($set, $object) {
         $weighted = $i = 0;
 
@@ -355,7 +371,7 @@ class GDSRDBMulti {
 
     function add_to_log($post_id, $set_id, $user_id, $ip, $ua, $values, $comment_id = 0) {
         global $wpdb, $table_prefix;
-        $set = wp_gdget_mulit_set($set_id);
+        $set = wp_gdget_multi_set($set_id);
         $vote = intval(GDSRDBMulti::get_multi_rating_from_single_object($set, $values) * 10);
 
         $modsql = sprintf("INSERT INTO %sgdsr_votes_log (id, vote_type, multi_id, user_id, vote, object, voted, ip, user_agent, comment_id) VALUES (%s, 'multis', %s, %s, %s, '%s', '%s', '%s', '%s', %s)",

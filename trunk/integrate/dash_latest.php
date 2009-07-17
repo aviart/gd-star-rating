@@ -13,7 +13,7 @@ foreach ($data as $row) {
     } else if ($row->vote_type == "multis") {
         $voteval = intval($row->vote) / 10;
         if ($row->vote == 0) {
-            $set = wp_gdget_mulit_set($row->multi_id);
+            $set = wp_gdget_multi_set($row->multi_id);
             $voteval = GDSRDBMulti::get_multi_rating_from_single_object($set, unserialize($row->object));
         }
         $votevl = __("Multi Vote", "gd-star-rating")." <strong>".$voteval."</strong> ";
