@@ -1484,6 +1484,12 @@ if (!class_exists('GDStarRating')) {
                 exit;
             }
 
+            if (isset($_POST['gdsr_updatemultilog_tool'])) {
+                GDSRDBMulti::recalculate_multi_rating_log();
+                //wp_redirect_self();
+                //exit;
+            }
+
             if (isset($_POST['gdsr_mulitrecalc_tool'])) {
                 $set_id = $_POST['gdsr_mulitrecalc_set'];
                 if ($set_id > 0) GDSRDBMulti::recalculate_set($set_id);
@@ -1824,7 +1830,7 @@ wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_wid
             else $ua = "";
             $user = intval($userdata->ID);
             $data = GDSRDatabase::get_post_data($post_id);
-            $set = wp_gdget_mulit_set($set_id);
+            $set = gd_get_multi_set($set_id);
 
 wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [".$user."] ".$unit_width."px");
 

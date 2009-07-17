@@ -128,9 +128,7 @@ foreach($raw_blocks as $r) {
 }
 
 foreach ($sizes as $size) {
-    echo '.starsbar.gdsr-size-'.$size.', .starsbar.gdsr-size-'.$size.' a { height: '.$size.'px; }';
-    echo "\r\n";
-    echo '.starsbar.gdsr-size-'.$size.' a { height: '.$size.'px; }';
+    echo '.starsbar.gdsr-size-'.$size.', .starsbar.gdsr-size-'.$size.' .gdheight, .starsbar.gdsr-size-'.$size.' a { height: '.$size.'px; }';
     echo "\r\n";
     for ($i = 1; $i <= 20; $i++) {
         echo '.starsbar.gdsr-size-'.$size.' a.s'.$i.' { width: '.($i * $size).'px; }';
@@ -142,23 +140,19 @@ foreach ($blocks as $block) {
     $stars = $block["size"];
     foreach ($sizes as $size) {
         if ($block["name"] != "ratemulti") {
-            echo ".".$block["name"].".gdsr-size-".$size." { width: ".($stars * $size)."px; }\r\n";
-            echo ".".$block["name"].".gdsr-size-".$size." .starsbar .gdouter { width: ".($stars * $size)."px; }\r\n";
+            echo ".".$block["name"].".gdsr-size-".$size.", .".$block["name"].".gdsr-size-".$size." .starsbar .gdouter { width: ".($stars * $size)."px; }\r\n";
         }
     }
 }
 
-foreach ($blocks as $block) {
-    $stars = $block["size"];
-    foreach ($sets as $set) {
-        $class = ".gdsr-".$set["folder"];
-        foreach ($sizes as $size) {
-            $url = ($set["location"] == 1 ? $base_url_local : $base_url_extra)."stars/".$set["folder"]."/stars".$size.".".$set["type"];
-            echo $class." .starsbar.gdsr-size-".$size." .gdouter { height: ".$size."px; background: url('".$url."') repeat-x 0px 0px; }\r\n";
-            echo $class." .starsbar.gdsr-size-".$size." .gdinner { height: ".$size."px; background: url('".$url."') repeat-x 0px -".(2 * $size)."px; }\r\n";
-            echo $class." .starsbar.gdsr-size-".$size." .gdcurrent { height: ".$size."px; background: url('".$url."') repeat-x 0px -".($size)."px; }\r\n";
-            echo $class." .starsbar.gdsr-size-".$size." a:hover { background: url('".$url."') repeat-x 0px -".$size."px !important; }\r\n";
-        }
+foreach ($sets as $set) {
+    $class = ".gdsr-".$set["folder"];
+    foreach ($sizes as $size) {
+        $url = ($set["location"] == 1 ? $base_url_local : $base_url_extra)."stars/".$set["folder"]."/stars".$size.".".$set["type"];
+        echo $class." .starsbar.gdsr-size-".$size." .gdouter { background: url('".$url."') repeat-x 0px 0px; }\r\n";
+        echo $class." .starsbar.gdsr-size-".$size." .gdinner { background: url('".$url."') repeat-x 0px -".(2 * $size)."px; }\r\n";
+        echo $class." .starsbar.gdsr-size-".$size." .gdcurrent { background: url('".$url."') repeat-x 0px -".($size)."px; }\r\n";
+        echo $class." .starsbar.gdsr-size-".$size." a:hover { background: url('".$url."') repeat-x 0px -".$size."px !important; }\r\n";
     }
 }
 

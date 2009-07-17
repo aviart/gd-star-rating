@@ -180,7 +180,7 @@ function wp_gdget_thumb_commentlog($comment_id) {
     else return true;
 }
 
-function wp_gdget_mulit_set($multi_id) {
+function wp_gdget_multi_set($multi_id) {
     global $gdsr_cache_multi_sets;
     
     $set = $gdsr_cache_multi_sets->get($multi_id);
