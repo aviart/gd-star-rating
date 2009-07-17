@@ -180,6 +180,19 @@ function wp_gdget_thumb_commentlog($comment_id) {
     else return true;
 }
 
+function wp_gdget_mulit_set($multi_id) {
+    global $gdsr_cache_multi_sets;
+    
+    $set = $gdsr_cache_multi_sets->get($multi_id);
+    if (!is_null($set)) return $set;
+    else {
+        $set = gd_get_multi_set($multi_id);
+        $gdsr_cache_multi_sets->set($multi_id, $set);
+        return $set;
+    }
+}
+
+$gdsr_cache_multi_sets = new gdsrCache();
 $gdsr_cache_templates = new gdsrCache();
 $gdsr_cache_posts_std_data = new gdsrCache();
 $gdsr_cache_posts_std_log = new gdsrCache();

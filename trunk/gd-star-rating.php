@@ -108,6 +108,7 @@ if (!class_exists('GDStarRating')) {
         var $g; // gfx
         var $q; // query class instance
         var $c; // cached post ids
+        var $qc; // query class instance for comments
         var $ginc;
         var $bots;
 
@@ -153,8 +154,9 @@ if (!class_exists('GDStarRating')) {
             $this->default_widget = $gdd->default_widget;
             define('STARRATING_INSTALLED', $this->default_options["version"]." ".$this->default_options["status"]);
 
-            $this->q = new GDSRQuery();
             $this->c = array();
+            $this->q = new GDSRQuery();
+            $this->qc = new GDSRQueryComments();
 
             $this->tabpage = "front";
             $this->log_file = STARRATING_LOG_PATH;
@@ -744,11 +746,16 @@ if (!class_exists('GDStarRating')) {
         function comments_array($comments, $post_id) {
             if (count($comments) > 0 && !is_admin()) {
                 if ((is_single() && ($this->o["display_comment"] == 1 || $this->o["thumb_display_comment"] == 1)) ||
-                    (is_page() && ($this->o["display_comment_page"] == 1 || $this->o["thumb_display_comment_page"] == 1))) {
-                    $this->cache_comments($post_id);
+                    (is_page() && ($this->o["display_comment_page"] == 1 || $this->o["thumb_display_comment_page"] == 1)) ||
+                    $this->qc->is_active) {
+                        $this->cache_comments($post_id);
                 }
             }
-            return $comments;
+            return $this->qc->reorder($comments);
+        }
+
+        function set_comment_reorder($params = array()) {
+            $this->qc->set($params);
         }
 
         /**
@@ -1666,6 +1673,7 @@ if (!class_exists('GDStarRating')) {
             foreach ($this->ginc[0] as $size => $var) {
                 if ($var == 1) $star_sizes[] = $size;
             }
+            if (count($star_sizes) == 0) $star_sizes[] = 24;
             $elements[] = join("", $star_sizes);
 
             $thumb_sizes = array();
@@ -1675,9 +1683,12 @@ if (!class_exists('GDStarRating')) {
             if (count($thumb_sizes) == 0) $thumb_sizes[] = 24;
             $elements[] = join("", $thumb_sizes);
 
-            foreach($this->g->stars as $s) {
-                if (in_array($s->folder, $this->ginc[1]))
-                    $elements[] = "s".$s->primary.substr($s->type, 0, 1).$s->folder;
+            if (!is_array($this->ginc[1])) $elements[] = "spstarrating";
+            else {
+                foreach($this->g->stars as $s) {
+                    if (in_array($s->folder, $this->ginc[1]))
+                        $elements[] = "s".$s->primary.substr($s->type, 0, 1).$s->folder;
+                }
             }
 
             if (!is_array($this->ginc[3])) $elements[] = "tpstarrating";
@@ -1813,7 +1824,7 @@ wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_wid
             else $ua = "";
             $user = intval($userdata->ID);
             $data = GDSRDatabase::get_post_data($post_id);
-            $set = gd_get_multi_set($set_id);
+            $set = wp_gdget_mulit_set($set_id);
 
 wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [".$user."] ".$unit_width."px");
 

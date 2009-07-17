@@ -103,4 +103,14 @@
         </form>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Update Multi Rating Votes Log", "gd-star-rating"); ?></th>
+    <td>
+        <form method="post">
+        <?php _e("This tool will update votes log and recalculate average value for each multi ratings votes.", "gd-star-rating"); ?><br />
+        <input type="submit" class="inputbutton" value="<?php _e("Update", "gd-star-rating"); ?>" name="gdsr_updatemultilog_tool" id="gdsr_updatemultilog_tool" />
+        <div class="gdsr-table-split"></div>
+        <?php _e("You need to do only once.", "gd-star-rating"); ?>
+        </form>
+    </td>
+</tr>
 </tbody></table>

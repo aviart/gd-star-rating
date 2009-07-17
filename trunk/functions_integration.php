@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * Activates reordering of comments using array of parameters.
+ *
+ * @global GDStarRating $gdsr main rating class instance
+ * @global array $params reordering parameters
+ */
+function wp_gdsr_comment_reorder($params = array()) {
+    global $gdsr;
+    
+    $gdsr->set_comment_reorder($params);
+}
+
+/**
  * Get multi set id based on global and categoires rules.
  *
  * @global GDStarRating $gdsr main rating class instance

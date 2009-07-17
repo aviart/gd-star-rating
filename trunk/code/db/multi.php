@@ -1,6 +1,18 @@
 <?php
 
 class GDSRDBMulti {
+    function get_multi_rating_from_single_object($set, $object) {
+        $weighted = $i = 0;
+
+        $weight_norm = array_sum($set->weight);
+        $multi_data = $object;
+        foreach ($multi_data as $md) {
+            $weighted += (intval($md) * $set->weight[$i]) / $weight_norm;
+            $i++;
+        }
+        return number_format($weighted, 1);
+    }
+
     function get_first_multi_set() {
         global $wpdb, $table_prefix;
 
@@ -343,10 +355,13 @@ class GDSRDBMulti {
 
     function add_to_log($post_id, $set_id, $user_id, $ip, $ua, $values, $comment_id = 0) {
         global $wpdb, $table_prefix;
-            $modsql = sprintf("INSERT INTO %sgdsr_votes_log (id, vote_type, multi_id, user_id, object, voted, ip, user_agent, comment_id) VALUES (%s, 'multis', %s, %s, '%s', '%s', '%s', '%s', %s)",
-                $table_prefix, $post_id, $set_id, $user_id, serialize($values), str_replace("'", "''", current_time('mysql')), $ip, $ua, $comment_id);
-            wp_gdsr_dump("LOG", $modsql);
-            $wpdb->query($modsql);
+        $set = wp_gdget_mulit_set($set_id);
+        $vote = intval(GDSRDBMulti::get_multi_rating_from_single_object($set, $values) * 10);
+
+        $modsql = sprintf("INSERT INTO %sgdsr_votes_log (id, vote_type, multi_id, user_id, vote, object, voted, ip, user_agent, comment_id) VALUES (%s, 'multis', %s, %s, %s, '%s', '%s', '%s', '%s', %s)",
+            $table_prefix, $post_id, $set_id, $user_id, $vote, serialize($values), str_replace("'", "''", current_time('mysql')), $ip, $ua, $comment_id);
+        wp_gdsr_dump("LOG", $modsql);
+        $wpdb->query($modsql);
     }
 
     function rating_from_comment($comment_id, $multi_set_id) {
