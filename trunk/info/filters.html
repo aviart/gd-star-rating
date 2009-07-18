@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>GD Star Rating: WP Query</title>
+    <title>GD Star Rating: Filters &amp; Actions</title>
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!--[if IE ]><link rel="stylesheet" href="style_ie.css" type="text/css" media="screen" /><![endif]-->
@@ -44,46 +44,27 @@
 <div id="content">
 <div class="title">
     <h1>GD Star Rating</h1>
-    <h2>wp query</h2>
+    <h2>filters &amp; actions</h2>
 </div>
 
 <div class="contents">
-<h3>Query variables</h3>
-<ul>
-    <li><strong>gdsr_sort</strong>: data used for sorting results</li>
-    <li><strong>gdsr_order</strong>: data sorting order</li>
-    <li><strong>gdsr_multi</strong>: standard or multi ratings data to use</li>
-    <li><strong>gdsr_fsvmin</strong>: filter to specify minimal number of standard rating votes</li>
-    <li><strong>gdsr_ftvmin</strong>: filter to specify minimal number of thumbs rating votes</li>
-</ul>
-<h3>gdsr_sort</h3>
-<p>Supported values (columns) for sorting data:</p>
-<ul>
-    <li><strong>rating</strong>: post ratings, standard or multi ratings depending on the multi parameter</li>
-    <li><strong>review</strong>: post review rating, standard or multi ratings depending on the multi parameter</li>
-    <li><strong>votes</strong>: number of votes saved for the post</li>
-    <li><strong>thumbs</strong>: post thumbs rating</li>
-    <li><strong>last_voted</strong>: date of the last vote recorded</li>
-</ul>
-<h3>gdsr_order</h3>
-<p>Ascending or descending order to sort data:</p>
-<ul>
-    <li><strong>asc</strong>: ascending</li>
-    <li><strong>desc</strong>: descending (default)</li>
-</ul>
-<h3>gdsr_multi</h3>
-<p>
-    For standard rating data, don't use this variable, or set it to zero.<br />
-    To get multi ratings data this variable must be set to multi set id to use.
-</p>
-<h3>gdsr_fsvmin</h3>
-<p>
-    Set to number of votes for standard rating, and only posts with at least set number of votes will be included.
-</p>
-<h3>gdsr_ftvmin</h3>
-<p>
-    Set to number of votes for thumbs rating, and only posts with at least set number of votes will be included.
-</p>
+    <p>This is the list of filters and actions added by the plugin.</p>
+    <h3>Filters</h3>
+    <ul>
+        <li><strong>gdsr_widget_data_prepare</strong>: filter for array of the results prepared for rating results widget</li>
+        <li><strong>gdsr_widget_post_title</strong>: modify post title for each of widget results. if you already changed titles using widget settings, this filter will be on changed title, not original. disable widget setting for title if you want to change it using filter.</li>
+        <li><strong>gdsr_widget_post_excerpt</strong>: modify post excerpt for each of widget results. excerpt will be already prepared and even shortened if you set the length for it in the widget settings.</li>
+        <li><strong>gdsr_comments_widget_data_prepare</strong>: filter for array of the results prepared for comments rating results widget</li>
+        <li><strong>gdsr_comments_widget_comment_content</strong>: modify the comment content for each of the widget results. if you already changed it using widget settings, this filter will be on changed content, not original. disable widget setting for content if you want to change it using filter.</li>
+    </ul>
+    <h3>Actions</h3>
+    <ul>
+        <li><strong>gdsr_init</strong>: executed at the end of plugins init block</li>
+        <li><strong>gdsr_admin_menu</strong>: executed before adding last menu element</li>
+        <li><strong>gdsr_admin_head</strong>: executed at the end of plugins admin header block</li>
+        <li><strong>gdsr_wp_head</strong>: executed at the end of plugins blog header block</li>
+        <li><strong>gdsr_init_save_review</strong>: executed after saving review values</li>
+    </ul>
 </div>
 </div>
 </body>

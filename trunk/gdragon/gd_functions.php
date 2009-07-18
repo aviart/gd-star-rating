@@ -36,10 +36,12 @@ if (!class_exists('gdFunctionsGDSR')) {
         }
 
         function trim_to_words($text, $words_count = 10) {
-            $words = explode(' ', $text, $words_count + 1);
-            if (count($words) > $words_count) {
-                $words = array_slice($words, 0, $words_count);
-                $text = implode(' ', $words)."...";
+            if ($words_count > 0) {
+                $words = explode(' ', $text, $words_count + 1);
+                if (count($words) > $words_count) {
+                    $words = array_slice($words, 0, $words_count);
+                    $text = implode(' ', $words)."...";
+                }
             }
             return $text;
         }

@@ -128,9 +128,11 @@ class GDSRRenderT2 {
             foreach ($new_rows as $row) {
                 $row->table_row_class = $tr_class;
                 $row->excerpt = GDSRRenderT2::prepare_excerpt($widget["excerpt_words"], $row);
+                $row->excerpt = apply_filters('gdsr_widget_post_excerpt', $row->excerpt);
                 if (strlen($row->title) > $widget["tpl_title_length"] - 3 && $widget["tpl_title_length"] > 0)
                     $row->title = substr($row->title, 0, $widget["tpl_title_length"] - 3)." ...";
 
+                $row->title = apply_filters('gdsr_widget_post_title', $row->title);
                 if ($a_link || $a_name && intval($row->author) > 0) {
                     $user = get_userdata($row->author);
                     $row->author_name = $user->display_name;
@@ -294,6 +296,7 @@ class GDSRRenderT2 {
                 if (strlen($row->comment_content) > $widget["text_max"] - 3 && $widget["text_max"] > 0)
                     $row->comment_content = substr($row->comment_content, 0, $widget["text_max"] - 3)." ...";
 
+                $row->comment_content = apply_filters('gdsr_comments_widget_comment_content', $row->comment_content);
                 $row->comment_author_email = get_avatar($row->comment_author_email, $widget["avatar"]);
 
                 if (!(strpos($template, "%CMM_STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["cmm_stars"], $row->rating);
@@ -916,7 +919,7 @@ class GDSRRenderT2 {
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
 
-                $rt = str_replace('%ID%', $post_id, $rt);
+        $rt = str_replace('%ID%', $post_id, $rt);
         $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
         $tpl_render = str_replace("%MAX_RATING%", $set->stars, $tpl_render);
 
