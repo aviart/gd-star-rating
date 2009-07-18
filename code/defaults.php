@@ -3,10 +3,10 @@
 class GDSRDefaults {
     var $default_options = array(
         "version" => "1.5.5",
-        "date" => "2009.07.21.",
+        "date" => "2009.07.20.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 813,
+        "build" => 820,
         "admin_views" => 0,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,
@@ -188,6 +188,8 @@ class GDSRDefaults {
         "bayesian_minimal" => 10,
         "bayesian_mean" => 70,
         "use_nonce" => 1,
+        "wait_loader_artthumb" => "flower",
+        "wait_loader_cmmthumb" => "flower",
         "wait_text_article" => "please wait...",
         "wait_loader_article" => "flower",
         "wait_show_article" => 0,
