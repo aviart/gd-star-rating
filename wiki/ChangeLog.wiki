@@ -7,6 +7,29 @@ This is the list of changes for each release of the plugin.
 
 == Change log ==
 
+=== Version 1.4.8 / june 26 2009 ===
+  * new: added extended multi rating stars template
+  * new: rating widget and results can include post excerpt
+  * edit: some of the templates expanded with few more tags
+  * edit: removed some more obsolete code
+  * edit: massive html cleanup on all plugins admin panels
+  * fix: adding empty values for multi reviews
+  * fix: multi rating results sql had a small category problem
+  * fix: missing parameters in builder generated functions results
+  * fix: confusing branching in multi review editor code
+  * fix: missing default values for multi review function
+  * fix: initialization of category during full installation failed
+  * fix: minor installation problem with WP 2.6
+  * fix: missing visual styles for pre WP 2.7 versions
+  * fix: missing script type on all plugins admin panels
+  * fix: invalid tags on all plugins admin panels
+
+=== Version 1.4.7 / june 25 2009 ===
+  * fix: loading of main CSS file on the admin pages
+  * fix: integration multi set on categories page get deleted
+  * fix: multi review on edit page fails when set is not found
+  * fix: inserting multi values fails sometimes
+
 === Version 1.4.6 / june 21 2009 ===
   * new: enable or disable caching of the main css file:
   * new: categories panel is now functional:
