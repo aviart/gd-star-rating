@@ -152,7 +152,7 @@ Check the widget settings. Most likely problem is with default widget setting to
 * Dev4Press: http://www.dev4press.com/
 
 == Support ==
-* Twitter: http://twitter.com/gdstarrating
+* Twitter: http://twitter.com/milangd
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
 * Database Layout: http://code.google.com/p/gd-star-rating/wiki/DatabaseTablesFormat
 

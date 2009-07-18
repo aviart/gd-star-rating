@@ -43,7 +43,7 @@
                 <tr>
                     <td class="first b">Twitter</td>
                     <td class="t"><?php _e("development progress", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://twitter.com/gdstarrating" target="_blank"><?php _e("follow", "gd-star-rating"); ?></a></td>
+                    <td class="t options"><a href="http://twitter.com/milangd" target="_blank"><?php _e("follow", "gd-star-rating"); ?></a></td>
                 </tr>
             </tbody></table>
         </div>
