@@ -486,6 +486,8 @@ function wp_gdsr_render_review($post_id = 0, $template_id = 0, $echo = true) {
  * @return string html with rendered contents
  */
 function wp_gdsr_render_star_rating_widget($widget = array(), $echo = true) {
+    global $gdsr;
+    $widget = wp_parse_args((array)$widget, $gdsr->default_widget);
     if ($echo) echo GDSRRenderT2::render_wsr($widget);
     else return GDSRRenderT2::render_wsr($widget);
 }
@@ -498,6 +500,8 @@ function wp_gdsr_render_star_rating_widget($widget = array(), $echo = true) {
  * @return string html with rendered contents
  */
 function wp_gdsr_render_blog_rating_widget($widget = array(), $echo = true) {
+    global $gdsr;
+    $widget = wp_parse_args((array)$widget, $gdsr->default_widget_top);
     if ($echo) echo GDSRRenderT2::render_wbr($widget);
     else return GDSRRenderT2::render_wbr($widget);
 }
@@ -510,6 +514,8 @@ function wp_gdsr_render_blog_rating_widget($widget = array(), $echo = true) {
  * @return string html with rendered contents
  */
 function wp_gdsr_render_comments_rating_widget($widget = array(), $echo = true) {
+    global $gdsr;
+    $widget = wp_parse_args((array)$widget, $gdsr->default_widget_comments);
     if ($echo) echo GDSRRenderT2::render_wcr($widget);
     else return GDSRRenderT2::render_wcr($widget);
 }
