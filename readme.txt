@@ -17,10 +17,15 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 [Changelog](http://info.dev4press.com/gd-star-rating/changelog.html) |
 [Translations](http://info.dev4press.com/gd-star-rating/languages.html)
 
+= Plugin Reference =
+[Functions](http://info.dev4press.com/gd-star-rating/functions.html) |
+[WP Query](http://info.dev4press.com/gd-star-rating/wpquery.html) |
+[Actions & Filters](http://info.dev4press.com/gd-star-rating/filters.html)
+
 = Using the Plugin =
 [FAQ](http://www.gdstarrating.com/faq/) |
 [Tutorials](http://www.gdstarrating.com/category/tutorials/) |
-[Functions](http://info.dev4press.com/gd-star-rating/functions.html)
+[User Guide](http://www.gdstarrating.com/downloads/user-guide/)
 
 = Plugin Support =
 * Before asking any question, please read the provided FAQ, user guide and tutorials.
@@ -149,7 +154,6 @@ Check the widget settings. Most likely problem is with default widget setting to
 == Support ==
 * Twitter: http://twitter.com/gdstarrating
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
-* PDF User Guide: http://www.gdstarrating.com/downloads/user-guide/
 * Database Layout: http://code.google.com/p/gd-star-rating/wiki/DatabaseTablesFormat
 
 == Communities ==

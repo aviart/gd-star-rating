@@ -1,22 +1,9 @@
-.title {
-	height: 83px;
-	position: static;
-	width: 100%;
-}
+h2 { padding-top: 7px; height: 36px; }
 
-.contents {
-	margin-top: 0;
-}
+.contents { margin-top: 0; }
 
-#sidebar {
-    position: static;
-}
+.title { height: 83px; position: static; width: 100%; }
 
-#content {
-    margin-left: 0;
-}
+#content { margin-left: 0; }
 
-h2 {
-    padding-top: 7px;
-	height: 36px;
-}
+#sidebar { position: static; }
