@@ -60,6 +60,10 @@
                 <td width="150"><?php _e("Rating Template", "gd-star-rating"); ?>:</td>
                 <td align="left"><?php gdTemplateHelper::render_templates_section("TAB", "gdsr_default_tab_template", $gdsr_options["default_tab_template"], 350); ?></td>
             </tr>
+            <tr>
+                <td width="150"><?php _e("Animation indicator", "gd-star-rating"); ?>:</td>
+                <td align="left"><?php GDSRHelper::render_loaders("gdsr_wait_loader_artthumb", $gdsr_options["wait_loader_artthumb"], 'jqloaderartthumb', 180, '', true); ?></td>
+            </tr>
         </table>
     </td>
 </tr>
@@ -124,6 +128,10 @@
             <tr>
                 <td width="150"><?php _e("Rating Template", "gd-star-rating"); ?>:</td>
                 <td align="left"><?php gdTemplateHelper::render_templates_section("TCB", "gdsr_default_tcb_template", $gdsr_options["default_tcb_template"], 350); ?></td>
+            </tr>
+            <tr>
+                <td width="150"><?php _e("Animation indicator", "gd-star-rating"); ?>:</td>
+                <td align="left"><?php GDSRHelper::render_loaders("gdsr_wait_loader_cmmthumb", $gdsr_options["wait_loader_cmmthumb"], 'jqloadercmmthumb', 180, '', true); ?></td>
             </tr>
         </table>
      </td>

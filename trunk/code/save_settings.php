@@ -54,6 +54,8 @@ if ($_POST['gdsr_action'] == 'save') {
     $gdsr_options["wait_class_article"] = $_POST['gdsr_wait_class_article'];
     $gdsr_options["wait_class_comment"] = $_POST['gdsr_wait_class_comment'];
     $gdsr_options["wait_class_multis"] = $_POST['gdsr_wait_class_multis'];
+    $gdsr_options["wait_loader_artthumb"] = $_POST['gdsr_wait_loader_artthumb'];
+    $gdsr_options["wait_loader_cmmthumb"] = $_POST['gdsr_wait_loader_cmmthumb'];
 
     $gdsr_options["debug_wpquery"] = isset($_POST['gdsr_debug_wpquery']) ? 1 : 0;
     $gdsr_options["debug_active"] = isset($_POST['gdsr_debug_active']) ? 1 : 0;

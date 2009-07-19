@@ -70,6 +70,8 @@ if (!class_exists('GDStarRating')) {
         var $cats_data_posts = array();
         var $cats_data_cats = array();
 
+        var $loader_article_thumb = "";
+        var $loader_comment_thumb = "";
         var $loader_article = "";
         var $loader_comment = "";
         var $loader_multis = "";
@@ -1273,7 +1275,10 @@ if (!class_exists('GDStarRating')) {
                 $this->render_wait_article();
                 if ($this->o["comments_active"] == 1) $this->render_wait_comment();
                 if ($this->o["multis_active"] == 1) $this->render_wait_multis();
-
+                if ($this->o["thumbs_active"] == 1) {
+                    $this->render_wait_article_thumb();
+                    $this->render_wait_comment_thumb();
+                }
                 if ($this->o["external_javascript"] == 1) {
                     wp_enqueue_script("gdsr_script", plugins_url('gd-star-rating/script.js.php'), array(), $this->o["version"]);
                 }
@@ -2459,6 +2464,18 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         // comment rating
 
         // rendering
+        function render_wait_article_thumb() {
+            $cls = 'loader '.$this->o["wait_loader_artthumb"].' thumb';
+            $div = '<div class="'.$cls.'"></div>';
+            $this->loader_article_thumb = $div;
+        }
+
+        function render_wait_comment_thumb() {
+            $cls = 'loader thumb '.$this->o["wait_loader_cmmthumb"];
+            $div = '<div class="'.$cls.'"></div>';
+            $this->loader_comment_thumb = $div;
+        }
+
         function render_wait_article() {
             $cls = "loader ".$this->o["wait_loader_article"]." ";
             if ($this->o["wait_show_article"] == 1)
