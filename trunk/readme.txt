@@ -115,6 +115,8 @@ Check the widget settings. Most likely problem is with default widget setting to
 
 == Changelog ==
 = 1.5.5 =
+* Thumbs loading animations and other thumbs improvements
+* Cleanup and optimization of main CSS file
 * Fixed few reported bugs and more php notices
 
 = 1.5.4 =
@@ -143,14 +145,16 @@ Check the widget settings. Most likely problem is with default widget setting to
 
 == Website ==
 * Plugin Home: http://www.gdstarrating.com/
-* Feedburner: http://feeds2.feedburner.com/GdStarRating
 * GDragoN Home: http://www.gdragon.info/
 * Dev4Press: http://www.dev4press.com/
 
 == Support ==
-* Twitter: http://twitter.com/milangd
 * Forum: http://forum.gdragon.info/viewforum.php?f=9
 * Database Layout: http://code.google.com/p/gd-star-rating/wiki/DatabaseTablesFormat
+
+== Subscribe ==
+* Feedburner: http://feeds2.feedburner.com/GdStarRating
+* Twitter: http://twitter.com/milangd
 
 == Communities ==
 * Google Code: http://code.google.com/p/gd-star-rating/
