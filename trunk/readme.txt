@@ -27,10 +27,6 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 [Tutorials](http://www.gdstarrating.com/category/tutorials/) |
 [User Guide](http://www.gdstarrating.com/downloads/user-guide/)
 
-= Plugin Support =
-* Before asking any question, please read the provided FAQ, user guide and tutorials.
-* I am not going to respond to repeated questions that are already answered or/and explained in tutorials.
-
 == Configuration ==
 Plugin administration consist of 14 main panels:
 

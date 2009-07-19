@@ -62,10 +62,22 @@ class GDSRArticleRating {
     var $user_votes;
     var $visitor_votes;
     var $votes;
+    var $views;
     var $user_rating = 0;
     var $visitor_rating = 0;
     var $rating = 0;
-    var $views;
+    var $thumbs_user_rating = 0;
+    var $thumbs_visitor_rating = 0;
+    var $thumbs_rating = 0;
+    var $thumbs_user_votes;
+    var $thumbs_user_votes_plus;
+    var $thumbs_user_votes_minus;
+    var $thumbs_visitor_votes;
+    var $thumbs_visitor_votes_plus;
+    var $thumbs_visitor_votes_minus;
+    var $thumbs_votes;
+    var $thumbs_votes_plus;
+    var $thumbs_votes_minus;
 
     /**
      * Class constructor.
@@ -82,6 +94,18 @@ class GDSRArticleRating {
         if ($post_data->user_voters > 0) $this->user_rating = number_format($post_data->user_votes / $post_data->user_voters, 1);
         if ($post_data->visitor_voters > 0) $this->visitor_rating = number_format($post_data->visitor_votes / $post_data->visitor_voters, 1);
         if ($this->votes > 0) $this->rating = number_format(($post_data->visitor_votes + $post_data->user_votes) / ($post_data->visitor_voters + $post_data->user_voters), 1);
+        $this->thumbs_votes = $post_data->user_recc_plus + $post_data->user_recc_minus + $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
+        $this->thumbs_rating = $post_data->user_recc_plus - $post_data->user_recc_minus + $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+        $this->thumbs_votes_plus = $post_data->user_recc_plus + $post_data->visitor_recc_plus;
+        $this->thumbs_votes_minus = $post_data->user_recc_minus + $post_data->visitor_recc_minus;
+        $this->thumbs_visitor_votes = $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
+        $this->thumbs_visitor_rating = $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+        $this->thumbs_visitor_votes_plus = $post_data->visitor_recc_plus;
+        $this->thumbs_visitor_votes_minus = $post_data->visitor_recc_minus;
+        $this->thumbs_user_votes = $post_data->user_recc_plus + $post_data->user_recc_minus;
+        $this->thumbs_user_rating = $post_data->user_recc_plus - $post_data->user_recc_minus;
+        $this->thumbs_user_votes_plus = $post_data->user_recc_plus;
+        $this->thumbs_user_votes_minus = $post_data->user_recc_minus;
     }
 }
 
@@ -98,6 +122,18 @@ class GDSRCommentRating {
     var $user_rating;
     var $visitor_rating;
     var $rating;
+    var $thumbs_user_rating = 0;
+    var $thumbs_visitor_rating = 0;
+    var $thumbs_rating = 0;
+    var $thumbs_user_votes;
+    var $thumbs_user_votes_plus;
+    var $thumbs_user_votes_minus;
+    var $thumbs_visitor_votes;
+    var $thumbs_visitor_votes_plus;
+    var $thumbs_visitor_votes_minus;
+    var $thumbs_votes;
+    var $thumbs_votes_plus;
+    var $thumbs_votes_minus;
 
     /**
      * Class constructor.
@@ -114,6 +150,18 @@ class GDSRCommentRating {
         if ($comment_data->user_voters > 0) $this->user_rating = number_format($comment_data->user_votes / $comment_data->user_voters, 1);
         if ($comment_data->visitor_voters > 0) $this->visitor_rating = number_format($comment_data->visitor_votes / $comment_data->visitor_voters, 1);
         if ($this->votes > 0) $this->rating = number_format(($comment_data->visitor_votes + $comment_data->user_votes) / ($comment_data->visitor_voters + $comment_data->user_voters), 1);
+        $this->thumbs_votes = $post_data->user_recc_plus + $post_data->user_recc_minus + $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
+        $this->thumbs_rating = $post_data->user_recc_plus - $post_data->user_recc_minus + $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+        $this->thumbs_votes_plus = $post_data->user_recc_plus + $post_data->visitor_recc_plus;
+        $this->thumbs_votes_minus = $post_data->user_recc_minus + $post_data->visitor_recc_minus;
+        $this->thumbs_visitor_votes = $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
+        $this->thumbs_visitor_rating = $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+        $this->thumbs_visitor_votes_plus = $post_data->visitor_recc_plus;
+        $this->thumbs_visitor_votes_minus = $post_data->visitor_recc_minus;
+        $this->thumbs_user_votes = $post_data->user_recc_plus + $post_data->user_recc_minus;
+        $this->thumbs_user_rating = $post_data->user_recc_plus - $post_data->user_recc_minus;
+        $this->thumbs_user_votes_plus = $post_data->user_recc_plus;
+        $this->thumbs_user_votes_minus = $post_data->user_recc_minus;
     }
 }
 
