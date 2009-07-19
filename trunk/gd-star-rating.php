@@ -156,7 +156,7 @@ if (!class_exists('GDStarRating')) {
 
             $this->c = array();
             $this->q = new GDSRQuery();
-            $this->qc = new GDSRQueryComments();
+            // $this->qc = new GDSRQueryComments();
 
             $this->tabpage = "front";
             $this->log_file = STARRATING_LOG_PATH;
@@ -752,11 +752,11 @@ if (!class_exists('GDStarRating')) {
                         $this->cache_comments($post_id);
                 }
             }
-            return $this->qc->reorder($comments);
+            return $comments;
         }
 
         function set_comment_reorder($params = array()) {
-            $this->qc->set($params);
+            // $this->qc->set($params);
         }
 
         /**
