@@ -339,20 +339,20 @@ class GDSRHelper {
         <?php
     }
 
-    function render_loaders($name, $selected = 'bar', $cls = 'jqloaderarticle', $width = 180, $extraSel = "") {
+    function render_loaders($name, $selected = 'bar', $cls = 'jqloaderarticle', $width = 180, $extraSel = "", $square_only = false) {
         ?>
 <select class="<?php echo $cls ?>" style="width: <?php echo $width ?>px;" name="<?php echo $name; ?>" id="<?php echo $name; ?>" <?php echo $extraSel; ?>>
     <option value=""<?php echo $selected == '' ? ' selected="selected"' : ''; ?>><?php _e("No Animation", "gd-star-rating"); ?></option>
     <option value="arrows"<?php echo $selected == 'arrows' ? ' selected="selected"' : ''; ?>>Arrows [16x16]</option>
-    <option value="bar"<?php echo $selected == 'bar' ? ' selected="selected"' : ''; ?>>Bar [208x13]</option>
+    <?php if (!$square_only) { ?><option value="bar"<?php echo $selected == 'bar' ? ' selected="selected"' : ''; ?>>Bar [208x13]</option><?php } ?>
     <option value="circle"<?php echo $selected == 'circle' ? ' selected="selected"' : ''; ?>>Circle [16x16]</option>
     <option value="flower"<?php echo $selected == 'flower' ? ' selected="selected"' : ''; ?>>Flower [15x15]</option>
-    <option value="gauge"<?php echo $selected == 'gauge' ? ' selected="selected"' : ''; ?>>Gauge [128x15]</option>
-    <option value="squares"<?php echo $selected == 'squares' ? ' selected="selected"' : ''; ?>>Squares [43x11]</option>
-    <option value="fountain"<?php echo $selected == 'fountain' ? ' selected="selected"' : ''; ?>>Fountain [128x16]</option>
+    <?php if (!$square_only) { ?><option value="gauge"<?php echo $selected == 'gauge' ? ' selected="selected"' : ''; ?>>Gauge [128x15]</option><?php } ?>
+    <?php if (!$square_only) { ?><option value="squares"<?php echo $selected == 'squares' ? ' selected="selected"' : ''; ?>>Squares [43x11]</option><?php } ?>
+    <?php if (!$square_only) { ?><option value="fountain"<?php echo $selected == 'fountain' ? ' selected="selected"' : ''; ?>>Fountain [128x16]</option><?php } ?>
     <option value="broken"<?php echo $selected == 'broken' ? ' selected="selected"' : ''; ?>>Broken [16x16]</option>
     <option value="brokenbig"<?php echo $selected == 'brokenbig' ? ' selected="selected"' : ''; ?>>Broken Big [24x24]</option>
-    <option value="lines"<?php echo $selected == 'lines' ? ' selected="selected"' : ''; ?>>Lines [96x12]</option>
+    <?php if (!$square_only) { ?><option value="lines"<?php echo $selected == 'lines' ? ' selected="selected"' : ''; ?>>Lines [96x12]</option><?php } ?>
     <option value="snake"<?php echo $selected == 'snake' ? ' selected="selected"' : ''; ?>>Snake [12x12]</option>
     <option value="radar"<?php echo $selected == 'radar' ? ' selected="selected"' : ''; ?>>Radar [16x16]</option>
     <option value="snakebig"<?php echo $selected == 'snakebig' ? ' selected="selected"' : ''; ?>>Snake Big [24x24]</option>

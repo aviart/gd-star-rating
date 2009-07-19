@@ -23,9 +23,9 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 [Actions & Filters](http://info.dev4press.com/gd-star-rating/filters.html)
 
 = Using the Plugin =
-[FAQ](http://www.gdstarrating.com/faq/) |
 [Tutorials](http://www.gdstarrating.com/category/tutorials/) |
-[User Guide](http://www.gdstarrating.com/downloads/user-guide/)
+[User Guide](http://www.gdstarrating.com/downloads/user-guide/) |
+[FAQ](http://www.gdstarrating.com/faq/)
 
 == Configuration ==
 Plugin administration consist of 14 main panels:

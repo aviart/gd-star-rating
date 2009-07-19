@@ -238,48 +238,32 @@ foreach ($thumb_sizes as $size) {
 
 /* loading indicators */
 .loader { margin-left: auto; margin-right: auto; text-align: left; }
+.loader.thumb { background-position: center !important; padding-left: 0px; }
+.loader.width { padding-left: 0px; }
 
 .loader.circle { background: url(<?php echo $base_url_local;?>gfx/loader/circle.gif) no-repeat left; padding-left: 18px; }
-.loader.circle.width { width: 16px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.bar { background: url(<?php echo $base_url_local;?>gfx/loader/bar.gif) no-repeat left; padding-left: 216px; }
-.loader.bar.width { width: 208px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.arrows { background: url(<?php echo $base_url_local;?>gfx/loader/arrows.gif) no-repeat left; padding-left: 18px; }
-.loader.arrows.width { width: 16px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.flower { background: url(<?php echo $base_url_local;?>gfx/loader/flower.gif) no-repeat left; padding-left: 18px; }
-.loader.flower.width { width: 15px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.gauge { background: url(<?php echo $base_url_local;?>gfx/loader/gauge.gif) no-repeat left; padding-left: 134px; }
-.loader.gauge.width { width: 128px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.squares { background: url(<?php echo $base_url_local;?>gfx/loader/squares.gif) no-repeat left; padding-left: 43px; }
-.loader.squares.width { width: 43px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.fountain { background: url(<?php echo $base_url_local;?>gfx/loader/fountain.gif) no-repeat left; padding-left: 134px; }
-.loader.fountain.width { width: 128px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.lines { background: url(<?php echo $base_url_local;?>gfx/loader/lines.gif) no-repeat left; padding-left: 102px; }
-.loader.lines.width { width: 96px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.broken { background: url(<?php echo $base_url_local;?>gfx/loader/broken.gif) no-repeat left; padding-left: 18px; }
-.loader.broken.width { width: 16px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.brokenbig { background: url(<?php echo $base_url_local;?>gfx/loader/brokenbig.gif) no-repeat left; padding-left: 26px; }
-.loader.brokenbig.width { width: 24px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.snake { background: url(<?php echo $base_url_local;?>gfx/loader/snake.gif) no-repeat left; padding-left: 14px; }
-.loader.snake.width { width: 12px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.snakebig { background: url(<?php echo $base_url_local;?>gfx/loader/snakebig.gif) no-repeat left; padding-left: 26px; }
-.loader.snakebig.width { width: 24px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.triangles { background: url(<?php echo $base_url_local;?>gfx/loader/triangles.gif) no-repeat left; padding-left: 14px; }
-.loader.triangles.width { width: 12px; margin-left: auto; margin-right: auto; padding-left: 0px; }
-
 .loader.radar { background: url(<?php echo $base_url_local;?>gfx/loader/radar.gif) no-repeat left; padding-left: 18px; }
-.loader.radar.width { width: 16px; margin-left: auto; margin-right: auto; padding-left: 0px; }
+
+.loader.circle.width, .loader.arrows.width, .loader.broken.width, .loader.radar.width { width: 16px;  }
+.loader.fountain.width, .loader.gauge.width { width: 128px; }
+.loader.snakebig.width, .loader.brokenbig.width { width: 24px; }
+.loader.triangles.width, .loader.snake.width { width: 12px; }
+.loader.bar.width { width: 208px; }
+.loader.flower.width { width: 15px; }
+.loader.lines.width { width: 96px; }
+.loader.squares.width { width: 43px; }
 
 /* top rating widget */
 .trw-title { text-align: center; font-size: 16px; font-family: "Century Gothic", Arial, Helvetica, sans-serif; }
