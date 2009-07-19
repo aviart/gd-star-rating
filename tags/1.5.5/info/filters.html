@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>GD Star Rating: Filters &amp; Actions</title>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--[if IE ]><link rel="stylesheet" href="style_ie.css" type="text/css" media="screen" /><![endif]-->
+</head>
+<body>
+
+<div id="sidebar">
+    <h4>Contents:</h4>
+    <ul>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="functions.html">Functions</a></li>
+        <li><a href="filters.html">Filters &amp; Actions</a></li>
+        <li><a href="javascript.html">JavaScript</a></li>
+        <li><a href="wpquery.html">WP Query</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="t2map.html">T2 Templates</a></li>
+        <li><a href="languages.html">Translations</a></li>
+    </ul>
+    <h4>Plugin Links:</h4>
+    <ul>
+        <li><a href="http://www.gdstarrating.com/">Home Page</a></li>
+        <li><a href="http://wordpress.org/extend/plugins/gd-star-rating">WordPress Extend</a></li>
+        <li><a href="http://groups.google.com/group/gd-star-rating">Google Groups</a></li>
+        <li><a href="http://twitter.com/milangd">Follow on Twitter</a></li>
+    </ul>
+    <h4>Support:</h4>
+    <ul>
+        <li><a href="http://www.gdstarrating.com/premium/">Premium Support</a></li>
+        <li><a href="http://forum.gdragon.info/">Support Forum</a></li>
+    </ul>
+    <h4>Other Links:</h4>
+    <ul>
+        <li><a href="http://www.dev4press.com/">Dev4Press</a></li>
+    </ul>
+    <h4 class="copyright">Copyright:</h4>
+    <p>
+        &copy; 2009. <a href="http://www.gdragon.info/">Golden Dragon WebStudio</a>
+    </p>
+</div>
+<div id="content">
+<div class="title">
+    <h1>GD Star Rating</h1>
+    <h2>filters &amp; actions</h2>
+</div>
+
+<div class="contents">
+    <p>This is the list of filters and actions added by the plugin. You can use them as any standard WordPress filters and actions from other plugins or themes.</p>
+    <h3>Filters</h3>
+    <ul>
+        <li><strong>gdsr_widget_data_prepare</strong>: filter for array of the results prepared for rating results widget</li>
+        <li><strong>gdsr_widget_post_title</strong>: modify post title for each of widget results. if you already changed titles using widget settings, this filter will be on changed title, not original. disable widget setting for title if you want to change it using filter.</li>
+        <li><strong>gdsr_widget_post_excerpt</strong>: modify post excerpt for each of widget results. excerpt will be already prepared and even shortened if you set the length for it in the widget settings.</li>
+        <li><strong>gdsr_comments_widget_data_prepare</strong>: filter for array of the results prepared for comments rating results widget</li>
+        <li><strong>gdsr_comments_widget_comment_content</strong>: modify the comment content for each of the widget results. if you already changed it using widget settings, this filter will be on changed content, not original. disable widget setting for content if you want to change it using filter.</li>
+    </ul>
+    <h3>Actions</h3>
+    <ul>
+        <li><strong>gdsr_init</strong>: executed at the end of plugins init block</li>
+        <li><strong>gdsr_admin_menu</strong>: executed before adding last menu element</li>
+        <li><strong>gdsr_admin_head</strong>: executed at the end of plugins admin header block</li>
+        <li><strong>gdsr_wp_head</strong>: executed at the end of plugins blog header block</li>
+        <li><strong>gdsr_init_save_review</strong>: executed after saving review values</li>
+    </ul>
+</div>
+</div>
+</body>
+</html>
