@@ -548,18 +548,27 @@ class GDSRRenderT2 {
 
         if (in_array("%THUMB_UP%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
             if ($allow_vote) {
-                $rater = sprintf('<div id="gdsr_thumb_%s_a_up" class="gdt-size-%s gdthumb gdup"><a id="gdsrX%sXupXaX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
-                    $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+                $rater = sprintf('<div id="gdsr_thumb_%s_a_up" class="gdt-size-%s gdthumb gdup"><a id="gdsrX%sXupXaX%sX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
+                    $post_id, $unit_width, $post_id, $template_id, $unit_width, $wait_msg == '' ? "N" : "Y", $style);
+                if ($wait_msg != '') {
+                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_a_loader_up", $post_id), $unit_width, '', $wait_msg);
+                    $rater.= sprintf($rater_wait, sprintf("width: %spx; height: %spx;", $unit_width, $unit_width));
+                }
             } else {
                 $rater = sprintf('<div id="gdsr_thumb_%s_a_up" class="gdt-size-%s gdthumb gdup"><div class="gdt-%s"></div></div>',
                     $post_id, $unit_width, $style);
             }
             $tpl_render = str_replace("%THUMB_UP%", $rater, $tpl_render);
         }
+
         if (in_array("%THUMB_DOWN%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
             if ($allow_vote) {
-                $rater = sprintf('<div id="gdsr_thumb_%s_a_dw" class="gdt-size-%s gdthumb gddw"><a id="gdsrX%sXdwXaX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
-                    $post_id, $unit_width, $post_id, $template_id, $unit_width, $style);
+                $rater = sprintf('<div id="gdsr_thumb_%s_a_dw" class="gdt-size-%s gdthumb gddw"><a id="gdsrX%sXdwXaX%sX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
+                    $post_id, $unit_width, $post_id, $template_id, $unit_width, $wait_msg == '' ? "N" : "Y", $style);
+                if ($wait_msg != '') {
+                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_a_loader_dw", $post_id), $unit_width, '', $wait_msg);
+                    $rater.= sprintf($rater_wait, sprintf("width: %spx; height: %spx;", $unit_width, $unit_width));
+                }
             } else {
                 $rater = sprintf('<div id="gdsr_thumb_%s_a_dw" class="gdt-size-%s gdthumb gddw"><div class="gdt-%s"></div></div>',
                     $post_id, $unit_width, $style);
@@ -640,18 +649,27 @@ class GDSRRenderT2 {
 
         if (in_array("%THUMB_UP%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
             if ($allow_vote) {
-                $rater = sprintf('<div id="gdsr_thumb_%s_c_up" class="gdt-size-%s gdthumb gdup"><a id="gdsrX%sXupXcX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
-                    $comment_id, $unit_width, $comment_id, $template_id, $unit_width, $style);
+                $rater = sprintf('<div id="gdsr_thumb_%s_c_up" class="gdt-size-%s gdthumb gdup"><a id="gdsrX%sXupXcX%sX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
+                    $comment_id, $unit_width, $comment_id, $template_id, $unit_width, $wait_msg == '' ? "N" : "Y", $style);
+                if ($wait_msg != '') {
+                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_c_loader_up", $comment_id), $unit_width, '', $wait_msg);
+                    $rater.= sprintf($rater_wait, sprintf("width: %spx; height: %spx;", $unit_width, $unit_width));
+                }
             } else {
                 $rater = sprintf('<div id="gdsr_thumb_%s_c_up" class="gdt-size-%s gdthumb gdup"><div class="gdt-%s"></div></div>',
                     $comment_id, $unit_width, $style);
             }
             $tpl_render = str_replace("%THUMB_UP%", $rater, $tpl_render);
         }
+
         if (in_array("%THUMB_DOWN%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
             if ($allow_vote) {
-                $rater = sprintf('<div id="gdsr_thumb_%s_c_dw" class="gdt-size-%s gdthumb gddw"><a id="gdsrX%sXdwXcX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
-                    $comment_id, $unit_width, $comment_id, $template_id, $unit_width, $style);
+                $rater = sprintf('<div id="gdsr_thumb_%s_c_dw" class="gdt-size-%s gdthumb gddw"><a id="gdsrX%sXdwXcX%sX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
+                    $comment_id, $unit_width, $comment_id, $template_id, $unit_width, $wait_msg == '' ? "N" : "Y", $style);
+                if ($wait_msg != '') {
+                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_c_loader_dw", $comment_id), $unit_width, '', $wait_msg);
+                    $rater.= sprintf($rater_wait, sprintf("width: %spx; height: %spx;", $unit_width, $unit_width));
+                }
             } else {
                 $rater = sprintf('<div id="gdsr_thumb_%s_c_dw" class="gdt-size-%s gdthumb gddw"><div class="gdt-%s"></div></div>',
                     $comment_id, $unit_width, $style);

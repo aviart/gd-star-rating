@@ -196,6 +196,7 @@ foreach ($thumb_sizes as $size) {
 .gdthumb { position: relative; float: left; }
 .gdthumb div { opacity: 0.7; }
 .gdthumb.gdup a { background-position:  0px 0px; }
+.thumblock .ratingloader { float: left; }
 
 .ratemulti .starsbar .gdcurrent { width: 0; top: 0; position: absolute; opacity: 0.7; }
 .starsbar .gdinner { padding: 0; }
@@ -238,8 +239,6 @@ foreach ($thumb_sizes as $size) {
 
 /* loading indicators */
 .loader { margin-left: auto; margin-right: auto; text-align: left; }
-.loader.thumb { background-position: center !important; padding-left: 0px; }
-.loader.width { padding-left: 0px; }
 
 .loader.circle { background: url(<?php echo $base_url_local;?>gfx/loader/circle.gif) no-repeat left; padding-left: 18px; }
 .loader.bar { background: url(<?php echo $base_url_local;?>gfx/loader/bar.gif) no-repeat left; padding-left: 216px; }
@@ -264,6 +263,11 @@ foreach ($thumb_sizes as $size) {
 .loader.flower.width { width: 15px; }
 .loader.lines.width { width: 96px; }
 .loader.squares.width { width: 43px; }
+
+.loader.width { padding-left: 0px; }
+.loader.arrows.thumb, .loader.flower.thumb, .loader.circle.thumb, .loader.broken.thumb,
+.loader.radar.thumb, .loader.triangles.thumb, .loader.snake.thumb, .loader.snakebig.thumb,
+.loader.brokenbig.thumb { background-position: center !important; padding-left: 0px !important; }
 
 /* top rating widget */
 .trw-title { text-align: center; font-size: 16px; font-family: "Century Gothic", Arial, Helvetica, sans-serif; }
