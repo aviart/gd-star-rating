@@ -2465,15 +2465,19 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
         // rendering
         function render_wait_article_thumb() {
-            $cls = 'loader '.$this->o["wait_loader_artthumb"].' thumb';
-            $div = '<div class="'.$cls.'"></div>';
-            $this->loader_article_thumb = $div;
+            if ($this->o["wait_loader_artthumb"] != "") {
+                $cls = 'loader '.$this->o["wait_loader_artthumb"].' thumb';
+                $div = '<div class="'.$cls.'" style="%s"></div>';
+                $this->loader_article_thumb = $div;
+            }
         }
 
         function render_wait_comment_thumb() {
-            $cls = 'loader thumb '.$this->o["wait_loader_cmmthumb"];
-            $div = '<div class="'.$cls.'"></div>';
-            $this->loader_comment_thumb = $div;
+            if ($this->o["wait_loader_cmmthumb"] != "") {
+                $cls = 'loader thumb '.$this->o["wait_loader_cmmthumb"];
+                $div = '<div class="'.$cls.'" style="%s"></div>';
+                $this->loader_comment_thumb = $div;
+            }
         }
 
         function render_wait_article() {
@@ -2854,7 +2858,7 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_tcb_template"];
 
-            $rating_block = GDSRRenderT2::render_tcb($template_id, $rd_comment_id, $votes, $score, $votes_plus, $votes_minus, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, '');
+            $rating_block = GDSRRenderT2::render_tcb($template_id, $rd_comment_id, $votes, $score, $votes_plus, $votes_minus, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, $this->loader_comment_thumb);
             return $rating_block;
         }
 
@@ -3079,7 +3083,7 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_tab_template"];
 
-            $rating_block = GDSRRenderT2::render_tab($template_id, $rd_post_id, $votes, $score, $votes_plus, $votes_minus, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, '', $expiry_type, $remaining, $deadline);
+            $rating_block = GDSRRenderT2::render_tab($template_id, $rd_post_id, $votes, $score, $votes_plus, $votes_minus, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, $this->loader_article_thumb, $expiry_type, $remaining, $deadline);
             return $rating_block;
         }
 
