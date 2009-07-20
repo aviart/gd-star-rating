@@ -72,6 +72,19 @@
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
+                <td width="150"><?php _e("Data source", "gd-star-rating"); ?>:</td>
+                <td align="left">
+                <select style="width: 180px;" name="gdsr_rss_datasource" id="gdsr_rss_datasource">
+                    <option value="standard"<?php echo $gdsr_options['rss_datasource'] == 'standard' ? ' selected="selected"' : ''; ?>><?php _e("Standard Rating", "gd-star-rating"); ?></option>
+                    <option value="multis"<?php echo $gdsr_options['rss_datasource'] == 'multis' ? ' selected="selected"' : ''; ?>><?php _e("Multi Rating", "gd-star-rating"); ?></option>
+                    <option value="thumbs"<?php echo $gdsr_options['rss_datasource'] == 'thumbs' ? ' selected="selected"' : ''; ?>><?php _e("Thumbs Rating", "gd-star-rating"); ?></option>
+                </select>
+                </td>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
                 <td width="150"><?php _e("Stars", "gd-star-rating"); ?>:</td>
                 <td width="200" align="left">
                 <select style="width: 180px;" name="gdsr_rss_style" id="gdsr_rss_style">
@@ -81,6 +94,18 @@
                 <td width="10"></td>
                 <td width="150" align="left">
                 <?php GDSRHelper::render_star_sizes("gdsr_rss_size", $gdsr_options["rss_size"]); ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="150"><?php _e("Thumbs", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <select style="width: 180px;" name="gdsr_thumb_rss_style" id="gdsr_thumb_rss_style">
+                <?php GDSRHelper::render_styles_select($gdsr_gfx->thumbs, $gdsr_options["thumb_rss_style"]); ?>
+                </select>
+                </td>
+                <td width="10"></td>
+                <td width="150" align="left">
+                <?php GDSRHelper::render_thumbs_sizes("gdsr_thumb_rss_size", $gdsr_options["thumb_rss_size"]); ?>
                 </td>
             </tr>
         </table>

@@ -39,6 +39,7 @@
 <?php if (count($wpml) > 0) { ?>
             <option value="multis"<?php echo $wpno['source'] == 'multis' ? ' selected="selected"' : ''; ?>><?php _e("Multi Rating", "gd-star-rating"); ?></option>
 <?php } ?>
+            <option value="thumbs"<?php echo $wpno['source'] == 'thumbs' ? ' selected="selected"' : ''; ?>><?php _e("Thumbs Rating", "gd-star-rating"); ?></option>
         </select></label>
     </td>
   </tr>
