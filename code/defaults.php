@@ -2,11 +2,11 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.5.5",
-        "date" => "2009.07.20.",
+        "version" => "1.5.6",
+        "date" => "2009.07.24.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 825,
+        "build" => 830,
         "admin_views" => 0,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,
@@ -128,8 +128,8 @@ class GDSRDefaults {
         "display_home" => 1,
         "display_archive" => 1,
         "display_search" => 1,
-        "override_display_comment" => 1,
-        "override_thumb_display_comment" => 1,
+        "override_display_comment" => 0,
+        "override_thumb_display_comment" => 0,
         "auto_display_position" => "bottom",
         "auto_display_comment_position" => "bottom",
         "thumb_style" => "starrating",
