@@ -128,8 +128,11 @@ if ($_POST['gdsr_action'] == 'save') {
     $gdsr_options["logged"] = isset($_POST['gdsr_logged']) ? 1 : 0;
     $gdsr_options["cmm_logged"] = isset($_POST['gdsr_cmm_logged']) ? 1 : 0;
 
+    $gdsr_options["rss_datasource"] = $_POST['gdsr_rss_datasource'];
     $gdsr_options["rss_style"] = $_POST['gdsr_rss_style'];
     $gdsr_options["rss_size"] = $_POST['gdsr_rss_size'];
+    $gdsr_options["thumb_rss_style"] = $_POST['gdsr_thumb_rss_style'];
+    $gdsr_options["thumb_rss_size"] = $_POST['gdsr_thumb_rss_size'];
     $gdsr_options["rss_header_text"] = stripslashes(htmlentities($_POST['gdsr_rss_header_text'], ENT_QUOTES, STARRATING_ENCODING));
     $gdsr_options["style"] = $_POST['gdsr_style'];
     $gdsr_options["style_ie6"] = $_POST['gdsr_style_ie6'];

@@ -184,6 +184,7 @@ $t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
 $t->add_element("%TITLE%", __("post/page title", "gd-star-rating"));
 $t->add_element("%PERMALINK%", __("url to post/page", "gd-star-rating"));
 $t->add_element("%STARS%", __("rating stars", "gd-star-rating"));
+$t->add_element("%THUMB%", __("rating thumb", "gd-star-rating"));
 $t->add_element("%BAYES_RATING%", __("bayesian estimate mean rating", "gd-star-rating"));
 $t->add_element("%BAYES_STARS%", __("bayesian estimate mean rating stars", "gd-star-rating"));
 $t->add_element("%RATE_TREND%", __("article rating trend", "gd-star-rating"));
