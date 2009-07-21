@@ -413,21 +413,22 @@ wp_gdsr_dump("CAT_DEFAULTS_ADD", $cats);
         $dbt_data_article = $table_prefix.'gdsr_data_article';
         $dbt_data_comment = $table_prefix.'gdsr_data_comment';
         $dbt_votes_log = $table_prefix.'gdsr_votes_log';
-
         if ($delete == "") return;
 
-        $delstring = "";
-        $dellog = "";
+        $delstring = $dellog = "";
         switch (substr($delete, 1, 1)) {
             case "A":
                 $delstring = "user_votes = 0, user_voters = 0, visitor_votes = 0, visitor_voters = 0";
+                $delstring.= ", user_recc_plus = 0, user_recc_minus = 0, visitor_recc_plus = 0, visitor_recc_minus = 0";
                 break;
             case "V":
                 $delstring = "visitor_votes = 0, visitor_voters = 0";
+                $delstring.= ", visitor_recc_plus = 0, visitor_recc_minus = 0";
                 $dellog = " and user_id = 0";
                 break;
             case "U":
                 $delstring = "user_votes = 0, user_voters = 0";
+                $delstring.= ", user_recc_plus = 0, user_recc_minus = 0";
                 $dellog = " and user_id > 0";
                 break;
             default:
@@ -437,11 +438,11 @@ wp_gdsr_dump("CAT_DEFAULTS_ADD", $cats);
 
         if (substr($delete, 0, 1) == "A") {
             $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_article, $delstring, $ids));
-            $wpdb->query(sprintf("delete from %s where vote_type = 'article' and id in %s%s", $dbt_votes_log, $ids, $dellog));
+            $wpdb->query(sprintf("delete from %s where vote_type in ('article', 'artthumb') and id in %s%s", $dbt_votes_log, $ids, $dellog));
         }
         else if (substr($delete, 0, 1) == "K") {
             $wpdb->query(sprintf("update %s set %s where comment_id in %s", $dbt_data_comment, $delstring, $ids));
-            $wpdb->query(sprintf("delete from %s where vote_type = 'comment' and id in %s%s", $dbt_votes_log, $ids, $dellog));
+            $wpdb->query(sprintf("delete from %s where vote_type in ('comment', 'cmmthumb') and id in %s%s", $dbt_votes_log, $ids, $dellog));
         }
         else if (substr($delete, 0, 1) == "C") {
             $cids = GDSRDatabase::get_commentids_posts($ids);
@@ -450,7 +451,7 @@ wp_gdsr_dump("CAT_DEFAULTS_ADD", $cats);
                 $cm[] = $cid->comment_id;
             $cms = "(".join(", ", $cm).")";
             $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_comment, $delstring, $ids));
-            $wpdb->query(sprintf("delete from %s where vote_type = 'comment' and id in %s%s", $dbt_votes_log, $cms, $dellog));
+            $wpdb->query(sprintf("delete from %s where vote_type in ('comment', 'cmmthumb') and id in %s%s", $dbt_votes_log, $cms, $dellog));
         }
         else {
             return;
@@ -464,6 +465,23 @@ wp_gdsr_dump("CAT_DEFAULTS_ADD", $cats);
         $wpdb->query($sql);
     }
 
+    function delete_voters_main_thumb($id, $value, $article = true, $user = true) {
+        global $wpdb, $table_prefix;
+        $update = "";
+
+        if ($value > 0) {
+            if (!$user) $update = "visitor_recc_plus = visitor_recc_plus - 1";
+            else $update = "user_recc_plus = user_recc_plus - 1";
+        } else {
+            if (!$user) $update = "visitor_recc_minus = visitor_recc_minus - 1";
+            else $update = "user_recc_minus = user_recc_minus - 1";
+        }
+
+        $sql = sprintf("update %sgdsr_data_%s set %s where %s_id = %s", $table_prefix,
+                $article ? "article" : "comment", $mod, $article ? "post" : "comment", $id);
+        $wpdb->query($sql);
+    }
+
     function delete_voters_main($id, $value, $article = true, $user = true) {
         global $wpdb, $table_prefix;
         $mod = $user ? "user_voters = user_voters - 1, user_votes = user_votes - 1" :
@@ -474,20 +492,44 @@ wp_gdsr_dump("CAT_DEFAULTS_ADD", $cats);
         $wpdb->query($sql);
     }
 
-    function delete_voters_full($ids, $vote_type) {
+    function delete_voters_full($ids, $vote_type, $thumb = false) {
         global $wpdb, $table_prefix;
+        if ($vote_type == "artthumb") $vote_type = "article";
+        if ($vote_type == "cmmthumb") $vote_type = "comment";
         $delfrom = $table_prefix."gdsr_data_".$vote_type;
 
-        $sql = sprintf("select id, user_id = 0 as user, count(*) as count, sum(vote) as votes from %sgdsr_votes_log where record_id in %s group by id, (user_id = 0)", $table_prefix, $ids);
-        $del = $wpdb->get_results($sql);
+        if ($thumb) {
+            $sql = sprintf("select id, user_id, vote from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
+            $del = $wpdb->get_results($sql);
 
-        if (count($del) > 0) {
-            foreach ($del as $d) {
-                if ($d->user == 0) $update = sprintf("user_voters = user_voters - %s, user_votes = user_votes - %s", $d->count, $d->votes);
-                else $update = sprintf("visitor_voters = visitor_voters - %s, visitor_votes = visitor_votes - %s", $d->count, $d->votes);
-                
-                $sql = sprintf("update %s set %s where post_id = %s", $delfrom, $update, $d->id);
-                $wpdb->query($sql);
+            if (count($del) > 0) {
+                foreach ($del as $d) {
+                    $update = "";
+
+                    if ($d->vote > 0) {
+                        if ($d->user_id == 0) $update = "visitor_recc_plus = visitor_recc_plus - 1";
+                        else $update = "user_recc_plus = user_recc_plus - 1";
+                    } else {
+                        if ($d->user_id == 0) $update = "visitor_recc_minus = visitor_recc_minus - 1";
+                        else $update = "user_recc_minus = user_recc_minus - 1";
+                    }
+
+                    $sql = sprintf("update %s set %s where post_id = %s", $delfrom, $update, $d->id);
+                    $wpdb->query($sql);
+                }
+            }
+        } else {
+            $sql = sprintf("select id, user_id = 0 as user, count(*) as count, sum(vote) as votes from %sgdsr_votes_log where record_id in %s group by id, (user_id = 0)", $table_prefix, $ids);
+            $del = $wpdb->get_results($sql);
+
+            if (count($del) > 0) {
+                foreach ($del as $d) {
+                    if ($d->user == 0) $update = sprintf("user_voters = user_voters - %s, user_votes = user_votes - %s", $d->count, $d->votes);
+                    else $update = sprintf("visitor_voters = visitor_voters - %s, visitor_votes = visitor_votes - %s", $d->count, $d->votes);
+
+                    $sql = sprintf("update %s set %s where post_id = %s", $delfrom, $update, $d->id);
+                    $wpdb->query($sql);
+                }
             }
         }
 

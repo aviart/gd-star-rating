@@ -141,7 +141,7 @@ span.rss-date {
 .gdrgrid td.options {
 	text-align: right;
 	white-space: normal;
-	padding-right: 0;
+	padding-right: 0 !important;
 }
 
 .gdrgrid td.t { white-space: normal; padding-bottom: 3px; }

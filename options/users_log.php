@@ -26,6 +26,8 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     $page_id = 1;
 }
 
+$is_thumb = substr($vote_type, 3) == "thumb";
+
 if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $ips = $_POST["gdsr_item"];
     if (count($ips) > 0) {
@@ -51,7 +53,8 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
                     GDSRDatabase::delete_voters_log("(".$l->record_id.")");
                 if ($del == "FD" && $l->id == $l->control_id) {
                     GDSRDatabase::delete_voters_log("(".$l->record_id.")");
-                    GDSRDatabase::delete_voters_main($l->id, $l->vote, $l->vote_type == "article", $user_id > 0);
+                    if ($is_thumb) GDSRDatabase::delete_voters_main_thumb($l->id, $l->vote, $l->vote_type == "artthumb", $user_id > 0);
+                    else GDSRDatabase::delete_voters_main($l->id, $l->vote, $l->vote_type == "article", $user_id > 0);
                 }
             }
         }
