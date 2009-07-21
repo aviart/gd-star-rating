@@ -454,17 +454,25 @@ class GDSRRenderT2 {
         return $rater;
     }
 
-    function render_ssb($template_id, $post_id, $votes, $score, $unit_set, $unit_width, $unit_count, $header_text) {
+    function render_ssb($template_id, $post_id, $votes, $score, $unit_count, $header_text, $type) {
         $template = GDSRRenderT2::get_template($template_id, "SSB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+        $rater_stars = "";
 
-        $rating2 = $votes > 0 ? $score / $votes : 0;
-        if ($rating2 > $unit_count) $rating2 = $unit_count;
-        $rating = @number_format($rating2, 1);
-
-        $rater_stars = '<img src="'.STARRATING_URL.sprintf("gfx.php?value=%s", $rating).'" />';
+        if ($type == "thumbs") {
+            $rating = $score > 0 ? "+".$score : $score;
+            $rater_stars = '<img src="'.STARRATING_URL.sprintf("gfx.php?type=thumbs&value=%s", $score).'" />';
+        } else if ($type == "multis") {
+            $rating = $score;
+            $rater_stars = '<img src="'.STARRATING_URL.sprintf("gfx.php?value=%s", $rating).'" />';
+        } else {
+            $rating2 = $votes > 0 ? $score / $votes : 0;
+            if ($rating2 > $unit_count) $rating2 = $unit_count;
+            $rating = @number_format($rating2, 1);
+            $rater_stars = '<img src="'.STARRATING_URL.sprintf("gfx.php?value=%s", $rating).'" />';
+        }
 
         $rt = str_replace('%RATING%', $rating, $tpl_render);
         $rt = str_replace('%MAX_RATING%', $unit_count, $rt);

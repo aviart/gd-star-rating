@@ -461,8 +461,7 @@ if (!class_exists('GDStarRating')) {
                             case "total":
                                 $sum = $data->average_rating_users * $data->total_votes_users + $data->average_rating_visitors * $data->total_votes_visitors;
                                 $votes = $data->total_votes_users + $data->total_votes_visitors;
-                                $sum = $votes == 0 ? 0 : $sum / $votes;
-                                $rating = number_format($sum, 1);
+                                $rating = number_format($votes == 0 ? 0 : $sum / $votes, 1);
                                 break;
                         }
                         $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $rating);
@@ -2736,24 +2735,53 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
             global $post;
             $rd_post_id = intval($post->ID);
             $post_data = GDSRDatabase::get_post_data($rd_post_id);
+            $template_id = $this->o["default_ssb_template"];
+            $votes = $score = 0;
+            $stars = 10;
 
-            $votes = 0;
-            $score = 0;
-
-            if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
-                $votes = $post_data->user_voters + $post_data->visitor_voters;
-                $score = $post_data->user_votes + $post_data->visitor_votes;
-            } else if ($post_data->rules_articles == "V") {
-                $votes = $post_data->visitor_voters;
-                $score = $post_data->visitor_votes;
+            if ($this->o["rss_datasource"] == "thumbs") {
+                if ($rules_articles == "A" || $rules_articles == "N") {
+                    $votes = $post_data->user_recc_plus + $post_data->user_recc_minus + $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
+                    $score = $post_data->user_recc_plus - $post_data->user_recc_minus + $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+                } else if ($rules_articles == "V") {
+                    $votes = $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
+                    $score = $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+                } else {
+                    $votes = $post_data->user_recc_plus + $post_data->user_recc_minus;
+                    $score = $post_data->user_recc_plus - $post_data->user_recc_minus;
+                }
+            } else if ($this->o["rss_datasource"] == "standard") {
+                $stars = $this->o["stars"];
+                if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
+                    $votes = $post_data->user_voters + $post_data->visitor_voters;
+                    $score = $post_data->user_votes + $post_data->visitor_votes;
+                } else if ($post_data->rules_articles == "V") {
+                    $votes = $post_data->visitor_voters;
+                    $score = $post_data->visitor_votes;
+                } else {
+                    $votes = $post_data->user_voters;
+                    $score = $post_data->user_votes;
+                }
             } else {
-                $votes = $post_data->user_voters;
-                $score = $post_data->user_votes;
+                $data = GDSRDBMulti::get_rss_multi_data($post_id);
+                if (count($row) > 0) {
+                    $set = wp_gdget_multi_set($data->multi_id);
+                    $stars = $set->stars;
+                    if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
+                        $sum = $data->average_rating_users * $data->total_votes_users + $data->average_rating_visitors * $data->total_votes_visitors;
+                        $votes = $data->total_votes_visitors + $data->total_votes_users;
+                        $score = number_format($votes == 0 ? 0 : $sum / $votes, 1);
+                    } else if ($post_data->rules_articles == "V") {
+                        $votes = $data->total_votes_visitors;
+                        $score = $data->average_rating_visitors;
+                    } else {
+                        $votes = $data->total_votes_users;
+                        $score = $data->average_rating_users;
+                    }
+                }
             }
 
-            $template_id = $this->o["default_ssb_template"];
-
-            $rating_block = GDSRRenderT2::render_ssb($template_id, $rd_post_id, $votes, $score, $this->o["rss_style"], $this->o["rss_size"], $this->o["stars"], $this->o["rss_header_text"]);
+            $rating_block = GDSRRenderT2::render_ssb($template_id, $rd_post_id, $votes, $score, $stars, $this->o["rss_header_text"], $this->o["rss_datasource"]);
             return $rating_block;
         }
 
