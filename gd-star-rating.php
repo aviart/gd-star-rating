@@ -654,8 +654,10 @@ if (!class_exists('GDStarRating')) {
                 if ($this->wp_version >= 27 && $this->wp_version < 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />');
                 if ($this->wp_version >= 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp28.css" type="text/css" media="screen" />');
                 if ($this->wp_version < 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp26.css" type="text/css" media="screen" />');
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>');
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>');
+                if ($this->wp_version < 28) {
+                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>');
+                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>');
+                }
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
                 if ($this->admin_plugin_page == "t2" ||
                     $this->admin_plugin_page == "multi-sets") {
@@ -1267,6 +1269,10 @@ if (!class_exists('GDStarRating')) {
             $this->init_operations();
             $this->init_templates();
             wp_enqueue_script('jquery');
+            if ($this->wp_version >= 28 && is_admin()) {
+                wp_enqueue_script('jquery-ui-core');
+                wp_enqueue_script('jquery-ui-tabs');
+            }
 
             if (!is_admin()) {
                 $this->is_bot = GDSRHelper::detect_bot($_SERVER['HTTP_USER_AGENT'], $this->bots);
