@@ -657,21 +657,27 @@ if (!class_exists('GDStarRating')) {
                 if ($this->wp_version < 28) {
                     echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>');
                     echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>');
+                    echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
+                } else {
+                    echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.17.css" type="text/css" media="screen" />');
                 }
-                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
                 if ($this->admin_plugin_page == "t2" ||
                     $this->admin_plugin_page == "multi-sets") {
                     include(STARRATING_PATH."code/js/corrections.php");
                 }
             }
             if ($this->admin_plugin || $this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
-                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.core.css" type="text/css" media="screen" />');
-                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.theme.css" type="text/css" media="screen" />');
                 $datepicker_date = date("Y, n, j");
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>');
+                if ($this->wp_version < 28) {
+                    echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.core.css" type="text/css" media="screen" />');
+                    echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.theme.css" type="text/css" media="screen" />');
+                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>');
+                } else {
+                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker-17.js"></script>');
+                }
                 if(!empty($this->l)) {
                     $jsFile = $this->plugin_path.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js';
-                    if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js"></script>';
+                    if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js"></script>';
                 }
             }
             if ($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php") {
@@ -681,7 +687,7 @@ if (!class_exists('GDStarRating')) {
             echo('<script type="text/javascript">jQuery(document).ready(function() {');
                 echo("\r\n");
                 if ($this->admin_page == "edit-comments.php") include ($this->plugin_path."code/js/integration.php");
-                if ($this->admin_plugin) echo('jQuery("#gdsr_tabs > ul").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
+                if ($this->admin_plugin) echo('jQuery("#gdsr_tabs'.($this->wp_version < 28 ? ' > ul' : '').'").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
                 if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
                 if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
                 if ($this->admin_plugin_page == "settings-page") include(STARRATING_PATH."code/js/loaders.php");
