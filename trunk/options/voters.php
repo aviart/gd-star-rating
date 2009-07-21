@@ -36,17 +36,19 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     $page_id = 1;
 }
 
+$is_thumb = substr($vote_type, 3) == "thumb";
+
 if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
         $ids = "(".join(", ", $gdsr_items).")";
         $delact = $_POST["gdsr_delete_voters"];
         if ($delact == "L") GDSRDatabase::delete_voters_log($ids);
-        if ($delact == "D") GDSRDatabase::delete_voters_full($ids, $vote_type);
+        if ($delact == "D") GDSRDatabase::delete_voters_full($ids, $vote_type, $is_thumb);
     }
 }
 
-$url.= "&amp;pid=".$post_id;
+$url.= "&amp;pid=".$post_id."&amp;vt=".$vote_type;
 if ($filter_date != '' || $filter_date != '0') $url.= "&amp;date=".$filter_date;
 if ($filter_vote > 0) $url.= "&amp;vote=".$filter_vote;
 if ($select != '') $url.= "&amp;vg=".$select;
@@ -162,7 +164,7 @@ function checkAll(form) {
         echo '<td><strong>';
         echo $row->user_id == 0 ? "Visitor" : $row->user_nicename;
         echo '</strong></td>';
-        echo '<td>'.$row->vote.'</td>';
+        echo '<td>'.($is_thumb && $row->vote > 0 ? "+" : "").$row->vote.'</td>';
         echo '<td>'.$row->voted.'</td>';
         echo '<td>'.$row->ip.'</td>';
         echo '<td>'.$row->user_agent.'</td>';

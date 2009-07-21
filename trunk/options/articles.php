@@ -147,6 +147,7 @@ function gdsrTimerChange() {
     <thead>
         <tr>
             <th class="check-column" scope="col"><input type="checkbox" onclick="checkAll(document.getElementById('gdsr-articles'));"/></th>
+            <th scope="col"><?php _e("ID", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("Title", "gd-star-rating"); ?></th>
             <th scope="col"><?php _e("View", "gd-star-rating"); ?></th>
             <th scope="col" class="num"><div class="vers"><img src="images/comment-grey-bubble.png" alt="Comments"/></div></th>
@@ -219,6 +220,7 @@ function gdsrTimerChange() {
 
         echo '<tr id="post-'.$row->pid.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->pid.'" type="checkbox"/></th>';
+        echo '<td nowrap="nowrap">'.$row->pid.'</td>';
         echo '<td><strong>'.$row->title.'</strong><br />'.GDSRDatabase::get_categories($row->pid).'</td>';
         echo '<td nowrap="nowrap">';
             echo '<a href="'.get_permalink($row->pid).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a>&nbsp;';

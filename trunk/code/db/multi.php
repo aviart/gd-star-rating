@@ -1,6 +1,37 @@
 <?php
 
 class GDSRDBMulti {
+    function delete_votes($ids, $delete, $multi_id) {
+        global $wpdb, $table_prefix;
+        if ($delete == "") return;
+
+        $delstring = $dellog = "";
+        switch (substr($delete, 1, 1)) {
+            case "A":
+                $delstring = "md.average_rating_users = 0, md.total_votes_users = 0, mv.user_voters = 0, mv.user_votes = 0";
+                $delstring.= ", md.average_rating_visitors = 0, md.total_votes_visitors = 0, mv.visitor_voters = 0, mv.visitor_votes = 0";
+                break;
+            case "V":
+                $delstring = "md.average_rating_visitors = 0, md.total_votes_visitors = 0, mv.visitor_voters = 0, mv.visitor_votes = 0";
+                $dellog = " and user_id = 0";
+                break;
+            case "U":
+                $delstring = "md.average_rating_users = 0, md.total_votes_users = 0, mv.user_voters = 0, mv.user_votes = 0";
+                $dellog = " and user_id > 0";
+                break;
+            default:
+                return;
+                break;
+        }
+
+        $sql = sprintf("update %sgdsr_multis_data md inner join %sgdsr_multis_values mv on mv.id = md.id set %s where md.multi_id = %s and md.post_id in %s and mv.source = 'dta'",
+            $table_prefix, $table_prefix, $delstring, $multi_id, $ids);
+        $wpdb->query($sql);
+
+        $sql = sprintf("delete from %sgdsr_votes_log where id in %s and multi_id = %s%s", $table_prefix, $ids, $multi_id, $dellog);
+        $wpdb->query($sql);
+    }
+
     function get_rss_multi_data($post_id) {
         global $wpdb, $table_prefix;
 
@@ -602,7 +633,7 @@ class GDSRDBMulti {
 
     function get_usage_count_posts($set_id) {
         global $wpdb, $table_prefix;
-        return $wpdb->get_var(sprintf("select count(*) from %sgdsr_multis_data where multi_id = %s", $table_prefix, $set_id));
+        return $wpdb->get_var(sprintf("select count(*) from %sgdsr_multis_data where (average_rating_visitors > 0 or average_rating_users > 0) and multi_id = %s", $table_prefix, $set_id));
     }
 
     function get_usage_count_post_reviews($set_id) {

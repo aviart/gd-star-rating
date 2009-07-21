@@ -33,6 +33,15 @@ if ($_POST["gdsr_search"] == __("Search Posts", "gd-star-rating")) {
     $search = apply_filters('get_search_query', stripslashes($_POST["s"]));
 }
 
+if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
+    $gdsr_items = $_POST["gdsr_item"];
+    if (count($gdsr_items) > 0) {
+        $ids = "(".join(", ", $gdsr_items).")";
+        if ($_POST["gdsr_delete_articles"] != '')
+            GDSRDBMulti::delete_votes($ids, $_POST["gdsr_delete_articles"], $set_id);
+    }
+}
+
 $url.= "&amp;sid=".$set_id;
 if ($filter_cats != '' || $filter_cats != '0') $url.= "&amp;cat=".$filter_cats;
 if ($filter_date != '' || $filter_date != '0') $url.= "&amp;date=".$filter_date;
@@ -207,17 +216,17 @@ function gdsrTimerChange() {
                 </td><td style="width: 10px"></td>
                 <?php if ($options["moderation_active"] == 1) { ?>
                 <td style="width: 80px; height: 29px;">
-                    <span class="paneltext"><?php _e("Moderation", "gd-star-rating"); ?>:</span>
+                     <!--<span class="paneltext"><?php _e("Moderation", "gd-star-rating"); ?>:</span>-->
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                <?php GDSRHelper::render_moderation_combo("gdsr_article_moderation", "/", 120, "", true); ?>
+                <?php //GDSRHelper::render_moderation_combo("gdsr_article_moderation", "/", 120, "", true); ?>
                 </td><td style="width: 10px"></td>
                 <?php } ?>
                 <td style="width: 80px; height: 29px;">
-                    <span class="paneltext"><?php _e("Vote Rules", "gd-star-rating"); ?>:</span>
+                     <!--<span class="paneltext"><?php _e("Vote Rules", "gd-star-rating"); ?>:</span>-->
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                <?php GDSRHelper::render_rules_combo("gdsr_article_voterules", "/", 120, "", true); ?>
+                <?php //GDSRHelper::render_rules_combo("gdsr_article_voterules", "/", 120, "", true); ?>
                 </td>
             </tr>
             </table>
@@ -228,7 +237,7 @@ function gdsrTimerChange() {
         </td>
         </tr>
         </table>
-            <table cellpadding="0" cellspacing="0">
+             <!--<table cellpadding="0" cellspacing="0">
             <tr>
                 <td style="width: 120px; height: 29px;">
                 </td>
@@ -248,7 +257,7 @@ function gdsrTimerChange() {
                     <div id="gdsr_timer_date" style="display: none"><input class="regular-text" type="text" value="<?php echo $timer_date_value; ?>" id="gdsr_timer_date_value" name="gdsr_timer_date_value" style="width: 110px; padding: 2px;" /></div>
                 </td>
             </tr>
-            </table>
+            </table>-->
         </div>
     </div>
 <br class="clear"/>
