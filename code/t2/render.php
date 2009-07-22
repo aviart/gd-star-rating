@@ -81,7 +81,7 @@ class GDSRRenderT2 {
                     }
                     $idx[] = $id;
                 }
-                $trends = GDSRX::get_trend_calculation(join(", ", $idx), $widget["grouping"], $widget['show'], $gdsr->o["trend_last"], $gdsr->o["trend_over"]);
+                $trends = GDSRX::get_trend_calculation(join(", ", $idx), $widget["grouping"], $widget['show'], $gdsr->o["trend_last"], $gdsr->o["trend_over"], $widget['source'], $widget['source_set']);
                 $trends_calculated = true;
             }
 

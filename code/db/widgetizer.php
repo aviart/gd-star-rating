@@ -1,30 +1,19 @@
 <?php
 
 class GDSRX {
-    function get_trend_data($ids, $grouping = "post", $type = "article", $period = "over", $last = 1, $over = 30) {
+    function get_trend_data($ids, $grouping = "post", $type = "article", $period = "over", $last = 1, $over = 30, $multi_id = 0) {
         global $wpdb, $table_prefix;
-        $mysql4_strtodate = "date_add(d.vote_date, interval 0 day)";
-        $mysql5_strtodate = "str_to_date(d.vote_date, '%Y-%m-%d')";
-
-        $strtodate = "";
-        switch(gdFunctionsGDSR::mysql_version()) {
-            case "4":
-                $strtodate = $mysql4_strtodate;
-                break;
-            case "5":
-            default:
-                $strtodate = $mysql4_strtodate;
-                break;
-        }
+        $type = $type == "standard" ? "article" : "multis";
+        $strtodate = gdFunctionsGDSR::mysql_version();
+        $strtodate = $strtodate == 4 ? $strtodate = "date_add(d.vote_date, interval 0 day)" : $strtodate = "str_to_date(d.vote_date, '%Y-%m-%d')";
 
         if ($period == "over") $where = sprintf("%s BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND DATE_SUB(NOW(), INTERVAL %s DAY)", $strtodate, $last + $over, $last);
         else $where = sprintf("%s BETWEEN DATE_SUB(NOW(), INTERVAL %s DAY) AND NOW()", $strtodate, $last);
 
-        $from = $join = "";
+        $from = $join = $sql = "";
         switch ($grouping) {
             case "post":
-                $select = "d.id";
-                $join = "";
+                $select = $type == "multis" ? "d.post_id" : "d.id";
                 break;
             case "user":
                 $select = "u.id";
@@ -35,6 +24,7 @@ class GDSRX {
                 $join = "p.id = d.id and p.post_status = 'publish' and t.term_taxonomy_id = r.term_taxonomy_id and r.object_id = p.id and t.taxonomy = 'category' and t.term_id = x.term_id and ";
                 break;
         }
+
         if ($type == "multis") {
             switch ($grouping) {
                 case "post":
@@ -48,10 +38,9 @@ class GDSRX {
                     break;
             }
 
-            $sql = sprintf("SELECT %s as id, sum(d.total_votes_users) as user_voters, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.total_votes_visitors) as visitor_voters, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes FROM %s WHERE %s%s and %s in (%s) group by %s order by %s asc",
-                $select, $from, $join, $where, $select, $ids, $select, $select);
-        }
-        else {
+            $sql = sprintf("SELECT %s as id, sum(d.total_votes_users) as user_voters, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.total_votes_visitors) as visitor_voters, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes FROM %s WHERE %s%s and %s in (%s) and multi_id = %s group by %s order by %s asc",
+                $select, $from, $join, $where, $select, $ids, $multi_id, $select, $select);
+        } else {
             switch ($grouping) {
                 case "post":
                     $from = sprintf("%sgdsr_votes_trend d", $table_prefix);
@@ -64,34 +53,22 @@ class GDSRX {
                     break;
             }
 
-            $sql = sprintf("SELECT %s as id, sum(d.user_voters) as user_voters, sum(d.user_votes) as user_votes, sum(d.visitor_voters) as visitor_voters, sum(d.visitor_votes) as visitor_votes FROM %s WHERE %s%s and d.vote_type = '%s' and %s in (%s) group by %s order by %s asc",
+            $sql = sprintf("SELECT %s as id, sum(d.user_voters) as user_voters, sum(d.user_votes) as user_votes, sum(d.visitor_voters) as visitor_voters, sum(d.visitor_votes) as visitor_votes FROM %s WHERE %s%s and d.vote_type = '%s' AND %s IN (%s) GROUP BY %s ORDER BY %s asc",
                 $select, $from, $join, $where, $type, $select, $ids, $select, $select);
         }
+
         return $wpdb->get_results($sql);
     }
 
-    function get_trend_calculation($ids, $grouping = "post", $show = "total", $last = 1, $over = 30) {
+    function get_trend_calculation($ids, $grouping = "post", $show = "total", $last = 1, $over = 30, $source = "article", $multi_id = 0) {
         global $wpdb, $table_prefix;
+        $data_over = $data_last = $votes_over = $voters_over = array();
+        $data_last = GDSRX::get_trend_data($ids, $grouping, $source, "last", $last, $over, $multi_id);
+        $data_over = GDSRX::get_trend_data($ids, $grouping, $source, "over", $last, $over, $multi_id);
 
-        $data_over = array();
-        $data_last = array();
-        switch ($grouping) {
-            case "post":
-                $data_last = GDSRX::get_trend_data($ids, $grouping, "article", "last", $last, $over);
-                $data_over = GDSRX::get_trend_data($ids, $grouping, "article", "over", $last);
-                break;
-            case "category":
-                $data_last = GDSRX::get_trend_data($ids, $grouping, "article", "last", $last, $over);
-                $data_over = GDSRX::get_trend_data($ids, $grouping, "article", "over", $last);
-                break;
-            case "user":
-                $data_last = GDSRX::get_trend_data($ids, $grouping, "article", "last", $last, $over);
-                $data_over = GDSRX::get_trend_data($ids, $grouping, "article", "over", $last);
-                break;
-        }
+        if (count($data_last) == 0) $votes_last = $voters_last = array();
+        if (count($data_over) == 0) $votes_over = $voters_over = array();
 
-        $votes_over = array();
-        $voters_over = array();
         for ($i = 0; $i < count($data_over); $i++) {
             $row_over = $data_over[$i];
 
@@ -109,18 +86,6 @@ class GDSRX {
             }
         }
 
-        if (count($data_last) == 0) {
-            $votes_last = array();
-            $voters_last = array();
-        }
-
-        if (count($data_over) == 0) {
-            $votes_over = array();
-            $voters_over = array();
-        }
-
-        $votes_last = array();
-        $voters_last = array();
         for ($i = 0; $i < count($data_last); $i++) {
             $row_last = $data_last[$i];
             
@@ -140,15 +105,13 @@ class GDSRX {
 
         foreach ($votes_last as $key => $value) {
             if (!isset($votes_over[$key])) {
-                $votes_over[$key] = 0;
-                $voters_over[$key] = 0;
+                $votes_over[$key] = $voters_over[$key] = 0;
             }
         }
 
         foreach ($votes_over as $key => $value) {
             if (!isset($votes_last[$key])) {
-                $votes_last[$key] = 0;
-                $voters_last[$key] = 0;
+                $votes_last[$key] = $voters_last[$key] = 0;
             }
         }
 
