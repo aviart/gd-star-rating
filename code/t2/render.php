@@ -15,18 +15,18 @@ class GDSRRenderT2 {
     function prepare_wbr($widget) {
         global $gdsr, $wpdb;
 
-        $sql = GDSRX::get_totals_standard($widget);
-        $data = $wpdb->get_row($sql);
+        $data = $widget["source"] == "thumbs" ? $wpdb->get_row(GDSRX::get_totals_thumbs($widget)) : $wpdb->get_row(GDSRX::get_totals_standard($widget));
+        $data->max_rating = $widget["source"] == "thumbs" ? 0 : $gdsr->o["stars"];
 
-        $data->max_rating = $gdsr->o["stars"];
         if ($data->votes == null) {
             $data->votes = 0;
             $data->voters = 0;
         }
+
         if ($data->votes > 0) {
-            $data->rating = @number_format($data->votes / $data->voters, 1);
-            $data->bayes_rating = $gdsr->bayesian_estimate($data->voters, $data->rating);
-            $data->percentage = floor((100 / $data->max_rating) * $data->rating);
+            $data->rating = $widget["source"] == "thumbs" ? $data->score : @number_format($data->votes / $data->voters, 1);
+            $data->bayes_rating = $widget["source"] == "thumbs" ? 0 : $gdsr->bayesian_estimate($data->voters, $data->rating);
+            $data->percentage = $widget["source"] == "thumbs" ? 0 : floor((100 / $data->max_rating) * $data->rating);
         }
 
         return $data;
@@ -803,6 +803,7 @@ class GDSRRenderT2 {
         $tpl_render = html_entity_decode($template->elm["header"]);
         $rt = html_entity_decode($template->elm["item"]);
         $all_rows = GDSRRenderT2::prepare_wsr($widget, $rt);
+        $is_thumb = $widget["source"] == "thumbs";
 
         if (count($all_rows) > 0) {
             foreach ($all_rows as $row) {
@@ -891,7 +892,9 @@ class GDSRRenderT2 {
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
         $data = GDSRRenderT2::prepare_wbr($widget);
-        
+        if ($widget["source"] == "thumbs" && $data->rating > 0) $data->rating = "+".$data->rating;
+        if ($widget["source"] == "thumbs") $data->voters = $data->votes;
+
         $rt = str_replace('%PERCENTAGE%', $data->percentage, $tpl_render);
         $rt = str_replace('%RATING%', $data->rating, $rt);
         $rt = str_replace('%MAX_RATING%', $data->max_rating, $rt);

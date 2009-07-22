@@ -37,6 +37,7 @@
         <label><select name="<?php echo $this->get_field_name('source'); ?>" id="<?php echo $this->get_field_id('source'); ?>" style="width: 130px" onchange="gdsrChangeSource('<?php echo $this->get_field_id('source'); ?>', this.options[this.selectedIndex].value)">
             <option value="standard"<?php echo $instance['source'] == 'standard' ? ' selected="selected"' : ''; ?>><?php _e("Standard Rating", "gd-star-rating"); ?></option>
             <?php if (count($wpml) > 0) { ?><option value="multis"<?php echo $instance['source'] == 'multis' ? ' selected="selected"' : ''; ?>><?php _e("Multi Rating", "gd-star-rating"); ?></option><?php } ?>
+            <option value="thumbs"<?php echo $instance['source'] == 'thumbs' ? ' selected="selected"' : ''; ?>><?php _e("Thumbs Rating", "gd-star-rating"); ?></option>
         </select></label>
     </td>
   </tr>
