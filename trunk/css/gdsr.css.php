@@ -170,12 +170,12 @@ foreach ($sets as $set) {
 foreach ($thumb_sizes as $size) {
     echo sprintf(".gdt-size-%s.gdthumbtext { line-height: %spx; }\r\n", $size, $size);
     echo sprintf(".gdt-size-%s.gdthumb, .gdt-size-%s.gdthumb a, .gdt-size-%s.gdthumb div { width: %spx; height: %spx; }\r\n", $size, $size, $size, $size, $size);
-    echo sprintf(".gdt-size-%s.gdthumb.gddw a, .gdt-size-%s.gdthumb.gddw div { background-position:  0px -%spx !important; }\r\n", $size, $size, $size);
-    echo sprintf(".gdt-size-%s.gdthumb.gdup a:hover { background-position:  0px -%spx; }\r\n", $size, 2 * $size);
-    echo sprintf(".gdt-size-%s.gdthumb.gddw a:hover { background-position:  0px -%spx !important; }\r\n", $size, 3 * $size);
+    echo sprintf(".gdt-size-%s.gdthumb.gddw a, .gdt-size-%s.gdthumb.gddw div { background-position: 0px -%spx !important; }\r\n", $size, $size, $size);
+    echo sprintf(".gdt-size-%s.gdthumb.gdup a:hover { background-position: 0px -%spx; }\r\n", $size, 2 * $size);
+    echo sprintf(".gdt-size-%s.gdthumb.gddw a:hover { background-position: 0px -%spx !important; }\r\n", $size, 3 * $size);
     foreach ($thumb_sets as $set) {
         $url = ($set["location"] == 1 ? $base_url_local : $base_url_extra)."thumbs/".$set["folder"]."/thumbs".$size.".".$set["type"];
-        echo sprintf(".gdt-size-%s.gdthumb a.gdt-%s, .gdt-size-%s.gdthumb div.gdt-%s { background: url('%s') repeat-x; }\r\n", $size, $set["folder"], $size, $set["folder"], $url);
+        echo sprintf(".gdt-size-%s.gdthumb a.gdt-%s, .gdt-size-%s.gdthumb div.gdt-%s { background: url('%s') no-repeat; }\r\n", $size, $set["folder"], $size, $set["folder"], $url);
     }
 }
 

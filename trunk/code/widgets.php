@@ -347,6 +347,8 @@ class gdsrWidgets {
                 $options['rating_size'] = $posted['rating_size'];
                 $options['review_stars'] = $posted['review_stars'];
                 $options['review_size'] = $posted['review_size'];
+                $options['rating_thumb'] = $posted['rating_thumb'];
+                $options['rating_thumb_size'] = $posted['rating_thumb_size'];
 
                 $options['trends_rating'] = $posted['trends_rating'];
                 $options['trends_rating_set'] = $posted['trends_rating_set'];
@@ -382,6 +384,7 @@ class gdsrWidgets {
         $wpfn = 'gdstarr['.$wpnm.']';
         $wptr = $this->g->trend;
         $wpst = $this->g->stars;
+        $wptt = $this->g->thumbs;
         $wpml = GDSRDBMulti::get_multis_tinymce();
 
         include(STARRATING_PATH."widgets/widget_rating.php");

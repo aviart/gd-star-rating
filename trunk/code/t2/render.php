@@ -36,8 +36,10 @@ class GDSRRenderT2 {
         global $wpdb;
         if ($widget["source"] == "standard")
             $sql = GDSRX::get_widget_standard($widget, $min);
-        else
+        else if ($widget["source"] == "multis")
             $sql = GDSRX::get_widget_multis($widget, $min);
+        else
+            $sql = GDSRX::get_widget_thumbs($widget, $min);
         return $wpdb->get_results($sql);
     }
 
@@ -89,31 +91,45 @@ class GDSRRenderT2 {
             foreach ($all_rows as $row) {
                 if ($widget["image_from"] == "content") {
                     $row->image = gdFunctionsGDSR::get_image_from_text($row->post_content);
-                }
-                else if ($widget["image_from"] == "custom") {
+                } else if ($widget["image_from"] == "custom") {
                     $row->image = get_post_meta($row->post_id, $widget["image_custom"], true);
-                }
-                else $row->image = "";
-                if ($widget['show'] == "total") {
-                    $row->votes = $row->user_votes + $row->visitor_votes;
-                    $row->voters = $row->user_voters + $row->visitor_voters;
-                }
-                if ($widget['show'] == "visitors") {
-                    $row->votes = $row->visitor_votes;
-                    $row->voters = $row->visitor_voters;
-                }
-                if ($widget['show'] == "users") {
-                    $row->votes = $row->user_votes ;
-                    $row->voters = $row->user_voters;
-                }
+                } else $row->image = "";
 
-                if ($row->voters == 0) $row->rating = 0;
-                else $row->rating = @number_format($row->votes / $row->voters, 1);
+                if ($widget['source'] == "thumbs") {
+                    if ($widget['show'] == "total") {
+                        $row->votes = $row->rating = $row->user_recc_plus - $row->user_recc_minus + $row->visitor_recc_plus - $row->visitor_recc_minus;
+                        $row->voters = $row->user_recc_plus + $row->user_recc_minus + $row->visitor_recc_plus + $row->visitor_recc_minus;
+                    }
+                    if ($widget['show'] == "visitors") {
+                        $row->votes = $row->rating = $row->visitor_recc_plus - $row->visitor_recc_minus;
+                        $row->voters = $row->visitor_recc_plus + $row->visitor_recc_minus;
+                    }
+                    if ($widget['show'] == "users") {
+                        $row->votes = $row->rating = $row->user_recc_plus - $row->user_recc_minus;
+                        $row->voters = $row->user_recc_plus + $row->user_recc_minus;
+                    }
 
-                if ($bayesian_calculated)
-                    $row->bayesian = $gdsr->bayesian_estimate($row->voters, $row->rating);
-                else
                     $row->bayesian = -1;
+                } else {
+                    if ($widget['show'] == "total") {
+                        $row->votes = $row->user_votes + $row->visitor_votes;
+                        $row->voters = $row->user_voters + $row->visitor_voters;
+                    }
+                    if ($widget['show'] == "visitors") {
+                        $row->votes = $row->visitor_votes;
+                        $row->voters = $row->visitor_voters;
+                    }
+                    if ($widget['show'] == "users") {
+                        $row->votes = $row->user_votes ;
+                        $row->voters = $row->user_voters;
+                    }
+
+                    if ($row->voters == 0) $row->rating = 0;
+                    else $row->rating = @number_format($row->votes / $row->voters, 1);
+
+                    if ($bayesian_calculated) $row->bayesian = $gdsr->bayesian_estimate($row->voters, $row->rating);
+                    else $row->bayesian = -1;
+                }
                 $new_rows[] = $row;
             }
 
@@ -127,6 +143,7 @@ class GDSRRenderT2 {
             $all_rows = array();
             foreach ($new_rows as $row) {
                 $row->table_row_class = $tr_class;
+                $row->rating_stars = $row->bayesian = $row->rating_thumb = $row->review_stars = "";
                 $row->excerpt = GDSRRenderT2::prepare_excerpt($widget["excerpt_words"], $row);
                 $row->excerpt = apply_filters('gdsr_widget_post_excerpt', $row->excerpt);
                 if (strlen($row->title) > $widget["tpl_title_length"] - 3 && $widget["tpl_title_length"] > 0)
@@ -232,8 +249,12 @@ class GDSRRenderT2 {
                         break;
                 }
 
-                if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["stars"], $row->rating);
-                if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["stars"], $row->bayesian);
+                if ($widget["source"] == "thumbs") {
+                    if (!(strpos($template, "%THUMB%") === false)) $row->rating_thumb = GDSRRender::render_static_thumb($widget['rating_thumb'], $widget['rating_thumb_size'], $row->rating);
+                } else {
+                    if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["stars"], $row->rating);
+                    if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["stars"], $row->bayesian);
+                }
                 if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["stars"], $row->review);
 
                 if ($tr_class == "odd") $tr_class = "even";
@@ -257,6 +278,7 @@ class GDSRRenderT2 {
         $all_rows = $sort->sorted;
 
         $all_rows = apply_filters('gdsr_widget_data_prepare', $all_rows);
+
         return $all_rows;
     }
 
@@ -810,7 +832,9 @@ class GDSRRenderT2 {
                 $rt = html_entity_decode($template->elm["item"]);
                 $title = $row->title;
                 if (strlen($title) == 0) $title = __("(no title)", "gd-star-rating");
+                if ($widget["source"] == "thumbs" && $row->rating > 0) $row->rating = "+".$row->rating;
 
+                $rt = str_replace('%THUMB%', $row->rating_thumb, $rt);
                 $rt = str_replace('%RATING%', $row->rating, $rt);
                 $rt = str_replace('%MAX_RATING%', $gdsr->o["stars"], $rt);
                 $rt = str_replace('%EXCERPT%', $row->excerpt, $rt);

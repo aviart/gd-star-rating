@@ -32,6 +32,37 @@ class GDSRRender {
         return $loader;
     }
 
+    function render_static_thumb($style, $size, $rating, $id = "", $rendering = "") {
+        if ($rendering == "") $rendering = STARRATING_STARS_GENERATOR;
+        switch ($rendering) {
+            case "GFX":
+                return GDSRRender::render_static_thumb_gfx($style, $size, $rating);
+                break;
+            default:
+            case "DIV":
+                return GDSRRender::render_static_thumb_div($style, $size, $rating);
+                break;
+        }
+    }
+
+    function render_static_thumb_div($style, $size, $rating, $id = "") {
+        global $gdsr;
+
+        $gfx = $gdsr->g->find_thumb($style);
+        $path = is_null($gfx) ? "" : $gfx->get_url($size);
+
+        return sprintf('<div%s style="%s"></div>',
+            $id == "" ? '' : ' id="'.$id.'"',
+            sprintf('text-align:left; padding: 0; margin: 0; background: url(%s) no-repeat 0px -%spx; height: %spx; width: %spx;',
+                $path, $rating < 0 ? 3 * $size : 2 * $size, $size, $size)
+        );
+    }
+
+    function render_static_thumb_gfx($style, $size, $rating, $id = "") {
+        $url = STARRATING_URL.sprintf("gfx.php?value=%s&amp;type=thumbs&amp;set=%s&amp;size=%s", $rating, $style, $size);
+        return sprintf('<img%s src="%s" alt="%s" />', $id == "" ? '' : ' id="'.$id.'"', $url, ($rating > 0 ? "+" : "").$rating);
+    }
+
     function render_static_stars($star_style, $star_size, $star_max, $rating, $id = "", $rendering = "") {
         if ($rendering == "") $rendering = STARRATING_STARS_GENERATOR;
         switch ($rendering) {
