@@ -25,6 +25,7 @@
             <select name="srDataSource" style="width: 130px" id="srDataSource" onchange="gdsrChangeSource(this.options[this.selectedIndex].value, 'tinymce')">
                 <option value="standard"><?php _e("Standard Rating", "gd-star-rating"); ?></option>
                 <?php if (count($gdst_multis) > 0) { ?><option value="multis"><?php _e("Multi Rating", "gd-star-rating"); ?></option><?php } ?>
+                <option value="thumbs"><?php _e("Thumbs Rating", "gd-star-rating"); ?></option>
             </select>
         </td>
       </tr>

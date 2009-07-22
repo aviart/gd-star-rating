@@ -114,6 +114,12 @@ Check the widget settings. Most likely problem is with default widget setting to
 7. Example multi rating block
 
 == Changelog ==
+= 1.5.6 =
+* RSS integration supports thumbs and multis.
+* Added jQueryUI 1.7 plugins and styles.
+* Added support for thumbs to widgets.
+* Many fixes to admin panels, deletion of thumbs data.
+
 = 1.5.5 =
 * Thumbs loading animations and other thumbs improvements
 * Cleanup and optimization of main CSS file
@@ -129,16 +135,6 @@ Check the widget settings. Most likely problem is with default widget setting to
 * First version of thumbs up/down ratings
 * Added German translation
 * Fixed few multi rating init problems
-
-= 1.5.2 =
-* Fixed importing data from other rating plugins
-* Fixed some minor cache and prefetch problems
-
-= 1.5.1 =
-* Cachind and prefetch of data to reduce number of sql queries
-* Caching of templates to reduce number of sql queries
-* Number of SQL queries reduced by more than 65%
-* Few bugs causing additional unneeded SQL queries
 
 == Source SVN ==
 * svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only
