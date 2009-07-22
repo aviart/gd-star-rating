@@ -6,7 +6,7 @@ class GDSRDefaults {
         "date" => "2009.07.23.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 835,
+        "build" => 840,
         "admin_views" => 0,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,
@@ -416,6 +416,8 @@ class GDSRDefaults {
         "image_custom" => "Image",
         "rating_stars" => "oxygen",
         "rating_size" => 20,
+        "rating_thumb" => "starrating",
+        "rating_thumb_size" => 20,
         "review_stars" => "oxygen",
         "review_size" => 20,
         "last_voted_days" => 0

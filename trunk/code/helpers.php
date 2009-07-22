@@ -314,6 +314,10 @@ class GDSRHelper {
         <?php
     }
 
+    function render_thumbs_sizes_tinymce($name, $selected = "20", $width = 130) {
+        GDSRHelper::render_thumbs_sizes($name, $selected, $width);
+    }
+
     function render_star_sizes_tinymce($name, $selected = "20", $width = 130) {
         GDSRHelper::render_star_sizes($name, $selected, $width);
     }

@@ -2250,6 +2250,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $wpv = $this->wp_version;
             $gdsr_styles = $this->g->stars;
             $gdsr_trends = $this->g->trend;
+            $gdsr_thumbs = $this->g->thumbs;
             $gdst_multis = GDSRDBMulti::get_multis_tinymce();
             include($this->plugin_path.'options/builder.php');
         }

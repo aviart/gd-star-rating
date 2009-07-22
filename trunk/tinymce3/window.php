@@ -7,6 +7,7 @@
     require_once(STARRATING_PATH."code/helpers.php");
 
     $gdsr_styles = $gdsr->g->stars;
+    $gdsr_thumbs = $gdsr->g->thumbs;
     $gdsr_trends = $gdsr->g->trend;
     $gdst_multis = GDSRDBMulti::get_multis_tinymce();
 

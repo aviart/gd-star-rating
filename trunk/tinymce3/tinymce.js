@@ -298,9 +298,11 @@ function insertStarRatingCode() {
         }
         if (document.getElementById('srDataSource').value != 'standard') {
             tagtext = tagtext + " source='" + document.getElementById('srDataSource').value + "'";
-            tagtext = tagtext + " source_set=" + document.getElementById('srMultiSet').value;
             funa.push("'source' => '" + document.getElementById('srDataSource').value + "'");
-            funa.push("'source_set' => " + document.getElementById('srMultiSet').value);
+            if (document.getElementById('srDataSource').value == 'multis') {
+                tagtext = tagtext + " source_set=" + document.getElementById('srMultiSet').value;
+                funa.push("'source_set' => " + document.getElementById('srMultiSet').value);
+            }
         }
 
         if (document.getElementById('srImageFrom').value != 'none') {
@@ -348,6 +350,14 @@ function insertStarRatingCode() {
         if (document.getElementById('srReviewStarsSize').value != '20') {
             tagtext = tagtext + " review_size='" + document.getElementById('srReviewStarsSize').value + "'";
             funa.push("'review_size' => '" + document.getElementById('srReviewStarsSize').value + "'");
+        }
+        if (document.getElementById('srThumbsStyle').value != 'starrating') {
+            tagtext = tagtext + " rating_thumb='" + document.getElementById('srThumbsStyle').value + "'";
+            funa.push("'rating_thumb' => '" + document.getElementById('srThumbsStyle').value + "'");
+        }
+        if (document.getElementById('srThumbsSize').value != '20') {
+            tagtext = tagtext + " rating_thumb_size='" + document.getElementById('srThumbsSize').value + "'";
+            funa.push("'rating_thumb_size' => '" + document.getElementById('srThumbsSize').value + "'");
         }
 
         tagtext = tagtext + "]";
