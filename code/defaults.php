@@ -321,6 +321,8 @@ class GDSRDefaults {
         "image_custom" => "Image",
         "rating_stars" => "oxygen",
         "rating_size" => 20,
+        "rating_thumb" => "starrating",
+        "rating_thumb_size" => 20,
         "review_stars" => "oxygen",
         "review_size" => 20,
         "last_voted_days" => 0

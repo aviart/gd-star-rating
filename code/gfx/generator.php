@@ -155,12 +155,14 @@ class GDSRGenerator {
 
     function generate_thumb_png($file_path, $size, $value, $output = '') {
         $value = intval($value);
+        wp_gdsr_dump("VAL", $value);
         $image_set = imagecreatefrompng($file_path);
         $thumb = imagecreatetruecolor($size, $size);
         imagesavealpha($thumb, true);
         $transparent = imagecolorallocatealpha($thumb, 0, 0, 0, 127);
         imagefill($thumb, 0, 0, $transparent);
-        imagecopy($thumb, $image_set, 0, 0, 0, $value > 0 ? $size * 2 : $size * 3, $size, $size);
+        $pos = $value > 0 ? $size * 2 : $size * 3;
+        imagecopy($thumb, $image_set, 0, 0, 0, $pos, $size, $size);
 
         if ($output == '') {
             Header("Content-type: image/png");
@@ -182,7 +184,8 @@ class GDSRGenerator {
             imagefill($thumb, 0, 0,$transparent);
             imagecolortransparent($thumb, $transparent);
         }
-        imagecopy($thumb, $image_set, 0, 0, 0, $value > 0 ? $size * 2 : $size * 3, $size, $size);
+        $pos = $value > 0 ? $size * 2 : $size * 3;
+        imagecopy($thumb, $image_set, 0, 0, 0, $pos, $size, $size);
 
         if ($output == '') {
             Header("Content-type: image/gif");
@@ -197,7 +200,8 @@ class GDSRGenerator {
         $image_set = imagecreatefromjpeg($file_path);
 
         $thumb = imagecreate($size, $size);
-        imagecopy($thumb, $image_set, 0, 0, 0, $value > 0 ? $size * 2 : $size * 3, $size, $size);
+        $pos = $value > 0 ? $size * 2 : $size * 3;
+        imagecopy($thumb, $image_set, 0, 0, 0, $pos, $size, $size);
 
         if ($output == '') {
             Header("Content-type: image/jpg");
