@@ -118,6 +118,7 @@ if (class_exists("WP_Widget")) {
             $instance = $old_instance;
 
             $instance['title'] = strip_tags(stripslashes($new_instance['title']));
+            $instance['source'] = $new_instance['source'];
             $instance['display'] = $new_instance['display'];
             $instance['select'] = $new_instance['select'];
             $instance['show'] = $new_instance['show'];

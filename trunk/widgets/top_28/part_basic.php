@@ -21,5 +21,14 @@
         </select></label>
     </td>
   </tr>
+  <tr>
+    <td width="140" nowrap="nowrap"><?php _e("Data Source", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <label><select name="<?php echo $this->get_field_name('source'); ?>" id="<?php echo $this->get_field_id('source'); ?>" style="width: 130px">
+            <option value="standard"<?php echo $instance['source'] == 'standard' ? ' selected="selected"' : ''; ?>><?php _e("Standard Rating", "gd-star-rating"); ?></option>
+            <option value="thumbs"<?php echo $instance['source'] == 'thumbs' ? ' selected="selected"' : ''; ?>><?php _e("Thumbs Rating", "gd-star-rating"); ?></option>
+        </select></label>
+    </td>
+  </tr>
 </table>
 <div class="gdsr-table-split"></div>

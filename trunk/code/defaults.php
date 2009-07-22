@@ -263,6 +263,7 @@ class GDSRDefaults {
 
     var $default_widget_top = array(
         "title" => "Blog Rating",
+        "source" => "standard",
         "display" => "all",
         "template_id" => 0,
         "div_template" => "0",

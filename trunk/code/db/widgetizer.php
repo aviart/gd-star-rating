@@ -160,12 +160,37 @@ class GDSRX {
         return $trends;
     }
 
+    function get_totals_thumbs($widget, $min = 0) {
+        global $table_prefix;
+        $where = array("p.id = d.post_id", "p.post_status = 'publish'");
+        $select.= ", count(*) as count, 0 as voters, 0 as rating, 0 as bayes_rating, 0 as max_rating, 0 as percentage";
+
+        if ($widget["show"] == "total") {
+            $select = "(d.user_recc_plus + d.visitor_recc_plus - d.user_recc_minus - d.visitor_recc_minus) as score";
+            $select.= ", (d.user_recc_plus + d.visitor_recc_plus + d.user_recc_minus + d.visitor_recc_minus) as votes";
+            $where[] = "(d.user_recc_plus + d.visitor_recc_plus + d.user_recc_minus + d.visitor_recc_minus) > ".$min;
+        }
+        if ($widget["show"] == "visitors") {
+            $select = "(d.visitor_recc_plus - d.visitor_recc_minus) as score";
+            $select.= ", (d.visitor_recc_plus + d.visitor_recc_minus) as votes";
+            $where[] = "(d.visitor_recc_plus + d.visitor_recc_minus) > ".$min;
+        }
+        if ($widget["show"] == "users") {
+            $select = "(d.user_recc_plus - d.user_recc_minus) as score";
+            $select.= ", (d.user_recc_plus + d.user_recc_minus) as votes";
+            $where[] = "(d.user_recc_plus + d.user_recc_minus) > ".$min;
+        }
+
+        if ($widget["select"] != "" && $widget["select"] != "postpage")
+            $where[] = "p.post_type = '".$widget["select"]."'";
+
+        return sprintf("select %s from %sposts p, %sgdsr_data_article d where %s", $select, $table_prefix, $table_prefix, join(" and ", $where));
+    }
+
     function get_totals_standard($widget, $min = 0) {
         global $table_prefix;
-        $where = array();
-
-        $where[] = "p.id = d.post_id";
-        $where[] = "p.post_status = 'publish'";
+        $where = array("p.id = d.post_id", "p.post_status = 'publish'");
+        $select.= ", count(*) as count, 0 as rating, 0 as bayes_rating, 0 as max_rating, 0 as percentage";
 
         if ($widget["show"] == "total") {
             $select = "sum(d.user_voters) + sum(d.visitor_voters) as voters, sum(d.user_votes) + sum(d.visitor_votes) as votes";
@@ -180,13 +205,10 @@ class GDSRX {
             $where[] = "d.user_voters > ".$min;
         }
 
-        $select.= ", count(*) as count, 0 as rating, 0 as bayes_rating, 0 as max_rating, 0 as percentage";
-
         if ($widget["select"] != "" && $widget["select"] != "postpage") 
             $where[] = "p.post_type = '".$widget["select"]."'";
 
-        $sql = sprintf("select %s from %sposts p, %sgdsr_data_article d where %s", $select, $table_prefix, $table_prefix, join(" and ", $where));
-        return $sql;
+        return sprintf("select %s from %sposts p, %sgdsr_data_article d where %s", $select, $table_prefix, $table_prefix, join(" and ", $where));
     }
 
     function get_widget_multis($widget, $min = 0) {
@@ -317,31 +339,28 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
     function get_widget_standard($widget, $min = 0) {
         global $table_prefix;
 
+        $is_thumb = $widget["source"] == "thumbs";
         $grouping = $widget["grouping"];
         $cats = $widget["category"];
         $cats_in = $widget["category_toponly"] == 0;
+        $select = $from = $group = "";
+        $where = array("p.id = d.post_id", "p.post_status = 'publish'");
+        $extras = ", 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars";
+
         if ($cats_in && $cats != "0") {
             $subs = gdWPGDSR::get_subcategories_ids($widget["category"]);
             $subs[] = $cats;
             $cats = join(",", $subs);
         }
+
         if ($widget["categories"] != "") {
             $cats = $widget["categories"];
             $cats_in = true;
         }
-        $where = array();
-        $select = "";
-        $from = "";
-        $group = "";
 
         if ($widget["bayesian_calculation"] == "0") $min = 0;
         if ($widget["min_votes"] > $min) $min = $widget["min_votes"];
         if ($min == 0 && $widget["hide_empty"] == "1") $min = 1;
-
-        $where[] = "p.id = d.post_id";
-        $where[] = "p.post_status = 'publish'";
-
-        $extras = ", 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as item_trend_rating, '' as item_trend_voting, '' as permalink, '' as tense, '' as rating_stars, '' as bayesian_stars, '' as review_stars";
 
         if (($cats != "" && $cats != "0") || $grouping == 'category'){
             $from = sprintf("%sterm_taxonomy t, %sterm_relationships r, ", $table_prefix, $table_prefix);

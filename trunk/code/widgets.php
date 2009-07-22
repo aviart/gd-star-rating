@@ -202,6 +202,7 @@ class gdsrWidgets {
                 $options = array();
 
                 $options['title'] = strip_tags(stripslashes($posted['title']));
+                $options['source'] = $posted['source'];
                 $options['display'] = $posted['display'];
                 $options['template_id'] = $posted['template_id'];
                 $options['select'] = $posted['select'];
