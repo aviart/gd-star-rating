@@ -194,7 +194,7 @@ function insertStarRatingCode() {
         funtext = funtext + ");"
     } else {
         tagtext = "[starrating";
-        funtext = "wp_gdsr_render_star_rating_widget(array(";
+        funtext = "wp_gdsr_render_rating_results(array(";
         funa = new Array();
         tagtext = tagtext + " template_id=" + document.getElementById('srTemplateSRR').value;
         funa.push("'template_id' => " + document.getElementById('srTemplateSRR').value);
@@ -362,12 +362,12 @@ function insertStarRatingCode() {
 
         tagtext = tagtext + "]";
         funtext = funtext + funa.join(", ") + "));"
-	}
+    }
 
-	if (window.tinyMCE) {
-		window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tagtext);
-		tinyMCEPopup.editor.execCommand('mceRepaint');
-		tinyMCEPopup.close();
-        return;
-	} else return new Array(tagtext, funtext);
+    if (window.tinyMCE) {
+        window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tagtext);
+        tinyMCEPopup.editor.execCommand('mceRepaint');
+        tinyMCEPopup.close();
+    return;
+    } else return new Array(tagtext, funtext);
 }

@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
-Version: 1.5.6
+Version: 1.5.7
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -1762,6 +1762,8 @@ wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_wi
             if ($allow_vote) {
                 GDSRDatabase::save_vote_thumb($id, $user, $ip, $ua, $vote_value);
                 $this->save_cookie($id, "artthumb");
+
+                do_action("gdsr_vote_thumb_article", $id, $user, $vote_value);
             }
 
             $data = GDSRDatabase::get_post_data($id);
@@ -1808,6 +1810,8 @@ wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_wid
             if ($allow_vote) {
                 GDSRDatabase::save_vote_comment_thumb($id, $user, $ip, $ua, $vote_value);
                 $this->save_cookie($id, 'cmmthumb');
+
+                do_action("gdsr_vote_thumb_comment", $id, $user, $vote_value);
             }
 
             $data = GDSRDatabase::get_comment_data($id);
@@ -1875,6 +1879,8 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
                 $rating = $summary["total"]["rating"];
                 $total_votes = $summary["total"]["votes"];
                 $json = $summary["json"];
+
+                do_action("gdsr_vote_rating_multis", $post_id, $user, $set_id, $values);
             }
 
             include($this->plugin_path.'code/t2/templates.php');
@@ -1902,6 +1908,8 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
             if ($allow_vote) {
                 GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
                 $this->save_cookie($id);
+
+                do_action("gdsr_vote_rating_article", $id, $user, $votes);
             }
 
             $data = GDSRDatabase::get_post_data($id);
@@ -1949,6 +1957,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if ($allow_vote) {
                 GDSRDatabase::save_vote_comment($id, $user, $ip, $ua, $votes);
                 $this->save_cookie($id, 'comment');
+
+                do_action("gdsr_vote_rating_comment", $id, $user, $votes);
             }
 
             $data = GDSRDatabase::get_comment_data($id);
