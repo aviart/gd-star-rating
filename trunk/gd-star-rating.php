@@ -764,6 +764,9 @@ if (!class_exists('GDStarRating')) {
             return $comments;
         }
 
+        /**
+         * In progress...
+         */
         function set_comment_reorder($params = array()) {
             // $this->qc->set($params);
         }
@@ -956,7 +959,10 @@ if (!class_exists('GDStarRating')) {
                 else GDSRDatabase::save_comment_review($comment_id, $this->post_comment["review"]);
             }
 
-            if ($this->post_comment["standard_rating"] > 0) {
+            $std_minimum = $this->o["int_comment_std_zero"] == 1 ? -1 : 0;
+            $mur_minimum = $this->o["int_comment_mur_zero"] == 1 ?  0 : 1;
+
+            if ($this->post_comment["standard_rating"] > $std_minimum) {
                 $ip = $_SERVER["REMOTE_ADDR"];
                 $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
                 $user = intval($userdata->ID);
@@ -968,7 +974,7 @@ if (!class_exists('GDStarRating')) {
                 $values = explode("X", $this->post_comment["multi_rating"]);
                 $allow_vote = true;
                 foreach ($values as $v) {
-                    if ($v > $set->stars || $v < 1) {
+                    if ($v > $set->stars || $v < $mur_minimum) {
                         $allow_vote = false;
                         break;
                     }

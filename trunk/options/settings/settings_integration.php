@@ -4,6 +4,17 @@
         <input type="checkbox" name="gdsr_wp_query_handler" id="gdsr_wp_query_handler"<?php if ($gdsr_options["wp_query_handler"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_wp_query_handler"><?php _e("Expand WP Query with new rating specific sorting and filtering.", "gd-star-rating"); ?></label>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Comment Integration", "gd-star-rating"); ?></th>
+    <td>
+        <input type="checkbox" name="gdsr_cmm_integration_replay_hide_review" id="gdsr_cmm_integration_replay_hide_review"<?php if ($gdsr_options["cmm_integration_replay_hide_review"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_integration_reply_hide_review"><?php _e("Hide comment integrated rating block if the comment is in reply mode (WP 2.7 or newer only).", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_int_comment_std_zero" id="gdsr_int_comment_std_zero"<?php if ($gdsr_options["int_comment_std_zero"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_int_comment_std_zero"><?php _e("Allow rating zero for standard rating vote from comment integration.", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_int_comment_mur_zero" id="gdsr_int_comment_mur_zero"<?php if ($gdsr_options["int_comment_mur_zero"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_int_comment_mur_zero"><?php _e("Allow rating zero for multis ratings vote from comment integration.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
+        <?php _e("Be careful with zero's settings. Many zero votes will have very negative impact on ratings calculations.", "gd-star-rating"); ?>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Dashboard", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_integrate_dashboard" id="gdsr_integrate_dashboard"<?php if ($gdsr_options["integrate_dashboard"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard"><?php _e("Add widgets to the administration dashboard.", "gd-star-rating"); ?></label>

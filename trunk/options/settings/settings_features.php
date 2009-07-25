@@ -8,8 +8,6 @@
         <input type="checkbox" name="gdsr_ip_filtering" id="gdsr_ip_filtering"<?php if ($gdsr_options["ip_filtering"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ip_filtering"><?php _e("Use banned IP's lists to filter out visitors.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_ip_filtering_restrictive" id="gdsr_ip_filtering_restrictive"<?php if ($gdsr_options["ip_filtering_restrictive"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ip_filtering_restrictive"><?php _e("Don't even show rating stars to visitors comming from banned IP's.", "gd-star-rating"); ?></label>
-        <div class="gdsr-table-split"></div>
-        <input type="checkbox" name="gdsr_cmm_integration_replay_hide_review" id="gdsr_cmm_integration_replay_hide_review"<?php if ($gdsr_options["cmm_integration_replay_hide_review"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_integration_reply_hide_review"><?php _e("Hide comment integrated rating block if the comment is in reply mode (WP 2.7 or newer only).", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Plugin Features", "gd-star-rating"); ?></th>

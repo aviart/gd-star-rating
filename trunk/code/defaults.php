@@ -191,6 +191,8 @@ class GDSRDefaults {
         "bayesian_minimal" => 10,
         "bayesian_mean" => 70,
         "use_nonce" => 1,
+        "int_comment_std_zero" => 0,
+        "int_comment_mur_zero" => 0,
         "wait_loader_artthumb" => "flower",
         "wait_loader_cmmthumb" => "flower",
         "wait_text_article" => "please wait...",

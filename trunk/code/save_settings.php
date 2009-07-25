@@ -10,6 +10,8 @@ if ($_POST['gdsr_action'] == 'save') {
 
     update_option("gd-star-rating-bots", $bots);
 
+    $gdsr_options["int_comment_std_zero"] = isset($_POST['gdsr_int_comment_std_zero']) ? 1 : 0;
+    $gdsr_options["int_comment_mur_zero"] = isset($_POST['gdsr_int_comment_mur_zero']) ? 1 : 0;
     $gdsr_options["thumbs_active"] = isset($_POST['gdsr_thumbs_act']) ? 1 : 0;
     $gdsr_options["wp_query_handler"] = isset($_POST['gdsr_wp_query_handler']) ? 1 : 0;
     $gdsr_options["disable_ie6_check"] = isset($_POST['gdsr_disable_ie6_check']) ? 1 : 0;
