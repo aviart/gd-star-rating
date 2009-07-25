@@ -48,7 +48,23 @@
 </div>
 
 <div class="contents">
-    <p>This is the list of filters and actions added by the plugin. You can use them as any standard WordPress filters and actions from other plugins or themes.</p>
+    <p>This is the list of filters and actions added by the plugin. You can use them as any standard WordPress filters and actions from other plugins or themes. If it's not stated differently, actions don't have additional parameters, and filters have only one parameter. Parameters, if they are existing, are colored red.</p>
+    <h3>Actions, General</h3>
+    <ul>
+        <li><strong>gdsr_init</strong>: executed at the end of plugins init block</li>
+        <li><strong>gdsr_admin_menu</strong>: executed before adding last menu element</li>
+        <li><strong>gdsr_admin_head</strong>: executed at the end of plugins admin header block</li>
+        <li><strong>gdsr_wp_head</strong>: executed at the end of plugins blog header block</li>
+        <li><strong>gdsr_init_save_review</strong>: executed after saving review values</li>
+    </ul>
+    <h3>Actions, Saving</h3>
+    <ul>
+        <li><strong>gdsr_vote_rating_article</strong>: <em style="color: #cc0000;">$post_id, $user_id, $vote</em> executed when the rating vote for post/page is saved.</li>
+        <li><strong>gdsr_vote_rating_comment</strong>: <em style="color: #cc0000;">$comment_id, $user_id, $vote</em> executed when the rating vote for comment is saved.</li>
+        <li><strong>gdsr_vote_rating_multis</strong>: <em style="color: #cc0000;">$post_id, $user_id, $set_id, $votes</em> executed when the multis rating vote for post/page is saved.</li>
+        <li><strong>gdsr_vote_thumb_article</strong>: <em style="color: #cc0000;">$post_id, $user_id, $vote</em> executed when the thumb vote for post/page is saved.</li>
+        <li><strong>gdsr_vote_thumb_comment</strong>: <em style="color: #cc0000;">$comment_id, $user_id, $vote</em> executed when the thumb vote for comment is saved.</li>
+    </ul>
     <h3>Filters</h3>
     <ul>
         <li><strong>gdsr_widget_data_prepare</strong>: filter for array of the results prepared for rating results widget</li>
@@ -56,14 +72,6 @@
         <li><strong>gdsr_widget_post_excerpt</strong>: modify post excerpt for each of widget results. excerpt will be already prepared and even shortened if you set the length for it in the widget settings.</li>
         <li><strong>gdsr_comments_widget_data_prepare</strong>: filter for array of the results prepared for comments rating results widget</li>
         <li><strong>gdsr_comments_widget_comment_content</strong>: modify the comment content for each of the widget results. if you already changed it using widget settings, this filter will be on changed content, not original. disable widget setting for content if you want to change it using filter.</li>
-    </ul>
-    <h3>Actions</h3>
-    <ul>
-        <li><strong>gdsr_init</strong>: executed at the end of plugins init block</li>
-        <li><strong>gdsr_admin_menu</strong>: executed before adding last menu element</li>
-        <li><strong>gdsr_admin_head</strong>: executed at the end of plugins admin header block</li>
-        <li><strong>gdsr_wp_head</strong>: executed at the end of plugins blog header block</li>
-        <li><strong>gdsr_init_save_review</strong>: executed after saving review values</li>
     </ul>
 </div>
 </div>

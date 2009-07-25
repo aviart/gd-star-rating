@@ -467,6 +467,20 @@ function wp_gdsr_render_review($post_id = 0, $template_id = 0, $echo = true) {
 }
 
 /**
+ * Renders rating results based on $atts settings array similar to the StarRating shortcode.
+ *
+ * @param array $atts settings to use for rendering
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
+function wp_gdsr_render_rating_results($atts = array(), $echo = true) {
+    global $gdsr;
+    $atts = wp_parse_args((array)$atts, $gdsr->default_shortcode_starrating);
+    if ($echo) echo GDSRRenderT2::render_srr($atts);
+    else return GDSRRenderT2::render_srr($atts);
+}
+
+/**
  * Renders widget-like element based on the $widget settings array
  *
  * @param array $widget settings to use for rendering
