@@ -12,7 +12,7 @@
         <br />
         <input type="checkbox" name="gdsr_int_comment_mur_zero" id="gdsr_int_comment_mur_zero"<?php if ($gdsr_options["int_comment_mur_zero"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_int_comment_mur_zero"><?php _e("Allow rating zero for multis ratings vote from comment integration.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
-        <?php _e("Be careful with zero's settings. Many zero votes will have very negative impact on ratings calculations.", "gd-star-rating"); ?>
+        <?php _e("Be careful with zero's settings. This can break some other things, and is not recommended or supported.", "gd-star-rating"); ?>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Dashboard", "gd-star-rating"); ?></th>
