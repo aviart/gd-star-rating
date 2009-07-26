@@ -2361,7 +2361,7 @@ wp_gdsr_dump("CACHE_INT_STD_RESULT", $gdsr_cache_integation_std);
             }
 
             $value = intval(wp_gdget_integration_std($comment_id));
-            if ($value > 0) {
+            if ($value > 0 || $this->o["int_comment_std_zero"] == 1) {
                 $style = $stars_set == "" ? $this->o["style"] : $stars_set;
                 $style = $this->is_ie6 ? ($stars_set_ie6 == "" ? $this->o["style_ie6"] : $stars_set_ie6) : $style;
                 return GDSRRender::render_static_stars($style, $stars_size == 0 ? $this->o["size"] : $stars_size, $this->o["stars"], $value);
