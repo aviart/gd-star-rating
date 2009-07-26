@@ -1,4 +1,5 @@
 
+if (jQuery.browser.msie) jQuery(".gdthumb > a").attr("href", "javascript:gdsrEmpty()");
 jQuery(".gdthumb > a").click(function() {
     var cls = jQuery(this).attr('class');
     var el = jQuery(this).attr("id").split("X");

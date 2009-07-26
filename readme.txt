@@ -116,7 +116,7 @@ Check the widget settings. Most likely problem is with default widget setting to
 == Changelog ==
 = 1.5.7 =
 * New actions for saving votes
-* Several small fixes and improvements
+* Many small fixes and improvements
 
 = 1.5.6 =
 * RSS integration supports thumbs and multis.
