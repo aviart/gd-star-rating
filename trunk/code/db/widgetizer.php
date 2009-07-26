@@ -210,6 +210,7 @@ class GDSRX {
             $where[] = "r.object_id = p.id";
         }
         if ($cats != "" && $cats != "0") {
+            $where[] = "t.taxonomy = 'category'";
             if ($cats_in) $where[] = "t.term_id in (".$cats.")";
             else $where[] = "t.term_id = ".$cats;
         }
@@ -329,6 +330,7 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
             $where[] = "r.object_id = p.id";
         }
         if ($cats != "" && $cats != "0") {
+            $where[] = "t.taxonomy = 'category'";
             if ($cats_in) $where[] = "t.term_id in (".$cats.")";
             else $where[] = "t.term_id = ".$cats;
         }
@@ -443,6 +445,7 @@ wp_gdsr_dump("WIDGET_THUMBS", $sql);
             $where[] = "r.object_id = p.id";
         }
         if ($cats != "" && $cats != "0") {
+            $where[] = "t.taxonomy = 'category'";
             if ($cats_in) $where[] = "t.term_id in (".$cats.")";
             else $where[] = "t.term_id = ".$cats;
         }

@@ -4,8 +4,8 @@ class GDSRDBCache {
     function get_integration($post_id, $type = "article") {
         global $wpdb, $table_prefix;
 
-        $sql = sprintf("SELECT l.%s as vote, l.comment_id, l.multi_id FROM %sgdsr_votes_log l inner join %sgdsr_data_comment c on l.comment_id = c.comment_id WHERE l.comment_id > 0 and c.post_id = %s and l.vote_type = '%s'",
-            $type == "article" ? "vote" : "object", $table_prefix, $table_prefix, $post_id, $type);
+        $sql = sprintf("SELECT l.%s as vote, l.comment_id, l.multi_id FROM %sgdsr_votes_log l WHERE l.comment_id > 0 and l.id = %s and l.vote_type = '%s'",
+            $type == "article" ? "vote" : "object", $table_prefix, $post_id, $type);
 
 wp_gdsr_dump("PREFETCH_INTEGRATION_".strtoupper($type), $sql);
 

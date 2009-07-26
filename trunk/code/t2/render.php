@@ -55,7 +55,9 @@ class GDSRRenderT2 {
 
     function prepare_wsr($widget, $template) {
         global $gdsr;
-        $bayesian_calculated = !(strpos($template, "%BAYES_RATING%") === false);
+
+        $bayesian_calculated = !(strpos($template, "%BAYES_") === false);
+
         $t_rate = !(strpos($template, "%RATE_TREND%") === false);
         $t_vote = !(strpos($template, "%VOTE_TREND%") === false);
         $a_name = !(strpos($template, "%AUTHOR_NAME%") === false);
@@ -143,7 +145,7 @@ class GDSRRenderT2 {
             $all_rows = array();
             foreach ($new_rows as $row) {
                 $row->table_row_class = $tr_class;
-                $row->rating_stars = $row->bayesian = $row->rating_thumb = $row->review_stars = "";
+                $row->rating_stars = $row->bayesian_stars = $row->rating_thumb = $row->review_stars = "";
                 $row->excerpt = GDSRRenderT2::prepare_excerpt($widget["excerpt_words"], $row);
                 $row->excerpt = apply_filters('gdsr_widget_post_excerpt', $row->excerpt);
                 if (strlen($row->title) > $widget["tpl_title_length"] - 3 && $widget["tpl_title_length"] > 0)
@@ -828,6 +830,7 @@ class GDSRRenderT2 {
         $is_thumb = $widget["source"] == "thumbs";
 
         if (count($all_rows) > 0) {
+            $rank_id = 1;
             foreach ($all_rows as $row) {
                 $rt = html_entity_decode($template->elm["item"]);
                 $title = $row->title;
@@ -843,6 +846,7 @@ class GDSRRenderT2 {
                 $rt = str_replace('%MAX_REVIEW%', $gdsr->o["review_stars"], $rt);
                 $rt = str_replace('%TITLE%', __($title), $rt);
                 $rt = str_replace('%PERMALINK%', $row->permalink, $rt);
+                $rt = str_replace('%RANK_ID%', $rank_id, $rt);
                 $rt = str_replace('%ID%', $row->post_id, $rt);
                 $rt = str_replace('%COUNT%', $row->counter, $rt);
                 $rt = str_replace('%BAYES_RATING%', $row->bayesian, $rt);
@@ -854,6 +858,7 @@ class GDSRRenderT2 {
                 $rt = str_replace('%IMAGE%', $row->image, $rt);
                 $rt = str_replace('%AUTHOR_NAME%', $row->author_name, $rt);
                 $rt = str_replace('%AUTHOR_LINK%', $row->author_url, $rt);
+                $rank_id++;
 
                 $word_votes = $template->dep["EWV"];
                 $tense = $row->voters == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
