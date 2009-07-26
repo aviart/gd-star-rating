@@ -44,10 +44,10 @@
                 <option value="rating"><?php _e("Rating", "gd-star-rating"); ?></option>
                 <option value="votes"><?php _e("Total Votes", "gd-star-rating"); ?></option>
                 <option value="id"><?php _e("ID", "gd-star-rating"); ?></option>
-                <option value="post_title"><?php _e("Title", "gd-star-rating"); ?></option>
+                <option value="title"><?php _e("Title", "gd-star-rating"); ?></option>
                 <option value="review"><?php _e("Review", "gd-star-rating"); ?></option>
                 <option value="count"><?php _e("Count", "gd-star-rating"); ?></option>
-                <option value="bayes"><?php _e("Bayesian Rating", "gd-star-rating"); ?></option>
+                <option value="bayesian"><?php _e("Bayesian Rating", "gd-star-rating"); ?></option>
             </select>
         </td>
       </tr>

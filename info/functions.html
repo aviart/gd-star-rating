@@ -199,7 +199,7 @@
              
           </td>
           <td class="memItemRight" valign="bottom">
-            <a class="el" href="#5b89ef779cdf2f333437c0b7aff2c73b">wp_gdsr_render_article_thumbs</a> ($template_id=0, $read_only=false, $stars_set="", $stars_set_ie6="", $echo=true)
+            <a class="el" href="#5b89ef779cdf2f333437c0b7aff2c73b">wp_gdsr_render_article_thumbs</a> ($template_id=0, $read_only=false, $stars_set="", $stars_size=0, $stars_set_ie6="", $echo=true)
           </td>
         </tr>
         <tr>
@@ -231,7 +231,7 @@
              
           </td>
           <td class="memItemRight" valign="bottom">
-            <a class="el" href="#6c2f988dbaffe502fc406452bbd58c1e">wp_gdsr_render_comment_thumbs</a> ($template_id=0, $read_only=false, $stars_set="", $stars_set_ie6="", $echo=true)
+            <a class="el" href="#6c2f988dbaffe502fc406452bbd58c1e">wp_gdsr_render_comment_thumbs</a> ($template_id=0, $read_only=false, $stars_set="", $stars_size=0, $stars_set_ie6="", $echo=true)
           </td>
         </tr>
         <tr>
@@ -450,7 +450,23 @@
             Renders standard review for a post. <a href="#69188475538ae1bedd11deebf5e876dd"></a><br>
           </td>
         </tr>
+         <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href="#18fad33a043c3397c56d544d47182f00">wp_gdsr_render_rating_results</a> ($atts=array(), $echo=true)
+          </td>
+        </tr>
         <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Renders rating results based on $atts settings array similar to the StarRating shortcode.. <a href="#18fad33a043c3397c56d544d47182f00"></a><br>
+          </td>
+        </tr>
+       <tr>
           <td class="memItemLeft" nowrap align="right" valign="top">
              
           </td>
@@ -2726,6 +2742,16 @@
                 $ 
               </td>
               <td class="paramname">
+                <em>stars_size</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
                 <em>stars_set_ie6</em> = <code>""</code>,
               </td>
             </tr>
@@ -3223,6 +3249,16 @@
               </td>
               <td class="paramname">
                 <em>stars_set</em> = <code>""</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>stars_size</em> = <code>0</code>,
               </td>
             </tr>
             <tr>
@@ -3824,6 +3860,91 @@
                   </td>
                   <td>
                     $template_id id of the template to use
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="18fad33a043c3397c56d544d47182f00"></a><!-- doxytag: member="functions_integration.php::wp_gdsr_render_rating_results" ref="18fad33a043c3397c56d544d47182fc8" args="($widget=array(), $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_render_rating_results
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>atts</em> = <code>array()</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders rating results based on $atts settings array similar to the StarRating shortcode.
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>array</em> 
+                  </td>
+                  <td>
+                    $atts settings to use for rendering
                   </td>
                 </tr>
                 <tr>

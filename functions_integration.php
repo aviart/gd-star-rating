@@ -171,9 +171,9 @@ function wp_gdsr_render_powered_by($echo = true) {
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_render_article_thumbs($template_id = 0, $read_only = false, $stars_set = "", $stars_set_ie6 = "", $echo = true) {
+function wp_gdsr_render_article_thumbs($template_id = 0, $read_only = false, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
     global $post, $userdata, $gdsr;
-    $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
+    $override = array("style" => $stars_set, "size" => $stars_size, "style_ie6" => $stars_set_ie6, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
     $user_id = $userdata->ID;
     $gdsr->cache_posts($user_id);
     if ($echo) echo $gdsr->render_thumb_article($post, $userdata, $override);
@@ -216,9 +216,9 @@ function wp_gdsr_render_article($template_id = 0, $read_only = false, $stars_set
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_render_comment_thumbs($template_id = 0, $read_only = false, $stars_set = "", $stars_set_ie6 = "", $echo = true) {
+function wp_gdsr_render_comment_thumbs($template_id = 0, $read_only = false, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
     global $comment, $post, $userdata, $gdsr;
-    $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
+    $override = array("style" => $stars_set, "size" => $stars_size, "style_ie6" => $stars_set_ie6, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
     if ($echo) echo $gdsr->render_thumb_comment($post, $comment, $userdata, $override);
     else return $gdsr->render_thumb_comment($post, $comment, $userdata, $override);
 }
