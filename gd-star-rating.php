@@ -1333,7 +1333,7 @@ if (!class_exists('GDStarRating')) {
                 else wp_enqueue_script("thickbox");
                 $this->safe_mode = gdFunctionsGDSR::php_in_safe_mode();
                 if (!$this->safe_mode)
-                    $this->extra_folders = GDSRHelper::create_folders($this->wp_version);
+                    $this->extra_folders = $this->o["cache_forced"] == 1 || GDSRHelper::create_folders($this->wp_version);
             }
 
             if (is_admin()) {
