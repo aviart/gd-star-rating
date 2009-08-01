@@ -41,6 +41,7 @@ if ($_POST['gdsr_action'] == 'save') {
     $gdsr_options["cmm_allow_mixed_ip_votes"] = isset($_POST['gdsr_cmm_allow_mixed_ip_votes']) ? 1 : 0;
     $gdsr_options["mur_allow_mixed_ip_votes"] = isset($_POST['gdsr_mur_allow_mixed_ip_votes']) ? 1 : 0;
     $gdsr_options["cache_active"] = isset($_POST['gdsr_cache_active']) ? 1 : 0;
+    $gdsr_options["cache_forced"] = isset($_POST['gdsr_cache_forced']) ? 1 : 0;
     $gdsr_options["cache_cleanup_auto"] = isset($_POST['gdsr_cache_cleanup_auto']) ? 1 : 0;
     $gdsr_options["cache_cleanup_days"] = $_POST['gdsr_cache_cleanup_days'];
 

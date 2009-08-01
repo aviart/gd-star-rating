@@ -226,7 +226,7 @@ foreach ($thumb_sizes as $size) {
 .gdtblmuravg { background-color: #fffcf4; }
 .gdtblmuravg td { border-top: 2px solid #dcdcdc; text-align: center; }
 .gdmultitable td { vertical-align: middle; padding: 2px 4px; color: black; }
-.ratingblock { padding-bottom: 4px; margin-bottom: 4px; margin-top: 8px; font-size: 12px; }
+.ratingblock, .thumblock { margin-bottom: 4px; margin-top: 4px; font-size: 12px; }
 .ratingtext { padding-bottom: 2px; margin-bottom: 2px; margin-top: 0px; }
 .ratingmulti img { border: 0; padding: 0; margin: 0; }
 .gdouter { text-align: left; }

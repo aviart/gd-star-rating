@@ -11,6 +11,8 @@
 <tr><th scope="row"><?php _e("Cache Activation", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_cache_active" id="gdsr_cache_active"<?php if ($gdsr_options["cache_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cache_active"><?php _e("Cache enabled.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_cache_forced" id="gdsr_cache_forced"<?php if ($gdsr_options["cache_forced"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cache_forced"><?php _e("Force using of cache. This is usefull in some rare cases when PHP can't report writeability correct.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Cache Cleanup", "gd-star-rating"); ?></th>

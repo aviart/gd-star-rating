@@ -17,15 +17,13 @@ class GDSRHelper {
                     copy(STARRATING_PATH."css/rating.css", STARRATING_XTRA_PATH."css/rating.css");
                 }
             }
-        }
-        else {
+        } else {
             if ($version < 27) $path = ABSPATH.'/wp-content';
             else $path = WP_CONTENT_DIR;
             if (is_writable($path)) {
                 mkdir(STARRATING_XTRA_PATH, 0755);
                 GDSRHelper::create_folders($version);
-            }
-            else return false;
+            } else return false;
         }
         return is_dir(STARRATING_CACHE_PATH) && is_writable(STARRATING_CACHE_PATH);
     }
