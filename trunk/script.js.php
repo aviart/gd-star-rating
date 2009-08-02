@@ -17,8 +17,6 @@
     header("Cache-Control: must-revalidate");
 
     include ($gdsr->plugin_path."code/js/main.php");
-
-    if ($gdsr->o["cmm_integration_replay_hide_review"] == 1)
-        include ($gdsr->plugin_path."code/js/comments.php");
+    include ($gdsr->plugin_path."code/js/comments.php");
 
 ?>
