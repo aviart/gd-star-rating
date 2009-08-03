@@ -30,7 +30,7 @@ if (!class_exists('gdFunctionsGDSR')) {
     class gdFunctionsGDSR {
         function get_update_url($options, $url) {
             global $wp_version;
-            $url = sprintf("http://info.dev4press.com/update/index.php?ver=%s&amp;pdt=%s&amp;blg=%s&amp;wpv=%s",
+            $url = sprintf("http://info.dev4press.com/update/index.php?ver=%s&pdt=%s&blg=%s&wpv=%s",
                 $options["version"], urlencode($options["product_id"]), urlencode($url), urlencode($wp_version));
             return $url;
         }
