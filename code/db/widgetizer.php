@@ -30,7 +30,7 @@ class GDSRX {
                     $from = sprintf("%sgdsr_multis_trend d", $table_prefix);
                     break;
                 case "user":
-                    $from = sprintf("%susers u, %sposts p, %sgdsr_multis_trend d", $table_prefix, $table_prefix, $table_prefix);
+                    $from = sprintf("%s u, %sposts p, %sgdsr_multis_trend d", $wpdb->users, $table_prefix, $table_prefix);
                     break;
                 case "category":
                     $from = sprintf("%sterm_taxonomy t, %sterm_relationships r, %sterms x, %sposts p, %sgdsr_multis_trend d", $table_prefix, $table_prefix, $table_prefix, $table_prefix, $table_prefix);
@@ -45,7 +45,7 @@ class GDSRX {
                     $from = sprintf("%sgdsr_votes_trend d", $table_prefix);
                     break;
                 case "user":
-                    $from = sprintf("%susers u, %sposts p, %sgdsr_votes_trend d", $table_prefix, $table_prefix, $table_prefix);
+                    $from = sprintf("%s u, %sposts p, %sgdsr_votes_trend d", $wpdb->users, $table_prefix, $table_prefix);
                     break;
                 case "category":
                     $from = sprintf("%sterm_taxonomy t, %sterm_relationships r, %sterms x, %sposts p, %sgdsr_votes_trend d", $table_prefix, $table_prefix, $table_prefix, $table_prefix, $table_prefix);
@@ -227,7 +227,7 @@ class GDSRX {
             $col_title = "x.name";
         }
         else if ($grouping == 'user') {
-            $from.= sprintf("%susers u, ", $table_prefix);
+            $from.= sprintf("%s u, ", $wpdb->users);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.id, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters";
             $group = "group by u.id";
@@ -345,16 +345,14 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
             $group = "group by t.term_id";
             $col_id = "t.term_id";
             $col_title = "x.name";
-        }
-        else if ($grouping == 'user') {
-            $from.= sprintf("%susers u, ", $table_prefix);
+        } else if ($grouping == 'user') {
+            $from.= sprintf("%s u, ", $wpdb->users);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.id, count(*) as counter, sum(d.user_recc_plus) as user_recc_plus, sum(d.visitor_recc_plus) as visitor_recc_plus, sum(d.user_recc_minus) as user_recc_minus, sum(d.visitor_recc_minus) as visitor_recc_minus";
             $group = "group by u.id";
             $col_id = "u.id";
             $col_title = "u.display_name";
-        }
-        else {
+        } else {
             $select = "p.id as post_id, p.post_author as author, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter";
         }
 
@@ -460,16 +458,14 @@ wp_gdsr_dump("WIDGET_THUMBS", $sql);
             $group = "group by t.term_id";
             $col_id = "t.term_id";
             $col_title = "x.name";
-        }
-        else if ($grouping == 'user') {
-            $from.= sprintf("%susers u, ", $table_prefix);
+        } else if ($grouping == 'user') {
+            $from.= sprintf("%s u, ", $wpdb->users);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.id, count(*) as counter, sum(d.user_votes) as user_votes, sum(d.visitor_votes) as visitor_votes, sum(d.user_voters) as user_voters, sum(d.visitor_voters) as visitor_voters";
             $group = "group by u.id";
             $col_id = "u.id";
             $col_title = "u.display_name";
-        }
-        else {
+        } else {
             $select = "p.id as post_id, p.post_author as author, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter";
         }
 
@@ -511,13 +507,11 @@ wp_gdsr_dump("WIDGET_THUMBS", $sql);
             if ($widget["show"] == "total") $col = "(d.user_votes + d.visitor_votes)/(d.user_voters + d.visitor_voters)";
             if ($widget["show"] == "visitors") $col = "d.visitor_votes/d.visitor_voters";
             if ($widget["show"] == "users") $col = "d.user_votes/d.user_voters";
-        }
-        else if ($col == "voters") {
+        } else if ($col == "voters") {
             if ($widget["show"] == "total") $col = "d.user_votes + d.visitor_votes";
             if ($widget["show"] == "visitors") $col = "d.visitor_votes";
             if ($widget["show"] == "users") $col = "d.user_votes";
-        }
-        else if ($col == "counter" && $grouping != "post") $col = "count(*)";
+        } else if ($col == "counter" && $grouping != "post") $col = "count(*)";
         else $col = $col_id;
         $ordering = sprintf("order by %s %s", $col, $sort);
 

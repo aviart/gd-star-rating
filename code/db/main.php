@@ -210,8 +210,8 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
     function get_valid_users() {
         global $wpdb, $table_prefix;
 
-        $sql = sprintf("SELECT l.user_id, l.vote_type, count(*) as voters, sum(l.vote) as votes, count(distinct ip) as ips, u.display_name, u.user_email FROM %sgdsr_votes_log l left join %susers u on u.id = l.user_id group by user_id, vote_type order by user_id, vote_type",
-                $table_prefix, $table_prefix);
+        $sql = sprintf("SELECT l.user_id, l.vote_type, count(*) as voters, sum(l.vote) as votes, count(distinct ip) as ips, u.display_name, u.user_email FROM %sgdsr_votes_log l left join %s u on u.id = l.user_id group by user_id, vote_type order by user_id, vote_type",
+                $table_prefix, $wpdb->users);
         return $wpdb->get_results($sql);
     }
 
@@ -1152,8 +1152,8 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
         if ($vote_value > 0)
             $where.= " and vote = ".$vote_value;
 
-        $sql = sprintf("SELECT p.*, u.user_nicename FROM %sgdsr_votes_log p LEFT JOIN %susers u ON u.ID = p.user_id%s ORDER BY %s %s LIMIT %s, %s",
-            $table_prefix, $table_prefix, $where, $sort_column, $sort_order, $start, $limit
+        $sql = sprintf("SELECT p.*, u.user_nicename FROM %sgdsr_votes_log p LEFT JOIN %s u ON u.ID = p.user_id%s ORDER BY %s %s LIMIT %s, %s",
+            $table_prefix, $wpdb->users, $where, $sort_column, $sort_order, $start, $limit
             );
 
         return $sql;
