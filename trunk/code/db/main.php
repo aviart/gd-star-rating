@@ -351,14 +351,15 @@ wp_gdsr_dump("CAT_DEFAULTS_SQL", $sql);
 
         $cats = array();
         $rows = $wpdb->get_results($sql, ARRAY_N);
-        foreach ($rows as $row) $cats[] = $row[0];
+        if (is_array($rows)) foreach ($rows as $row) $cats[] = $row[0];
 
 wp_gdsr_dump("CAT_DEFAULTS_RESULTS", $cats);
 
-        if (count($rows) == 0) $rows = array();
-        foreach ($ids_array as $id) {
-            if (!in_array($id, $cats)) {
-                GDSRDatabase::add_category_default($id, $items[$id] > 0);
+        if (is_array($cats)) {
+            foreach ($ids_array as $id) {
+                if (!in_array($id, $cats)) {
+                    GDSRDatabase::add_category_default($id, $items[$id] > 0);
+                }
             }
         }
     }
