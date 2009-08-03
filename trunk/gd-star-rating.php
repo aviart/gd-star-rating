@@ -738,8 +738,10 @@ if (!class_exists('GDStarRating')) {
         function loop_start($wp_query) {
             if (!is_admin()) {
                 if ($this->wp_version < 28) global $wp_query;
-                foreach ($wp_query->posts as $p) {
-                    if (!isset($this->c[$p->ID])) $this->c[$p->ID] = 0;
+                if (is_array($wp_query->posts)) {
+                    foreach ($wp_query->posts as $p) {
+                        if (!isset($this->c[$p->ID])) $this->c[$p->ID] = 0;
+                    }
                 }
             }
             if ($this->wp_version >= 28) return $wp_query;

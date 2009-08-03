@@ -71,7 +71,7 @@ class GDSRDB {
         $types = array();
 
         $select = "l.id, l.vote_type, l.voted, l.vote, l.ip, l.user_id, u.display_name, u.user_email";
-        $from = sprintf("%sgdsr_votes_log l left join %susers u on u.ID = l.user_id", $table_prefix, $table_prefix);
+        $from = sprintf("%sgdsr_votes_log l left join %s u on u.ID = l.user_id", $wpdb->users, $table_prefix);
 
         if ($o["integrate_dashboard_latest_filter_thumb_std"] == 1) $types[] = "'artthumb'";
         if ($o["integrate_dashboard_latest_filter_thumb_cmm"] == 1) $types[] = "'cmmthumb'";
