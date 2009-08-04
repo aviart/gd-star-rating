@@ -1,6 +1,16 @@
 <?php
 
 class GDSRDBMulti {
+    function get_review_avg($multi_id, $post_id) {
+        global $wpdb, $table_prefix;
+        $articles = $table_prefix.'gdsr_multis_data';
+
+        $sql = "select average_review from ".$articles." WHERE multi_id = ".$multi_id." and post_id = ".$post_id;
+        $results = $wpdb->get_row($sql, OBJECT);
+        if (count($results) == 0) return -1;
+        else return $results->average_review;
+    }
+
     function delete_votes($ids, $delete, $multi_id) {
         global $wpdb, $table_prefix;
         if ($delete == "") return;

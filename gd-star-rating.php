@@ -409,6 +409,29 @@ if (!class_exists('GDStarRating')) {
         }
 
         /**
+         * Renders post review stars for selected post
+         *
+         * @param int $post_id id for the post you want review displayed
+         * @param bool $zero_render if set to false and $value is 0 then nothing will be rendered
+         * @param bool $use_default rendering is using default rendering settings
+         * @param string $style folder name of the stars set to use
+         * @param int $size stars size 12, 20, 30, 46
+         * @return string rendered stars for article review
+         */
+        function display_multis_review($multi_id, $post_id, $use_default = true, $style = "oxygen", $size = 20) {
+            if ($use_default) {
+                $style = ($this->is_ie6 ? $this->o["review_style_ie6"] : $this->o["review_style"]);
+                $size = $this->o["review_size"];
+            }
+            $set = gd_get_multi_set($multi_id);
+            $stars = $set->stars;
+            $review = GDSRDBMulti::get_review_avg($multi_id, $post_id);
+            if ($review < 0) $review = 0;
+
+            return GDSRRender::render_static_stars($style, $size, $stars, $review);
+        }
+
+        /**
          * Renders post rating stars for selected post
          *
          * @param int $post_id id for the post you want rating displayed
@@ -424,10 +447,7 @@ if (!class_exists('GDStarRating')) {
                 $size = $this->o["size"];
             }
             $stars = $this->o["stars"];
-            list($votes, $score) = $this->get_article_rating($post_id);
-            if ($votes > 0) $rating = $score / $votes;
-            else $rating = 0;
-            $rating = @number_format($rating, 1);
+            $rating = $this->get_article_rating_simple($post_id);
 
             return GDSRRender::render_static_stars($style, $size, $stars, $rating);
         }
@@ -1614,6 +1634,16 @@ if (!class_exists('GDStarRating')) {
             if (count($this->cats_data_cats[$cat_id]) == 0) {
                 $this->cats_data_cats[$cat_id] = GDSRDatabase::get_categories_data(array($cat_id));
             }
+        }
+
+        function get_article_rating_simple($post_id) {
+            $rating = 0;
+
+            list($votes, $score) = $this->get_article_rating($post_id);
+            if ($votes > 0) $rating = $score / $votes;
+
+            $rating = @number_format($rating, 1);
+            return $rating;
         }
 
         function get_post_rule_value($post_id, $rule = "rules_articles", $default = "default_voterules_articles") {
