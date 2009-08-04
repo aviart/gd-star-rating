@@ -2,7 +2,7 @@
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
 Version: 1.5.8
-Tags: vote, ratings, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi
+Tags: vote, ratings, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.5
 Tested up to: 2.8.2
 Stable tag: trunk
@@ -116,6 +116,8 @@ Check the widget settings. Most likely problem is with default widget setting to
 == Changelog ==
 = 1.5.8 =
 * Russian and Ukrainian translations
+* New functions and options
+* More indexes on database tables
 * Several WPMU related fixes
 
 = 1.5.7 =
@@ -127,11 +129,6 @@ Check the widget settings. Most likely problem is with default widget setting to
 * Added jQueryUI 1.7 plugins and styles.
 * Added support for thumbs to widgets.
 * Many fixes to admin panels, deletion of thumbs data.
-
-= 1.5.5 =
-* Thumbs loading animations and other thumbs improvements
-* Cleanup and optimization of main CSS file
-* Fixed few reported bugs and more php notices
 
 == Source SVN ==
 * svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only

@@ -126,11 +126,8 @@ class GDSRRenderT2 {
                         $row->voters = $row->user_voters;
                     }
 
-                    if ($row->voters == 0) $row->rating = 0;
-                    else $row->rating = @number_format($row->votes / $row->voters, 1);
-
-                    if ($bayesian_calculated) $row->bayesian = $gdsr->bayesian_estimate($row->voters, $row->rating);
-                    else $row->bayesian = -1;
+                    $row->rating = $row->voters == 0 ? 0 : @number_format($row->votes / $row->voters, 1);
+                    $row->bayesian = $bayesian_calculated ? $gdsr->bayesian_estimate($row->voters, $row->rating) : -1;
                 }
                 $new_rows[] = $row;
             }

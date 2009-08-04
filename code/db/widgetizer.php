@@ -188,6 +188,7 @@ class GDSRX {
             $cats = $widget["categories"];
             $cats_in = true;
         }
+
         $where = array();
         $select = "";
         $from = "";
@@ -225,16 +226,14 @@ class GDSRX {
             $group = "group by t.term_id";
             $col_id = "t.term_id";
             $col_title = "x.name";
-        }
-        else if ($grouping == 'user') {
+        } else if ($grouping == 'user') {
             $from.= sprintf("%s u, ", $wpdb->users);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.id, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters";
             $group = "group by u.id";
             $col_id = "u.id";
             $col_title = "u.display_name";
-        }
-        else {
+        } else {
             $select = "p.id as post_id, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, d.average_rating_users * d.total_votes_users as user_votes, d.average_rating_visitors * d.total_votes_visitors as visitor_votes, d.total_votes_users as user_voters, d.total_votes_visitors as visitor_voters";
         }
 
@@ -259,15 +258,13 @@ class GDSRX {
 
         if ($widget["publish_date"] == "range") {
             $where[] = "p.post_date >= '".$widget["publish_range_from"]."' and p.post_date <= '".$widget["publish_range_to"]."'";
-        }
-        else if ($widget["publish_date"] == "month") {
+        } else if ($widget["publish_date"] == "month") {
             $month = $widget["publish_month"];
             if ($month != "" && $month != "0") {
                 $where[] = "year(p.post_date) = ".substr($month, 0, 4);
                 $where[] = "month(p.post_date) = ".substr($month, 4, 2);
             }
-        }
-        else if ($widget["publish_date"] == "lastd") {
+        } else if ($widget["publish_date"] == "lastd") {
             if ($widget["publish_days"] > 0)
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
@@ -281,8 +278,7 @@ class GDSRX {
             if ($widget["show"] == "total") $col = "(d.average_rating_users * d.total_votes_users + d.average_rating_visitors * d.total_votes_visitors)/(d.total_votes_users + d.total_votes_visitors)";
             if ($widget["show"] == "visitors") $col = "(d.average_rating_visitors * d.total_votes_visitors)/d.total_votes_visitors";
             if ($widget["show"] == "users") $col = "(d.average_rating_users * d.total_votes_users)/d.total_votes_users";
-        }
-        else if ($col == "voters") {
+        } else if ($col == "voters") {
             if ($widget["show"] == "total") $col = "d.total_votes_users + d.total_votes_visitors";
             if ($widget["show"] == "visitors") $col = "d.total_votes_visitors";
             if ($widget["show"] == "users") $col = "d.total_votes_users";
