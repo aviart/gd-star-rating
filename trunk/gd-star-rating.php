@@ -1638,6 +1638,27 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
+        function get_taxonomy_multi_ratings($taxonomy = "category", $term = "", $multi_id = 0, $size = 20, $style = "oxygen") {
+            $results = GDSRDBTools::taxonomy_multi_ratings($taxonomy, $term, $multi_id);
+            $set = wp_gdget_multi_set($multi_id);
+            $new_results = array();
+
+            foreach ($results as $row) {
+                $row->votes = $row->user_votes + $row->visitor_votes;
+                $row->voters = $row->user_voters + $row->visitor_voters;
+                $row->rating = $row->voters == 0 ? 0 : @number_format($row->votes / $row->voters, 1);
+                $row->review = @number_format($row->review, 1);
+                $row->bayesian = $bayesian_calculated ? $gdsr->bayesian_estimate($row->voters, $row->rating) : -1;
+                $row->rating_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->rating);
+                $row->bayesian_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->bayesian);
+                $row->review_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->review);
+                $new_results[] = $row;
+            }
+
+            if (count($new_results) == 1) return $new_results[0];
+            else return $new_results;
+        }
+
         function get_article_rating_simple($post_id) {
             $rating = 0;
 

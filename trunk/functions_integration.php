@@ -603,4 +603,21 @@ function wp_gdsr_show_article_rating($post_id = 0, $use_default = true, $size = 
     else return $gdsr->display_article_rating($post_id, $use_default, $style, $size);
 }
 
+/**
+ * Returns object with multi ratings data for any taxonomy.
+ *
+ * @global GDStarRating $gdsr main rating class instance
+ * @param string $taxonomy name of the taxonomy (slug name)
+ * @param string $term full name of the term belonging to taxonomy
+ * @param int $multi_id id of the multi rating set
+ * @param int $size size of the stars to render, must be valid value: 12, 20, 30, 46
+ * @param string $style name of the stars set to use, name of the folder for the set
+ * @return object results with data and rendered stars
+ */
+function wp_gdsr_taxonomy_multi_ratings($taxonomy = "category", $term = "", $multi_id = 0, $size = 20, $style = "oxygen") {
+    global $gdsr;
+
+    return $gdsr->get_taxonomy_multi_ratings($taxonomy, $term, $multi_id, $size, $style);
+}
+
 ?>
