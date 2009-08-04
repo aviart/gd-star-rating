@@ -7,4 +7,6 @@ CREATE TABLE `%sgdsr_multis_trend` (
   `average_rating_visitors` decimal(3,1) NOT NULL DEFAULT '0.0',
   `total_votes_users` int(11) NOT NULL DEFAULT '0',
   `total_votes_visitors` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (`id`),
+  KEY idx_post_mtt (post_id),
+  KEY idx_multi_mtt (multi_id));
