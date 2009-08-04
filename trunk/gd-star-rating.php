@@ -1101,6 +1101,7 @@ if (!class_exists('GDStarRating')) {
                 gdDBInstallGDSR::create_tables(STARRATING_PATH);
                 gdDBInstallGDSR::upgrade_tables(STARRATING_PATH);
                 gdDBInstallGDSR::alter_tables(STARRATING_PATH);
+                gdDBInstallGDSR::alter_tables(STARRATING_PATH, "idx.txt");
                 $this->o["database_upgrade"] = date("r");
 
                 GDSRDB::install_all_templates();
@@ -1523,6 +1524,7 @@ if (!class_exists('GDStarRating')) {
                 gdDBInstallGDSR::create_tables(STARRATING_PATH);
                 gdDBInstallGDSR::upgrade_tables(STARRATING_PATH);
                 gdDBInstallGDSR::alter_tables(STARRATING_PATH);
+                gdDBInstallGDSR::alter_tables(STARRATING_PATH, "idx.txt");
                 $this->o["database_upgrade"] = date("r");
                 update_option('gd-star-rating', $this->o);
                 wp_redirect_self();

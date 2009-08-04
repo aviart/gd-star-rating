@@ -68,9 +68,9 @@ if (!class_exists('gdDBInstallGDSR')) {
          * @global string $table_prefix Wordpress table prefix
          * @param string $path base path to folder where the install folder is located with trailing slash
          */
-        function alter_tables($path) {
+        function alter_tables($path, $fname = 'alter.txt') {
             global $wpdb, $table_prefix;
-            $path.= "install/alter.txt";
+            $path.= "install/".$fname;
             if (file_exists($path)) {
                 $alters = file($path);
                 foreach ($alters as $a) {
