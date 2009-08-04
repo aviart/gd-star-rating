@@ -7,4 +7,5 @@ CREATE TABLE `%sgdsr_multis_values` (
   `visitor_voters` int(11) DEFAULT '0',
   `visitor_votes` decimal(11,1) DEFAULT '0.0',
   KEY `id` (`id`),
-  KEY `item_id` (`item_id`));
+  KEY `item_id` (`item_id`),
+  KEY `source` (`source`));

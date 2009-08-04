@@ -13,4 +13,6 @@ CREATE TABLE `%sgdsr_multis_data` (
   `expiry_type` char(1) NOT NULL DEFAULT 'N',
   `expiry_value` varchar(32) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
-  KEY `post_id` (`post_id`));
+  KEY post_id (post_id),
+  KEY idx_post_mdt (post_id),
+  KEY idx_multi_mdt (multi_id));
