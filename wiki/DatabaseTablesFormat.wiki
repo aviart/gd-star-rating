@@ -1,5 +1,5 @@
 #summary SQL for creating database tables for the plugin
-#labels Phase-Design
+#labels Phase-Design,Featured
 
 = Introduction =
 
@@ -99,7 +99,11 @@ CREATE TABLE `wp_gdsr_moderate` (
   `voted` datetime DEFAULT NULL,
   `ip` varchar(32) DEFAULT NULL,
   `user_agent` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`record_id`)
+  PRIMARY KEY (`record_id`),
+  KEY idx_id_mod (id),
+  KEY idx_vote_mod (vote_type),
+  KEY idx_multi_mod (multi_id),
+  KEY idx_user_mod (user_id)
 );
 }}}
 
@@ -140,7 +144,9 @@ CREATE TABLE `wp_gdsr_multis_data` (
   `expiry_type` char(1) NOT NULL DEFAULT 'N',
   `expiry_value` varchar(32) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
-  KEY `post_id` (`post_id`)
+  KEY post_id (post_id),
+  KEY idx_post_mdt (post_id),
+  KEY idx_multi_mdt (multi_id)
 );
 }}}
 
@@ -156,7 +162,9 @@ CREATE TABLE `wp_gdsr_multis_trend` (
   `average_rating_visitors` decimal(3,1) NOT NULL DEFAULT '0.0',
   `total_votes_users` int(11) NOT NULL DEFAULT '0',
   `total_votes_visitors` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY idx_post_mtt (post_id),
+  KEY idx_multi_mtt (multi_id)
 );
 }}}
 
@@ -172,7 +180,8 @@ CREATE TABLE `wp_gdsr_multis_values` (
   `visitor_voters` int(11) DEFAULT '0',
   `visitor_votes` decimal(11,1) DEFAULT '0.0',
   KEY `id` (`id`),
-  KEY `item_id` (`item_id`)
+  KEY `item_id` (`item_id`),
+  KEY `source` (`source`)
 );
 }}}
 
@@ -207,7 +216,11 @@ CREATE TABLE `wp_gdsr_votes_log` (
   `ip` varchar(32) DEFAULT NULL,
   `user_agent` varchar(255) DEFAULT NULL,
   `comment_id` bigint(20) unsigned DEFAULT '0',
-  PRIMARY KEY (`record_id`)
+  PRIMARY KEY (`record_id`),
+  KEY idx_id_log (id),
+  KEY idx_vote_log (vote_type),
+  KEY idx_multi_log (multi_id),
+  KEY idx_user_log (user_id)
 );
 }}}
 
@@ -221,6 +234,8 @@ CREATE TABLE `wp_gdsr_votes_trend` (
   `user_votes` int(11) DEFAULT '0',
   `visitor_voters` int(11) DEFAULT '0',
   `visitor_votes` int(11) DEFAULT '0',
-  `vote_date` varchar(10) DEFAULT NULL
+  `vote_date` varchar(10) DEFAULT NULL,
+  KEY idx_id_trd (id),
+  KEY idx_vote_trd (vote_type)
 );
 }}}
