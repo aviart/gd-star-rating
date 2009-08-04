@@ -563,6 +563,27 @@ function wp_gdsr_show_article_review($post_id = 0, $use_default = true, $size = 
 }
 
 /**
+ * Shows multis review rating for the post with stars
+ *
+ * @global object $post post data
+ * @global GDStarRating $gdsr main rating class instance
+ * @param int $multi_id id of the multi rating set
+ * @param int $post_id ID for the article to display rating from. If this is set to 0, than it must be used within the loop, and id of current article will be used.
+ * @param bool $use_default set to true tell this function to render stars using default settings for stars set on settings panel, false tells to use $size and $style parameters.
+ * @param int $size size of the stars to render, must be valid value: 12, 20, 30, 46
+ * @param string $style name of the stars set to use, name of the folder for the set
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
+function wp_gdsr_show_multis_review($multi_id, $post_id = 0, $use_default = true, $size = 20, $style = "oxygen", $echo = true) {
+    global $post, $gdsr;
+    if ($post_id == 0) $post_id = $post->ID;
+
+    if ($echo) echo $gdsr->display_multis_review($multi_id, $post_id, $use_default, $style, $size);
+    else return $gdsr->display_multis_review($multi_id, $post_id, $use_default, $style, $size);
+}
+
+/**
  * Shows rating for the post with stars
  *
  * @global object $post post data
