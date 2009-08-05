@@ -324,6 +324,12 @@ function insertStarRatingCode() {
                 tagtext = tagtext + " image_custom='" + document.getElementById('srImageCustom').value + "'";
                 funa.push("'image_custom' => '" + document.getElementById('srImageCustom').value + "'");
             }
+            if (document.getElementById('srResizeX').value > 0 && document.getElementById('srResizeY').value > 0) {
+                tagtext = tagtext + " image_resize_x=" + document.getElementById('srResizeX').value;
+                funa.push("'image_resize_x' => " + document.getElementById('srResizeX').value);
+                tagtext = tagtext + " image_resize_y=" + document.getElementById('srResizeY').value;
+                funa.push("'image_resize_y' => " + document.getElementById('srResizeY').value);
+            }
         }
 
         if (document.getElementById('publishDate').value == 'lastd') {

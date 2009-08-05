@@ -7,6 +7,13 @@
 <legend><?php _e("Post Image", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
+        <td class="gdsrleft"><?php _e("Resize Width x Height", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright"><input class="widefat widnumb" style="text-align: right;" type="text" size="7" id="srResizeX" name="srResizeX" value="0" /> x <input class="widefat widnumb" style="text-align: right;" type="text" size="7" id="srResizeY" name="srResizeY" value="0" /></td>
+      </tr>
+      <tr>
+        <td class="gdsrleft" colspan="2"><?php _e("This will work only if image is stored on the server.", "gd-star-rating"); ?></td>
+      </tr>
+      <tr>
         <td class="gdsrleft"><?php _e("Get Image From", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
             <select id="srImageFrom" name="srImageFrom" onchange="gdsrChangeImage(this.options[this.selectedIndex].value, 'tinymce')">
@@ -18,7 +25,13 @@
       </tr>
     </table>
     <div id="gdsr-pi-none[tinymce]" style="display: block">
-    <?php _e("If you use %IMAGE% tag in template and this option is selected, image will not be rendered.", "gd-star-rating"); ?>
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
+      <tr>
+        <td>
+            <?php _e("If you use %IMAGE% tag in template and this option is selected, image will not be rendered.", "gd-star-rating"); ?>
+        </td>
+      </tr>
+    </table>
     </div>
     <div id="gdsr-pi-custom[tinymce]" style="display: none">
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
@@ -31,7 +44,13 @@
     </table>
     </div>
     <div id="gdsr-pi-content[tinymce]" style="display: none">
-    <?php _e("First image from post content will be used for %IMAGE% tag.", "gd-star-rating"); ?>
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
+      <tr>
+        <td>
+            <?php _e("First image from post content will be used for %IMAGE% tag.", "gd-star-rating"); ?>
+        </td>
+      </tr>
+    </table>
     </div>
 </fieldset>
 

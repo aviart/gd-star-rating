@@ -43,6 +43,28 @@ class GDSRRenderT2 {
         return $wpdb->get_results($sql);
     }
 
+    function prepare_image($url, $x, $y) {
+        $wpcurl = strlen(WP_CONTENT_URL);
+        if (substr($url, 0, $wpcurl) != WP_CONTENT_URL) return $url;
+        else {
+            $path = WP_CONTENT_DIR.substr($url, $wpcurl);
+            if (!file_exists($path)) return $url;
+            else {
+                $new_path = strlen($path) - 1 - strlen(end(explode(".", $path)));
+                $new_path = substr($path, 0, $new_path)."-".$x."x".$y.".".end(explode(".", $path));
+                if (!file_exists($new_path)) {
+                    require_once(ABSPATH.'wp-admin/includes/image.php');
+                    $img = image_resize($path, $x, $y, true);
+                    if (!is_string($img)) return $url;
+                    else return trailingslashit(dirname($url)).basename($img);
+                } else {
+                    $new_url = strlen($url) - 1 - strlen(end(explode(".", $url)));
+                    return substr($url, 0, $new_url)."-".$x."x".$y.".".end(explode(".", $url));
+                }
+            }
+        }
+    }
+
     function prepare_excerpt($length, $r) {
         $text = trim($r->post_excerpt);
         if ($text == "") {
@@ -96,6 +118,12 @@ class GDSRRenderT2 {
                 } else if ($widget["image_from"] == "custom") {
                     $row->image = get_post_meta($row->post_id, $widget["image_custom"], true);
                 } else $row->image = "";
+
+                $row->image = apply_filters('gdsr_widget_image_url_prepare', $row->image);
+
+                if ($row->image != "" && $widget["image_resize_x"] > 0 && $widget["image_resize_y"] > 0) {
+                    $row->image = GDSRRenderT2::prepare_image($row->image, $widget["image_resize_x"], $widget["image_resize_y"]);
+                }
 
                 if ($widget['source'] == "thumbs") {
                     if ($widget['show'] == "total") {
@@ -826,18 +854,28 @@ class GDSRRenderT2 {
         global $gdsr;
         $template = GDSRRenderT2::get_template($widget["template_id"], $section);
         $tpl_render = html_entity_decode($template->elm["header"]);
+        $tpl_render = apply_filters('gdsr_t2render_'.strtolower($section).'_header', $tpl_render, $template, $widget);
+
         $rt = html_entity_decode($template->elm["item"]);
         $all_rows = GDSRRenderT2::prepare_wsr($widget, $rt);
         $is_thumb = $widget["source"] == "thumbs";
+        $total_rows = count($all_rows);
 
-        if (count($all_rows) > 0) {
+        if ($total_rows > 0) {
             $rank_id = 1;
             foreach ($all_rows as $row) {
                 $rt = html_entity_decode($template->elm["item"]);
+                $rt = apply_filters('gdsr_t2render_'.strtolower($section).'_item', $rt, $template, $widget, $row);
+
                 $title = $row->title;
                 if (strlen($title) == 0) $title = __("(no title)", "gd-star-rating");
                 if ($widget["source"] == "thumbs" && $row->rating > 0) $row->rating = "+".$row->rating;
 
+                $auto_css = " t2-row-".$rank_id;
+                if ($rank_id == 1) $auto_css.= " t2-first";
+                if ($rank_id == $total_rows) $auto_css.= " t2-last";
+
+                $rt = str_replace('%AUTO_ROW_CLASS%', $auto_css, $rt);
                 $rt = str_replace('%THUMB%', $row->rating_thumb, $rt);
                 $rt = str_replace('%RATING%', $row->rating, $rt);
                 $rt = str_replace('%MAX_RATING%', $gdsr->o["stars"], $rt);
@@ -875,8 +913,10 @@ class GDSRRenderT2 {
             }
         }
 
-        $tpl_render.= html_entity_decode($template->elm["footer"]);
+        $rt = html_entity_decode($template->elm["footer"]);
+        $rt = apply_filters('gdsr_t2render_'.strtolower($section).'_footer', $rt, $template, $widget);
 
+        $tpl_render.= $rt;
         return $tpl_render;
     }
 
@@ -884,12 +924,16 @@ class GDSRRenderT2 {
         global $gdsr;
         $template = GDSRRenderT2::get_template($widget["template_id"], "WCR");
         $tpl_render = html_entity_decode($template->elm["header"]);
+        $tpl_render = apply_filters('gdsr_t2render_wcr_header', $tpl_render, $template, $widget);
+
         $rt = html_entity_decode($template->elm["item"]);
         $all_rows = GDSRRenderT2::prepare_wcr($widget, $rt);
 
         if (count($all_rows) > 0) {
             foreach ($all_rows as $row) {
                 $rt = html_entity_decode($template->elm["item"]);
+                $rt = apply_filters('gdsr_t2render_wcr_item', $rt, $template, $widget, $row);
+
                 $rt = str_replace('%CMM_RATING%', $row->rating, $rt);
                 $rt = str_replace('%MAX_RATING%', $gdsr->o["cmm_stars"], $rt);
                 $rt = str_replace('%CMM_VOTES%', $row->voters, $rt);
@@ -914,8 +958,10 @@ class GDSRRenderT2 {
             }
         }
 
-        $tpl_render.= html_entity_decode($template->elm["footer"]);
+        $rt = html_entity_decode($template->elm["footer"]);
+        $rt = apply_filters('gdsr_t2render_wcr_footer', $rt, $template, $widget);
 
+        $tpl_render.= $rt;
         return $tpl_render;
     }
 

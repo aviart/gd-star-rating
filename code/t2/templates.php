@@ -64,6 +64,7 @@ $t->add_element("%AUTHOR_NAME%", __("name of the post/page author", "gd-star-rat
 $t->add_element("%AUTHOR_LINK%", __("url to authors archive", "gd-star-rating"));
 $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
 $t->add_element("%TABLE_ROW_CLASS%", __("class for alternating row class", "gd-star-rating"));
+$t->add_element("%AUTO_ROW_CLASS%", __("auto generated row classes", "gd-star-rating"));
 $t->add_part(__("Header", "gd-star-rating"), "header", "", "none");
 $t->add_part(__("Item", "gd-star-rating"), "item", "", "all", "area");
 $t->add_part(__("Footer", "gd-star-rating"), "footer", "", "none");
@@ -205,6 +206,7 @@ $t->add_element("%AUTHOR_NAME%", __("name of the post/page author", "gd-star-rat
 $t->add_element("%AUTHOR_LINK%", __("url to authors archive", "gd-star-rating"));
 $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
 $t->add_element("%TABLE_ROW_CLASS%", __("class for alternating row class", "gd-star-rating"));
+$t->add_element("%AUTO_ROW_CLASS%", __("auto generated row classes", "gd-star-rating"));
 $t->add_part(__("Header", "gd-star-rating"), "header", "", "none");
 $t->add_part(__("Item", "gd-star-rating"), "item", "", "all", "area");
 $t->add_part(__("Footer", "gd-star-rating"), "footer", "", "none");
@@ -238,6 +240,7 @@ $t->add_element("%AUTHOR_LINK%", __("authors url", "gd-star-rating"));
 $t->add_element("%AUTHOR_AVATAR%", __("authors avatar", "gd-star-rating"));
 $t->add_element("%WORD_VOTES%", __("singular/plural word votes", "gd-star-rating"));
 $t->add_element("%TABLE_ROW_CLASS%", __("class for alternating row class", "gd-star-rating"));
+$t->add_element("%AUTO_ROW_CLASS%", __("auto generated row classes", "gd-star-rating"));
 $t->add_part(__("Header", "gd-star-rating"), "header", "", "none");
 $t->add_part(__("Item", "gd-star-rating"), "item", "", "all", "area");
 $t->add_part(__("Footer", "gd-star-rating"), "footer", "", "none");

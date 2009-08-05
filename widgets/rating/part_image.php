@@ -11,6 +11,18 @@
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divimage', '<?php echo $wpnm; ?>')"><?php _e("Image", "gd-star-rating"); ?></a></strong></td>
+    <td width="150" nowrap="nowrap"><?php _e("Resize Image", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <input class="widefat" style="text-align: right; width: 47px" type="text" name="<?php echo $wpfn; ?>[image_resize_x]" value="<?php echo $wpno["image_resize_x"]; ?>" /> x
+        <input class="widefat" style="text-align: right; width: 47px" type="text" name="<?php echo $wpfn; ?>[image_resize_y]" value="<?php echo $wpno["image_resize_y"]; ?>" />
+    </td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td colspan="2"><?php _e("This will work only if image is stored on the server.", "gd-star-rating"); ?></td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
     <td width="150" nowrap="nowrap"><?php _e("Get Image From", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select name="<?php echo $wpfn; ?>[image_from]" style="width: 110px" id="gdstarr-imagefrom" onchange="gdsrChangeImage(this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">

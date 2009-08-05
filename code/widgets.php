@@ -342,6 +342,8 @@ class gdsrWidgets {
                 $options['div_image'] = $posted['div_image'];
                 $options['div_stars'] = $posted['div_stars'];
 
+                $options['image_resize_x'] = $posted['image_resize_x'];
+                $options['image_resize_y'] = $posted['image_resize_y'];
                 $options['image_from'] = $posted['image_from'];
                 $options['image_custom'] = $posted['image_custom'];
                 $options['rating_stars'] = $posted['rating_stars'];
