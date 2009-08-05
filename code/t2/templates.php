@@ -234,6 +234,7 @@ $t->add_element("%COMMENT%", __("comment contents", "gd-star-rating"));
 $t->add_element("%PERMALINK%", __("url to comment", "gd-star-rating"));
 $t->add_element("%CMM_STARS%", __("rating stars", "gd-star-rating"));
 $t->add_element("%POST_ID%", __("post id", "gd-star-rating"));
+$t->add_element("%RANK_ID%", __("results rank id", "gd-star-rating"));
 $t->add_element("%ID%", __("comment id", "gd-star-rating"));
 $t->add_element("%AUTHOR_NAME%", __("name of the comments author", "gd-star-rating"));
 $t->add_element("%AUTHOR_LINK%", __("authors url", "gd-star-rating"));
