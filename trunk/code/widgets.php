@@ -316,6 +316,7 @@ class gdsrWidgets {
 
                 $options['source'] = $posted['source'];
                 $options['source_set'] = $posted['source_set'];
+                $options['taxonomy'] = $posted['taxonomy'];
 
                 $options['excerpt_words'] = intval($posted['excerpt_words']);
                 $options['rows'] = intval($posted['rows']);

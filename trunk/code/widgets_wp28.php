@@ -33,6 +33,7 @@ if (class_exists("WP_Widget")) {
             $instance['rows'] = intval($new_instance['rows']);
             $instance['min_votes'] = $new_instance['min_votes'];
             $instance['select'] = $new_instance['select'];
+            $instance['taxonomy'] = $new_instance['taxonomy'];
             $instance['grouping'] = $new_instance['grouping'];
             $instance['column'] = $new_instance['column'];
             $instance['order'] = $new_instance['order'];

@@ -10,6 +10,7 @@
     $gdsr_thumbs = $gdsr->g->thumbs;
     $gdsr_trends = $gdsr->g->trend;
     $gdst_multis = GDSRDBMulti::get_multis_tinymce();
+    $wpv = $gdsr->wp_version;
 
 ?>
 
@@ -51,7 +52,7 @@
       <tr>
         <td class="gdsrright">
             <label>
-                <select onchange="gdsrChangeShortcode('tinymce')" id="srShortcode" name="srShortcode" style="width: 200px">
+                <select onchange="gdsrChangeShortcode('tinymce', <?php echo $wpv; ?>)" id="srShortcode" name="srShortcode" style="width: 200px">
                     <option value="starrating"><?php _e("Results", "gd-star-rating"); ?>: StarRating</option>
                     <option value="blograting"><?php _e("Results", "gd-star-rating"); ?>: BlogRating</option>
                     <option value="starrating">--------------------</option>

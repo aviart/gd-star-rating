@@ -24,13 +24,24 @@
   <tr>
     <td width="140" nowrap="nowrap"><?php _e("Items Grouping", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <label><select name="<?php echo $wpfn; ?>[grouping]" id="gdstarr-grouping" style="width: 130px">
+        <label><select name="<?php echo $wpfn; ?>[grouping]" id="gdstarr-grouping" style="width: 130px" onchange="gdsrChangeTaxonomy(this.options[this.selectedIndex].value, '<?php echo $wpnm; ?>')">
             <option value="post"<?php echo $wpno['grouping'] == 'post' ? ' selected="selected"' : ''; ?>><?php _e("No grouping", "gd-star-rating"); ?></option>
             <option value="user"<?php echo $wpno['grouping'] == 'user' ? ' selected="selected"' : ''; ?>><?php _e("User based", "gd-star-rating"); ?></option>
             <option value="category"<?php echo $wpno['grouping'] == 'category' ? ' selected="selected"' : ''; ?>><?php _e("Category based", "gd-star-rating"); ?></option>
+            <option value="taxonomy"<?php echo $wpno['grouping'] == 'taxonomy' ? ' selected="selected"' : ''; ?>><?php _e("Taxonomy based", "gd-star-rating"); ?></option>
         </select></label>
     </td>
   </tr>
+</table>
+<div id="gdsr-src-tax[<?php echo $wpnm; ?>]" style="display: <?php echo $wpno['grouping'] == 'taxonomy' ? 'block' : 'none' ?>">
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+  <tr>
+    <td width="140" nowrap="nowrap"><?php _e("Taxonomy", "gd-star-rating"); ?>:</td>
+    <td align="right"><select name="<?php echo $wpfn; ?>[taxonomy]" style="width: 130px"><?php GDSRHelper::render_taxonomy_select($wpno['taxonomy']); ?></select></td>
+  </tr>
+</table>
+</div>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="140" nowrap="nowrap"><?php _e("Data Source", "gd-star-rating"); ?>:</td>
     <td align="right">

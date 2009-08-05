@@ -162,6 +162,7 @@ class GDSRRenderT2 {
                         case "post":
                             $id = $row->post_id;
                             break;
+                        case "taxonomy":
                         case "category":
                             $id = $row->term_id;
                             break;
@@ -239,6 +240,9 @@ class GDSRRenderT2 {
                 switch ($widget["grouping"]) {
                     case "post":
                         $row->permalink = get_permalink($row->post_id);
+                        break;
+                    case "taxonomy":
+                        $row->permalink = get_term_link($row->slug, $widget["taxonomy"]);
                         break;
                     case "category":
                         $row->permalink = get_category_link($row->term_id);
@@ -842,6 +846,8 @@ class GDSRRenderT2 {
                 $rt = str_replace('%REVIEW%', $row->review, $rt);
                 $rt = str_replace('%MAX_REVIEW%', $gdsr->o["review_stars"], $rt);
                 $rt = str_replace('%TITLE%', __($title), $rt);
+                $rt = str_replace('%SLUG%', $row->slug, $rt);
+                $rt = str_replace('%TAXONOMY%', $widget["taxonomy"], $rt);
                 $rt = str_replace('%PERMALINK%', $row->permalink, $rt);
                 $rt = str_replace('%RANK_ID%', $rank_id, $rt);
                 $rt = str_replace('%ID%', $row->post_id, $rt);
