@@ -274,6 +274,11 @@ class gdTemplates {
     }
 }
 
+function wp_get_custom_tags($rendering) {
+    preg_match_all('(%CUSTOM_.+?%)', $rendering, $matches, PREG_PATTERN_ORDER);
+    return $matches[0];
+}
+
 function wp_gdtpl_get_template($template_id) {
     global $gdsr_cache_templates;
 

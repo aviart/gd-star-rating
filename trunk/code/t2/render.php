@@ -928,12 +928,21 @@ class GDSRRenderT2 {
 
         $rt = html_entity_decode($template->elm["item"]);
         $all_rows = GDSRRenderT2::prepare_wcr($widget, $rt);
+        $total_rows = count($all_rows);
 
-        if (count($all_rows) > 0) {
+        if ($total_rows > 0) {
+            $rank_id = 1;
             foreach ($all_rows as $row) {
                 $rt = html_entity_decode($template->elm["item"]);
                 $rt = apply_filters('gdsr_t2render_wcr_item', $rt, $template, $widget, $row);
 
+                if ($widget["source"] == "thumbs" && $row->rating > 0) $row->rating = "+".$row->rating;
+
+                $auto_css = " t2-row-".$rank_id;
+                if ($rank_id == 1) $auto_css.= " t2-first";
+                if ($rank_id == $total_rows) $auto_css.= " t2-last";
+
+                $rt = str_replace('%AUTO_ROW_CLASS%', $auto_css, $rt);
                 $rt = str_replace('%CMM_RATING%', $row->rating, $rt);
                 $rt = str_replace('%MAX_RATING%', $gdsr->o["cmm_stars"], $rt);
                 $rt = str_replace('%CMM_VOTES%', $row->voters, $rt);
@@ -943,8 +952,10 @@ class GDSRRenderT2 {
                 $rt = str_replace('%AUTHOR_AVATAR%', $row->comment_author_email, $rt);
                 $rt = str_replace('%AUTHOR_LINK%', $row->comment_author_url, $rt);
                 $rt = str_replace('%ID%', $row->comment_id, $rt);
+                $rt = str_replace('%RANK_ID%', $rank_id, $rt);
                 $rt = str_replace('%POST_ID%', $post->ID, $rt);
                 $rt = str_replace('%CMM_STARS%', $row->rating_stars, $rt);
+                $rank_id++;
 
                 $word_votes = $template->dep["EWV"];
                 $tense = $row->voters == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
