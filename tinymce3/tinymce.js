@@ -1,4 +1,7 @@
-function gdsrChangeShortcode(calledfrom) {
+function gdsrChangeShortcode(calledfrom, wpversion) {
+    var tabber = "#gdsr_tabs";
+    if (wpversion < 28) tabber = tabber + " > ul";
+
     var shortcode = document.getElementById("srShortcode").selectedIndex;
     var adminIndex = 0;
     document.getElementById("general_tab").style.display = "none";
@@ -45,7 +48,9 @@ function gdsrChangeShortcode(calledfrom) {
             adminIndex = 8;
             break;
     }
-    if (calledfrom == 'admin') jQuery("#gdsr_tabs > ul").tabs("select", adminIndex);
+    if (calledfrom == 'admin') {
+        jQuery(tabber).tabs("select", adminIndex);
+    }
 }
 
 function gdsrAdminGetShortcode() {
@@ -61,6 +66,10 @@ function gdsrChangeTrend(trend, el, index) {
 
 function gdsrChangeSource(el, index) {
     document.getElementById("gdsr-src-multi["+index+"]").style.display = el == "multis" ? "block" : "none";
+}
+
+function gdsrChangeTaxonomy(el, index) {
+    document.getElementById("gdsr-src-tax["+index+"]").style.display = el == "taxonomy" ? "block" : "none";
 }
 
 function gdsrChangeDate(el, index) {
@@ -225,6 +234,10 @@ function insertStarRatingCode() {
         if (document.getElementById('srGrouping').value != 'post') {
             tagtext = tagtext + " grouping='" + document.getElementById('srGrouping').value + "'";
             funa.push("'grouping' => '" + document.getElementById('srGrouping').value + "'");
+            if (document.getElementById('srGrouping').value == 'taxonomy') {
+                tagtext = tagtext + " taxonomy='" + document.getElementById('srTaxonomy').value + "'";
+                funa.push("'taxonomy' => '" + document.getElementById('srTaxonomy').value + "'");
+            }
         }
         if (document.getElementById('srShow').value != 'total') {
             tagtext = tagtext + " show='" + document.getElementById('srShow').value + "'";
@@ -260,8 +273,7 @@ function insertStarRatingCode() {
                 tagtext = tagtext + " trends_voting_set='" + document.getElementById('trendVotingSet').value + "'";
                 funa.push("'trends_voting_set' => '" + document.getElementById('trendVotingSet').value + "'");
             }
-        }
-        else {
+        } else {
             if (document.getElementById('trendVotingRise').value != '+') {
                 tagtext = tagtext + " trends_voting_rise='" + document.getElementById('trendVotingRise').value + "'";
                 funa.push("'trends_voting_rise' => '" + document.getElementById('trendVotingRise').value + "'");
@@ -319,14 +331,12 @@ function insertStarRatingCode() {
                 tagtext = tagtext + " publish_days=" + document.getElementById('publishDays').value;
                 funa.push("'publish_days' => " + document.getElementById('publishDays').value);
             }
-        }
-        else if (document.getElementById('publishDate').value == 'month') {
+        } else if (document.getElementById('publishDate').value == 'month') {
             tagtext = tagtext + " publish_date='month'";
             tagtext = tagtext + " publish_month='" + document.getElementById('publishMonth').value + "'";
             funa.push("'publish_date' => 'month'");
             funa.push("'publish_month' => '" + document.getElementById('publishMonth').value + "'");
-        }
-        else {
+        } else {
             tagtext = tagtext + " publish_date='range'";
             tagtext = tagtext + " publish_range_from='" + document.getElementById('publishRangeFrom').value + "'";
             tagtext = tagtext + " publish_range_to='" + document.getElementById('publishRangeTo').value + "'";

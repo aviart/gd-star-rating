@@ -7,13 +7,24 @@
       </tr>
       <tr>
         <td class="gdsrleft"><?php _e("Items Grouping", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright"><select name="srGrouping" id="srGrouping" style="width: 130px">
-            <option value="post"><?php _e("No grouping", "gd-star-rating"); ?></option>
-            <option value="user"><?php _e("User based", "gd-star-rating"); ?></option>
-            <option value="category"><?php _e("Category based", "gd-star-rating"); ?></option>
-        </select></td>
+        <td class="gdsrright">
+            <select name="srGrouping" id="srGrouping" style="width: 130px" onchange="gdsrChangeTaxonomy(this.options[this.selectedIndex].value, 'tinymce')">
+                <option value="post"><?php _e("No grouping", "gd-star-rating"); ?></option>
+                <option value="user"><?php _e("User based", "gd-star-rating"); ?></option>
+                <option value="category"><?php _e("Category based", "gd-star-rating"); ?></option>
+                <option value="taxonomy"><?php _e("Taxonomy based", "gd-star-rating"); ?></option>
+            </select>
+        </td>
       </tr>
     </table>
+    <div id="gdsr-src-tax[tinymce]" style="display: none">
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
+      <tr>
+        <td class="gdsrleft"><?php _e("Taxonomy", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright"><select name="srTaxonomy" id="srTaxonomy" style="width: 130px"><?php GDSRHelper::render_taxonomy_select(); ?></select></td>
+      </tr>
+    </table>
+    </div>
 </fieldset>
 
 <fieldset>

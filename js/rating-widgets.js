@@ -19,6 +19,10 @@ function gdsrChangeSource(el, index) {
     document.getElementById("gdsr-src-multi["+index+"]").style.display = el == "multis" ? "block" : "none";
 }
 
+function gdsrChangeTaxonomy(el, index) {
+    document.getElementById("gdsr-src-tax["+index+"]").style.display = el == "taxonomy" ? "block" : "none";
+}
+
 function gdsrChangeDate(el, index) {
     document.getElementById("gdsr-pd-lastd["+index+"]").style.display = el == "lastd" ? "block" : "none";
     document.getElementById("gdsr-pd-month["+index+"]").style.display = el == "month" ? "block" : "none";

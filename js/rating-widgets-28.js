@@ -19,6 +19,10 @@ function gdsrChangeSource(gdid, el) {
     document.getElementById(gdid + '-multis').style.display = el == "multis" ? "block" : "none";
 }
 
+function gdsrChangeTaxonomy(gdid, el) {
+    document.getElementById(gdid + "-tax").style.display = el == "taxonomy" ? "block" : "none";
+}
+
 function gdsrChangeDate(gdid, el) {
     document.getElementById(gdid + "-lastd").style.display = el == "lastd" ? "block" : "none";
     document.getElementById(gdid + "-month").style.display = el == "month" ? "block" : "none";

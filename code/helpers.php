@@ -153,11 +153,21 @@ class GDSRHelper {
         return $parts;
     }
 
+    function render_taxonomy_select($tax = "") {
+        global $wp_taxonomies;
+        print_r($wp_taxonomies);
+        foreach ($wp_taxonomies as $taxonomy => $cnt) {
+            if ($taxonomy != "category" && $cnt->object_type == "post") {
+                $current = $tax == $taxonomy ? ' selected="selected"' : $current = '';
+                echo "\t<option value='".$taxonomy."'".$current.">".$cnt->label."</option>\r\n";
+            }
+        }
+    }
+
     function render_styles_select($styles, $selected = '', $version = false) {
         foreach ($styles as $style) {
             $title = $version ? $style->name." ".$style->version : $style->name;
-            if ($selected == $style->folder) $current = ' selected="selected"';
-            else $current = '';
+            $current = $selected == $style->folder ? ' selected="selected"' : $current = '';
             echo "\t<option value='".$style->folder."'".$current.">".$title."</option>\r\n";
         }
     }
