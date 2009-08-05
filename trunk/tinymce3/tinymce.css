@@ -1,20 +1,11 @@
-td.gdsrright, td.gdsrleft, td.gdsrreg {
-	vertical-align: top;
-	height: 20px;
-    padding: 1px;
-}
+fieldset { margin-bottom: 5px; }
 
-td.gdsrright { text-align: right; }
+p { margin-top: 0; margin-bottom: 5px; }
 
 td.gdsrleft { text-align: left; }
 
-fieldset { margin-bottom: 5px; }
+td.gdsrright { text-align: right; }
 
-p {
-	margin-top: 0;
-	margin-bottom: 5px;
-}
+td.gdsrright, td.gdsrleft, td.gdsrreg { vertical-align: top; height: 20px; padding: 1px; }
 
-.panel_wrapper {
-    height: 320px;
-}
+.panel_wrapper { height: 360px; }

@@ -55,6 +55,8 @@ if (class_exists("WP_Widget")) {
             $instance['div_image'] = $new_instance['div_image'];
             $instance['div_stars'] = $new_instance['div_stars'];
 
+            $instance['image_resize_x'] = $new_instance['image_resize_x'];
+            $instance['image_resize_y'] = $new_instance['image_resize_y'];
             $instance['image_from'] = $new_instance['image_from'];
             $instance['image_custom'] = $new_instance['image_custom'];
             $instance['rating_stars'] = $new_instance['rating_stars'];

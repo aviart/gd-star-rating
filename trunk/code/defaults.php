@@ -2,7 +2,7 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.5.9",
+        "version" => "1.6.0",
         "date" => "2009.08.10.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
@@ -321,6 +321,8 @@ class GDSRDefaults {
         "trends_voting_fall" => "-",
         "trends_voting_set" => "famfamfam",
         "bayesian_calculation" => "0",
+        "image_resize_x" => 0,
+        "image_resize_y" => 0,
         "image_from" => "none",
         "image_custom" => "Image",
         "rating_stars" => "oxygen",
@@ -417,6 +419,8 @@ class GDSRDefaults {
         "trends_voting_same" => "=",
         "trends_voting_fall" => "-",
         "trends_voting_set" => "famfamfam",
+        "image_resize_x" => 0,
+        "image_resize_y" => 0,
         "image_from" => "none",
         "image_custom" => "Image",
         "rating_stars" => "oxygen",

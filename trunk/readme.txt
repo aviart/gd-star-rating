@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.5.8
+Version: 1.6.0
 Tags: vote, ratings, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.5
 Tested up to: 2.8.2
@@ -114,6 +114,9 @@ Check the widget settings. Most likely problem is with default widget setting to
 7. Example multi rating block
 
 == Changelog ==
+= 1.6.0 =
+* Custom support for taxonomies in widgets and builder
+
 = 1.5.8 =
 * Russian and Ukrainian translations
 * New functions and options

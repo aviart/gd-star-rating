@@ -48,7 +48,7 @@
 </div>
 
 <div class="contents">
-    <p>This is the list of filters and actions added by the plugin. You can use them as any standard WordPress filters and actions from other plugins or themes. If it's not stated differently, actions don't have additional parameters, and filters have only one parameter. Parameters, if they are existing, are colored red.</p>
+    <p>This is the list of filters and actions added by the plugin. You can use them as any standard WordPress filters and actions from other plugins or themes. If it's not stated differently, actions don't have additional parameters, and filters have only one parameter. Parameters, if they are existing, are colored red. What needs to be returned is colored blue. If the return is misisng for the filter, than you need to return the variable you got from the filter (input) after modifing it.</p>
     <h3>Actions, General</h3>
     <ul>
         <li><strong>gdsr_init</strong>: executed at the end of plugins init block</li>
@@ -65,13 +65,33 @@
         <li><strong>gdsr_vote_thumb_article</strong>: <em style="color: #cc0000;">$post_id, $user_id, $vote</em> executed when the thumb vote for post/page is saved.</li>
         <li><strong>gdsr_vote_thumb_comment</strong>: <em style="color: #cc0000;">$comment_id, $user_id, $vote</em> executed when the thumb vote for comment is saved.</li>
     </ul>
-    <h3>Filters</h3>
+    <h3>Filters, Prepare Rendering</h3>
     <ul>
+        <li><strong>gdsr_widget_image_url_prepare</strong>: filter for url for the image in the widget or results</li>
         <li><strong>gdsr_widget_data_prepare</strong>: filter for array of the results prepared for rating results widget</li>
         <li><strong>gdsr_widget_post_title</strong>: modify post title for each of widget results. if you already changed titles using widget settings, this filter will be on changed title, not original. disable widget setting for title if you want to change it using filter.</li>
         <li><strong>gdsr_widget_post_excerpt</strong>: modify post excerpt for each of widget results. excerpt will be already prepared and even shortened if you set the length for it in the widget settings.</li>
         <li><strong>gdsr_comments_widget_data_prepare</strong>: filter for array of the results prepared for comments rating results widget</li>
         <li><strong>gdsr_comments_widget_comment_content</strong>: modify the comment content for each of the widget results. if you already changed it using widget settings, this filter will be on changed content, not original. disable widget setting for content if you want to change it using filter.</li>
+    </ul>
+    <h3>Filters, T2 Rendering</h3>
+    <ul>
+        <li><strong>gdsr_t2render_wcr_header</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>,  <em style="color: #0000cc;">$result</em> filter for header rendering in comments rating widget.</li>
+        <li><strong>gdsr_t2render_wcr_item</strong>: <em style="color: #cc0000;">$result, $template, $widget, $row</em>,  <em style="color: #0000cc;">$result</em> filter for single item rendering in comments rating widget.</li>
+        <li><strong>gdsr_t2render_wcr_footer</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>,  <em style="color: #0000cc;">$result</em> filter for footer rendering in comments rating widget.</li>
+        <li><strong>gdsr_t2render_wsr_header</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>,  <em style="color: #0000cc;">$result</em> filter for header rendering in posts rating widget.</li>
+        <li><strong>gdsr_t2render_wsr_item</strong>: <em style="color: #cc0000;">$result, $template, $widget, $row</em>,  <em style="color: #0000cc;">$result</em> filter for single item rendering in posts rating widget.</li>
+        <li><strong>gdsr_t2render_wsr_footer</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>,  <em style="color: #0000cc;">$result</em> filter for footer rendering in posts rating widget.</li>
+        <li><strong>gdsr_t2render_srr_header</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>,  <em style="color: #0000cc;">$result</em> filter for header rendering in posts rating results.</li>
+        <li><strong>gdsr_t2render_srr_item</strong>: <em style="color: #cc0000;">$result, $template, $widget, $row</em>,  <em style="color: #0000cc;">$result</em> filter for single item rendering in posts rating results.</li>
+        <li><strong>gdsr_t2render_srr_footer</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>,  <em style="color: #0000cc;">$result</em> filter for footer rendering in posts rating results.</li>
+    </ul>
+    <p>Parameters for this rendering:</p>
+    <ul>
+        <li>$result: actual rendered HTML, with all tags still inside, before processing</li>
+        <li>$template: full template object</li>
+        <li>$widget: widget settings</li>
+        <li>$row: data for the row</li>
     </ul>
 </div>
 </div>
