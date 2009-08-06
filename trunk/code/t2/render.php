@@ -119,7 +119,7 @@ class GDSRRenderT2 {
                     $row->image = get_post_meta($row->post_id, $widget["image_custom"], true);
                 } else $row->image = "";
 
-                $row->image = apply_filters('gdsr_widget_image_url_prepare', $row->image);
+                $row->image = apply_filters('gdsr_widget_image_url_prepare', $widget, $row);
 
                 if ($row->image != "" && $widget["image_resize_x"] > 0 && $widget["image_resize_y"] > 0) {
                     $row->image = GDSRRenderT2::prepare_image($row->image, $widget["image_resize_x"], $widget["image_resize_y"]);
@@ -280,13 +280,20 @@ class GDSRRenderT2 {
                         break;
                 }
 
+                $stars = $gdsr->o["stars"];
+                $review_stars = $gdsr->o["review_stars"];
+                if ($widget["source"] == "multis") {
+                    $set = wp_gdget_multi_set($widget["source_set"]);
+                    $stars = $review_stars = $set->stars;
+                }
+
                 if ($widget["source"] == "thumbs") {
                     if (!(strpos($template, "%THUMB%") === false)) $row->rating_thumb = GDSRRender::render_static_thumb($widget['rating_thumb'], $widget['rating_thumb_size'], $row->rating);
                 } else {
-                    if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["stars"], $row->rating);
-                    if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["stars"], $row->bayesian);
+                    if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $stars, $row->rating);
+                    if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = GDSRRender::render_static_stars($widget['rating_stars'], $stars, $stars, $row->bayesian);
                 }
-                if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["stars"], $row->review);
+                if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = GDSRRender::render_static_stars($widget['review_stars'], $widget['review_size'], $review_stars, $row->review);
 
                 if ($tr_class == "odd") $tr_class = "even";
                 else $tr_class = "odd";

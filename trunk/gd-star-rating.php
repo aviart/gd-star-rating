@@ -839,6 +839,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->o["integrate_rss_powered"] == 1 || $this->o["rss_active"] == 1) {
                 add_filter('the_excerpt_rss', array(&$this, 'rss_filter'));
                 add_filter('the_content_rss', array(&$this, 'rss_filter'));
+                add_filter('the_content', array(&$this, 'rss_filter'));
             }
 
             add_action('delete_comment', array(&$this, 'comment_delete'));
@@ -910,9 +911,12 @@ if (!class_exists('GDStarRating')) {
          * WordPress rss content filter
          */
         function rss_filter($content) {
-            if ($this->o["rss_active"] == 1) $content.= "<br />".$this->render_article_rss();
-            if ($this->o["integrate_rss_powered"] == 1) $content.= "<br />".$this->powered_by();
-            return $content."<br />";
+            if (is_feed()) {
+                if ($this->o["rss_active"] == 1) $content.= "<br />".$this->render_article_rss();
+                if ($this->o["integrate_rss_powered"] == 1) $content.= "<br />".$this->powered_by();
+                $content.= "<br />";
+            }
+            return $content;
         }
 
         /**
