@@ -4,7 +4,7 @@ Donate link: http://www.gdstarrating.com/donate/
 Version: 1.6.0
 Tags: vote, ratings, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.5
-Tested up to: 2.8.2
+Tested up to: 2.8.3
 Stable tag: trunk
 
 GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
@@ -116,6 +116,8 @@ Check the widget settings. Most likely problem is with default widget setting to
 == Changelog ==
 = 1.6.0 =
 * Custom support for taxonomies in widgets and builder
+* Many improvements to templates and rendering
+* Several rendering, rss and builder problems fixed
 
 = 1.5.8 =
 * Russian and Ukrainian translations
