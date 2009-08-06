@@ -66,8 +66,7 @@ class GDSRDatabase {
                 $sql = sprintf("INSERT INTO %sgdsr_votes_trend (id, vote_type, user_voters, user_votes, vote_date) VALUES (%s, 'cmmthumb', 1, %s, '%s')",
                     $table_prefix, $id, $vote, $trend_date);
                 $wpdb->query($sql);
-            }
-            else {
+            } else {
                 $sql = sprintf("INSERT INTO %sgdsr_votes_trend (id, vote_type, visitor_voters, visitor_votes, vote_date) VALUES (%s, 'cmmthumb', 1, %s, '%s')",
                     $table_prefix, $id, $vote, $trend_date);
                 $wpdb->query($sql);
@@ -234,8 +233,7 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
         if ($vote_type == "article" || $vote_type == "artthumb") {
             $join = sprintf("%sposts o on o.ID = l.id", $table_prefix); 
             $select = "o.post_title, o.ID as post_id, o.ID as control_id";
-        }
-        else if ($vote_type == "comment" || $vote_type == "cmmthumb") {
+        } else if ($vote_type == "comment" || $vote_type == "cmmthumb") {
             $join = sprintf("%scomments o on o.comment_ID = l.id left join %sposts p on p.ID = o.comment_post_ID", $table_prefix, $table_prefix); 
             $select = "o.comment_content, o.comment_author as author, o.comment_ID as control_id, p.post_title, p.ID as post_id";
         }
@@ -440,12 +438,10 @@ wp_gdsr_dump("CAT_DEFAULTS_ADD", $cats);
         if (substr($delete, 0, 1) == "A") {
             $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_article, $delstring, $ids));
             $wpdb->query(sprintf("delete from %s where vote_type in ('article', 'artthumb') and id in %s%s", $dbt_votes_log, $ids, $dellog));
-        }
-        else if (substr($delete, 0, 1) == "K") {
+        } else if (substr($delete, 0, 1) == "K") {
             $wpdb->query(sprintf("update %s set %s where comment_id in %s", $dbt_data_comment, $delstring, $ids));
             $wpdb->query(sprintf("delete from %s where vote_type in ('comment', 'cmmthumb') and id in %s%s", $dbt_votes_log, $ids, $dellog));
-        }
-        else if (substr($delete, 0, 1) == "C") {
+        } else if (substr($delete, 0, 1) == "C") {
             $cids = GDSRDatabase::get_commentids_posts($ids);
             $cm = array();
             foreach ($cids as $cid) 
@@ -453,10 +449,7 @@ wp_gdsr_dump("CAT_DEFAULTS_ADD", $cats);
             $cms = "(".join(", ", $cm).")";
             $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_comment, $delstring, $ids));
             $wpdb->query(sprintf("delete from %s where vote_type in ('comment', 'cmmthumb') and id in %s%s", $dbt_votes_log, $cms, $dellog));
-        }
-        else {
-            return;
-        }
+        } else return;
     }
 
     function delete_voters_log($ids) {
@@ -714,8 +707,7 @@ wp_gdsr_dump("SAVEVOTE_CMM_trend_check_error", $wpdb->last_error);
                 $sql = sprintf("INSERT INTO %s (id, vote_type, user_voters, user_votes, vote_date) VALUES (%s, 'comment', 1, %s, '%s')",
                     $trend, $id, $vote, $trend_date);
                 $wpdb->query($sql);
-            }
-            else {
+            } else {
                 $sql = sprintf("INSERT INTO %s (id, vote_type, visitor_voters, visitor_votes, vote_date) VALUES (%s, 'comment', 1, %s, '%s')",
                     $trend, $id, $vote, $trend_date);
                 $wpdb->query($sql);
@@ -743,8 +735,7 @@ wp_gdsr_dump("SAVEVOTE_CMM_trend_update_user_sql", $sql);
 wp_gdsr_dump("SAVEVOTE_CMM_trend_update_user_error", $wpdb->last_error);
 
             }
-        }
-        else {
+        } else {
             $sql = sprintf("UPDATE %s SET visitor_voters = visitor_voters + 1, visitor_votes = visitor_votes + %s, last_voted = CURRENT_TIMESTAMP WHERE comment_id = %s",
                 $comments, $vote, $id);
             $wpdb->query($sql);
@@ -1131,7 +1122,7 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
     }
 
     function get_visitors($post_id, $vote_type = "article", $dates = "", $vote_value = 0, $select = "total", $start = 0, $limit = 20, $sort_column = '', $sort_order = '') {
-        global $table_prefix;
+        global $wpdb, $table_prefix;
 
         if ($sort_column == '') $sort_column = 'user_id';
         if ($sort_order == '') $sort_order = 'asc';
@@ -1146,6 +1137,7 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
             $where.= " and year(p.voted) = ".substr($dates, 0, 4);
             $where.= " and month(p.voted) = ".substr($dates, 4, 2);
         }
+
         if ($select == "users")
             $where.= " and user_id > 0";
         if ($select == "visitors")
@@ -1154,8 +1146,7 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
             $where.= " and vote = ".$vote_value;
 
         $sql = sprintf("SELECT p.*, u.user_nicename FROM %sgdsr_votes_log p LEFT JOIN %s u ON u.ID = p.user_id%s ORDER BY %s %s LIMIT %s, %s",
-            $table_prefix, $wpdb->users, $where, $sort_column, $sort_order, $start, $limit
-            );
+                $table_prefix, $wpdb->users, $where, $sort_column, $sort_order, $start, $limit);
 
         return $sql;
     }
@@ -1256,10 +1247,8 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
             <option>---------------</option>
         <?php
         foreach ($arc_result as $arc_row) {
-            if ($selected == $arc_row->ID)
-                $default = ' selected="selected"';
-            else
-                $default = '';
+            if ($selected == $arc_row->ID) $default = ' selected="selected"';
+            else $default = '';
             echo sprintf('<option%s value="%s">%s</option>', $default, $arc_row->ID, $arc_row->user_login);
         }
         ?>
