@@ -155,6 +155,7 @@ class GDSRRenderT2 {
                     }
 
                     $row->rating = $row->voters == 0 ? 0 : @number_format($row->votes / $row->voters, 1);
+                    $row->review = $row->review == 0 ? 0 : @number_format($row->review / $row->counter, 1);
                     $row->bayesian = $bayesian_calculated ? $gdsr->bayesian_estimate($row->voters, $row->rating) : -1;
                 }
                 $new_rows[] = $row;
