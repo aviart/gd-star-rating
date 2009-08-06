@@ -469,8 +469,7 @@ if (!class_exists('GDStarRating')) {
                     if ($settings["render"] == "review") {
                         $review = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $data->average_review);
                         return $review;
-                    }
-                    else {
+                    } else {
                         switch ($settings["show"]) {
                             case "visitors":
                                 $rating = $data->average_rating_visitors;
@@ -601,8 +600,7 @@ if (!class_exists('GDStarRating')) {
             if ($this->wp_version < 27) {
                 $box_width = "100%";
                 include($this->plugin_path.'integrate/edit26.php');
-            }
-            else {
+            } else {
                 $box_width = "260";
                 include($this->plugin_path.'integrate/edit.php');
             }
@@ -620,8 +618,7 @@ if (!class_exists('GDStarRating')) {
                     add_meta_box("gdsr-meta-box", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
                     add_meta_box("gdsr-meta-box", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
                 }
-            }
-            else {
+            } else {
                 add_menu_page('GD Star Rating', 'GD Star Rating', 10, __FILE__, array(&$this,"star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
                 if ($this->o["integrate_post_edit"] == 1) {
                     add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "post", "side", "high");
@@ -859,8 +856,7 @@ if (!class_exists('GDStarRating')) {
                 if ($this->o["widget_articles"] == 1) $this->widgets->widget_articles_init();
                 if ($this->o["widget_top"] == 1) $this->widgets->widget_top_init();
                 if ($this->o["widget_comments"] == 1) $this->widgets->widget_comments_init();
-            }
-            else {
+            } else {
                 if ($this->o["widget_articles"] == 1) register_widget("gdsrWidgetRating");
                 if ($this->o["widget_top"] == 1) register_widget("gdsrWidgetTop");
                 if ($this->o["widget_comments"] == 1) register_widget("gdsrWidgetComments");
@@ -1247,8 +1243,7 @@ if (!class_exists('GDStarRating')) {
                 $this->plugin_xtra_url = get_option('siteurl').'/wp-content/gd-star-rating/';
                 $this->plugin_xtra_path = ABSPATH.'/wp-content/gd-star-rating/';
                 $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
-            }
-            else {
+            } else {
                 $this->plugin_url = WP_PLUGIN_URL.'/gd-star-rating/';
                 $this->plugin_ajax = $this->plugin_url.'ajax.php';
                 $this->plugin_xtra_url = WP_CONTENT_URL.'/gd-star-rating/';
@@ -1793,8 +1788,7 @@ if (!class_exists('GDStarRating')) {
                 $url = $this->plugin_url.'css/gdsr.css.php?t='.urlencode($t).'&amp;s='.urlencode($q);
                 if ($return) return $url;
                 else echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
-            }
-            else {
+            } else {
                 echo('<style type="text/css" media=screen>');
                 $inclusion = "internal";
                 $base_url_local = $this->plugin_url;
@@ -2034,12 +2028,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             if ($post_data->rules_comments == "A" || $post_data->rules_comments == "N") {
                 $votes = $data->user_voters + $data->visitor_voters;
                 $score = $data->user_votes + $data->visitor_votes;
-            }
-            else if ($post_data->rules_comments == "V") {
+            } else if ($post_data->rules_comments == "V") {
                 $votes = $data->visitor_voters;
                 $score = $data->visitor_votes;
-            }
-            else {
+            } else {
                 $votes = $data->user_voters;
                 $score = $data->user_votes;
             }
@@ -2240,8 +2232,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             else if (isset($_POST["gdsr_setdefaults"])) {
                 gdTemplateDB::set_templates_defaults($_POST["gdsr_section"]);
                 include($this->plugin_path.'gdt2/form_list.php');
-            }
-            else {
+            } else {
                 include($this->plugin_path.'gdt2/form_list.php');
             }
         }
