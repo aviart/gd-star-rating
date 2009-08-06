@@ -223,6 +223,7 @@ class GDSRX {
             $where[] = "tt.term_id = tx.term_id";
             $where[] = "tr.object_id = p.id";
             $select = "tx.name as title, tx.term_id, tx.slug, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters";
+            $select.= ", sum(d.average_review) as review";
             $group = "group by tt.term_id";
             $col_id = "tt.term_id";
             $col_title = "tx.name";
@@ -231,6 +232,7 @@ class GDSRX {
             $where[] = "t.taxonomy = 'category'";
             $where[] = "t.term_id = x.term_id";
             $select = "x.name as title, x.term_id, x.slug, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters";
+            $select.= ", sum(d.average_review) as review";
             $group = "group by t.term_id";
             $col_id = "t.term_id";
             $col_title = "x.name";
@@ -238,11 +240,13 @@ class GDSRX {
             $from.= sprintf("%s u, ", $wpdb->users);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.user_nicename as slug, u.id, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters";
+            $select.= ", sum(d.average_review) as review";
             $group = "group by u.id";
             $col_id = "u.id";
             $col_title = "u.display_name";
         } else {
             $select = "p.id as post_id, p.post_name as slug, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, d.average_rating_users * d.total_votes_users as user_votes, d.average_rating_visitors * d.total_votes_visitors as visitor_votes, d.total_votes_users as user_voters, d.total_votes_visitors as visitor_voters";
+            $select.= ", d.average_review as review";
         }
 
         if ($widget["select"] != "" && $widget["select"] != "postpage")
@@ -277,7 +281,6 @@ class GDSRX {
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
         $select = "p.post_content, p.post_excerpt, '' as excerpt, ".$select;
-        $select.= ", d.average_review as review";
 
         $col = $widget["column"];
         if ($col == "title") $col = $col_title;
@@ -348,6 +351,7 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
             $where[] = "tt.term_id = tx.term_id";
             $where[] = "tr.object_id = p.id";
             $select = "tx.name as title, tx.term_id, tx.slug, count(*) as counter, sum(d.user_recc_plus) as user_recc_plus, sum(d.visitor_recc_plus) as visitor_recc_plus, sum(d.user_recc_minus) as user_recc_minus, sum(d.visitor_recc_minus) as visitor_recc_minus";
+            $select.= ", sum(d.review) as review";
             $group = "group by tt.term_id";
             $col_id = "tt.term_id";
             $col_title = "tx.name";
@@ -356,6 +360,7 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
             $where[] = "t.taxonomy = 'category'";
             $where[] = "t.term_id = x.term_id";
             $select = "x.name as title, x.term_id, x.slug, count(*) as counter, sum(d.user_recc_plus) as user_recc_plus, sum(d.visitor_recc_plus) as visitor_recc_plus, sum(d.user_recc_minus) as user_recc_minus, sum(d.visitor_recc_minus) as visitor_recc_minus";
+            $select.= ", sum(d.review) as review";
             $group = "group by t.term_id";
             $col_id = "t.term_id";
             $col_title = "x.name";
@@ -363,6 +368,7 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
             $from.= sprintf("%s u, ", $wpdb->users);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.user_nicename as slug, u.id, count(*) as counter, sum(d.user_recc_plus) as user_recc_plus, sum(d.visitor_recc_plus) as visitor_recc_plus, sum(d.user_recc_minus) as user_recc_minus, sum(d.visitor_recc_minus) as visitor_recc_minus";
+            $select.= ", sum(d.review) as review";
             $group = "group by u.id";
             $col_id = "u.id";
             $col_title = "u.display_name";
@@ -471,6 +477,7 @@ wp_gdsr_dump("WIDGET_THUMBS", $sql);
             $where[] = "tt.term_id = tx.term_id";
             $where[] = "tr.object_id = p.id";
             $select = "tx.name as title, tx.term_id, tx.slug, count(*) as counter, sum(d.user_votes) as user_votes, sum(d.visitor_votes) as visitor_votes, sum(d.user_voters) as user_voters, sum(d.visitor_voters) as visitor_voters";
+            $select.= ", sum(d.review) as review";
             $group = "group by tt.term_id";
             $col_id = "tt.term_id";
             $col_title = "tx.name";
@@ -479,6 +486,7 @@ wp_gdsr_dump("WIDGET_THUMBS", $sql);
             $where[] = "t.taxonomy = 'category'";
             $where[] = "t.term_id = x.term_id";
             $select = "x.name as title, x.term_id, x.slug, count(*) as counter, sum(d.user_votes) as user_votes, sum(d.visitor_votes) as visitor_votes, sum(d.user_voters) as user_voters, sum(d.visitor_voters) as visitor_voters";
+            $select.= ", sum(d.review) as review";
             $group = "group by t.term_id";
             $col_id = "t.term_id";
             $col_title = "x.name";
@@ -486,6 +494,7 @@ wp_gdsr_dump("WIDGET_THUMBS", $sql);
             $from.= sprintf("%s u, ", $wpdb->users);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.user_nicename as slug, u.id, count(*) as counter, sum(d.user_votes) as user_votes, sum(d.visitor_votes) as visitor_votes, sum(d.user_voters) as user_voters, sum(d.visitor_voters) as visitor_voters";
+            $select.= ", sum(d.review) as review";
             $group = "group by u.id";
             $col_id = "u.id";
             $col_title = "u.display_name";
