@@ -14,8 +14,14 @@ class GDSRRenderT2 {
 
     function prepare_wbr($widget) {
         global $gdsr, $wpdb;
+        
+        $query = $widget["source"] == "thumbs" ? GDSRX::get_totals_thumbs($widget) : GDSRX::get_totals_standard($widget);
+        $query = apply_filters("gdsr_query_totals", $query, $widget);
+        $sql = GDSRX::compile_query($query);
 
-        $data = $widget["source"] == "thumbs" ? $wpdb->get_row(GDSRX::get_totals_thumbs($widget)) : $wpdb->get_row(GDSRX::get_totals_standard($widget));
+wp_gdsr_dump("SQL_TOTALS_".strtoupper($widget["source"]), $sql);
+
+        $data = $wpdb->get_row($sql);
         $data->max_rating = $widget["source"] == "thumbs" ? 0 : $gdsr->o["stars"];
 
         if ($data->votes == null) {
@@ -34,12 +40,19 @@ class GDSRRenderT2 {
 
     function prepare_data_retrieve($widget, $min = 0) {
         global $wpdb;
-        if ($widget["source"] == "standard")
-            $sql = GDSRX::get_widget_standard($widget, $min);
-        else if ($widget["source"] == "multis")
-            $sql = GDSRX::get_widget_multis($widget, $min);
-        else
-            $sql = GDSRX::get_widget_thumbs($widget, $min);
+        if ($widget["source"] == "standard"){
+            $query = GDSRX::get_widget_standard($widget, $min);
+        } else if ($widget["source"] == "multis") {
+            $query = GDSRX::get_widget_multis($widget, $min);
+        } else {
+            $query = GDSRX::get_widget_thumbs($widget, $min);
+        }
+
+        $query = apply_filters("gdsr_query_results", $query, $widget);
+        $sql = GDSRX::compile_query($query);
+
+wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
+
         return $wpdb->get_results($sql);
     }
 
@@ -316,7 +329,7 @@ class GDSRRenderT2 {
         $sort = new gdSortObjectsArray($all_rows, $properties);
         $all_rows = $sort->sorted;
 
-        $all_rows = apply_filters('gdsr_widget_data_prepare', $all_rows);
+        $all_rows = apply_filters("gdsr_widget_data_prepare", $all_rows);
 
         return $all_rows;
     }

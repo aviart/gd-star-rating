@@ -67,6 +67,8 @@
     </ul>
     <h3>Filters, Prepare Rendering</h3>
     <ul>
+        <li><strong>gdsr_query_totals</strong>: <em style="color: #cc0000;">$query, $widget</em>, <em style="color: #0000cc;">$query</em> filter for array of sql elements for the query to get data for total blog rating widget.</li>
+        <li><strong>gdsr_query_results</strong>: <em style="color: #cc0000;">$query, $widget</em>, <em style="color: #0000cc;">$query</em> filter for array of sql elements for the query to get data for main widget and rating results.</li>
         <li><strong>gdsr_widget_image_url_prepare</strong>: <em style="color: #cc0000;">$widget, $row</em>, <em style="color: #0000cc;">$result</em> filter for url for the image in the widget or results. returns image url.</li>
         <li><strong>gdsr_widget_data_prepare</strong>: filter for array of the results prepared for rating results widget</li>
         <li><strong>gdsr_widget_post_title</strong>: modify post title for each of widget results. if you already changed titles using widget settings, this filter will be on changed title, not original. disable widget setting for title if you want to change it using filter.</li>
