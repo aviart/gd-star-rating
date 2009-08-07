@@ -11,9 +11,20 @@ define('STARRATING_WPCONFIG', '');
 define('STARRATING_LOG_PATH', dirname(__FILE__).'/debug.txt');
 
 /**
- * Full path to a text file used to save debug info. File must be writeable.
+ * Name of the table for T2 templates without prefix.
  */
 define('STARRATING_TPLT2_TABLE', 'gdsr_templates');
+
+/**
+ * Minimal user level required to access all plugins panels except Front and Builder.
+ */
+define('STARRATING_ACCESS_LEVEL', 10);
+
+/**
+ * Minimal user level required to access some of the plugins panels.
+ */
+define('STARRATING_ACCESS_LEVEL_BUILDER', 1);
+define('STARRATING_ACCESS_LEVEL_SETUP', 10);
 
 /**
  * Returns the path to wp-config.php file
