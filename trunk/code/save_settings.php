@@ -27,6 +27,7 @@ if ($_POST['gdsr_action'] == 'save') {
     $gdsr_options["css_cache_active"] = isset($_POST['gdsr_css_cache_active']) ? 1 : 0;
     $gdsr_options["external_css"] = isset($_POST['gdsr_external_css']) ? 1 : 0;
     $gdsr_options["cmm_integration_replay_hide_review"] = isset($_POST['gdsr_cmm_integration_replay_hide_review']) ? 1 : 0;
+    $gdsr_options["cmm_integration_prevent_duplicates"] = isset($_POST['gdsr_cmm_integration_prevent_duplicates']) ? 1 : 0;
     $gdsr_options["admin_advanced"] = isset($_POST['gdsr_admin_advanced']) ? 1 : 0;
     $gdsr_options["admin_placement"] = isset($_POST['gdsr_admin_placement']) ? 1 : 0;
     $gdsr_options["admin_defaults"] = isset($_POST['gdsr_admin_defaults']) ? 1 : 0;

@@ -992,16 +992,29 @@ if (!class_exists('GDStarRating')) {
 
             $std_minimum = $this->o["int_comment_std_zero"] == 1 ? -1 : 0;
             $mur_minimum = $this->o["int_comment_mur_zero"] == 1 ?  0 : 1;
+            $id = $this->post_comment["post_id"];
 
             if ($this->post_comment["standard_rating"] > $std_minimum) {
+                $votes = $this->post_comment["standard_rating"];
                 $ip = $_SERVER["REMOTE_ADDR"];
                 $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
                 $user = intval($userdata->ID);
-                GDSRDatabase::save_vote($this->post_comment["post_id"], $user, $ip, $ua, $this->post_comment["standard_rating"], $comment_id);
+                $allow_vote = true;
+                if ($this->o["cmm_integration_prevent_duplicates"] == 1) {
+                    $allow_vote = intval($votes) <= $this->o["stars"];
+                    if ($allow_vote) $allow_vote = $this->check_cookie($id);
+                    if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
+                }
+                if ($allow_vote) {
+                    GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes, $comment_id);
+                    if ($this->o["cmm_integration_prevent_duplicates"] == 1) $this->save_cookie($id);
+                    do_action("gdsr_vote_rating_article_integrate", $id, $user, $votes);
+                }
             }
 
             if ($this->post_comment["multi_id"] > 0 && $this->post_comment["multi_rating"] != "") {
-                $set = gd_get_multi_set($this->post_comment["multi_id"]);
+                $set_id = $this->post_comment["multi_id"];
+                $set = gd_get_multi_set($set_id);
                 $values = explode("X", $this->post_comment["multi_rating"]);
                 $allow_vote = true;
                 foreach ($values as $v) {
@@ -1010,13 +1023,19 @@ if (!class_exists('GDStarRating')) {
                         break;
                     }
                 }
+                if ($this->o["cmm_integration_prevent_duplicates"] == 1) {
+                    if ($allow_vote) $allow_vote = $this->check_cookie($id."#".$set_id, "multis");
+                    if ($allow_vote) $allow_vote = GDSRDBMulti::check_vote($id, $user, $set_id, 'multis', $ip, $this->o["logged"] != 1, $this->o["mur_allow_mixed_ip_votes"] == 1);
+                }
                 if ($allow_vote) {
                     $ip = $_SERVER["REMOTE_ADDR"];
                     $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
                     $user = intval($userdata->ID);
-                    $data = GDSRDatabase::get_post_data($this->post_comment["post_id"]);
-                    GDSRDBMulti::save_vote($this->post_comment["post_id"], $set->multi_id, $user, $ip, $ua, $values, $data, $comment_id);
-                    GDSRDBMulti::recalculate_multi_averages($this->post_comment["post_id"], $set->multi_id, "", $set, true);
+                    $data = GDSRDatabase::get_post_data($id);
+                    GDSRDBMulti::save_vote($id, $set->multi_id, $user, $ip, $ua, $values, $data, $comment_id);
+                    GDSRDBMulti::recalculate_multi_averages($id, $set->multi_id, "", $set, true);
+                    if ($this->o["cmm_integration_prevent_duplicates"] == 1) $this->save_cookie($id."#".$set_id, "multis");
+                    do_action("gdsr_vote_rating_multis_integrate", $id, $user, $set_id, $values);
                 }
             }
         }

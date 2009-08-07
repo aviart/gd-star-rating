@@ -322,7 +322,6 @@ class GDSRX {
         }
         else if ($col == "counter" && $grouping != "post") $col = "count(*)";
         else $col = $col_id;
-        $ordering = sprintf("order by %s %s", $col, $sort);
 
         $query = array(
             "select" => "distinct ".$select.$extras,
