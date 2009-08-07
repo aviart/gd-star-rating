@@ -116,6 +116,7 @@ Check the widget settings. Most likely problem is with default widget setting to
 == Changelog ==
 = 1.6.0 =
 * Custom support for taxonomies in widgets and builder
+* Config options to set the panels user access levels
 * Many improvements to templates and rendering
 * Several rendering, rss and builder problems fixed
 
