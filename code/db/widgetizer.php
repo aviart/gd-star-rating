@@ -1,6 +1,17 @@
 <?php
 
 class GDSRX {
+    function compile_query($query) {
+        $sql = "select ".$query["select"]." from ".$query["from"];
+
+        if (trim($query["where"]) != "") $sql.= " where ".$query["where"];
+        if (trim($query["group"]) != "") $sql.= " group by ".$query["group"];
+        if (trim($query["order"]) != "") $sql.= " order by ".$query["order"];
+        if (trim($query["limit"]) != "") $sql.= " limit ".$query["limit"];
+
+        return $sql;
+    }
+
     function get_trend_data($ids, $grouping = "post", $type = "article", $period = "over", $last = 1, $over = 30, $multi_id = 0) {
         global $wpdb, $table_prefix;
         $strtodate = gdFunctionsGDSR::mysql_version();
@@ -146,7 +157,16 @@ class GDSRX {
         if ($widget["select"] != "" && $widget["select"] != "postpage")
             $where[] = "p.post_type = '".$widget["select"]."'";
 
-        return sprintf("select %s from %sposts p, %sgdsr_data_article d where %s", $select, $table_prefix, $table_prefix, join(" and ", $where));
+        $query = array(
+            "select" => $select,
+            "from" => sprintf("%sposts p, %sgdsr_data_article d", $table_prefix, $table_prefix),
+            "where" => join(" and ", $where),
+            "group" => "",
+            "order" => "",
+            "limit" => ""
+        );
+
+        return $query;
     }
 
     function get_totals_standard($widget, $min = 0) {
@@ -170,7 +190,16 @@ class GDSRX {
         if ($widget["select"] != "" && $widget["select"] != "postpage") 
             $where[] = "p.post_type = '".$widget["select"]."'";
 
-        return sprintf("select %s from %sposts p, %sgdsr_data_article d where %s", $select, $table_prefix, $table_prefix, join(" and ", $where));
+        $query = array(
+            "select" => $select,
+            "from" => sprintf("%sposts p, %sgdsr_data_article d", $table_prefix, $table_prefix),
+            "where" => join(" and ", $where),
+            "group" => "",
+            "order" => "",
+            "limit" => ""
+        );
+
+        return $query;
     }
 
     function get_widget_multis($widget, $min = 0) {
@@ -224,8 +253,7 @@ class GDSRX {
             $where[] = "tr.object_id = p.id";
             $select = "tx.name as title, tx.term_id, tx.slug, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters";
             $select.= ", sum(d.average_review) as review";
-            $group = "group by tt.term_id";
-            $col_id = "tt.term_id";
+            $group = $col_id = "tt.term_id";
             $col_title = "tx.name";
         } else if ($grouping == 'category') {
             $from.= sprintf("%sterms x, ", $table_prefix);
@@ -233,16 +261,14 @@ class GDSRX {
             $where[] = "t.term_id = x.term_id";
             $select = "x.name as title, x.term_id, x.slug, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters";
             $select.= ", sum(d.average_review) as review";
-            $group = "group by t.term_id";
-            $col_id = "t.term_id";
+            $group = $col_id = "t.term_id";
             $col_title = "x.name";
         } else if ($grouping == 'user') {
             $from.= sprintf("%s u, ", $wpdb->users);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.user_nicename as slug, u.id, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters";
             $select.= ", sum(d.average_review) as review";
-            $group = "group by u.id";
-            $col_id = "u.id";
+            $group = $col_id = "u.id";
             $col_title = "u.display_name";
         } else {
             $select = "p.id as post_id, p.post_name as slug, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, d.average_rating_users * d.total_votes_users as user_votes, d.average_rating_visitors * d.total_votes_visitors as visitor_votes, d.total_votes_users as user_voters, d.total_votes_visitors as visitor_voters";
@@ -298,12 +324,16 @@ class GDSRX {
         else $col = $col_id;
         $ordering = sprintf("order by %s %s", $col, $sort);
 
-        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_multis_data d where %s %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $ordering, $widget["rows"]);
+        $query = array(
+            "select" => "distinct ".$select.$extras,
+            "from" => sprintf("%s%sposts p, %sgdsr_multis_data d", $from, $table_prefix, $table_prefix),
+            "where" => join(" and ", $where),
+            "group" => $group,
+            "order" => sprintf("%s %s", $col, $sort),
+            "limit" => "0, ".$widget["rows"]
+        );
 
-wp_gdsr_dump("WIDGET_MULTIS", $sql);
-
-        return $sql;
+        return $query;
     }
 
     function get_widget_thumbs($widget, $min = 0) {
@@ -352,8 +382,7 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
             $where[] = "tr.object_id = p.id";
             $select = "tx.name as title, tx.term_id, tx.slug, count(*) as counter, sum(d.user_recc_plus) as user_recc_plus, sum(d.visitor_recc_plus) as visitor_recc_plus, sum(d.user_recc_minus) as user_recc_minus, sum(d.visitor_recc_minus) as visitor_recc_minus";
             $select.= ", sum(d.review) as review";
-            $group = "group by tt.term_id";
-            $col_id = "tt.term_id";
+            $group = $col_id = "tt.term_id";
             $col_title = "tx.name";
         } else if ($grouping == 'category') {
             $from.= sprintf("%sterms x, ", $table_prefix);
@@ -361,16 +390,14 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
             $where[] = "t.term_id = x.term_id";
             $select = "x.name as title, x.term_id, x.slug, count(*) as counter, sum(d.user_recc_plus) as user_recc_plus, sum(d.visitor_recc_plus) as visitor_recc_plus, sum(d.user_recc_minus) as user_recc_minus, sum(d.visitor_recc_minus) as visitor_recc_minus";
             $select.= ", sum(d.review) as review";
-            $group = "group by t.term_id";
-            $col_id = "t.term_id";
+            $group = $col_id = "t.term_id";
             $col_title = "x.name";
         } else if ($grouping == 'user') {
             $from.= sprintf("%s u, ", $wpdb->users);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.user_nicename as slug, u.id, count(*) as counter, sum(d.user_recc_plus) as user_recc_plus, sum(d.visitor_recc_plus) as visitor_recc_plus, sum(d.user_recc_minus) as user_recc_minus, sum(d.visitor_recc_minus) as visitor_recc_minus";
             $select.= ", sum(d.review) as review";
-            $group = "group by u.id";
-            $col_id = "u.id";
+            $group = $col_id = "u.id";
             $col_title = "u.display_name";
         } else {
             $select = "p.id as post_id, p.post_name as slug, p.post_author as author, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter";
@@ -424,12 +451,16 @@ wp_gdsr_dump("WIDGET_MULTIS", $sql);
         else $col = $col_id;
         $ordering = sprintf("order by %s %s", $col, $sort);
 
-        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_data_article d where %s %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $ordering, $widget["rows"]);
+        $query = array(
+            "select" => "distinct ".$select.$extras,
+            "from" => sprintf("%s%sposts p, %sgdsr_data_article d", $from, $table_prefix, $table_prefix),
+            "where" => join(" and ", $where),
+            "group" => $group,
+            "order" => sprintf("%s %s", $col, $sort),
+            "limit" => "0, ".$widget["rows"]
+        );
 
-wp_gdsr_dump("WIDGET_THUMBS", $sql);
-
-        return $sql;
+        return $query;
     }
 
     function get_widget_standard($widget, $min = 0) {
@@ -478,8 +509,7 @@ wp_gdsr_dump("WIDGET_THUMBS", $sql);
             $where[] = "tr.object_id = p.id";
             $select = "tx.name as title, tx.term_id, tx.slug, count(*) as counter, sum(d.user_votes) as user_votes, sum(d.visitor_votes) as visitor_votes, sum(d.user_voters) as user_voters, sum(d.visitor_voters) as visitor_voters";
             $select.= ", sum(d.review) as review";
-            $group = "group by tt.term_id";
-            $col_id = "tt.term_id";
+            $group = $col_id = "tt.term_id";
             $col_title = "tx.name";
         } else if ($grouping == 'category') {
             $from.= sprintf("%sterms x, ", $table_prefix);
@@ -487,16 +517,14 @@ wp_gdsr_dump("WIDGET_THUMBS", $sql);
             $where[] = "t.term_id = x.term_id";
             $select = "x.name as title, x.term_id, x.slug, count(*) as counter, sum(d.user_votes) as user_votes, sum(d.visitor_votes) as visitor_votes, sum(d.user_voters) as user_voters, sum(d.visitor_voters) as visitor_voters";
             $select.= ", sum(d.review) as review";
-            $group = "group by t.term_id";
-            $col_id = "t.term_id";
+            $group = $col_id = "t.term_id";
             $col_title = "x.name";
         } else if ($grouping == 'user') {
             $from.= sprintf("%s u, ", $wpdb->users);
             $where[] = "u.id = p.post_author";
             $select = "u.display_name as title, u.user_nicename as slug, u.id, count(*) as counter, sum(d.user_votes) as user_votes, sum(d.visitor_votes) as visitor_votes, sum(d.user_voters) as user_voters, sum(d.visitor_voters) as visitor_voters";
             $select.= ", sum(d.review) as review";
-            $group = "group by u.id";
-            $col_id = "u.id";
+            $group = $col_id = "u.id";
             $col_title = "u.display_name";
         } else {
             $select = "p.id as post_id, p.post_name as slug, p.post_author as author, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter";
@@ -548,12 +576,16 @@ wp_gdsr_dump("WIDGET_THUMBS", $sql);
         else $col = $col_id;
         $ordering = sprintf("order by %s %s", $col, $sort);
 
-        $sql = sprintf("select distinct %s%s from %s%sposts p, %sgdsr_data_article d where %s %s %s limit 0, %s",
-                $select, $extras, $from, $table_prefix, $table_prefix, join(" and ", $where), $group, $ordering, $widget["rows"]);
+        $query = array(
+            "select" => "distinct ".$select.$extras,
+            "from" => sprintf("%s%sposts p, %sgdsr_data_article d", $from, $table_prefix, $table_prefix),
+            "where" => join(" and ", $where),
+            "group" => $group,
+            "order" => sprintf("%s %s", $col, $sort),
+            "limit" => "0, ".$widget["rows"]
+        );
 
-wp_gdsr_dump("WIDGET_STANDARD", $sql);
-
-        return $sql;
+        return $query;
     }
 
     function get_widget_comments($widget, $post_id) {
