@@ -6,7 +6,9 @@
 </tr>
 <tr><th scope="row"><?php _e("Comment Integration", "gd-star-rating"); ?></th>
     <td>
-        <input type="checkbox" name="gdsr_cmm_integration_replay_hide_review" id="gdsr_cmm_integration_replay_hide_review"<?php if ($gdsr_options["cmm_integration_replay_hide_review"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_integration_reply_hide_review"><?php _e("Hide comment integrated rating block if the comment is in reply mode (WP 2.7 or newer only).", "gd-star-rating"); ?></label>
+        <input type="checkbox" name="gdsr_cmm_integration_replay_hide_review" id="gdsr_cmm_integration_replay_hide_review"<?php if ($gdsr_options["cmm_integration_replay_hide_review"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_integration_replay_hide_review"><?php _e("Hide comment integrated rating block if the comment is in reply mode (WP 2.7 or newer only).", "gd-star-rating"); ?></label>
+        <br />
+        <input type="checkbox" name="gdsr_cmm_integration_prevent_duplicates" id="gdsr_cmm_integration_prevent_duplicates"<?php if ($gdsr_options["cmm_integration_prevent_duplicates"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmm_integration_prevent_duplicates"><?php _e("Prevent saving more than one rating per user or visitor.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
         <input type="checkbox" name="gdsr_int_comment_std_zero" id="gdsr_int_comment_std_zero"<?php if ($gdsr_options["int_comment_std_zero"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_int_comment_std_zero"><?php _e("Allow rating zero for standard rating vote from comment integration.", "gd-star-rating"); ?></label>
         <br />

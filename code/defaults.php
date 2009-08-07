@@ -17,6 +17,7 @@ class GDSRDefaults {
         "css_last_changed" => 0,
         "css_cache_active" => 1,
         "cmm_integration_replay_hide_review" => 0,
+        "cmm_integration_prevent_duplicates" => 1,
         "disable_ie6_check" => 0,
         "widgets_hidempty" => 0,
         "encoding" => "UTF-8",
