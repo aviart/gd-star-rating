@@ -427,12 +427,12 @@ msgstr "наслов"
 #: code/t2/templates.php:47
 #: code/t2/templates.php:189
 msgid "clean name"
-msgstr ""
+msgstr "чисто име"
 
 #: code/t2/templates.php:48
 #: code/t2/templates.php:190
 msgid "taxonomy"
-msgstr ""
+msgstr "таксономија"
 
 #: code/t2/templates.php:49
 #: code/t2/templates.php:191
@@ -453,9 +453,8 @@ msgstr "рејтинг звезде"
 
 #: code/t2/templates.php:51
 #: code/t2/templates.php:193
-#, fuzzy
 msgid "rating thumb"
-msgstr "рејтинг текст"
+msgstr "рејтинг тумб"
 
 #: code/t2/templates.php:52
 #: code/t2/templates.php:194
@@ -493,7 +492,7 @@ msgstr "број чланака"
 #: code/t2/templates.php:200
 #: code/t2/templates.php:236
 msgid "results rank id"
-msgstr ""
+msgstr "ранг резултата"
 
 #: code/t2/templates.php:60
 #: code/t2/templates.php:202
@@ -526,7 +525,7 @@ msgstr "класа за алтернитвне редове табеле"
 #: code/t2/templates.php:208
 #: code/t2/templates.php:243
 msgid "auto generated row classes"
-msgstr ""
+msgstr "ауто генерисане класе редова"
 
 #: code/t2/templates.php:67
 #: code/t2/templates.php:209
@@ -2157,7 +2156,7 @@ msgstr "Редови за приказ"
 
 #: options/settings/settings_administration.php:27
 msgid "Show column with number of views on the plugins articles panel."
-msgstr ""
+msgstr "Прикажи колону са бројем прегледа на панелу са чланцима"
 
 #: options/settings/settings_administration.php:29
 msgid "Maximum screen width is used only on WP version older than 2.7."
@@ -2232,7 +2231,7 @@ msgstr "Кеширање активно."
 
 #: options/settings/settings_advanced.php:14
 msgid "Force using of cache. This is usefull in some rare cases when PHP can't report writeability correct."
-msgstr ""
+msgstr "Насилно коришћење кеша. Ово је корисно у ретким случајевима када ПХП не може да пријави да ли је фолдер отворен за писање."
 
 #: options/settings/settings_advanced.php:17
 msgid "Cache Cleanup"
@@ -2485,7 +2484,7 @@ msgstr "За коментаре за стране."
 #: options/settings/settings_comments.php:62
 #: options/settings/settings_thumbs.php:114
 msgid "Enable auto insert regardless of the single page or post."
-msgstr ""
+msgstr "Омогући ауто убацивање без обзира да је у питању један чланак."
 
 #: options/settings/settings_comments.php:129
 msgid "Aggregated Rating"
@@ -2532,9 +2531,8 @@ msgid "Multiple rating support."
 msgstr "Подршка за вишеструки рејтинг."
 
 #: options/settings/settings_features.php:23
-#, fuzzy
 msgid "Thumbs up/down rating support."
-msgstr "Подршка за вишеструки рејтинг."
+msgstr "Подршка затамб рејтинг."
 
 #: options/settings/settings_features.php:27
 msgid "Post And Page Review Rating."
@@ -2625,9 +2623,8 @@ msgid "Expand WP Query with new rating specific sorting and filtering."
 msgstr "Прошири WP Упит ојекат новим рејтинг специфичним сортирањем и филтрирањем."
 
 #: options/settings/settings_integration.php:6
-#, fuzzy
 msgid "Comment Integration"
-msgstr "Мулти Рејтинг Комент Интеграција"
+msgstr "Комент Интеграција"
 
 #: options/settings/settings_integration.php:8
 msgid "Hide comment integrated rating block if the comment is in reply mode (WP 2.7 or newer only)."
@@ -2635,68 +2632,59 @@ msgstr "Сакриј блок интегрисан у коментар, ако �
 
 #: options/settings/settings_integration.php:10
 msgid "Prevent saving more than one rating per user or visitor."
-msgstr ""
+msgstr "Спречи снимање више од једног гласа по кориснику или посетиоцу."
 
 #: options/settings/settings_integration.php:12
 msgid "Allow rating zero for standard rating vote from comment integration."
-msgstr ""
+msgstr "Дозволи рејтинг 0 за стандардни рејтину у интеграцији коментара."
 
 #: options/settings/settings_integration.php:14
-#, fuzzy
 msgid "Allow rating zero for multis ratings vote from comment integration."
-msgstr "(овај мулти се се користи за коментар интеграцију)"
+msgstr "Дозволи рејтинг 0 за мултис гласове у коментар интеграцији."
 
 #: options/settings/settings_integration.php:16
 msgid "Be careful with zero's settings. This can break some other things, and is not recommended or supported."
-msgstr ""
+msgstr "Опрезно са овим подешавањем. Мозе да узазове проблеме, и није препоручено нити подржано."
 
 #: options/settings/settings_integration.php:19
 msgid "Dashboard"
 msgstr "Контролни Панел"
 
 #: options/settings/settings_integration.php:21
-#, fuzzy
 msgid "Add widgets to the administration dashboard."
-msgstr "Додај сумарни виџет на администраторски контрол панел."
+msgstr "Додај виџете на администраторски контрол панел."
 
 #: options/settings/settings_integration.php:23
-#, fuzzy
 msgid "Add chart summary rating widget."
-msgstr "GD Star Rating: Post/Page rating widget."
+msgstr "Додај виџет са сумарним гласовима."
 
 #: options/settings/settings_integration.php:28
 msgid "Add widget with list of latest votes."
-msgstr ""
+msgstr "Додај виџет са последњим гласовима."
 
 #: options/settings/settings_integration.php:31
-#, fuzzy
 msgid "Votes to display:"
-msgstr "Текст за приказ"
+msgstr "Гласови за приказ:"
 
 #: options/settings/settings_integration.php:39
-#, fuzzy
 msgid "Show thumbs for posts."
-msgstr "За коментаре за чланке."
+msgstr "Прикажи тамбове за чланке."
 
 #: options/settings/settings_integration.php:41
-#, fuzzy
 msgid "Show stars for posts."
-msgstr "За коментаре за чланке."
+msgstr "Прикажи звезде за чланке."
 
 #: options/settings/settings_integration.php:43
-#, fuzzy
 msgid "Show multis for posts."
-msgstr "За коментаре за чланке."
+msgstr "Прикажи мулти рејтинг за чланке."
 
 #: options/settings/settings_integration.php:46
-#, fuzzy
 msgid "Show thumbs for comments."
-msgstr "укупно гласова за коментар"
+msgstr "Прикажи тамбове за коментаре."
 
 #: options/settings/settings_integration.php:48
-#, fuzzy
 msgid "Show stars for comments."
-msgstr "укупно гласова за коментар"
+msgstr "Прикажи звезде са коментаре."
 
 #: options/settings/settings_integration.php:54
 msgid "Widgets"
@@ -2755,9 +2743,8 @@ msgid "Add ratings to posts in RSS feeds."
 msgstr "Додај рејтинг у чланке у РСС фиду."
 
 #: options/settings/settings_integration.php:87
-#, fuzzy
 msgid "Data source"
-msgstr "Извор Података"
+msgstr "Извор података"
 
 #: options/settings/settings_integration.php:90
 #: tinymce3/panels/general.php:36
@@ -2952,17 +2939,16 @@ msgid "Depending on the number of posts, this operation can take a while to comp
 msgstr "У зависности од броја чланак, операција може да потраје. Будите стрпљиви."
 
 #: options/tools/tools_bulk.php:105
-#, fuzzy
 msgid "Update Multi Rating Votes Log"
-msgstr "Додај Нови Мулти Сет"
+msgstr "Унапреди Милти Рејтинг лог."
 
 #: options/tools/tools_bulk.php:108
 msgid "This tool will update votes log and recalculate average value for each multi ratings votes."
-msgstr ""
+msgstr "Овај алат ће прерачунати лог и просечне вредности за мулти рејтинг гласове."
 
 #: options/tools/tools_bulk.php:111
 msgid "You need to do only once."
-msgstr ""
+msgstr "Треба да се уради само једном."
 
 #: options/tools/tools_cleanup.php:1
 msgid "Cache"
@@ -3385,24 +3371,20 @@ msgid "Email"
 msgstr "Имејл"
 
 #: options/users.php:63
-#, fuzzy
 msgid "Thumbs Articles"
-msgstr "Тамб Величине"
+msgstr "Тамб Чланака"
 
 #: options/users.php:64
-#, fuzzy
 msgid "Thumbs Comments"
-msgstr "Број Коментара"
+msgstr "Тамб Коментара"
 
 #: options/users.php:65
-#, fuzzy
 msgid "Ratings Articles"
-msgstr "чланци"
+msgstr "Рејтинг Чланака"
 
 #: options/users.php:66
-#, fuzzy
 msgid "Ratings Comments"
-msgstr "Рејтинг Сет"
+msgstr "Рејтинг Коментари"
 
 #: options/users.php:33
 msgid "Visitor"
@@ -3735,15 +3717,14 @@ msgstr "Категорија"
 #: tinymce3/panels/general.php:14
 #: widgets/rating/part_basic.php:30
 #: widgets/rating_28/part_basic.php:30
-#, fuzzy
 msgid "Taxonomy based"
-msgstr "Категорија"
+msgstr "Базирано на Таксономији"
 
 #: tinymce3/panels/general.php:22
 #: widgets/rating/part_basic.php:38
 #: widgets/rating_28/part_basic.php:38
 msgid "Taxonomy"
-msgstr ""
+msgstr "Таксономија"
 
 #: tinymce3/panels/general.php:30
 msgid "Source"
@@ -3886,13 +3867,13 @@ msgstr "Слика Чланка"
 
 #: tinymce3/panels/styles.php:9
 msgid "Resize Width x Height"
-msgstr ""
+msgstr "Величина Ширина Висина"
 
 #: tinymce3/panels/styles.php:13
 #: widgets/rating/part_image.php:21
 #: widgets/rating_28/part_image.php:21
 msgid "This will work only if image is stored on the server."
-msgstr ""
+msgstr "Ово ради само ако је слика на серверу."
 
 #: tinymce3/panels/styles.php:16
 #: widgets/rating/part_image.php:25
@@ -3945,7 +3926,6 @@ msgid "Review Stars"
 msgstr "Критика Звездице"
 
 #: tinymce3/panels/thumbsrating.php:1
-#, fuzzy
 msgid "Thumbs Rating Block"
 msgstr "Тамб Рејтинг Блок Чланака"
 
@@ -4091,19 +4071,16 @@ msgstr "Сви датуми"
 
 #: widgets/rating/part_image.php:13
 #: widgets/rating_28/part_image.php:13
-#, fuzzy
 msgid "Resize Image"
-msgstr "Слика Чланка"
+msgstr "Промена Вличине слике"
 
 #: widgets/rating/part_stars.php:13
 #: widgets/rating_28/part_stars.php:13
-#, fuzzy
 msgid "Stars Set"
 msgstr "Сетови Звезда"
 
 #: widgets/rating/part_stars.php:18
 #: widgets/rating_28/part_stars.php:18
-#, fuzzy
 msgid "Stars Size"
 msgstr "Величине Звезда"
 
@@ -4119,7 +4096,6 @@ msgstr "Критика Величина"
 
 #: widgets/rating/part_stars.php:38
 #: widgets/rating_28/part_stars.php:38
-#, fuzzy
 msgid "Thumbs Size"
 msgstr "Тамб Величине"
 
