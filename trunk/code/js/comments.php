@@ -10,6 +10,7 @@ function hideshowCmmInt() {
         jQuery("#gdsr-cmm-integration-block-standard").addClass("cmminthide");
         jQuery("#gdsr-cmm-integration-block-multis").addClass("cmminthide");
     }
+
     if (!gdsrCanceled) {
         jQuery("#cancel-comment-reply-link").click(function() {
             hideshowCmmInt();
@@ -20,12 +21,6 @@ function hideshowCmmInt() {
         gdsrCanceled = false;
     }
 }
-
-jQuery(document).ready(function() {
-    jQuery(".comment-reply-link").click(function() {
-        hideshowCmmInt();
-    });
-});
 
 function is_cmm_rated_multis() {
     var value = value_cmm_rated_multis();
