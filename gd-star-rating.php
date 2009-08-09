@@ -1003,7 +1003,7 @@ if (!class_exists('GDStarRating')) {
                 if ($this->o["cmm_integration_prevent_duplicates"] == 1) {
                     $allow_vote = intval($votes) <= $this->o["stars"];
                     if ($allow_vote) $allow_vote = $this->check_cookie($id);
-                    if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
+                    if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, false, false);
                 }
                 if ($allow_vote) {
                     GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes, $comment_id);
@@ -1025,7 +1025,7 @@ if (!class_exists('GDStarRating')) {
                 }
                 if ($this->o["cmm_integration_prevent_duplicates"] == 1) {
                     if ($allow_vote) $allow_vote = $this->check_cookie($id."#".$set_id, "multis");
-                    if ($allow_vote) $allow_vote = GDSRDBMulti::check_vote($id, $user, $set_id, 'multis', $ip, $this->o["logged"] != 1, $this->o["mur_allow_mixed_ip_votes"] == 1);
+                    if ($allow_vote) $allow_vote = GDSRDBMulti::check_vote($id, $user, $set_id, 'multis', $ip, false, false);
                 }
                 if ($allow_vote) {
                     $ip = $_SERVER["REMOTE_ADDR"];
@@ -2370,8 +2370,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                     $cookie = $_COOKIE["wp_gdsr_".$type];
                     $cookie = substr($cookie, 7, strlen($cookie) - 7);
                     $cookie_ids = explode('|', $cookie);
-                    if (in_array($id, $cookie_ids))
-                        return false;
+                    if (in_array($id, $cookie_ids)) return false;
                 }
             }
             return true;

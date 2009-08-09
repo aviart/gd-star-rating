@@ -51,6 +51,14 @@
 <div class="contents">
       <table border="0" cellpadding="0" cellspacing="0">
         <tr>
+          <td colspan="2">
+            <br>
+            <h2>
+              Functions
+            </h2>
+          </td>
+        </tr>
+        <tr>
           <td class="memItemLeft" nowrap align="right" valign="top">
              
           </td>
@@ -199,7 +207,7 @@
              
           </td>
           <td class="memItemRight" valign="bottom">
-            <a class="el" href="#5b89ef779cdf2f333437c0b7aff2c73b">wp_gdsr_render_article_thumbs</a> ($template_id=0, $read_only=false, $stars_set="", $stars_size=0, $stars_set_ie6="", $echo=true)
+            <a class="el" href="#b2e934acbb99b8571c154ac36b0afc2e">wp_gdsr_render_article_thumbs</a> ($template_id=0, $read_only=false, $stars_set="", $stars_size=0, $stars_set_ie6="", $echo=true)
           </td>
         </tr>
         <tr>
@@ -207,7 +215,7 @@
              
           </td>
           <td class="mdescRight">
-            Renders the rating thumbs for article. <a href="#5b89ef779cdf2f333437c0b7aff2c73b"></a><br>
+            Renders the rating thumbs for article. <a href="#b2e934acbb99b8571c154ac36b0afc2e"></a><br>
           </td>
         </tr>
         <tr>
@@ -231,7 +239,7 @@
              
           </td>
           <td class="memItemRight" valign="bottom">
-            <a class="el" href="#6c2f988dbaffe502fc406452bbd58c1e">wp_gdsr_render_comment_thumbs</a> ($template_id=0, $read_only=false, $stars_set="", $stars_size=0, $stars_set_ie6="", $echo=true)
+            <a class="el" href="#6587136f02fcb76e24daa5e881eb12d3">wp_gdsr_render_comment_thumbs</a> ($template_id=0, $read_only=false, $stars_set="", $stars_size=0, $stars_set_ie6="", $echo=true)
           </td>
         </tr>
         <tr>
@@ -239,7 +247,7 @@
              
           </td>
           <td class="mdescRight">
-            Manual render of comment thumbs rating. <a href="#6c2f988dbaffe502fc406452bbd58c1e"></a><br>
+            Manual render of comment thumbs rating. <a href="#6587136f02fcb76e24daa5e881eb12d3"></a><br>
           </td>
         </tr>
         <tr>
@@ -450,12 +458,12 @@
             Renders standard review for a post. <a href="#69188475538ae1bedd11deebf5e876dd"></a><br>
           </td>
         </tr>
-         <tr>
+        <tr>
           <td class="memItemLeft" nowrap align="right" valign="top">
              
           </td>
           <td class="memItemRight" valign="bottom">
-            <a class="el" href="#18fad33a043c3397c56d544d47182f00">wp_gdsr_render_rating_results</a> ($atts=array(), $echo=true)
+            <a class="el" href="#effcc62b7dbe43353643619667627072">wp_gdsr_render_rating_results</a> ($atts=array(), $echo=true)
           </td>
         </tr>
         <tr>
@@ -463,10 +471,10 @@
              
           </td>
           <td class="mdescRight">
-            Renders rating results based on $atts settings array similar to the StarRating shortcode.. <a href="#18fad33a043c3397c56d544d47182f00"></a><br>
+            Renders rating results based on $atts settings array similar to the StarRating shortcode. <a href="#effcc62b7dbe43353643619667627072"></a><br>
           </td>
         </tr>
-       <tr>
+        <tr>
           <td class="memItemLeft" nowrap align="right" valign="top">
              
           </td>
@@ -551,6 +559,22 @@
              
           </td>
           <td class="memItemRight" valign="bottom">
+            <a class="el" href="#4d68943026745549956b1759aa9b9def">wp_gdsr_show_multis_review</a> ($multi_id, $post_id=0, $use_default=true, $size=20, $style="oxygen", $echo=true)
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Shows multis review rating for the post with stars. <a href="#4d68943026745549956b1759aa9b9def"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
             <a class="el" href="#176d5eaa2d3977bf59f48a412fdff878">wp_gdsr_show_article_rating</a> ($post_id=0, $use_default=true, $size=20, $style="oxygen", $echo=true)
           </td>
         </tr>
@@ -560,6 +584,22 @@
           </td>
           <td class="mdescRight">
             Shows rating for the post with stars. <a href="#176d5eaa2d3977bf59f48a412fdff878"></a><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="memItemLeft" nowrap align="right" valign="top">
+             
+          </td>
+          <td class="memItemRight" valign="bottom">
+            <a class="el" href="#8456ffa47d499efcd496bf4e45d31f8e">wp_gdsr_taxonomy_multi_ratings</a> ($taxonomy="category", $term="", $multi_id=0, $size=20, $style="oxygen")
+          </td>
+        </tr>
+        <tr>
+          <td class="mdescLeft">
+             
+          </td>
+          <td class="mdescRight">
+            Returns object with multi ratings data for any taxonomy. <a href="#8456ffa47d499efcd496bf4e45d31f8e"></a><br>
           </td>
         </tr>
         <tr>
@@ -2696,7 +2736,7 @@
         </div>
       </div>
       <p>
-        <a class="anchor" name="5b89ef779cdf2f333437c0b7aff2c73b"></a><!-- doxytag: member="functions_integration.php::wp_gdsr_render_article_thumbs" ref="5b89ef779cdf2f333437c0b7aff2c73b" args="($template_id=0, $read_only=false, $stars_set=&quot;&quot;, $stars_set_ie6=&quot;&quot;, $echo=true)" -->
+        <a class="anchor" name="b2e934acbb99b8571c154ac36b0afc2e" id="b2e934acbb99b8571c154ac36b0afc2e"></a><!-- doxytag: member="functions_integration.php::wp_gdsr_render_article_thumbs" ref="b2e934acbb99b8571c154ac36b0afc2e" args="($template_id=0, $read_only=false, $stars_set=&quot;&quot;, $stars_size=0, $stars_set_ie6=&quot;&quot;, $echo=true)" -->
       </p>
       <div class="memitem">
         <div class="memproto">
@@ -3212,7 +3252,7 @@
         </div>
       </div>
       <p>
-        <a class="anchor" name="6c2f988dbaffe502fc406452bbd58c1e"></a><!-- doxytag: member="functions_integration.php::wp_gdsr_render_comment_thumbs" ref="6c2f988dbaffe502fc406452bbd58c1e" args="($template_id=0, $read_only=false, $stars_set=&quot;&quot;, $stars_set_ie6=&quot;&quot;, $echo=true)" -->
+        <a class="anchor" name="6587136f02fcb76e24daa5e881eb12d3"></a><!-- doxytag: member="functions_integration.php::wp_gdsr_render_comment_thumbs" ref="6587136f02fcb76e24daa5e881eb12d3" args="($template_id=0, $read_only=false, $stars_set=&quot;&quot;, $stars_size=0, $stars_set_ie6=&quot;&quot;, $echo=true)" -->
       </p>
       <div class="memitem">
         <div class="memproto">
@@ -3778,6 +3818,91 @@
         </div>
       </div>
       <p>
+        <a class="anchor" name="effcc62b7dbe43353643619667627072" id="effcc62b7dbe43353643619667627072"></a><!-- doxytag: member="functions_integration.php::wp_gdsr_render_rating_results" ref="effcc62b7dbe43353643619667627072" args="($atts=array(), $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_render_rating_results
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>atts</em> = <code>array()</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Renders rating results based on $atts settings array similar to the StarRating shortcode.
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>array</em> 
+                  </td>
+                  <td>
+                    $atts settings to use for rendering
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
         <a class="anchor" name="69188475538ae1bedd11deebf5e876dd"></a><!-- doxytag: member="functions_integration.php::wp_gdsr_render_review" ref="69188475538ae1bedd11deebf5e876dd" args="($post_id=0, $template_id=0, $echo=true)" -->
       </p>
       <div class="memitem">
@@ -3860,91 +3985,6 @@
                   </td>
                   <td>
                     $template_id id of the template to use
-                  </td>
-                </tr>
-                <tr>
-                  <td valign="top"></td>
-                  <td valign="top">
-                    <em>bool</em> 
-                  </td>
-                  <td>
-                    $echo echo results or return it as a string
-                  </td>
-                </tr>
-              </table>
-            </dd>
-          </dl>
-          <dl class="return" compact>
-            <dt>
-              <b>Returns:</b>
-            </dt>
-            <dd>
-              string html with rendered contents
-            </dd>
-          </dl>
-        </div>
-      </div>
-      <p>
-        <a class="anchor" name="18fad33a043c3397c56d544d47182f00"></a><!-- doxytag: member="functions_integration.php::wp_gdsr_render_rating_results" ref="18fad33a043c3397c56d544d47182fc8" args="($widget=array(), $echo=true)" -->
-      </p>
-      <div class="memitem">
-        <div class="memproto">
-          <table class="memname">
-            <tr>
-              <td class="memname">
-                wp_gdsr_render_rating_results
-              </td>
-              <td>
-                (
-              </td>
-              <td class="paramtype">
-                $ 
-              </td>
-              <td class="paramname">
-                <em>atts</em> = <code>array()</code>,
-              </td>
-            </tr>
-            <tr>
-              <td class="paramkey"></td>
-              <td></td>
-              <td class="paramtype">
-                $ 
-              </td>
-              <td class="paramname">
-                <em>echo</em> = <code>true</code>
-              </td>
-              <td>
-                 
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                )
-              </td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </table>
-        </div>
-        <div class="memdoc">
-          <p>
-            Renders rating results based on $atts settings array similar to the StarRating shortcode.
-          </p>
-          <dl compact>
-            <dt>
-              <b>Parameters:</b>
-            </dt>
-            <dd>
-              <table border="0" cellspacing="2" cellpadding="0">
-                <tr>
-                  <td valign="top"></td>
-                  <td valign="top">
-                    <em>array</em> 
-                  </td>
-                  <td>
-                    $atts settings to use for rendering
                   </td>
                 </tr>
                 <tr>
@@ -4720,9 +4760,319 @@
           </dl>
         </div>
       </div>
-
+      <p>
+        <a class="anchor" name="4d68943026745549956b1759aa9b9def"></a><!-- doxytag: member="functions_integration.php::wp_gdsr_show_multis_review" ref="4d68943026745549956b1759aa9b9def" args="($multi_id, $post_id=0, $use_default=true, $size=20, $style=&quot;oxygen&quot;, $echo=true)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_show_multis_review
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>multi_id</em>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>post_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>use_default</em> = <code>true</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>size</em> = <code>20</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>style</em> = <code>"oxygen"</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>echo</em> = <code>true</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Shows multis review rating for the post with stars.
+          </p>
+          <p>
+            object $post post data GDStarRating $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $multi_id id of the multi rating set
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $post_id ID for the article to display rating from. If this is set to 0, than it must be used within the loop, and id of current article will be used.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $use_default set to true tell this function to render stars using default settings for stars set on settings panel, false tells to use $size and $style parameters.
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $size size of the stars to render, must be valid value: 12, 20, 30, 46
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $style name of the stars set to use, name of the folder for the set
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>bool</em> 
+                  </td>
+                  <td>
+                    $echo echo results or return it as a string
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              string html with rendered contents
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        <a class="anchor" name="8456ffa47d499efcd496bf4e45d31f8e"></a><!-- doxytag: member="functions_integration.php::wp_gdsr_taxonomy_multi_ratings" ref="8456ffa47d499efcd496bf4e45d31f8e" args="($taxonomy=&quot;category&quot;, $term=&quot;&quot;, $multi_id=0, $size=20, $style=&quot;oxygen&quot;)" -->
+      </p>
+      <div class="memitem">
+        <div class="memproto">
+          <table class="memname">
+            <tr>
+              <td class="memname">
+                wp_gdsr_taxonomy_multi_ratings
+              </td>
+              <td>
+                (
+              </td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>taxonomy</em> = <code>"category"</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>term</em> = <code>""</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>multi_id</em> = <code>0</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>size</em> = <code>20</code>,
+              </td>
+            </tr>
+            <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">
+                $ 
+              </td>
+              <td class="paramname">
+                <em>style</em> = <code>"oxygen"</code>
+              </td>
+              <td>
+                 
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                )
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="memdoc">
+          <p>
+            Returns object with multi ratings data for any taxonomy.
+          </p>
+          <p>
+            GDStarRating $gdsr main rating class instance
+          </p>
+          <dl compact>
+            <dt>
+              <b>Parameters:</b>
+            </dt>
+            <dd>
+              <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $taxonomy name of the taxonomy (slug name)
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $term full name of the term belonging to taxonomy
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $multi_id id of the multi rating set
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>int</em> 
+                  </td>
+                  <td>
+                    $size size of the stars to render, must be valid value: 12, 20, 30, 46
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top"></td>
+                  <td valign="top">
+                    <em>string</em> 
+                  </td>
+                  <td>
+                    $style name of the stars set to use, name of the folder for the set
+                  </td>
+                </tr>
+              </table>
+            </dd>
+          </dl>
+          <dl class="return" compact>
+            <dt>
+              <b>Returns:</b>
+            </dt>
+            <dd>
+              object results with data and rendered stars
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
     <a class="anchor" name="7f49bcf3b92e7566949c3cd3f07ebb27"></a>
       <!-- doxytag: member="functions_helpers.php::gd_get_multi_set" ref="7f49bcf3b92e7566949c3cd3f07ebb27" args="($id)" -->
+      </p>
       <div class="memitem">
         <div class="memproto">
           <table class="memname">

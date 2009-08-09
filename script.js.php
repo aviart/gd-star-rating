@@ -19,4 +19,12 @@
     include ($gdsr->plugin_path."code/js/main.php");
     include ($gdsr->plugin_path."code/js/comments.php");
 
+    if ($gdsr->o["cmm_integration_replay_hide_review"]) { ?>
+
+jQuery(document).ready(function() {
+    jQuery(".comment-reply-link").click(function() { hideshowCmmInt(); });
+});
+
+<?php }
+
 ?>
