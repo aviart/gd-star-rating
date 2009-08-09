@@ -1,9 +1,11 @@
 <?php
 
 /**
- * Full path to wp-config file. Only for WordPress 2.6 or newer and only if the location of wp-content folder is changed.
+ * Full path to wp-load file. Use only if the location of wp-content folder is changed.
+ * 
+ * example: define('STARRATING_WPLOAD', '/home/path/to/wp-load.php');
  */
-define('STARRATING_WPCONFIG', '');
+define('STARRATING_WPLOAD', '');
 
 /**
  * Full path to a text file used to save debug info. File must be writeable.
@@ -29,17 +31,15 @@ define('STARRATING_ACCESS_LEVEL_SETUP', 10);
 /**
  * Returns the path to wp-config.php file
  * 
- * @return string wp-config.php path
+ * @return string wp-load.php path
  */
-function get_wpconfig() {
-	if (STARRATING_WPCONFIG == '') {
-	    $d = 0;
-	    while (!file_exists(str_repeat('../', $d).'wp-config.php')) 
-	        if (++$d > 99) exit;
-	    $wpconfig = str_repeat('../', $d).'wp-config.php';
-	    return $wpconfig;
-    }
-    else return STARRATING_WPCONFIG;
+function get_wpload_path() {
+    if (STARRATING_WPLOAD == '') {
+        $d = 0;
+        while (!file_exists(str_repeat('../', $d).'wp-load.php'))
+            if (++$d > 16) exit;
+        return str_repeat('../', $d).'wp-load.php';
+    } else return STARRATING_WPLOAD;
 }
 
 ?>
