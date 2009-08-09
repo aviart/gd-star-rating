@@ -1,9 +1,9 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.6.0
+Version: 1.6.1
 Tags: vote, ratings, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
-Requires at least: 2.5
+Requires at least: 2.6
 Tested up to: 2.8.3
 Stable tag: trunk
 
@@ -64,12 +64,12 @@ Plugin administration consist of 14 main panels:
 = Minimal Requirements =
 * PHP: 4.4.x or 5.x.x
 * mySQL: 4.0, 4.1 or 5.x
-* WordPress: 2.5 or newer
+* WordPress: 2.6 or newer
 
 = Reccomended Requirements =
 * PHP: 5.2.x or newer
 * mySQL: 5.x
-* WordPress: 2.7 or newer
+* WordPress: 2.8 or newer
 
 = Browser Notice =
 * Multi review feature on administration Post Edit page will not work properly with IE6 browsers.
@@ -80,12 +80,9 @@ Plugin administration consist of 14 main panels:
 * Activate the plugin through the 'Plugins' menu in WordPress
 * Check all the plugin and plugin widgets settings before using the plugin.
 
-= WordPress 2.5.x =
-* plugin doesn't require any more changes.
-
-= WordPress 2.6.x and newer  =
+= Advanced Installation  =
 * if you don't change location of `wp-content` folder, then you don't need to make any more changes.
-* if your `wp-content` folder is moved out of WordPress web location, then you must edit `config.php` file and set value with exact location of `wp-content` file for `STARRATING_WPCONFIG` in line 3. Without this some plugin feature will not work.
+* if your `wp-content` folder is moved out of WordPress web location, then you must edit plugins `config.php` file and set value with exact location of `wp-load.php` file for global constant `STARRATING_WPLOAD` in line 8. Without this most of the features, including saving votes, will not work.
 
 == Frequently Asked Questions ==
 
@@ -114,6 +111,9 @@ Check the widget settings. Most likely problem is with default widget setting to
 7. Example multi rating block
 
 == Changelog ==
+= 1.6.1 =
+* Dropped support for WordPress 2.5
+
 = 1.6.0 =
 * Support for custom taxonomies in widgets and builder
 * Config options to set the panels user access levels

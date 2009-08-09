@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
-Version: 1.6.0
+Version: 1.6.1
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -746,9 +746,6 @@ if (!class_exists('GDStarRating')) {
 
             $this->custom_actions('admin_head');
 
-            if ($this->admin_plugin && $this->wp_version < 26)
-                echo('<link rel="stylesheet" href="'.get_option('home').'/wp-includes/js/thickbox/thickbox.css" type="text/css" media="screen" />');
-
             if ($this->admin_plugin_page == "builder")
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'tinymce3/tinymce.js"></script>');
 
@@ -1265,19 +1262,11 @@ if (!class_exists('GDStarRating')) {
         function plugin_path_url() {
             global $wp_version;
             $this->wp_version = substr(str_replace('.', '', $wp_version), 0, 2);
-            if ($this->wp_version < 26) {
-                $this->plugin_url = get_option('siteurl').'/'.PLUGINDIR.'/gd-star-rating/';
-                $this->plugin_ajax = get_option('siteurl').'/'.PLUGINDIR.'/gd-star-rating/ajax.php';
-                $this->plugin_xtra_url = get_option('siteurl').'/wp-content/gd-star-rating/';
-                $this->plugin_xtra_path = ABSPATH.'/wp-content/gd-star-rating/';
-                $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
-            } else {
-                $this->plugin_url = WP_PLUGIN_URL.'/gd-star-rating/';
-                $this->plugin_ajax = $this->plugin_url.'ajax.php';
-                $this->plugin_xtra_url = WP_CONTENT_URL.'/gd-star-rating/';
-                $this->plugin_xtra_path = WP_CONTENT_DIR.'/gd-star-rating/';
-                $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
-            }
+            $this->plugin_url = WP_PLUGIN_URL.'/gd-star-rating/';
+            $this->plugin_ajax = $this->plugin_url.'ajax.php';
+            $this->plugin_xtra_url = WP_CONTENT_URL.'/gd-star-rating/';
+            $this->plugin_xtra_path = WP_CONTENT_DIR.'/gd-star-rating/';
+            $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
             $this->plugin_path = dirname(__FILE__)."/";
             $this->e = $this->plugin_url."gfx/blank.gif";
 

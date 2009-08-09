@@ -132,9 +132,9 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
                     $row->image = get_post_meta($row->post_id, $widget["image_custom"], true);
                 } else $row->image = "";
 
-                $row->image = apply_filters('gdsr_widget_image_url_prepare', $widget, $row);
+                $row->image = apply_filters('gdsr_widget_image_url_prepare', $row->image, $widget, $row);
 
-                if ($row->image != "" && $widget["image_resize_x"] > 0 && $widget["image_resize_y"] > 0) {
+                if ($row->image != "" && intval($widget["image_resize_x"]) > 0 && intval($widget["image_resize_y"] > 0)) {
                     $row->image = GDSRRenderT2::prepare_image($row->image, $widget["image_resize_x"], $widget["image_resize_y"]);
                 }
 
