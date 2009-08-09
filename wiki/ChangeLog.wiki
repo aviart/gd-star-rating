@@ -7,6 +7,153 @@ This is the list of changes for each release of the plugin.
 
 == Change log ==
 
+=== Version 1.6.0 / august 10 2009 ===
+  * new: support for custom taxonomies in widgets and builder
+  * new: resizing images support for widget and results
+  * new: config options to set the panels user access levels
+  * new: preventing duplicate votes from integration
+  * new: few more filters for t2 rendering
+  * new: filters for modifying sql queries used for results
+  * new: few more tags for results and widgets templates
+  * edit: many improvements for t2 rendering
+  * edit: cleanup of widgets, render and templates code
+  * fix: missing voters log on the articles panel
+  * fix: invalid review rating results from widget sql query
+  * fix: panel with multi rating results filtering problems
+  * fix: rendering review stars for widget or results
+  * fix: option to control comment reply for integration was not working
+  * fix: rendering multi rating stars results for widget or results
+  * fix: rating added to rss cut during formation of the feed
+  * fix: some minor problems with t2 rendering of comments widget
+  * fix: builder javascript problems in wordpress 2.8
+
+=== Version 1.5.8 / august 4 2009 ===
+  * new: russian translation thanks to studio xl
+  * new: ukrainian translation thanks to Oleksandr Natalenko
+  * new: additional indexes to all plugin's database tables
+  * new: force using cache even if it's not auto detected
+  * new: added some new functions for getting and rendering data
+  * fix: problem with inclusion of some javascript helper functions
+  * fix: dashboard widget with latest votes in wpmu
+  * fix: db queries use of users table causing wpmu problems
+  * fix: other minor incompatibilities with wordpressmu and buddypress
+
+=== Version 1.5.7 / july 26 2009 ===
+  * new: function to mirror starrating shortcode
+  * new: several new actions for saving votes
+  * new: options to allow zero votes from integrated ratings
+  * new: rank id template tag for widget and shortcode results
+  * fix: minor problems with bayesian sorting for widget and results
+  * fix: rendering of bayesian rating results
+  * fix: thumbs javascript problem with IE browsers
+  * fix: caching prefetch of integration results
+  * fix: missing parameters in thumbs integration functions
+  * fix: some problems with builder panel and invalid generated function
+  * fix: invalid multi rating template displayed on settings panel
+
+=== Version 1.5.6 / july 23 2009 ===
+  * new: rss integration supports thumbs results
+  * new: rss integration supports multi ratings results
+  * new: post based deleting multi set results
+  * new: jquery ui 1.7 styles and datepicker for better wp 2.8 support
+  * edit: major overhaul of the trend recalculations
+  * edit: tinymce plugin and builder support thumbs
+  * edit: results widget supports thumbs ratings datasource
+  * edit: top blog widget supports thumbs ratings results
+  * edit: graphics generator expanded to support thumbs sets
+  * edit: added extra classes to thumbs loaders
+  * fix: several problems with trend recalculations for multi results
+  * fix: missing german translation for jquery datepicker
+  * fix: display some of the data on multi sets panel
+  * fix: column sorting on visitors log panel
+  * fix: deleting thumbs data from articles panel
+  * fix: deleting thumbs data from visitors log
+  * fix: deleting thumbs data from users log
+
+=== Version 1.5.5 / july 20 2009 ===
+  * new: cache support for multi rating sets
+  * new: auto insert comments outside post or page, but still in the post loop
+  * new: three more square shaped loader animations
+  * new: another default thumbs set called classical
+  * new: articles and comments thumbs waiting loader animations
+  * new: few more filters for data prepared for widget rendering
+  * edit: expanded article and comment results objects with thumbs data
+  * edit: improved and cleaned styles structure of main css file
+  * edit: improved latest votes dashboard widget
+  * edit: clean up of all admin css files
+  * edit: expanded info files and list of filters and actions added
+  * fix: problems with theme functions used for rendering widgets
+  * fix: theme function for rendering comments thumbs
+  * fix: generating css with no thumbs or stars sets selected
+
+=== Version 1.5.4 / july 16 2009 ===
+  * new: dashboard widget with latest votes with filter options
+  * new: option to disable thumbs up/down ratings
+  * new: show thumbs data and log on the comments panel
+  * new: show thumbs data and log on the users panel
+  * new: prefetch and cache comment integration results
+  * edit: few updates to features and functions info files
+  * edit: more improvements to caching and prefetch system
+  * fix: loading of main css file for wp older than 2.7
+  * fix: rendering of thumbs rating comments text
+  * fix: adding default values for categories rules and restrictions
+  * fix: users log queries to support thumbs ratings
+  * fix: problem with article trends charts rendering
+  * fix: missing voted class for blocks that are not active
+  * fix: invalid cookies check for articles thumbs ratings
+  * fix: cookies not saved or checked for thumbs ratings
+  * fix: compression problem with zlib compression already active in php.ini
+  * fix: prefetch problem with comments rating not auto inserted
+  * fix: extra empty lines on the end of some files
+  * fix: several more php notices found on blog pages
+
+=== Version 1.5.3 / july 13 2009 ===
+  * new: first version of the thumbs up/down ratings
+  * new: show thumbs data and log on the articles panel
+  * new: shortcode for thumbs up/down ratings
+  * new: gfx classes now support thumbs sets and sizes
+  * new: main css file expanded with thumbs generation code
+  * new: preview for thumbs sets and seection for main css file
+  * new: german translation thanks to bjoern buerstinghaus
+  * edit: expanded wp query support with thumbs score and votes
+  * edit: expanded builder and tinymce plugin with thumbs shortcode and function
+  * edit: upgrade of plugin now resets css cache timestamp
+  * edit: optimized check for multi rating sets to render
+  * fix: cache and prefetch not working for theme functions
+  * fix: checking for standard rating vote value not to allow negative values
+  * fix: check multi ratings active to exclude more sql queries
+
+=== Version 1.5.2 / july 7 2009 ===
+  * fix: import from post star rating plugin data
+  * fix: import from wp post rating plugin data
+  * fix: deleting multi rating data from comments integration
+  * fix: saving standard rating through comment integration failes in some cases
+  * fix: post prefetch array not always initialized
+  * fix: comments prefetch with no post comments
+
+=== Version 1.5.1 / july 5 2009 ===
+  * new: optimized sql queries for getting posts and caching results
+  * new: optimized sql queries for getting comments and caching results
+  * new: caching of templates to reduce number of queries
+  * new: added minimal votes filter for wp query
+  * fix: checking for multi sets on non pages or posts
+  * fix: checking for logged data even if it's disabled
+  * fix: export problem caused by incompatibility with jquery 1.3
+
+=== Version 1.5.0 / july 3 2009 ===
+  * new: modifing WP Query to allow sorting posts using reviews, votes and ratings
+  * new: plugin now uses category based voting rules and limitations
+  * new: css and javascipt files are loaded using wp enqueue functions
+  * new: css and javascipt files are transported using server side gzip compression
+  * new: attempts to log the invalid set request, if log into file is active
+  * edit: changed some defaults settings values for fresh installations
+  * edit: no longer shows the error message when the set is missing
+  * fix: after database reinstall default templates are missing
+  * fix: exporting data returns no results
+  * fix: saving incomplete integration multi rating
+  * fix: invalid url for creating multi rating set
+  * fix: saving multi review with one of the integration widgets deactivated
+
 === Version 1.4.8 / june 26 2009 ===
   * new: added extended multi rating stars template
   * new: rating widget and results can include post excerpt
