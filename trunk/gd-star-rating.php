@@ -60,6 +60,11 @@ if (!class_exists('GDStarRating')) {
         var $is_cached = false;
         var $is_update = false;
 
+        var $security_level = 9;
+        var $security_level_builder = 1;
+        var $security_level_setup = 9;
+        var $security_users = '0';
+
         var $is_cached_integration_std = false;
         var $is_cached_integration_mur = false;
 
@@ -168,9 +173,17 @@ if (!class_exists('GDStarRating')) {
             $this->plugin_path_url();
             $this->install_plugin();
             $this->actions_filters();
+            $this->initialize_security();
 
             if ($this->o["ajax_jsonp"] == 1) $this->plugin_ajax.= "?callback=?";
             define('STARRATING_AJAX', $this->plugin_ajax);
+        }
+
+        function initialize_security() {
+            if (defined('STARRATING_ACCESS_LEVEL')) $this->security_level = STARRATING_ACCESS_LEVEL;
+            if (defined('STARRATING_ACCESS_LEVEL_BUILDER')) $this->security_level_builder = STARRATING_ACCESS_LEVEL_BUILDER;
+            if (defined('STARRATING_ACCESS_LEVEL_SETUP')) $this->security_level_setup = STARRATING_ACCESS_LEVEL_SETUP;
+            if (defined('STARRATING_ACCESS_ADMIN_USERIDS')) $this->security_users = STARRATING_ACCESS_ADMIN_USERIDS;
         }
 
         // shortcodes
@@ -617,13 +630,14 @@ if (!class_exists('GDStarRating')) {
         function check_user_access() {
             global $userdata;
             $this->wp_access_level = $userdata->user_level;
-            if (STARRATING_ACCESS_ADMIN_USERIDS == "0") {
+
+            if ($this->security_users == "0") {
                 $this->wp_secure_level = $this->wp_access_level > 8;
             } else {
-            $allowed = explode(",", STARRATING_ACCESS_ADMIN_USERIDS);
+            $allowed = explode(",", $this->security_users);
                 if (is_array($allowed)) {
-                    $this->wp_access_level = in_array($userdata->ID, $allowed);
-                } else $this->wp_access_level = false;
+                    $this->wp_secure_level = in_array($userdata->ID, $allowed);
+                } else $this->wp_secure_level = false;
             }
         }
 
@@ -656,27 +670,27 @@ if (!class_exists('GDStarRating')) {
             }
 
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 0, __FILE__, array(&$this,"star_menu_front"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Builder", "gd-star-rating"), __("Builder", "gd-star-rating"), STARRATING_ACCESS_LEVEL_BUILDER, "gd-star-rating-builder", array(&$this,"star_menu_builder"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Builder", "gd-star-rating"), __("Builder", "gd-star-rating"), $this->security_level_builder, "gd-star-rating-builder", array(&$this,"star_menu_builder"));
 
-            if ($this->wp_access_level >= STARRATING_ACCESS_LEVEL) {
-                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
-                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
+            if ($this->wp_access_level >= $this->security_level) {
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), $this->security_level, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), $this->security_level, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
                 if ($this->o["admin_users"] == 1)
-                    add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-users", array(&$this,"star_menu_users"));
+                    add_submenu_page(__FILE__, 'GD Star Rating: '.__("Users", "gd-star-rating"), __("Users", "gd-star-rating"), $this->security_level, "gd-star-rating-users", array(&$this,"star_menu_users"));
                 if ($this->o["multis_active"] == 1)
-                    add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Sets", "gd-star-rating"), __("Multi Sets", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-multi-sets", array(&$this,"star_multi_sets"));
-                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
-                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Graphics", "gd-star-rating"), __("Graphics", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-gfx-page", array(&$this,"star_menu_gfx"));
-                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
-                add_submenu_page(__FILE__, 'GD Star Rating: '.__("T2 Templates", "gd-star-rating"), __("T2 Templates", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-t2", array(&$this,"star_menu_t2"));
+                    add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Sets", "gd-star-rating"), __("Multi Sets", "gd-star-rating"), $this->security_level, "gd-star-rating-multi-sets", array(&$this,"star_multi_sets"));
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), $this->security_level, "gd-star-rating-settings-page", array(&$this,"star_menu_settings"));
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Graphics", "gd-star-rating"), __("Graphics", "gd-star-rating"), $this->security_level, "gd-star-rating-gfx-page", array(&$this,"star_menu_gfx"));
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), $this->security_level, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("T2 Templates", "gd-star-rating"), __("T2 Templates", "gd-star-rating"), $this->security_level, "gd-star-rating-t2", array(&$this,"star_menu_t2"));
                 if ($this->o["admin_ips"] == 1)
-                    add_submenu_page(__FILE__, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-ips", array(&$this,"star_menu_ips"));
+                    add_submenu_page(__FILE__, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), $this->security_level, "gd-star-rating-ips", array(&$this,"star_menu_ips"));
                 if ($this->o["admin_import"] == 1)
-                    add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-import", array(&$this,"star_menu_import"));
-                if ($this->wp_secure_level) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-export", array(&$this,"star_menu_security"));
+                    add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), $this->security_level, "gd-star-rating-import", array(&$this,"star_menu_import"));
+                // if ($this->wp_secure_level) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), $this->security_level, "gd-star-rating-export", array(&$this,"star_menu_security"));
                 $this->custom_actions('admin_menu');
-                if ($this->wp_access_level >= STARRATING_ACCESS_LEVEL_SETUP && $this->o["admin_setup"] == 1)
-                    add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
+                if ($this->wp_access_level >= $this->security_level_setup && $this->o["admin_setup"] == 1)
+                    add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), $this->security_level_setup, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
             } else {
 
             }
