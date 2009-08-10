@@ -71,6 +71,7 @@ if (!class_exists('GDStarRating')) {
         var $cats_data_cats = array();
 
         var $wp_access_level = 0;
+        var $wp_secure_level = false;
         var $loader_article_thumb = "";
         var $loader_comment_thumb = "";
         var $loader_article = "";
@@ -608,13 +609,30 @@ if (!class_exists('GDStarRating')) {
         }
         // edit boxes
 
+        /**
+         * Check the user access levels.
+         *
+         * @global object $userdata Object with user data.
+         */
+        function check_user_access() {
+            global $userdata;
+            $this->wp_access_level = $userdata->user_level;
+            if (STARRATING_ACCESS_ADMIN_USERIDS == "0") {
+                $this->wp_secure_level = $this->wp_access_level > 8;
+            } else {
+            $allowed = explode(",", STARRATING_ACCESS_ADMIN_USERIDS);
+                if (is_array($allowed)) {
+                    $this->wp_access_level = in_array($userdata->ID, $allowed);
+                } else $this->wp_access_level = false;
+            }
+        }
+
         // install
         /**
          * WordPress action for adding administration menu items
          */
         function admin_menu() {
-            global $userdata;
-            $this->wp_access_level = $userdata->user_level;
+            $this->check_user_access();
 
             if ($this->wp_version < 27) {
                 add_menu_page('GD Star Rating', 'GD Star Rating', 0, __FILE__, array(&$this,"star_menu_front"));
@@ -655,7 +673,7 @@ if (!class_exists('GDStarRating')) {
                     add_submenu_page(__FILE__, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-ips", array(&$this,"star_menu_ips"));
                 if ($this->o["admin_import"] == 1)
                     add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-import", array(&$this,"star_menu_import"));
-                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-export", array(&$this,"star_menu_export"));
+                if ($this->wp_secure_level) add_submenu_page(__FILE__, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-export", array(&$this,"star_menu_security"));
                 $this->custom_actions('admin_menu');
                 if ($this->wp_access_level >= STARRATING_ACCESS_LEVEL_SETUP && $this->o["admin_setup"] == 1)
                     add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), STARRATING_ACCESS_LEVEL, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
@@ -2326,6 +2344,11 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $options = $this->o;
             $wpv = $this->wp_version;
             include($this->plugin_path.'options/categories.php');
+        }
+
+        function star_menu_security() {
+            $options = $this->o;
+            $wpv = $this->wp_version;
         }
 
         function star_menu_builder(){
