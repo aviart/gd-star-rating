@@ -56,6 +56,8 @@ Plugin administration consist of 14 main panels:
   Import voting data from other rating plugins
 * Export:
   Export rating data and templates to CSV format
+* Security:
+  Access levels and rights used mainly for WPMU
 * Setup:
   Upgrade and setup options
 
@@ -71,9 +73,6 @@ Plugin administration consist of 14 main panels:
 * mySQL: 5.x
 * WordPress: 2.8 or newer
 
-= Browser Notice =
-* Multi review feature on administration Post Edit page will not work properly with IE6 browsers.
-
 = Basic Installation =
 * Plugin folder in the WordPress plugins folder must be `gd-star-rating`.
 * Upload `gd-star-rating` folder to the `/wp-content/plugins/` directory
@@ -82,7 +81,10 @@ Plugin administration consist of 14 main panels:
 
 = Advanced Installation  =
 * if you don't change location of `wp-content` folder, then you don't need to make any more changes.
-* if your `wp-content` folder is moved out of WordPress web location, then you must edit plugins `config.php` file and set value with exact location of `wp-load.php` file for global constant `STARRATING_WPLOAD` in line 8. Without this most of the features, including saving votes, will not work.
+* if your `wp-content` folder is moved out of default WordPress location, then you must edit plugins `config.php` file and set value with exact location of `wp-load.php` file for global constant `STARRATING_WPLOAD` in line 8. Without this most of the features, including saving votes, will not work.
+
+= Browser Notice =
+* Multi review feature on administration Post Edit page will not work properly with IE6 browsers.
 
 == Frequently Asked Questions ==
 
