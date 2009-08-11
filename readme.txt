@@ -15,7 +15,8 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 = Basic Information =
 [Features](http://info.dev4press.com/gd-star-rating/features.html) |
 [Changelog](http://info.dev4press.com/gd-star-rating/changelog.html) |
-[Translations](http://info.dev4press.com/gd-star-rating/languages.html)
+[Translations](http://info.dev4press.com/gd-star-rating/languages.html) |
+[FAQ](http://www.gdstarrating.com/faq/)
 
 = Plugin Reference =
 [Functions](http://info.dev4press.com/gd-star-rating/functions.html) |
@@ -23,9 +24,9 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 [Actions & Filters](http://info.dev4press.com/gd-star-rating/filters.html)
 
 = Using the Plugin =
+[Advanced Installation](http://www.gdstarrating.com/category/tutorials/advanced/) |
 [Tutorials](http://www.gdstarrating.com/category/tutorials/) |
-[User Guide](http://www.gdstarrating.com/downloads/user-guide/) |
-[FAQ](http://www.gdstarrating.com/faq/)
+[User Guide](http://www.gdstarrating.com/downloads/user-guide/)
 
 == Configuration ==
 Plugin administration consist of 14 main panels:
@@ -118,6 +119,8 @@ Check the widget settings. Most likely problem is with default widget setting to
 == Changelog ==
 = 1.6.1 =
 * Dropped support for WordPress 2.5
+* More changes to access rights and config
+* Several minor bugs fixed
 
 = 1.6.0 =
 * Support for custom taxonomies in widgets and builder
