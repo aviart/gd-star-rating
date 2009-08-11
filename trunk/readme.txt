@@ -84,7 +84,7 @@ Plugin administration consist of 14 main panels:
 * if your `wp-content` folder is moved out of default WordPress location, then you must edit plugins `config.php` file and set value with exact location of `wp-load.php` file for global constant `STARRATING_WPLOAD` in line 8. Without this most of the features, including saving votes, will not work.
 
 = WordPress MU =
-* Minimal ersion supported: 2.8.1
+* Minimal version supported: 2.8.1
 
 = Browser Notice =
 * Multi review feature on administration Post Edit page will not work properly with IE6 browsers.
