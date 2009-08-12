@@ -629,9 +629,7 @@ if (!class_exists('GDStarRating')) {
          */
         function check_user_access() {
             global $userdata;
-            $this->wp_access_level = $userdata->user_level;
-
-            wp_gdsr_dump("USER", $userdata);
+            $this->wp_access_level = isset($userdata->user_level) ? $userdata->user_level : 0;
 
             if ($this->security_users == "0") {
                 $this->wp_secure_level = $this->wp_access_level > 8;
@@ -2281,6 +2279,9 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             } else {
                 if (isset($_POST["gdsr_setdefaults"])) {
                     gdTemplateDB::set_templates_defaults($_POST["gdsr_section"]);
+                }
+                if (isset($_POST["gdsr_setdepends"])) {
+                    gdTemplateDB::set_templates_dependes($_POST["gdsr_tpl_dep"]);
                 }
 
                 include($this->plugin_path.'options/templates.php');

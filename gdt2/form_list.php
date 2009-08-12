@@ -1,6 +1,6 @@
 <?php
 
-$posts_per_page = 20;
+$posts_per_page = 50;
 
 $url = $_SERVER['REQUEST_URI'];
 $url_pos = strpos($url, "&gdt=");
