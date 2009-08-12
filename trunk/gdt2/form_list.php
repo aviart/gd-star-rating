@@ -27,9 +27,6 @@ $all_sections = $tpls->list_sections_assoc();
 
 ?>
 
-<div class="wrap"><h2 class="gdptlogopage">GD Star Rating: T2 <?php _e("Templates", "gd-star-rating"); ?></h2>
-<div class="gdsr">
-
 <div class="tablenav">
     <div class="alignleft">
         <form method="post">
@@ -87,9 +84,8 @@ $all_sections = $tpls->list_sections_assoc();
 
 <div class="tablenav">
     <div class="alignleft">
-        <form method="post">
-            <input class="inputbutton" style="width: 200px" type="submit" name="gdsr_defaults" value="<?php _e("Set Default Templates", "gd-star-rating"); ?>" />
-        </form>
+        <?php _e("Map with dependencies for templates", "gd-star-rating"); ?>:<br />
+        <a style="font-weight: bold" target="_blank" href="<?php echo STARRATING_URL; ?>info/t2map.html"><?php _e("T2 Templates Map", "gd-star-rating") ?></a>
     </div>
     <div class="tablenav-pages">
         <form method="post">
@@ -100,11 +96,4 @@ $all_sections = $tpls->list_sections_assoc();
             </td></tr></table>
         </form>
     </div>
-</div>
-
-<br class="clear"/>
-</div>
-<div class="gdsr-table-split"></div>
-<?php _e("Click to open post with T2 templates map with dependencies for templates", "gd-star-rating"); ?>:<br />
-<a target="_blank" href="<?php echo STARRATING_URL; ?>info/t2map.html"><?php _e("T2 Templates Map", "gd-star-rating") ?></a>
 </div>

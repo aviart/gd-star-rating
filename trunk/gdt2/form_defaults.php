@@ -1,6 +1,3 @@
-<div class="wrap"><h2 class="gdptlogopage">GD Star Rating: T2 <?php _e("Default Templates", "gd-star-rating"); ?></h2>
-<div class="gdsr">
-
 <form method="post">
 <table class="widefat">
     <thead>
@@ -44,6 +41,3 @@
     </div>
 </div>
 </form>
-
-</div>
-</div>

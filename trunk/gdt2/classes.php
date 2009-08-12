@@ -3,13 +3,36 @@
 /*
 Name:    gdTemplatesT2
 Library: Classes
-Version: 2.1.0
+Version: 2.2.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/
 */
 
 class gdTemplateDB {
+    function rewrite_dependencies($section, $id) {
+        global $wpdb, $table_prefix;
+        include($this->plugin_path.'code/t2/templates.php');
+        $sections = $tpls->find_sections_depending($section);
+        $sql = sprintf("select template_id, dependencies from %s%s where section in ('%s')", $table_prefix, STARRATING_TPLT2_TABLE, join("', '", $sections));
+        $rows = $wpdb->get_results($sql);
+        foreach ($rows as $row) {
+            $dep = unserialize($row->dependencies);
+            $dep[$section] = $id;
+            $sql = sprintf("update %s%s set dependencies = '%s' where template_id = %s", $table_prefix, STARRATING_TPLT2_TABLE, serialize($dep), $row->template_id);
+            $wpdb->query($sql);
+        }
+    }
+
+    function rewrite_defaults($code, $id) {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("update %s%s set `default` = '0' where section = '%s'", $table_prefix, STARRATING_TPLT2_TABLE, $code);
+        $wpdb->query($sql);
+        $sql = sprintf("update %s%s set `default` = '1' where template_id = %s", $table_prefix, STARRATING_TPLT2_TABLE, $id);
+        $wpdb->query($sql);
+    }
+
     function get_templates($section = '', $default_sort = false, $only_default = false) {
         global $wpdb, $table_prefix;
         if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
@@ -244,6 +267,23 @@ class gdTemplates {
                 $listed[] = $code;
                 $sections[] = array("code" => $code, "name" => $name);
             }
+        }
+        return $sections;
+    }
+
+    function find_sections_depending($code) {
+        $sections = array();
+        foreach ($this->tpls as $t) {
+            $found = false;
+            if (count($t->tpls) > 0) {
+                foreach ($t->tpls as $x) {
+                    if ($x->code == $code) {
+                        $found = true;
+                        break;
+                    }
+                }
+            }
+            if ($found) $sections[] = $t->code;
         }
         return $sections;
     }
