@@ -631,6 +631,8 @@ if (!class_exists('GDStarRating')) {
             global $userdata;
             $this->wp_access_level = $userdata->user_level;
 
+            wp_gdsr_dump("USER", $userdata);
+
             if ($this->security_users == "0") {
                 $this->wp_secure_level = $this->wp_access_level > 8;
             } else {
@@ -1663,8 +1665,12 @@ if (!class_exists('GDStarRating')) {
                 $elements = array();
                 foreach ($tpl_input as $key => $value)
                     $elements[$key] = stripslashes(htmlentities($value, ENT_QUOTES, STARRATING_ENCODING));
-                if ($general["id"] == 0) gdTemplateDB::add_template($general, $elements);
+                if ($general["id"] == 0) $general["id"] = gdTemplateDB::add_template($general, $elements);
                 else gdTemplateDB::edit_template($general, $elements);
+
+                if (isset($_POST["tpl_dep_rewrite"])) gdTemplateDB::rewrite_dependencies($general["section"], $general["id"]);
+                if (isset($_POST["tpl_default_rewrite"])) gdTemplateDB::rewrite_defaults($general["section"], $general["id"]);
+
                 $url = remove_query_arg("tplid");
                 $url = remove_query_arg("mode", $url);
                 wp_redirect($url);
@@ -2268,20 +2274,16 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 $id = $_GET["tplid"];
                 $mode = $_GET["mode"];
                 include($this->plugin_path.'gdt2/form_editor.php');
-            }
-            else if (isset($_POST["gdsr_defaults"])) {
-                include($this->plugin_path.'gdt2/form_defaults.php');
-            }
-            else if (isset($_POST["gdsr_create"])) {
+            } else if (isset($_POST["gdsr_create"])) {
                 $id = 0;
                 $mode = "new";
                 include($this->plugin_path.'gdt2/form_editor.php');
-            }
-            else if (isset($_POST["gdsr_setdefaults"])) {
-                gdTemplateDB::set_templates_defaults($_POST["gdsr_section"]);
-                include($this->plugin_path.'gdt2/form_list.php');
             } else {
-                include($this->plugin_path.'gdt2/form_list.php');
+                if (isset($_POST["gdsr_setdefaults"])) {
+                    gdTemplateDB::set_templates_defaults($_POST["gdsr_section"]);
+                }
+
+                include($this->plugin_path.'options/templates.php');
             }
         }
 
