@@ -51,12 +51,19 @@ class gdTemplateDB {
         return $wpdb->get_row($sql);
     }
 
+    function get_templates_dep() {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("select * from %s%s order by template_id", $table_prefix, STARRATING_TPLT2_TABLE);
+        return $wpdb->get_results($sql);
+    }
+
     function get_templates_paged($section = '', $start = 0, $limit = 20) {
         global $wpdb, $table_prefix;
         if ($section != '') $section = sprintf(" WHERE section = '%s'", $section);
 
         $sql = sprintf("select * from %s%s%s limit %s, %s", $table_prefix, STARRATING_TPLT2_TABLE, $section, $start, $limit);
-         return $wpdb->get_results($sql);
+        return $wpdb->get_results($sql);
     }
 
     function get_templates_count($section = '') {
@@ -65,6 +72,15 @@ class gdTemplateDB {
 
         $sql = sprintf("select count(*) from %s%s%s", $table_prefix, STARRATING_TPLT2_TABLE, $section);
         return $wpdb->get_var($sql);
+    }
+
+    function set_templates_dependes($post) {
+        global $wpdb, $table_prefix;
+
+        foreach ($post as $id => $dep) {
+            $sql = sprintf("update %s%s set dependencies = '%s' where template_id = %s", $table_prefix, STARRATING_TPLT2_TABLE, serialize($dep), $id);
+            $wpdb->query($sql);
+        }
     }
 
     function set_templates_defaults($post) {
@@ -129,6 +145,26 @@ class gdTemplateHelper {
         ?>
 </select>
         <?php
+    }
+
+    function render_dependency($secs, $tpls, $dep, $id, $tid) {
+        echo '<tr><td>'.$secs[$dep].':</td><td style="text-align: right;">';
+        echo '<select style="width: 240px" name="gdsr_tpl_dep['.$tid.']['.$dep.']">';
+        foreach ($tpls as $tpl) {
+            if ($tpl->section == $dep) {
+                $select = $tpl->template_id == $id ? ' selected="selected"' : '';
+                echo sprintf('<option value="%s"%s>%s</option>', $tpl->template_id, $select, $tpl->name);
+            }
+        }
+        echo '</select></td></tr>';
+    }
+
+    function prepare_dependencies($secs, $tpls, $dep, $tid) {
+        echo '<table class="tplclean">';
+        foreach ($dep as $d => $id) {
+            gdTemplateHelper::render_dependency($secs, $tpls, $d, $id, $tid);
+        }
+        echo '</table>';
     }
 }
 

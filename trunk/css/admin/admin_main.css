@@ -649,3 +649,12 @@ span.rss-date {
 }
 
 #rightnow h3, #rightnow p { padding: 0pt 5px; }
+
+.tplclean { width: 100% }
+
+.tplclean tr, .tplclean td, .tplclean {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+}
