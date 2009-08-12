@@ -10,7 +10,7 @@
                     <td class="t"><?php _e("release date", "gd-star-rating"); ?>: <?php echo $options["date"]; ?></td>
                     <td class="b options" style="color: red; font-weight: bold;"><?php echo $options["version"]; ?></td>
                 </tr>
-                <?php if ($this->wp_access_level >= STARRATING_ACCESS_LEVEL) { ?>
+                <?php if ($this->wp_access_level >= $this->security_level) { ?>
                 <tr>
                     <td class="first b" style="width: 133px;"><?php _e("Change Log", "gd-star-rating"); ?></td>
                     <td class="t"><?php _e("detailed list of changes", "gd-star-rating"); ?></td>

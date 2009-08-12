@@ -31,7 +31,6 @@ if ($_POST['gdsr_action'] == 'save') {
     $gdsr_options["admin_advanced"] = isset($_POST['gdsr_admin_advanced']) ? 1 : 0;
     $gdsr_options["admin_placement"] = isset($_POST['gdsr_admin_placement']) ? 1 : 0;
     $gdsr_options["admin_defaults"] = isset($_POST['gdsr_admin_defaults']) ? 1 : 0;
-    $gdsr_options["admin_users"] = isset($_POST['gdsr_admin_users']) ? 1 : 0;
     $gdsr_options["admin_import"] = isset($_POST['gdsr_admin_import']) ? 1 : 0;
     $gdsr_options["admin_setup"] = isset($_POST['gdsr_admin_setup']) ? 1 : 0;
     $gdsr_options["admin_ips"] = isset($_POST['gdsr_admin_ips']) ? 1 : 0;
