@@ -21,12 +21,19 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 = Plugin Reference =
 [Functions](http://info.dev4press.com/gd-star-rating/functions.html) |
 [WP Query](http://info.dev4press.com/gd-star-rating/wpquery.html) |
-[Actions & Filters](http://info.dev4press.com/gd-star-rating/filters.html)
+[Actions & Filters](http://info.dev4press.com/gd-star-rating/filters.html) |
+[Database Layout](http://code.google.com/p/gd-star-rating/wiki/DatabaseTablesFormat)
 
 = Using the Plugin =
 [Tutorials](http://www.gdstarrating.com/category/tutorials/) |
 [Advanced](http://www.gdstarrating.com/category/tutorials/advanced/) |
 [User Guide](http://www.gdstarrating.com/downloads/user-guide/)
+
+= Other Important URL's =
+[Forum](http://forum.gdragon.info/viewforum.php?f=9) |
+[Google Code](http://code.google.com/p/gd-star-rating/) |
+[Feedburner](http://feeds2.feedburner.com/GdStarRating) |
+[Twitter](http://twitter.com/milangd)
 
 == Configuration ==
 Plugin administration consist of 17 main panels:
@@ -122,6 +129,10 @@ Check the widget settings. Most likely problem is with default widget setting to
 
 == Changelog ==
 = 1.6.2 =
+* My ratings panel for current logged user ratings stats.
+* T2 Templates improvements and dependencies editor.
+* Some css styles improvements.
+* Many changes and fixes.
 
 = 1.6.1 =
 * Dropped support for WordPress 2.5
@@ -144,21 +155,10 @@ Check the widget settings. Most likely problem is with default widget setting to
 == Source SVN ==
 * svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only
 
-== Website ==
+== Various Plugin related URLs' ==
 * Plugin Home: http://www.gdstarrating.com/
 * GDragoN Home: http://www.gdragon.info/
 * Dev4Press: http://www.dev4press.com/
-
-== Support ==
-* Forum: http://forum.gdragon.info/viewforum.php?f=9
-* Database Layout: http://code.google.com/p/gd-star-rating/wiki/DatabaseTablesFormat
-
-== Subscribe ==
-* Feedburner: http://feeds2.feedburner.com/GdStarRating
-* Twitter: http://twitter.com/milangd
-
-== Communities ==
-* Google Code: http://code.google.com/p/gd-star-rating/
 * Ohloh: https://www.ohloh.net/p/gd-star-rating/
 * WordPress Extend: http://wordpress.org/extend/plugins/gd-star-rating/
 
