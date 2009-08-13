@@ -81,10 +81,31 @@ class GDSRDBTools {
 }
 
 class GDSRDB {
-    function filter_latest_votes($o) {
+    function filter_votes_by_type($user, $filter = "'multis', 'artthumb', 'article'", $posts = true) {
+        global $wpdb, $table_prefix;
+
+        $select = "l.id, l.vote_type, l.voted, l.vote, l.ip, l.user_id, u.display_name, u.user_email";
+        $from = sprintf("%sgdsr_votes_log l left join %s u on u.ID = l.user_id", $table_prefix, $wpdb->users);
+        if ($posts) {
+            $select.= ", l.object, m.stars, m.weight, m.name";
+            $from.= sprintf(" left join %sgdsr_multis m on m.multi_id = l.multi_id", $table_prefix);
+            $from.= sprintf(" inner join %sposts p on p.ID = l.id", $table_prefix);
+            $where = " and p.post_author = ".$user;
+        } else {
+            $from.= sprintf(" inner join %scomments c on c.comment_ID = l.id", $table_prefix);
+            $where = " and c.user_id = ".$user;
+        }
+
+        $sql = sprintf("select %s from %s where vote_type in (%s)%s order by l.voted desc limit 0, %s",
+            $select, $from, $filter, $where, 100);
+        return $wpdb->get_results($sql);
+    }
+
+    function filter_latest_votes($o, $user = 0) {
         global $wpdb, $table_prefix;
         $types = array();
 
+        $where = $user == 0 ? "" : " and l.user_id = ".$user;
         $select = "l.id, l.vote_type, l.voted, l.vote, l.ip, l.user_id, u.display_name, u.user_email";
         $from = sprintf("%sgdsr_votes_log l left join %s u on u.ID = l.user_id", $table_prefix, $wpdb->users);
 
@@ -98,8 +119,8 @@ class GDSRDB {
             $from.= sprintf(" left join %sgdsr_multis m on m.multi_id = l.multi_id", $table_prefix);
         }
 
-        $sql = sprintf("select %s from %s where vote_type in (%s) order by voted desc limit 0, %s",
-            $select, $from, join(", ", $types), $o["integrate_dashboard_latest_count"]);
+        $sql = sprintf("select %s from %s where vote_type in (%s)%s order by voted desc limit 0, %s",
+            $select, $from, join(", ", $types), $where, $o["integrate_dashboard_latest_count"]);
         return $wpdb->get_results($sql);
     }
 

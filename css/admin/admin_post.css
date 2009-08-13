@@ -80,28 +80,29 @@
 
 #gdsr-latest-cmds { padding: 10px 0 0 0; text-align: right; }
 
-#gdsr-latest-votes {
+#gdsr-latest-votes-my-comments, #gdsr-latest-votes-my-posts, 
+#gdsr-latest-votes-my-latest, #gdsr-latest-votes {
 	margin: -10px -10px 0;
 	border-bottom: 1px solid #BBD8E7;
 }
 
-#gdsr-latest-votes .gdsr-latest-item { padding: 3px 0; border-top: 1px solid #BBD8E7; }
+.gdsr-latest-item { padding: 3px 0; border-top: 1px solid #BBD8E7; }
 
-#gdsr-latest-votes .gdsr-latest-item .avatar { float: left; margin: 0 5px 0 10px; }
+.gdsr-latest-item .avatar { float: left; margin: 0 5px 0 10px; }
 
-#gdsr-latest-votes .gdsr-latest-item .clear { clear: both; }
+.gdsr-latest-item .clear { clear: both; }
 
-#gdsr-latest-votes .gdsr-latest-item h5 {
+.gdsr-latest-item h5 {
 	font-weight: normal;
 	font-size: 0.85em;
 	margin: 1px 0 5px 0;
 	padding: 0;
 }
 
-#gdsr-latest-votes .gdsr-latest-item p.datx { float: right; margin-right: 5px; font-style: italic; }
+.gdsr-latest-item p.datx { float: right; margin-right: 5px; font-style: italic; }
 
-#gdsr-latest-votes .gdsr-latest-item p.linx, #gdsr-latest-votes .gdsr-latest-item p.datx { padding:0 10px 0 0; margin: 0; font-size: 10px; }
+.gdsr-latest-item p.linx, .gdsr-latest-item p.datx { padding:0 10px 0 0; margin: 0; font-size: 10px; }
 
-#gdsr-latest-votes .gdsr-latest-item.first { border-top: none; }
+.gdsr-latest-item.first { border-top: none; }
 
-#gdsr-latest-votes .gdsr-latest-item.user { background-color: #EDFBFC; }
+.gdsr-latest-item.user { background-color: #EDFBFC; }

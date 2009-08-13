@@ -1,23 +1,29 @@
+<?php
+
+$sett = array();
+$sett["integrate_dashboard_latest_filter_thumb_std"] = 1;
+$sett["integrate_dashboard_latest_filter_thumb_cmm"] = 1;
+$sett["integrate_dashboard_latest_filter_stars_std"] = 1;
+$sett["integrate_dashboard_latest_filter_stars_cmm"] = 1;
+$sett["integrate_dashboard_latest_filter_stars_mur"] = 1;
+$sett["integrate_dashboard_latest_count"] = 100;
+
+?>
+
 <div class="wrap"><h2 class="gdptlogopage">GD Star Rating: <?php _e("My Ratings", "gd-star-rating"); ?></h2>
 <div class="gdsr">
 
-<div id="gdsr_tabs" class="gdsrtabs">
-<ul>
-    <li><a href="#fragment-1"><span><?php _e("General", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-2"><span><?php _e("General", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-3"><span><?php _e("General", "gd-star-rating"); ?></span></a></li>
-</ul>
-<div style="clear: both"></div>
-<div id="fragment-1">
-<?php include STARRATING_PATH."options/my/my_general.php"; ?>
+<table><tr><td valign="top">
+<div class="metabox-holder">
+<?php include(STARRATING_PATH.'options/my/my_general.php'); ?>
+<?php include(STARRATING_PATH.'options/my/my_posts.php'); ?>
 </div>
-<div id="fragment-2">
-<?php include STARRATING_PATH."options/my/my_general.php"; ?>
+</td><td style="width: 20px"> </td><td valign="top">
+<div class="metabox-holder">
+<?php include(STARRATING_PATH.'options/my/my_voted.php'); ?>
+<?php include(STARRATING_PATH.'options/my/my_comments.php'); ?>
 </div>
-<div id="fragment-3">
-<?php include STARRATING_PATH."options/my/my_general.php"; ?>
-</div>
-</div>
+</td></tr></table>
 
 </div>
 </div>

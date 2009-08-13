@@ -658,3 +658,17 @@ span.rss-date {
     margin: 0;
     vertical-align: middle;
 }
+
+.my-panel { height: 300px; overflow: auto; }
+
+.my-general { height: 280px; overflow: auto; }
+
+.myboxes .inside { margin: 10px 10px 0 !important; }
+
+.myboxes #gdsr-latest-votes-my-latest,
+.myboxes #gdsr-latest-votes-my-posts,
+.myboxes #gdsr-latest-votes-my-comments { border-bottom: none !important; }
+
+#gdsr-latest-votes-my-latest .gdsr-latest-item.alter.user,
+#gdsr-latest-votes-my-posts .gdsr-latest-item.alter.user,
+#gdsr-latest-votes-my-comments .gdsr-latest-item.alter.user { background-color: #f5fffa; }
