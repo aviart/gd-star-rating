@@ -175,23 +175,26 @@ class gdTemplateRender {
     var $tag;
 
     function gdTemplateRender($id, $section) {
+        $this->dep = $this->tag = array();
         $this->tpl = wp_gdtpl_get_template($id);
+
         if (!is_object($this->tpl) || $this->tpl->section != $section) {
             $t = gdTemplateDB::get_templates($section, true, true);
             $id = $t->template_id;
             $this->tpl = wp_gdtpl_get_template($id);
         }
-        $this->dep = array();
 
         $dependencies = unserialize($this->tpl->dependencies);
         if (is_array($dependencies)) {
             foreach ($dependencies as $key => $value) $this->dep[$key] = new gdTemplateRender($value, $key);
         }
+
         $this->elm = unserialize($this->tpl->elements);
         if (is_array($this->elm)) {
             foreach($this->elm as $key => $value) {
+                $this->tag[$key] = array();
                 preg_match_all('(%.+?%)', $value, $matches, PREG_PATTERN_ORDER);
-                $this->tag[$key] = $matches[0];
+                if (is_array($matches[0])) $this->tag[$key] = $matches[0];
             }
         }
     }
