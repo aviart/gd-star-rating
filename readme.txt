@@ -24,15 +24,17 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 [Actions & Filters](http://info.dev4press.com/gd-star-rating/filters.html)
 
 = Using the Plugin =
-[Advanced Installation](http://www.gdstarrating.com/category/tutorials/advanced/) |
 [Tutorials](http://www.gdstarrating.com/category/tutorials/) |
+[Advanced](http://www.gdstarrating.com/category/tutorials/advanced/) |
 [User Guide](http://www.gdstarrating.com/downloads/user-guide/)
 
 == Configuration ==
-Plugin administration consist of 14 main panels:
+Plugin administration consist of 17 main panels:
 
 * Front Page:
   General info about the plugin and links
+* My Ratings:
+  Current logged user ratings statistics
 * Builder:
   Building shortcodes and integration functions
 * Articles:
@@ -57,10 +59,12 @@ Plugin administration consist of 14 main panels:
   Import voting data from other rating plugins
 * Export:
   Export rating data and templates to CSV format
-* Security:
-  Access levels and rights used mainly for WPMU
 * Setup:
   Upgrade and setup options
+* Security:
+  Access levels and rights used mainly for WPMU
+* Wizard:
+  Easy to follow, simplified plugin settings
 
 == Installation ==
 
@@ -117,6 +121,8 @@ Check the widget settings. Most likely problem is with default widget setting to
 7. Example multi rating block
 
 == Changelog ==
+= 1.6.2 =
+
 = 1.6.1 =
 * Dropped support for WordPress 2.5
 * More changes to access rights and config

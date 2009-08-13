@@ -642,7 +642,7 @@ class TrendValue {
         $this->votes_over = $v_over;
         $this->voters_over = $r_over;
 
-        $this->day_rate_voters = $last / $over;
+        if ($over > 0) $this->day_rate_voters = $last / $over;
 
         $this->Calculate();
     }
