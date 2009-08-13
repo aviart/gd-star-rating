@@ -1,7 +1,8 @@
-<?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-?>
+<div class="postbox gdrgrid frontright">
+    <h3 class="hndle"><span><?php _e("General Statistics"); ?></span></h3>
+    <div class="inside">
+        <div class="my-general">
+            Work in progress...
+        </div>
+    </div>
+</div>
