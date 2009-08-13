@@ -670,6 +670,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 0, __FILE__, array(&$this,"star_menu_front"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("My Ratings", "gd-star-rating"), __("My Ratings", "gd-star-rating"), 0, "gd-star-rating-my", array(&$this,"star_menu_my"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Builder", "gd-star-rating"), __("Builder", "gd-star-rating"), $this->security_level_builder, "gd-star-rating-builder", array(&$this,"star_menu_builder"));
 
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), $this->security_level, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
@@ -692,6 +693,7 @@ if (!class_exists('GDStarRating')) {
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), $this->security_level_setup, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
             if ($this->wp_secure_level)
                 add_submenu_page(__FILE__, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), $this->security_level, "gd-star-rating-export", array(&$this,"star_menu_security"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Wizard", "gd-star-rating"), __("Wizard", "gd-star-rating"), $this->security_level, "gd-star-rating-wizard", array(&$this,"star_menu_wizard"));
         }
 
         /**
@@ -2365,6 +2367,19 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         function star_menu_security() {
             $options = $this->o;
             $wpv = $this->wp_version;
+            include($this->plugin_path.'options/security.php');
+        }
+
+        function star_menu_wizard() {
+            $options = $this->o;
+            $wpv = $this->wp_version;
+            include($this->plugin_path.'options/wizard.php');
+        }
+
+        function star_menu_my() {
+            $options = $this->o;
+            $wpv = $this->wp_version;
+            include($this->plugin_path.'options/my.php');
         }
 
         function star_menu_builder(){
