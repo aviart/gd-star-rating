@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
-Version: 1.6.1
+Version: 1.6.2
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -131,6 +131,7 @@ if (!class_exists('GDStarRating')) {
         var $default_shortcode_starrater;
         var $default_shortcode_starthumbsblock;
         var $default_shortcode_starreview;
+        var $default_user_ratings_filter;
         var $default_options;
         var $default_import;
         var $default_widget_comments;
@@ -156,6 +157,7 @@ if (!class_exists('GDStarRating')) {
             $this->default_shortcode_starrater = $gdd->default_shortcode_starrater;
             $this->default_shortcode_starthumbsblock = $gdd->default_shortcode_starthumbsblock;
             $this->default_shortcode_starreview = $gdd->default_shortcode_starreview;
+            $this->default_user_ratings_filter = $gdd->default_user_ratings_filter;
             $this->default_options = $gdd->default_options;
             $this->default_import = $gdd->default_import;
             $this->default_widget_comments = $gdd->default_widget_comments;
@@ -179,6 +181,9 @@ if (!class_exists('GDStarRating')) {
             define('STARRATING_AJAX', $this->plugin_ajax);
         }
 
+        /**
+         * Initialize security variables based on the gdsr-config.php file
+         */
         function initialize_security() {
             if (defined('STARRATING_ACCESS_LEVEL')) $this->security_level = STARRATING_ACCESS_LEVEL;
             if (defined('STARRATING_ACCESS_LEVEL_BUILDER')) $this->security_level_builder = STARRATING_ACCESS_LEVEL_BUILDER;
@@ -641,7 +646,6 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
-        // install
         /**
          * WordPress action for adding administration menu items
          */
@@ -960,6 +964,18 @@ if (!class_exists('GDStarRating')) {
          */
         function powered_by() {
             return '<a target="_blank" href="http://www.gdstarrating.com/"><img src="'.STARRATING_URL.'gfx/powered.png" border="0" width="80" height="15" /></a>';
+        }
+
+        function get_users_votes($user_id, $limit = 100, $filter = array()) {
+            $sett = array();
+            $sett["integrate_dashboard_latest_count"] = $limit;
+            $settings = shortcode_atts($this->default_user_ratings_filter, $filter);
+
+            foreach ($settings as $name => $value) {
+                $sett["integrate_dashboard_latest_filter_".$name] = $value;
+            }
+
+            return GDSRDB::filter_latest_votes($sett, $user_id);
         }
 
         function add_dashboard_widget() {
@@ -1856,7 +1872,6 @@ if (!class_exists('GDStarRating')) {
             $this->include_rating_css($external_css);
             echo('<script type="text/javascript" src="'.$this->plugin_url.'script.js.php"></script>');
         }
-        // install
 
         // vote
         function vote_thumbs_article($vote, $id, $tpl_id, $unit_width) {

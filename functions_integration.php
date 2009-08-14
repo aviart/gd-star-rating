@@ -1,6 +1,21 @@
 <?php
 
 /**
+ * Get the array with objects with user votes.
+ *
+ * @global GDStarRating $gdsr main rating class instance
+ * @param int $user_id ID of the user to get data for
+ * @param int $limit number of votes to get
+ * @param array $filter variables to determine data to be retrieved
+ * @return array votes objects
+ */
+function wp_gdsr_get_users_votes($user_id, $limit = 100, $filter = array()) {
+    global $gdsr;
+
+    return $gdsr->get_users_votes($user_id, $limit, $filter);
+}
+
+/**
  * Get multi set id based on global and categoires rules.
  *
  * @global GDStarRating $gdsr main rating class instance
