@@ -117,6 +117,9 @@ class GDSRDB {
             $types[] = "'multis'";
             $select.= ", l.object, m.stars, m.weight, m.name";
             $from.= sprintf(" left join %sgdsr_multis m on m.multi_id = l.multi_id", $table_prefix);
+
+            if ($o["integrate_dashboard_latest_filter_stars_mur"] > 0)
+                $where.= " and l.multi_id = ".$o["integrate_dashboard_latest_filter_stars_mur"];
         }
 
         $sql = sprintf("select %s from %s where vote_type in (%s)%s order by voted desc limit 0, %s",

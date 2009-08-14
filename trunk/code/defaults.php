@@ -2,12 +2,12 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.6.1",
-        "revision" => 4,
+        "version" => "1.6.2",
+        "revision" => 0,
         "date" => "2009.08.12.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 885,
+        "build" => 886,
         "admin_views" => 0,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,
@@ -431,6 +431,15 @@ class GDSRDefaults {
         "review_stars" => "oxygen",
         "review_size" => 20,
         "last_voted_days" => 0
+    );
+
+    var $default_user_ratings_filter = array(
+        "thumb_std" => 1,
+        "thumb_cmm" => 1,
+        "stars_std" => 1,
+        "stars_cmm" => 1,
+        "stars_mur" => 1,
+        "multis_id" => 0
     );
 
     function GDSRDefaults() { }
