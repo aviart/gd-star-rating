@@ -61,11 +61,11 @@
 		 */
 		getInfo : function() {
 			return {
-					longname  : 'StarRating',
-					author 	  : 'Milan Petrovic',
-					authorurl : 'http://wp.gdragon.info/',
-					infourl   : 'http://wp.gdragon.info/',
-					version   : "2.0"
+                            longname  : 'StarRating',
+                            author 	  : 'Milan Petrovic',
+                            authorurl : 'http://www.dev4press.com/',
+                            infourl   : 'http://www.gdstarrating.com/',
+                            version   : "1.0"
 			};
 		}
 	});

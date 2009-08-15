@@ -81,6 +81,19 @@ class GDSRDBTools {
 }
 
 class GDSRDB {
+    function get_user_votes_overview($user) {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("select vote_type, count(*) as counter from %sgdsr_votes_log where user_id = %s group by vote_type", $table_prefix, $user);
+        $results = $wpdb->get_results($sql);
+
+        $data = array();
+        foreach ($results as $r) {
+            $data[$r->vote_type] = intval($r->counter);
+        }
+        return $data;
+    }
+
     function filter_votes_by_type($user, $filter = "'multis', 'artthumb', 'article'", $posts = true) {
         global $wpdb, $table_prefix;
 
