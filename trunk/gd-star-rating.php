@@ -728,6 +728,7 @@ if (!class_exists('GDStarRating')) {
                     include(STARRATING_PATH."code/js/corrections.php");
                 }
             }
+
             if ($this->admin_plugin || $this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
                 $datepicker_date = date("Y, n, j");
                 if ($this->wp_version < 28) {
@@ -742,6 +743,7 @@ if (!class_exists('GDStarRating')) {
                     if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js"></script>';
                 }
             }
+
             if ($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php") {
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'code/js/editors.php"></script>');
             }
@@ -837,10 +839,10 @@ if (!class_exists('GDStarRating')) {
          */
         function actions_filters() {
             add_action('init', array(&$this, 'init'));
-            add_action('wp_head', array(&$this, 'wp_head'));
-            add_action('widgets_init', array(&$this, 'widgets_init'));
             add_action('admin_menu', array(&$this, 'admin_menu'));
             add_action('admin_head', array(&$this, 'admin_head'));
+            add_action('wp_head', array(&$this, 'wp_head'));
+            add_action('widgets_init', array(&$this, 'widgets_init'));
             add_action('loop_start', array(&$this, 'loop_start'));
             add_filter('comments_array', array(&$this, 'comments_array'), 10, 2);
 
@@ -857,8 +859,7 @@ if (!class_exists('GDStarRating')) {
                 add_action('save_post', array(&$this, 'saveedit_post'));
             if ($this->o["integrate_dashboard"] == 1) {
                 add_action('wp_dashboard_setup', array(&$this, 'add_dashboard_widget'));
-                if (!function_exists('wp_add_dashboard_widget'))
-                    add_filter('wp_dashboard_widgets', array(&$this, 'add_dashboard_widget_filter'));
+                if (!function_exists('wp_add_dashboard_widget')) add_filter('wp_dashboard_widgets', array(&$this, 'add_dashboard_widget_filter'));
             }
             add_filter('comment_text', array(&$this, 'display_comment'));
             add_filter('the_content', array(&$this, 'display_article'));
@@ -980,11 +981,15 @@ if (!class_exists('GDStarRating')) {
 
         function add_dashboard_widget() {
             if (!function_exists('wp_add_dashboard_widget')) {
-                wp_register_sidebar_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
-                wp_register_sidebar_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
+                if ($this->o["integrate_dashboard_latest"] == 1)
+                    wp_register_sidebar_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
+                if ($this->o["integrate_dashboard_chart"] == 1)
+                    wp_register_sidebar_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
             } else {
-                wp_add_dashboard_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'));
-                wp_add_dashboard_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'));
+                if ($this->o["integrate_dashboard_latest"] == 1)
+                    wp_add_dashboard_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'));
+                if ($this->o["integrate_dashboard_chart"] == 1)
+                    wp_add_dashboard_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'));
             }
         }
 
@@ -993,8 +998,10 @@ if (!class_exists('GDStarRating')) {
 
             if (!isset($wp_registered_widgets["dashboard_gdstarrating_chart"]) && !isset($wp_registered_widgets["dashboard_gdstarrating_latest"])) return $widgets;
 
-            array_splice($widgets, 2, 0, "dashboard_gdstarrating_latest");
-            array_splice($widgets, 2, 0, "dashboard_gdstarrating_chart");
+            if ($this->o["integrate_dashboard_latest"] == 1)
+                array_splice($widgets, 2, 0, "dashboard_gdstarrating_latest");
+                if ($this->o["integrate_dashboard_chart"] == 1)
+                array_splice($widgets, 2, 0, "dashboard_gdstarrating_chart");
             return $widgets;
         }
 
