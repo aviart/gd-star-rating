@@ -661,7 +661,7 @@ span.rss-date {
 
 .my-panel { height: 300px; overflow: auto; }
 
-.my-general { height: 280px; overflow: auto; }
+.my-general { height: 280px; }
 
 .myboxes .inside { margin: 10px 10px 0 !important; }
 
