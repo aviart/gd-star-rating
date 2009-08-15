@@ -3,8 +3,8 @@
     $types = array("a", "c", "m", "ra", "rc");
 
     require_once(dirname(__FILE__)."/config.php");
-    $wpconfig = get_wpload_path();
-    require($wpconfig);
+    $wpload = get_gdsr_wpload_path();
+    require($wpload);
 
     global $gdsr;
 

@@ -25,7 +25,7 @@ define('STARRATING_TPLT2_TABLE', 'gdsr_templates');
  * 
  * @return string wp-load.php path
  */
-function get_wpload_path() {
+function get_gdsr_wpload_path() {
     if (STARRATING_WPLOAD == '') {
         $d = 0;
         while (!file_exists(str_repeat('../', $d).'wp-load.php'))

@@ -1,8 +1,8 @@
 <?php
 
     require_once("../config.php");
-    $wpconfig = get_wpload_path();
-    require($wpconfig);
+    $wpload = get_gdsr_wpload_path();
+    require($wpload);
     global $gdsr;
     require_once(STARRATING_PATH."code/helpers.php");
 
