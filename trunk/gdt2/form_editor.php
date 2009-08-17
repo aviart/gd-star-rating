@@ -41,15 +41,15 @@ $template = $tpls->get_list($section);
         <?php echo $mode == "edit" ? "Editing: ".$tpl->name : __("Creating new template", "gd-star-rating"); ?>
     </td>
 </tr>
-<?php if ($template->tag != "") { ?>
 <tr><th scope="row"><?php _e("Options", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="tpl_dep_rewrite" id="tpl_dep_rewrite" /><label style="margin-left: 5px;" for="tpl_dep_rewrite"><?php _e("Set this template as a dependency for all other templates that use it.", "gd-star-rating"); ?></label>
+        <?php if ($template->tag != "") { ?>
         <br />
         <input type="checkbox" name="tpl_default_rewrite" id="tpl_default_rewrite" /><label style="margin-left: 5px;" for="tpl_default_rewrite"><?php _e("Set this template as default for this type of templates.", "gd-star-rating"); ?></label>
+        <?php } ?>
     </td>
 </tr>
-<?php } ?>
 <tr><th scope="row"><?php _e("General", "gd-star-rating"); ?></th>
     <td>
         <?php _e("Name", "gd-star-rating"); ?>:<br />

@@ -77,6 +77,11 @@
                     <td class="t options"><a href="http://www.dev4press.com/plugins/gd-press-tools" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
                 <tr>
+                    <td class="first b">GD Taxonomies Tools</td>
+                    <td class="t"><?php _e("custom taxonomies managment", "gd-press-tools"); ?></td>
+                    <td class="t options"><a href="http://www.dev4press.com/plugins/gd-taxonomies-tools" target="_blank"><?php _e("visit", "gd-press-tools"); ?></a></td>
+                </tr>
+                <tr>
                     <td class="first b">GD Simple Widgets</td>
                     <td class="t"><?php _e("collection of widgets", "gd-star-rating"); ?></td>
                     <td class="t options"><a href="http://www.dev4press.com/plugins/gd-simple-widgets" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
