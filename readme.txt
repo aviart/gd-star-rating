@@ -131,8 +131,7 @@ Check the widget settings. Most likely problem is with default widget setting to
 = 1.6.2 =
 * My ratings panel for current logged user ratings stats.
 * T2 Templates improvements and dependencies editor.
-* Some css styles improvements.
-* Many changes and fixes.
+* Many changes, fixes and some css styles improvements.
 
 = 1.6.1 =
 * Dropped support for WordPress 2.5

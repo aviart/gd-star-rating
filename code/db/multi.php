@@ -671,7 +671,7 @@ class GDSRDBMulti {
 
     function get_multis($start = 0, $limit = 20) {
         global $wpdb, $table_prefix;
-        $sql = sprintf("select * from %sgdsr_multis limit %s, %s", $table_prefix, $start, $limit);
+        $sql = sprintf("select * from %sgdsr_multis order by multi_id desc limit %s, %s", $table_prefix, $start, $limit);
         return $wpdb->get_results($sql);
     }
 

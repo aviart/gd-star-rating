@@ -155,7 +155,6 @@ class GDSRHelper {
 
     function render_taxonomy_select($tax = "") {
         global $wp_taxonomies;
-        print_r($wp_taxonomies);
         foreach ($wp_taxonomies as $taxonomy => $cnt) {
             if ($taxonomy != "category" && $cnt->object_type == "post") {
                 $current = $tax == $taxonomy ? ' selected="selected"' : $current = '';

@@ -25,7 +25,7 @@ $page_id = 1;
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 
 $number_posts = GDSRDBMulti::get_multis_count();
-
+$max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
 
 if ($max_page > 1)
