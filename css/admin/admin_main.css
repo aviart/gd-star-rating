@@ -398,13 +398,6 @@ span.rss-date {
 
 .loader.flower.width { width: 15px; }
 
-.loader.radar {
-	background: url(../../gfx/loader/radar.gif) no-repeat left;
-	padding-left: 18px;
-}
-
-.loader.radar.width { width: 16px; }
-
 .loader.fountain {
 	background: url(../../gfx/loader/fountain.gif) no-repeat left;
 	padding-left: 134px;
@@ -425,6 +418,13 @@ span.rss-date {
 }
 
 .loader.lines.width { width: 96px; }
+
+.loader.radar {
+	background: url(../../gfx/loader/radar.gif) no-repeat left;
+	padding-left: 18px;
+}
+
+.loader.radar.width { width: 16px; }
 
 .loader.snake {
 	background: url(../../gfx/loader/snake.gif) no-repeat left;
@@ -459,6 +459,16 @@ span.rss-date {
 	margin-right: auto;
 	padding-left: 0px;
 }
+
+.myboxes #gdsr-latest-votes-my-latest,
+.myboxes #gdsr-latest-votes-my-posts,
+.myboxes #gdsr-latest-votes-my-comments { border-bottom: none !important; }
+
+.myboxes .inside { margin: 10px 10px 0 !important; }
+
+.my-general { height: 225px; }
+
+.my-panel { height: 233px; overflow: auto; }
 
 .pagenavg { font-size: 12px; }
 
@@ -506,6 +516,15 @@ span.rss-date {
 	margin-bottom: 5px;
 	padding: 2px 6px 4px 5px;
 	color: white;
+}
+
+.tplclean { width: 100%; }
+
+.tplclean tr, .tplclean td, .tplclean {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
 }
 
 .tpl-edit-name { font-size: 13px; margin: 0; font-weight: bold; }
@@ -629,6 +648,10 @@ span.rss-date {
 	font-weight: normal;
 }
 
+#gdsr-latest-votes-my-latest .gdsr-latest-item.alter.user,
+#gdsr-latest-votes-my-posts .gdsr-latest-item.alter.user,
+#gdsr-latest-votes-my-comments .gdsr-latest-item.alter.user { background-color: #f5fffa; }
+
 #rightnow {
 	border-style: solid;
 	border-width: 1px;
@@ -649,26 +672,3 @@ span.rss-date {
 }
 
 #rightnow h3, #rightnow p { padding: 0pt 5px; }
-
-.tplclean { width: 100% }
-
-.tplclean tr, .tplclean td, .tplclean {
-    border: 0;
-    padding: 0;
-    margin: 0;
-    vertical-align: middle;
-}
-
-.my-panel { height: 300px; overflow: auto; }
-
-.my-general { height: 280px; }
-
-.myboxes .inside { margin: 10px 10px 0 !important; }
-
-.myboxes #gdsr-latest-votes-my-latest,
-.myboxes #gdsr-latest-votes-my-posts,
-.myboxes #gdsr-latest-votes-my-comments { border-bottom: none !important; }
-
-#gdsr-latest-votes-my-latest .gdsr-latest-item.alter.user,
-#gdsr-latest-votes-my-posts .gdsr-latest-item.alter.user,
-#gdsr-latest-votes-my-comments .gdsr-latest-item.alter.user { background-color: #f5fffa; }
