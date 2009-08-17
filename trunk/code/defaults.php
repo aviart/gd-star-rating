@@ -7,7 +7,7 @@ class GDSRDefaults {
         "date" => "2009.08.17.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 891,
+        "build" => 892,
         "admin_views" => 0,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,

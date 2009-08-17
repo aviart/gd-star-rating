@@ -191,7 +191,6 @@ if (!class_exists('GDStarRating')) {
             if (defined('STARRATING_ACCESS_ADMIN_USERIDS')) $this->security_users = STARRATING_ACCESS_ADMIN_USERIDS;
         }
 
-        // shortcodes
         /**
         * Adds new button to tinyMCE editor toolbar
         *
@@ -212,6 +211,7 @@ if (!class_exists('GDStarRating')) {
             return $plugin_array;
         }
 
+        // shortcodes
         /**
         * Adds shortcodes into WordPress instance
         *
