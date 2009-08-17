@@ -145,19 +145,13 @@ Check the widget settings. Most likely problem is with default widget setting to
 * Many improvements to templates and rendering
 * Several rendering, rss and builder problems fixed
 
-= 1.5.8 =
-* Russian and Ukrainian translations
-* New functions and options
-* More indexes on database tables
-* Several WPMU related fixes
-
 == Source SVN ==
 * svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only
 
 == Various Plugin related URLs' ==
 * Plugin Home: http://www.gdstarrating.com/
-* GDragoN Home: http://www.gdragon.info/
 * Dev4Press: http://www.dev4press.com/
+* GDragoN Home: http://www.gdragon.info/
 * Ohloh: https://www.ohloh.net/p/gd-star-rating/
 * WordPress Extend: http://wordpress.org/extend/plugins/gd-star-rating/
 
