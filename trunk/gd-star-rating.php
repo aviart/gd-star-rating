@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
-Version: 1.6.2
+Version: 1.6.3
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -1119,14 +1119,15 @@ if (!class_exists('GDStarRating')) {
          * @param int $post_id ID of the post saving
          */
         function saveedit_post($post_id) {
-            $post_id = $_POST["post_ID"];
+            if (isset($_POST["post_ID"]) && $_POST["post_ID"] > 0)
+                $post_id = $_POST["post_ID"];
 
             if ($_POST['gdsr_post_edit'] == "edit" || $_POST['gdsr_post_edit_mur'] == "edit") {
                 if ($this->o["integrate_post_edit"] == 1) {
                     $set_id = $_POST["gdsrmultiactive"];
                     if ($set_id > 0) {
                         $mur = $_POST['gdsrmulti'];
-                        $mur = $mur[$post_id][0];
+                        $mur = isset($mur[$post_id]) ? $mur[$post_id][0] : $mur[0][0];
                         $values = explode("X", $mur);
                         $set = gd_get_multi_set($set_id);
                         $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
