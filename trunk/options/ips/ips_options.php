@@ -1,7 +1,7 @@
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Ban Single IP's", "gd-star-rating"); ?></th>
     <td>
-        <form method="post">
+        <form method="post" action="">
         <input type="hidden" name="action" value="addips" />
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -13,13 +13,13 @@
             </tr>
         </table>
         <div class="gdsr-table-split"></div>
-        <input type="submit" class="inputbutton" value="<?php _e("Add", "gd-star-rating"); ?>" name="gdsr_preview_scan" id="gdsr_preview_scan" />
+        <input type="submit" class="inputbutton" value="<?php _e("Add", "gd-star-rating"); ?>" name="gdsr_ips_addips" id="gdsr_ips_addips" />
         </form>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Ban IP Range", "gd-star-rating"); ?></th>
     <td>
-        <form method="post">
+        <form method="post" action="">
         <input type="hidden" name="action" value="baniprange" />
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -39,13 +39,13 @@
             </tr>
         </table>
         <div class="gdsr-table-split"></div>
-        <input type="submit" class="inputbutton" value="<?php _e("Add", "gd-star-rating"); ?>" name="gdsr_preview_scan" id="gdsr_preview_scan" />
+        <input type="submit" class="inputbutton" value="<?php _e("Add", "gd-star-rating"); ?>" name="gdsr_ips_banrange" id="gdsr_ips_banrange" />
         </form>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Ban IP Masked", "gd-star-rating"); ?></th>
     <td>
-        <form method="post">
+        <form method="post" action="">
         <input type="hidden" name="action" value="maskip" />
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -55,7 +55,7 @@
         </table>
         <?php _e("Use XXX as a part of IP or leave empty to mask.", "gd-star-rating"); ?>
         <div class="gdsr-table-split"></div>
-        <input type="submit" class="inputbutton" value="<?php _e("Add", "gd-star-rating"); ?>" name="gdsr_preview_scan" id="gdsr_preview_scan" />
+        <input type="submit" class="inputbutton" value="<?php _e("Add", "gd-star-rating"); ?>" name="gdsr_ips_maskip" id="gdsr_ips_maskip" />
         </form>
     </td>
 </tr>

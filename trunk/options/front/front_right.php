@@ -111,14 +111,19 @@
                     <td class="t options"><a href="http://www.gdragon.info/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
                 <tr>
-                    <td class="first b"><?php _e("Support Forum", "gd-star-rating"); ?></td>
-                    <td class="t"><?php _e("development discussion forum", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://forum.gdragon.info/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
-                </tr>
-                <tr>
                     <td class="first b">Dev4Press</td>
                     <td class="t"><?php _e("wordpress development", "gd-star-rating"); ?></td>
                     <td class="t options"><a href="http://www.dev4press.com/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
+                </tr>
+                <tr>
+                    <td class="first b" style="color: navy;">TVScape</td>
+                    <td class="t"><?php _e("tv shows reviews and news", "gd-star-rating"); ?></td>
+                    <td class="t options"><a href="http://www.tvscape.net/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
+                </tr>
+                <tr>
+                    <td class="first b"><?php _e("Support Forum", "gd-star-rating"); ?></td>
+                    <td class="t"><?php _e("development discussion forum", "gd-star-rating"); ?></td>
+                    <td class="t options"><a href="http://forum.gdragon.info/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
                 <tr>
                     <td class="first b">Starscape Theme</td>
