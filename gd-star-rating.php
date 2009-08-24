@@ -1606,8 +1606,8 @@ if (!class_exists('GDStarRating')) {
 
             if (isset($_POST['gdsr_updatemultilog_tool'])) {
                 GDSRDBMulti::recalculate_multi_rating_log();
-                //wp_redirect_self();
-                //exit;
+                wp_redirect_self();
+                exit;
             }
 
             if (isset($_POST['gdsr_mulitrecalc_tool'])) {
@@ -2321,6 +2321,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         function star_menu_ips() {
             $options = $this->o;
             $wpv = $this->wp_version;
+
             include($this->plugin_path.'options/ips.php');
         }
 
