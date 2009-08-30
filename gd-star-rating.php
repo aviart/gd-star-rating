@@ -819,8 +819,7 @@ if (!class_exists('GDStarRating')) {
             if (count($comments) > 0 && !is_admin()) {
                 if ((is_single() && ($this->o["display_comment"] == 1 || $this->o["thumb_display_comment"] == 1)) ||
                     (is_page() && ($this->o["display_comment_page"] == 1 || $this->o["thumb_display_comment_page"] == 1)) ||
-                    $this->o["override_thumb_display_comment"] == 1 || $this->o["override_display_comment"] == 1 ||
-                    $this->qc->is_active) {
+                    $this->o["override_thumb_display_comment"] == 1 || $this->o["override_display_comment"] == 1) {
                         $this->cache_comments($post_id);
                 }
             }
