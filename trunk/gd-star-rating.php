@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
-Version: 1.6.3
+Version: 1.6.4
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -1102,7 +1102,7 @@ if (!class_exists('GDStarRating')) {
         }
 
         function comment_edit_review($comment_content) {
-            if ($_POST['gdsr_comment_edit'] == "edit") {
+            if (isset($_POST['gdsr_comment_edit']) && $_POST['gdsr_comment_edit'] == "edit") {
                 $post_id = $_POST["comment_post_ID"];
                 $comment_id = $_POST["comment_ID"];
                 $value = isset($_POST["gdsr_cmm_review"]) ? $_POST["gdsr_cmm_review"] : -1;
@@ -2164,10 +2164,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         // menues
         function star_multi_sets() {
             $wpv = $this->wp_version;
-            $gdsr_page = $_GET["gdsr"];
+            $gdsr_page = isset($_GET["gdsr"]) ? $_GET["gdsr"] : "";
 
             $editor = true;
-            if ($_POST['gdsr_action'] == 'save') {
+            if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
                 $editor = false;
                 $eset = new GDMultiSingle(false);
                 $eset->multi_id = $_POST["gdsr_ms_id"];
@@ -2233,8 +2233,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 update_option('gd-star-rating-gfx', $this->g);
             }
             
-            $gdsr_styles = $this->styles;
-            $gdsr_trends = $this->trends;
             $gdsr_options = $this->o;
             $gdsr_bots = $this->bots;
             $gdsr_root_url = $this->plugin_url;
@@ -2258,8 +2256,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
                 update_option('gd-star-rating-gfx', $this->g);
             }
 
-            $gdsr_styles = $this->styles;
-            $gdsr_trends = $this->trends;
+            $recalculate_articles = $recalculate_comment = $recalculate_reviews = $recalculate_cmm_reviews = false;
+
             $gdsr_options = $this->o;
             $gdsr_bots = $this->bots;
             $gdsr_root_url = $this->plugin_url;
@@ -2329,8 +2327,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $msg = "";
 
             $gdsr_options = $this->o;
-            $gdsr_styles = $this->styles;
-            $gdsr_trends = $this->trends;
             $gdsr_gfx = $this->g;
             $wpv = $this->wp_version;
 
@@ -2376,7 +2372,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         function star_menu_users(){
             $options = $this->o;
             $wpv = $this->wp_version;
-            if ($_GET["gdsr"] == "userslog")
+            if (isset($_GET["gdsr"]) && $_GET["gdsr"] == "userslog")
                 include($this->plugin_path.'options/users_log.php');
             else
                 include($this->plugin_path.'options/users.php');

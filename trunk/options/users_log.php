@@ -21,14 +21,14 @@ if (isset($_GET["vt"])) $vote_type = $_GET["vt"];
 if (isset($_GET["un"])) $user_name = urldecode($_GET["un"]);
 if (isset($_GET["vote"])) $filter_vote = $_GET["vote"];
 
-if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
+if (isset($_POST["gdsr_filter"]) && $_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     $filter_vote = $_POST["gdsr_vote"];
     $page_id = 1;
 }
 
 $is_thumb = substr($vote_type, 3) == "thumb";
 
-if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
+if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $ips = $_POST["gdsr_item"];
     if (count($ips) > 0) {
         if (isset($_POST["gdsr_ip_ban"])) {
@@ -69,8 +69,7 @@ $number_posts = GDSRDatabase::get_count_user_log($user_id, $vote_type, $filter_v
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
 
-if ($max_page > 1)
-    $pager = gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg");
+$pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg") : "";
 
 if ($vote_type == "article")
     $max_stars = $options["stars"];

@@ -18,8 +18,7 @@ $number_posts = GDSRDatabase::get_valid_users_count();
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
 
-if ($max_page > 1)
-    $pager = gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg");
+$pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg") : "";
 
 $users = array();
 $pre_users = GDSRDatabase::get_valid_users();
@@ -82,25 +81,25 @@ if ($usr_to > $number_posts) $usr_to = $number_posts;
 
         $ip_pst = 0;
         $r_pst = 0;
-        if ($row["article"]["voters"] > 0) $r_pst = @number_format($row["article"]["votes"] / $row["article"]["voters"], 1);
+        if (isset($row["article"]["voters"]) && $row["article"]["voters"] > 0) $r_pst = @number_format($row["article"]["votes"] / $row["article"]["voters"], 1);
         else $row["article"]["voters"] = "0";
-        if ($row["article"]["ips"] > 0) $ip_pst = $row["article"]["ips"];
+        $ip_pst = (isset($row["article"]["ips"]) && $row["article"]["ips"] > 0) ? $row["article"]["ips"] : 0;
 
         $ip_pst_thumb = 0;
         if (!isset($row["artthumb"]["voters"])) $row["artthumb"]["voters"] = 0;
         $r_pst_thumb = $row["artthumb"]["voters"];
-        if ($row["artthumb"]["ips"] > 0) $ip_pst_thumb = $row["artthumb"]["ips"];
+        $ip_pst_thumb = (isset($row["artthumb"]["ips"]) && $row["artthumb"]["ips"] > 0) ? $row["artthumb"]["ips"] : 0;
 
         $ip_cmm = 0;
         $r_cmm = 0;
-        if ($row["comment"]["voters"] > 0) $r_cmm = @number_format($row["comment"]["votes"] / $row["comment"]["voters"], 1);
+        if (isset($row["comment"]["voters"]) && $row["comment"]["voters"] > 0) $r_cmm = @number_format($row["comment"]["votes"] / $row["comment"]["voters"], 1);
         else $row["comment"]["voters"] = "0";
-        if ($row["comment"]["ips"] > 0) $ip_cmm = $row["comment"]["ips"];
+        $ip_cmm = (isset($row["comment"]["ips"]) && $row["comment"]["ips"] > 0) ? $row["comment"]["ips"] : 0;
 
         $ip_cmm_thumb = 0;
         if (!isset($row["cmmthumb"]["voters"])) $row["cmmthumb"]["voters"] = 0;
         $r_cmm_thumb = $row["cmmthumb"]["voters"];
-        if ($row["cmmthumb"]["ips"] > 0) $ip_cmm_thumb = $row["cmmthumb"]["ips"];
+        $ip_cmm_thumb = (isset($row["cmmthumb"]["ips"]) && $row["cmmthumb"]["ips"] > 0) ? $row["cmmthumb"]["ips"] : 0;
 
         echo '<tr id="post-'.$row["id"].'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<td><strong>'.$usr_url.'</strong></td>';
