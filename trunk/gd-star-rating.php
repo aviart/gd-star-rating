@@ -1000,7 +1000,7 @@ if (!class_exists('GDStarRating')) {
 
             if ($this->o["integrate_dashboard_latest"] == 1)
                 array_splice($widgets, 2, 0, "dashboard_gdstarrating_latest");
-                if ($this->o["integrate_dashboard_chart"] == 1)
+            if ($this->o["integrate_dashboard_chart"] == 1)
                 array_splice($widgets, 2, 0, "dashboard_gdstarrating_chart");
             return $widgets;
         }

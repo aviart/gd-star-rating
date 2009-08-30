@@ -136,20 +136,20 @@ class GDSRX {
     function get_totals_thumbs($widget, $min = 0) {
         global $table_prefix;
         $where = array("p.id = d.post_id", "p.post_status = 'publish'");
-        $select.= ", count(*) as count, 0 as voters, 0 as rating, 0 as bayes_rating, 0 as max_rating, 0 as percentage";
+        $select = "count(*) as count, 0 as voters, 0 as rating, 0 as bayes_rating, 0 as max_rating, 0 as percentage";
 
         if ($widget["show"] == "total") {
-            $select = "(d.user_recc_plus + d.visitor_recc_plus - d.user_recc_minus - d.visitor_recc_minus) as score";
+            $select.= ", (d.user_recc_plus + d.visitor_recc_plus - d.user_recc_minus - d.visitor_recc_minus) as score";
             $select.= ", (d.user_recc_plus + d.visitor_recc_plus + d.user_recc_minus + d.visitor_recc_minus) as votes";
             $where[] = "(d.user_recc_plus + d.visitor_recc_plus + d.user_recc_minus + d.visitor_recc_minus) > ".$min;
         }
         if ($widget["show"] == "visitors") {
-            $select = "(d.visitor_recc_plus - d.visitor_recc_minus) as score";
+            $select.= ", (d.visitor_recc_plus - d.visitor_recc_minus) as score";
             $select.= ", (d.visitor_recc_plus + d.visitor_recc_minus) as votes";
             $where[] = "(d.visitor_recc_plus + d.visitor_recc_minus) > ".$min;
         }
         if ($widget["show"] == "users") {
-            $select = "(d.user_recc_plus - d.user_recc_minus) as score";
+            $select.= ", (d.user_recc_plus - d.user_recc_minus) as score";
             $select.= ", (d.user_recc_plus + d.user_recc_minus) as votes";
             $where[] = "(d.user_recc_plus + d.user_recc_minus) > ".$min;
         }
@@ -172,18 +172,18 @@ class GDSRX {
     function get_totals_standard($widget, $min = 0) {
         global $table_prefix;
         $where = array("p.id = d.post_id", "p.post_status = 'publish'");
-        $select.= ", count(*) as count, 0 as rating, 0 as bayes_rating, 0 as max_rating, 0 as percentage";
+        $select = "count(*) as count, 0 as rating, 0 as bayes_rating, 0 as max_rating, 0 as percentage";
 
         if ($widget["show"] == "total") {
-            $select = "sum(d.user_voters) + sum(d.visitor_voters) as voters, sum(d.user_votes) + sum(d.visitor_votes) as votes";
+            $select.= ", sum(d.user_voters) + sum(d.visitor_voters) as voters, sum(d.user_votes) + sum(d.visitor_votes) as votes";
             $where[] = "(d.user_voters + d.visitor_voters) > ".$min;
         }
         if ($widget["show"] == "visitors") {
-            $select = "sum(d.visitor_voters) as voters, sum(d.visitor_votes) as votes";
+            $select.= ", sum(d.visitor_voters) as voters, sum(d.visitor_votes) as votes";
             $where[] = "d.visitor_voters > ".$min;
         }
         if ($widget["show"] == "users") {
-            $select = "sum(d.user_voters) as voters, sum(d.user_votes) as votes";
+            $select.= ", sum(d.user_voters) as voters, sum(d.user_votes) as votes";
             $where[] = "d.user_voters > ".$min;
         }
 
