@@ -2,7 +2,7 @@
 
 /*
 Name:    gdWordPress
-Version: 1.1.0
+Version: 1.2.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/

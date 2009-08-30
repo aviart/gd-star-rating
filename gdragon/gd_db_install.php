@@ -2,7 +2,7 @@
 
 /*
 Name:    gdDBInstallGDSR
-Version: 1.1.0
+Version: 1.2.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/
@@ -239,14 +239,13 @@ if (!class_exists('gdDBInstallGDSR')) {
          */
         function scan_folder($path) {
             $files = array();
-            if (function_exists(scandir)) {
+            if (function_exists("scandir")) {
                 $f = scandir($path);
                 foreach ($f as $filename) {
                     if (substr($filename, 0, 1) != '.' && substr($filename, 0, 1) != '_' && is_file($path."/".$filename))
                         $files[] = $filename;
                 }
-            }
-            else {
+            } else {
                 $dh = opendir($path);
                 while (false !== ($filename = readdir($dh))) {
                     if (substr($filename, 0, 1) != '.' && substr($filename, 0, 1) != '_' && is_file($path."/".$filename))
