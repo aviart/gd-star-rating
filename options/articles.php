@@ -76,8 +76,7 @@ else $number_posts = $number_posts_all;
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
 
-if ($max_page > 1)
-    $pager = gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg");
+$pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg") : "";
 
 ?>
 
@@ -317,9 +316,9 @@ function gdsrTimerChange() {
                     <div id="gdsr_timer_date_text" style="display: none"><span class="paneltext"><?php _e("Date", "gd-star-rating"); ?>:</span></div>
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
-                    <div id="gdsr_timer_countdown" style="display: none"><input class="regular-text" type="text" value="<?php echo $countdown_value; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 35px; text-align: right; padding: 2px;" />
+                    <div id="gdsr_timer_countdown" style="display: none"><input class="regular-text" type="text" value="<?php echo ''; ?>" id="gdsr_timer_countdown_value" name="gdsr_timer_countdown_value" style="width: 35px; text-align: right; padding: 2px;" />
                     <?php GDSRHelper::render_countdown_combo("gdsr_timer_countdown_type", 'H', 70); ?></div>
-                    <div id="gdsr_timer_date" style="display: none"><input class="regular-text" type="text" value="<?php echo $timer_date_value; ?>" id="gdsr_timer_date_value" name="gdsr_timer_date_value" style="width: 110px; padding: 2px;" /></div>
+                    <div id="gdsr_timer_date" style="display: none"><input class="regular-text" type="text" value="<?php echo ''; ?>" id="gdsr_timer_date_value" name="gdsr_timer_date_value" style="width: 110px; padding: 2px;" /></div>
                 </td>
             </tr>
             </table>

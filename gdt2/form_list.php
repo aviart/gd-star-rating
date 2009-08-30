@@ -13,7 +13,7 @@ $filter_section = "";
 $page_id = 1;
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 
-if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
+if (isset($_POST["gdsr_filter"]) && $_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     $filter_section = $_POST["filter_section"];
     $page_id = 1;
 }
@@ -21,7 +21,7 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
 $number_posts = gdTemplateDB::get_templates_count($filter_section);
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
-if ($max_page > 1) $pager = gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg");
+$pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg") : "";
 
 $all_sections = $tpls->list_sections_assoc();
 

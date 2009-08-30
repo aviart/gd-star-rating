@@ -1,6 +1,6 @@
 <?php 
 
-    if ($_POST['gdsr_action'] == 'save') {
+    if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
         $gdsr_oldstars = $gdsr_options["stars"];
         $gdsr_newstars = $_POST['gdsr_stars'];
         $gdsr_cmm_oldstars = $gdsr_options["cmm_stars"];
@@ -34,8 +34,6 @@
 
 <div class="gdsr">
 <form method="post">
-<input type="hidden" id="gdsr_preview_stars" name="gdsr_preview_stars" value="<?php echo $gdsr_options["preview_active"]; ?>" />
-<input type="hidden" id="gdsr_preview_trends" name="gdsr_preview_trends" value="<?php echo $gdsr_options["preview_trends_active"]; ?>" />
 <input type="hidden" id="gdsr_action" name="gdsr_action" value="save" />
 <div class="wrap"><h2 class="gdptlogopage">GD Star Rating: <?php _e("Settings", "gd-star-rating"); ?></h2>
 

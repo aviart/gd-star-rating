@@ -2,12 +2,12 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.6.3",
+        "version" => "1.6.4",
         "revision" => 0,
-        "date" => "2009.08.25.",
+        "date" => "2009.09.01.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 896,
+        "build" => 898,
         "admin_views" => 0,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,

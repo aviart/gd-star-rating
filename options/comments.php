@@ -64,8 +64,7 @@ if (isset($id)) {
     $max_page = floor($number_posts / $posts_per_page);
     if ($max_page * $posts_per_page != $number_posts) $max_page++;
 
-    if ($max_page > 1)
-        $pager = gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg");
+    $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg") : "";
 
 ?>
 

@@ -1,6 +1,6 @@
 <?php 
 
-if ($_POST['gdsr_action'] == 'save') {
+if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $bots = explode("\r\n", $_POST["gdsr_bots"]);
 
     foreach($bots as $key => $value) {

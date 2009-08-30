@@ -2,7 +2,7 @@
 
 $review_set = $options["mur_review_set"];
 
-if ($_POST["gdsr_operation"] == __("Delete Selected", "gd-star-rating")) {
+if (isset($_POST["gdsr_operation"]) && $_POST["gdsr_operation"] == __("Delete Selected", "gd-star-rating")) {
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
         $ids = "(".join(", ", $gdsr_items).")";
@@ -28,8 +28,7 @@ $number_posts = GDSRDBMulti::get_multis_count();
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
 
-if ($max_page > 1)
-    $pager = gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg");
+$pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg") : "";
 
 ?>
 
