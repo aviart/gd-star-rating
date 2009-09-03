@@ -97,6 +97,7 @@ Plugin administration consist of 17 main panels:
 
 = WordPress MU =
 * Minimal version supported: 2.8.1
+* Support for WPMU is only partial, not everything works as it should be.
 
 = Browser Notice =
 * Multi review feature on administration Post Edit page will not work properly with IE6 browsers.
@@ -129,8 +130,9 @@ Check the widget settings. Most likely problem is with default widget setting to
 
 == Changelog ==
 = 1.6.4 =
-* Updated shared libraries.
-* Several bugs fixed and code cleanup.
+* Tag percentage for thumbs post and comments ratings.
+* Several bugs fixed, T2 improvementa and code cleanup.
+* Updated gdragon shared libraries.
 
 = 1.6.3 =
 * Several bugs fixed.

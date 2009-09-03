@@ -308,6 +308,7 @@ $t = new gdTemplate("TAT", __("Thumbs Article Ratings Text", "gd-star-rating"), 
 $t->add_template("EWV", "%WORD_VOTES%");
 $t->add_element("%ID%", __("post/page id", "gd-star-rating"));
 $t->add_element("%RATING%", __("article rating", "gd-star-rating"));
+$t->add_element("%PERCENTAGE%", __("article percentage rating", "gd-star-rating"));
 $t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
 $t->add_element("%VOTES_UP%", __("total up votes for article", "gd-star-rating"));
 $t->add_element("%VOTES_DOWN%", __("total down votes for article", "gd-star-rating"));
@@ -346,7 +347,8 @@ $tpls->add_template($t);
 $t = new gdTemplate("TCT", __("Thumbs Comment Ratings Text", "gd-star-rating"), "%CMM_THUMBS_TEXT%");
 $t->add_template("EWV", "%WORD_VOTES%");
 $t->add_element("%ID%", __("post/page id", "gd-star-rating"));
-$t->add_element("%RATING%", __("article rating", "gd-star-rating"));
+$t->add_element("%RATING%", __("comment rating", "gd-star-rating"));
+$t->add_element("%PERCENTAGE%", __("comment percentage rating", "gd-star-rating"));
 $t->add_element("%VOTES%", __("total votes for article", "gd-star-rating"));
 $t->add_element("%VOTES_UP%", __("total up votes for article", "gd-star-rating"));
 $t->add_element("%VOTES_DOWN%", __("total down votes for article", "gd-star-rating"));

@@ -7,6 +7,7 @@ class GDSRRenderT2 {
         if (intval($template_id) == 0) {
             $t = gdTemplateDB::get_templates($section, true, true);
             $template_id = $t->template_id;
+            wp_gdtpl_cache_template($t);
         }
 
         return new gdTemplateRender($template_id, $section);
@@ -564,7 +565,12 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     function render_tat_voted($template, $votes, $score, $votes_plus, $votes_minus, $id, $vote) {
         $tpl = $template->elm["vote_saved"];
         $rt = html_entity_decode($tpl);
+
+        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
+        $percent = number_format($percent, 0);
+
         $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
+        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
         $rt = str_replace('%VOTES%', $votes, $rt);
         $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
         $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
@@ -594,15 +600,19 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             $rt = str_replace('%TOT_DAYS%', $time_total["day"], $rt);
             $rt = str_replace('%TOT_HOURS%', $time_total["hour"], $rt);
             $rt = str_replace('%TOT_MINUTES%', $time_total["minute"], $rt);
-        }
-        else {
+        } else {
             if ($time_restirctions == 'D' || $time_restirctions == 'T')
                 $tpl = $template->elm["time_closed"];
             else
                 $tpl = $template->elm["normal"];
             $rt = html_entity_decode($tpl);
         }
+
+        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
+        $percent = number_format($percent, 0);
+
         $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
+        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
         $rt = str_replace('%VOTES%', $votes, $rt);
         $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
         $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
@@ -701,8 +711,12 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $tpl = $template->elm["normal"];
         if ($vote_value != 0) $tpl = $template->elm["vote_saved"];
 
+        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
+        $percent = number_format($percent, 0);
+
         $rt = html_entity_decode($tpl);
         $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
+        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
         $rt = str_replace('%VOTES%', $votes, $rt);
         $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
         $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
@@ -875,7 +889,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         global $gdsr;
         $template = GDSRRenderT2::get_template($widget["template_id"], $section);
         $tpl_render = html_entity_decode($template->elm["header"]);
-        $tpl_render = apply_filters('gdsr_t2render_'.strtolower($section).'_header', $tpl_render, $template, $widget);
+        $tpl_render = apply_filters('gdsr_t2render_'.strtolower($section).'_header', $tpl_render, $template, $widget, "header");
 
         $rt = html_entity_decode($template->elm["item"]);
         $all_rows = GDSRRenderT2::prepare_wsr($widget, $rt);
@@ -886,7 +900,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             $rank_id = 1;
             foreach ($all_rows as $row) {
                 $rt = html_entity_decode($template->elm["item"]);
-                $rt = apply_filters('gdsr_t2render_'.strtolower($section).'_item', $rt, $template, $widget, $row);
+                $rt = apply_filters('gdsr_t2render_'.strtolower($section).'_item', $rt, $template, $widget, $row, "item");
 
                 $title = $row->title;
                 if (strlen($title) == 0) $title = __("(no title)", "gd-star-rating");
@@ -935,7 +949,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         }
 
         $rt = html_entity_decode($template->elm["footer"]);
-        $rt = apply_filters('gdsr_t2render_'.strtolower($section).'_footer', $rt, $template, $widget);
+        $rt = apply_filters('gdsr_t2render_'.strtolower($section).'_footer', $rt, $template, $widget, "footer");
 
         $tpl_render.= $rt;
         return $tpl_render;
@@ -945,7 +959,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         global $gdsr;
         $template = GDSRRenderT2::get_template($widget["template_id"], "WCR");
         $tpl_render = html_entity_decode($template->elm["header"]);
-        $tpl_render = apply_filters('gdsr_t2render_wcr_header', $tpl_render, $template, $widget);
+        $tpl_render = apply_filters('gdsr_t2render_wcr_header', $tpl_render, $template, $widget, "header");
 
         $rt = html_entity_decode($template->elm["item"]);
         $all_rows = GDSRRenderT2::prepare_wcr($widget, $rt);
@@ -955,7 +969,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             $rank_id = 1;
             foreach ($all_rows as $row) {
                 $rt = html_entity_decode($template->elm["item"]);
-                $rt = apply_filters('gdsr_t2render_wcr_item', $rt, $template, $widget, $row);
+                $rt = apply_filters('gdsr_t2render_wcr_item', $rt, $template, $widget, $row, "item");
 
                 if ($widget["source"] == "thumbs" && $row->rating > 0) $row->rating = "+".$row->rating;
 
@@ -991,7 +1005,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         }
 
         $rt = html_entity_decode($template->elm["footer"]);
-        $rt = apply_filters('gdsr_t2render_wcr_footer', $rt, $template, $widget);
+        $rt = apply_filters('gdsr_t2render_wcr_footer', $rt, $template, $widget, "footer");
 
         $tpl_render.= $rt;
         return $tpl_render;
@@ -1001,6 +1015,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($widget["template_id"], "WBR");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_wbr', $tpl_render, $template, $widget, "normal");
         $data = GDSRRenderT2::prepare_wbr($widget);
         if ($widget["source"] == "thumbs" && $data->rating > 0) $data->rating = "+".$data->rating;
         if ($widget["source"] == "thumbs") $data->voters = $data->votes;

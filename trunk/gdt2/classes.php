@@ -3,7 +3,7 @@
 /*
 Name:    gdTemplatesT2
 Library: Classes
-Version: 2.2.0
+Version: 2.2.1
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/
@@ -173,6 +173,7 @@ class gdTemplateRender {
     var $dep;
     var $elm;
     var $tag;
+    var $custom;
 
     function gdTemplateRender($id, $section) {
         $this->dep = $this->tag = array();
@@ -193,6 +194,8 @@ class gdTemplateRender {
         if (is_array($this->elm)) {
             foreach($this->elm as $key => $value) {
                 $this->tag[$key] = array();
+                $this->custom[$key] = array();
+                $this->custom[$key] = wp_get_custom_tags($value);
                 preg_match_all('(%.+?%)', $value, $matches, PREG_PATTERN_ORDER);
                 if (is_array($matches[0])) $this->tag[$key] = $matches[0];
             }
@@ -355,7 +358,8 @@ class gdTemplates {
 
 function wp_get_custom_tags($rendering) {
     preg_match_all('(%CUSTOM_.+?%)', $rendering, $matches, PREG_PATTERN_ORDER);
-    return $matches[0];
+    if (is_array($matches[0])) return $matches[0];
+    else return array();
 }
 
 function wp_gdtpl_get_template($template_id) {
@@ -368,6 +372,12 @@ function wp_gdtpl_get_template($template_id) {
         $gdsr_cache_templates->set($template_id, $tpl);
         return $tpl;
     }
+}
+
+function wp_gdtpl_cache_template($template) {
+    global $gdsr_cache_templates;
+
+    $gdsr_cache_templates->set($template->template_id, $template);
 }
 
 ?>

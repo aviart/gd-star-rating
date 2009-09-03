@@ -78,15 +78,16 @@
     </ul>
     <h3>Filters, T2 Rendering</h3>
     <ul>
-        <li><strong>gdsr_t2render_wcr_header</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>, <em style="color: #0000cc;">$result</em> filter for header rendering in comments rating widget.</li>
-        <li><strong>gdsr_t2render_wcr_item</strong>: <em style="color: #cc0000;">$result, $template, $widget, $row</em>, <em style="color: #0000cc;">$result</em> filter for single item rendering in comments rating widget.</li>
-        <li><strong>gdsr_t2render_wcr_footer</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>, <em style="color: #0000cc;">$result</em> filter for footer rendering in comments rating widget.</li>
-        <li><strong>gdsr_t2render_wsr_header</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>, <em style="color: #0000cc;">$result</em> filter for header rendering in posts rating widget.</li>
-        <li><strong>gdsr_t2render_wsr_item</strong>: <em style="color: #cc0000;">$result, $template, $widget, $row</em>, <em style="color: #0000cc;">$result</em> filter for single item rendering in posts rating widget.</li>
-        <li><strong>gdsr_t2render_wsr_footer</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>, <em style="color: #0000cc;">$result</em> filter for footer rendering in posts rating widget.</li>
-        <li><strong>gdsr_t2render_srr_header</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>, <em style="color: #0000cc;">$result</em> filter for header rendering in posts rating results.</li>
-        <li><strong>gdsr_t2render_srr_item</strong>: <em style="color: #cc0000;">$result, $template, $widget, $row</em>, <em style="color: #0000cc;">$result</em> filter for single item rendering in posts rating results.</li>
-        <li><strong>gdsr_t2render_srr_footer</strong>: <em style="color: #cc0000;">$result, $template, $widget</em>, <em style="color: #0000cc;">$result</em> filter for footer rendering in posts rating results.</li>
+        <li><strong>gdsr_t2render_wbr_normal</strong>: <em style="color: #cc0000;">$result, $template, $widget, $element</em>, <em style="color: #0000cc;">$result</em> filter for rendering in blog rating widget.</li>
+        <li><strong>gdsr_t2render_wcr_header</strong>: <em style="color: #cc0000;">$result, $template, $widget, $element</em>, <em style="color: #0000cc;">$result</em> filter for header rendering in comments rating widget.</li>
+        <li><strong>gdsr_t2render_wcr_item</strong>: <em style="color: #cc0000;">$result, $template, $widget, $row, $element</em>, <em style="color: #0000cc;">$result</em> filter for single item rendering in comments rating widget.</li>
+        <li><strong>gdsr_t2render_wcr_footer</strong>: <em style="color: #cc0000;">$result, $template, $widget, $element</em>, <em style="color: #0000cc;">$result</em> filter for footer rendering in comments rating widget.</li>
+        <li><strong>gdsr_t2render_wsr_header</strong>: <em style="color: #cc0000;">$result, $template, $widget, $element</em>, <em style="color: #0000cc;">$result</em> filter for header rendering in posts rating widget.</li>
+        <li><strong>gdsr_t2render_wsr_item</strong>: <em style="color: #cc0000;">$result, $template, $widget, $row, $element</em>, <em style="color: #0000cc;">$result</em> filter for single item rendering in posts rating widget.</li>
+        <li><strong>gdsr_t2render_wsr_footer</strong>: <em style="color: #cc0000;">$result, $template, $widget, $element</em>, <em style="color: #0000cc;">$result</em> filter for footer rendering in posts rating widget.</li>
+        <li><strong>gdsr_t2render_srr_header</strong>: <em style="color: #cc0000;">$result, $template, $widget, $element</em>, <em style="color: #0000cc;">$result</em> filter for header rendering in posts rating results.</li>
+        <li><strong>gdsr_t2render_srr_item</strong>: <em style="color: #cc0000;">$result, $template, $widget, $row, $element</em>, <em style="color: #0000cc;">$result</em> filter for single item rendering in posts rating results.</li>
+        <li><strong>gdsr_t2render_srr_footer</strong>: <em style="color: #cc0000;">$result, $template, $widget, $element</em>, <em style="color: #0000cc;">$result</em> filter for footer rendering in posts rating results.</li>
     </ul>
     <p>Parameters for this rendering:</p>
     <ul>
@@ -94,6 +95,7 @@
         <li>$template: full template object</li>
         <li>$widget: widget settings</li>
         <li>$row: data for the row</li>
+        <li>$element: name of the template element</li>
     </ul>
 </div>
 </div>
