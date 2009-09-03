@@ -4,10 +4,10 @@ class GDSRDefaults {
     var $default_options = array(
         "version" => "1.6.4",
         "revision" => 0,
-        "date" => "2009.09.01.",
+        "date" => "2009.09.03.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 900,
+        "build" => 902,
         "admin_views" => 0,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,

@@ -32,25 +32,22 @@ require_once(dirname(__FILE__)."/gdragon/gd_functions.php");
 require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
 require_once(dirname(__FILE__)."/gdragon/gd_db_install.php");
 require_once(dirname(__FILE__)."/gdragon/gd_wordpress.php");
-
-if (!defined('DOING_AJAX')) {
-    require_once(dirname(__FILE__)."/code/results_classes.php");
-    require_once(dirname(__FILE__)."/code/standard_render.php");
-    require_once(dirname(__FILE__)."/code/helpers.php");
-    require_once(dirname(__FILE__)."/code/db/main.php");
-    require_once(dirname(__FILE__)."/code/db/operations.php");
-    require_once(dirname(__FILE__)."/code/db/widgetizer.php");
-    require_once(dirname(__FILE__)."/code/db/multi.php");
-    require_once(dirname(__FILE__)."/code/gfx/charting.php");
-    require_once(dirname(__FILE__)."/code/gfx/gfx_lib.php");
-    require_once(dirname(__FILE__)."/code/gfx/generator.php");
-    require_once(dirname(__FILE__)."/code/query.php");
-    require_once(dirname(__FILE__)."/code/cache.php");
-    require_once(dirname(__FILE__)."/gdt2/classes.php");
-    require_once(dirname(__FILE__)."/code/t2/render.php");
-    require_once(dirname(__FILE__)."/code/widgets.php");
-    require_once(dirname(__FILE__)."/code/widgets_wp28.php");
-}
+require_once(dirname(__FILE__)."/code/results_classes.php");
+require_once(dirname(__FILE__)."/code/standard_render.php");
+require_once(dirname(__FILE__)."/code/helpers.php");
+require_once(dirname(__FILE__)."/code/db/main.php");
+require_once(dirname(__FILE__)."/code/db/operations.php");
+require_once(dirname(__FILE__)."/code/db/widgetizer.php");
+require_once(dirname(__FILE__)."/code/db/multi.php");
+require_once(dirname(__FILE__)."/code/gfx/charting.php");
+require_once(dirname(__FILE__)."/code/gfx/gfx_lib.php");
+require_once(dirname(__FILE__)."/code/gfx/generator.php");
+require_once(dirname(__FILE__)."/code/query.php");
+require_once(dirname(__FILE__)."/code/cache.php");
+require_once(dirname(__FILE__)."/gdt2/classes.php");
+require_once(dirname(__FILE__)."/code/t2/render.php");
+require_once(dirname(__FILE__)."/code/widgets.php");
+require_once(dirname(__FILE__)."/code/widgets_wp28.php");
 
 if (!class_exists('GDStarRating')) {
     /**
@@ -156,6 +153,11 @@ if (!class_exists('GDStarRating')) {
             $this->thumb_sizes = $gdd->thumb_sizes;
             $this->default_spider_bots = $gdd->default_spider_bots;
             $this->default_wpr8 = $gdd->default_wpr8;
+            $this->default_user_ratings_filter = $gdd->default_user_ratings_filter;
+            $this->default_import = $gdd->default_import;
+            $this->default_widget_comments = $gdd->default_widget_comments;
+            $this->default_widget_top = $gdd->default_widget_top;
+            $this->default_widget = $gdd->default_widget;
             $this->default_shortcode_starrating = $gdd->default_shortcode_starrating;
             $this->default_shortcode_starratingmulti = $gdd->default_shortcode_starratingmulti;
             $this->default_shortcode_starreviewmulti = $gdd->default_shortcode_starreviewmulti;
@@ -163,22 +165,16 @@ if (!class_exists('GDStarRating')) {
             $this->default_shortcode_starrater = $gdd->default_shortcode_starrater;
             $this->default_shortcode_starthumbsblock = $gdd->default_shortcode_starthumbsblock;
             $this->default_shortcode_starreview = $gdd->default_shortcode_starreview;
-            $this->default_user_ratings_filter = $gdd->default_user_ratings_filter;
-            $this->default_import = $gdd->default_import;
-            $this->default_widget_comments = $gdd->default_widget_comments;
-            $this->default_widget_top = $gdd->default_widget_top;
-            $this->default_widget = $gdd->default_widget;
+
             define('STARRATING_INSTALLED', $this->default_options["version"]." ".$this->default_options["status"]);
 
             $this->c = array();
-            if (!$this->is_ajax()) $this->q = new GDSRQuery();
+            $this->q = new GDSRQuery();
 
             $this->plugin_path_url();
             $this->install_plugin();
-            if (!$this->is_ajax()) {
-                $this->actions_filters();
-                $this->initialize_security();
-            }
+            $this->actions_filters();
+            $this->initialize_security();
 
             if ($this->o["ajax_jsonp"] == 1) $this->plugin_ajax.= "?callback=?";
             define('STARRATING_AJAX', $this->plugin_ajax);
@@ -192,15 +188,6 @@ if (!class_exists('GDStarRating')) {
             if (defined('STARRATING_ACCESS_LEVEL_BUILDER')) $this->security_level_builder = STARRATING_ACCESS_LEVEL_BUILDER;
             if (defined('STARRATING_ACCESS_LEVEL_SETUP')) $this->security_level_setup = STARRATING_ACCESS_LEVEL_SETUP;
             if (defined('STARRATING_ACCESS_ADMIN_USERIDS')) $this->security_users = STARRATING_ACCESS_ADMIN_USERIDS;
-        }
-
-        /**
-         * Check to see if the loading is ajax call
-         *
-         * @return bool true for ajax call load
-         */
-        function is_ajax() {
-            return defined('DOING_AJAX');
         }
 
         /**
@@ -1182,11 +1169,9 @@ if (!class_exists('GDStarRating')) {
             $this->bots = get_option('gd-star-rating-bots');
 
             if ($this->o["build"] < $this->default_options["build"] || !is_array($this->o)) {
-                if (!$this->is_ajax()) {
-                    if (is_object($this->g)) {
-                        $this->g = $this->gfx_scan();
-                        update_option('gd-star-rating-gfx', $this->g);
-                    }
+                if (is_object($this->g)) {
+                    $this->g = $this->gfx_scan();
+                    update_option('gd-star-rating-gfx', $this->g);
                 }
 
                 gdDBInstallGDSR::delete_tables(STARRATING_PATH);
@@ -1226,11 +1211,9 @@ if (!class_exists('GDStarRating')) {
                 update_option('gd-star-rating-import', $this->i);
             }
 
-            if (!$this->is_ajax()) {
-                if (!is_object($this->g)) {
-                    $this->g = $this->gfx_scan();
-                    update_option('gd-star-rating-gfx', $this->g);
-                }
+            if (!is_object($this->g)) {
+                $this->g = $this->gfx_scan();
+                update_option('gd-star-rating-gfx', $this->g);
             }
 
             if (!is_array($this->wpr8)) {
@@ -1266,7 +1249,7 @@ if (!class_exists('GDStarRating')) {
             define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"]);
             define("STARRATING_STARS_GENERATOR", $this->o["gfx_generator_auto"] == 0 ? "DIV" : "GFX");
 
-            if (!$this->is_ajax()) $this->t = GDSRDB::get_database_tables();
+            $this->t = GDSRDB::get_database_tables();
         }
 
         /**
