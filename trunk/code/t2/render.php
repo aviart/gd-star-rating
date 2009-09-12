@@ -410,7 +410,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "MRI");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
-        
+        $tpl_render = apply_filters('gdsr_t2render_mri_normal', $tpl_render, $template, $rpar, "normal");
+
         $empty_value = str_repeat("0X", count($set->object));
         $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
 
@@ -447,6 +448,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "MRE");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_mre_normal', $tpl_render, $template, $rpar, "normal");
 
         $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti gdsr-review-block">';
 
@@ -494,6 +496,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "SSB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_ssb_normal', $tpl_render, $template, $rpar, "normal");
 
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
         $rater_stars = "";
@@ -534,6 +537,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "MRB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_mrb_normal', $tpl_render, $template, $rpar, "normal");
 
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
         $tpl_render = str_replace("%MUR_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
@@ -601,6 +605,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "SRB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_srb_normal', $tpl_render, $template, $rpar, "normal");
+
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
 
@@ -642,6 +648,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "TAB");
         $tpl_render = $allow_vote ? $template->elm["active"] : $template->elm["inactive"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_tab_'.($allow_vote ? "active" : "inactive"), $tpl_render, $template, $rpar, $allow_vote ? "active" : "inactive");
+
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
 
@@ -695,6 +703,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "TCB");
         $tpl_render = $allow_vote ? $template->elm["active"] : $template->elm["inactive"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_tcb_'.($allow_vote ? "active" : "inactive"), $tpl_render, $template, $rpar, $allow_vote ? "active" : "inactive");
+
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
         $tpl_render = str_replace("%CMM_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
 
@@ -748,6 +758,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "CRB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_crb_normal', $tpl_render, $template, $rpar, "normal");
+
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
         $tpl_render = str_replace("%CMM_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
 
@@ -788,6 +800,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "RSB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_rsb_normal', $tpl_render, $template, $rpar, "normal");
 
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
         $tpl_render = str_replace("%CSS_BLOCK%", $css, $tpl_render);
@@ -809,6 +822,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "RCB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_rcb_normal', $tpl_render, $template, $rpar, "normal");
 
         $tpl_render = str_replace("%MAX_MM_RATING%", $star_max, $tpl_render);
         $tpl_render = str_replace("%CMM_RATING%", $rating, $tpl_render);
@@ -828,6 +842,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "MCR");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_mcr_normal', $tpl_render, $template, $rpar, "normal");
 
         $rt = str_replace('%ID%', $post_id, $rt);
         $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
@@ -848,6 +863,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "RMB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_rmb_normal', $tpl_render, $template, $rpar, "normal");
+
         $rater = '<div id="gdsr_mureview_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti gdsr-review-block">';
 
         $i = 0;
@@ -890,6 +907,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $template = GDSRRenderT2::get_template($template_id, "CAR");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+        $tpl_render = apply_filters('gdsr_t2render_car_normal', $tpl_render, $template, $rpar, "normal");
 
         $tpl_render = str_replace("%CMM_COUNT%", $comments, $tpl_render);
         $tpl_render = str_replace("%CMM_VOTES%", $votes, $tpl_render);
@@ -958,13 +976,13 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $rpar = wp_parse_args($rpar, $rdef);
         extract($rpar, EXTR_SKIP);
 
-        $tpl = $template->elm["normal"];
-        if ($vote_value != 0) $tpl = $template->elm["vote_saved"];
+        $tpl = $vote_value != 0 ? $template->elm["vote_saved"] : $template->elm["normal"];
+        $rt = html_entity_decode($tpl);
+        $rt = apply_filters('gdsr_t2render_tct_'.($vote_value != 0 ? "vote_saved" : "normal"), $rt, $template, $rpar, $vote_value != 0 ? "vote_saved" : "normal");
 
         $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
         $percent = number_format($percent, 0);
 
-        $rt = html_entity_decode($tpl);
         $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
         $rt = str_replace('%PERCENTAGE%', $percent, $rt);
         $rt = str_replace('%VOTES%', $votes, $rt);
@@ -995,10 +1013,10 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $rpar = wp_parse_args($rpar, $rdef);
         extract($rpar, EXTR_SKIP);
 
-        $tpl = $template->elm["normal"];
-        if ($vote_value > -1) $tpl = $template->elm["vote_saved"];
-
+        $tpl = $vote_value > -1 ? $template->elm["vote_saved"] : $template->elm["normal"];
         $rt = html_entity_decode($tpl);
+        $rt = apply_filters('gdsr_t2render_crt_'.($vote_value > -1 ? "vote_saved" : "normal"), $rt, $template, $rpar, $vote_value > -1 ? "vote_saved" : "normal");
+
         $rt = str_replace('%CMM_RATING%', $rating, $rt);
         $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
         $rt = str_replace('%CMM_VOTES%', $votes, $rt);
@@ -1058,6 +1076,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
         $tpl = $template->elm["vote_saved"];
         $rt = html_entity_decode($tpl);
+        $rt = apply_filters('gdsr_t2render_tat_vote_saved', $rt, $template, $rpar, "vote_saved");
 
         $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
         $percent = number_format($percent, 0);
@@ -1084,6 +1103,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
         $tpl = $template->elm["vote_saved"];
         $rt = html_entity_decode($tpl);
+        $rt = apply_filters('gdsr_t2render_srt_vote_saved', $rt, $template, $rpar, "vote_saved");
+
         $rt = str_replace('%RATING%', $rating, $rt);
         $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
         $rt = str_replace('%VOTES%', $votes, $rt);
