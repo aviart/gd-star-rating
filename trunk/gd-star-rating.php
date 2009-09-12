@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
-Version: 1.6.4
+Version: 1.6.5
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -313,7 +313,7 @@ if (!class_exists('GDStarRating')) {
                 }
                 if ($total_voters > 0) $calc_rating = $total_votes / $total_voters;
                 $calc_rating = number_format($calc_rating, 1);
-                $rating = GDSRRenderT2::render_car($sett["tpl"], $total_voters, $calc_rating, $sett["comments"], ($this->is_ie6 ? $this->o["cmm_aggr_style_ie6"] : $this->o["cmm_aggr_style"]), $this->o['cmm_aggr_size'], $this->o["cmm_stars"]);
+                $rating = GDSRRenderT2::render_car($sett["tpl"], array("votes" => $total_voters, "rating" => $calc_rating, "comments" => $sett["comments"], "star_style" => ($this->is_ie6 ? $this->o["cmm_aggr_style_ie6"] : $this->o["cmm_aggr_style"]), "star_size" => $this->o['cmm_aggr_size'], "star_max" => $this->o["cmm_stars"]));
             }
             return $rating;
         }
@@ -332,7 +332,7 @@ if (!class_exists('GDStarRating')) {
 
             $rating = GDSRDatabase::get_review($sett["post"]);
             if ($rating < 0) $rating = 0;
-            return GDSRRenderT2::render_rsb($sett["tpl"], $rating, ($this->is_ie6 ? $this->o["review_style_ie6"] : $this->o["review_style"]), $this->o['review_size'], $this->o["review_stars"], $this->o["review_header_text"], $this->o["review_class_block"]);
+            return GDSRRenderT2::render_rsb($sett["tpl"], array("rating" => $rating, "star_style" => $this->is_ie6 ? $this->o["review_style_ie6"] : $this->o["review_style"], "star_size" => $this->o['review_size'], "star_max" => $this->o["review_stars"], "header_text" => $this->o["review_header_text"], "css" => $this->o["review_class_block"]));
 	}
 
         /**
@@ -362,7 +362,7 @@ if (!class_exists('GDStarRating')) {
                     $votes[] = $single_vote;
                 }
                 $avg_rating = GDSRDBMulti::get_multi_review_average($vote_id);
-                return GDSRRenderT2::render_rmb($settings["tpl"], $votes, $post_id, $set, $avg_rating, $settings["element_stars"], $settings["element_size"], $settings["average_stars"], $settings["average_size"]);
+                return GDSRRenderT2::render_rmb($settings["tpl"], array("votes" => $votes, "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "style" => $settings["element_stars"], "size" => $settings["element_size"], "avg_style" => $settings["average_stars"], "avg_size" => $settings["average_size"]));
             }
             else return '';
         }
@@ -545,7 +545,7 @@ if (!class_exists('GDStarRating')) {
                 $votes[] = $single_vote;
             }
             if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
-            else return GDSRRenderT2::render_mre("oxygen", intval($settings["tpl"]), true, $votes, $post_id, $set, 20);
+            else return GDSRRenderT2::render_mre(intval($settings["tpl"]), array("post_id" => $post_id, "votes" => $votes, "style" => "oxygen", "set" => $set, "height" => 20, "allow_vote" => true));
         }
         // various rendering
 
@@ -1922,7 +1922,7 @@ wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_wi
             include($this->plugin_path.'code/t2/templates.php');
 
             $template = new gdTemplateRender($tpl_id, "TAB");
-            $rt = GDSRRenderT2::render_tat_voted($template->dep["TAT"], $votes, $score, $votes_plus, $votes_minus, $id, $vote_value);
+            $rt = GDSRRenderT2::render_tat_voted($template->dep["TAT"], array("votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $id, "vote" => $vote_value));
 
             return "{ status: 'ok', value: ".$score.", rater: '".$rt."' }";
         }
@@ -1972,7 +1972,7 @@ wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_wid
             include($this->plugin_path.'code/t2/templates.php');
 
             $template = new gdTemplateRender($tpl_id, "TCB");
-            $rt = GDSRRenderT2::render_tct($template->dep["TCT"], $votes, $score, $votes_plus, $votes_minus, $id, $vote_value);
+            $rt = GDSRRenderT2::render_tct($template->dep["TCT"], array("votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $id, "vote_value" => $vote_value));
 
             return "{ status: 'ok', value: ".$score.", rater: '".$rt."' }";
         }
@@ -2019,7 +2019,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
             include($this->plugin_path.'code/t2/templates.php');
 
             $template = new gdTemplateRender($tpl_id, "MRB");
-            $rt = GDSRRenderT2::render_srt_voted($template->dep["MRT"], $rating, $set->stars, $total_votes, $post_id, $vote_value);
+            $rt = GDSRRenderT2::render_srt_voted($template->dep["MRT"], array("rating" => $rating, "unit_count" => $set->stars, "votes" => $total_votes, "id" => $post_id, "vote" => $vote_value));
             $enc_values = "[".join(",", $json)."]";
 
             return "{ status: 'ok', values: ".$enc_values.", rater: '".$rt."', average: '".$rating."' }";
@@ -2068,7 +2068,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
             include($this->plugin_path.'code/t2/templates.php');
 
             $template = new gdTemplateRender($tpl_id, "SRB");
-            $rt = GDSRRenderT2::render_srt_voted($template->dep["SRT"], $rating1, $unit_count, $votes, $post_id, $vote_value);
+            $rt = GDSRRenderT2::render_srt_voted($template->dep["SRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "id" => $post_id, "vote" => $vote_value));
 
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
@@ -2118,7 +2118,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             include($this->plugin_path.'code/t2/templates.php');
 
             $template = new gdTemplateRender($tpl_id, "CRB");
-            $rt = GDSRRenderT2::render_crt($template->dep["CRT"], $rating1, $unit_count, $votes, $vote_value);
+            $rt = GDSRRenderT2::render_crt($template->dep["CRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "vote_value" => $vote_value));
 
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
@@ -2566,9 +2566,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                 }
                 $avg_rating = @number_format($avg_rating, 1);
                 if ($avg_rating > 0) {
-                    return GDSRRenderT2::render_rmb($template_id, $votes, $post_id, $set, $avg_rating,
-                        $this->is_ie6 ? $stars_set_ie6 : $stars_set, $stars_size,
-                        $this->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, $avg_stars_size);
+                    return GDSRRenderT2::render_rmb($template_id, array("votes" => $votes, "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "star_style" => $this->is_ie6 ? $stars_set_ie6 : $stars_set, "star_size" => $stars_size, "avg_style" => $this->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, "avg_size" => $avg_stars_size));
                 } else return "";
             } else return "";
         }
@@ -2597,8 +2595,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                 }
                 $avg_rating = @number_format($avg_rating, 1);
                 if ($avg_rating > 0) {
-                    return GDSRRenderT2::render_mcr($template_id, $post_id, $set, $avg_rating,
-                        $this->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, $avg_stars_size);
+                    return GDSRRenderT2::render_mcr($template_id, array("post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "avg_style" => $this->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, "avg_size" => $avg_stars_size));
                 } else return "";
             } else return "";
         }
@@ -2624,7 +2621,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                 $single_vote["rating"] = 0;
                 $votes[] = $single_vote;
             }
-            return GDSRRenderT2::render_mri($this->is_ie6 ? $stars_set_ie6 : $stars_set, $template_id, $post_id, $set, $stars_size);
+            return GDSRRenderT2::render_mri($template_id, array("post_id" => $post_id, "style" => $this->is_ie6 ? $stars_set_ie6 : $stars_set, "set" => $set, "height" => $stars_size));
         }
         // comment rating
 
@@ -2947,7 +2944,7 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
                 }
             }
 
-            $rating_block = GDSRRenderT2::render_ssb($template_id, $rd_post_id, $votes, $score, $stars, $this->o["rss_header_text"], $this->o["rss_datasource"]);
+            $rating_block = GDSRRenderT2::render_ssb($template_id, array("post_id" => $rd_post_id, "votes" => $votes, "score" => $score, "unit_count" => $stars, "header_text" => $this->o["rss_header_text"], "type" => $this->o["rss_datasource"]));
             return $rating_block;
         }
 
@@ -3052,7 +3049,7 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_tcb_template"];
 
-            $rating_block = GDSRRenderT2::render_tcb($template_id, $rd_comment_id, $votes, $score, $votes_plus, $votes_minus, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, $this->loader_comment_thumb);
+            $rating_block = GDSRRenderT2::render_tcb($template_id, array("comment_id" => $rd_comment_id, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "tags_css" => $tags_css, "header_text" => $this->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_comment_thumb));
             return $rating_block;
         }
 
@@ -3154,7 +3151,7 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_crb_template"];
 
-            $rating_block = GDSRRenderT2::render_crb($template_id, $rd_comment_id, "ratecmm", "c", $votes, $score, $rd_unit_style, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "comment", $tags_css, $this->o["cmm_header_text"], $debug, $this->loader_comment);
+            $rating_block = GDSRRenderT2::render_crb($template_id, array("cmm_id" => $rd_comment_id, "class" => "ratecmm", "type" => "c", "votes" => $votes, "score" => $score, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "unit_count" => $rd_unit_count, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "typecls" => "comment", "tags_css" => $tags_css, "header_text" => $this->o["cmm_header_text"], "debug" => $debug, "wait_msg" => $this->loader_comment));
             return $rating_block;
         }
 
@@ -3277,7 +3274,7 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_tab_template"];
 
-            $rating_block = GDSRRenderT2::render_tab($template_id, $rd_post_id, $votes, $score, $votes_plus, $votes_minus, $rd_unit_style, $rd_unit_width, $allow_vote, $rd_user_id, $tags_css, $this->o["header_text"], $debug, $this->loader_article_thumb, $expiry_type, $remaining, $deadline);
+            $rating_block = GDSRRenderT2::render_tab($template_id, array("post_id" => $rd_post_id, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "tags_css" => $tags_css, "header_text" => $this->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_article_thumb, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline));
             return $rating_block;
         }
 
@@ -3397,7 +3394,7 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
             if ($override["tpl"] > 0) $template_id = $override["tpl"];
             else $template_id = $this->o["default_srb_template"];
 
-            $rating_block = GDSRRenderT2::render_srb($template_id, $rd_post_id, "ratepost", "a", $votes, $score, $rd_unit_style, $rd_unit_width, $rd_unit_count, $allow_vote, $rd_user_id, "article", $tags_css, $this->o["header_text"], $debug, $this->loader_article, $expiry_type, $remaining, $deadline);
+            $rating_block = GDSRRenderT2::render_srb($template_id, array("post_id" => $rd_post_id, "class" => "ratepost", "type" => "a", "votes" => $votes, "score" => $score, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "unit_count" => $rd_unit_count, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "typecls" => "article", "tags_css" => $tags_css, "header_text" => $this->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_article, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline));
             return $rating_block;
         }
 
@@ -3541,7 +3538,7 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
             $mur_button = $this->o["mur_button_active"] == 1;
             if (!$allow_vote) $mur_button = false;
 
-            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, $allow_vote, $votes, $rd_post_id, $set, $rd_unit_width, $this->o["mur_header_text"], $tags_css, $rd_unit_style_avg, $rd_unit_width_avg, 1, $expiry_type, $remaining, $deadline, $mur_button, $this->o["mur_button_text"], $debug, $this->loader_multis);
+            return GDSRRenderT2::render_mrb($template_id, array("style" => $rd_unit_style, "allow_vote" => $allow_vote, "votes" => $votes, "post_id" => $rd_post_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $this->o["mur_header_text"], "tags_css" => $tags_css, "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => 1, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline, "button_active" => $mur_button, "button_text" => $this->o["mur_button_text"], "debug" => $debug, "wait_msg" => $this->loader_multis));
         }
 
         function render_multi_custom_values($template_id, $multi_set_id, $custom_id, $votes, $header_text = '', $override = array(), $tags_css = array(), $star_factor = 1) {
@@ -3552,7 +3549,7 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
             $rd_unit_width_avg = $override["average_size"];
             $rd_unit_style_avg = $this->is_ie6 ? $override["average_stars_ie6"] : $override["average_stars"];
 
-            return GDSRRenderT2::render_mrb($rd_unit_style, $template_id, false, $votes, $custom_id, $set, $rd_unit_width, $header_text, $tags_css, $rd_unit_style_avg, $rd_unit_width_avg, $star_factor);
+            return GDSRRenderT2::render_mrb($template_id, array("style" => $rd_unit_style, "allow_vote" => false, "votes" => $votes, "post_id" => $custom_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $header_text, "tags_css" => $tags_css, "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => 1));
         }
         // rendering
     }

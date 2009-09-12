@@ -32,7 +32,7 @@
         <input onclick="gdsrMultiRevert(<?php echo $multi_id; ?>, <?php echo $post_id; ?>, <?php echo count($set->object); ?>)" type="button" class="gdsr-input-button" value="<?php _e("Revert", "gd-star-rating"); ?>" />
 <?php
         echo '</td><td width="65%" class="gdsr-mur-review-stars">';
-        echo GDSRRenderT2::render_mre("oxygen", 0, true, $votes, $post_id, $set, 20);
+        echo GDSRRenderT2::render_mre(0, array("post_id" => $post_id, "votes" => $votes, "style" => "oxygen", "set" => $set, "height" => 20, "allow_vote" => true));
         echo '</td></tr></table>';
     }
 ?>
