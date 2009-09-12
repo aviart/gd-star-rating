@@ -1,6 +1,7 @@
 <?php
 
 class GDSRRenderT2 {
+    // get template
     function get_template($template_id, $section) {
         include(STARRATING_PATH.'code/t2/templates.php');
 
@@ -13,6 +14,7 @@ class GDSRRenderT2 {
         return new gdTemplateRender($template_id, $section);
     }
 
+    // prepare data
     function prepare_wbr($widget) {
         global $gdsr, $wpdb;
         
@@ -398,65 +400,13 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         return $all_rows;
     }
 
-    function render_mrb($style, $template_id, $allow_vote, $votes, $post_id, $set, $height, $header_text, $tags_css, $avg_style, $avg_size, $star_factor = 1, $time_restirctions = "N", $time_remaining = 0, $time_date = "", $button_active = true, $button_text = "Submit", $debug = '', $wait_msg = '') {
-        $template = GDSRRenderT2::get_template($template_id, "MRB");
-        $tpl_render = $template->elm["normal"];
-        $tpl_render = html_entity_decode($tpl_render);
-        foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
-        $tpl_render = str_replace("%MUR_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
-        $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti '.$tags_css["MUR_CSS_BLOCK"].'">';;
+    // main rendering data
+    function render_mri($template_id, $rpar = array()) {
+        $rdef = array("post_id" => 0, "style" => "oxygen",
+            "set" => "", "height" => 20, "css" => "");
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
 
-        $empty_value = str_repeat("0X", count($set->object));
-        $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
-        if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
-        if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$empty_value.'" />';
-
-        $i = 0;
-        $weighted = 0;
-        $total_votes = 0;
-        $weight_norm = array_sum($set->weight);
-        $rating_stars = "";
-        $table_row_class = $template->dep["MRS"]->dep["ETR"];
-        foreach ($set->object as $el) {
-            $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
-            $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
-            $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
-            $single_row = str_replace('%ELEMENT_VALUE%', $votes[$i]["rating"], $single_row);
-            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars * $star_factor, $allow_vote, $votes[$i]["rating"] * $star_factor), $single_row);
-            $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
-            $rating_stars.= $single_row;
-
-            $weighted += ($votes[$i]["rating"] * $set->weight[$i]) / $weight_norm;
-            $total_votes += $votes[$i]["votes"];
-            $i++;
-        }
-        $rating = @number_format($weighted, 1);
-        $total_votes = @number_format($total_votes / $i, 0);
-        if (in_array("%MUR_RATING_TEXT%", $template->tag["normal"])) {
-            $rating_text = GDSRRenderT2::render_mrt($template->dep["MRT"], $rating, $set->stars, $total_votes, $post_id, $time_restirctions, $time_remaining, $time_date);
-            $rating_wait = $allow_vote ? GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", "", $wait_msg) : "";
-            $rating_text = $rating_wait.'<div id="gdsr_mur_text_'.$post_id.'_'.$set->multi_id.'">'.$rating_text.'</div>';
-            $tpl_render = str_replace("%MUR_RATING_TEXT%", $rating_text, $tpl_render);
-        }
-
-        if (in_array("%BUTTON%", $template->tag["normal"])) {
-            if ($button_active) $rating_button = '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$tags_css["MUR_CSS_BUTTON"].'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'_'.$template_id.'_'.$height.'"><a rel="nofollow">'.$button_text.'</a></div>';
-            else $rating_button = "";
-
-            $tpl_render = str_replace("%BUTTON%", $rating_button, $tpl_render);
-        }
-
-        $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
-        $tpl_render = str_replace("%AVG_RATING%", $rating, $tpl_render);
-        if (in_array("%AVG_RATING_STARS%", $template->tag["normal"])) {
-            $avg_id = "gdsr_mur_avgstars_".$post_id."_".$set->multi_id;
-            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars * $star_factor, $rating * $star_factor, $avg_id, "DIV"), $tpl_render);
-        }
-        $rater.= $tpl_render."</div>";
-        return $rater;
-    }
-
-    function render_mri($style, $template_id, $post_id, $set, $height, $css = "") {
         $template = GDSRRenderT2::get_template($template_id, "MRI");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -488,10 +438,16 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         return $rater;
     }
 
-    function render_mre($style, $template_id, $allow_vote, $votes, $post_id, $set, $height, $css = "") {
+    function render_mre($template_id, $rpar = array()) {
+        $rdef = array("post_id" => 0, "votes" => 0, "style" => "oxygen",
+            "set" => "", "height" => 20, "css" => "", "allow_vote" => true);
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
         $template = GDSRRenderT2::get_template($template_id, "MRE");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+
         $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti gdsr-review-block">';
 
         $empty_value = str_repeat("0X", count($set->object));
@@ -529,10 +485,16 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         return $rater;
     }
 
-    function render_ssb($template_id, $post_id, $votes, $score, $unit_count, $header_text, $type) {
+    function render_ssb($template_id, $rpar = array()) {
+        $rdef = array("post_id" => 0, "votes" => 0, "score" => 0,
+            "unit_count" => 10, "header_text" => "", "type" => "");
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
         $template = GDSRRenderT2::get_template($template_id, "SSB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
+
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
         $rater_stars = "";
 
@@ -562,70 +524,121 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         return $rt;
     }
 
-    function render_tat_voted($template, $votes, $score, $votes_plus, $votes_minus, $id, $vote) {
-        $tpl = $template->elm["vote_saved"];
-        $rt = html_entity_decode($tpl);
+    function render_mrb($template_id, $rpar = array()) {
+        $rdef = array("style" => "oxygen", "allow_vote" => true, "votes" => 0, "post_id" => 0, "set" => "", "height" => "", "header_text" => "",
+            "tags_css" => array(), "avg_style" => "oxygen", "avg_size" => 20, "star_factor" => 1, "time_restirctions" => "N", "time_remaining" => 0,
+            "time_date" => "", "button_active" => true, "button_text" => "Submit", "debug" => "", "wait_msg" => "");
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
 
-        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
-        $percent = number_format($percent, 0);
+        $template = GDSRRenderT2::get_template($template_id, "MRB");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
 
-        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
-        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
-        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
-        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
-        $rt = str_replace('%ID%', $id, $rt);
-        $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
+        foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
+        $tpl_render = str_replace("%MUR_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+        $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti '.$tags_css["MUR_CSS_BLOCK"].'">';;
 
-        $word_votes = $template->dep["EWV"];
-        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
-        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+        $empty_value = str_repeat("0X", count($set->object));
+        $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
+        if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
+        if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$empty_value.'" />';
 
-        return $rt;
-    }
+        $i = 0;
+        $weighted = 0;
+        $total_votes = 0;
+        $weight_norm = array_sum($set->weight);
+        $rating_stars = "";
+        $table_row_class = $template->dep["MRS"]->dep["ETR"];
+        foreach ($set->object as $el) {
+            $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
+            $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
+            $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
+            $single_row = str_replace('%ELEMENT_VALUE%', $votes[$i]["rating"], $single_row);
+            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars * $star_factor, $allow_vote, $votes[$i]["rating"] * $star_factor), $single_row);
+            $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
+            $rating_stars.= $single_row;
 
-    function render_tat($template, $votes, $score, $votes_plus, $votes_minus, $id, $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
-        if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
-            $time_parts = GDSRHelper::remaining_time_parts($time_remaining);
-            $time_total = GDSRHelper::remaining_time_total($time_remaining);
-            $tpl = $template->elm["time_active"];
-            $rt = html_entity_decode($tpl);
-            $rt = str_replace('%TR_DATE%', $time_date, $rt);
-            $rt = str_replace('%TR_YEARS%', $time_parts["year"], $rt);
-            $rt = str_replace('%TR_MONTHS%', $time_parts["month"], $rt);
-            $rt = str_replace('%TR_DAYS%', $time_parts["day"], $rt);
-            $rt = str_replace('%TR_HOURS%', $time_parts["hour"], $rt);
-            $rt = str_replace('%TR_MINUTES%', $time_parts["minute"], $rt);
-            $rt = str_replace('%TR_SECONDS%', $time_parts["second"], $rt);
-            $rt = str_replace('%TOT_DAYS%', $time_total["day"], $rt);
-            $rt = str_replace('%TOT_HOURS%', $time_total["hour"], $rt);
-            $rt = str_replace('%TOT_MINUTES%', $time_total["minute"], $rt);
-        } else {
-            if ($time_restirctions == 'D' || $time_restirctions == 'T')
-                $tpl = $template->elm["time_closed"];
-            else
-                $tpl = $template->elm["normal"];
-            $rt = html_entity_decode($tpl);
+            $weighted += ($votes[$i]["rating"] * $set->weight[$i]) / $weight_norm;
+            $total_votes += $votes[$i]["votes"];
+            $i++;
         }
 
-        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
-        $percent = number_format($percent, 0);
+        $rating = @number_format($weighted, 1);
+        $total_votes = @number_format($total_votes / $i, 0);
+        if (in_array("%MUR_RATING_TEXT%", $template->tag["normal"])) {
+            $rating_text = GDSRRenderT2::render_mrt($template->dep["MRT"], array("rating" => $rating, "unit_count" => $set->stars, "votes" => $total_votes, "id" => $post_id, "time_restirctions" => $time_restirctions, "time_remaining" => $time_remaining, "time_date" => $time_date));
+            $rating_wait = $allow_vote ? GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", "", $wait_msg) : "";
+            $rating_text = $rating_wait.'<div id="gdsr_mur_text_'.$post_id.'_'.$set->multi_id.'">'.$rating_text.'</div>';
+            $tpl_render = str_replace("%MUR_RATING_TEXT%", $rating_text, $tpl_render);
+        }
 
-        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
-        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
-        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
-        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
-        $rt = str_replace('%ID%', $id, $rt);
+        if (in_array("%BUTTON%", $template->tag["normal"])) {
+            if ($button_active) $rating_button = '<div class="ratingbutton gdinactive gdsr_multisbutton_as '.$tags_css["MUR_CSS_BUTTON"].'" id="gdsr_button_'.$post_id.'_'.$set->multi_id.'_'.$template_id.'_'.$height.'"><a rel="nofollow">'.$button_text.'</a></div>';
+            else $rating_button = "";
 
-        $word_votes = $template->dep["EWV"];
-        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
-        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+            $tpl_render = str_replace("%BUTTON%", $rating_button, $tpl_render);
+        }
 
-        return $rt;
+        $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
+        $tpl_render = str_replace("%AVG_RATING%", $rating, $tpl_render);
+        if (in_array("%AVG_RATING_STARS%", $template->tag["normal"])) {
+            $avg_id = "gdsr_mur_avgstars_".$post_id."_".$set->multi_id;
+            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars * $star_factor, $rating * $star_factor, $avg_id, "DIV"), $tpl_render);
+        }
+
+        $rater.= $tpl_render."</div>";
+        return $rater;
     }
 
-    function render_tab($template_id, $post_id, $votes, $score, $votes_plus, $votes_minus, $style, $unit_width, $allow_vote, $user_id, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+    function render_srb($template_id, $rpar = array()) {
+        $rdef = array("post_id" => 0, "class" => "", "type" => "", "votes" => 0, "score" => 0, "style" => "oxygen",
+            "unit_width" => 20, "unit_count" => 10, "allow_vote" => true, "user_id" => 0, "typecls" => "", "tags_css" => array(),
+            "header_text" => "", "debug" => "", "wait_msg" => "", "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
+        $template = GDSRRenderT2::get_template($template_id, "SRB");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+        foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
+        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+
+        $rating2 = $votes > 0 ? $score / $votes : 0;
+        if ($rating2 > $unit_count) $rating2 = $unit_count;
+        $rating = @number_format($rating2, 1);
+
+        $rating_width = $rating2 * $unit_width;
+        $rater_length = $unit_width * $unit_count;
+        $rater_id = $typecls."_rater_".$post_id;
+        $loader_id = $typecls."_loader_".$post_id;
+
+        if (in_array("%RATING_STARS%", $template->tag["normal"])) {
+            $rating_stars = GDSRRender::rating_stars($style, $unit_width, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $post_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
+            $tpl_render = str_replace("%RATING_STARS%", $rating_stars, $tpl_render);
+        }
+
+        if (in_array("%RATING_TEXT%", $template->tag["normal"])) {
+            $rating_text = GDSRRenderT2::render_srt($template->dep["SRT"], array("rating" => $rating, "unit_count" => $unit_count, "votes" => $votes, "id" => $post_id, "time_restirctions" => $time_restirctions, "time_remaining" => $time_remaining, "time_date" => $time_date));
+            $voted = $allow_vote ? '' : ' class="voted"';
+            $rating_text = '<div id="gdr_text_'.$type.$post_id.'"'.$voted.'>'.$rating_text.'</div>';
+            $tpl_render = str_replace("%RATING_TEXT%", $rating_text, $tpl_render);
+        }
+
+        $tpl_render = '<div class="ratingblock">'.$tpl_render;
+        if ($debug != '') $tpl_render = '<div style="display: none">'.$debug.'</div>'.$tpl_render;
+        $tpl_render.= '</div>';
+
+        return $tpl_render;
+    }
+
+    function render_tab($template_id, $rpar = array()) {
+        $rdef = array("post_id" => 0, "votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "style" => "starrating",
+            "unit_width" => 20, "allow_vote" => true, "user_id" => 0, "tags_css" => array(), "header_text" => "", 
+            "debug" => "", "wait_msg" => "", "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
         $template = GDSRRenderT2::get_template($template_id, "TAB");
         $tpl_render = $allow_vote ? $template->elm["active"] : $template->elm["inactive"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -633,7 +646,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
 
         if (in_array("%THUMBS_TEXT%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
-            $rating_text = GDSRRenderT2::render_tat($template->dep["TAT"], $votes, $score, $votes_plus, $votes_minus, $post_id, $time_restirctions, $time_remaining, $time_date);
+            $rating_text = GDSRRenderT2::render_tat($template->dep["TAT"], array("votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $post_id, "time_restirctions" => $time_restirctions, "time_remaining" => $time_remaining, "time_date" => $time_date));
             $rating_text = '<div id="gdsr_thumb_text_'.$post_id.'_a" class="gdt-size-'.$unit_width.($allow_vote ? "" : " voted").' gdthumbtext">'.$rating_text.'</div>';
             $tpl_render = str_replace("%THUMBS_TEXT%", $rating_text, $tpl_render);
         }
@@ -672,65 +685,13 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         return $tpl_render;
     }
 
-    function render_srb($template_id, $post_id, $class, $type, $votes, $score, $style, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '', $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
-        $template = GDSRRenderT2::get_template($template_id, "SRB");
-        $tpl_render = $template->elm["normal"];
-        $tpl_render = html_entity_decode($tpl_render);
-        foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
-        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+    function render_tcb($template_id, $rpar = array()) {
+        $rdef = array("comment_id" => 0, "votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0,
+            "style" => "starrating", "unit_width" => 20, "allow_vote" => true, "user_id" => 0, "tags_css" => array(),
+            "header_text" => "", "debug" => "", "wait_msg" => "");
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
 
-        $rating2 = $votes > 0 ? $score / $votes : 0;
-        if ($rating2 > $unit_count) $rating2 = $unit_count;
-        $rating = @number_format($rating2, 1);
-
-        $rating_width = $rating2 * $unit_width;
-        $rater_length = $unit_width * $unit_count;
-        $rater_id = $typecls."_rater_".$post_id;
-        $loader_id = $typecls."_loader_".$post_id;
-
-        if (in_array("%RATING_STARS%", $template->tag["normal"])) {
-            $rating_stars = GDSRRender::rating_stars($style, $unit_width, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $post_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
-            $tpl_render = str_replace("%RATING_STARS%", $rating_stars, $tpl_render);
-        }
-
-        if (in_array("%RATING_TEXT%", $template->tag["normal"])) {
-            $rating_text = GDSRRenderT2::render_srt($template->dep["SRT"], $rating, $unit_count, $votes, $post_id, $time_restirctions, $time_remaining, $time_date);
-            $voted = $allow_vote ? '' : ' class="voted"';
-            $rating_text = '<div id="gdr_text_'.$type.$post_id.'"'.$voted.'>'.$rating_text.'</div>';
-            $tpl_render = str_replace("%RATING_TEXT%", $rating_text, $tpl_render);
-        }
-
-        $tpl_render = '<div class="ratingblock">'.$tpl_render;
-        if ($debug != '') $tpl_render = '<div style="display: none">'.$debug.'</div>'.$tpl_render;
-        $tpl_render.= '</div>';
-
-        return $tpl_render;
-    }
-
-    function render_tct($template, $votes, $score, $votes_plus, $votes_minus, $id, $vote_value = 0) {
-        $tpl = $template->elm["normal"];
-        if ($vote_value != 0) $tpl = $template->elm["vote_saved"];
-
-        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
-        $percent = number_format($percent, 0);
-
-        $rt = html_entity_decode($tpl);
-        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
-        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
-        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
-        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
-        $rt = str_replace('%ID%', $id, $rt);
-        $rt = str_replace('%VOTE_VALUE%', $vote_value, $rt);
-
-        $word_votes = $template->dep["EWV"];
-        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
-        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
-
-        return $rt;
-    }
-
-    function render_tcb($template_id, $comment_id, $votes, $score, $votes_plus, $votes_minus, $style, $unit_width, $allow_vote, $user_id, $tags_css, $header_text, $debug = '', $wait_msg = '') {
         $template = GDSRRenderT2::get_template($template_id, "TCB");
         $tpl_render = $allow_vote ? $template->elm["active"] : $template->elm["inactive"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -738,7 +699,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $tpl_render = str_replace("%CMM_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
 
         if (in_array("%CMM_THUMBS_TEXT%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
-            $rating_text = GDSRRenderT2::render_tct($template->dep["TCT"], $votes, $score, $votes_plus, $votes_minus, $comment_id);
+            $rating_text = GDSRRenderT2::render_tct($template->dep["TCT"], array("votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $comment_id));
             $rating_text = '<div id="gdsr_thumb_text_'.$comment_id.'_c" class="gdt-size-'.$unit_width.($allow_vote ? "" : " voted").' gdthumbtext">'.$rating_text.'</div>';
             $tpl_render = str_replace("%CMM_THUMBS_TEXT%", $rating_text, $tpl_render);
         }
@@ -777,7 +738,13 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         return $tpl_render;
     }
 
-    function render_crb($template_id, $cmm_id, $class, $type, $votes, $score, $style, $unit_width, $unit_count, $allow_vote, $user_id, $typecls, $tags_css, $header_text, $debug = '', $wait_msg = '') {
+    function render_crb($template_id, $rpar = array()) {
+        $rdef = array("cmm_id" => 0, "class" => "", "type" => "", "votes" => 0, "score" => 20,
+            "style" => "oxygen", "unit_width" => 20, "unit_count" => 10, "allow_vote" => true, "user_id" => 0, 
+            "typecls" => "", "tags_css" => array(), "header_text" => "", "debug" => "", "wait_msg" => "");
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
         $template = GDSRRenderT2::get_template($template_id, "CRB");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -799,7 +766,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         }
 
         if (in_array("%CMM_RATING_TEXT%", $template->tag["normal"])) {
-            $rating_text = GDSRRenderT2::render_crt($template->dep["CRT"], $rating, $unit_count, $votes);
+            $rating_text = GDSRRenderT2::render_crt($template->dep["CRT"], array("rating" => $rating, "unit_count" => $unit_count, "votes" => $votes));
             $voted = $allow_vote ? '' : ' class="voted"';
             $rating_text = '<div id="gdr_text_'.$type.$cmm_id.'"'.$voted.'>'.$rating_text.'</div>';
             $tpl_render = str_replace("%CMM_RATING_TEXT%", $rating_text, $tpl_render);
@@ -812,27 +779,140 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         return $tpl_render;
     }
 
-    function render_mrt($template, $rating, $unit_count, $votes, $id, $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
-        return GDSRRenderT2::render_srt($template, $rating, $unit_count, $votes, $id, $time_restirctions, $time_remaining, $time_date);
+    function render_rsb($template_id, $rpar = array()) {
+        $rdef = array("rating" => 0, "star_style" => "oxygen",
+            "star_size" => 20, "star_max" => 10, "header_text" => "", "css" => "");
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
+        $template = GDSRRenderT2::get_template($template_id, "RSB");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+
+        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+        $tpl_render = str_replace("%CSS_BLOCK%", $css, $tpl_render);
+        $tpl_render = str_replace("%MAX_RATING%", $star_max, $tpl_render);
+        $tpl_render = str_replace("%RATING%", $rating, $tpl_render);
+
+        $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
+        $tpl_render = str_replace("%RATING_STARS%", $rating_stars, $tpl_render);
+
+        return $tpl_render;
     }
 
-    function render_srt_voted($template, $rating, $unit_count, $votes, $id, $vote) {
-        $tpl = $template->elm["vote_saved"];
-        $rt = html_entity_decode($tpl);
-        $rt = str_replace('%RATING%', $rating, $rt);
-        $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
-        $rt = str_replace('%ID%', $id, $rt);
-        $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
+    function render_rcb($template_id, $rpar = array()) {
+        $rdef = array("rating" => 0, "star_style" => "oxygen",
+            "star_size" => 20, "star_max" => 10);
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
+        $template = GDSRRenderT2::get_template($template_id, "RCB");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+
+        $tpl_render = str_replace("%MAX_MM_RATING%", $star_max, $tpl_render);
+        $tpl_render = str_replace("%CMM_RATING%", $rating, $tpl_render);
+
+        $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
+        $tpl_render = str_replace("%CMM_RATING_STARS%", $rating_stars, $tpl_render);
+
+        return $tpl_render;
+    }
+
+    function render_mcr($template_id, $rpar = array()) {
+        $rdef = array("post_id" => 0, "set" => 0, "avg_rating" => 0,
+            "avg_style" => "oxygen", "avg_size" => 20);
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
+        $template = GDSRRenderT2::get_template($template_id, "MCR");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+
+        $rt = str_replace('%ID%', $post_id, $rt);
+        $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
+        $tpl_render = str_replace("%MAX_RATING%", $set->stars, $tpl_render);
+
+        if (in_array("%AVG_RATING_STARS%", $template->tag["normal"]))
+            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars, $avg_rating), $tpl_render);
+
+        return $tpl_render;
+    }
+
+    function render_rmb($template_id, $rpar = array()) {
+        $rdef = array("votes" => 0, "post_id" => 0, "set" => 0, "avg_rating" => 0,
+            "style" => "oxygen", "size" => 20, "avg_style" => "oxygen", "avg_size" => 20);
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
+        $template = GDSRRenderT2::get_template($template_id, "RMB");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+        $rater = '<div id="gdsr_mureview_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti gdsr-review-block">';
+
+        $i = 0;
+        $weighted = 0;
+        $total_votes = 0;
+        $weight_norm = array_sum($set->weight);
+        $rating_stars = "";
+        $table_row_class = $template->dep["MRS"]->dep["ETR"];
+        foreach ($set->object as $el) {
+            $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
+            $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
+            $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
+            $single_row = str_replace('%ELEMENT_VALUE%', $votes[$i]["rating"], $single_row);
+            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::render_static_stars($style, $size, $set->stars, $votes[$i]["rating"]), $single_row);
+            $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
+            $rating_stars.= $single_row;
+
+            $weighted += ($votes[$i]["rating"] * $set->weight[$i]) / $weight_norm;
+            $total_votes += $votes[$i]["votes"];
+            $i++;
+        }
+
+        $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
+        $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
+        $tpl_render = str_replace("%MAX_RATING%", $set->stars, $tpl_render);
+
+        if (in_array("%AVG_RATING_STARS%", $template->tag["normal"]))
+            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars, $avg_rating), $tpl_render);
+
+        $rater.= $tpl_render."</div>";
+        return $rater;
+    }
+
+    function render_car($template_id, $rpar = array()) {
+        $rdef = array("votes" => 0, "rating" => 0, "comments" => 0,
+            "star_style" => "oxygen", "star_size" => 20, "star_max" => 10);
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
+        $template = GDSRRenderT2::get_template($template_id, "CAR");
+        $tpl_render = $template->elm["normal"];
+        $tpl_render = html_entity_decode($tpl_render);
+
+        $tpl_render = str_replace("%CMM_COUNT%", $comments, $tpl_render);
+        $tpl_render = str_replace("%CMM_VOTES%", $votes, $tpl_render);
+        $tpl_render = str_replace("%MAX_CMM_RATING%", $star_max, $tpl_render);
+        $tpl_render = str_replace("%CMM_RATING%", $rating, $tpl_render);
 
         $word_votes = $template->dep["EWV"];
         $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
-        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+        $tpl_render = str_replace('%WORD_VOTES%', __($tense), $tpl_render);
 
-        return $rt;
+        $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
+        $tpl_render = str_replace("%CMM_STARS%", $rating_stars, $tpl_render);
+
+        return $tpl_render;
     }
 
-    function render_srt($template, $rating, $unit_count, $votes, $id, $time_restirctions = "N", $time_remaining = 0, $time_date = '') {
+    // extras rendering data
+    function render_tat($template, $rpar = array()) {
+        $rdef = array("votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "id" => 0,
+            "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
         if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
             $time_parts = GDSRHelper::remaining_time_parts($time_remaining);
             $time_total = GDSRHelper::remaining_time_total($time_remaining);
@@ -848,8 +928,111 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             $rt = str_replace('%TOT_DAYS%', $time_total["day"], $rt);
             $rt = str_replace('%TOT_HOURS%', $time_total["hour"], $rt);
             $rt = str_replace('%TOT_MINUTES%', $time_total["minute"], $rt);
+        } else {
+            if ($time_restirctions == 'D' || $time_restirctions == 'T')
+                $tpl = $template->elm["time_closed"];
+            else
+                $tpl = $template->elm["normal"];
+            $rt = html_entity_decode($tpl);
         }
-        else {
+
+        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
+        $percent = number_format($percent, 0);
+
+        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
+        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
+        $rt = str_replace('%VOTES%', $votes, $rt);
+        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
+        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
+        $rt = str_replace('%ID%', $id, $rt);
+
+        $word_votes = $template->dep["EWV"];
+        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+        return $rt;
+    }
+
+    function render_tct($template, $rpar = array()) {
+        $rdef = array("votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "id" => 0, "vote_value" => 0);
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
+        $tpl = $template->elm["normal"];
+        if ($vote_value != 0) $tpl = $template->elm["vote_saved"];
+
+        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
+        $percent = number_format($percent, 0);
+
+        $rt = html_entity_decode($tpl);
+        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
+        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
+        $rt = str_replace('%VOTES%', $votes, $rt);
+        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
+        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
+        $rt = str_replace('%ID%', $id, $rt);
+        $rt = str_replace('%VOTE_VALUE%', $vote_value, $rt);
+
+        $word_votes = $template->dep["EWV"];
+        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+        return $rt;
+    }
+
+    function render_mrt($template, $rpar = array()) {
+        $rdef = array("rating" => 0, "unit_count" => 0, "votes" => 0, "id" => 0,
+            "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
+        return GDSRRenderT2::render_srt($template, array("rating" => $rating, "unit_count" => $unit_count, "votes" => $votes, "id" => $id, "time_restirctions" => $time_restirctions, "time_remaining" => $time_remaining, "time_date" => $time_date));
+    }
+
+    function render_crt($template, $rpar = array()) {
+        $rdef = array("rating" => 0, "unit_count" => 10,
+            "votes" => 0, "vote_value" => -1);
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
+        $tpl = $template->elm["normal"];
+        if ($vote_value > -1) $tpl = $template->elm["vote_saved"];
+
+        $rt = html_entity_decode($tpl);
+        $rt = str_replace('%CMM_RATING%', $rating, $rt);
+        $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
+        $rt = str_replace('%CMM_VOTES%', $votes, $rt);
+        if ($vote_value > -1) $rt = str_replace('%CMM_VOTE_VALUE%', $vote_value, $rt);
+
+        $word_votes = $template->dep["EWV"];
+        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+        return $rt;
+    }
+
+    function render_srt($template, $rpar = array()) {
+        $rdef = array("rating" => 0, "unit_count" => 0, "votes" => 0, "id" => 0,
+            "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
+        if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
+            $time_parts = GDSRHelper::remaining_time_parts($time_remaining);
+            $time_total = GDSRHelper::remaining_time_total($time_remaining);
+            $tpl = $template->elm["time_active"];
+            $rt = html_entity_decode($tpl);
+            $rt = str_replace('%TR_DATE%', $time_date, $rt);
+            $rt = str_replace('%TR_YEARS%', $time_parts["year"], $rt);
+            $rt = str_replace('%TR_MONTHS%', $time_parts["month"], $rt);
+            $rt = str_replace('%TR_DAYS%', $time_parts["day"], $rt);
+            $rt = str_replace('%TR_HOURS%', $time_parts["hour"], $rt);
+            $rt = str_replace('%TR_MINUTES%', $time_parts["minute"], $rt);
+            $rt = str_replace('%TR_SECONDS%', $time_parts["second"], $rt);
+            $rt = str_replace('%TOT_DAYS%', $time_total["day"], $rt);
+            $rt = str_replace('%TOT_HOURS%', $time_total["hour"], $rt);
+            $rt = str_replace('%TOT_MINUTES%', $time_total["minute"], $rt);
+        } else {
             if ($time_restirctions == 'D' || $time_restirctions == 'T')
                 $tpl = $template->elm["time_closed"];
             else
@@ -868,15 +1051,24 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         return $rt;
     }
 
-    function render_crt($template, $rating, $unit_count, $votes, $vote_value = -1) {
-        $tpl = $template->elm["normal"];
-        if ($vote_value > -1) $tpl = $template->elm["vote_saved"];
+    function render_tat_voted($template, $rpar = array()) {
+        $rdef = array("votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "id" => 0, "vote" => 0);
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
 
+        $tpl = $template->elm["vote_saved"];
         $rt = html_entity_decode($tpl);
-        $rt = str_replace('%CMM_RATING%', $rating, $rt);
-        $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
-        $rt = str_replace('%CMM_VOTES%', $votes, $rt);
-        if ($vote_value > -1) $rt = str_replace('%CMM_VOTE_VALUE%', $vote_value, $rt);
+
+        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
+        $percent = number_format($percent, 0);
+
+        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
+        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
+        $rt = str_replace('%VOTES%', $votes, $rt);
+        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
+        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
+        $rt = str_replace('%ID%', $id, $rt);
+        $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
 
         $word_votes = $template->dep["EWV"];
         $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
@@ -885,6 +1077,27 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         return $rt;
     }
 
+    function render_srt_voted($template, $rpar = array()) {
+        $rdef = array("rating" => 0, "unit_count" => 0, "votes" => 0, "id" => 0, "vote" => 0);
+        $rpar = wp_parse_args($rpar, $rdef);
+        extract($rpar, EXTR_SKIP);
+
+        $tpl = $template->elm["vote_saved"];
+        $rt = html_entity_decode($tpl);
+        $rt = str_replace('%RATING%', $rating, $rt);
+        $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
+        $rt = str_replace('%VOTES%', $votes, $rt);
+        $rt = str_replace('%ID%', $id, $rt);
+        $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
+
+        $word_votes = $template->dep["EWV"];
+        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
+        $rt = str_replace('%WORD_VOTES%', __($tense), $rt);
+
+        return $rt;
+    }
+
+    // rendering results
     function render_wsr($widget, $section = "WSR") {
         global $gdsr;
         $template = GDSRRenderT2::get_template($widget["template_id"], $section);
@@ -1036,108 +1249,6 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
     function render_srr($widget) {
         return GDSRRenderT2::render_wsr($widget, "SRR");
-    }
-
-    function render_rsb($template_id, $rating, $star_style, $star_size, $star_max, $header_text, $css) {
-        $template = GDSRRenderT2::get_template($template_id, "RSB");
-        $tpl_render = $template->elm["normal"];
-        $tpl_render = html_entity_decode($tpl_render);
-
-        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
-        $tpl_render = str_replace("%CSS_BLOCK%", $css, $tpl_render);
-        $tpl_render = str_replace("%MAX_RATING%", $star_max, $tpl_render);
-        $tpl_render = str_replace("%RATING%", $rating, $tpl_render);
-
-        $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
-        $tpl_render = str_replace("%RATING_STARS%", $rating_stars, $tpl_render);
-
-        return $tpl_render;
-    }
-
-    function render_rcb($template_id, $rating, $star_style, $star_size, $star_max) {
-        $template = GDSRRenderT2::get_template($template_id, "RCB");
-        $tpl_render = $template->elm["normal"];
-        $tpl_render = html_entity_decode($tpl_render);
-
-        $tpl_render = str_replace("%MAX_MM_RATING%", $star_max, $tpl_render);
-        $tpl_render = str_replace("%CMM_RATING%", $rating, $tpl_render);
-
-        $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
-        $tpl_render = str_replace("%CMM_RATING_STARS%", $rating_stars, $tpl_render);
-
-        return $tpl_render;
-    }
-
-    function render_mcr($template_id, $post_id, $set, $avg_rating, $avg_style, $avg_size) {
-        $template = GDSRRenderT2::get_template($template_id, "MCR");
-        $tpl_render = $template->elm["normal"];
-        $tpl_render = html_entity_decode($tpl_render);
-
-        $rt = str_replace('%ID%', $post_id, $rt);
-        $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
-        $tpl_render = str_replace("%MAX_RATING%", $set->stars, $tpl_render);
-
-        if (in_array("%AVG_RATING_STARS%", $template->tag["normal"]))
-            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars, $avg_rating), $tpl_render);
-
-        return $tpl_render;
-    }
-
-    function render_rmb($template_id, $votes, $post_id, $set, $avg_rating, $style, $size, $avg_style, $avg_size) {
-        $template = GDSRRenderT2::get_template($template_id, "RMB");
-        $tpl_render = $template->elm["normal"];
-        $tpl_render = html_entity_decode($tpl_render);
-        $rater = '<div id="gdsr_mureview_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti gdsr-review-block">';
-
-        $i = 0;
-        $weighted = 0;
-        $total_votes = 0;
-        $weight_norm = array_sum($set->weight);
-        $rating_stars = "";
-        $table_row_class = $template->dep["MRS"]->dep["ETR"];
-        foreach ($set->object as $el) {
-            $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
-            $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
-            $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
-            $single_row = str_replace('%ELEMENT_VALUE%', $votes[$i]["rating"], $single_row);
-            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::render_static_stars($style, $size, $set->stars, $votes[$i]["rating"]), $single_row);
-            $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
-            $rating_stars.= $single_row;
-
-            $weighted += ($votes[$i]["rating"] * $set->weight[$i]) / $weight_norm;
-            $total_votes += $votes[$i]["votes"];
-            $i++;
-        }
-
-        $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
-        $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
-        $tpl_render = str_replace("%MAX_RATING%", $set->stars, $tpl_render);
-
-        if (in_array("%AVG_RATING_STARS%", $template->tag["normal"]))
-            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars, $avg_rating), $tpl_render);
-
-        $rater.= $tpl_render."</div>";
-        return $rater;
-    }
-
-    function render_car($template_id, $votes, $rating, $comments, $star_style, $star_size, $star_max) {
-        $template = GDSRRenderT2::get_template($template_id, "CAR");
-        $tpl_render = $template->elm["normal"];
-        $tpl_render = html_entity_decode($tpl_render);
-
-        $tpl_render = str_replace("%CMM_COUNT%", $comments, $tpl_render);
-        $tpl_render = str_replace("%CMM_VOTES%", $votes, $tpl_render);
-        $tpl_render = str_replace("%MAX_CMM_RATING%", $star_max, $tpl_render);
-        $tpl_render = str_replace("%CMM_RATING%", $rating, $tpl_render);
-
-        $word_votes = $template->dep["EWV"];
-        $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
-        $tpl_render = str_replace('%WORD_VOTES%', __($tense), $tpl_render);
-
-        $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
-        $tpl_render = str_replace("%CMM_STARS%", $rating_stars, $tpl_render);
-
-        return $tpl_render;
     }
 }
 
