@@ -1337,6 +1337,7 @@ if (!class_exists('GDStarRating')) {
             define('STARRATING_XTRA_URL', $this->plugin_xtra_url);
             define('STARRATING_XTRA_PATH', $this->plugin_xtra_path);
             define('STARRATING_CACHE_PATH', $this->plugin_cache_path);
+            define('STARRATING_AJAX_URL', $this->plugin_ajax);
 
             define('STARRATING_CHART_URL', $this->plugin_chart_url);
             define('STARRATING_CHART_PATH', $this->plugin_chart_path);

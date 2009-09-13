@@ -387,7 +387,7 @@ class GDSRHelper {
 </select>
         <?php
     }
-   
+
     function timer_value($t_type, $t_date = '', $t_count_value = 0, $t_count_type = 'D') {
         $value = '';
         switch ($t_type) {
@@ -400,14 +400,17 @@ class GDSRHelper {
         }
         return $value;
     }
-    
+
+    /**
+     * Function to deactivate plugin
+     */
     function deactivate_plugin() {
         $current = get_option('active_plugins');
         if(in_array("gd-star-rating/gd-star-rating.php", $current))
             array_splice($current, array_search("gd-star-rating/gd-star-rating.php", $current), 1);
         update_option('active_plugins', $current);
     }
-   
+
     function get_categories_hierarchy($cats, $depth = 0, $level = 0) {
         $h = array();
         foreach ($cats as $cat) {
