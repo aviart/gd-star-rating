@@ -14,7 +14,7 @@ $over_comms = count($over_comms) > 0 ? join(", ", $over_comms) : "/";
 
 ?>
 <div class="postbox gdrgrid frontright">
-    <h3 class="hndle"><span><?php _e("General Statistics"); ?></span></h3>
+    <h3 class="hndle"><span><?php _e("General Statistics", "gd-star-rating"); ?></span></h3>
     <div class="inside">
         <div class="my-general">
             <p class="sub"><?php _e("My votes overview", "gd-star-rating"); ?></p>
