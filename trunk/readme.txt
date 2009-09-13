@@ -27,7 +27,8 @@ GD Star Rating plugin allows you to set up rating and review system for posts, p
 = Using the Plugin =
 [Tutorials](http://www.gdstarrating.com/category/tutorials/) |
 [Advanced](http://www.gdstarrating.com/category/tutorials/advanced/) |
-[User Guide](http://www.gdstarrating.com/downloads/user-guide/)
+[User Guide](http://www.gdstarrating.com/downloads/user-guide/) |
+[Issue Tracker](http://tracker.gdstarrating.com/)
 
 = Other Important URL's =
 [Forum](http://forum.gdragon.info/viewforum.php?f=9) |

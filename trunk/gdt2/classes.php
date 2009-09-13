@@ -3,7 +3,7 @@
 /*
 Name:    gdTemplatesT2
 Library: Classes
-Version: 2.2.1
+Version: 2.3.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/
@@ -137,7 +137,7 @@ class gdTemplateHelper {
     function render_templates_sections($name, $section, $empty = true, $selected = "") {
         ?>
 <select name="<?php echo $name; ?>" id="<?php echo $name; ?>">
-<?php if ($empty) { ?><option value=""<?php echo $selected == '' ? ' selected="selected"' : ''; ?>>All Sections</option><?php } ?>
+<?php if ($empty) { ?><option value=""<?php echo $selected == '' ? ' selected="selected"' : ''; ?>><?php _e("All Sections"); ?></option><?php } ?>
         <?php
             foreach ($section as $s) {
                 echo sprintf('<option value="%s"%s>%s</option>', $s["code"], ($selected == $s["code"] ? ' selected="selected"' : ''),  $s["name"]);
@@ -203,163 +203,167 @@ class gdTemplateRender {
     }
 }
 
-class gdTemplateElement {
-    var $tag;
-    var $description;
-    var $tpl;
+if (!class_exists("gdTemplateElement")) {
+    class gdTemplateElement {
+        var $tag;
+        var $description;
+        var $tpl;
 
-    function gdTemplateElement($t, $d) {
-        $this->tag = $t;
-        $this->description = $d;
-        $this->tpl = -1;
-    }
-}
-
-class gdTemplatePart {
-    var $name;
-    var $code;
-    var $description;
-    var $elements;
-    var $size;
-
-    function gdTemplatePart($n, $c, $d, $s = "single") {
-        $this->name = $n;
-        $this->code = $c;
-        $this->description = $d;
-        $this->size = $s;
-        $this->elements = array();
-    }
-}
-
-class gdTemplateTpl {
-    var $code;
-    var $tag;
-    
-    function gdTemplateTpl($c, $t) {
-        $this->code = $c;
-        $this->tag = $t;
-    }
-}
-
-class gdTemplate {
-    var $code;
-    var $section;
-    var $elements;
-    var $parts;
-    var $tag;
-    var $tpls;
-    var $tpls_tags;
-
-    function gdTemplate($c, $s, $t = "") {
-        $this->code = $c;
-        $this->section = $s;
-        $this->tag = $t;
-        $this->elements = array();
-        $this->parts = array();
-        $this->tpls = array();
-        $this->tpls_tags = array();
-    }
-
-    function add_template($c, $t) {
-        $this->tpls[] = new gdTemplateTpl($c, $t);
-        $this->tpls_tags[] = $t;
-    }
-
-    function add_element($t, $d) {
-        $tpl = new gdTemplateElement($t, $d);
-        if (in_array($t, $this->tpls_tags)) {
-            $k = array_keys($this->tpls_tags, $t);
-            if (count($k) == 1) $tpl->tpl = $k[0];
+        function gdTemplateElement($t, $d) {
+            $this->tag = $t;
+            $this->description = $d;
+            $this->tpl = -1;
         }
-        $this->elements[] = $tpl;
-    }
-    
-    function add_part($n, $c, $d, $parts = array(), $s = "single") {
-        $part = new gdTemplatePart($n, $c, $d, $s);
-        $part->elements = $parts;
-        $this->parts[] = $part;
-    }
-}
-
-class gdTemplates {
-    var $tpls;
-
-    function gdTemplates() {
-        $this->tpls = array();
     }
 
-    function add_template($t) {
-        $this->tpls[] = $t;
-    }
+    class gdTemplatePart {
+        var $name;
+        var $code;
+        var $description;
+        var $elements;
+        var $size;
 
-    function get_list($section) {
-        foreach ($this->tpls as $t) {
-            if ($t->code == $section) return $t;
+        function gdTemplatePart($n, $c, $d, $s = "single") {
+            $this->name = $n;
+            $this->code = $c;
+            $this->description = $d;
+            $this->size = $s;
+            $this->elements = array();
         }
-        return null;
     }
 
-    function list_sections() {
-        $sections = array();
-        $listed = array();
-        foreach ($this->tpls as $t) {
-            $code = $t->code;
-            $name = $t->section;
-            if (!in_array($code, $listed)) {
-                $listed[] = $code;
-                $sections[] = array("code" => $code, "name" => $name);
+    class gdTemplateTpl {
+        var $code;
+        var $tag;
+
+        function gdTemplateTpl($c, $t) {
+            $this->code = $c;
+            $this->tag = $t;
+        }
+    }
+
+    class gdTemplate {
+        var $code;
+        var $section;
+        var $elements;
+        var $parts;
+        var $tag;
+        var $tpls;
+        var $tpls_tags;
+
+        function gdTemplate($c, $s, $t = "") {
+            $this->code = $c;
+            $this->section = $s;
+            $this->tag = $t;
+            $this->elements = array();
+            $this->parts = array();
+            $this->tpls = array();
+            $this->tpls_tags = array();
+        }
+
+        function add_template($c, $t) {
+            $this->tpls[] = new gdTemplateTpl($c, $t);
+            $this->tpls_tags[] = $t;
+        }
+
+        function add_element($t, $d) {
+            $tpl = new gdTemplateElement($t, $d);
+            if (in_array($t, $this->tpls_tags)) {
+                $k = array_keys($this->tpls_tags, $t);
+                if (count($k) == 1) $tpl->tpl = $k[0];
             }
+            $this->elements[] = $tpl;
         }
-        return $sections;
+
+        function add_part($n, $c, $d, $parts = array(), $s = "single") {
+            $part = new gdTemplatePart($n, $c, $d, $s);
+            $part->elements = $parts;
+            $this->parts[] = $part;
+        }
     }
 
-    function find_sections_depending($code) {
-        $sections = array();
-        foreach ($this->tpls as $t) {
-            $found = false;
-            if (count($t->tpls) > 0) {
-                foreach ($t->tpls as $x) {
-                    if ($x->code == $code) {
-                        $found = true;
-                        break;
-                    }
+    class gdTemplates {
+        var $tpls;
+
+        function gdTemplates() {
+            $this->tpls = array();
+        }
+
+        function add_template($t) {
+            $this->tpls[] = $t;
+        }
+
+        function get_list($section) {
+            foreach ($this->tpls as $t) {
+                if ($t->code == $section) return $t;
+            }
+            return null;
+        }
+
+        function list_sections() {
+            $sections = array();
+            $listed = array();
+            foreach ($this->tpls as $t) {
+                $code = $t->code;
+                $name = $t->section;
+                if (!in_array($code, $listed)) {
+                    $listed[] = $code;
+                    $sections[] = array("code" => $code, "name" => $name);
                 }
             }
-            if ($found) $sections[] = $t->code;
+            return $sections;
         }
-        return $sections;
-    }
 
-    function find_template_tag($code) {
-        $tag = "";
-        foreach ($this->tpls as $t) {
-            if ($t->code == $code) {
-                $tag = $t->tag;
-                break;
+        function find_sections_depending($code) {
+            $sections = array();
+            foreach ($this->tpls as $t) {
+                $found = false;
+                if (count($t->tpls) > 0) {
+                    foreach ($t->tpls as $x) {
+                        if ($x->code == $code) {
+                            $found = true;
+                            break;
+                        }
+                    }
+                }
+                if ($found) $sections[] = $t->code;
             }
+            return $sections;
         }
-        return $tag;
-    }
 
-    function list_sections_assoc() {
-        $sections = array();
-        $listed = array();
-        foreach ($this->tpls as $t) {
-            $code = $t->code;
-            $name = $t->section;
-            if (!in_array($code, $listed)) {
-                $listed[] = $code;
-                $sections[$code] = $name;
+        function find_template_tag($code) {
+            $tag = "";
+            foreach ($this->tpls as $t) {
+                if ($t->code == $code) {
+                    $tag = $t->tag;
+                    break;
+                }
             }
+            return $tag;
         }
-        return $sections;
+
+        function list_sections_assoc() {
+            $sections = array();
+            $listed = array();
+            foreach ($this->tpls as $t) {
+                $code = $t->code;
+                $name = $t->section;
+                if (!in_array($code, $listed)) {
+                    $listed[] = $code;
+                    $sections[$code] = $name;
+                }
+            }
+            return $sections;
+        }
     }
 }
 
-function wp_get_custom_tags($rendering) {
-    preg_match_all('(%CUSTOM_.+?%)', $rendering, $matches, PREG_PATTERN_ORDER);
-    if (is_array($matches[0])) return $matches[0];
-    else return array();
+if (!function_exists("wp_get_custom_tags")) {
+    function wp_get_custom_tags($rendering) {
+        preg_match_all('(%CUSTOM_.+?%)', $rendering, $matches, PREG_PATTERN_ORDER);
+        if (is_array($matches[0])) return $matches[0];
+        else return array();
+    }
 }
 
 function wp_gdtpl_get_template($template_id) {

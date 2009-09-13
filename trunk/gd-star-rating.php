@@ -26,28 +26,30 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
-require_once(dirname(__FILE__)."/config.php");
-require_once(dirname(__FILE__)."/code/defaults.php");
-require_once(dirname(__FILE__)."/gdragon/gd_functions.php");
-require_once(dirname(__FILE__)."/gdragon/gd_debug.php");
-require_once(dirname(__FILE__)."/gdragon/gd_db_install.php");
-require_once(dirname(__FILE__)."/gdragon/gd_wordpress.php");
-require_once(dirname(__FILE__)."/code/results_classes.php");
-require_once(dirname(__FILE__)."/code/standard_render.php");
-require_once(dirname(__FILE__)."/code/helpers.php");
-require_once(dirname(__FILE__)."/code/db/main.php");
-require_once(dirname(__FILE__)."/code/db/operations.php");
-require_once(dirname(__FILE__)."/code/db/widgetizer.php");
-require_once(dirname(__FILE__)."/code/db/multi.php");
-require_once(dirname(__FILE__)."/code/gfx/charting.php");
-require_once(dirname(__FILE__)."/code/gfx/gfx_lib.php");
-require_once(dirname(__FILE__)."/code/gfx/generator.php");
-require_once(dirname(__FILE__)."/code/query.php");
-require_once(dirname(__FILE__)."/code/cache.php");
-require_once(dirname(__FILE__)."/gdt2/classes.php");
-require_once(dirname(__FILE__)."/code/t2/render.php");
-require_once(dirname(__FILE__)."/code/widgets.php");
-require_once(dirname(__FILE__)."/code/widgets_wp28.php");
+$gdsr_dirname_basic = dirname(__FILE__);
+
+require_once($gdsr_dirname_basic."/config.php");
+require_once($gdsr_dirname_basic."/code/defaults.php");
+require_once($gdsr_dirname_basic."/gdragon/gd_functions.php");
+require_once($gdsr_dirname_basic."/gdragon/gd_debug.php");
+require_once($gdsr_dirname_basic."/gdragon/gd_db_install.php");
+require_once($gdsr_dirname_basic."/gdragon/gd_wordpress.php");
+require_once($gdsr_dirname_basic."/code/results_classes.php");
+require_once($gdsr_dirname_basic."/code/standard_render.php");
+require_once($gdsr_dirname_basic."/code/helpers.php");
+require_once($gdsr_dirname_basic."/code/db/main.php");
+require_once($gdsr_dirname_basic."/code/db/operations.php");
+require_once($gdsr_dirname_basic."/code/db/widgetizer.php");
+require_once($gdsr_dirname_basic."/code/db/multi.php");
+require_once($gdsr_dirname_basic."/code/gfx/charting.php");
+require_once($gdsr_dirname_basic."/code/gfx/gfx_lib.php");
+require_once($gdsr_dirname_basic."/code/gfx/generator.php");
+require_once($gdsr_dirname_basic."/code/query.php");
+require_once($gdsr_dirname_basic."/code/cache.php");
+require_once($gdsr_dirname_basic."/gdt2/classes.php");
+require_once($gdsr_dirname_basic."/code/t2/render.php");
+require_once($gdsr_dirname_basic."/code/widgets.php");
+require_once($gdsr_dirname_basic."/code/widgets_wp28.php");
 
 if (!class_exists('GDStarRating')) {
     /**
@@ -1432,7 +1434,7 @@ if (!class_exists('GDStarRating')) {
             if (is_admin()) {
                 $this->l = get_locale();
                 if(!empty($this->l)) {
-                    $moFile = dirname(__FILE__)."/languages/gd-star-rating-".$this->l.".mo";
+                    $moFile = $this->plugin_path."/languages/gd-star-rating-".$this->l.".mo";
                     if (@file_exists($moFile) && is_readable($moFile)) load_textdomain('gd-star-rating', $moFile);
                 }
             }
