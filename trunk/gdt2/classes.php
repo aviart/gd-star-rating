@@ -137,7 +137,7 @@ class gdTemplateHelper {
     function render_templates_sections($name, $section, $empty = true, $selected = "") {
         ?>
 <select name="<?php echo $name; ?>" id="<?php echo $name; ?>">
-<?php if ($empty) { ?><option value=""<?php echo $selected == '' ? ' selected="selected"' : ''; ?>><?php _e("All Sections"); ?></option><?php } ?>
+<?php if ($empty) { ?><option value=""<?php echo $selected == '' ? ' selected="selected"' : ''; ?>><?php _e("All Sections", "gd-star-rating"); ?></option><?php } ?>
         <?php
             foreach ($section as $s) {
                 echo sprintf('<option value="%s"%s>%s</option>', $s["code"], ($selected == $s["code"] ? ' selected="selected"' : ''),  $s["name"]);

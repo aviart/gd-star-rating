@@ -1,5 +1,5 @@
 <div class="postbox gdrgrid frontright myboxes">
-    <h3 class="hndle"><span><?php _e("My Latest 100 Votes"); ?></span></h3>
+    <h3 class="hndle"><span><?php _e("My Latest 100 Votes", "gd-star-rating"); ?></span></h3>
     <div class="inside">
     <?php
 
