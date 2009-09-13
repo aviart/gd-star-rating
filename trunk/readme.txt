@@ -131,21 +131,22 @@ Check the widget settings. Most likely problem is with default widget setting to
 
 == Changelog ==
 = 1.6.5 =
-* Full refactoring of all t2 rendering methods.
-* Some minor bugs fixed.
+* Full refactoring of all t2 rendering methods
+* Some improvements to t2 base classes
+* Some minor bugs fixed
 
 = 1.6.4 =
-* Tag percentage for thumbs post and comments ratings.
-* Several bugs fixed, T2 improvementa and code cleanup.
-* Updated gdragon shared libraries.
+* Tag percentage for thumbs post and comments ratings
+* Several bugs fixed, T2 improvementa and code cleanup
+* Updated gdragon shared libraries
 
 = 1.6.3 =
 * Several bugs fixed.
 
 = 1.6.2 =
-* My ratings panel for current logged user ratings stats.
-* T2 Templates improvements and dependencies editor.
-* Many changes, fixes and some css styles improvements.
+* My ratings panel for current logged user ratings stats
+* T2 Templates improvements and dependencies editor
+* Many changes, fixes and some css styles improvements
 
 = 1.6.1 =
 * Dropped support for WordPress 2.5
