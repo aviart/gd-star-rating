@@ -2,7 +2,7 @@
 
 /*
 Name:    gdDBInstallGDSR
-Version: 1.2.0
+Version: 1.3.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/
@@ -174,6 +174,22 @@ if (!class_exists('gdDBInstallGDSR')) {
         }
 
         /**
+         * Get valid collation for the database
+         *
+         * @global object $wpdb Wordpress DB class
+         * @return string collation string
+         */
+        function get_collation() {
+            global $wpdb;
+            $charset_collate = "";
+            if ($wpdb->has_cap('collation')) {
+                if (!empty($wpdb->charset)) $charset_collate = "DEFAULT CHARACTER SET $wpdb->charset";
+                if (!empty($wpdb->collate)) $charset_collate .= " COLLATE $wpdb->collate";
+            }
+            return $charset_collate;
+        }
+
+        /**
          * Creates table based on the table install file
          *
          * @global object $wpdb Wordpress DB class
@@ -191,12 +207,14 @@ if (!class_exists('gdDBInstallGDSR')) {
                     $fc = file($file_path);
                     $first = true;
                     $sql = "";
+                    $collation = gdDBInstallGDSR::get_collation();
                     foreach ($fc as $f) {
                         if ($first) {
                             $sql.= sprintf($f, $table_prefix);
                             $first = false;
-                        }
-                        else $sql.= $f;
+                        } else if (strpos($f, '%COLLATE%') !== false) {
+                            $sql.= str_replace("%COLLATE%", $collation, $f);
+                        } else $sql.= $f;
                     }
                     $wpdb->query($sql);
                 }

@@ -7,4 +7,4 @@ CREATE TABLE `%sgdsr_votes_trend` (
   `visitor_votes` int(11) DEFAULT '0',
   `vote_date` varchar(10) DEFAULT NULL,
   KEY idx_id_trd (id),
-  KEY idx_vote_trd (vote_type));
+  KEY idx_vote_trd (vote_type))%COLLATE%;

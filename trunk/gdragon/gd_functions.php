@@ -2,14 +2,14 @@
 
 /*
 Name:    gdFunctionsGDSR
-Version: 1.2.0
+Version: 1.3.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/
 
 == Copyright ==
 
-Copyright 2008 Milan Petrovic (email : milan@gdragon.info)
+Copyright 2008-2009 Milan Petrovic (email : milan@gdragon.info)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

@@ -9,4 +9,4 @@ CREATE TABLE `%sgdsr_multis_trend` (
   `total_votes_visitors` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY idx_post_mtt (post_id),
-  KEY idx_multi_mtt (multi_id));
+  KEY idx_multi_mtt (multi_id))%COLLATE%;

@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.6.5
+Version: 1.6.6
 Tags: vote, ratings, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.6
 Tested up to: 2.8.4
@@ -105,17 +105,20 @@ Plugin administration consist of 17 main panels:
 
 == Frequently Asked Questions ==
 
+= How to check if there is a simple and already explained solution to my problem? =
+Check the post in the following category: http://www.gdstarrating.com/category/tutorials/solving-problems/.
+
+= How to change visibiliy of plugin menus to different user levels? =
+This is controled by the constants defined in the config files. Detailed info on setting them is here: http://www.gdstarrating.com/2009/08/12/using-config-files/.
+
+= How to insert rating blocks or results directly into the theme files? =
+All plugins functions for inserting wherever you want can be found in the info folder included with the plugin, or at this url: http://info.dev4press.com/gd-star-rating/.
+
+= How to change the elements displayed by the plugin in widget, rating blocks and other rendering elements? =
+All rendering is controled by the T2 templates system. To change the rendering output you need to make your own templates and change what they display.
+
 = Plugin is not showing rating stars or rating widgets after update? =
 Check all plugin and plugins widgets settings after update and save them.
-
-= Where can I see an example of the plugin? =
-My Wordpress blog has this plugin installed, so you can see it in action there.
-
-= Is there a user guide for this plugin? =
-Yes, there is a PDF file with detailed explanations on over 30 pages. You can download it from official plugin blog.
-
-= I have encountered a potential bug? =
-Plugin has debug into log file feature built in. Information on activating this can be found in user guide.
 
 = I have added one of the plugins widgets, and it's not showing anything? =
 Check the widget settings. Most likely problem is with default widget setting to show only posts with 5 votes or more. If you have just set the plugin most likely you still don't have enough votes.
@@ -130,6 +133,9 @@ Check the widget settings. Most likely problem is with default widget setting to
 7. Example multi rating block
 
 == Changelog ==
+= 1.6.6 =
+* Improved database installation to include collation for mysql 4.1 and 5
+
 = 1.6.5 =
 * Full refactoring of all t2 rendering methods
 * Some improvements to t2 base classes
