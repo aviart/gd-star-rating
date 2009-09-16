@@ -8,4 +8,4 @@ CREATE TABLE `%sgdsr_multis_values` (
   `visitor_votes` decimal(11,1) DEFAULT '0.0',
   KEY `id` (`id`),
   KEY `item_id` (`item_id`),
-  KEY `source` (`source`));
+  KEY `source` (`source`))%COLLATE%;

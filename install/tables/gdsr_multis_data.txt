@@ -15,4 +15,4 @@ CREATE TABLE `%sgdsr_multis_data` (
   PRIMARY KEY (`id`),
   KEY post_id (post_id),
   KEY idx_post_mdt (post_id),
-  KEY idx_multi_mdt (multi_id));
+  KEY idx_multi_mdt (multi_id))%COLLATE%;

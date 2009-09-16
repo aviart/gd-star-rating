@@ -14,4 +14,4 @@ CREATE TABLE `%sgdsr_moderate` (
   KEY idx_id_mod (id),
   KEY idx_vote_mod (vote_type),
   KEY idx_multi_mod (multi_id),
-  KEY idx_user_mod (user_id));
+  KEY idx_user_mod (user_id))%COLLATE%;

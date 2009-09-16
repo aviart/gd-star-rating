@@ -1,15 +1,15 @@
 <?php
 
 /*
-Name:    gdWordPress
-Version: 1.2.0
+Name:    gdWordPressGDSR
+Version: 1.3.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/
 
 == Copyright ==
 
-Copyright 2008 Milan Petrovic (email : milan@gdragon.info)
+Copyright 2008-2009 Milan Petrovic (email : milan@gdragon.info)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -36,8 +36,8 @@ if (!class_exists('gdWPGDSR')) {
         }
 
         function get_users_with_role($role) {
-          $wp_user_search = new WP_User_Search("", "", $role);
-          return $wp_user_search->get_results();
+            $wp_user_search = new WP_User_Search("", "", $role);
+            return $wp_user_search->get_results();
         }
 
         function get_current_category_id() {

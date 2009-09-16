@@ -14,4 +14,4 @@ CREATE TABLE `%sgdsr_votes_log` (
   KEY idx_id_log (id),
   KEY idx_vote_log (vote_type),
   KEY idx_multi_log (multi_id),
-  KEY idx_user_log (user_id));
+  KEY idx_user_log (user_id))%COLLATE%;
