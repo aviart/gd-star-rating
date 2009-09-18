@@ -5,6 +5,8 @@
     require($wpload);
     global $gdsr;
 
+    require_once(STARRATING_PATH."/code/gfx/generator.php");
+
     $input["value"] = $_GET["value"];
     $input["type"] = isset($_GET["type"]) ? $_GET["type"] : "stars";
 

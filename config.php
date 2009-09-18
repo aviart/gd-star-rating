@@ -11,6 +11,11 @@ if (file_exists($gdsr_config_extra)) require_once($gdsr_config_extra);
 if (!defined('STARRATING_WPLOAD')) define('STARRATING_WPLOAD', '');
 
 /**
+ * GD Star Rating is working in AJAX mode or not.
+ */
+if (!defined('STARRATING_AJAX')) define('STARRATING_AJAX', false);
+
+/**
  * Full path to a text file used to save debug info. File must be writeable.
  */
 if (!defined('STARRATING_LOG_PATH')) define('STARRATING_LOG_PATH', dirname(__FILE__).'/debug.txt');
