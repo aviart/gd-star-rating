@@ -1,11 +1,11 @@
 <?php
 
+    define('STARRATING_AJAX', true);
     $types = array("a", "c", "m", "ra", "rc");
 
     require_once(dirname(__FILE__)."/config.php");
     $wpload = get_gdsr_wpload_path();
     require($wpload);
-
     global $gdsr;
 
     if ($gdsr->use_nonce) {

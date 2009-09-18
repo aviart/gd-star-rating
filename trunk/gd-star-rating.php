@@ -30,6 +30,7 @@ $gdsr_dirname_basic = dirname(__FILE__);
 
 require_once($gdsr_dirname_basic."/config.php");
 require_once($gdsr_dirname_basic."/code/defaults.php");
+require_once($gdsr_dirname_basic."/code/cache.php");
 require_once($gdsr_dirname_basic."/gdragon/gd_functions.php");
 require_once($gdsr_dirname_basic."/gdragon/gd_debug.php");
 require_once($gdsr_dirname_basic."/gdragon/gd_db_install.php");
@@ -38,16 +39,11 @@ require_once($gdsr_dirname_basic."/code/results_classes.php");
 require_once($gdsr_dirname_basic."/code/standard_render.php");
 require_once($gdsr_dirname_basic."/code/helpers.php");
 require_once($gdsr_dirname_basic."/code/db/main.php");
-require_once($gdsr_dirname_basic."/code/db/operations.php");
-require_once($gdsr_dirname_basic."/code/db/widgetizer.php");
-require_once($gdsr_dirname_basic."/code/db/multi.php");
-require_once($gdsr_dirname_basic."/code/gfx/charting.php");
 require_once($gdsr_dirname_basic."/code/gfx/gfx_lib.php");
-require_once($gdsr_dirname_basic."/code/gfx/generator.php");
 require_once($gdsr_dirname_basic."/code/query.php");
-require_once($gdsr_dirname_basic."/code/cache.php");
 require_once($gdsr_dirname_basic."/gdt2/classes.php");
 require_once($gdsr_dirname_basic."/code/t2/render.php");
+require_once($gdsr_dirname_basic."/code/db/widgetizer.php");
 require_once($gdsr_dirname_basic."/code/widgets.php");
 require_once($gdsr_dirname_basic."/code/widgets_wp28.php");
 

@@ -3,8 +3,10 @@
 require_once("../config.php");
 $wpload = get_gdsr_wpload_path();
 require($wpload);
-
 global $gdsr;
+
+require_once(STARRATING_PATH."/code/gfx/charting.php");
+
 if ($gdsr->use_nonce) {
     $nonce = $_REQUEST['_wpnonce'];
     require_once(ABSPATH.WPINC."/pluggable.php");

@@ -1,2 +1,0 @@
-gdsr_data_multi
-multis_trend

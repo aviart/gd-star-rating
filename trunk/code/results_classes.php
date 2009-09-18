@@ -165,4 +165,31 @@ class GDSRCommentRating {
     }
 }
 
+/**
+ * Multi Rating Set
+ */
+class GDMultiSingle {
+    var $multi_id = 0;
+    var $name = "";
+    var $description = "";
+    var $stars = 10;
+    var $object = array();
+    var $weight = array();
+
+    /**
+     * Constructor
+     *
+     * @param bool $fill_empty prefill set with empty elements
+     * @param int $count number of elements in the set
+     */
+    function GDMultiSingle($fill_empty = true, $count = 20) {
+        if ($fill_empty) {
+            for ($i = 0; $i < $count; $i++) {
+                $this->object[] = "";
+                $this->weight[] = 1;
+            }
+        }
+    }
+}
+
 ?>

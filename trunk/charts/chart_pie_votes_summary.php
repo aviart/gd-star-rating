@@ -5,6 +5,8 @@ $wpload = get_gdsr_wpload_path();
 require($wpload);
 global $gdsr;
 
+require_once(STARRATING_PATH."/code/gfx/charting.php");
+
 $data = GDSRChart::votes_counter();
 $values = array();
 $titles = array();

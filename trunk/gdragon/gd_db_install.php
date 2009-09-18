@@ -45,7 +45,9 @@ if (!class_exists('gdDBInstallGDSR')) {
             foreach ($files as $file) {
                 $file_path = $path."/".$file;
                 $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
-                $wpdb->query("drop table ".$table_name);
+                if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name) {
+                    $wpdb->query("drop table ".$table_name);
+                }
             }
         }
 
@@ -73,10 +75,12 @@ if (!class_exists('gdDBInstallGDSR')) {
             $path.= "install/".$fname;
             if (file_exists($path)) {
                 $alters = file($path);
-                foreach ($alters as $a) {
-                    if (trim($a) != '') {
-                        $a = sprintf($a, $table_prefix);
-                        $wpdb->query($a);
+                if (is_array($tables) && count($tables) > 0) {
+                    foreach ($alters as $a) {
+                        if (trim($a) != '') {
+                            $a = sprintf($a, $table_prefix);
+                            $wpdb->query($a);
+                        }
                     }
                 }
             }
@@ -94,10 +98,14 @@ if (!class_exists('gdDBInstallGDSR')) {
             $path.= "install/delete.txt";
             if (file_exists($path)) {
                 $tables = file($path);
-                foreach ($tables as $table_name) {
-                    if (trim($table_name) != '') {
-                        $table_name = $table_prefix.$table_name;
-                        $wpdb->query("drop table ".$table_name);
+                if (is_array($tables) && count($tables) > 0) {
+                    foreach ($tables as $table_name) {
+                        if (trim($table_name) != '') {
+                            $table_name = $table_prefix.$table_name;
+                            if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name) {
+                                $wpdb->query("drop table ".$table_name);
+                            }
+                        }
                     }
                 }
             }
