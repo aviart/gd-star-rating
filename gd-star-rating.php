@@ -39,13 +39,16 @@ require_once($gdsr_dirname_basic."/code/results_classes.php");
 require_once($gdsr_dirname_basic."/code/standard_render.php");
 require_once($gdsr_dirname_basic."/code/helpers.php");
 require_once($gdsr_dirname_basic."/code/db/main.php");
-require_once($gdsr_dirname_basic."/code/gfx/gfx_lib.php");
-require_once($gdsr_dirname_basic."/code/query.php");
 require_once($gdsr_dirname_basic."/gdt2/classes.php");
 require_once($gdsr_dirname_basic."/code/t2/render.php");
-require_once($gdsr_dirname_basic."/code/db/widgetizer.php");
-require_once($gdsr_dirname_basic."/code/widgets.php");
-require_once($gdsr_dirname_basic."/code/widgets_wp28.php");
+
+if (!STARRATING_AJAX) {
+    require_once($gdsr_dirname_basic."/code/gfx/gfx_lib.php");
+    require_once($gdsr_dirname_basic."/code/query.php");
+    require_once($gdsr_dirname_basic."/code/db/widgetizer.php");
+    require_once($gdsr_dirname_basic."/code/widgets.php");
+    require_once($gdsr_dirname_basic."/code/widgets_wp28.php");
+}
 
 if (!class_exists('GDStarRating')) {
     /**
@@ -108,7 +111,6 @@ if (!class_exists('GDStarRating')) {
         var $l; // language
         var $o; // options
         var $w; // widget options
-        var $t; // database tables
         var $p; // post data
         var $e; // blank image
         var $i; // import
@@ -167,15 +169,17 @@ if (!class_exists('GDStarRating')) {
             define('STARRATING_INSTALLED', $this->default_options["version"]." ".$this->default_options["status"]);
 
             $this->c = array();
-            $this->q = new GDSRQuery();
 
             $this->plugin_path_url();
             $this->install_plugin();
-            $this->actions_filters();
-            $this->initialize_security();
+            if (!STARRATING_AJAX) {
+                $this->q = new GDSRQuery();
+                $this->actions_filters();
+                $this->initialize_security();
+            }
 
             if ($this->o["ajax_jsonp"] == 1) $this->plugin_ajax.= "?callback=?";
-            define('STARRATING_AJAX', $this->plugin_ajax);
+            define('STARRATING_AJAX_URL', $this->plugin_ajax);
         }
 
         /**
@@ -1166,88 +1170,88 @@ if (!class_exists('GDStarRating')) {
             $this->ginc = get_option('gd-star-rating-inc');
             $this->bots = get_option('gd-star-rating-bots');
 
-            if ($this->o["build"] < $this->default_options["build"] || !is_array($this->o)) {
-                if (is_object($this->g)) {
+            if (!STARRATING_AJAX) {
+                if ($this->o["build"] < $this->default_options["build"] || !is_array($this->o)) {
+                    if (is_object($this->g)) {
+                        $this->g = $this->gfx_scan();
+                        update_option('gd-star-rating-gfx', $this->g);
+                    }
+
+                    gdDBInstallGDSR::delete_tables(STARRATING_PATH);
+                    gdDBInstallGDSR::create_tables(STARRATING_PATH);
+                    gdDBInstallGDSR::upgrade_tables(STARRATING_PATH);
+                    gdDBInstallGDSR::alter_tables(STARRATING_PATH);
+                    gdDBInstallGDSR::alter_tables(STARRATING_PATH, "idx.txt");
+                    $this->o["database_upgrade"] = date("r");
+
+                    GDSRDB::install_all_templates();
+
+                    $this->o = gdFunctionsGDSR::upgrade_settings($this->o, $this->default_options);
+
+                    $this->o["css_last_changed"] = time();
+                    $this->o["version"] = $this->default_options["version"];
+                    $this->o["date"] = $this->default_options["date"];
+                    $this->o["status"] = $this->default_options["status"];
+                    $this->o["build"] = $this->default_options["build"];
+                    $this->o["revision"] = $this->default_options["revision"];
+                    if ($this->o["css_last_changed"] == 0) $this->o["css_last_changed"] = time();
+
+                    $this->is_update = true;
+                    update_option('gd-star-rating', $this->o);
+                }
+
+                if (!is_array($this->o)) {
+                    update_option('gd-star-rating', $this->default_options);
+                    $this->o = get_option('gd-star-rating');
+                    gdDBInstallGDSR::create_tables(STARRATING_PATH);
+                }
+
+                if (!is_array($this->i)) {
+                    update_option('gd-star-rating-import', $this->default_import);
+                    $this->i = get_option('gd-star-rating-import');
+                } else {
+                    $this->i = gdFunctionsGDSR::upgrade_settings($this->i, $this->default_import);
+                    update_option('gd-star-rating-import', $this->i);
+                }
+
+                if (!is_object($this->g)) {
                     $this->g = $this->gfx_scan();
                     update_option('gd-star-rating-gfx', $this->g);
                 }
 
-                gdDBInstallGDSR::delete_tables(STARRATING_PATH);
-                gdDBInstallGDSR::create_tables(STARRATING_PATH);
-                gdDBInstallGDSR::upgrade_tables(STARRATING_PATH);
-                gdDBInstallGDSR::alter_tables(STARRATING_PATH);
-                gdDBInstallGDSR::alter_tables(STARRATING_PATH, "idx.txt");
-                $this->o["database_upgrade"] = date("r");
+                if (!is_array($this->wpr8)) {
+                    update_option('gd-star-rating-wpr8', $this->default_wpr8);
+                    $this->wpr8 = get_option('gd-star-rating-wpr8');
+                } else {
+                    $this->wpr8 = gdFunctionsGDSR::upgrade_settings($this->wpr8, $this->default_wpr8);
+                    update_option('gd-star-rating-wpr8', $this->wpr8);
+                }
 
-                GDSRDB::install_all_templates();
+                if (!is_array($this->bots)) {
+                    $this->bots = $this->default_spider_bots;
+                    update_option('gd-star-rating-bots', $this->bots);
+                }
 
-                $this->o = gdFunctionsGDSR::upgrade_settings($this->o, $this->default_options);
+                if (!is_array($this->ginc)) {
+                    $this->ginc = array();
+                    $this->ginc[] = $this->stars_sizes;
+                    $this->ginc[] = $this->g->get_list(true);
+                    $this->ginc[] = $this->thumb_sizes;
+                    $this->ginc[] = $this->g->get_list(false);
+                    update_option('gd-star-rating-inc', $this->ginc);
+                }
 
-                $this->o["css_last_changed"] = time();
-                $this->o["version"] = $this->default_options["version"];
-                $this->o["date"] = $this->default_options["date"];
-                $this->o["status"] = $this->default_options["status"];
-                $this->o["build"] = $this->default_options["build"];
-                $this->o["revision"] = $this->default_options["revision"];
-                if ($this->o["css_last_changed"] == 0) $this->o["css_last_changed"] = time();
-
-                $this->is_update = true;
-                update_option('gd-star-rating', $this->o);
-            }
-
-            if (!is_array($this->o)) {
-                update_option('gd-star-rating', $this->default_options);
-                $this->o = get_option('gd-star-rating');
-                gdDBInstallGDSR::create_tables(STARRATING_PATH);
-            }
-
-            if (!is_array($this->i)) {
-                update_option('gd-star-rating-import', $this->default_import);
-                $this->i = get_option('gd-star-rating-import');
-            } else {
-                $this->i = gdFunctionsGDSR::upgrade_settings($this->i, $this->default_import);
-                update_option('gd-star-rating-import', $this->i);
-            }
-
-            if (!is_object($this->g)) {
-                $this->g = $this->gfx_scan();
-                update_option('gd-star-rating-gfx', $this->g);
-            }
-
-            if (!is_array($this->wpr8)) {
-                update_option('gd-star-rating-wpr8', $this->default_wpr8);
-                $this->wpr8 = get_option('gd-star-rating-wpr8');
-            } else {
-                $this->wpr8 = gdFunctionsGDSR::upgrade_settings($this->wpr8, $this->default_wpr8);
-                update_option('gd-star-rating-wpr8', $this->wpr8);
-            }
-
-            if (!is_array($this->bots)) {
-                $this->bots = $this->default_spider_bots;
-                update_option('gd-star-rating-bots', $this->bots);
-            }
-
-            if (!is_array($this->ginc)) {
-                $this->ginc = array();
-                $this->ginc[] = $this->stars_sizes;
-                $this->ginc[] = $this->g->get_list(true);
-                $this->ginc[] = $this->thumb_sizes;
-                $this->ginc[] = $this->g->get_list(false);
-                update_option('gd-star-rating-inc', $this->ginc);
-            }
-
-            if (count($this->ginc) == 2) {
-                $this->ginc[] = $this->thumb_sizes;
-                $this->ginc[] = $this->g->get_list(false);
-                update_option('gd-star-rating-inc', $this->ginc);
+                if (count($this->ginc) == 2) {
+                    $this->ginc[] = $this->thumb_sizes;
+                    $this->ginc[] = $this->g->get_list(false);
+                    update_option('gd-star-rating-inc', $this->ginc);
+                }
             }
 
             $this->use_nonce = $this->o["use_nonce"] == 1;
             define("STARRATING_VERSION", $this->o["version"].'_'.$this->o["build"]);
             define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"]);
             define("STARRATING_STARS_GENERATOR", $this->o["gfx_generator_auto"] == 0 ? "DIV" : "GFX");
-
-            $this->t = GDSRDB::get_database_tables();
         }
 
         /**
@@ -1333,7 +1337,6 @@ if (!class_exists('GDStarRating')) {
             define('STARRATING_XTRA_URL', $this->plugin_xtra_url);
             define('STARRATING_XTRA_PATH', $this->plugin_xtra_path);
             define('STARRATING_CACHE_PATH', $this->plugin_cache_path);
-            define('STARRATING_AJAX_URL', $this->plugin_ajax);
 
             define('STARRATING_CHART_URL', $this->plugin_chart_url);
             define('STARRATING_CHART_PATH', $this->plugin_chart_path);

@@ -1403,20 +1403,6 @@ class GDSRDB {
         return $wpdb->get_results($sql);
     }
 
-    function get_database_tables() {
-        global $table_prefix;
-        $tables = array(
-            "data_article" => $table_prefix.'gdsr_data_article',
-            "data_comment" => $table_prefix.'gdsr_data_comment',
-            "votes_log" => $table_prefix.'gdsr_votes_log',
-            "votes_trend" => $table_prefix.'gdsr_votes_trend',
-            "moderate" => $table_prefix.'gdsr_moderate',
-            "multi_sets" => $table_prefix.'gdsr_multis',
-            "banned_ips" => $table_prefix.'gdsr_ips'
-        );
-        return $tables;
-    }
-
     function get_post_title($post_id) {
         global $wpdb;
         return $wpdb->get_var("select post_title from $wpdb->posts where ID = ".$post_id);
