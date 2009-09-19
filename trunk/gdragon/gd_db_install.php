@@ -198,6 +198,28 @@ if (!class_exists('gdDBInstallGDSR')) {
         }
 
         /**
+         * Upgrades collation for all plugin tables to default DB collation.
+         *
+         * @global object $wpdb Wordpress DB class
+         * @global string $table_prefix Wordpress table prefix
+         * @param string $path base path to folder where the install folder is located with trailing slash
+         */
+        function upgrade_collation($path) {
+            global $wpdb, $table_prefix;
+            $path.= "install/tables";
+            $files = gdDBInstallGDSR::scan_folder($path);
+            $collation = gdDBInstallGDSR::get_collation();
+            foreach ($files as $file) {
+                $file_path = $path."/".$file;
+                $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
+                if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name) {
+                    $sql = sprintf("ALTER TABLE `%s` %s", $table_name, $collation);
+                    $wpdb->query($sql);
+                }
+            }
+        }
+
+        /**
          * Creates table based on the table install file
          *
          * @global object $wpdb Wordpress DB class
@@ -208,6 +230,7 @@ if (!class_exists('gdDBInstallGDSR')) {
             global $wpdb, $table_prefix;
             $path.= "install/tables";
             $files = gdDBInstallGDSR::scan_folder($path);
+            $collation = gdDBInstallGDSR::get_collation();
             foreach ($files as $file) {
                 $file_path = $path."/".$file;
                 $table_name = $table_prefix.substr($file, 0, strlen($file) - 4);
@@ -215,7 +238,6 @@ if (!class_exists('gdDBInstallGDSR')) {
                     $fc = file($file_path);
                     $first = true;
                     $sql = "";
-                    $collation = gdDBInstallGDSR::get_collation();
                     foreach ($fc as $f) {
                         if ($first) {
                             $sql.= sprintf($f, $table_prefix);
