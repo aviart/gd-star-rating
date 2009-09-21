@@ -134,7 +134,9 @@ Check the widget settings. Most likely problem is with default widget setting to
 
 == Changelog ==
 = 1.6.6 =
-* Improved database installation to include collation for mysql 4.1 and 5
+* Upgrade database tables by setting the collation
+* Improved plugin loading and memory usage
+* Improved database installation to include collation
 
 = 1.6.5 =
 * Full refactoring of all t2 rendering methods
