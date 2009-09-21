@@ -1177,6 +1177,9 @@ if (!class_exists('GDStarRating')) {
                         update_option('gd-star-rating-gfx', $this->g);
                     }
 
+                    if ($this->o["build"] < 911)
+                        gdDBInstallGDSR::upgrade_collation(STARRATING_PATH);
+
                     gdDBInstallGDSR::delete_tables(STARRATING_PATH);
                     gdDBInstallGDSR::create_tables(STARRATING_PATH);
                     gdDBInstallGDSR::upgrade_tables(STARRATING_PATH);
