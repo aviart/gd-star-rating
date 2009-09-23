@@ -1,5 +1,0 @@
-#summary List of trend image styles built in the plugin.
-
-= Trend List =
-
-  * Fam Fam Fam
