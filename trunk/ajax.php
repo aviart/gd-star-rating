@@ -19,7 +19,18 @@
     $vote_value = $_GET["vote_value"];
     $vote_type = $_GET["vote_type"];
 
-    if (!(in_array($vote_type, $types))) {
+    if ($vote_type == "cache") {
+        $votes = explode(":", $_GET["votes"]);
+        $result = "xss_error";
+        switch ($_GET["vote_domain"]) {
+            case 'a':
+                $result = $gdsr->cached_posts($votes);
+                break;
+            case 'c':
+                $result = $gdsr->cached_comments($votes);
+                break;
+        }
+    } else if (!(in_array($vote_type, $types))) {
         $result = "xss_error";
     } else {
         $result = $vote_type."_error";
