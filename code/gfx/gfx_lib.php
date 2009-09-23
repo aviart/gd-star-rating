@@ -32,6 +32,18 @@ class GDgfxLib {
         return $results;
     }
 
+    function find_id($gfx, $folder) {
+        $result = 0;
+        foreach ($gfx as $id => $s) {
+            if ($s->folder == $folder) {
+                $result = $id;
+                break;
+            }
+        }
+        if ($result == 0) wp_gdsr_dump("INVALID_SET_REQUEST", "Requested set name: ".$folder);
+        return $result;
+    }
+
     function find_gfx($gfx, $folder) {
         $result = null;
         foreach ($gfx as $s) {
@@ -54,6 +66,18 @@ class GDgfxLib {
 
     function find_trend($folder) {
         return $this->find_gfx($this->trend, $folder);
+    }
+
+    function find_thumb_id($folder) {
+        return $this->find_id($this->thumbs, $folder);
+    }
+
+    function find_stars_id($folder) {
+        return $this->find_id($this->stars, $folder);
+    }
+
+    function find_trend_id($folder) {
+        return $this->find_id($this->trend, $folder);
     }
 
     function get_type($gfx, $folder) {

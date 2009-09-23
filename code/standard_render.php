@@ -24,8 +24,8 @@ class GDSRRender {
         return $rater;
     }
 
-    function rating_loader($type, $id, $size = "small") {
-        $render = '<div class="gdsrcacheloader gdsrcl'.$size.'" id="gdsrc_'.$type.'_'.$id.'">';
+    function rating_loader($id, $size = "small") {
+        $render = '<div class="gdsrcacheloader gdsrcl'.$size.'" id="gdsrc_'.$id.'">';
         $render.= '<strong>GD Star Rating</strong><br />';
         $render.= '<em>'.__("loading", "gd-star-rating").'...</em>';
         $render.= '</div>';

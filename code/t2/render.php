@@ -631,9 +631,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             $tpl_render = str_replace("%RATING_TEXT%", $rating_text, $tpl_render);
         }
 
-        $tpl_render = '<div class="ratingblock">'.$tpl_render;
         if ($debug != '') $tpl_render = '<div style="display: none">'.$debug.'</div>'.$tpl_render;
-        $tpl_render.= '</div>';
 
         return $tpl_render;
     }
@@ -784,9 +782,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             $tpl_render = str_replace("%CMM_RATING_TEXT%", $rating_text, $tpl_render);
         }
 
-        $tpl_render = '<div class="ratingblock">'.$tpl_render;
         if ($debug != '') $tpl_render = '<div style="display: none">'.$debug.'</div>'.$tpl_render;
-        $tpl_render.= '</div>';
 
         return $tpl_render;
     }

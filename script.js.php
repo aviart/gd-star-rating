@@ -18,9 +18,8 @@
     header("Content-Type: text/javascript; charset: UTF-8");
     header("Cache-Control: must-revalidate");
 
-    include ($gdsr->plugin_path."code/js/cache_load.php");
-    include ($gdsr->plugin_path."code/js/main.php");
-    include ($gdsr->plugin_path."code/js/comments.php");
+    include(STARRATING_PATH."code/js/main.php");
+    include(STARRATING_PATH."code/js/comments.php");
 
     if ($gdsr->o["cmm_integration_replay_hide_review"]) { ?>
 

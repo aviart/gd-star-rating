@@ -41,9 +41,9 @@ require_once($gdsr_dirname_basic."/code/helpers.php");
 require_once($gdsr_dirname_basic."/code/db/main.php");
 require_once($gdsr_dirname_basic."/gdt2/classes.php");
 require_once($gdsr_dirname_basic."/code/t2/render.php");
+require_once($gdsr_dirname_basic."/code/gfx/gfx_lib.php");
 
 if (!STARRATING_AJAX) {
-    require_once($gdsr_dirname_basic."/code/gfx/gfx_lib.php");
     require_once($gdsr_dirname_basic."/code/query.php");
     require_once($gdsr_dirname_basic."/code/db/widgetizer.php");
     require_once($gdsr_dirname_basic."/code/widgets.php");
@@ -1505,77 +1505,6 @@ if (!class_exists('GDStarRating')) {
         /**
          * Method executing cleanup of the cache files
          */
-        function cache_cleanup() {
-            if ($this->o["cache_cleanup_auto"] == 1) {
-                $clean = false;
-
-                $pdate = strtotime($this->o["cache_cleanup_last"]);
-                $next_clean = mktime(date("H", $pdate), date("i", $pdate), date("s", $pdate), date("m", $pdate) + $this->o["cache_cleanup_days"], date("j", $pdate), date("Y", $pdate));
-                if (intval($next_clean) < intval(mktime())) $clean = true;
-
-                if ($clean) {
-                    GDSRHelper::clean_cache(substr(STARRATING_CACHE_PATH, 0, strlen(STARRATING_CACHE_PATH) - 1));
-                    $this->o["cache_cleanup_last"] = date("r");
-                    update_option('gd-star-rating', $this->o);
-                }
-            }
-        }
-
-        function cache_posts($user_id) {
-            $to_get = array();
-            foreach ($this->c as $id => $value) {
-                if ($value == 0) $to_get[] = $id;
-            }
-            if (count($to_get) > 0) {
-                global $gdsr_cache_posts_std_data, $gdsr_cache_posts_std_log, $gdsr_cache_posts_std_thumbs_log;
-
-                $data = GDSRDBCache::get_posts($to_get);
-                foreach ($data as $row) {
-                    $id = $row->post_id;
-                    $this->c[$id] = 1;
-                    $gdsr_cache_posts_std_data->set($id, $row);
-                }
-
-                $logs = GDSRDBCache::get_logs($to_get, $user_id, "article", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
-                foreach ($logs as $id => $value) {
-                    $gdsr_cache_posts_std_log->set($id, $value == 0);
-                }
-
-                if ($this->o["thumbs_active"] == 1) {
-                    $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "artthumb", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
-                    foreach ($logs_thumb as $id => $value) {
-                        $gdsr_cache_posts_std_thumbs_log->set($id, $value == 0);
-                    }
-                }
-            }
-        }
-
-        function cache_comments($post_id) {
-            global $gdsr_cache_posts_cmm_data, $gdsr_cache_posts_cmm_log, $gdsr_cache_posts_cmm_thumbs_log, $userdata;
-            $user_id = $userdata->ID;
-            $to_get = array();
-
-            $data = GDSRDBCache::get_comments($post_id);
-            foreach ($data as $row) {
-                $id = $row->comment_id;
-                $gdsr_cache_posts_cmm_data->set($id, $row);
-                $to_get[] = $id;
-            }
-            if (count($to_get) > 0) {
-                $logs = GDSRDBCache::get_logs($to_get, $user_id, "comment", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
-                foreach ($logs as $id => $value) {
-                    $gdsr_cache_posts_cmm_log->set($id, $value == 0);
-                }
-
-                if ($this->o["thumbs_active"] == 1) {
-                    $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "cmmthumb", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
-                    foreach ($logs_thumb as $id => $value) {
-                        $gdsr_cache_posts_cmm_thumbs_log->set($id, $value == 0);
-                    }
-                }
-            }
-        }
-
         function init_uninstall() {
             if (isset($_POST["gdsr_full_uninstall"]) && $_POST["gdsr_full_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
                 delete_option('gd-star-rating');
@@ -2685,6 +2614,104 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         }
         // comment rating
 
+        // cache
+        function cache_cleanup() {
+            if ($this->o["cache_cleanup_auto"] == 1) {
+                $clean = false;
+
+                $pdate = strtotime($this->o["cache_cleanup_last"]);
+                $next_clean = mktime(date("H", $pdate), date("i", $pdate), date("s", $pdate), date("m", $pdate) + $this->o["cache_cleanup_days"], date("j", $pdate), date("Y", $pdate));
+                if (intval($next_clean) < intval(mktime())) $clean = true;
+
+                if ($clean) {
+                    GDSRHelper::clean_cache(substr(STARRATING_CACHE_PATH, 0, strlen(STARRATING_CACHE_PATH) - 1));
+                    $this->o["cache_cleanup_last"] = date("r");
+                    update_option('gd-star-rating', $this->o);
+                }
+            }
+        }
+
+        function cache_posts($user_id) {
+            $to_get = array();
+            foreach ($this->c as $id => $value) {
+                if ($value == 0) $to_get[] = $id;
+            }
+            if (count($to_get) > 0) {
+                global $gdsr_cache_posts_std_data, $gdsr_cache_posts_std_log, $gdsr_cache_posts_std_thumbs_log;
+
+                $data = GDSRDBCache::get_posts($to_get);
+                foreach ($data as $row) {
+                    $id = $row->post_id;
+                    $this->c[$id] = 1;
+                    $gdsr_cache_posts_std_data->set($id, $row);
+                }
+
+                $logs = GDSRDBCache::get_logs($to_get, $user_id, "article", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
+                foreach ($logs as $id => $value) {
+                    $gdsr_cache_posts_std_log->set($id, $value == 0);
+                }
+
+                if ($this->o["thumbs_active"] == 1) {
+                    $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "artthumb", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
+                    foreach ($logs_thumb as $id => $value) {
+                        $gdsr_cache_posts_std_thumbs_log->set($id, $value == 0);
+                    }
+                }
+            }
+        }
+
+        function cache_comments($post_id) {
+            global $gdsr_cache_posts_cmm_data, $gdsr_cache_posts_cmm_log, $gdsr_cache_posts_cmm_thumbs_log, $userdata;
+            $user_id = $userdata->ID;
+            $to_get = array();
+
+            $data = GDSRDBCache::get_comments($post_id);
+            foreach ($data as $row) {
+                $id = $row->comment_id;
+                $gdsr_cache_posts_cmm_data->set($id, $row);
+                $to_get[] = $id;
+            }
+            if (count($to_get) > 0) {
+                $logs = GDSRDBCache::get_logs($to_get, $user_id, "comment", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+                foreach ($logs as $id => $value) {
+                    $gdsr_cache_posts_cmm_log->set($id, $value == 0);
+                }
+
+                if ($this->o["thumbs_active"] == 1) {
+                    $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "cmmthumb", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+                    foreach ($logs_thumb as $id => $value) {
+                        $gdsr_cache_posts_cmm_thumbs_log->set($id, $value == 0);
+                    }
+                }
+            }
+        }
+
+        function cached_posts($votes) {
+            global $userdata;
+
+            $this->c = $rendered = $alls = array();
+            foreach ($votes as $vote) {
+                $settings = explode(".", $vote);
+                $alls[$vote] = $settings;
+                $this->c[$settings[1]] = 1;
+            }
+
+            $this->render_wait_article();
+            $this->cache_posts($userdata->ID);
+            foreach ($alls as $vote => $settings) {
+                $html = $this->render_article_actual($settings);
+                $html = str_replace('"', '\"', $html);
+                $rendered[] = '{"id": "gdsrc_'.$vote.'", "html": "'.$html.'"}';
+            }
+
+            return '{ "items": ['.join(", ", $rendered).']}';
+        }
+
+        function cached_comments($votes) {
+
+        }
+        // cache
+
         // rendering waiting animations
         function render_wait_article_thumb() {
             if ($this->o["wait_loader_artthumb"] != "") {
@@ -2749,6 +2776,27 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         // rendering waiting animations
 
         // rendering
+        function rating_loader_elements_post($post, $user, $override, $type) {
+            return array(
+                $type, $post->ID, $post->post_type == "page" ? "1" : "0",
+                $post->post_author, strtotime($post->post_date),
+                $override["tpl"], $override["read_only"], $override["size"],
+                $this->g->find_stars_id($override["style"]),
+                $this->g->find_stars_id($override["style_ie6"], $user->ID)
+            );
+        }
+
+        function rating_loader_elements_comment($post, $comment, $user, $override, $type) {
+            return array(
+                $type, $post->ID, $comment->comment_ID, $comment->user_id,
+                $post->post_type == "page" ? "1" : "0", $post->post_author,
+                strtotime($post->post_date), $override["tpl"],
+                $override["read_only"], $override["size"],
+                $this->g->find_stars_id($override["style"]),
+                $this->g->find_stars_id($override["style_ie6"], $user->ID)
+            );
+        }
+
         function display_comment($content) {
             global $post, $comment, $userdata;
 
@@ -3048,15 +3096,19 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             return $rating_block;
         }
 
+        function render_comment_actual($settings) {
+            
+        }
+
         function render_comment($post, $comment, $user, $override = array()) {
             $default_settings = array("style" => $this->o["cmm_style"], "style_ie6" => $this->o["cmm_style_ie6"], "size" => $this->o["cmm_size"], "tpl" => 0, "read_only" => 0);
             $override = shortcode_atts($default_settings, $override);
             if ($override["style"] == "") $override["style"] = $this->o["cmm_style"];
             if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["cmm_style_ie6"];
             if ($override["size"] == "") $override["size"] = $this->o["cmm_size"];
+            if ($override["tpl"] == 0) $override["tpl"] = $this->o["default_crb_template"];
 
-            if ($this->o["comments_active"] != 1) return "";
-            if ($this->is_bot) return "";
+            if ($this->o["comments_active"] != 1 || $this->is_bot) return "";
 
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
@@ -3143,9 +3195,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $tags_css["CMM_CSS_STARS"] = $this->o["cmm_class_stars"];
             $tags_css["CMM_CSS_TEXT"] = $this->o["cmm_class_text"];
 
-            if ($override["tpl"] > 0) $template_id = $override["tpl"];
-            else $template_id = $this->o["default_crb_template"];
-
+            $template_id = $override["tpl"];
             $rating_block = GDSRRenderT2::render_crb($template_id, array("cmm_id" => $rd_comment_id, "class" => "ratecmm", "type" => "c", "votes" => $votes, "score" => $score, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "unit_count" => $rd_unit_count, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "typecls" => "comment", "tags_css" => $tags_css, "header_text" => $this->o["cmm_header_text"], "debug" => $debug, "wait_msg" => $this->loader_comment));
             return $rating_block;
         }
@@ -3273,18 +3323,22 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             return $rating_block;
         }
 
-        function render_article($post, $user, $override = array()) {
-            if ($this->o["cached_loading"] == 1)
-                return GDSRRender::rating_loader("asr", $post->ID, "small");
-
-            $default_settings = array("style" => $this->o["style"], "style_ie6" => $this->o["style_ie6"], "size" => $this->o["size"], "tpl" => 0, "read_only" => 0);
-            $override = shortcode_atts($default_settings, $override);
-            if ($override["style"] == "") $override["style"] = $this->o["style"];
-            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["style_ie6"];
-            if ($override["size"] == "") $override["size"] = $this->o["size"];
-
+        function render_article_actual($settings) {
             if ($this->is_bot) return "";
 
+            $post_id = $settings[1];
+            $user_id = $settings[10];
+            $post_date = $settings[3];
+            $post_author = $settings[4];
+            $rd_is_page = $settings[2];
+
+            $override["tpl"] = $settings[5];
+            $override["read_only"] = $settings[6];
+            $override["size"] = $settings[7];
+            $override["style"] = $this->g->stars[$settings[8]]->folder;
+            $override["style_ie6"] = $this->g->stars[$settings[9]]->folder;
+            wp_gdsr_dump("X", $override);
+            wp_gdsr_dump("X", $this->g->stars);
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
             if ($this->override_readonly_standard) $allow_vote = false;
@@ -3299,9 +3353,8 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $rd_unit_count = $this->o["stars"];
             $rd_unit_width = $override["size"];
             $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
-            $rd_post_id = intval($post->ID);
-            $rd_user_id = intval($user->ID);
-            $rd_is_page = $post->post_type == "page" ? "1" : "0";
+            $rd_post_id = intval($post_id);
+            $rd_user_id = intval($user_id);
 
             $post_data = wp_gdget_post($rd_post_id);
             if (count($post_data) == 0) {
@@ -3326,7 +3379,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             }
 
             if ($allow_vote) {
-                if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author) {
+                if ($this->o["author_vote"] == 1 && $rd_user_id == $post_author) {
                     $allow_vote = false;
                     $dbg_allow = "A";
                 }
@@ -3344,7 +3397,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                         $deadline = $expiry_value;
                         break;
                     case "T":
-                        $remaining = GDSRHelper::expiration_countdown($post->post_date, $expiry_value);
+                        $remaining = GDSRHelper::expiration_countdown($post_date, $expiry_value);
                         $deadline = GDSRHelper::calculate_deadline($remaining);
                         break;
                 }
@@ -3365,8 +3418,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                 if (!$allow_vote) $dbg_allow = "C";
             }
 
-            $votes = 0;
-            $score = 0;
+            $votes = $score = 0;
 
             if ($rules_articles == "A" || $rules_articles == "N") {
                 $votes = $post_data->user_voters + $post_data->visitor_voters;
@@ -3380,20 +3432,35 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
-            $debug.= $rd_user_id == $post->post_author ? "A" : "N";
+            $debug.= $rd_user_id == $post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
-            $tags_css = array();
-            $tags_css["CSS_BLOCK"] = $this->o["srb_class_block"];
-            $tags_css["CSS_HEADER"] = $this->o["srb_class_header"];
-            $tags_css["CSS_STARS"] = $this->o["srb_class_stars"];
-            $tags_css["CSS_TEXT"] = $this->o["srb_class_text"];
+            $tags_css = array(
+                "CSS_BLOCK" => $this->o["srb_class_block"],
+                "CSS_HEADER" => $this->o["srb_class_header"],
+                "CSS_STARS" => $this->o["srb_class_stars"],
+                "CSS_TEXT" => $this->o["srb_class_text"]
+            );
 
-            if ($override["tpl"] > 0) $template_id = $override["tpl"];
-            else $template_id = $this->o["default_srb_template"];
-
+            $template_id = $override["tpl"];
             $rating_block = GDSRRenderT2::render_srb($template_id, array("post_id" => $rd_post_id, "class" => "ratepost", "type" => "a", "votes" => $votes, "score" => $score, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "unit_count" => $rd_unit_count, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "typecls" => "article", "tags_css" => $tags_css, "header_text" => $this->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_article, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline));
             return $rating_block;
+        }
+
+        function render_article($post, $user, $override = array()) {
+            $default_settings = array("style" => $this->o["style"], "style_ie6" => $this->o["style_ie6"], "size" => $this->o["size"], "tpl" => 0, "read_only" => 0);
+            $override = shortcode_atts($default_settings, $override);
+            if ($override["style"] == "") $override["style"] = $this->o["style"];
+            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["style_ie6"];
+            if ($override["size"] == "") $override["size"] = $this->o["size"];
+            if ($override["tpl"] == 0) $override["tpl"] = $this->o["default_srb_template"];
+
+            $elements = $this->rating_loader_elements_post($post, $user, $override, "asr");
+
+            if ($this->o["cached_loading"] == 1)
+                return GDSRRender::rating_loader(join(".", $elements), "small");
+            else
+                return $this->render_article_actual($elements);
         }
 
         function render_multi_rating($post, $user, $override = array()) {
