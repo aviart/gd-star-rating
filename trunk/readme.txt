@@ -1,8 +1,8 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.6.6
-Tags: vote, ratings, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
+Version: 1.6.7
+Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.6
 Tested up to: 2.8.4
 Stable tag: trunk
@@ -133,6 +133,10 @@ Check the widget settings. Most likely problem is with default widget setting to
 7. Example multi rating block
 
 == Changelog ==
+= 1.6.7 =
+* Basic support for cache plugins
+* Several minor bugs fixed
+
 = 1.6.6 =
 * Upgrade database tables by setting the collation
 * Improved plugin loading and memory usage

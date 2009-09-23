@@ -273,3 +273,30 @@ foreach ($thumb_sizes as $size) {
 .trw-title { text-align: center; font-size: 16px; font-family: "Century Gothic", Arial, Helvetica, sans-serif; }
 .trw-rating { font-size: 44px; font-family: "Century Gothic", Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; }
 .trw-footer { text-align: center; font-size: 11px; font-family: "Century Gothic", Geneva, Arial, Helvetica, sans-serif; }
+
+.gdsrcacheloader {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    margin: 3px;
+    padding: 3px;
+}
+
+.gdsrclsmall {
+    background: url(<?php echo $base_url_local;?>gfx/load_small.png) no-repeat left;
+    padding-left: 28px;
+    width: 120px;
+}
+
+.gdsrclbig {
+    background: url(<?php echo $base_url_local;?>gfx/load_big.png) no-repeat left;
+    padding-left: 46px;
+    width: 160px;
+}
+
+.gdsrclsmall strong { font-size: 14px; }
+
+.gdsrclsmall em { font-size: 11px; }
+
+.gdsrclbig strong { font-size: 17px; }
+
+.gdsrclbig em { font-size: 14px; }
