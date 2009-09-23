@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
-Version: 1.6.6
+Version: 1.6.7
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -117,7 +117,7 @@ if (!class_exists('GDStarRating')) {
         var $g; // gfx
         var $q; // query class instance
         var $c; // cached post ids
-        var $qc; // query class instance for comments
+        var $qc;
         var $ginc;
         var $bots;
 
@@ -1521,6 +1521,61 @@ if (!class_exists('GDStarRating')) {
             }
         }
 
+        function cache_posts($user_id) {
+            $to_get = array();
+            foreach ($this->c as $id => $value) {
+                if ($value == 0) $to_get[] = $id;
+            }
+            if (count($to_get) > 0) {
+                global $gdsr_cache_posts_std_data, $gdsr_cache_posts_std_log, $gdsr_cache_posts_std_thumbs_log;
+
+                $data = GDSRDBCache::get_posts($to_get);
+                foreach ($data as $row) {
+                    $id = $row->post_id;
+                    $this->c[$id] = 1;
+                    $gdsr_cache_posts_std_data->set($id, $row);
+                }
+
+                $logs = GDSRDBCache::get_logs($to_get, $user_id, "article", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
+                foreach ($logs as $id => $value) {
+                    $gdsr_cache_posts_std_log->set($id, $value == 0);
+                }
+
+                if ($this->o["thumbs_active"] == 1) {
+                    $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "artthumb", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
+                    foreach ($logs_thumb as $id => $value) {
+                        $gdsr_cache_posts_std_thumbs_log->set($id, $value == 0);
+                    }
+                }
+            }
+        }
+
+        function cache_comments($post_id) {
+            global $gdsr_cache_posts_cmm_data, $gdsr_cache_posts_cmm_log, $gdsr_cache_posts_cmm_thumbs_log, $userdata;
+            $user_id = $userdata->ID;
+            $to_get = array();
+
+            $data = GDSRDBCache::get_comments($post_id);
+            foreach ($data as $row) {
+                $id = $row->comment_id;
+                $gdsr_cache_posts_cmm_data->set($id, $row);
+                $to_get[] = $id;
+            }
+            if (count($to_get) > 0) {
+                $logs = GDSRDBCache::get_logs($to_get, $user_id, "comment", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+                foreach ($logs as $id => $value) {
+                    $gdsr_cache_posts_cmm_log->set($id, $value == 0);
+                }
+
+                if ($this->o["thumbs_active"] == 1) {
+                    $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "cmmthumb", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
+                    foreach ($logs_thumb as $id => $value) {
+                        $gdsr_cache_posts_cmm_thumbs_log->set($id, $value == 0);
+                    }
+                }
+            }
+        }
+
         function init_uninstall() {
             if (isset($_POST["gdsr_full_uninstall"]) && $_POST["gdsr_full_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
                 delete_option('gd-star-rating');
@@ -2630,7 +2685,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         }
         // comment rating
 
-        // rendering
+        // rendering waiting animations
         function render_wait_article_thumb() {
             if ($this->o["wait_loader_artthumb"] != "") {
                 $cls = 'loader '.$this->o["wait_loader_artthumb"].' thumb';
@@ -2691,74 +2746,9 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $div.= '</div>';
             $this->loader_comment = $div;
         }
+        // rendering waiting animations
 
-        function cache_posts($user_id) {
-            $to_get = array();
-            foreach ($this->c as $id => $value) {
-                if ($value == 0) $to_get[] = $id;
-            }
-            if (count($to_get) > 0) {
-                global $gdsr_cache_posts_std_data, $gdsr_cache_posts_std_log, $gdsr_cache_posts_std_thumbs_log;
-
-                $data = GDSRDBCache::get_posts($to_get);
-                foreach ($data as $row) {
-                    $id = $row->post_id;
-                    $this->c[$id] = 1;
-                    $gdsr_cache_posts_std_data->set($id, $row);
-                }
-
-wp_gdsr_dump("CACHE_POSTDATA", $gdsr_cache_posts_std_data);
-
-                $logs = GDSRDBCache::get_logs($to_get, $user_id, "article", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
-                foreach ($logs as $id => $value) {
-                    $gdsr_cache_posts_std_log->set($id, $value == 0);
-                }
-
-wp_gdsr_dump("CACHE_POSTLOG", $gdsr_cache_posts_std_log);
-
-                if ($this->o["thumbs_active"] == 1) {
-                    $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "artthumb", $_SERVER["REMOTE_ADDR"], $this->o["logged"] != 1, $this->o["allow_mixed_ip_votes"] == 1);
-                    foreach ($logs_thumb as $id => $value) {
-                        $gdsr_cache_posts_std_thumbs_log->set($id, $value == 0);
-                    }
-
-wp_gdsr_dump("CACHE_POSTTHUMBLOG", $gdsr_cache_posts_std_thumbs_log);
-
-                }
-            }
-        }
-
-        function cache_comments($post_id) {
-            global $gdsr_cache_posts_cmm_data, $gdsr_cache_posts_cmm_log, $gdsr_cache_posts_cmm_thumbs_log, $userdata;
-            $user_id = $userdata->ID;
-            $to_get = array();
-
-            $data = GDSRDBCache::get_comments($post_id);
-            foreach ($data as $row) {
-                $id = $row->comment_id;
-                $gdsr_cache_posts_cmm_data->set($id, $row);
-                $to_get[] = $id;
-            }
-            if (count($to_get) > 0) {
-                $logs = GDSRDBCache::get_logs($to_get, $user_id, "comment", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
-                foreach ($logs as $id => $value) {
-                    $gdsr_cache_posts_cmm_log->set($id, $value == 0);
-                }
-
-wp_gdsr_dump("CACHE_CMMDATA", $gdsr_cache_posts_cmm_log);
-
-                if ($this->o["thumbs_active"] == 1) {
-                    $logs_thumb = GDSRDBCache::get_logs($to_get, $user_id, "cmmthumb", $_SERVER["REMOTE_ADDR"], $this->o["cmm_logged"] != 1, $this->o["cmm_allow_mixed_ip_votes"] == 1);
-                    foreach ($logs_thumb as $id => $value) {
-                        $gdsr_cache_posts_cmm_thumbs_log->set($id, $value == 0);
-                    }
-
-wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
-
-                }
-            }
-        }
-
+        // rendering
         function display_comment($content) {
             global $post, $comment, $userdata;
 
@@ -3284,6 +3274,9 @@ wp_gdsr_dump("CACHE_CMMTHUMBLOG", $gdsr_cache_posts_cmm_thumbs_log);
         }
 
         function render_article($post, $user, $override = array()) {
+            if ($this->o["cached_loading"] == 1)
+                return GDSRRender::rating_loader("asr", $post->ID, "small");
+
             $default_settings = array("style" => $this->o["style"], "style_ie6" => $this->o["style_ie6"], "size" => $this->o["size"], "tpl" => 0, "read_only" => 0);
             $override = shortcode_atts($default_settings, $override);
             if ($override["style"] == "") $override["style"] = $this->o["style"];

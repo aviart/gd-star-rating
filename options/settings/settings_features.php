@@ -1,4 +1,11 @@
 <table class="form-table"><tbody>
+<tr><th scope="row"><?php _e("Cache Support", "gd-star-rating"); ?></th>
+    <td>
+        <input type="checkbox" name="gdsr_cached_loading" id="gdsr_cached_loading"<?php if ($gdsr_options["cached_loading"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cached_loading"><?php _e("Activate support for cache plugins and dynamic loading of data.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
+        <?php _e("This options is designed for use with cache plugins, but it can be activated regardless of that. Ratings will be loaded dynamically using ajax.", "gd-star-rating"); ?>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Voting", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_use_nonce" id="gdsr_use_nonce"<?php if ($gdsr_options["use_nonce"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="use_nonce"><?php _e("Use Nonce with AJAX for improved security.", "gd-star-rating"); ?></label>

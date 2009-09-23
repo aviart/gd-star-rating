@@ -1,6 +1,8 @@
 <?php
 
-    require_once("./config.php");
+    define('STARRATING_AJAX', true);
+
+    require_once(dirname(__FILE__)."/config.php");
     $wpload = get_gdsr_wpload_path();
     require($wpload);
     global $gdsr;
@@ -16,6 +18,7 @@
     header("Content-Type: text/javascript; charset: UTF-8");
     header("Cache-Control: must-revalidate");
 
+    include ($gdsr->plugin_path."code/js/cache_load.php");
     include ($gdsr->plugin_path."code/js/main.php");
     include ($gdsr->plugin_path."code/js/comments.php");
 

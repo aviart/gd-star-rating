@@ -24,9 +24,17 @@ class GDSRRender {
         return $rater;
     }
 
+    function rating_loader($type, $id, $size = "small") {
+        $render = '<div class="gdsrcacheloader gdsrcl'.$size.'" id="gdsrc_'.$type.'_'.$id.'">';
+        $render.= '<strong>GD Star Rating</strong><br />';
+        $render.= '<em>'.__("loading", "gd-star-rating").'...</em>';
+        $render.= '</div>';
+        return $render;
+    }
+
     function rating_wait($loader_id, $rater_length, $typecls, $wait_msg = '', $style = '') {
         $rater_length = $rater_length > 0 ? " width: ".$rater_length."px;" : "";
-        $loader = '<div id="'.$loader_id.'" style="display: none;'.$rater_length.' '.$style.'" class="ratingloader '.$typecls.'">';
+        $loader = '<div id="'.$loader_id.'" style="display: none;'.$rater_length.' '.$style.'" class="ratingloader'.$typecls.'">';
         $loader.= $wait_msg;
         $loader.= '</div>';
         return $loader;
