@@ -134,8 +134,8 @@ Check the widget settings. Most likely problem is with default widget setting to
 
 == Changelog ==
 = 1.6.7 =
-* Basic support for cache plugins
-* Several minor bugs fixed
+* Cache plugins support for post and comment standard rating.
+* Improvements, optimization and bug fixes.
 
 = 1.6.6 =
 * Upgrade database tables by setting the collation

@@ -51,4 +51,3 @@ function value_cmm_rated_standard() {
 function value_cmm_rated_review() {
     return jQuery(".gdsr-cmm-cls-rt").val();
 }
-

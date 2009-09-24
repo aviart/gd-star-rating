@@ -49,7 +49,10 @@
 </div>
 
 <div class="contents">
-<h3>Version 1.6.7 / october 1 2009</h3><ul>
+<h3>Version 1.6.7 / september 25 2009</h3><ul>
+    <li><strong>new</strong> cache plugins support for post and comment standard rating</li>
+    <li><strong>edit</strong> several improvements in rendering</li>
+    <li><strong>edit</strong> optimized javascript rating code</li>
     <li><strong>fix</strong> invalid class for waiting messages</li>
 </ul>
 <h3>Version 1.6.6 / september 22 2009</h3><ul>
@@ -122,87 +125,7 @@
     <li><strong>fix</strong> some minor problems with t2 rendering of comments widget</li>
     <li><strong>fix</strong> builder javascript problems in wordpress 2.8</li>
 </ul>
-<h3>Version 1.5.8 / august 4 2009</h3><ul>
-    <li><strong>new</strong> russian translation thanks to studio xl</li>
-    <li><strong>new</strong> ukrainian translation thanks to Oleksandr Natalenko</li>
-    <li><strong>new</strong> additional indexes to all plugin's database tables</li>
-    <li><strong>new</strong> force using cache even if it's not auto detected</li>
-    <li><strong>new</strong> added some new functions for getting and rendering data</li>
-    <li><strong>fix</strong> problem with inclusion of some javascript helper functions</li>
-    <li><strong>fix</strong> dashboard widget with latest votes in wpmu</li>
-    <li><strong>fix</strong> db queries use of users table causing wpmu problems</li>
-    <li><strong>fix</strong> other minor incompatibilities with wordpressmu and buddypress</li>
-</ul>
-<h3>Version 1.5.7 / july 26 2009</h3><ul>
-    <li><strong>new</strong> function to mirror starrating shortcode</li>
-    <li><strong>new</strong> several new actions for saving votes</li>
-    <li><strong>new</strong> options to allow zero votes from integrated ratings</li>
-    <li><strong>new</strong> rank id template tag for widget and shortcode results</li>
-    <li><strong>fix</strong> minor problems with bayesian sorting for widget and results</li>
-    <li><strong>fix</strong> rendering of bayesian rating results</li>
-    <li><strong>fix</strong> thumbs javascript problem with IE browsers</li>
-    <li><strong>fix</strong> caching prefetch of integration results</li>
-    <li><strong>fix</strong> missing parameters in thumbs integration functions</li>
-    <li><strong>fix</strong> some problems with builder panel and invalid generated function</li>
-    <li><strong>fix</strong> invalid multi rating template displayed on settings panel</li>
-</ul>
-<h3>Version 1.5.6 / july 23 2009</h3><ul>
-    <li><strong>new</strong> rss integration supports thumbs results</li>
-    <li><strong>new</strong> rss integration supports multi ratings results</li>
-    <li><strong>new</strong> post based deleting multi set results</li>
-    <li><strong>new</strong> jquery ui 1.7 styles and datepicker for better wp 2.8 support</li>
-    <li><strong>edit</strong> major overhaul of the trend recalculations</li>
-    <li><strong>edit</strong> tinymce plugin and builder support thumbs</li>
-    <li><strong>edit</strong> results widget supports thumbs ratings datasource</li>
-    <li><strong>edit</strong> top blog widget supports thumbs ratings results</li>
-    <li><strong>edit</strong> graphics generator expanded to support thumbs sets</li>
-    <li><strong>edit</strong> added extra classes to thumbs loaders</li>
-    <li><strong>fix</strong> several problems with trend recalculations for multi results</li>
-    <li><strong>fix</strong> missing german translation for jquery datepicker</li>
-    <li><strong>fix</strong> display some of the data on multi sets panel</li>
-    <li><strong>fix</strong> column sorting on visitors log panel</li>
-    <li><strong>fix</strong> deleting thumbs data from articles panel</li>
-    <li><strong>fix</strong> deleting thumbs data from visitors log</li>
-    <li><strong>fix</strong> deleting thumbs data from users log</li>
-</ul>
-<h3>Version 1.5.5 / july 20 2009</h3><ul>
-    <li><strong>new</strong> cache support for multi rating sets</li>
-    <li><strong>new</strong> auto insert comments outside post or page, but still in the post loop</li>
-    <li><strong>new</strong> three more square shaped loader animations</li>
-    <li><strong>new</strong> another default thumbs set called classical</li>
-    <li><strong>new</strong> articles and comments thumbs waiting loader animations</li>
-    <li><strong>new</strong> few more filters for data prepared for widget rendering</li>
-    <li><strong>edit</strong> expanded article and comment results objects with thumbs data</li>
-    <li><strong>edit</strong> improved and cleaned styles structure of main css file</li>
-    <li><strong>edit</strong> improved latest votes dashboard widget</li>
-    <li><strong>edit</strong> clean up of all admin css files</li>
-    <li><strong>edit</strong> expanded info files and list of filters and actions added</li>
-    <li><strong>fix</strong> problems with theme functions used for rendering widgets</li>
-    <li><strong>fix</strong> theme function for rendering comments thumbs</li>
-    <li><strong>fix</strong> generating css with no thumbs or stars sets selected</li>
-</ul>
-<h3>Version 1.5.4 / july 16 2009</h3><ul>
-    <li><strong>new</strong> dashboard widget with latest votes with filter options</li>
-    <li><strong>new</strong> option to disable thumbs up/down ratings</li>
-    <li><strong>new</strong> show thumbs data and log on the comments panel</li>
-    <li><strong>new</strong> show thumbs data and log on the users panel</li>
-    <li><strong>new</strong> prefetch and cache comment integration results</li>
-    <li><strong>edit</strong> few updates to features and functions info files</li>
-    <li><strong>edit</strong> more improvements to caching and prefetch system</li>
-    <li><strong>fix</strong> loading of main css file for wp older than 2.7</li>
-    <li><strong>fix</strong> rendering of thumbs rating comments text</li>
-    <li><strong>fix</strong> adding default values for categories rules and restrictions</li>
-    <li><strong>fix</strong> users log queries to support thumbs ratings</li>
-    <li><strong>fix</strong> problem with article trends charts rendering</li>
-    <li><strong>fix</strong> missing voted class for blocks that are not active</li>
-    <li><strong>fix</strong> invalid cookies check for articles thumbs ratings</li>
-    <li><strong>fix</strong> cookies not saved or checked for thumbs ratings</li>
-    <li><strong>fix</strong> compression problem with zlib compression already active in php.ini</li>
-    <li><strong>fix</strong> prefetch problem with comments rating not auto inserted</li>
-    <li><strong>fix</strong> extra empty lines on the end of some files</li>
-    <li><strong>fix</strong> several more php notices found on blog pages</li>
-</ul>
-<h3>Version 1.5.3 / july 13 2009</h3>
+<h3>Version 1.5.8 / august 4 2009</h3>
 <ul>
     <li><a href="http://code.google.com/p/gd-star-rating/wiki/ChangeLog">http://code.google.com/p/gd-star-rating/wiki/ChangeLog</a></li>
 </ul>

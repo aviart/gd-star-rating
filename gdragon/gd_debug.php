@@ -2,7 +2,7 @@
 
 /*
 Name:    gdDebugGDSR
-Version: 1.3.0
+Version: 1.4.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/
