@@ -11,6 +11,7 @@
     $gdsr_trends = $gdsr->g->trend;
     $gdst_multis = GDSRDBMulti::get_multis_tinymce();
     $wpv = $gdsr->wp_version;
+    $gdsr->load_translation();
 
 ?>
 
