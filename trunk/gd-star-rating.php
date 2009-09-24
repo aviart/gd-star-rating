@@ -2708,7 +2708,24 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         }
 
         function cached_comments($votes) {
+            $this->c = $rendered = $alls = $postids = array();
 
+            foreach ($votes as $vote) {
+                $settings = explode(".", $vote);
+                $alls[$vote] = $settings;
+                $this->c[$settings[1]] = 1;
+                if (!in_array($settings[1], $postids)) $postids[] = $settings[1];
+            }
+
+            $this->render_wait_comment();
+            foreach ($postids as $post_id) $this->cache_comments($post_id);
+            foreach ($alls as $vote => $settings) {
+                $html = $this->render_comment_actual($settings);
+                $html = str_replace('"', '\"', $html);
+                $rendered[] = '{"id": "gdsrc_'.$vote.'", "html": "'.$html.'"}';
+            }
+
+            return '{ "items": ['.join(", ", $rendered).']}';
         }
         // cache
 
@@ -2790,10 +2807,9 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             return array(
                 $type, $post->ID, $comment->comment_ID, $comment->user_id,
                 $post->post_type == "page" ? "1" : "0", $post->post_author,
-                strtotime($post->post_date), $override["tpl"],
-                $override["read_only"], $override["size"],
-                $this->g->find_stars_id($override["style"]),
-                $this->g->find_stars_id($override["style_ie6"], $user->ID)
+                $user->ID, $override["tpl"], $override["read_only"],
+                $override["size"], $this->g->find_stars_id($override["style"]),
+                $this->g->find_stars_id($override["style_ie6"])
             );
         }
 
@@ -3097,18 +3113,20 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         }
 
         function render_comment_actual($settings) {
-            
-        }
-
-        function render_comment($post, $comment, $user, $override = array()) {
-            $default_settings = array("style" => $this->o["cmm_style"], "style_ie6" => $this->o["cmm_style_ie6"], "size" => $this->o["cmm_size"], "tpl" => 0, "read_only" => 0);
-            $override = shortcode_atts($default_settings, $override);
-            if ($override["style"] == "") $override["style"] = $this->o["cmm_style"];
-            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["cmm_style_ie6"];
-            if ($override["size"] == "") $override["size"] = $this->o["cmm_size"];
-            if ($override["tpl"] == 0) $override["tpl"] = $this->o["default_crb_template"];
-
             if ($this->o["comments_active"] != 1 || $this->is_bot) return "";
+
+            $post_id = $settings[1];
+            $comment_id = $settings[2];
+            $comment_author = $settings[3];
+            $user_id = $settings[5];
+            $post_author = $settings[6];
+            $rd_is_page = $settings[4];
+
+            $override["tpl"] = $settings[7];
+            $override["read_only"] = $settings[8];
+            $override["size"] = $settings[9];
+            $override["style"] = $this->g->stars[$settings[10]]->folder;
+            $override["style_ie6"] = $this->g->stars[$settings[11]]->folder;
 
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
@@ -3121,10 +3139,9 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $rd_unit_count = $this->o["cmm_stars"];
             $rd_unit_width = $override["size"];
             $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
-            $rd_post_id = intval($post->ID);
-            $rd_user_id = intval($user->ID);
-            $rd_comment_id = intval($comment->comment_ID);
-            $rd_is_page = $post->post_type == "page" ? "1" : "0";
+            $rd_post_id = intval($post_id);
+            $rd_user_id = intval($user_id);
+            $rd_comment_id = intval($comment_id);
 
             $post_data = wp_gdget_post($rd_post_id);
             if (count($post_data) == 0) {
@@ -3186,18 +3203,35 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
-            $debug.= $rd_user_id == $comment->user_id ? "A" : "N";
+            $debug.= $rd_user_id == $comment_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
-            $tags_css = array();
-            $tags_css["CMM_CSS_BLOCK"] = $this->o["cmm_class_block"];
-            $tags_css["CMM_CSS_HEADER"] = $this->o["srb_class_header"];
-            $tags_css["CMM_CSS_STARS"] = $this->o["cmm_class_stars"];
-            $tags_css["CMM_CSS_TEXT"] = $this->o["cmm_class_text"];
+            $tags_css = array(
+                "CMM_CSS_BLOCK" => $this->o["cmm_class_block"],
+                "CMM_CSS_HEADER" => $this->o["srb_class_header"],
+                "CMM_CSS_STARS" => $this->o["cmm_class_stars"],
+                "CMM_CSS_TEXT" => $this->o["cmm_class_text"]
+            );
 
             $template_id = $override["tpl"];
             $rating_block = GDSRRenderT2::render_crb($template_id, array("cmm_id" => $rd_comment_id, "class" => "ratecmm", "type" => "c", "votes" => $votes, "score" => $score, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "unit_count" => $rd_unit_count, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "typecls" => "comment", "tags_css" => $tags_css, "header_text" => $this->o["cmm_header_text"], "debug" => $debug, "wait_msg" => $this->loader_comment));
             return $rating_block;
+        }
+
+        function render_comment($post, $comment, $user, $override = array()) {
+            $default_settings = array("style" => $this->o["cmm_style"], "style_ie6" => $this->o["cmm_style_ie6"], "size" => $this->o["cmm_size"], "tpl" => 0, "read_only" => 0);
+            $override = shortcode_atts($default_settings, $override);
+            if ($override["style"] == "") $override["style"] = $this->o["cmm_style"];
+            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["cmm_style_ie6"];
+            if ($override["size"] == "") $override["size"] = $this->o["cmm_size"];
+            if ($override["tpl"] == 0) $override["tpl"] = $this->o["default_crb_template"];
+
+            $elements = $this->rating_loader_elements_comment($post, $comment, $user, $override, "csr");
+
+            if ($this->o["cached_loading"] == 1)
+                return GDSRRender::rating_loader(join(".", $elements), "small");
+            else
+                return $this->render_comment_actual($elements);
         }
 
         function render_thumb_article($post, $user, $override = array()) {
@@ -3337,8 +3371,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $override["size"] = $settings[7];
             $override["style"] = $this->g->stars[$settings[8]]->folder;
             $override["style_ie6"] = $this->g->stars[$settings[9]]->folder;
-            wp_gdsr_dump("X", $override);
-            wp_gdsr_dump("X", $this->g->stars);
+
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
             if ($this->override_readonly_standard) $allow_vote = false;
