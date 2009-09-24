@@ -1434,13 +1434,7 @@ if (!class_exists('GDStarRating')) {
                     $this->extra_folders = $this->o["cache_forced"] == 1 || GDSRHelper::create_folders($this->wp_version);
             }
 
-            if (is_admin()) {
-                $this->l = get_locale();
-                if(!empty($this->l)) {
-                    $moFile = $this->plugin_path."/languages/gd-star-rating-".$this->l.".mo";
-                    if (@file_exists($moFile) && is_readable($moFile)) load_textdomain('gd-star-rating', $moFile);
-                }
-            }
+            if (is_admin()) $this->load_translation();
 
             $this->is_cached = $this->o["cache_active"];
             $this->is_ie6 = $this->o["disable_ie6_check"] == 1 ? false : is_msie6();
@@ -1452,6 +1446,14 @@ if (!class_exists('GDStarRating')) {
                     $this->o["mur_review_set"] = $set[0]->multi_id;
                     update_option('gd-star-rating', $this->o);
                 }
+            }
+        }
+
+        function load_translation() {
+            $this->l = get_locale();
+            if(!empty($this->l)) {
+                $moFile = $this->plugin_path."/languages/gd-star-rating-".$this->l.".mo";
+                if (@file_exists($moFile) && is_readable($moFile)) load_textdomain('gd-star-rating', $moFile);
             }
         }
 
