@@ -6,17 +6,6 @@
         <?php _e("This options is designed for use with cache plugins, but it can be activated regardless of that. Ratings will be loaded dynamically using ajax.", "gd-star-rating"); ?>
     </td>
 </tr>
-<tr><th scope="row"><?php _e("Voting", "gd-star-rating"); ?></th>
-    <td>
-        <input type="checkbox" name="gdsr_use_nonce" id="gdsr_use_nonce"<?php if ($gdsr_options["use_nonce"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="use_nonce"><?php _e("Use Nonce with AJAX for improved security.", "gd-star-rating"); ?></label>
-        <br />
-        <input type="checkbox" name="gdsr_ajax_jsonp" id="gdsr_ajax_jsonp"<?php if ($gdsr_options["ajax_jsonp"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ajax_jsonp"><?php _e("Use AJAX cross-domain calls. Enable only if your website URL is different from actual URL.", "gd-star-rating"); ?></label>
-        <div class="gdsr-table-split"></div>
-        <input type="checkbox" name="gdsr_ip_filtering" id="gdsr_ip_filtering"<?php if ($gdsr_options["ip_filtering"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ip_filtering"><?php _e("Use banned IP's lists to filter out visitors.", "gd-star-rating"); ?></label>
-        <br />
-        <input type="checkbox" name="gdsr_ip_filtering_restrictive" id="gdsr_ip_filtering_restrictive"<?php if ($gdsr_options["ip_filtering_restrictive"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ip_filtering_restrictive"><?php _e("Don't even show rating stars to visitors comming from banned IP's.", "gd-star-rating"); ?></label>
-    </td>
-</tr>
 <tr><th scope="row"><?php _e("Plugin Features", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
@@ -68,13 +57,6 @@
             </tr>
         </table>
         <?php _e("For list of supported charsets visit: ", "gd-star-rating"); ?><a href="http://www.php.net/manual/en/function.htmlentities.php" target="_blank">http://www.php.net/manual/en/function.htmlentities.php</a>
-    </td>
-</tr>
-<tr><th scope="row"><?php _e("Rating Log", "gd-star-rating"); ?></th>
-    <td>
-        <input type="checkbox" name="gdsr_save_user_agent" id="gdsr_save_user_agent"<?php if ($gdsr_options["save_user_agent"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_save_user_agent"><?php _e("Log user agent (browser) information.", "gd-star-rating"); ?></label>
-        <br />
-        <input type="checkbox" name="gdsr_save_cookies" id="gdsr_save_cookies"<?php if ($gdsr_options["save_cookies"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_save_cookies"><?php _e("Save cookies with ratings.", "gd-star-rating"); ?></label>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Internet Explorer", "gd-star-rating"); ?></th>

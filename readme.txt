@@ -133,6 +133,10 @@ Check the widget settings. Most likely problem is with default widget setting to
 7. Example multi rating block
 
 == Changelog ==
+= 1.6.8 =
+* Cache plugins support for thumbs rating.
+* New security options and bug fixes.
+
 = 1.6.7 =
 * Cache plugins support for post and comment standard rating.
 * Improvements, optimization and bug fixes.

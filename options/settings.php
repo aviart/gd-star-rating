@@ -40,6 +40,7 @@
 <div id="gdsr_tabs" class="gdsrtabs">
 <ul>
     <li><a href="#fragment-7"><span><?php _e("Features", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-5"><span><?php _e("Security", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-9"><span><?php _e("Advanced", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-6"><span><?php _e("Integration", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-2"><span><?php _e("Posts And Pages", "gd-star-rating"); ?></span></a></li>
@@ -52,10 +53,12 @@
 <div id="fragment-7">
 <?php include STARRATING_PATH."options/settings/settings_features.php"; ?>
 </div>
+<div id="fragment-5">
+<?php include STARRATING_PATH."options/settings/settings_security.php"; ?>
+</div>
 <div id="fragment-9">
 <?php include STARRATING_PATH."options/settings/settings_advanced.php"; ?>
 <?php include STARRATING_PATH."options/settings/settings_administration.php"; ?>
-<?php include STARRATING_PATH."options/settings/settings_bots.php"; ?>
 </div>
 <div id="fragment-6">
 <?php include STARRATING_PATH."options/settings/settings_integration.php"; ?>

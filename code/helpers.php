@@ -425,6 +425,9 @@ class GDSRHelper {
     }
 
     function render_dash_widget_vote($data, $cls = "", $id = "") {
+        global $userdata, $gdsr;
+        $user_level = intval($userdata->user_level);
+
         echo '<div id="gdsr-latest-votes'.$id.'"'.($cls != "" ? ' class="'.$cls.'"' : '').'>';
         $first = true;
         $tr_class = "";
@@ -475,7 +478,12 @@ class GDSRHelper {
                 <?php echo get_avatar($row->user_email, 32); ?>
                 <h5><?php echo '<span style="color: #CC0000">'.$votevl.'</span>'; _e("from", "gd-star-rating"); ?> <strong style="color: <?php echo $row->user_id == 0 ? "blue" : "green"; ?>"><?php echo $user; ?></strong> <?php _e("on", "gd-star-rating"); ?> <?php echo $voteon; ?></h5>
                 <p class="datx"><?php echo $row->voted; ?></p>
-                <p class="linx"><strong><?php _e("ip", "gd-star-rating"); ?>:</strong> <span style="color: blue"><?php echo $row->ip; ?></span> | <strong><?php _e("log", "gd-star-rating"); ?>:</strong> <?php echo $loguser; ?>, <?php echo $pocmlog; ?><?php if ($postlog != "") echo ", "; echo $postlog; ?></p>
+                <p class="linx">
+                    <?php if ($user_level >= intval($gdsr->o["security_showip_user_level"])) { ?>
+                    <strong><?php _e("ip", "gd-star-rating"); ?>:</strong> <span style="color: blue"><?php echo $row->ip; ?></span> |
+                    <?php } ?>
+                    <strong><?php _e("log", "gd-star-rating"); ?>:</strong> <?php echo $loguser; ?>, <?php echo $pocmlog; ?><?php if ($postlog != "") echo ", "; echo $postlog; ?>
+                </p>
                 <div class="clear"></div>
             </div>
 
