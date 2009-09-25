@@ -32,6 +32,14 @@ class GDSRRender {
         return $render;
     }
 
+    function bot_response() {
+        $render = '<div class="gdsrcacheloader gdsrclsmall">';
+        $render.= '<a rel="rating" href="http://www.gdstarrating.com/" title="GD Star Rating: a WordPress rating system"><strong>GD Star Rating</strong><br />';
+        $render.= '<em>a WordPress rating system</em>';
+        $render.= '</div>';
+        return $render;
+    }
+
     function rating_wait($loader_id, $rater_length, $typecls, $wait_msg = '', $style = '') {
         $rater_length = $rater_length > 0 ? " width: ".$rater_length."px;" : "";
         $loader = '<div id="'.$loader_id.'" style="display: none;'.$rater_length.' '.$style.'" class="ratingloader'.$typecls.'">';

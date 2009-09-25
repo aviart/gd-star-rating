@@ -2,12 +2,12 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.6.7",
+        "version" => "1.6.8",
         "revision" => 0,
-        "date" => "2009.09.25.",
+        "date" => "2009.09.27.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 924,
+        "build" => 925,
         "admin_views" => 0,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,
@@ -166,8 +166,9 @@ class GDSRDefaults {
         "admin_placement" => 1,
         "admin_defaults" => 1,
         "admin_import" => 1,
+        "admin_export" => 1,
         "admin_setup" => 1,
-        "admin_ips" => 0,
+        "admin_ips" => 1,
         "author_vote" => 0,
         "cmm_author_vote" => 0,
         "allow_mixed_ip_votes" => 0,
