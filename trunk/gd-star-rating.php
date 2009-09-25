@@ -843,7 +843,6 @@ if (!class_exists('GDStarRating')) {
             add_action('wp_head', array(&$this, 'wp_head'));
             add_action('widgets_init', array(&$this, 'widgets_init'));
             add_action('loop_start', array(&$this, 'loop_start'));
-            add_filter('comments_array', array(&$this, 'comments_array'), 10, 2);
 
             add_filter('query_vars', array($this->q, 'query_vars'));
             add_action('pre_get_posts', array($this->q, 'pre_get_posts'));
@@ -854,16 +853,20 @@ if (!class_exists('GDStarRating')) {
                     add_action('submitpage_box', array(&$this, 'editbox_post'));
                 }
             }
+            if ($this->o["cached_loading"] == 0)
+                add_filter('comments_array', array(&$this, 'comments_array'), 10, 2);
             if ($this->o["integrate_post_edit_mur"] == 1 || $this->o["integrate_post_edit"] == 1)
                 add_action('save_post', array(&$this, 'saveedit_post'));
             if ($this->o["integrate_dashboard"] == 1) {
                 add_action('wp_dashboard_setup', array(&$this, 'add_dashboard_widget'));
                 if (!function_exists('wp_add_dashboard_widget')) add_filter('wp_dashboard_widgets', array(&$this, 'add_dashboard_widget_filter'));
             }
+
             add_filter('comment_text', array(&$this, 'display_comment'));
             add_filter('the_content', array(&$this, 'display_article'));
             add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
             add_filter('comment_post', array(&$this, 'comment_save'));
+
             if ($this->o["comments_review_active"] == 1) {
                 if ($this->o["integrate_comment_edit"] == 1) {
                     if ($this->wp_version < 27) add_action('submitcomment_box', array(&$this, 'editbox_comment'));
@@ -979,28 +982,37 @@ if (!class_exists('GDStarRating')) {
         }
 
         function add_dashboard_widget() {
-            if (!function_exists('wp_add_dashboard_widget')) {
-                if ($this->o["integrate_dashboard_latest"] == 1)
-                    wp_register_sidebar_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
-                if ($this->o["integrate_dashboard_chart"] == 1)
-                    wp_register_sidebar_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
-            } else {
-                if ($this->o["integrate_dashboard_latest"] == 1)
-                    wp_add_dashboard_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'));
-                if ($this->o["integrate_dashboard_chart"] == 1)
-                    wp_add_dashboard_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'));
+            global $userdata;
+            $user_level = intval($userdata->user_level);
+
+            if ($user_level >= intval($this->o["security_showdashboard_user_level"])) {
+                if (!function_exists('wp_add_dashboard_widget')) {
+                    if ($this->o["integrate_dashboard_latest"] == 1)
+                        wp_register_sidebar_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
+                    if ($this->o["integrate_dashboard_chart"] == 1)
+                        wp_register_sidebar_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
+                } else {
+                    if ($this->o["integrate_dashboard_latest"] == 1)
+                        wp_add_dashboard_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'));
+                    if ($this->o["integrate_dashboard_chart"] == 1)
+                        wp_add_dashboard_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'));
+                }
             }
         }
 
         function add_dashboard_widget_filter($widgets) {
-            global $wp_registered_widgets;
+            global $userdata;
+            $user_level = intval($userdata->user_level);
 
-            if (!isset($wp_registered_widgets["dashboard_gdstarrating_chart"]) && !isset($wp_registered_widgets["dashboard_gdstarrating_latest"])) return $widgets;
+            if ($user_level >= intval($this->o["security_showdashboard_user_level"])) {
+                global $wp_registered_widgets;
 
-            if ($this->o["integrate_dashboard_latest"] == 1)
-                array_splice($widgets, 2, 0, "dashboard_gdstarrating_latest");
-            if ($this->o["integrate_dashboard_chart"] == 1)
-                array_splice($widgets, 2, 0, "dashboard_gdstarrating_chart");
+                if (!isset($wp_registered_widgets["dashboard_gdstarrating_chart"]) && !isset($wp_registered_widgets["dashboard_gdstarrating_latest"])) return $widgets;
+                if ($this->o["integrate_dashboard_latest"] == 1)
+                    array_splice($widgets, 2, 0, "dashboard_gdstarrating_latest");
+                if ($this->o["integrate_dashboard_chart"] == 1)
+                    array_splice($widgets, 2, 0, "dashboard_gdstarrating_chart");
+            }
             return $widgets;
         }
 
@@ -2889,7 +2901,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                     (is_archive() && $this->o["display_archive"] == 1) ||
                     (is_search() && $this->o["display_search"] == 1)
                 ) {
-                    $this->cache_posts($user_id);
+                    if ($this->o["cached_loading"] == 0) $this->cache_posts($user_id);
                     $rendered = $this->render_article($post, $userdata);
                     if ($this->o["auto_display_position"] == "top" || $this->o["auto_display_position"] == "both")
                         $content = $rendered.$content;
@@ -2905,7 +2917,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                         (is_archive() && $this->o["thumb_display_archive"] == 1) ||
                         (is_search() && $this->o["thumb_display_search"] == 1)
                     ) {
-                        $this->cache_posts($user_id);
+                        if ($this->o["cached_loading"] == 0) $this->cache_posts($user_id);
                         $rendered = $this->render_thumb_article($post, $userdata);
                         if ($this->o["thumb_auto_display_position"] == "top" || $this->o["thumb_auto_display_position"] == "both")
                             $content = $rendered.$content;
@@ -3030,15 +3042,21 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             return $rating_block;
         }
 
-        function render_thumb_comment($post, $comment, $user, $override = array()) {
-            $default_settings = array("style" => $this->o["thumb_cmm_style"], "style_ie6" => $this->o["thumb_cmm_style_ie6"], "size" => $this->o["thumb_cmm_size"], "tpl" => 0, "read_only" => 0);
-            $override = shortcode_atts($default_settings, $override);
-            if ($override["style"] == "") $override["style"] = $this->o["thumb_cmm_style"];
-            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["thumb_cmm_style_ie6"];
-            if ($override["size"] == "") $override["size"] = $this->o["thumb_cmm_size"];
+        function render_thumb_comment_actual($settings) {
+            if ($this->o["comments_active"] != 1 || $this->is_bot) return "";
 
-            if ($this->o["comments_active"] != 1) return "";
-            if ($this->is_bot) return "";
+            $post_id = $settings[1];
+            $comment_id = $settings[2];
+            $comment_author = $settings[3];
+            $user_id = $settings[5];
+            $post_author = $settings[6];
+            $rd_is_page = $settings[4];
+
+            $override["tpl"] = $settings[7];
+            $override["read_only"] = $settings[8];
+            $override["size"] = $settings[9];
+            $override["style"] = $this->g->stars[$settings[10]]->folder;
+            $override["style_ie6"] = $this->g->stars[$settings[11]]->folder;
 
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
@@ -3050,10 +3068,9 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
             $rd_unit_width = $override["size"];
             $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
-            $rd_post_id = intval($post->ID);
-            $rd_user_id = intval($user->ID);
-            $rd_comment_id = intval($comment->comment_ID);
-            $rd_is_page = $post->post_type == "page" ? "1" : "0";
+            $rd_post_id = intval($post_id);
+            $rd_user_id = intval($user_id);
+            $rd_comment_id = intval($comment_id);
 
             $post_data = wp_gdget_post($rd_post_id);
             if (count($post_data) == 0) {
@@ -3072,7 +3089,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             }
 
             if ($allow_vote) {
-                if ($this->o["cmm_author_vote"] == 1 && $rd_user_id == $comment->user_id && $rd_user_id > 0) {
+                if ($this->o["cmm_author_vote"] == 1 && $rd_user_id == $comment_author && $rd_user_id > 0) {
                     $allow_vote = false;
                     $dbg_allow = "A";
                 }
@@ -3119,7 +3136,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
-            $debug.= $rd_user_id == $comment->user_id ? "A" : "N";
+            $debug.= $rd_user_id == $comment_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
             $tags_css = array();
@@ -3128,11 +3145,25 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $tags_css["CMM_CSS_STARS"] = $this->o["cmm_class_stars"];
             $tags_css["CMM_CSS_TEXT"] = $this->o["cmm_class_text"];
 
-            if ($override["tpl"] > 0) $template_id = $override["tpl"];
-            else $template_id = $this->o["default_tcb_template"];
-
+            $template_id = $override["tpl"];
             $rating_block = GDSRRenderT2::render_tcb($template_id, array("comment_id" => $rd_comment_id, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "tags_css" => $tags_css, "header_text" => $this->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_comment_thumb));
             return $rating_block;
+        }
+
+        function render_thumb_comment($post, $comment, $user, $override = array()) {
+            $default_settings = array("style" => $this->o["thumb_cmm_style"], "style_ie6" => $this->o["thumb_cmm_style_ie6"], "size" => $this->o["thumb_cmm_size"], "tpl" => 0, "read_only" => 0);
+            $override = shortcode_atts($default_settings, $override);
+            if ($override["style"] == "") $override["style"] = $this->o["thumb_cmm_style"];
+            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["thumb_cmm_style_ie6"];
+            if ($override["size"] == "") $override["size"] = $this->o["thumb_cmm_size"];
+            if ($override["tpl"] == 0) $override["tpl"] = $this->o["default_srb_template"];
+
+            $elements = $this->rating_loader_elements_comment($post, $comment, $user, $override, "ctr");
+
+            if ($this->o["cached_loading"] == 1)
+                return GDSRRender::rating_loader(join(".", $elements), "small");
+            else
+                return $this->render_thumb_comment_actual($elements);
         }
 
         function render_comment_actual($settings) {
