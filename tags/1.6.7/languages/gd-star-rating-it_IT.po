@@ -1,0 +1,5268 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GD Star Rating in italiano\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-22 02:12+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Gianni Diurno (aka gidibao) <gidibao@gmail.com>\n"
+"Language-Team: Gianni Diurno | http://gidibao.net/ <gidibao@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: C:\\Documents and Settings\\Gianni\\Desktop\\gd-star-rating\\gd-star-rating\n"
+"X-Poedit-SearchPath-0: C:\\Documents and Settings\\Gianni\\Desktop\\gd-star-rating\\gd-star-rating\n"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:659
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:660
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:669
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:670
+msgid "Multi Ratings Review"
+msgstr "Revisione valutazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:677
+msgid "Front Page"
+msgstr "Pagina principale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:678
+msgid "My Ratings"
+msgstr "Panoramica"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:679
+msgid "Builder"
+msgstr "Allestimento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:681
+msgid "Articles"
+msgstr "Articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:682
+msgid "Categories"
+msgstr "Categorie"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:683
+msgid "All Users"
+msgstr "Utenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:684
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:915
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:685
+msgid "Graphics"
+msgstr "Grafica"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:686
+msgid "Tools"
+msgstr "Strumenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:687
+msgid "T2 Templates"
+msgstr "T2 Templates"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:690
+msgid "Multi Sets"
+msgstr "Impostazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:692
+msgid "IP's"
+msgstr "IP"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:694
+msgid "Import"
+msgstr "Importa"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:698
+msgid "Setup"
+msgstr "Setup"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:700
+msgid "Security"
+msgstr "Sicurezza"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:701
+msgid "Wizard"
+msgstr "Wizard"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:983
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:988
+msgid "Latest"
+msgstr "Recenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:985
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:990
+msgid "Chart"
+msgstr "Classifica"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:1525
+msgid "UNINSTALL"
+msgstr "DISINSTALLA"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:1626
+msgid "articles records from log table removed."
+msgstr "i dati degli articoli sono stati rimossi dalla tabella del registro."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:1628
+msgid "comments records from log table removed."
+msgstr "i dati dei commenti sono stati rimossi dalla tabella del registro."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:1632
+msgid "articles records from trends log table removed."
+msgstr "i dati degli articoli sono stati rimossi dalla tabella del registro tendenze."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:1634
+msgid "comments records from trends log table removed."
+msgstr "i dati dei commenti sono stati rimossi dalla tabella del registro tendenze."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:1638
+msgid "dead articles records from articles table."
+msgstr "i dati degli articoli inesistenti sono stati rimossi dalla tabella degli articoli."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:1640
+msgid "post revisions records from articles table."
+msgstr "i dati delle revisioni articoli sono stati rimossi dalla tabella degli articoli."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:1642
+msgid "dead comments records from comments table."
+msgstr "i dati dei commenti inesistenti sono stati rimossi dalla tabella dei commenti."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:1646
+msgid "dead articles records from multi ratings tables."
+msgstr "i dati degli articoli sono stati rimossi dalla tabella delle valutazioni multiple."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gd-star-rating.php:1648
+msgid "post revisions records from multi ratings tables."
+msgstr "i dati della revisione articolo sono stati rimossi dalla tabella delle valutazioni multiple."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/charts/chart_pie_votes_summary.php:38
+msgid "Chart with votes distribution"
+msgstr "Grafico con la distribuzione dei voti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:237
+msgid "No moderation"
+msgstr "Nessuna moderazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:238
+msgid "Moderate visitors"
+msgstr "Moderazione per i visitatori"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:239
+msgid "Moderate users"
+msgstr "Moderazione per gli utenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:240
+msgid "Moderate all"
+msgstr "Moderazione globale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:241
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:256
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:270
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:293
+msgid "Inherit from Category"
+msgstr "Ereditato dalla categoria"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:242
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:257
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:271
+msgid "Inherit from Parent"
+msgstr "Ereditato dal genitore"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:251
+msgid "Everyone can vote"
+msgstr "Tutti possono votare"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:252
+msgid "Only visitors"
+msgstr "Solo i visitatori"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:253
+msgid "Only users"
+msgstr "Solo gli utenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:254
+msgid "Locked"
+msgstr "Chiuso"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:255
+msgid "Locked and hidden"
+msgstr "Chiuso e nascosto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:267
+msgid "No timer"
+msgstr "Nessun timer"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:268
+msgid "Countdown timer"
+msgstr "Conto alla rovescia"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:269
+msgid "Date limited"
+msgstr "Limitazione data"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:279
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:381
+msgid "Bottom"
+msgstr "Al fondo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:280
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:379
+msgid "Top"
+msgstr "In cima"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:281
+msgid "Top and Bottom"
+msgstr "Al fondo ed in cima"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:290
+msgid "Hours"
+msgstr "Ore"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:291
+msgid "Days"
+msgstr "Giorni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:292
+msgid "Months"
+msgstr "Mesi"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:301
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:314
+msgid "Mini"
+msgstr "Mini"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:302
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:315
+msgid "Icon"
+msgstr "Icona"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:303
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:316
+msgid "Small"
+msgstr "Piccola"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:304
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:317
+msgid "Standard"
+msgstr "Standard"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:305
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:318
+msgid "Medium"
+msgstr "Media"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:306
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:319
+msgid "Big"
+msgstr "Grande"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:335
+msgid "Stars and text"
+msgstr "Star e testo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:336
+msgid "Stars only"
+msgstr "Solo star"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:337
+msgid "Text only"
+msgstr "Solo testo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:345
+msgid "No alignment"
+msgstr "Nessun allineamento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:346
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:383
+msgid "Left"
+msgstr "a sinistra"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:347
+msgid "Center"
+msgstr "centrato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:348
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:385
+msgid "Right"
+msgstr "a destra"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:356
+msgid "No Animation"
+msgstr "Nessuna animazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:378
+msgid "Always hide"
+msgstr "Nascondi sempre"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:380
+msgid "Top (hide if empty)"
+msgstr "Sopra (nascondi se vuoto)"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:382
+msgid "Bottom (hide if empty)"
+msgstr "Al fondo (nascondi se vuoto)"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:384
+msgid "Left (hide if empty)"
+msgstr "A sinistra (nascondi se vuoto)"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:386
+msgid "Right (hide if empty)"
+msgstr "A destra (nascondi se vuoto)"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:432
+msgid "visitor"
+msgstr "visitatore"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:436
+msgid "Thumb"
+msgstr "Thumb"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:443
+msgid "Multi Vote"
+msgstr "Voto multiplo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:445
+msgid "Vote"
+msgstr "Voto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:452
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:461
+msgid "post"
+msgstr "articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:456
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:458
+msgid "comment"
+msgstr "commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:456
+msgid "for"
+msgstr "per"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:466
+msgid "visitors"
+msgstr "visitatori"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:469
+msgid "user"
+msgstr "utente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:476
+msgid "from"
+msgstr "da"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:476
+msgid "on"
+msgstr "il"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:478
+msgid "ip"
+msgstr "ip"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/helpers.php:478
+msgid "log"
+msgstr "registro"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/import.php:6
+msgid "Data not imported."
+msgstr "I dati non sono stati importati."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/import.php:10
+msgid "Plugin not available for import."
+msgstr "Il plugin non é disponibile per l'importazione."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/import.php:56
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/import.php:75
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/import.php:135
+msgid "Data imported."
+msgstr "I dati sono stati importati"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/widgets_wp28.php:6
+msgid "Customized rating results list."
+msgstr "Lista dei risultati valutazione personalizzata."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/widgets_wp28.php:107
+msgid "Overall blog rating results."
+msgstr "Risultati valutazione complessiva blog."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/widgets_wp28.php:149
+msgid "Current post comments rating."
+msgstr "Valutazione commenti articolo in corso."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1211
+msgid "Show all dates"
+msgstr "Mostra tutti i dati"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1239
+msgid "All users and visitors"
+msgstr "Tutti gli utenti e visitatori"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1240
+msgid "Visitors Only"
+msgstr "Solo visitatori"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1255
+msgid "All categories"
+msgstr "Tutte le categorie"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1412
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1415
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1418
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1421
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1425
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1448
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1451
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1454
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1457
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1460
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1463
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1555
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1558
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1561
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1564
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1568
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1591
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1594
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1597
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1600
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1603
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1607
+msgid "articles"
+msgstr "articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1412
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1430
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1448
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1468
+msgid "inherited"
+msgstr "ereditato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1415
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1433
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1558
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1576
+msgid "all"
+msgstr "tutti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1421
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1439
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1460
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1480
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1544
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1545
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1564
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1582
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1603
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1624
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1698
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1699
+msgid "users"
+msgstr "utenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1425
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1443
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1568
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1586
+msgid "free"
+msgstr "esente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1430
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1433
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1436
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1439
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1443
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1468
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1471
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1474
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1477
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1480
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1483
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1573
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1576
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1579
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1582
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1586
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1612
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1615
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1618
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1621
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1624
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1628
+msgid "comments"
+msgstr "commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1451
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1471
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1594
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1615
+msgid "hidden"
+msgstr "nascosto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1454
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1474
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1597
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1618
+msgid "locked"
+msgstr "chiuso"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1463
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1483
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1607
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1628
+msgid "everyone"
+msgstr "tutti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1543
+msgid "rating"
+msgstr "valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1543
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1697
+msgid "thumbs"
+msgstr "thumbs"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1555
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1573
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1591
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1612
+msgid "parent"
+msgstr "genitore"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/db/main.php:1697
+msgid "votes"
+msgstr "voti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/render.php:1140
+msgid "(no title)"
+msgstr "(nessun titolo)"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:5
+msgid "Element Word Votes"
+msgstr "Elemento voti parola"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:6
+msgid "Singular"
+msgstr "Singolare"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:7
+msgid "Plural"
+msgstr "Plurale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:10
+msgid "Element For Alternating Table Rows"
+msgstr "Elemento tabella righe alternate"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:11
+msgid "Odd"
+msgstr "Dispari"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:12
+msgid "Even"
+msgstr "Pari"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:15
+msgid "Standard Ratings Text"
+msgstr "Testo valutazione standard"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:17
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:42
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:87
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:109
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:184
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:217
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:310
+msgid "article rating"
+msgstr "valutazione articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:18
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:43
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:88
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:110
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:185
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:218
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:231
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:301
+msgid "maximum rating value"
+msgstr "valore max valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:19
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:46
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:89
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:111
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:188
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:220
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:312
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:352
+msgid "total votes for article"
+msgstr "totale dei voti articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:20
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:60
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:90
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:112
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:202
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:300
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:309
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:349
+msgid "post/page id"
+msgstr "ID articolo/pagina"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:21
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:65
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:78
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:92
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:103
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:113
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:207
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:223
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:242
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:281
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:315
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:355
+msgid "singular/plural word votes"
+msgstr "voti parola singolare/plurale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:22
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:114
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:316
+msgid "remaining years"
+msgstr "anni residui"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:23
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:115
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:317
+msgid "remaining months"
+msgstr "mesi residui"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:24
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:116
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:318
+msgid "remaining days"
+msgstr "giorni residui"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:25
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:117
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:319
+msgid "remaining hours"
+msgstr "ore residue"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:26
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:118
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:320
+msgid "remaining minutes"
+msgstr "minuti residui"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:27
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:119
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:321
+msgid "remaining seconds"
+msgstr "secondi residui"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:28
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:120
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:322
+msgid "end voting date"
+msgstr "data fine votazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:29
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:121
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:323
+msgid "total remaining days"
+msgstr "totale giorni residui"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:30
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:122
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:324
+msgid "total remaining hours"
+msgstr "totale ore residue"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:31
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:123
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:325
+msgid "total remaining minutes"
+msgstr "totale minuti residui"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:32
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:79
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:124
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:326
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:356
+msgid "saved vote value"
+msgstr "valore voto salvato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:33
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:80
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:93
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:104
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:125
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:154
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:166
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:178
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:224
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:256
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:263
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:272
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:282
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:289
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:296
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:304
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:327
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:357
+msgid "Normal"
+msgstr "Normale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:34
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:126
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:328
+msgid "Time Restricted Active"
+msgstr "Limitazione tempo attiva"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:35
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:127
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:329
+msgid "Time Restricted Closed"
+msgstr "Limitazione tempo chiusa"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:36
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:81
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:128
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:330
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:358
+msgid "Vote Saved"
+msgstr "Il voto é stato salvato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:39
+msgid "Standard Ratings Results"
+msgstr "Risultati valutazione standard"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:44
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:186
+msgid "article review"
+msgstr "valutazione articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:45
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:187
+msgid "maximum review value"
+msgstr "valore max valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:47
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:189
+msgid "title"
+msgstr "titolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:48
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:190
+msgid "clean name"
+msgstr "svuota nome"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:49
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:191
+msgid "taxonomy"
+msgstr "tassonomia"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:50
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:192
+msgid "url to post/page"
+msgstr "URL articolo/pagina"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:51
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:86
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:160
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:172
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:193
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:235
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:253
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:254
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:255
+msgid "rating stars"
+msgstr "Star valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:52
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:194
+msgid "rating thumb"
+msgstr "Thumb valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:53
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:195
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:219
+msgid "bayesian estimate mean rating"
+msgstr "valutazione media stima bayesiana"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:54
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:196
+msgid "bayesian estimate mean rating stars"
+msgstr "Star valutazione media stima bayesiana"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:55
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:197
+msgid "article rating trend"
+msgstr "tendenza valutazione articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:56
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:198
+msgid "article voting trend"
+msgstr "tendenza votazione articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:57
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:199
+msgid "article review stars"
+msgstr "Star valutazione articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:58
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:200
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:221
+msgid "number of posts/pages"
+msgstr "numero di articoli/pagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:59
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:201
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:237
+msgid "results rank id"
+msgstr "id risultati classificazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:61
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:203
+msgid "image for the post/page"
+msgstr "immagine articolo/pagina"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:62
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:204
+msgid "short post/page excerpt"
+msgstr "riassunto breve articolo/pagina"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:63
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:205
+msgid "name of the post/page author"
+msgstr "nome autore articolo/pagina"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:64
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:206
+msgid "url to authors archive"
+msgstr "URL archivio autori"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:66
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:137
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:208
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:243
+msgid "class for alternating row class"
+msgstr "classe per la classe delle righe alternate"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:67
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:209
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:244
+msgid "auto generated row classes"
+msgstr "Classi delle righe auto-generate"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:68
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:210
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:245
+msgid "Header"
+msgstr "Header"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:69
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:138
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:211
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:246
+msgid "Item"
+msgstr "Termine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:70
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:212
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:247
+msgid "Footer"
+msgstr "Footer"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:73
+msgid "Comments Ratings Text"
+msgstr "Testo valutazione commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:75
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:98
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:230
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:261
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:277
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:350
+msgid "comment rating"
+msgstr "valutazione commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:76
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:99
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:262
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:269
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:278
+msgid "maximum comment rating value"
+msgstr "valore max valutazione commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:77
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:232
+msgid "total votes for comment"
+msgstr "totale voti commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:84
+msgid "Standard RSS Rating Block"
+msgstr "Blocco standard RSS valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:91
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:159
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:171
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:251
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:252
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:337
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:366
+msgid "rating header text"
+msgstr "testo header valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:96
+msgid "Comments Aggregated Rating"
+msgstr "Valutazione commenti aggregati"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:100
+msgid "total comments"
+msgstr "totale dei commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:101
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:279
+msgid "total votes for all comment"
+msgstr "totale voti per tutti i commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:102
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:260
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:280
+msgid "comment rating stars"
+msgstr "Star valutazione commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:107
+msgid "Multi Ratings Text"
+msgstr "Testo valutazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:131
+msgid "Multi Ratings Stars"
+msgstr "Star valutazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:133
+msgid "single element name"
+msgstr "Nome elemento singolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:134
+msgid "single element id"
+msgstr "ID elemento singolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:135
+msgid "single element stars"
+msgstr "Stars elemento singolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:136
+msgid "single element value"
+msgstr "valore elemento singolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:141
+msgid "Multi Ratings Block"
+msgstr "Blocco valutazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:144
+msgid "mulit rating header text"
+msgstr "Testo header valutazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:145
+msgid "multi rating text"
+msgstr "testo valutazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:146
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:268
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:287
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:294
+msgid "multi rating stars"
+msgstr "Star valutazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:147
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:162
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:174
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:288
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:295
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:339
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:367
+msgid "css class for whole block"
+msgstr "Classe CSS per l'intero blocco"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:148
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:163
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:175
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:340
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:368
+msgid "css class for header"
+msgstr "Classe CSS per la header"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:149
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:150
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:165
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:177
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:342
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:370
+msgid "css class for rating text"
+msgstr "Classe CSS per il testo di valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:151
+msgid "rating button"
+msgstr "Pulsante valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:152
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:270
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:302
+msgid "average rating"
+msgstr "media valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:153
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:271
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:303
+msgid "average rating stars"
+msgstr "Star media valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:157
+msgid "Standard Ratings Block"
+msgstr "Blocco standard valutazioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:161
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:173
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:338
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:365
+msgid "rating text"
+msgstr "testo valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:164
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:176
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:341
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:369
+msgid "css class for stars"
+msgstr "Classe CSS per le star"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:169
+msgid "Comments Ratings Block"
+msgstr "Blocco valutazione commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:181
+msgid "Widget Star Rating"
+msgstr "Widget valutazione star"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:215
+msgid "Widget Blog Rating"
+msgstr "Widget valutazione blog"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:222
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:311
+msgid "article percentage rating"
+msgstr "percentuale valutazione articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:227
+msgid "Widget Comments Rating"
+msgstr "Widget valutazione commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:233
+msgid "comment contents"
+msgstr "contenuti commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:234
+msgid "url to comment"
+msgstr "URL commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:236
+msgid "post id"
+msgstr "ID articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:238
+msgid "comment id"
+msgstr "ID commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:239
+msgid "name of the comments author"
+msgstr "nome autore commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:240
+msgid "authors url"
+msgstr "URL autori"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:241
+msgid "authors avatar"
+msgstr "avatar autori"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:250
+msgid "Standard Review Rating Block"
+msgstr "Blocco standard valutazione revisione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:259
+msgid "Comments Review Rating Block"
+msgstr "Blocco valutazione revisione commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:266
+msgid "Multi Review Rating Block"
+msgstr "Blocco valutazione revisioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:275
+msgid "Aggregated Comments Review Rating"
+msgstr "Valutazione revisione commenti aggregati"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:285
+msgid "Multi Review Editor"
+msgstr "Editor revisione multipla"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:292
+msgid "Multi Rating Comment Integration"
+msgstr "Integrazione commenti revisione multipla"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:299
+msgid "Multi Rating Comment Integration Result"
+msgstr "Risultato integrazione commenti revisione multipla"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:307
+msgid "Thumbs Article Ratings Text"
+msgstr "Testo thumb valutazioni articolo "
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:313
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:353
+msgid "total up votes for article"
+msgstr "totale vot favorevoli per l'articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:314
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:354
+msgid "total down votes for article"
+msgstr "totale voti sfavorevoli per l'articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:333
+msgid "Thumbs Article Rating Block"
+msgstr "Blocco Thumb valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:335
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:363
+msgid "thumb down image style"
+msgstr "stile immagine thumb giù"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:336
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:364
+msgid "thumb up image style"
+msgstr "stule immagine thumb su"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:343
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:371
+msgid "Inactive"
+msgstr "Inattivo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:344
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:372
+msgid "Active"
+msgstr "Attivo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:347
+msgid "Thumbs Comment Ratings Text"
+msgstr "Testo thumb valutazione commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:351
+msgid "comment percentage rating"
+msgstr "percentuale valutazione commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/code/t2/templates.php:361
+msgid "Thumbs Comment Rating Block"
+msgstr "Blocco thumb valutazione commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/classes.php:140
+msgid "All Sections"
+msgstr "Tutte le sezioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_defaults.php:5
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_dependencies.php:11
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:44
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:149
+msgid "ID"
+msgstr "ID"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_defaults.php:6
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:46
+msgid "Section / Type"
+msgstr "Sezione / Tipo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_defaults.php:7
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:61
+msgid "Template"
+msgstr "Template"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_defaults.php:8
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:44
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:48
+msgid "Options"
+msgstr "Opzioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_defaults.php:38
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_dependencies.php:48
+msgid "Save Changes"
+msgstr "Salva le modifiche"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_dependencies.php:12
+msgid "Type"
+msgstr "Tipo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_dependencies.php:13
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:55
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:45
+msgid "Name"
+msgstr "Nome"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_dependencies.php:14
+msgid "Dependencies"
+msgstr "Confluenze"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:22
+msgid "Template Editor"
+msgstr "Editor template"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:30
+msgid "Editor"
+msgstr "Editor"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:32
+msgid "Elements"
+msgstr "Elementi"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:37
+msgid "Info"
+msgstr "Info"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:41
+msgid "Creating new template"
+msgstr "Nuovo template in creazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:46
+msgid "Set this template as default for this type of templates."
+msgstr "Imposta questo template come predefinito per questo tipo di template."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:49
+msgid "Set this template as a dependency for all other templates that use it."
+msgstr "Imposta questo template come dipendente per tutti gli altri template che lo utilizzano."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:53
+msgid "General"
+msgstr "Generale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:57
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:70
+msgid "Description"
+msgstr "Descrizione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:71
+msgid "Allowed elements"
+msgstr "Elementi permessi"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:79
+msgid "All tag elements"
+msgstr "Tutti gli elementi tag"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:80
+msgid "No tag elements allowed"
+msgstr "Nessun elemento tag permesso"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:92
+msgid "Save Template"
+msgstr "Salva il template"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_editor.php:102
+msgid "Select template to use for this element:"
+msgstr "Seleziona il template da utilizzare con questo elemento:"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:16
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:34
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:24
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:132
+msgid "Filter"
+msgstr "Filtro"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:47
+msgid "Tag"
+msgstr "Tag"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:68
+msgid "delete"
+msgstr "cancella"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:69
+msgid "edit"
+msgstr "modifica"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:71
+msgid "duplicate"
+msgstr "duplica"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:87
+msgid "Map with dependencies for templates"
+msgstr "Mappa delle confluenze per i template"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:88
+msgid "T2 Templates Map"
+msgstr "Mappa T2 Templates"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:93
+msgid "New template for:"
+msgstr "Template nuovo per:"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/gdt2/form_list.php:95
+msgid "Create"
+msgstr "Crea"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/dash_latest.php:8
+msgid "Articles Log"
+msgstr "Registro articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/dash_latest.php:9
+msgid "Users Log"
+msgstr "Registro utenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:2
+msgid "Post Review"
+msgstr "Revisione articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:4
+msgid "Value"
+msgstr "Valore"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:16
+msgid "Post Rating"
+msgstr "Valutazione articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:18
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:34
+msgid "Vote Rule"
+msgstr "Regola voto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:24
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:40
+msgid "Moderate"
+msgstr "Modera"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:32
+msgid "Comments Rating"
+msgstr "Valutazione commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:49
+msgid "Time Restriction"
+msgstr "Limitazione temporale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:51
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:309
+msgid "Restriction"
+msgstr "Limitazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:58
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:316
+msgid "Date"
+msgstr "Data"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit.php:66
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:315
+msgid "Countdown"
+msgstr "Conto alla rovescia"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit_multi.php:2
+msgid "You don't have any multi rating sets defined. Create at least one set."
+msgstr "Non hai definito nessun set per la valutazione multipla. Creane almeno uno."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit_multi.php:11
+msgid "Set"
+msgstr "Set"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit_multi.php:18
+msgid "To change the active set, you need to select the set you want from the list on the left, and save this article to accept the change."
+msgstr "Per la modifica dei set attivi, é necessario che tu prima selezioni nella lista di sinistra il set quindi, salva l'articolo per apportare le modifiche."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit_multi.php:20
+msgid "All values for all sets will be saved in the database. This allows different multi rating sets reviews."
+msgstr "Tutti i valori dei set verranno salvati nel database. Questa operazione ti permetterà di apportare ai singoli set le eventuali revisioni necessarie"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit_multi.php:27
+msgid "Set ID"
+msgstr "ID set"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit_multi.php:28
+msgid "Set Name"
+msgstr "Nome set"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit_multi.php:31
+msgid "Clear"
+msgstr "Svuota"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/integrate/edit_multi.php:32
+msgid "Revert"
+msgstr "Inverti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:30
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:124
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:126
+msgid "Search Posts"
+msgstr "Ricerca articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:35
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:363
+msgid "Update"
+msgstr "Aggiorna"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:150
+msgid "Title"
+msgstr "Titolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:151
+msgid "View"
+msgstr "Vedi"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:154
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:275
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:345
+msgid "Moderation"
+msgstr "Moderazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:157
+msgid "Time"
+msgstr "Periodo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:159
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:282
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:352
+msgid "Vote Rules"
+msgstr "Regole voto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:160
+msgid "Thumbs"
+msgstr "Thumbs"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:161
+msgid "Ratings"
+msgstr "Valutazioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:162
+msgid "Total"
+msgstr "Totale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:164
+msgid "Views"
+msgstr "Vedi"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:167
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:295
+msgid "Review"
+msgstr "Revisione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:197
+msgid "date limit"
+msgstr "limite data"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:200
+msgid "countdown"
+msgstr "conto alla rovescia"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:213
+msgid "no limit"
+msgstr "nessun limite"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:226
+msgid "Charts"
+msgstr "Grafici"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:263
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:333
+msgid "Delete"
+msgstr "Cancella"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:268
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:338
+msgid "Visitors"
+msgstr "Visitatori"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:269
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:339
+msgid "Users"
+msgstr "Utenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:270
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:340
+msgid "All"
+msgstr "Tutti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/articles.php:330
+msgid "Comments"
+msgstr "Commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder.php:7
+msgid "Shortcode/Functions"
+msgstr "Shortcode/Funzioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/categories.php:92
+msgid "Category"
+msgstr "Categoria"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/categories.php:98
+msgid "Time Restrictions"
+msgstr "Limitazioni temporali"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/categories.php:101
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings.php:44
+msgid "Integration"
+msgstr "Integrazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/categories.php:102
+msgid "Posts"
+msgstr "Articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/categories.php:148
+msgid "multi set"
+msgstr "set multiplo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/categories.php:149
+msgid "inhert from parent"
+msgstr "ereditato dal genitore"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/categories.php:204
+msgid "Multi Set"
+msgstr "Set multiplo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/categories.php:214
+msgid "(this multi set is used for comment integration)"
+msgstr "(set utilizzato per l'integrazione nei commenti)"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/charts.php:7
+msgid "Articles (Posts And Pages)"
+msgstr "Pubblicazioni (articoli e pagine)"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/comments.php:47
+msgid "Comments for post"
+msgstr "Commenti articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/comments.php:91
+msgid "Comment"
+msgstr "Commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/comments.php:92
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/moderation.php:115
+msgid "User"
+msgstr "Utente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/comments.php:93
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/moderation.php:114
+msgid "Date And Time"
+msgstr "Data e ora"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/comments.php:95
+msgid "Votes"
+msgstr "Voti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/comments.php:135
+msgid "With selected"
+msgstr "Con il selezionato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export.php:2
+msgid "Export Data"
+msgstr "Dati esportazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export.php:7
+msgid "Users Data"
+msgstr "Dati utente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx.php:2
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings.php:31
+msgid "Settings saved."
+msgstr "Le impostazioni sono state salvate"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx.php:60
+msgid "Stars"
+msgstr "Stars"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx.php:62
+msgid "Preview"
+msgstr "Anteprima"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx.php:76
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings.php:80
+msgid "Save Settings"
+msgstr "Salva"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:5
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:12
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:19
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:29
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:61
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:86
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:145
+msgid "Import Data"
+msgstr "Importa i dati"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:44
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:69
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:94
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:152
+msgid "Plugin URL"
+msgstr "URL del plugin"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:49
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:74
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:99
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:157
+msgid "Author URL"
+msgstr "URL autore"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:54
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:79
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:138
+msgid "Status"
+msgstr "Stato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:104
+msgid "Instructions"
+msgstr "Istruzioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:106
+#, php-format
+msgid "You need to enter few settings for this plugin. This can be found in the plugin's main and only PHP file: %s"
+msgstr "Per questo plugin dovrai inserire alcune impostazioni: potrai trovarle nell'unico file PHP: %s"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:107
+msgid "For each value you have a name of the variable from plugin file in square brackets."
+msgstr "Per ogni valore hai il nome della variabile corrispondente (racchiusa tra le parentesi quadre) estratta dal file del plugin."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:108
+msgid "Plugin could save data in post meta table or only in the post using shortcodes. Import can try both, but if you are usre that ratings are stored in post meta table, use that option."
+msgstr "Il plugin può salvare i dati nella tabella dei metadati dell'articolo oppure negli articoli che hanno in uso gli shortcode. L'operazione di importazione proverà entrambe comunque, qualora fossi certo che le votazioni fossero state salvate nella tabella dei metadati dell'articolo, utilizza quella opzione."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:111
+msgid "Import Settings"
+msgstr "Importa le impostazioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:115
+msgid "Maximum review value"
+msgstr "Valore max valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:121
+msgid "Meta Key"
+msgstr "Chiave meta"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:127
+msgid "Try Importing from"
+msgstr "Prova ad importare da"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:130
+msgid "Posts meta table"
+msgstr "Tabella meta articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:131
+msgid "Posts contents only"
+msgstr "Solo contenuto dell'articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:132
+msgid "Both contents and meta"
+msgstr "Contenuto e meta"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/import.php:167
+msgid "To avoid rating data import problems, please don't use GD Star Rating in the same time as the plugins above, to avoid potential import problems and false data. I can't guarantee that data will be transfered without problems."
+msgstr "Per evitare dei problemi durante l'importazione dei dati, non utilizzare nello stesso momento GD Star Rating ed i plugin qui sotto. Non sono comunque in grado di garantire che i dati saranno trasferiti senza problemi."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips.php:74
+msgid "Ban New"
+msgstr "Nuova interdizione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips.php:75
+msgid "Banned"
+msgstr "Interdetto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/moderation.php:117
+msgid "IP"
+msgstr "IP"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/moderation.php:118
+msgid "User Agent"
+msgstr "User Agent"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/moderation.php:147
+msgid "With Selected"
+msgstr "Con il selezionato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/moderation.php:150
+msgid "Approve"
+msgstr "Approva"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings.php:42
+msgid "Features"
+msgstr "Caratteristiche"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings.php:43
+msgid "Advanced"
+msgstr "Avanzato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings.php:45
+msgid "Posts And Pages"
+msgstr "Articoli e pagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings.php:47
+msgid "Multis"
+msgstr "Multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings.php:48
+msgid "Thumbs Up/Down"
+msgstr "Thumbs Su/Giù"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings.php:49
+msgid "Statistics"
+msgstr "Statistiche"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:3
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:10
+msgid "Reinstall"
+msgstr "Reinstalla"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:7
+msgid "Database tables reinstalled."
+msgstr "Le tabelle del database sono state reinstallate."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:17
+msgid "Multi rating tables reinstalled."
+msgstr "Le tabelle multi-valutazione sono state reinstallate."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:20
+msgid "Remove Settings"
+msgstr "Rimuovi impostazioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:24
+msgid "Settings are removed from WordPress installation."
+msgstr "Le impostazioni sono state rimosse dalla installazione di WordPress."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:27
+msgid "Reinstall Templates"
+msgstr "Reinstalla i template"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:32
+msgid "Plugins default templates are reinstalled."
+msgstr "Sono stati reinstallati i template predefiniti del plugin."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:35
+msgid "Reset Imports"
+msgstr "Ripristina importazioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:37
+msgid "Import Information is reseted."
+msgstr "Le informazioni di importazione sono state azzerate."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:43
+msgid "Are you sure? Operation is not reversible."
+msgstr "Ne sei certo? L'operazione non é reversibile."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:50
+msgid "Database Maintenance"
+msgstr "Manutenzione database"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:51
+msgid "Global Maintenance"
+msgstr "Manutenzione generale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup.php:52
+msgid "Full Uninstall"
+msgstr "Disinstallazione completa"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/templates.php:6
+msgid "Templates"
+msgstr "Template"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/templates.php:8
+msgid "Defaults"
+msgstr "Predefinite"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools.php:6
+msgid "Bulk"
+msgstr "Generale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools.php:7
+msgid "Database"
+msgstr "Database"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools.php:8
+msgid "Cleanup"
+msgstr "Pulizia"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools.php:11
+msgid "Edit CSS"
+msgstr "Modifica CSS"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users.php:33
+msgid "Visitor"
+msgstr "Visitatore"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users.php:62
+msgid "Email"
+msgstr "Email"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users.php:63
+msgid "Thumbs Articles"
+msgstr "Thumb articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users.php:64
+msgid "Thumbs Comments"
+msgstr "Thumb commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users.php:65
+msgid "Ratings Articles"
+msgstr "Valutazione articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users.php:66
+msgid "Ratings Comments"
+msgstr "Valutazione commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users.php:111
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users.php:116
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users.php:121
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users.php:126
+msgid "unique ip's"
+msgstr "IP unico"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:97
+msgid "User Vote Log"
+msgstr "Registro voto utente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:100
+msgid "Votes log for user"
+msgstr "Registro voti utente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:103
+msgid "Votes log for visitors"
+msgstr "Registro voti visitatori"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:109
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/voters.php:116
+msgid "All Votes"
+msgstr "Tutti i voti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:125
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/voters.php:147
+msgid "Vote Date"
+msgstr "Data voto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:127
+msgid "Post"
+msgstr "Articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:129
+msgid "Comment Author"
+msgstr "Autore commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:130
+msgid "Comment Excerpt"
+msgstr "Riassunto commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:201
+msgid "Add selected IP's to ban IP's list."
+msgstr "Aggiungi gli IP selezionati alla lista degli IP interdetti."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:214
+msgid "Only Invalid"
+msgstr "Solo non valido"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:215
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/voters.php:193
+msgid "From Log Only"
+msgstr "Solo dal registro"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/users_log.php:216
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/voters.php:192
+msgid "Full Delete"
+msgstr "Camcellazione completa"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/voters.php:101
+msgid "Vote log for post"
+msgstr "Registro voti articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/settings.php:4
+msgid "Filter    "
+msgstr "Filtro"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/settings.php:6
+msgid "Multi Rating"
+msgstr "Valutazione multipla"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/settings.php:7
+msgid "Multi Review"
+msgstr "Revisione multipla"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/settings.php:8
+msgid "Articles Review"
+msgstr "Revisione articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/settings.php:9
+msgid "Articles Rating Block"
+msgstr "Blocco valutazione articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/settings.php:10
+msgid "Aggregated Comments"
+msgstr "Commenti aggregati"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/settings.php:11
+msgid "Blog Rating"
+msgstr "Valutazione blog"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/settings.php:12
+msgid "Thumbs Rating"
+msgstr "Valutazione thumb"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/shortcode.php:3
+msgid "Select code:"
+msgstr "Seleziona il codice:"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/shortcode.php:6
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/shortcode.php:7
+msgid "Results"
+msgstr "Risultato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/shortcode.php:9
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/shortcode.php:10
+msgid "Multi"
+msgstr "Multiplo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/shortcode.php:24
+msgid "Shortcode:"
+msgstr "Shortcode:"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/shortcode.php:33
+msgid "Function:"
+msgstr "Funzione:"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/shortcode.php:39
+msgid "Rebuild"
+msgstr "Rigenera"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/shortcode.php:41
+msgid "List of all functions with additional parameters"
+msgstr "Lista di tutte le funzioni con i parametri aggiuntivi"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/builder/shortcode.php:42
+msgid "Functions"
+msgstr "Funzioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_t2.php:2
+msgid "Export Templates"
+msgstr "Esporta template"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_t2.php:4
+msgid "This will export all templates you created into a file."
+msgstr "L'operazione esporterà in un file i template."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_t2.php:5
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:54
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:57
+msgid "Export"
+msgstr "Esporta"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_t2.php:7
+msgid "Exported file will contain names, descriptions and contents of templates. File will be in CSV format."
+msgstr "Il file di esportazione conterrà i nomi, le descrizioni ed i contenuti dei template. Il file verrà creato in formato CSV."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:30
+msgid "User Info"
+msgstr "Info utente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:32
+msgid "Minimal: only user id is exported"
+msgstr "Essenziale: esportazione della sola ID utente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:33
+msgid "Normal: user id, name and email are exported"
+msgstr "Normale: esportazione ID utente, nome ed email"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:36
+msgid "Data"
+msgstr "Data"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:38
+msgid "Post / Page votes"
+msgstr "Voti articolo / pagina"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:39
+msgid "Comments votes"
+msgstr "Voti commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:42
+msgid "Additional Columns"
+msgstr "Colonne addizionali"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:47
+msgid "Post/Page title"
+msgstr "Titolo articolo/pagina"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:48
+msgid "Post/Page date"
+msgstr "Data articolo/pagina"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:50
+msgid "Comment author"
+msgstr "Autore commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:51
+msgid "Comment date"
+msgstr "Data commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:56
+msgid "This will export voters data file."
+msgstr "L'operazione esporterà il file dati dei votanti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/export/export_users.php:59
+msgid "Exported file will contain all the users ratings. File will be in CSV format."
+msgstr "Il file di esportazione conterrà le valutazioni di tutti gli utenti. Il file verrà creato in formato CSV."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_left.php:21
+msgid "Quick Rating Facts"
+msgstr "In un colpo d'occhio"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_left.php:25
+#, php-format
+msgid "Registered users rated %s articles with average rating of %s and %s comments with average rating of %s. Visitors rated %s articles with average rating of %s and %s comments with average rating of %s."
+msgstr "Gli utenti registrati hanno espresso la loro valutazione per %s articoli con una media pari al %s mentre per i %s commenti la media é del %s. I visitatori hanno valutato %s articoli con una media pari al %s mentre per i %s commenti la media é del %s."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_left.php:36
+#, php-format
+msgid " There are %s article and %s comments ratings waiting in moderation queue."
+msgstr " Attendono in coda di moderazione le valutazioni per %s articoli e %s commenti."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_left.php:46
+msgid "See All"
+msgstr "Visualizza"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_left.php:48
+msgid "Latest News"
+msgstr "Ultime notizie"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_left.php:76
+#, php-format
+msgid "An error occured while loading newsfeed. Go to the %sfront page%s to check for updates."
+msgstr "Si é verificato un errore durante il caricamento del feed. Vai alla %shomepage%s del plugin per controllare se fossero disponibili dei nuovi aggiornamenti."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_left.php:82
+msgid "Newsfeed update is disabled. You can enable it on settings page."
+msgstr "Il feed per l'aggiornamento delle notizie é stato disattivato. Puoi riattivarlo nella pagina delle impostazioni."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:9
+msgid "Version"
+msgstr "Versione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:10
+msgid "release date"
+msgstr "data di pubblicazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:15
+msgid "Change Log"
+msgstr "Registro modifiche"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:16
+msgid "detailed list of changes"
+msgstr "lista nel dettaglio"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:17
+msgid "show"
+msgstr "mostra"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:22
+msgid "Links"
+msgstr "Link"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:27
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:76
+msgid "official plugin page"
+msgstr "pagina ufficiale del plugin"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:28
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:33
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:38
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:43
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:58
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:63
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:77
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:82
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:87
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:92
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:97
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:111
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:116
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:121
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:126
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:131
+msgid "visit"
+msgstr "visita"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:32
+msgid "development home with svn"
+msgstr "sede sviluppo con svn"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:37
+msgid "discussions group"
+msgstr "gruppo di discussione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:42
+msgid "wordpress plugin page"
+msgstr "pagina dedicata"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:47
+msgid "development progress"
+msgstr "aggiornamento progressi"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:48
+msgid "follow"
+msgstr "segui"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:52
+msgid "Extra"
+msgstr "Extra"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:56
+msgid "Premium Support"
+msgstr "Premium Support"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:57
+msgid "special plugin customizations"
+msgstr "personalizzazioni plugin"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:61
+msgid "Donate"
+msgstr "Donazioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:62
+msgid "help further development"
+msgstr "sostieni lo sviluppo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:70
+msgid "GD WordPress Plugins"
+msgstr "Plugin GD WordPress"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:81
+msgid "custom taxonomies managment"
+msgstr "gestione personalizzazione tassonomie"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:86
+msgid "collection of widgets"
+msgstr "raccolta di widget"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:91
+msgid "advanced pages widget"
+msgstr "estensione funzioni widget"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:96
+msgid "widget to add linkedin badge"
+msgstr "widget per il badge di linkedin"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:109
+msgid "Official Website"
+msgstr "Sito ufficiale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:110
+msgid "golden dragon official web portal"
+msgstr "Portale web ufficiale golden dragon"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:115
+msgid "wordpress development"
+msgstr "sviluppo wordpress"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:120
+msgid "tv shows reviews and news"
+msgstr "recensioni e novità show tv"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:124
+msgid "Support Forum"
+msgstr "Forum di supporto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:125
+msgid "development discussion forum"
+msgstr "forum discussione sviluppo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/front/front_right.php:130
+msgid "announcements and theme demo"
+msgstr "annunci e demo per i temi"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_preview.php:2
+msgid "Stars Preview"
+msgstr "Anteprima star"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_preview.php:36
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_preview.php:86
+msgid "Size"
+msgstr "Dimensione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_preview.php:42
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_preview.php:92
+msgid "Author"
+msgstr "Autore"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_preview.php:52
+msgid "Thumbs Preview"
+msgstr "Anteprima thumb"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_preview.php:102
+msgid "Trends Preview"
+msgstr "Anteprima andamento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_preview.php:106
+msgid "Trends"
+msgstr "Tendenza"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_stars.php:2
+msgid "Stars Sizes"
+msgstr "Dimensioni star"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_stars.php:25
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_thumbs.php:25
+msgid "Only sizes checked here will be included in the css file for the active rating blocks."
+msgstr "Solo le dimensioni qui selezionate verranno incluse nel file CSS utilizzato per i blocchi delle valutazioni."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_stars.php:28
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_thumbs.php:28
+msgid "Stars Sets"
+msgstr "Set stelle"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_stars.php:55
+msgid "Only stars set checked here will be included in the css file for the active rating blocks."
+msgstr "Solo i gruppi di stelle qui selezionati verranno inclusi nel file CSS utilizzato per i blocchi delle valutazioni."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_thumbs.php:2
+msgid "Thumbs Sizes"
+msgstr "Dimensioni thumb"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/gfx/gfx_thumbs.php:55
+msgid "Only thumbs set checked here will be included in the css file for the active rating blocks."
+msgstr "Solo i thumb qui selezionati verranno inclusi nel file CSS utilizzato per i blocchi delle valutazioni."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_list.php:54
+msgid "Record Id"
+msgstr "ID record"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_list.php:96
+msgid "Unban Selected"
+msgstr "riabilitazione selezionata"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:2
+msgid "Ban Single IP's"
+msgstr "Interdizione singolo IP"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:9
+msgid "Add IP addresses"
+msgstr "Aggiungi indirizzi IP"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:10
+msgid "One IP address per line."
+msgstr "Un indirizzo IP per linea."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:16
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:42
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:58
+msgid "Add"
+msgstr "Aggiungi"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:20
+msgid "Ban IP Range"
+msgstr "Interdizione range IP"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:26
+msgid "From"
+msgstr "Da"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:36
+msgid "To"
+msgstr "A"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:46
+msgid "Ban IP Masked"
+msgstr "Interdizione IP mascherato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:52
+msgid "Mask"
+msgstr "Maschera"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/ips/ips_options.php:56
+msgid "Use XXX as a part of IP or leave empty to mask."
+msgstr "Utilizza XXX come parte dell'IP oppure lascia vuota la maschera."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:25
+msgid "Multi Sets Editor"
+msgstr "Editor set multipli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:38
+msgid "Number Of Stars"
+msgstr "Numero di stelle"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:49
+msgid "Auto Insertion"
+msgstr "Aggiunta automatica"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:53
+msgid "Insertion"
+msgstr "Inserimento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:56
+msgid "No"
+msgstr "No"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:57
+msgid "Category Based"
+msgstr "Categoria"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:58
+msgid "All Posts"
+msgstr "Tutti gli articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:59
+msgid "All Pages"
+msgstr "Tutte le pagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:60
+msgid "All Posts &amp; Pages"
+msgstr "Tutti articoli &amp; pagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:65
+msgid "Location"
+msgstr "Posizione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:97
+msgid "Weight"
+msgstr "Peso"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:104
+msgid "Important Notice"
+msgstr "Avvertimento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:106
+msgid "Once the set is created, you can't change number of elements in the set or number of stars! You can edit names and weight of the elements, name and description of the set."
+msgstr "Una volta che avrai creato il set, non potrai cambiare il numero degli elementi nel set oppure il numero delle star! Potrai modificare invece i nomi ed il peso degli elementi nonché il nome e la descrizione del set."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/editor.php:111
+msgid "Save Multi Set"
+msgstr "Salva il set"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/results_post.php:106
+msgid "Multi Set Results"
+msgstr "Risultati set multiplo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/results_set.php:18
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/sets.php:144
+msgid "Voters"
+msgstr "Votanti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/sets.php:5
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/sets.php:162
+msgid "Delete Selected"
+msgstr "Seleziona e cancella"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/sets.php:49
+msgid "Add New Multi Rating Set"
+msgstr "Aggiungi un nuovo set"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/multis/sets.php:63
+msgid "Auto Insert"
+msgstr "Inserimento automatico"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/my/my_comments.php:2
+msgid "Votes for my comments"
+msgstr "Commenti con valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/my/my_general.php:17
+msgid "General Statistics"
+msgstr "Statistiche generali"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/my/my_general.php:20
+msgid "My votes overview"
+msgstr "Panoramica voti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/my/my_posts.php:2
+msgid "Votes for my posts"
+msgstr "Articoli con valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/my/my_voted.php:2
+msgid "My Latest 100 Votes"
+msgstr "Gli ultimi 100 voti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_administration.php:1
+msgid "Admin Display"
+msgstr "Schermata amministrazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_administration.php:5
+msgid "Maximum screen width"
+msgstr "Larghezza max schermo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_administration.php:16
+msgid "Rows for display"
+msgstr "Righe da visualizzare"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_administration.php:28
+msgid "Show column with number of views on the plugins articles panel."
+msgstr "Mostra la colonna con il numero delle visualizzazioni nel pannello degli articoli di questo plugin."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_administration.php:30
+msgid "Maximum screen width is used only on WP version older than 2.7."
+msgstr "La definizione per la larghezza massima dello schermo é da utilizzarsi solamente per le verioni precedenti la WP 2.7"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_administration.php:33
+msgid "Plugin Panels"
+msgstr "Pannelli plugin"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_administration.php:38
+msgid "Importing data for other rating plugins."
+msgstr "importa i dati da altri plugin. "
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_administration.php:40
+msgid "Uninstall and maintenance."
+msgstr "disinstallazione e manutenzione."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_administration.php:44
+msgid "IP addresses managment."
+msgstr "gestione indirizzi IP."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_administration.php:50
+msgid "Other Settings"
+msgstr "Altre impostazioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_administration.php:52
+msgid "Update front page latest news feed."
+msgstr "Visualizza nella pagina principale gli aggiornamenti via feed."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:4
+msgid "PHP is working in the safe mode. Plugin can't create folders for caching. You need to do it manually if you want to use cache."
+msgstr "Il PHP sta lavorando in modalità safe. Il plugin non é in grado di creare le cartelle per la cache. Qualora desiderassi fare uso della cache, dovrai compiere manualmente questa operazione."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:5
+msgid "For cache to work, plugin must be able to access cache folder. Plugin has tried to create folders needed and failed. Until you resolved this issue cache feature can't be used."
+msgstr "Affinché la cache possa funzionare, é necessario che il plugin possa accedere alla cartella della cache. Il plugin non é stato in grado di creare le opportune cartelle. Sino a quando non avrai risolto questo problema, la funzione di cache non potrà essere utilizzata. "
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:6
+msgid "Either make <strong>wp-content</strong> folder writeable or create <strong>gd-star-rating</strong> folder in <strong>wp-content</strong> and make it writeable. Use 0755 chmod setting."
+msgstr "Fai in modo che la cartella <strong>wp-content</strong> sia scrivibile oppure rendi scrivibile la cartella <strong>gd-star-rating</strong> sotto <strong>wp-content</strong>. Imposta a chmod 0755."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:11
+msgid "Cache Activation"
+msgstr "Attivazione cache"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:13
+msgid "Cache enabled."
+msgstr "Abilita la cache."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:15
+msgid "Force using of cache. This is usefull in some rare cases when PHP can't report writeability correct."
+msgstr "Imponi l'utilizzo della cache. Utile qualora in alcuni rari casi il PHP non sia in grado di definire correttamente la scrittura."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:18
+msgid "Cache Cleanup"
+msgstr "Pulizia cache"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:22
+msgid "Auto cleanup cache"
+msgstr "Svuota in automatico"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:23
+msgid "Enabled."
+msgstr "Attivato."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:26
+msgid "Cleanup cache every"
+msgstr "Svuota la cache ogni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:32
+msgid "Inline Debug Info"
+msgstr "Info debug inline"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:34
+msgid "Add small block with essential debug info into each rating block."
+msgstr "Aggiungi un piccolo block con le info debug in ogni block valutazione."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:36
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:45
+msgid "Important"
+msgstr "Importante"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:39
+msgid "Log Into File"
+msgstr "File Log Into"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:41
+msgid "Log into file various debug information."
+msgstr "File contenente un registro con le varie informazioni di debug."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_advanced.php:43
+msgid "Save into debug file each WP Query executed."
+msgstr "Salva il file di debug ad ogni eseguzione di una WP Query"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:11
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:11
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:11
+msgid "Rating"
+msgstr "Valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:26
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:200
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:26
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:214
+msgid "Number of stars"
+msgstr "Numero di star"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:43
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:219
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:43
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:34
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:27
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:95
+msgid "Rating header"
+msgstr "Header valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:50
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:50
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:34
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:102
+msgid "Auto insert rating code"
+msgstr "inserisci codice in automatico per"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:52
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:36
+msgid "For individual posts."
+msgstr "Articoli singoli."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:54
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:38
+msgid "For individual pages."
+msgstr "Pagine singole."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:58
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:42
+msgid "For posts displayed in Archives."
+msgstr "Articoli mostrati negli archivi."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:60
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:44
+msgid "For posts displayed on Front Page."
+msgstr "Articoli mostrati nella pagina principale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:62
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:46
+msgid "For posts displayed on Search results."
+msgstr "Articoli mostrati nei risultati della ricerca."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:69
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:70
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:53
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:122
+msgid "Auto insert location"
+msgstr "Posizione inserimento automatico"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:79
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:83
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:44
+msgid "Vote rule"
+msgstr "Regola voto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:85
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:89
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:50
+msgid "Moderation rule"
+msgstr "Regola moderazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:95
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:60
+msgid "Time restriction"
+msgstr "Limitazione temporale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:100
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:65
+msgid "Countdown value"
+msgstr "Valore countdown"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:111
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:224
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:73
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:99
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:76
+msgid "Rating block CSS class"
+msgstr "Classe CSS blocco valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:116
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:104
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:81
+msgid "Rating text CSS class"
+msgstr "Classe CSS testo valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:122
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:110
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:87
+msgid "Rating header CSS class"
+msgstr "Classe CSS header valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:127
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:115
+msgid "Rating stars CSS class"
+msgstr "Classe CSS star valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:136
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:124
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:132
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:101
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:60
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:129
+msgid "Rating Template"
+msgstr "Template valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:142
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:156
+msgid "Restrict"
+msgstr "Limitazioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:144
+msgid "Prevent article author to vote."
+msgstr "Non permettere all'autore di esprimere il proprio voto."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:144
+msgid "This is only for registered users."
+msgstr "Vale solo per gli utenti registrati."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:146
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:160
+msgid "Use logged data (IP) to prevent duplicate voting."
+msgstr "Utilizza i dati IP in modo da prevenire le votazioni doppie."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:148
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:162
+msgid "Use cookies to prevent duplicate voting."
+msgstr "Utilizza i cookies in modo da prevenire le votazioni doppie."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:150
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:164
+msgid "Allow votes from user and visitor coming from same IP address."
+msgstr "Permetti il voto a quegli utenti/visitatori provenienti dallo stesso indirizzo IP."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:153
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:167
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:121
+msgid "Vote Waiting Message"
+msgstr "Messaggio di attesa"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:157
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:171
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:125
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:64
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:133
+msgid "Animation indicator"
+msgstr "Indicatore ricarica "
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:170
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:184
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:138
+msgid "Text to display"
+msgstr "Testo da mostrare"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:175
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:189
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:143
+msgid "Additional CSS class"
+msgstr "Classe CSS"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_articles.php:181
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:195
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:149
+msgid "Hide text and show only animation image."
+msgstr "Nascondi il testo e mostra solamente l'animazione."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_bots.php:1
+msgid "Spider BOT's"
+msgstr "Crawler"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_bots.php:9
+msgid "Each line must contain only one BOT name to ensure proper detection of search engines."
+msgstr "Ogni linea dovrà contenere il nome di un solo spiderbot (in favore dei motori di ricerca)."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:52
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:104
+msgid "For comments for posts."
+msgstr "per i commenti agli articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:56
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:108
+msgid "For comments for pages."
+msgstr "per i commenti alle pagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:63
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:115
+msgid "Enable auto insert regardless of the single page or post."
+msgstr "Attiva l'inserimento automatico indipendentemente dal singolo articolo o pagina."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:130
+msgid "Aggregated Rating"
+msgstr "Valutazione aggregata"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_comments.php:158
+msgid "Prevent comment author to vote."
+msgstr "Impedisci la votazione all'autore del commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:2
+msgid "Voting"
+msgstr "Voto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:4
+msgid "Use Nonce with AJAX for improved security."
+msgstr "Utilizza un Nonce con AJAX per migliorare la sicurezza."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:6
+msgid "Use AJAX cross-domain calls. Enable only if your website URL is different from actual URL."
+msgstr "Utilizza le call AJAX cross-domain. Attiva solamente qualora l'URL del tuo sito fosse differente dall'URL in uso."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:8
+msgid "Use banned IP's lists to filter out visitors."
+msgstr "Utilizza la lista degli IP interdetti per filtrare i visitatori."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:10
+msgid "Don't even show rating stars to visitors comming from banned IP's."
+msgstr "Non mostrare anche le valutazioni di quei visitatori provenienti da un IP interdetto."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:13
+msgid "Plugin Features"
+msgstr "Funzioni plugin"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:18
+msgid "Time restriction for rating."
+msgstr "Limite temporale per la valutazione."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:20
+msgid "Moderation options and handling."
+msgstr "Opzioni moderazione e gestione."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:22
+msgid "Multiple rating support."
+msgstr "Supporto valutazione multipla."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:24
+msgid "Thumbs up/down rating support."
+msgstr "Supporto valutazione Thumbs Su/Giù."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:28
+msgid "Post And Page Review Rating."
+msgstr "Suppporto revisione articoli e pagine."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:30
+msgid "Comments Rating."
+msgstr "Valutazione commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:32
+msgid "Comments Review Rating."
+msgstr "Revisione valutazione commenti."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:37
+msgid "Use graphics generator to generate and display static stars images."
+msgstr "Utilizza il generatore grafico per creare e mostrare delle immagini statiche per le star."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:39
+msgid "Prevent outside access to graphics generator. Graphics integrated into RSS is not affected."
+msgstr "Impedisci l'accesso esterno al generatore grafico (non influisce sulla grafica inserita nel RSS). "
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:41
+msgid "This leeching prevention will only work if a referer is sent and your server is set up correctly with proper server name variable."
+msgstr "Questa protezione dal leeching funzionerà solamente qualora il referente fosse avviato ed il tuo server fosse stato impostato correttamente con una server name variable appropriata."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:44
+msgid "JS and CSS files"
+msgstr "JS e file CSS"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:46
+msgid "Link external javascript rating code, instead of embeding it into the page."
+msgstr "Link esterno per il javascript del codice di valutazione invece di incorporarlo nella pagina."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:48
+msgid "Link external CSS rating code, uncheck to embed all the CSS into the page."
+msgstr "Link esterno per il CSS del codice di valutazione. De-seleziona per incorporare tutto il CSS nella pagina."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:50
+msgid "Link additional CSS file"
+msgstr "Link aggiuntivo file CSS"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:52
+msgid "Auto cache of the main CSS file enabled."
+msgstr "Cache automatica per il file CSS principale attivo."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:55
+msgid "Charset"
+msgstr "Charset"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:59
+msgid "Character encoding"
+msgstr "Codifica di caratteri"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:63
+msgid "For list of supported charsets visit: "
+msgstr "Vedi la lista dei caratteri supportati:"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:66
+msgid "Rating Log"
+msgstr "Registro valutazioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:68
+msgid "Log user agent (browser) information."
+msgstr "Registro info su l'user agent (browser)."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:70
+msgid "Save cookies with ratings."
+msgstr "Salva i cookies con le valutazioni."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:73
+msgid "Internet Explorer"
+msgstr "Internet Explorer"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:75
+msgid "Use IE opacity fix for multi ratings."
+msgstr "Utilizza IE opacity fix per le valutazioni multiple."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_features.php:77
+msgid "Disable checking for IE6 and IE6 specific settings."
+msgstr "Disattiva il controllo e la ricerca delle impostazioni specifice per IE6."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:2
+msgid "WP Query Object"
+msgstr "Oggetto WP Query"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:4
+msgid "Expand WP Query with new rating specific sorting and filtering."
+msgstr "Espandi la WP Query con le nuove specifiche di valutazione per la disposizione ed il filtro."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:7
+msgid "Comment Integration"
+msgstr "Integrazione commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:9
+msgid "Hide comment integrated rating block if the comment is in reply mode (WP 2.7 or newer only)."
+msgstr "Nascondi il blocco di valutazione qualora i commenti fossero nella modalità nidificata (WP 2.7 o superiore)."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:11
+msgid "Prevent saving more than one rating per user or visitor."
+msgstr "Fai in modo che ogni utente/visitatore possa esprimere un solo voto."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:13
+msgid "Allow rating zero for standard rating vote from comment integration."
+msgstr "Permetti la valutazione a zero per il voto di valutazione standard del commento integrato."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:15
+msgid "Allow rating zero for multis ratings vote from comment integration."
+msgstr "Permetti la valutazione a zero per il voto di valutazione multiplo del commento integrato."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:17
+msgid "Be careful with zero's settings. This can break some other things, and is not recommended or supported."
+msgstr "Presta molta attenzione quando imposti a zero. Questa operazione potrebbe avere delle conseguenze sulle altre funzioni."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:20
+msgid "Dashboard"
+msgstr "Bacheca"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:22
+msgid "Add widgets to the administration dashboard."
+msgstr "Aggiungi i widget nella bacheca di amministrazione."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:24
+msgid "Add chart summary rating widget."
+msgstr "Aggiungi il widget con il grafico generale delle valutazioni."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:29
+msgid "Add widget with list of latest votes."
+msgstr "Aggiungi il widget con la lista dei voti più recenti."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:32
+msgid "Votes to display:"
+msgstr "Numero di voti da mostrare:"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:40
+msgid "Show thumbs for posts."
+msgstr "Mostra thumb negli articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:42
+msgid "Show stars for posts."
+msgstr "Mostra star negli articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:44
+msgid "Show multis for posts."
+msgstr "Mostra multiple negli articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:47
+msgid "Show thumbs for comments."
+msgstr "Mostra thunb nei commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:49
+msgid "Show stars for comments."
+msgstr "Mostra star nei commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:55
+msgid "Widgets"
+msgstr "Widget"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:57
+msgid "GD Star Rating: Post/Page rating widget."
+msgstr "Valutazione GD Star: widget valutazione articolo/pagina."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:59
+msgid "GD Blog Rating: Blog average rating."
+msgstr "Valutazione GD Blog: valutazione media del blog."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:61
+msgid "GD Comments Rating: Per post comments rating."
+msgstr "Valutazione GD Comments: valutazione commenti articolo."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:63
+msgid "Don't render the widget if there are no results to display."
+msgstr "Non visualizzare il widget in assenza di risultati da mostrare."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:66
+msgid "Post Edit"
+msgstr "Modifica articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:68
+msgid "Add standard rating box in the post/page edit sidebar area."
+msgstr "Aggiungi la casella di valutazione standard nella sidebar dell'editor per gli articoli/pagine."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:70
+msgid "Add multi ratings box in the post/page edit."
+msgstr "Aggiungi la casella di valutazione multipla nella sidebar dell'editor per gli articoli/pagine."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:72
+msgid "Add rating shortcode plugin into tinyMCE visual editor."
+msgstr "Aggiungi lo shortcode di valutazione nell'editor visuale tinyMCE."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:75
+msgid "Comment Edit"
+msgstr "Modifica commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:77
+msgid "Add rating box on the comment edit page."
+msgstr "Aggiungi la casella di valutazione nella pagina di modifica dei commenti."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:80
+msgid "RSS Feeds"
+msgstr "Feed RSS"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:82
+msgid "Add small 80x15 badge to posts in RSS feed."
+msgstr "Aggiungi un piccolo badge 80x15 nel feed RSS degli articoli."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:84
+msgid "Add ratings to posts in RSS feeds."
+msgstr "Aggiungi le valutazioni nel feed RSS degli articoli."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:88
+msgid "Data source"
+msgstr "Fonte dati"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:91
+msgid "Standard Rating"
+msgstr "Valutazione standard"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_integration.php:128
+msgid "Rating Header"
+msgstr "Header valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:92
+msgid "Rating button CSS class"
+msgstr "Classe CSS pulsante valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:107
+msgid "Submit Button"
+msgstr "Pulsante di invio"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:111
+msgid "Button text"
+msgstr "Testo per il pulsante"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_multis.php:118
+msgid "Use submit button to send votes. If disabled, votes will be send once all block elements are rated."
+msgstr "Utilizza il pulsante per inviare i voti. Se disattivato, i voti saranno inviati quando tutti gli elementi del blocco saranno stati valutati."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_statistics.php:2
+msgid "Trend Calculations"
+msgstr "Calcoli tendenza"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_statistics.php:6
+msgid "Calculate for last number of days"
+msgstr "Calcolo per l'ultimo numero di giorni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_statistics.php:10
+msgid "Calculate over how many days before"
+msgstr "Calcolo in relazione a quanti giorni prima"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_statistics.php:16
+msgid "Bayesian Estimate Mean"
+msgstr "Media stima bayesiana"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_statistics.php:20
+msgid "Minimum votes required"
+msgstr "Numero minimo di voti necessari"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_statistics.php:24
+msgid "Mean vote rating across the whole report"
+msgstr "Media voto di valutazione in relazione al rapporto complessivo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:2
+msgid "Posts &amp; Pages"
+msgstr "Articoli &amp; Pagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:6
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/settings/settings_thumbs.php:74
+msgid "Thumbs Set"
+msgstr "Set thumbs"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_database.php:5
+msgid "All database tables will be deleted, and installed again."
+msgstr "Saranno cancellate e poi reinstallate tutte le tabelle del database."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_database.php:8
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_database.php:18
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_database.php:28
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_global.php:8
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_uninstall.php:8
+msgid "This operation is not reversable. Backup your data if you want to be able to restore it later."
+msgstr "Questa operazione non é reversibile. Effettua il backup del database qualora desiderassi in un secondo momento ripristinare."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_database.php:12
+msgid "Reinstall Multi Ratings"
+msgstr "Reinstalla le valutazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_database.php:15
+msgid "Only multi ratings tables will be deleted, and installed again."
+msgstr "Saranno cancellate e poi reinstallate solamente le tabelle delle valutazioni multiple."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_database.php:25
+msgid "This will remove all saved templates for the plugin. Templates will be reseted to their default values."
+msgstr "L'operazione rimuoverà tutti i template del plugin che sono stati salvati. I template saranno ripristinati ai valori predefiniti."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_global.php:5
+msgid "This will remove all plugin settings and all the saved widgets."
+msgstr "L'operazione rimuoverà tutte le impostazioni del plugin e tutti i widget che sono stati salvati."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_global.php:15
+msgid "This will reset all import flags for import data modules and will allow you to import again allready imported data."
+msgstr "L'operazione azzererà tutti i flag di importazione dai dati dei moduli permettendoti di importare nuovamente i dati già importati."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_uninstall.php:2
+msgid "Uninstall"
+msgstr "Disinstalla"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/setup/setup_uninstall.php:5
+msgid "After removal, plugin will be disabled. All data recorded by the plugin will be lost"
+msgstr "Il plugin verrà disattivato una volta compiuta la disinstallazione. Tutti i dati raccolti dal plugin saranno perduti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:3
+msgid "Date Based Post Locking"
+msgstr "Esclusione articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:8
+msgid "Lock posts older than"
+msgstr "Blocca articoli a far data"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:12
+msgid "Lock"
+msgstr "Blocca"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:14
+msgid "Previous Lock Date"
+msgstr "Data del blocco precedente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:18
+msgid "Global Voting Rules Update"
+msgstr "Aggiornamento regole generali votazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:80
+msgid "This will update all posts and comments with previously saved ratings."
+msgstr "Questa operazione aggiornerà tutti gli articoli e commenti con le valutazioni salvate in precedenza."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:84
+msgid "Recalculate Multi Ratings Averages"
+msgstr "Ricalcola le medie delle valutazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:87
+msgid "If you change multi rating sets weight for the elements you can execute recaluculation of all average ratings saved. Select the set you want to recalculate for, or select all sets."
+msgstr "Qualora avessi modificato l'importanza per gli elementi dei set di valutazione multipla, é possibile rieseguire il calcolo di tutte le medie di voti salvate. Seleziona il set che desideri sia ricalcolato oppure tutti."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:88
+msgid "Use this also if you update from versions before 1.2.0 and you had problems with saving multi rating results."
+msgstr "Utilizza questa opzione anche se effettuassi l'aggiornamento da una versione precedente la 1.2.0 qualora avessi riscontrato dei problemi durante il salvataggio dei risultati di valutazione multipla."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:91
+msgid "Select multi set"
+msgstr "Seleziona il set"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:94
+msgid "All Sets"
+msgstr "Tutti i set"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:100
+msgid "Recalculate"
+msgstr "Ricalcola"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:102
+msgid "Depending on the number of posts, this operation can take a while to complete. Be patient."
+msgstr "In relazione al numero di articoli, questa operazione potrebbe richiedere un po' di tempo. Abbi pazienza..."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:106
+msgid "Update Multi Rating Votes Log"
+msgstr "Aggiorna il registro dei voti per le valutazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:109
+msgid "This tool will update votes log and recalculate average value for each multi ratings votes."
+msgstr "Questo strumento aggionerà il registro dei voti ricalcolando il valore medio per ogni votazione multipla di valutazione."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_bulk.php:112
+msgid "You need to do only once."
+msgstr "Dovrai farlo una volta sola."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_cleanup.php:2
+msgid "Cache"
+msgstr "Cache"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_cleanup.php:5
+msgid "Delete all cached files from folder"
+msgstr "Cancella tutti i file di cache dalla cartella"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_cleanup.php:6
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_cleanup.php:19
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_db.php:23
+msgid "Clean"
+msgstr "Svuota"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_cleanup.php:8
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_db.php:8
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_db.php:25
+msgid "Last cleanup was executed on"
+msgstr "L'ultima operazione di svuotamento é stata effettuata il"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_cleanup.php:10
+msgid "Total files cached"
+msgstr "Totale file svuotati"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_cleanup.php:12
+msgid "Total size of cached files"
+msgstr "Dimensione complessiva dei file svuotati"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_cleanup.php:15
+msgid "Debug"
+msgstr "Debug"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_cleanup.php:18
+msgid "Empty the debug file"
+msgstr "Svuota il file di debug"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_cleanup.php:22
+msgid "Total size of debug file"
+msgstr "Dimensione complessiva del file di debug"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_db.php:2
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_db.php:6
+msgid "Upgrade"
+msgstr "Aggiornamento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_db.php:5
+msgid "Try to upgrade plugin tables. This is performed automatically after each plugin upgrade, but you can use this tool also."
+msgstr "Aggiorna le tabelle del plugin. Opzione attivata in automatico dopo ogni aggiornamento del plugin utilizzabile anche a piacere."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_db.php:15
+msgid "Remove all invalid votes from votes log."
+msgstr "Rimuovi dal registro dei voti tutti quelli che non sono validi"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_db.php:17
+msgid "Remove all invalid votes from trends log."
+msgstr "Rimuovi dal registro delle tendenze tutti i voti non validi"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_db.php:19
+msgid "Remove data for old and deleted posts and comments."
+msgstr "Rimuovi i dati circa gli articoli vecchi e/o cancellati (commenti compresi)."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_db.php:21
+msgid "Remove data for old and deleted multi ratings."
+msgstr "Rimuovi i dati delle valutazioni multiple per gli articoli vecchi e/o cancellati."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_db.php:26
+msgid "Cleanup summary"
+msgstr "Sommario rimozioni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_editcss.php:7
+msgid "File is not writeable and can't be saved through this form."
+msgstr "Questo file non é scrivibile quindi, non potrà essere salvato attraverso questo modulo."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_editcss.php:12
+msgid "Additional CSS file not found"
+msgstr "Non é stato trovato alcun file CSS addizionale"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_editcss.php:22
+msgid "Save"
+msgstr "Salva"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_gfx.php:2
+msgid "Stars and Trends Graphics"
+msgstr "Grafica star e tendenze"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_gfx.php:5
+msgid "Rescan graphics folders for new stars and trends images."
+msgstr "Verifica se fossero presenti nelle cartelle grafiche delle nuove immagini di stelle e/o tendenze."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_gfx.php:6
+msgid "Rescan"
+msgstr "Scansiona"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_gfx.php:8
+msgid "Last scan was executed on."
+msgstr "L'ultima scansione é stata effettuata il"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_t2.php:2
+msgid "Import Templates"
+msgstr "Importazione template"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_t2.php:5
+msgid "This will import templates from alternative location:"
+msgstr "I file saranno importati da questa allocazione alternativa:"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/options/tools/tools_t2.php:9
+msgid "Templates with same name as the templates already in database will be skipped."
+msgstr "Verranno saltati i template aventi lo stesso nome di quelli già presenti nel database."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/window.php:32
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/window.php:123
+msgid "Insert"
+msgstr "Inserisci"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/window.php:50
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/window.php:74
+msgid "Shortcode Info"
+msgstr "Info shortcode"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/window.php:75
+msgid "Change shortcode to see additional options you can set."
+msgstr "Cambia lo shortcode per vedere le opzioni addizionali utilizzabili."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/window.php:119
+msgid "Cancel"
+msgstr "Annulla"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/articlesrater.php:3
+msgid "StarRater will render actual rating block if you choose not to have it automatically inserted. This way you can position it wherever you want in the contnents."
+msgstr "Lo StarRater farà sì che l'attuale blocco di valutazione da te scelto non venga inserito automaticamente. In questo modo potrai posizionarlo ovunque tu voglia all'interno dei contenuti."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/articlesrater.php:13
+msgid "Display rating block as read only."
+msgstr "Mostra i blocchi di valutazione come sola lettura."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/articlesreview.php:2
+msgid "Articles Review Rating"
+msgstr "Valutazione revisione articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/articlesreview.php:3
+msgid "StarReview will render stars representing review value assigned to the post or page."
+msgstr "Lo StarReview creerà il valore della rappresentazione per la valutazione star assegnato all'articolo o pagina."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/blograting.php:10
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:5
+msgid "Include Articles"
+msgstr "Inserisci in"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/blograting.php:14
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:9
+msgid "Posts Only"
+msgstr "Solo articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/blograting.php:15
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:10
+msgid "Pages Only"
+msgstr "Solo pagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/blograting.php:20
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:15
+msgid "Display Votes From"
+msgstr "Mostra i voti di"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/blograting.php:22
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/commentsaggr.php:17
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:17
+msgid "Everyone"
+msgstr "Tutti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/blograting.php:24
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/commentsaggr.php:19
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:19
+msgid "Users Only"
+msgstr "Solo utenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/commentsaggr.php:2
+msgid "Aggregated Comments Ratings"
+msgstr "Valutazioni commenti aggregati"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/commentsaggr.php:3
+msgid "This will render aggregated comments rating for the post."
+msgstr "L'operazione creerà per gli articoli la valutazione dei commenti aggregati."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/commentsaggr.php:15
+msgid "Calculate Votes From"
+msgstr "Calcola i voti da"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:2
+msgid "Basic"
+msgstr "Base"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:27
+msgid "Minimum Votes"
+msgstr "Numero minimo di voti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:31
+msgid "Excerpt words"
+msgstr "Numero max parole per il riassunto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:38
+msgid "Sorting"
+msgstr "Disposizione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:41
+msgid "Column"
+msgstr "Colonna"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:45
+msgid "Total Votes"
+msgstr "Totale voti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:49
+msgid "Count"
+msgstr "Calcolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:50
+msgid "Bayesian Rating"
+msgstr "Valutazione bayesiana"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:55
+msgid "Order"
+msgstr "Ordine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:58
+msgid "Descending"
+msgstr "Decrescente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:59
+msgid "Ascending"
+msgstr "Ascendente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:67
+msgid "Last Voted"
+msgstr "Votati di recente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:68
+msgid "Use only articles voted for in last # days."
+msgstr "Utilizza solo gli articoli votati negli ultimi x giorni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:71
+msgid "Enter 0 for all"
+msgstr "Imposta a 0 per tutti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:81
+msgid "Publish Date"
+msgstr "Data pubblicazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:84
+msgid "Last # days"
+msgstr "Ultimi x giorni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:85
+msgid "Exact month"
+msgstr "Mese esatto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:86
+msgid "Date range"
+msgstr "Intervallo date"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:94
+msgid "Number Of Days"
+msgstr "Numero di giorni"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:104
+msgid "Month"
+msgstr "Mese"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/filter.php:114
+msgid "Range"
+msgstr "Periodo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:2
+msgid "Display"
+msgstr "Mostra"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:5
+msgid "Number Of Posts"
+msgstr "Numero articoli"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:9
+msgid "Items Grouping"
+msgstr "Elementi raggruppamento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:12
+msgid "No grouping"
+msgstr "nessuno"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:13
+msgid "User based"
+msgstr "a base utente"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:14
+msgid "Category based"
+msgstr "a base categoria"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:15
+msgid "Taxonomy based"
+msgstr "a base tassonomia"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:23
+msgid "Taxonomy"
+msgstr "Tassonomia"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:31
+msgid "Source"
+msgstr "Fonte"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:34
+msgid "Data Source"
+msgstr "Sorgente dati"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:55
+msgid "Trend"
+msgstr "Andamento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:58
+msgid "Rating trend display as"
+msgstr "Mostra la tendenza della valutazione come"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:61
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:98
+msgid "Text"
+msgstr "Testo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:62
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:99
+msgid "Image"
+msgstr "Immagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:70
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:107
+msgid "Up"
+msgstr "Rialzo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:73
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:110
+msgid "Equal"
+msgstr "Invariato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:76
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:113
+msgid "Down"
+msgstr "Ribasso"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:84
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:121
+msgid "Image set"
+msgstr "Set immagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:95
+msgid "Voting trend display as"
+msgstr "Mostra la tendenza della votazione come"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:133
+msgid "Hiding"
+msgstr "Occultamento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:134
+msgid "Bayesian minumum votes required."
+msgstr "Numero min voti per calcolo probabilità (bayesiana)."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:135
+msgid "Hide articles with no recorded votes."
+msgstr "Non mostrare gli articoli senza voti."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/general.php:136
+msgid "Hide articles with no review values."
+msgstr "Non mostrare gli articoli senza valutazione."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/multis.php:7
+msgid "Multi Ratings"
+msgstr "Valutazioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/multis.php:26
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/multisreview.php:22
+msgid "Elements Stars"
+msgstr "Elementi star"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/multis.php:46
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/multisreview.php:42
+msgid "Average Stars"
+msgstr "Stelle media"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/multisreview.php:7
+msgid "Multi Reviews"
+msgstr "Revisioni multiple"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/multisreview.php:13
+msgid "Default"
+msgstr "Predefinito"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:7
+msgid "Post Image"
+msgstr "Immagine articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:10
+msgid "Resize Width x Height"
+msgstr "Ridimensiona Larg x Alt"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:14
+msgid "This will work only if image is stored on the server."
+msgstr "Funziona solo se l'immagine é allocata nel server."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:17
+msgid "Get Image From"
+msgstr "Prendi l'immagine da"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:20
+msgid "No image"
+msgstr "Nessuna immagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:21
+msgid "Custom field"
+msgstr "Campo personalizzato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:22
+msgid "Post content"
+msgstr "Contenuto articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:31
+msgid "If you use %IMAGE% tag in template and this option is selected, image will not be rendered."
+msgstr "Qualora utilizzassi nel template il tag %IMAGE% avendo selezionato questa opzione, l'immagine non verrà generata."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:39
+msgid "Custom Field"
+msgstr "Campo Personalizzato"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:50
+msgid "First image from post content will be used for %IMAGE% tag."
+msgstr "Il tag %IMAGE% utilizzerà la prima immagine estratta dall'articolo."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:58
+msgid "Rating Stars"
+msgstr "Star valutazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/styles.php:78
+msgid "Review Stars"
+msgstr "Star votazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/tinymce3/panels/thumbsrating.php:2
+msgid "Thumbs Rating Block"
+msgstr "Blocco valutazione thumb"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_basic.php:14
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_basic.php:14
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_basic.php:14
+msgid "Show Widget To"
+msgstr "Mostra il widget a"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_basic.php:20
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_basic.php:20
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_basic.php:20
+msgid "Hide Widget"
+msgstr "Nascondi il widget"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_filter.php:6
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_image.php:6
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_stars.php:6
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_filter.php:6
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_image.php:6
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_stars.php:6
+msgid "Click on the header title to display the options."
+msgstr "Clicca sul titolo della header per mostrare le opzioni."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_filter.php:25
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_filter.php:25
+msgid "Number Of Comments"
+msgstr "Numero di commenti"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_filter.php:32
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_filter.php:32
+msgid "Maximal length of comment text"
+msgstr "Lunghezza max per il testo del commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_filter.php:44
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_filter.php:44
+msgid "Sorting Column"
+msgstr "Disposizione colonna"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_filter.php:49
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_filter.php:49
+msgid "Comment ID"
+msgstr "ID commento"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_filter.php:55
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_filter.php:55
+msgid "Sorting Order"
+msgstr "Disposizione ordine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_filter.php:66
+msgid "Hide comments with no recorded votes."
+msgstr "Nascondi i commenti che non sono stati votati."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_filter.php:73
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_filter.php:73
+msgid "Use only comments voted for in last # days."
+msgstr "Utilizza solo i commenti votati negli ultimi x giorni."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_image.php:5
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments/part_image.php:13
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_image.php:5
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/comments_28/part_image.php:13
+msgid "Avatar"
+msgstr "Avatar"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_filter.php:17
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_filter.php:17
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/top/part_filter.php:17
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/top_28/part_filter.php:17
+msgid "Posts & Pages"
+msgstr "Articoli e pagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_filter.php:43
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_filter.php:43
+msgid "Maximal character length for title"
+msgstr "Numero massimo di caratteri per la lunghezza del titolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_filter.php:48
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_filter.php:48
+msgid "Number of words for excerpt"
+msgstr "Numero massimo di parole per il riassunto"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_filter.php:109
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_filter.php:109
+msgid "Article Category"
+msgstr "Categoria articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_filter.php:117
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_filter.php:117
+msgid "Only selected category, no subcategories."
+msgstr "Solo le categorie selezionate, non le categorie figlie."
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_filter.php:142
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_filter.php:142
+msgid "Article Publish Date"
+msgstr "Data pubblicazione articolo"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_filter.php:145
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_filter.php:145
+msgid "Any date"
+msgstr "Ogni data"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_image.php:14
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_image.php:14
+msgid "Resize Image"
+msgstr "Ridimensionamento immagine"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_stars.php:14
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_stars.php:14
+msgid "Stars Set"
+msgstr "Impostazione stelle"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_stars.php:19
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_stars.php:19
+msgid "Stars Size"
+msgstr "Dimensione stelle"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_stars.php:24
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_stars.php:24
+msgid "Review Set"
+msgstr "Revisiona impostazione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_stars.php:29
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_stars.php:29
+msgid "Review Size"
+msgstr "Revisiona dimensione"
+
+#: C:\Documents
+#: and
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating/part_stars.php:39
+#: Settings\Gianni\Desktop\gd-star-rating\gd-star-rating/widgets/rating_28/part_stars.php:39
+msgid "Thumbs Size"
+msgstr "Dimensione thumb"
+
