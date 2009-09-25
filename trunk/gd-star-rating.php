@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
-Version: 1.6.7
+Version: 1.6.8
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -692,12 +692,14 @@ if (!class_exists('GDStarRating')) {
                 add_submenu_page(__FILE__, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), $this->security_level, "gd-star-rating-ips", array(&$this,"star_menu_ips"));
             if ($this->o["admin_import"] == 1)
                 add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), $this->security_level, "gd-star-rating-import", array(&$this,"star_menu_import"));
+            if ($this->o["admin_export"] == 1)
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), $this->security_level, "gd-star-rating-export", array(&$this,"star_menu_export"));
 
             $this->custom_actions('admin_menu');
 
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), $this->security_level_setup, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
             if ($this->wp_secure_level)
-                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), $this->security_level, "gd-star-rating-export", array(&$this,"star_menu_security"));
+                add_submenu_page(__FILE__, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), $this->security_level, "gd-star-rating-security", array(&$this,"star_menu_security"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Wizard", "gd-star-rating"), __("Wizard", "gd-star-rating"), $this->security_level, "gd-star-rating-wizard", array(&$this,"star_menu_wizard"));
         }
 
@@ -724,8 +726,7 @@ if (!class_exists('GDStarRating')) {
                 } else {
                     echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.17.css" type="text/css" media="screen" />');
                 }
-                if ($this->admin_plugin_page == "t2" ||
-                    $this->admin_plugin_page == "multi-sets") {
+                if ($this->admin_plugin_page == "multi-sets") {
                     include(STARRATING_PATH."code/js/corrections.php");
                 }
             }
@@ -2699,9 +2700,19 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             }
 
             $this->render_wait_article();
+            $this->render_wait_article_thumb();
             $this->cache_posts($userdata->ID);
             foreach ($alls as $vote => $settings) {
-                $html = $this->render_article_actual($settings);
+                $cde = substr($vote, 0, 3);
+                $html = "";
+                switch ($cde) {
+                    case "asr":
+                        $html = $this->render_article_actual($settings);
+                        break;
+                    case "atr":
+                        $html = $this->render_thumb_article_actual($settings);
+                        break;
+                }
                 $html = str_replace('"', '\"', $html);
                 $rendered[] = '{"id": "gdsrc_'.$vote.'", "html": "'.$html.'"}';
             }
@@ -2720,9 +2731,19 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             }
 
             $this->render_wait_comment();
+            $this->render_wait_comment_thumb();
             foreach ($postids as $post_id) $this->cache_comments($post_id);
             foreach ($alls as $vote => $settings) {
-                $html = $this->render_comment_actual($settings);
+                $cde = substr($vote, 0, 3);
+                $html = "";
+                switch ($cde) {
+                    case "csr":
+                        $html = $this->render_comment_actual($settings);
+                        break;
+                    case "ctr":
+                        $html = $this->render_thumb_article_actual($settings);
+                        break;
+                }
                 $html = str_replace('"', '\"', $html);
                 $rendered[] = '{"id": "gdsrc_'.$vote.'", "html": "'.$html.'"}';
             }
@@ -3115,7 +3136,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         }
 
         function render_comment_actual($settings) {
-            if ($this->o["comments_active"] != 1 || $this->is_bot) return "";
+            if ($this->o["comments_active"] != 1 || $this->is_bot) return GDSRRender::bot_response();
 
             $post_id = $settings[1];
             $comment_id = $settings[2];
@@ -3236,14 +3257,20 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                 return $this->render_comment_actual($elements);
         }
 
-        function render_thumb_article($post, $user, $override = array()) {
-            $default_settings = array("style" => $this->o["thumb_style"], "style_ie6" => $this->o["thumb_style_ie6"], "size" => $this->o["thumb_size"], "tpl" => 0, "read_only" => 0);
-            $override = shortcode_atts($default_settings, $override);
-            if ($override["style"] == "") $override["style"] = $this->o["thumb_style"];
-            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["thumb_style_ie6"];
-            if ($override["size"] == "") $override["size"] = $this->o["thumb_size"];
+        function render_thumb_article_actual($settings) {
+            if ($this->is_bot) return GDSRRender::bot_response();
 
-            if ($this->is_bot) return "";
+            $post_id = $settings[1];
+            $user_id = $settings[10];
+            $post_date = $settings[3];
+            $post_author = $settings[4];
+            $rd_is_page = $settings[2];
+
+            $override["tpl"] = $settings[5];
+            $override["read_only"] = $settings[6];
+            $override["size"] = $settings[7];
+            $override["style"] = $this->g->thumbs[$settings[8]]->folder;
+            $override["style_ie6"] = $this->g->thumbs[$settings[9]]->folder;
 
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
@@ -3257,9 +3284,8 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
             $rd_unit_width = $override["size"];
             $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
-            $rd_post_id = intval($post->ID);
-            $rd_user_id = intval($user->ID);
-            $rd_is_page = $post->post_type == "page" ? "1" : "0";
+            $rd_post_id = intval($post_id);
+            $rd_user_id = intval($user_id);
 
             $post_data = wp_gdget_post($rd_post_id);
             if (count($post_data) == 0) {
@@ -3284,7 +3310,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             }
 
             if ($allow_vote) {
-                if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author) {
+                if ($this->o["author_vote"] == 1 && $rd_user_id == $post_author) {
                     $allow_vote = false;
                     $dbg_allow = "A";
                 }
@@ -3302,7 +3328,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                         $deadline = $expiry_value;
                         break;
                     case "T":
-                        $remaining = GDSRHelper::expiration_countdown($post->post_date, $expiry_value);
+                        $remaining = GDSRHelper::expiration_countdown($post_date, $expiry_value);
                         $deadline = GDSRHelper::calculate_deadline($remaining);
                         break;
                 }
@@ -3343,24 +3369,39 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
-            $debug.= $rd_user_id == $post->post_author ? "A" : "N";
+            $debug.= $rd_user_id == $post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
-            $tags_css = array();
-            $tags_css["CSS_BLOCK"] = $this->o["srb_class_block"];
-            $tags_css["CSS_HEADER"] = $this->o["srb_class_header"];
-            $tags_css["CSS_STARS"] = $this->o["srb_class_stars"];
-            $tags_css["CSS_TEXT"] = $this->o["srb_class_text"];
+            $tags_css = array(
+                "CSS_BLOCK" => $this->o["srb_class_block"],
+                "CSS_HEADER" => $this->o["srb_class_header"],
+                "CSS_STARS" => $this->o["srb_class_stars"],
+                "CSS_TEXT" => $this->o["srb_class_text"]
+            );
 
-            if ($override["tpl"] > 0) $template_id = $override["tpl"];
-            else $template_id = $this->o["default_tab_template"];
-
+            $template_id = $override["tpl"];
             $rating_block = GDSRRenderT2::render_tab($template_id, array("post_id" => $rd_post_id, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "tags_css" => $tags_css, "header_text" => $this->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_article_thumb, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline));
             return $rating_block;
         }
 
+        function render_thumb_article($post, $user, $override = array()) {
+            $default_settings = array("style" => $this->o["thumb_style"], "style_ie6" => $this->o["thumb_style_ie6"], "size" => $this->o["thumb_size"], "tpl" => 0, "read_only" => 0);
+            $override = shortcode_atts($default_settings, $override);
+            if ($override["style"] == "") $override["style"] = $this->o["thumb_style"];
+            if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["thumb_style_ie6"];
+            if ($override["size"] == "") $override["size"] = $this->o["thumb_size"];
+            if ($override["tpl"] == 0) $override["tpl"] = $this->o["default_srb_template"];
+
+            $elements = $this->rating_loader_elements_post($post, $user, $override, "atr");
+
+            if ($this->o["cached_loading"] == 1)
+                return GDSRRender::rating_loader(join(".", $elements), "small");
+            else
+                return $this->render_article_actual($elements);
+        }
+
         function render_article_actual($settings) {
-            if ($this->is_bot) return "";
+            if ($this->is_bot) return GDSRRender::bot_response();
 
             $post_id = $settings[1];
             $user_id = $settings[10];
