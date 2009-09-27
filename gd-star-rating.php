@@ -3740,7 +3740,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $rd_unit_width_avg = $override["average_size"];
             $rd_unit_style_avg = $this->is_ie6 ? $override["average_stars_ie6"] : $override["average_stars"];
 
-            return GDSRRenderT2::render_mrb($template_id, array("style" => $rd_unit_style, "allow_vote" => false, "votes" => $votes, "post_id" => $custom_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $header_text, "tags_css" => $tags_css, "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => 1));
+            return GDSRRenderT2::render_mrb($template_id, array("style" => $rd_unit_style, "allow_vote" => false, "votes" => $votes, "post_id" => $custom_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $header_text, "tags_css" => $tags_css, "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => $star_factor));
         }
         // rendering
     }
