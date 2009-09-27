@@ -2704,11 +2704,11 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         function cached_posts($votes) {
             global $userdata;
 
-            $this->c = $rendered = $alls = array();
+            $rendered = $alls = array();
             foreach ($votes as $vote) {
                 $settings = explode(".", $vote);
                 $alls[$vote] = $settings;
-                $this->c[$settings[1]] = 1;
+                $this->c[$settings[1]] = 0;
             }
 
             $this->render_wait_article();
@@ -2733,12 +2733,11 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         }
 
         function cached_comments($votes) {
-            $this->c = $rendered = $alls = $postids = array();
+            $rendered = $alls = $postids = array();
 
             foreach ($votes as $vote) {
                 $settings = explode(".", $vote);
                 $alls[$vote] = $settings;
-                $this->c[$settings[1]] = 1;
                 if (!in_array($settings[1], $postids)) $postids[] = $settings[1];
             }
 
@@ -2753,7 +2752,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                         $html = $this->render_comment_actual($settings);
                         break;
                     case "ctr":
-                        $html = $this->render_thumb_article_actual($settings);
+                        $html = $this->render_thumb_comment_actual($settings);
                         break;
                 }
                 $html = str_replace('"', '\"', $html);
@@ -2955,7 +2954,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                 // multis rating
                 if ($this->o["multis_active"] && (is_single() || is_page())) {
                     $this->prepare_multiset();
-                    $this->cache_posts($user_id);
+                    //$this->cache_posts($user_id);
                     $content = $this->display_multi_rating("top", $post, $userdata).$content;
                     $content = $content.$this->display_multi_rating("bottom", $post, $userdata);
                 }
@@ -3317,17 +3316,18 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         function render_thumb_article_actual($settings) {
             if ($this->is_bot) return GDSRRender::bot_response();
 
-            $post_id = $settings[1];
-            $user_id = $settings[10];
+            $rd_post_id = intval($settings[1]);
+            $rd_user_id = intval($settings[10]);
             $post_date = $settings[3];
             $post_author = $settings[4];
             $rd_is_page = $settings[2];
 
+            $rd_unit_width = $settings[7];
             $override["tpl"] = $settings[5];
             $override["read_only"] = $settings[6];
-            $override["size"] = $settings[7];
             $override["style"] = $this->g->thumbs[$settings[8]]->folder;
             $override["style_ie6"] = $this->g->thumbs[$settings[9]]->folder;
+            $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
 
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
@@ -3338,12 +3338,6 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             }
 
             if ($override["read_only"] == 1) $dbg_allow = "RO";
-
-            $rd_unit_width = $override["size"];
-            $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
-            $rd_post_id = intval($post_id);
-            $rd_user_id = intval($user_id);
-
             $post_data = wp_gdget_post($rd_post_id);
             if (count($post_data) == 0) {
                 GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
@@ -3355,8 +3349,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
             if ($rules_articles == "H") return "";
             if ($allow_vote) {
-                if (($rules_articles == "") ||
-                    ($rules_articles == "A") ||
+                if (($rules_articles == "") || ($rules_articles == "A") ||
                     ($rules_articles == "U" && $rd_user_id > 0) ||
                     ($rules_articles == "V" && $rd_user_id == 0)
                 ) $allow_vote = true;

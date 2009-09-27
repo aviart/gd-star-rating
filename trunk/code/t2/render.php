@@ -662,7 +662,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
                 $rater = sprintf('<div id="gdsr_thumb_%s_a_up" class="gdt-size-%s gdthumb gdup"><a id="gdsrX%sXupXaX%sX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
                     $post_id, $unit_width, $post_id, $template_id, $unit_width, $wait_msg == '' ? "N" : "Y", $style);
                 if ($wait_msg != '') {
-                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_a_loader_up", $post_id), $unit_width, 'loadup', $wait_msg);
+                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_a_loader_up", $post_id), $unit_width, ' loadup', $wait_msg);
                     $rater.= sprintf($rater_wait, sprintf("width: %spx; height: %spx;", $unit_width, $unit_width));
                 }
             } else {
@@ -677,7 +677,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
                 $rater = sprintf('<div id="gdsr_thumb_%s_a_dw" class="gdt-size-%s gdthumb gddw"><a id="gdsrX%sXdwXaX%sX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
                     $post_id, $unit_width, $post_id, $template_id, $unit_width, $wait_msg == '' ? "N" : "Y", $style);
                 if ($wait_msg != '') {
-                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_a_loader_dw", $post_id), $unit_width, 'loaddw', $wait_msg);
+                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_a_loader_dw", $post_id), $unit_width, ' loaddw', $wait_msg);
                     $rater.= sprintf($rater_wait, sprintf("width: %spx; height: %spx;", $unit_width, $unit_width));
                 }
             } else {
