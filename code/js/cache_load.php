@@ -18,6 +18,8 @@ jQuery(document).ready(function() {
             }
             jQuery(".gdsr_rating_as > a").unbind("click");
             jQuery(".gdsr_rating_as > a").click(function() { gdsr_rating_standard(this); });
+            jQuery(".gdthumb > a").unbind("click");
+            jQuery(".gdthumb > a").click(function() { gdsr_rating_thumb(this); });
         });
     }
 
@@ -30,6 +32,8 @@ jQuery(document).ready(function() {
             }
             jQuery(".gdsr_rating_as > a").unbind("click");
             jQuery(".gdsr_rating_as > a").click(function() { gdsr_rating_standard(this); });
+            jQuery(".gdthumb > a").unbind("click");
+            jQuery(".gdthumb > a").click(function() { gdsr_rating_thumb(this); });
         });
     }
 });
