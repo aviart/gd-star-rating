@@ -2007,7 +2007,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
 
             $rating = 0;
             $total_votes = 0;
-            $json = array();
+            $json = $summary = array();
 
             if ($allow_vote) {
                 GDSRDBMulti::save_vote($post_id, $set_id, $user, $ip, $ua, $values, $data);
@@ -2024,6 +2024,8 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
 
             $template = new gdTemplateRender($tpl_id, "MRB");
             $rt = GDSRRenderT2::render_srt_voted($template->dep["MRT"], array("rating" => $rating, "unit_count" => $set->stars, "votes" => $total_votes, "id" => $post_id, "vote" => $vote_value));
+
+            $json = apply_filters("gdsr_vote_rating_multis_return", $json, $summary, $values);
             $enc_values = "[".join(",", $json)."]";
 
             return "{ status: 'ok', values: ".$enc_values.", rater: '".$rt."', average: '".$rating."' }";
@@ -2074,6 +2076,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
             $template = new gdTemplateRender($tpl_id, "SRB");
             $rt = GDSRRenderT2::render_srt_voted($template->dep["SRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "id" => $post_id, "vote" => $vote_value));
 
+            $rating_width = apply_filters("gdsr_vote_rating_article_return", $rating_width, $rating1, $vote_value);
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
 
@@ -2124,6 +2127,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $template = new gdTemplateRender($tpl_id, "CRB");
             $rt = GDSRRenderT2::render_crt($template->dep["CRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "vote_value" => $vote_value));
 
+            $rating_width = apply_filters("gdsr_vote_rating_comment_return", $rating_width, $rating1, $vote_value);
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
         // vote
@@ -2828,6 +2832,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
         // rendering
         function rating_loader_elements_post($post, $user, $override, $type) {
+            $user_id = is_object($user) ? $user->ID : 0;
             switch ($type) {
                 case "asr":
                     return array(
@@ -2835,7 +2840,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                         $post->post_author, strtotime($post->post_date),
                         $override["tpl"], $override["read_only"], $override["size"],
                         $this->g->find_stars_id($override["style"]),
-                        $this->g->find_stars_id($override["style_ie6"], $user->ID)
+                        $this->g->find_stars_id($override["style_ie6"], $user_id)
                     );
                     break;
                 case "atr":
@@ -2844,19 +2849,20 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                         $post->post_author, strtotime($post->post_date),
                         $override["tpl"], $override["read_only"], $override["size"],
                         $this->g->find_thumb_id($override["style"]),
-                        $this->g->find_thumb_id($override["style_ie6"], $user->ID)
+                        $this->g->find_thumb_id($override["style_ie6"], $user_id)
                     );
                     break;
             }
         }
 
         function rating_loader_elements_comment($post, $comment, $user, $override, $type) {
+            $user_id = is_object($user) ? $user->ID : 0;
             switch ($type) {
                 case "csr":
                     return array(
                         $type, $post->ID, $comment->comment_ID, $comment->user_id,
                         $post->post_type == "page" ? "1" : "0", $post->post_author,
-                        $user->ID, $override["tpl"], $override["read_only"],
+                        $user_id, $override["tpl"], $override["read_only"],
                         $override["size"], $this->g->find_stars_id($override["style"]),
                         $this->g->find_stars_id($override["style_ie6"])
                     );
@@ -2865,7 +2871,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                     return array(
                         $type, $post->ID, $comment->comment_ID, $comment->user_id,
                         $post->post_type == "page" ? "1" : "0", $post->post_author,
-                        $user->ID, $override["tpl"], $override["read_only"],
+                        $user_id, $override["tpl"], $override["read_only"],
                         $override["size"], $this->g->find_thumb_id($override["style"]),
                         $this->g->find_thumb_id($override["style_ie6"])
                     );
