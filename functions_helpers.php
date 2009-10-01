@@ -47,7 +47,7 @@ function gd_get_multi_set($id = 0) {
  */
 function is_msie6() {
     $agent = $_SERVER['HTTP_USER_AGENT'];
-    if(eregi("msie",$agent) && !eregi("opera",$agent)) {
+    if (preg_match("/msie/i", $agent) && !preg_match("/opera/i", $agent)) {
         $val = explode(" ", stristr($agent, "msie"));
         $version = substr($val[1], 0, 1);
         if ($version < 7) return true;

@@ -58,7 +58,7 @@ class GDSRHelper {
 
     function detect_bot($str, $spiders = array()) {
         foreach($spiders as $spider) {
-        if (ereg($spider, $str)) 
+        if (preg_match("/".$spider."/", $str))
             return true;
         }
         return false;
