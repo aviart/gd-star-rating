@@ -275,8 +275,8 @@ class GDSRX {
             $select.= ", d.average_review as review";
         }
 
-        if ($grouping != 'post')
-            $where[] = "count(*) > ".$widget["min_count"];
+        if ($grouping != 'post' && $widget["min_count"] > 0)
+            $group.= " having count(*) >= ".$widget["min_count"];
 
         if ($widget["select"] != "" && $widget["select"] != "postpage")
             $where[] = "p.post_type = '".$widget["select"]."'";
@@ -405,6 +405,9 @@ class GDSRX {
             $select = "p.id as post_id, p.post_name as slug, p.post_author as author, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter";
         }
 
+        if ($grouping != 'post' && $widget["min_count"] > 0)
+            $group.= " having count(*) >= ".$widget["min_count"];
+
         if ($widget["select"] != "" && $widget["select"] != "postpage")
             $where[] = "p.post_type = '".$widget["select"]."'";
 
@@ -532,8 +535,8 @@ class GDSRX {
             $select = "p.id as post_id, p.post_name as slug, p.post_author as author, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter";
         }
 
-        if ($grouping != 'post')
-            $where[] = "count(*) > ".$widget["min_count"];
+        if ($grouping != 'post' && $widget["min_count"] > 0)
+            $group.= " having count(*) >= ".$widget["min_count"];
 
         if ($widget["select"] != "" && $widget["select"] != "postpage") 
             $where[] = "p.post_type = '".$widget["select"]."'";
