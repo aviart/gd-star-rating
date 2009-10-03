@@ -152,6 +152,8 @@ There could be two causes for this:
 == Changelog ==
 = 1.6.9 =
 * Minimum count option for rating widgets with grouping
+* More filters for rating results
+* Solved SQL upgrade error reports
 * Few bugs and php warning fixed
 
 = 1.6.8 =

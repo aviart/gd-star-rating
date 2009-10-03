@@ -1,15 +1,15 @@
 <?php
 
 /*
-Name:    gdDBInstallGDSR
-Version: 1.4.0
+Name:    gdDBInstall
+Version: 1.5.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/
 
 == Copyright ==
 
-Copyright 2008-2009 Milan Petrovic (email : milan@gdragon.info)
+Copyright 2008-2009 Milan Petrovic (email: milan@gdragon.info)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -64,18 +64,19 @@ if (!class_exists('gdDBInstallGDSR')) {
         }
 
         /**
-         * Executes alert scrips from alert.txt file.
+         * Executes alert scripts from alert.txt file.
          *
          * @global object $wpdb Wordpress DB class
          * @global string $table_prefix Wordpress table prefix
          * @param string $path base path to folder where the install folder is located with trailing slash
+         * @param string $fname file name to use
          */
         function alter_tables($path, $fname = 'alter.txt') {
             global $wpdb, $table_prefix;
-            $path.= "install/".$fname;
+            $path.= "install/mod/".$fname;
             if (file_exists($path)) {
                 $alters = file($path);
-                if (is_array($tables) && count($tables) > 0) {
+                if (is_array($alters) && count($alters) > 0) {
                     foreach ($alters as $a) {
                         if (trim($a) != '') {
                             $a = sprintf($a, $table_prefix);
@@ -87,23 +88,98 @@ if (!class_exists('gdDBInstallGDSR')) {
         }
 
         /**
-         * Executes drop scrips from delete.txt file.
+         * Executes alert index scripts from idx.txt file.
          *
          * @global object $wpdb Wordpress DB class
          * @global string $table_prefix Wordpress table prefix
          * @param string $path base path to folder where the install folder is located with trailing slash
+         * @param string $fname file name to use
          */
-        function delete_tables($path) {
+        function alter_index($path, $fname = 'idx.txt') {
             global $wpdb, $table_prefix;
-            $path.= "install/delete.txt";
+            $path.= "install/mod/".$fname;
+            if (file_exists($path)) {
+                $alters = file($path);
+                $table_cache = $matches = array();
+                if (is_array($alters) && count($alters) > 0) {
+                    foreach ($alters as $a) {
+                        if (trim($a) != '') {
+                            $a = sprintf($a, $table_prefix);
+                            $tbl = trim(substr($a, 12, strpos($a, " ADD") - 12));
+                            if (!in_array($tbl, array_keys($table_cache))) {
+                                $table_cache[$tbl] = $wpdb->get_results("SHOW INDEX FROM ".$tbl);
+                            }
+                            $found = preg_match("/ADD\sINDEX\s`(.+?)`\s\(`(.+?)`\)/i", $a, $matches);
+                            if ($found == 1) {
+                                if (gdDBInstallGDSR::check_for_index($table_cache[$tbl], $matches[2])) {
+                                    $wpdb->query($a);
+                                }
+                            } else {
+                                $found = preg_match("/ADD\sPRIMARY\sKEY\s\(`(.+?)`\)/i", $a, $matches);
+                                if ($found == 1) {
+                                    if (gdDBInstallGDSR::check_for_index($table_cache[$tbl], $matches[2])) {
+                                        $wpdb->query($a);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /**
+         * Executes drop scrips to delete tables in drop files.
+         *
+         * @global object $wpdb Wordpress DB class
+         * @global string $table_prefix Wordpress table prefix
+         * @param string $path base path to folder where the install folder is located with trailing slash
+         * @param string $fname file name to use
+         */
+        function delete_tables($path, $fname = 'drop_tables.txt') {
+            global $wpdb, $table_prefix;
+            $path.= "install/mod/".$fname;
             if (file_exists($path)) {
                 $tables = file($path);
                 if (is_array($tables) && count($tables) > 0) {
                     foreach ($tables as $table_name) {
                         if (trim($table_name) != '') {
-                            $table_name = $table_prefix.$table_name;
+                            $table_name = $table_prefix."gdsr_".$table_name;
                             if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name) {
                                 $wpdb->query("drop table ".$table_name);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /**
+         * Executes drop scrips to delete columns in drop files.
+         *
+         * @global object $wpdb Wordpress DB class
+         * @global string $table_prefix Wordpress table prefix
+         * @param string $path base path to folder where the install folder is located with trailing slash
+         * @param string $fname file name to use
+         */
+        function delete_columns($path, $fname = 'drop_columns.txt') {
+            global $wpdb, $table_prefix;
+            $path.= "install/mod/".$fname;
+            if (file_exists($path)) {
+                $rows = file($path);
+                $table_cache = array();
+                if (is_array($rows) && count($rows) > 0) {
+                    foreach ($rows as $row) {
+                        if (trim($row) != '') {
+                            $a = explode("|", $row);
+                            $table = $table_prefix."gdsr_".trim($a[0]);
+                            $column = trim($a[1]);
+                            if (!in_array($table, array_keys($table_cache))) {
+                                $table_cache[$table] = $wpdb->get_results(sprintf("SHOW COLUMNS FROM %s", $table));
+                            }
+                            $tbl = $table_cache[$table];
+                            if (gdDBInstallGDSR::check_column($tbl, $column)) {
+                                $wpdb->query(sprintf("ALTER TABLE `%s` DROP `%s`", $table, $column));
                             }
                         }
                     }
@@ -125,14 +201,31 @@ if (!class_exists('gdDBInstallGDSR')) {
         }
 
         /**
+         *
+         *
+         * @param array $idx list of indexed columns
+         * @param string $column column to find as index
+         * @return bool true if column is not in indexes array
+         */
+        function check_for_index($idx, $column) {
+            if (is_array($idx) && count($idx) > 0) {
+                foreach ($idx as $index) {
+                    if (strtolower($index->Column_name) == strtolower($column)) return false;
+                }
+            }
+            return true;
+        }
+
+        /**
          * Checks if the column exists in the table columns.
          *
          * @param array $columns all columns in the table
          * @param string $column column name to check
          */
         function check_column($columns, $column) {
-            foreach ($columns as $c)
+            foreach ($columns as $c) {
                 if ($c->Field == $column) return true;
+            }
             return false;
         }
 
