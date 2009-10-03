@@ -7,7 +7,7 @@ class GDSRDefaults {
         "date" => "2009.10.04.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 931,
+        "build" => 936,
         "admin_views" => 0,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,
@@ -446,6 +446,21 @@ class GDSRDefaults {
         "stars_cmm" => 1,
         "stars_mur" => 1,
         "multis_id" => 0
+    );
+
+    var $tables_list = array(
+        "data_article",
+        "data_category",
+        "data_comment",
+        "ips",
+        "moderate",
+        "multis",
+        "multis_data",
+        "multis_trend",
+        "multis_values",
+        "templates",
+        "votes_log",
+        "votes_trend"
     );
 
     function GDSRDefaults() { }

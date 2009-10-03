@@ -1,3 +1,4 @@
+ALTER TABLE %sgdsr_multis ADD PRIMARY KEY (`multi_id`)
 ALTER TABLE %sgdsr_votes_log ADD INDEX `idx_id_log` (`id`)
 ALTER TABLE %sgdsr_votes_log ADD INDEX `idx_vote_log` (`vote_type`)
 ALTER TABLE %sgdsr_votes_log ADD INDEX `idx_multi_log` (`multi_id`)

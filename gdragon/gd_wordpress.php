@@ -1,15 +1,15 @@
 <?php
 
 /*
-Name:    gdWordPressGDSR
-Version: 1.4.0
+Name:    gdWordPress
+Version: 1.5.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/
 
 == Copyright ==
 
-Copyright 2008-2009 Milan Petrovic (email : milan@gdragon.info)
+Copyright 2008-2009 Milan Petrovic (email: milan@gdragon.info)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

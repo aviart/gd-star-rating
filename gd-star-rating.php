@@ -96,6 +96,7 @@ if (!class_exists('GDStarRating')) {
         var $override_readonly_standard = false;
         var $override_readonly_multis = false;
 
+        var $tables_list;
         var $plugin_url;
         var $plugin_ajax;
         var $plugin_path;
@@ -151,6 +152,7 @@ if (!class_exists('GDStarRating')) {
             $this->shortcodes = $gdd->shortcodes;
             $this->stars_sizes = $gdd->stars_sizes;
             $this->thumb_sizes = $gdd->thumb_sizes;
+            $this->tables_list = $gdd->tables_list;
             $this->default_spider_bots = $gdd->default_spider_bots;
             $this->default_wpr8 = $gdd->default_wpr8;
             $this->default_user_ratings_filter = $gdd->default_user_ratings_filter;
@@ -873,6 +875,7 @@ if (!class_exists('GDStarRating')) {
                     add_filter('comment_save_pre', array(&$this, 'comment_edit_review'));
                 }
             }
+
             if ($this->o["integrate_tinymce"] == 1) {
                 add_filter("mce_external_plugins", array(&$this, 'add_tinymce_plugin'), 5);
                 add_filter('mce_buttons', array(&$this, 'add_tinymce_button'), 5);
@@ -1194,10 +1197,11 @@ if (!class_exists('GDStarRating')) {
                         gdDBInstallGDSR::upgrade_collation(STARRATING_PATH);
 
                     gdDBInstallGDSR::delete_tables(STARRATING_PATH);
+                    gdDBInstallGDSR::delete_columns(STARRATING_PATH);
                     gdDBInstallGDSR::create_tables(STARRATING_PATH);
                     gdDBInstallGDSR::upgrade_tables(STARRATING_PATH);
                     gdDBInstallGDSR::alter_tables(STARRATING_PATH);
-                    gdDBInstallGDSR::alter_tables(STARRATING_PATH, "idx.txt");
+                    gdDBInstallGDSR::alter_index(STARRATING_PATH);
                     $this->o["database_upgrade"] = date("r");
 
                     GDSRDB::install_all_templates();
