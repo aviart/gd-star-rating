@@ -2,9 +2,9 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.6.8",
+        "version" => "1.6.9",
         "revision" => 0,
-        "date" => "2009.09.28.",
+        "date" => "2009.10.04.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
         "build" => 931,
@@ -292,6 +292,7 @@ class GDSRDefaults {
         "display_categories" => "",
         "rows" => 10,
         "min_votes" => 3,
+        "min_count" => 2,
         "select" => "postpage",
         "column" => "rating",
         "order" => "desc",
@@ -396,6 +397,7 @@ class GDSRDefaults {
         "taxonomy" => "",
         "rows" => 10,
         "min_votes" => 3,
+        "min_count" => 2,
         "excerpt_words" => 10,
         "select" => "postpage",
         "column" => "rating",

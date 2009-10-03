@@ -11,7 +11,7 @@
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('<?php echo $this->get_field_id('div_filter'); ?>')"><?php _e("Filter", "gd-star-rating"); ?></a></strong></td>
-    <td width="150" nowrap="nowrap"><?php _e("Include Articles", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Include articles", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select class="widefat" name="<?php echo $this->get_field_name('select'); ?>" id="<?php echo $this->get_field_id('select'); ?>" style="width: 110px">
             <option value="postpage"<?php echo $instance['select'] == 'postpage' ? ' selected="selected"' : ''; ?>><?php _e("Posts & Pages", "gd-star-rating"); ?></option>
@@ -22,7 +22,7 @@
   </tr>
   <tr>
     <td width="100" valign="top"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Display Votes From", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Display votes from", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select name="<?php echo $this->get_field_name('show'); ?>" id="<?php echo $this->get_field_id('show'); ?>" style="width: 110px">
             <option value="total"<?php echo $instance['show'] == 'all' ? ' selected="selected"' : ''; ?>><?php _e("Everyone", "gd-star-rating"); ?></option>
@@ -33,7 +33,7 @@
   </tr>
   <tr>
     <td width="100" valign="top"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Number Of Posts", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Number of posts", "gd-star-rating"); ?>:</td>
     <td align="right">
         <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $this->get_field_name('rows'); ?>" id="<?php echo $this->get_field_id('rows'); ?>" value="<?php echo $instance["rows"]; ?>" />
     </td>
@@ -50,14 +50,37 @@
   </tr>
   <tr>
     <td width="100" valign="top"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Minimum votes", "gd-star-rating"); ?>:</td>
     <td align="right">
         <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $this->get_field_name('min_votes'); ?>" id="<?php echo $this->get_field_id('min_votes'); ?>" value="<?php echo $instance["min_votes"]; ?>" />
     </td>
   </tr>
   <tr>
+    <td width="100"></td>
+    <td nowrap="nowrap" colspan="2">
+        <div class="gdsr-table-split-filter"></div>
+    </td>
+  </tr>
+  <tr>
     <td width="100" valign="top"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Sorting Column", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Minimum posts count", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $this->get_field_name('min_count'); ?>" id="<?php echo $this->get_field_id('min_count'); ?>" value="<?php echo $instance["min_count"]; ?>" />
+    </td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td colspan="2" align="right"><em><small><?php _e("This filter will be used only with grouping options.", "gd-star-rating"); ?></small></em></td>
+  </tr>
+  <tr>
+    <td width="100"></td>
+    <td nowrap="nowrap" colspan="2">
+        <div class="gdsr-table-split-filter"></div>
+    </td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td width="150" nowrap="nowrap"><?php _e("Sorting column", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select name="<?php echo $this->get_field_name('column'); ?>" id="<?php echo $this->get_field_id('column'); ?>" style="width: 110px">
             <option value="rating"<?php echo $instance['column'] == 'rating' ? ' selected="selected"' : ''; ?>><?php _e("Rating", "gd-star-rating"); ?></option>
@@ -72,7 +95,7 @@
   </tr>
   <tr>
     <td width="100" valign="top"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Sorting Order", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Sorting order", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select name="<?php echo $this->get_field_name('order'); ?>" id="<?php echo $this->get_field_id('order'); ?>" style="width: 110px">
             <option value="desc"<?php echo $instance['order'] == 'desc' ? ' selected="selected"' : ''; ?>><?php _e("Descending", "gd-star-rating"); ?></option>

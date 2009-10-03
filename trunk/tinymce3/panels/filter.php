@@ -2,7 +2,7 @@
 <legend><?php _e("Basic", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="3" cellspacing="0" width="100%">
       <tr>
-        <td class="gdsrleft"><?php _e("Include Articles", "gd-star-rating"); ?>:</td>
+        <td class="gdsrleft"><?php _e("Include articles", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
             <select id="srSelect" name="srSelect" style="width: 130px">
                 <option value="postpage"><?php _e("Posts And Pages", "gd-star-rating"); ?></option>
@@ -12,7 +12,7 @@
         </td>
       </tr>
       <tr>
-        <td class="gdsrleft"><?php _e("Display Votes From", "gd-star-rating"); ?>:</td>
+        <td class="gdsrleft"><?php _e("Display votes from", "gd-star-rating"); ?>:</td>
         <td class="gdsrright"><select name="srShow" id="srShow" style="width: 130px">
             <option value="total"><?php _e("Everyone", "gd-star-rating"); ?></option>
             <option value="visitors"><?php _e("Visitors Only", "gd-star-rating"); ?></option>
@@ -24,12 +24,22 @@
         <td class="gdsrright"><?php GDSRDatabase::get_combo_categories('', 'srCategory'); ?></td>
       </tr>
       <tr>
-        <td class="gdsrleft"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright"><input class="widefat widnumb" style="text-align: right;" type="text" size="8" id="srMinVotes" name="srMinVotes" value="5" /></td>
+        <td class="gdsrleft"><?php _e("Minimum votes", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright"><input class="widefat widnumb" style="text-align: right;" type="text" size="8" id="srMinVotes" name="srMinVotes" value="3" /></td>
       </tr>
       <tr>
         <td class="gdsrleft"><?php _e("Excerpt words", "gd-star-rating"); ?>:</td>
         <td class="gdsrright"><input class="widefat widnumb" style="text-align: right;" type="text" size="8" id="srMinExcerpt" name="srMinExcerpt" value="10" /></td>
+      </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+<legend><?php _e("Grouping Specific", "gd-star-rating"); ?></legend>
+    <table border="0" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+        <td class="gdsrleft"><?php _e("Minimum posts count", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright"><input class="widefat widnumb" style="text-align: right;" type="text" size="8" id="srMinCount" name="srMinCount" value="2" /></td>
       </tr>
     </table>
 </fieldset>

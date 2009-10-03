@@ -300,9 +300,13 @@ function insertStarRatingCode() {
             tagtext = tagtext + " bayesian_calculation=1";
             funa.push("'bayesian_calculation' => true");
         }
-        if (document.getElementById('srMinVotes').value != 5) {
+        if (document.getElementById('srMinVotes').value != 3) {
             tagtext = tagtext + " min_votes=" + document.getElementById('srMinVotes').value;
             funa.push("'min_votes' => " + document.getElementById('srMinVotes').value);
+        }
+        if (document.getElementById('srMinCount').value != 2) {
+            tagtext = tagtext + " min_count=" + document.getElementById('srMinCount').value;
+            funa.push("'min_count' => " + document.getElementById('srMinCount').value);
         }
         if (document.getElementById('srMinExcerpt').value != 10) {
             tagtext = tagtext + " excerpt_words=" + document.getElementById('srMinExcerpt').value;
