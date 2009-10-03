@@ -11,7 +11,7 @@
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('gdstarr-divfilter', '<?php echo $wpnm; ?>')"><?php _e("Filter", "gd-star-rating"); ?></a></strong></td>
-    <td width="150" nowrap="nowrap"><?php _e("Include Articles", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Include articles", "gd-star-rating"); ?>:</td>
     <td align="right">
         <label><select class="widefat" name="<?php echo $wpfn; ?>[select]" id="gdstarr-select" style="width: 110px">
             <option value="postpage"<?php echo $wpno['select'] == 'postpage' ? ' selected="selected"' : ''; ?>><?php _e("Posts & Pages", "gd-star-rating"); ?></option>
@@ -22,7 +22,7 @@
   </tr>
   <tr>
     <td width="100" valign="top"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Display Votes From", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Display votes from", "gd-star-rating"); ?>:</td>
     <td align="right">
         <label><select name="<?php echo $wpfn; ?>[show]" id="gdstarr-show" style="width: 110px">
             <option value="total"<?php echo $wpno['show'] == 'all' ? ' selected="selected"' : ''; ?>><?php _e("Everyone", "gd-star-rating"); ?></option>
@@ -33,7 +33,7 @@
   </tr>
   <tr>
     <td width="100" valign="top"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Number Of Posts", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Number of posts", "gd-star-rating"); ?>:</td>
     <td align="right">
         <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[rows]" id="gdstarr-rows" value="<?php echo $wpno["rows"]; ?>" />
     </td>
@@ -50,14 +50,37 @@
   </tr>
   <tr>
     <td width="100" valign="top"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Minimum Votes", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Minimum votes", "gd-star-rating"); ?>:</td>
     <td align="right">
         <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[min_votes]" id="gdstarr-minvotes" value="<?php echo $wpno["min_votes"]; ?>" />
     </td>
   </tr>
   <tr>
+    <td width="100"></td>
+    <td nowrap="nowrap" colspan="2">
+        <div class="gdsr-table-split-filter"></div>
+    </td>
+  </tr>
+  <tr>
     <td width="100" valign="top"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Sorting Column", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Minimum posts count", "gd-star-rating"); ?>:</td>
+    <td align="right">
+        <input class="widefat" style="text-align: right; width: 40px" type="text" name="<?php echo $wpfn; ?>[min_count]" id="gdstarr-mincount" value="<?php echo $wpno["min_count"]; ?>" />
+    </td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td colspan="2" align="right"><em><small><?php _e("This filter will be used only with grouping options.", "gd-star-rating"); ?></small></em></td>
+  </tr>
+  <tr>
+    <td width="100"></td>
+    <td nowrap="nowrap" colspan="2">
+        <div class="gdsr-table-split-filter"></div>
+    </td>
+  </tr>
+  <tr>
+    <td width="100" valign="top"></td>
+    <td width="150" nowrap="nowrap"><?php _e("Sorting column", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select name="<?php echo $wpfn; ?>[column]" id="gdstarr-column" style="width: 110px">
             <option value="rating"<?php echo $wpno['column'] == 'rating' ? ' selected="selected"' : ''; ?>><?php _e("Rating", "gd-star-rating"); ?></option>
@@ -72,7 +95,7 @@
   </tr>
   <tr>
     <td width="100" valign="top"></td>
-    <td width="150" nowrap="nowrap"><?php _e("Sorting Order", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap"><?php _e("Sorting order", "gd-star-rating"); ?>:</td>
     <td align="right">
         <select name="<?php echo $wpfn; ?>[order]" id="gdstarr-order" style="width: 110px">
             <option value="desc"<?php echo $wpno['order'] == 'desc' ? ' selected="selected"' : ''; ?>><?php _e("Descending", "gd-star-rating"); ?></option>

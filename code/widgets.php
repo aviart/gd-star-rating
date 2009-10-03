@@ -321,6 +321,7 @@ class gdsrWidgets {
                 $options['excerpt_words'] = intval($posted['excerpt_words']);
                 $options['rows'] = intval($posted['rows']);
                 $options['min_votes'] = $posted['min_votes'];
+                $options['min_count'] = $posted['min_count'];
                 $options['select'] = $posted['select'];
                 $options['grouping'] = $posted['grouping'];
                 $options['column'] = $posted['column'];

@@ -32,6 +32,7 @@ if (class_exists("WP_Widget")) {
             $instance['excerpt_words'] = intval($new_instance['excerpt_words']);
             $instance['rows'] = intval($new_instance['rows']);
             $instance['min_votes'] = $new_instance['min_votes'];
+            $instance['min_count'] = $new_instance['min_count'];
             $instance['select'] = $new_instance['select'];
             $instance['taxonomy'] = $new_instance['taxonomy'];
             $instance['grouping'] = $new_instance['grouping'];
