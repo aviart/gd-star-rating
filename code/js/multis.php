@@ -1,4 +1,10 @@
 
+    if (jQuery.browser.msie) jQuery(".gdsr_multisbutton_as > a").attr("href", "javascript:gdsrEmpty()");
+    jQuery(".gdsr_multisbutton_as > a").click(function() { gdsr_rating_multi_button(this); });
+
+    if (jQuery.browser.msie) jQuery(".gdsr_multis_as > a").attr("href", "javascript:gdsrEmpty()");
+    jQuery(".gdsr_multis_as > a").click(function() { gdsr_rating_multi_stars(this); });
+
     if (jQuery.browser.msie) jQuery(".gdsr_mur_static > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_mur_static > a").click(function() {
         var el = jQuery(this).attr("id").split("X");

@@ -573,7 +573,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         if (in_array("%MUR_RATING_TEXT%", $template->tag["normal"])) {
             $rating_text = GDSRRenderT2::render_mrt($template->dep["MRT"], array("rating" => $rating, "unit_count" => $set->stars, "votes" => $total_votes, "id" => $post_id, "time_restirctions" => $time_restirctions, "time_remaining" => $time_remaining, "time_date" => $time_date));
             $rating_wait = $allow_vote ? GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", "", $wait_msg) : "";
-            $rating_text = $rating_wait.'<div id="gdsr_mur_text_'.$post_id.'_'.$set->multi_id.'">'.$rating_text.'</div>';
+            $voted = $allow_vote ? '' : ' class="voted"';
+            $rating_text = $rating_wait.'<div'.$voted.' id="gdsr_mur_text_'.$post_id.'_'.$set->multi_id.'">'.$rating_text.'</div>';
             $tpl_render = str_replace("%MUR_RATING_TEXT%", $rating_text, $tpl_render);
         }
 

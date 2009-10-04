@@ -46,7 +46,7 @@ require_once($gdsr_dirname_basic."/code/gfx/gfx_lib.php");
 if (!STARRATING_AJAX) {
     require_once($gdsr_dirname_basic."/code/query.php");
     require_once($gdsr_dirname_basic."/code/db/widgetizer.php");
-    require_once($gdsr_dirname_basic."/code/widgets.php");
+    require_once($gdsr_dirname_basic."/code/widgets_wp27.php");
     require_once($gdsr_dirname_basic."/code/widgets_wp28.php");
 }
 
@@ -693,8 +693,7 @@ if (!class_exists('GDStarRating')) {
         function admin_head() {
             global $parent_file;
             $this->admin_page = $parent_file;
-            $tabs_extras = "";
-            $datepicker_date = "";
+            $tabs_extras = $datepicker_date = "";
 
             if ($this->admin_plugin_page == "ips" && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
             if ($this->admin_plugin) {
@@ -711,7 +710,7 @@ if (!class_exists('GDStarRating')) {
                     echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.17.css" type="text/css" media="screen" />');
                 }
                 if ($this->admin_plugin_page == "multi-sets") {
-                    include(STARRATING_PATH."code/js/corrections.php");
+                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-corrections.js"></script>');
                 }
             }
 
@@ -731,7 +730,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             if ($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php") {
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'code/js/editors.php"></script>');
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-editors.js"></script>');
             }
             echo("\r\n");
             echo('<script type="text/javascript">jQuery(document).ready(function() {');
@@ -1751,7 +1750,7 @@ if (!class_exists('GDStarRating')) {
 
         function get_multi_set($post_id) {
             $this->init_post_categories_data($post_id);
-print_r($this->cats_data_posts[$post_id]);
+
             $set = $prn = 0;
             foreach ($this->cats_data_posts[$post_id] as $cat) {
                 if ($cat->parent > 0 && $prn == 0) $prn = $cat->parent;
@@ -2703,6 +2702,9 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                     case "atr":
                         $html = $this->render_thumb_article_actual($settings);
                         break;
+                    case "amr":
+                        $html = $this->render_multi_rating_actual($settings);
+                        break;
                 }
                 $html = str_replace('"', '\"', $html);
                 $rendered[] = '{"id": "gdsrc_'.$vote.'", "html": "'.$html.'"}';
@@ -2809,6 +2811,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         function rating_loader_elements_post($post, $user, $override, $type) {
             $user_id = is_object($user) ? $user->ID : 0;
             switch ($type) {
+                case "amr":
                 case "asr":
                     return array(
                         $type, $post->ID, $post->post_type == "page" ? "1" : "0",
@@ -2935,7 +2938,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                 // multis rating
                 if ($this->o["multis_active"] && (is_single() || is_page())) {
                     $this->prepare_multiset();
-                    //$this->cache_posts($user_id);
+                    if ($this->o["cached_loading"] == 0) $this->cache_posts($user_id);
                     $content = $this->display_multi_rating("top", $post, $userdata).$content;
                     $content = $content.$this->display_multi_rating("bottom", $post, $userdata);
                 }
@@ -2974,8 +2977,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                 $post_data = GDSRDatabase::get_post_data($post_id);
             }
 
-            $votes = 0;
-            $score = 0;
+            $votes = $score = 0;
 
             if ($post_data->rules_articles == "A" || $post_data->rules_articles == "N") {
                 $votes = $post_data->user_voters + $post_data->visitor_voters;
@@ -2988,10 +2990,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                 $score = $post_data->user_votes;
             }
 
-            $out = array();
-            $out[] = $votes;
-            $out[] = $score;
-            return $out;
+            return array($votes, $score);
         }
 
         function render_article_rss() {
@@ -3569,14 +3568,37 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         }
 
         function render_multi_rating($post, $user, $override = array()) {
+            if (is_feed()) return "";
+
             $default_settings = array("id" => 0, "style" => $this->o["mur_style"], "style_ie6" => $this->o["mur_style_ie6"], "size" => $this->o["mur_size"], "average_stars" => "oxygen", "average_size" => 30, "tpl" => 0, "read_only" => 0);
             $override = shortcode_atts($default_settings, $override);
             if ($override["style"] == "") $override["style"] = $this->o["mur_style"];
             if ($override["style_ie6"] == "") $override["style_ie6"] = $this->o["mur_style_ie6"];
             if ($override["size"] == "") $override["size"] = $this->o["mur_size"];
+            if ($override["tpl"] == 0) $override["tpl"] = $this->o["default_srb_template"];
 
-            if ($this->is_bot) return "";
-            if (is_feed()) return "";
+            $elements = $this->rating_loader_elements_post($post, $user, $override, "amr");
+
+            if ($this->o["cached_loading"] == 1)
+                return GDSRRender::rating_loader(join(".", $elements), "small");
+            else
+                return $this->render_multi_rating_actual($elements);
+        }
+
+        function render_multi_rating_actual($settings) {
+            if ($this->is_bot) return GDSRRender::bot_response();
+
+            $rd_post_id = intval($settings[1]);
+            $rd_user_id = intval($settings[10]);
+            $post_date = $settings[3];
+            $post_author = $settings[4];
+            $rd_is_page = $settings[2];
+
+            $override["tpl"] = $settings[5];
+            $override["read_only"] = $settings[6];
+            $override["size"] = $settings[7];
+            $override["style"] = $this->g->stars[$settings[8]]->folder;
+            $override["style_ie6"] = $this->g->stars[$settings[9]]->folder;
 
             $set = gd_get_multi_set($override["id"]);
             if ($set == null) return "";
@@ -3597,9 +3619,6 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
             if ($override["read_only"] == 1) $dbg_allow = "RO";
 
-            $rd_post_id = intval($post->ID);
-            $rd_user_id = intval($user->ID);
-            $rd_is_page = $post->post_type == "page" ? "1" : "0";
             $remaining = 0;
             $deadline = "";
 
@@ -3696,18 +3715,17 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $debug.= $rd_user_id == $post->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
-            $tags_css = array();
-            $tags_css["MUR_CSS_BLOCK"] = $this->o["mur_class_block"];
-            $tags_css["MUR_CSS_HEADER"] = $this->o["mur_class_header"];
-            $tags_css["MUR_CSS_TEXT"] = $this->o["mur_class_text"];
-            $tags_css["MUR_CSS_BUTTON"] = $this->o["mur_class_button"];
-
-            if ($override["tpl"] > 0) $template_id = $override["tpl"];
-            else $template_id = $this->o["default_mrb_template"];
+            $tags_css = array(
+                "MUR_CSS_BLOCK" => $this->o["mur_class_block"],
+                "MUR_CSS_HEADER" => $this->o["mur_class_header"],
+                "MUR_CSS_STARS" => $this->o["mur_class_stars"],
+                "MUR_CSS_TEXT" => $this->o["mur_class_text"]
+            );
 
             $mur_button = $this->o["mur_button_active"] == 1;
             if (!$allow_vote) $mur_button = false;
 
+            $template_id = $override["tpl"];
             return GDSRRenderT2::render_mrb($template_id, array("style" => $rd_unit_style, "allow_vote" => $allow_vote, "votes" => $votes, "post_id" => $rd_post_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $this->o["mur_header_text"], "tags_css" => $tags_css, "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => 1, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline, "button_active" => $mur_button, "button_text" => $this->o["mur_button_text"], "debug" => $debug, "wait_msg" => $this->loader_multis));
         }
 

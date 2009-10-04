@@ -11,8 +11,5 @@ jQuery(document).ready(function() {
     jQuery(".gdthumb > a").click(function() { gdsr_rating_thumb(this); });
 
     <?php include(STARRATING_PATH.'code/js/integration.php'); ?>
-    <?php if ($include_mur_rating) {
-        include(STARRATING_PATH.'code/js/multi_rt.php');
-        include(STARRATING_PATH.'code/js/multi_in.php');
-    } ?>
+    <?php include(STARRATING_PATH.'code/js/multis.php'); ?>
 });
