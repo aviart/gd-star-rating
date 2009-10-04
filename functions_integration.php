@@ -23,8 +23,11 @@ function wp_gdsr_get_users_votes($user_id, $limit = 100, $filter = array()) {
  * @param int $post_id post to get review for
  */
 function wp_gdsr_get_multi_set($post_id = 0) {
-    global $gdsr, $post;
-    if ($post_id == 0) $post_id = $post->ID;
+    global $gdsr;
+    if ($post_id == 0) {
+        global $post;
+        $post_id = $post->ID;
+    }
     return $gdsr->get_multi_set($post_id);
 }
 

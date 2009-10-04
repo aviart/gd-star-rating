@@ -45,36 +45,7 @@ if ($cat_to > $number_posts) $cat_to = $number_posts;
     
 ?>
 
-<script type="text/javascript">
-function checkAll(form) {
-    for (i = 0, n = form.elements.length; i < n; i++) {
-        if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick', 2))) {
-            if(form.elements[i].checked == true)
-                form.elements[i].checked = false;
-            else
-                form.elements[i].checked = true;
-        }
-    }
-}
-function gdsrTimerChange() {
-    var timer = jQuery("#gdsr_timer_type").val();
-    jQuery("#gdsr_timer_date").css("display", "none");
-    jQuery("#gdsr_timer_countdown").css("display", "none");
-    jQuery("#gdsr_timer_date_text").css("display", "none");
-    jQuery("#gdsr_timer_countdown_text").css("display", "none");
-    if (timer == "D") {
-        jQuery("#gdsr_timer_date").css("display", "block");
-        jQuery("#gdsr_timer_date_text").css("display", "block");
-    }
-    if (timer == "T") {
-        jQuery("#gdsr_timer_countdown").css("display", "block");
-        jQuery("#gdsr_timer_countdown_text").css("display", "block");
-    }
-}
-</script>
-
-<?php if ($wpv < 27) { ?><div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
-<?php } else { ?><div class="wrap"><?php } ?>
+<div class="wrap">
 <form id="gdsr-articles" method="post" action="">
 <h2 class="gdptlogopage">GD Star Rating: <?php _e("Categories", "gd-star-rating"); ?></h2>
 <div class="tablenav">
@@ -98,8 +69,8 @@ function gdsrTimerChange() {
                 <th scope="col"><?php _e("Time Restrictions", "gd-star-rating"); ?></th>
             <?php } ?>
             <th scope="col"><?php _e("Vote Rules", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Integration", "gd-star-rating"); ?></th>
-            <th scope="col"><?php _e("Posts", "gd-star-rating"); ?></th>
+            <th scope="col"><?php _e("Comment Integration", "gd-star-rating"); ?></th>
+            <th scope="col" style="text-align: right"><?php _e("Posts", "gd-star-rating"); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -145,10 +116,11 @@ function gdsrTimerChange() {
             echo '<td>'.$timer_info.'</td>';
         echo '<td nowrap="nowrap">'.$row->rules_articles.'<br />'.$row->rules_comments.'</td>';
         echo '<td>';
-        if ($row->multi_set != '') echo __("multi set", "gd-star-rating").': <strong>'.$row->multi_set.'</strong>';
-        else if ($row->parent > 0) echo '<strong style="color: blue">'.__("inhert from parent", "gd-star-rating").'</strong>';
+            if ($row->multi_set != '') echo __("multi set", "gd-star-rating").': <strong>'.$row->multi_set.'</strong>';
+            else if ($row->parent > 0) echo '<strong style="color: blue">'.__("inhert from parent", "gd-star-rating").'</strong>';
+            else echo '<strong style="color: #cc0000">'.__("no multi set assigned", "gd-star-rating").'</strong>';
         echo '</td>';
-        echo '<td>'.$row->count.'</td>';
+        echo '<td style="text-align: right">'.$row->count.'</td>';
         echo '</tr>';
         
         if ($tr_class == "")
@@ -201,21 +173,6 @@ function gdsrTimerChange() {
             <tr>
                 <td style="width: 120px; height: 29px;"></td>
                 <td style="width: 80px; height: 29px;">
-                    <span class="paneltext"><?php _e("Multi Set", "gd-star-rating"); ?>:</span>
-                </td>
-                <td style="width: 230px; height: 29px;" align="right" colspan="3">
-                    <select id="gdsr_integration_mur" name="gdsr_integration_mur" style="width: 210px">
-                        <option value="">/</option>
-                        <option value="0"><?php _e("Inherit from Parent", "gd-star-rating"); ?></option>
-                        <option value="">------------------------</option>
-                        <?php GDSRHelper::render_styles_select(GDSRDBMulti::get_multis_tinymce(), 0); ?>
-                    </select>
-                </td>
-                <td colspan="4" align="right"><?php _e("(this multi set is used for comment integration)", "gd-star-rating"); ?></td>
-            </tr>
-            <tr>
-                <td style="width: 120px; height: 29px;"></td>
-                <td style="width: 80px; height: 29px;">
                     <span class="paneltext"><?php _e("Restriction", "gd-star-rating"); ?>:</span>
                 </td>
                 <td style="width: 140px; height: 29px;" align="right">
@@ -231,6 +188,51 @@ function gdsrTimerChange() {
                     <div id="gdsr_timer_date" style="display: none"><input class="regular-text" type="text" value="<?php echo ''; ?>" id="gdsr_timer_date_value" name="gdsr_timer_date_value" style="width: 110px; padding: 2px;" /></div>
                 </td>
                 <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td colspan="9"><div class="gdsr-table-split"></div></td>
+            </tr>
+            <tr>
+                <td style="width: 120px; height: 29px;">
+                    <span class="paneltext"><strong><?php _e("Comment Integration", "gd-star-rating"); ?>:</strong></span>
+                </td>
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Multis", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 29px;" align="right">
+                    <select id="gdsr_integration_active_mur" name="gdsr_integration_active_mur" style="width: 120px">
+                        <option value="">/</option>
+                        <option value="A"><?php _e("Normal activity", "gd-star-rating"); ?></option>
+                        <option value="N"><?php _e("Force hidden", "gd-star-rating"); ?></option>
+                    </select>
+                </td><td style="width: 10px"></td>
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Standard", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 140px; height: 29px;" align="right">
+                    <select id="gdsr_integration_active_std" name="gdsr_integration_active_std" style="width: 120px">
+                        <option value="">/</option>
+                        <option value="A"><?php _e("Normal activity", "gd-star-rating"); ?></option>
+                        <option value="N"><?php _e("Force hidden", "gd-star-rating"); ?></option>
+                    </select>
+                </td>
+                <td colspan="3"></td>
+            </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 120px; height: 29px;"></td>
+                <td style="width: 80px; height: 29px;">
+                    <span class="paneltext"><?php _e("Multi Set", "gd-star-rating"); ?>:</span>
+                </td>
+                <td style="width: 230px; height: 29px;" align="right">
+                    <select id="gdsr_integration_mur" name="gdsr_integration_mur" style="width: 210px">
+                        <option value="">/</option>
+                        <option value="0"><?php _e("Inherit from Parent", "gd-star-rating"); ?></option>
+                        <option value="">------------------------</option>
+                        <?php GDSRHelper::render_styles_select(GDSRDBMulti::get_multis_tinymce(), 0); ?>
+                    </select>
+                </td>
             </tr>
             </table>
             <div class="gdsr-table-split"></div>
