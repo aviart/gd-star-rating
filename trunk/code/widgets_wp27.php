@@ -1,8 +1,6 @@
 <?php
 
 class gdsrWidgets {
-    var $wp_old;
-
     var $w;
     var $g;
 
@@ -11,7 +9,6 @@ class gdsrWidgets {
     var $default_widget;
 
     function gdsrWidgets($g, $dw_c, $dw_t, $dw_s) {
-        $this->wp_old = false;
         $this->g = $g;
         $this->default_widget_comments = $dw_c;
         $this->default_widget_top = $dw_t;
@@ -23,7 +20,7 @@ class gdsrWidgets {
             $options = array();
 
         $widget_ops = array('classname' => 'widget_gdstarrating_comments', 'description' => 'GD Comments Rating');
-        $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstarcmm');
+        $control_ops = array('width' => 440, 'height' => 420, 'id_base' => 'gdstarcmm');
         $name = 'GD Comments Rating';
 
         $registered = false;
@@ -148,7 +145,7 @@ class gdsrWidgets {
             $options = array();
 
         $widget_ops = array('classname' => 'widget_gdstarrating_top', 'description' => 'Overall blog rating results.');
-        $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstartop');
+        $control_ops = array('width' => 440, 'height' => 420, 'id_base' => 'gdstartop');
         $name = 'GD Blog Rating';
 
         $registered = false;
@@ -256,7 +253,7 @@ class gdsrWidgets {
             $options = array();
 
         $widget_ops = array('classname' => 'widget_gdstarrating', 'description' => 'Customized rating results list.');
-        $control_ops = array('width' => $this->wp_old ? 580 : 440, 'height' => 420, 'id_base' => 'gdstarrmulti');
+        $control_ops = array('width' => 440, 'height' => 420, 'id_base' => 'gdstarrmulti');
         $name = 'GD Star Rating';
 
         $registered = false;

@@ -150,6 +150,11 @@ There could be two causes for this:
 7. Example multi rating block
 
 == Changelog ==
+= 1.7.0 =
+* Fully implemented cache plugins support
+* Removed support for WordPress 2.6.x
+* Many bugs and warnings fixed
+
 = 1.6.9 =
 * Minimum count option for rating widgets with grouping
 * More filters for rating results
