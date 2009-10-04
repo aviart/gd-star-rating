@@ -16,21 +16,7 @@ if (isset($_GET["pid"])) {
 
 ?>
 
-<script type="text/javascript">
-function checkAll(form) {
-    for (i = 0, n = form.elements.length; i < n; i++) {
-        if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick',2))) {
-            if(form.elements[i].checked == true)
-                form.elements[i].checked = false;
-            else
-                form.elements[i].checked = true;
-        }
-    }
-}
-</script>
-
-<?php if ($wpv < 27) { ?><div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
-<?php } else { ?><div class="wrap"><?php } ?>
+<div class="wrap">
 <form id="gdsr-moderation" method="post" action="">
 <h2 class="gdptlogopage">GD Star Rating: <?php _e("Moderation", "gd-star-rating"); ?></h2>
 <div>

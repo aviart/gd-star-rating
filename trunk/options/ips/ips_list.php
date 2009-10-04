@@ -23,19 +23,6 @@ if ($max_page > 1)
 
 ?>
 
-<script type="text/javascript">
-function checkAll(form) {
-    for (i = 0, n = form.elements.length; i < n; i++) {
-        if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick', 2))) {
-            if(form.elements[i].checked == true)
-                form.elements[i].checked = false;
-            else
-                form.elements[i].checked = true;
-        }
-    }
-}
-</script>
-
 <div class="wrap" style="max-width: <?php echo $options['admin_width']; ?>px">
 <form id="gdsr-articles" method="post" action="">
 <input type="hidden" name="action" value="deletebans" />

@@ -1,9 +1,9 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.6.9
+Version: 1.7.0
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
-Requires at least: 2.6
+Requires at least: 2.7
 Tested up to: 2.9-rare
 Stable tag: trunk
 
@@ -79,7 +79,7 @@ Plugin administration consist of 17 main panels:
 = Minimal Requirements =
 * PHP: 4.4.x or 5.x.x
 * mySQL: 4.0, 4.1 or 5.x
-* WordPress: 2.6 or newer
+* WordPress: 2.7 or newer
 
 = Reccomended Requirements =
 * PHP: 5.2.x or newer

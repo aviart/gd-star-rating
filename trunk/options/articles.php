@@ -80,36 +80,7 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
 
 ?>
 
-<script type="text/javascript">
-function checkAll(form) {
-    for (i = 0, n = form.elements.length; i < n; i++) {
-        if(form.elements[i].type == "checkbox" && !(form.elements[i].getAttribute('onclick', 2))) {
-            if(form.elements[i].checked == true)
-                form.elements[i].checked = false;
-            else
-                form.elements[i].checked = true;
-        }
-    }
-}
-function gdsrTimerChange() {
-    var timer = jQuery("#gdsr_timer_type").val();
-    jQuery("#gdsr_timer_date").css("display", "none");
-    jQuery("#gdsr_timer_countdown").css("display", "none");
-    jQuery("#gdsr_timer_date_text").css("display", "none");
-    jQuery("#gdsr_timer_countdown_text").css("display", "none");
-    if (timer == "D") {
-        jQuery("#gdsr_timer_date").css("display", "block");
-        jQuery("#gdsr_timer_date_text").css("display", "block");
-    }
-    if (timer == "T") {
-        jQuery("#gdsr_timer_countdown").css("display", "block");
-        jQuery("#gdsr_timer_countdown_text").css("display", "block");
-    }
-}
-</script>
-
-<?php if ($wpv < 27) { ?><div class="wrap" style="max-width: <?php echo $options["admin_width"]; ?>px">
-<?php } else { ?><div class="wrap"><?php } ?>
+<div class="wrap">
 <form id="gdsr-articles" method="post" action="">
 <h2 class="gdptlogopage">GD Star Rating: <?php _e("Articles", "gd-star-rating"); ?></h2>
 <ul class="subsubsub">

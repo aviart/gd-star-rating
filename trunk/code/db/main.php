@@ -335,7 +335,7 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
         if ($upd_cr != '') $update[] = "rules_comments = '".$upd_cr."'";
         if (count($update) > 0) {
             $updstring = join(", ", $update);
-            $sql = sprintf("update %s set %s where category_id in %s", $dbt_data_cats, $updstring, $ids);
+            $sql = sprintf("update %s set %s where category_id in %s", $dbt_data_cats, $updstring, "(".join(", ", $ids_array).")");
             $wpdb->query($sql);
         }
     }

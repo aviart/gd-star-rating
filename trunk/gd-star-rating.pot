@@ -30,8 +30,8 @@ msgid "Visitors Only"
 msgstr ""
 
 #: code/db/main.php:1240
-#: gd-star-rating.php:682
-#: gd-star-rating.php:682
+#: gd-star-rating.php:666
+#: gd-star-rating.php:666
 msgid "All Users"
 msgstr ""
 
@@ -90,9 +90,9 @@ msgstr ""
 #: code/db/main.php:1620
 #: code/db/main.php:1697
 #: code/db/main.php:1698
-#: code/helpers.php:468
-#: options/multis/results_post.php:168
-#: options/multis/results_post.php:169
+#: code/helpers.php:467
+#: options/multis/results_post.php:140
+#: options/multis/results_post.php:141
 msgid "visitors"
 msgstr ""
 
@@ -108,8 +108,8 @@ msgstr ""
 #: code/db/main.php:1623
 #: code/db/main.php:1697
 #: code/db/main.php:1698
-#: options/multis/results_post.php:170
-#: options/multis/results_post.php:171
+#: options/multis/results_post.php:142
+#: options/multis/results_post.php:143
 msgid "users"
 msgstr ""
 
@@ -167,12 +167,12 @@ msgid "everyone"
 msgstr ""
 
 #: code/db/main.php:1542
-#: options/multis/results_post.php:174
-#: options/multis/results_post.php:175
-#: options/users.php:109
-#: options/users.php:114
-#: options/users.php:119
-#: options/users.php:124
+#: options/multis/results_post.php:146
+#: options/multis/results_post.php:147
+#: options/users.php:108
+#: options/users.php:113
+#: options/users.php:118
+#: options/users.php:123
 msgid "rating"
 msgstr ""
 
@@ -189,10 +189,10 @@ msgid "parent"
 msgstr ""
 
 #: code/db/main.php:1696
-#: options/users.php:108
-#: options/users.php:113
-#: options/users.php:118
-#: options/users.php:123
+#: options/users.php:107
+#: options/users.php:112
+#: options/users.php:117
+#: options/users.php:122
 msgid "votes"
 msgstr ""
 
@@ -826,241 +826,242 @@ msgstr ""
 msgid "Thumbs Comment Rating Block"
 msgstr ""
 
-#: code/helpers.php:236
+#: code/helpers.php:235
 msgid "No moderation"
 msgstr ""
 
-#: code/helpers.php:237
+#: code/helpers.php:236
 msgid "Moderate visitors"
 msgstr ""
 
-#: code/helpers.php:238
+#: code/helpers.php:237
 msgid "Moderate users"
 msgstr ""
 
-#: code/helpers.php:239
+#: code/helpers.php:238
 msgid "Moderate all"
+msgstr ""
+
+#: code/helpers.php:239
+#: code/helpers.php:254
+#: code/helpers.php:268
+#: code/helpers.php:291
+msgid "Inherit from Category"
 msgstr ""
 
 #: code/helpers.php:240
 #: code/helpers.php:255
 #: code/helpers.php:269
-#: code/helpers.php:292
-msgid "Inherit from Category"
-msgstr ""
-
-#: code/helpers.php:241
-#: code/helpers.php:256
-#: code/helpers.php:270
-#: options/categories.php:208
+#: options/categories.php:230
 msgid "Inherit from Parent"
 msgstr ""
 
-#: code/helpers.php:250
+#: code/helpers.php:249
 msgid "Everyone can vote"
 msgstr ""
 
-#: code/helpers.php:251
+#: code/helpers.php:250
 msgid "Only visitors"
 msgstr ""
 
-#: code/helpers.php:252
+#: code/helpers.php:251
 msgid "Only users"
 msgstr ""
 
-#: code/helpers.php:253
+#: code/helpers.php:252
 msgid "Locked"
 msgstr ""
 
-#: code/helpers.php:254
+#: code/helpers.php:253
 msgid "Locked and hidden"
 msgstr ""
 
-#: code/helpers.php:266
+#: code/helpers.php:265
 msgid "No timer"
 msgstr ""
 
-#: code/helpers.php:267
+#: code/helpers.php:266
 msgid "Countdown timer"
 msgstr ""
 
-#: code/helpers.php:268
+#: code/helpers.php:267
 msgid "Date limited"
 msgstr ""
 
-#: code/helpers.php:278
-#: code/helpers.php:380
+#: code/helpers.php:277
+#: code/helpers.php:379
 #: options/multis/editor.php:67
-#: options/multis/sets.php:108
+#: options/multis/sets.php:107
 msgid "Bottom"
 msgstr ""
 
-#: code/helpers.php:279
-#: code/helpers.php:378
+#: code/helpers.php:278
+#: code/helpers.php:377
 #: options/multis/editor.php:68
-#: options/multis/sets.php:105
+#: options/multis/sets.php:104
 msgid "Top"
 msgstr ""
 
-#: code/helpers.php:280
+#: code/helpers.php:279
 msgid "Top and Bottom"
 msgstr ""
 
-#: code/helpers.php:289
-#: options/articles.php:203
-#: options/categories.php:122
+#: code/helpers.php:288
+#: options/articles.php:174
+#: options/categories.php:93
 msgid "Hours"
 msgstr ""
 
-#: code/helpers.php:290
-#: options/articles.php:206
-#: options/categories.php:125
+#: code/helpers.php:289
+#: options/articles.php:177
+#: options/categories.php:96
 msgid "Days"
 msgstr ""
 
-#: code/helpers.php:291
-#: options/articles.php:209
-#: options/categories.php:128
+#: code/helpers.php:290
+#: options/articles.php:180
+#: options/categories.php:99
 msgid "Months"
+msgstr ""
+
+#: code/helpers.php:299
+#: code/helpers.php:312
+msgid "Mini"
 msgstr ""
 
 #: code/helpers.php:300
 #: code/helpers.php:313
-msgid "Mini"
+msgid "Icon"
 msgstr ""
 
 #: code/helpers.php:301
 #: code/helpers.php:314
-msgid "Icon"
+msgid "Small"
 msgstr ""
 
 #: code/helpers.php:302
 #: code/helpers.php:315
-msgid "Small"
+#: options/tools/tools_bulk.php:22
+#: options/categories.php:209
+msgid "Standard"
 msgstr ""
 
 #: code/helpers.php:303
 #: code/helpers.php:316
-#: options/tools/tools_bulk.php:22
-msgid "Standard"
+msgid "Medium"
 msgstr ""
 
 #: code/helpers.php:304
 #: code/helpers.php:317
-msgid "Medium"
-msgstr ""
-
-#: code/helpers.php:305
-#: code/helpers.php:318
 msgid "Big"
 msgstr ""
 
-#: code/helpers.php:334
+#: code/helpers.php:333
 msgid "Stars and text"
 msgstr ""
 
-#: code/helpers.php:335
+#: code/helpers.php:334
 msgid "Stars only"
 msgstr ""
 
-#: code/helpers.php:336
+#: code/helpers.php:335
 msgid "Text only"
 msgstr ""
 
-#: code/helpers.php:344
+#: code/helpers.php:343
 msgid "No alignment"
 msgstr ""
 
-#: code/helpers.php:345
-#: code/helpers.php:382
+#: code/helpers.php:344
+#: code/helpers.php:381
 msgid "Left"
 msgstr ""
 
-#: code/helpers.php:346
+#: code/helpers.php:345
 msgid "Center"
 msgstr ""
 
-#: code/helpers.php:347
-#: code/helpers.php:384
+#: code/helpers.php:346
+#: code/helpers.php:383
 msgid "Right"
 msgstr ""
 
-#: code/helpers.php:355
+#: code/helpers.php:354
 msgid "No Animation"
 msgstr ""
 
-#: code/helpers.php:377
+#: code/helpers.php:376
 msgid "Always hide"
 msgstr ""
 
-#: code/helpers.php:379
+#: code/helpers.php:378
 msgid "Top (hide if empty)"
 msgstr ""
 
-#: code/helpers.php:381
+#: code/helpers.php:380
 msgid "Bottom (hide if empty)"
 msgstr ""
 
-#: code/helpers.php:383
+#: code/helpers.php:382
 msgid "Left (hide if empty)"
 msgstr ""
 
-#: code/helpers.php:385
+#: code/helpers.php:384
 msgid "Right (hide if empty)"
 msgstr ""
 
-#: code/helpers.php:478
+#: code/helpers.php:477
 msgid "from"
 msgstr ""
 
-#: code/helpers.php:478
+#: code/helpers.php:477
 msgid "on"
 msgstr ""
 
-#: code/helpers.php:482
+#: code/helpers.php:481
 msgid "ip"
 msgstr ""
 
-#: code/helpers.php:484
+#: code/helpers.php:483
 msgid "log"
 msgstr ""
 
-#: code/helpers.php:434
+#: code/helpers.php:433
 msgid "visitor"
 msgstr ""
 
-#: code/helpers.php:438
+#: code/helpers.php:437
 msgid "Thumb"
 msgstr ""
 
-#: code/helpers.php:445
+#: code/helpers.php:444
 msgid "Multi Vote"
 msgstr ""
 
-#: code/helpers.php:447
-#: options/moderation.php:115
-#: options/users_log.php:125
-#: options/users_log.php:109
-#: options/voters.php:145
-#: options/voters.php:116
+#: code/helpers.php:446
+#: options/moderation.php:101
+#: options/users_log.php:111
+#: options/users_log.php:95
+#: options/voters.php:131
+#: options/voters.php:102
 msgid "Vote"
 msgstr ""
 
-#: code/helpers.php:454
-#: code/helpers.php:463
+#: code/helpers.php:453
+#: code/helpers.php:462
 msgid "post"
 msgstr ""
 
-#: code/helpers.php:458
-#: code/helpers.php:460
+#: code/helpers.php:457
+#: code/helpers.php:459
 msgid "comment"
 msgstr ""
 
-#: code/helpers.php:458
+#: code/helpers.php:457
 msgid "for"
 msgstr ""
 
-#: code/helpers.php:471
+#: code/helpers.php:470
 msgid "user"
 msgstr ""
 
@@ -1101,11 +1102,11 @@ msgstr ""
 #: gdt2/form_defaults.php:4
 #: gdt2/form_dependencies.php:10
 #: gdt2/form_list.php:43
-#: options/multis/sets.php:60
-#: options/articles.php:148
-#: options/users.php:60
-#: options/voters.php:143
-#: tinymce3/panels/filter.php:45
+#: options/multis/sets.php:59
+#: options/articles.php:119
+#: options/users.php:59
+#: options/voters.php:129
+#: tinymce3/panels/filter.php:55
 #: widgets/rating/part_filter.php:87
 #: widgets/rating_28/part_filter.php:87
 msgid "ID"
@@ -1147,7 +1148,7 @@ msgid "Save Changes"
 msgstr ""
 
 #: gdt2/form_dependencies.php:11
-#: options/ips/ips_list.php:54
+#: options/ips/ips_list.php:41
 msgid "Type"
 msgstr ""
 
@@ -1156,9 +1157,9 @@ msgstr ""
 #: gdt2/form_list.php:44
 #: options/multis/editor.php:27
 #: options/multis/editor.php:93
-#: options/multis/sets.php:61
-#: options/users.php:59
-#: options/voters.php:144
+#: options/multis/sets.php:60
+#: options/users.php:58
+#: options/voters.php:130
 msgid "Name"
 msgstr ""
 
@@ -1231,14 +1232,14 @@ msgstr ""
 
 #: gdt2/form_list.php:33
 #: gdt2/form_list.php:15
-#: options/multis/results_post.php:124
+#: options/multis/results_post.php:96
 #: options/multis/results_post.php:26
 #: options/multis/results_set.php:22
-#: options/articles.php:131
+#: options/articles.php:102
 #: options/articles.php:23
-#: options/users_log.php:111
+#: options/users_log.php:97
 #: options/users_log.php:23
-#: options/voters.php:118
+#: options/voters.php:104
 #: options/voters.php:32
 #: tinymce3/panels/blograting.php:6
 #: tinymce3/panels/commentsaggr.php:11
@@ -1329,24 +1330,24 @@ msgid "Time Restriction"
 msgstr ""
 
 #: integrate/edit.php:50
-#: options/multis/results_post.php:244
-#: options/articles.php:308
-#: options/categories.php:218
+#: options/multis/results_post.php:216
+#: options/articles.php:279
+#: options/categories.php:175
 msgid "Restriction"
 msgstr ""
 
 #: integrate/edit.php:57
-#: options/multis/results_post.php:251
-#: options/articles.php:315
-#: options/categories.php:225
-#: tinymce3/panels/filter.php:77
+#: options/multis/results_post.php:223
+#: options/articles.php:286
+#: options/categories.php:182
+#: tinymce3/panels/filter.php:87
 msgid "Date"
 msgstr ""
 
 #: integrate/edit.php:65
-#: options/multis/results_post.php:250
-#: options/articles.php:314
-#: options/categories.php:224
+#: options/multis/results_post.php:222
+#: options/articles.php:285
+#: options/categories.php:181
 msgid "Countdown"
 msgstr ""
 
@@ -1391,7 +1392,7 @@ msgid "Set ID"
 msgstr ""
 
 #: integrate/edit_multi.php:27
-#: options/multis/results_post.php:106
+#: options/multis/results_post.php:78
 msgid "Set Name"
 msgstr ""
 
@@ -1407,8 +1408,8 @@ msgstr ""
 #: widgets/rating/part_stars.php:12
 #: widgets/rating_28/part_stars.php:4
 #: widgets/rating_28/part_stars.php:12
-#: gd-star-rating.php:684
-#: gd-star-rating.php:684
+#: gd-star-rating.php:668
+#: gd-star-rating.php:668
 msgid "Graphics"
 msgstr ""
 
@@ -1479,15 +1480,15 @@ msgstr ""
 #: options/builder/shortcode.php:11
 #: options/builder/shortcode.php:12
 #: options/builder/shortcode.php:13
-#: options/multis/results_post.php:203
-#: options/articles.php:113
-#: options/articles.php:259
-#: options/categories.php:172
+#: options/multis/results_post.php:175
+#: options/articles.php:84
+#: options/articles.php:230
+#: options/categories.php:144
 #: tinymce3/window.php:62
 #: tinymce3/window.php:63
 #: tinymce3/window.php:64
-#: gd-star-rating.php:680
-#: gd-star-rating.php:680
+#: gd-star-rating.php:664
+#: gd-star-rating.php:664
 msgid "Articles"
 msgstr ""
 
@@ -1495,10 +1496,10 @@ msgstr ""
 #: options/my/my_general.php:27
 #: options/settings/settings_thumbs.php:69
 #: options/tools/tools_bulk.php:60
-#: options/articles.php:329
-#: options/categories.php:240
+#: options/articles.php:300
+#: options/categories.php:242
 #: options/charts.php:7
-#: options/comments.php:44
+#: options/comments.php:30
 #: options/settings.php:46
 #: tinymce3/window.php:66
 msgid "Comments"
@@ -1536,8 +1537,8 @@ msgstr ""
 #: options/export/export_users.php:53
 #: options/export/export_users.php:56
 #: options/settings/settings_administration.php:43
-#: gd-star-rating.php:695
-#: gd-star-rating.php:695
+#: gd-star-rating.php:679
+#: gd-star-rating.php:679
 msgid "Export"
 msgstr ""
 
@@ -1574,16 +1575,16 @@ msgid "Additional Columns"
 msgstr ""
 
 #: options/export/export_users.php:43
-#: options/ips/ips_list.php:55
-#: options/moderation.php:116
-#: options/users_log.php:122
-#: options/voters.php:147
+#: options/ips/ips_list.php:42
+#: options/moderation.php:102
+#: options/users_log.php:108
+#: options/voters.php:133
 msgid "IP"
 msgstr ""
 
 #: options/export/export_users.php:44
-#: options/moderation.php:117
-#: options/voters.php:148
+#: options/moderation.php:103
+#: options/voters.php:134
 msgid "User Agent"
 msgstr ""
 
@@ -1780,7 +1781,7 @@ msgid "Stars Preview"
 msgstr ""
 
 #: options/gfx/gfx_preview.php:5
-#: options/multis/sets.php:64
+#: options/multis/sets.php:63
 #: options/settings/settings_articles.php:14
 #: options/settings/settings_articles.php:188
 #: options/settings/settings_comments.php:14
@@ -1823,8 +1824,8 @@ msgstr ""
 
 #: options/gfx/gfx_preview.php:55
 #: options/settings/settings_integration.php:112
-#: options/articles.php:159
-#: options/comments.php:93
+#: options/articles.php:130
+#: options/comments.php:79
 #: options/gfx.php:60
 #: tinymce3/panels/styles.php:97
 msgid "Thumbs"
@@ -1864,11 +1865,11 @@ msgstr ""
 msgid "Only thumbs set checked here will be included in the css file for the active rating blocks."
 msgstr ""
 
-#: options/ips/ips_list.php:53
+#: options/ips/ips_list.php:40
 msgid "Record Id"
 msgstr ""
 
-#: options/ips/ips_list.php:95
+#: options/ips/ips_list.php:82
 msgid "Unban Selected"
 msgstr ""
 
@@ -1923,7 +1924,7 @@ msgid "Number Of Stars"
 msgstr ""
 
 #: options/multis/editor.php:44
-#: options/multis/sets.php:63
+#: options/multis/sets.php:62
 #: options/settings/settings_articles.php:74
 #: options/settings/settings_comments.php:78
 #: options/settings/settings_multis.php:39
@@ -1940,27 +1941,27 @@ msgid "Insertion"
 msgstr ""
 
 #: options/multis/editor.php:55
-#: options/multis/sets.php:86
+#: options/multis/sets.php:85
 msgid "No"
 msgstr ""
 
 #: options/multis/editor.php:56
-#: options/multis/sets.php:89
+#: options/multis/sets.php:88
 msgid "Category Based"
 msgstr ""
 
 #: options/multis/editor.php:57
-#: options/multis/sets.php:92
+#: options/multis/sets.php:91
 msgid "All Posts"
 msgstr ""
 
 #: options/multis/editor.php:58
-#: options/multis/sets.php:95
+#: options/multis/sets.php:94
 msgid "All Pages"
 msgstr ""
 
 #: options/multis/editor.php:59
-#: options/multis/sets.php:98
+#: options/multis/sets.php:97
 msgid "All Posts &amp; Pages"
 msgstr ""
 
@@ -1969,10 +1970,10 @@ msgid "Location"
 msgstr ""
 
 #: options/multis/editor.php:77
-#: options/multis/results_post.php:144
-#: options/categories.php:78
-#: gd-star-rating.php:681
-#: gd-star-rating.php:681
+#: options/multis/results_post.php:116
+#: options/categories.php:49
+#: gd-star-rating.php:665
+#: gd-star-rating.php:665
 msgid "Categories"
 msgstr ""
 
@@ -1992,23 +1993,23 @@ msgstr ""
 msgid "Save Multi Set"
 msgstr ""
 
-#: options/multis/results_post.php:105
+#: options/multis/results_post.php:77
 #: options/multis/results_set.php:17
 msgid "Multi Set Results"
 msgstr ""
 
-#: options/multis/results_post.php:116
-#: options/multis/results_post.php:118
+#: options/multis/results_post.php:88
+#: options/multis/results_post.php:90
 #: options/multis/results_post.php:31
-#: options/articles.php:123
-#: options/articles.php:125
+#: options/articles.php:94
+#: options/articles.php:96
 #: options/articles.php:29
 msgid "Search Posts"
 msgstr ""
 
-#: options/multis/results_post.php:142
-#: options/articles.php:149
-#: tinymce3/panels/filter.php:46
+#: options/multis/results_post.php:114
+#: options/articles.php:120
+#: tinymce3/panels/filter.php:56
 #: widgets/comments/part_basic.php:2
 #: widgets/comments_28/part_basic.php:2
 #: widgets/rating/part_basic.php:2
@@ -2020,152 +2021,152 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: options/multis/results_post.php:143
-#: options/articles.php:150
+#: options/multis/results_post.php:115
+#: options/articles.php:121
 msgid "View"
 msgstr ""
 
-#: options/multis/results_post.php:145
-#: options/multis/sets.php:65
-#: options/articles.php:160
+#: options/multis/results_post.php:117
+#: options/multis/sets.php:64
+#: options/articles.php:131
 msgid "Ratings"
 msgstr ""
 
-#: options/multis/results_post.php:146
-#: options/articles.php:161
-#: options/comments.php:95
+#: options/multis/results_post.php:118
+#: options/articles.php:132
+#: options/comments.php:81
 msgid "Total"
 msgstr ""
 
-#: options/multis/results_post.php:148
-#: options/multis/sets.php:66
+#: options/multis/results_post.php:120
+#: options/multis/sets.php:65
 #: options/settings/settings_articles.php:184
 #: options/settings/settings_comments.php:198
-#: options/articles.php:166
-#: options/articles.php:294
-#: options/comments.php:96
-#: tinymce3/panels/filter.php:47
+#: options/articles.php:137
+#: options/articles.php:265
+#: options/comments.php:82
+#: tinymce3/panels/filter.php:57
 #: widgets/rating/part_filter.php:89
 #: widgets/rating_28/part_filter.php:89
 msgid "Review"
 msgstr ""
 
-#: options/multis/results_post.php:206
-#: options/articles.php:262
-#: options/articles.php:332
-#: options/categories.php:175
-#: options/categories.php:243
-#: options/comments.php:137
-#: options/moderation.php:150
-#: options/users_log.php:208
-#: options/voters.php:188
+#: options/multis/results_post.php:178
+#: options/articles.php:233
+#: options/articles.php:303
+#: options/categories.php:147
+#: options/categories.php:245
+#: options/comments.php:123
+#: options/moderation.php:136
+#: options/users_log.php:194
+#: options/voters.php:174
 msgid "Delete"
 msgstr ""
 
-#: options/multis/results_post.php:211
-#: options/articles.php:267
-#: options/articles.php:337
-#: options/categories.php:180
-#: options/categories.php:248
-#: options/comments.php:140
+#: options/multis/results_post.php:183
+#: options/articles.php:238
+#: options/articles.php:308
+#: options/categories.php:152
+#: options/categories.php:250
+#: options/comments.php:126
 msgid "Visitors"
 msgstr ""
 
-#: options/multis/results_post.php:212
-#: options/articles.php:268
-#: options/articles.php:338
-#: options/categories.php:181
-#: options/categories.php:249
-#: options/comments.php:141
-#: options/users.php:46
+#: options/multis/results_post.php:184
+#: options/articles.php:239
+#: options/articles.php:309
+#: options/categories.php:153
+#: options/categories.php:251
+#: options/comments.php:127
+#: options/users.php:45
 msgid "Users"
 msgstr ""
 
-#: options/multis/results_post.php:213
-#: options/articles.php:269
-#: options/articles.php:339
-#: options/categories.php:182
-#: options/categories.php:250
-#: options/comments.php:142
+#: options/multis/results_post.php:185
+#: options/articles.php:240
+#: options/articles.php:310
+#: options/categories.php:154
+#: options/categories.php:252
+#: options/comments.php:128
 msgid "All"
 msgstr ""
 
-#: options/multis/results_post.php:218
+#: options/multis/results_post.php:190
 #: options/tools/tools_bulk.php:25
 #: options/tools/tools_bulk.php:44
 #: options/tools/tools_bulk.php:63
-#: options/articles.php:153
-#: options/articles.php:274
-#: options/articles.php:344
-#: options/categories.php:94
-#: options/categories.php:187
-#: options/categories.php:255
-#: options/moderation.php:34
+#: options/articles.php:124
+#: options/articles.php:245
+#: options/articles.php:315
+#: options/categories.php:65
+#: options/categories.php:159
+#: options/categories.php:257
+#: options/moderation.php:20
 msgid "Moderation"
 msgstr ""
 
-#: options/multis/results_post.php:225
+#: options/multis/results_post.php:197
 #: options/tools/tools_bulk.php:32
 #: options/tools/tools_bulk.php:51
 #: options/tools/tools_bulk.php:70
-#: options/articles.php:158
-#: options/articles.php:281
-#: options/articles.php:351
-#: options/categories.php:99
-#: options/categories.php:194
-#: options/categories.php:262
+#: options/articles.php:129
+#: options/articles.php:252
+#: options/articles.php:322
+#: options/categories.php:70
+#: options/categories.php:166
+#: options/categories.php:264
 msgid "Vote Rules"
 msgstr ""
 
-#: options/multis/results_post.php:235
+#: options/multis/results_post.php:207
 #: options/multis/results_post.php:35
 #: options/tools/tools_bulk.php:109
-#: options/articles.php:362
+#: options/articles.php:333
 #: options/articles.php:34
-#: options/categories.php:272
+#: options/categories.php:274
 #: options/categories.php:14
-#: options/comments.php:146
+#: options/comments.php:132
 #: options/comments.php:17
-#: options/users_log.php:223
+#: options/users_log.php:209
 #: options/users_log.php:30
-#: options/voters.php:196
+#: options/voters.php:182
 #: options/voters.php:40
 msgid "Update"
 msgstr ""
 
 #: options/multis/results_set.php:17
-#: options/multis/sets.php:143
+#: options/multis/sets.php:142
 msgid "Voters"
 msgstr ""
 
-#: options/multis/sets.php:44
-#: gd-star-rating.php:689
-#: gd-star-rating.php:689
+#: options/multis/sets.php:43
+#: gd-star-rating.php:673
+#: gd-star-rating.php:673
 msgid "Multi Sets"
 msgstr ""
 
-#: options/multis/sets.php:48
+#: options/multis/sets.php:47
 msgid "Add New Multi Rating Set"
 msgstr ""
 
-#: options/multis/sets.php:62
+#: options/multis/sets.php:61
 msgid "Auto Insert"
 msgstr ""
 
-#: options/multis/sets.php:67
+#: options/multis/sets.php:66
 #: options/settings.php:49
 msgid "Statistics"
 msgstr ""
 
-#: options/multis/sets.php:161
+#: options/multis/sets.php:160
 #: options/multis/sets.php:4
 msgid "Delete Selected"
 msgstr ""
 
-#: options/multis/sets.php:133
-#: options/multis/sets.php:142
+#: options/multis/sets.php:132
+#: options/multis/sets.php:141
 #: options/my/my_general.php:23
-#: options/categories.php:101
+#: options/categories.php:72
 msgid "Posts"
 msgstr ""
 
@@ -2215,8 +2216,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:37
 #: options/tools/tools_t2.php:6
-#: gd-star-rating.php:693
-#: gd-star-rating.php:693
+#: gd-star-rating.php:677
+#: gd-star-rating.php:677
 msgid "Import"
 msgstr ""
 
@@ -2226,8 +2227,8 @@ msgstr ""
 
 #: options/settings/settings_administration.php:39
 #: options/setup.php:46
-#: gd-star-rating.php:699
-#: gd-star-rating.php:699
+#: gd-star-rating.php:683
+#: gd-star-rating.php:683
 msgid "Setup"
 msgstr ""
 
@@ -2241,9 +2242,9 @@ msgstr ""
 
 #: options/settings/settings_administration.php:45
 #: options/ips.php:69
-#: options/users_log.php:197
-#: gd-star-rating.php:691
-#: gd-star-rating.php:691
+#: options/users_log.php:183
+#: gd-star-rating.php:675
+#: gd-star-rating.php:675
 msgid "IP's"
 msgstr ""
 
@@ -2335,7 +2336,7 @@ msgstr ""
 #: options/settings/settings_articles.php:10
 #: options/settings/settings_comments.php:10
 #: options/settings/settings_multis.php:10
-#: tinymce3/panels/filter.php:43
+#: tinymce3/panels/filter.php:53
 #: widgets/comments/part_filter.php:46
 #: widgets/comments_28/part_filter.php:46
 #: widgets/rating/part_filter.php:85
@@ -2653,6 +2654,8 @@ msgid "Expand WP Query with new rating specific sorting and filtering."
 msgstr ""
 
 #: options/settings/settings_integration.php:6
+#: options/categories.php:71
+#: options/categories.php:196
 msgid "Comment Integration"
 msgstr ""
 
@@ -2959,7 +2962,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1523
+#: gd-star-rating.php:1496
 msgid "UNINSTALL"
 msgstr ""
 
@@ -2984,6 +2987,7 @@ msgid "Global Voting Rules Update"
 msgstr ""
 
 #: options/tools/tools_bulk.php:41
+#: options/categories.php:199
 #: options/settings.php:47
 msgid "Multis"
 msgstr ""
@@ -3146,37 +3150,37 @@ msgstr ""
 msgid "Templates with same name as the templates already in database will be skipped."
 msgstr ""
 
-#: options/articles.php:156
+#: options/articles.php:127
 msgid "Time"
 msgstr ""
 
-#: options/articles.php:163
+#: options/articles.php:134
 msgid "Views"
 msgstr ""
 
-#: options/articles.php:196
-#: options/categories.php:114
+#: options/articles.php:167
+#: options/categories.php:85
 msgid "date limit"
 msgstr ""
 
-#: options/articles.php:199
-#: options/categories.php:118
+#: options/articles.php:170
+#: options/categories.php:89
 msgid "countdown"
 msgstr ""
 
-#: options/articles.php:212
-#: options/categories.php:132
+#: options/articles.php:183
+#: options/categories.php:103
 msgid "no limit"
 msgstr ""
 
-#: options/articles.php:225
+#: options/articles.php:196
 #: options/charts.php:1
 msgid "Charts"
 msgstr ""
 
 #: options/builder.php:2
-#: gd-star-rating.php:678
-#: gd-star-rating.php:678
+#: gd-star-rating.php:662
+#: gd-star-rating.php:662
 msgid "Builder"
 msgstr ""
 
@@ -3189,74 +3193,79 @@ msgstr ""
 #: tinymce3/panels/articlesrater.php:11
 #: tinymce3/panels/multis.php:20
 #: tinymce3/panels/thumbsrating.php:11
-#: gd-star-rating.php:683
-#: gd-star-rating.php:683
-#: gd-star-rating.php:918
+#: gd-star-rating.php:667
+#: gd-star-rating.php:667
+#: gd-star-rating.php:896
 msgid "Settings"
 msgstr ""
 
-#: options/categories.php:91
+#: options/categories.php:62
 #: tinymce3/panels/filter.php:22
 msgid "Category"
 msgstr ""
 
-#: options/categories.php:97
+#: options/categories.php:68
 msgid "Time Restrictions"
 msgstr ""
 
-#: options/categories.php:100
-#: options/settings.php:44
-msgid "Integration"
+#: options/categories.php:204
+#: options/categories.php:214
+msgid "Normal activity"
 msgstr ""
 
-#: options/categories.php:203
+#: options/categories.php:205
+#: options/categories.php:215
+msgid "Force hidden"
+msgstr ""
+
+#: options/categories.php:225
 #: tinymce3/panels/general.php:46
 #: widgets/rating/part_basic.php:60
 #: widgets/rating_28/part_basic.php:58
 msgid "Multi Set"
 msgstr ""
 
-#: options/categories.php:213
-msgid "(this multi set is used for comment integration)"
-msgstr ""
-
-#: options/categories.php:147
+#: options/categories.php:118
 msgid "multi set"
 msgstr ""
 
-#: options/categories.php:148
+#: options/categories.php:119
 msgid "inhert from parent"
+msgstr ""
+
+#: options/categories.php:120
+msgid "no multi set assigned"
 msgstr ""
 
 #: options/charts.php:6
 msgid "Articles (Posts And Pages)"
 msgstr ""
 
-#: options/comments.php:46
+#: options/comments.php:32
 msgid "Comments for post"
 msgstr ""
 
-#: options/comments.php:90
+#: options/comments.php:76
 msgid "Comment"
 msgstr ""
 
-#: options/comments.php:91
-#: options/moderation.php:114
+#: options/comments.php:77
+#: options/moderation.php:100
 msgid "User"
 msgstr ""
 
-#: options/comments.php:92
-#: options/moderation.php:113
+#: options/comments.php:78
+#: options/moderation.php:99
 msgid "Date And Time"
 msgstr ""
 
-#: options/comments.php:94
-#: options/users_log.php:205
+#: options/comments.php:80
+#: options/users_log.php:191
 msgid "Votes"
 msgstr ""
 
-#: options/comments.php:134
-#: options/voters.php:185
+#: options/comments.php:120
+#: options/voters.php:171
 msgid "With selected"
 msgstr ""
 
@@ -3271,8 +3280,8 @@ msgstr ""
 #: options/export.php:7
 #: options/templates.php:0
 #: options/tools.php:8
-#: gd-star-rating.php:686
-#: gd-star-rating.php:686
+#: gd-star-rating.php:670
+#: gd-star-rating.php:670
 msgid "T2 Templates"
 msgstr ""
 
@@ -3313,7 +3322,7 @@ msgstr ""
 #: options/import.php:53
 #: options/import.php:78
 #: options/import.php:137
-#: options/users_log.php:123
+#: options/users_log.php:109
 msgid "Status"
 msgstr ""
 
@@ -3373,24 +3382,24 @@ msgstr ""
 msgid "Banned"
 msgstr ""
 
-#: options/moderation.php:146
+#: options/moderation.php:132
 msgid "With Selected"
 msgstr ""
 
-#: options/moderation.php:149
+#: options/moderation.php:135
 msgid "Approve"
 msgstr ""
 
 #: options/my.php:12
-#: gd-star-rating.php:677
-#: gd-star-rating.php:677
+#: gd-star-rating.php:661
+#: gd-star-rating.php:661
 msgid "My Ratings"
 msgstr ""
 
 #: options/security.php:0
 #: options/settings.php:42
-#: gd-star-rating.php:701
-#: gd-star-rating.php:701
+#: gd-star-rating.php:685
+#: gd-star-rating.php:685
 msgid "Security"
 msgstr ""
 
@@ -3400,6 +3409,10 @@ msgstr ""
 
 #: options/settings.php:43
 msgid "Advanced"
+msgstr ""
+
+#: options/settings.php:44
+msgid "Integration"
 msgstr ""
 
 #: options/settings.php:45
@@ -3453,8 +3466,8 @@ msgid "Templates"
 msgstr ""
 
 #: options/tools.php:0
-#: gd-star-rating.php:685
-#: gd-star-rating.php:685
+#: gd-star-rating.php:669
+#: gd-star-rating.php:669
 msgid "Tools"
 msgstr ""
 
@@ -3470,23 +3483,23 @@ msgstr ""
 msgid "Edit CSS"
 msgstr ""
 
-#: options/users.php:61
+#: options/users.php:60
 msgid "Email"
 msgstr ""
 
-#: options/users.php:62
+#: options/users.php:61
 msgid "Thumbs Articles"
 msgstr ""
 
-#: options/users.php:63
+#: options/users.php:62
 msgid "Thumbs Comments"
 msgstr ""
 
-#: options/users.php:64
+#: options/users.php:63
 msgid "Ratings Articles"
 msgstr ""
 
-#: options/users.php:65
+#: options/users.php:64
 msgid "Ratings Comments"
 msgstr ""
 
@@ -3494,72 +3507,72 @@ msgstr ""
 msgid "Visitor"
 msgstr ""
 
-#: options/users.php:110
-#: options/users.php:115
-#: options/users.php:120
-#: options/users.php:125
+#: options/users.php:109
+#: options/users.php:114
+#: options/users.php:119
+#: options/users.php:124
 msgid "unique ip's"
 msgstr ""
 
-#: options/users_log.php:96
+#: options/users_log.php:82
 msgid "User Vote Log"
 msgstr ""
 
-#: options/users_log.php:99
+#: options/users_log.php:85
 msgid "Votes log for user"
 msgstr ""
 
-#: options/users_log.php:102
+#: options/users_log.php:88
 msgid "Votes log for visitors"
 msgstr ""
 
-#: options/users_log.php:108
-#: options/voters.php:115
+#: options/users_log.php:94
+#: options/voters.php:101
 msgid "All Votes"
 msgstr ""
 
-#: options/users_log.php:124
-#: options/voters.php:146
+#: options/users_log.php:110
+#: options/voters.php:132
 msgid "Vote Date"
 msgstr ""
 
-#: options/users_log.php:126
+#: options/users_log.php:112
 msgid "Post"
 msgstr ""
 
-#: options/users_log.php:128
+#: options/users_log.php:114
 msgid "Comment Author"
 msgstr ""
 
-#: options/users_log.php:129
+#: options/users_log.php:115
 msgid "Comment Excerpt"
 msgstr ""
 
-#: options/users_log.php:200
+#: options/users_log.php:186
 msgid "Add selected IP's to ban IP's list."
 msgstr ""
 
-#: options/users_log.php:213
+#: options/users_log.php:199
 msgid "Only Invalid"
 msgstr ""
 
-#: options/users_log.php:214
-#: options/voters.php:192
+#: options/users_log.php:200
+#: options/voters.php:178
 msgid "From Log Only"
 msgstr ""
 
-#: options/users_log.php:215
-#: options/voters.php:191
+#: options/users_log.php:201
+#: options/voters.php:177
 msgid "Full Delete"
 msgstr ""
 
-#: options/voters.php:100
+#: options/voters.php:86
 msgid "Vote log for post"
 msgstr ""
 
 #: options/wizard.php:0
-#: gd-star-rating.php:702
-#: gd-star-rating.php:702
+#: gd-star-rating.php:686
+#: gd-star-rating.php:686
 msgid "Wizard"
 msgstr ""
 
@@ -3583,7 +3596,6 @@ msgid "StarReview will render stars representing review value assigned to the po
 msgstr ""
 
 #: tinymce3/panels/blograting.php:9
-#: tinymce3/panels/filter.php:4
 #: widgets/top/part_filter.php:13
 #: widgets/top_28/part_filter.php:13
 msgid "Include Articles"
@@ -3608,7 +3620,6 @@ msgid "Pages Only"
 msgstr ""
 
 #: tinymce3/panels/blograting.php:19
-#: tinymce3/panels/filter.php:14
 #: widgets/comments/part_filter.php:13
 #: widgets/comments_28/part_filter.php:13
 #: widgets/top/part_filter.php:24
@@ -3668,10 +3679,22 @@ msgstr ""
 msgid "Basic"
 msgstr ""
 
+#: tinymce3/panels/filter.php:4
+#: widgets/rating/part_filter.php:13
+#: widgets/rating_28/part_filter.php:13
+msgid "Include articles"
+msgstr ""
+
+#: tinymce3/panels/filter.php:14
+#: widgets/rating/part_filter.php:24
+#: widgets/rating_28/part_filter.php:24
+msgid "Display votes from"
+msgstr ""
+
 #: tinymce3/panels/filter.php:26
-#: widgets/comments/part_filter.php:36
-#: widgets/comments_28/part_filter.php:36
-msgid "Minimum Votes"
+#: widgets/rating/part_filter.php:52
+#: widgets/rating_28/part_filter.php:52
+msgid "Minimum votes"
 msgstr ""
 
 #: tinymce3/panels/filter.php:30
@@ -3679,14 +3702,24 @@ msgid "Excerpt words"
 msgstr ""
 
 #: tinymce3/panels/filter.php:37
-msgid "Sorting"
+msgid "Grouping Specific"
 msgstr ""
 
 #: tinymce3/panels/filter.php:40
+#: widgets/rating/part_filter.php:65
+#: widgets/rating_28/part_filter.php:65
+msgid "Minimum posts count"
+msgstr ""
+
+#: tinymce3/panels/filter.php:47
+msgid "Sorting"
+msgstr ""
+
+#: tinymce3/panels/filter.php:50
 msgid "Column"
 msgstr ""
 
-#: tinymce3/panels/filter.php:44
+#: tinymce3/panels/filter.php:54
 #: widgets/comments/part_filter.php:47
 #: widgets/comments_28/part_filter.php:47
 #: widgets/rating/part_filter.php:86
@@ -3694,23 +3727,23 @@ msgstr ""
 msgid "Total Votes"
 msgstr ""
 
-#: tinymce3/panels/filter.php:48
+#: tinymce3/panels/filter.php:58
 #: widgets/rating/part_filter.php:90
 #: widgets/rating_28/part_filter.php:90
 msgid "Count"
 msgstr ""
 
-#: tinymce3/panels/filter.php:49
+#: tinymce3/panels/filter.php:59
 #: widgets/rating/part_filter.php:91
 #: widgets/rating_28/part_filter.php:91
 msgid "Bayesian Rating"
 msgstr ""
 
-#: tinymce3/panels/filter.php:54
+#: tinymce3/panels/filter.php:64
 msgid "Order"
 msgstr ""
 
-#: tinymce3/panels/filter.php:57
+#: tinymce3/panels/filter.php:67
 #: widgets/comments/part_filter.php:57
 #: widgets/comments_28/part_filter.php:57
 #: widgets/rating/part_filter.php:100
@@ -3718,7 +3751,7 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
-#: tinymce3/panels/filter.php:58
+#: tinymce3/panels/filter.php:68
 #: widgets/comments/part_filter.php:58
 #: widgets/comments_28/part_filter.php:58
 #: widgets/rating/part_filter.php:101
@@ -3726,17 +3759,17 @@ msgstr ""
 msgid "Ascending"
 msgstr ""
 
-#: tinymce3/panels/filter.php:66
+#: tinymce3/panels/filter.php:76
 msgid "Last Voted"
 msgstr ""
 
-#: tinymce3/panels/filter.php:67
+#: tinymce3/panels/filter.php:77
 #: widgets/rating/part_filter.php:146
 #: widgets/rating_28/part_filter.php:146
 msgid "Use only articles voted for in last # days."
 msgstr ""
 
-#: tinymce3/panels/filter.php:70
+#: tinymce3/panels/filter.php:80
 #: widgets/comments/part_filter.php:77
 #: widgets/comments_28/part_filter.php:77
 #: widgets/rating/part_filter.php:151
@@ -3744,41 +3777,41 @@ msgstr ""
 msgid "Enter 0 for all"
 msgstr ""
 
-#: tinymce3/panels/filter.php:80
+#: tinymce3/panels/filter.php:90
 msgid "Publish Date"
 msgstr ""
 
-#: tinymce3/panels/filter.php:83
+#: tinymce3/panels/filter.php:93
 #: widgets/rating/part_filter.php:168
 #: widgets/rating_28/part_filter.php:168
 msgid "Last # days"
 msgstr ""
 
-#: tinymce3/panels/filter.php:84
+#: tinymce3/panels/filter.php:94
 #: widgets/rating/part_filter.php:169
 #: widgets/rating_28/part_filter.php:169
 msgid "Exact month"
 msgstr ""
 
-#: tinymce3/panels/filter.php:85
+#: tinymce3/panels/filter.php:95
 #: widgets/rating/part_filter.php:170
 #: widgets/rating_28/part_filter.php:170
 msgid "Date range"
 msgstr ""
 
-#: tinymce3/panels/filter.php:93
+#: tinymce3/panels/filter.php:103
 #: widgets/rating/part_filter.php:179
 #: widgets/rating_28/part_filter.php:179
 msgid "Number Of Days"
 msgstr ""
 
-#: tinymce3/panels/filter.php:103
+#: tinymce3/panels/filter.php:113
 #: widgets/rating/part_filter.php:190
 #: widgets/rating_28/part_filter.php:190
 msgid "Month"
 msgstr ""
 
-#: tinymce3/panels/filter.php:113
+#: tinymce3/panels/filter.php:123
 #: widgets/rating/part_filter.php:201
 #: widgets/rating_28/part_filter.php:201
 msgid "Range"
@@ -4099,6 +4132,11 @@ msgstr ""
 msgid "Maximal length of comment text"
 msgstr ""
 
+#: widgets/comments/part_filter.php:36
+#: widgets/comments_28/part_filter.php:36
+msgid "Minimum Votes"
+msgstr ""
+
 #: widgets/comments/part_filter.php:43
 #: widgets/comments_28/part_filter.php:43
 msgid "Sorting Column"
@@ -4130,21 +4168,11 @@ msgstr ""
 msgid "Avatar"
 msgstr ""
 
-#: widgets/rating/part_filter.php:13
-#: widgets/rating_28/part_filter.php:13
-msgid "Include articles"
-msgstr ""
-
 #: widgets/rating/part_filter.php:16
 #: widgets/rating_28/part_filter.php:16
 #: widgets/top/part_filter.php:16
 #: widgets/top_28/part_filter.php:16
 msgid "Posts & Pages"
-msgstr ""
-
-#: widgets/rating/part_filter.php:24
-#: widgets/rating_28/part_filter.php:24
-msgid "Display votes from"
 msgstr ""
 
 #: widgets/rating/part_filter.php:35
@@ -4160,16 +4188,6 @@ msgstr ""
 #: widgets/rating/part_filter.php:47
 #: widgets/rating_28/part_filter.php:47
 msgid "Number of words for excerpt"
-msgstr ""
-
-#: widgets/rating/part_filter.php:52
-#: widgets/rating_28/part_filter.php:52
-msgid "Minimum votes"
-msgstr ""
-
-#: widgets/rating/part_filter.php:65
-#: widgets/rating_28/part_filter.php:65
-msgid "Minimum posts count"
 msgstr ""
 
 #: widgets/rating/part_filter.php:72
@@ -4237,61 +4255,59 @@ msgstr ""
 msgid "Thumbs Size"
 msgstr ""
 
-#: gd-star-rating.php:658
-#: gd-star-rating.php:659
-#: gd-star-rating.php:668
-#: gd-star-rating.php:669
+#: gd-star-rating.php:653
+#: gd-star-rating.php:654
 msgid "Multi Ratings Review"
 msgstr ""
 
-#: gd-star-rating.php:676
-#: gd-star-rating.php:676
+#: gd-star-rating.php:660
+#: gd-star-rating.php:660
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:990
-#: gd-star-rating.php:995
+#: gd-star-rating.php:968
+#: gd-star-rating.php:973
 msgid "Latest"
 msgstr ""
 
-#: gd-star-rating.php:992
-#: gd-star-rating.php:997
+#: gd-star-rating.php:970
+#: gd-star-rating.php:975
 msgid "Chart"
 msgstr ""
 
-#: gd-star-rating.php:1624
+#: gd-star-rating.php:1597
 msgid "articles records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1626
+#: gd-star-rating.php:1599
 msgid "comments records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1630
+#: gd-star-rating.php:1603
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1632
+#: gd-star-rating.php:1605
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1636
+#: gd-star-rating.php:1609
 msgid "dead articles records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1638
+#: gd-star-rating.php:1611
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1640
+#: gd-star-rating.php:1613
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: gd-star-rating.php:1644
+#: gd-star-rating.php:1617
 msgid "dead articles records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1646
+#: gd-star-rating.php:1619
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 
