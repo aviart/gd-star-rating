@@ -699,18 +699,18 @@ if (!class_exists('GDStarRating')) {
             if ($this->admin_plugin) {
                 wp_admin_css('css/dashboard');
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_main.css" type="text/css" media="screen" />');
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-admin.js"></script>');
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-admin.js"></script>');
                 if ($this->wp_version == 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />');
                 if ($this->wp_version >= 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp28.css" type="text/css" media="screen" />');
                 if ($this->wp_version < 28) {
-                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui.js"></script>');
-                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-tabs.js"></script>');
+                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery/jquery-ui.js"></script>');
+                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery/jquery-ui-tabs.js"></script>');
                     echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
                 } else {
                     echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.17.css" type="text/css" media="screen" />');
                 }
                 if ($this->admin_plugin_page == "multi-sets") {
-                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-corrections.js"></script>');
+                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-corrections.js"></script>');
                 }
             }
 
@@ -719,9 +719,9 @@ if (!class_exists('GDStarRating')) {
                 if ($this->wp_version < 28) {
                     echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.core.css" type="text/css" media="screen" />');
                     echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.theme.css" type="text/css" media="screen" />');
-                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker.js"></script>');
+                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery/jquery-ui-datepicker.js"></script>');
                 } else {
-                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery-ui-datepicker-17.js"></script>');
+                    echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery/jquery-ui-datepicker-17.js"></script>');
                 }
                 if(!empty($this->l)) {
                     $jsFile = $this->plugin_path.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js';
@@ -730,7 +730,7 @@ if (!class_exists('GDStarRating')) {
             }
 
             if ($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php") {
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-editors.js"></script>');
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-editors.js"></script>');
             }
             echo("\r\n");
             echo('<script type="text/javascript">jQuery(document).ready(function() {');
@@ -756,8 +756,8 @@ if (!class_exists('GDStarRating')) {
                 $this->include_rating_css_admin();
             }
             if ($this->admin_page == "widgets.php" || $this->admin_page == "themes.php") {
-                if ($this->wp_version < 28) echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-widgets.js"></script>');
-                else echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating-widgets-28.js"></script>');
+                if ($this->wp_version < 28) echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets.js"></script>');
+                else echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets-28.js"></script>');
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />');
             }
 
