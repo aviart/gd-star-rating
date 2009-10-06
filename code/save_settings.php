@@ -11,6 +11,7 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     update_option("gd-star-rating-bots", $bots);
 
     $gdsr_options["cached_loading"] = isset($_POST['gdsr_cached_loading']) ? 1 : 0;
+    $gdsr_options["update_report_usage"] = isset($_POST['gdsr_update_report_usage']) ? 1 : 0;
     $gdsr_options["int_comment_std_zero"] = isset($_POST['gdsr_int_comment_std_zero']) ? 1 : 0;
     $gdsr_options["int_comment_mur_zero"] = isset($_POST['gdsr_int_comment_mur_zero']) ? 1 : 0;
     $gdsr_options["thumbs_active"] = isset($_POST['gdsr_thumbs_act']) ? 1 : 0;
