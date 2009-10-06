@@ -29,7 +29,7 @@ msgstr "Сви корисници и посетиоци"
 #: widgets/comments/part_filter.php:17
 #: widgets/comments_28/part_basic.php:17
 #: widgets/comments_28/part_filter.php:17
-#: widgets/rating/part_basic.php:17
+#: widgets/rating/part_basic.php:16
 #: widgets/rating/part_filter.php:28
 #: widgets/rating_28/part_basic.php:17
 #: widgets/rating_28/part_filter.php:28
@@ -206,7 +206,7 @@ msgstr "родитељ"
 msgid "votes"
 msgstr "гласови"
 
-#: code/t2/render.php:1135
+#: code/t2/render.php:1150
 msgid "(no title)"
 msgstr "(без имена)"
 
@@ -1430,7 +1430,7 @@ msgstr "Графика"
 #: options/settings/settings_integration.php:91
 #: tinymce3/panels/general.php:37
 #: tinymce3/window.php:36
-#: widgets/rating/part_basic.php:50
+#: widgets/rating/part_basic.php:49
 #: widgets/rating_28/part_basic.php:49
 msgid "Multi Rating"
 msgstr "Мулти Рејтинг"
@@ -1465,7 +1465,7 @@ msgstr "Блог Рејтинг"
 #: options/settings/settings_integration.php:92
 #: tinymce3/panels/general.php:38
 #: tinymce3/window.php:42
-#: widgets/rating/part_basic.php:52
+#: widgets/rating/part_basic.php:51
 #: widgets/rating_28/part_basic.php:50
 #: widgets/top/part_basic.php:28
 #: widgets/top_28/part_basic.php:28
@@ -2793,7 +2793,7 @@ msgstr "Извор података"
 
 #: options/settings/settings_integration.php:90
 #: tinymce3/panels/general.php:36
-#: widgets/rating/part_basic.php:48
+#: widgets/rating/part_basic.php:47
 #: widgets/rating_28/part_basic.php:48
 #: widgets/top/part_basic.php:27
 #: widgets/top_28/part_basic.php:27
@@ -2871,6 +2871,19 @@ msgstr "БОТ Претраживачи"
 #: options/settings/settings_security.php:41
 msgid "Each line must contain only one BOT name to ensure proper detection of search engines."
 msgstr "Свака линија мора да садржи само један БОТ да би се осигурала тачна детекција претраживача."
+
+#: options/settings/settings_security.php:47
+#, fuzzy
+msgid "Plugin Update"
+msgstr "Опције плугина"
+
+#: options/settings/settings_security.php:49
+msgid "Report basic usage data that will be used for statistical purposes only."
+msgstr ""
+
+#: options/settings/settings_security.php:51
+msgid "This report will include your WordPress version and website URL. Report will be sent only when plugin needs to be updated."
+msgstr ""
 
 #: options/settings/settings_statistics.php:1
 msgid "Trend Calculations"
@@ -2974,7 +2987,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr "После брисања, плугин ће бити искључен. "
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1496
+#: gd-star-rating.php:1495
 msgid "UNINSTALL"
 msgstr "ДЕИНСТАЛИРАЈ"
 
@@ -3205,7 +3218,7 @@ msgstr "Скраћени Код/Функције"
 #: tinymce3/panels/multis.php:20
 #: tinymce3/panels/thumbsrating.php:11
 #: gd-star-rating.php:667
-#: gd-star-rating.php:896
+#: gd-star-rating.php:895
 msgid "Settings"
 msgstr "Подешавања"
 
@@ -3231,7 +3244,7 @@ msgstr "Закључано и сакривено"
 
 #: options/categories.php:225
 #: tinymce3/panels/general.php:46
-#: widgets/rating/part_basic.php:60
+#: widgets/rating/part_basic.php:59
 #: widgets/rating_28/part_basic.php:58
 msgid "Multi Set"
 msgstr "Мулти Сет"
@@ -3641,7 +3654,7 @@ msgstr "Прикажи гласове од"
 #: widgets/comments/part_filter.php:16
 #: widgets/comments_28/part_basic.php:16
 #: widgets/comments_28/part_filter.php:16
-#: widgets/rating/part_basic.php:16
+#: widgets/rating/part_basic.php:15
 #: widgets/rating/part_filter.php:27
 #: widgets/rating_28/part_basic.php:16
 #: widgets/rating_28/part_filter.php:27
@@ -3659,7 +3672,7 @@ msgstr "Сви"
 #: widgets/comments/part_filter.php:18
 #: widgets/comments_28/part_basic.php:18
 #: widgets/comments_28/part_filter.php:18
-#: widgets/rating/part_basic.php:18
+#: widgets/rating/part_basic.php:17
 #: widgets/rating/part_filter.php:29
 #: widgets/rating_28/part_basic.php:18
 #: widgets/rating_28/part_filter.php:29
@@ -3701,9 +3714,8 @@ msgstr "Прикажи гласове од"
 #: tinymce3/panels/filter.php:26
 #: widgets/rating/part_filter.php:52
 #: widgets/rating_28/part_filter.php:52
-#, fuzzy
 msgid "Minimum votes"
-msgstr "Минимум Гласова"
+msgstr "Минимум гласова"
 
 #: tinymce3/panels/filter.php:30
 msgid "Excerpt words"
@@ -3716,9 +3728,8 @@ msgstr ""
 #: tinymce3/panels/filter.php:40
 #: widgets/rating/part_filter.php:65
 #: widgets/rating_28/part_filter.php:65
-#, fuzzy
 msgid "Minimum posts count"
-msgstr "Минимум Гласова"
+msgstr "Минимум чланака"
 
 #: tinymce3/panels/filter.php:47
 msgid "Sorting"
@@ -3835,37 +3846,37 @@ msgid "Number Of Posts"
 msgstr "Број Чланака"
 
 #: tinymce3/panels/general.php:8
-#: widgets/rating/part_basic.php:24
+#: widgets/rating/part_basic.php:23
 #: widgets/rating_28/part_basic.php:24
 msgid "Items Grouping"
 msgstr "Груписање"
 
 #: tinymce3/panels/general.php:11
-#: widgets/rating/part_basic.php:27
+#: widgets/rating/part_basic.php:26
 #: widgets/rating_28/part_basic.php:27
 msgid "No grouping"
 msgstr "Без груписања"
 
 #: tinymce3/panels/general.php:12
-#: widgets/rating/part_basic.php:28
+#: widgets/rating/part_basic.php:27
 #: widgets/rating_28/part_basic.php:28
 msgid "User based"
 msgstr "Корисници"
 
 #: tinymce3/panels/general.php:13
-#: widgets/rating/part_basic.php:29
+#: widgets/rating/part_basic.php:28
 #: widgets/rating_28/part_basic.php:29
 msgid "Category based"
 msgstr "Категорија"
 
 #: tinymce3/panels/general.php:14
-#: widgets/rating/part_basic.php:30
+#: widgets/rating/part_basic.php:29
 #: widgets/rating_28/part_basic.php:30
 msgid "Taxonomy based"
 msgstr "Базирано на Таксономији"
 
 #: tinymce3/panels/general.php:22
-#: widgets/rating/part_basic.php:38
+#: widgets/rating/part_basic.php:37
 #: widgets/rating_28/part_basic.php:38
 msgid "Taxonomy"
 msgstr "Таксономија"
@@ -3875,7 +3886,7 @@ msgid "Source"
 msgstr "Извор"
 
 #: tinymce3/panels/general.php:33
-#: widgets/rating/part_basic.php:45
+#: widgets/rating/part_basic.php:44
 #: widgets/rating_28/part_basic.php:45
 #: widgets/top/part_basic.php:24
 #: widgets/top_28/part_basic.php:24
@@ -4096,7 +4107,7 @@ msgstr "Откажи"
 
 #: widgets/comments/part_basic.php:13
 #: widgets/comments_28/part_basic.php:13
-#: widgets/rating/part_basic.php:13
+#: widgets/rating/part_basic.php:12
 #: widgets/rating_28/part_basic.php:13
 #: widgets/top/part_basic.php:13
 #: widgets/top_28/part_basic.php:13
@@ -4105,7 +4116,7 @@ msgstr "Прикажи виџет"
 
 #: widgets/comments/part_basic.php:19
 #: widgets/comments_28/part_basic.php:19
-#: widgets/rating/part_basic.php:19
+#: widgets/rating/part_basic.php:18
 #: widgets/rating_28/part_basic.php:19
 #: widgets/top/part_basic.php:19
 #: widgets/top_28/part_basic.php:19
@@ -4186,9 +4197,8 @@ msgstr "Чланци и Стране"
 
 #: widgets/rating/part_filter.php:35
 #: widgets/rating_28/part_filter.php:35
-#, fuzzy
 msgid "Number of posts"
-msgstr "Број звездица"
+msgstr "Број чланака"
 
 #: widgets/rating/part_filter.php:42
 #: widgets/rating_28/part_filter.php:42
@@ -4207,15 +4217,13 @@ msgstr ""
 
 #: widgets/rating/part_filter.php:82
 #: widgets/rating_28/part_filter.php:82
-#, fuzzy
 msgid "Sorting column"
-msgstr "Колона За Сортирање"
+msgstr "Колона за сортирање"
 
 #: widgets/rating/part_filter.php:97
 #: widgets/rating_28/part_filter.php:97
-#, fuzzy
 msgid "Sorting order"
-msgstr "Редослед Сортирања"
+msgstr "Редослед сортирања"
 
 #: widgets/rating/part_filter.php:131
 #: widgets/rating_28/part_filter.php:131
@@ -4276,52 +4284,49 @@ msgstr "Мулти Рејтинг Критика"
 msgid "Front Page"
 msgstr "Главна Страна"
 
-#: gd-star-rating.php:968
-#: gd-star-rating.php:973
+#: gd-star-rating.php:967
+#: gd-star-rating.php:972
 msgid "Latest"
 msgstr "Последњи"
 
-#: gd-star-rating.php:970
-#: gd-star-rating.php:975
+#: gd-star-rating.php:969
+#: gd-star-rating.php:974
 msgid "Chart"
 msgstr "Графикон"
 
-#: gd-star-rating.php:1597
+#: gd-star-rating.php:1596
 msgid "articles records from log table removed."
 msgstr "чланка из лог табеле је уклоњено."
 
-#: gd-star-rating.php:1599
+#: gd-star-rating.php:1598
 msgid "comments records from log table removed."
 msgstr "коментара из лог табеле је уклоњено."
 
-#: gd-star-rating.php:1603
+#: gd-star-rating.php:1602
 msgid "articles records from trends log table removed."
 msgstr "чланака из тренд табеле је уклоњено."
 
-#: gd-star-rating.php:1605
+#: gd-star-rating.php:1604
 msgid "comments records from trends log table removed."
 msgstr "коментара је уклоњено из тренд лог табеле."
 
-#: gd-star-rating.php:1609
+#: gd-star-rating.php:1608
 msgid "dead articles records from articles table."
 msgstr "мртвих чланака из рејтинг табела"
 
-#: gd-star-rating.php:1611
+#: gd-star-rating.php:1610
 msgid "post revisions records from articles table."
 msgstr "ревизија чланак је уклоњено из табеле чланака."
 
-#: gd-star-rating.php:1613
+#: gd-star-rating.php:1612
 msgid "dead comments records from comments table."
 msgstr "мртвих коментара уклоњено из табеле коментара."
 
-#: gd-star-rating.php:1617
+#: gd-star-rating.php:1616
 msgid "dead articles records from multi ratings tables."
 msgstr "мртвих чланака из мулти рејтинг табела"
 
-#: gd-star-rating.php:1619
+#: gd-star-rating.php:1618
 msgid "post revisions records from multi ratings tables."
 msgstr "ревизија из мулти рејтинг табела."
-
-#~ msgid "(this multi set is used for comment integration)"
-#~ msgstr "(овај мулти се се користи за коментар интеграцију)"
 

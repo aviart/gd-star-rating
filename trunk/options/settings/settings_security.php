@@ -45,4 +45,11 @@
         </table>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Plugin Update", "gd-star-rating"); ?></th>
+    <td>
+        <input type="checkbox" name="gdsr_update_report_usage" id="gdsr_update_report_usage"<?php if ($gdsr_options["update_report_usage"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_update_report_usage"><?php _e("Report basic usage data that will be used for statistical purposes only.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
+        <?php _e("This report will include your WordPress version and website URL. Report will be sent only when plugin needs to be updated.", "gd-star-rating"); ?>
+    </td>
+</tr>
 </tbody></table>

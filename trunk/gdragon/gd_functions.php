@@ -36,10 +36,13 @@ if (!class_exists('gdFunctionsGDSR')) {
          * @param string $url website url
          * @return string url to update check
          */
-        function get_update_url($options, $url) {
+        function get_update_url($options, $url = "") {
             global $wp_version;
-            $url = sprintf("http://info.dev4press.com/update/index.php?ver=%s&pdt=%s&blg=%s&wpv=%s",
-                $options["version"], urlencode($options["product_id"]), urlencode($url), urlencode($wp_version));
+            $url = sprintf("http://info.dev4press.com/update/index.php?ver=%s&pdt=%s", 
+                $options["version"], urlencode($options["product_id"]));
+            if ($options["update_report_usage"] == 1) {
+                $url.= "&blg=".urlencode($url)."&&wpv=".urlencode($wp_version);
+            }
             return $url;
         }
 

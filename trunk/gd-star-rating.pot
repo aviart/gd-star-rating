@@ -18,7 +18,7 @@ msgstr ""
 #: widgets/comments/part_filter.php:17
 #: widgets/comments_28/part_basic.php:17
 #: widgets/comments_28/part_filter.php:17
-#: widgets/rating/part_basic.php:17
+#: widgets/rating/part_basic.php:16
 #: widgets/rating/part_filter.php:28
 #: widgets/rating_28/part_basic.php:17
 #: widgets/rating_28/part_filter.php:28
@@ -196,7 +196,7 @@ msgstr ""
 msgid "votes"
 msgstr ""
 
-#: code/t2/render.php:1135
+#: code/t2/render.php:1150
 msgid "(no title)"
 msgstr ""
 
@@ -1417,7 +1417,7 @@ msgstr ""
 #: options/settings/settings_integration.php:91
 #: tinymce3/panels/general.php:37
 #: tinymce3/window.php:36
-#: widgets/rating/part_basic.php:50
+#: widgets/rating/part_basic.php:49
 #: widgets/rating_28/part_basic.php:49
 msgid "Multi Rating"
 msgstr ""
@@ -1452,7 +1452,7 @@ msgstr ""
 #: options/settings/settings_integration.php:92
 #: tinymce3/panels/general.php:38
 #: tinymce3/window.php:42
-#: widgets/rating/part_basic.php:52
+#: widgets/rating/part_basic.php:51
 #: widgets/rating_28/part_basic.php:50
 #: widgets/top/part_basic.php:28
 #: widgets/top_28/part_basic.php:28
@@ -2781,7 +2781,7 @@ msgstr ""
 
 #: options/settings/settings_integration.php:90
 #: tinymce3/panels/general.php:36
-#: widgets/rating/part_basic.php:48
+#: widgets/rating/part_basic.php:47
 #: widgets/rating_28/part_basic.php:48
 #: widgets/top/part_basic.php:27
 #: widgets/top_28/part_basic.php:27
@@ -2858,6 +2858,18 @@ msgstr ""
 
 #: options/settings/settings_security.php:41
 msgid "Each line must contain only one BOT name to ensure proper detection of search engines."
+msgstr ""
+
+#: options/settings/settings_security.php:47
+msgid "Plugin Update"
+msgstr ""
+
+#: options/settings/settings_security.php:49
+msgid "Report basic usage data that will be used for statistical purposes only."
+msgstr ""
+
+#: options/settings/settings_security.php:51
+msgid "This report will include your WordPress version and website URL. Report will be sent only when plugin needs to be updated."
 msgstr ""
 
 #: options/settings/settings_statistics.php:1
@@ -2962,7 +2974,7 @@ msgid "After removal, plugin will be disabled. All data recorded by the plugin w
 msgstr ""
 
 #: options/setup/setup_uninstall.php:5
-#: gd-star-rating.php:1496
+#: gd-star-rating.php:1495
 msgid "UNINSTALL"
 msgstr ""
 
@@ -3195,7 +3207,7 @@ msgstr ""
 #: tinymce3/panels/thumbsrating.php:11
 #: gd-star-rating.php:667
 #: gd-star-rating.php:667
-#: gd-star-rating.php:896
+#: gd-star-rating.php:895
 msgid "Settings"
 msgstr ""
 
@@ -3220,7 +3232,7 @@ msgstr ""
 
 #: options/categories.php:225
 #: tinymce3/panels/general.php:46
-#: widgets/rating/part_basic.php:60
+#: widgets/rating/part_basic.php:59
 #: widgets/rating_28/part_basic.php:58
 msgid "Multi Set"
 msgstr ""
@@ -3634,7 +3646,7 @@ msgstr ""
 #: widgets/comments/part_filter.php:16
 #: widgets/comments_28/part_basic.php:16
 #: widgets/comments_28/part_filter.php:16
-#: widgets/rating/part_basic.php:16
+#: widgets/rating/part_basic.php:15
 #: widgets/rating/part_filter.php:27
 #: widgets/rating_28/part_basic.php:16
 #: widgets/rating_28/part_filter.php:27
@@ -3652,7 +3664,7 @@ msgstr ""
 #: widgets/comments/part_filter.php:18
 #: widgets/comments_28/part_basic.php:18
 #: widgets/comments_28/part_filter.php:18
-#: widgets/rating/part_basic.php:18
+#: widgets/rating/part_basic.php:17
 #: widgets/rating/part_filter.php:29
 #: widgets/rating_28/part_basic.php:18
 #: widgets/rating_28/part_filter.php:29
@@ -3826,37 +3838,37 @@ msgid "Number Of Posts"
 msgstr ""
 
 #: tinymce3/panels/general.php:8
-#: widgets/rating/part_basic.php:24
+#: widgets/rating/part_basic.php:23
 #: widgets/rating_28/part_basic.php:24
 msgid "Items Grouping"
 msgstr ""
 
 #: tinymce3/panels/general.php:11
-#: widgets/rating/part_basic.php:27
+#: widgets/rating/part_basic.php:26
 #: widgets/rating_28/part_basic.php:27
 msgid "No grouping"
 msgstr ""
 
 #: tinymce3/panels/general.php:12
-#: widgets/rating/part_basic.php:28
+#: widgets/rating/part_basic.php:27
 #: widgets/rating_28/part_basic.php:28
 msgid "User based"
 msgstr ""
 
 #: tinymce3/panels/general.php:13
-#: widgets/rating/part_basic.php:29
+#: widgets/rating/part_basic.php:28
 #: widgets/rating_28/part_basic.php:29
 msgid "Category based"
 msgstr ""
 
 #: tinymce3/panels/general.php:14
-#: widgets/rating/part_basic.php:30
+#: widgets/rating/part_basic.php:29
 #: widgets/rating_28/part_basic.php:30
 msgid "Taxonomy based"
 msgstr ""
 
 #: tinymce3/panels/general.php:22
-#: widgets/rating/part_basic.php:38
+#: widgets/rating/part_basic.php:37
 #: widgets/rating_28/part_basic.php:38
 msgid "Taxonomy"
 msgstr ""
@@ -3866,7 +3878,7 @@ msgid "Source"
 msgstr ""
 
 #: tinymce3/panels/general.php:33
-#: widgets/rating/part_basic.php:45
+#: widgets/rating/part_basic.php:44
 #: widgets/rating_28/part_basic.php:45
 #: widgets/top/part_basic.php:24
 #: widgets/top_28/part_basic.php:24
@@ -4087,7 +4099,7 @@ msgstr ""
 
 #: widgets/comments/part_basic.php:13
 #: widgets/comments_28/part_basic.php:13
-#: widgets/rating/part_basic.php:13
+#: widgets/rating/part_basic.php:12
 #: widgets/rating_28/part_basic.php:13
 #: widgets/top/part_basic.php:13
 #: widgets/top_28/part_basic.php:13
@@ -4096,7 +4108,7 @@ msgstr ""
 
 #: widgets/comments/part_basic.php:19
 #: widgets/comments_28/part_basic.php:19
-#: widgets/rating/part_basic.php:19
+#: widgets/rating/part_basic.php:18
 #: widgets/rating_28/part_basic.php:19
 #: widgets/top/part_basic.php:19
 #: widgets/top_28/part_basic.php:19
@@ -4265,49 +4277,49 @@ msgstr ""
 msgid "Front Page"
 msgstr ""
 
-#: gd-star-rating.php:968
-#: gd-star-rating.php:973
+#: gd-star-rating.php:967
+#: gd-star-rating.php:972
 msgid "Latest"
 msgstr ""
 
-#: gd-star-rating.php:970
-#: gd-star-rating.php:975
+#: gd-star-rating.php:969
+#: gd-star-rating.php:974
 msgid "Chart"
 msgstr ""
 
-#: gd-star-rating.php:1597
+#: gd-star-rating.php:1596
 msgid "articles records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1599
+#: gd-star-rating.php:1598
 msgid "comments records from log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1603
+#: gd-star-rating.php:1602
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1605
+#: gd-star-rating.php:1604
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: gd-star-rating.php:1609
+#: gd-star-rating.php:1608
 msgid "dead articles records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1611
+#: gd-star-rating.php:1610
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: gd-star-rating.php:1613
+#: gd-star-rating.php:1612
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: gd-star-rating.php:1617
+#: gd-star-rating.php:1616
 msgid "dead articles records from multi ratings tables."
 msgstr ""
 
-#: gd-star-rating.php:1619
+#: gd-star-rating.php:1618
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 

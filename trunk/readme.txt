@@ -114,17 +114,29 @@ This is controled by the constants defined in the config files. Detailed info on
 = How to insert rating blocks or results directly into the theme files? =
 All plugins functions for inserting wherever you want can be found in the info folder included with the plugin, or at this url: http://info.dev4press.com/gd-star-rating/.
 
+= Both stars and thumbs rating block are showing on pages. =
+You need to disable auto insertion of the rating type you don't want to use. Both are controlled by the options on the Settings panel. For post/page stars use Posts & Pages tab and 5 auto insert checkboxes, for comments use Comments tab and 3 auto insert checkboxes. To control thumb ratings auto insertion, use Thumbs Up/Down tab, and you ave auto insert options for posts and pages, and at the bottom for comments. Disable what you don't wanna use.
+
 = How to change the elements displayed by the plugin in widget, rating blocks and other rendering elements? =
 All rendering is controled by the T2 templates system. To change the rendering output you need to make your own templates and change what they display.
 
 = Plugin is not showing rating stars or rating widgets after update, or all stars and thumbs have disappeared, and there is nothing in stars/thumbs selection lists. =
 Check all plugin settings and plugins widgets settings after update and save them. If graphics is gone, try rebuilding stars and thumbs sets: go to plugin Tools -> tab Graphics -> Rescan.
 
+= After update I can vote for some posts (stars and/or thumbs). =
+Most likely you have already voted for these posts. Plugin uses database log and cookies to prevent duplicate votes (can be disabled). Update CAN'T break the plugin (well, this is true in 99% of the cases), because tables layout and queries are not changed for a long time. You can't upgrade to latest versions from old releases pre 1.3.0 version.
+
 = I have added one of the plugins widgets, and it's not showing anything. =
 Check the widget settings. Most likely problem is with default widget setting to show only posts with 5 votes or more. If you have just set the plugin most likely you still don't have enough votes.
 
 = Instead of ratings, in posts on front and category pages plugin shows something like this: VN:F [1.6.7_924] Rating 0/10 (0 Votes). =
 This is not a bug, but a well known excerpt problem More details on that and the solutions are in this post: http://www.gdstarrating.com/2009/02/13/the-excerpt-problems/.
+
+= Can I use this plugin in combination with cache plugins like WP Super Cache? =
+Yes. Plugin supports all cache plugins and can load ratings using ajax to keep them current and to avoid ratings to be cached. To enable this feature, you need to activate it on the plugins Settings panel, tab Features, option Cache Support. You can use this option even if you don't use cache plugins. Instead of showing ratings with the page, plugin will render loading message, that will be replaced with rating block once the page is fully loaded.
+
+= After upgrade plugin is not rendering stars, and only a loading message appears. =
+This is caused by the cache plugins support enabled that causes rating block to be loaded after the page is ready. To disable this feature, you need to deactivate it on the plugins Settings panel, tab Features, option Cache Support.
 
 = Plugin is not working in some browsers. =
 Plugin is tested in Opera 9, Opera 9.5, Opera 10, Safari 3, Safari 4, Firefox 2, Firefox 3, MS Internet Explorer 6, MS Internet Explorer 7, MS Internet Explorer 8. But, still there is a possibility that plugin fails to work in some browsers because other plugins or theme can contain JavaScript code that can interfere with GD Star Rating. In that case you need to fix code causing the problems. I will not test how badly written plugins can cause problems.
@@ -139,6 +151,9 @@ This is the problem in case when PHP on the server can't execute these files. Bo
 There could be two causes for this:
 * Plugins CSS and JavaScrip files are not loaded: Check the previous FAQ answer.
 * There are no stars or thumbs set selected for the plugin to use. To check this, go to Graphics panel and you will see if there are any sets there, and if any of them is selected. If there are no sets displayed, you need to rescan for them: panel Tools, tab Graphics, button Rescan. Once the sets are back, you need to select on the Graphics panel sets and sizes you want to use in the active rating blocks: http://www.gdstarrating.com/2009/05/20/settings-explained-part-5/.
+
+= I tried everything (I really tried), and many things are still not working. =
+I can't guarantee that plugin will work on every WordPress setup. In 99.9% of the cases there are no problems, but some plugin, theme and server combinations can cause problems that can't be anticipated. But this is very rare, and in most cases that can be corrected bu tracking down the problem. And usually only some plugins features will fail. Don't simply give up, find the problem, find the PHP error that can cause problem, that will most likely point to some other plugin causing problems.
 
 == Screenshots ==
 1. Plugin settings General tab
