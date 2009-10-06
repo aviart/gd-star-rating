@@ -2048,7 +2048,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
             $template = new gdTemplateRender($tpl_id, "SRB");
             $rt = GDSRRenderT2::render_srt_voted($template->dep["SRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "id" => $post_id, "vote" => $vote_value));
 
-            $rating_width = apply_filters("gdsr_vote_rating_article_return", $rating_width, $rating1, $vote_value);
+            $rating_width = apply_filters("gdsr_vote_rating_article_return", $rating_width, $unit_width, $rating1, $vote_value);
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
 
@@ -2099,7 +2099,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
             $template = new gdTemplateRender($tpl_id, "CRB");
             $rt = GDSRRenderT2::render_crt($template->dep["CRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "vote_value" => $vote_value));
 
-            $rating_width = apply_filters("gdsr_vote_rating_comment_return", $rating_width, $rating1, $vote_value);
+            $rating_width = apply_filters("gdsr_vote_rating_comment_return", $rating_width, $unit_width, $rating1, $vote_value);
             return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
         }
         // vote
@@ -3078,7 +3078,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $rd_comment_id = intval($comment_id);
 
             $post_data = wp_gdget_post($rd_post_id);
-            if (count($post_data) == 0) {
+            if (!is_object($post_data)) {
                 GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
                 $post_data = wp_gdget_post($rd_post_id);
                 $this->c[$rd_post_id] = 1;
@@ -3203,7 +3203,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $rd_comment_id = intval($comment_id);
 
             $post_data = wp_gdget_post($rd_post_id);
-            if (count($post_data) == 0) {
+            if (!is_object($post_data)) {
                 GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
                 $post_data = wp_gdget_post($rd_post_id);
                 $this->c[$rd_post_id] = 1;
@@ -3319,7 +3319,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
             if ($override["read_only"] == 1) $dbg_allow = "RO";
             $post_data = wp_gdget_post($rd_post_id);
-            if (count($post_data) == 0) {
+            if (!is_object($post_data)) {
                 GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
                 $post_data = wp_gdget_post($rd_post_id);
                 $this->c[$rd_post_id] = 1;
@@ -3461,7 +3461,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $rd_unit_style = $this->is_ie6 ? $override["style_ie6"] : $override["style"];
 
             $post_data = wp_gdget_post($rd_post_id);
-            if (count($post_data) == 0) {
+            if (!is_object($post_data)) {
                 GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
                 $post_data = wp_gdget_post($rd_post_id);
                 $this->c[$rd_post_id] = 1;
@@ -3623,7 +3623,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $deadline = "";
 
             $post_data = wp_gdget_post($rd_post_id);
-            if (count($post_data) == 0) {
+            if (!is_object($post_data)) {
                 GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
                 $post_data = wp_gdget_post($rd_post_id);
                 $this->c[$rd_post_id] = 1;

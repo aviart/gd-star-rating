@@ -402,9 +402,9 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
     // main rendering data
     function render_mri($template_id, $rpar = array()) {
-        $rdef = array("post_id" => 0, "style" => "oxygen",
-            "set" => "", "height" => 20, "css" => "");
+        $rdef = array("post_id" => 0, "style" => "oxygen", "set" => "", "height" => 20, "css" => "");
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_mri', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "MRI");
@@ -440,9 +440,9 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     }
 
     function render_mre($template_id, $rpar = array()) {
-        $rdef = array("post_id" => 0, "votes" => 0, "style" => "oxygen",
-            "set" => "", "height" => 20, "css" => "", "allow_vote" => true);
+        $rdef = array("post_id" => 0, "votes" => 0, "style" => "oxygen", "set" => "", "height" => 20, "css" => "", "allow_vote" => true);
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_mre', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "MRE");
@@ -488,9 +488,9 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     }
 
     function render_ssb($template_id, $rpar = array()) {
-        $rdef = array("post_id" => 0, "votes" => 0, "score" => 0,
-            "unit_count" => 10, "header_text" => "", "type" => "");
+        $rdef = array("post_id" => 0, "votes" => 0, "score" => 0, "unit_count" => 10, "header_text" => "", "type" => "");
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_ssb', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "SSB");
@@ -532,6 +532,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             "tags_css" => array(), "avg_style" => "oxygen", "avg_size" => 20, "star_factor" => 1, "time_restirctions" => "N", "time_remaining" => 0,
             "time_date" => "", "button_active" => true, "button_text" => "Submit", "debug" => "", "wait_msg" => "");
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_mrb', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "MRB");
@@ -601,6 +602,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             "unit_width" => 20, "unit_count" => 10, "allow_vote" => true, "user_id" => 0, "typecls" => "", "tags_css" => array(),
             "header_text" => "", "debug" => "", "wait_msg" => "", "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_srb', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "SRB");
@@ -642,6 +644,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             "unit_width" => 20, "allow_vote" => true, "user_id" => 0, "tags_css" => array(), "header_text" => "", 
             "debug" => "", "wait_msg" => "", "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_tab', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "TAB");
@@ -697,6 +700,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             "style" => "starrating", "unit_width" => 20, "allow_vote" => true, "user_id" => 0, "tags_css" => array(),
             "header_text" => "", "debug" => "", "wait_msg" => "");
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_tcb', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "TCB");
@@ -752,6 +756,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             "style" => "oxygen", "unit_width" => 20, "unit_count" => 10, "allow_vote" => true, "user_id" => 0, 
             "typecls" => "", "tags_css" => array(), "header_text" => "", "debug" => "", "wait_msg" => "");
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_crb', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "CRB");
@@ -792,6 +797,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $rdef = array("rating" => 0, "star_style" => "oxygen",
             "star_size" => 20, "star_max" => 10, "header_text" => "", "css" => "");
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_rsb', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "RSB");
@@ -811,9 +817,9 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     }
 
     function render_rcb($template_id, $rpar = array()) {
-        $rdef = array("rating" => 0, "star_style" => "oxygen",
-            "star_size" => 20, "star_max" => 10);
+        $rdef = array("rating" => 0, "star_style" => "oxygen", "star_size" => 20, "star_max" => 10);
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_rcb', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "RCB");
@@ -831,9 +837,9 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     }
 
     function render_mcr($template_id, $rpar = array()) {
-        $rdef = array("post_id" => 0, "set" => 0, "avg_rating" => 0,
-            "avg_style" => "oxygen", "avg_size" => 20);
+        $rdef = array("post_id" => 0, "set" => 0, "avg_rating" => 0, "avg_style" => "oxygen", "avg_size" => 20);
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_mcr', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "MCR");
@@ -855,6 +861,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $rdef = array("votes" => 0, "post_id" => 0, "set" => 0, "avg_rating" => 0,
             "style" => "oxygen", "size" => 20, "avg_style" => "oxygen", "avg_size" => 20);
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_rmb', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "RMB");
@@ -899,6 +906,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $rdef = array("votes" => 0, "rating" => 0, "comments" => 0,
             "star_style" => "oxygen", "star_size" => 20, "star_max" => 10);
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_car', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $template = GDSRRenderT2::get_template($template_id, "CAR");
@@ -926,6 +934,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $rdef = array("votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "id" => 0,
             "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_tat', $rpar);
         extract($rpar, EXTR_SKIP);
 
         if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
@@ -971,6 +980,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     function render_tct($template, $rpar = array()) {
         $rdef = array("votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "id" => 0, "vote_value" => 0);
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_tct', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $tpl = $vote_value != 0 ? $template->elm["vote_saved"] : $template->elm["normal"];
@@ -999,15 +1009,16 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $rdef = array("rating" => 0, "unit_count" => 0, "votes" => 0, "id" => 0,
             "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_mrt', $rpar);
         extract($rpar, EXTR_SKIP);
 
         return GDSRRenderT2::render_srt($template, array("rating" => $rating, "unit_count" => $unit_count, "votes" => $votes, "id" => $id, "time_restirctions" => $time_restirctions, "time_remaining" => $time_remaining, "time_date" => $time_date));
     }
 
     function render_crt($template, $rpar = array()) {
-        $rdef = array("rating" => 0, "unit_count" => 10,
-            "votes" => 0, "vote_value" => -1);
+        $rdef = array("rating" => 0, "unit_count" => 10, "votes" => 0, "vote_value" => -1);
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_crt', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $tpl = $vote_value > -1 ? $template->elm["vote_saved"] : $template->elm["normal"];
@@ -1030,6 +1041,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $rdef = array("rating" => 0, "unit_count" => 0, "votes" => 0, "id" => 0,
             "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_srt', $rpar);
         extract($rpar, EXTR_SKIP);
 
         if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
@@ -1069,6 +1081,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     function render_tat_voted($template, $rpar = array()) {
         $rdef = array("votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "id" => 0, "vote" => 0);
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_tat_voted', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $tpl = $template->elm["vote_saved"];
@@ -1096,6 +1109,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     function render_srt_voted($template, $rpar = array()) {
         $rdef = array("rating" => 0, "unit_count" => 0, "votes" => 0, "id" => 0, "vote" => 0);
         $rpar = wp_parse_args($rpar, $rdef);
+        $rpar = apply_filters('gdsr_t2parameters_srt_voted', $rpar);
         extract($rpar, EXTR_SKIP);
 
         $tpl = $template->elm["vote_saved"];
