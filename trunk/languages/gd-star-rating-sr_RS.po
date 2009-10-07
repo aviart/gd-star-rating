@@ -829,9 +829,8 @@ msgid "Thumbs Comment Ratings Text"
 msgstr "Тамб Рејтинг Текст Кометара"
 
 #: code/t2/templates.php:350
-#, fuzzy
 msgid "comment percentage rating"
-msgstr "рејтинг чланка у процентима"
+msgstr "рејтинг коментара у процентима"
 
 #: code/t2/templates.php:360
 msgid "Thumbs Comment Rating Block"
@@ -1107,9 +1106,8 @@ msgid "Current post comments rating."
 msgstr "Рејтинг коментара требутниг чланка."
 
 #: gdt2/classes.php:139
-#, fuzzy
 msgid "All Sections"
-msgstr "Сви Сетови"
+msgstr "Све Секције"
 
 #: gdt2/form_defaults.php:4
 #: gdt2/form_dependencies.php:10
@@ -1178,7 +1176,7 @@ msgstr "Назив"
 #: gdt2/form_dependencies.php:13
 #: options/templates.php:6
 msgid "Dependencies"
-msgstr ""
+msgstr "Зависности"
 
 #: gdt2/form_editor.php:21
 msgid "Template Editor"
@@ -1199,13 +1197,12 @@ msgid "Info"
 msgstr "Подаци"
 
 #: gdt2/form_editor.php:45
-#, fuzzy
 msgid "Set this template as default for this type of templates."
-msgstr "Изабери шаблон за овај елемент:"
+msgstr "Постави шаблон као главни за овај тип шаблона."
 
 #: gdt2/form_editor.php:48
 msgid "Set this template as a dependency for all other templates that use it."
-msgstr ""
+msgstr "Постави овај шаблон као гавни за све шаблоне који га користе."
 
 #: gdt2/form_editor.php:52
 #: options/builder/settings.php:2
@@ -1277,9 +1274,8 @@ msgid "Tag"
 msgstr "Таг"
 
 #: gdt2/form_list.php:86
-#, fuzzy
 msgid "Map with dependencies for templates"
-msgstr "Кликните да бисте отворили страна су Т2 мапом међузависности."
+msgstr "Мапом међузависности за шаблоне"
 
 #: gdt2/form_list.php:87
 msgid "T2 Templates Map"
@@ -1745,7 +1741,7 @@ msgstr "GD WordPress Плагинови"
 
 #: options/front/front_right.php:80
 msgid "custom taxonomies managment"
-msgstr ""
+msgstr "рад са додатним таксономијама"
 
 #: options/front/front_right.php:85
 msgid "collection of widgets"
@@ -1773,7 +1769,7 @@ msgstr "wordpress развој"
 
 #: options/front/front_right.php:119
 msgid "tv shows reviews and news"
-msgstr ""
+msgstr "вести и описи тв серија"
 
 #: options/front/front_right.php:123
 msgid "Support Forum"
@@ -2180,28 +2176,24 @@ msgid "Posts"
 msgstr "Чланци"
 
 #: options/my/my_comments.php:1
-#, fuzzy
 msgid "Votes for my comments"
-msgstr "укупно гласова за коментар"
+msgstr "Гласови за моје коментаре"
 
 #: options/my/my_general.php:16
-#, fuzzy
 msgid "General Statistics"
-msgstr "Статистика"
+msgstr "Општа Статистика"
 
 #: options/my/my_general.php:19
 msgid "My votes overview"
-msgstr ""
+msgstr "Моји гласови"
 
 #: options/my/my_posts.php:1
-#, fuzzy
 msgid "Votes for my posts"
-msgstr "Листа гласова за чланке."
+msgstr "Гласови за моје чланке."
 
 #: options/my/my_voted.php:1
-#, fuzzy
 msgid "My Latest 100 Votes"
-msgstr "Последњи Глас"
+msgstr "Мојих 100 Последњих Гласова"
 
 #: options/settings/settings_administration.php:0
 msgid "Admin Display"
@@ -2248,9 +2240,8 @@ msgid "Uninstall and maintenance."
 msgstr "Деисталација и одржавање."
 
 #: options/settings/settings_administration.php:43
-#, fuzzy
 msgid "Export data and custom templates."
-msgstr "Извоз Шаблона"
+msgstr "Извоз података и шаблона."
 
 #: options/settings/settings_administration.php:45
 #: options/ips.php:69
@@ -2326,7 +2317,7 @@ msgstr "Важно"
 
 #: options/settings/settings_advanced.php:35
 msgid "I strongly recommend leaving this option active. It doesn't disrupt the page, it's hidden and very small."
-msgstr ""
+msgstr "Препоручујем да оставите ову опцију укључену. Не омета страну, сакривена је и врло мала."
 
 #: options/settings/settings_advanced.php:38
 msgid "Log Into File"
@@ -2342,7 +2333,7 @@ msgstr "Сними у дебаг фајл сваки извршени WP упи�
 
 #: options/settings/settings_advanced.php:44
 msgid "Plugin must have write access to a text file. Path to this file needs to be set in %s file."
-msgstr ""
+msgstr "Плагин мора да има приступ текст фајлу. Путања је подешена у %s фајлу."
 
 #: options/settings/settings_articles.php:10
 #: options/settings/settings_comments.php:10
@@ -2557,17 +2548,16 @@ msgid "Prevent comment author to vote."
 msgstr "Спречи аутора коментара да гласа."
 
 #: options/settings/settings_features.php:1
-#, fuzzy
 msgid "Cache Support"
-msgstr "Премијум Подршка"
+msgstr "Кеш Подршка"
 
 #: options/settings/settings_features.php:3
 msgid "Activate support for cache plugins and dynamic loading of data."
-msgstr ""
+msgstr "Активирај подршку за кеш и динамичко учитавање података."
 
 #: options/settings/settings_features.php:5
 msgid "This options is designed for use with cache plugins, but it can be activated regardless of that. Ratings will be loaded dynamically using ajax."
-msgstr ""
+msgstr "Ова опција је намењена за кеш плагинове, али се може користити и без тога. Рејтинг подаци ће се учитавати динамички ајаксом."
 
 #: options/settings/settings_features.php:8
 msgid "Plugin Features"
@@ -2846,11 +2836,11 @@ msgstr "Кориснички нивои"
 
 #: options/settings/settings_security.php:16
 msgid "Required to show the dashboard widgets"
-msgstr ""
+msgstr "Потребно да би се приказао дашбоард виџет"
 
 #: options/settings/settings_security.php:20
 msgid "Required to show IP's in widgets and my ratings"
-msgstr ""
+msgstr "Потребно да се ИП прикаже у виџету и мојим рејтингом"
 
 #: options/settings/settings_security.php:26
 msgid "Rating Log"
@@ -2873,17 +2863,16 @@ msgid "Each line must contain only one BOT name to ensure proper detection of se
 msgstr "Свака линија мора да садржи само један БОТ да би се осигурала тачна детекција претраживача."
 
 #: options/settings/settings_security.php:47
-#, fuzzy
 msgid "Plugin Update"
-msgstr "Опције плугина"
+msgstr "Плугина упдејт"
 
 #: options/settings/settings_security.php:49
 msgid "Report basic usage data that will be used for statistical purposes only."
-msgstr ""
+msgstr "Пријави основне податке о коришењу за статистичке потребе."
 
 #: options/settings/settings_security.php:51
 msgid "This report will include your WordPress version and website URL. Report will be sent only when plugin needs to be updated."
-msgstr ""
+msgstr "Ово ће укључити ВордПрес верзију и УРЛ. Репорт се шаље само када се плугин апдејтује."
 
 #: options/settings/settings_statistics.php:1
 msgid "Trend Calculations"
@@ -3234,13 +3223,12 @@ msgstr "Временска Ограничења"
 #: options/categories.php:204
 #: options/categories.php:214
 msgid "Normal activity"
-msgstr ""
+msgstr "Нормална активност"
 
 #: options/categories.php:205
 #: options/categories.php:215
-#, fuzzy
 msgid "Force hidden"
-msgstr "Закључано и сакривено"
+msgstr "Сакриј"
 
 #: options/categories.php:225
 #: tinymce3/panels/general.php:46
@@ -3258,9 +3246,8 @@ msgid "inhert from parent"
 msgstr "наследи од родитеља"
 
 #: options/categories.php:120
-#, fuzzy
 msgid "no multi set assigned"
-msgstr "мулти сет"
+msgstr "мулти сет није подешен"
 
 #: options/charts.php:6
 msgid "Articles (Posts And Pages)"
@@ -3723,7 +3710,7 @@ msgstr "Број речи"
 
 #: tinymce3/panels/filter.php:37
 msgid "Grouping Specific"
-msgstr ""
+msgstr "Груписање"
 
 #: tinymce3/panels/filter.php:40
 #: widgets/rating/part_filter.php:65
@@ -4213,7 +4200,7 @@ msgstr "Број речи у исечку"
 #: widgets/rating/part_filter.php:72
 #: widgets/rating_28/part_filter.php:72
 msgid "This filter will be used only with grouping options."
-msgstr ""
+msgstr "Овај филтер ће бити коришћен само са груписањем."
 
 #: widgets/rating/part_filter.php:82
 #: widgets/rating_28/part_filter.php:82
