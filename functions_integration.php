@@ -476,12 +476,12 @@ function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
  * @param bool $echo echo results or return it as a string
  * @return string html with rendered contents
  */
-function wp_gdsr_render_review($post_id = 0, $template_id = 0, $echo = true) {
+function wp_gdsr_render_review($post_id = 0, $template_id = 0, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif", $echo = true) {
     global $gdsr, $post;
     if ($post_id == 0) $post_id = $post->ID;
 
-    if ($echo) echo $gdsr->shortcode_starreview(array("post" => $post_id, "tpl" => $template_id));
-    else return $gdsr->shortcode_starreview(array("post" => $post_id, "tpl" => $template_id));
+    if ($echo) echo $gdsr->shortcode_starreview(array("post" => $post_id, "tpl" => $template_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size));
+    else return $gdsr->shortcode_starreview(array("post" => $post_id, "tpl" => $template_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size));
 }
 
 /**

@@ -110,11 +110,26 @@ function insertStarRatingCode() {
         tagtext = tagtext + "]";
         funtext = funtext + funa.join(", ") + "));"
     } else if (shortcode == 'starreview') {
+        var rvw_style_added = false;
         tagtext = "[starreview";
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRSB').value;
+        if (document.getElementById('srRVWPostID').value > 0) tagtext = tagtext + " post_id=" + document.getElementById('srRVWPostID').value;
+        funtext = "wp_gdsr_render_review(" + document.getElementById('srRVWPostID').value + ", ";
+        funtext = funtext + document.getElementById('srTemplateRSB').value;
+        if (document.getElementById('srRVWStarsStyle').value != 'oxygen') {
+            tagtext = tagtext + " style='" + document.getElementById('srRVWStarsStyle').value + "'";
+            funtext = funtext + ", '" + document.getElementById('srRVWStarsStyle').value + "'";
+            rvw_style_added = true;
+        }
+        if (document.getElementById('srRVWStarsSize').value != '20') {
+            tagtext = tagtext + " size='" + document.getElementById('srRVWStarsSize').value + "'";
+            if (!rvw_style_added) {
+                funtext = funtext + ", '" + document.getElementById('srRVWStarsStyle').value + "'";
+            }
+            funtext = funtext + ", " + document.getElementById('srRVWStarsSize').value;
+        }
         tagtext = tagtext + "]";
-        funtext = "wp_gdsr_render_review(0, ";
-        funtext = funtext + document.getElementById('srTemplateRSB').value + ");"
+        funtext = funtext + ");";
     } else if (shortcode == 'starcomments') {
         tagtext = "[starcomments";
         funtext = "wp_gdsr_render_comment_aggregation(0, " + document.getElementById('srTemplateCAR').value;
@@ -126,12 +141,25 @@ function insertStarRatingCode() {
         tagtext = tagtext + "]";
         funtext = funtext + ");"
     } else if (shortcode == 'starrater') {
+        var rtg_style_added = false;
         tagtext = "[starrater tpl=";
-        funtext = "wp_gdsr_render_article(" + document.getElementById('srRatingBlockTemplate').value;
+        funtext = "wp_gdsr_render_article(" + document.getElementById('srRatingBlockTemplate').value + ", ";
         tagtext = tagtext + document.getElementById('srRatingBlockTemplate').value;
         if (document.getElementById('srArticleRead').checked) {
            tagtext = tagtext + " read_only=1";
-           funtext = funtext + ", true";
+        }
+        funtext = funtext + (document.getElementById('srArticleRead').checked ? "true" : "false");
+        if (document.getElementById('srRTGStarsStyle').value != 'oxygen') {
+            tagtext = tagtext + " style='" + document.getElementById('srRTGStarsStyle').value + "'";
+            funtext = funtext + ", '" + document.getElementById('srRTGStarsStyle').value + "'";
+            rtg_style_added = true;
+        }
+        if (document.getElementById('srRTGStarsSize').value != '20') {
+            tagtext = tagtext + " size='" + document.getElementById('srRTGStarsSize').value + "'";
+            if (!rtg_style_added) {
+                funtext = funtext + ", '" + document.getElementById('srRTGStarsStyle').value + "'";
+            }
+            funtext = funtext + ", " + document.getElementById('srRTGStarsSize').value;
         }
         tagtext = tagtext + "]";
         funtext = funtext + ");"
@@ -148,8 +176,10 @@ function insertStarRatingCode() {
     } else if (shortcode == 'starreviewmulti') {
         tagtext = "[starreviewmulti id=";
         funtext = "wp_gdsr_show_multi_review(" + document.getElementById('srMultiReviewSet').value;
-        funtext = funtext + ", " + document.getElementById('srTemplateRMB').value + ", 0";
+        funtext = funtext + ", " + document.getElementById('srTemplateRMB').value;
+        funtext = funtext + ", " + document.getElementById('srMultiReviewPostID').value;
         tagtext = tagtext + document.getElementById('srMultiReviewSet').value;
+        if (document.getElementById('srMultiReviewPostID').value > 0) tagtext = tagtext + " post_id=" + document.getElementById('srMultiReviewPostID').value;
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRMB').value;
         if (document.getElementById('srStarsStyleMRREl').value != 'oxygen') {
             tagtext = tagtext + " element_stars='" + document.getElementById('srStarsStyleMRREl').value + "'";
