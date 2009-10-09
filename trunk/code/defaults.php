@@ -4,10 +4,10 @@ class GDSRDefaults {
     var $default_options = array(
         "version" => "1.7.0",
         "revision" => 0,
-        "date" => "2009.10.07.",
+        "date" => "2009.10.11.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 938,
+        "build" => 939,
         "admin_views" => 0,
         "update_report_usage" => 1,
         "ajax_jsonp" => 0,
@@ -349,22 +349,25 @@ class GDSRDefaults {
 
     var $default_shortcode_starreview = array(
         "post" => 0,
-        "tpl" => 0
+        "tpl" => 0,
+        "style" => "",
+        "style_ie6" => "",
+        "size" => 0
     );
 
     var $default_shortcode_starrater = array(
         "tpl" => 0,
         "read_only" => 0,
-        "style" => "oxygen",
-        "style_ie6" => "oxygen_gif",
-        "size" => 20
+        "style" => "",
+        "style_ie6" => "",
+        "size" => 0
     );
 
     var $default_shortcode_starthumbsblock = array(
         "tpl" => 0,
         "read_only" => 0,
-        "style" => "oxygen",
-        "style_ie6" => "oxygen_gif",
+        "style" => "starrating",
+        "style_ie6" => "starrating_gif",
         "size" => 20
     );
 

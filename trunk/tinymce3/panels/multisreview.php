@@ -19,6 +19,16 @@
 </fieldset>
 
 <fieldset>
+<legend><?php _e("Source", "gd-star-rating"); ?></legend>
+    <table border="0" cellpadding="3" cellspacing="0" width="100%">
+      <tr>
+        <td class="gdsrleft"><?php _e("Post ID", "gd-star-rating"); ?>:</td>
+        <td class="gdsrright"><input class="widefat widnumb" style="text-align: right;" size="8" type="text" name="srMultiReviewPostID" id="srMultiReviewPostID" value="0" /></td>
+      </tr>
+    </table>
+</fieldset>
+
+<fieldset>
 <legend><?php _e("Elements Stars", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="2" cellspacing="0" width="100%">
       <tr>
