@@ -7,7 +7,7 @@ class GDSRDefaults {
         "date" => "2009.10.11.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 939,
+        "build" => 941,
         "admin_views" => 0,
         "update_report_usage" => 1,
         "ajax_jsonp" => 0,
@@ -350,12 +350,14 @@ class GDSRDefaults {
     var $default_shortcode_starreview = array(
         "post" => 0,
         "tpl" => 0,
+        "css" => "",
         "style" => "",
         "style_ie6" => "",
         "size" => 0
     );
 
     var $default_shortcode_starrater = array(
+        "post" => 0,
         "tpl" => 0,
         "read_only" => 0,
         "style" => "",
@@ -364,11 +366,12 @@ class GDSRDefaults {
     );
 
     var $default_shortcode_starthumbsblock = array(
+        "post" => 0,
         "tpl" => 0,
         "read_only" => 0,
-        "style" => "starrating",
-        "style_ie6" => "starrating_gif",
-        "size" => 20
+        "style" => "",
+        "style_ie6" => "",
+        "size" => 0
     );
 
     var $default_shortcode_starratingmulti = array(
@@ -383,7 +386,7 @@ class GDSRDefaults {
     );
 
     var $default_shortcode_starreviewmulti = array(
-        "post_id" => 0,
+        "post" => 0,
         "id" => 1,
         "tpl" => 0,
         "element_stars" => "oxygen",

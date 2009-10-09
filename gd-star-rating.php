@@ -246,8 +246,11 @@ if (!class_exists('GDStarRating')) {
         * @param array $atts
         */
         function shortcode_starthumbsblock($atts = array()) {
-            global $post, $userdata;
+            global $userdata;
             $override = shortcode_atts($this->default_shortcode_starthumbsblock, $atts);
+            if ($override["post"] == 0) global $post;
+            else $post = get_post($override["post"]);
+
             $user_id = $userdata->ID;
             $this->cache_posts($user_id);
             return $this->render_thumb_article($post, $userdata, $override);
@@ -259,8 +262,11 @@ if (!class_exists('GDStarRating')) {
         * @param array $atts
         */
         function shortcode_starratingblock($atts = array()) {
-            global $post, $userdata;
+            global $userdata;
             $override = shortcode_atts($this->default_shortcode_starrater, $atts);
+            if ($override["post"] == 0) global $post;
+            else $post = get_post($override["post"]);
+
             $user_id = $userdata->ID;
             $this->cache_posts($user_id);
             return $this->render_article($post, $userdata, $override);
@@ -282,16 +288,16 @@ if (!class_exists('GDStarRating')) {
         * @param array $atts
         */
         function shortcode_starcomments($atts = array()) {
-            $rating = "";
             $sett = shortcode_atts($this->default_shortcode_starcomments, $atts);
             if ($sett["post"] == 0) {
                 global $post;
                 $sett["post"] = $post->ID;
-                $sett["comments"] = $post->comment_count;
             } else {
                 $post = get_post($sett["post"]);
-                $sett["comments"] = $post->comment_count;
             }
+
+            $rating = "";
+            $sett["comments"] = $post->comment_count;
             if ($post->ID > 0) {
                 $rows = GDSRDatabase::get_comments_aggregation($sett["post"], $sett["show"]);
                 $totel_comments = count($rows);
@@ -334,9 +340,14 @@ if (!class_exists('GDStarRating')) {
                 $sett["post"] = $post->ID;
             }
 
+            $star_css = $sett["css"] != "" ? $sett["css"] : $this->o["review_class_block"];
+            $star_style = $sett["style"] != "" ? $sett["style"] : $this->o["review_style"];
+            $star_style_ie6 = $sett["style_ie6"] != "" ? $sett["style_ie6"] : $this->o["review_style_ie6"];
+            $star_size = $sett["size"] != "" ? $sett["size"] : $this->o['review_size'];
+
             $rating = GDSRDatabase::get_review($sett["post"]);
             if ($rating < 0) $rating = 0;
-            return GDSRRenderT2::render_rsb($sett["tpl"], array("rating" => $rating, "star_style" => $this->is_ie6 ? $this->o["review_style_ie6"] : $this->o["review_style"], "star_size" => $this->o['review_size'], "star_max" => $this->o["review_stars"], "header_text" => $this->o["review_header_text"], "css" => $this->o["review_class_block"]));
+            return GDSRRenderT2::render_rsb($sett["tpl"], array("rating" => $rating, "star_style" => $this->is_ie6 ? $star_style_ie6 : $star_style, "star_size" => $star_size, "star_max" => $this->o["review_stars"], "header_text" => $this->o["review_header_text"], "css" => $star_css));
 	}
 
         /**
@@ -346,7 +357,7 @@ if (!class_exists('GDStarRating')) {
         */
         function shortcode_starreviewmulti($atts = array()) {
             $settings = shortcode_atts($this->default_shortcode_starreviewmulti, $atts);
-            $post_id = $settings["post_id"];
+            $post_id = $settings["post"];
             if ($post_id == 0) {
                 global $post;
                 $post_id = $post->ID;
@@ -3745,8 +3756,9 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     $gd_debug = new gdDebugGDSR(STARRATING_LOG_PATH);
     $gdsr = new GDStarRating();
 
-    include(STARRATING_PATH."functions_helpers.php");
-    include(STARRATING_PATH."functions_integration.php");
+    include(STARRATING_PATH."code/fn/general.php");
+    include(STARRATING_PATH."code/fn/data.php");
+    include(STARRATING_PATH."code/fn/render.php");
 }
 
 ?>

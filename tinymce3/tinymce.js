@@ -113,7 +113,7 @@ function insertStarRatingCode() {
         var rvw_style_added = false;
         tagtext = "[starreview";
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRSB').value;
-        if (document.getElementById('srRVWPostID').value > 0) tagtext = tagtext + " post_id=" + document.getElementById('srRVWPostID').value;
+        if (document.getElementById('srRVWPostID').value > 0) tagtext = tagtext + " post=" + document.getElementById('srRVWPostID').value;
         funtext = "wp_gdsr_render_review(" + document.getElementById('srRVWPostID').value + ", ";
         funtext = funtext + document.getElementById('srTemplateRSB').value;
         if (document.getElementById('srRVWStarsStyle').value != 'oxygen') {
@@ -179,7 +179,7 @@ function insertStarRatingCode() {
         funtext = funtext + ", " + document.getElementById('srTemplateRMB').value;
         funtext = funtext + ", " + document.getElementById('srMultiReviewPostID').value;
         tagtext = tagtext + document.getElementById('srMultiReviewSet').value;
-        if (document.getElementById('srMultiReviewPostID').value > 0) tagtext = tagtext + " post_id=" + document.getElementById('srMultiReviewPostID').value;
+        if (document.getElementById('srMultiReviewPostID').value > 0) tagtext = tagtext + " post=" + document.getElementById('srMultiReviewPostID').value;
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRMB').value;
         if (document.getElementById('srStarsStyleMRREl').value != 'oxygen') {
             tagtext = tagtext + " element_stars='" + document.getElementById('srStarsStyleMRREl').value + "'";
