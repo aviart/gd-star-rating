@@ -1,37 +1,6 @@
 <?php
 
 /**
- * Get the array with objects with user votes.
- *
- * @global GDStarRating $gdsr main rating class instance
- * @param int $user_id ID of the user to get data for
- * @param int $limit number of votes to get
- * @param array $filter variables to determine data to be retrieved
- * @return array votes objects
- */
-function wp_gdsr_get_users_votes($user_id, $limit = 100, $filter = array()) {
-    global $gdsr;
-
-    return $gdsr->get_users_votes($user_id, $limit, $filter);
-}
-
-/**
- * Get multi set id based on global and categoires rules.
- *
- * @global GDStarRating $gdsr main rating class instance
- * @global object $post post data
- * @param int $post_id post to get review for
- */
-function wp_gdsr_get_multi_set($post_id = 0) {
-    global $gdsr;
-    if ($post_id == 0) {
-        global $post;
-        $post_id = $post->ID;
-    }
-    return $gdsr->get_multi_set($post_id);
-}
-
-/**
  * This will render aggregated comments rating for the post.
  *
  * @param int $post_id post to get review for
@@ -147,33 +116,6 @@ function wp_gdsr_comment_integrate_standard_rating($value = 0, $stars_set = "", 
 
     if ($echo) echo $gdsr->comment_integrate_standard_rating($value, $stars_set, $stars_size, $stars_set_ie6);
     else return $gdsr->comment_integrate_standard_rating($value, $stars_set, $stars_size, $stars_set_ie6);
-}
-
-/**
- * Makes rating blocks readonly regardless of other settings.
- *
- * @global GDStarRating $gdsr main rating class instance
- * @param bool $standard standard ratings will be read only
- * @param bool $multis multi ratings will be read only
- */
-function wp_gdsr_integration_readonly($standard = false, $multis = false) {
-    global $gdsr;
-    $gdsr->override_readonly_multis = $multis;
-    $gdsr->override_readonly_standard = $standard;
-}
-
-/**
- * Renders small 80x15 powered by GD Star Rating button.
- *
- * @global GDStarRating $gdsr main rating class instance
- * @param bool $echo echo results or return it as a string
- * @return string html with rendered contents
- */
-function wp_gdsr_render_powered_by($echo = true) {
-    global $gdsr;
-
-    if ($echo) echo $gdsr->powered_by();
-    else return $gdsr->powered_by();
 }
 
 /**
@@ -330,20 +272,6 @@ function wp_gdsr_multi_review_editor($multi_set_id = 0, $post_id = 0, $template_
 }
 
 /**
- * Renders multi rating review header elements css and javascript.
- *
- * @global GDStarRating $gdsr main rating class instance
- * @param bool $echo echo results or return it as a string
- * @return string html with rendered contents
- */
-function wp_gdsr_multi_review_editor_header($echo = true) {
-    global $gdsr;
-
-    if ($echo) echo $gdsr->multi_rating_header();
-    else return $gdsr->multi_rating_header();
-}
-
-/**
  * Renders multi rating review for a post.
  *
  * @global object $post post data
@@ -407,64 +335,6 @@ function wp_gdsr_multi_review_average($multi_set_id = 0, $post_id = 0, $echo = t
     $review = $gdsr->get_multi_average_rendered($post_id, array("id" => $multi_set_id, "render" => "review"));
     if ($echo) echo $review;
     else return $review;
-}
-
-/**
- * Returns object with all needed rating properties for post or page.
- *
- * @global object $post post data
- * @global GDStarRating $gdsr main rating class instance
- * @param int $post_id post to get rating for, leave 0 to get post from loop
- * @return object rating post properties
- */
-function wp_gdsr_rating_article($post_id = 0) {
-    global $post, $gdsr;
-    if ($post_id < 1) $post_id = $post->ID;
-    return $gdsr->get_ratings_post($post_id);
-}
-
-/**
- * Returns object with all needed rating properties for comment.
- *
- * @global object $comment comment data
- * @global GDStarRating $gdsr main rating class instance
- * @param int $post_id post to get rating for, leave 0 to get post from loop
- * @return object rating post properties
- */
-function wp_gdsr_rating_comment($comment_id = 0) {
-    global $comment, $gdsr;
-    if ($comment_id < 1) $comment_id = $comment->comment_ID;
-    return $gdsr->get_ratings_comment($comment_id);
-}
-
-/**
- * Returns object with all needed multi rating properties for post or page.
- *
- * @global object $post post data
- * @global GDStarRating $gdsr main rating class instance
- * @param int $set_id id of the multi rating set
- * @param int $post_id post to get rating for, leave 0 to get post from loop
- * @return object rating post properties
- */
-function wp_gdsr_rating_multi($multi_set_id = 0, $post_id = 0) {
-    global $post, $gdsr;
-    if ($post_id == 0) $post_id = $post->ID;
-
-    $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post_id) : $multi_set_id;
-    return $gdsr->get_ratings_multi($multi_set_id, $post_id);
-}
-
-/**
- * Returns calculated data for average blog rating including bayesian estimate mean.
- *
- * @global class $gdsr
- * @param string $select articles to select postpage|post|page
- * @param string $show votes to use: total|users|visitors
- * @return object with average blog rating values
- */
-function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
-    $widget = array("select" => $select, "show" => $show);
-    return GDSRRenderT2::prepare_wbr($widget);
 }
 
 /**
