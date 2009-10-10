@@ -15,17 +15,17 @@ if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
-        $items = array();
-        $ids = array();
+        $items = $ids = array();
         foreach ($gdsr_items as $it) {
             $parts = explode(",", $it);
             $ids[] = $parts[1];
             $items[$parts[1]] = $parts[0];
         }
-        GDSRDatabase::update_category_settings("(".join(", ", $gdsr_items).")", $ids, $items,
+        GDSRDatabase::update_category_settings("(".join(", ", $gdsr_items).")", $ids, $items, 
             $_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"],
             $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"],
-            $_POST["gdsr_integration_mur"]);
+            $_POST["gdsr_integration_mur"], $_POST["gdsr_integration_active_std"],
+            $_POST["gdsr_integration_active_mur"]);
     }
 }
 
@@ -119,6 +119,10 @@ if ($cat_to > $number_posts) $cat_to = $number_posts;
             if ($row->multi_set != '') echo __("multi set", "gd-star-rating").': <strong>'.$row->multi_set.'</strong>';
             else if ($row->parent > 0) echo '<strong style="color: blue">'.__("inhert from parent", "gd-star-rating").'</strong>';
             else echo '<strong style="color: #cc0000">'.__("no multi set assigned", "gd-star-rating").'</strong>';
+            $hidden = array();
+            if ($row->cmm_integration_std == "N") $hidden[] = __("standard", "gd-star-rating");
+            if ($row->cmm_integration_mur == "N") $hidden[] = __("multis", "gd-star-rating");
+            if (count($hidden) > 0) echo '<br /><strong style="color: #cc0000">'.__("inactive", "gd-star-rating").':</strong> '.join(", ", $hidden);
         echo '</td>';
         echo '<td style="text-align: right">'.$row->count.'</td>';
         echo '</tr>';

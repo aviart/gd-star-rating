@@ -322,12 +322,14 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
     // ip
 
     // categories
-    function update_category_settings($ids, $ids_array, $items, $upd_am, $upd_ar, $upd_cm, $upd_cr, $upd_ms) {
+    function update_category_settings($ids, $ids_array, $items, $upd_am, $upd_ar, $upd_cm, $upd_cr, $upd_ms, $frc_std, $frc_mur) {
         global $wpdb, $table_prefix;
         GDSRDatabase::add_category_defaults($ids, $ids_array, $items);
         $dbt_data_cats = $table_prefix.'gdsr_data_category';
 
         $update = array();
+        if ($frc_std != '') $update[] = "cmm_integration_std = '".$frc_std."'";
+        if ($frc_mur != '') $update[] = "cmm_integration_mur = '".$frc_mur."'";
         if ($upd_ms != '') $update[] = "cmm_integration_set = '".$upd_ms."'";
         if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
         if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";

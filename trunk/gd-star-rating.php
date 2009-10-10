@@ -62,6 +62,7 @@ if (!class_exists('GDStarRating')) {
         var $is_update = false;
 
         var $security_level = 9;
+        var $security_level_front = 1;
         var $security_level_builder = 1;
         var $security_level_setup = 9;
         var $security_users = '0';
@@ -189,6 +190,7 @@ if (!class_exists('GDStarRating')) {
          */
         function initialize_security() {
             if (defined('STARRATING_ACCESS_LEVEL')) $this->security_level = STARRATING_ACCESS_LEVEL;
+            if (defined('STARRATING_ACCESS_LEVEL_FRONT')) $this->security_level_front = STARRATING_ACCESS_LEVEL_FRONT;
             if (defined('STARRATING_ACCESS_LEVEL_BUILDER')) $this->security_level_builder = STARRATING_ACCESS_LEVEL_BUILDER;
             if (defined('STARRATING_ACCESS_LEVEL_SETUP')) $this->security_level_setup = STARRATING_ACCESS_LEVEL_SETUP;
             if (defined('STARRATING_ACCESS_ADMIN_USERIDS')) $this->security_users = STARRATING_ACCESS_ADMIN_USERIDS;
@@ -656,7 +658,7 @@ if (!class_exists('GDStarRating')) {
         function admin_menu() {
             $this->check_user_access();
 
-            add_menu_page('GD Star Rating', 'GD Star Rating', 0, __FILE__, array(&$this,"star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
+            add_menu_page('GD Star Rating', 'GD Star Rating', $this->security_level_front, __FILE__, array(&$this,"star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
             if ($this->o["integrate_post_edit"] == 1) {
                 add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "post", "side", "high");
                 add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "page", "side", "high");
@@ -669,8 +671,8 @@ if (!class_exists('GDStarRating')) {
                 add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_comment'), "comments", "side", "high");
             }
 
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), 0, __FILE__, array(&$this,"star_menu_front"));
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("My Ratings", "gd-star-rating"), __("My Ratings", "gd-star-rating"), 0, "gd-star-rating-my", array(&$this,"star_menu_my"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), $this->security_level_front, __FILE__, array(&$this,"star_menu_front"));
+            add_submenu_page(__FILE__, 'GD Star Rating: '.__("My Ratings", "gd-star-rating"), __("My Ratings", "gd-star-rating"), $this->security_level_front, "gd-star-rating-my", array(&$this,"star_menu_my"));
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Builder", "gd-star-rating"), __("Builder", "gd-star-rating"), $this->security_level_builder, "gd-star-rating-builder", array(&$this,"star_menu_builder"));
 
             add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), $this->security_level, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
@@ -1759,11 +1761,22 @@ if (!class_exists('GDStarRating')) {
             return "";
         }
 
+        function check_integration_std($post_id) {
+            $this->init_post_categories_data($post_id);
+
+            foreach ($this->cats_data_posts[$post_id] as $cat) {
+                if ($cat->cmm_integration_std == "N") return false;
+            }
+
+            return true;
+        }
+
         function get_multi_set($post_id) {
             $this->init_post_categories_data($post_id);
 
             $set = $prn = 0;
             foreach ($this->cats_data_posts[$post_id] as $cat) {
+                if ($cat->cmm_integration_mur == "N") return 0;
                 if ($cat->parent > 0 && $prn == 0) $prn = $cat->parent;
                 if ($cat->cmm_integration_set > 0 && $set == 0) $set = $cat->cmm_integration_set;
                 if ($set > 0 || ($set > 0 && $prn > 0)) break;

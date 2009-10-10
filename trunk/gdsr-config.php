@@ -15,6 +15,7 @@ define('STARRATING_ACCESS_LEVEL', 9);
 /**
  * Minimal user level required to access some of the plugins panels.
  */
+define('STARRATING_ACCESS_LEVEL_FRONT', 1);
 define('STARRATING_ACCESS_LEVEL_BUILDER', 1);
 define('STARRATING_ACCESS_LEVEL_SETUP', 9);
 
