@@ -112,10 +112,15 @@ function wp_gdsr_comment_integrate_multi_rating($multi_set_id = 0, $template_id 
  * @return string html with rendered contents
  */
 function wp_gdsr_comment_integrate_standard_rating($value = 0, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
-    global $gdsr;
+    global $gdsr, $post;
 
-    if ($echo) echo $gdsr->comment_integrate_standard_rating($value, $stars_set, $stars_size, $stars_set_ie6);
-    else return $gdsr->comment_integrate_standard_rating($value, $stars_set, $stars_size, $stars_set_ie6);
+    if ($gdsr->check_integration_std($post->ID)) {
+        if ($echo) echo $gdsr->comment_integrate_standard_rating($value, $stars_set, $stars_size, $stars_set_ie6);
+        else return $gdsr->comment_integrate_standard_rating($value, $stars_set, $stars_size, $stars_set_ie6);
+    } else {
+        if ($echo) echo "";
+        else return "";
+    }
 }
 
 /**

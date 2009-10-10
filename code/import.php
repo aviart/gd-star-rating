@@ -140,7 +140,9 @@ class GDSRImport {
     function import_wpr_log() {
         global $wpdb, $table_prefix;
         $sql = sprintf("INSERT INTO %sgdsr_votes_log SELECT null, rating_postid, 'article', 0, rating_userid, rating_rating, '', FROM_UNIXTIME(rating_timestamp), rating_ip, '', 0 FROM %sratings ORDER BY rating_timestamp asc", $table_prefix, $table_prefix);
+        wp_gdsr_dump("LOG", $sql);
         $wpdb->query($sql);
+        wp_gdsr_dump("LOG", $wpdb->last_error);
     }
     
     function import_wpr_trend_articles() {
@@ -157,7 +159,7 @@ class GDSRImport {
         $idn = array();
         foreach ($ids as $id) {
             if (!in_array($id->rating_postid, $idm))
-                $idn[] = $id->id;
+                $idn[] = $id->rating_postid;
         }
         $sqlFull = sprintf("CREATE TABLE %sgdsrtemp (id INTEGER(11) DEFAULT NULL, vote_type VARCHAR(10) DEFAULT NULL, user_voters INTEGER(11) DEFAULT NULL, user_votes INTEGER(11) DEFAULT NULL, visitor_voters INTEGER(11) DEFAULT NULL, visitor_votes INTEGER(11) DEFAULT NULL, vote_date VARCHAR(10) DEFAULT NULL)", $table_prefix);
         $wpdb->query($sqlFull);
@@ -177,7 +179,7 @@ class GDSRImport {
 
         if (count($idn) > 0) {
             $inlist = join(", ", $idn);
-            $sqlFull = sprintf("INSERT INTO %sgdsr_data_article SELECT p.id, 'A', 'A', 'N', 'N', if (strcmp(w.post_type, 'page'), '0', '1'), p.user_voters, p.user_votes, p.visitor_voters, p.visitor_votes, -1, '', 0, 0, 0, 0, 0, 'N', '', null FROM %sgdsrjoin p INNER JOIN %sposts w ON p.id = w.id WHERE p.id in (%s) ORDER BY p.id",
+            $sqlFull = sprintf("INSERT INTO %sgdsr_data_article SELECT p.id, 'A', 'A', 'N', 'N', if (strcmp(w.post_type, 'page'), '0', '1'), p.user_voters, p.user_votes, p.visitor_voters, p.visitor_votes, -1, '', 0, 0, 0, 0, 0, 'N', '', null, null FROM %sgdsrjoin p INNER JOIN %sposts w ON p.id = w.id WHERE p.id in (%s) ORDER BY p.id",
                 $table_prefix, $table_prefix, $table_prefix, $inlist);
             $wpdb->query($sqlFull);
         }
