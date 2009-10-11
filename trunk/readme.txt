@@ -166,9 +166,14 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Changelog ==
 = 1.7.0 =
-* Fully implemented cache plugins support
-* Removed support for WordPress 2.6.x
-* Many bugs and warnings fixed
+* Removed support for wordpress 2.6.x
+* Many more new filters for results and rendering
+* Cache plugins support for multis ratings
+* Improved category based comment integration
+* Expanded shortcodes and builder elements
+* JavaScript code refactored
+* Many more changes and improvements
+* Number of bugs fixed
 
 = 1.6.9 =
 * Minimum count option for rating widgets with grouping
