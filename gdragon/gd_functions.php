@@ -279,15 +279,38 @@ if (!class_exists('gdFunctionsGDSR')) {
         }
 
         /**
+         * Draw a pager for wordpress query loop.
+         *
+         * @global object $wp_query wordpress query object
+         * @param string $query page element for url query
+         * @param string $sign what sign to add before page part
+         * @param bool $div draw div around the pager
+         */
+        function loop_pager($query = "pg", $sign = "?", $div = true) {
+            global $wp_query;
+            $numposts = $wp_query->found_posts;
+            $max_page = $wp_query->max_num_pages;
+            if ($max_page > 1) {
+                $page = intval(get_query_var('paged'));
+                if ($page == 0) $page++;
+                $url = remove_query_arg($query);
+                if ($div) echo '<div class="gdpager">';
+                echo gdFunctionsGDPC::draw_pager($max_page, $page, $url, $query, $sign);
+                if ($div) echo '</div>';
+            }
+        }
+
+        /**
          * Creates a html with pager based on number of pages and position
          *
          * @param int $total_pages total pages
          * @param int $current_page current page in pager
          * @param string $url base url
          * @param string $query page element for url query
+         * @param string $sign what sign to add before page part
          * @return string html for pager
          */
-        function draw_pager($total_pages, $current_page, $url, $query = "page") {
+        function draw_pager($total_pages, $current_page, $url, $query = "page", $sign = "&") {
             $pages = array();
             $break_first = -1;
             $break_last = -1;
@@ -303,14 +326,16 @@ if (!class_exists('gdFunctionsGDSR')) {
                 if ($island_start > 4) {
                     for ($i = 0; $i < 3; $i++) $pages[] = $i + 1;
                     $break_first = 3;
-                } else {
+                }
+                else {
                     for ($i = 0; $i < $island_end; $i++) $pages[] = $i + 1;
                 }
 
                 if ($island_end < $total_pages - 4) {
                     for ($i = 0; $i < 3; $i++) $pages[] = $i + $total_pages - 2;
                     $break_last = $total_pages - 2;
-                } else {
+                }
+                else {
                     for ($i = 0; $i < $total_pages - $island_start + 1; $i++) $pages[] = $island_start + $i;
                 }
 
@@ -321,19 +346,18 @@ if (!class_exists('gdFunctionsGDSR')) {
             sort($pages, SORT_NUMERIC);
             $render = '';
             foreach ($pages as $page) {
-                if ($page == $break_last) $render.= "... ";
-
-                if ($page == $current_page) {
+                if ($page == $break_last)
+                    $render.= "... ";
+                if ($page == $current_page)
                     $render.= sprintf('<span class="page-numbers current">%s</span>', $page);
-                } else {
-                    $render.= sprintf('<a class="page-numbers" href="%s&amp;%s=%s">%s</a>', $url, $query, $page, $page);
-                }
-
-                if ($page == $break_first) $render.= "... ";
+                else
+                    $render.= sprintf('<a class="page-numbers" href="%s%s%s=%s">%s</a>', $url, $sign, $query, $page, $page);
+                if ($page == $break_first)
+                    $render.= "... ";
             }
 
-            if ($current_page > 1) $render.= sprintf('<a class="next page-numbers" href="%s&amp;%s=%s">Previous</a>', $url, $query, $current_page - 1);
-            if ($current_page < $total_pages) $render.= sprintf('<a class="next page-numbers" href="%s&amp;%s=%s">Next</a>', $url, $query, $current_page + 1);
+            if ($current_page > 1) $render.= sprintf('<a class="next page-numbers" href="%s&%s=%s">Previous</a>', $url, $query, $current_page - 1);
+            if ($current_page < $total_pages) $render.= sprintf('<a class="next page-numbers" href="%s&%s=%s">Next</a>', $url, $query, $current_page + 1);
 
             return $render;
         }
