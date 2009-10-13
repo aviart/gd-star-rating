@@ -753,16 +753,10 @@ if (!class_exists('GDStarRating')) {
                 if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
                 if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
                 if ($this->admin_plugin_page == "settings-page") include(STARRATING_PATH."code/js/loaders.php");
-                if ($this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) {
-                    echo("\r\n");
-                    include(STARRATING_PATH."code/js/multi_in.php");
-                }
             echo('});');
-            if ($this->admin_page == "post-new.php" || $this->admin_page == "edit-pages.php" ||$this->admin_page == "edit.php") {
-                $edit_std = $this->o["integrate_post_edit_mur"] == 1;
-                $edit_mur = $this->o["integrate_post_edit"] == 1;
+            if ($this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) {
                 echo("\r\n");
-                include(STARRATING_PATH."code/js/editors.php");
+                include(STARRATING_PATH."code/js/main.php");
             }
             echo('</script>');
             if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") && $this->o["integrate_post_edit_mur"] == 1) {

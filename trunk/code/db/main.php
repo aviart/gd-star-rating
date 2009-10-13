@@ -1195,7 +1195,7 @@ wp_gdsr_dump("GET_POST_TYPE_type", $r);
                 $extras, $table_prefix, $table_prefix, $table_prefix, $table_prefix, $cats, $where, $additional, $order, $start, $limit
             );
         else
-            $sql = sprintf("select p.id as pid, p.post_title, p.post_type, d.*%s from %sposts p left join %sgdsr_data_article d on p.id = d.post_id WHERE p.post_status = 'publish'%s%s%s limit %s, %s",
+            $sql = sprintf("SELECT p.id as pid, p.post_title, p.post_type, d.*%s FROM %sposts p left join %sgdsr_data_article d on p.id = d.post_id WHERE p.post_status = 'publish'%s%s%s limit %s, %s",
                 $extras, $table_prefix, $table_prefix, $where, $additional, $order, $start, $limit
             );
         return $sql;
@@ -1408,7 +1408,8 @@ class GDSRDB {
 
     }
 
-    function convert_row($row) {
+    function convert_row($row, $multis = array()) {
+        $mur = $row->cmm_integration_mur;
         switch ($row->moderate_articles) {
             case 'I':
                 $row->moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
@@ -1465,6 +1466,30 @@ class GDSRDB {
                 $row->rules_articles = __("articles", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
                 break;
         }
+        switch ($row->cmm_integration_std) {
+            default:
+            case 'I':
+                $row->cmm_integration_std = '<span style="color: blue">'.__("inherit from category", "gd-star-rating").'</span>';
+                break;
+            case 'N':
+                $row->cmm_integration_std = '<span style="color: red">'.__("force hidden", "gd-star-rating").'</span>';
+                break;
+            case 'A':
+                $row->cmm_integration_mur = ''.__("normal activity", "gd-star-rating");
+                break;
+        }
+        switch ($row->cmm_integration_mur) {
+            default:
+            case 'I':
+                $row->cmm_integration_mur = '<span style="color: blue">'.__("inherit from category", "gd-star-rating").'</span>';
+                break;
+            case 'N':
+                $row->cmm_integration_mur = '<span style="color: red">'.__("force hidden", "gd-star-rating").'</span>';
+                break;
+            case 'A':
+                $row->cmm_integration_mur = ''.__("normal activity", "gd-star-rating");
+                break;
+        }
         switch ($row->rules_comments) {
             case 'I':
                 $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
@@ -1486,8 +1511,9 @@ class GDSRDB {
                 break;
         }
 
-        $votes_v = '/';
-        $count_v = '[ 0 ] ';
+        $votes_v = $votes_u = $votes_t = '/';
+        $count_v = $count_u = $count_t = '[ 0 ] ';
+
         if ($row->visitor_voters > 0) {
             $visitor_rating = @number_format($row->visitor_votes / $row->visitor_voters, 1);
             $row->rating_visitors = $visitor_rating;
@@ -1495,8 +1521,6 @@ class GDSRDB {
             $count_v = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=article&amp;vg=visitors"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $row->visitor_voters);
         }
 
-        $votes_u = '/';
-        $count_u = '[ 0 ] ';
         if ($row->user_voters > 0) {
             $user_rating = @number_format($row->user_votes / $row->user_voters, 1);
             $row->rating_users = $user_rating;
@@ -1505,13 +1529,11 @@ class GDSRDB {
         }
 
         if ($row->review == -1 || $row->review == '') $row->review = "/";
-        $row->review = '<strong><span style="color: blue">'.$row->review.'</span></strong>';
+        $row->review = '[ '.($row->review == "/" ? "-" : "+").' ] '.__("review", "gd-star-rating").': <strong><span style="color: blue">'.$row->review.'</span></strong>';
 
         $total_votes = $row->visitor_votes + $row->user_votes;
         $total_voters = $row->visitor_voters + $row->user_voters;
 
-        $votes_t = '/';
-        $count_t = '[ 0 ] ';
         if ($total_voters > 0) {
             $total_rating = @number_format($total_votes / $total_voters, 1);
             $row->rating_total = $total_rating;
@@ -1542,11 +1564,18 @@ class GDSRDB {
             $vts_thumb_t = sprintf('[ <a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=voters&amp;pid=%s&amp;vt=artthumb&amp;vg=total"> <strong style="color: red;">%s</strong> </a> ] ', $row->pid, $votes);
         }
 
-        $row->total = $count_t.__("rating", "gd-star-rating").': <strong>'.$votes_t.'</strong><br />'.$vts_thumb_t.__("thumbs", "gd-star-rating").': <strong>'.$cnt_thumb_t.'</strong>';
+        $row->total = $count_t.__("rating", "gd-star-rating").': <strong>'.$votes_t.'</strong><br />';
+        $row->total.= $row->review.'<br /><div class="gdsr-art-split"></div>';
+        $row->total.= $vts_thumb_t.__("rating", "gd-star-rating").': <strong>'.$cnt_thumb_t.'</strong>';
         $row->votes = $count_v.__("visitors", "gd-star-rating").': <strong>'.$votes_v.'</strong><br />'.$count_u.__("users", "gd-star-rating").': <strong>'.$votes_u.'</strong>';
         $row->thumbs = $vts_thumb_v.__("visitors", "gd-star-rating").': <strong>'.$cnt_thumb_v.'</strong><br />'.$vts_thumb_u.__("users", "gd-star-rating").': <strong>'.$cnt_thumb_u.'</strong>';
 
-        $row->title = sprintf('<a href="./post.php?action=edit&amp;post=%s">%s</a>', $row->pid, $row->post_title);
+        if ($mur == "I" || $mu == "") $row->cmm_integration_mur.= "<br /><br />";
+        else $row->cmm_integration_mur.= "<br/>".$row->cmm_integration_set == 0 ? __("no multi set assigned") : __("multi set", "gd-star-rating").': <strong>'.$multis["cmm_integration_set"].'</strong>';
+
+        $row->cmm_integration_std.= "<br /><br />";
+        $row->title = sprintf('<a href="%s">%s</a>', get_edit_post_link($row->pid), $row->post_title);
+        $row->views = intval($row->views);
 
         return $row;
     }

@@ -26,6 +26,8 @@
                     <input type="checkbox" name="gdsr_commentsactive" id="gdsr_commentsactive"<?php if ($gdsr_options["comments_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_commentsactive"><?php _e("Comments Rating.", "gd-star-rating"); ?></label>
                     <br />
                     <input type="checkbox" name="gdsr_cmmreviewactive" id="gdsr_cmmreviewactive"<?php if ($gdsr_options["comments_review_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmmreviewactive"><?php _e("Comments Review Rating.", "gd-star-rating"); ?></label>
+                    <br />
+                    <input type="checkbox" name="gdsr_cmmintartactive" id="gdsr_cmmintartactive"<?php if ($gdsr_options["comments_integration_articles_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cmmintartactive"><?php _e("Show comments integration ratings on articles panel.", "gd-star-rating"); ?></label>
                 </td>
             </tr>
         </table>

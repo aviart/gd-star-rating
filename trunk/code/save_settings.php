@@ -11,6 +11,7 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     update_option("gd-star-rating-bots", $bots);
 
     $gdsr_options["cached_loading"] = isset($_POST['gdsr_cached_loading']) ? 1 : 0;
+    $gdsr_options["comments_integration_articles_active"] = isset($_POST['gdsr_cmmintartactive']) ? 1 : 0;
     $gdsr_options["update_report_usage"] = isset($_POST['gdsr_update_report_usage']) ? 1 : 0;
     $gdsr_options["int_comment_std_zero"] = isset($_POST['gdsr_int_comment_std_zero']) ? 1 : 0;
     $gdsr_options["int_comment_mur_zero"] = isset($_POST['gdsr_int_comment_mur_zero']) ? 1 : 0;
@@ -20,7 +21,6 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["news_feed_active"] = isset($_POST['gdsr_news_feed_active']) ? 1 : 0;
     $gdsr_options["widgets_hidempty"] = $_POST['gdsr_widgets_hidempty'];
     $gdsr_options["encoding"] = $_POST['gdsr_encoding'];
-    $gdsr_options["admin_width"] = $_POST['gdsr_admin_width'];
     $gdsr_options["admin_rows"] = $_POST['gdsr_admin_rows'];
     $gdsr_options["gfx_generator_auto"] = isset($_POST['gdsr_gfx_generator_auto']) ? 1 : 0;
     $gdsr_options["gfx_prevent_leeching"] = isset($_POST['gdsr_gfx_prevent_leeching']) ? 1 : 0;
@@ -207,7 +207,7 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["default_voterules_multis"] = $_POST['gdsr_default_vote_multis'];
     $gdsr_options["default_voterules_articles"] = $_POST['gdsr_default_vote_articles'];
     $gdsr_options["default_voterules_comments"] = $_POST['gdsr_default_vote_comments'];
-    $gdsr_options["default_moderation_multis"] = $_POST['gdsr_default_mod_multies'];
+    $gdsr_options["default_moderation_multis"] = $_POST['gdsr_default_mod_multis'];
     $gdsr_options["default_moderation_articles"] = $_POST['gdsr_default_mod_articles'];
     $gdsr_options["default_moderation_comments"] = $_POST['gdsr_default_mod_comments'];
 

@@ -179,7 +179,7 @@ class GDSRImport {
 
         if (count($idn) > 0) {
             $inlist = join(", ", $idn);
-            $sqlFull = sprintf("INSERT INTO %sgdsr_data_article SELECT p.id, 'A', 'A', 'N', 'N', if (strcmp(w.post_type, 'page'), '0', '1'), p.user_voters, p.user_votes, p.visitor_voters, p.visitor_votes, -1, '', 0, 0, 0, 0, 0, 'N', '', null, null FROM %sgdsrjoin p INNER JOIN %sposts w ON p.id = w.id WHERE p.id in (%s) ORDER BY p.id",
+            $sqlFull = sprintf("INSERT INTO %sgdsr_data_article SELECT p.id, 'A', 'A', 'N', 'N', 'A', 'A', 'N', 'N', if (strcmp(w.post_type, 'page'), '0', '1'), p.user_voters, p.user_votes, p.visitor_voters, p.visitor_votes, -1, '', 0, 0, 0, 0, 0, 'N', '', 'N', '', null, null, 'I', 'I', 0 FROM %sgdsrjoin p INNER JOIN %sposts w ON p.id = w.id WHERE p.id in (%s) ORDER BY p.id",
                 $table_prefix, $table_prefix, $table_prefix, $inlist);
             $wpdb->query($sqlFull);
         }

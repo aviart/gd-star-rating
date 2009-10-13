@@ -152,6 +152,9 @@ There could be two causes for this:
 * Plugins CSS and JavaScrip files are not loaded: Check the previous FAQ answer.
 * There are no stars or thumbs set selected for the plugin to use. To check this, go to Graphics panel and you will see if there are any sets there, and if any of them is selected. If there are no sets displayed, you need to rescan for them: panel Tools, tab Graphics, button Rescan. Once the sets are back, you need to select on the Graphics panel sets and sizes you want to use in the active rating blocks: http://www.gdstarrating.com/2009/05/20/settings-explained-part-5/.
 
+= Rating is not working in Firefox, but is working in other browsers. =
+There are many extensions for Firefox that modify the page, and are known to cause many JavaScript problems. Plugin works with all major browsers, and all JavaScript is developed using Firefox and Firebug. But I am not using (nor will test) Firefox with extensions (I use only Firebug).
+
 = I tried everything (I really tried), and many things are still not working. =
 I can't guarantee that plugin will work on every WordPress setup. In 99.9% of the cases there are no problems, but some plugin, theme and server combinations can cause problems that can't be anticipated. But this is very rare, and in most cases that can be corrected bu tracking down the problem. And usually only some plugins features will fail. Don't simply give up, find the problem, find the PHP error that can cause problem, that will most likely point to some other plugin causing problems.
 
