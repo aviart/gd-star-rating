@@ -2880,10 +2880,13 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
         function render_google_rich_snippet($post) {
             $review = GDSRDatabase::get_snippet_review_standard($post);
+            $author = get_userdata($post->post_author);
             return $this->rSnippets->snippet_stars_review(array(
                 "title" => $post->post_title, "rating" => $review,
                 "max_rating" => $this->o["review_stars"],
-                "review_date" => $post->post_date));
+                "review_date" => $post->post_date,
+                "reviewer" => $author->display_name
+            ));
         }
 
         function display_comment($content) {
@@ -2926,7 +2929,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
             global $post, $userdata;
             $user_id = is_object($userdata) ? $userdata->ID : 0;
-            $rich_snippet = $this->is_bot ? $this->render_google_rich_snippet($post) : "";
+            $rich_snippet = true ? $this->render_google_rich_snippet($post) : "";
 
             if (!is_feed()) {
                 if (is_single() || is_page()) {
