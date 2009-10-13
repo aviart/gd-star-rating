@@ -1,14 +1,23 @@
 <?php
 
 class GDSRDatabase {
+    function get_snippet_review_standard($post) {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("select review from %sgdsr_data_article where post_id = %s", $table_prefix, $post->ID);
+        return $wpdb->get_var($sql);
+    }
+
     function truncate_table($table_name) {
         global $wpdb, $table_prefix;
+
         $sql = sprintf("TRUNCATE TABLE %s%s", $table_prefix, $table_name);
         $wpdb->query($sql);
     }
 
     function table_exists($table_name) {
         global $wpdb, $table_prefix;
+
         return $wpdb->get_var(sprintf("SHOW TABLES LIKE '%s%s'", $table_prefix, $table_name)) == $table_prefix.$table_name;
     }
 
