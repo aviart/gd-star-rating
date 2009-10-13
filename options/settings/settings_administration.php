@@ -1,18 +1,7 @@
-<tr><th scope="row"><?php _e("Admin Display", "gd-star-rating"); ?></th>
+<tr><th scope="row"><?php _e("Plugins Grid Panels", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
-                <td width="150"><?php _e("Maximum screen width", "gd-star-rating"); ?>:</td>
-                <td width="200">
-                    <select name="gdsr_admin_width" id="gdsr_admin_width" style="width: 180px; text-align: center">
-                        <option value="980"<?php echo $gdsr_options["admin_width"] == '980' ? ' selected="selected"' : ''; ?>>1024 px</option>
-                        <option value="1240"<?php echo $gdsr_options["admin_width"] == '1240' ? ' selected="selected"' : ''; ?>>1280 px</option>
-                        <option value="1400"<?php echo $gdsr_options["admin_width"] == '1400' ? ' selected="selected"' : ''; ?>>1440 px</option>
-                        <option value="1640"<?php echo $gdsr_options["admin_width"] == '1640' ? ' selected="selected"' : ''; ?>>1680 px</option>
-                        <option value="1880"<?php echo $gdsr_options["admin_width"] == '1880' ? ' selected="selected"' : ''; ?>>1920 px</option>
-                    </select>
-                </td>
-                <td width="10"></td>
                 <td width="150"><?php _e("Rows for display", "gd-star-rating"); ?>:</td>
                 <td width="200">
                     <select name="gdsr_admin_rows" id="gdsr_admin_rows" style="width: 180px; text-align: center">
@@ -25,9 +14,6 @@
                 </td>
             </tr>
         </table>
-        <input type="checkbox" name="gdsr_admin_views" id="gdsr_admin_views"<?php if ($gdsr_options["admin_views"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_admin_views"><?php _e("Show column with number of views on the plugins articles panel.", "gd-star-rating"); ?></label>
-        <div class="gdsr-table-split"></div>
-        <?php _e("Maximum screen width is used only on WP version older than 2.7.", "gd-star-rating"); ?>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("Plugin Panels", "gd-star-rating"); ?></th>

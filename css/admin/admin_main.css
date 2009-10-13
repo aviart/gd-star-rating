@@ -306,6 +306,8 @@ span.rss-date {
 	background: url(../../gfx/arrow_up.png) no-repeat left;
 }
 
+.gdsr-art-split { margin-top: 2px; padding-top: 2px; border-top: 1px dotted #ccc; width: 100%; }
+
 .gdsr-table-split { margin-top: 7px; padding-top: 7px; }
 
 .gdsr-table-split, .gdsr-table-split-edit { border-top: 2px solid #add8e6; width: 100%; }
@@ -672,3 +674,33 @@ span.rss-date {
 }
 
 #rightnow h3, #rightnow p { padding: 0pt 5px; }
+
+td.gdrinner {
+    padding: 6px 1px 1px !important;
+}
+
+.gdsr-art-stars {
+    background: transparent url(../../gfx/mini_star.png) no-repeat left bottom;
+    padding-left: 28px;
+}
+
+.gdsr-art-multis {
+    background: transparent url(../../gfx/mini_multi.png) no-repeat;
+    padding-left: 28px;
+}
+
+.gdsr-art-thumbs {
+    background: transparent url(../../gfx/mini_thumb.png) no-repeat;
+    padding-left: 28px;
+}
+
+.gdsr-td-condensed {
+    line-height: 14px;
+}
+
+.gdsr-td-title {
+    background-color: #eee;
+    padding: 0 0 0 3px;
+    font-weight: bold;
+    margin: 4px 0 2px 0;
+}
