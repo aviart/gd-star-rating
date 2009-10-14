@@ -13,6 +13,11 @@ define('STARRATING_WPLOAD', '');
 define('STARRATING_ACCESS_LEVEL', 9);
 
 /**
+ * Global control of debug. Set to false will prevent any kind of debug into file.
+ */
+define('STARRATING_DEBUG', true);
+
+/**
  * Minimal user level required to access some of the plugins panels.
  */
 define('STARRATING_ACCESS_LEVEL_FRONT', 1);

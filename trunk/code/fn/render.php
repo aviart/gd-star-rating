@@ -36,8 +36,8 @@ function wp_gdsr_comment_integrate_multi_result($comment_id, $multi_set_id = 0, 
     global $gdsr, $post;
 
     $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post->ID) : $multi_set_id;
-    if ($echo) echo $gdsr->comment_integrate_multi_result($comment_id, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
-    else return $gdsr->comment_integrate_multi_result($comment_id, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
+    if ($echo) echo $gdsr->f->comment_integrate_multi_result($comment_id, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
+    else return $gdsr->f->comment_integrate_multi_result($comment_id, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
 }
 
 /**
@@ -57,8 +57,8 @@ function wp_gdsr_comment_integrate_multi_result_average($comment_id, $multi_set_
     global $gdsr, $post;
 
     $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post->ID) : $multi_set_id;
-    if ($echo) echo $gdsr->comment_integrate_multi_result_average($comment_id, $post->ID, $multi_set_id, $template_id, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
-    else return $gdsr->comment_integrate_multi_result_average($comment_id, $post->ID, $multi_set_id, $template_id, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
+    if ($echo) echo $gdsr->f->comment_integrate_multi_result_average($comment_id, $post->ID, $multi_set_id, $template_id, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
+    else return $gdsr->f->comment_integrate_multi_result_average($comment_id, $post->ID, $multi_set_id, $template_id, $avg_stars_set, $avg_stars_size, $avg_stars_set_ie6);
 }
 
 /**
@@ -75,8 +75,8 @@ function wp_gdsr_comment_integrate_multi_result_average($comment_id, $multi_set_
 function wp_gdsr_comment_integrate_standard_result($comment_id, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
     global $gdsr, $post;
 
-    if ($echo) echo $gdsr->comment_integrate_standard_result($comment_id, $post->ID, $stars_set, $stars_size, $stars_set_ie6);
-    else return $gdsr->comment_integrate_standard_result($comment_id, $post->ID, $stars_set, $stars_size, $stars_set_ie6);
+    if ($echo) echo $gdsr->f->comment_integrate_standard_result($comment_id, $post->ID, $stars_set, $stars_size, $stars_set_ie6);
+    else return $gdsr->f->comment_integrate_standard_result($comment_id, $post->ID, $stars_set, $stars_size, $stars_set_ie6);
 }
 
 /**
@@ -96,8 +96,8 @@ function wp_gdsr_comment_integrate_multi_rating($multi_set_id = 0, $template_id 
     global $gdsr, $post;
 
     $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post->ID) : $multi_set_id;
-    if ($echo) echo $gdsr->comment_integrate_multi_rating($value, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6);
-    else return $gdsr->comment_integrate_multi_rating($value, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6);
+    if ($echo) echo $gdsr->f->comment_integrate_multi_rating($value, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6);
+    else return $gdsr->f->comment_integrate_multi_rating($value, $post->ID, $multi_set_id, $template_id, $stars_set, $stars_size, $stars_set_ie6);
 }
 
 /**
@@ -115,8 +115,8 @@ function wp_gdsr_comment_integrate_standard_rating($value = 0, $stars_set = "", 
     global $gdsr, $post;
 
     if ($gdsr->check_integration_std($post->ID)) {
-        if ($echo) echo $gdsr->comment_integrate_standard_rating($value, $stars_set, $stars_size, $stars_set_ie6);
-        else return $gdsr->comment_integrate_standard_rating($value, $stars_set, $stars_size, $stars_set_ie6);
+        if ($echo) echo $gdsr->f->comment_integrate_standard_rating($value, $stars_set, $stars_size, $stars_set_ie6);
+        else return $gdsr->f->comment_integrate_standard_rating($value, $stars_set, $stars_size, $stars_set_ie6);
     } else {
         if ($echo) echo "";
         else return "";
@@ -141,8 +141,8 @@ function wp_gdsr_render_article_thumbs($template_id = 0, $read_only = false, $st
     $override = array("style" => $stars_set, "size" => $stars_size, "style_ie6" => $stars_set_ie6, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
     $user_id = $userdata->ID;
     $gdsr->cache_posts($user_id);
-    if ($echo) echo $gdsr->render_thumb_article($post, $userdata, $override);
-    else return $gdsr->render_thumb_article($post, $userdata, $override);
+    if ($echo) echo $gdsr->f->render_thumb_article($post, $userdata, $override);
+    else return $gdsr->f->render_thumb_article($post, $userdata, $override);
 }
 
 /**
@@ -164,8 +164,8 @@ function wp_gdsr_render_article($template_id = 0, $read_only = false, $stars_set
     $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
     $user_id = $userdata->ID;
     $gdsr->cache_posts($user_id);
-    if ($echo) echo $gdsr->render_article($post, $userdata, $override);
-    else return $gdsr->render_article($post, $userdata, $override);
+    if ($echo) echo $gdsr->f->render_article($post, $userdata, $override);
+    else return $gdsr->f->render_article($post, $userdata, $override);
 }
 
 /**
@@ -184,8 +184,8 @@ function wp_gdsr_render_article($template_id = 0, $read_only = false, $stars_set
 function wp_gdsr_render_comment_thumbs($template_id = 0, $read_only = false, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
     global $comment, $post, $userdata, $gdsr;
     $override = array("style" => $stars_set, "size" => $stars_size, "style_ie6" => $stars_set_ie6, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
-    if ($echo) echo $gdsr->render_thumb_comment($post, $comment, $userdata, $override);
-    else return $gdsr->render_thumb_comment($post, $comment, $userdata, $override);
+    if ($echo) echo $gdsr->f->render_thumb_comment($post, $comment, $userdata, $override);
+    else return $gdsr->f->render_thumb_comment($post, $comment, $userdata, $override);
 }
 
 /**
@@ -205,8 +205,8 @@ function wp_gdsr_render_comment_thumbs($template_id = 0, $read_only = false, $st
 function wp_gdsr_render_comment($template_id = 0, $read_only = false, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
     global $comment, $userdata, $gdsr, $post;
     $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
-    if ($echo) echo $gdsr->render_comment($post, $comment, $userdata, $override);
-    else return $gdsr->render_comment($post, $comment, $userdata, $override);
+    if ($echo) echo $gdsr->f->render_comment($post, $comment, $userdata, $override);
+    else return $gdsr->f->render_comment($post, $comment, $userdata, $override);
 }
 
 /**
@@ -235,8 +235,8 @@ function wp_gdsr_render_multi($multi_set_id = 0, $template_id = 0, $read_only = 
     $user_id = $userdata->ID;
     $gdsr->cache_posts($user_id);
     $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post->ID) : $multi_set_id;
-    if ($echo) echo $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
-    else return $gdsr->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
+    if ($echo) echo $gdsr->f->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
+    else return $gdsr->f->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
 }
 
 /**
@@ -253,8 +253,8 @@ function wp_gdsr_render_multi($multi_set_id = 0, $template_id = 0, $read_only = 
 function wp_gdsr_new_comment_review($value = 0, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
     global $gdsr;
     $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size);
-    if ($echo) echo $gdsr->comment_review($value, $override);
-    else return $gdsr->comment_review($value, $override);
+    if ($echo) echo $gdsr->f->comment_review($value, $override);
+    else return $gdsr->f->comment_review($value, $override);
 }
 
 /**
@@ -510,7 +510,7 @@ function wp_gdsr_show_article_rating($post_id = 0, $use_default = true, $size = 
 function wp_gdsr_taxonomy_multi_ratings($taxonomy = "category", $term = "", $multi_id = 0, $size = 20, $style = "oxygen") {
     global $gdsr;
 
-    return $gdsr->get_taxonomy_multi_ratings($taxonomy, $term, $multi_id, $size, $style);
+    return $gdsr->f->get_taxonomy_multi_ratings($taxonomy, $term, $multi_id, $size, $style);
 }
 
 ?>

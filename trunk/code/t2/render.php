@@ -938,8 +938,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         extract($rpar, EXTR_SKIP);
 
         if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
-            $time_parts = GDSRHelper::remaining_time_parts($time_remaining);
-            $time_total = GDSRHelper::remaining_time_total($time_remaining);
+            $time_parts = gdsrFrontHelp::remaining_time_parts($time_remaining);
+            $time_total = gdsrFrontHelp::remaining_time_total($time_remaining);
             $tpl = $template->elm["time_active"];
             $rt = html_entity_decode($tpl);
             $rt = str_replace('%TR_DATE%', $time_date, $rt);
@@ -1045,8 +1045,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         extract($rpar, EXTR_SKIP);
 
         if (($time_restirctions == 'D' || $time_restirctions == 'T') && $time_remaining > 0) {
-            $time_parts = GDSRHelper::remaining_time_parts($time_remaining);
-            $time_total = GDSRHelper::remaining_time_total($time_remaining);
+            $time_parts = gdsrFrontHelp::remaining_time_parts($time_remaining);
+            $time_total = gdsrFrontHelp::remaining_time_total($time_remaining);
             $tpl = $template->elm["time_active"];
             $rt = html_entity_decode($tpl);
             $rt = str_replace('%TR_DATE%', $time_date, $rt);

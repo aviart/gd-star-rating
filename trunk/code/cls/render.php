@@ -32,7 +32,7 @@ class GDSRRender {
         return $render;
     }
 
-    function bot_response() {
+    function render_locked_response() {
         $render = '<div class="gdsrcacheloader gdsrclsmall">';
         $render.= '<a rel="rating" href="http://www.gdstarrating.com/" title="GD Star Rating: a WordPress rating system"><strong>GD Star Rating</strong><br />';
         $render.= '<em>a WordPress rating system</em>';

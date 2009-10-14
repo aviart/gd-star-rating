@@ -1,6 +1,6 @@
 <?php
 
-require_once(STARRATING_PATH."code/import.php");
+require_once(STARRATING_PATH."code/cls/import.php");
 
 if (isset($_POST["gdsr_import_psr"]) && $_POST["gdsr_import_psr"] == __("Import Data", "gd-star-rating")) {
     GDSRImport::import_psr();
