@@ -44,36 +44,11 @@ class GDSRHelper {
     }
 
     /**
-     * Adding elements for IE Opacity fix
+     * Cleans IP.
+     *
+     * @param string $ip start IP
+     * @return string cleaned IP
      */
-    function ie_opacity_fix() {
-        echo('<!--[if IE]>');
-        echo('<style type="text/css">');
-        echo('.ratemulti .starsbar .gdcurrent { -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; filter: alpha(opacity=70); }');
-        echo('</style>');
-        echo('<![endif]-->');
-        echo("\r\n");
-    }
-
-    function detect_bot($str, $spiders = array()) {
-        foreach($spiders as $spider) {
-        if (preg_match("/".$spider."/", $str))
-            return true;
-        }
-        return false;
-    }
-
-    function detect_ban() {
-        $ip = $_SERVER["REMOTE_ADDR"];
-        $ban = false;
-        $ban = GDSRDatabase::check_ip_single($ip);
-        if (!$ban)
-            $ban = GDSRDatabase::check_ip_range($ip);
-        if (!$ban)
-            $ban = GDSRDatabase::check_ip_mask($ip);
-        return $ban;
-    }
-
     function clean_ip($ip) {
         $parts = explode(".", $ip);
         for ($i = 0; $i < count($parts); $i++)
@@ -82,74 +57,30 @@ class GDSRHelper {
         return join(".", $parts);
     }
 
-    function expiration_countdown($post_date, $value) {
-        $period = substr($value, 0, 1);
-        $value = substr($value, 1);
-        $pdate = strtotime($post_date);
-        $expiry = 0;
-        switch ($period) {
-            case 'H':
-                $expiry = mktime(date("H", $pdate) + $value, date("i", $pdate), date("s", $pdate), date("m", $pdate),          date("j", $pdate),          date("Y", $pdate));
-                break;
+    function timer_value($t_type, $t_date = '', $t_count_value = 0, $t_count_type = 'D') {
+        $value = '';
+        switch ($t_type) {
             case 'D':
-                $expiry = mktime(date("H", $pdate),          date("i", $pdate), date("s", $pdate), date("m", $pdate),          date("j", $pdate) + $value, date("Y", $pdate));
+                $value = $t_date;
                 break;
-            case 'M':
-                $expiry = mktime(date("H", $pdate),          date("i", $pdate), date("s", $pdate), date("m", $pdate) + $value, date("j", $pdate),          date("Y", $pdate));
+            case 'T':
+                $value = $t_count_type.$t_count_value;
                 break;
         }
-        return $expiry - mktime();
+        return $value;
     }
 
-    function expiration_date($value) {
-        return strtotime($value) - mktime();
-    }
-
-    function calculate_deadline($timestamp) {
-        $deadline_ts = $timestamp + mktime();
-        return date("Y-m-d", $deadline_ts);
-    }
-
-    function remaining_time_parts($timestamp) {
-        $times = array(
-                31536000 => 'year', 
-                2592000 => 'month',  
-                86400 => 'day', 
-                3600 => 'hour', 
-                60 => 'minute', 
-                1 => 'second'
-            );
-        $secs = $timestamp;
-        $parts = array();
-        
-        foreach ($times AS $key => $value) {
-            if ($secs >= $key) {
-                $count = floor($secs / $key);
-                $parts[$value] = $count;
-                $secs = $secs - $count * $key;
+    function get_categories_hierarchy($cats, $depth = 0, $level = 0) {
+        $h = array();
+        foreach ($cats as $cat) {
+            if($cat->parent == $level) {
+                $cat->depth = $depth;
+                $h[] = $cat;
+                $recats = GDSRHelper::get_categories_hierarchy($cats, $depth + 1, $cat->term_id);
+                $h = array_merge($h, $recats);
             }
-            else $parts[$value] = 0;
         }
-        
-        return $parts;
-    }
-
-    function remaining_time_total($timestamp) {
-        $times = array(
-                31536000 => 'year', 
-                2592000 => 'month',  
-                86400 => 'day', 
-                3600 => 'hour', 
-                60 => 'minute', 
-                1 => 'second'
-            );
-        $parts = array();
-
-        foreach ($times AS $key => $value) {
-            $parts[$value] = floor($timestamp / $key);
-        }
-
-        return $parts;
+        return $h;
     }
 
     function render_taxonomy_select($tax = "") {
@@ -385,42 +316,6 @@ class GDSRHelper {
     <option value="right_hidden"<?php echo $selected == 'right_hidden' ? ' selected="selected"' : ''; ?>><?php _e("Right (hide if empty)", "gd-star-rating"); ?></option>
 </select>
         <?php
-    }
-
-    function timer_value($t_type, $t_date = '', $t_count_value = 0, $t_count_type = 'D') {
-        $value = '';
-        switch ($t_type) {
-            case 'D':
-                $value = $t_date;
-                break;
-            case 'T':
-                $value = $t_count_type.$t_count_value;
-                break;
-        }
-        return $value;
-    }
-
-    /**
-     * Function to deactivate plugin
-     */
-    function deactivate_plugin() {
-        $current = get_option('active_plugins');
-        if(in_array("gd-star-rating/gd-star-rating.php", $current))
-            array_splice($current, array_search("gd-star-rating/gd-star-rating.php", $current), 1);
-        update_option('active_plugins', $current);
-    }
-
-    function get_categories_hierarchy($cats, $depth = 0, $level = 0) {
-        $h = array();
-        foreach ($cats as $cat) {
-            if($cat->parent == $level) {
-                $cat->depth = $depth;
-                $h[] = $cat;
-                $recats = GDSRHelper::get_categories_hierarchy($cats, $depth + 1, $cat->term_id);
-                $h = array_merge($h, $recats);
-            }
-        }
-        return $h;
     }
 
     function render_dash_widget_vote($data, $cls = "", $id = "") {

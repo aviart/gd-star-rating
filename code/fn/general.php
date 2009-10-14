@@ -12,7 +12,8 @@
 function wp_gdsr_dump($msg, $obj, $block = "none", $mode = "a+", $force = false) {
     if (STARRATING_DEBUG_ACTIVE == 1 || $force) {
         global $gd_debug;
-        $gd_debug->dump($msg, $obj, $block, $mode);
+        if (is_object($gd_debug))
+            $gd_debug->dump($msg, $obj, $block, $mode);
     }
 }
 
@@ -21,7 +22,8 @@ function wp_gdsr_dump($msg, $obj, $block = "none", $mode = "a+", $force = false)
 */
 function wp_gdsr_debug_clean() {
     global $gd_debug;
-    $gd_debug->truncate();
+    if (is_object($gd_debug))
+        $gd_debug->truncate();
 }
 
 /**

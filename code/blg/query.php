@@ -1,11 +1,12 @@
 <?php
 
-class GDSRQuery {
+class gdsrQuery {
     var $keys_sort = array(
         "rating",
         "review",
         "thumbs",
         "votes",
+        "thumbs_votes",
         "last_voted"
     );
 
@@ -14,7 +15,7 @@ class GDSRQuery {
         "asc"
     );
 
-    function GDSRQuery() { }
+    function gdsrQuery() { }
 
     function query_vars($qvar) {
         $qvar[] = "gdsr_sort";
@@ -73,12 +74,18 @@ class GDSRQuery {
         $order = strtolower(trim(addslashes(get_query_var('gdsr_order'))));
         $order = in_array($order, $this->keys_order) ? $order : "desc";
 
+        $c = "";
         switch ($sort) {
             case "thumbs":
                 $c = sprintf(" (gdsra.user_recc_plus - gdsra.user_recc_minus + gdsra.visitor_recc_plus - gdsra.visitor_recc_minus) ".$order);
+                $c.= sprintf(" (gdsra.user_recc_plus + gdsra.user_recc_minus + gdsra.visitor_recc_plus + gdsra.visitor_recc_minus) ".$order);
                 break;
             case "rating":
                 $c = sprintf(" (gdsra.user_votes + gdsra.visitor_votes)/(gdsra.user_voters + gdsra.visitor_voters) ".$order);
+                $c.= sprintf(", (gdsra.user_voters + gdsra.visitor_voters) ".$order);
+                break;
+            case "thumbs_votes":
+                $c = sprintf(" (gdsra.user_recc_plus + gdsra.user_recc_minus + gdsra.visitor_recc_plus + gdsra.visitor_recc_minus) ".$order);
                 break;
             case "votes":
                 $c = sprintf(" (gdsra.user_voters + gdsra.visitor_voters) ".$order);
@@ -89,10 +96,9 @@ class GDSRQuery {
             case "last_voted":
                 $c = sprintf(" gdsra.last_voted ".$order);
                 break;
-            default:
-                $c = "";
-                break;
         }
+
+        if ($c != "") $c.= ", %sposts.post_date desc";
         return $c != "" ? $c : $default;
     }
 
@@ -126,9 +132,11 @@ class GDSRQuery {
         $order = strtolower(trim(addslashes(get_query_var('gdsr_order'))));
         $order = in_array($order, $this->keys_order) ? $order : "desc";
 
+        $c = "";
         switch ($sort) {
             case "rating":
                 $c = sprintf(" (gdsrm.average_rating_users * gdsrm.total_votes_users + gdsrm.average_rating_visitors * gdsrm.total_votes_visitors)/(gdsrm.total_votes_users + gdsrm.total_votes_visitors) ".$order);
+                $c.= sprintf(", (gdsrm.total_votes_users + gdsrm.total_votes_visitors) ".$order);
                 break;
             case "votes":
                 $c = sprintf(" (gdsrm.total_votes_users + gdsrm.total_votes_visitors) ".$order);
@@ -139,10 +147,9 @@ class GDSRQuery {
             case "last_voted":
                 $c = sprintf(" gdsrm.last_voted ".$order);
                 break;
-            default:
-                $c = "";
-                break;
         }
+
+        if ($c != "") $c.= ", %sposts.post_date desc";
         return $c != "" ? $c : $default;
     }
 }

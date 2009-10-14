@@ -8,18 +8,18 @@ function checkAll(form) {
         }
     }
 }
-function gdsrTimerChange() {
-    var timer = jQuery("#gdsr_timer_type").val();
-    jQuery("#gdsr_timer_date").css("display", "none");
-    jQuery("#gdsr_timer_countdown").css("display", "none");
-    jQuery("#gdsr_timer_date_text").css("display", "none");
-    jQuery("#gdsr_timer_countdown_text").css("display", "none");
+function gdsrTimerChange(tp) {
+    var timer = jQuery("#gdsr_timer_type"+tp).val();
+    jQuery("#gdsr_timer_date"+tp).css("display", "none");
+    jQuery("#gdsr_timer_countdown"+tp).css("display", "none");
+    jQuery("#gdsr_timer_date_text"+tp).css("display", "none");
+    jQuery("#gdsr_timer_countdown_text"+tp).css("display", "none");
     if (timer == "D") {
-        jQuery("#gdsr_timer_date").css("display", "block");
-        jQuery("#gdsr_timer_date_text").css("display", "block");
+        jQuery("#gdsr_timer_date"+tp).css("display", "block");
+        jQuery("#gdsr_timer_date_text"+tp).css("display", "block");
     }
     if (timer == "T") {
-        jQuery("#gdsr_timer_countdown").css("display", "block");
-        jQuery("#gdsr_timer_countdown_text").css("display", "block");
+        jQuery("#gdsr_timer_countdown"+tp).css("display", "block");
+        jQuery("#gdsr_timer_countdown_text"+tp).css("display", "block");
     }
 }

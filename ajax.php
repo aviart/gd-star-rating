@@ -37,20 +37,20 @@ if ($vote_type == "cache") {
     if ($vote_type == "a" || $vote_type == "c") $vote_value = intval($vote_value);
     switch ($vote_type) {
         case 'ra':
-            $result = $gdsr->vote_thumbs_article($vote_value, $vote_id, $vote_tpl, $vote_size);
+            $result = $gdsr->v->vote_thumbs_article($vote_value, $vote_id, $vote_tpl, $vote_size);
             break;
         case 'rc':
-            $result = $gdsr->vote_thumbs_comment($vote_value, $vote_id, $vote_tpl, $vote_size);
+            $result = $gdsr->v->vote_thumbs_comment($vote_value, $vote_id, $vote_tpl, $vote_size);
             break;
         case 'a':
-            $result = $gdsr->vote_article($vote_value, $vote_id, $vote_tpl, $vote_size);
+            $result = $gdsr->v->vote_article($vote_value, $vote_id, $vote_tpl, $vote_size);
             break;
         case 'c':
-            $result = $gdsr->vote_comment($vote_value, $vote_id, $vote_tpl, $vote_size);
+            $result = $gdsr->v->vote_comment($vote_value, $vote_id, $vote_tpl, $vote_size);
             break;
         case 'm':
             $vote_set = intval($_GET["vote_set"]);
-            if ($vote_set > 0) $result = $gdsr->vote_multis($vote_value, $vote_id, $vote_set, $vote_tpl, $vote_size);
+            if ($vote_set > 0) $result = $gdsr->v->vote_multis($vote_value, $vote_id, $vote_set, $vote_tpl, $vote_size);
             else $result = "m_set_error";
             break;
     }

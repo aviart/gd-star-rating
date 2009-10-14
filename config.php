@@ -11,6 +11,11 @@ if (file_exists($gdsr_config_extra)) require_once($gdsr_config_extra);
 if (!defined('STARRATING_WPLOAD')) define('STARRATING_WPLOAD', '');
 
 /**
+ * Global control of debug. Set to false will prevent any kind of debug into file.
+ */
+if (!defined('STARRATING_DEBUG')) define('STARRATING_DEBUG', true);
+
+/**
  * GD Star Rating is working in AJAX mode or not.
  */
 if (!defined('STARRATING_AJAX')) define('STARRATING_AJAX', false);

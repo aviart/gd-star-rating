@@ -484,7 +484,7 @@ class GDSRX {
             $cats = join(",", $subs);
         }
 
-        if ($widget["categories"] != "") {
+        if (isset($widget["categories"]) && $widget["categories"] != "") {
             $cats = $widget["categories"];
             $cats_in = true;
         }
