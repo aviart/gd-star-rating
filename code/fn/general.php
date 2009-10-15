@@ -49,8 +49,8 @@ function wp_gdsr_render_powered_by($echo = true) {
  */
 function wp_gdsr_integration_readonly($standard = false, $multis = false) {
     global $gdsr;
-    $gdsr->override_readonly_multis = $multis;
     $gdsr->override_readonly_standard = $standard;
+    $gdsr->override_readonly_multis = $multis;
 }
 
 /**

@@ -369,11 +369,12 @@ if (!function_exists("wp_get_custom_tags")) {
 function wp_gdtpl_get_template($template_id) {
     global $gdsr_cache_templates;
 
-    $tpl = $gdsr_cache_templates->get($template_id);
+    $tpl = is_object($gdsr_cache_templates) ? $gdsr_cache_templates->get($template_id) : null;
     if (!is_null($tpl)) return $tpl;
     else {
         $tpl = gdTemplateDB::get_template($template_id);
-        $gdsr_cache_templates->set($template_id, $tpl);
+        if (is_object($gdsr_cache_templates))
+            $gdsr_cache_templates->set($template_id, $tpl);
         return $tpl;
     }
 }
@@ -381,7 +382,8 @@ function wp_gdtpl_get_template($template_id) {
 function wp_gdtpl_cache_template($template) {
     global $gdsr_cache_templates;
 
-    $gdsr_cache_templates->set($template->template_id, $template);
+    if (is_object($gdsr_cache_templates))
+        $gdsr_cache_templates->set($template->template_id, $template);
 }
 
 ?>

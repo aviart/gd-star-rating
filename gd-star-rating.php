@@ -37,6 +37,7 @@ require_once($gdsr_dirname_basic."/code/db/main.php");
 require_once($gdsr_dirname_basic."/code/cls/results.php");
 require_once($gdsr_dirname_basic."/code/cls/render.php");
 require_once($gdsr_dirname_basic."/code/gfx/gfx_lib.php");
+require_once($gdsr_dirname_basic."/gdt2/classes.php");
 
 if (STARRATING_DEBUG) {
     require_once($gdsr_dirname_basic."/gdragon/gd_debug.php");
@@ -75,6 +76,7 @@ if (!class_exists('GDStarRating')) {
     include(STARRATING_PATH."code/fn/general.php");
     include(STARRATING_PATH."code/fn/data.php");
     include(STARRATING_PATH."code/fn/render.php");
+    include(STARRATING_PATH."code/fn/legacy.php");
 }
 
 ?>

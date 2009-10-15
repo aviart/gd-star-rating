@@ -1,6 +1,7 @@
-<?php 
+<?php
     if ($multi_id == 0) _e("You don't have any multi rating sets defined. Create at least one set.", "gd-star-rating");
     else {
+        require_once(STARRATING_PATH."code/t2/render.php");
         $gdsr_multis = GDSRDBMulti::get_multis_tinymce();
 ?>
     <div class="gdsr-mur-sets-background">
