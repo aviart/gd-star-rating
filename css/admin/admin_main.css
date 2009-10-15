@@ -704,3 +704,28 @@ td.gdrinner {
     font-weight: bold;
     margin: 4px 0 2px 0;
 }
+
+.gdsr-bulleter-basic { padding-left: 16px; text-decoration: none; background: transparent url(../../gfx/section_closed.png) no-repeat; }
+
+.gdsr-bulleter-basic.gdsr-bullet-opened { background: transparent url(../../gfx/section_opened.png) no-repeat; }
+
+.opt-td-control { width: 230px; vertical-align: top; }
+
+.opt-td-panel { vertical-align: top; }
+
+.opt-td-panel {
+    border: 1px solid #cee1ef;
+    padding: 4px;
+    width: 450px;
+}
+
+.opt-td-control h4 {
+    margin: 0;
+    padding: 2px 3px;
+    background-color: #CEE1EF;
+    font-size: 12px;
+}
+
+.opt-td-divider {
+    height: 3px;
+}
