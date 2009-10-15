@@ -8,6 +8,12 @@ function checkAll(form) {
         }
     }
 }
+
+function gdsrOptionsSection(id) {
+    jQuery("#opt-control-"+id).toggleClass("gdsr-bullet-opened");
+    jQuery("#opt-panel-"+id).toggle("fast");
+}
+
 function gdsrTimerChange(tp) {
     var timer = jQuery("#gdsr_timer_type"+tp).val();
     jQuery("#gdsr_timer_date"+tp).css("display", "none");

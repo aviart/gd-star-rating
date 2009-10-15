@@ -106,3 +106,7 @@
 .gdsr-latest-item.first { border-top: none; }
 
 .gdsr-latest-item.user { background-color: #EDFBFC; }
+
+.gdsr-bulleter-basic { padding-left: 16px; text-decoration: none; background: transparent url(../../gfx/section_closed.png) no-repeat; }
+
+.gdsr-bulleter-basic.gdsr-bullet-opened { background: transparent url(../../gfx/section_opened.png) no-repeat; }
