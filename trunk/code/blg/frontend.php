@@ -607,28 +607,28 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
     // article rendering
     function rating_loader_elements_post($post, $user, $override, $type) {
-            $user_id = is_object($user) ? $user->ID : 0;
-            switch ($type) {
-                    case "amr":
-                    case "asr":
-                            return array(
-                                    $type, $post->ID, $post->post_type == "page" ? "1" : "0",
-                                    $post->post_author, strtotime($post->post_date),
-                                    $override["tpl"], $override["read_only"], $override["size"],
-                                    $this->g->g->find_stars_id($override["style"]),
-                                    $this->g->g->find_stars_id($override["style_ie6"]), $user_id
-                            );
-                            break;
-                    case "atr":
-                            return array(
-                                    $type, $post->ID, $post->post_type == "page" ? "1" : "0",
-                                    $post->post_author, strtotime($post->post_date),
-                                    $override["tpl"], $override["read_only"], $override["size"],
-                                    $this->g->g->find_thumb_id($override["style"]),
-                                    $this->g->g->find_thumb_id($override["style_ie6"]), $user_id
-                            );
-                            break;
-            }
+        $user_id = is_object($user) ? $user->ID : 0;
+        switch ($type) {
+            case "amr":
+            case "asr":
+                return array(
+                    $type, $post->ID, $post->post_type == "page" ? "1" : "0",
+                    $post->post_author, strtotime($post->post_date),
+                    $override["tpl"], $override["read_only"], $override["size"],
+                    $this->g->g->find_stars_id($override["style"]),
+                    $this->g->g->find_stars_id($override["style_ie6"]), $user_id
+                );
+                break;
+            case "atr":
+                return array(
+                    $type, $post->ID, $post->post_type == "page" ? "1" : "0",
+                    $post->post_author, strtotime($post->post_date),
+                    $override["tpl"], $override["read_only"], $override["size"],
+                    $this->g->g->find_thumb_id($override["style"]),
+                    $this->g->g->find_thumb_id($override["style_ie6"]), $user_id
+                );
+                break;
+        }
     }
 
     function render_thumb_article_actual($settings) {
@@ -648,90 +648,90 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
             if ($this->g->is_ban && $this->g->o["ip_filtering"] == 1) {
-                    if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
-                    else $allow_vote = false;
-                    $dbg_allow = "B";
+                if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
+                else $allow_vote = false;
+                $dbg_allow = "B";
             }
 
             if ($override["read_only"] == 1) $dbg_allow = "RO";
             $post_data = wp_gdget_post($rd_post_id);
             if (!is_object($post_data)) {
-                    GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
-                    $post_data = wp_gdget_post($rd_post_id);
-                    $this->g->c[$rd_post_id] = 1;
+                GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
+                $post_data = wp_gdget_post($rd_post_id);
+                $this->g->c[$rd_post_id] = 1;
             }
 
             $rules_articles = $post_data->rules_articles != "I" ? $post_data->rules_articles : $this->g->get_post_rule_value($rd_post_id, "rules_articles", "default_voterules_articles");
 
             if ($rules_articles == "H") return "";
             if ($allow_vote) {
-                    if (($rules_articles == "") || ($rules_articles == "A") ||
-                            ($rules_articles == "U" && $rd_user_id > 0) ||
-                            ($rules_articles == "V" && $rd_user_id == 0)
-                    ) $allow_vote = true;
-                    else {
-                            $allow_vote = false;
-                            $dbg_allow = "R_".$rules_articles;
-                    }
+                if (($rules_articles == "") || ($rules_articles == "A") ||
+                    ($rules_articles == "U" && $rd_user_id > 0) ||
+                    ($rules_articles == "V" && $rd_user_id == 0)
+                ) $allow_vote = true;
+                else {
+                    $allow_vote = false;
+                    $dbg_allow = "R_".$rules_articles;
+                }
             }
 
             if ($allow_vote) {
-                    if ($this->g->o["author_vote"] == 1 && $rd_user_id == $post_author) {
-                            $allow_vote = false;
-                            $dbg_allow = "A";
-                    }
+                if ($this->g->o["author_vote"] == 1 && $rd_user_id == $post_author) {
+                    $allow_vote = false;
+                    $dbg_allow = "A";
+                }
             }
 
             $remaining = 0;
             $deadline = '';
             $expiry_type = 'N';
             if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T' || $post_data->expiry_type == 'I')) {
-                    $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->g->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
-                    $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->g->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");
-                    switch($expiry_type) {
-                            case "D":
-                                    $remaining = gdsrFrontHelp::expiration_date($expiry_value);
-                                    $deadline = $expiry_value;
-                                    break;
-                            case "T":
-                                    $remaining = gdsrFrontHelp::expiration_countdown($post_date, $expiry_value);
-                                    $deadline = gdsrFrontHelp::calculate_deadline($remaining);
-                                    break;
-                    }
-                    if ($remaining < 1) {
-                            GDSRDatabase::lock_post($rd_post_id);
-                            $allow_vote = false;
-                            $dbg_allow = "T";
-                    }
+                $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->g->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
+                $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->g->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");
+                switch($expiry_type) {
+                    case "D":
+                        $remaining = gdsrFrontHelp::expiration_date($expiry_value);
+                        $deadline = $expiry_value;
+                        break;
+                    case "T":
+                        $remaining = gdsrFrontHelp::expiration_countdown($post_date, $expiry_value);
+                        $deadline = gdsrFrontHelp::calculate_deadline($remaining);
+                        break;
+                }
+                if ($remaining < 1) {
+                    GDSRDatabase::lock_post($rd_post_id);
+                    $allow_vote = false;
+                    $dbg_allow = "T";
+                }
             }
 
             if ($allow_vote) {
-                    $allow_vote = wp_gdget_thumb_postlog($rd_post_id);
-                    if (!$allow_vote) $dbg_allow = "D";
+                $allow_vote = wp_gdget_thumb_postlog($rd_post_id);
+                if (!$allow_vote) $dbg_allow = "D";
             }
 
             if ($allow_vote) {
-                    $allow_vote = gdsrFrontHelp::check_cookie($rd_post_id, "artthumb");
-                    if (!$allow_vote) $dbg_allow = "C";
+                $allow_vote = gdsrFrontHelp::check_cookie($rd_post_id, "artthumb");
+                if (!$allow_vote) $dbg_allow = "C";
             }
 
             $votes = $score = $votes_plus = $votes_minus = 0;
 
             if ($rules_articles == "A" || $rules_articles == "N") {
-                    $votes = $post_data->user_recc_plus + $post_data->user_recc_minus + $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
-                    $score = $post_data->user_recc_plus - $post_data->user_recc_minus + $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
-                    $votes_plus = $post_data->user_recc_plus + $post_data->visitor_recc_plus;
-                    $votes_minus = $post_data->user_recc_minus + $post_data->visitor_recc_minus;
+                $votes = $post_data->user_recc_plus + $post_data->user_recc_minus + $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
+                $score = $post_data->user_recc_plus - $post_data->user_recc_minus + $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+                $votes_plus = $post_data->user_recc_plus + $post_data->visitor_recc_plus;
+                $votes_minus = $post_data->user_recc_minus + $post_data->visitor_recc_minus;
             } else if ($rules_articles == "V") {
-                    $votes = $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
-                    $score = $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
-                    $votes_plus = $post_data->visitor_recc_plus;
-                    $votes_minus = $post_data->visitor_recc_minus;
+                $votes = $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
+                $score = $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+                $votes_plus = $post_data->visitor_recc_plus;
+                $votes_minus = $post_data->visitor_recc_minus;
             } else {
-                    $votes = $post_data->user_recc_plus + $post_data->user_recc_minus;
-                    $score = $post_data->user_recc_plus - $post_data->user_recc_minus;
-                    $votes_plus = $post_data->user_recc_plus;
-                    $votes_minus = $post_data->user_recc_minus;
+                $votes = $post_data->user_recc_plus + $post_data->user_recc_minus;
+                $score = $post_data->user_recc_plus - $post_data->user_recc_minus;
+                $votes_plus = $post_data->user_recc_plus;
+                $votes_minus = $post_data->user_recc_minus;
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
@@ -739,10 +739,10 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
             $tags_css = array(
-                    "CSS_BLOCK" => $this->g->o["srb_class_block"],
-                    "CSS_HEADER" => $this->g->o["srb_class_header"],
-                    "CSS_STARS" => $this->g->o["srb_class_stars"],
-                    "CSS_TEXT" => $this->g->o["srb_class_text"]
+                "CSS_BLOCK" => $this->g->o["srb_class_block"],
+                "CSS_HEADER" => $this->g->o["srb_class_header"],
+                "CSS_STARS" => $this->g->o["srb_class_stars"],
+                "CSS_TEXT" => $this->g->o["srb_class_text"]
             );
 
             $template_id = $override["tpl"];
@@ -763,9 +763,9 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $elements = $this->rating_loader_elements_post($post, $user, $override, "atr");
 
             if ($this->g->o["cached_loading"] == 1)
-                    return GDSRRender::rating_loader(join(".", $elements), "small");
+                return GDSRRender::rating_loader(join(".", $elements), "small");
             else
-                    return $this->render_thumb_article_actual($elements);
+                return $this->render_thumb_article_actual($elements);
     }
 
     function render_article_actual($settings) {
@@ -783,11 +783,14 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
-            if ($this->g->override_readonly_standard) $allow_vote = false;
+            if ($this->g->override_readonly_standard) {
+                $allow_vote = false;
+                $dbg_allow = "RTO";
+            }
             if ($this->g->is_ban && $this->g->o["ip_filtering"] == 1) {
-                    if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
-                    else $allow_vote = false;
-                    $dbg_allow = "B";
+                if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
+                else $allow_vote = false;
+                $dbg_allow = "B";
             }
 
             if ($override["read_only"] == 1) $dbg_allow = "RO";
@@ -798,77 +801,77 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
             $post_data = wp_gdget_post($rd_post_id);
             if (!is_object($post_data)) {
-                    GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
-                    $post_data = wp_gdget_post($rd_post_id);
-                    $this->g->c[$rd_post_id] = 1;
+                GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
+                $post_data = wp_gdget_post($rd_post_id);
+                $this->g->c[$rd_post_id] = 1;
             }
 
             $rules_articles = $post_data->rules_articles != "I" ? $post_data->rules_articles : $this->g->get_post_rule_value($rd_post_id, "rules_articles", "default_voterules_articles");
 
             if ($rules_articles == "H") return "";
             if ($allow_vote) {
-                    if (($rules_articles == "") ||
-                            ($rules_articles == "A") ||
-                            ($rules_articles == "U" && $rd_user_id > 0) ||
-                            ($rules_articles == "V" && $rd_user_id == 0)
-                    ) $allow_vote = true;
-                    else {
-                            $allow_vote = false;
-                            $dbg_allow = "R_".$rules_articles;
-                    }
+                if (($rules_articles == "") ||
+                    ($rules_articles == "A") ||
+                    ($rules_articles == "U" && $rd_user_id > 0) ||
+                    ($rules_articles == "V" && $rd_user_id == 0)
+                ) $allow_vote = true;
+                else {
+                    $allow_vote = false;
+                    $dbg_allow = "R_".$rules_articles;
+                }
             }
 
             if ($allow_vote) {
-                    if ($this->g->o["author_vote"] == 1 && $rd_user_id == $post_author) {
-                            $allow_vote = false;
-                            $dbg_allow = "A";
-                    }
+                if ($this->g->o["author_vote"] == 1 && $rd_user_id == $post_author) {
+                    $allow_vote = false;
+                    $dbg_allow = "A";
+                }
             }
 
             $remaining = 0;
             $deadline = '';
             $expiry_type = 'N';
             if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T' || $post_data->expiry_type == 'I')) {
-                    $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->g->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
-                    $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->g->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");
-                    switch($expiry_type) {
-                            case "D":
-                                    $remaining = gdsrFrontHelp::expiration_date($expiry_value);
-                                    $deadline = $expiry_value;
-                                    break;
-                            case "T":
-                                    $remaining = gdsrFrontHelp::expiration_countdown($post_date, $expiry_value);
-                                    $deadline = gdsrFrontHelp::calculate_deadline($remaining);
-                                    break;
-                    }
-                    if ($remaining < 1) {
-                            GDSRDatabase::lock_post($rd_post_id);
-                            $allow_vote = false;
-                            $dbg_allow = "T";
-                    }
+                $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->g->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
+                $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->g->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");
+                switch($expiry_type) {
+                    case "D":
+                        $remaining = gdsrFrontHelp::expiration_date($expiry_value);
+                        $deadline = $expiry_value;
+                        break;
+                    case "T":
+                        $remaining = gdsrFrontHelp::expiration_countdown($post_date, $expiry_value);
+                        $deadline = gdsrFrontHelp::calculate_deadline($remaining);
+                        break;
+                }
+                if ($remaining < 1) {
+                    GDSRDatabase::lock_post($rd_post_id);
+                    $allow_vote = false;
+                    $dbg_allow = "T";
+                }
             }
 
             if ($allow_vote) {
-                    $allow_vote = wp_gdget_postlog($rd_post_id);
-                    if (!$allow_vote) $dbg_allow = "D";
+                $allow_vote = wp_gdget_postlog($rd_post_id);
+                if (!$allow_vote) $dbg_allow = "D";
             }
 
             if ($allow_vote) {
-                    $allow_vote = gdsrFrontHelp::check_cookie($rd_post_id);
-                    if (!$allow_vote) $dbg_allow = "C";
+                $allow_vote = gdsrFrontHelp::check_cookie($rd_post_id);
+                if (!$allow_vote) $dbg_allow = "C";
             }
 
             $votes = $score = 0;
 
             if ($rules_articles == "A" || $rules_articles == "N") {
-                    $votes = $post_data->user_voters + $post_data->visitor_voters;
-                    $score = $post_data->user_votes + $post_data->visitor_votes;
+                $votes = $post_data->user_voters + $post_data->visitor_voters;
+                $score = $post_data->user_votes + $post_data->visitor_votes;
             } else if ($rules_articles == "V") {
-                    $votes = $post_data->visitor_voters;
-                    $score = $post_data->visitor_votes;
+                $votes = $post_data->visitor_voters;
+                $score = $post_data->visitor_votes;
             } else {
-                    $votes = $post_data->user_voters;
-                    $score = $post_data->user_votes;
+                $votes = $post_data->user_voters;
+                $score = $post_data->user_votes;
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
@@ -876,10 +879,10 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
             $tags_css = array(
-                    "CSS_BLOCK" => $this->g->o["srb_class_block"],
-                    "CSS_HEADER" => $this->g->o["srb_class_header"],
-                    "CSS_STARS" => $this->g->o["srb_class_stars"],
-                    "CSS_TEXT" => $this->g->o["srb_class_text"]
+                "CSS_BLOCK" => $this->g->o["srb_class_block"],
+                "CSS_HEADER" => $this->g->o["srb_class_header"],
+                "CSS_STARS" => $this->g->o["srb_class_stars"],
+                "CSS_TEXT" => $this->g->o["srb_class_text"]
             );
 
             $template_id = $override["tpl"];
@@ -900,9 +903,9 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $elements = $this->rating_loader_elements_post($post, $user, $override, "asr");
 
             if ($this->g->o["cached_loading"] == 1)
-                    return GDSRRender::rating_loader(join(".", $elements), "small");
+                return GDSRRender::rating_loader(join(".", $elements), "small");
             else
-                    return $this->render_article_actual($elements);
+                return $this->render_article_actual($elements);
     }
 
     function render_multi_rating_actual($settings) {
@@ -930,11 +933,14 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
             $dbg_allow = "F";
             $allow_vote = $override["read_only"] == 0;
-            if ($this->g->override_readonly_multis) $allow_vote = false;
+            if ($this->g->override_readonly_multis) {
+                $allow_vote = false;
+                $dbg_allow = "RTO";
+            }
             if ($this->g->is_ban && $this->g->o["ip_filtering"] == 1) {
-                    if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
-                    else $allow_vote = false;
-                    $dbg_allow = "B";
+                if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
+                else $allow_vote = false;
+                $dbg_allow = "B";
             }
 
             if ($override["read_only"] == 1) $dbg_allow = "RO";
@@ -944,64 +950,64 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
             $post_data = wp_gdget_post($rd_post_id);
             if (!is_object($post_data)) {
-                    GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
-                    $post_data = wp_gdget_post($rd_post_id);
-                    $this->g->c[$rd_post_id] = 1;
+                GDSRDatabase::add_default_vote($rd_post_id, $rd_is_page);
+                $post_data = wp_gdget_post($rd_post_id);
+                $this->g->c[$rd_post_id] = 1;
             }
 
             $rules_articles = $post_data->rules_articles != "I" ? $post_data->rules_articles : $this->g->get_post_rule_value($rd_post_id, "rules_articles", "default_voterules_articles");
 
             if ($rules_articles == "H") return "";
             if ($allow_vote) {
-                    if ($this->g->o["author_vote"] == 1 && $rd_user_id == $post->post_author) {
-                            $allow_vote = false;
-                            $dbg_allow = "A";
-                    }
+                if ($this->g->o["author_vote"] == 1 && $rd_user_id == $post->post_author) {
+                    $allow_vote = false;
+                    $dbg_allow = "A";
+                }
             }
 
             if ($allow_vote) {
-                    if (($rules_articles == "") ||
-                            ($rules_articles == "A") ||
-                            ($rules_articles == "U" && $rd_user_id > 0) ||
-                            ($rules_articles == "V" && $rd_user_id == 0)
-                    ) $allow_vote = true;
-                    else {
-                            $allow_vote = false;
-                            $dbg_allow = "R_".$rules_articles;
-                    }
+                if (($rules_articles == "") ||
+                    ($rules_articles == "A") ||
+                    ($rules_articles == "U" && $rd_user_id > 0) ||
+                    ($rules_articles == "V" && $rd_user_id == 0)
+                ) $allow_vote = true;
+                else {
+                    $allow_vote = false;
+                    $dbg_allow = "R_".$rules_articles;
+                }
             }
 
             $remaining = 0;
             $deadline = '';
             $expiry_type = 'N';
             if ($allow_vote && ($post_data->expiry_type == 'D' || $post_data->expiry_type == 'T' || $post_data->expiry_type == 'I')) {
-                    $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->g->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
-                    $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->g->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");
-                    switch($expiry_type) {
-                            case "D":
-                                    $remaining = gdsrFrontHelp::expiration_date($expiry_value);
-                                    $deadline = $expiry_value;
-                                    break;
-                            case "T":
-                                    $remaining = gdsrFrontHelp::expiration_countdown($post->post_date, $expiry_value);
-                                    $deadline = gdsrFrontHelp::calculate_deadline($remaining);
-                                    break;
-                    }
-                    if ($remaining < 1) {
-                            GDSRDatabase::lock_post($rd_post_id);
-                            $allow_vote = false;
-                            $dbg_allow = "T";
-                    }
+                $expiry_type = $post_data->expiry_type != 'I' ? $post_data->expiry_type : $this->g->get_post_rule_value($rd_post_id, "expiry_type", "default_timer_type");
+                $expiry_value = $post_data->expiry_type != 'I' ? $post_data->expiry_value : $this->g->get_post_rule_value($rd_post_id, "expiry_value", "default_timer_value");
+                switch($expiry_type) {
+                    case "D":
+                        $remaining = gdsrFrontHelp::expiration_date($expiry_value);
+                        $deadline = $expiry_value;
+                        break;
+                    case "T":
+                        $remaining = gdsrFrontHelp::expiration_countdown($post->post_date, $expiry_value);
+                        $deadline = gdsrFrontHelp::calculate_deadline($remaining);
+                        break;
+                }
+                if ($remaining < 1) {
+                    GDSRDatabase::lock_post($rd_post_id);
+                    $allow_vote = false;
+                    $dbg_allow = "T";
+                }
             }
 
             if ($allow_vote) {
-                    $allow_vote = GDSRDBMulti::check_vote($rd_post_id, $rd_user_id, $set->multi_id, 'multis', $_SERVER["REMOTE_ADDR"], $this->g->o["logged"] != 1, $this->g->o["mur_allow_mixed_ip_votes"] == 1);
-                    if (!$allow_vote) $dbg_allow = "D";
+                $allow_vote = GDSRDBMulti::check_vote($rd_post_id, $rd_user_id, $set->multi_id, 'multis', $_SERVER["REMOTE_ADDR"], $this->g->o["logged"] != 1, $this->g->o["mur_allow_mixed_ip_votes"] == 1);
+                if (!$allow_vote) $dbg_allow = "D";
             }
 
             if ($allow_vote) {
-                    $allow_vote = gdsrFrontHelp::check_cookie($rd_post_id."#".$set->multi_id, "multis");
-                    if (!$allow_vote) $dbg_allow = "C";
+                $allow_vote = gdsrFrontHelp::check_cookie($rd_post_id."#".$set->multi_id, "multis");
+                if (!$allow_vote) $dbg_allow = "C";
             }
 
             $multi_record_id = GDSRDBMulti::get_vote($rd_post_id, $set->multi_id, count($set->object));
@@ -1009,26 +1015,26 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
             $votes = array();
             foreach ($multi_data as $md) {
-                    $single_vote = array();
-                    $single_vote["votes"] = 0;
-                    $single_vote["score"] = 0;
+                $single_vote = array();
+                $single_vote["votes"] = 0;
+                $single_vote["score"] = 0;
 
-                    if ($rules_articles == "A" || $rules_articles == "N") {
-                            $single_vote["votes"] = $md->user_voters + $md->visitor_voters;
-                            $single_vote["score"] = $md->user_votes + $md->visitor_votes;
-                    } else if ($rules_articles == "V") {
-                            $single_vote["votes"] = $md->visitor_voters;
-                            $single_vote["score"] = $md->visitor_votes;
-                    } else {
-                            $single_vote["votes"] = $md->user_voters;
-                            $single_vote["score"] = $md->user_votes;
-                    }
-                    if ($single_vote["votes"] > 0) $rating = $single_vote["score"] / $single_vote["votes"];
-                    else $rating = 0;
-                    if ($rating > $set->stars) $rating = $set->stars;
-                    $single_vote["rating"] = @number_format($rating, 1);
+                if ($rules_articles == "A" || $rules_articles == "N") {
+                    $single_vote["votes"] = $md->user_voters + $md->visitor_voters;
+                    $single_vote["score"] = $md->user_votes + $md->visitor_votes;
+                } else if ($rules_articles == "V") {
+                    $single_vote["votes"] = $md->visitor_voters;
+                    $single_vote["score"] = $md->visitor_votes;
+                } else {
+                    $single_vote["votes"] = $md->user_voters;
+                    $single_vote["score"] = $md->user_votes;
+                }
+                if ($single_vote["votes"] > 0) $rating = $single_vote["score"] / $single_vote["votes"];
+                else $rating = 0;
+                if ($rating > $set->stars) $rating = $set->stars;
+                $single_vote["rating"] = @number_format($rating, 1);
 
-                    $votes[] = $single_vote;
+                $votes[] = $single_vote;
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
@@ -1036,10 +1042,10 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
             $tags_css = array(
-                    "MUR_CSS_BLOCK" => $this->g->o["mur_class_block"],
-                    "MUR_CSS_HEADER" => $this->g->o["mur_class_header"],
-                    "MUR_CSS_STARS" => $this->g->o["mur_class_stars"],
-                    "MUR_CSS_TEXT" => $this->g->o["mur_class_text"]
+                "MUR_CSS_BLOCK" => $this->g->o["mur_class_block"],
+                "MUR_CSS_HEADER" => $this->g->o["mur_class_header"],
+                "MUR_CSS_STARS" => $this->g->o["mur_class_stars"],
+                "MUR_CSS_TEXT" => $this->g->o["mur_class_text"]
             );
 
             $mur_button = $this->g->o["mur_button_active"] == 1;
@@ -1064,20 +1070,20 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             $elements = $this->rating_loader_elements_post($post, $user, $override, "amr");
 
             if ($this->g->o["cached_loading"] == 1)
-                    return GDSRRender::rating_loader(join(".", $elements), "small");
+                return GDSRRender::rating_loader(join(".", $elements), "small");
             else
-                    return $this->render_multi_rating_actual($elements);
+                return $this->render_multi_rating_actual($elements);
     }
 
     function render_multi_custom_values($template_id, $multi_set_id, $custom_id, $votes, $header_text = '', $override = array(), $tags_css = array(), $star_factor = 1) {
-            $set = gd_get_multi_set($multi_set_id);
+        $set = gd_get_multi_set($multi_set_id);
 
-            $rd_unit_width = $override["size"];
-            $rd_unit_style = $this->g->is_ie6 ? $override["style_ie6"] : $override["style"];
-            $rd_unit_width_avg = $override["average_size"];
-            $rd_unit_style_avg = $this->g->is_ie6 ? $override["average_stars_ie6"] : $override["average_stars"];
+        $rd_unit_width = $override["size"];
+        $rd_unit_style = $this->g->is_ie6 ? $override["style_ie6"] : $override["style"];
+        $rd_unit_width_avg = $override["average_size"];
+        $rd_unit_style_avg = $this->g->is_ie6 ? $override["average_stars_ie6"] : $override["average_stars"];
 
-            return GDSRRenderT2::render_mrb($template_id, array("style" => $rd_unit_style, "allow_vote" => false, "votes" => $votes, "post_id" => $custom_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $header_text, "tags_css" => $tags_css, "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => $star_factor));
+        return GDSRRenderT2::render_mrb($template_id, array("style" => $rd_unit_style, "allow_vote" => false, "votes" => $votes, "post_id" => $custom_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $header_text, "tags_css" => $tags_css, "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => $star_factor));
     }
     // article rendering
 }

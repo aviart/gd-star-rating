@@ -133,7 +133,7 @@ class GDStarRating {
             $this->initialize_security();
             $this->rSnippets = new gdGoogleRichSnippetsGDSR($this->o["google_rich_snippets_format"]);
         } else {
-            $this->c = new gdsrVotes($this);
+            $this->v = new gdsrVotes($this);
         }
 
         if ($this->o["ajax_jsonp"] == 1) $this->plugin_ajax.= "?callback=?";
@@ -523,14 +523,6 @@ class GDStarRating {
 
     // edit boxes
     /**
-     * Insert edit box for a comment on edit comment panel.
-     */
-    function editbox_comment() {
-        if ($this->admin_page != "edit-comments.php") return;
-        include($this->plugin_path.'integrate/editcomment27.php');
-    }
-
-    /**
      * Insert box multi review on post edit panel.
      */
     function editbox_post_mur() {
@@ -622,9 +614,6 @@ class GDStarRating {
             add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
             add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
         }
-        if ($this->o["integrate_comment_edit"] == 1) {
-            add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_comment'), "comments", "side", "high");
-        }
 
         add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), $this->security_level_front, __FILE__, array(&$this,"star_menu_front"));
         add_submenu_page(__FILE__, 'GD Star Rating: '.__("My Ratings", "gd-star-rating"), __("My Ratings", "gd-star-rating"), $this->security_level_front, "gd-star-rating-my", array(&$this,"star_menu_my"));
@@ -659,6 +648,9 @@ class GDStarRating {
      * WordPress action for adding administration header contents
      */
     function admin_head() {
+        global $parent_file;
+        $this->admin_page = $parent_file;
+
         $tabs_extras = $datepicker_date = "";
 
         if ($this->admin_plugin_page == "ips" && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
@@ -780,51 +772,46 @@ class GDStarRating {
      * Adding WordPress action and filter
      */
     function actions_filters() {
-        add_action('init', array(&$this, 'init'));
-        add_action('admin_menu', array(&$this, 'admin_menu'));
-        add_action('admin_head', array(&$this, 'admin_head'));
-        add_action('wp_head', array(&$this, 'wp_head'));
-        add_action('widgets_init', array(&$this, 'widgets_init'));
-        add_action('loop_start', array(&$this, 'loop_start'));
-
-        add_filter('query_vars', array($this->q, 'query_vars'));
-        add_action('pre_get_posts', array($this->q, 'pre_get_posts'));
-
-        if ($this->o["cached_loading"] == 0)
-            add_filter('comments_array', array(&$this, 'comments_array'), 10, 2);
-        if ($this->o["integrate_post_edit_mur"] == 1 || $this->o["integrate_post_edit"] == 1)
-            add_action('save_post', array(&$this, 'saveedit_post'));
-        if ($this->o["integrate_dashboard"] == 1) {
-            add_action('wp_dashboard_setup', array(&$this, 'add_dashboard_widget'));
-            if (!function_exists('wp_add_dashboard_widget')) add_filter('wp_dashboard_widgets', array(&$this, 'add_dashboard_widget_filter'));
-        }
-
-        add_filter('comment_text', array(&$this, 'display_comment'));
-        add_filter('the_content', array(&$this, 'display_article'));
-        add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
-        add_filter('comment_post', array(&$this, 'comment_save'));
-
-        if ($this->o["comments_review_active"] == 1) {
-            if ($this->o["integrate_comment_edit"] == 1) {
-                add_filter('comment_save_pre', array(&$this, 'comment_edit_review'));
+        if (GDSR_WP_ADMIN) {
+            add_action('admin_menu', array(&$this, 'admin_menu'));
+            add_action('admin_head', array(&$this, 'admin_head'));
+            add_filter('plugin_action_links', array(&$this, 'plugin_links'), 10, 2 );
+            add_action('after_plugin_row', array(&$this,'plugin_check_version'), 10, 2);
+            if ($this->o["integrate_post_edit_mur"] == 1 || $this->o["integrate_post_edit"] == 1) {
+                add_action('save_post', array(&$this, 'saveedit_post'));
+            }
+            if ($this->o["integrate_dashboard"] == 1) {
+                add_action('wp_dashboard_setup', array(&$this, 'add_dashboard_widget'));
+                if (!function_exists('wp_add_dashboard_widget')) add_filter('wp_dashboard_widgets', array(&$this, 'add_dashboard_widget_filter'));
+            }
+            if ($this->o["integrate_tinymce"] == 1) {
+                add_filter("mce_external_plugins", array(&$this, 'add_tinymce_plugin'), 5);
+                add_filter('mce_buttons', array(&$this, 'add_tinymce_button'), 5);
+            }
+        } else {
+            add_action('wp_head', array(&$this, 'wp_head'));
+            add_filter('query_vars', array($this->q, 'query_vars'));
+            add_action('pre_get_posts', array($this->q, 'pre_get_posts'));
+            add_filter('comment_text', array(&$this, 'display_comment'));
+            add_filter('the_content', array(&$this, 'display_article'));
+            add_action('loop_start', array(&$this, 'loop_start'));
+            add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
+            add_filter('comment_post', array(&$this, 'comment_save'));
+            if ($this->o["integrate_rss_powered"] == 1 || $this->o["rss_active"] == 1) {
+                add_filter('the_excerpt_rss', array(&$this, 'rss_filter'));
+                add_filter('the_content_rss', array(&$this, 'rss_filter'));
+                add_filter('the_content', array(&$this, 'rss_filter'));
+            }
+            if ($this->o["cached_loading"] == 0) {
+                add_filter('comments_array', array(&$this, 'comments_array'), 10, 2);
             }
         }
 
-        if ($this->o["integrate_tinymce"] == 1) {
-            add_filter("mce_external_plugins", array(&$this, 'add_tinymce_plugin'), 5);
-            add_filter('mce_buttons', array(&$this, 'add_tinymce_button'), 5);
-        }
-
-        if ($this->o["integrate_rss_powered"] == 1 || $this->o["rss_active"] == 1) {
-            add_filter('the_excerpt_rss', array(&$this, 'rss_filter'));
-            add_filter('the_content_rss', array(&$this, 'rss_filter'));
-            add_filter('the_content', array(&$this, 'rss_filter'));
-        }
+        add_action('init', array(&$this, 'init'));
+        add_action('widgets_init', array(&$this, 'widgets_init'));
 
         add_action('delete_comment', array(&$this, 'comment_delete'));
         add_action('delete_post', array(&$this, 'post_delete'));
-        add_filter('plugin_action_links', array(&$this, 'plugin_links'), 10, 2 );
-        add_action('after_plugin_row', array(&$this,'plugin_check_version'), 10, 2);
 
         foreach ($this->shortcodes as $code) $this->shortcode_action($code);
     }
@@ -1047,18 +1034,6 @@ class GDStarRating {
 
     function post_delete($post_id) {
 
-    }
-
-    function comment_edit_review($comment_content) {
-        if (isset($_POST['gdsr_comment_edit']) && $_POST['gdsr_comment_edit'] == "edit") {
-            $post_id = $_POST["comment_post_ID"];
-            $comment_id = $_POST["comment_ID"];
-            $value = isset($_POST["gdsr_cmm_review"]) ? $_POST["gdsr_cmm_review"] : -1;
-            $comment_data = GDSRDatabase::get_comment_data($comment_id);
-            if (count($comment_data) == 0) GDSRDatabase::add_empty_comment($comment_id, $post_id, $value);
-            else GDSRDatabase::save_comment_review($comment_id, $value);
-        }
-        return $comment_content;
     }
 
     /**
@@ -1346,14 +1321,10 @@ class GDStarRating {
                 }
             }
         } else {
-            global $parent_file;
-            $this->admin_page = $parent_file;
-
             if (isset($_GET["page"])) {
                 if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
                     $this->admin_plugin = true;
                     $this->admin_plugin_page = substr($_GET["page"], 15);
-                    if ($this->admin_plugin) require_once($gdsr_dirname_basic."/gdt2/classes.php");
                 }
             }
 
