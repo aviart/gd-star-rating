@@ -4,7 +4,7 @@
     <?php
 
     global $user_ID;
-    $data = GDSRDB::filter_votes_by_type($user_ID);
+    $data = gdsrAdmDB::filter_votes_by_type($user_ID);
     GDSRHelper::render_dash_widget_vote($data, "my-panel", "-my-posts");
 
     ?>

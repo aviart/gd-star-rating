@@ -1,7 +1,7 @@
 <?php
 
 global $user_ID;
-$overview = GDSRDB::get_user_votes_overview($user_ID);
+$overview = gdsrAdmDB::get_user_votes_overview($user_ID);
 
 $over_posts = $over_comms = array();
 if (isset($overview["article"])) $over_posts[] = "Standard: <strong>".$overview["article"]."</strong>";

@@ -85,7 +85,7 @@ else
 <div class="wrap">
 <form id="gdsr-comments" method="post" action="">
 <p><strong><?php _e("Vote log for post", "gd-star-rating"); ?>: 
-    <?php echo sprintf('<a href="./post.php?action=edit&amp;post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $post_id, GDSRDB::get_post_title($post_id), get_permalink($post_id)); ?>
+    <?php echo sprintf('<a href="./post.php?action=edit&amp;post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $post_id, gdsrAdmDB::get_post_title($post_id), get_permalink($post_id)); ?>
 </strong></p>
 <ul class="subsubsub">
     <li><a<?php echo $select == "total" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&amp;vg=total">All Votes (<?php echo $number_posts_all; ?>)</a> |</li>
@@ -97,7 +97,7 @@ else
 ?>
 <div class="tablenav">
     <div class="alignleft">
-        <?php GDSRDatabase::get_combo_months($filter_date); ?>
+        <?php gdsrAdmDB::get_combo_months($filter_date); ?>
         <select style="width: 100px;" name="gdsr_vote" id="gdsr_vote">
         <option value="0"<?php if ($filter_vote == 0) echo ' selected="selected"'; ?>><?php _e("All Votes", "gd-star-rating"); ?></option>
         <?php GDSRHelper::render_stars_select_full($filter_vote, $max_stars, 1, __("Vote", "gd-star-rating")); ?>

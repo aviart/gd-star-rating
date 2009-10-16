@@ -45,27 +45,32 @@ if (STARRATING_DEBUG) {
     $gd_debug = new gdDebugGDSR(STARRATING_LOG_PATH);
 }
 
-if (!STARRATING_AJAX) {
-    require_once($gdsr_dirname_basic."/gdragon/gd_google.php");
-    require_once($gdsr_dirname_basic."/code/db/widgetizer.php");
-    require_once($gdsr_dirname_basic."/code/wdg/widgets_wp27.php");
-    require_once($gdsr_dirname_basic."/code/wdg/widgets_wp28.php");
-} else {
-    require_once($gdsr_dirname_basic."/code/blg/votes.php");
-}
-
 if (!defined("WP_ADMIN") || (defined("WP_ADMIN") && !WP_ADMIN)) {
     define("GDSR_WP_ADMIN", false);
     require_once($gdsr_dirname_basic."/gdt2/classes.php");
     require_once($gdsr_dirname_basic."/code/t2/render.php");
-    require_once($gdsr_dirname_basic."/code/blg/query.php");
+    require_once($gdsr_dirname_basic."/code/blg/db.php");
     require_once($gdsr_dirname_basic."/code/blg/frontend.php");
     require_once($gdsr_dirname_basic."/code/blg/helpers.php");
+
+    if (!STARRATING_AJAX) {
+        require_once($gdsr_dirname_basic."/gdragon/gd_google.php");
+        require_once($gdsr_dirname_basic."/code/db/widgetizer.php");
+        require_once($gdsr_dirname_basic."/code/blg/query.php");
+    } else {
+        require_once($gdsr_dirname_basic."/code/blg/votes.php");
+    }
 } else {
     define("GDSR_WP_ADMIN", true);
     require_once($gdsr_dirname_basic."/gdragon/gd_db_install.php");
+    require_once($gdsr_dirname_basic."/code/adm/db.php");
     require_once($gdsr_dirname_basic."/code/adm/elements.php");
     require_once($gdsr_dirname_basic."/code/adm/menus.php");
+}
+
+if (!STARRATING_AJAX) {
+    require_once($gdsr_dirname_basic."/code/wdg/widgets_wp27.php");
+    require_once($gdsr_dirname_basic."/code/wdg/widgets_wp28.php");
 }
 
 if (!class_exists('GDStarRating')) {

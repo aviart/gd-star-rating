@@ -18,8 +18,8 @@ $url.= "&amp;gdsr=murset";
 <h2 class="gdptlogopage">GD Star Rating: <?php _e("Multi Set Results", "gd-star-rating"); ?>: <?php _e("Voters", "gd-star-rating"); ?></h2>
 <div class="tablenav">
     <div class="alignleft">
-<?php GDSRDatabase::get_combo_months($filter_date); ?>
-<?php GDSRDatabase::get_combo_categories($filter_cats); ?>
+<?php gdsrAdmDB::get_combo_months($filter_date); ?>
+<?php gdsrAdmDB::get_combo_categories($filter_cats); ?>
         <input class="button-secondary delete" type="submit" name="gdsr_filter" value="<?php _e("Filter", "gd-star-rating"); ?>" />
     </div>
     <div class="tablenav-pages">

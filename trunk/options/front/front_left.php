@@ -1,8 +1,8 @@
 <?php
 
-    $votes_articles = GDSRDB::front_page_article_totals();
-    $votes_comments = GDSRDB::front_page_comment_totals();
-    $moderation = GDSRDB::front_page_moderation_totals();
+    $votes_articles = gdsrAdmDB::front_page_article_totals();
+    $votes_comments = gdsrAdmDB::front_page_comment_totals();
+    $moderation = gdsrAdmDB::front_page_moderation_totals();
 
     $moderation_articles = 0;
     $moderation_comments = 0;
