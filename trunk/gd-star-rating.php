@@ -34,6 +34,7 @@ require_once($gdsr_dirname_basic."/code/defaults.php");
 require_once($gdsr_dirname_basic."/gdragon/gd_functions.php");
 require_once($gdsr_dirname_basic."/gdragon/gd_wordpress.php");
 require_once($gdsr_dirname_basic."/code/db/main.php");
+require_once($gdsr_dirname_basic."/code/cache.php");
 require_once($gdsr_dirname_basic."/code/cls/results.php");
 require_once($gdsr_dirname_basic."/code/cls/render.php");
 require_once($gdsr_dirname_basic."/code/gfx/gfx_lib.php");
@@ -57,7 +58,6 @@ if (!defined("WP_ADMIN") || (defined("WP_ADMIN") && !WP_ADMIN)) {
     define("GDSR_WP_ADMIN", false);
     require_once($gdsr_dirname_basic."/gdt2/classes.php");
     require_once($gdsr_dirname_basic."/code/t2/render.php");
-    require_once($gdsr_dirname_basic."/code/blg/cache.php");
     require_once($gdsr_dirname_basic."/code/blg/query.php");
     require_once($gdsr_dirname_basic."/code/blg/frontend.php");
     require_once($gdsr_dirname_basic."/code/blg/helpers.php");

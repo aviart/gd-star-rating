@@ -226,15 +226,13 @@ class GDSRDefaults {
         "Sogou web spider", "WebAlta Crawler", "www.galaxy.com", "Slurp", "msnbot", "appie", "TECNOSEEK",
         "InfoSeek", "WebFindBot", "girafabot", "crawler", "inktomi", "looksmart", "URL_Spider_SQL",
         "Firefly", "NationalDirectory", "Teoma", "alexa", "froogle", "AdsBot-Google", "ia_archiver",
-        "Scooter/", "Ask Jeeves", "Baiduspider+(", "Exabot/", "FAST Enterprise Crawler", "FAST-WebCrawler/",
-        "http://www.neomo.de/", "Gigabot/", "Mediapartners-Google", "Google Desktop", "Feedfetcher-Google",
-        "Googlebot", "heise-IT-Markt-Crawler", "heritrix/1.", "ibm.com/cs/crawler", "ICCrawler - ICjobs",
-        "ichiro/", "MJ12bot/", "MetagerBot/", "msnbot-NewsBlogs/", "msnbot/", "msnbot-media/", "NG-Search/",
-        "http://lucene.apache.org/nutch/", "NutchCVS/", "OmniExplorer_Bot/", "psbot/0", "Seekbot/",
-        "Sensis Web Crawler", "SEO search Crawler/", "Seoma [SEO Crawler]", "SEOsearch/", "Snappy/1.1 ( http://www.urltrends.com/ )",
-        "http://www.tkl.iis.u-tokyo.ac.jp/~crawler/", "SynooBot/", "crawleradmin.t-info@telekom.de", "TurnitinBot/",
-        "voyager/1.0", "W3 SiteSearch Crawler", "W3C-checklink/", "http://www.WISEnutbot.com", "yacybot",
-        "Yahoo-MMCrawler/", "Yahoo! DE Slurp", "Yahoo! Slurp", "YahooSeeker/");
+        "Scooter", "Ask Jeeves", "Baiduspider", "Exabot", "FAST Enterprise Crawler", "FAST-WebCrawler",
+        "Gigabot", "Mediapartners-Google", "Google Desktop", "Feedfetcher-Google", "Googlebot",
+        "heise-IT-Markt-Crawler", "heritrix", "ichiro", "MJ12bot", "MetagerBot", "OmniExplorer_Bot",
+        "msnbot-NewsBlogs", "msnbot", "msnbot-media", "NG-Search", "NutchCVS", "Seekbot", "SynooBot",
+        "Sensis Web Crawler", "SEO search Crawler", "Seoma", "SEOsearch", "voyager", "W3 SiteSearch Crawler",
+        "crawleradmin.t-info@telekom.de", "TurnitinBot", "W3C-checklink", "yacybot", "Yahoo-MMCrawler", 
+        "Yahoo! DE Slurp", "Yahoo! Slurp", "YahooSeeker");
 
     var $shortcodes = array(
         "starrating",
