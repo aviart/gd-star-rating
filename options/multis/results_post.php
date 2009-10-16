@@ -92,8 +92,8 @@ $set = gd_get_multi_set($set_id);
 </p>
 <div class="tablenav">
     <div class="alignleft">
-<?php GDSRDatabase::get_combo_months($filter_date); ?>
-<?php GDSRDatabase::get_combo_categories($filter_cats); ?>
+<?php gdsrAdmDB::get_combo_months($filter_date); ?>
+<?php gdsrAdmDB::get_combo_categories($filter_cats); ?>
         <input class="button-secondary delete" type="submit" name="gdsr_filter" value="<?php _e("Filter", "gd-star-rating"); ?>" />
     </div>
     <div class="tablenav-pages">

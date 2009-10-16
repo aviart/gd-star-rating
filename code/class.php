@@ -127,8 +127,13 @@ class GDStarRating {
         $this->install_plugin();
 
         if (!GDSR_WP_ADMIN) {
-            $this->q = new gdsrQuery();
             $this->f = new gdsrFront($this);
+            if (!STARRATING_AJAX) {
+                $this->q = new gdsrQuery();
+                $this->rSnippets = new gdGoogleRichSnippetsGDSR($this->o["google_rich_snippets_format"]);
+            } else {
+                $this->v = new gdsrVotes($this);
+            }
         } else {
             $this->m = new gdsrMenus($this);
         }
@@ -136,9 +141,6 @@ class GDStarRating {
         if (!STARRATING_AJAX) {
             $this->actions_filters();
             $this->initialize_security();
-            $this->rSnippets = new gdGoogleRichSnippetsGDSR($this->o["google_rich_snippets_format"]);
-        } else {
-            $this->v = new gdsrVotes($this);
         }
 
         if ($this->o["ajax_jsonp"] == 1) $this->plugin_ajax.= "?callback=?";
@@ -610,12 +612,12 @@ class GDStarRating {
 
         add_menu_page('GD Star Rating', 'GD Star Rating', $this->security_level_front, $this->plugin_base, array(&$this->m, "star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
         if ($this->o["integrate_post_edit"] == 1) {
-            add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this->m, 'editbox_post'), "post", "side", "high");
-            add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this->m, 'editbox_post'), "page", "side", "high");
+            add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "post", "side", "high");
+            add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "page", "side", "high");
         }
         if ($this->o["integrate_post_edit_mur"] == 1) {
-            add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this->m, 'editbox_post_mur'), "post", "advanced", "high");
-            add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this->m, 'editbox_post_mur'), "page", "advanced", "high");
+            add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
+            add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
         }
 
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), $this->security_level_front, $this->plugin_base, array(&$this->m, "star_menu_front"));
@@ -905,7 +907,7 @@ class GDStarRating {
             $sett["integrate_dashboard_latest_filter_".$name] = $value;
         }
 
-        return GDSRDB::filter_latest_votes($sett, $user_id);
+        return gdsrAdmDB::filter_latest_votes($sett, $user_id);
     }
 
     function add_dashboard_widget() {
@@ -1116,7 +1118,7 @@ class GDStarRating {
                 gdDBInstallGDSR::alter_index(STARRATING_PATH);
                 $this->o["database_upgrade"] = date("r");
 
-                GDSRDB::install_all_templates();
+                gdsrAdmDB::install_all_templates();
 
                 $this->o = gdFunctionsGDSR::upgrade_settings($this->o, $this->default_options);
 
@@ -1498,7 +1500,7 @@ class GDStarRating {
         }
 
         if (isset($_POST['gdsr_t2_import'])) {
-            GDSRDB::insert_extras_templates(STARRATING_XTRA_PATH, false);
+            gdsrAdmDB::insert_extras_templates(STARRATING_XTRA_PATH, false);
             wp_redirect_self();
             exit;
         }
@@ -1531,23 +1533,23 @@ class GDStarRating {
 
         if (isset($_POST['gdsr_cleanup_tool'])) {
             if (isset($_POST['gdsr_tools_clean_invalid_log'])) {
-                $count = GDSRDBTools::clean_invalid_log_articles();
+                $count = gdsrTlsDB::clean_invalid_log_articles();
                 if ($count > 0) $msg.= $count." ".__("articles records from log table removed.", "gd-star-rating")." ";
-                $count = GDSRDBTools::clean_invalid_log_comments();
+                $count = gdsrTlsDB::clean_invalid_log_comments();
                 if ($count > 0) $msg.= $count." ".__("comments records from log table removed.", "gd-star-rating")." ";
             }
             if (isset($_POST['gdsr_tools_clean_invalid_trend'])) {
-                $count = GDSRDBTools::clean_invalid_trend_articles();
+                $count = gdsrTlsDB::clean_invalid_trend_articles();
                 if ($count > 0) $msg.= $count." ".__("articles records from trends log table removed.", "gd-star-rating")." ";
-                $count = GDSRDBTools::clean_invalid_trend_comments();
+                $count = gdsrTlsDB::clean_invalid_trend_comments();
                 if ($count > 0) $msg.= $count." ".__("comments records from trends log table removed.", "gd-star-rating")." ";
             }
             if (isset($_POST['gdsr_tools_clean_old_posts'])) {
-                $count = GDSRDBTools::clean_dead_articles();
+                $count = gdsrTlsDB::clean_dead_articles();
                 if ($count > 0) $msg.= $count." ".__("dead articles records from articles table.", "gd-star-rating")." ";
-                $count = GDSRDBTools::clean_revision_articles();
+                $count = gdsrTlsDB::clean_revision_articles();
                 if ($count > 0) $msg.= $count." ".__("post revisions records from articles table.", "gd-star-rating")." ";
-                $count = GDSRDBTools::clean_dead_comments();
+                $count = gdsrTlsDB::clean_dead_comments();
                 if ($count > 0) $msg.= $count." ".__("dead comments records from comments table.", "gd-star-rating")." ";
             }
             if (isset($_POST['gdsr_tools_clean_old_posts'])) {

@@ -1,6 +1,6 @@
 <?php
 
-$data = GDSRDB::filter_latest_votes($o);
+$data = gdsrAdmDB::filter_latest_votes($o);
 GDSRHelper::render_dash_widget_vote($data);
 
 ?>

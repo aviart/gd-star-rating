@@ -21,7 +21,7 @@
       </tr>
       <tr>
         <td class="gdsrleft"><?php _e("Category", "gd-star-rating"); ?>:</td>
-        <td class="gdsrright"><?php GDSRDatabase::get_combo_categories('', 'srCategory'); ?></td>
+        <td class="gdsrright"><?php gdsrAdmDB::get_combo_categories('', 'srCategory'); ?></td>
       </tr>
       <tr>
         <td class="gdsrleft"><?php _e("Minimum votes", "gd-star-rating"); ?>:</td>
@@ -113,7 +113,7 @@
       <tr>
         <td class="gdsrleft"><?php _e("Month", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <?php GDSRDatabase::get_combo_months("0", "publishMonth"); ?>
+            <?php gdsrAdmDB::get_combo_months("0", "publishMonth"); ?>
         </td>
       </tr>
     </table>

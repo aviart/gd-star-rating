@@ -4,7 +4,7 @@
     <?php
 
     global $user_ID;
-    $data = GDSRDB::filter_votes_by_type($user_ID, "'cmmthumb', 'comment'", false);
+    $data = gdsrAdmDB::filter_votes_by_type($user_ID, "'cmmthumb', 'comment'", false);
     GDSRHelper::render_dash_widget_vote($data, "my-panel", "-my-comments");
 
     ?>

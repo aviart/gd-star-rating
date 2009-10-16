@@ -124,16 +124,16 @@ class gdsrMenus {
         include(STARRATING_PATH.'options/settings.php');
 
         if ($recalculate_articles)
-            GDSRDB::recalculate_articles($gdsr_oldstars, $gdsr_newstars);
+            gdsrAdmDB::recalculate_articles($gdsr_oldstars, $gdsr_newstars);
 
         if ($recalculate_comment)
-            GDSRDB::recalculate_comments($gdsr_cmm_oldstars, $gdsr_cmm_newstars);
+            gdsrAdmDB::recalculate_comments($gdsr_cmm_oldstars, $gdsr_cmm_newstars);
 
         if ($recalculate_reviews)
-            GDSRDB::recalculate_reviews($gdsr_review_oldstars, $gdsr_review_newstars);
+            gdsrAdmDB::recalculate_reviews($gdsr_review_oldstars, $gdsr_review_newstars);
 
         if ($recalculate_cmm_reviews)
-            GDSRDB::recalculate_comments_reviews($gdsr_cmm_review_oldstars, $gdsr_cmm_review_newstars);
+            gdsrAdmDB::recalculate_comments_reviews($gdsr_cmm_review_oldstars, $gdsr_cmm_review_newstars);
     }
 
     function star_menu_t2() {

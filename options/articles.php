@@ -118,8 +118,8 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
 </p>
 <div class="tablenav">
     <div class="alignleft">
-<?php GDSRDatabase::get_combo_months($filter_date); ?>
-<?php GDSRDatabase::get_combo_categories($filter_cats); ?>
+<?php gdsrAdmDB::get_combo_months($filter_date); ?>
+<?php gdsrAdmDB::get_combo_categories($filter_cats); ?>
         <input class="button-secondary delete" type="submit" name="gdsr_filter" value="<?php _e("Filter", "gd-star-rating"); ?>" />
     </div>
     <div class="tablenav-pages">
@@ -165,7 +165,7 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
         $multis[$ms->folder] = $ms->name;
     }
     foreach ($rows as $row) {
-        $row = GDSRDB::convert_row($row, $multis);
+        $row = gdsrAdmDB::convert_row($row, $multis);
         $moderate_articles = $moderate_comments = "";
         if ($options["moderation_active"] == 1) {
             $moderate_articles = GDSRDatabase::get_moderation_count($row->pid);

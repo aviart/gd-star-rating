@@ -80,7 +80,7 @@ if ($cat_to > $number_posts) $cat_to = $number_posts;
     $tr_class = "";
     for ($i = $cat_from; $i < $cat_to; $i++) {
         $row = $categories[$i];
-        $row = GDSRDB::convert_category_row($row);
+        $row = gdsrAdmDB::convert_category_row($row);
         if ($options["timer_active"] == 1) {
             if ($row->expiry_type == "D") {
                 $timer_info = '<strong><span style="color: red">'.__("date limit", "gd-star-rating").'</span></strong><br />';

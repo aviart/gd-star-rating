@@ -32,7 +32,7 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
 <div>
 <p><strong><?php _e("Comments for post", "gd-star-rating"); ?>:
     <?php echo ''; ?>
-    <?php echo sprintf('<a href="./post.php?action=edit&amp;post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $id, GDSRDB::get_post_title($id), get_permalink($id)); ?>
+    <?php echo sprintf('<a href="./post.php?action=edit&amp;post=%s">%s</a> <a href="%s" target="_blank">[view]</a>', $id, gdsrAdmDB::get_post_title($id), get_permalink($id)); ?>
 </strong></p>
 <?php
 
@@ -88,7 +88,7 @@ if (isset($id)) {
     
     $tr_class = "";
     foreach ($rows as $row) {
-        $row = GDSRDB::convert_comment_row($row);
+        $row = gdsrAdmDB::convert_comment_row($row);
 
         if ($row->rating_total > $options["cmm_stars"] || $row->rating_visitors > $options["cmm_stars"] || $row->rating_users > $options["cmm_stars"])
             $tr_class.=" invalidarticle";

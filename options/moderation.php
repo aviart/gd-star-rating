@@ -53,9 +53,9 @@ if (isset($id)) {
             $ids = "(".join(", ", $gdsr_items).")";
             $mod = $_POST["gdsr_moderate"];
             if ($mod == "delete")
-                GDSRDB::moderation_delete($ids);
+                gdsrAdmDB::moderation_delete($ids);
             if ($mod == "approve") 
-                GDSRDB::moderation_approve($ids, $gdsr_items);
+                gdsrAdmDB::moderation_approve($ids, $gdsr_items);
         }
     }
     
@@ -76,7 +76,7 @@ if (isset($id)) {
     
 <div class="tablenav">
     <div class="alignleft">
-<?php GDSRDatabase::get_combo_users($filter_user); ?>
+<?php gdsrAdmDB::get_combo_users($filter_user); ?>
         <input class="button-secondary delete" type="submit" name="gdsr_filter" value="Filter" />
     </div>
     <div class="tablenav-pages">
@@ -109,7 +109,7 @@ if (isset($id)) {
     $tr_class = "";
     
     foreach ($rows as $row) {
-        $row = GDSRDB::convert_moderation_row($row);
+        $row = gdsrAdmDB::convert_moderation_row($row);
         echo '<tr id="post-'.$row->record_id.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->record_id.'" type="checkbox"></th>';
         echo '<td><strong>'.$row->voted.'</strong></td>';

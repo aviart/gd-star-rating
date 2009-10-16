@@ -131,7 +131,7 @@
     <td width="100"></td>
     <td width="150" nowrap="nowrap"><?php _e("Article Category", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <label><?php GDSRDatabase::get_combo_categories($wpno['category'], $wpfn.'[category]'); ?></label>
+        <label><?php gdsrAdmDB::get_combo_categories($wpno['category'], $wpfn.'[category]'); ?></label>
     </td>
   </tr>
   <tr>
@@ -190,7 +190,7 @@
     <td width="100"></td>
     <td width="150" nowrap="nowrap"><?php _e("Month", "gd-star-rating"); ?>:</td>
     <td align="right">
-        <?php GDSRDatabase::get_combo_months($wpno['publish_month'], $wpfn."[publish_month]"); ?>
+        <?php gdsrAdmDB::get_combo_months($wpno['publish_month'], $wpfn."[publish_month]"); ?>
     </td>
   </tr>
 </table>
