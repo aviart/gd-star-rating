@@ -117,7 +117,7 @@ if (!class_exists('gdDBInstallGDSR')) {
                             } else {
                                 $found = preg_match("/ADD\sPRIMARY\sKEY\s\(`(.+?)`\)/i", $a, $matches);
                                 if ($found == 1) {
-                                    if (gdDBInstallGDSR::check_for_index($table_cache[$tbl], $matches[2])) {
+                                    if (gdDBInstallGDSR::check_for_index($table_cache[$tbl], $matches[1])) {
                                         $wpdb->query($a);
                                     }
                                 }

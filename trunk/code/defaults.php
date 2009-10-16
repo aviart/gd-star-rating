@@ -7,7 +7,7 @@ class GDSRDefaults {
         "date" => "2009.10.15.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 950,
+        "build" => 952,
         "admin_views" => 0,
         "google_rich_snippets_format" => "microformat",
         "update_report_usage" => 1,
@@ -105,6 +105,7 @@ class GDSRDefaults {
         "mur_size" => 20,
         "mur_header" => 0,
         "mur_header_text" => "",
+        "mur_class_stars" => "",
         "mur_class_block" => "",
         "mur_class_text" => "",
         "mur_class_header" => "",
@@ -221,13 +222,19 @@ class GDSRDefaults {
     var $thumb_sizes = array("12" => 1, "16" => 1, "20" => 1, "24" => 1, "32" => 1, "40" => 1);
 
     var $default_spider_bots = array(
-        "Teoma", "alexa", "froogle", "Gigabot", "inktomi", "looksmart", 
-        "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", 
-        "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", 
-        "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "msnbot", "appie", 
-        "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", 
-        "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot", "Mediapartners-Google", 
-        "Sogou web spider", "WebAlta Crawler");
+        "FAST", "WebBug", "Spade", "ZyBorg", "rabaz", "Baiduspider", "TechnoratiSnoop", "Rankivabot",
+        "Sogou web spider", "WebAlta Crawler", "www.galaxy.com", "Slurp", "msnbot", "appie", "TECNOSEEK",
+        "InfoSeek", "WebFindBot", "girafabot", "crawler", "inktomi", "looksmart", "URL_Spider_SQL",
+        "Firefly", "NationalDirectory", "Teoma", "alexa", "froogle", "AdsBot-Google", "ia_archiver",
+        "Scooter/", "Ask Jeeves", "Baiduspider+(", "Exabot/", "FAST Enterprise Crawler", "FAST-WebCrawler/",
+        "http://www.neomo.de/", "Gigabot/", "Mediapartners-Google", "Google Desktop", "Feedfetcher-Google",
+        "Googlebot", "heise-IT-Markt-Crawler", "heritrix/1.", "ibm.com/cs/crawler", "ICCrawler - ICjobs",
+        "ichiro/", "MJ12bot/", "MetagerBot/", "msnbot-NewsBlogs/", "msnbot/", "msnbot-media/", "NG-Search/",
+        "http://lucene.apache.org/nutch/", "NutchCVS/", "OmniExplorer_Bot/", "psbot/0", "Seekbot/",
+        "Sensis Web Crawler", "SEO search Crawler/", "Seoma [SEO Crawler]", "SEOsearch/", "Snappy/1.1 ( http://www.urltrends.com/ )",
+        "http://www.tkl.iis.u-tokyo.ac.jp/~crawler/", "SynooBot/", "crawleradmin.t-info@telekom.de", "TurnitinBot/",
+        "voyager/1.0", "W3 SiteSearch Crawler", "W3C-checklink/", "http://www.WISEnutbot.com", "yacybot",
+        "Yahoo-MMCrawler/", "Yahoo! DE Slurp", "Yahoo! Slurp", "YahooSeeker/");
 
     var $shortcodes = array(
         "starrating",

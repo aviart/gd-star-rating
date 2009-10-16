@@ -71,7 +71,7 @@ if (!defined("WP_ADMIN") || (defined("WP_ADMIN") && !WP_ADMIN)) {
 if (!class_exists('GDStarRating')) {
     require_once($gdsr_dirname_basic."/code/class.php");
 
-    $gdsr = new GDStarRating($gdsr_dirname_basic);
+    $gdsr = new GDStarRating($gdsr_dirname_basic, __FILE__);
 
     include(STARRATING_PATH."code/fn/general.php");
     include(STARRATING_PATH."code/fn/data.php");

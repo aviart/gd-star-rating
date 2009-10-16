@@ -102,9 +102,10 @@ function wp_gdget_post($post_id) {
     global $gdsr_cache_posts_std_data;
 
     $post = $gdsr_cache_posts_std_data->get($post_id);
-    if (!is_null($post)) return $post;
+    if (!is_null($post) && is_object($post)) return $post;
     else {
         $post = GDSRDatabase::get_post_data($post_id);
+        if (!is_object($post)) return null;
         $gdsr_cache_posts_std_data->set($post_id, $post);
         return $post;
     }
@@ -130,9 +131,10 @@ function wp_gdget_comment($comment_id) {
     global $gdsr_cache_posts_cmm_data;
 
     $cmm = $gdsr_cache_posts_cmm_data->get($comment_id);
-    if (!is_null($cmm)) return $cmm;
+    if (!is_null($cmm) && is_object($cmm)) return $cmm;
     else {
         $cmm = GDSRDatabase::get_comment_data($comment_id);
+        if (!is_object($cmm)) return null;
         $gdsr_cache_posts_cmm_data->set($comment_id, $cmm);
         return $cmm;
     }
@@ -166,7 +168,7 @@ function wp_gdget_multi_set($multi_id) {
     global $gdsr_cache_multi_sets;
     
     $set = $gdsr_cache_multi_sets->get($multi_id);
-    if (!is_null($set)) return $set;
+    if (!is_null($set) && is_object($set)) return $set;
     else {
         $set = gd_get_multi_set($multi_id);
         $gdsr_cache_multi_sets->set($multi_id, $set);

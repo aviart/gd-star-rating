@@ -42,6 +42,7 @@ class GDStarRating {
     var $override_readonly_multis = false;
 
     var $tables_list;
+    var $plugin_base;
     var $plugin_url;
     var $plugin_ajax;
     var $plugin_path;
@@ -60,10 +61,11 @@ class GDStarRating {
     var $p; // post data
     var $i; // import
     var $g; // gfx object
-    var $q; // query class instance
+    var $q; // query object
     var $c; // cached post ids
-    var $f; // front end rendering class
-    var $v; // ajax votes saving class
+    var $f; // front end rendering object
+    var $m; // admin menus object
+    var $v; // ajax votes saving object
     var $qc;
     var $rSnippets;
     var $ginc;
@@ -91,9 +93,10 @@ class GDStarRating {
     /**
     * Constructor method
     */
-    function GDStarRating($base_path) {
+    function GDStarRating($base_path, $base_file) {
         $this->tabpage = "front";
         $this->plugin_path = $base_path."/";
+        $this->plugin_base = $base_file;
 
         $gdd = new GDSRDefaults();
         $this->default_options = $gdd->default_options;
@@ -126,6 +129,8 @@ class GDStarRating {
         if (!GDSR_WP_ADMIN) {
             $this->q = new gdsrQuery();
             $this->f = new gdsrFront($this);
+        } else {
+            $this->m = new gdsrMenus($this);
         }
 
         if (!STARRATING_AJAX) {
@@ -543,9 +548,9 @@ class GDStarRating {
 
         $countdown_value = $gdsr_options["default_timer_countdown_value"];
         $countdown_type = $gdsr_options["default_timer_countdown_type"];
-        if ($post_id == 0)
+        if ($post_id == 0) {
             $default = true;
-        else {
+        } else {
             $post_data = GDSRDatabase::get_post_edit($post_id);
             if (count($post_data) > 0) {
                 $rating = explode(".", strval($post_data->review));
@@ -559,21 +564,19 @@ class GDStarRating {
                 if ($timer_restrictions == "T") {
                     $countdown_type = substr($post_data->expiry_value, 0, 1);
                     $countdown_value = substr($post_data->expiry_value, 1);
-                }
-                else if ($timer_restrictions == "D") {
+                } else if ($timer_restrictions == "D") {
                     $timer_date_value = $post_data->expiry_value;
                 }
-            }
-            else
-                $default = true;
+            } else $default = true;
         }
 
         if ($default) {
-            $rating_decimal = -1;
-            $rating = -1;
+            $rating_decimal = $rating = -1;
             $vote_rules = $gdsr_options["default_voterules_articles"];
             $moderation_rules = $gdsr_options["default_moderation_articles"];
             $timer_restrictions = $gdsr_options["default_timer_type"];
+            $cmm_vote_rules = $gdsr_options["default_voterules_comments"];
+            $cmm_moderation_rules = $gdsr_options["default_moderation_comments"];
         }
 
         include($this->plugin_path.'integrate/edit.php');
@@ -605,43 +608,43 @@ class GDStarRating {
     function admin_menu() {
         $this->check_user_access();
 
-        add_menu_page('GD Star Rating', 'GD Star Rating', $this->security_level_front, __FILE__, array(&$this,"star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
+        add_menu_page('GD Star Rating', 'GD Star Rating', $this->security_level_front, $this->plugin_base, array(&$this->m, "star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
         if ($this->o["integrate_post_edit"] == 1) {
-            add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "post", "side", "high");
-            add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "page", "side", "high");
+            add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this->m, 'editbox_post'), "post", "side", "high");
+            add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this->m, 'editbox_post'), "page", "side", "high");
         }
         if ($this->o["integrate_post_edit_mur"] == 1) {
-            add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
-            add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
+            add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this->m, 'editbox_post_mur'), "post", "advanced", "high");
+            add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this->m, 'editbox_post_mur'), "page", "advanced", "high");
         }
 
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), $this->security_level_front, __FILE__, array(&$this,"star_menu_front"));
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("My Ratings", "gd-star-rating"), __("My Ratings", "gd-star-rating"), $this->security_level_front, "gd-star-rating-my", array(&$this,"star_menu_my"));
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("Builder", "gd-star-rating"), __("Builder", "gd-star-rating"), $this->security_level_builder, "gd-star-rating-builder", array(&$this,"star_menu_builder"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), $this->security_level_front, $this->plugin_base, array(&$this->m, "star_menu_front"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("My Ratings", "gd-star-rating"), __("My Ratings", "gd-star-rating"), $this->security_level_front, "gd-star-rating-my", array(&$this->m, "star_menu_my"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Builder", "gd-star-rating"), __("Builder", "gd-star-rating"), $this->security_level_builder, "gd-star-rating-builder", array(&$this->m, "star_menu_builder"));
 
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), $this->security_level, "gd-star-rating-stats", array(&$this,"star_menu_stats"));
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), $this->security_level, "gd-star-rating-cats", array(&$this,"star_menu_cats"));
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("All Users", "gd-star-rating"), __("All Users", "gd-star-rating"), $this->security_level, "gd-star-rating-users", array(&$this,"star_menu_users"));
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), $this->security_level, "gd-star-rating-settings", array(&$this,"star_menu_settings"));
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("Graphics", "gd-star-rating"), __("Graphics", "gd-star-rating"), $this->security_level, "gd-star-rating-gfx-page", array(&$this,"star_menu_gfx"));
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), $this->security_level, "gd-star-rating-tools", array(&$this,"star_menu_tools"));
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("T2 Templates", "gd-star-rating"), __("T2 Templates", "gd-star-rating"), $this->security_level, "gd-star-rating-t2", array(&$this,"star_menu_t2"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), $this->security_level, "gd-star-rating-stats", array(&$this->m, "star_menu_stats"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), $this->security_level, "gd-star-rating-cats", array(&$this->m, "star_menu_cats"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("All Users", "gd-star-rating"), __("All Users", "gd-star-rating"), $this->security_level, "gd-star-rating-users", array(&$this->m, "star_menu_users"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), $this->security_level, "gd-star-rating-settings", array(&$this->m, "star_menu_settings"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Graphics", "gd-star-rating"), __("Graphics", "gd-star-rating"), $this->security_level, "gd-star-rating-gfx-page", array(&$this->m, "star_menu_gfx"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), $this->security_level, "gd-star-rating-tools", array(&$this->m, "star_menu_tools"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("T2 Templates", "gd-star-rating"), __("T2 Templates", "gd-star-rating"), $this->security_level, "gd-star-rating-t2", array(&$this->m, "star_menu_t2"));
 
         if ($this->o["multis_active"] == 1)
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Multi Sets", "gd-star-rating"), __("Multi Sets", "gd-star-rating"), $this->security_level, "gd-star-rating-multi-sets", array(&$this,"star_multi_sets"));
+            add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Multi Sets", "gd-star-rating"), __("Multi Sets", "gd-star-rating"), $this->security_level, "gd-star-rating-multi-sets", array(&$this->m, "star_multi_sets"));
         if ($this->o["admin_ips"] == 1)
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), $this->security_level, "gd-star-rating-ips", array(&$this,"star_menu_ips"));
+            add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), $this->security_level, "gd-star-rating-ips", array(&$this->m, "star_menu_ips"));
         if ($this->o["admin_import"] == 1)
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), $this->security_level, "gd-star-rating-import", array(&$this,"star_menu_import"));
+            add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Import", "gd-star-rating"), __("Import", "gd-star-rating"), $this->security_level, "gd-star-rating-import", array(&$this->m, "star_menu_import"));
         if ($this->o["admin_export"] == 1)
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), $this->security_level, "gd-star-rating-export", array(&$this,"star_menu_export"));
+            add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Export", "gd-star-rating"), __("Export", "gd-star-rating"), $this->security_level, "gd-star-rating-export", array(&$this->m, "star_menu_export"));
 
         $this->custom_actions('admin_menu');
 
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), $this->security_level_setup, "gd-star-rating-setup", array(&$this,"star_menu_setup"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), $this->security_level_setup, "gd-star-rating-setup", array(&$this->m, "star_menu_setup"));
         if ($this->wp_secure_level)
-            add_submenu_page(__FILE__, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), $this->security_level, "gd-star-rating-security", array(&$this,"star_menu_security"));
-        add_submenu_page(__FILE__, 'GD Star Rating: '.__("Wizard", "gd-star-rating"), __("Wizard", "gd-star-rating"), $this->security_level, "gd-star-rating-wizard", array(&$this,"star_menu_wizard"));
+            add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), $this->security_level, "gd-star-rating-security", array(&$this->m, "star_menu_security"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Wizard", "gd-star-rating"), __("Wizard", "gd-star-rating"), $this->security_level, "gd-star-rating-wizard", array(&$this->m, "star_menu_wizard"));
     }
 
     /**
@@ -667,7 +670,7 @@ class GDStarRating {
             } else {
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.17.css" type="text/css" media="screen" />');
             }
-            if ($this->admin_plugin_page == "multi-sets") {
+            if ($this->admin_plugin_page == "multi-sets" || $this->admin_plugin_page == "t2") {
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-corrections.js"></script>');
             }
         }
@@ -837,7 +840,7 @@ class GDStarRating {
      */
     function plugin_links($links, $file) {
         static $this_plugin;
-        if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
+        if (!$this_plugin) $this_plugin = plugin_basename($this->plugin_base);
 
         if ($file == $this_plugin){
             $settings_link = '<a href="admin.php?page=gd-star-rating-settings">'.__("Settings", "gd-star-rating").'</a>';
@@ -855,7 +858,7 @@ class GDStarRating {
      */
     function plugin_check_version($file, $plugin_data) {
         static $this_plugin;
-        if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
+        if (!$this_plugin) $this_plugin = plugin_basename($this->plugin_base);
 
         if ($file == $this_plugin){
             $current = $this->wp_version < 28 ? get_option('update_plugins') : get_transient('update_plugins');
@@ -1095,7 +1098,7 @@ class GDStarRating {
         $this->ginc = get_option('gd-star-rating-inc');
         $this->bots = get_option('gd-star-rating-bots');
 
-        if (!STARRATING_AJAX) {
+        if (!STARRATING_AJAX && GDSR_WP_ADMIN) {
             if ($this->o["build"] < $this->default_options["build"] || !is_array($this->o)) {
                 if (is_object($this->g)) {
                     $this->g = $this->gfx_scan();
@@ -1836,258 +1839,6 @@ class GDStarRating {
         return new GDSRArticleMultiRating($multis_data, $set_id);
     }
 
-    // menues
-    function star_multi_sets() {
-        $wpv = $this->wp_version;
-        $gdsr_page = isset($_GET["gdsr"]) ? $_GET["gdsr"] : "";
-
-        $editor = true;
-        if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
-            $editor = false;
-            $eset = new GDMultiSingle(false);
-            $eset->multi_id = $_POST["gdsr_ms_id"];
-            $eset->name = stripslashes(htmlentities($_POST["gdsr_ms_name"], ENT_QUOTES, STARRATING_ENCODING));
-            $eset->description = stripslashes(htmlentities($_POST["gdsr_ms_description"], ENT_QUOTES, STARRATING_ENCODING));
-            $eset->stars = $_POST["gdsr_ms_stars"];
-            $eset->auto_insert = $_POST["gdsr_ms_autoinsert"];
-            $eset->auto_categories = $_POST["gdsr_ms_autocategories"];
-            $eset->auto_location = $_POST["gdsr_ms_autolocation"];
-            $elms = $_POST["gdsr_ms_element"];
-            $elwe = $_POST["gdsr_ms_weight"];
-            $i = 0;
-            foreach ($elms as $el) {
-                if (($el != "" && $eset->multi_id == 0) || $eset->multi_id > 0) {
-                    $eset->object[] = stripslashes(htmlentities($el, ENT_QUOTES, STARRATING_ENCODING));
-                    $ew = $elwe[$i];
-                    if (!is_numeric($ew)) $ew = 1;
-                    $eset->weight[] = $ew;
-                    $i++;
-                }
-            }
-            if ($eset->name != "") {
-                if ($eset->multi_id == 0) $set_id = GDSRDBMulti::add_multi_set($eset);
-                else {
-                    $set_id = $eset->multi_id;
-                    GDSRDBMulti::edit_multi_set($eset);
-                }
-            }
-        }
-        $options = $this->o;
-        if (($gdsr_page == "munew" || $gdsr_page == "muedit") && $editor) include($this->plugin_path.'options/multis/editor.php');
-        else {
-            switch ($gdsr_page) {
-                case "mulist":
-                default:
-                    include($this->plugin_path.'options/multis/sets.php');
-                    break;
-                case "murpost":
-                    include($this->plugin_path.'options/multis/results_post.php');
-                    break;
-                case "murset":
-                    include($this->plugin_path.'options/multis/results_set.php');
-                    break;
-            }
-        }
-    }
-
-    function star_multi_results() {
-        $options = $this->o;
-        $wpv = $this->wp_version;
-        include($this->plugin_path.'options/multis/results.php');
-    }
-
-    function star_menu_front() {
-        $options = $this->o;
-        $wpv = $this->wp_version;
-        include($this->plugin_path.'options/front.php');
-    }
-
-    function star_menu_gfx() {
-        if (isset($_POST['gdsr_preview_scan'])) {
-            $this->g = $this->gfx_scan();
-            update_option('gd-star-rating-gfx', $this->g);
-        }
-
-        $gdsr_options = $this->o;
-        $gdsr_bots = $this->bots;
-        $gdsr_root_url = $this->plugin_url;
-        $gdsr_gfx = $this->g;
-        $gdsr_wpr8 = $this->wpr8_available;
-        $extra_folders = $this->extra_folders;
-        $safe_mode = $this->safe_mode;
-        $wpv = $this->wp_version;
-        $ginc_sizes = $this->ginc[0];
-        $ginc_stars = $this->ginc[1];
-        $ginc_sizes_thumb = $this->ginc[2];
-        $ginc_stars_thumb = $this->ginc[3];
-        $wpr8 = $this->wpr8;
-
-        include($this->plugin_path.'options/gfx.php');
-    }
-
-    function star_menu_settings() {
-        if (isset($_POST['gdsr_preview_scan'])) {
-            $this->g = $this->gfx_scan();
-            update_option('gd-star-rating-gfx', $this->g);
-        }
-
-        $recalculate_articles = $recalculate_comment = $recalculate_reviews = $recalculate_cmm_reviews = false;
-
-        $gdsr_options = $this->o;
-        $gdsr_bots = $this->bots;
-        $gdsr_root_url = $this->plugin_url;
-        $gdsr_gfx = $this->g;
-        $gdsr_wpr8 = $this->wpr8_available;
-        $extra_folders = $this->extra_folders;
-        $safe_mode = $this->safe_mode;
-        $wpv = $this->wp_version;
-        $ginc_sizes = $this->ginc[0];
-        $ginc_stars = $this->ginc[1];
-        $wpr8 = $this->wpr8;
-
-        include($this->plugin_path.'options/settings.php');
-
-        if ($recalculate_articles)
-            GDSRDB::recalculate_articles($gdsr_oldstars, $gdsr_newstars);
-
-        if ($recalculate_comment)
-            GDSRDB::recalculate_comments($gdsr_cmm_oldstars, $gdsr_cmm_newstars);
-
-        if ($recalculate_reviews)
-            GDSRDB::recalculate_reviews($gdsr_review_oldstars, $gdsr_review_newstars);
-
-        if ($recalculate_cmm_reviews)
-            GDSRDB::recalculate_comments_reviews($gdsr_cmm_review_oldstars, $gdsr_cmm_review_newstars);
-    }
-
-    function star_menu_t2() {
-        $options = $this->o;
-        $wpv = $this->wp_version;
-
-        include($this->plugin_path.'code/t2/templates.php');
-
-        if (isset($_GET["tplid"])) {
-            $id = $_GET["tplid"];
-            $mode = $_GET["mode"];
-            include($this->plugin_path.'gdt2/form_editor.php');
-        } else if (isset($_POST["gdsr_create"])) {
-            $id = 0;
-            $mode = "new";
-            include($this->plugin_path.'gdt2/form_editor.php');
-        } else {
-            if (isset($_POST["gdsr_setdefaults"])) {
-                gdTemplateDB::set_templates_defaults($_POST["gdsr_section"]);
-            }
-            if (isset($_POST["gdsr_setdepends"])) {
-                gdTemplateDB::set_templates_dependes($_POST["gdsr_tpl_dep"]);
-            }
-
-            include($this->plugin_path.'options/templates.php');
-        }
-    }
-
-    function star_menu_setup() {
-        $wpv = $this->wp_version;
-        include($this->plugin_path.'options/setup.php');
-    }
-
-    function star_menu_ips() {
-        $options = $this->o;
-        $wpv = $this->wp_version;
-
-        include($this->plugin_path.'options/ips.php');
-    }
-
-    function star_menu_tools() {
-        $msg = "";
-
-        $gdsr_options = $this->o;
-        $gdsr_gfx = $this->g;
-        $wpv = $this->wp_version;
-
-        include($this->plugin_path.'options/tools.php');
-    }
-
-    function star_menu_import() {
-        $options = $this->o;
-        $imports = $this->i;
-        $wpv = $this->wp_version;
-        include($this->plugin_path.'options/import.php');
-    }
-
-    function star_menu_export() {
-        $options = $this->o;
-        $wpv = $this->wp_version;
-        include($this->plugin_path.'options/export.php');
-    }
-
-    function star_menu_stats() {
-        $options = $this->o;
-        $wpv = $this->wp_version;
-        $gdsr_page = isset($_GET["gdsr"]) ? $_GET["gdsr"] : "";
-        $use_nonce = $this->use_nonce;
-
-        switch ($gdsr_page) {
-            case "articles":
-            default:
-                include($this->plugin_path.'options/articles.php');
-                break;
-            case "moderation":
-                include($this->plugin_path.'options/moderation.php');
-                break;
-            case "comments":
-                include($this->plugin_path.'options/comments.php');
-                break;
-            case "voters":
-                include($this->plugin_path.'options/voters.php');
-                break;
-        }
-    }
-
-    function star_menu_users(){
-        $options = $this->o;
-        $wpv = $this->wp_version;
-        if (isset($_GET["gdsr"]) && $_GET["gdsr"] == "userslog")
-            include($this->plugin_path.'options/users_log.php');
-        else
-            include($this->plugin_path.'options/users.php');
-    }
-
-    function star_menu_cats(){
-        $options = $this->o;
-        $wpv = $this->wp_version;
-        include($this->plugin_path.'options/categories.php');
-    }
-
-    function star_menu_security() {
-        $options = $this->o;
-        $wpv = $this->wp_version;
-        include($this->plugin_path.'options/security.php');
-    }
-
-    function star_menu_wizard() {
-        $options = $this->o;
-        $wpv = $this->wp_version;
-        include($this->plugin_path.'options/wizard.php');
-    }
-
-    function star_menu_my() {
-        $options = $this->o;
-        $wpv = $this->wp_version;
-        include($this->plugin_path.'options/my.php');
-    }
-
-    function star_menu_builder(){
-        $options = $this->o;
-        $wpv = $this->wp_version;
-        $gdsr_styles = $this->g->stars;
-        $gdsr_trends = $this->g->trend;
-        $gdsr_thumbs = $this->g->thumbs;
-        $gdst_multis = GDSRDBMulti::get_multis_tinymce();
-        include($this->plugin_path.'options/builder.php');
-    }
-    // menues
-
     // display
     function display_comment($content) {
         global $post, $comment, $userdata;
@@ -2128,13 +1879,15 @@ class GDStarRating {
         if (is_admin()) return $content;
 
         global $post, $userdata;
+        $post_id = is_object($post) ? $post->ID : 0;
+        if ($post_id == 0) return $content;
+
         $user_id = is_object($userdata) ? $userdata->ID : 0;
-        $rich_snippet = true ? $this->f->render_google_rich_snippet($post) : "";
 
         if (!is_feed()) {
             if (is_single() || is_page()) {
-                GDSRDatabase::add_new_view($post->ID);
-                $this->widget_post_id = $post->ID;
+                GDSRDatabase::add_new_view($post_id);
+                $this->widget_post_id = $post_id;
             }
 
             // standard rating
@@ -2177,6 +1930,8 @@ class GDStarRating {
                 $content = $content.$this->display_multi_rating("bottom", $post, $userdata);
             }
         }
+
+        $rich_snippet = true ? $this->f->render_google_rich_snippet($post) : "";
 
         return $rich_snippet.$content;
     }
