@@ -411,8 +411,10 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
     // categories
 
     // save & update
-    function delete_votes($ids, $delete, $ids_array) {
+    function delete_votes($ids, $delete, $ids_array, $thumbs = false) {
         global $wpdb, $table_prefix;
+        $cde_articles = $thumbs ? "artthumb" : "article";
+        $cde_comments = $thumbs ? "cmmthumb" : "comment";
         $dbt_data_article = $table_prefix.'gdsr_data_article';
         $dbt_data_comment = $table_prefix.'gdsr_data_comment';
         $dbt_votes_log = $table_prefix.'gdsr_votes_log';
@@ -421,17 +423,14 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
         $delstring = $dellog = "";
         switch (substr($delete, 1, 1)) {
             case "A":
-                $delstring = "user_votes = 0, user_voters = 0, visitor_votes = 0, visitor_voters = 0";
-                $delstring.= ", user_recc_plus = 0, user_recc_minus = 0, visitor_recc_plus = 0, visitor_recc_minus = 0";
+                $delstring = $thumbs ? "user_recc_plus = 0, user_recc_minus = 0, visitor_recc_plus = 0, visitor_recc_minus = 0" : "user_votes = 0, user_voters = 0, visitor_votes = 0, visitor_voters = 0";
                 break;
             case "V":
-                $delstring = "visitor_votes = 0, visitor_voters = 0";
-                $delstring.= ", visitor_recc_plus = 0, visitor_recc_minus = 0";
+                $delstring = $thumbs ? "visitor_recc_plus = 0, visitor_recc_minus = 0" : "visitor_votes = 0, visitor_voters = 0";
                 $dellog = " and user_id = 0";
                 break;
             case "U":
-                $delstring = "user_votes = 0, user_voters = 0";
-                $delstring.= ", user_recc_plus = 0, user_recc_minus = 0";
+                $delstring = $thumbs ? "user_recc_plus = 0, user_recc_minus = 0" : "user_votes = 0, user_voters = 0";
                 $dellog = " and user_id > 0";
                 break;
             default:
@@ -441,10 +440,10 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
 
         if (substr($delete, 0, 1) == "A") {
             $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_article, $delstring, $ids));
-            $wpdb->query(sprintf("delete from %s where vote_type in ('article', 'artthumb') and id in %s%s", $dbt_votes_log, $ids, $dellog));
+            $wpdb->query(sprintf("delete from %s where vote_type = '%s' and id in %s%s", $dbt_votes_log, $cde_articles, $ids, $dellog));
         } else if (substr($delete, 0, 1) == "K") {
             $wpdb->query(sprintf("update %s set %s where comment_id in %s", $dbt_data_comment, $delstring, $ids));
-            $wpdb->query(sprintf("delete from %s where vote_type in ('comment', 'cmmthumb') and id in %s%s", $dbt_votes_log, $ids, $dellog));
+            $wpdb->query(sprintf("delete from %s where vote_type = '%s' and id in %s%s", $dbt_votes_log, $cde_comments, $ids, $dellog));
         } else if (substr($delete, 0, 1) == "C") {
             $cids = GDSRDatabase::get_commentids_posts($ids);
             $cm = array();
@@ -452,7 +451,7 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
                 $cm[] = $cid->comment_id;
             $cms = "(".join(", ", $cm).")";
             $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_comment, $delstring, $ids));
-            $wpdb->query(sprintf("delete from %s where vote_type in ('comment', 'cmmthumb') and id in %s%s", $dbt_votes_log, $cms, $dellog));
+            $wpdb->query(sprintf("delete from %s where vote_type = '%s' and id in %s%s", $dbt_votes_log, $cde_comments, $cms, $dellog));
         } else return;
     }
 
@@ -550,16 +549,39 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
         }
     }
 
-    function update_settings($ids, $upd_am, $upd_ar, $upd_cm, $upd_cr, $ids_array) {
+    function update_settings($ids, $upd_am, $upd_ar, $upd_cm, $upd_cr, $upd_am_rcc, $upd_ar_rcc, $upd_cm_rcc, $upd_cr_rcc, $ids_array) {
         global $wpdb, $table_prefix;
         GDSRDatabase::add_defaults($ids, $ids_array);
         $dbt_data_article = $table_prefix.'gdsr_data_article';
 
         $update = array();
+
         if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
         if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
         if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
         if ($upd_cr != '') $update[] = "rules_comments = '".$upd_cr."'";
+
+        if ($upd_am_rcc != '') $update[] = "recc_moderate_articles = '".$upd_am_rcc."'";
+        if ($upd_cm_rcc != '') $update[] = "recc_moderate_comments = '".$upd_cm_rcc."'";
+        if ($upd_ar_rcc != '') $update[] = "recc_rules_articles = '".$upd_ar_rcc."'";
+        if ($upd_cr_rcc != '') $update[] = "recc_rules_comments = '".$upd_cr_rcc."'";
+
+        if (count($update) > 0) {
+            $updstring = join(", ", $update);
+            $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_article, $updstring, $ids));
+        }
+    }
+
+    function upgrade_integration($ids, $cmm_std, $cmm_mur, $cmm_set) {
+        global $wpdb, $table_prefix;
+        $dbt_data_article = $table_prefix.'gdsr_data_article';
+
+        $update = array();
+
+        if ($cmm_std != '') $update[] = "cmm_integration_std = '".$cmm_std."'";
+        if ($cmm_mur != '') $update[] = "cmm_integration_mur = '".$cmm_mur."'";
+        if ($cmm_set != '') $update[] = "cmm_integration_set = ".$cmm_set;
+
         if (count($update) > 0) {
             $updstring = join(", ", $update);
             $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_article, $updstring, $ids));
@@ -572,6 +594,12 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
             $table_prefix, $timer_type, $timer_value, $ids));
     }
     
+    function update_restrictions_thumbs($ids, $timer_type, $timer_value) {
+        global $wpdb, $table_prefix;
+        $wpdb->query(sprintf("update %sgdsr_data_article set recc_expiry_type = '%s', recc_expiry_value = '%s' where post_id in %s",
+            $table_prefix, $timer_type, $timer_value, $ids));
+    }
+
     function lock_post($post_id, $rules_articles = "N") {
         global $wpdb, $table_prefix;
         
@@ -931,14 +959,14 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
 
     function get_post_data($post_id) {
         global $wpdb, $table_prefix;
-        $sql = "select * from ".$table_prefix."gdsr_data_article WHERE post_id = ".$post_id;
+        $sql = "SELECT * FROM ".$table_prefix."gdsr_data_article WHERE post_id = ".$post_id;
         $results = $wpdb->get_row($sql, OBJECT);
         return $results;
     }
 
     function get_comment_data($comment_id) {
         global $wpdb, $table_prefix;
-        $sql = "select * from ".$table_prefix."gdsr_data_comment WHERE comment_id = ".$comment_id;
+        $sql = "SELECT * FROM ".$table_prefix."gdsr_data_comment WHERE comment_id = ".$comment_id;
         $results = $wpdb->get_row($sql, OBJECT);
         return $results;
     }

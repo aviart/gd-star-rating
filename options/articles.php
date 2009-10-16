@@ -36,20 +36,40 @@ if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-st
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
         $ids = "(".join(", ", $gdsr_items).")";
-        if ($_POST["gdsr_delete_articles"] != '') 
+        if ($_POST["gdsr_delete_articles"] != "")
             GDSRDatabase::delete_votes($ids, $_POST["gdsr_delete_articles"], $gdsr_items);
-        if ($_POST["gdsr_delete_comments"] != '') 
+        if ($_POST["gdsr_delete_articles_recc"] != "")
+            GDSRDatabase::delete_votes($ids, $_POST["gdsr_delete_articles_recc"], $gdsr_items, true);
+        if ($_POST["gdsr_delete_comments"] != "")
             GDSRDatabase::delete_votes($ids, $_POST["gdsr_delete_comments"], $gdsr_items);
+        if ($_POST["gdsr_delete_comments_recc"] != "")
+            GDSRDatabase::delete_votes($ids, $_POST["gdsr_delete_comments_recc"], $gdsr_items, true);
+
         if ($_POST["gdsr_review_rating"] != "") {
             $review = $_POST["gdsr_review_rating"];
             if ($_POST["gdsr_review_rating_decimal"] != "" && $_POST["gdsr_review_rating"] < $options["review_stars"])
                 $review.= ".".$_POST["gdsr_review_rating_decimal"];
             GDSRDatabase::update_reviews($ids, $review, $gdsr_items);
         }
-        GDSRDatabase::update_settings($ids, $_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"], $gdsr_items);
+
         if ($_POST["gdsr_timer_type"] != "") {
-            GDSRDatabase::update_restrictions($ids, $_POST["gdsr_timer_type"], GDSRHelper::timer_value($_POST["gdsr_timer_type"], $_POST['gdsr_timer_date_value'], $_POST['gdsr_timer_countdown_value'], $_POST['gdsr_timer_countdown_type']));
+            GDSRDatabase::update_restrictions($ids, $_POST["gdsr_timer_type"], GDSRHelper::timer_value($_POST["gdsr_timer_type"], $_POST["gdsr_timer_date_value"], $_POST["gdsr_timer_countdown_value"], $_POST["gdsr_timer_countdown_type"]));
         }
+
+        if ($_POST["gdsr_timer_type_recc"] != "") {
+            GDSRDatabase::update_restrictions($ids, $_POST["gdsr_timer_type_recc"], GDSRHelper::timer_value($_POST["gdsr_timer_type_recc"], $_POST["gdsr_timer_date_value_recc"], $_POST["gdsr_timer_countdown_value_recc"], $_POST["gdsr_timer_countdown_type_recc"]));
+        }
+
+        GDSRDatabase::update_settings($ids,
+            $_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"],
+            $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"],
+            $_POST["gdsr_article_moderation_recc"], $_POST["gdsr_article_voterules_recc"],
+            $_POST["gdsr_comments_moderation_recc"], $_POST["gdsr_comments_voterules_recc"],
+            $gdsr_items);
+
+        GDSRDatabase::upgrade_integration($ids,
+            $_POST["gdsr_integration_active_std"], $_POST["gdsr_integration_active_mur"],
+            $_POST["gdsr_integration_mur"]);
     }
 }
 

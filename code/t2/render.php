@@ -547,7 +547,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $empty_value = str_repeat("0X", count($set->object));
         $empty_value = substr($empty_value, 0, strlen($empty_value) - 1);
         if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
-        if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$empty_value.'" />';
+        if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->multi_id.']" value="'.$empty_value.'" />';
 
         $i = 0;
         $weighted = 0;

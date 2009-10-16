@@ -9,12 +9,13 @@ class gdsrFrontHelp {
     * @return bool true if cookie exists for $id and $type, false if is not
     */
     function check_cookie($id, $type = "article") {
+        global $gdsr;
         if (
-            ($type == "article" && $this->o["cookies"]) ||
-            ($type == "artthumb" && $this->o["cookies"] == 1) ||
-            ($type == "multis" && $this->o["cookies"] == 1) ||
-            ($type == "comment" && $this->o["cmm_cookies"]) ||
-            ($type == "cmmthumb" && $this->o["cmm_cookies"] == 1)
+            ($type == "article" && $gdsr->o["cookies"]) ||
+            ($type == "artthumb" && $gdsr->o["cookies"] == 1) ||
+            ($type == "multis" && $gdsr->o["cookies"] == 1) ||
+            ($type == "comment" && $gdsr->o["cmm_cookies"]) ||
+            ($type == "cmmthumb" && $gdsr->o["cmm_cookies"] == 1)
             ) {
             if (isset($_COOKIE["wp_gdsr_".$type])) {
                 $cookie = $_COOKIE["wp_gdsr_".$type];
@@ -34,11 +35,11 @@ class gdsrFrontHelp {
     */
     function save_cookie($id, $type = "article") {
         if (
-            ($type == "article" && $this->o["cookies"] == 1) ||
-            ($type == "artthumb" && $this->o["cookies"] == 1) ||
-            ($type == "multis" && $this->o["cookies"] == 1) ||
-            ($type == "comment" && $this->o["cmm_cookies"] == 1) ||
-            ($type == "cmmthumb" && $this->o["cmm_cookies"] == 1)
+            ($type == "article" && $gdsr->o["cookies"] == 1) ||
+            ($type == "artthumb" && $gdsr->o["cookies"] == 1) ||
+            ($type == "multis" && $gdsr->o["cookies"] == 1) ||
+            ($type == "comment" && $gdsr->o["cmm_cookies"] == 1) ||
+            ($type == "cmmthumb" && $gdsr->o["cmm_cookies"] == 1)
             ) {
             if (isset($_COOKIE["wp_gdsr_".$type])) {
                 $cookie = $_COOKIE["wp_gdsr_".$type];

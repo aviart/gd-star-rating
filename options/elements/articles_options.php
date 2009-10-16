@@ -107,7 +107,8 @@
                                 </td>
                                 <td style="width: 140px; height: 29px;" align="right">
                                 <?php GDSRHelper::render_moderation_combo("gdsr_article_moderation_recc", "/", 120, "", true); ?>
-                                </td><td style="width: 10px"></td>
+                                </td>
+                                <td style="width: 10px"></td>
                             <?php } ?>
                             <td style="width: 80px; height: 29px;">
                                 <span class="paneltext"><?php _e("Vote Rules", "gd-star-rating"); ?>:</span>
@@ -124,7 +125,8 @@
                             </td>
                             <td style="width: 140px; height: 29px;" align="right">
                             <?php GDSRHelper::render_timer_combo("gdsr_timer_type_recc", 'N', 120, '', true, 'gdsrTimerChange(\'_recc\')'); ?>
-                            </td><td style="width: 10px"></td>
+                            </td>
+                            <td style="width: 10px"></td>
                             <td style="width: 80px; height: 29px;">
                                 <div id="gdsr_timer_countdown_text_recc" style="display: none"><span class="paneltext"><?php _e("Countdown", "gd-star-rating"); ?>:</span></div>
                                 <div id="gdsr_timer_date_text_recc" style="display: none"><span class="paneltext"><?php _e("Date", "gd-star-rating"); ?>:</span></div>
@@ -153,7 +155,7 @@
                                 <span class="paneltext"><?php _e("Delete", "gd-star-rating"); ?>:</span>
                             </td>
                             <td style="width: 140px; height: 29px;" align="right">
-                                <select id="gdsr_delete_articles" name="gdsr_delete_comments" style="margin-top: -4px; width: 120px;">
+                                <select id="gdsr_delete_comments" name="gdsr_delete_comments" style="margin-top: -4px; width: 120px;">
                                     <option value="">/</option>
                                     <option value="CV"><?php _e("Visitors", "gd-star-rating"); ?></option>
                                     <option value="CU"><?php _e("Users", "gd-star-rating"); ?></option>
@@ -196,7 +198,7 @@
                                 <span class="paneltext"><?php _e("Delete", "gd-star-rating"); ?>:</span>
                             </td>
                             <td style="width: 140px; height: 29px;" align="right">
-                                <select id="gdsr_delete_articles" name="gdsr_delete_comments_recc" style="margin-top: -4px; width: 120px;">
+                                <select id="gdsr_delete_comments_recc" name="gdsr_delete_comments_recc" style="margin-top: -4px; width: 120px;">
                                     <option value="">/</option>
                                     <option value="CV"><?php _e("Visitors", "gd-star-rating"); ?></option>
                                     <option value="CU"><?php _e("Users", "gd-star-rating"); ?></option>
@@ -246,7 +248,8 @@
                                     <option value="N"><?php _e("Force hidden", "gd-star-rating"); ?></option>
                                     <option value="I"><?php _e("Inherit from Category", "gd-star-rating"); ?></option>
                                 </select>
-                            </td><td style="width: 10px"></td>
+                            </td>
+                            <td style="width: 10px"></td>
                             <td style="width: 80px; height: 29px;">
                                 <span class="paneltext"><?php _e("Standard", "gd-star-rating"); ?>:</span>
                             </td>
