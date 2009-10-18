@@ -45,7 +45,7 @@ if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-st
             $xips = array();
             $del = $_POST["gdsr_delete_articles"];
             foreach ($ips as $ip) $xips[] = "'".$ip."'";
-            $log = GDSRDatabase::get_user_log($user_id, $vote_type, $filter_vote, 0, 0, join(",", $xips));
+            $log = gdsrAdmDB::get_user_log($user_id, $vote_type, $filter_vote, 0, 0, join(",", $xips));
             foreach ($log as $l) {
                 if ($del == "OI" && $l->id != $l->control_id)
                     GDSRDatabase::delete_voters_log("(".$l->record_id.")");
@@ -64,7 +64,7 @@ if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-st
 if ($filter_vote > 0) $url.= "&amp;vote=".$filter_vote;
 $url.= "&amp;ui=".$user_id."&amp;vt=".$vote_type."&amp;un=".$user_name;
 
-$number_posts = GDSRDatabase::get_count_user_log($user_id, $vote_type, $filter_vote);
+$number_posts = gdsrAdmDB::get_count_user_log($user_id, $vote_type, $filter_vote);
 
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
@@ -121,7 +121,7 @@ else
 
 <?php
 
-    $log = GDSRDatabase::get_user_log($user_id, $vote_type, $filter_vote, ($page_id - 1) * $posts_per_page, $posts_per_page);
+    $log = gdsrAdmDB::get_user_log($user_id, $vote_type, $filter_vote, ($page_id - 1) * $posts_per_page, $posts_per_page);
     $ips = array();
     $idx = array();
     foreach ($log as $l) {

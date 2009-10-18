@@ -558,6 +558,18 @@ class GDStarRating {
                 $rating = explode(".", strval($post_data->review));
                 $rating_decimal = intval($rating[1]);
                 $rating = intval($rating[0]);
+                $recc_vote_rules = $post_data->recc_rules_articles;
+                $recc_moderation_rules = $post_data->recc_moderate_articles;
+                $recc_cmm_vote_rules = $post_data->recc_rules_comments;
+                $recc_cmm_moderation_rules = $post_data->recc_moderate_comments;
+                $recc_timer_restrictions = $post_data->recc_expiry_type;
+                if ($recc_timer_restrictions == "T") {
+                    $recc_countdown_type = substr($post_data->recc_expiry_value, 0, 1);
+                    $recc_countdown_value = substr($post_data->recc_expiry_value, 1);
+                } else if ($recc_timer_restrictions == "D") {
+                    $recc_timer_date_value = $post_data->recc_expiry_value;
+                }
+
                 $vote_rules = $post_data->rules_articles;
                 $moderation_rules = $post_data->moderate_articles;
                 $cmm_vote_rules = $post_data->rules_comments;
@@ -574,11 +586,18 @@ class GDStarRating {
 
         if ($default) {
             $rating_decimal = $rating = -1;
+
+            $recc_vote_rules = $gdsr_options["default_voterules_articles"];
+            $recc_moderation_rules = $gdsr_options["default_moderation_articles"];
+            $recc_cmm_vote_rules = $gdsr_options["default_voterules_comments"];
+            $recc_cmm_moderation_rules = $gdsr_options["default_moderation_comments"];
+            $recc_timer_restrictions = $gdsr_options["default_timer_type"];
+
             $vote_rules = $gdsr_options["default_voterules_articles"];
             $moderation_rules = $gdsr_options["default_moderation_articles"];
-            $timer_restrictions = $gdsr_options["default_timer_type"];
             $cmm_vote_rules = $gdsr_options["default_voterules_comments"];
             $cmm_moderation_rules = $gdsr_options["default_moderation_comments"];
+            $timer_restrictions = $gdsr_options["default_timer_type"];
         }
 
         include($this->plugin_path.'integrate/edit.php');
@@ -995,10 +1014,10 @@ class GDStarRating {
             if ($this->o["cmm_integration_prevent_duplicates"] == 1) {
                 $allow_vote = intval($votes) <= $this->o["stars"];
                 if ($allow_vote) $allow_vote = gdsrFrontHelp::check_cookie($id);
-                if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, false, false);
+                if ($allow_vote) $allow_vote = gdsrBlgDB::check_vote($id, $user, 'article', $ip, false, false);
             }
             if ($allow_vote) {
-                GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes, $comment_id);
+                gdsrBlgDB::save_vote($id, $user, $ip, $ua, $votes, $comment_id);
                 if ($this->o["cmm_integration_prevent_duplicates"] == 1) gdsrFrontHelp::save_cookie($id);
                 do_action("gdsr_vote_rating_article_integrate", $id, $user, $votes);
             }
@@ -1074,17 +1093,26 @@ class GDStarRating {
             GDSRDatabase::save_review($post_id, $review, $old);
             $old = true;
 
-            GDSRDatabase::save_article_rules($post_id, $_POST['gdsr_vote_articles'], $_POST['gdsr_mod_articles']);
-            if ($this->o["comments_active"] == 1)
-                GDSRDatabase::save_comment_rules($post_id, $_POST['gdsr_cmm_vote_articles'], $_POST['gdsr_cmm_mod_articles']);
+            GDSRDatabase::save_article_rules($post_id, 
+                $_POST['gdsr_vote_articles'], $_POST['gdsr_mod_articles'],
+                $_POST['gdsr_recc_vote_articles'], $_POST['gdsr_recc_mod_articles']);
+            if ($this->o["comments_active"] == 1) {
+                GDSRDatabase::save_comment_rules($post_id, 
+                    $_POST['gdsr_cmm_vote_articles'], $_POST['gdsr_cmm_mod_articles'],
+                    $_POST['gdsr_recc_cmm_vote_articles'], $_POST['gdsr_recc_cmm_mod_articles']);
+            }
+
             $timer = $_POST['gdsr_timer_type'];
             GDSRDatabase::save_timer_rules(
                 $post_id,
                 $timer,
-                GDSRHelper::timer_value($timer,
-                    $_POST['gdsr_timer_date_value'],
-                    $_POST['gdsr_timer_countdown_value'],
-                    $_POST['gdsr_timer_countdown_type'])
+                GDSRHelper::timer_value($timer, $_POST['gdsr_timer_date_value'], $_POST['gdsr_timer_countdown_value'], $_POST['gdsr_timer_countdown_type'])
+            );
+            $timer = $_POST['gdsr_timer_type_recc'];
+            GDSRDatabase::save_timer_rules_thumbs(
+                $post_id,
+                $timer,
+                GDSRHelper::timer_value($timer, $_POST['gdsr_recc_timer_date_value'], $_POST['gdsr_recc_timer_countdown_value'], $_POST['gdsr_recc_timer_countdown_type'])
             );
         }
     }

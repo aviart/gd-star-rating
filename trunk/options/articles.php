@@ -57,7 +57,7 @@ if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-st
         }
 
         if ($_POST["gdsr_timer_type_recc"] != "") {
-            GDSRDatabase::update_restrictions($ids, $_POST["gdsr_timer_type_recc"], GDSRHelper::timer_value($_POST["gdsr_timer_type_recc"], $_POST["gdsr_timer_date_value_recc"], $_POST["gdsr_timer_countdown_value_recc"], $_POST["gdsr_timer_countdown_type_recc"]));
+            GDSRDatabase::update_restrictions_thumbs($ids, $_POST["gdsr_timer_type_recc"], GDSRHelper::timer_value($_POST["gdsr_timer_type_recc"], $_POST["gdsr_timer_date_value_recc"], $_POST["gdsr_timer_countdown_value_recc"], $_POST["gdsr_timer_countdown_type_recc"]));
         }
 
         GDSRDatabase::update_settings($ids,
@@ -161,24 +161,28 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
     $tr_class = "";
     $multi_sets = GDSRDBMulti::get_multis_tinymce();
     $multis = array();
-    foreach ($multi_sets as $ms) {
-        $multis[$ms->folder] = $ms->name;
-    }
+    foreach ($multi_sets as $ms) $multis[$ms->folder] = $ms->name;
+
     foreach ($rows as $row) {
         $row = gdsrAdmDB::convert_row($row, $multis);
         $moderate_articles = $moderate_comments = "";
         if ($options["moderation_active"] == 1) {
-            $moderate_articles = GDSRDatabase::get_moderation_count($row->pid);
-            $moderate_comments = GDSRDatabase::get_moderation_count_joined($row->pid);
+            $moderate_articles = gdsrAdmDB::get_moderation_count($row->pid);
+            $moderate_comments = gdsrAdmDB::get_moderation_count_joined($row->pid);
+            $recc_moderate_articles = gdsrAdmDB::get_moderation_count($row->pid, "artthumb");
+            $recc_moderate_comments = gdsrAdmDB::get_moderation_count_joined($row->pid, "artthumb");
 
             if ($moderate_articles == 0) $moderate_articles = "[ 0 ] ";
             else $moderate_articles = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=moderation&amp;pid=%s&amp;vt=article"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_articles);
-
             if ($moderate_comments == 0) $moderate_comments = "[ 0 ] ";
             else $moderate_comments = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=moderation&amp;pid=%s&amp;vt=post"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $moderate_comments);
+            if ($recc_moderate_articles == 0) $recc_moderate_articles = "[ 0 ] ";
+            else $recc_moderate_articles = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=moderation&amp;pid=%s&amp;vt=article"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $recc_moderate_articles);
+            if ($recc_moderate_comments == 0) $recc_moderate_comments = "[ 0 ] ";
+            else $recc_moderate_comments = sprintf('[<a href="./admin.php?page=gd-star-rating-stats&amp;gdsr=moderation&amp;pid=%s&amp;vt=post"> <strong style="color: red;">%s</strong> </a>] ', $row->pid, $recc_moderate_comments);
         }
 
-        $timer_info = "";
+        $timer_info = $recc_timer_info = "";
         if ($options["timer_active"] == 1) {
             if ($row->expiry_type == "D") {
                 $timer_info = '<strong><span style="color: red">'.__("date limit", "gd-star-rating").'</span></strong><br />';
@@ -198,6 +202,27 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
                         break;
                 }
             } else $timer_info = __("no limit", "gd-star-rating").'<br /><br />';
+        }
+
+        if ($options["timer_active"] == 1) {
+            if ($row->recc_expiry_type == "D") {
+                $recc_timer_info = '<strong><span style="color: red">'.__("date limit", "gd-star-rating").'</span></strong><br />';
+                $recc_timer_info.= $row->recc_expiry_value;
+            } else if ($row->recc_expiry_type == "T") {
+                $recc_timer_info = '<strong><span style="color: red">'.__("countdown", "gd-star-rating").'</span></strong><br />';
+                $recc_timer_info.= substr($row->recc_expiry_value, 1)." ";
+                switch (substr($row->recc_expiry_value, 0, 1)) {
+                    case "H":
+                        $recc_timer_info.= __("Hours", "gd-star-rating");
+                        break;
+                    case "D":
+                        $recc_timer_info.= __("Days", "gd-star-rating");
+                        break;
+                    case "M":
+                        $recc_timer_info.= __("Months", "gd-star-rating");
+                        break;
+                }
+            } else $recc_timer_info = __("no limit", "gd-star-rating").'<br /><br />';
         }
 
         if ($row->rating_total > $options["stars"] ||
@@ -222,23 +247,23 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
             echo '<div class="gdsr-art-stars">';
             echo $row->rules_articles.'<br />'.$row->rules_comments;
             echo '</div>';
-        echo '<div class="gdsr-art-split"></div>';
+            echo '<div class="gdsr-art-split"></div>';
             echo '<div class="gdsr-art-thumbs">';
-            echo $row->rules_articles.'<br />'.$row->rules_comments;
+            echo $row->recc_rules_articles.'<br />'.$row->recc_rules_comments;
             echo '</div>';
         echo '</td>';
         if ($options["timer_active"] == 1) {
             echo '<td nowrap="nowrap" class="gdsr-td-condensed">';
             echo $timer_info;
             echo '<div class="gdsr-art-split"></div>';
-            echo $timer_info;
+            echo $recc_timer_info;
             echo '</td>';
         }
         if ($options["moderation_active"] == 1) {
             echo '<td nowrap="nowrap" class="gdsr-td-condensed">';
             echo $moderate_articles.$row->moderate_articles.'<br />'.$moderate_comments.$row->moderate_comments;
             echo '<div class="gdsr-art-split"></div>';
-            echo $moderate_articles.$row->moderate_articles.'<br />'.$moderate_comments.$row->moderate_comments;
+            echo $recc_moderate_articles.$row->recc_moderate_articles.'<br />'.$recc_moderate_comments.$row->recc_moderate_comments;
             echo '</td>';
         }
         echo '<td nowrap="nowrap" class="gdsr-td-condensed">';

@@ -729,3 +729,15 @@ td.gdrinner {
 .opt-td-divider {
     height: 3px;
 }
+
+.tbs-star {
+    background: transparent url(../../gfx/mini_star_20.png) no-repeat left;
+    padding-left: 24px !important;
+    margin-left:3px;
+}
+
+.tbs-thumb {
+    background: transparent url(../../gfx/mini_thumb_20.png) no-repeat left;
+    padding-left: 24px !important;
+    margin-left:3px;
+}
