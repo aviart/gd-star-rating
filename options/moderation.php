@@ -1,5 +1,7 @@
 <?php
 
+require_once($gdsr_dirname_basic."/code/blg/db.php");
+
 global $wpdb, $gdsr;
 
 $url = $_SERVER['REQUEST_URI'];
@@ -63,9 +65,9 @@ if (isset($id)) {
     $posts_per_page = $options["admin_rows"];
 
     if ($vt == "post")
-        $number_posts = GDSRDatabase::get_moderation_count_joined($id, $filter_user);
+        $number_posts = gdsrAdmDB::get_moderation_count_joined($id, $filter_user);
     else
-        $number_posts = GDSRDatabase::get_moderation_count($id, $vt, $filter_user);
+        $number_posts = gdsrAdmDB::get_moderation_count($id, $vt, $filter_user);
 
     $max_page = floor($number_posts / $posts_per_page);
     if ($max_page * $posts_per_page != $number_posts) $max_page++;
@@ -87,9 +89,9 @@ if (isset($id)) {
 <?php
 
     if ($vt == "post")
-        $sql = GDSRDatabase::get_moderation_joined($id, ($page_id - 1) * $posts_per_page, $posts_per_page, $filter_user);
+        $sql = gdsrAdmDB::get_moderation_joined($id, ($page_id - 1) * $posts_per_page, $posts_per_page, $filter_user);
     else
-        $sql = GDSRDatabase::get_moderation($id, $vt, ($page_id - 1) * $posts_per_page, $posts_per_page, $filter_user);
+        $sql = gdsrAdmDB::get_moderation($id, $vt, ($page_id - 1) * $posts_per_page, $posts_per_page, $filter_user);
     $rows = $wpdb->get_results($sql, OBJECT);
     
 ?>

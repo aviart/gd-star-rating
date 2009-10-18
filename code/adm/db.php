@@ -1,6 +1,137 @@
 <?php
 
 class gdsrAdmDB {
+    //users
+    function get_valid_users() {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("SELECT l.user_id, l.vote_type, count(*) as voters, sum(l.vote) as votes, count(distinct ip) as ips, u.display_name, u.user_email FROM %sgdsr_votes_log l left join %s u on u.id = l.user_id group by user_id, vote_type order by user_id, vote_type",
+                $table_prefix, $wpdb->users);
+        return $wpdb->get_results($sql);
+    }
+
+    function get_valid_users_count() {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("SELECT count(distinct user_id) from %sgdsr_votes_log", $table_prefix);
+        return $wpdb->get_var($sql);
+    }
+
+    function get_user_log($user_id, $vote_type, $vote_value = 0, $start = 0, $limit = 20, $ip = "") {
+        global $wpdb, $table_prefix;
+
+        $join = $select = "";
+
+        $vote_value = $vote_value > 0 ? ' and vote = '.$vote_value : '';
+        $range = $limit > 0 ? sprintf("limit %s, %s", $start, $limit) : "";
+        $ip = $ip != '' ? ' and l.ip in ('.$ip.')' : "";
+
+        if ($vote_type == "article" || $vote_type == "artthumb") {
+            $join = sprintf("%sposts o on o.ID = l.id", $table_prefix);
+            $select = "o.post_title, o.ID as post_id, o.ID as control_id";
+        } else if ($vote_type == "comment" || $vote_type == "cmmthumb") {
+            $join = sprintf("%scomments o on o.comment_ID = l.id left join %sposts p on p.ID = o.comment_post_ID", $table_prefix, $table_prefix);
+            $select = "o.comment_content, o.comment_author as author, o.comment_ID as control_id, p.post_title, p.ID as post_id";
+        }
+        $sql = sprintf("SELECT 1 as span, l.*, i.status, %s from %sgdsr_votes_log l left join %s left join %sgdsr_ips i on i.ip = l.ip where l.user_id = %s and l.vote_type = '%s'%s%s order by l.ip asc, l.voted desc %s",
+                $select, $table_prefix, $join, $table_prefix, $user_id, $vote_type, $vote_value, $ip, $range);
+        return $wpdb->get_results($sql);
+    }
+
+    function get_count_user_log($user_id, $vote_type, $vote_value = 0) {
+        global $wpdb, $table_prefix;
+        if ($vote_value > 0) $vote_value = ' and vote = '.$vote_value;
+        else $vote_value = '';
+        $sql = sprintf("SELECT count(*) from %sgdsr_votes_log where user_id = %s and vote_type = '%s'%s",
+                $table_prefix, $user_id, $vote_type, $vote_value);
+        return $wpdb->get_var($sql);
+    }
+    //users
+
+    // moderation
+    function get_moderation_count($id, $vote_type = 'article', $user = 'all') {
+        global $wpdb, $table_prefix;
+
+        if ($user == "all")
+            $users = '';
+        else if ($user == "users")
+            $users = ' and user_id > 0';
+        else if ($user == "visitors")
+            $users = ' and user_id = 0';
+        else
+            $users = ' and user_id = '.$user;
+
+        $sql = sprintf("select count(*) from %s where id = %s and vote_type = '%s'%s",
+            $table_prefix."gdsr_moderate", $id, $vote_type, $users);
+        return $wpdb->get_var($sql);
+    }
+
+    function get_moderation_count_joined($post_id, $user = 'all') {
+        global $wpdb, $table_prefix;
+
+        if ($user == "all")
+            $users = '';
+        else if ($user == "users")
+            $users = ' and m.user_id > 0';
+        else if ($user == "visitors")
+            $users = ' and m.user_id = 0';
+        else
+            $users = ' and m.user_id = '.$user;
+
+        $sql = sprintf("select count(*) from %s c inner join %s m on m.id = c.comment_ID where c.comment_post_ID = %s and m.vote_type = 'comment'%s",
+            $wpdb->comments, $table_prefix."gdsr_moderate", $post_id, $users);
+        return $wpdb->get_var($sql);
+    }
+
+    function get_moderation($post_id, $vote_type = 'article', $start = 0, $limit = 20, $user = 'all') {
+        global $wpdb, $table_prefix;
+
+        if ($user == "all")
+            $users = '';
+        else if ($user == "users")
+            $users = ' and user_id > 0';
+        else if ($user == "visitors")
+            $users = ' and m.user_id = 0';
+        else
+            $users = ' and m.user_id = '.$user;
+
+        $sql = sprintf("select m.*, u.user_login as username from %s m left join %s u on u.id = m.user_id where m.id = %s and m.vote_type = '%s'%s order by m.voted desc LIMIT %s, %s",
+            $table_prefix."gdsr_moderate",
+            $wpdb->users,
+            $post_id,
+            $vote_type,
+            $users,
+            $start,
+            $limit
+        );
+        return $sql;
+    }
+
+    function get_moderation_joined($post_id, $start = 0, $limit = 20, $user = 'all') {
+        global $wpdb, $table_prefix;
+
+        if ($user == "all")
+            $users = '';
+        else if ($user == "users")
+            $users = ' and m.user_id > 0';
+        else if ($user == "visitors")
+            $users = ' and m.user_id = 0';
+        else
+            $users = ' and m.user_id = '.$user;
+
+        $sql = sprintf("select m.*, u.user_login as username from %s c inner join %s m on m.id = c.comment_ID left join %s u on u.id = m.user_id where c.comment_post_ID = %s and m.vote_type = 'comment'%s order by m.voted desc LIMIT %s, %s",
+            $wpdb->comments,
+            $table_prefix."gdsr_moderate",
+            $wpdb->users,
+            $post_id,
+            $users,
+            $start,
+            $limit
+        );
+        return $sql;
+    }
+    // moderation
+
     // recalculate
     function recalculate_articles($gdsr_oldstars, $gdsr_newstars) {
         global $wpdb, $table_prefix;
@@ -240,6 +371,102 @@ class gdsrAdmDB {
                 $row->rules_articles = __("articles", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
                 break;
         }
+        switch ($row->rules_comments) {
+            case 'I':
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
+                break;
+            case 'H':
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("hidden", "gd-star-rating").'</span></strong>';
+                break;
+            case 'N':
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("locked", "gd-star-rating").'</span></strong>';
+                break;
+            case 'V':
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("visitors", "gd-star-rating").'</strong>';
+                break;
+            case 'U':
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("users", "gd-star-rating").'</strong>';
+                break;
+            default:
+                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
+                break;
+        }
+        switch ($row->recc_moderate_articles) {
+            case 'I':
+                $row->recc_moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
+                break;
+            case 'A':
+                $row->recc_moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("all", "gd-star-rating").'</span></strong>';
+                break;
+            case 'V':
+                $row->recc_moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("visitors", "gd-star-rating").'</span></strong>';
+                break;
+            case 'U':
+                $row->recc_moderate_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
+                break;
+            case 'N':
+            default:
+                $row->recc_moderate_articles = __("articles", "gd-star-rating").': <strong>'.__("free", "gd-star-rating").'</strong>';
+                break;
+        }
+        switch ($row->recc_moderate_comments) {
+            case 'I':
+                $row->recc_moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
+                break;
+            case 'A':
+                $row->recc_moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("all", "gd-star-rating").'</span></strong>';
+                break;
+            case 'V':
+                $row->recc_moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("visitors", "gd-star-rating").'</span></strong>';
+                break;
+            case 'U':
+                $row->recc_moderate_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("users", "gd-star-rating").'</span></strong>';
+                break;
+            case 'N':
+            default:
+                $row->recc_moderate_comments = __("comments", "gd-star-rating").': <strong>'.__("free", "gd-star-rating").'</strong>';
+                break;
+        }
+        switch ($row->recc_rules_articles) {
+            case 'I':
+                $row->recc_rules_articles = __("articles", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
+                break;
+            case 'H':
+                $row->recc_rules_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("hidden", "gd-star-rating").'</span></strong>';
+                break;
+            case 'N':
+                $row->recc_rules_articles = __("articles", "gd-star-rating").': <strong><span style="color: red">'.__("locked", "gd-star-rating").'</span></strong>';
+                break;
+            case 'V':
+                $row->recc_rules_articles = __("articles", "gd-star-rating").': <strong>'.__("visitors", "gd-star-rating").'</strong>';
+                break;
+            case 'U':
+                $row->recc_rules_articles = __("articles", "gd-star-rating").': <strong>'.__("users", "gd-star-rating").'</strong>';
+                break;
+            default:
+                $row->recc_rules_articles = __("articles", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
+                break;
+        }
+        switch ($row->recc_rules_comments) {
+            case 'I':
+                $row->recc_rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
+                break;
+            case 'H':
+                $row->recc_rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("hidden", "gd-star-rating").'</span></strong>';
+                break;
+            case 'N':
+                $row->recc_rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("locked", "gd-star-rating").'</span></strong>';
+                break;
+            case 'V':
+                $row->recc_rules_comments = __("comments", "gd-star-rating").': <strong>'.__("visitors", "gd-star-rating").'</strong>';
+                break;
+            case 'U':
+                $row->recc_rules_comments = __("comments", "gd-star-rating").': <strong>'.__("users", "gd-star-rating").'</strong>';
+                break;
+            default:
+                $row->recc_rules_comments = __("comments", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
+                break;
+        }
         switch ($row->cmm_integration_std) {
             default:
             case 'I':
@@ -262,26 +489,6 @@ class gdsrAdmDB {
                 break;
             case 'A':
                 $row->cmm_integration_mur = ''.__("normal activity", "gd-star-rating");
-                break;
-        }
-        switch ($row->rules_comments) {
-            case 'I':
-                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: blue">'.__("inherited", "gd-star-rating").'</span></strong>';
-                break;
-            case 'H':
-                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("hidden", "gd-star-rating").'</span></strong>';
-                break;
-            case 'N':
-                $row->rules_comments = __("comments", "gd-star-rating").': <strong><span style="color: red">'.__("locked", "gd-star-rating").'</span></strong>';
-                break;
-            case 'V':
-                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("visitors", "gd-star-rating").'</strong>';
-                break;
-            case 'U':
-                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("users", "gd-star-rating").'</strong>';
-                break;
-            default:
-                $row->rules_comments = __("comments", "gd-star-rating").': <strong>'.__("everyone", "gd-star-rating").'</strong>';
                 break;
         }
 
@@ -579,9 +786,9 @@ class gdsrAdmDB {
         $rows = $wpdb->get_results($sql);
         foreach ($rows as $row) {
             if ($row->vote_type == "article")
-                GDSRDatabase::add_vote($row->id, $row->user_id, $row->ip, $row->user_agent, $row->vote);
+                gdsrBlgDB::add_vote($row->id, $row->user_id, $row->ip, $row->user_agent, $row->vote);
             if ($row->vote_type == "comment")
-                GDSRDatabase::add_vote_comment($row->id, $row->user_id, $row->ip, $row->user_agent, $row->vote);
+                gdsrBlgDB::add_vote_comment($row->id, $row->user_id, $row->ip, $row->user_agent, $row->vote);
         }
 
         gdsrAdmDB::moderation_delete($ids);

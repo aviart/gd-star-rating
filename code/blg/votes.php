@@ -17,11 +17,11 @@ wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_wi
 
         $allow_vote = $vote == "up" || $vote == "dw";
         if ($allow_vote) $allow_vote = gdsrFrontHelp::check_cookie($id, "artthumb");
-        if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'artthumb', $ip, $this->g->o["logged"] != 1, $this->g->o["allow_mixed_ip_votes"] == 1);
+        if ($allow_vote) $allow_vote = gdsrBlgDB::check_vote($id, $user, 'artthumb', $ip, $this->g->o["logged"] != 1, $this->g->o["allow_mixed_ip_votes"] == 1);
 
         $vote_value = $vote == "up" ? 1 : -1;
         if ($allow_vote) {
-            GDSRDatabase::save_vote_thumb($id, $user, $ip, $ua, $vote_value);
+            gdsrBlgDB::save_vote_thumb($id, $user, $ip, $ua, $vote_value);
             gdsrFrontHelp::save_cookie($id, "artthumb");
 
             do_action("gdsr_vote_thumb_article", $id, $user, $vote_value);
@@ -65,11 +65,11 @@ wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_wid
 
         $allow_vote = $vote == "up" || $vote == "dw";
         if ($allow_vote) $allow_vote = gdsrFrontHelp::check_cookie($id, 'cmmthumb');
-        if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'cmmthumb', $ip, $this->g->o["cmm_logged"] != 1, $this->g->o["cmm_allow_mixed_ip_votes"] == 1);
+        if ($allow_vote) $allow_vote = gdsrBlgDB::check_vote($id, $user, 'cmmthumb', $ip, $this->g->o["cmm_logged"] != 1, $this->g->o["cmm_allow_mixed_ip_votes"] == 1);
 
         $vote_value = $vote == "up" ? 1 : -1;
         if ($allow_vote) {
-            GDSRDatabase::save_vote_comment_thumb($id, $user, $ip, $ua, $vote_value);
+            gdsrBlgDB::save_vote_comment_thumb($id, $user, $ip, $ua, $vote_value);
             gdsrFrontHelp::save_cookie($id, 'cmmthumb');
 
             do_action("gdsr_vote_thumb_comment", $id, $user, $vote_value);
@@ -166,10 +166,10 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
 
         $allow_vote = intval($votes) <= $this->g->o["stars"] && intval($votes) > 0;
         if ($allow_vote) $allow_vote = gdsrFrontHelp::check_cookie($id);
-        if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'article', $ip, $this->g->o["logged"] != 1, $this->g->o["allow_mixed_ip_votes"] == 1);
+        if ($allow_vote) $allow_vote = gdsrBlgDB::check_vote($id, $user, 'article', $ip, $this->g->o["logged"] != 1, $this->g->o["allow_mixed_ip_votes"] == 1);
 
         if ($allow_vote) {
-            GDSRDatabase::save_vote($id, $user, $ip, $ua, $votes);
+            gdsrBlgDB::save_vote($id, $user, $ip, $ua, $votes);
             gdsrFrontHelp::save_cookie($id);
 
             do_action("gdsr_vote_rating_article", $id, $user, $votes);
@@ -216,10 +216,10 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
 
         $allow_vote = intval($votes) <= $this->g->o["cmm_stars"] && intval($votes) > 0;
         if ($allow_vote) $allow_vote = gdsrFrontHelp::check_cookie($id, 'comment');
-        if ($allow_vote) $allow_vote = GDSRDatabase::check_vote($id, $user, 'comment', $ip, $this->g->o["cmm_logged"] != 1, $this->g->o["cmm_allow_mixed_ip_votes"] == 1);
+        if ($allow_vote) $allow_vote = gdsrBlgDB::check_vote($id, $user, 'comment', $ip, $this->g->o["cmm_logged"] != 1, $this->g->o["cmm_allow_mixed_ip_votes"] == 1);
 
         if ($allow_vote) {
-            GDSRDatabase::save_vote_comment($id, $user, $ip, $ua, $votes);
+            gdsrBlgDB::save_vote_comment($id, $user, $ip, $ua, $votes);
             gdsrFrontHelp::save_cookie($id, 'comment');
 
             do_action("gdsr_vote_rating_comment", $id, $user, $votes);

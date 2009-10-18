@@ -1,6 +1,12 @@
 <?php
 
 class GDSRImport {
+    function table_exists($table_name) {
+        global $wpdb, $table_prefix;
+
+        return $wpdb->get_var(sprintf("SHOW TABLES LIKE '%s%s'", $table_prefix, $table_name)) == $table_prefix.$table_name;
+    }
+
     function import_check($import_exists) {
         if ($import_exists) {
             _e("Data not imported.", "gd-star-rating");
@@ -69,7 +75,7 @@ class GDSRImport {
 
     function import_psr_check($import_status) {
         if ($import_status == 0) {
-            return GDSRImport::import_check(GDSRDatabase::table_exists("psr_post") && GDSRDatabase::table_exists("psr_user"));
+            return GDSRImport::import_check(GDSRImport::table_exists("psr_post") && GDSRImport::table_exists("psr_user"));
         }
         else {
             _e("Data imported.", "gd-star-rating");
@@ -129,7 +135,7 @@ class GDSRImport {
     
     function import_wpr_check($import_status) {
         if ($import_status == 0) {
-            return GDSRImport::import_check(GDSRDatabase::table_exists("ratings"));
+            return GDSRImport::import_check(GDSRImport::table_exists("ratings"));
         }
         else {
             _e("Data imported.", "gd-star-rating");

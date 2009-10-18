@@ -13,7 +13,7 @@ $url.= "&amp;gdsr=users";
 $page_id = 1;
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 
-$number_posts = GDSRDatabase::get_valid_users_count();
+$number_posts = gdsrAdmDB::get_valid_users_count();
 
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
@@ -21,7 +21,7 @@ if ($max_page * $posts_per_page != $number_posts) $max_page++;
 $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg") : "";
 
 $users = array();
-$pre_users = GDSRDatabase::get_valid_users();
+$pre_users = gdsrAdmDB::get_valid_users();
 $count = -1;
 $usrid = -1;
 foreach ($pre_users as $user) {

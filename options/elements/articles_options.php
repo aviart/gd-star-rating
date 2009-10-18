@@ -61,7 +61,7 @@
                                 <span class="paneltext"><?php _e("Restriction", "gd-star-rating"); ?>:</span>
                             </td>
                             <td style="width: 140px; height: 29px;" align="right">
-                            <?php GDSRHelper::render_timer_combo("gdsr_timer_type", 'N', 120, '', true, 'gdsrTimerChange(\'\')'); ?>
+                            <?php GDSRHelper::render_timer_combo("gdsr_timer_type", '/', 120, '', true, 'gdsrTimerChange(\'\')'); ?>
                             </td><td style="width: 10px"></td>
                             <td style="width: 80px; height: 29px;">
                                 <div id="gdsr_timer_countdown_text" style="display: none"><span class="paneltext"><?php _e("Countdown", "gd-star-rating"); ?>:</span></div>
@@ -124,7 +124,7 @@
                                 <span class="paneltext"><?php _e("Restriction", "gd-star-rating"); ?>:</span>
                             </td>
                             <td style="width: 140px; height: 29px;" align="right">
-                            <?php GDSRHelper::render_timer_combo("gdsr_timer_type_recc", 'N', 120, '', true, 'gdsrTimerChange(\'_recc\')'); ?>
+                            <?php GDSRHelper::render_timer_combo("gdsr_timer_type_recc", '/', 120, '', true, 'gdsrTimerChange(\'_recc\')'); ?>
                             </td>
                             <td style="width: 10px"></td>
                             <td style="width: 80px; height: 29px;">
