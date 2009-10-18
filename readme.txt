@@ -168,6 +168,12 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.7.1 =
+* Major code reorganization, optimization, speed up and less memory usage
+* Redesign for some plugins panels
+* Many multi review and rating bugs bugs fixed
+* Several more problems and notices solved
+
 = 1.7.0 =
 * Removed support for wordpress 2.6.x
 * Many more new filters for results and rendering
