@@ -4,7 +4,8 @@
     $wpload = get_gdsr_wpload_path();
     require($wpload);
     global $gdsr;
-    require_once(STARRATING_PATH."code/helpers.php");
+    require_once(STARRATING_PATH."code/adm/db.php");
+    require_once(STARRATING_PATH."code/adm/elements.php");
 
     $gdsr_styles = $gdsr->g->stars;
     $gdsr_thumbs = $gdsr->g->thumbs;

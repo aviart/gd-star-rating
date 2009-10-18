@@ -24,10 +24,15 @@ class GDSRRender {
         return $rater;
     }
 
-    function rating_loader($id, $size = "small") {
+    function rating_loader($id, $is_bot = false, $size = "small") {
         $render = '<div class="gdsrcacheloader gdsrcl'.$size.'" id="gdsrc_'.$id.'">';
-        $render.= '<strong>GD Star Rating</strong><br />';
-        $render.= '<em>'.__("loading", "gd-star-rating").'...</em>';
+        if ($is_bot) {
+            $render.= '<a rel="rating" href="http://www.gdstarrating.com/" title="GD Star Rating: a WordPress rating system"><strong>GD Star Rating</strong><br />';
+            $render.= '<em>a WordPress rating system</em>';
+        } else {
+            $render.= '<strong>GD Star Rating</strong><br />';
+            $render.= '<em>'.__("loading", "gd-star-rating").'...</em>';
+        }
         $render.= '</div>';
         return $render;
     }

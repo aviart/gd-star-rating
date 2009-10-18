@@ -1719,6 +1719,12 @@ class GDStarRating {
     }
 
     function check_integration_std($post_id) {
+        $post_data = wp_gdget_post($post_id);
+        if (is_object($post_data)) {
+            if ($post_data->cmm_integration_std == "N") return false;
+            else if ($post_data->cmm_integration_std == "A") return true;
+        }
+
         $this->init_post_categories_data($post_id);
 
         foreach ($this->cats_data_posts[$post_id] as $cat) {
@@ -1729,6 +1735,12 @@ class GDStarRating {
     }
 
     function get_multi_set($post_id) {
+        $post_data = wp_gdget_post($post_id);
+        if (is_object($post_data)) {
+            if ($post_data->cmm_integration_mur == "N") return 0;
+            else if ($post_data->cmm_integration_mur == "A") return $post_data->cmm_integration_set;
+        }
+
         $this->init_post_categories_data($post_id);
 
         $set = $prn = 0;
