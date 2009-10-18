@@ -463,7 +463,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     }
 
     function render_thumb_comment($post, $comment, $user, $override = array()) {
-        if ($this->g->is_bot) return GDSRRender::render_locked_response();
+        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
 
         $default_settings = array("style" => $this->g->o["thumb_cmm_style"], "style_ie6" => $this->g->o["thumb_cmm_style_ie6"], "size" => $this->g->o["thumb_cmm_size"], "tpl" => 0, "read_only" => 0);
         $override = shortcode_atts($default_settings, $override);
@@ -475,7 +475,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         $elements = $this->rating_loader_elements_comment($post, $comment, $user, $override, "ctr");
 
         if ($this->g->o["cached_loading"] == 1)
-            return GDSRRender::rating_loader(join(".", $elements), "small");
+            return GDSRRender::rating_loader(join(".", $elements), $this->g->is_bot, "small");
         else
             return $this->render_thumb_comment_actual($elements);
     }
@@ -587,7 +587,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     }
 
     function render_comment($post, $comment, $user, $override = array()) {
-        if ($this->g->is_bot) return GDSRRender::render_locked_response();
+        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
 
         $default_settings = array("style" => $this->g->o["cmm_style"], "style_ie6" => $this->g->o["cmm_style_ie6"], "size" => $this->g->o["cmm_size"], "tpl" => 0, "read_only" => 0);
         $override = shortcode_atts($default_settings, $override);
@@ -599,7 +599,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         $elements = $this->rating_loader_elements_comment($post, $comment, $user, $override, "csr");
 
         if ($this->g->o["cached_loading"] == 1)
-            return GDSRRender::rating_loader(join(".", $elements), "small");
+            return GDSRRender::rating_loader(join(".", $elements), $this->g->is_bot, "small");
         else
             return $this->render_comment_actual($elements);
     }
@@ -762,7 +762,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     }
 
     function render_thumb_article($post, $user, $override = array()) {
-        if ($this->g->is_bot) return GDSRRender::render_locked_response();
+        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
 
         $default_settings = array("style" => $this->g->o["thumb_style"], "style_ie6" => $this->g->o["thumb_style_ie6"], "size" => $this->g->o["thumb_size"], "tpl" => 0, "read_only" => 0);
         $override = shortcode_atts($default_settings, $override);
@@ -774,7 +774,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         $elements = $this->rating_loader_elements_post($post, $user, $override, "atr");
 
         if ($this->g->o["cached_loading"] == 1)
-            return GDSRRender::rating_loader(join(".", $elements), "small");
+            return GDSRRender::rating_loader(join(".", $elements), $this->g->is_bot, "small");
         else
             return $this->render_thumb_article_actual($elements);
     }
@@ -902,7 +902,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     }
 
     function render_article($post, $user, $override = array()) {
-        if ($this->g->is_bot) return GDSRRender::render_locked_response();
+        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
 
         $default_settings = array("style" => $this->g->o["style"], "style_ie6" => $this->g->o["style_ie6"], "size" => $this->g->o["size"], "tpl" => 0, "read_only" => 0);
         $override = shortcode_atts($default_settings, $override);
@@ -914,7 +914,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         $elements = $this->rating_loader_elements_post($post, $user, $override, "asr");
 
         if ($this->g->o["cached_loading"] == 1)
-            return GDSRRender::rating_loader(join(".", $elements), "small");
+            return GDSRRender::rating_loader(join(".", $elements), $this->g->is_bot, "small");
         else
             return $this->render_article_actual($elements);
     }
@@ -1072,7 +1072,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     }
 
     function render_multi_rating($post, $user, $override = array()) {
-        if ($this->g->is_bot) return GDSRRender::render_locked_response();
+        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
 
         if (is_feed()) return "";
 
@@ -1086,7 +1086,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         $elements = $this->rating_loader_elements_post($post, $user, $override, "amr");
 
         if ($this->g->o["cached_loading"] == 1)
-            return GDSRRender::rating_loader(join(".", $elements), "small");
+            return GDSRRender::rating_loader(join(".", $elements), $this->g->is_bot, "small");
         else
             return $this->render_multi_rating_actual($elements);
     }
