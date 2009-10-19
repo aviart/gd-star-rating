@@ -66,7 +66,7 @@ class gdsrAdmDB {
         return $wpdb->get_var($sql);
     }
 
-    function get_moderation_count_joined($post_id, $user = 'all') {
+    function get_moderation_count_joined($post_id, $vote_type = 'article', $user = 'all') {
         global $wpdb, $table_prefix;
 
         if ($user == "all")
@@ -78,8 +78,8 @@ class gdsrAdmDB {
         else
             $users = ' and m.user_id = '.$user;
 
-        $sql = sprintf("select count(*) from %s c inner join %s m on m.id = c.comment_ID where c.comment_post_ID = %s and m.vote_type = 'comment'%s",
-            $wpdb->comments, $table_prefix."gdsr_moderate", $post_id, $users);
+        $sql = sprintf("select count(*) from %s c inner join %s m on m.id = c.comment_ID where c.comment_post_ID = %s and m.vote_type = '%s'%s",
+            $wpdb->comments, $table_prefix."gdsr_moderate", $post_id, $vote_type, $users);
         return $wpdb->get_var($sql);
     }
 
@@ -772,6 +772,8 @@ class gdsrAdmDB {
             $select.= ", l.object, m.stars, m.weight, m.name";
             $from.= sprintf(" left join %sgdsr_multis m on m.multi_id = l.multi_id", $table_prefix);
         }
+
+        if (count($types) == 0) return array();
 
         $sql = sprintf("select %s from %s where vote_type in (%s)%s order by voted desc limit 0, %s",
             $select, $from, join(", ", $types), $where, $o["integrate_dashboard_latest_count"]);

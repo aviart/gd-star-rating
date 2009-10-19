@@ -19,7 +19,7 @@ class gdsrMenus {
             $eset->multi_id = $_POST["gdsr_ms_id"];
             $eset->name = stripslashes(htmlentities($_POST["gdsr_ms_name"], ENT_QUOTES, STARRATING_ENCODING));
             $eset->description = stripslashes(htmlentities($_POST["gdsr_ms_description"], ENT_QUOTES, STARRATING_ENCODING));
-            $eset->stars = $_POST["gdsr_ms_stars"];
+            if (isset($_POST["gdsr_ms_stars"])) $eset->stars = $_POST["gdsr_ms_stars"];
             $eset->auto_insert = $_POST["gdsr_ms_autoinsert"];
             $eset->auto_categories = $_POST["gdsr_ms_autocategories"];
             $eset->auto_location = $_POST["gdsr_ms_autolocation"];

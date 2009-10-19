@@ -19,7 +19,7 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["wp_query_handler"] = isset($_POST['gdsr_wp_query_handler']) ? 1 : 0;
     $gdsr_options["disable_ie6_check"] = isset($_POST['gdsr_disable_ie6_check']) ? 1 : 0;
     $gdsr_options["news_feed_active"] = isset($_POST['gdsr_news_feed_active']) ? 1 : 0;
-    $gdsr_options["widgets_hidempty"] = $_POST['gdsr_widgets_hidempty'];
+    $gdsr_options["widgets_hidempty"] = isset($_POST['gdsr_widgets_hidempty']) ? 1 : 0;
     $gdsr_options["encoding"] = $_POST['gdsr_encoding'];
     $gdsr_options["admin_rows"] = $_POST['gdsr_admin_rows'];
     $gdsr_options["gfx_generator_auto"] = isset($_POST['gdsr_gfx_generator_auto']) ? 1 : 0;
@@ -145,8 +145,6 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["style"] = $_POST['gdsr_style'];
     $gdsr_options["style_ie6"] = $_POST['gdsr_style_ie6'];
     $gdsr_options["size"] = $_POST['gdsr_size'];
-    $gdsr_options["text"] = $_POST['gdsr_text'];
-    $gdsr_options["align"] = $_POST['gdsr_align'];
     $gdsr_options["header_text"] = stripslashes(htmlentities($_POST['gdsr_header_text'], ENT_QUOTES, STARRATING_ENCODING));
     $gdsr_options["thumb_style"] = $_POST['gdsr_thumb_style'];
     $gdsr_options["thumb_style_ie6"] = $_POST['gdsr_thumb_style_ie6'];
@@ -189,8 +187,6 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["cmm_style"] = $_POST['gdsr_cmm_style'];
     $gdsr_options["cmm_style_ie6"] = $_POST['gdsr_cmm_style_ie6'];
     $gdsr_options["cmm_size"] = $_POST['gdsr_cmm_size'];
-    $gdsr_options["cmm_text"] = $_POST['gdsr_cmm_text'];
-    $gdsr_options["cmm_align"] = $_POST['gdsr_cmm_align'];
     $gdsr_options["cmm_header_text"] = stripslashes(htmlentities($_POST['gdsr_cmm_header_text'], ENT_QUOTES, STARRATING_ENCODING));
 
     $gdsr_options["review_style"] = $_POST['gdsr_review_style'];

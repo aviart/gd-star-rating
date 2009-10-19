@@ -58,7 +58,7 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
 
             $tpl = '';
             if ($this->snippet_type == "microformat") {
-                $tpl.= '<span class="hreview" style="display: none"><span class="item"><span class="fn">%TITLE%</span></span>';
+                $tpl.= '<span class="hreview" style="display: none !important;"><span class="item"><span class="fn">%TITLE%</span></span>';
                 $tpl.= '<span class="rating"><span class="value">%RATING%</span><span class="best">%MAX_RATING%</span>';
                 $tpl.= '<span class="dtreviewed">%REVIEW_DATE%</span>';
                 $tpl.= '<span class="reviewer">%REVIEWER%</span>';

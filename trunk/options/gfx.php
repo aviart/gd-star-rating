@@ -1,4 +1,4 @@
-<?php if ($_POST['gdsr_action'] == 'save') { ?>
+<?php if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') { ?>
 <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Settings saved.", "gd-star-rating"); ?></strong></p></div>
 <?php } ?>
 

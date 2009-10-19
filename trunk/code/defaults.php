@@ -2,12 +2,12 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.7.1",
+        "version" => "1.7.2",
         "revision" => 0,
         "date" => "2009.10.19.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 960,
+        "build" => 963,
         "admin_views" => 0,
         "google_rich_snippets_format" => "microformat",
         "update_report_usage" => 1,
@@ -260,6 +260,7 @@ class GDSRDefaults {
         "display" => "all",
         "template_id" => 0,
         "rows" => 5,
+        "show" => "total",
         "min_votes" => 1,
         "select" => "post",
         "column" => "rating",

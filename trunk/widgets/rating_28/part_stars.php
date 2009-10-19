@@ -1,4 +1,4 @@
-<input type="hidden" id="<?php echo $this->get_field_id('div_stars'); ?>" name="<?php echo $wpfn; ?>[div_stars]" value="<?php echo $instance['div_stars'] ?>" />
+<input type="hidden" id="<?php echo $this->get_field_id('div_stars'); ?>" name="<?php echo $this->get_field_name('div_stars'); ?>" value="<?php echo $instance['div_stars'] ?>" />
 <div id="<?php echo $this->get_field_id('div_stars'); ?>-off" style="display: <?php echo $instance['div_stars'] == '1' ? 'none' : 'block' ?>">
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>

@@ -11,7 +11,7 @@ class gdsrVotes {
         global $userdata;
         $ip = $_SERVER["REMOTE_ADDR"];
         $ua = $this->g->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
-        $user = intval($userdata->ID);
+        $user = is_object($userdata) ? $userdata->ID : 0;
 
 wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_width."px");
 
@@ -59,7 +59,7 @@ wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_wi
         global $userdata;
         $ip = $_SERVER["REMOTE_ADDR"];
         $ua = $this->g->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
-        $user = intval($userdata->ID);
+        $user = is_object($userdata) ? $userdata->ID : 0;
 
 wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_width."px");
 
@@ -110,11 +110,11 @@ wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_wid
         $ip = $_SERVER["REMOTE_ADDR"];
         if ($this->g->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
         else $ua = "";
-        $user = intval($userdata->ID);
+        $user = is_object($userdata) ? $userdata->ID : 0;
         $data = GDSRDatabase::get_post_data($post_id);
         $set = gd_get_multi_set($set_id);
 
-wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [".$user."] ".$unit_width."px");
+wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [".$user."]");
 
         $values = explode("X", $votes);
         $allow_vote = true;
@@ -159,7 +159,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
         global $userdata;
         $ip = $_SERVER["REMOTE_ADDR"];
         $ua = $this->g->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
-        $user = intval($userdata->ID);
+        $user = is_object($userdata) ? $userdata->ID : 0;
         $vote_value = $votes;
 
 wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."px");
@@ -198,7 +198,7 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
         include(STARRATING_PATH.'code/t2/templates.php');
 
         $template = new gdTemplateRender($tpl_id, "SRB");
-        $rt = GDSRRenderT2::render_srt_voted($template->dep["SRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "id" => $post_id, "vote" => $vote_value));
+        $rt = GDSRRenderT2::render_srt_voted($template->dep["SRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "id" => $id, "vote" => $vote_value));
 
         $rating_width = apply_filters("gdsr_vote_rating_article_return", $rating_width, $unit_width, $rating1, $vote_value);
         return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
@@ -206,10 +206,11 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
 
     function vote_comment($votes, $id, $tpl_id, $unit_width) {
         global $userdata;
+        $user = is_object($userdata) ? $userdata->ID : 0;
+
         $ip = $_SERVER["REMOTE_ADDR"];
         if ($this->g->o["save_user_agent"] == 1) $ua = $_SERVER["HTTP_USER_AGENT"];
         else $ua = "";
-        $user = intval($userdata->ID);
         $vote_value = $votes;
 
 wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_width."px");

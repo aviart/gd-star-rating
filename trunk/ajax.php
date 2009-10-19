@@ -13,22 +13,25 @@ if ($gdsr->use_nonce) {
     check_ajax_referer('gdsr_ajax_r8');
 }
 
-$vote_id = intval($_GET["vote_id"]);
-$vote_tpl = intval($_GET["vote_tpl"]);
-$vote_size = intval($_GET["vote_size"]);
-$vote_value = $_GET["vote_value"];
 $vote_type = $_GET["vote_type"];
 
+$vote_id = isset($_GET["vote_id"]) ? intval($_GET["vote_id"]) : 0;
+$vote_tpl = isset($_GET["vote_tpl"]) ? intval($_GET["vote_tpl"]) : 0;
+$vote_size = isset($_GET["vote_size"]) ? intval($_GET["vote_size"]) : 0;
+$vote_value = isset($_GET["vote_value"]) ? $_GET["vote_value"] : "";
+
 if ($vote_type == "cache") {
-    $votes = explode(":", $_GET["votes"]);
     $result = "xss_error";
-    switch ($_GET["vote_domain"]) {
-        case 'a':
-            $result = $gdsr->cached_posts($votes);
-            break;
-        case 'c':
-            $result = $gdsr->cached_comments($votes);
-            break;
+    if (isset($_GET["vote_domain"]) && isset( $_GET["votes"])) {
+        $votes = explode(":", $_GET["votes"]);
+        switch ($_GET["vote_domain"]) {
+            case 'a':
+                $result = $gdsr->cached_posts($votes);
+                break;
+            case 'c':
+                $result = $gdsr->cached_comments($votes);
+                break;
+        }
     }
 } else if (!(in_array($vote_type, $types))) {
     $result = "xss_error";

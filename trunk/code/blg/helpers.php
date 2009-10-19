@@ -34,6 +34,7 @@ class gdsrFrontHelp {
     * @param string $type article or comment
     */
     function save_cookie($id, $type = "article") {
+        global $gdsr;
         if (
             ($type == "article" && $gdsr->o["cookies"] == 1) ||
             ($type == "artthumb" && $gdsr->o["cookies"] == 1) ||
