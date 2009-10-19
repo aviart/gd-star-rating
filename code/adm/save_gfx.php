@@ -1,6 +1,6 @@
 <?php
 
-    if ($_POST['gdsr_action'] == 'save') {
+    if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
         $ginc = array();
 
         $sizes = $_POST["gdsr_inc_size"];

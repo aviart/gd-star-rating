@@ -198,6 +198,9 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
                     $user = get_userdata($row->author);
                     $row->author_name = $user->display_name;
                     $row->author_url = get_bloginfo("url")."/author/".$user->user_login;
+                } else {
+                    $row->author_name = "";
+                    $row->author_url = "";
                 }
 
                 if ($trends_calculated) {
@@ -329,7 +332,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $properties[] = array("property" => $widget["column"], "order" => $widget["order"]);
         if ($widget["column"] == "rating")
             $properties[] = array("property" => "voters", "order" => $widget["order"]);
-        $sort = new gdSortObjectsArray($all_rows, $properties);
+        $sort = new gdSortObjectsArrayGDSR($all_rows, $properties);
         $all_rows = $sort->sorted;
 
         $all_rows = apply_filters("gdsr_widget_data_prepare", $all_rows);
@@ -391,9 +394,9 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
         $properties = array();
         $properties[] = array("property" => $widget["column"], "order" => $widget["order"]);
-        if ($widget["column"] == "rating")
-            $properties[] = array("property" => "voters", "order" => $widget["order"]);
-        $sort = new gdSortObjectsArray($all_rows, $properties);
+        if ($widget["column"] == "rating") $properties[] = array("property" => "voters", "order" => $widget["order"]);
+
+        $sort = new gdSortObjectsArrayGDSR($all_rows, $properties);
         $all_rows = $sort->sorted;
 
         $all_rows = apply_filters('gdsr_comments_widget_data_prepare', $all_rows);
@@ -458,8 +461,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $original_value = "";
         foreach($votes as $vote) $original_value.= number_format($vote["rating"], 0)."X";
         $original_value = substr($original_value, 0, strlen($original_value) - 1);
-        $rater.= '<input type="hidden" id="gdsr_mur_review_'.$post_id.'_'.$set->multi_id.'" name="gdsrmurreview['.$post_id.']['.$set->id.']" value="'.$original_value.'" />';
-        if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_int_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->id.']" value="'.$original_value.'" />';
+        $rater.= '<input type="hidden" id="gdsr_mur_review_'.$post_id.'_'.$set->multi_id.'" name="gdsrmurreview['.$post_id.']['.$set->multi_id.']" value="'.$original_value.'" />';
+        if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_int_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->multi_id.']" value="'.$original_value.'" />';
 
         $i = 0;
         $weighted = 0;
@@ -471,13 +474,13 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             $single_row = html_entity_decode($template->dep["MRS"]->elm["item"]);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
             $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
-            $single_row = str_replace('%ELEMENT_VALUE%', $votes[$i]["rating"], $single_row);
-            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, $votes[$i]["rating"], "", true), $single_row);
+            $single_row = str_replace('%ELEMENT_VALUE%', isset($votes[$i]) ? $votes[$i]["rating"] : "0", $single_row);
+            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::rating_stars_multi($style, $post_id, $template_id, $set->multi_id, $i, $height, $set->stars, $allow_vote, isset($votes[$i]) ? $votes[$i]["rating"] : "0", "", true), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
 
-            $weighted += ($votes[$i]["rating"] * $set->weight[$i]) / $weight_norm;
-            $total_votes += $votes[$i]["votes"];
+            $weighted += ((isset($votes[$i]) ? $votes[$i]["rating"] : 0) * $set->weight[$i]) / $weight_norm;
+            $total_votes += isset($votes[$i]) ? $votes[$i]["votes"] : 0;
             $i++;
         }
 
@@ -1216,7 +1219,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
                 $rt = html_entity_decode($template->elm["item"]);
                 $rt = apply_filters('gdsr_t2render_wcr_item', $rt, $template, $widget, $row, "item");
 
-                if ($widget["source"] == "thumbs" && $row->rating > 0) $row->rating = "+".$row->rating;
+                if (isset($widget["source"]) && $widget["source"] == "thumbs" && $row->rating > 0) $row->rating = "+".$row->rating;
 
                 $auto_css = " t2-row-".$rank_id;
                 if ($rank_id == 1) $auto_css.= " t2-first";
@@ -1233,7 +1236,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
                 $rt = str_replace('%AUTHOR_LINK%', $row->comment_author_url, $rt);
                 $rt = str_replace('%ID%', $row->comment_id, $rt);
                 $rt = str_replace('%RANK_ID%', $rank_id, $rt);
-                $rt = str_replace('%POST_ID%', $post->ID, $rt);
+                $rt = str_replace('%POST_ID%', $gdsr->widget_post_id, $rt);
                 $rt = str_replace('%CMM_STARS%', $row->rating_stars, $rt);
                 $rank_id++;
 

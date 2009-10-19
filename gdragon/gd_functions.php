@@ -456,12 +456,12 @@ if (!class_exists('gdFunctionsGDSR')) {
     }
 }
 
-if (!class_exists("gdSortObjectsArray")) {
-    class gdSortObjectsArray {
+if (!class_exists("gdSortObjectsArrayGDSR")) {
+    class gdSortObjectsArrayGDSR {
         var $properties;
         var $sorted;
 
-        function gdSortObjectsArray($objects_array, $properties = array()) {
+        function gdSortObjectsArrayGDSR($objects_array, $properties = array()) {
             if (count($properties) > 0) {
                 $this->properties = $properties;
                 usort($objects_array, array(&$this, 'array_compare'));
@@ -480,7 +480,7 @@ if (!class_exists("gdSortObjectsArray")) {
                 } else return 0;
             }
 
-            if (strtolower($this->order) == "asc")
+            if (strtolower($order) == "asc")
                 return ($one->$column < $two->$column) ? -1 : 1;
             else
                 return ($one->$column < $two->$column) ? 1 : -1;

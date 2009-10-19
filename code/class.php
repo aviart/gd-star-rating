@@ -127,13 +127,13 @@ class GDStarRating {
         $this->install_plugin();
 
         if (!GDSR_WP_ADMIN) {
-            $this->f = new gdsrFront($this);
             if (!STARRATING_AJAX) {
                 $this->q = new gdsrQuery();
                 $this->rSnippets = new gdGoogleRichSnippetsGDSR($this->o["google_rich_snippets_format"]);
             } else {
                 $this->v = new gdsrVotes($this);
             }
+            $this->f = new gdsrFront($this);
         } else {
             $this->m = new gdsrMenus($this);
         }
@@ -211,11 +211,12 @@ class GDStarRating {
     */
     function shortcode_starthumbsblock($atts = array()) {
         global $userdata;
+        $user_id = is_object($userdata) ? $userdata->ID : 0;
+
         $override = shortcode_atts($this->default_shortcode_starthumbsblock, $atts);
         if ($override["post"] == 0) global $post;
         else $post = get_post($override["post"]);
 
-        $user_id = $userdata->ID;
         $this->cache_posts($user_id);
         return $this->f->render_thumb_article($post, $userdata, $override);
     }
@@ -227,11 +228,12 @@ class GDStarRating {
     */
     function shortcode_starratingblock($atts = array()) {
         global $userdata;
+        $user_id = is_object($userdata) ? $userdata->ID : 0;
+
         $override = shortcode_atts($this->default_shortcode_starrater, $atts);
         if ($override["post"] == 0) global $post;
         else $post = get_post($override["post"]);
 
-        $user_id = $userdata->ID;
         $this->cache_posts($user_id);
         return $this->f->render_article($post, $userdata, $override);
     }
@@ -499,7 +501,7 @@ class GDStarRating {
      * @return string rendered result
      */
     function blog_multi_review_editor($post_id, $settings = array(), $admin = true) {
-        if ($settings["id"] == "") $multi_id = $this->o["mur_review_set"];
+        if (!isset($settings["id"]) || $settings["id"] == "") $multi_id = $this->o["mur_review_set"];
         else $multi_id = $settings["id"];
         $set = gd_get_multi_set($multi_id);
         if (is_null($set)) {
@@ -550,6 +552,9 @@ class GDStarRating {
 
         $countdown_value = $gdsr_options["default_timer_countdown_value"];
         $countdown_type = $gdsr_options["default_timer_countdown_type"];
+        $recc_countdown_value = $gdsr_options["default_timer_countdown_value"];
+        $recc_countdown_type = $gdsr_options["default_timer_countdown_type"];
+        $timer_date_value = $recc_timer_date_value = "";
         if ($post_id == 0) {
             $default = true;
         } else {
@@ -677,7 +682,7 @@ class GDStarRating {
 
         $tabs_extras = $datepicker_date = "";
 
-        if ($this->admin_plugin_page == "ips" && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
+        if ($this->admin_plugin_page == "ips" && isset($_GET["gdsr"]) && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
         if ($this->admin_plugin) {
             wp_admin_css('css/dashboard');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_main.css" type="text/css" media="screen" />');
@@ -994,6 +999,7 @@ class GDStarRating {
 
     function comment_save($comment_id) {
         global $userdata;
+        $user_id = is_object($userdata) ? $userdata->ID : 0;
 
         if ($this->post_comment["review"] > -1) {
             $comment_data = GDSRDatabase::get_comment_data($comment_id);
@@ -1009,7 +1015,7 @@ class GDStarRating {
             $votes = $this->post_comment["standard_rating"];
             $ip = $_SERVER["REMOTE_ADDR"];
             $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
-            $user = intval($userdata->ID);
+            $user = intval($user_id);
             $allow_vote = true;
             if ($this->o["cmm_integration_prevent_duplicates"] == 1) {
                 $allow_vote = intval($votes) <= $this->o["stars"];
@@ -1041,7 +1047,7 @@ class GDStarRating {
             if ($allow_vote) {
                 $ip = $_SERVER["REMOTE_ADDR"];
                 $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
-                $user = intval($userdata->ID);
+                $user = intval($user_id);
                 $data = GDSRDatabase::get_post_data($id);
                 GDSRDBMulti::save_vote($id, $set->multi_id, $user, $ip, $ua, $values, $data, $comment_id);
                 GDSRDBMulti::recalculate_multi_averages($id, $set->multi_id, "", $set, true);
@@ -1069,12 +1075,12 @@ class GDStarRating {
         if (isset($_POST["post_ID"]) && $_POST["post_ID"] > 0)
             $post_id = $_POST["post_ID"];
 
-        if ($_POST['gdsr_post_edit'] == "edit" || $_POST['gdsr_post_edit_mur'] == "edit") {
+        if ((isset($_POST['gdsr_post_edit']) && $_POST['gdsr_post_edit'] == "edit") || (isset($_POST['gdsr_post_edit_mur']) && $_POST['gdsr_post_edit_mur'] == "edit")) {
             if ($this->o["integrate_post_edit"] == 1) {
-                $set_id = $_POST["gdsrmultiactive"];
+                $set_id = intval($_POST["gdsrmultiactive"]);
                 if ($set_id > 0) {
                     $mur = $_POST['gdsrmulti'];
-                    $mur = isset($mur[$post_id]) ? $mur[$post_id][0] : $mur[0][0];
+                    $mur = isset($mur[$post_id]) ? $mur[$post_id][$set_id] : $mur[0][$set_id];
                     $values = explode("X", $mur);
                     $set = gd_get_multi_set($set_id);
                     $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
@@ -1106,13 +1112,19 @@ class GDStarRating {
             GDSRDatabase::save_timer_rules(
                 $post_id,
                 $timer,
-                GDSRHelper::timer_value($timer, $_POST['gdsr_timer_date_value'], $_POST['gdsr_timer_countdown_value'], $_POST['gdsr_timer_countdown_type'])
+                GDSRHelper::timer_value($timer, 
+                    isset($_POST['gdsr_timer_date_value']) ? $_POST['gdsr_timer_date_value'] : "",
+                    isset($_POST['gdsr_timer_countdown_value']) ? $_POST['gdsr_timer_countdown_value'] : "",
+                    isset($_POST['gdsr_timer_countdown_type']) ? $_POST['gdsr_timer_countdown_type'] : "")
             );
             $timer = $_POST['gdsr_timer_type_recc'];
             GDSRDatabase::save_timer_rules_thumbs(
                 $post_id,
                 $timer,
-                GDSRHelper::timer_value($timer, $_POST['gdsr_recc_timer_date_value'], $_POST['gdsr_recc_timer_countdown_value'], $_POST['gdsr_recc_timer_countdown_type'])
+                GDSRHelper::timer_value($timer,
+                    isset($_POST['gdsr_recc_timer_date_value']) ? $_POST['gdsr_recc_timer_date_value'] : "",
+                    isset($_POST['gdsr_recc_timer_countdown_value']) ? $_POST['gdsr_recc_timer_countdown_value'] : "",
+                    isset($_POST['gdsr_recc_timer_countdown_type']) ? $_POST['gdsr_recc_timer_countdown_type'] : "")
             );
         }
     }
@@ -1644,14 +1656,14 @@ class GDStarRating {
     }
 
     function init_post_categories_data($post_id) {
-        if (count($this->cats_data_posts[$post_id]) == 0) {
+        if (!isset($this->cats_data_posts[$post_id]) || (isset($this->cats_data_posts[$post_id]) && count($this->cats_data_posts[$post_id]) == 0)) {
             $cats = wp_get_post_categories($post_id);
             $this->cats_data_posts[$post_id] = GDSRDatabase::get_categories_data($cats);
         }
     }
 
     function init_cats_categories_data($cat_id) {
-        if (count($this->cats_data_cats[$cat_id]) == 0) {
+        if (!isset($this->cats_data_cats[$cat_id]) || (isset($this->cats_data_cats[$cat_id]) && count($this->cats_data_cats[$cat_id]) == 0)) {
             $this->cats_data_cats[$cat_id] = GDSRDatabase::get_categories_data(array($cat_id));
         }
     }
@@ -1973,7 +1985,7 @@ class GDStarRating {
             }
         }
 
-        $rich_snippet = true ? $this->f->render_google_rich_snippet($post) : "";
+        $rich_snippet = ((is_single() || is_page()) && !is_admin() && !is_feed()) ? $this->f->render_google_rich_snippet($post) : "";
 
         return $rich_snippet.$content;
     }
@@ -2050,7 +2062,7 @@ class GDStarRating {
 
     function cache_comments($post_id) {
         global $gdsr_cache_posts_cmm_data, $gdsr_cache_posts_cmm_log, $gdsr_cache_posts_cmm_thumbs_log, $userdata;
-        $user_id = $userdata->ID;
+        $user_id = is_object($userdata) ? $userdata->ID : 0;
         $to_get = array();
 
         $data = GDSRDBCache::get_comments($post_id);
@@ -2076,6 +2088,7 @@ class GDStarRating {
 
     function cached_posts($votes) {
         global $userdata;
+        $user_id = is_object($userdata) ? $userdata->ID : 0;
 
         $rendered = $alls = array();
         foreach ($votes as $vote) {
@@ -2086,7 +2099,7 @@ class GDStarRating {
 
         $this->f->render_wait_article();
         $this->f->render_wait_article_thumb();
-        $this->cache_posts($userdata->ID);
+        $this->cache_posts($user_id);
         foreach ($alls as $vote => $settings) {
             $cde = substr($vote, 0, 3);
             $html = "";

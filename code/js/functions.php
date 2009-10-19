@@ -36,7 +36,7 @@ function gdsr_rating_multi_stars(elm) {
 
     jQuery(input_id).val(rating_values.join("X"));
     var button_block = el[1] + '_' + el[2] + '_' + el[6] + '_' + size;
-<?php if ($button_active) { ?>
+<?php if (isset($button_active) && $button_active) { ?>
     var button_id = '#gdsr_button_' + button_block;
     if (active) {
         jQuery(button_id).removeClass('gdinactive');
@@ -81,7 +81,7 @@ function gdsr_rating_thumb(elm) {
     });
 }
 
-<?php if ($include_mur_rating) { ?>
+<?php if (isset($include_mur_rating) && $include_mur_rating) { ?>
 
 function multi_rating_vote(block) {
     var el = block.split("_");

@@ -1,4 +1,4 @@
-<?php if ($gdsr->o["cached_loading"] == 1) { ?>
+<?php global $gdsr; if ($gdsr->o["cached_loading"] == 1) { ?>
 
 jQuery(document).ready(function() {
     var ela = "";

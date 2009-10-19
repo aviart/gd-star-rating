@@ -38,6 +38,7 @@ class gdsrFront {
         $post_data = wp_gdget_post($post->ID);
         $review = is_object($post_data) ? $post_data->review : 0;
         $author = get_userdata($post->post_author);
+        if (!is_object($this->g->rSnippets) || $review <= 0) return "";
         return $this->g->rSnippets->snippet_stars_review(array(
             "title" => $post->post_title, "rating" => $review,
             "max_rating" => $this->g->o["review_stars"],

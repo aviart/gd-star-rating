@@ -18,12 +18,11 @@ $number_posts = GDSRDatabase::get_all_banned_ips_count();
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
 
-if ($max_page > 1)
-    $pager = gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg");
+$pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, "pg") : "";
 
 ?>
 
-<div class="wrap" style="max-width: <?php echo $options['admin_width']; ?>px">
+<div class="wrap">
 <form id="gdsr-articles" method="post" action="">
 <input type="hidden" name="action" value="deletebans" />
 <div class="tablenav">

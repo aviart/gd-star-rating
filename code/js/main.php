@@ -1,4 +1,4 @@
-<?php if ($nonce != "") $nonce = sprintf("_ajax_nonce: '%s', ", $nonce); ?>
+<?php if (isset($nonce) && $nonce != "") $nonce = sprintf("_ajax_nonce: '%s', ", $nonce); else $nonce = ""; ?>
 
 <?php include(STARRATING_PATH.'code/js/functions.php'); ?>
 <?php include(STARRATING_PATH."code/js/cache_load.php"); ?>

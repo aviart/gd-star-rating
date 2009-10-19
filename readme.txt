@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.7.1
+Version: 1.7.2
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
 Tested up to: 2.9-rare
@@ -168,6 +168,11 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.7.2 =
+* Fixed few critical bugs in rating rendering
+* Several more bugs in widgets and javascript
+* More PHP warnings and notices fixed
+
 = 1.7.1 =
 * Major code reorganization, optimization, speed up and less memory usage
 * Redesign for some plugins panels
