@@ -1092,6 +1092,16 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             return $this->render_multi_rating_actual($elements);
     }
 
+    function render_stars_custom_value($settings = array()) {
+        $style = $this->g->is_ie6 ? $settings["style_ie6"] : $settings["style"];
+        $value = intval($settings["value"]);
+        $star_factor = $settings["star_factor"];
+        $stars = $settings["max_value"];
+        $size = $settings["size"];
+
+        return GDSRRender::render_static_stars($style, $size, $stars, $value, "", "", $star_factor);
+    }
+
     function render_multi_custom_values($template_id, $multi_set_id, $custom_id, $votes, $header_text = '', $override = array(), $tags_css = array(), $star_factor = 1) {
         $set = gd_get_multi_set($multi_set_id);
 
