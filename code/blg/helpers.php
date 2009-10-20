@@ -87,11 +87,11 @@ class gdsrFrontHelp {
     function detect_ban() {
         $ip = $_SERVER["REMOTE_ADDR"];
         $ban = false;
-        $ban = GDSRDatabase::check_ip_single($ip);
+        $ban = gdsrBlgDB::check_ip_single($ip);
         if (!$ban)
-            $ban = GDSRDatabase::check_ip_range($ip);
+            $ban = gdsrBlgDB::check_ip_range($ip);
         if (!$ban)
-            $ban = GDSRDatabase::check_ip_mask($ip);
+            $ban = gdsrBlgDB::check_ip_mask($ip);
         return $ban;
     }
 

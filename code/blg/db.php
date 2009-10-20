@@ -1,6 +1,37 @@
 <?php
 
 class gdsrBlgDB {
+    // ip
+    function check_ip_single($ip) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select count(*) from %sgdsr_ips where `status` = 'B' and `mode` = 'S' and `ip` = '%s'", $table_prefix, $ip);
+        return $wpdb->get_var($sql) > 0;
+    }
+
+    function check_ip_range($ip) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select count(*) from %sgdsr_ips where `status` = 'B' and `mode` = 'R' and inet_aton(substring_index(ip, '|', 1)) <= inet_aton('%s') and inet_aton(substring_index(ip, '|', -1)) >= inet_aton('%s')", $table_prefix, $ip, $ip);
+        return $wpdb->get_var($sql) > 0;
+    }
+
+    function check_ip_mask($ip) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select ip from %sgdsr_ips where `status` = 'B' and `mode` = 'M'", $table_prefix);
+        $ips = $wpdb->get_results($sql);
+        foreach ($ips as $i) {
+            $mask = explode('.', $i->ip);
+            $ip = explode('.', $ip);
+            for ($i = 0; $i < 4; $i++) {
+                if (is_numeric($mask[$i])) {
+                    if ($ip[$i] != $mask[$i]) return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    // ip
+
     // check vote
     function check_vote_table($table, $id, $user, $type, $ip, $mixed = false) {
         global $wpdb, $table_prefix;

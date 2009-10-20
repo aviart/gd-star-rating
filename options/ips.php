@@ -7,7 +7,7 @@ if (isset($_POST["action"])) {
         $ip_add = array();
         foreach ($ip_list as $ip) {
             if (preg_match('^(?:25[0-5]|2[0-4]\d|[1-9]\d|\d)(?:[.](?:25[0-5]|2[0-4]\d|[1-9]\d|\d)){3}$^', $ip)) {
-                GDSRDatabase::ban_ip($ip);
+                gdsrAdmDB::ban_ip($ip);
             }
         }
     }
@@ -42,7 +42,7 @@ if (isset($_POST["action"])) {
         }
         else $valid = false;
         if ($valid) {
-            GDSRDatabase::ban_ip_range($ip_start, $ip_end);
+            gdsrAdmDB::ban_ip_range($ip_start, $ip_end);
         }
     }
 
@@ -52,14 +52,14 @@ if (isset($_POST["action"])) {
         $ip_part_3 = $_POST["gdsr_ip_mask_3"];
         $ip_part_4 = $_POST["gdsr_ip_mask_4"];
         $ip = $ip_part_1.".".$ip_part_2.".".$ip_part_3.".".$ip_part_4;
-        GDSRDatabase::ban_ip($ip, 'M');
+        gdsrAdmDB::ban_ip($ip, 'M');
     }
 
     if ($_POST["action"] == "deletebans") {
         $gdsr_items = $_POST["gdsr_item"];
         if (count($gdsr_items) > 0) {
             $ids = "(".join(", ", $gdsr_items).")";
-            GDSRDatabase::unban_ips($ids);
+            gdsrAdmDB::unban_ips($ids);
         }
     }
 }

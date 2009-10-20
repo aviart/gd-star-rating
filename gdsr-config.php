@@ -13,6 +13,11 @@ define('STARRATING_WPLOAD', '');
 define('STARRATING_ACCESS_LEVEL', 9);
 
 /**
+ * Should plugin load and use old format legacy functions.
+ */
+define('STARRATING_LEGACY_FUNCTIONS', true);
+
+/**
  * Global control of debug. Set to false will prevent any kind of debug into file.
  */
 define('STARRATING_DEBUG', true);
@@ -23,6 +28,12 @@ define('STARRATING_DEBUG', true);
 define('STARRATING_ACCESS_LEVEL_FRONT', 1);
 define('STARRATING_ACCESS_LEVEL_BUILDER', 1);
 define('STARRATING_ACCESS_LEVEL_SETUP', 9);
+
+/**
+ * My Ratings is moved under dahsboard and visible to all registered users regardless of other access settings.
+ */
+define('STARRATING_ACCESS_MY_RATINGS', false);
+define('STARRATING_ACCESS_MY_RATINGS_LEVEL', 0);
 
 /**
  * Main admin account user ID's with access to special Security panel. If not set, all administrators will have access to it. You can set it to single account or to list of accounts, separated by commas ('1,6,23,12').

@@ -48,7 +48,7 @@ if ($filter_date != '' || $filter_date != '0') $url.= "&amp;date=".$filter_date;
 if ($search != '') $url.= "&amp;s=".$search;
 if ($select != '') $url.= "&amp;select=".$select;
 
-$sql_count = GDSRDBMulti::get_stats_count($set_id, $filter_date, $filter_cats, $search);
+$sql_count = gdsrAdmDBMulti::get_stats_count($set_id, $filter_date, $filter_cats, $search);
 $np = $wpdb->get_results($sql_count);
 $number_posts_page = 0;
 $number_posts_post = 0;
@@ -103,7 +103,7 @@ $set = gd_get_multi_set($set_id);
 <br class="clear"/>
 <?php
 
-    $sql = GDSRDBMulti::get_stats($set_id, $select, ($page_id - 1) * $posts_per_page, $posts_per_page, $filter_date, $filter_cats, $search);
+    $sql = gdsrAdmDBMulti::get_stats($set_id, $select, ($page_id - 1) * $posts_per_page, $posts_per_page, $filter_date, $filter_cats, $search);
     $rows = $wpdb->get_results($sql, OBJECT);
 
 ?>
