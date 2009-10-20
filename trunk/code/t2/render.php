@@ -1135,6 +1135,9 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     // rendering results
     function render_wsr($widget, $section = "WSR") {
         global $gdsr;
+
+        $widget = apply_filters('gdsr_widget_parameters_wsr', $widget);
+
         $template = GDSRRenderT2::get_template($widget["template_id"], $section);
         $tpl_render = html_entity_decode($template->elm["header"]);
         $tpl_render = apply_filters('gdsr_t2render_'.strtolower($section).'_header', $tpl_render, $template, $widget, "header");
@@ -1205,6 +1208,9 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
     function render_wcr($widget) {
         global $gdsr;
+
+        $widget = apply_filters('gdsr_widget_parameters_wcr', $widget);
+
         $template = GDSRRenderT2::get_template($widget["template_id"], "WCR");
         $tpl_render = html_entity_decode($template->elm["header"]);
         $tpl_render = apply_filters('gdsr_t2render_wcr_header', $tpl_render, $template, $widget, "header");
@@ -1260,6 +1266,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     }
 
     function render_wbr($widget) {
+        $widget = apply_filters('gdsr_widget_parameters_wbr', $widget);
+
         $template = GDSRRenderT2::get_template($widget["template_id"], "WBR");
         $tpl_render = $template->elm["normal"];
         $tpl_render = html_entity_decode($tpl_render);
@@ -1283,6 +1291,8 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     }
 
     function render_srr($widget) {
+        $widget = apply_filters('gdsr_widget_parameters_srr', $widget);
+
         return GDSRRenderT2::render_wsr($widget, "SRR");
     }
 }

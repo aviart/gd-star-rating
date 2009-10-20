@@ -84,26 +84,26 @@ class GDSRRender {
         return sprintf('<img%s src="%s" alt="%s" />', $id == "" ? '' : ' id="'.$id.'"', $url, ($rating > 0 ? "+" : "").$rating);
     }
 
-    function render_static_stars($star_style, $star_size, $star_max, $rating, $id = "", $rendering = "") {
+    function render_static_stars($star_style, $star_size, $star_max, $rating, $id = "", $rendering = "", $star_factor = 1) {
         if ($rendering == "") $rendering = STARRATING_STARS_GENERATOR;
         switch ($rendering) {
             case "GFX":
-                return GDSRRender::render_static_stars_gfx($star_style, $star_size, $star_max, $rating, $id);
+                return GDSRRender::render_static_stars_gfx($star_style, $star_size, $star_max, $rating, $id, $star_factor);
                 break;
             default:
             case "DIV":
-                return GDSRRender::render_static_stars_div($star_style, $star_size, $star_max, $rating, $id);
+                return GDSRRender::render_static_stars_div($star_style, $star_size, $star_max, $rating, $id, $star_factor);
                 break;
         }
     }
 
-    function render_static_stars_div($star_style, $star_size, $star_max, $rating, $id = "") {
+    function render_static_stars_div($star_style, $star_size, $star_max, $rating, $id = "", $star_factor = 1) {
         global $gdsr;
 
         $gfx = $gdsr->g->find_stars($star_style);
         $star_path = is_null($gfx) ? "" : $gfx->get_url($star_size);
-        $full_width = $star_size * $star_max;
-        $rate_width = $star_size * $rating;
+        $full_width = $star_size * $star_max * $star_factor;
+        $rate_width = $star_size * $rating * $star_factor;
         
         return sprintf('<div%s style="%s"><div style="%s"></div></div>',
             $id == "" ? '' : ' id="'.$id.'"',
@@ -112,8 +112,8 @@ class GDSRRender {
         );
     }
 
-    function render_static_stars_gfx($star_style, $star_size, $star_max, $rating, $id = "") {
-        $url = STARRATING_URL.sprintf("gfx.php?value=%s&amp;set=%s&amp;size=%s&amp;max=%s", $rating, $star_style, $star_size, $star_max);
+    function render_static_stars_gfx($star_style, $star_size, $star_max, $rating, $id = "", $star_factor = 1) {
+        $url = STARRATING_URL.sprintf("gfx.php?value=%s&amp;set=%s&amp;size=%s&amp;max=%s", $rating * $star_factor, $star_style, $star_size, $star_max * $star_factor);
         return sprintf('<img%s src="%s" alt="%s/%s" />', $id == "" ? '' : ' id="'.$id.'"', $url, $rating, $star_max);
     }
 
