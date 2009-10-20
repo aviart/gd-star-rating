@@ -98,7 +98,7 @@ class gdsrQuery {
                 break;
         }
 
-        if ($c != "") $c.= ", %sposts.post_date desc";
+        if ($c != "") $c.= sprintf(", %sposts.post_date desc", $table_prefix);
         return $c != "" ? $c : $default;
     }
 
@@ -149,7 +149,7 @@ class gdsrQuery {
                 break;
         }
 
-        if ($c != "") $c.= ", %sposts.post_date desc";
+        if ($c != "") $c.= sprintf(", %sposts.post_date desc", $table_prefix);
         return $c != "" ? $c : $default;
     }
 }

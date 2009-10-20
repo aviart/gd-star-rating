@@ -13,7 +13,7 @@ $url.= "&amp;gdsr=iplist";
 $page_id = 1;
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 
-$number_posts = GDSRDatabase::get_all_banned_ips_count();
+$number_posts = gdsrAdmDB::get_all_banned_ips_count();
 
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
@@ -45,7 +45,7 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
     <tbody>
 <?php
 
-$rows = GDSRDatabase::get_all_banned_ips(($page_id - 1) * $posts_per_page, $posts_per_page);
+    $rows = gdsrAdmDB::get_all_banned_ips(($page_id - 1) * $posts_per_page, $posts_per_page);
     $tr_class = "";
     foreach ($rows as $row) {
         echo '<tr id="post-'.$row->id.'" class="'.$tr_class.' author-self status-publish" valign="top">';

@@ -32,11 +32,11 @@ if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-st
     $ips = $_POST["gdsr_item"];
     if (count($ips) > 0) {
         if (isset($_POST["gdsr_ip_ban"])) {
-            $all_banned = GDSRDatabase::get_all_banned_ips();
+            $all_banned = gdsrAdmDB::get_all_banned_ips();
             $banned_ips = array();
             foreach ($all_banned as $ip) $banned_ips[] = $ip->ip;
             foreach ($ips as $ip) {
-                if (!in_array($ip, $banned_ips)) GDSRDatabase::ban_ip($ip);
+                if (!in_array($ip, $banned_ips)) gdsrAdmDB::ban_ip($ip);
             }
         }
 

@@ -78,7 +78,7 @@ if ($filter_date != '' || $filter_date != '0') $url.= "&amp;date=".$filter_date;
 if ($search != '') $url.= "&amp;s=".$search;
 if ($select != '') $url.= "&amp;select=".$select;
 
-$sql_count = GDSRDatabase::get_stats_count($filter_date, $filter_cats, $search);
+$sql_count = gdsrAdmDB::get_stats_count($filter_date, $filter_cats, $search);
 $np = $wpdb->get_results($sql_count);
 $number_posts_page = 0;
 $number_posts_post = 0;
@@ -129,7 +129,7 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
 <br class="clear"/>
 <?php
 
-    $sql = GDSRDatabase::get_stats($select, ($page_id - 1) * $posts_per_page, $posts_per_page, $filter_date, $filter_cats, $search);
+    $sql = gdsrAdmDB::get_stats($select, ($page_id - 1) * $posts_per_page, $posts_per_page, $filter_date, $filter_cats, $search);
     $rows = $wpdb->get_results($sql, OBJECT);
     
 ?>

@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
-Version: 1.7.2
+Version: 1.7.3
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -39,7 +39,6 @@ require_once($gdsr_dirname_basic."/code/cls/results.php");
 require_once($gdsr_dirname_basic."/code/cls/render.php");
 require_once($gdsr_dirname_basic."/code/gfx/gfx_lib.php");
 require_once($gdsr_dirname_basic."/gdt2/classes.php");
-require_once($gdsr_dirname_basic."/code/t2/render.php");
 
 if (STARRATING_DEBUG) {
     require_once($gdsr_dirname_basic."/gdragon/gd_debug.php");
@@ -48,7 +47,7 @@ if (STARRATING_DEBUG) {
 
 if (!defined("WP_ADMIN") || (defined("WP_ADMIN") && !WP_ADMIN)) {
     define("GDSR_WP_ADMIN", false);
-    require_once($gdsr_dirname_basic."/gdt2/classes.php");
+    require_once($gdsr_dirname_basic."/code/t2/render.php");
     require_once($gdsr_dirname_basic."/code/blg/db.php");
     require_once($gdsr_dirname_basic."/code/blg/frontend.php");
     require_once($gdsr_dirname_basic."/code/blg/helpers.php");
@@ -79,9 +78,13 @@ if (!class_exists('GDStarRating')) {
     $gdsr = new GDStarRating($gdsr_dirname_basic, __FILE__);
 
     include(STARRATING_PATH."code/fn/general.php");
-    include(STARRATING_PATH."code/fn/data.php");
-    include(STARRATING_PATH."code/fn/render.php");
-    include(STARRATING_PATH."code/fn/legacy.php");
+    if (!GDSR_WP_ADMIN) {
+        include(STARRATING_PATH."code/fn/data.php");
+        include(STARRATING_PATH."code/fn/render.php");
+
+        if (STARRATING_LEGACY_FUNCTIONS)
+            include(STARRATING_PATH."code/fn/legacy.php");
+    }
 }
 
 ?>

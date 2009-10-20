@@ -55,7 +55,7 @@ if ($select != '') $url.= "&amp;vg=".$select;
 $b_url = $url;
 if ($sort_colum != '') $url.= '&amp;sc='.$sort_colum.'&amp;so='.$sort_order;
 
-$sql_count = GDSRDatabase::get_voters_count($post_id, $filter_date, $vote_type, $filter_vote);
+$sql_count = gdsrAdmDB::get_voters_count($post_id, $filter_date, $vote_type, $filter_vote);
 $np = $wpdb->get_results($sql_count);
 $number_posts_users = 0;
 $number_posts_visitors = 0;
@@ -111,7 +111,7 @@ else
 <br class="clear"/>
 <?php
 
-    $sql = GDSRDatabase::get_visitors($post_id, $vote_type, $filter_date, $filter_vote, $select, ($page_id - 1) * $posts_per_page, $posts_per_page, $sort_column, $sort_order);
+    $sql = gdsrAdmDB::get_visitors($post_id, $vote_type, $filter_date, $filter_vote, $select, ($page_id - 1) * $posts_per_page, $posts_per_page, $sort_column, $sort_order);
     $rows = $wpdb->get_results($sql, OBJECT);
 
     $col[0] = gdFunctionsGDSR::column_sort_vars("user_id", $sort_order, $sort_column);

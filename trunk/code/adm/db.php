@@ -1,6 +1,201 @@
 <?php
 
+class gdsrAdmDBMulti {
+    function get_stats_count($set_id, $dates = "0", $cats = "0", $search = "") {
+        global $table_prefix;
+        $where = " and ms.multi_id = ".$set_id;
+
+        if ($dates != "" && $dates != "0") {
+            $where.= " and year(p.post_date) = ".substr($dates, 0, 4);
+            $where.= " and month(p.post_date) = ".substr($dates, 4, 2);
+        }
+        if ($search != "")
+            $where.= " and p.post_title like '%".$search."%'";
+
+        if ($cats != "" && $cats != "0")
+            $sql = sprintf("SELECT p.post_type, count(*) as count FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p, %sgdsr_multis_data ms WHERE p.ID = ms.post_id and t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.ID AND t.term_id = %s AND t.taxonomy = 'category' AND p.post_status = 'publish'%s GROUP BY p.post_type",
+                $table_prefix, $table_prefix, $table_prefix, $table_prefix, $cats, $where
+            );
+        else
+            $sql = sprintf("select p.post_type, count(*) as count from %sposts p inner join %sgdsr_multis_data ms on p.ID = ms.post_id where p.post_status = 'publish'%s group by post_type",
+                $table_prefix, $table_prefix, $where
+            );
+        return $sql;
+    }
+
+    function get_stats($set_id, $select = "", $start = 0, $limit = 20, $dates = "0", $cats = "0", $search = "", $sort_column = 'id', $sort_order = 'desc', $additional = '') {
+        global $table_prefix;
+        $where = " and ms.multi_id = ".$set_id;
+
+        if ($dates != "" && $dates != "0") {
+            $where.= " and year(p.post_date) = ".substr($dates, 0, 4);
+            $where.= " and month(p.post_date) = ".substr($dates, 4, 2);
+        }
+        if ($search != "")
+            $where.= " and p.post_title like '%".$search."%'";
+
+        if ($select != "" && $select != "postpage")
+            $where.= " and post_type = '".$select."'";
+
+        if ($sort_column == 'post_title' || $sort_column == 'id')
+            $order = " ORDER BY p.".$sort_column." ".$sort_order;
+        else
+            $order = " ORDER BY ".$sort_column." ".$sort_order;
+
+        if ($cats != "" && $cats != "0")
+            $sql = sprintf("SELECT p.id as pid, p.post_title, p.post_type, ms.* FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p, %sgdsr_multis_data ms WHERE ms.post_id = p.id and t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.id AND t.term_id = %s AND t.taxonomy = 'category' AND p.post_status = 'publish'%s%s%s LIMIT %s, %s",
+                 $table_prefix, $table_prefix, $table_prefix, $table_prefix, $cats, $where, $additional, $order, $start, $limit
+            );
+        else
+            $sql = sprintf("select p.id as pid, p.post_title, p.post_type, ms.* from %sposts p left join %sgdsr_multis_data ms on p.id = ms.post_id WHERE p.post_status = 'publish'%s%s%s limit %s, %s",
+                $table_prefix, $table_prefix, $where, $additional, $order, $start, $limit
+            );
+        return $sql;
+    }
+}
+
 class gdsrAdmDB {
+    function get_voters_count($post_id, $dates = "", $vote_type = "article", $vote_value = 0) {
+        global $table_prefix;
+        $where = " where vote_type = '".$vote_type."'";
+        $where.= " and id = ".$post_id;
+        if ($dates != "" && $dates != "0") {
+            $where.= " and year(voted) = ".substr($dates, 0, 4);
+            $where.= " and month(voted) = ".substr($dates, 4, 2);
+        }
+        if ($vote_value > 0)
+            $where.= " and vote = ".$vote_value;
+
+        $sql = sprintf("SELECT count(*) as count, user_id = 0 as user FROM %sgdsr_votes_log%s group by (user_id = 0)",
+            $table_prefix, $where
+            );
+
+        return $sql;
+    }
+
+    function get_visitors($post_id, $vote_type = "article", $dates = "", $vote_value = 0, $select = "total", $start = 0, $limit = 20, $sort_column = '', $sort_order = '') {
+        global $wpdb, $table_prefix;
+
+        if ($sort_column == '') $sort_column = 'user_id';
+        if ($sort_order == '') $sort_order = 'asc';
+
+        if ($sort_column == 'ip') $sort_column = 'INET_ATON(p.ip)';
+        else if ($sort_column == 'user_nicename') $sort_column = "u.user_nicename";
+        else $sort_column = "p.".$sort_column;
+
+        $where = " where vote_type = '".$vote_type."'";
+        $where.= " and p.id = ".$post_id;
+        if ($dates != "" && $dates != "0") {
+            $where.= " and year(p.voted) = ".substr($dates, 0, 4);
+            $where.= " and month(p.voted) = ".substr($dates, 4, 2);
+        }
+
+        if ($select == "users")
+            $where.= " and user_id > 0";
+        if ($select == "visitors")
+            $where.= " and user_id = 0";
+        if ($vote_value > 0)
+            $where.= " and vote = ".$vote_value;
+
+        $sql = sprintf("SELECT p.*, u.user_nicename FROM %sgdsr_votes_log p LEFT JOIN %s u ON u.ID = p.user_id%s ORDER BY %s %s LIMIT %s, %s",
+                $table_prefix, $wpdb->users, $where, $sort_column, $sort_order, $start, $limit);
+
+        return $sql;
+    }
+
+    function get_stats_count($dates = "0", $cats = "0", $search = "") {
+        global $table_prefix;
+        $where = "";
+        if ($dates != "" && $dates != "0") {
+            $where.= " and year(p.post_date) = ".substr($dates, 0, 4);
+            $where.= " and month(p.post_date) = ".substr($dates, 4, 2);
+        }
+        if ($search != "")
+            $where.= " and p.post_title like '%".$search."%'";
+
+        if ($cats != "" && $cats != "0")
+            $sql = sprintf("SELECT p.post_type, count(*) as count FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p WHERE t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.ID AND t.term_id = %s AND p.post_status = 'publish'%s GROUP BY p.post_type",
+                $table_prefix, $table_prefix, $table_prefix, $cats, $where
+            );
+        else
+            $sql = sprintf("select p.post_type, count(*) as count from %sposts p where p.post_status = 'publish'%s group by post_type",
+                $table_prefix, $where
+            );
+        return $sql;
+    }
+
+    function get_stats($select = "", $start = 0, $limit = 20, $dates = "0", $cats = "0", $search = "", $sort_column = 'id', $sort_order = 'desc', $additional = '') {
+        global $table_prefix;
+        $where = "";
+
+        $extras = ", '' as total, '' as votes, '' as title, 0 as rating_total, 0 as rating_users, 0 as rating_visitors";
+
+        if ($dates != "" && $dates != "0") {
+            $where.= " and year(p.post_date) = ".substr($dates, 0, 4);
+            $where.= " and month(p.post_date) = ".substr($dates, 4, 2);
+        }
+        if ($search != "")
+            $where.= " and p.post_title like '%".$search."%'";
+
+        if ($select != "" && $select != "postpage")
+            $where.= " and post_type = '".$select."'";
+
+        if ($sort_column == 'post_title' || $sort_column == 'id')
+            $order = " ORDER BY p.".$sort_column." ".$sort_order;
+        else
+            $order = " ORDER BY ".$sort_column." ".$sort_order;
+
+        if ($cats != "" && $cats != "0")
+            $sql = sprintf("SELECT p.id as pid, p.post_title, p.post_type, d.*%s FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p, %sgdsr_data_article d WHERE d.post_id = p.id and t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.id AND t.term_id = %s AND p.post_status = 'publish'%s%s%s LIMIT %s, %s",
+                $extras, $table_prefix, $table_prefix, $table_prefix, $table_prefix, $cats, $where, $additional, $order, $start, $limit
+            );
+        else
+            $sql = sprintf("SELECT p.id as pid, p.post_title, p.post_type, d.*%s FROM %sposts p left join %sgdsr_data_article d on p.id = d.post_id WHERE p.post_status = 'publish'%s%s%s limit %s, %s",
+                $extras, $table_prefix, $table_prefix, $where, $additional, $order, $start, $limit
+            );
+        return $sql;
+    }
+
+    // ip
+    function get_all_banned_ips($start = 0, $limit = 0) {
+        global $wpdb, $table_prefix;
+        if ($limit > 0) $limiter = " LIMIT ".$start.", ".$limit;
+        else $limiter = "";
+        return $wpdb->get_results(sprintf("select * from %sgdsr_ips where status = 'B'%s", $table_prefix, $limiter));
+    }
+
+    function get_all_banned_ips_count() {
+        global $wpdb, $table_prefix;
+        return $wpdb->get_var(sprintf("select count(*) from %sgdsr_ips where status = 'B'", $table_prefix));
+    }
+
+    function ban_ip_check($ip, $mode = 'S') {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select count(*) from %sgdsr_ips where `status` = 'B' and `mode` = '%s' and `ip` = '%s'", $table_prefix, $mode, $ip);
+        $result = $wpdb->get_var($sql);
+        return !($result == 0);
+    }
+
+    function ban_ip($ip, $mode = 'S') {
+        global $wpdb, $table_prefix;
+        if ($mode == 'S') $ip = GDSRHelper::clean_ip($ip);
+        if (!gdsrAdmDB::ban_ip_check($ip, $mode))
+            $wpdb->query(sprintf("INSERT INTO %sgdsr_ips (`status`, `mode`, `ip`) VALUES ('B', '%s', '%s')", $table_prefix, $mode, $ip));
+    }
+
+    function ban_ip_range($ip_from, $ip_to) {
+        global $wpdb, $table_prefix;
+        $ip = $ip_from."|".$ip_to;
+        gdsrAdmDB::ban_ip($ip, 'R');
+    }
+
+    function unban_ips($ips) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("delete from %sgdsr_ips where id in %s", $table_prefix, $ips);
+        $wpdb->query($sql);
+    }
+    // ip
+
     //users
     function get_valid_users() {
         global $wpdb, $table_prefix;
