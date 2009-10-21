@@ -1500,14 +1500,15 @@ class GDStarRating {
         $msg = "";
         if (isset($_POST["gdsr_multi_review_form"]) && $_POST["gdsr_multi_review_form"] == "review") {
             $mur_all = $_POST['gdsrmulti'];
-            $set_id = $this->o["mur_review_set"];
             foreach ($mur_all as $post_id => $data) {
-                $mur = $data[0];
-                $values = explode("X", $mur);
-                $set = gd_get_multi_set($set_id);
-                $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
-                GDSRDBMulti::save_review($record_id, $values);
-                GDSRDBMulti::recalculate_multi_review($record_id, $values, $set);
+                foreach ($data as $set_id => $mur) {
+                    $set = gd_get_multi_set($set_id);
+                    $values = explode("X", $mur);
+                    wp_gdsr_dump("MUR", $values);
+                    $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
+                    GDSRDBMulti::save_review($record_id, $values);
+                    GDSRDBMulti::recalculate_multi_review($record_id, $values, $set);
+                }
             }
             $this->custom_actions('init_save_review');
             wp_redirect_self();
