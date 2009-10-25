@@ -269,7 +269,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
             }
             $avg_rating = @number_format($avg_rating, 1);
             if ($avg_rating > 0) {
-                return GDSRRenderT2::render_rmb($template_id, array("votes" => $votes, "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "star_style" => $this->g->is_ie6 ? $stars_set_ie6 : $stars_set, "star_size" => $stars_size, "avg_style" => $this->g->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, "avg_size" => $avg_stars_size));
+                return GDSRRenderT2::render_rmb($template_id, array("votes" => $votes, "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "style" => $this->g->is_ie6 ? $stars_set_ie6 : $stars_set, "size" => $stars_size, "avg_style" => $this->g->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, "avg_size" => $avg_stars_size));
             } else return "";
         } else return "";
     }

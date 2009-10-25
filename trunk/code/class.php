@@ -1155,6 +1155,8 @@ class GDStarRating {
                     update_option('gd-star-rating-gfx', $this->g);
                 }
 
+                require_once(STARRATING_PATH."/gdragon/gd_db_install.php");
+
                 if ($this->o["build"] < 911)
                     gdDBInstallGDSR::upgrade_collation(STARRATING_PATH);
 
