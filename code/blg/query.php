@@ -78,7 +78,7 @@ class gdsrQuery {
         switch ($sort) {
             case "thumbs":
                 $c = sprintf(" (gdsra.user_recc_plus - gdsra.user_recc_minus + gdsra.visitor_recc_plus - gdsra.visitor_recc_minus) ".$order);
-                $c.= sprintf(" (gdsra.user_recc_plus + gdsra.user_recc_minus + gdsra.visitor_recc_plus + gdsra.visitor_recc_minus) ".$order);
+                $c.= sprintf(", (gdsra.user_recc_plus + gdsra.user_recc_minus + gdsra.visitor_recc_plus + gdsra.visitor_recc_minus) ".$order);
                 break;
             case "rating":
                 $c = sprintf(" (gdsra.user_votes + gdsra.visitor_votes)/(gdsra.user_voters + gdsra.visitor_voters) ".$order);
