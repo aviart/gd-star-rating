@@ -156,6 +156,207 @@ class gdsrAdmDB {
         return $sql;
     }
 
+    function check_post_review($post_id) {
+        global $wpdb, $table_prefix;
+        $articles = $table_prefix.'gdsr_data_article';
+        $sql = "select review from ".$articles." WHERE post_id = ".$post_id;
+        $results = $wpdb->get_row($sql, OBJECT);
+        return count($results) > 0;
+    }
+
+    function get_categories($post_id) {
+        global $wpdb;
+
+        $sql = "SELECT s.name FROM $wpdb->term_taxonomy t, $wpdb->terms s, $wpdb->term_relationships r WHERE t.taxonomy = 'category' AND t.term_taxonomy_id = r.term_taxonomy_id AND t.term_id = s.term_id AND r.object_id = ".$post_id;
+        $cats = $wpdb->get_results($sql);
+        $output = '';
+        foreach ($cats as $cat) $output.= $cat->name.", ";
+        $output = $output != '' ? substr($output, 0, strlen($output) - 2) : '/';
+
+        return $output;
+    }
+
+    function update_category_settings($ids, $ids_array, $items, $upd_am, $upd_ar, $upd_cm, $upd_cr, $upd_ms, $frc_std, $frc_mur) {
+        global $wpdb, $table_prefix;
+        GDSRDatabase::add_category_defaults($ids, $ids_array, $items);
+        $dbt_data_cats = $table_prefix.'gdsr_data_category';
+
+        $update = array();
+        if ($frc_std != '') $update[] = "cmm_integration_std = '".$frc_std."'";
+        if ($frc_mur != '') $update[] = "cmm_integration_mur = '".$frc_mur."'";
+        if ($upd_ms != '') $update[] = "cmm_integration_set = '".$upd_ms."'";
+        if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
+        if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
+        if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
+        if ($upd_cr != '') $update[] = "rules_comments = '".$upd_cr."'";
+        if (count($update) > 0) {
+            $updstring = join(", ", $update);
+            $sql = sprintf("update %s set %s where category_id in %s", $dbt_data_cats, $updstring, "(".join(", ", $ids_array).")");
+            $wpdb->query($sql);
+        }
+    }
+
+    function update_reviews($ids, $review, $ids_array) {
+        global $wpdb, $table_prefix;
+        GDSRDatabase::add_defaults($ids, $ids_array);
+        $dbt_data_article = $table_prefix.'gdsr_data_article';
+
+        $wpdb->query(sprintf("update %s set review = %s where post_id in %s", $dbt_data_article, $review, $ids));
+    }
+
+    function update_settings_full($upd_am, $upd_ar, $upd_cm, $upd_cr) {
+        global $wpdb, $table_prefix;
+        $dbt_data_article = $table_prefix.'gdsr_data_article';
+
+        $update = array();
+        if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
+        if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
+        if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
+        if ($upd_cr != '') $update[] = "rules_comments = '".$upd_cr."'";
+        if (count($update) > 0) {
+            $updstring = join(", ", $update);
+            $wpdb->query(sprintf("update %s set %s", $dbt_data_article, $updstring));
+        }
+    }
+
+    function lock_post_massive($date) {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("update %sgdsr_data_article a inner join %sposts p on a.post_id = p.id set a.rules_articles = 'N', a.rules_comments = 'N' where p.post_date < '%s'",
+            $table_prefix, $table_prefix, $date);
+        $wpdb->query($sql);
+    }
+
+    function update_restrictions($ids, $timer_type, $timer_value) {
+        global $wpdb, $table_prefix;
+        $wpdb->query(sprintf("update %sgdsr_data_article set expiry_type = '%s', expiry_value = '%s' where post_id in %s",
+            $table_prefix, $timer_type, $timer_value, $ids));
+    }
+
+    function update_restrictions_thumbs($ids, $timer_type, $timer_value) {
+        global $wpdb, $table_prefix;
+        $wpdb->query(sprintf("update %sgdsr_data_article set recc_expiry_type = '%s', recc_expiry_value = '%s' where post_id in %s",
+            $table_prefix, $timer_type, $timer_value, $ids));
+    }
+
+    function upgrade_integration($ids, $cmm_std, $cmm_mur, $cmm_set) {
+        global $wpdb, $table_prefix;
+        $dbt_data_article = $table_prefix.'gdsr_data_article';
+
+        $update = array();
+
+        if ($cmm_std != '') $update[] = "cmm_integration_std = '".$cmm_std."'";
+        if ($cmm_mur != '') $update[] = "cmm_integration_mur = '".$cmm_mur."'";
+        if ($cmm_set != '') $update[] = "cmm_integration_set = ".$cmm_set;
+
+        if (count($update) > 0) {
+            $updstring = join(", ", $update);
+            $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_article, $updstring, $ids));
+        }
+    }
+
+    function update_settings($ids, $upd_am, $upd_ar, $upd_cm, $upd_cr, $upd_am_rcc, $upd_ar_rcc, $upd_cm_rcc, $upd_cr_rcc, $ids_array) {
+        global $wpdb, $table_prefix;
+        GDSRDatabase::add_defaults($ids, $ids_array);
+        $dbt_data_article = $table_prefix.'gdsr_data_article';
+
+        $update = array();
+
+        if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
+        if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
+        if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
+        if ($upd_cr != '') $update[] = "rules_comments = '".$upd_cr."'";
+
+        if ($upd_am_rcc != '') $update[] = "recc_moderate_articles = '".$upd_am_rcc."'";
+        if ($upd_cm_rcc != '') $update[] = "recc_moderate_comments = '".$upd_cm_rcc."'";
+        if ($upd_ar_rcc != '') $update[] = "recc_rules_articles = '".$upd_ar_rcc."'";
+        if ($upd_cr_rcc != '') $update[] = "recc_rules_comments = '".$upd_cr_rcc."'";
+
+        if (count($update) > 0) {
+            $updstring = join(", ", $update);
+            $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_article, $updstring, $ids));
+        }
+    }
+
+    function delete_voters_log($ids) {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("delete from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
+        $wpdb->query($sql);
+    }
+
+    function delete_voters_main_thumb($id, $value, $article = true, $user = true) {
+        global $wpdb, $table_prefix;
+        $update = "";
+
+        if ($value > 0) {
+            if (!$user) $update = "visitor_recc_plus = visitor_recc_plus - 1";
+            else $update = "user_recc_plus = user_recc_plus - 1";
+        } else {
+            if (!$user) $update = "visitor_recc_minus = visitor_recc_minus - 1";
+            else $update = "user_recc_minus = user_recc_minus - 1";
+        }
+
+        $sql = sprintf("update %sgdsr_data_%s set %s where %s_id = %s", $table_prefix,
+                $article ? "article" : "comment", $mod, $article ? "post" : "comment", $id);
+        $wpdb->query($sql);
+    }
+
+    function delete_voters_main($id, $value, $article = true, $user = true) {
+        global $wpdb, $table_prefix;
+        $mod = $user ? "user_voters = user_voters - 1, user_votes = user_votes - 1" :
+                "visitor_voters = visitor_voters - 1, visitor_votes = visitor_votes - ".$value;
+
+        $sql = sprintf("update %sgdsr_data_%s set %s where %s_id = %s", $table_prefix,
+                $article ? "article" : "comment", $mod, $article ? "post" : "comment", $id);
+        $wpdb->query($sql);
+    }
+
+    function delete_voters_full($ids, $vote_type, $thumb = false) {
+        global $wpdb, $table_prefix;
+        if ($vote_type == "artthumb") $vote_type = "article";
+        if ($vote_type == "cmmthumb") $vote_type = "comment";
+        $delfrom = $table_prefix."gdsr_data_".$vote_type;
+
+        if ($thumb) {
+            $sql = sprintf("select id, user_id, vote from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
+            $del = $wpdb->get_results($sql);
+
+            if (count($del) > 0) {
+                foreach ($del as $d) {
+                    $update = "";
+
+                    if ($d->vote > 0) {
+                        if ($d->user_id == 0) $update = "visitor_recc_plus = visitor_recc_plus - 1";
+                        else $update = "user_recc_plus = user_recc_plus - 1";
+                    } else {
+                        if ($d->user_id == 0) $update = "visitor_recc_minus = visitor_recc_minus - 1";
+                        else $update = "user_recc_minus = user_recc_minus - 1";
+                    }
+
+                    $sql = sprintf("update %s set %s where post_id = %s", $delfrom, $update, $d->id);
+                    $wpdb->query($sql);
+                }
+            }
+        } else {
+            $sql = sprintf("select id, user_id = 0 as user, count(*) as count, sum(vote) as votes from %sgdsr_votes_log where record_id in %s group by id, (user_id = 0)", $table_prefix, $ids);
+            $del = $wpdb->get_results($sql);
+
+            if (count($del) > 0) {
+                foreach ($del as $d) {
+                    if ($d->user == 0) $update = sprintf("user_voters = user_voters - %s, user_votes = user_votes - %s", $d->count, $d->votes);
+                    else $update = sprintf("visitor_voters = visitor_voters - %s, visitor_votes = visitor_votes - %s", $d->count, $d->votes);
+
+                    $sql = sprintf("update %s set %s where post_id = %s", $delfrom, $update, $d->id);
+                    $wpdb->query($sql);
+                }
+            }
+        }
+
+        $sql = sprintf("delete from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
+        $wpdb->query($sql);
+    }
+
     // ip
     function get_all_banned_ips($start = 0, $limit = 0) {
         global $wpdb, $table_prefix;
@@ -1120,6 +1321,120 @@ class gdsrTlsDB {
             $table_prefix, $table_prefix);
         $wpdb->query($sql);
         return $wpdb->rows_affected;
+    }
+}
+
+class gdsrAdmFunc {
+    /**
+     * Scans main and additional graphics folders for stars and trends sets.
+     *
+     * @return GDgfxLib scanned graphics object
+     */
+    function gfx_scan() {
+        $data = new GDgfxLib();
+
+        $stars_folders = gdFunctionsGDSR::get_folders(STARRATING_PATH."stars/");
+        foreach ($stars_folders as $f) {
+            $gfx = new GDgfxStar($f);
+            if ($gfx->imported)
+                $data->stars[] = $gfx;
+        }
+        if (is_dir(STARRATING_XTRA_PATH."stars/")) {
+            $stars_folders = gdFunctionsGDSR::get_folders(STARRATING_XTRA_PATH."stars/");
+            foreach ($stars_folders as $f) {
+                $gfx = new GDgfxStar($f, false);
+                if ($gfx->imported)
+                    $data->stars[] = $gfx;
+            }
+        }
+
+        $trend_folders = gdFunctionsGDSR::get_folders(STARRATING_PATH."trends/");
+        foreach ($trend_folders as $f) {
+            $gfx = new GDgfxTrend($f);
+            if ($gfx->imported)
+                $data->trend[] = $gfx;
+        }
+        if (is_dir(STARRATING_XTRA_PATH."trends/")) {
+            $trend_folders = gdFunctionsGDSR::get_folders(STARRATING_XTRA_PATH."trends/");
+            foreach ($trend_folders as $f) {
+                $gfx = new GDgfxTrend($f, false);
+                if ($gfx->imported)
+                    $data->trend[] = $gfx;
+            }
+        }
+
+        $thumbs_folders = gdFunctionsGDSR::get_folders(STARRATING_PATH."thumbs/");
+        foreach ($thumbs_folders as $f) {
+            $gfx = new GDgfxThumb($f);
+            if ($gfx->imported)
+                $data->thumbs[] = $gfx;
+        }
+        if (is_dir(STARRATING_XTRA_PATH."thumbs/")) {
+            $thumbs_folders = gdFunctionsGDSR::get_folders(STARRATING_XTRA_PATH."thumbs/");
+            foreach ($thumbs_folders as $f) {
+                $gfx = new GDgfxThumb($f, false);
+                if ($gfx->imported)
+                    $data->thumbs[] = $gfx;
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * Full uninstall of plugin.
+     */
+    function init_uninstall() {
+        if (isset($_POST["gdsr_full_uninstall"]) && $_POST["gdsr_full_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
+            delete_option('gd-star-rating');
+            delete_option('widget_gdstarrating');
+            delete_option('gd-star-rating-import');
+            delete_option('gd-star-rating-gfx');
+            delete_option('gd-star-rating-inc');
+
+            gdDBInstallGDSR::drop_tables(STARRATING_PATH);
+            gdWPGDSR::deactivate_plugin("gd-star-rating/gd-star-rating.php");
+            update_option('recently_activated', array("gd-star-rating/gd-star-rating.php" => time()) + (array)get_option('recently_activated'));
+            wp_redirect('index.php');
+            exit;
+        }
+    }
+
+    /**
+     * Templates operations.
+     */
+    function init_templates() {
+        if (isset($_GET["deltpl"])) {
+            $del_id = $_GET["deltpl"];
+            gdTemplateDB::delete_template($del_id);
+            $url = remove_query_arg("deltpl");
+            wp_redirect($url);
+            exit;
+        }
+
+        if (isset($_POST["gdsr_save_tpl"])) {
+            $general = array();
+            $general["name"] = stripslashes(htmlentities($_POST['tpl_gen_name'], ENT_QUOTES, STARRATING_ENCODING));
+            $general["desc"] = stripslashes(htmlentities($_POST['tpl_gen_desc'], ENT_QUOTES, STARRATING_ENCODING));
+            $general["section"] = $_POST["tpl_section"];
+            $general["dependencies"] = $_POST["tpl_tpl"];
+            $general["id"] = $_POST["tpl_id"];
+            $general["preinstalled"] = '0';
+            $tpl_input = $_POST["tpl_element"];
+            $elements = array();
+            foreach ($tpl_input as $key => $value)
+                $elements[$key] = stripslashes(htmlentities($value, ENT_QUOTES, STARRATING_ENCODING));
+            if ($general["id"] == 0) $general["id"] = gdTemplateDB::add_template($general, $elements);
+            else gdTemplateDB::edit_template($general, $elements);
+
+            if (isset($_POST["tpl_dep_rewrite"])) gdTemplateDB::rewrite_dependencies($general["section"], $general["id"]);
+            if (isset($_POST["tpl_default_rewrite"])) gdTemplateDB::rewrite_defaults($general["section"], $general["id"]);
+
+            $url = remove_query_arg("tplid");
+            $url = remove_query_arg("mode", $url);
+            wp_redirect($url);
+            exit;
+        }
     }
 }
 

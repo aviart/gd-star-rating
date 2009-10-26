@@ -21,7 +21,7 @@ if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-st
             $ids[] = $parts[1];
             $items[$parts[1]] = $parts[0];
         }
-        GDSRDatabase::update_category_settings("(".join(", ", $gdsr_items).")", $ids, $items, 
+        gdsrAdmDB::update_category_settings("(".join(", ", $gdsr_items).")", $ids, $items,
             $_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"],
             $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"],
             $_POST["gdsr_integration_mur"], $_POST["gdsr_integration_active_std"],

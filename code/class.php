@@ -146,7 +146,13 @@ class GDStarRating {
         }
 
         if ($this->o["ajax_jsonp"] == 1) $this->plugin_ajax.= "?callback=?";
+        $this->is_cached = $this->o["cache_active"];
+        $this->use_nonce = $this->o["use_nonce"] == 1;
+        define("STARRATING_VERSION", $this->o["version"].'_'.$this->o["build"]);
+        define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"]);
+        define("STARRATING_STARS_GENERATOR", $this->o["gfx_generator_auto"] == 0 ? "DIV" : "GFX");
         define('STARRATING_AJAX_URL', $this->plugin_ajax);
+        define('STARRATING_ENCODING', $this->o["encoding"]);
     }
 
     /**
@@ -233,12 +239,12 @@ class GDStarRating {
     function shortcode_starratingblock($atts = array()) {
         global $userdata;
         $user_id = is_object($userdata) ? $userdata->ID : 0;
+        $this->cache_posts($user_id);
 
         $override = shortcode_atts($this->default_shortcode_starrater, $atts);
         if ($override["post"] == 0) global $post;
         else $post = get_post($override["post"]);
 
-        $this->cache_posts($user_id);
         return $this->f->render_article($post, $userdata, $override);
     }
 
@@ -269,7 +275,7 @@ class GDStarRating {
         $rating = "";
         $sett["comments"] = $post->comment_count;
         if ($post->ID > 0) {
-            $rows = GDSRDatabase::get_comments_aggregation($sett["post"], $sett["show"]);
+            $rows = gdsrBlgDB::get_comments_aggregation($sett["post"], $sett["show"]);
             $totel_comments = count($rows);
             $total_voters = 0;
             $total_votes = 0;
@@ -304,6 +310,10 @@ class GDStarRating {
     * @param array $atts
     */
     function shortcode_starreview($atts = array()) {
+        global $userdata;
+        $user_id = is_object($userdata) ? $userdata->ID : 0;
+        $this->cache_posts($user_id);
+
         $sett = shortcode_atts($this->default_shortcode_starreview, $atts);
         if ($sett["post"] == 0) {
             global $post;
@@ -315,8 +325,9 @@ class GDStarRating {
         $star_style_ie6 = $sett["style_ie6"] != "" ? $sett["style_ie6"] : $this->o["review_style_ie6"];
         $star_size = $sett["size"] != "" ? $sett["size"] : $this->o['review_size'];
 
-        $rating = GDSRDatabase::get_review($sett["post"]);
-        if ($rating < 0) $rating = 0;
+        $post_data = wp_gdget_post($post_id);
+        $rating = is_object($post_data) ? $post_data->review : -1;
+        $rating = $rating < 0 ? 0 : $rating;
         return GDSRRenderT2::render_rsb($sett["tpl"], array("rating" => $rating, "star_style" => $this->is_ie6 ? $star_style_ie6 : $star_style, "star_size" => $star_size, "star_max" => $this->o["review_stars"], "header_text" => $this->o["review_header_text"], "css" => $star_css));
     }
 
@@ -401,12 +412,17 @@ class GDStarRating {
      * @return string rendered stars for article review
      */
     function display_article_review($post_id, $use_default = true, $style = "oxygen", $size = 20) {
+        global $userdata;
+        $user_id = is_object($userdata) ? $userdata->ID : 0;
+        $this->cache_posts($user_id);
+
         if ($use_default) {
             $style = ($this->is_ie6 ? $this->o["review_style_ie6"] : $this->o["review_style"]);
             $size = $this->o["review_size"];
         }
         $stars = $this->o["review_stars"];
-        $review = GDSRDatabase::get_review($post_id);
+        $post_data = wp_gdget_post($post_id);
+        $review = is_object($post_data) ? $post_data->review : -1;
         if ($review < 0) $review = 0;
 
         return GDSRRender::render_static_stars($style, $size, $stars, $review);
@@ -446,6 +462,10 @@ class GDStarRating {
      * @return string rendered stars for article rating
      */
     function display_article_rating($post_id, $use_default = true, $style = "oxygen", $size = 20) {
+        global $userdata;
+        $user_id = is_object($userdata) ? $userdata->ID : 0;
+        $this->cache_posts($user_id);
+
         if ($use_default) {
             $style = ($this->is_ie6 ? $this->o["style_ie6"] : $this->o["style"]);
             $size = $this->o["size"];
@@ -801,11 +821,6 @@ class GDStarRating {
     }
 
     /**
-     * In progress...
-     */
-    function set_comment_reorder($params = array()) { }
-
-    /**
      * Adding WordPress action and filter
      */
     function actions_filters() {
@@ -1099,7 +1114,7 @@ class GDStarRating {
                 }
             }
 
-            $old = GDSRDatabase::check_post($post_id);
+            $old = gdsrAdmDB::check_post_review($post_id);
 
             $review = $_POST['gdsr_review'];
             if ($_POST['gdsr_review_decimal'] != "-1")
@@ -1151,7 +1166,7 @@ class GDStarRating {
         if (!STARRATING_AJAX && GDSR_WP_ADMIN) {
             if ($this->o["build"] < $this->default_options["build"] || !is_array($this->o)) {
                 if (is_object($this->g)) {
-                    $this->g = $this->gfx_scan();
+                    $this->g = gdsrAdmFunc::gfx_scan();
                     update_option('gd-star-rating-gfx', $this->g);
                 }
 
@@ -1199,7 +1214,7 @@ class GDStarRating {
             }
 
             if (!is_object($this->g)) {
-                $this->g = $this->gfx_scan();
+                $this->g = gdsrAdmFunc::gfx_scan();
                 update_option('gd-star-rating-gfx', $this->g);
             }
 
@@ -1231,67 +1246,6 @@ class GDStarRating {
                 update_option('gd-star-rating-inc', $this->ginc);
             }
         }
-
-        $this->use_nonce = $this->o["use_nonce"] == 1;
-        define("STARRATING_VERSION", $this->o["version"].'_'.$this->o["build"]);
-        define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"]);
-        define("STARRATING_STARS_GENERATOR", $this->o["gfx_generator_auto"] == 0 ? "DIV" : "GFX");
-    }
-
-    /**
-     * Scans main and additional graphics folders for stars and trends sets.
-     *
-     * @return GDgfxLib scanned graphics object
-     */
-    function gfx_scan() {
-        $data = new GDgfxLib();
-
-        $stars_folders = gdFunctionsGDSR::get_folders($this->plugin_path."stars/");
-        foreach ($stars_folders as $f) {
-            $gfx = new GDgfxStar($f);
-            if ($gfx->imported)
-                $data->stars[] = $gfx;
-        }
-        if (is_dir($this->plugin_xtra_path."stars/")) {
-            $stars_folders = gdFunctionsGDSR::get_folders($this->plugin_xtra_path."stars/");
-            foreach ($stars_folders as $f) {
-                $gfx = new GDgfxStar($f, false);
-                if ($gfx->imported)
-                    $data->stars[] = $gfx;
-            }
-        }
-
-        $trend_folders = gdFunctionsGDSR::get_folders($this->plugin_path."trends/");
-        foreach ($trend_folders as $f) {
-            $gfx = new GDgfxTrend($f);
-            if ($gfx->imported)
-                $data->trend[] = $gfx;
-        }
-        if (is_dir($this->plugin_xtra_path."trends/")) {
-            $trend_folders = gdFunctionsGDSR::get_folders($this->plugin_xtra_path."trends/");
-            foreach ($trend_folders as $f) {
-                $gfx = new GDgfxTrend($f, false);
-                if ($gfx->imported)
-                    $data->trend[] = $gfx;
-            }
-        }
-
-        $thumbs_folders = gdFunctionsGDSR::get_folders($this->plugin_path."thumbs/");
-        foreach ($thumbs_folders as $f) {
-            $gfx = new GDgfxThumb($f);
-            if ($gfx->imported)
-                $data->thumbs[] = $gfx;
-        }
-        if (is_dir($this->plugin_xtra_path."thumbs/")) {
-            $thumbs_folders = gdFunctionsGDSR::get_folders($this->plugin_xtra_path."thumbs/");
-            foreach ($thumbs_folders as $f) {
-                $gfx = new GDgfxThumb($f, false);
-                if ($gfx->imported)
-                    $data->thumbs[] = $gfx;
-            }
-        }
-
-        return $data;
     }
 
     /**
@@ -1338,26 +1292,22 @@ class GDStarRating {
      * Main init method executed as wordpress action 'init'.
      */
     function init() {
-        $this->init_uninstall();
-
-        if ($this->is_update) {
-            GDSRDatabase::init_categories_data();
+        $this->is_ie6 = $this->o["disable_ie6_check"] == 1 ? false : is_msie6();
+        if ($this->is_update) GDSRDatabase::init_categories_data();
+        if (is_admin()) {
+            gdsrAdmFunc::init_uninstall();
+            gdsrAdmFunc::init_templates();
+            $this->init_operations();
+            $this->load_translation();
         }
 
-        define('STARRATING_ENCODING', $this->o["encoding"]);
-
-        $this->init_operations();
-        $this->init_templates();
         wp_enqueue_script('jquery');
-        if ($this->wp_version >= 28 && is_admin()) {
-            wp_enqueue_script('jquery-ui-core');
-            wp_enqueue_script('jquery-ui-tabs');
-        }
 
         if (!is_admin()) {
             $this->is_bot = gdsrFrontHelp::detect_bot($_SERVER['HTTP_USER_AGENT'], $this->bots);
             $this->is_ban = gdsrFrontHelp::detect_ban();
             $this->f->render_wait_article();
+
             if ($this->o["comments_active"] == 1) $this->f->render_wait_comment();
             if ($this->o["multis_active"] == 1) $this->f->render_wait_multis();
             if ($this->o["thumbs_active"] == 1) {
@@ -1367,25 +1317,39 @@ class GDStarRating {
             if ($this->o["external_javascript"] == 1) {
                 wp_enqueue_script("gdsr_script", plugins_url('gd-star-rating/script.js.php'), array(), $this->o["version"]);
             }
-            if ($this->wp_version >= 27) {
-                if ($this->o["external_rating_css"] == 1) {
-                    wp_enqueue_style("gdsr_style_main", $this->include_rating_css(true, true), array(), $this->o["version"]);
-                }
-                if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
-                    wp_enqueue_style("gdsr_style_xtra", $this->plugin_xtra_url."css/rating.css", array(), $this->o["version"]);
-                }
+            if ($this->o["external_rating_css"] == 1) {
+                wp_enqueue_style("gdsr_style_main", $this->include_rating_css(true, true), array(), $this->o["version"]);
+            }
+            if ($this->o["external_css"] == 1 && file_exists($this->plugin_xtra_path."css/rating.css")) {
+                wp_enqueue_style("gdsr_style_xtra", $this->plugin_xtra_url."css/rating.css", array(), $this->o["version"]);
             }
         } else {
+            if ($this->wp_version >= 28) {
+                wp_enqueue_script('jquery-ui-core');
+                wp_enqueue_script('jquery-ui-tabs');
+            }
             if (isset($_GET["page"])) {
                 if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
                     $this->admin_plugin = true;
                     $this->admin_plugin_page = substr($_GET["page"], 15);
                 }
             }
-
             $this->cache_cleanup();
+            $this->init_specific_pages();
         }
 
+        if (is_admin() && $this->o["mur_review_set"] == 0) {
+            $set = GDSRDBMulti::get_multis(0, 1);
+            if (count($set) > 0) {
+                $this->o["mur_review_set"] = $set[0]->multi_id;
+                update_option('gd-star-rating', $this->o);
+            }
+        }
+
+        $this->custom_actions('init');
+    }
+
+    function init_specific_pages() {
         if ($this->admin_plugin_page == "settings") {
             $gdsr_options = $this->o;
             include ($this->plugin_path."code/adm/save_settings.php");
@@ -1409,20 +1373,6 @@ class GDStarRating {
             $this->safe_mode = gdFunctionsGDSR::php_in_safe_mode();
             if (!$this->safe_mode)
                 $this->extra_folders = $this->o["cache_forced"] == 1 || GDSRHelper::create_folders($this->wp_version);
-        }
-
-        if (is_admin()) $this->load_translation();
-
-        $this->is_cached = $this->o["cache_active"];
-        $this->is_ie6 = $this->o["disable_ie6_check"] == 1 ? false : is_msie6();
-        $this->custom_actions('init');
-
-        if (is_admin() && $this->o["mur_review_set"] == 0) {
-            $set = GDSRDBMulti::get_multis(0, 1);
-            if (count($set) > 0) {
-                $this->o["mur_review_set"] = $set[0]->multi_id;
-                update_option('gd-star-rating', $this->o);
-            }
         }
     }
 
@@ -1479,25 +1429,6 @@ class GDStarRating {
         if (!is_array($this->rendering_sets)) $this->rendering_sets = array();
     }
 
-    /**
-     * Method executing cleanup of the cache files
-     */
-    function init_uninstall() {
-        if (isset($_POST["gdsr_full_uninstall"]) && $_POST["gdsr_full_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
-            delete_option('gd-star-rating');
-            delete_option('widget_gdstarrating');
-            delete_option('gd-star-rating-import');
-            delete_option('gd-star-rating-gfx');
-            delete_option('gd-star-rating-inc');
-
-            gdDBInstallGDSR::drop_tables(STARRATING_PATH);
-            gdWPGDSR::deactivate_plugin("gd-star-rating/gd-star-rating.php");
-            update_option('recently_activated', array("gd-star-rating/gd-star-rating.php" => time()) + (array)get_option('recently_activated'));
-            wp_redirect('index.php');
-            exit;
-        }
-    }
-
     function init_operations() {
         $msg = "";
         if (isset($_POST["gdsr_multi_review_form"]) && $_POST["gdsr_multi_review_form"] == "review") {
@@ -1544,7 +1475,7 @@ class GDStarRating {
         }
 
         if (isset($_POST['gdsr_preview_scan'])) {
-            $this->g = $this->gfx_scan();
+            $this->g = gdsrAdmFunc::gfx_scan();
             update_option('gd-star-rating-gfx', $this->g);
             wp_redirect_self();
             exit;
@@ -1618,7 +1549,7 @@ class GDStarRating {
 
         if (isset($_POST['gdsr_post_lock'])) {
             $lock_date = $_POST['gdsr_lock_date'];
-            GDSRDatabase::lock_post_massive($lock_date);
+            gdsrAdmDB::lock_post_massive($lock_date);
             $this->o["mass_lock"] = $lock_date;
             update_option('gd-star-rating', $this->o);
             wp_redirect_self();
@@ -1626,42 +1557,8 @@ class GDStarRating {
         }
 
         if (isset($_POST['gdsr_rules_set'])) {
-            GDSRDatabase::update_settings_full($_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"]);
+            gdsrAdmDB::update_settings_full($_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"]);
             wp_redirect_self();
-            exit;
-        }
-    }
-
-    function init_templates() {
-        if (isset($_GET["deltpl"])) {
-            $del_id = $_GET["deltpl"];
-            gdTemplateDB::delete_template($del_id);
-            $url = remove_query_arg("deltpl");
-            wp_redirect($url);
-            exit;
-        }
-
-        if (isset($_POST["gdsr_save_tpl"])) {
-            $general = array();
-            $general["name"] = stripslashes(htmlentities($_POST['tpl_gen_name'], ENT_QUOTES, STARRATING_ENCODING));
-            $general["desc"] = stripslashes(htmlentities($_POST['tpl_gen_desc'], ENT_QUOTES, STARRATING_ENCODING));
-            $general["section"] = $_POST["tpl_section"];
-            $general["dependencies"] = $_POST["tpl_tpl"];
-            $general["id"] = $_POST["tpl_id"];
-            $general["preinstalled"] = '0';
-            $tpl_input = $_POST["tpl_element"];
-            $elements = array();
-            foreach ($tpl_input as $key => $value)
-                $elements[$key] = stripslashes(htmlentities($value, ENT_QUOTES, STARRATING_ENCODING));
-            if ($general["id"] == 0) $general["id"] = gdTemplateDB::add_template($general, $elements);
-            else gdTemplateDB::edit_template($general, $elements);
-
-            if (isset($_POST["tpl_dep_rewrite"])) gdTemplateDB::rewrite_dependencies($general["section"], $general["id"]);
-            if (isset($_POST["tpl_default_rewrite"])) gdTemplateDB::rewrite_defaults($general["section"], $general["id"]);
-
-            $url = remove_query_arg("tplid");
-            $url = remove_query_arg("mode", $url);
-            wp_redirect($url);
             exit;
         }
     }
@@ -1690,10 +1587,10 @@ class GDStarRating {
     }
 
     function get_article_rating($post_id, $is_page = '') {
-        $post_data = GDSRDatabase::get_post_data($post_id);
+        $post_data = wp_gdget_post($post_id);
         if (count($post_data) == 0) {
             GDSRDatabase::add_default_vote($post_id, $is_page);
-            $post_data = GDSRDatabase::get_post_data($post_id);
+            $post_data = wp_gdget_post($post_id);
         }
 
         $votes = $score = 0;
@@ -1875,33 +1772,15 @@ class GDStarRating {
     *
     * @param int $v number of votes
     * @param decimal $R rating value
+    * @param int $s maximal rating
     * @return decimal Bayesian rating value
     */
-    function bayesian_estimate($v, $R) {
+    function bayesian_estimate($v, $R, $s) {
         $m = $this->o["bayesian_minimal"];
-        $C = ($this->o["bayesian_mean"] / 100) * $this->o["stars"];
+        $C = ($this->o["bayesian_mean"] / 100) * $s;
 
         $WR = ($v / ($v + $m)) * $R + ($m / ($v + $m)) * $C;
         return @number_format($WR, 1);
-    }
-
-    function get_ratings_post($post_id) {
-        if ($this->p && $this->p->post_id == $post_id) $post_data = $this->p;
-        else $post_data = GDSRDatabase::get_post_data($post_id);
-        if (count($post_data) == 0) return null;
-        return new GDSRArticleRating($post_data);
-    }
-
-    function get_ratings_comment($comment_id) {
-        $comment_data = GDSRDatabase::get_comment_data($comment_id);
-        if (count($comment_data) == 0) return null;
-        return new GDSRCommentRating($comment_data);
-    }
-
-    function get_ratings_multi($set_id, $post_id) {
-        $multis_data = GDSRDBMulti::get_multi_rating_data($set_id, $post_id);
-        if (count($multis_data) == 0) return null;
-        return new GDSRArticleMultiRating($multis_data, $set_id);
     }
 
     // display
@@ -1951,7 +1830,7 @@ class GDStarRating {
 
         if (!is_feed()) {
             if (is_single() || is_page()) {
-                GDSRDatabase::add_new_view($post_id);
+                gdsrBlgDB::add_new_view($post_id);
                 $this->widget_post_id = $post_id;
             }
 

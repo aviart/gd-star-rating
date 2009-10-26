@@ -154,37 +154,4 @@ class gdsrQuery {
     }
 }
 
-class GDSRQueryComments {
-    var $keys_sort = array(
-        "rating",
-        "review",
-        "thumbs",
-        "votes",
-        "last_voted"
-    );
-
-    var $keys_order = array(
-        "desc",
-        "asc"
-    );
-
-    var $p = array();
-    var $is_active = false;
-
-    function GDSRQueryComments() { }
-
-    function set($params = array()) {
-        if (count($params) > 0) {
-            $this->p = $params;
-            $this->is_active = true;
-        }
-    }
-
-    function reorder($comments) {
-        if (!$this->is_active) return $comments;
-
-        return $comments;
-    }
-}
-
 ?>

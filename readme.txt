@@ -98,9 +98,10 @@ Plugin administration consist of 17 main panels:
 * if you don't change location of `wp-content` folder, then you don't need to make any more changes.
 * if your `wp-content` folder is moved out of default WordPress location, then you must edit plugins `config.php` file and set value with exact location of `wp-load.php` file for global constant `STARRATING_WPLOAD` in line 8. Without this most of the features, including saving votes, will not work.
 
-= WordPress MU =
+= WordPress MU & BuddyPress =
 * Minimal version supported: 2.8.1
 * Support for WPMU is only partial, not everything works as it should be.
+* Plugin is not working with some BuddyPress specific features.
 
 = Browser Notice =
 * Multi review feature on administration Post Edit page will not work properly with IE6 browsers.

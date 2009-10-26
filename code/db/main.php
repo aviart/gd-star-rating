@@ -2,26 +2,6 @@
 
 class GDSRDatabase {
     // categories
-    function update_category_settings($ids, $ids_array, $items, $upd_am, $upd_ar, $upd_cm, $upd_cr, $upd_ms, $frc_std, $frc_mur) {
-        global $wpdb, $table_prefix;
-        GDSRDatabase::add_category_defaults($ids, $ids_array, $items);
-        $dbt_data_cats = $table_prefix.'gdsr_data_category';
-
-        $update = array();
-        if ($frc_std != '') $update[] = "cmm_integration_std = '".$frc_std."'";
-        if ($frc_mur != '') $update[] = "cmm_integration_mur = '".$frc_mur."'";
-        if ($upd_ms != '') $update[] = "cmm_integration_set = '".$upd_ms."'";
-        if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
-        if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
-        if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
-        if ($upd_cr != '') $update[] = "rules_comments = '".$upd_cr."'";
-        if (count($update) > 0) {
-            $updstring = join(", ", $update);
-            $sql = sprintf("update %s set %s where category_id in %s", $dbt_data_cats, $updstring, "(".join(", ", $ids_array).")");
-            $wpdb->query($sql);
-        }
-    }
-
     function add_category_defaults($ids, $ids_array, $items) {
         global $wpdb, $table_prefix;
         $sql = sprintf("select category_id from %sgdsr_data_category where category_id in %s", $table_prefix, $ids);
@@ -63,20 +43,20 @@ class GDSRDatabase {
         GDSRDatabase::add_category_defaults("(".join(", ", $ids_array).")", $ids_array, $items);
     }
 
+    function get_all_categories() {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("SELECT 0 as depth, x.term_id, t.name, t.slug, x.parent, x.count, ms.name as multi_set, d.* FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id left join %sgdsr_data_category d on d.category_id = x.term_id left join %sgdsr_multis ms on ms.multi_id = d.cmm_integration_set where taxonomy = 'category' order by x.parent, t.name asc",
+                $table_prefix, $table_prefix, $table_prefix, $table_prefix);
+        return $wpdb->get_results($sql);
+    }
+
     function get_categories_data($cats = array()) {
         global $wpdb, $table_prefix;
 
         $where = count($cats) > 0 ? sprintf(" and x.term_id in (%s)", join(", ", $cats)) : "";
         $sql = sprintf("SELECT x.parent, d.* FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id left join %sgdsr_data_category d on d.category_id = x.term_id left join %sgdsr_multis ms on ms.multi_id = d.cmm_integration_set where taxonomy = 'category'%s order by x.parent desc, d.cmm_integration_set desc, x.term_id asc",
                 $table_prefix, $table_prefix, $table_prefix, $table_prefix, $where);
-        return $wpdb->get_results($sql);
-    }
-
-    function get_all_categories() {
-        global $wpdb, $table_prefix;
-
-        $sql = sprintf("SELECT 0 as depth, x.term_id, t.name, t.slug, x.parent, x.count, ms.name as multi_set, d.* FROM %sterm_taxonomy x inner join %sterms t on x.term_id = t.term_id left join %sgdsr_data_category d on d.category_id = x.term_id left join %sgdsr_multis ms on ms.multi_id = d.cmm_integration_set where taxonomy = 'category' order by x.parent, t.name asc",
-                $table_prefix, $table_prefix, $table_prefix, $table_prefix);
         return $wpdb->get_results($sql);
     }
     // categories
@@ -124,174 +104,6 @@ class GDSRDatabase {
             $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_comment, $delstring, $ids));
             $wpdb->query(sprintf("delete from %s where vote_type = '%s' and id in %s%s", $dbt_votes_log, $cde_comments, $cms, $dellog));
         } else return;
-    }
-
-    function delete_voters_log($ids) {
-        global $wpdb, $table_prefix;
-
-        $sql = sprintf("delete from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
-        $wpdb->query($sql);
-    }
-
-    function delete_voters_main_thumb($id, $value, $article = true, $user = true) {
-        global $wpdb, $table_prefix;
-        $update = "";
-
-        if ($value > 0) {
-            if (!$user) $update = "visitor_recc_plus = visitor_recc_plus - 1";
-            else $update = "user_recc_plus = user_recc_plus - 1";
-        } else {
-            if (!$user) $update = "visitor_recc_minus = visitor_recc_minus - 1";
-            else $update = "user_recc_minus = user_recc_minus - 1";
-        }
-
-        $sql = sprintf("update %sgdsr_data_%s set %s where %s_id = %s", $table_prefix,
-                $article ? "article" : "comment", $mod, $article ? "post" : "comment", $id);
-        $wpdb->query($sql);
-    }
-
-    function delete_voters_main($id, $value, $article = true, $user = true) {
-        global $wpdb, $table_prefix;
-        $mod = $user ? "user_voters = user_voters - 1, user_votes = user_votes - 1" :
-                "visitor_voters = visitor_voters - 1, visitor_votes = visitor_votes - ".$value;
-
-        $sql = sprintf("update %sgdsr_data_%s set %s where %s_id = %s", $table_prefix,
-                $article ? "article" : "comment", $mod, $article ? "post" : "comment", $id);
-        $wpdb->query($sql);
-    }
-
-    function delete_voters_full($ids, $vote_type, $thumb = false) {
-        global $wpdb, $table_prefix;
-        if ($vote_type == "artthumb") $vote_type = "article";
-        if ($vote_type == "cmmthumb") $vote_type = "comment";
-        $delfrom = $table_prefix."gdsr_data_".$vote_type;
-
-        if ($thumb) {
-            $sql = sprintf("select id, user_id, vote from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
-            $del = $wpdb->get_results($sql);
-
-            if (count($del) > 0) {
-                foreach ($del as $d) {
-                    $update = "";
-
-                    if ($d->vote > 0) {
-                        if ($d->user_id == 0) $update = "visitor_recc_plus = visitor_recc_plus - 1";
-                        else $update = "user_recc_plus = user_recc_plus - 1";
-                    } else {
-                        if ($d->user_id == 0) $update = "visitor_recc_minus = visitor_recc_minus - 1";
-                        else $update = "user_recc_minus = user_recc_minus - 1";
-                    }
-
-                    $sql = sprintf("update %s set %s where post_id = %s", $delfrom, $update, $d->id);
-                    $wpdb->query($sql);
-                }
-            }
-        } else {
-            $sql = sprintf("select id, user_id = 0 as user, count(*) as count, sum(vote) as votes from %sgdsr_votes_log where record_id in %s group by id, (user_id = 0)", $table_prefix, $ids);
-            $del = $wpdb->get_results($sql);
-
-            if (count($del) > 0) {
-                foreach ($del as $d) {
-                    if ($d->user == 0) $update = sprintf("user_voters = user_voters - %s, user_votes = user_votes - %s", $d->count, $d->votes);
-                    else $update = sprintf("visitor_voters = visitor_voters - %s, visitor_votes = visitor_votes - %s", $d->count, $d->votes);
-
-                    $sql = sprintf("update %s set %s where post_id = %s", $delfrom, $update, $d->id);
-                    $wpdb->query($sql);
-                }
-            }
-        }
-
-        $sql = sprintf("delete from %sgdsr_votes_log where record_id in %s", $table_prefix, $ids);
-        $wpdb->query($sql);
-    }
-
-    function update_settings_full($upd_am, $upd_ar, $upd_cm, $upd_cr) {
-        global $wpdb, $table_prefix;
-        $dbt_data_article = $table_prefix.'gdsr_data_article';
-
-        $update = array();
-        if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
-        if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
-        if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
-        if ($upd_cr != '') $update[] = "rules_comments = '".$upd_cr."'";
-        if (count($update) > 0) {
-            $updstring = join(", ", $update);
-            $wpdb->query(sprintf("update %s set %s", $dbt_data_article, $updstring));
-        }
-    }
-
-    function update_settings($ids, $upd_am, $upd_ar, $upd_cm, $upd_cr, $upd_am_rcc, $upd_ar_rcc, $upd_cm_rcc, $upd_cr_rcc, $ids_array) {
-        global $wpdb, $table_prefix;
-        GDSRDatabase::add_defaults($ids, $ids_array);
-        $dbt_data_article = $table_prefix.'gdsr_data_article';
-
-        $update = array();
-
-        if ($upd_am != '') $update[] = "moderate_articles = '".$upd_am."'";
-        if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
-        if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
-        if ($upd_cr != '') $update[] = "rules_comments = '".$upd_cr."'";
-
-        if ($upd_am_rcc != '') $update[] = "recc_moderate_articles = '".$upd_am_rcc."'";
-        if ($upd_cm_rcc != '') $update[] = "recc_moderate_comments = '".$upd_cm_rcc."'";
-        if ($upd_ar_rcc != '') $update[] = "recc_rules_articles = '".$upd_ar_rcc."'";
-        if ($upd_cr_rcc != '') $update[] = "recc_rules_comments = '".$upd_cr_rcc."'";
-
-        if (count($update) > 0) {
-            $updstring = join(", ", $update);
-            $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_article, $updstring, $ids));
-        }
-    }
-
-    function upgrade_integration($ids, $cmm_std, $cmm_mur, $cmm_set) {
-        global $wpdb, $table_prefix;
-        $dbt_data_article = $table_prefix.'gdsr_data_article';
-
-        $update = array();
-
-        if ($cmm_std != '') $update[] = "cmm_integration_std = '".$cmm_std."'";
-        if ($cmm_mur != '') $update[] = "cmm_integration_mur = '".$cmm_mur."'";
-        if ($cmm_set != '') $update[] = "cmm_integration_set = ".$cmm_set;
-
-        if (count($update) > 0) {
-            $updstring = join(", ", $update);
-            $wpdb->query(sprintf("update %s set %s where post_id in %s", $dbt_data_article, $updstring, $ids));
-        }
-    }
-
-    function update_restrictions($ids, $timer_type, $timer_value) {
-        global $wpdb, $table_prefix;
-        $wpdb->query(sprintf("update %sgdsr_data_article set expiry_type = '%s', expiry_value = '%s' where post_id in %s", 
-            $table_prefix, $timer_type, $timer_value, $ids));
-    }
-
-    function update_restrictions_thumbs($ids, $timer_type, $timer_value) {
-        global $wpdb, $table_prefix;
-        $wpdb->query(sprintf("update %sgdsr_data_article set recc_expiry_type = '%s', recc_expiry_value = '%s' where post_id in %s",
-            $table_prefix, $timer_type, $timer_value, $ids));
-    }
-
-    function lock_post($post_id, $rules_articles = "N") {
-        global $wpdb, $table_prefix;
-        
-        $wpdb->query(sprintf("update %sgdsr_data_article set rules_articles = '%s' where post_id = %s",
-            $table_prefix, $rules_articles, $post_id));
-    }
-
-    function lock_post_massive($date) {
-        global $wpdb, $table_prefix;
-
-        $sql = sprintf("update %sgdsr_data_article a inner join %sposts p on a.post_id = p.id set a.rules_articles = 'N', a.rules_comments = 'N' where p.post_date < '%s'",
-            $table_prefix, $table_prefix, $date);
-        $wpdb->query($sql);
-    }
-
-    function update_reviews($ids, $review, $ids_array) {
-        global $wpdb, $table_prefix;
-        GDSRDatabase::add_defaults($ids, $ids_array);
-        $dbt_data_article = $table_prefix.'gdsr_data_article';
-        
-        $wpdb->query(sprintf("update %s set review = %s where post_id in %s", $dbt_data_article, $review, $ids));
     }
 
     function add_defaults($ids, $ids_array) {
@@ -350,14 +162,6 @@ class GDSRDatabase {
         $wpdb->query("update ".$articles." set recc_expiry_type = '".$timer_type."', recc_expiry_value = '".$timer_value."' where post_id = ".$post_id);
     }
 
-    function check_post($post_id) {
-        global $wpdb, $table_prefix;
-        $articles = $table_prefix.'gdsr_data_article';
-        $sql = "select review from ".$articles." WHERE post_id = ".$post_id;
-        $results = $wpdb->get_row($sql, OBJECT);
-        return count($results) > 0;
-    }
-
     function rating_from_comment($comment_id) {
         global $wpdb, $table_prefix;
         $sql = sprintf("select vote from %sgdsr_votes_log where vote_type = 'article' and comment_id = %s", $table_prefix, $comment_id);
@@ -408,39 +212,9 @@ class GDSRDatabase {
         foreach ($cmms as $c)
             GDSRDatabase::add_empty_comment($c->comment_ID, $post_id);
     }
-
-    function add_new_view($post_id) {
-        if (intval($post_id) > 0) {
-            global $wpdb, $table_prefix;
-            $dbt_data_article = $table_prefix.'gdsr_data_article';
-            $sql = sprintf("update %s set views = views + 1 where post_id = %s", $dbt_data_article, $post_id);
-            $wpdb->query($sql);
-        }
-    }
     // save & update
 
     // get
-    function get_comments_aggregation($post_id, $filter_show = "total") {
-        global $wpdb, $table_prefix;
-
-        $where = "";
-        switch ($filter_show) {
-            default:
-            case "total":
-                $where = " user_voters + visitor_voters > 0";
-                break;
-            case "users":
-                $where = " user_voters > 0";
-                break;
-            case "visitors":
-                $where = " visitor_voters > 0";
-                break;
-        }
-
-        $sql = sprintf("SELECT * FROM %sgdsr_data_comment where post_id = %s and %s", $table_prefix, $post_id, $where);
-        return $wpdb->get_results($sql);
-    }
-
     function get_post_data($post_id) {
         global $wpdb, $table_prefix;
         $sql = "SELECT * FROM ".$table_prefix."gdsr_data_article WHERE post_id = ".$post_id;
@@ -468,16 +242,6 @@ class GDSRDatabase {
         $sql = "select review from ".$comments." WHERE comment_id = ".$comment_id;
         $results = $wpdb->get_row($sql, OBJECT);
         if (count($results) == 0) return 0;
-        else return $results->review;
-    }
-
-    function get_review($post_id) {
-        global $wpdb, $table_prefix;
-        $articles = $table_prefix.'gdsr_data_article';
-
-        $sql = "select review from ".$articles." WHERE post_id = ".$post_id;
-        $results = $wpdb->get_row($sql, OBJECT);
-        if (count($results) == 0) return -1;
         else return $results->review;
     }
 
@@ -517,26 +281,7 @@ class GDSRDatabase {
         global $wpdb;
         $sql = "SELECT post_type FROM $wpdb->posts WHERE ID = ".$post_id;
         $r = $wpdb->get_row($sql);
-
-wp_gdsr_dump("GET_POST_TYPE_sql", $sql);
-wp_gdsr_dump("GET_POST_TYPE_type", $r);
-
         return $r->post_type;
-    }
-
-    function get_categories($post_id) {
-        global $wpdb;
-
-        $sql = "SELECT s.name FROM $wpdb->term_taxonomy t, $wpdb->terms s, $wpdb->term_relationships r WHERE t.taxonomy = 'category' AND t.term_taxonomy_id = r.term_taxonomy_id AND t.term_id = s.term_id AND r.object_id = ".$post_id;
-        $cats = $wpdb->get_results($sql);
-        $output = '';
-        foreach ($cats as $cat)
-            $output.= $cat->name.", ";
-        if ($output != '')
-            $output = substr($output, 0, strlen($output) - 2);
-        else $output = '/';
-
-        return $output;
     }
     // get
 }

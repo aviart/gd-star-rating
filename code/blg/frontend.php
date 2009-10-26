@@ -23,7 +23,7 @@ class gdsrFront {
             $row->voters = $row->user_voters + $row->visitor_voters;
             $row->rating = $row->voters == 0 ? 0 : @number_format($row->votes / $row->voters, 1);
             $row->review = @number_format($row->review, 1);
-            $row->bayesian = $bayesian_calculated ? $gdsr->bayesian_estimate($row->voters, $row->rating) : -1;
+            $row->bayesian = $bayesian_calculated ? $gdsr->bayesian_estimate($row->voters, $row->rating, $set->stars) : -1;
             $row->rating_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->rating);
             $row->bayesian_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->bayesian);
             $row->review_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->review);
@@ -711,7 +711,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                     break;
             }
             if ($remaining < 1) {
-                GDSRDatabase::lock_post($rd_post_id);
+                gdsrBlgDB::lock_post($rd_post_id);
                 $allow_vote = false;
                 $dbg_allow = "T";
             }
@@ -857,7 +857,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                     break;
             }
             if ($remaining < 1) {
-                GDSRDatabase::lock_post($rd_post_id);
+                gdsrBlgDB::lock_post($rd_post_id);
                 $allow_vote = false;
                 $dbg_allow = "T";
             }
@@ -1010,7 +1010,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                     break;
             }
             if ($remaining < 1) {
-                GDSRDatabase::lock_post($rd_post_id);
+                gdsrBlgDB::lock_post($rd_post_id);
                 $allow_vote = false;
                 $dbg_allow = "T";
             }

@@ -136,7 +136,7 @@ $set = gd_get_multi_set($set_id);
         echo '<td nowrap="nowrap" style="text-align: center;">';
             echo '<a href="'.get_permalink($row->pid).'" target="_blank"><img src="'.STARRATING_URL.'gfx/view.png" border="0" /></a>&nbsp;';
         echo '</td>';
-        echo '<td>'.GDSRDatabase::get_categories($row->pid).'</td>';
+        echo '<td>'.gdsrAdmDB::get_categories($row->pid).'</td>';
         echo '<td>';
             if ($row->total_votes_visitors == 0) echo sprintf("[ 0 ] %s: /<br />", __("visitors", "gd-star-rating"));
             else echo sprintf('[ <a href="./admin.php?page=gd-star-rating-multi-sets&amp;gdsr=murset&amp;sid=%s&amp;pid=%s&amp;filter=visitor"><strong style="color: red;">%s</strong></a> ] %s: <strong style="color: red;">%s</strong><br />', $set_id, $row->pid, $row->total_votes_visitors, __("visitors", "gd-star-rating"), $row->average_rating_visitors);
