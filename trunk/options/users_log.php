@@ -48,13 +48,13 @@ if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-st
             $log = gdsrAdmDB::get_user_log($user_id, $vote_type, $filter_vote, 0, 0, join(",", $xips));
             foreach ($log as $l) {
                 if ($del == "OI" && $l->id != $l->control_id)
-                    GDSRDatabase::delete_voters_log("(".$l->record_id.")");
+                    gdsrAdmDB::delete_voters_log("(".$l->record_id.")");
                 if ($del == "LO" && $l->id == $l->control_id)
-                    GDSRDatabase::delete_voters_log("(".$l->record_id.")");
+                    gdsrAdmDB::delete_voters_log("(".$l->record_id.")");
                 if ($del == "FD" && $l->id == $l->control_id) {
-                    GDSRDatabase::delete_voters_log("(".$l->record_id.")");
-                    if ($is_thumb) GDSRDatabase::delete_voters_main_thumb($l->id, $l->vote, $l->vote_type == "artthumb", $user_id > 0);
-                    else GDSRDatabase::delete_voters_main($l->id, $l->vote, $l->vote_type == "article", $user_id > 0);
+                    gdsrAdmDB::delete_voters_log("(".$l->record_id.")");
+                    if ($is_thumb) gdsrAdmDB::delete_voters_main_thumb($l->id, $l->vote, $l->vote_type == "artthumb", $user_id > 0);
+                    else gdsrAdmDB::delete_voters_main($l->id, $l->vote, $l->vote_type == "article", $user_id > 0);
                 }
             }
         }

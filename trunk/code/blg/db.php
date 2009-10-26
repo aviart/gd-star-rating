@@ -1,6 +1,43 @@
 <?php
 
 class gdsrBlgDB {
+    function add_new_view($post_id) {
+        if (intval($post_id) > 0) {
+            global $wpdb, $table_prefix;
+            $dbt_data_article = $table_prefix.'gdsr_data_article';
+            $sql = sprintf("update %s set views = views + 1 where post_id = %s", $dbt_data_article, $post_id);
+            $wpdb->query($sql);
+        }
+    }
+
+    function get_comments_aggregation($post_id, $filter_show = "total") {
+        global $wpdb, $table_prefix;
+
+        $where = "";
+        switch ($filter_show) {
+            default:
+            case "total":
+                $where = " user_voters + visitor_voters > 0";
+                break;
+            case "users":
+                $where = " user_voters > 0";
+                break;
+            case "visitors":
+                $where = " visitor_voters > 0";
+                break;
+        }
+
+        $sql = sprintf("SELECT * FROM %sgdsr_data_comment where post_id = %s and %s", $table_prefix, $post_id, $where);
+        return $wpdb->get_results($sql);
+    }
+
+    function lock_post($post_id, $rules_articles = "N") {
+        global $wpdb, $table_prefix;
+
+        $wpdb->query(sprintf("update %sgdsr_data_article set rules_articles = '%s' where post_id = %s",
+            $table_prefix, $rules_articles, $post_id));
+    }
+
     // ip
     function check_ip_single($ip) {
         global $wpdb, $table_prefix;

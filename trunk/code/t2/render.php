@@ -34,7 +34,7 @@ wp_gdsr_dump("SQL_TOTALS_".strtoupper($widget["source"]), $sql);
 
         if ($data->votes > 0) {
             $data->rating = $widget["source"] == "thumbs" ? $data->score : @number_format($data->votes / $data->voters, 1);
-            $data->bayes_rating = $widget["source"] == "thumbs" ? 0 : $gdsr->bayesian_estimate($data->voters, $data->rating);
+            $data->bayes_rating = $widget["source"] == "thumbs" ? 0 : $gdsr->bayesian_estimate($data->voters, $data->rating, $data->max_rating);
             $data->percentage = $widget["source"] == "thumbs" ? 0 : floor((100 / $data->max_rating) * $data->rating);
         }
 
@@ -127,6 +127,13 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
                 $trends_calculated = true;
             }
 
+            $stars = $gdsr->o["stars"];
+            $review_stars = $gdsr->o["review_stars"];
+            if ($widget["source"] == "multis") {
+                $set = wp_gdget_multi_set($widget["source_set"]);
+                $stars = $review_stars = $set->stars;
+            }
+
             $new_rows = array();
             foreach ($all_rows as $row) {
                 if ($widget["image_from"] == "content") {
@@ -172,7 +179,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
                     $row->rating = $row->voters == 0 ? 0 : @number_format($row->votes / $row->voters, 1);
                     $row->review = $row->review == 0 ? 0 : @number_format($row->review / $row->counter, 1);
-                    $row->bayesian = $bayesian_calculated ? $gdsr->bayesian_estimate($row->voters, $row->rating) : -1;
+                    $row->bayesian = $bayesian_calculated ? $gdsr->bayesian_estimate($row->voters, $row->rating, $stars) : -1;
                 }
                 $new_rows[] = $row;
             }
@@ -300,13 +307,6 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
                         break;
                 }
 
-                $stars = $gdsr->o["stars"];
-                $review_stars = $gdsr->o["review_stars"];
-                if ($widget["source"] == "multis") {
-                    $set = wp_gdget_multi_set($widget["source_set"]);
-                    $stars = $review_stars = $set->stars;
-                }
-
                 if ($widget["source"] == "thumbs") {
                     if (!(strpos($template, "%THUMB%") === false)) $row->rating_thumb = GDSRRender::render_static_thumb($widget['rating_thumb'], $widget['rating_thumb_size'], $row->rating);
                 } else {
@@ -333,9 +333,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         if ($widget["column"] == "rating")
             $properties[] = array("property" => "voters", "order" => $widget["order"]);
         $sort = new gdSortObjectsArrayGDSR($all_rows, $properties);
-        $all_rows = $sort->sorted;
-
-        $all_rows = apply_filters("gdsr_widget_data_prepare", $all_rows);
+        $all_rows = apply_filters("gdsr_widget_data_prepare", $sort->sorted);
 
         return $all_rows;
     }

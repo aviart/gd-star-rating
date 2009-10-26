@@ -43,8 +43,8 @@ if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     if (count($gdsr_items) > 0) {
         $ids = "(".join(", ", $gdsr_items).")";
         $delact = $_POST["gdsr_delete_voters"];
-        if ($delact == "L") GDSRDatabase::delete_voters_log($ids);
-        if ($delact == "D") GDSRDatabase::delete_voters_full($ids, $vote_type, $is_thumb);
+        if ($delact == "L") gdsrAdmDB::delete_voters_log($ids);
+        if ($delact == "D") gdsrAdmDB::delete_voters_full($ids, $vote_type, $is_thumb);
     }
 }
 

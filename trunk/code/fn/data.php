@@ -23,11 +23,15 @@ function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
  * @return object rating post properties
  */
 function wp_gdsr_rating_multi($multi_set_id = 0, $post_id = 0) {
-    global $post, $gdsr;
-    if ($post_id == 0) $post_id = $post->ID;
+    if ($post_id == 0) {
+        global $post;
+        $post_id = $post->ID;
+    }
 
     $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post_id) : $multi_set_id;
-    return $gdsr->get_ratings_multi($multi_set_id, $post_id);
+    $multis_data = GDSRDBMulti::get_multi_rating_data($set_id, $post_id);
+    if (count($multis_data) == 0) return null;
+    return new GDSRArticleMultiRating($multis_data, $set_id);
 }
 
 /**
@@ -39,9 +43,14 @@ function wp_gdsr_rating_multi($multi_set_id = 0, $post_id = 0) {
  * @return object rating post properties
  */
 function wp_gdsr_rating_article($post_id = 0) {
-    global $post, $gdsr;
-    if ($post_id < 1) $post_id = $post->ID;
-    return $gdsr->get_ratings_post($post_id);
+    if ($post_id < 1) {
+        global $post;
+        $post_id = $post->ID;
+    }
+
+    $post_data = GDSRDatabase::get_post_data($post_id);
+    if (count($post_data) == 0) return null;
+    return new GDSRArticleRating($post_data);
 }
 
 /**
@@ -53,9 +62,14 @@ function wp_gdsr_rating_article($post_id = 0) {
  * @return object rating post properties
  */
 function wp_gdsr_rating_comment($comment_id = 0) {
-    global $comment, $gdsr;
-    if ($comment_id < 1) $comment_id = $comment->comment_ID;
-    return $gdsr->get_ratings_comment($comment_id);
+    if ($comment_id < 1) {
+        global $comment;
+        $comment_id = $comment->comment_ID;
+    }
+
+    $comment_data = GDSRDatabase::get_comment_data($comment_id);
+    if (count($comment_data) == 0) return null;
+    return new GDSRCommentRating($comment_data);
 }
 
 ?>

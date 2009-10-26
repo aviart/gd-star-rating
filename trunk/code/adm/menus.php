@@ -80,7 +80,7 @@ class gdsrMenus {
 
     function star_menu_gfx() {
         if (isset($_POST['gdsr_preview_scan'])) {
-            $this->g->g = $this->g->gfx_scan();
+            $this->g->g = gdsrAdmFunc::gfx_scan();
             update_option('gd-star-rating-gfx', $this->g->g);
         }
 
@@ -103,7 +103,7 @@ class gdsrMenus {
 
     function star_menu_settings() {
         if (isset($_POST['gdsr_preview_scan'])) {
-            $this->g->g = $this->g->gfx_scan();
+            $this->g->g = gdsrAdmFunc::gfx_scan();
             update_option('gd-star-rating-gfx', $this->g->g);
         }
 
