@@ -741,3 +741,10 @@ td.gdrinner {
     padding-left: 24px !important;
     margin-left:3px;
 }
+
+
+.tbs-spec {
+    background: transparent url(../../gfx/mini_spec_20.png) no-repeat left;
+    padding-left: 24px !important;
+    margin-left:3px;
+}

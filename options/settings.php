@@ -43,12 +43,12 @@
     <li><a href="#fragment-5"><span><?php _e("Security", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-9"><span><?php _e("Advanced", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-6"><span><?php _e("Integration", "gd-star-rating"); ?></span></a></li>
-    <li><a href="#fragment-4"><span><?php _e("Statistics", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-2" class="tbs-star"><span><?php _e("Articles", "gd-star-rating"); ?></span></a></li>
     <?php if ($gdsr_options["comments_active"] == 1) { ?><li><a href="#fragment-3" class="tbs-star"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li><?php } ?>
     <?php if ($gdsr_options["multis_active"] == 1) { ?><li><a href="#fragment-8" class="tbs-star"><span><?php _e("Multis", "gd-star-rating"); ?></span></a></li><?php } ?>
     <li><a href="#fragment-1" class="tbs-thumb"><span><?php _e("Articles", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-10" class="tbs-thumb"><span><?php _e("Comments", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-4" class="tbs-spec"><span><?php _e("Special", "gd-star-rating"); ?></span></a></li>
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-7">
@@ -65,7 +65,7 @@
 <?php include STARRATING_PATH."options/settings/settings_integration.php"; ?>
 </div>
 <div id="fragment-4">
-<?php include STARRATING_PATH."options/settings/settings_statistics.php"; ?>
+<?php include STARRATING_PATH."options/settings/settings_special.php"; ?>
 </div>
 <div id="fragment-2">
 <?php include STARRATING_PATH."options/settings/settings_articles.php"; ?>
