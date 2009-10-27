@@ -1676,7 +1676,7 @@ class GDStarRating {
             $set = $this->get_multi_set_recursion($prn);
             if ($set > 0) return $set;
             $first = GDSRDBMulti::get_first_multi_set();
-            return $first->multi_set;
+            return $first->multi_id;
         } else return 0;
     }
 
@@ -1787,8 +1787,8 @@ class GDStarRating {
     function display_comment($content) {
         global $post, $comment, $userdata;
 
-        if (is_admin()) return $content;
-        if ($comment->comment_type == "pingback" && $this->o["display_trackback"] == 0) return $content;
+        if (is_admin() || !is_object($comment) ||
+            ($comment->comment_type == "pingback" && $this->o["display_trackback"] == 0)) return $content;
 
         if (!is_feed()) {
             if ((is_single() && $this->o["display_comment"] == 1) ||
