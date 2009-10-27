@@ -130,8 +130,9 @@ class GDStarRating {
 
         if (!GDSR_WP_ADMIN) {
             if (!STARRATING_AJAX) {
+                $google_rspf = isset($this->o["google_rich_snippets_format"]) ? $this->o["google_rich_snippets_format"] : "microformat";
                 $this->q = new gdsrQuery();
-                $this->rSnippets = new gdGoogleRichSnippetsGDSR($this->o["google_rich_snippets_format"]);
+                $this->rSnippets = new gdGoogleRichSnippetsGDSR($google_rspf);
             } else {
                 $this->v = new gdsrVotes($this);
             }
@@ -325,7 +326,7 @@ class GDStarRating {
         $star_style_ie6 = $sett["style_ie6"] != "" ? $sett["style_ie6"] : $this->o["review_style_ie6"];
         $star_size = $sett["size"] != "" ? $sett["size"] : $this->o['review_size'];
 
-        $post_data = wp_gdget_post($post_id);
+        $post_data = wp_gdget_post($sett["post"]);
         $rating = is_object($post_data) ? $post_data->review : -1;
         $rating = $rating < 0 ? 0 : $rating;
         return GDSRRenderT2::render_rsb($sett["tpl"], array("rating" => $rating, "star_style" => $this->is_ie6 ? $star_style_ie6 : $star_style, "star_size" => $star_size, "star_max" => $this->o["review_stars"], "header_text" => $this->o["review_header_text"], "css" => $star_css));
