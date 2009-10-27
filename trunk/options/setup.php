@@ -1,6 +1,6 @@
 <?php
 
-require_once($gdsr_dirname_basic."/gdragon/gd_db_install.php");
+require_once(STARRATING_PATH."gdragon/gd_db_install.php");
 
 if (isset($_POST["gdsr_reinstall"]) && $_POST["gdsr_reinstall"] == __("Reinstall", "gd-star-rating")) {
     gdDBInstallGDSR::drop_tables(STARRATING_PATH);
