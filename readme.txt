@@ -172,6 +172,9 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Changelog ==
 = 1.7.3 =
+* More code optimizations
+* New config file options
+* Several bugs fixed
 
 = 1.7.2 =
 * Fixed few critical bugs in rating rendering
