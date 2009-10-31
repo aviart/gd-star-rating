@@ -344,8 +344,7 @@ class GDStarRating {
             global $post;
             $post_id = $post->ID;
         }
-        if ($settings["id"] == 0) $multi_id = $this->o["mur_review_set"];
-        else $multi_id = $settings["id"];
+        $multi_id = $settings["id"] == 0 ? $this->o["mur_review_set"] : $settings["id"];
         $set = gd_get_multi_set($multi_id);
         if ($multi_id > 0 && $post_id > 0) {
             $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id, count($set->object));
@@ -754,18 +753,12 @@ class GDStarRating {
         }
         echo("\r\n");
         echo('<script type="text/javascript">jQuery(document).ready(function() {');
-            echo("\r\n");
-            if ($this->admin_page == "edit-comments.php") include ($this->plugin_path."code/js/integration.php");
             if ($this->admin_plugin) echo('jQuery("#gdsr_tabs'.($this->wp_version < 28 ? ' > ul' : '').'").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
             if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
             if ($this->admin_plugin_page == "settings") include(STARRATING_PATH."code/js/loaders.php");
-        echo('});');
-        if ($this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) {
-            echo("\r\n");
-            include(STARRATING_PATH."code/js/main.php");
-        }
-        echo('</script>');
+            if ($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) include(STARRATING_PATH."code/js/admin.php");
+        echo("});</script>\r\n");
         if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") && $this->o["integrate_post_edit_mur"] == 1) {
             $this->include_rating_css_admin();
         }
