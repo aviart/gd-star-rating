@@ -36,17 +36,54 @@ class gdsrFront {
 
     function render_google_rich_snippet($post) {
         if ($this->g->o["google_rich_snippets_active"] == 1) {
-            $post_data = wp_gdget_post($post->ID);
-            $review = is_object($post_data) ? $post_data->review : 0;
-            $author = get_userdata($post->post_author);
-            if (!is_object($this->g->rSnippets) || $review <= 0) return "";
-            return $this->g->rSnippets->snippet_stars_review(array(
-                "title" => $post->post_title, "rating" => $review,
-                "max_rating" => $this->g->o["review_stars"],
-                "review_date" => $post->post_date,
-                "reviewer" => $author->display_name
-            ));
+            switch ($this->g->o["google_rich_snippets_datasource"]) {
+                case "standard_rating":
+                    return $this->render_gsr_standard_rating($post);
+                    break;
+                case "standard_review":
+                    return $this->render_gsr_standard_review($post);
+                    break;
+                case "multis_rating":
+                    return $this->render_gsr_multis_rating($post);
+                    break;
+                case "multis_review":
+                    return $this->render_gsr_multis_review($post);
+                    break;
+                case "thumbs":
+                    return $this->render_gsr_thumbs($post);
+                    break;
+            }
         } else return "";
+    }
+
+    function render_gsr_thumbs($post) {
+        $post_data = wp_gdget_post($post->ID);
+    }
+
+    function render_gsr_multis_rating($post) {
+        $post_data = wp_gdget_post($post->ID);
+    }
+
+    function render_gsr_multis_review($post) {
+        $post_data = wp_gdget_post($post->ID);
+        $author = get_userdata($post->post_author);
+    }
+
+    function render_gsr_standard_rating($post) {
+        $post_data = wp_gdget_post($post->ID);
+    }
+
+    function render_gsr_standard_review($post) {
+        $post_data = wp_gdget_post($post->ID);
+        $author = get_userdata($post->post_author);
+        $review = is_object($post_data) ? $post_data->review : 0;
+        if (!is_object($this->g->rSnippets) || $review <= 0) return "";
+        return $this->g->rSnippets->snippet_stars_review(array(
+            "title" => $post->post_title, "rating" => $review,
+            "max_rating" => $this->g->o["review_stars"],
+            "review_date" => $post->post_date,
+            "reviewer" => $author->display_name
+        ));
     }
 
     function render_article_rss() {
