@@ -947,7 +947,7 @@ class gdsrAdmDB {
         $row->thumbs = $vts_thumb_v.__("visitors", "gd-star-rating").': <strong>'.$cnt_thumb_v.'</strong><br />'.$vts_thumb_u.__("users", "gd-star-rating").': <strong>'.$cnt_thumb_u.'</strong>';
 
         if ($mur == "I" || $mu == "") $row->cmm_integration_mur.= "<br /><br />";
-        else $row->cmm_integration_mur.= "<br/>".$row->cmm_integration_set == 0 ? __("no multi set assigned") : __("multi set", "gd-star-rating").': <strong>'.$multis["cmm_integration_set"].'</strong>';
+        else $row->cmm_integration_mur.= "<br/>".$row->cmm_integration_set == 0 ? __("no multi set assigned", "gd-star-rating") : __("multi set", "gd-star-rating").': <strong>'.$multis["cmm_integration_set"].'</strong>';
 
         $row->cmm_integration_std.= "<br /><br />";
         $row->title = sprintf('<a href="%s">%s</a>', get_edit_post_link($row->pid), $row->post_title);

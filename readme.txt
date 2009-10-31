@@ -171,6 +171,12 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.7.4 =
+* Permanently solved famous excerpt problem
+* Controls for google rich snippets integration
+* New templates import and export
+* Several bugs fixed
+
 = 1.7.3 =
 * More code optimizations
 * New config file options

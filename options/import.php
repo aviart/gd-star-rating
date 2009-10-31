@@ -6,21 +6,21 @@ if (isset($_POST["gdsr_import_psr"]) && $_POST["gdsr_import_psr"] == __("Import 
     GDSRImport::import_psr();
     $imports["post_star_rating"] = $imports["post_star_rating"] + 1;
     update_option('gd-star-rating-import', $imports);
-    ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Data import completed."); ?></strong></p></div> <?php
+    ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Data import completed.", "gd-star-rating"); ?></strong></p></div> <?php
 }
 
 if (isset($_POST["gdsr_import_wpr"]) && $_POST["gdsr_import_wpr"] == __("Import Data", "gd-star-rating")) {
     GDSRImport::import_wpr();
     $imports["wp_post_ratings"] = $imports["wp_post_ratings"] + 1;
     update_option('gd-star-rating-import', $imports);
-    ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Data import completed."); ?></strong></p></div> <?php
+    ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Data import completed.", "gd-star-rating"); ?></strong></p></div> <?php
 }
 
 if (isset($_POST["gdsr_import_srfr"]) && $_POST["gdsr_import_srfr"] == __("Import Data", "gd-star-rating")) {
     GDSRImport::import_srfr($options["review_stars"], $_POST["gdsr_srfr_max"], $_POST["gdsr_srfr_meta"], $_POST["gdsr_srfr_try"]);
     $imports["star_rating_for_reviews"] = $imports["star_rating_for_reviews"] + 1;
     update_option('gd-star-rating-import', $imports);
-    ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Data import completed."); ?></strong></p></div> <?php
+    ?> <div id="message" class="updated fade" style="background-color: rgb(255, 251, 204);"><p><strong><?php _e("Data import completed.", "gd-star-rating"); ?></strong></p></div> <?php
 }
 
 ?>
