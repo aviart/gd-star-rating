@@ -65,7 +65,7 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
                 $tpl.= '<span class="summary">%REVIEW_EXCERPT%</span>';
                 $tpl.= '</span></span>';
             } else if ($this->snippet_type == "rdf") {
-
+                
             }
 
             $tpl = str_replace("%TITLE%", $options["title"], $tpl);

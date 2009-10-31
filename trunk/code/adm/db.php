@@ -590,9 +590,8 @@ class gdsrAdmDB {
                     $wpdb->query($sql);
                     $tpl_id = $wpdb->insert_id;
                 }
-                $template["section"] = $tpl_section;
-                $template["tpl_id"] = sprintf("%s", $tpl_id);
-                $templates[] = $template;
+
+                $templates[] = array("section" => $tpl_section, "tpl_id" => sprintf("%s", $tpl_id));
             }
         }
         if (count($templates) > 0) {

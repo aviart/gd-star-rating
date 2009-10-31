@@ -680,13 +680,14 @@ class GDStarRating {
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Articles", "gd-star-rating"), __("Articles", "gd-star-rating"), $this->security_level, "gd-star-rating-stats", array(&$this->m, "star_menu_stats"));
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Categories", "gd-star-rating"), __("Categories", "gd-star-rating"), $this->security_level, "gd-star-rating-cats", array(&$this->m, "star_menu_cats"));
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("All Users", "gd-star-rating"), __("All Users", "gd-star-rating"), $this->security_level, "gd-star-rating-users", array(&$this->m, "star_menu_users"));
-        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), $this->security_level, "gd-star-rating-settings", array(&$this->m, "star_menu_settings"));
-        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Graphics", "gd-star-rating"), __("Graphics", "gd-star-rating"), $this->security_level, "gd-star-rating-gfx-page", array(&$this->m, "star_menu_gfx"));
-        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), $this->security_level, "gd-star-rating-tools", array(&$this->m, "star_menu_tools"));
-        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("T2 Templates", "gd-star-rating"), __("T2 Templates", "gd-star-rating"), $this->security_level, "gd-star-rating-t2", array(&$this->m, "star_menu_t2"));
 
         if ($this->o["multis_active"] == 1)
             add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Multi Sets", "gd-star-rating"), __("Multi Sets", "gd-star-rating"), $this->security_level, "gd-star-rating-multi-sets", array(&$this->m, "star_multi_sets"));
+
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Settings", "gd-star-rating"), __("Settings", "gd-star-rating"), $this->security_level, "gd-star-rating-settings", array(&$this->m, "star_menu_settings"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Graphics", "gd-star-rating"), __("Graphics", "gd-star-rating"), $this->security_level, "gd-star-rating-gfx-page", array(&$this->m, "star_menu_gfx"));
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("T2 Templates", "gd-star-rating"), __("T2 Templates", "gd-star-rating"), $this->security_level, "gd-star-rating-t2", array(&$this->m, "star_menu_t2"));
+
         if ($this->o["admin_ips"] == 1)
             add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("IP's", "gd-star-rating"), __("IP's", "gd-star-rating"), $this->security_level, "gd-star-rating-ips", array(&$this->m, "star_menu_ips"));
         if ($this->o["admin_import"] == 1)
@@ -696,9 +697,12 @@ class GDStarRating {
 
         $this->custom_actions('admin_menu');
 
+        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), $this->security_level, "gd-star-rating-tools", array(&$this->m, "star_menu_tools"));
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), $this->security_level_setup, "gd-star-rating-setup", array(&$this->m, "star_menu_setup"));
+
         if ($this->wp_secure_level)
             add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), $this->security_level, "gd-star-rating-security", array(&$this->m, "star_menu_security"));
+
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Wizard", "gd-star-rating"), __("Wizard", "gd-star-rating"), $this->security_level, "gd-star-rating-wizard", array(&$this->m, "star_menu_wizard"));
     }
 
@@ -1822,6 +1826,8 @@ class GDStarRating {
 
     function display_article($content) {
         if (is_admin()) return $content;
+        $back_trace = gdFunctionsGDSR::get_caller_backtrace();
+        if (in_array("get_the_excerpt", $back_trace)) return $content;
 
         global $post, $userdata;
         $post_id = is_object($post) ? $post->ID : 0;

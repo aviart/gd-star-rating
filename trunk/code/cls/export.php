@@ -7,6 +7,31 @@ class GDSRExport {
         return $sql;
     }
 
+    function export_t2_full() {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("select * from %sgdsr_templates", $table_prefix);
+        $res = $wpdb->get_results($sql);
+        $lines = array();
+        $line = '';
+        $first = true;
+        foreach ($res as $row) {
+            $values = '(';
+            foreach ($row as $data) $values.= '\''.addslashes($data).'\', ';
+            $values = substr($values, 0, -2).')';
+            if ($first) {
+                $line.= 'INSERT INTO %%T2_TABLE_NAME%% VALUES '.$values;
+                $first = false;
+            } else $line.= ', '.$values;
+            if (strlen($line) > 65536) {
+                $first = true;
+                $lines[] = $line.";\r\n";
+                $line = '';
+            }
+        }
+        if ($line != "") $lines[] = $line.";\r\n";
+        return $lines;
+    }
+
     function export_users($user_data = "min", $data_export = "article", $get_data = array()) {
         global $table_prefix;
         $columns = array();

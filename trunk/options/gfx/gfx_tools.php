@@ -1,5 +1,5 @@
 <table class="form-table"><tbody>
-<tr><th scope="row"><?php _e("Stars and Trends Graphics", "gd-star-rating"); ?></th>
+<tr><th scope="row"><?php _e("Rescan graphics", "gd-star-rating"); ?></th>
     <td>
         <form method="post">
         <?php _e("Rescan graphics folders for new stars and trends images.", "gd-star-rating"); ?><br />

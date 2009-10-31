@@ -45,7 +45,7 @@ $all_sections = $tpls->list_sections_assoc();
 <br class="clear"/>
 <div class="tablenav">
     <div class="alignleft">
-        <input class="button-secondary delete" type="submit" name="gdsr_setdepends" value="<?php _e("Save Changes", "gd-star-rating"); ?>" />
+        <input class="inputbutton" type="submit" name="gdsr_setdepends" value="<?php _e("Save Changes", "gd-star-rating"); ?>" />
     </div>
     <div class="tablenav-pages">
     </div>
