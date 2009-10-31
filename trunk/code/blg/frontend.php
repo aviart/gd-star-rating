@@ -58,28 +58,69 @@ class gdsrFront {
 
     function render_gsr_thumbs($post) {
         $post_data = wp_gdget_post($post->ID);
+        $votes = $post_data->user_recc_plus + $post_data->user_recc_minus + $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
+        if (!is_object($this->g->rSnippets) || $votes == 0) return "";
+        $rating = $post_data->user_recc_plus - $post_data->user_recc_minus + $post_data->visitor_recc_plus - $post_data->visitor_recc_minus;
+        $rating = number_format(100 * ($rating / $votes), 0);
+        return $this->g->rSnippets->snippet_stars_percentage(array(
+            "title" => $post->post_title,
+            "rating" => $rating,
+            "votes" => $votes
+        ));
     }
 
     function render_gsr_multis_rating($post) {
-        $post_data = wp_gdget_post($post->ID);
+        $data = gdsrBlgDB::get_rss_multi_data($post->ID);
+        $votes = $data->total_votes_visitors + $data->total_votes_users;
+        if (!is_object($this->g->rSnippets) || $votes == 0) return "";
+        $sum = $data->average_rating_users * $data->total_votes_users + $data->average_rating_visitors * $data->total_votes_visitors;
+        $rating = number_format($sum / $votes, 1);
+        $set = wp_gdget_multi_set($data->multi_id);
+        return $this->g->rSnippets->snippet_stars_rating(array(
+            "title" => $post->post_title,
+            "rating" => $rating,
+            "max_rating" => $set->stars,
+            "votes" => $votes
+        ));
     }
 
     function render_gsr_multis_review($post) {
-        $post_data = wp_gdget_post($post->ID);
+        $data = gdsrBlgDB::get_rss_multi_data_review($post->ID);
+        $review = is_object($data) ? $data->average_review : 0;
+        if (!is_object($this->g->rSnippets) || $review <= 0) return "";
         $author = get_userdata($post->post_author);
+        $set = wp_gdget_multi_set($data->multi_id);
+        return $this->g->rSnippets->snippet_stars_review(array(
+            "title" => $post->post_title,
+            "rating" => $review,
+            "max_rating" => $set->stars,
+            "review_date" => $post->post_date,
+            "reviewer" => $author->display_name
+        ));
     }
 
     function render_gsr_standard_rating($post) {
         $post_data = wp_gdget_post($post->ID);
+        $voters = $post_data->visitor_voters + $post_data->user_voters;
+        if (!is_object($this->g->rSnippets) || $voters == 0) return "";
+        $votes = $post_data->visitor_votes + $post_data->user_votes;
+        $rating = number_format($votes / $voters, 1);
+        return $this->g->rSnippets->snippet_stars_rating(array(
+            "title" => $post->post_title,
+            "rating" => $rating,
+            "max_rating" => $this->g->o["stars"],
+            "votes" => $voters
+        ));
     }
 
     function render_gsr_standard_review($post) {
         $post_data = wp_gdget_post($post->ID);
-        $author = get_userdata($post->post_author);
         $review = is_object($post_data) ? $post_data->review : 0;
         if (!is_object($this->g->rSnippets) || $review <= 0) return "";
+        $author = get_userdata($post->post_author);
         return $this->g->rSnippets->snippet_stars_review(array(
-            "title" => $post->post_title, "rating" => $review,
+            "title" => $post->post_title,
+            "rating" => $review,
             "max_rating" => $this->g->o["review_stars"],
             "review_date" => $post->post_date,
             "reviewer" => $author->display_name
@@ -118,7 +159,7 @@ class gdsrFront {
                 $score = $post_data->user_votes;
             }
         } else {
-            $data = GDSRDBMulti::get_rss_multi_data($post_id);
+            $data = gdsrBlgDB::get_rss_multi_data($post_id);
             if (count($row) > 0) {
                 $set = wp_gdget_multi_set($data->multi_id);
                 $stars = $set->stars;

@@ -3227,11 +3227,11 @@ msgstr ""
 
 #: options/settings/settings_special.php:22
 msgid "Microformat"
-msgstr ""
+msgstr "Microformat"
 
 #: options/settings/settings_special.php:23
 msgid "RDF"
-msgstr ""
+msgstr "RDF"
 
 #: options/settings/settings_special.php:29
 msgid "Thumbs ratings will be embeded as percentage ratings."
@@ -3508,9 +3508,8 @@ msgid "no limit"
 msgstr "без лимита"
 
 #: options/articles.php:237
-#, fuzzy
 msgid "Edit"
-msgstr "Едитор"
+msgstr "Измени"
 
 #: options/articles.php:241
 #: options/users_log.php:112
@@ -3518,9 +3517,8 @@ msgid "Post"
 msgstr "Чланцак"
 
 #: options/articles.php:242
-#, fuzzy
 msgid "Page"
-msgstr "Опсег"
+msgstr "Страна"
 
 #: options/articles.php:243
 msgid "Views"
@@ -3544,19 +3542,16 @@ msgid "inhert from parent"
 msgstr "наследи од родитеља"
 
 #: options/categories.php:122
-#, fuzzy
 msgid "standard"
-msgstr "Стандард"
+msgstr "стандард"
 
 #: options/categories.php:123
-#, fuzzy
 msgid "multis"
-msgstr "Мулти Сетови"
+msgstr "мултис"
 
 #: options/categories.php:124
-#, fuzzy
 msgid "inactive"
-msgstr "Неактиван"
+msgstr "неактиван"
 
 #: options/charts.php:1
 msgid "Charts"
@@ -3615,9 +3610,8 @@ msgstr "Сними подешавања"
 #: options/import.php:8
 #: options/import.php:15
 #: options/import.php:22
-#, fuzzy
 msgid "Data import completed."
-msgstr "Подаци увезени."
+msgstr "Увоз података завршен."
 
 #: options/import.php:28
 #: options/import.php:60
@@ -3728,7 +3722,7 @@ msgstr "Интеграција"
 
 #: options/settings.php:50
 msgid "Special"
-msgstr ""
+msgstr "Посебно"
 
 #: options/setup.php:8
 msgid "Database tables reinstalled."
@@ -3897,9 +3891,8 @@ msgstr "Извор"
 
 #: tinymce3/panels/articlesreview.php:14
 #: tinymce3/panels/multisreview.php:24
-#, fuzzy
 msgid "Post ID"
-msgstr "Чланцак"
+msgstr "ИД Чланка"
 
 #: tinymce3/panels/articlesreview.php:21
 #: tinymce3/panels/styles.php:77

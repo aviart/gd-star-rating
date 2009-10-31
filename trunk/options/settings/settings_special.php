@@ -21,7 +21,7 @@
                 <td align="left">
                 <select style="width: 180px;" name="gdsr_grs_format" id="gdsr_grs_format">
                     <option value="microformat"<?php echo $gdsr_options['google_rich_snippets_format'] == 'microformat' ? ' selected="selected"' : ''; ?>><?php _e("Microformat", "gd-star-rating"); ?></option>
-                    <option value="rdf"<?php echo $gdsr_options['google_rich_snippets_format'] == 'rdf' ? ' selected="selected"' : ''; ?>><?php _e("RDF", "gd-star-rating"); ?></option>
+                    <!--<option value="rdf"<?php echo $gdsr_options['google_rich_snippets_format'] == 'rdf' ? ' selected="selected"' : ''; ?>><?php _e("RDF", "gd-star-rating"); ?></option>-->
                 </select>
                 </td>
             </tr>

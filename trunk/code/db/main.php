@@ -328,13 +328,6 @@ class GDSRDBMulti {
         $wpdb->query($sql);
     }
 
-    function get_rss_multi_data($post_id) {
-        global $wpdb, $table_prefix;
-
-        $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s order by (total_votes_users + total_votes_visitors) desc limit 0, 1", $table_prefix, $post_id);
-        return $wpdb->get_row($sql);
-    }
-
     function recalculate_multi_rating_log() {
         global $wpdb, $table_prefix;
 

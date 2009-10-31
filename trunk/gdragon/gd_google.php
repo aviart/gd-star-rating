@@ -42,12 +42,67 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
             $this->snippet_type = $snippet_type;
         }
 
-        function snippet_stars_rating() {
+        /**
+         * Render snippet with thumbs rating.
+         *
+         * @param array $options settings for snippet
+         * @return string rendered snippet code
+         */
+        function snippet_stars_percentage($options = array()) {
+            $default = array("title" => "", "rating" => 0, "votes" => "", "review_excerpt" => "");
+            $options = wp_parse_args($options, $default);
 
+            $tpl = '';
+            if ($this->snippet_type == "microformat") {
+                $tpl.= '<span class="hreview-aggregate" style="display: none !important;"><span class="item"><span class="fn">%TITLE%</span></span>';
+                $tpl.= '<span class="rating"><span class="rating">%RATING%%</span>';
+                $tpl.= '<span class="count">%VOTES%</span>';
+                $tpl.= '<span class="summary">%REVIEW_EXCERPT%</span>';
+                $tpl.= '</span></span>';
+            } else if ($this->snippet_type == "rdf") {
+
+            }
+
+            $tpl = str_replace("%TITLE%", $options["title"], $tpl);
+            $tpl = str_replace("%RATING%", $options["rating"], $tpl);
+            $tpl = str_replace("%VOTES%", $options["votes"], $tpl);
+            $tpl = str_replace("%REVIEW_EXCERPT%", $options["review_excerpt"], $tpl);
+
+            return $tpl;
         }
 
         /**
-         * Render snippet with review stars.
+         * Render snippet with rating.
+         *
+         * @param array $options settings for snippet
+         * @return string rendered snippet code
+         */
+        function snippet_stars_rating($options = array()) {
+            $default = array("title" => "", "rating" => 0, "max_rating" => 5, "votes" => "", "review_excerpt" => "");
+            $options = wp_parse_args($options, $default);
+
+            $tpl = '';
+            if ($this->snippet_type == "microformat") {
+                $tpl.= '<span class="hreview-aggregate" style="display: none !important;"><span class="item"><span class="fn">%TITLE%</span></span>';
+                $tpl.= '<span class="rating"><span class="average">%RATING%</span><span class="best">%MAX_RATING%</span>';
+                $tpl.= '<span class="count">%VOTES%</span>';
+                $tpl.= '<span class="summary">%REVIEW_EXCERPT%</span>';
+                $tpl.= '</span></span>';
+            } else if ($this->snippet_type == "rdf") {
+
+            }
+
+            $tpl = str_replace("%TITLE%", $options["title"], $tpl);
+            $tpl = str_replace("%RATING%", $options["rating"], $tpl);
+            $tpl = str_replace("%MAX_RATING%", $options["max_rating"], $tpl);
+            $tpl = str_replace("%VOTES%", $options["votes"], $tpl);
+            $tpl = str_replace("%REVIEW_EXCERPT%", $options["review_excerpt"], $tpl);
+
+            return $tpl;
+        }
+
+        /**
+         * Render snippet with review.
          *
          * @param array $options settings for snippet
          * @return string rendered snippet code
@@ -65,7 +120,6 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
                 $tpl.= '<span class="summary">%REVIEW_EXCERPT%</span>';
                 $tpl.= '</span></span>';
             } else if ($this->snippet_type == "rdf") {
-                
             }
 
             $tpl = str_replace("%TITLE%", $options["title"], $tpl);
@@ -76,10 +130,6 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
             $tpl = str_replace("%REVIEW_EXCERPT%", $options["review_excerpt"], $tpl);
 
             return $tpl;
-        }
-
-        function snippet_thumbs_rating() {
-
         }
     }
 }
