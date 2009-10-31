@@ -2,14 +2,16 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.7.3",
+        "version" => "1.7.4",
         "revision" => 0,
-        "date" => "2009.10.27.",
+        "date" => "2009.11.02.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 972,
+        "build" => 975,
         "admin_views" => 0,
         "google_rich_snippets_format" => "microformat",
+        "google_rich_snippets_active" => 1,
+        "google_rich_snippets_datasource" => "standard_rating",
         "update_report_usage" => 1,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,

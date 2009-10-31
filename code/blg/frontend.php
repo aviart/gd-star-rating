@@ -35,16 +35,18 @@ class gdsrFront {
     }
 
     function render_google_rich_snippet($post) {
-        $post_data = wp_gdget_post($post->ID);
-        $review = is_object($post_data) ? $post_data->review : 0;
-        $author = get_userdata($post->post_author);
-        if (!is_object($this->g->rSnippets) || $review <= 0) return "";
-        return $this->g->rSnippets->snippet_stars_review(array(
-            "title" => $post->post_title, "rating" => $review,
-            "max_rating" => $this->g->o["review_stars"],
-            "review_date" => $post->post_date,
-            "reviewer" => $author->display_name
-        ));
+        if ($this->g->o["google_rich_snippets_active"] == 1) {
+            $post_data = wp_gdget_post($post->ID);
+            $review = is_object($post_data) ? $post_data->review : 0;
+            $author = get_userdata($post->post_author);
+            if (!is_object($this->g->rSnippets) || $review <= 0) return "";
+            return $this->g->rSnippets->snippet_stars_review(array(
+                "title" => $post->post_title, "rating" => $review,
+                "max_rating" => $this->g->o["review_stars"],
+                "review_date" => $post->post_date,
+                "reviewer" => $author->display_name
+            ));
+        } else return "";
     }
 
     function render_article_rss() {

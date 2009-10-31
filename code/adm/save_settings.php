@@ -66,6 +66,10 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["security_showdashboard_user_level"] = $_POST['gdsr_security_showdashboard_user_level'];
     $gdsr_options["security_showip_user_level"] = $_POST['gdsr_security_showip_user_level'];
 
+    $gdsr_options["google_rich_snippets_format"] = $_POST['gdsr_grs_format'];
+    $gdsr_options["google_rich_snippets_datasource"] = $_POST['gdsr_grs_datasource'];
+    $gdsr_options["google_rich_snippets_active"] = isset($_POST['gdsr_grs']) ? 1 : 0;
+
     $gdsr_options["debug_wpquery"] = isset($_POST['gdsr_debug_wpquery']) ? 1 : 0;
     $gdsr_options["debug_active"] = isset($_POST['gdsr_debug_active']) ? 1 : 0;
     $gdsr_options["debug_inline"] = isset($_POST['gdsr_debug_inline']) ? 1 : 0;

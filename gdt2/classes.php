@@ -3,13 +3,57 @@
 /*
 Name:    gdTemplatesT2
 Library: Classes
-Version: 2.3.0
+Version: 2.4.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/
 */
 
 class gdTemplateDB {
+    function import_templates_full($t2) {
+        global $wpdb, $table_prefix;
+        $sql = sprintf("TRUNCATE TABLE %s%s", $table_prefix, STARRATING_TPLT2_TABLE);
+        $wpdb->query($sql);
+        $t2 = str_replace("%%T2_TABLE_NAME%%", $table_prefix.STARRATING_TPLT2_TABLE, $t2);
+        $wpdb->query($t2);
+    }
+
+    function import_templates_own($t2) {
+        global $wpdb, $table_prefix;
+        $templates = array();
+        foreach ($t2 as $tpl) {
+            $parts = explode("|", $tpl, 4);
+            $sql = sprintf("insert into %s%s (`section`, `name`, `description`, `elements`, `preinstalled`, `default`) values ('%s', '%s', '%s', '%s', '2', '0')",
+                $table_prefix, STARRATING_TPLT2_TABLE, $parts[0], $parts[1], $parts[2], $parts[3]);
+            $wpdb->query($sql);
+            $tpl_id = $wpdb->insert_id;
+            $templates[] = array("section" => $parts[0], "tpl_id" => sprintf("%s", $tpl_id));
+        }
+        if (count($templates) > 0) {
+            include(STARRATING_PATH.'code/t2/templates.php');
+            $depend = array();
+            foreach ($tpls->tpls as $tpl) {
+                $section = $tpl->code;
+                $sql = sprintf("select template_id from %s%s where section = '%s' and preinstalled = '1'", $table_prefix, STARRATING_TPLT2_TABLE, $section);
+                $tpl_id = intval($wpdb->get_var($sql));
+                $depend[$section] = $tpl_id;
+            }
+            foreach ($templates as $tpl) {
+                $dep = array();
+                $t = $tpls->get_list($tpl["section"]);
+                foreach ($t->tpls as $tag) {
+                    $s = $tag->code;
+                    $dep[$s] = sprintf("%s", $depend[$s]);
+                }
+                if (count($dep) > 0) {
+                    $sql = sprintf("update %s%s set dependencies = '%s' where template_id = %s",
+                        $table_prefix, STARRATING_TPLT2_TABLE, serialize($dep), $tpl["tpl_id"]);
+                    $wpdb->query($sql);
+                }
+            }
+        }
+    }
+
     function rewrite_dependencies($section, $id) {
         global $wpdb, $table_prefix;
         include($this->plugin_path.'code/t2/templates.php');

@@ -60,6 +60,7 @@ function gdsrStyleSelection(preview) {
     <li><a href="#fragment-1"><span><?php _e("Stars", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-2"><span><?php _e("Thumbs", "gd-star-rating"); ?></span></a></li>
     <li><a href="#fragment-3"><span><?php _e("Preview", "gd-star-rating"); ?></span></a></li>
+    <li><a href="#fragment-4"><span><?php _e("Tools", "gd-star-rating"); ?></span></a></li>
 </ul>
 <div style="clear: both"></div>
 <div id="fragment-1">
@@ -70,6 +71,9 @@ function gdsrStyleSelection(preview) {
 </div>
 <div id="fragment-3">
 <?php include STARRATING_PATH."options/gfx/gfx_preview.php"; ?>
+</div>
+<div id="fragment-4">
+<?php include STARRATING_PATH."options/gfx/gfx_tools.php"; ?>
 </div>
 </div>
 

@@ -47,6 +47,27 @@ if (!class_exists('gdFunctionsGDSR')) {
         }
 
         /**
+         * Get the function call backtrace.
+         *
+         * @return array all functions calls leading to the place of call to this one
+         */
+        function get_caller_backtrace() {
+            if (!is_callable('debug_backtrace')) return array();
+            $bt = debug_backtrace();
+            $caller = array();
+
+            $bt = array_reverse($bt);
+            foreach ((array)$bt as $call) {
+                $function = $call['function'];
+                if (isset($call['class'])) $function = $call['class']."->$function";
+                $caller[] = $function;
+            }
+
+            unset($caller[count($caller) - 1]);
+            return $caller;
+        }
+
+        /**
          * Trims the text to given number of words.
          *
          * @param string $text text to trim
