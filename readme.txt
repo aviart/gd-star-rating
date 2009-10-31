@@ -173,6 +173,7 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 == Changelog ==
 = 1.7.4 =
 * Permanently solved famous excerpt problem
+* Fully implemented google rich snippets support
 * Controls for google rich snippets integration
 * New templates import and export
 * Several bugs fixed

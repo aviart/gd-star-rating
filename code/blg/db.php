@@ -1,6 +1,20 @@
 <?php
 
 class gdsrBlgDB {
+    function get_rss_multi_data($post_id) {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s order by (total_votes_users + total_votes_visitors) desc limit 0, 1", $table_prefix, $post_id);
+        return $wpdb->get_row($sql);
+    }
+
+    function get_rss_multi_data_review($post_id) {
+        global $wpdb, $table_prefix;
+
+        $sql = sprintf("select * from %sgdsr_multis_data where post_id = %s order by average_review desc limit 0, 1", $table_prefix, $post_id);
+        return $wpdb->get_row($sql);
+    }
+
     function add_new_view($post_id) {
         if (intval($post_id) > 0) {
             global $wpdb, $table_prefix;
