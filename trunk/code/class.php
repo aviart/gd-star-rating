@@ -530,7 +530,7 @@ class GDStarRating {
         $set = gd_get_multi_set($multi_id);
         if (is_null($set)) {
             $set = gd_get_multi_set();
-            $multi_id = $set->multi_id;
+            $multi_id = !is_null($set) ? $set->multi_id : 0  ;
         }
         if ($multi_id > 0 && $post_id > 0) {
             $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id, count($set->object));
@@ -1097,7 +1097,7 @@ class GDStarRating {
             $post_id = $_POST["post_ID"];
 
         if ((isset($_POST['gdsr_post_edit']) && $_POST['gdsr_post_edit'] == "edit") || (isset($_POST['gdsr_post_edit_mur']) && $_POST['gdsr_post_edit_mur'] == "edit")) {
-            if ($this->o["integrate_post_edit"] == 1) {
+            if ($this->o["integrate_post_edit"] == 1 && isset($_POST["gdsrmultiactive"])) {
                 $set_id = intval($_POST["gdsrmultiactive"]);
                 if ($set_id > 0) {
                     $mur = $_POST['gdsrmulti'];
@@ -1115,38 +1115,46 @@ class GDStarRating {
             $old = gdsrAdmDB::check_post_review($post_id);
 
             $review = $_POST['gdsr_review'];
-            if ($_POST['gdsr_review_decimal'] != "-1")
-                $review.= ".".$_POST['gdsr_review_decimal'];
+            if ($_POST['gdsr_review_decimal'] != "-1") $review.= ".".$_POST['gdsr_review_decimal'];
             GDSRDatabase::save_review($post_id, $review, $old);
             $old = true;
 
             GDSRDatabase::save_article_rules($post_id, 
-                $_POST['gdsr_vote_articles'], $_POST['gdsr_mod_articles'],
-                $_POST['gdsr_recc_vote_articles'], $_POST['gdsr_recc_mod_articles']);
+                isset($_POST['gdsr_vote_articles']) ? $_POST['gdsr_vote_articles'] : "A",
+                isset($_POST['gdsr_mod_articles']) ? $_POST['gdsr_mod_articles'] : "N",
+                isset($_POST['gdsr_recc_vote_articles']) ? $_POST['gdsr_recc_vote_articles'] : "A",
+                isset($_POST['gdsr_recc_mod_articles']) ? $_POST['gdsr_recc_mod_articles'] : "N");
+
             if ($this->o["comments_active"] == 1) {
                 GDSRDatabase::save_comment_rules($post_id, 
-                    $_POST['gdsr_cmm_vote_articles'], $_POST['gdsr_cmm_mod_articles'],
-                    $_POST['gdsr_recc_cmm_vote_articles'], $_POST['gdsr_recc_cmm_mod_articles']);
+                    isset($_POST['gdsr_cmm_vote_articles']) ? $_POST['gdsr_cmm_vote_articles'] : "A",
+                    isset($_POST['gdsr_cmm_mod_articles']) ? $_POST['gdsr_cmm_mod_articles'] : "N",
+                    isset($_POST['gdsr_recc_cmm_vote_articles']) ? $_POST['gdsr_recc_cmm_vote_articles'] : "A",
+                    isset($_POST['gdsr_recc_cmm_mod_articles']) ? $_POST['gdsr_recc_cmm_mod_articles'] : "N");
             }
 
-            $timer = $_POST['gdsr_timer_type'];
-            GDSRDatabase::save_timer_rules(
-                $post_id,
-                $timer,
-                GDSRHelper::timer_value($timer, 
-                    isset($_POST['gdsr_timer_date_value']) ? $_POST['gdsr_timer_date_value'] : "",
-                    isset($_POST['gdsr_timer_countdown_value']) ? $_POST['gdsr_timer_countdown_value'] : "",
-                    isset($_POST['gdsr_timer_countdown_type']) ? $_POST['gdsr_timer_countdown_type'] : "")
-            );
-            $timer = $_POST['gdsr_timer_type_recc'];
-            GDSRDatabase::save_timer_rules_thumbs(
-                $post_id,
-                $timer,
-                GDSRHelper::timer_value($timer,
-                    isset($_POST['gdsr_recc_timer_date_value']) ? $_POST['gdsr_recc_timer_date_value'] : "",
-                    isset($_POST['gdsr_recc_timer_countdown_value']) ? $_POST['gdsr_recc_timer_countdown_value'] : "",
-                    isset($_POST['gdsr_recc_timer_countdown_type']) ? $_POST['gdsr_recc_timer_countdown_type'] : "")
-            );
+            if (isset($_POST['gdsr_timer_type'])) {
+                $timer = $_POST['gdsr_timer_type'];
+                GDSRDatabase::save_timer_rules(
+                    $post_id,
+                    $timer,
+                    GDSRHelper::timer_value($timer,
+                        isset($_POST['gdsr_timer_date_value']) ? $_POST['gdsr_timer_date_value'] : "",
+                        isset($_POST['gdsr_timer_countdown_value']) ? $_POST['gdsr_timer_countdown_value'] : "",
+                        isset($_POST['gdsr_timer_countdown_type']) ? $_POST['gdsr_timer_countdown_type'] : "")
+                );
+            }
+            if (isset($_POST['gdsr_timer_type_recc'])) {
+                $timer = $_POST['gdsr_timer_type_recc'];
+                GDSRDatabase::save_timer_rules_thumbs(
+                    $post_id,
+                    $timer,
+                    GDSRHelper::timer_value($timer,
+                        isset($_POST['gdsr_recc_timer_date_value']) ? $_POST['gdsr_recc_timer_date_value'] : "",
+                        isset($_POST['gdsr_recc_timer_countdown_value']) ? $_POST['gdsr_recc_timer_countdown_value'] : "",
+                        isset($_POST['gdsr_recc_timer_countdown_type']) ? $_POST['gdsr_recc_timer_countdown_type'] : "")
+                );
+            }
         }
     }
 
