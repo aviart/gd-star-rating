@@ -182,10 +182,10 @@ function insertStarRatingCode() {
         if (document.getElementById('srMultiReviewPostID').value > 0) tagtext = tagtext + " post=" + document.getElementById('srMultiReviewPostID').value;
         tagtext = tagtext + " tpl=" + document.getElementById('srTemplateRMB').value;
         if (document.getElementById('srStarsStyleMRREl').value != 'oxygen') {
-            tagtext = tagtext + " element_stars='" + document.getElementById('srStarsStyleMRREl').value + "'";
+            tagtext = tagtext + " style='" + document.getElementById('srStarsStyleMRREl').value + "'";
         }
         if (document.getElementById('srStarsSizeMRREl').value != '20') {
-            tagtext = tagtext + " element_size='" + document.getElementById('srStarsSizeMRREl').value + "'";
+            tagtext = tagtext + " size='" + document.getElementById('srStarsSizeMRREl').value + "'";
         }
         if (document.getElementById('srStarsStyleMRRAv').value != 'oxygen') {
             tagtext = tagtext + " average_stars='" + document.getElementById('srStarsStyleMRRAv').value + "'";
@@ -218,10 +218,10 @@ function insertStarRatingCode() {
         funtext = funtext + "', " + document.getElementById('srStarsSizeMURAv').value;
         funtext = funtext + ", 'oxygen_gif'";
         if (document.getElementById('srStarsStyleMUREl').value != 'oxygen') {
-            tagtext = tagtext + " element_stars='" + document.getElementById('srStarsStyleMUREl').value + "'";
+            tagtext = tagtext + " style='" + document.getElementById('srStarsStyleMUREl').value + "'";
         }
         if (document.getElementById('srStarsSizeMUREl').value != '20') {
-            tagtext = tagtext + " element_size='" + document.getElementById('srStarsSizeMUREl').value + "'";
+            tagtext = tagtext + " size='" + document.getElementById('srStarsSizeMUREl').value + "'";
         }
         if (document.getElementById('srStarsStyleMURAv').value != 'oxygen') {
             tagtext = tagtext + " average_stars='" + document.getElementById('srStarsStyleMURAv').value + "'";
