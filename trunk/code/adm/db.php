@@ -415,6 +415,8 @@ class gdsrAdmDB {
 
     function get_user_log($user_id, $vote_type, $vote_value = 0, $start = 0, $limit = 20, $ip = "") {
         global $wpdb, $table_prefix;
+        $types = array("article", "artthumb", "comment", "cmmthumb");
+        if (!in_array($vote_type, $types)) return array();
 
         $join = $select = "";
 
@@ -429,6 +431,7 @@ class gdsrAdmDB {
             $join = sprintf("%scomments o on o.comment_ID = l.id left join %sposts p on p.ID = o.comment_post_ID", $table_prefix, $table_prefix);
             $select = "o.comment_content, o.comment_author as author, o.comment_ID as control_id, p.post_title, p.ID as post_id";
         }
+
         $sql = sprintf("SELECT 1 as span, l.*, i.status, %s from %sgdsr_votes_log l left join %s left join %sgdsr_ips i on i.ip = l.ip where l.user_id = %s and l.vote_type = '%s'%s%s order by l.ip asc, l.voted desc %s",
                 $select, $table_prefix, $join, $table_prefix, $user_id, $vote_type, $vote_value, $ip, $range);
         return $wpdb->get_results($sql);

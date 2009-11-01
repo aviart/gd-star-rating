@@ -1704,7 +1704,7 @@ class GDStarRating {
     }
 
     function include_rating_css($external = true, $return = false) {
-        $elements = array();
+        $star_sizes = $thumb_sizes = $elements = $loaders = array();
 
         $presizes = "a".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
         $presizes.= "i".gdFunctionsGDSR::prefill_zeros($this->o["stars"], 2);
@@ -1714,14 +1714,12 @@ class GDStarRating {
         $presizes.= "r".gdFunctionsGDSR::prefill_zeros($this->o["cmm_review_stars"], 2);
         $elements[] = $presizes;
 
-        $star_sizes = array();
         foreach ($this->ginc[0] as $size => $var) {
             if ($var == 1) $star_sizes[] = $size;
         }
         if (count($star_sizes) == 0) $star_sizes[] = 24;
         $elements[] = join("", $star_sizes);
 
-        $thumb_sizes = array();
         foreach ($this->ginc[2] as $size => $var) {
             if ($var == 1) $thumb_sizes[] = $size;
         }
@@ -1743,6 +1741,13 @@ class GDStarRating {
                     $elements[] = "t".$s->primary.substr($s->type, 0, 1).$s->folder;
             }
         }
+        $loaders[] = $this->o["wait_loader_artthumb"];
+        $loaders[] = $this->o["wait_loader_cmmthumb"];
+        $loaders[] = $this->o["wait_loader_article"];
+        $loaders[] = $this->o["wait_loader_comment"];
+        $loaders[] = $this->o["wait_loader_multis"];
+        $loaders = array_unique($loaders);
+        foreach ($loaders as $l) $elements[] = "lsg".$l;
 
         $q = join("#", $elements);
         $t = $this->o["css_cache_active"] == 1 ? $this->o["css_last_changed"] : 0;

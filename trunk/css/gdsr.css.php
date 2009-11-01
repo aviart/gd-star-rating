@@ -1,5 +1,13 @@
 <?php
 
+$load_base = array(
+    "circle" => array(18, 16), "bar" => array(216, 208), "arrows" => array(18, 16),
+    "flower" => array(18, 16), "gauge" => array(134, 128), "squares" => array(43, 47),
+    "fountain" => array(134, 128), "lines" => array(102, 96), "broken" => array(18, 16),
+    "snake" => array(14, 12), "snakebig" => array(26, 24), "brokenbig" => array(26, 24),
+    "triangles" => array(14, 12), "radar" => array(18, 16)
+);
+
 function split_by_length($string, $chunkLength = 1) {
     $result = array();
     $strLength = strlen($string);
@@ -59,13 +67,8 @@ unset($raw[0]);
 unset($raw[1]);
 unset($raw[2]);
 
-$thumb_sets = array();
-$thumb_folders = array();
+$thumb_sets = $thumb_folders = $loaders_folders = $sets = $blocks = $head = $folders = $loaders = array();
 
-$sets = array();
-$blocks = array();
-$head = array();
-$folders = array();
 foreach($raw as $r) {
     $set = array();
     $type = substr($r, 0, 1);;
@@ -86,6 +89,9 @@ foreach($raw as $r) {
     if ($type == "s") {
         $folders[] = substr($r, 3);
         $sets[] = $set;
+    } else if ($type == "l") {
+        $loaders_folders[] = substr($r, 3);
+        $loaders[] = $set;
     } else {
         $thumb_folders[] = substr($r, 3);
         $thumb_sets[] = $set;
@@ -95,7 +101,8 @@ foreach($raw as $r) {
 echo "/* stars sizes: ".join(", ", $sizes) ." */\r\n";
 echo "/* stars sets: ".join(", ", $folders) ." */\r\n";
 echo "/* thumbs sizes: ".join(", ", $thumb_sizes) ." */\r\n";
-echo "/* thumbs sets: ".join(", ", $thumb_folders) ." */\r\n\r\n";
+echo "/* thumbs sets: ".join(", ", $thumb_folders) ." */\r\n";
+echo "/* loaders: ".join(", ", $loaders_folders) ." */\r\n\r\n";
 
 foreach($raw_blocks as $r) {
     $block = array();
@@ -127,32 +134,34 @@ foreach($raw_blocks as $r) {
     $blocks[] = $block;
 }
 
-foreach ($sizes as $size) {
-    echo '.starsbar.gdsr-size-'.$size.', .starsbar.gdsr-size-'.$size.' .gdheight, .starsbar.gdsr-size-'.$size.' a { height: '.$size.'px; }';
-    echo "\r\n";
-    for ($i = 1; $i <= 20; $i++) {
-        echo '.starsbar.gdsr-size-'.$size.' a.s'.$i.' { width: '.($i * $size).'px; }';
-        echo "\r\n";
-    }
-}
-
-foreach ($blocks as $block) {
-    $stars = $block["size"];
+if (count($sets) > 0 && count($sizes)) {
     foreach ($sizes as $size) {
-        if ($block["name"] != "ratemulti") {
-            echo ".".$block["name"].".gdsr-size-".$size.", .".$block["name"].".gdsr-size-".$size." .starsbar .gdouter { width: ".($stars * $size)."px; }\r\n";
+        echo '.starsbar.gdsr-size-'.$size.', .starsbar.gdsr-size-'.$size.' .gdheight, .starsbar.gdsr-size-'.$size.' a { height: '.$size.'px; }';
+        echo "\r\n";
+        for ($i = 1; $i <= 20; $i++) {
+            echo '.starsbar.gdsr-size-'.$size.' a.s'.$i.' { width: '.($i * $size).'px; }';
+            echo "\r\n";
         }
     }
-}
 
-foreach ($sets as $set) {
-    $class = ".gdsr-".$set["folder"];
-    foreach ($sizes as $size) {
-        $url = ($set["location"] == 1 ? $base_url_local : $base_url_extra)."stars/".$set["folder"]."/stars".$size.".".$set["type"];
-        echo $class." .starsbar.gdsr-size-".$size." .gdouter { background: url('".$url."') repeat-x 0px 0px; }\r\n";
-        echo $class." .starsbar.gdsr-size-".$size." .gdinner { background: url('".$url."') repeat-x 0px -".(2 * $size)."px; }\r\n";
-        echo $class." .starsbar.gdsr-size-".$size." .gdcurrent { background: url('".$url."') repeat-x 0px -".($size)."px; }\r\n";
-        echo $class." .starsbar.gdsr-size-".$size." a:hover { background: url('".$url."') repeat-x 0px -".$size."px !important; }\r\n";
+    foreach ($blocks as $block) {
+        $stars = $block["size"];
+        foreach ($sizes as $size) {
+            if ($block["name"] != "ratemulti") {
+                echo ".".$block["name"].".gdsr-size-".$size.", .".$block["name"].".gdsr-size-".$size." .starsbar .gdouter { width: ".($stars * $size)."px; }\r\n";
+            }
+        }
+    }
+
+    foreach ($sets as $set) {
+        $class = ".gdsr-".$set["folder"];
+        foreach ($sizes as $size) {
+            $url = ($set["location"] == 1 ? $base_url_local : $base_url_extra)."stars/".$set["folder"]."/stars".$size.".".$set["type"];
+            echo $class." .starsbar.gdsr-size-".$size." .gdouter { background: url('".$url."') repeat-x 0px 0px; }\r\n";
+            echo $class." .starsbar.gdsr-size-".$size." .gdinner { background: url('".$url."') repeat-x 0px -".(2 * $size)."px; }\r\n";
+            echo $class." .starsbar.gdsr-size-".$size." .gdcurrent { background: url('".$url."') repeat-x 0px -".($size)."px; }\r\n";
+            echo $class." .starsbar.gdsr-size-".$size." a:hover { background: url('".$url."') repeat-x 0px -".$size."px !important; }\r\n";
+        }
     }
 }
 
@@ -167,15 +176,17 @@ foreach ($sets as $set) {
 
 <?php
 
-foreach ($thumb_sizes as $size) {
-    echo sprintf(".gdt-size-%s.gdthumbtext { line-height: %spx; }\r\n", $size, $size);
-    echo sprintf(".gdt-size-%s.gdthumb, .gdt-size-%s.gdthumb a, .gdt-size-%s.gdthumb div { width: %spx; height: %spx; }\r\n", $size, $size, $size, $size, $size);
-    echo sprintf(".gdt-size-%s.gdthumb.gddw a, .gdt-size-%s.gdthumb.gddw div { background-position: 0px -%spx !important; }\r\n", $size, $size, $size);
-    echo sprintf(".gdt-size-%s.gdthumb.gdup a:hover { background-position: 0px -%spx; }\r\n", $size, 2 * $size);
-    echo sprintf(".gdt-size-%s.gdthumb.gddw a:hover { background-position: 0px -%spx !important; }\r\n", $size, 3 * $size);
-    foreach ($thumb_sets as $set) {
-        $url = ($set["location"] == 1 ? $base_url_local : $base_url_extra)."thumbs/".$set["folder"]."/thumbs".$size.".".$set["type"];
-        echo sprintf(".gdt-size-%s.gdthumb a.gdt-%s, .gdt-size-%s.gdthumb div.gdt-%s { background: url('%s') no-repeat; }\r\n", $size, $set["folder"], $size, $set["folder"], $url);
+if (count($thumb_sets) > 0 && count($thumb_sizes)) {
+    foreach ($thumb_sizes as $size) {
+        echo sprintf(".gdt-size-%s.gdthumbtext { line-height: %spx; }\r\n", $size, $size);
+        echo sprintf(".gdt-size-%s.gdthumb, .gdt-size-%s.gdthumb a, .gdt-size-%s.gdthumb div { width: %spx; height: %spx; }\r\n", $size, $size, $size, $size, $size);
+        echo sprintf(".gdt-size-%s.gdthumb.gddw a, .gdt-size-%s.gdthumb.gddw div { background-position: 0px -%spx !important; }\r\n", $size, $size, $size);
+        echo sprintf(".gdt-size-%s.gdthumb.gdup a:hover { background-position: 0px -%spx; }\r\n", $size, 2 * $size);
+        echo sprintf(".gdt-size-%s.gdthumb.gddw a:hover { background-position: 0px -%spx !important; }\r\n", $size, 3 * $size);
+        foreach ($thumb_sets as $set) {
+            $url = ($set["location"] == 1 ? $base_url_local : $base_url_extra)."thumbs/".$set["folder"]."/thumbs".$size.".".$set["type"];
+            echo sprintf(".gdt-size-%s.gdthumb a.gdt-%s, .gdt-size-%s.gdthumb div.gdt-%s { background: url('%s') no-repeat; }\r\n", $size, $set["folder"], $size, $set["folder"], $url);
+        }
     }
 }
 
@@ -241,29 +252,16 @@ foreach ($thumb_sizes as $size) {
 /* loading indicators */
 .loader { margin-left: auto; margin-right: auto; text-align: left; }
 
-.loader.circle { background: url(<?php echo $base_url_local;?>gfx/loader/circle.gif) no-repeat left; padding-left: 18px; }
-.loader.bar { background: url(<?php echo $base_url_local;?>gfx/loader/bar.gif) no-repeat left; padding-left: 216px; }
-.loader.arrows { background: url(<?php echo $base_url_local;?>gfx/loader/arrows.gif) no-repeat left; padding-left: 18px; }
-.loader.flower { background: url(<?php echo $base_url_local;?>gfx/loader/flower.gif) no-repeat left; padding-left: 18px; }
-.loader.gauge { background: url(<?php echo $base_url_local;?>gfx/loader/gauge.gif) no-repeat left; padding-left: 134px; }
-.loader.squares { background: url(<?php echo $base_url_local;?>gfx/loader/squares.gif) no-repeat left; padding-left: 43px; }
-.loader.fountain { background: url(<?php echo $base_url_local;?>gfx/loader/fountain.gif) no-repeat left; padding-left: 134px; }
-.loader.lines { background: url(<?php echo $base_url_local;?>gfx/loader/lines.gif) no-repeat left; padding-left: 102px; }
-.loader.broken { background: url(<?php echo $base_url_local;?>gfx/loader/broken.gif) no-repeat left; padding-left: 18px; }
-.loader.brokenbig { background: url(<?php echo $base_url_local;?>gfx/loader/brokenbig.gif) no-repeat left; padding-left: 26px; }
-.loader.snake { background: url(<?php echo $base_url_local;?>gfx/loader/snake.gif) no-repeat left; padding-left: 14px; }
-.loader.snakebig { background: url(<?php echo $base_url_local;?>gfx/loader/snakebig.gif) no-repeat left; padding-left: 26px; }
-.loader.triangles { background: url(<?php echo $base_url_local;?>gfx/loader/triangles.gif) no-repeat left; padding-left: 14px; }
-.loader.radar { background: url(<?php echo $base_url_local;?>gfx/loader/radar.gif) no-repeat left; padding-left: 18px; }
+<?php
 
-.loader.circle.width, .loader.arrows.width, .loader.broken.width, .loader.radar.width { width: 16px;  }
-.loader.fountain.width, .loader.gauge.width { width: 128px; }
-.loader.snakebig.width, .loader.brokenbig.width { width: 24px; }
-.loader.triangles.width, .loader.snake.width { width: 12px; }
-.loader.bar.width { width: 208px; }
-.loader.flower.width { width: 15px; }
-.loader.lines.width { width: 96px; }
-.loader.squares.width { width: 43px; }
+foreach ($loaders as $l) {
+    $loader = $load_base[$l["folder"]];
+    $url = $base_url_local."gfx/loader/".$l["folder"].".gif";
+    echo sprintf(".loader.%s { background: url(%s) no-repeat left; padding-left: %spx; }\r\n", $l["folder"], $url, $loader[0]);
+    echo sprintf(".loader.%s.width { width: %spx; }\r\n", $l["folder"], $loader[1]);
+}
+
+?>
 
 .loader.width { padding-left: 0px; }
 .loader.arrows.thumb, .loader.flower.thumb, .loader.circle.thumb, .loader.broken.thumb,
@@ -295,9 +293,6 @@ foreach ($thumb_sizes as $size) {
 }
 
 .gdsrclsmall strong { font-size: 14px; }
-
 .gdsrclsmall em { font-size: 11px; }
-
 .gdsrclbig strong { font-size: 17px; }
-
 .gdsrclbig em { font-size: 14px; }
