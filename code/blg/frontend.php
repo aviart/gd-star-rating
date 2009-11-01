@@ -88,7 +88,6 @@ class gdsrFront {
         $data = gdsrBlgDB::get_rss_multi_data_review($post->ID);
         $review = is_object($data) ? $data->average_review : 0;
         if (!is_object($this->g->rSnippets) || $review <= 0) return "";
-        $author = get_userdata($post->post_author);
         $set = wp_gdget_multi_set($data->multi_id);
         return $this->g->rSnippets->snippet_stars_review(array(
             "title" => $post->post_title,

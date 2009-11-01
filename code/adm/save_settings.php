@@ -220,6 +220,7 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["thumb_auto_display_position"] = $_POST['gdsr_thumb_auto_display_position'];
     $gdsr_options["thumb_auto_display_comment_position"] = $_POST['gdsr_thumb_auto_display_comment_position'];
 
+    $gdsr_options["css_last_changed"] = time();
     update_option("gd-star-rating", $gdsr_options);
 }
 

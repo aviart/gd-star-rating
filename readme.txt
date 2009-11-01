@@ -176,6 +176,7 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 * Fully implemented google rich snippets support
 * Controls for google rich snippets integration
 * New templates import and export
+* Loaders optimizations for main CSS file
 * Several bugs fixed
 
 = 1.7.3 =
