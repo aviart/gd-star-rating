@@ -339,6 +339,8 @@ class GDStarRating {
     */
     function shortcode_starreviewmulti($atts = array()) {
         $settings = shortcode_atts($this->default_shortcode_starreviewmulti, $atts);
+        $el_stars = $settings["element_stars"] != "" ? $settings["element_stars"] : $settings["style"];
+        $el_size = $settings["element_size"] != "" ? $settings["element_size"] : $settings["size"];
         $post_id = $settings["post"];
         if ($post_id == 0) {
             global $post;
@@ -358,7 +360,7 @@ class GDStarRating {
                 $votes[] = $single_vote;
             }
             $avg_rating = GDSRDBMulti::get_multi_review_average($vote_id);
-            return GDSRRenderT2::render_rmb($settings["tpl"], array("votes" => $votes, "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "style" => $settings["element_stars"], "size" => $settings["element_size"], "avg_style" => $settings["average_stars"], "avg_size" => $settings["average_size"]));
+            return GDSRRenderT2::render_rmb($settings["tpl"], array("votes" => $votes, "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "style" => $el_stars, "size" => $el_size, "avg_style" => $settings["average_stars"], "avg_size" => $settings["average_size"]));
         }
         else return '';
     }
@@ -371,10 +373,11 @@ class GDStarRating {
     function shortcode_starratingmulti($atts = array()) {
         if ($this->o["multis_active"] == 1) {
             global $post, $userdata;
+            if (!isset($atts["style"]) && isset($atts["element_stars"]) && $atts["element_stars"] != "") $atts["style"] = $atts["element_stars"];
+            if (!isset($atts["size"]) && isset($atts["element_size"]) && $atts["element_size"] != 0) $atts["size"] = $atts["element_size"];
             $settings = shortcode_atts($this->default_shortcode_starratingmulti, $atts);
             return $this->f->render_multi_rating($post, $userdata, $settings);
-        }
-        else return '';
+        } else return "";
     }
     // shortcodes
 
@@ -392,7 +395,8 @@ class GDStarRating {
     function display_comment_review($comment_id, $use_default = true, $style = "oxygen", $size = 20) {
         $review = wp_gdget_comment_review($comment_id);
         if ($review < 1) return "";
-            else {if ($use_default) {
+        else {
+            if ($use_default) {
                 $style = ($this->is_ie6 ? $this->o["cmm_review_style_ie6"] : $this->o["cmm_review_style"]);
                 $size = $this->o["cmm_review_size"];
             }
@@ -579,9 +583,8 @@ class GDStarRating {
         $recc_countdown_value = $gdsr_options["default_timer_countdown_value"];
         $recc_countdown_type = $gdsr_options["default_timer_countdown_type"];
         $timer_date_value = $recc_timer_date_value = "";
-        if ($post_id == 0) {
-            $default = true;
-        } else {
+        if ($post_id == 0) $default = true;
+        else {
             $post_data = GDSRDatabase::get_post_edit($post_id);
             if (count($post_data) > 0) {
                 $rating = explode(".", strval($post_data->review));
@@ -645,7 +648,7 @@ class GDStarRating {
         if ($this->security_users == "0") {
             $this->wp_secure_level = $this->wp_access_level > 8;
         } else {
-        $allowed = explode(",", $this->security_users);
+            $allowed = explode(",", $this->security_users);
             if (is_array($allowed)) {
                 $this->wp_secure_level = in_array($userdata->ID, $allowed);
             } else $this->wp_secure_level = false;
@@ -757,7 +760,6 @@ class GDStarRating {
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
             if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
             if ($this->admin_plugin_page == "settings") include(STARRATING_PATH."code/js/loaders.php");
-            if ($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" && $this->o["integrate_post_edit_mur"] == 1) include(STARRATING_PATH."code/js/admin.php");
         echo("});</script>\r\n");
         if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") && $this->o["integrate_post_edit_mur"] == 1) {
             $this->include_rating_css_admin();
@@ -1199,7 +1201,6 @@ class GDStarRating {
                 $this->o["status"] = $this->default_options["status"];
                 $this->o["build"] = $this->default_options["build"];
                 $this->o["revision"] = $this->default_options["revision"];
-                if ($this->o["css_last_changed"] == 0) $this->o["css_last_changed"] = time();
 
                 $this->is_update = true;
                 update_option('gd-star-rating', $this->o);

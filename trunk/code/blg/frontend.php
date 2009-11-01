@@ -842,6 +842,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     }
 
     function render_thumb_article($post, $user, $override = array()) {
+        if (is_feed()) return "";
         if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
 
         $default_settings = array("style" => $this->g->o["thumb_style"], "style_ie6" => $this->g->o["thumb_style_ie6"], "size" => $this->g->o["thumb_size"], "tpl" => 0, "read_only" => 0);
@@ -982,6 +983,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     }
 
     function render_article($post, $user, $override = array()) {
+        if (is_feed()) return "";
         if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
 
         $default_settings = array("style" => $this->g->o["style"], "style_ie6" => $this->g->o["style_ie6"], "size" => $this->g->o["size"], "tpl" => 0, "read_only" => 0);
@@ -1152,9 +1154,8 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     }
 
     function render_multi_rating($post, $user, $override = array()) {
-        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
-
         if (is_feed()) return "";
+        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
 
         $default_settings = array("id" => 0, "style" => $this->g->o["mur_style"], "style_ie6" => $this->g->o["mur_style_ie6"], "size" => $this->g->o["mur_size"], "average_stars" => "oxygen", "average_stars_ie6" => "oxygen_gif", "average_size" => 30, "tpl" => 0, "read_only" => 0);
         $override = shortcode_atts($default_settings, $override);
