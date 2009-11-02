@@ -267,9 +267,9 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
             echo '</td>';
         }
         echo '<td nowrap="nowrap" class="gdsr-td-condensed">';
-            echo $row->thumbs;
-            echo '<div class="gdsr-art-split"></div>';
             echo $row->votes;
+            echo '<div class="gdsr-art-split"></div>';
+            echo $row->thumbs;
         echo '</td>';
         echo '<td nowrap="nowrap" class="gdsr-td-condensed">'.$row->total.'</td>';
         if ($options["comments_integration_articles_active"] == 1) {

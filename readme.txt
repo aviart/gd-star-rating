@@ -217,15 +217,6 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 * New security options and bug fixes
 * Updated readme and info files
 
-= 1.6.7 =
-* Cache plugins support for post and comment standard rating
-* Improvements, optimization and bug fixes
-
-= 1.6.6 =
-* Upgrade database tables by setting the collation
-* Improved plugin loading and memory usage
-* Improved database installation to include collation
-
 == Source SVN ==
 * svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only
 

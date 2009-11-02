@@ -1,6 +1,6 @@
 <?php
 
-require_once($gdsr_dirname_basic."/code/blg/db.php");
+require_once(STARRATING_PATH."/code/blg/db.php");
 
 global $wpdb, $gdsr;
 
@@ -41,7 +41,7 @@ if (isset($id)) {
     if (isset($_GET["pg"])) $page_id = $_GET["pg"];
     if (isset($_GET["usr"])) $filter_user = $_GET["usr"];
 
-    if ($_POST["gdsr_filter"] == "Filter") {
+    if (isset($_POST["gdsr_filter"]) && $_POST["gdsr_filter"] == "Filter") {
         $filter_user = $_POST["gdsr_users"];
     }
     else
@@ -49,7 +49,7 @@ if (isset($id)) {
     
     $url.= "&amp;usr=".$filter_user;
     
-    if ($_POST["gdsr_update"] == "Update") {
+    if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == "Update") {
         $gdsr_items = $_POST["gdsr_item"];
         if (count($gdsr_items) > 0) {
             $ids = "(".join(", ", $gdsr_items).")";

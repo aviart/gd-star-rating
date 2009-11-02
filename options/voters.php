@@ -30,7 +30,7 @@ if (isset($_GET["vote"])) $filter_vote = $_GET["vote"];
 if (isset($_GET["sc"])) $sort_column = $_GET["sc"];
 if (isset($_GET["so"])) $sort_order = $_GET["so"];
 
-if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
+if (isset($_POST["gdsr_filter"]) && $_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
     $filter_date = $_POST["gdsr_dates"];
     $filter_vote = $_POST["gdsr_vote"];
     $page_id = 1;
@@ -38,7 +38,7 @@ if ($_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
 
 $is_thumb = substr($vote_type, 3) == "thumb";
 
-if ($_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
+if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-star-rating")) {
     $gdsr_items = $_POST["gdsr_item"];
     if (count($gdsr_items) > 0) {
         $ids = "(".join(", ", $gdsr_items).")";
@@ -53,7 +53,7 @@ if ($filter_date != '' || $filter_date != '0') $url.= "&amp;date=".$filter_date;
 if ($filter_vote > 0) $url.= "&amp;vote=".$filter_vote;
 if ($select != '') $url.= "&amp;vg=".$select;
 $b_url = $url;
-if ($sort_colum != '') $url.= '&amp;sc='.$sort_colum.'&amp;so='.$sort_order;
+if ($sort_column != '') $url.= '&amp;sc='.$sort_column.'&amp;so='.$sort_order;
 
 $sql_count = gdsrAdmDB::get_voters_count($post_id, $filter_date, $vote_type, $filter_vote);
 $np = $wpdb->get_results($sql_count);
