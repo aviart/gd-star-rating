@@ -1264,8 +1264,8 @@ class GDStarRating {
         global $wp_version;
         $this->wp_version = substr(str_replace('.', '', $wp_version), 0, 2);
 
-        $this->plugin_url = WP_PLUGIN_URL.'/gd-star-rating/';
-        $this->plugin_xtra_url = WP_CONTENT_URL.'/gd-star-rating/';
+        $this->plugin_url = plugins_url('/gd-star-rating/');
+        $this->plugin_xtra_url = content_url('/gd-star-rating/');
         $this->plugin_xtra_path = WP_CONTENT_DIR.'/gd-star-rating/';
         $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
         $this->plugin_ajax = $this->plugin_url.'ajax.php';
