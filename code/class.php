@@ -954,7 +954,7 @@ class GDStarRating {
             $sett["integrate_dashboard_latest_filter_".$name] = $value;
         }
 
-        return gdsrAdmDB::filter_latest_votes($sett, $user_id);
+        return gdsrDB::filter_latest_votes($sett, $user_id);
     }
 
     function add_dashboard_widget() {

@@ -218,26 +218,22 @@ msgstr "сви"
 
 #: code/adm/db.php:867
 #: code/adm/db.php:879
-#, fuzzy
 msgid "inherit from category"
-msgstr "Наследи из Категорије"
+msgstr "наследи из категорије"
 
 #: code/adm/db.php:870
 #: code/adm/db.php:882
-#, fuzzy
 msgid "force hidden"
-msgstr "Сакриј"
+msgstr "форсирај сакривен"
 
 #: code/adm/db.php:873
 #: code/adm/db.php:885
-#, fuzzy
 msgid "normal activity"
-msgstr "Нормална активност"
+msgstr "нормална активност"
 
 #: code/adm/db.php:907
-#, fuzzy
 msgid "review"
-msgstr "Преглед"
+msgstr "опис"
 
 #: code/adm/db.php:942
 #: code/adm/db.php:944
@@ -1497,9 +1493,8 @@ msgid "Allowed elements"
 msgstr "Дозвољени елементи"
 
 #: gdt2/form_files.php:1
-#, fuzzy
 msgid "Export Own Templates"
-msgstr "Извоз Шаблона"
+msgstr "Извоз Својих Шаблона"
 
 #: gdt2/form_files.php:3
 msgid "This will export all templates you created into a file."
@@ -1510,9 +1505,8 @@ msgid "Exported file will contain names, descriptions and contents of templates.
 msgstr "Експорт фајл ће садржати имена, описе и садржај шаблона. Фајл ће бити у КСФ формату."
 
 #: gdt2/form_files.php:9
-#, fuzzy
 msgid "Export All Templates"
-msgstr "Извоз Шаблона"
+msgstr "Извоз Свих Шаблона"
 
 #: gdt2/form_files.php:11
 #, fuzzy
@@ -1524,9 +1518,8 @@ msgid "Exported file will contain full structure of the database table. File wil
 msgstr ""
 
 #: gdt2/form_files.php:17
-#, fuzzy
 msgid "Import Own Templates"
-msgstr "Увоз Шаблона"
+msgstr "Увоз Својих Шаблона"
 
 #: gdt2/form_files.php:19
 msgid "Use this to import templates you made. File must be generated with first export tool."
@@ -1537,9 +1530,8 @@ msgid "Once imported, these templates will use default dependencies."
 msgstr ""
 
 #: gdt2/form_files.php:28
-#, fuzzy
 msgid "Import All Templates"
-msgstr "Увоз Шаблона"
+msgstr "Увоз Свих Шаблона"
 
 #: gdt2/form_files.php:30
 msgid "Use this to import all templates. File must be generated with second export tool."
@@ -2327,9 +2319,8 @@ msgid "Only thumbs set checked here will be included in the css file for the act
 msgstr "Само тамб сетови које су селектовани биће укључени у цсс фајл за активне рејтинг блокове."
 
 #: options/gfx/gfx_tools.php:1
-#, fuzzy
 msgid "Rescan graphics"
-msgstr "Графика"
+msgstr "Скенирај графику"
 
 #: options/gfx/gfx_tools.php:4
 msgid "Rescan graphics folders for new stars and trends images."
@@ -3195,11 +3186,11 @@ msgstr "Ово ће укључити ВордПрес верзију и УРЛ. 
 
 #: options/settings/settings_special.php:1
 msgid "Google Rich Snippets"
-msgstr ""
+msgstr "Google Rich Snippets"
 
 #: options/settings/settings_special.php:3
 msgid "Embed Google Rich Snippets."
-msgstr ""
+msgstr "Убаци Google Rich Snippets."
 
 #: options/settings/settings_special.php:7
 #: options/settings/settings_special.php:41
@@ -3217,13 +3208,12 @@ msgid "Standard Rating"
 msgstr "Стандарни Рејтинг"
 
 #: options/settings/settings_special.php:11
-#, fuzzy
 msgid "Standard Review"
-msgstr "Стандарни Рејтинг"
+msgstr "Стандарни Опис"
 
 #: options/settings/settings_special.php:19
 msgid "Embed format"
-msgstr ""
+msgstr "Формат"
 
 #: options/settings/settings_special.php:22
 msgid "Microformat"
@@ -3481,9 +3471,8 @@ msgid "Additional CSS file not found"
 msgstr "Додатна ЦСС класа није пронађена"
 
 #: options/articles.php:141
-#, fuzzy
 msgid "Title &amp; Categories"
-msgstr "Категорије"
+msgstr "Име и Категорије"
 
 #: options/articles.php:144
 msgid "Time"

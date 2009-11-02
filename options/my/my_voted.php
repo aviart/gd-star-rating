@@ -4,7 +4,7 @@
     <?php
 
     global $user_ID;
-    $data = gdsrAdmDB::filter_latest_votes($sett, $user_ID);
+    $data = gdsrDB::filter_latest_votes($sett, $user_ID);
     GDSRHelper::render_dash_widget_vote($data, "my-panel", "-my-latest");
 
     ?>

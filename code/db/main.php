@@ -1,5 +1,32 @@
 <?php
 
+class gdsrDB {
+    function filter_latest_votes($o, $user = 0) {
+        global $wpdb, $table_prefix;
+        $types = array();
+
+        $where = $user == 0 ? "" : " and l.user_id = ".$user;
+        $select = "l.id, l.vote_type, l.voted, l.vote, l.ip, l.user_id, u.display_name, u.user_email";
+        $from = sprintf("%sgdsr_votes_log l left join %s u on u.ID = l.user_id", $table_prefix, $wpdb->users);
+
+        if ($o["integrate_dashboard_latest_filter_thumb_std"] == 1) $types[] = "'artthumb'";
+        if ($o["integrate_dashboard_latest_filter_thumb_cmm"] == 1) $types[] = "'cmmthumb'";
+        if ($o["integrate_dashboard_latest_filter_stars_std"] == 1) $types[] = "'article'";
+        if ($o["integrate_dashboard_latest_filter_stars_cmm"] == 1) $types[] = "'comment'";
+        if ($o["integrate_dashboard_latest_filter_stars_mur"] == 1) {
+            $types[] = "'multis'";
+            $select.= ", l.object, m.stars, m.weight, m.name";
+            $from.= sprintf(" left join %sgdsr_multis m on m.multi_id = l.multi_id", $table_prefix);
+        }
+
+        if (count($types) == 0) return array();
+
+        $sql = sprintf("select %s from %s where vote_type in (%s)%s order by voted desc limit 0, %s",
+            $select, $from, join(", ", $types), $where, $o["integrate_dashboard_latest_count"]);
+        return $wpdb->get_results($sql);
+    }
+}
+
 class GDSRDatabase {
     // categories
     function add_category_defaults($ids, $ids_array, $items) {
