@@ -949,7 +949,7 @@ class gdsrAdmDB {
         $row->votes = $count_v.__("visitors", "gd-star-rating").': <strong>'.$votes_v.'</strong><br />'.$count_u.__("users", "gd-star-rating").': <strong>'.$votes_u.'</strong>';
         $row->thumbs = $vts_thumb_v.__("visitors", "gd-star-rating").': <strong>'.$cnt_thumb_v.'</strong><br />'.$vts_thumb_u.__("users", "gd-star-rating").': <strong>'.$cnt_thumb_u.'</strong>';
 
-        if ($mur == "I" || $mu == "") $row->cmm_integration_mur.= "<br /><br />";
+        if ($mur == "I" || $mur == "") $row->cmm_integration_mur.= "<br /><br />";
         else $row->cmm_integration_mur.= "<br/>".$row->cmm_integration_set == 0 ? __("no multi set assigned", "gd-star-rating") : __("multi set", "gd-star-rating").': <strong>'.$multis["cmm_integration_set"].'</strong>';
 
         $row->cmm_integration_std.= "<br /><br />";
