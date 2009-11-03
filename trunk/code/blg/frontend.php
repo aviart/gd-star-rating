@@ -89,11 +89,12 @@ class gdsrFront {
         $review = is_object($data) ? $data->average_review : 0;
         if (!is_object($this->g->rSnippets) || $review <= 0) return "";
         $set = wp_gdget_multi_set($data->multi_id);
+        $author = get_userdata($post->post_author);
         return $this->g->rSnippets->snippet_stars_review(array(
             "title" => $post->post_title,
             "rating" => $review,
             "max_rating" => $set->stars,
-            "review_date" => $post->post_date,
+            "review_date" => mysql2date("c", $post->post_date),
             "reviewer" => $author->display_name
         ));
     }
@@ -121,7 +122,7 @@ class gdsrFront {
             "title" => $post->post_title,
             "rating" => $review,
             "max_rating" => $this->g->o["review_stars"],
-            "review_date" => $post->post_date,
+            "review_date" => mysql2date("c", $post->post_date),
             "reviewer" => $author->display_name
         ));
     }
