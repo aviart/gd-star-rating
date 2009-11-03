@@ -1495,8 +1495,6 @@ class GDStarRating {
         }
 
         if (isset($_POST['gdsr_upgrade_tool'])) {
-            require_once(STARRATING_PATH."/gdragon/gd_db_install.php");
-
             gdDBInstallGDSR::delete_tables(STARRATING_PATH);
             gdDBInstallGDSR::create_tables(STARRATING_PATH);
             gdDBInstallGDSR::upgrade_tables(STARRATING_PATH);
