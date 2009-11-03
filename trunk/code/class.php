@@ -488,12 +488,13 @@ class GDStarRating {
      * @param array $settings override settings for rendering the block
      */
     function get_multi_average_rendered($post_id, $settings = array()) {
+        $sum = $votes = $rating = 0;
         if ($settings["id"] == "") $multi_id = $this->o["mur_review_set"];
         else $multi_id = $settings["id"];
         if ($multi_id > 0 && $post_id > 0) {
             $set = gd_get_multi_set($multi_id);
             $data = GDSRDBMulti::get_averages($post_id, $multi_id);
-            if ($set != null) {
+            if ($set != null && is_object($data)) {
                 if ($settings["render"] == "review") {
                     $review = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $data->average_review);
                     return $review;
@@ -1801,8 +1802,7 @@ class GDStarRating {
     function display_comment($content) {
         global $post, $comment, $userdata;
 
-        if (is_admin() || !is_object($comment) ||
-            ($comment->comment_type == "pingback" && $this->o["display_trackback"] == 0)) return $content;
+        if (is_admin() || !is_object($comment) || $comment->comment_type == "pingback") return $content;
 
         if (!is_feed()) {
             if ((is_single() && $this->o["display_comment"] == 1) ||
