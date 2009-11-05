@@ -2,7 +2,7 @@
 
 /*
 Name:    gdGoogleRichSnippets
-Version: 1.5.0
+Version: 1.6.0
 Author:  Milan Petrovic
 Email:   milan@gdragon.info
 Website: http://www.gdragon.info/

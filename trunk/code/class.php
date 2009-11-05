@@ -1314,14 +1314,15 @@ class GDStarRating {
         if (!is_admin()) {
             $this->is_bot = gdsrFrontHelp::detect_bot($_SERVER['HTTP_USER_AGENT'], $this->bots);
             $this->is_ban = gdsrFrontHelp::detect_ban();
-            $this->f->render_wait_article();
 
-            if ($this->o["comments_active"] == 1) $this->f->render_wait_comment();
-            if ($this->o["multis_active"] == 1) $this->f->render_wait_multis();
-            if ($this->o["thumbs_active"] == 1) {
+            if ($this->o["cached_loading"] != 1) {
+                $this->f->render_wait_article();
+                $this->f->render_wait_comment();
+                $this->f->render_wait_multis();
                 $this->f->render_wait_article_thumb();
                 $this->f->render_wait_comment_thumb();
             }
+
             if ($this->o["external_javascript"] == 1) {
                 wp_enqueue_script("gdsr_script", plugins_url('gd-star-rating/script.js.php'), array(), $this->o["version"]);
             }
@@ -2004,6 +2005,7 @@ class GDStarRating {
         }
 
         $this->f->render_wait_article();
+        $this->f->render_wait_multis();
         $this->f->render_wait_article_thumb();
         $this->cache_posts($user_id);
         foreach ($alls as $vote => $settings) {

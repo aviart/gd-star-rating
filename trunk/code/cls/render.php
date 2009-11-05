@@ -46,7 +46,7 @@ class GDSRRender {
     }
 
     function rating_wait($loader_id, $rater_length, $typecls, $wait_msg = '', $style = '') {
-        $rater_length = $rater_length > 0 ? " width: ".$rater_length."px;" : "";
+        $rater_length = $rater_length > 0 ? " width: ".$rater_length : "";
         $loader = '<div id="'.$loader_id.'" style="display: none;'.$rater_length.' '.$style.'" class="ratingloader'.$typecls.'">';
         $loader.= $wait_msg;
         $loader.= '</div>';
