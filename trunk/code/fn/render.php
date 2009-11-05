@@ -1,6 +1,26 @@
 <?php
 
 /**
+ * Renders Google Rich Snippet code block.
+ *
+ * @param string $settings rendering parameters
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
+function gdsr_render_google_rich_snippets($settings = array(), $echo = true) {
+    global $gdsr;
+
+    $defaults = array("format" => "microformat", "source" => "standard_rating", "post_id" => 0);
+    $settings = wp_parse_args($settings, $defaults);
+    $settings = apply_filters('gdsr_fn_render_google_rich_snippets', $settings);
+    if ($settings["post_id"] == 0) global $post;
+    else $post = get_post($settings["post_id"]);
+    $render = $gdsr->f->render_google_rich_snippet($post, $settings);
+
+    if ($echo) echo $render; else return $render;
+}
+
+/**
  * Renders custom stars image (or div block).
  *
  * @param string $settings rendering parameters

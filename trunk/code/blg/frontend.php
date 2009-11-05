@@ -34,9 +34,12 @@ class gdsrFront {
         else return $new_results;
     }
 
-    function render_google_rich_snippet($post) {
+    function render_google_rich_snippet($post, $settings = array()) {
+        $datasource = isset($settings["source"]) ? $settings["source"] : $this->g->o["google_rich_snippets_datasource"];
+        if (isset($settings["source"]) && is_object($this->g->rSnippets)) $this->g->rSnippets->snippet_type = $settings["source"];
+
         if ($this->g->o["google_rich_snippets_active"] == 1) {
-            switch ($this->g->o["google_rich_snippets_datasource"]) {
+            switch ($datasource) {
                 case "standard_rating":
                     return $this->render_gsr_standard_rating($post);
                     break;

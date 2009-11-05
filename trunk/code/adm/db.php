@@ -1363,6 +1363,8 @@ class gdsrAdmFunc {
      */
     function init_uninstall() {
         if (isset($_POST["gdsr_full_uninstall"]) && $_POST["gdsr_full_uninstall"] == __("UNINSTALL", "gd-star-rating")) {
+            require_once(STARRATING_PATH."gdragon/gd_db_install.php");
+
             delete_option('gd-star-rating');
             delete_option('widget_gdstarrating');
             delete_option('gd-star-rating-import');

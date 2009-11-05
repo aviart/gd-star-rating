@@ -139,7 +139,7 @@ function wp_gdsr_comment_integrate_standard_rating($value = 0, $stars_set = "", 
 function wp_gdsr_render_article_thumbs($template_id = 0, $read_only = false, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
     global $post, $userdata, $gdsr;
     $override = array("style" => $stars_set, "size" => $stars_size, "style_ie6" => $stars_set_ie6, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
-    $user_id = $userdata->ID;
+    $user_id = is_object($userdata) ? $userdata->ID : 0;
     $gdsr->cache_posts($user_id);
     if ($echo) echo $gdsr->f->render_thumb_article($post, $userdata, $override);
     else return $gdsr->f->render_thumb_article($post, $userdata, $override);
@@ -162,7 +162,7 @@ function wp_gdsr_render_article_thumbs($template_id = 0, $read_only = false, $st
 function wp_gdsr_render_article($template_id = 0, $read_only = false, $stars_set = "", $stars_size = 0, $stars_set_ie6 = "", $echo = true) {
     global $post, $userdata, $gdsr;
     $override = array("style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "tpl" => $template_id, "read_only" => $read_only ? 1 : 0);
-    $user_id = $userdata->ID;
+    $user_id = is_object($userdata) ? $userdata->ID : 0;
     $gdsr->cache_posts($user_id);
     if ($echo) echo $gdsr->f->render_article($post, $userdata, $override);
     else return $gdsr->f->render_article($post, $userdata, $override);
@@ -232,7 +232,7 @@ function wp_gdsr_render_multi($multi_set_id = 0, $template_id = 0, $read_only = 
     global $userdata, $gdsr;
     if ($post_id == 0) global $post;
     else $post = get_post($post_id);
-    $user_id = $userdata->ID;
+    $user_id = is_object($userdata) ? $userdata->ID : 0;
     $gdsr->cache_posts($user_id);
     $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post->ID) : $multi_set_id;
     if ($echo) echo $gdsr->f->render_multi_rating($post, $userdata, array("id" => $multi_set_id, "style" => $stars_set, "style_ie6" => $stars_set_ie6, "size" => $stars_size, "read_only" => $read_only, "tpl" => $template_id, "average_stars" => $avg_stars_set, "average_stars_ie6" => $avg_stars_set_ie6, "average_size" => $avg_stars_size));
