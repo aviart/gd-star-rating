@@ -271,7 +271,7 @@ class GDSRX {
             $group = $col_id = "u.id";
             $col_title = "u.display_name";
         } else {
-            $select = "p.id as post_id, p.post_name as slug, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, d.average_rating_users * d.total_votes_users as user_votes, d.average_rating_visitors * d.total_votes_visitors as visitor_votes, d.total_votes_users as user_voters, d.total_votes_visitors as visitor_voters";
+            $select = "p.id as post_id, p.post_name as slug, p.post_author as author, p.post_title as title, p.post_type, p.post_date, d.*, 1 as counter, d.average_rating_users * d.total_votes_users as user_votes, d.average_rating_visitors * d.total_votes_visitors as visitor_votes, d.total_votes_users as user_voters, d.total_votes_visitors as visitor_voters";
             $select.= ", d.average_review as review";
         }
 

@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.7.4
+Version: 1.7.5
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
 Tested up to: 2.9-rare
@@ -171,6 +171,10 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.7.5 =
+* Integration function for Google Rich Snippets
+* Several more bugs fixed
+
 = 1.7.4 =
 * Permanently solved famous excerpt problem
 * Fully implemented google rich snippets support
