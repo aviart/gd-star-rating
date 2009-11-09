@@ -10,7 +10,7 @@
 function gdsr_render_google_rich_snippets($settings = array(), $echo = true) {
     global $gdsr;
 
-    $defaults = array("format" => "microformat", "source" => "standard_rating", "post_id" => 0);
+    $defaults = array("active" => 1, "format" => "microformat", "source" => "standard_rating", "post_id" => 0);
     $settings = wp_parse_args($settings, $defaults);
     $settings = apply_filters('gdsr_fn_render_google_rich_snippets', $settings);
     if ($settings["post_id"] == 0) global $post;

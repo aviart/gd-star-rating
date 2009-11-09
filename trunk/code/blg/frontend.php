@@ -35,10 +35,11 @@ class gdsrFront {
     }
 
     function render_google_rich_snippet($post, $settings = array()) {
+        $active = isset($settings["active"]) ? true : $this->g->o["google_rich_snippets_active"] == 1;
         $datasource = isset($settings["source"]) ? $settings["source"] : $this->g->o["google_rich_snippets_datasource"];
         if (isset($settings["format"]) && is_object($this->g->rSnippets)) $this->g->rSnippets->snippet_type = $settings["format"];
 
-        if ($this->g->o["google_rich_snippets_active"] == 1) {
+        if ($active) {
             switch ($datasource) {
                 case "standard_rating":
                     return $this->render_gsr_standard_rating($post);

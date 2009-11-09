@@ -204,7 +204,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
                 if ($a_link || $a_name && intval($row->author) > 0) {
                     $user = get_userdata($row->author);
                     $row->author_name = $user->display_name;
-                    $row->author_url = get_bloginfo("url")."/author/".$user->user_login;
+                    $row->author_url = get_author_link(intval($row->author));
                 } else {
                     $row->author_name = "";
                     $row->author_url = "";
@@ -303,7 +303,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
                         $row->permalink = get_category_link($row->term_id);
                         break;
                     case "user":
-                        $row->permalink = get_bloginfo('url')."/index.php?author=".$row->id;
+                        $row->permalink = get_author_link(intval($row->id));
                         break;
                 }
 
