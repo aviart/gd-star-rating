@@ -8,8 +8,8 @@
         $gdsr_review_oldstars = $gdsr_options["review_stars"];
         $gdsr_review_newstars = $_POST['gdsr_review_stars'];
         $gdsr_cmm_review_oldstars = $gdsr_options["cmm_review_stars"];
-        $gdsr_cmm_review_newstars = $_POST['gdsr_cmm_review_stars'];
-        
+        $gdsr_cmm_review_newstars = isset($_POST['gdsr_cmm_review_stars']) ? $_POST['gdsr_cmm_review_stars'] : $gdsr_cmm_review_oldstars;
+
         if ($gdsr_options["stars"] != $gdsr_newstars) $recalculate_articles = true;
         else $recalculate_articles = false;
         if ($gdsr_options["cmm_stars"] != $gdsr_cmm_newstars) $recalculate_comment = true;
@@ -18,12 +18,12 @@
         else $recalculate_reviews = false;
         if ($gdsr_options["cmm_review_stars"] != $gdsr_cmm_review_newstars) $recalculate_cmm_reviews = true;
         else $recalculate_cmm_reviews = false;
-        
+
         $gdsr_options["stars"] = $gdsr_newstars;
         $gdsr_options["cmm_stars"] = $gdsr_cmm_newstars;
         $gdsr_options["review_stars"] = $gdsr_review_newstars;
         $gdsr_options["cmm_review_stars"] = $gdsr_cmm_review_newstars;
-        
+
         update_option("gd-star-rating", $gdsr_options);
 
 ?>
@@ -33,7 +33,7 @@
 <?php } ?>
 
 <div class="gdsr">
-<form method="post">
+<form action="" method="post">
 <input type="hidden" id="gdsr_action" name="gdsr_action" value="save" />
 <div class="wrap"><h2 class="gdptlogopage">GD Star Rating: <?php _e("Settings", "gd-star-rating"); ?></h2>
 

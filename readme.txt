@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.7.5
+Version: 1.7.6
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
 Tested up to: 2.9-rare
@@ -79,7 +79,7 @@ Plugin administration consist of 17 main panels:
 == Installation ==
 
 = Minimal Requirements =
-* PHP: 4.4.9 or 5.x.x
+* PHP: 5.x.x
 * mySQL: 4.0, 4.1 or 5.x
 * WordPress: 2.7 or newer
 
@@ -158,6 +158,9 @@ There could be two causes for this:
 = Rating is not working in Firefox, but is working in other browsers. =
 There are many extensions for Firefox that modify the page, and are known to cause many JavaScript problems. Plugin works with all major browsers, and all JavaScript is developed using Firefox and Firebug. But I am not using (nor will test) Firefox with extensions (I use only Firebug).
 
+= I have trouble saving plugin settings? =
+This happens only with PHP4. That's why minimal plugin requirements is now PHP5. Upgrade your servers, PHP4 is no longer supported, it's outdated and full of security holes.
+
 = I tried everything (I really tried), and many things are still not working. =
 I can't guarantee that plugin will work on every WordPress setup. In 99.9% of the cases there are no problems, but some plugin, theme and server combinations can cause problems that can't be anticipated. But this is very rare, and in most cases that can be corrected by tracking down the problem. And usually only some plugins features will fail. Do not simply give up, find the problem, find the PHP error that can cause problem that will most likely point to some other plugin causing problems.
 
@@ -171,6 +174,8 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.7.6 =
+
 = 1.7.5 =
 * Integration function for Google Rich Snippets
 * Several more bugs fixed

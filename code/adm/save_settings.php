@@ -1,15 +1,6 @@
 <?php 
 
 if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
-    $bots = explode("\r\n", $_POST["gdsr_bots"]);
-
-    foreach($bots as $key => $value) {
-        if(trim($value) == "") unset($bots[$key]);
-    }
-    $bots = array_values($bots);
-
-    update_option("gd-star-rating-bots", $bots);
-
     $gdsr_options["cached_loading"] = isset($_POST['gdsr_cached_loading']) ? 1 : 0;
     $gdsr_options["comments_integration_articles_active"] = isset($_POST['gdsr_cmmintartactive']) ? 1 : 0;
     $gdsr_options["update_report_usage"] = isset($_POST['gdsr_update_report_usage']) ? 1 : 0;
@@ -120,14 +111,14 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["auto_display_position"] = $_POST['gdsr_auto_display_position'];
     $gdsr_options["auto_display_comment_position"] = $_POST['gdsr_auto_display_comment_position'];
 
-    $gdsr_options["default_timer_type"] = $_POST['gdsr_default_timer_type'];
-    $gdsr_options["default_timer_countdown_value"] = $_POST['gdsr_default_timer_countdown_value'];
-    $gdsr_options["default_timer_countdown_type"] = $_POST['gdsr_default_timer_countdown_type'];
-    $gdsr_options["default_timer_value"] = $_POST['gdsr_default_timer_countdown_type'].$_POST['gdsr_default_timer_countdown_value'];
-    $gdsr_options["default_mur_timer_type"] = $_POST['gdsr_default_mur_timer_type'];
-    $gdsr_options["default_mur_timer_countdown_value"] = $_POST['gdsr_default_mur_timer_countdown_value'];
-    $gdsr_options["default_mur_timer_countdown_type"] = $_POST['gdsr_default_mur_timer_countdown_type'];
-    $gdsr_options["default_mur_timer_value"] = $_POST['gdsr_default_mur_timer_countdown_type'].$_POST['gdsr_default_mur_timer_countdown_value'];
+    $gdsr_options["default_timer_type"] = isset($_POST['gdsr_default_timer_type']) ? $_POST['gdsr_default_timer_type'] : "N";
+    $gdsr_options["default_timer_countdown_value"] = isset($_POST['gdsr_default_timer_countdown_value']) ? $_POST['gdsr_default_timer_countdown_value'] : 30;
+    $gdsr_options["default_timer_countdown_type"] = isset($_POST['gdsr_default_timer_countdown_type']) ? $_POST['gdsr_default_timer_countdown_type'] : "D";
+    $gdsr_options["default_timer_value"] = $gdsr_options["default_timer_countdown_type"].$gdsr_options["default_timer_countdown_value"];
+    $gdsr_options["default_mur_timer_type"] = isset($_POST['gdsr_default_mur_timer_type']) ? $_POST['gdsr_default_mur_timer_type'] : "N";
+    $gdsr_options["default_mur_timer_countdown_value"] = isset($_POST['gdsr_default_mur_timer_countdown_value']) ? $_POST['gdsr_default_mur_timer_countdown_value'] : 30;
+    $gdsr_options["default_mur_timer_countdown_type"] = isset($_POST['gdsr_default_mur_timer_countdown_type']) ? $_POST['gdsr_default_mur_timer_countdown_type'] : "D";
+    $gdsr_options["default_mur_timer_value"] = $gdsr_options["default_mur_timer_countdown_type"].$gdsr_options["default_mur_timer_countdown_value"];
 
     $gdsr_options["review_active"] = isset($_POST['gdsr_reviewactive']) ? 1 : 0;
     $gdsr_options["comments_active"] = isset($_POST['gdsr_commentsactive']) ? 1 : 0;
@@ -199,16 +190,16 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["review_stars"] = $_POST['gdsr_review_stars'];
     $gdsr_options["review_header_text"] = stripslashes(htmlentities($_POST['gdsr_review_header_text'], ENT_QUOTES, STARRATING_ENCODING));
     $gdsr_options["review_class_block"] = $_POST['gdsr_review_classblock'];
-    $gdsr_options["cmm_review_style"] = $_POST['gdsr_cmm_review_style'];
-    $gdsr_options["cmm_review_style_ie6"] = $_POST['gdsr_cmm_review_style_ie6'];
-    $gdsr_options["cmm_review_size"] = $_POST['gdsr_cmm_review_size'];
+    $gdsr_options["cmm_review_style"] = isset($_POST['gdsr_cmm_review_style']) ? $_POST['gdsr_cmm_review_style'] : "oxyen";
+    $gdsr_options["cmm_review_style_ie6"] = isset($_POST['gdsr_cmm_review_style_ie6']) ? $_POST['gdsr_cmm_review_style_ie6'] : "oxyen_gif";
+    $gdsr_options["cmm_review_size"] = isset($_POST['gdsr_cmm_review_size']) ? $_POST['gdsr_cmm_review_size'] : 20;
 
     $gdsr_options["default_voterules_multis"] = $_POST['gdsr_default_vote_multis'];
     $gdsr_options["default_voterules_articles"] = $_POST['gdsr_default_vote_articles'];
     $gdsr_options["default_voterules_comments"] = $_POST['gdsr_default_vote_comments'];
-    $gdsr_options["default_moderation_multis"] = $_POST['gdsr_default_mod_multis'];
-    $gdsr_options["default_moderation_articles"] = $_POST['gdsr_default_mod_articles'];
-    $gdsr_options["default_moderation_comments"] = $_POST['gdsr_default_mod_comments'];
+    $gdsr_options["default_moderation_multis"] = isset($_POST['gdsr_default_mod_multis']) ? $_POST['gdsr_default_mod_multis'] : "";
+    $gdsr_options["default_moderation_articles"] = isset($_POST['gdsr_default_mod_articles']) ? $_POST['gdsr_default_mod_articles'] : "";
+    $gdsr_options["default_moderation_comments"] = isset($_POST['gdsr_default_mod_comments']) ? $_POST['gdsr_default_mod_comments'] : "";
 
     $gdsr_options["thumb_display_pages"] = isset($_POST['gdsr_thumb_pages']) ? 1 : 0;
     $gdsr_options["thumb_display_posts"] = isset($_POST['gdsr_thumb_posts']) ? 1 : 0;
@@ -222,6 +213,15 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
 
     $gdsr_options["css_last_changed"] = time();
     update_option("gd-star-rating", $gdsr_options);
+
+    $bots = explode("\r\n", $_POST["gdsr_bots"]);
+    foreach($bots as $key => $value) {
+        if(trim($value) == "") {
+            unset($bots[$key]);
+        }
+    }
+    $bots = array_values($bots);
+    update_option("gd-star-rating-bots", $bots);
 }
 
 ?>
