@@ -1894,7 +1894,7 @@ class GDStarRating {
 
         $rich_snippet = ((is_single() || is_page()) && !is_admin() && !is_feed()) ? $this->f->render_google_rich_snippet($post) : "";
 
-        return $rich_snippet.$content;
+        return $content.$rich_snippet;
     }
 
     function display_multi_rating($location, $post, $user) {

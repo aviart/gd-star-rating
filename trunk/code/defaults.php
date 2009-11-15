@@ -234,7 +234,7 @@ class GDSRDefaults {
         "msnbot-NewsBlogs", "msnbot", "msnbot-media", "NG-Search", "NutchCVS", "Seekbot", "SynooBot",
         "Sensis Web Crawler", "SEO search Crawler", "Seoma", "SEOsearch", "voyager", "W3 SiteSearch Crawler",
         "crawleradmin.t-info@telekom.de", "TurnitinBot", "W3C-checklink", "yacybot", "Yahoo-MMCrawler", 
-        "Yahoo! DE Slurp", "Yahoo! Slurp", "YahooSeeker");
+        "Yahoo! DE Slurp", "Yahoo! Slurp", "YahooSeeker", "Pingdom.com");
 
     var $shortcodes = array(
         "starrating",
