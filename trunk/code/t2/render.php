@@ -859,7 +859,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     }
 
     function render_rmb($template_id, $rpar = array()) {
-        $rdef = array("votes" => 0, "post_id" => 0, "set" => 0, "avg_rating" => 0,
+        $rdef = array("votes" => array(), "post_id" => 0, "set" => 0, "avg_rating" => 0,
             "style" => "oxygen", "size" => 20, "avg_style" => "oxygen", "avg_size" => 20);
         $rpar = wp_parse_args($rpar, $rdef);
         $rpar = apply_filters('gdsr_t2parameters_rmb', $rpar);

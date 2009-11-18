@@ -13,8 +13,68 @@ class gdsrFront {
         $this->g = $gdsr_main;
     }
 
+    function taxonomy_multi_ratings($settings) {
+        global $gdsr;
+        $results = gdsrBlgDB::taxonomy_multi_ratings($settings["taxonomy"], $settings["terms"], $settings["multi_id"], $settings["term_property"]);
+        $set = wp_gdget_multi_set($settings["multi_id"]);
+        $new_results = $final = $ids = array();
+        $style = $gdsr->is_ie6 ? $settings["style_ie6"] : $settings["style"];
+        $size = $settings["size"];
+        $avg_style = $gdsr->is_ie6 ? $settings["average_style_ie6"] : $settings["average_style"];
+        $avg_size = $settings["average_size"];
+
+        foreach ($results as $row) {
+            $ids[] = $row->mdid;
+            $row->votes = $row->user_votes + $row->visitor_votes;
+            $row->voters = $row->user_voters + $row->visitor_voters;
+            $row->rating = $row->voters == 0 ? 0 : @number_format($row->votes / $row->voters, 1);
+            $row->review = @number_format($row->review, 1);
+            $row->bayesian = $gdsr->bayesian_estimate($row->voters, $row->rating, $set->stars);
+            $row->rating_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->rating);
+            $row->bayesian_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->bayesian);
+            $row->review_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->review);
+            $new_results[] = $row;
+        }
+
+        $v_review = $v_rating = array();
+        $data = gdsrBlgDB::taxonomy_multi_ratings_data($settings["taxonomy"], $settings["terms"], $settings["multi_id"], $settings["term_property"]);
+        foreach ($data as $row) {
+            if ($row->source == "dta") {
+                $single_vote = array();
+                $single_vote["votes"] = $row->user_voters + $row->visitor_voters;
+                $single_vote["score"] = $row->user_votes + $row->visitor_votes;
+                $single_vote["rating"] = $single_vote["votes"] > 0 ? $single_vote["score"] / $single_vote["votes"] : 0;
+                $single_vote["rating"] = @number_format($single_vote["rating"], 1);
+                $v_rating[$row->mdid][] = $single_vote;
+            } else if ($row->source == "rvw") {
+                $single_vote["votes"] = $row->user_voters;
+                $single_vote["score"] = $row->user_votes;
+                $single_vote["rating"] = $single_vote["votes"] > 0 ? $single_vote["score"] / $single_vote["votes"] : 0;
+                $single_vote["rating"] = @number_format($single_vote["rating"], 1);
+                $v_review[$row->mdid][] = $single_vote;
+            }
+        }
+
+        foreach ($new_results as $row) {
+            $row->rating_block = GDSRRenderT2::render_mrb(
+                $settings["tpl_rating"], array("style" => $style, "allow_vote" => false, "votes" => $v_rating[$row->mdid],
+                    "post_id" => $row->term_id, "set" => $set, "height" => $size, "header_text" => "",
+                    "tags_css" => array("MUR_CSS_BLOCK" => "", "MUR_CSS_BUTTON" => ""), "avg_style" => $avg_style, "avg_size" => $avg_size,
+                    "star_factor" => $settings["star_factor"]));
+            $row->review_block = GDSRRenderT2::render_rmb(
+                $settings["tpl_review"], array("votes" => $v_review[$row->mdid], "post_id" => $row->term_id, "set" => $set,
+                    "avg_rating" => $row->review, "style" => $style, "size" => $size, "avg_style" => $avg_style,
+                    "avg_size" => $avg_size));
+
+        }
+
+        if (count($new_results) == 1) return $new_results[0];
+        else return $new_results;
+    }
+
     function get_taxonomy_multi_ratings($taxonomy = "category", $term = "", $multi_id = 0, $size = 20, $style = "oxygen") {
-        $results = gdsrBlgDB::taxonomy_multi_ratings($taxonomy, $term, $multi_id);
+        global $gdsr;
+        $results = gdsrBlgDB::taxonomy_multi_ratings($taxonomy, array($term), $multi_id);
         $set = wp_gdget_multi_set($multi_id);
         $new_results = array();
 
@@ -23,7 +83,7 @@ class gdsrFront {
             $row->voters = $row->user_voters + $row->visitor_voters;
             $row->rating = $row->voters == 0 ? 0 : @number_format($row->votes / $row->voters, 1);
             $row->review = @number_format($row->review, 1);
-            $row->bayesian = $bayesian_calculated ? $gdsr->bayesian_estimate($row->voters, $row->rating, $set->stars) : -1;
+            $row->bayesian = $gdsr->bayesian_estimate($row->voters, $row->rating, $set->stars);
             $row->rating_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->rating);
             $row->bayesian_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->bayesian);
             $row->review_stars = GDSRRender::render_static_stars($style, $size, $set->stars, $row->review);
@@ -1131,8 +1191,8 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
                 $single_vote["votes"] = $md->user_voters;
                 $single_vote["score"] = $md->user_votes;
             }
-            if ($single_vote["votes"] > 0) $rating = $single_vote["score"] / $single_vote["votes"];
-            else $rating = 0;
+            $rating = $single_vote["votes"] > 0 ? $single_vote["score"] / $single_vote["votes"] : 0;
+
             if ($rating > $set->stars) $rating = $set->stars;
             $single_vote["rating"] = @number_format($rating, 1);
 
@@ -1195,7 +1255,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
         $rd_unit_width_avg = $override["average_size"];
         $rd_unit_style_avg = $this->g->is_ie6 ? $override["average_stars_ie6"] : $override["average_stars"];
 
-        return GDSRRenderT2::render_mrb($template_id, array("style" => $rd_unit_style, "allow_vote" => false, "votes" => $votes, "post_id" => $custom_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $header_text, "tags_css" => $tags_css, "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => $star_factor));
+        return GDSRRenderT2::render_mrb($template_id, array("style" => $rd_unit_style, "allow_vote" => false, "votes" => $votes, "post_id" => $custom_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $header_text, "tags_css" => array("MUR_CSS_BLOCK" => ""), "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => $star_factor));
     }
     // article rendering
 }

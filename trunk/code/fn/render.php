@@ -84,4 +84,17 @@ function gdsr_render_comments_rating_widget($widget = array(), $echo = true) {
     else return GDSRRenderT2::render_wcr($widget);
 }
 
+function gdsr_get_taxonomy_multi_ratings($settings) {
+    global $gdsr;
+
+    $defaults = array("taxonomy" => "category", "terms" => array(), "multi_id" => 0,
+        "style" => "oxygen", "style_ie6" => "oxygen_gif", "size" => 20, "star_factor" => 1,
+        "average_style" => "oxygen", "average_style_ie6" => "oxygen_gif", "average_size" => 20,
+        "tpl_rating" => 0, "tpl_review" => 0, "term_property" => "name");
+    $settings = wp_parse_args($settings, $defaults);
+    $settings = apply_filters('gdsr_fn_get_taxonomy_multi_ratings', $settings);
+
+    return $gdsr->f->taxonomy_multi_ratings($settings);
+}
+
 ?>
