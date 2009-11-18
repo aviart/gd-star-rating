@@ -474,15 +474,38 @@ wp_gdsr_dump("SAVEVOTE_insert_stats_error", $wpdb->last_error);
     }
     // save stars votes
 
-    function taxonomy_multi_ratings($taxonomy = "category", $term = "", $multi_id = 0) {
+    function taxonomy_multi_ratings_data($taxonomy = "category", $terms = array(), $multi_id = 0, $by = "name") {
+        global $wpdb, $table_prefix;
+
+        $select = "d.id as mdid, v.source, x.name as title, t.term_id, v.item_id, sum(v.user_voters) as user_voters";
+        $select.= ", sum(v.user_votes) as user_votes, sum(v.visitor_voters) as visitor_voters, sum(v.visitor_votes) as visitor_votes";
+        $from = sprintf("%sterm_taxonomy t, %sterm_relationships r, %sterms x, %sgdsr_multis_values v, ", $table_prefix, $table_prefix, $table_prefix, $table_prefix);
+        $where = array("d.id = v.id", "t.term_taxonomy_id = r.term_taxonomy_id", "r.object_id = p.id", "t.term_id = x.term_id", "p.id = d.post_id", "p.post_status = 'publish'", "d.multi_id = ".$multi_id, sprintf("t.taxonomy = '%s'", $taxonomy));
+
+        if (count($terms) > 0) {
+            $clean_terms = array();
+            foreach ($terms as $t) $clean_terms[] = "'".str_replace("'", "''", $t)."'";
+            $where[] = sprintf("x.%s in (%s)", $by, join(", ", $clean_terms));
+        }
+
+        $sql = sprintf("select distinct %s from %s%sposts p, %sgdsr_multis_data d where %s group by x.term_id, v.source, v.item_id order by x.term_id, d.id, v.source, v.item_id",
+            $select, $from, $table_prefix, $table_prefix, join(" and ", $where));
+        return $wpdb->get_results($sql);
+    }
+
+    function taxonomy_multi_ratings($taxonomy = "category", $terms = array(), $multi_id = 0, $by = "name") {
         global $wpdb, $table_prefix, $wp_taxonomies;
 
-        $select = "x.name as title, t.term_id, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters, sum(d.average_review)/count(*) as review, 0 as votes, 0 as voters, 0 as rating, 0 as bayesian, '' as rating_stars, '' as bayesian_stars, '' as review_stars";
+        $select = "d.id as mdid, x.name as title, t.term_id, count(*) as counter, sum(d.average_rating_users * d.total_votes_users) as user_votes, sum(d.average_rating_visitors * d.total_votes_visitors) as visitor_votes, sum(d.total_votes_users) as user_voters, sum(d.total_votes_visitors) as visitor_voters, sum(d.average_review)/count(*) as review, 0 as votes, 0 as voters"; 
+        $select.= ", 0 as rating, 0 as bayesian, '' as rating_stars, '' as bayesian_stars, '' as review_stars, '' as review_block, '' as rating_block";
         $from = sprintf("%sterm_taxonomy t, %sterm_relationships r, %sterms x, ", $table_prefix, $table_prefix, $table_prefix);
-        $where = array("t.term_taxonomy_id = r.term_taxonomy_id", "r.object_id = p.id", "t.term_id = x.term_id", "p.id = d.post_id", "p.post_status = 'publish'", "d.multi_id = ".$multi_id);
+        $where = array("t.term_taxonomy_id = r.term_taxonomy_id", "r.object_id = p.id", "t.term_id = x.term_id", "p.id = d.post_id", "p.post_status = 'publish'", "d.multi_id = ".$multi_id, sprintf("t.taxonomy = '%s'", $taxonomy));
 
-        $where[] = sprintf("t.taxonomy = '%s'", $taxonomy);
-        if ($term != "") $where[] = sprintf("x.name = '%s'", str_replace("'", "''", $term));
+        if (count($terms) > 0) {
+            $clean_terms = array();
+            foreach ($terms as $t) $clean_terms[] = "'".str_replace("'", "''", $t)."'";
+            $where[] = sprintf("x.%s in (%s)", $by, join(", ", $clean_terms));
+        }
 
         $sql = sprintf("select distinct %s from %s%sposts p, %sgdsr_multis_data d where %s group by t.term_id",
             $select, $from, $table_prefix, $table_prefix, join(" and ", $where));
