@@ -1239,7 +1239,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
     function render_stars_custom_value($settings = array()) {
         $style = $this->g->is_ie6 ? $settings["style_ie6"] : $settings["style"];
-        $value = intval($settings["value"]);
+        $value = isset($settings["value"]) ? intval($settings["value"]) : 0;
         $star_factor = $settings["star_factor"];
         $stars = $settings["max_value"];
         $size = $settings["size"];
@@ -1252,8 +1252,8 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
         $rd_unit_width = $override["size"];
         $rd_unit_style = $this->g->is_ie6 ? $override["style_ie6"] : $override["style"];
-        $rd_unit_width_avg = $override["average_size"];
-        $rd_unit_style_avg = $this->g->is_ie6 ? $override["average_stars_ie6"] : $override["average_stars"];
+        $rd_unit_width_avg = isset($override["average_size"]) ? $override["average_size"] : $override["style"];
+        $rd_unit_style_avg = isset($override["average_stars"]) ? ($this->g->is_ie6 ? $override["average_stars_ie6"] : $override["average_stars"]) : $override["style"];
 
         return GDSRRenderT2::render_mrb($template_id, array("style" => $rd_unit_style, "allow_vote" => false, "votes" => $votes, "post_id" => $custom_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $header_text, "tags_css" => array("MUR_CSS_BLOCK" => ""), "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => $star_factor));
     }
