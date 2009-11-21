@@ -90,7 +90,6 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["override_thumb_display_comment"] = isset($_POST['gdsr_override_thumb_display_comment']) ? 1 : 0;
 
     $gdsr_options["integrate_dashboard"] = isset($_POST['gdsr_integrate_dashboard']) ? 1 : 0;
-    $gdsr_options["integrate_dashboard_chart"] = isset($_POST['gdsr_integrate_dashboard_chart']) ? 1 : 0;
     $gdsr_options["integrate_dashboard_latest"] = isset($_POST['gdsr_integrate_dashboard_latest']) ? 1 : 0;
     $gdsr_options["integrate_dashboard_latest_filter_thumb_std"] = isset($_POST['gdsr_integrate_dashboard_latest_filter_thumb_std']) ? 1 : 0;
     $gdsr_options["integrate_dashboard_latest_filter_thumb_cmm"] = isset($_POST['gdsr_integrate_dashboard_latest_filter_thumb_cmm']) ? 1 : 0;

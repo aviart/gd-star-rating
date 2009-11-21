@@ -58,7 +58,6 @@ class GDSRDefaults {
         "integrate_post_edit_mur" => 1,
         "integrate_tinymce" => 1,
         "integrate_dashboard" => 1,
-        "integrate_dashboard_chart" => 1,
         "integrate_dashboard_latest" => 1,
         "integrate_dashboard_latest_count" => 10,
         "integrate_dashboard_latest_filter_thumb_std" => 1,

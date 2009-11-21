@@ -966,13 +966,9 @@ class GDStarRating {
             if (!function_exists('wp_add_dashboard_widget')) {
                 if ($this->o["integrate_dashboard_latest"] == 1)
                     wp_register_sidebar_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
-                if ($this->o["integrate_dashboard_chart"] == 1)
-                    wp_register_sidebar_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'), array('all_link' => get_bloginfo('wpurl').'/wp-admin/admin.php?page=gd-star-rating/gd-star-rating.php', 'width' => 'half', 'height' => 'single'));
             } else {
                 if ($this->o["integrate_dashboard_latest"] == 1)
                     wp_add_dashboard_widget("dashboard_gdstarrating_latest", "GD Star Rating ".__("Latest", "gd-star-rating"), array(&$this, 'display_dashboard_widget_latest'));
-                if ($this->o["integrate_dashboard_chart"] == 1)
-                    wp_add_dashboard_widget("dashboard_gdstarrating_chart", "GD Star Rating ".__("Chart", "gd-star-rating"), array(&$this, 'display_dashboard_widget_chart'));
             }
         }
     }
@@ -984,11 +980,9 @@ class GDStarRating {
         if ($user_level >= intval($this->o["security_showdashboard_user_level"])) {
             global $wp_registered_widgets;
 
-            if (!isset($wp_registered_widgets["dashboard_gdstarrating_chart"]) && !isset($wp_registered_widgets["dashboard_gdstarrating_latest"])) return $widgets;
+            if (!isset($wp_registered_widgets["dashboard_gdstarrating_latest"])) return $widgets;
             if ($this->o["integrate_dashboard_latest"] == 1)
                 array_splice($widgets, 2, 0, "dashboard_gdstarrating_latest");
-            if ($this->o["integrate_dashboard_chart"] == 1)
-                array_splice($widgets, 2, 0, "dashboard_gdstarrating_chart");
         }
         return $widgets;
     }

@@ -235,6 +235,3 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 * GDragoN Home: http://www.gdragon.info/
 * Ohloh: https://www.ohloh.net/p/gd-star-rating/
 * WordPress Extend: http://wordpress.org/extend/plugins/gd-star-rating/
-
-== Thanx To ==
-* Jean-Damien Pogolotti (http://pchart.sourceforge.net/) for pChart
