@@ -16,8 +16,6 @@
     <td>
         <input type="checkbox" name="gdsr_integrate_dashboard" id="gdsr_integrate_dashboard"<?php if ($gdsr_options["integrate_dashboard"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard"><?php _e("Add widgets to the administration dashboard.", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
-        <input type="checkbox" name="gdsr_integrate_dashboard_chart" id="gdsr_integrate_dashboard_chart"<?php if ($gdsr_options["integrate_dashboard_chart"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_integrate_dashboard_chart"><?php _e("Add chart summary rating widget.", "gd-star-rating"); ?></label>
-        <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
                 <td style="width: 310px; vertical-align: top;" rowspan="2">
