@@ -710,8 +710,10 @@ class GDStarRating {
     }
 
     function load_colorbox() {
-	wp_enqueue_script('gdsr-colorbox', STARRATING_URL."js/jquery/jquery-colorbox.js", array("jquery"), $this->o["version"], true);
-	wp_enqueue_style('gdsr-colorbox', STARRATING_URL."css/jquery/colorbox.css");
+        if ($this->wp_version >= 28) {
+            wp_enqueue_script('gdsr-colorbox', STARRATING_URL."js/jquery/jquery-colorbox.js", array("jquery"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-colorbox', STARRATING_URL."css/jquery/colorbox.css");
+        }
     }
 
     function load_jquery() {
@@ -768,7 +770,7 @@ class GDStarRating {
         echo("\r\n");
         echo('<script type="text/javascript">jQuery(document).ready(function() {');
             if ($this->admin_plugin) {
-                echo('jQuery(".clrboxed").colorbox({width:800, height:470, iframe:true});');
+                if ($this->wp_version >= 28) echo('jQuery(".clrboxed").colorbox({width:800, height:470, iframe:true});');
                 echo('jQuery("#gdsr_tabs'.($this->wp_version < 28 ? ' > ul' : '').'").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
             }
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
