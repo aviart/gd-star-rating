@@ -762,19 +762,14 @@ class GDStarRating {
             if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
             if ($this->admin_plugin_page == "settings") include(STARRATING_PATH."code/js/loaders.php");
         echo("});</script>\r\n");
-        if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") && $this->o["integrate_post_edit_mur"] == 1) {
+        if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") &&
+            $this->o["integrate_post_edit_mur"] == 1) {
             $this->include_rating_css_admin();
         }
         if ($this->admin_page == "widgets.php" || $this->admin_page == "themes.php") {
             if ($this->wp_version < 28) echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets.js"></script>');
             else echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets-28.js"></script>');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />');
-        }
-
-        if ($this->admin_page == "edit-comments.php" || $this->admin_page == "comment.php") {
-            $gfx_r = $this->g->find_stars($this->o["cmm_review_style"]);
-            $comment_review = urlencode($this->o["cmm_review_style"]."|".$this->o["cmm_review_size"]."|".$this->o["cmm_review_stars"]."|".$gfx_r->type."|".$gfx_r->primary);
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_comment.css.php?stars='.$comment_review.'" type="text/css" media="screen" />');
         }
 
         $this->custom_actions('admin_head');
@@ -1265,8 +1260,8 @@ class GDStarRating {
         $this->plugin_cache_path = $this->plugin_xtra_path."cache/";
         $this->plugin_ajax = $this->plugin_url.'ajax.php';
 
-        $this->plugin_chart_path = $this->plugin_path."charts/";
-        $this->plugin_chart_url = $this->plugin_url."charts/";
+        $this->plugin_chart_path = $this->plugin_path."options/charts/";
+        $this->plugin_chart_url = $this->plugin_url."options/charts/";
 
         define('STARRATING_URL', $this->plugin_url);
         define('STARRATING_PATH', $this->plugin_path);
@@ -1276,8 +1271,6 @@ class GDStarRating {
 
         define('STARRATING_CHART_URL', $this->plugin_chart_url);
         define('STARRATING_CHART_PATH', $this->plugin_chart_path);
-        define('STARRATING_CHART_CACHE_URL', $this->plugin_xtra_url."charts/");
-        define('STARRATING_CHART_CACHE_PATH', $this->plugin_xtra_path."charts/");
     }
 
     /**
