@@ -32,7 +32,7 @@ switch ($action) {
         </td>
         <td width="10"></td>
         <td valign="top">
-            <div id="placeholder" style="width:570px; height:380px;"></div>
+            <div id="placeholder" style="width:550px; height:360px;"></div>
         </td>
     </tr>
 </table>
@@ -46,7 +46,7 @@ switch ($action) {
         xaxis: { tickDecimals: 0, tickSize: 1 }
     };
 
-    jQuery('#TB_iframeContent', top.document).load(function() {
+    jQuery(document).ready(function() {
         jQuery.plot("#placeholder", data, options);
     });
 </script>
