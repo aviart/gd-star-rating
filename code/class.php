@@ -674,7 +674,7 @@ class GDStarRating {
 
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), $this->security_level_front, $this->plugin_base, array(&$this->m, "star_menu_front"));
         if ($this->security_my_ratings) {
-            add_submenu_page('index.php', 'GD Star Rating: '.__("My Ratings", "gd-star-rating"), __("My Ratings", "gd-star-rating"), $this->security_level_front, "gd-star-rating-my", array(&$this->m, "star_menu_my"));
+            add_submenu_page('index.php', 'GD Star Rating: '.__("My Ratings", "gd-star-rating"), __("My Ratings", "gd-star-rating"), $this->security_my_ratings_level, "gd-star-rating-my", array(&$this->m, "star_menu_my"));
         } else {
             add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("My Ratings", "gd-star-rating"), __("My Ratings", "gd-star-rating"), $this->security_level_front, "gd-star-rating-my", array(&$this->m, "star_menu_my"));
         }
