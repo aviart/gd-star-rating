@@ -229,14 +229,14 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
             $row->rating_visitors > $options["stars"] ||
             $row->rating_users > $options["stars"]) $tr_class.=" invalidarticle";
 
-        $chart_url = STARRATING_CHART_URL."post_charts.php?_ajax_nonce=".wp_create_nonce('gdsr_chart_l8')."&postid=".$row->pid."&amp;action=article&amp;mode=both&amp;keepThis=true&amp;TB_iframe=true&amp;height=400&amp;width=750";
+        $chart_url = STARRATING_CHART_URL."post_charts.php?_ajax_nonce=".wp_create_nonce('gdsr_chart_l8')."&postid=".$row->pid."&amp;action=article";
 
         echo '<tr id="post-'.$row->pid.'" class="'.$tr_class.' author-self status-publish" valign="top">';
         echo '<th scope="row" class="check-column"><input name="gdsr_item[]" value="'.$row->pid.'" type="checkbox"/></th>';
         echo '<td nowrap="nowrap">'.$row->pid.'</td>';
         echo '<td class="gdrinner">';
             echo '<a title="'.__("Comments", "gd-star-rating").'" href="./admin.php?page=gd-star-rating-stats&amp;gdsr=comments&amp;postid='.$row->pid.'"><img alt="'.__("Comments", "gd-star-rating").'" src="'.STARRATING_URL.'gfx/comments.png" border="0" /></a>';
-            echo '<a title="'.__("Chart", "gd-star-rating").'" href="'.$chart_url.'" class="thickbox"><img alt="'.__("Chart", "gd-star-rating").'" src="'.STARRATING_URL.'gfx/chart.png" border="0" /></a><br />';
+            echo '<a title="'.__("Chart", "gd-star-rating").'" href="'.$chart_url.'" class="clrboxed"><img alt="'.__("Chart", "gd-star-rating").'" src="'.STARRATING_URL.'gfx/chart.png" border="0" /></a><br />';
             echo '<a title="'.__("Edit", "gd-star-rating").'" href="'.get_edit_post_link($row->pid).'" target="_blank"><img alt="'.__("Edit", "gd-star-rating").'" src="'.STARRATING_URL.'gfx/edit.png" border="0" /></a>';
             echo '<a title="'.__("View", "gd-star-rating").'" href="'.get_permalink($row->pid).'" target="_blank"><img alt="'.__("View", "gd-star-rating").'" src="'.STARRATING_URL.'gfx/view.png" border="0" /></a>';
         echo '</td>';

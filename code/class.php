@@ -709,11 +709,46 @@ class GDStarRating {
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Wizard", "gd-star-rating"), __("Wizard", "gd-star-rating"), $this->security_level, "gd-star-rating-wizard", array(&$this->m, "star_menu_wizard"));
     }
 
+    function load_colorbox() {
+	wp_enqueue_script('gdsr-colorbox', STARRATING_URL."js/jquery/jquery-colorbox.js", array("jquery"), $this->o["version"], true);
+	wp_enqueue_style('gdsr-colorbox', STARRATING_URL."css/jquery/colorbox.css");
+    }
+
+    function load_jquery() {
+        if ($this->wp_version < 28) {
+            wp_enqueue_script('gdsr-jquery-ui', STARRATING_URL."js/jquery/jquery-ui.js", array("jquery"), $this->o["version"], true);
+            wp_enqueue_script('gdsr-jquery-ui-tabs', STARRATING_URL."js/jquery/jquery-ui-tabs.js", array("jquery", "gdsr-jquery-ui"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-jquery-ui-tabs', STARRATING_URL."css/jquery/ui.tabs.js");
+        }
+    }
+
+    function load_datepicker() {
+        if ($this->wp_version < 28) {
+            wp_enqueue_script('gdsr-jquery-datepicker', STARRATING_URL."js/jquery/jquery-ui-datepicker.js", array("jquery", "gdsr-jquery-ui"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-jquery-ui-core', STARRATING_URL."css/jquery/ui.core.css");
+            wp_enqueue_style('gdsr-jquery-ui-theme', STARRATING_URL."css/jquery/ui.theme.css");
+        } else {
+            wp_enqueue_script('gdsr-jquery-datepicker', STARRATING_URL."js/jquery/jquery-ui-datepicker-17.js", array("jquery", "jquery-ui-core"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-jquery-ui-theme', STARRATING_URL."css/jquery/ui.17.css");
+        }
+
+        if(!empty($this->l)) {
+            $jsFile = $this->plugin_path.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js';
+            if (@file_exists($jsFile) && is_readable($jsFile))
+                wp_enqueue_script('gdsr-jquery-datepicker-translation', $jsFile, array(gdsr-jquery-datepicker), $this->o["version"], true);
+        }
+    }
+
+    function load_corrections() {
+        wp_enqueue_script('gdsr-js-corrections', STARRATING_URL."js/rating/rating-corrections.js", array(), $this->o["version"], true);
+    }
+
     /**
      * WordPress action for adding administration header contents
      */
     function admin_head() {
         global $parent_file;
+        $datepicker_date = date("Y, n, j");
         $this->admin_page = $parent_file;
 
         $tabs_extras = $datepicker_date = "";
@@ -725,31 +760,6 @@ class GDStarRating {
             echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-admin.js"></script>');
             if ($this->wp_version == 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />');
             if ($this->wp_version >= 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp28.css" type="text/css" media="screen" />');
-            if ($this->wp_version < 28) {
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery/jquery-ui.js"></script>');
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery/jquery-ui-tabs.js"></script>');
-                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.tabs.css" type="text/css" media="screen" />');
-            } else {
-                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.17.css" type="text/css" media="screen" />');
-            }
-            if ($this->admin_plugin_page == "multi-sets" || $this->admin_plugin_page == "t2") {
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-corrections.js"></script>');
-            }
-        }
-
-        if ($this->admin_plugin || $this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
-            $datepicker_date = date("Y, n, j");
-            if ($this->wp_version < 28) {
-                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.core.css" type="text/css" media="screen" />');
-                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/jquery/ui.theme.css" type="text/css" media="screen" />');
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery/jquery-ui-datepicker.js"></script>');
-            } else {
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/jquery/jquery-ui-datepicker-17.js"></script>');
-            }
-            if(!empty($this->l)) {
-                $jsFile = $this->plugin_path.'js/i18n/jquery-ui-datepicker-'.$this->l.'.js';
-                if (@file_exists($jsFile) && is_readable($jsFile)) echo '<script type="text/javascript" src="'.$this->plugin_url.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js"></script>';
-            }
         }
 
         if ($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php") {
@@ -757,7 +767,10 @@ class GDStarRating {
         }
         echo("\r\n");
         echo('<script type="text/javascript">jQuery(document).ready(function() {');
-            if ($this->admin_plugin) echo('jQuery("#gdsr_tabs'.($this->wp_version < 28 ? ' > ul' : '').'").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
+            if ($this->admin_plugin) {
+                echo('jQuery(".clrboxed").colorbox({width:800, height:470, iframe:true});');
+                echo('jQuery("#gdsr_tabs'.($this->wp_version < 28 ? ' > ul' : '').'").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
+            }
             if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
             if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
             if ($this->admin_plugin_page == "settings") include(STARRATING_PATH."code/js/loaders.php");
@@ -1365,10 +1378,18 @@ class GDStarRating {
         }
 
         if ($this->admin_plugin) {
-            add_thickbox();
+            $this->load_colorbox();
+            $this->load_jquery();
             $this->safe_mode = gdFunctionsGDSR::php_in_safe_mode();
             if (!$this->safe_mode)
                 $this->extra_folders = $this->o["cache_forced"] == 1 || GDSRHelper::create_folders($this->wp_version);
+            if ($this->admin_plugin_page == "multi-sets" || $this->admin_plugin_page == "t2")
+                $this->load_corrections();
+        }
+        if ($this->admin_plugin ||
+            $this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" ||
+            $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
+            $this->load_datepicker();
         }
     }
 
