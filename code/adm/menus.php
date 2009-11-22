@@ -241,12 +241,6 @@ class gdsrMenus {
         include(STARRATING_PATH.'options/security.php');
     }
 
-    function star_menu_wizard() {
-        $options = $this->g->o;
-        $wpv = $this->g->wp_version;
-        include(STARRATING_PATH.'options/wizard.php');
-    }
-
     function star_menu_my() {
         $options = $this->g->o;
         $wpv = $this->g->wp_version;
