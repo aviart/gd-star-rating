@@ -1,18 +1,33 @@
 <?php
 
-class GDSRChart {
+class gdsrDBChart {
+    function prepare_data_daily($data) {
+        $i = 0;
+        $rating = $votes = $ticks = array();
+        foreach ($data as $day => $values) {
+            $ticks[] = sprintf("[%s, '%s']", $i, (floor($i / 4) == $i / 4) ? $day : "");
+            $rating[] = sprintf("[%s, %s]", $i, $values["rating"]);
+            $votes[] = sprintf("[%s, %s]", $i, $values["votes"]);
+            $i++;
+        }
+
+        return sprintf("var gdr_rating = [%s]; var gdr_votes = [%s]; var gdr_ticks = [%s];",
+            join(", ", $rating), join(", ", $votes), join(", ", $ticks));
+    }
+
     function votes_counter($vote_type = 'article') {
         global $wpdb, $table_prefix;
         $sql = sprintf("SELECT vote, count(*) as counter FROM %sgdsr_votes_log where vote_type = '%s' group by vote order by vote desc", $table_prefix, $vote_type);
         return $wpdb->get_results($sql);
     }
 
-    function votes_trend_daily($id, $vote_type = 'article', $days = 30) {
+    function trends_daily($id, $vote_type = 'article', $show = "", $days = 30) {
         global $wpdb, $table_prefix;
         $mysql4_strtodate = "date_add(vote_date, interval 0 day)";
         $mysql5_strtodate = "str_to_date(vote_date, '%Y-%m-%d')";
 
         $strtodate = "";
+        $voters = $votes = 0;
         switch(gdFunctionsGDSR::mysql_version()) {
             case "4":
                 $strtodate = $mysql4_strtodate;
@@ -28,19 +43,23 @@ class GDSRChart {
         $data = array();
         for ($i = $days; $i > 0; $i--) {
             $day = date('Y-m-d', mktime(0, 0, 0, date("m"), date("d") - $i, date("Y")));
-            $el = array();
-            $el["date"] = $day;
-            $el["visitor_voters"] = 0;
-            $el["visitor_votes"] = 0;
-            $el["user_voters"] = 0;
-            $el["user_votes"] = 0;
-            $data[$day] = $el;
+            $data[$day] = array("votes" => 0, "rating" => 0);
         }
         foreach ($results as $row) {
-            $data[$row->vote_date]["visitor_voters"] = $row->visitor_voters;
-            $data[$row->vote_date]["visitor_votes"] = $row->visitor_votes;
-            $data[$row->vote_date]["user_voters"] = $row->user_voters;
-            $data[$row->vote_date]["user_votes"] = $row->user_votes;
+            if ($show == "user") {
+                $voters = $row->user_voters;
+                $votes = $row->user_votes;
+            }
+            else if ($show == "visitor") {
+                $voters = $row->visitor_voters;
+                $votes = $row->visitor_votes;
+            }
+            else {
+                $voters = $row->visitor_voters + $row->user_voters;
+                $votes = $row->visitor_votes + $row->user_votes;
+            }
+            $data[$row->vote_date]["rating"] = $voters > 0 ? number_format($votes / $voters, 1) : 0;
+            $data[$row->vote_date]["votes"] = $voters;
         }
         return $data;
     }
