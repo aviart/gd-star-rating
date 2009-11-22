@@ -4,9 +4,7 @@
  * Include rendering engine for admin pages.
  */
 function gdsr_include_render() {
-    global $gdsr_dirname_basic;
-
-    require_once($gdsr_dirname_basic."/code/t2/render.php");
+    require_once(STARRATING_PATH."code/t2/render.php");
     require_once(STARRATING_PATH."code/fn/legacy.php");
     require_once(STARRATING_PATH."code/fn/data.php");
     require_once(STARRATING_PATH."code/fn/render.php");
