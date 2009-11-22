@@ -73,8 +73,6 @@ Plugin administration consist of 17 main panels:
   Upgrade and setup options
 * Security:
   Access levels and rights used mainly for WPMU
-* Wizard:
-  Easy to follow, simplified plugin settings
 
 == Installation ==
 
@@ -217,18 +215,6 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 * JavaScript code refactored
 * Many more changes and improvements
 * Number of bugs fixed
-
-= 1.6.9 =
-* Minimum count option for rating widgets with grouping
-* More filters for rating results
-* Solved SQL upgrade error reports
-* Few bugs and php warning fixed
-
-= 1.6.8 =
-* Cache plugins support for thumbs rating
-* Several new extra templates
-* New security options and bug fixes
-* Updated readme and info files
 
 == Source SVN ==
 * svn checkout http://gd-star-rating.googlecode.com/svn/trunk/ gd-star-rating-read-only

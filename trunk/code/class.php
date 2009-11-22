@@ -705,8 +705,6 @@ class GDStarRating {
 
         if ($this->wp_secure_level)
             add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), $this->security_level, "gd-star-rating-security", array(&$this->m, "star_menu_security"));
-
-        add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Wizard", "gd-star-rating"), __("Wizard", "gd-star-rating"), $this->security_level, "gd-star-rating-wizard", array(&$this->m, "star_menu_wizard"));
     }
 
     function load_colorbox() {
@@ -1379,14 +1377,15 @@ class GDStarRating {
             $this->ginc = $ginc;
         }
 
+        if ($this->admin_plugin_page == "multi-sets" ||
+            $this->admin_plugin_page == "t2") $this->load_corrections();
+
         if ($this->admin_plugin) {
             $this->load_colorbox();
             $this->load_jquery();
             $this->safe_mode = gdFunctionsGDSR::php_in_safe_mode();
             if (!$this->safe_mode)
                 $this->extra_folders = $this->o["cache_forced"] == 1 || GDSRHelper::create_folders($this->wp_version);
-            if ($this->admin_plugin_page == "multi-sets" || $this->admin_plugin_page == "t2")
-                $this->load_corrections();
         }
         if ($this->admin_plugin ||
             $this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" ||
