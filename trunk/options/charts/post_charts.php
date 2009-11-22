@@ -7,11 +7,16 @@ global $gdsr;
 
 require_once(ABSPATH.WPINC."/pluggable.php");
 check_ajax_referer('gdsr_chart_l8');
+require_once(STARRATING_PATH."code/adm/charting.php");
 
 $action = isset($_GET["action"]) ? $_GET["action"] : "article";
+$show = isset($_GET["show"]) ? $_GET["show"] : "";
 
+$data = "";
 switch ($action) {
     case "article":
+        $post_id = $_GET["postid"];
+        $data = gdsrDBChart::trends_daily($post_id, "article", $show);
         break;
 }
 
@@ -37,13 +42,17 @@ switch ($action) {
     </tr>
 </table>
 <script type="text/javascript">
+    <?php echo gdsrDBChart::prepare_data_daily($data); ?>
     var alreadyFetched = {};
     var placeholder = "#placeholder";
-    var data = [];
+    var data = [
+        {data: gdr_rating, label: "<?php _e("Votes", "gd-star-rating"); ?>"},
+        {data: gdr_votes, label: "<?php _e("Rating", "gd-star-rating"); ?>", yaxis: 2}
+    ];
     var options = {
         lines: { show: true },
         points: { show: true },
-        xaxis: { tickDecimals: 0, tickSize: 1 }
+        xaxis: { ticks: gdr_ticks }
     };
 
     jQuery(document).ready(function() {
