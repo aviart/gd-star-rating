@@ -2,12 +2,12 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.7.6",
+        "version" => "1.7.7",
         "revision" => 0,
-        "date" => "2009.11.22.",
+        "date" => "2009.11.23.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 1010,
+        "build" => 1013,
         "admin_views" => 0,
         "google_rich_snippets_format" => "microformat",
         "google_rich_snippets_active" => 1,
