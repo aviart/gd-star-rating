@@ -1345,6 +1345,7 @@ class GDStarRating {
             }
             $this->cache_cleanup();
             $this->init_specific_pages();
+            $this->load_datepicker();
         }
 
         if (is_admin() && $this->o["mur_review_set"] == 0) {
@@ -1386,11 +1387,6 @@ class GDStarRating {
             $this->safe_mode = gdFunctionsGDSR::php_in_safe_mode();
             if (!$this->safe_mode)
                 $this->extra_folders = $this->o["cache_forced"] == 1 || GDSRHelper::create_folders($this->wp_version);
-        }
-        if ($this->admin_plugin ||
-            $this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" ||
-            $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
-            $this->load_datepicker();
         }
     }
 
