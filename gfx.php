@@ -14,8 +14,10 @@ $allow = false;
 if ($gdsr->o["gfx_prevent_leeching"] == 1 && (isset($_GET["set"]) || isset($_GET["size"]) || isset($_GET["max"]))) {
     $server_name = $_SERVER["SERVER_NAME"];
     if (substr($server_name, 0, 4) == "www.") $server_host = substr($server_name, 4);
-    $domain = parse_url($_SERVER['HTTP_REFERER']);
-    $allow = $domain['host'] == $server_name || $domain['host'] == $server_host;
+    if (isset($_SERVER['HTTP_REFERER'])) {
+        $domain = parse_url($_SERVER['HTTP_REFERER']);
+        $allow = $domain['host'] == $server_name || $domain['host'] == $server_host;
+    } else $allow = true;
 } else $allow = true;
 
 if ($allow && $input["type"] == "stars") {
