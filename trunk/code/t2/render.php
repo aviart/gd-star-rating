@@ -550,6 +550,15 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         if ($debug != '') $rater.= '<div style="display: none">'.$debug.'</div>';
         if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->multi_id.']" value="'.$empty_value.'" />';
 
+        if (in_array("%POST_TITLE%", $template->tag["normal"])) {
+            $act_post = get_post($post_id);
+            $tpl_render = str_replace("%POST_TITLE%", $act_post->post_title, $tpl_render);
+        }
+
+        if (in_array("%POST_PERMALINK%", $template->tag["normal"])) {
+            $tpl_render = str_replace("%POST_PERMALINK%", get_permalink($post_id), $tpl_render);
+        }
+
         $i = 0;
         $weighted = 0;
         $total_votes = 0;
@@ -591,7 +600,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $tpl_render = str_replace("%AVG_RATING%", $rating, $tpl_render);
         if (in_array("%AVG_RATING_STARS%", $template->tag["normal"])) {
             $avg_id = "gdsr_mur_avgstars_".$post_id."_".$set->multi_id;
-            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars * $star_factor, $rating * $star_factor, $avg_id, "DIV"), $tpl_render);
+            $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars * $star_factor, $rating * $star_factor, $avg_id, "", $star_factor), $tpl_render);
         }
 
         $rater.= $tpl_render."</div>";
@@ -622,6 +631,15 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $rater_length = $unit_width * $unit_count;
         $rater_id = $typecls."_rater_".$post_id;
         $loader_id = $typecls."_loader_".$post_id;
+
+        if (in_array("%POST_TITLE%", $template->tag["normal"])) {
+            $act_post = get_post($post_id);
+            $tpl_render = str_replace("%POST_TITLE%", $act_post->post_title, $tpl_render);
+        }
+
+        if (in_array("%POST_PERMALINK%", $template->tag["normal"])) {
+            $tpl_render = str_replace("%POST_PERMALINK%", get_permalink($post_id), $tpl_render);
+        }
 
         if (in_array("%RATING_STARS%", $template->tag["normal"])) {
             $rating_stars = GDSRRender::rating_stars($style, $unit_width, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $post_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
