@@ -23,7 +23,7 @@ class gdTemplateDB {
         $templates = array();
         foreach ($t2 as $tpl) {
             $parts = explode("|", $tpl, 4);
-            $sql = sprintf("insert into %s%s (`section`, `name`, `description`, `elements`, `preinstalled`, `default`) values ('%s', '%s', '%s', '%s', '2', '0')",
+            $sql = sprintf("insert into %s%s (`section`, `name`, `description`, `elements`, `preinstalled`, `default`) values ('%s', '%s', '%s', '%s', '0', '0')",
                 $table_prefix, STARRATING_TPLT2_TABLE, $parts[0], $parts[1], $parts[2], $parts[3]);
             $wpdb->query($sql);
             $tpl_id = $wpdb->insert_id;

@@ -89,7 +89,7 @@ foreach ($template->parts as $p) {
     </td>
 </tr>
 </tbody></table>
-<p class="submit"><input type="submit" value="<?php _e("Save Template", "gd-star-rating"); ?>" name="gdsr_saving"/></p>
+<input type="submit" class="inputbutton" value="<?php _e("Save Template", "gd-star-rating"); ?>" name="gdsr_saving"/>
 </td><td class="tpl-editor-list-td">
 <?php
 
