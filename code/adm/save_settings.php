@@ -1,6 +1,7 @@
 <?php 
 
 if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
+    $gdsr_options["bot_message"] = $_POST['gdsr_bot_message'];
     $gdsr_options["cached_loading"] = isset($_POST['gdsr_cached_loading']) ? 1 : 0;
     $gdsr_options["comments_integration_articles_active"] = isset($_POST['gdsr_cmmintartactive']) ? 1 : 0;
     $gdsr_options["update_report_usage"] = isset($_POST['gdsr_update_report_usage']) ? 1 : 0;
