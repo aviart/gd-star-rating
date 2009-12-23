@@ -36,9 +36,16 @@ class GDSRRender {
         return $render;
     }
 
-    function render_locked_response() {
+    function render_locked_response($value = "nothing") {
+        if ($value == "nothing") return "";
+
         $render = '<div class="gdsrcacheloader gdsrclsmall">';
-        $render.= '<a rel="rating" href="http://www.gdstarrating.com/" title="GD Star Rating: a WordPress rating system"><strong>GD Star Rating</strong><br />';
+
+        if ($value == "promourl")
+            $render.= '<a rel="rating" href="http://www.gdstarrating.com/" title="GD Star Rating: a WordPress rating system"><strong>GD Star Rating</strong><br />';
+        else if ($value == "promoname")
+            $render.= '<strong>GD Star Rating</strong><br />';
+
         $render.= '<em>a WordPress rating system</em>';
         $render.= '</div>';
         return $render;

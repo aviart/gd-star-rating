@@ -63,6 +63,25 @@
         <?php _e("For list of supported charsets visit: ", "gd-star-rating"); ?><a href="http://www.php.net/manual/en/function.htmlentities.php" target="_blank">http://www.php.net/manual/en/function.htmlentities.php</a>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Search engines", "gd-star-rating"); ?></th>
+    <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Display this", "gd-star-rating"); ?>:</td>
+                <td>
+                    <select name="gdsr_bot_message" style="width: 200px;">
+                        <option value="promourl"<?php echo $gdsr_options["bot_message"] == "promourl" ? ' selected="selected"' : ''; ?>><?php _e("Plugin website URL block", "gd-star-rating"); ?></option>
+                        <option value="promoname"<?php echo $gdsr_options["bot_message"] == "promoname" ? ' selected="selected"' : ''; ?>><?php _e("Plugin name and description", "gd-star-rating"); ?></option>
+                        <option value="nothing"<?php echo $gdsr_options["bot_message"] == "nothing" ? ' selected="selected"' : ''; ?>><?php _e("Don't render rating block", "gd-star-rating"); ?></option>
+                        <option value="normal"<?php echo $gdsr_options["bot_message"] == "normal" ? ' selected="selected"' : ''; ?>><?php _e("Render normal rating block", "gd-star-rating"); ?></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <?php _e("Plugin detects search engine BOT's and to save on the resources, there is no need to render whole rating block since it doesn't mean much to the search engine. You can select what plugin should do for BOT visits. Last option is not reccomended.", "gd-star-rating"); ?>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Internet Explorer", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_ieopacityfix" id="gdsr_ieopacityfix"<?php if ($gdsr_options["ie_opacity_fix"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_ieopacityfix"><?php _e("Use IE opacity fix for multi ratings.", "gd-star-rating"); ?></label>

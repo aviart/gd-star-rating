@@ -608,7 +608,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     }
 
     function render_thumb_comment($post, $comment, $user, $override = array()) {
-        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
+        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0 && $this->g->o["bot_message"] != "normal") return GDSRRender::render_locked_response($this->g->o["bot_message"]);
 
         $default_settings = array("style" => $this->g->o["thumb_cmm_style"], "style_ie6" => $this->g->o["thumb_cmm_style_ie6"], "size" => $this->g->o["thumb_cmm_size"], "tpl" => 0, "read_only" => 0);
         $override = shortcode_atts($default_settings, $override);
@@ -732,7 +732,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     }
 
     function render_comment($post, $comment, $user, $override = array()) {
-        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
+        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0 && $this->g->o["bot_message"] != "normal") return GDSRRender::render_locked_response($this->g->o["bot_message"]);
 
         $default_settings = array("style" => $this->g->o["cmm_style"], "style_ie6" => $this->g->o["cmm_style_ie6"], "size" => $this->g->o["cmm_size"], "tpl" => 0, "read_only" => 0);
         $override = shortcode_atts($default_settings, $override);
@@ -908,7 +908,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
     function render_thumb_article($post, $user, $override = array()) {
         if (is_feed()) return "";
-        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
+        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0 && $this->g->o["bot_message"] != "normal") return GDSRRender::render_locked_response($this->g->o["bot_message"]);
 
         $default_settings = array("style" => $this->g->o["thumb_style"], "style_ie6" => $this->g->o["thumb_style_ie6"], "size" => $this->g->o["thumb_size"], "tpl" => 0, "read_only" => 0);
         $override = shortcode_atts($default_settings, $override);
@@ -1049,7 +1049,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
     function render_article($post, $user, $override = array()) {
         if (is_feed()) return "";
-        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
+        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0 && $this->g->o["bot_message"] != "normal") return GDSRRender::render_locked_response($this->g->o["bot_message"]);
 
         $default_settings = array("style" => $this->g->o["style"], "style_ie6" => $this->g->o["style_ie6"], "size" => $this->g->o["size"], "tpl" => 0, "read_only" => 0);
         $override = shortcode_atts($default_settings, $override);
@@ -1067,7 +1067,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
     }
 
     function render_multi_rating_actual($settings) {
-        if ($this->g->is_bot) return GDSRRender::render_locked_response();
+        if ($this->g->is_bot && $this->g->o["bot_message"] != "normal") return GDSRRender::render_locked_response($this->g->o["bot_message"]);
 
         $rd_post_id = intval($settings[1]);
         $rd_user_id = intval($settings[10]);
@@ -1220,7 +1220,7 @@ wp_gdsr_dump("CACHE_INT_MUR_RESULT", $gdsr_cache_integation_mur);
 
     function render_multi_rating($post, $user, $override = array()) {
         if (is_feed()) return "";
-        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0) return GDSRRender::render_locked_response();
+        if ($this->g->is_bot && $this->g->o["cached_loading"] == 0 && $this->g->o["bot_message"] != "normal") return GDSRRender::render_locked_response($this->g->o["bot_message"]);
 
         $default_settings = array("id" => 0, "style" => $this->g->o["mur_style"], "style_ie6" => $this->g->o["mur_style_ie6"], "size" => $this->g->o["mur_size"], "average_stars" => "oxygen", "average_stars_ie6" => "oxygen_gif", "average_size" => 30, "tpl" => 0, "read_only" => 0);
         $override = shortcode_atts($default_settings, $override);
