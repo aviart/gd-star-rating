@@ -34,7 +34,7 @@ Supported languages: english, serbian, spanish, german, italian, french, ukraini
 [User Guide](http://www.gdstarrating.com/downloads/user-guide/) |
 [Issue Tracker](http://tracker.gdstarrating.com/) |
 [Forum](http://forum.gdragon.info/viewforum.php?f=9) |
-[Google Code](http://code.google.com/p/gd-star-rating/)
+[Source](http://code.google.com/p/gd-star-rating/)
 
 == Configuration ==
 Plugin administration consist of 17 main panels:
