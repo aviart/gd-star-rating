@@ -52,6 +52,18 @@
         <input type="checkbox" name="gdsr_css_cache_active" id="gdsr_css_cache_active"<?php if ($gdsr_options["css_cache_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_css_cache_active"><?php _e("Auto cache of the main CSS file enabled.", "gd-star-rating"); ?></label>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Percentages", "gd-star-rating"); ?></th>
+    <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("No votes value", "gd-star-rating"); ?>:</td>
+                <td><input type="text" name="gdsr_no_votes_percentage" id="gdsr_no_votes_percentage" value="<?php echo $gdsr_options["no_votes_percentage"]; ?>" style="width: 170px;" /> %</td>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <?php _e("If you use percentage tag in templates, and there are not votes recorded, default percentage would be 0. Here you can set that to any other value between 0 and 100.", "gd-star-rating"); ?>
+    </td>
+</tr>
 <tr><th scope="row"><?php _e("Charset", "gd-star-rating"); ?></th>
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
@@ -60,6 +72,7 @@
                 <td><input type="text" name="gdsr_encoding" id="gdsr_encoding" value="<?php echo $gdsr_options["encoding"]; ?>" style="width: 170px;" /></td>
             </tr>
         </table>
+        <div class="gdsr-table-split"></div>
         <?php _e("For list of supported charsets visit: ", "gd-star-rating"); ?><a href="http://www.php.net/manual/en/function.htmlentities.php" target="_blank">http://www.php.net/manual/en/function.htmlentities.php</a>
     </td>
 </tr>

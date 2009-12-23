@@ -4,7 +4,7 @@
     <div id="gdptlogo">
         <div class="gdpttitle">GD Star Rating
             <span>
-                <?php echo $options["version"]; ?><?php echo $options["revision"] == 0 ? "" : ", revision: ".$options["revision"]; ?>
+                <?php echo $options["version"]." ".$options["code_name"]; ?><?php echo $options["revision"] == 0 ? "" : ", revision: ".$options["revision"]; ?>
                 <?php echo $options["status"] == "Stable" ? "" : "[".$options["status"]."]"; ?>
             </span></div>
         <h3>a wordpress rating system</h3>
