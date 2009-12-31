@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
-Version: 1.7.9
+Version: 1.8.0
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
 Tested up to: 2.9
@@ -170,6 +170,10 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.8.0 =
+* Setting for default percentage value
+* Rewritten multi editor functions
+
 = 1.7.9 =
 * Control output for search engine bots
 * Few fixes and imporovements

@@ -84,7 +84,36 @@ function gdsr_render_comments_rating_widget($widget = array(), $echo = true) {
     else return GDSRRenderT2::render_wcr($widget);
 }
 
-function gdsr_get_taxonomy_multi_ratings($settings) {
+/**
+ *
+ * @param string $settings rendering parameters
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
+function gdsr_render_multi_editor($settings = array(), $echo = true) {
+    global $gdsr;
+
+    $defaults = array("multi_id" => 0, "post_id" => 0, "unlinked" => false, "admin" => false,
+        "style" => "oxygen", "style_ie6" => "oxygen_gif", "size" => 20, "tpl" => 0);
+    $settings = wp_parse_args($settings, $defaults);
+    $settings = apply_filters('gdsr_fn_render_multi_editor', $settings);
+    if ($settings["post_id"] == 0 && !$settings["unlinked"]) {
+        global $post;
+        $settings["post_id"] = $post->ID;
+    }
+
+    if ($echo) echo $gdsr->s->render_multi_editor($settings);
+    else return $gdsr->s->render_multi_editor($settings);
+}
+
+/**
+ * Get the data and rendered stars aggregated on taxonomies.
+ *
+ * @param string $settings rendering parameters
+ * @param bool $echo echo results or return it as a string
+ * @return object prepared ratings data and renderings
+ */
+function gdsr_get_taxonomy_multi_ratings($settings = array()) {
     global $gdsr;
 
     $defaults = array("taxonomy" => "category", "terms" => array(), "multi_id" => 0,

@@ -68,6 +68,7 @@ class GDStarRating {
     var $f; // front end rendering object
     var $m; // admin menus object
     var $v; // ajax votes saving object
+    var $s; // shared objects functions
     var $qc;
     var $rSnippets;
     var $ginc;
@@ -141,6 +142,7 @@ class GDStarRating {
             $this->m = new gdsrMenus($this);
         }
 
+        $this->s = new gdsrShared($this);
         if (!STARRATING_AJAX) {
             $this->actions_filters();
             $this->initialize_security();
@@ -521,42 +523,6 @@ class GDStarRating {
         $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $max, 0);
         return $rating;
     }
-
-    /**
-     * Renders multi rating review editor block.
-     *
-     * @param int $post_id id of the post to render review editor for
-     * @param bool $admin wheter the rendering is for admin edit post page or not
-     * @return string rendered result
-     */
-    function blog_multi_review_editor($post_id, $settings = array(), $admin = true) {
-        if (!isset($settings["id"]) || $settings["id"] == "") $multi_id = $this->o["mur_review_set"];
-        else $multi_id = $settings["id"];
-        $set = gd_get_multi_set($multi_id);
-        if (is_null($set)) {
-            $set = gd_get_multi_set();
-            $multi_id = !is_null($set) ? $set->multi_id : 0  ;
-        }
-        if ($multi_id > 0 && $post_id > 0) {
-            $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id, count($set->object));
-            $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
-            if (count($multi_data) == 0) {
-                GDSRDBMulti::add_empty_review_values($vote_id, count($set->object));
-                $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
-            }
-        } else $multi_data = array();
-
-        $votes = array();
-        foreach ($multi_data as $md) {
-            $single_vote = array();
-            $single_vote["votes"] = 1;
-            $single_vote["score"] = $md->user_votes;
-            $single_vote["rating"] = $md->user_votes;
-            $votes[] = $single_vote;
-        }
-        if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
-        else return GDSRRenderT2::render_mre(intval($settings["tpl"]), array("post_id" => $post_id, "votes" => $votes, "style" => "oxygen", "set" => $set, "height" => 20, "allow_vote" => true));
-    }
     // various rendering
 
     // edit boxes
@@ -565,8 +531,7 @@ class GDStarRating {
      */
     function editbox_post_mur() {
         global $post;
-        $post_id = $post->ID;
-        $this->blog_multi_review_editor($post_id);
+        gdsr_render_multi_editor(array("post_id" => $post->ID, "admin" => true));
     }
 
     /**
@@ -702,9 +667,6 @@ class GDStarRating {
 
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), $this->security_level, "gd-star-rating-tools", array(&$this->m, "star_menu_tools"));
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), $this->security_level_setup, "gd-star-rating-setup", array(&$this->m, "star_menu_setup"));
-
-        if ($this->wp_secure_level)
-            add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), $this->security_level, "gd-star-rating-security", array(&$this->m, "star_menu_security"));
     }
 
     function load_colorbox() {
