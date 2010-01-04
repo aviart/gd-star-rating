@@ -175,7 +175,7 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
-= 1.8.0 =
+= 1.8.0 MMX =
 * Setting for default percentage value
 * Rewritten multi editor functions
 * Several important fixes and changes
