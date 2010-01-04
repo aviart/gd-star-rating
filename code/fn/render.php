@@ -84,7 +84,59 @@ function gdsr_render_comments_rating_widget($widget = array(), $echo = true) {
     else return GDSRRenderT2::render_wcr($widget);
 }
 
-function gdsr_get_taxonomy_multi_ratings($settings) {
+/**
+ * Render the multi rating editor
+ *
+ * @param string $settings rendering parameters
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
+function gdsr_render_multi_editor($settings = array(), $echo = true) {
+    global $gdsr;
+
+    $defaults = array("multi_id" => 0, "post_id" => 0, "tpl" => 0, "unlinked" => false, "admin" => false,
+        "style" => "oxygen", "style_ie6" => "oxygen_gif", "size" => 20, "votes" => array());
+    $settings = wp_parse_args($settings, $defaults);
+    $settings = apply_filters('gdsr_fn_render_multi_editor', $settings);
+    if ($settings["post_id"] == 0 && !$settings["unlinked"]) {
+        global $post;
+        $settings["post_id"] = $post->ID;
+    }
+
+    if ($echo) echo $gdsr->s->render_multi_editor($settings);
+    else return $gdsr->s->render_multi_editor($settings);
+}
+
+/**
+ * Save multi rating or review for a post
+ *
+ * @param int $post_id id of the post to add values
+ * @param int $multi_set_id multi set id
+ * @param array $values list of values
+ */
+function gdsr_save_multi_review($post_id, $multi_set_id, $values) {
+    global $gdsr;
+    $set = gd_get_multi_set($multi_set_id);
+
+    $clean = array();
+    foreach ($values as $v) {
+        if ($v < 1) $v = 1;
+        $clean[] = $v > $set->stars ? $set->stars : $v;
+    }
+
+    $record_id = GDSRDBMulti::get_vote($post_id, $multi_set_id, count($set->object));
+    GDSRDBMulti::save_review($record_id, $clean);
+    GDSRDBMulti::recalculate_multi_review($record_id, $clean, $set);
+}
+
+/**
+ * Get the data and rendered stars aggregated on taxonomies.
+ *
+ * @param string $settings rendering parameters
+ * @param bool $echo echo results or return it as a string
+ * @return object prepared ratings data and renderings
+ */
+function gdsr_get_taxonomy_multi_ratings($settings = array()) {
     global $gdsr;
 
     $defaults = array("taxonomy" => "category", "terms" => array(), "multi_id" => 0,

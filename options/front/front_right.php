@@ -10,6 +10,11 @@
                     <td class="t"><?php _e("release date", "gd-star-rating"); ?>: <?php echo $options["date"]; ?></td>
                     <td class="b options" style="color: red; font-weight: bold;"><?php echo $options["version"]; ?></td>
                 </tr>
+                <tr>
+                    <td class="first b" style="width: 133px;"><?php _e("Code Name", "gd-star-rating"); ?></td>
+                    <td class="t"><?php _e("current major release", "gd-star-rating"); ?></td>
+                    <td class="b options" style="color: red; font-weight: bold;"><?php echo $options["code_name"]; ?></td>
+                </tr>
                 <?php if ($this->g->wp_access_level >= $this->g->security_level) { ?>
                 <tr>
                     <td class="first b" style="width: 133px;"><?php _e("Change Log", "gd-star-rating"); ?></td>
@@ -49,18 +54,13 @@
                 </tr>
             </tbody></table>
         </div>
-        <p class="sub"><?php _e("Extra", "gd-star-rating"); ?></p>
+        <p class="sub"><?php _e("Support", "gd-star-rating"); ?></p>
         <div class="table">
             <table><tbody>
                 <tr class="first">
                     <td class="first b"><span style="color: blue"><?php _e("Premium Support", "gd-star-rating"); ?></span></td>
                     <td class="t"><?php _e("special plugin customizations", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://www.gdstarrating.com/premium/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
-                </tr>
-                <tr>
-                    <td class="first b"><span style="color: red"><?php _e("Donate", "gd-star-rating"); ?></span></td>
-                    <td class="t"><?php _e("help further development", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://www.gdstarrating.com/donate/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
+                    <td class="t options"><a href="http://www.dev4press.com/plugins/gd-star-rating/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
             </tbody></table>
         </div>
@@ -106,13 +106,8 @@
         <div class="table">
             <table><tbody>
                 <tr class="first">
-                    <td class="first b"><?php _e("Official Website", "gd-star-rating"); ?></td>
-                    <td class="t"><?php _e("golden dragon official web portal", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://www.gdragon.info/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
-                </tr>
-                <tr>
                     <td class="first b">Dev4Press</td>
-                    <td class="t"><?php _e("wordpress development", "gd-star-rating"); ?></td>
+                    <td class="t"><?php _e("premium wordpress plugins and themes", "gd-star-rating"); ?></td>
                     <td class="t options"><a href="http://www.dev4press.com/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
                 <tr>
@@ -121,14 +116,14 @@
                     <td class="t options"><a href="http://www.tvscape.net/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
                 <tr>
-                    <td class="first b"><?php _e("Support Forum", "gd-star-rating"); ?></td>
-                    <td class="t"><?php _e("development discussion forum", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://forum.gdragon.info/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
-                </tr>
-                <tr>
                     <td class="first b">Starscape Theme</td>
                     <td class="t"><?php _e("announcements and theme demo", "gd-star-rating"); ?></td>
                     <td class="t options"><a href="http://blog.starscapetheme.com/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
+                </tr>
+                <tr>
+                    <td class="first b"><?php _e("Official Website", "gd-star-rating"); ?></td>
+                    <td class="t"><?php _e("golden dragon official web portal", "gd-star-rating"); ?></td>
+                    <td class="t options"><a href="http://www.gdragon.info/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
             </tbody></table>
         </div>

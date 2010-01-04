@@ -272,8 +272,8 @@ function wp_gdsr_multi_review_editor($multi_set_id = 0, $post_id = 0, $template_
     if ($post_id == 0) $post_id = $post->ID;
 
     $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post_id) : $multi_set_id;
-    if ($echo) echo $gdsr->blog_multi_review_editor($post_id, array("id" => $multi_set_id, "tpl" => $template_id), false);
-    else return $gdsr->blog_multi_review_editor($post_id, array("id" => $multi_set_id, "tpl" => $template_id), false);
+    if ($echo) echo gdsr_render_multi_editor(array("post_id" => $post_id, "multi_id" => $multi_set_id, "tpl" => $template_id), $echo);
+    else return gdsr_render_multi_editor(array("post_id" => $post_id, "multi_id" => $multi_set_id, "tpl" => $template_id), $echo);
 }
 
 /**
