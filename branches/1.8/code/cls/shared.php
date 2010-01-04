@@ -10,6 +10,7 @@ class gdsrShared {
     function render_multi_editor($settings) {
         $multi_id = $settings["multi_id"] == 0 ? $this->o["mur_review_set"] : $settings["multi_id"];
         $post_id = $settings["post_id"];
+        $init_votes = $settings["votes"];
         $set = gd_get_multi_set($multi_id);
         if (is_null($set)) $set = gd_get_multi_set();
         $multi_id = !is_null($set) ? $set->multi_id : 0;
@@ -33,7 +34,10 @@ class gdsrShared {
             }
         } else {
             for ($i = 0; $i < count($set->object); $i++) {
-                $votes[] = array("votes" => 0, "score" => 0, "rating" => 0);
+                $iv = isset($init_votes[$i]) ? $init_votes[$i] : 0;
+                $votes[] = array("votes" => $iv == 0 ? 0 : 1,
+                                 "score" => $iv == 0 ? 0 : $iv,
+                                 "rating" => $iv == 0 ? 0 : $iv);
             }
         }
 
