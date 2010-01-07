@@ -395,7 +395,8 @@ class GDSRDefaults {
         "style_ie6" => "oxygen_gif",
         "size" => 20,
         "average_stars" => "oxygen",
-        "average_size" => 30
+        "average_size" => 30,
+        "factor" => 1
     );
 
     var $default_shortcode_starreviewmulti = array(
@@ -410,7 +411,8 @@ class GDSRDefaults {
         "size" => 20,
         "average_stars" => "oxygen",
         "average_stars_ie6" => "oxygen_gif",
-        "average_size" => 30
+        "average_size" => 30,
+        "factor" => 1
     );
 
     var $default_shortcode_starrating = array(

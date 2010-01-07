@@ -362,7 +362,7 @@ class GDStarRating {
                 $votes[] = $single_vote;
             }
             $avg_rating = GDSRDBMulti::get_multi_review_average($vote_id);
-            return GDSRRenderT2::render_rmb($settings["tpl"], array("votes" => $votes, "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "style" => $el_stars, "size" => $el_size, "avg_style" => $settings["average_stars"], "avg_size" => $settings["average_size"]));
+            return GDSRRenderT2::render_rmb($settings["tpl"], array("votes" => $votes, "star_factor" => $settings["factor"], "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "style" => $el_stars, "size" => $el_size, "avg_style" => $settings["average_stars"], "avg_size" => $settings["average_size"]));
         }
         else return '';
     }

@@ -129,6 +129,24 @@ function gdsr_save_multi_review($post_id, $multi_set_id, $values) {
     GDSRDBMulti::recalculate_multi_review($record_id, $clean, $set);
 }
 
+function gdsr_render_multi_review($settings = array(), $echo = true) {
+    global $gdsr;
+    
+    $defaults = array("multi_id" => 0, "post_id" => 0, "tpl" => 0, "factor" => 1, "id" => 0,
+        "element_stars" => "oxygen", "element_stars_ie6" => "oxygen_gif", "element_size" => 20,
+        "average_stars" => "oxygen", "average_stars_ie6" => "oxygen_gif", "average_size" => 20);
+    $settings = wp_parse_args($settings, $defaults);
+    $settings = apply_filters('gdsr_fn_render_multi_review', $settings);
+    if ($settings["post_id"] == 0) {
+        global $post;
+        $settings["post_id"] = $post->ID;
+    }
+
+    $settings["id"] = $settings["multi_id"] == 0 ? wp_gdsr_get_multi_set($settings["post_id"]) : $settings["multi_id"];
+    if ($echo) echo $gdsr->shortcode_starreviewmulti($settings);
+    else return $gdsr->shortcode_starreviewmulti($settings);
+}
+
 /**
  * Get the data and rendered stars aggregated on taxonomies.
  *
