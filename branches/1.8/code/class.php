@@ -122,7 +122,8 @@ class GDStarRating {
         $this->default_shortcode_starthumbsblock = $gdd->default_shortcode_starthumbsblock;
         $this->default_shortcode_starreview = $gdd->default_shortcode_starreview;
 
-        define('STARRATING_INSTALLED', $this->default_options["version"]." ".$this->default_options["status"]);
+        define("STARRATING_INSTALLED", $this->default_options["version"]." ".$this->default_options["status"]);
+        define("STARRATING_EOL", "\r\n");
 
         $this->c = array();
 
@@ -671,38 +672,38 @@ class GDStarRating {
 
     function load_colorbox() {
         if ($this->wp_version >= 28) {
-            wp_enqueue_script('gdsr-colorbox', STARRATING_URL."js/jquery/jquery-colorbox.js", array("jquery"), $this->o["version"], true);
-            wp_enqueue_style('gdsr-colorbox', STARRATING_URL."css/jquery/colorbox.css");
+            wp_enqueue_script('gdsr-colorbox', $this->plugin_url."js/jquery/jquery-colorbox.js", array("jquery"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-colorbox', $this->plugin_url."css/jquery/colorbox.css");
         }
     }
 
     function load_jquery() {
         if ($this->wp_version < 28) {
-            wp_enqueue_script('gdsr-jquery-ui', STARRATING_URL."js/jquery/jquery-ui.js", array("jquery"), $this->o["version"], true);
-            wp_enqueue_script('gdsr-jquery-ui-tabs', STARRATING_URL."js/jquery/jquery-ui-tabs.js", array("jquery", "gdsr-jquery-ui"), $this->o["version"], true);
-            wp_enqueue_style('gdsr-jquery-ui-tabs', STARRATING_URL."css/jquery/ui.tabs.js");
+            wp_enqueue_script('gdsr-jquery-ui', $this->plugin_url."js/jquery/jquery-ui.js", array("jquery"), $this->o["version"], true);
+            wp_enqueue_script('gdsr-jquery-ui-tabs', $this->plugin_url."js/jquery/jquery-ui-tabs.js", array("jquery", "gdsr-jquery-ui"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-jquery-ui-tabs', $this->plugin_url."css/jquery/ui.tabs.js");
         }
     }
 
     function load_datepicker() {
         if ($this->wp_version < 28) {
-            wp_enqueue_script('gdsr-jquery-datepicker', STARRATING_URL."js/jquery/jquery-ui-datepicker.js", array("jquery", "gdsr-jquery-ui"), $this->o["version"], true);
-            wp_enqueue_style('gdsr-jquery-ui-core', STARRATING_URL."css/jquery/ui.core.css");
-            wp_enqueue_style('gdsr-jquery-ui-theme', STARRATING_URL."css/jquery/ui.theme.css");
+            wp_enqueue_script('gdsr-jquery-datepicker', $this->plugin_url."js/jquery/jquery-ui-datepicker.js", array("jquery", "gdsr-jquery-ui"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-jquery-ui-core', $this->plugin_url."css/jquery/ui.core.css");
+            wp_enqueue_style('gdsr-jquery-ui-theme', $this->plugin_url."css/jquery/ui.theme.css");
         } else {
-            wp_enqueue_script('gdsr-jquery-datepicker', STARRATING_URL."js/jquery/jquery-ui-datepicker-17.js", array("jquery", "jquery-ui-core"), $this->o["version"], true);
-            wp_enqueue_style('gdsr-jquery-ui-theme', STARRATING_URL."css/jquery/ui.17.css");
+            wp_enqueue_script('gdsr-jquery-datepicker', $this->plugin_url."js/jquery/jquery-ui-datepicker-17.js", array("jquery", "jquery-ui-core"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-jquery-ui-theme', $this->plugin_url."css/jquery/ui.17.css");
         }
 
         if(!empty($this->l)) {
             $jsFile = $this->plugin_path.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js';
             if (@file_exists($jsFile) && is_readable($jsFile))
-                wp_enqueue_script('gdsr-jquery-datepicker-translation', $jsFile, array(gdsr-jquery-datepicker), $this->o["version"], true);
+                wp_enqueue_script('gdsr-jquery-datepicker-translation', $jsFile, array("gdsr-jquery-datepicker"), $this->o["version"], true);
         }
     }
 
     function load_corrections() {
-        wp_enqueue_script('gdsr-js-corrections', STARRATING_URL."js/rating/rating-corrections.js", array(), $this->o["version"], true);
+        wp_enqueue_script('gdsr-js-corrections', $this->plugin_url."js/rating/rating-corrections.js", array(), $this->o["version"], true);
     }
 
     /**
@@ -710,49 +711,66 @@ class GDStarRating {
      */
     function admin_head() {
         global $parent_file;
-        $datepicker_date = date("Y, n, j");
         $this->admin_page = $parent_file;
+        $datepicker_date = date("Y, n, j");
+        $tabs_extras = "";
 
-        $tabs_extras = $datepicker_date = "";
+        if ($this->admin_plugin_page == "ips" && isset($_GET["gdsr"]) && $_GET["gdsr"] == "iplist") {
+            $tabs_extras = ", selected: 1";
+        }
 
-        if ($this->admin_plugin_page == "ips" && isset($_GET["gdsr"]) && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
         if ($this->admin_plugin) {
             wp_admin_css('css/dashboard');
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_main.css" type="text/css" media="screen" />');
-            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-admin.js"></script>');
-            if ($this->wp_version == 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />');
-            if ($this->wp_version >= 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp28.css" type="text/css" media="screen" />');
+            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_main.css" type="text/css" media="screen" />'.STARRATING_EOL);
+            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-admin.js"></script>'.STARRATING_EOL);
+            if ($this->wp_version < 28) {
+                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />'.STARRATING_EOL);
+            } else {
+                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp28.css" type="text/css" media="screen" />'.STARRATING_EOL);
+            }
         }
 
         if ($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php") {
-            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-editors.js"></script>');
+            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-editors.js"></script>'.STARRATING_EOL);
         }
-        echo("\r\n");
-        echo('<script type="text/javascript">jQuery(document).ready(function() {');
+
+        echo('<script type="text/javascript">jQuery(document).ready(function() {'.STARRATING_EOL);
             if ($this->admin_plugin) {
-                if ($this->wp_version >= 28) echo('jQuery(".clrboxed").colorbox({width:800, height:470, iframe:true});');
-                echo('jQuery("#gdsr_tabs'.($this->wp_version < 28 ? ' > ul' : '').'").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
+                if ($this->wp_version >= 28) {
+                    echo('jQuery(".clrboxed").colorbox({width:800, height:470, iframe:true});'.STARRATING_EOL);
+                }
+                echo('jQuery("#gdsr_tabs'.($this->wp_version < 28 ? ' > ul' : '').'").tabs({fx: {height: "toggle"}'.$tabs_extras.' });'.STARRATING_EOL);
             }
-            if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
-            if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
-            if ($this->admin_plugin_page == "settings") include(STARRATING_PATH."code/js/loaders.php");
-        echo("});</script>\r\n");
-        if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") &&
-            $this->o["integrate_post_edit_mur"] == 1) {
+            if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
+                echo('if (jQuery().datepicker) jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});'.STARRATING_EOL);
+            }
+            if ($this->admin_plugin_page == "tools") {
+                echo('if (jQuery().datepicker) jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});'.STARRATING_EOL);
+            }
+            if ($this->admin_plugin_page == "settings") {
+                include(STARRATING_PATH."code/js/loaders.php");
+            }
+        echo("});</script>".STARRATING_EOL);
+
+        if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") && $this->o["integrate_post_edit_mur"] == 1) {
             $this->include_rating_css_admin();
         }
         if ($this->admin_page == "widgets.php" || $this->admin_page == "themes.php") {
-            if ($this->wp_version < 28) echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets.js"></script>');
-            else echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets-28.js"></script>');
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />');
+            if ($this->wp_version < 28) {
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets.js"></script>'.STARRATING_EOL);
+            } else {
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets-28.js"></script>'.STARRATING_EOL);
+            }
+            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />'.STARRATING_EOL);
         }
 
         $this->custom_actions('admin_head');
 
-        if ($this->admin_plugin_page == "builder")
-            echo('<script type="text/javascript" src="'.$this->plugin_url.'tinymce3/tinymce.js"></script>');
+        if ($this->admin_plugin_page == "builder") {
+            echo('<script type="text/javascript" src="'.$this->plugin_url.'tinymce3/tinymce.js"></script>'.STARRATING_EOL);
+        }
 
-        echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_post.css" type="text/css" media="screen" />');
+        echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_post.css" type="text/css" media="screen" />'.STARRATING_EOL);
     }
 
     /**

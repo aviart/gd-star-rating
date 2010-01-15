@@ -8,7 +8,7 @@ class gdsrShared {
     }
 
     function render_multi_editor($settings) {
-        $multi_id = $settings["multi_id"] == 0 ? $this->o["mur_review_set"] : $settings["multi_id"];
+        $multi_id = $settings["multi_id"] == 0 ? $this->g->o["mur_review_set"] : $settings["multi_id"];
         $post_id = $settings["post_id"];
         $init_votes = $settings["votes"];
         $set = gd_get_multi_set($multi_id);
