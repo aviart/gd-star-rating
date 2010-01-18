@@ -176,7 +176,9 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Changelog ==
 = 1.8.1 =
-* Updated translations
+* Updated several translations
+* Override thumbs no votes percentage not used
+* Minor WP 2.9 issues with datepicker loading
 * Several important fixes and changes
 
 = 1.8.0 MMX =

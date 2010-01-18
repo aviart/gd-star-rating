@@ -981,6 +981,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
         $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
         $percent = number_format($percent, 0);
+        if ($percent == 0) $percent = gdsr_zero_percentage();
 
         $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
         $rt = str_replace('%PERCENTAGE%', $percent, $rt);
@@ -1008,6 +1009,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
         $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
         $percent = number_format($percent, 0);
+        if ($percent == 0) $percent = gdsr_zero_percentage();
 
         $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
         $rt = str_replace('%PERCENTAGE%', $percent, $rt);
@@ -1109,6 +1111,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
         $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
         $percent = number_format($percent, 0);
+        if ($percent == 0) $percent = gdsr_zero_percentage();
 
         $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
         $rt = str_replace('%PERCENTAGE%', $percent, $rt);
@@ -1291,6 +1294,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $data = GDSRRenderT2::prepare_wbr($widget);
         if ($widget["source"] == "thumbs" && $data->rating > 0) $data->rating = "+".$data->rating;
         if ($widget["source"] == "thumbs") $data->voters = $data->votes;
+        if ($data->percentage == 0) $data->percentage = gdsr_zero_percentage();
 
         $rt = str_replace('%PERCENTAGE%', $data->percentage, $tpl_render);
         $rt = str_replace('%RATING%', $data->rating, $rt);
