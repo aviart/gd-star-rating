@@ -11,6 +11,16 @@ function gdsr_include_render() {
 }
 
 /**
+ * Get the default percentage value if the calculated is zero.
+ *
+ * @return int percentage value
+ */
+function gdsr_zero_percentage() {
+    global $gdsr;
+    return $gdsr->o["no_votes_percentage"];
+}
+
+/**
 * Writes a object dump into the log file
 *
 * @param string $msg log entry message

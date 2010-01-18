@@ -2,17 +2,19 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.7.9",
+        "version" => "1.8.1",
         "revision" => 0,
-        "date" => "2009.12.23.",
+        "code_name" => "MMX",
+        "date" => "2010.01.18.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 1023,
+        "build" => 1037,
         "admin_views" => 0,
         "bot_message" => "promourl",
         "google_rich_snippets_format" => "microformat",
         "google_rich_snippets_active" => 1,
         "google_rich_snippets_datasource" => "standard_rating",
+        "no_votes_percentage" => 100,
         "update_report_usage" => 1,
         "ajax_jsonp" => 0,
         "wp_query_handler" => 1,
@@ -393,7 +395,8 @@ class GDSRDefaults {
         "style_ie6" => "oxygen_gif",
         "size" => 20,
         "average_stars" => "oxygen",
-        "average_size" => 30
+        "average_size" => 30,
+        "factor" => 1
     );
 
     var $default_shortcode_starreviewmulti = array(
@@ -408,7 +411,8 @@ class GDSRDefaults {
         "size" => 20,
         "average_stars" => "oxygen",
         "average_stars_ie6" => "oxygen_gif",
-        "average_size" => 30
+        "average_size" => 30,
+        "factor" => 1
     );
 
     var $default_shortcode_starrating = array(
