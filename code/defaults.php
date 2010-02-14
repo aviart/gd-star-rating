@@ -8,7 +8,7 @@ class GDSRDefaults {
         "date" => "2010.04.03.",
         "status" => "Beta",
         "product_id" => "gd-star-rating",
-        "build" => 1025,
+        "build" => 1038,
         "admin_views" => 0,
         "bot_message" => "promourl",
         "google_rich_snippets_format" => "microformat",
@@ -395,7 +395,8 @@ class GDSRDefaults {
         "style_ie6" => "oxygen_gif",
         "size" => 20,
         "average_stars" => "oxygen",
-        "average_size" => 30
+        "average_size" => 30,
+        "factor" => 1
     );
 
     var $default_shortcode_starreviewmulti = array(
@@ -410,7 +411,8 @@ class GDSRDefaults {
         "size" => 20,
         "average_stars" => "oxygen",
         "average_stars_ie6" => "oxygen_gif",
-        "average_size" => 30
+        "average_size" => 30,
+        "factor" => 1
     );
 
     var $default_shortcode_starrating = array(

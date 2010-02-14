@@ -627,8 +627,6 @@ class GDSRX {
         $sql = sprintf("select distinct %s%s from %scomments p, %sgdsr_data_comment d where %s limit 0, %s",
                 $select, $extras, $table_prefix, $table_prefix, join(" and ", $where), $widget["rows"]);
 
-wp_gdsr_dump("WIDGET_COMMENTS", $sql);
-
         return $sql;
     }
 }
