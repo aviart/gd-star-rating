@@ -3,7 +3,7 @@ Contributors: gdragon
 Donate link: http://www.gdstarrating.com/donate/
 Version: 1.7.9
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
-Requires at least: 2.7
+Requires at least: 2.8
 Tested up to: 2.9
 Stable tag: trunk
 
@@ -77,7 +77,7 @@ Plugin administration consist of 17 main panels:
 = Minimal Requirements =
 * PHP: 5.x.x
 * mySQL: 4.0, 4.1 or 5.x
-* WordPress: 2.7 or newer
+* WordPress: 2.8 or newer
 
 = Recommended Requirements =
 * PHP: 5.2.x or newer
@@ -94,10 +94,8 @@ Plugin administration consist of 17 main panels:
 * if you don't change location of `wp-content` folder, then you don't need to make any more changes.
 * if your `wp-content` folder is moved out of default WordPress location, then you must edit plugins `config.php` file and set value with exact location of `wp-load.php` file for global constant `STARRATING_WPLOAD` in line 8. Without this most of the features, including saving votes, will not work.
 
-= WordPress MU & BuddyPress =
-* Minimal version supported: 2.8.1
-* Support for WPMU is only partial, not everything works as it should be.
-* Plugin is not working with some BuddyPress specific features.
+= WordPress MU =
+* Minimal version supported: 2.8.6
 
 = Browser Notice =
 * Multi review feature on administration Post Edit page will not work properly with IE6 browsers.

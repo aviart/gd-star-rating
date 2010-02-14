@@ -8,20 +8,14 @@
     <?php } ?>
 <?php } ?>
 <table class="form-table"><tbody>
-<tr><th scope="row"><?php _e("Cache Activation", "gd-star-rating"); ?></th>
+<tr><th scope="row"><?php _e("Cache", "gd-star-rating"); ?></th>
     <td>
         <input type="checkbox" name="gdsr_cache_active" id="gdsr_cache_active"<?php if ($gdsr_options["cache_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cache_active"><?php _e("Cache enabled.", "gd-star-rating"); ?></label>
-        <div class="gdsr-table-split"></div>
+        <br />
         <input type="checkbox" name="gdsr_cache_forced" id="gdsr_cache_forced"<?php if ($gdsr_options["cache_forced"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cache_forced"><?php _e("Force using of cache. This is usefull in some rare cases when PHP can't report writeability correct.", "gd-star-rating"); ?></label>
-    </td>
-</tr>
-<tr><th scope="row"><?php _e("Cache Cleanup", "gd-star-rating"); ?></th>
-    <td>
+        <br />
+        <input type="checkbox" name="gdsr_cache_cleanup_auto" id="gdsr_cache_cleanup_auto"<?php if ($gdsr_options["cache_cleanup_auto"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cache_cleanup_auto"><?php _e("Enable auto cache cleanup.", "gd-star-rating"); ?></label>
         <table cellpadding="0" cellspacing="0" class="previewtable">
-            <tr>
-                <td width="200"><?php _e("Auto cleanup cache", "gd-star-rating"); ?>:</td>
-                <td><input type="checkbox" name="gdsr_cache_cleanup_auto" id="gdsr_cache_cleanup_auto"<?php if ($gdsr_options["cache_cleanup_auto"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_cache_cleanup_auto"><?php _e("Enabled.", "gd-star-rating"); ?></label></td>
-            </tr>
             <tr>
                 <td width="200"><?php _e("Cleanup cache every", "gd-star-rating"); ?>:</td>
                 <td><input type="text" name="gdsr_cache_cleanup_days" id="gdsr_cache_cleanup_days" value="<?php echo $gdsr_options["cache_cleanup_days"]; ?>" style="width: 70px; text-align: right;" /> [days]</td>
