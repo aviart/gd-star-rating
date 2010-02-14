@@ -1015,6 +1015,7 @@ class GDStarRating {
     function comment_save($comment_id) {
         global $userdata;
         $user_id = is_object($userdata) ? $userdata->ID : 0;
+        $user = intval($user_id);
 
         if ($this->post_comment["review"] > -1) {
             $comment_data = GDSRDatabase::get_comment_data($comment_id);
@@ -1030,7 +1031,6 @@ class GDStarRating {
             $votes = $this->post_comment["standard_rating"];
             $ip = $_SERVER["REMOTE_ADDR"];
             $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
-            $user = intval($user_id);
             $allow_vote = true;
             if ($this->o["cmm_integration_prevent_duplicates"] == 1) {
                 $allow_vote = intval($votes) <= $this->o["stars"];
@@ -1062,7 +1062,6 @@ class GDStarRating {
             if ($allow_vote) {
                 $ip = $_SERVER["REMOTE_ADDR"];
                 $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
-                $user = intval($user_id);
                 $data = GDSRDatabase::get_post_data($id);
                 GDSRDBMulti::save_vote($id, $set->multi_id, $user, $ip, $ua, $values, $data, $comment_id);
                 GDSRDBMulti::recalculate_multi_averages($id, $set->multi_id, "", $set, true);
