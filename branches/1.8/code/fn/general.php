@@ -1,6 +1,29 @@
 <?php
 
 /**
+ * Get plugin setting value by name
+ *
+ * @param string $name name of the setting
+ * @return mixed setting value
+ */
+function gdsr_settings_get($name) {
+    global $gdsr;
+    return $gdsr->get($name);
+}
+
+/**
+ * set plugin setting value by name and save all settings
+ *
+ * @param string $name name of the setting
+ * @param string $value value for the setting
+ * @param bool $save if tru settings will be saved to database
+ */
+function gdsr_settings_set($name, $value, $save = true) {
+    global $gdsr;
+    $gdsr->set($name, $value, $save);
+}
+
+/**
  * Include rendering engine for admin pages.
  */
 function gdsr_include_render() {
@@ -17,7 +40,7 @@ function gdsr_include_render() {
  */
 function gdsr_zero_percentage() {
     global $gdsr;
-    return $gdsr->o["no_votes_percentage"];
+    return apply_filters("gdsr_fn_zero_percentage", $gdsr->o["no_votes_percentage"]);
 }
 
 /**
@@ -112,7 +135,7 @@ function gd_get_multi_set($id = 0) {
  * @param array $filter variables to determine data to be retrieved
  * @return array votes objects
  */
-function wp_gdsr_get_users_votes($user_id, $limit = 100, $filter = array()) {
+function gdsr_get_users_votes($user_id, $limit = 100, $filter = array()) {
     global $gdsr;
     return $gdsr->get_users_votes($user_id, $limit, $filter);
 }
@@ -124,7 +147,7 @@ function wp_gdsr_get_users_votes($user_id, $limit = 100, $filter = array()) {
  * @global object $post post data
  * @param int $post_id post to get review for
  */
-function wp_gdsr_get_multi_set($post_id = 0) {
+function gdsr_get_multi_set($post_id = 0) {
     global $gdsr;
     if ($post_id == 0) {
         global $post;
@@ -133,20 +156,22 @@ function wp_gdsr_get_multi_set($post_id = 0) {
     return $gdsr->get_multi_set($post_id);
 }
 
-/**
- * Determines if the browser accessing the page is MS Internet Explorer 6
- *
- * @return bool true if the browser is IE6
- */
-function is_msie6() {
-    $agent = $_SERVER['HTTP_USER_AGENT'];
-    if (preg_match("/msie/i", $agent) && !preg_match("/opera/i", $agent)) {
-        $val = explode(" ", stristr($agent, "msie"));
-        $version = substr($val[1], 0, 1);
-        if ($version < 7) return true;
-        else return false;
+if (!function_exists("is_msie6")) {
+    /**
+     * Determines if the browser accessing the page is MS Internet Explorer 6
+     *
+     * @return bool true if the browser is IE6
+     */
+    function is_msie6() {
+        $agent = $_SERVER['HTTP_USER_AGENT'];
+        if (preg_match("/msie/i", $agent) && !preg_match("/opera/i", $agent)) {
+            $val = explode(" ", stristr($agent, "msie"));
+            $version = substr($val[1], 0, 1);
+            if ($version < 7) return true;
+            else return false;
+        }
+        return false;
     }
-    return false;
 }
 
 ?>

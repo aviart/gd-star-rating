@@ -22,8 +22,6 @@ class GDSRRenderT2 {
         $query = apply_filters("gdsr_query_totals", $query, $widget);
         $sql = GDSRX::compile_query($query);
 
-wp_gdsr_dump("SQL_TOTALS_".strtoupper($widget["source"]), $sql);
-
         $data = $wpdb->get_row($sql);
         $data->max_rating = $widget["source"] == "thumbs" ? 0 : $gdsr->o["stars"];
 
@@ -53,8 +51,6 @@ wp_gdsr_dump("SQL_TOTALS_".strtoupper($widget["source"]), $sql);
 
         $query = apply_filters("gdsr_query_results", $query, $widget);
         $sql = GDSRX::compile_query($query);
-
-wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
         return $wpdb->get_results($sql);
     }

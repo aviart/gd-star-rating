@@ -146,9 +146,7 @@ class GDSRImport {
     function import_wpr_log() {
         global $wpdb, $table_prefix;
         $sql = sprintf("INSERT INTO %sgdsr_votes_log SELECT null, rating_postid, 'article', 0, rating_userid, rating_rating, '', FROM_UNIXTIME(rating_timestamp), rating_ip, '', 0 FROM %sratings ORDER BY rating_timestamp asc", $table_prefix, $table_prefix);
-        wp_gdsr_dump("LOG", $sql);
         $wpdb->query($sql);
-        wp_gdsr_dump("LOG", $wpdb->last_error);
     }
     
     function import_wpr_trend_articles() {

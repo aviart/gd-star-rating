@@ -159,6 +159,15 @@ class GDStarRating {
         define('STARRATING_ENCODING', $this->o["encoding"]);
     }
 
+    function get($name) {
+        return $this->o[$name];
+    }
+
+    function set($name, $value, $save = true) {
+        $this->o[$name] = $value;
+        if ($save) update_option('gd-star-rating', $this->o);
+    }
+
     /**
      * Initialize security variables based on the gdsr-config.php file
      */
@@ -1339,6 +1348,9 @@ class GDStarRating {
         $this->custom_actions('init');
     }
 
+    /**
+     * Initialization of plugin panels
+     */
     function init_specific_pages() {
         if ($this->admin_plugin_page == "settings") {
             $gdsr_options = $this->o;
@@ -1432,7 +1444,6 @@ class GDStarRating {
                     foreach ($data as $set_id => $mur) {
                         $set = gd_get_multi_set($set_id);
                         $values = explode("X", $mur);
-                        wp_gdsr_dump("MUR", $values);
                         $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
                         GDSRDBMulti::save_review($record_id, $values);
                         GDSRDBMulti::recalculate_multi_review($record_id, $values, $set);

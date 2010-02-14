@@ -129,6 +129,13 @@ function gdsr_save_multi_review($post_id, $multi_set_id, $values) {
     GDSRDBMulti::recalculate_multi_review($record_id, $clean, $set);
 }
 
+/**
+ * Renders the multi review result
+ *
+ * @param string $settings rendering parameters
+ * @param bool $echo echo results or return it as a string
+ * @return string html with rendered contents
+ */
 function gdsr_render_multi_review($settings = array(), $echo = true) {
     global $gdsr;
     
@@ -142,7 +149,7 @@ function gdsr_render_multi_review($settings = array(), $echo = true) {
         $settings["post_id"] = $post->ID;
     }
 
-    $settings["id"] = $settings["multi_id"] == 0 ? wp_gdsr_get_multi_set($settings["post_id"]) : $settings["multi_id"];
+    $settings["id"] = $settings["multi_id"] == 0 ? gdsr_get_multi_set($settings["post_id"]) : $settings["multi_id"];
     if ($echo) echo $gdsr->shortcode_starreviewmulti($settings);
     else return $gdsr->shortcode_starreviewmulti($settings);
 }
