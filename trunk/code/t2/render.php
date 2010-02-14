@@ -22,8 +22,6 @@ class GDSRRenderT2 {
         $query = apply_filters("gdsr_query_totals", $query, $widget);
         $sql = GDSRX::compile_query($query);
 
-wp_gdsr_dump("SQL_TOTALS_".strtoupper($widget["source"]), $sql);
-
         $data = $wpdb->get_row($sql);
         $data->max_rating = $widget["source"] == "thumbs" ? 0 : $gdsr->o["stars"];
 
@@ -53,8 +51,6 @@ wp_gdsr_dump("SQL_TOTALS_".strtoupper($widget["source"]), $sql);
 
         $query = apply_filters("gdsr_query_results", $query, $widget);
         $sql = GDSRX::compile_query($query);
-
-wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
         return $wpdb->get_results($sql);
     }
@@ -877,7 +873,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
     }
 
     function render_rmb($template_id, $rpar = array()) {
-        $rdef = array("votes" => array(), "post_id" => 0, "set" => 0, "avg_rating" => 0,
+        $rdef = array("votes" => array(), "post_id" => 0, "set" => 0, "avg_rating" => 0, "star_factor" => 1,
             "style" => "oxygen", "size" => 20, "avg_style" => "oxygen", "avg_size" => 20);
         $rpar = wp_parse_args($rpar, $rdef);
         $rpar = apply_filters('gdsr_t2parameters_rmb', $rpar);
@@ -901,7 +897,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
             $single_row = str_replace('%ELEMENT_NAME%', $el, $single_row);
             $single_row = str_replace('%ELEMENT_ID%', $i, $single_row);
             $single_row = str_replace('%ELEMENT_VALUE%', $votes[$i]["rating"], $single_row);
-            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::render_static_stars($style, $size, $set->stars, $votes[$i]["rating"]), $single_row);
+            $single_row = str_replace('%ELEMENT_STARS%', GDSRRender::render_static_stars($style, $size, $set->stars * $star_factor, $votes[$i]["rating"] * $star_factor), $single_row);
             $single_row = str_replace('%TABLE_ROW_CLASS%', is_odd($i) ? $table_row_class->elm["odd"] : $table_row_class->elm["even"], $single_row);
             $rating_stars.= $single_row;
 
@@ -981,6 +977,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
         $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
         $percent = number_format($percent, 0);
+        if ($percent == 0) $percent = gdsr_zero_percentage();
 
         $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
         $rt = str_replace('%PERCENTAGE%', $percent, $rt);
@@ -1008,6 +1005,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
         $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
         $percent = number_format($percent, 0);
+        if ($percent == 0) $percent = gdsr_zero_percentage();
 
         $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
         $rt = str_replace('%PERCENTAGE%', $percent, $rt);
@@ -1109,6 +1107,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
 
         $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
         $percent = number_format($percent, 0);
+        if ($percent == 0) $percent = gdsr_zero_percentage();
 
         $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
         $rt = str_replace('%PERCENTAGE%', $percent, $rt);
@@ -1291,6 +1290,7 @@ wp_gdsr_dump("SQL_RESULTS_".strtoupper($widget["source"]), $sql);
         $data = GDSRRenderT2::prepare_wbr($widget);
         if ($widget["source"] == "thumbs" && $data->rating > 0) $data->rating = "+".$data->rating;
         if ($widget["source"] == "thumbs") $data->voters = $data->votes;
+        if ($data->percentage == 0) $data->percentage = gdsr_zero_percentage();
 
         $rt = str_replace('%PERCENTAGE%', $data->percentage, $tpl_render);
         $rt = str_replace('%RATING%', $data->rating, $rt);

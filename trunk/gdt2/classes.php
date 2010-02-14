@@ -156,7 +156,7 @@ class gdTemplateDB {
     function add_template($general, $elements) {
         global $wpdb, $table_prefix;
         $sql = sprintf("INSERT INTO %s%s (`section`, `name`, `description`, `elements`, `dependencies`, `preinstalled`, `default`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '0')",
-            $table_prefix, STARRATING_TPLT2_TABLE, $general["section"], $general["name"], $general["description"], serialize($elements), serialize($general["dependencies"]), $general["preinstalled"]);
+            $table_prefix, STARRATING_TPLT2_TABLE, $general["section"], $general["name"], isset($general["description"]) ? $general["description"] : "", serialize($elements), serialize($general["dependencies"]), $general["preinstalled"]);
         $wpdb->query($sql);
         return $wpdb->insert_id;
     }

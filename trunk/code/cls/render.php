@@ -42,7 +42,7 @@ class GDSRRender {
         $render = '<div class="gdsrcacheloader gdsrclsmall">';
 
         if ($value == "promourl")
-            $render.= '<a rel="rating" href="http://www.gdstarrating.com/" title="GD Star Rating: a WordPress rating system"><strong>GD Star Rating</strong><br />';
+            $render.= '<a rel="rating" href="http://www.gdstarrating.com/" title="GD Star Rating: a WordPress rating system"><strong>GD Star Rating</strong></a><br />';
         else if ($value == "promoname")
             $render.= '<strong>GD Star Rating</strong><br />';
 

@@ -28,7 +28,7 @@ function wp_gdsr_rating_multi($multi_set_id = 0, $post_id = 0) {
         $post_id = $post->ID;
     }
 
-    $multi_set_id = $multi_set_id == 0 ? wp_gdsr_get_multi_set($post_id) : $multi_set_id;
+    $multi_set_id = $multi_set_id == 0 ? gdsr_get_multi_set($post_id) : $multi_set_id;
     $multis_data = GDSRDBMulti::get_multi_rating_data($set_id, $post_id);
     if (count($multis_data) == 0) return null;
     return new GDSRArticleMultiRating($multis_data, $set_id);

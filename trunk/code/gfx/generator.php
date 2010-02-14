@@ -155,7 +155,7 @@ class GDSRGenerator {
 
     function generate_thumb_png($file_path, $size, $value, $output = '') {
         $value = intval($value);
-        wp_gdsr_dump("VAL", $value);
+
         $image_set = imagecreatefrompng($file_path);
         $thumb = imagecreatetruecolor($size, $size);
         imagesavealpha($thumb, true);

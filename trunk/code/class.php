@@ -68,6 +68,7 @@ class GDStarRating {
     var $f; // front end rendering object
     var $m; // admin menus object
     var $v; // ajax votes saving object
+    var $s; // shared objects functions
     var $qc;
     var $rSnippets;
     var $ginc;
@@ -121,7 +122,8 @@ class GDStarRating {
         $this->default_shortcode_starthumbsblock = $gdd->default_shortcode_starthumbsblock;
         $this->default_shortcode_starreview = $gdd->default_shortcode_starreview;
 
-        define('STARRATING_INSTALLED', $this->default_options["version"]." ".$this->default_options["status"]);
+        define("STARRATING_INSTALLED", $this->default_options["version"]." ".$this->default_options["status"]);
+        define("STARRATING_EOL", "\r\n");
 
         $this->c = array();
 
@@ -141,6 +143,7 @@ class GDStarRating {
             $this->m = new gdsrMenus($this);
         }
 
+        $this->s = new gdsrShared($this);
         if (!STARRATING_AJAX) {
             $this->actions_filters();
             $this->initialize_security();
@@ -154,6 +157,15 @@ class GDStarRating {
         define("STARRATING_STARS_GENERATOR", $this->o["gfx_generator_auto"] == 0 ? "DIV" : "GFX");
         define('STARRATING_AJAX_URL', $this->plugin_ajax);
         define('STARRATING_ENCODING', $this->o["encoding"]);
+    }
+
+    function get($name) {
+        return $this->o[$name];
+    }
+
+    function set($name, $value, $save = true) {
+        $this->o[$name] = $value;
+        if ($save) update_option('gd-star-rating', $this->o);
     }
 
     /**
@@ -360,7 +372,7 @@ class GDStarRating {
                 $votes[] = $single_vote;
             }
             $avg_rating = GDSRDBMulti::get_multi_review_average($vote_id);
-            return GDSRRenderT2::render_rmb($settings["tpl"], array("votes" => $votes, "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "style" => $el_stars, "size" => $el_size, "avg_style" => $settings["average_stars"], "avg_size" => $settings["average_size"]));
+            return GDSRRenderT2::render_rmb($settings["tpl"], array("votes" => $votes, "star_factor" => $settings["factor"], "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "style" => $el_stars, "size" => $el_size, "avg_style" => $settings["average_stars"], "avg_size" => $settings["average_size"]));
         }
         else return '';
     }
@@ -521,42 +533,6 @@ class GDStarRating {
         $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $max, 0);
         return $rating;
     }
-
-    /**
-     * Renders multi rating review editor block.
-     *
-     * @param int $post_id id of the post to render review editor for
-     * @param bool $admin wheter the rendering is for admin edit post page or not
-     * @return string rendered result
-     */
-    function blog_multi_review_editor($post_id, $settings = array(), $admin = true) {
-        if (!isset($settings["id"]) || $settings["id"] == "") $multi_id = $this->o["mur_review_set"];
-        else $multi_id = $settings["id"];
-        $set = gd_get_multi_set($multi_id);
-        if (is_null($set)) {
-            $set = gd_get_multi_set();
-            $multi_id = !is_null($set) ? $set->multi_id : 0  ;
-        }
-        if ($multi_id > 0 && $post_id > 0) {
-            $vote_id = GDSRDBMulti::get_vote($post_id, $multi_id, count($set->object));
-            $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
-            if (count($multi_data) == 0) {
-                GDSRDBMulti::add_empty_review_values($vote_id, count($set->object));
-                $multi_data = GDSRDBMulti::get_values($vote_id, 'rvw');
-            }
-        } else $multi_data = array();
-
-        $votes = array();
-        foreach ($multi_data as $md) {
-            $single_vote = array();
-            $single_vote["votes"] = 1;
-            $single_vote["score"] = $md->user_votes;
-            $single_vote["rating"] = $md->user_votes;
-            $votes[] = $single_vote;
-        }
-        if ($admin) include($this->plugin_path.'integrate/edit_multi.php');
-        else return GDSRRenderT2::render_mre(intval($settings["tpl"]), array("post_id" => $post_id, "votes" => $votes, "style" => "oxygen", "set" => $set, "height" => 20, "allow_vote" => true));
-    }
     // various rendering
 
     // edit boxes
@@ -565,8 +541,7 @@ class GDStarRating {
      */
     function editbox_post_mur() {
         global $post;
-        $post_id = $post->ID;
-        $this->blog_multi_review_editor($post_id);
+        gdsr_render_multi_editor(array("post_id" => $post->ID, "admin" => true));
     }
 
     /**
@@ -702,45 +677,42 @@ class GDStarRating {
 
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Tools", "gd-star-rating"), __("Tools", "gd-star-rating"), $this->security_level, "gd-star-rating-tools", array(&$this->m, "star_menu_tools"));
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Setup", "gd-star-rating"), __("Setup", "gd-star-rating"), $this->security_level_setup, "gd-star-rating-setup", array(&$this->m, "star_menu_setup"));
-
-        if ($this->wp_secure_level)
-            add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Security", "gd-star-rating"), __("Security", "gd-star-rating"), $this->security_level, "gd-star-rating-security", array(&$this->m, "star_menu_security"));
     }
 
     function load_colorbox() {
         if ($this->wp_version >= 28) {
-            wp_enqueue_script('gdsr-colorbox', STARRATING_URL."js/jquery/jquery-colorbox.js", array("jquery"), $this->o["version"], true);
-            wp_enqueue_style('gdsr-colorbox', STARRATING_URL."css/jquery/colorbox.css");
+            wp_enqueue_script('gdsr-colorbox', $this->plugin_url."js/jquery/jquery-colorbox.js", array("jquery"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-colorbox', $this->plugin_url."css/jquery/colorbox.css");
         }
     }
 
     function load_jquery() {
         if ($this->wp_version < 28) {
-            wp_enqueue_script('gdsr-jquery-ui', STARRATING_URL."js/jquery/jquery-ui.js", array("jquery"), $this->o["version"], true);
-            wp_enqueue_script('gdsr-jquery-ui-tabs', STARRATING_URL."js/jquery/jquery-ui-tabs.js", array("jquery", "gdsr-jquery-ui"), $this->o["version"], true);
-            wp_enqueue_style('gdsr-jquery-ui-tabs', STARRATING_URL."css/jquery/ui.tabs.js");
+            wp_enqueue_script('gdsr-jquery-ui', $this->plugin_url."js/jquery/jquery-ui.js", array("jquery"), $this->o["version"], true);
+            wp_enqueue_script('gdsr-jquery-ui-tabs', $this->plugin_url."js/jquery/jquery-ui-tabs.js", array("jquery", "gdsr-jquery-ui"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-jquery-ui-tabs', $this->plugin_url."css/jquery/ui.tabs.js");
         }
     }
 
     function load_datepicker() {
         if ($this->wp_version < 28) {
-            wp_enqueue_script('gdsr-jquery-datepicker', STARRATING_URL."js/jquery/jquery-ui-datepicker.js", array("jquery", "gdsr-jquery-ui"), $this->o["version"], true);
-            wp_enqueue_style('gdsr-jquery-ui-core', STARRATING_URL."css/jquery/ui.core.css");
-            wp_enqueue_style('gdsr-jquery-ui-theme', STARRATING_URL."css/jquery/ui.theme.css");
+            wp_enqueue_script('gdsr-jquery-datepicker', $this->plugin_url."js/jquery/jquery-ui-datepicker.js", array("jquery", "gdsr-jquery-ui"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-jquery-ui-core', $this->plugin_url."css/jquery/ui.core.css");
+            wp_enqueue_style('gdsr-jquery-ui-theme', $this->plugin_url."css/jquery/ui.theme.css");
         } else {
-            wp_enqueue_script('gdsr-jquery-datepicker', STARRATING_URL."js/jquery/jquery-ui-datepicker-17.js", array("jquery", "jquery-ui-core"), $this->o["version"], true);
-            wp_enqueue_style('gdsr-jquery-ui-theme', STARRATING_URL."css/jquery/ui.17.css");
+            wp_enqueue_script('gdsr-jquery-datepicker', $this->plugin_url."js/jquery/jquery-ui-datepicker-17.js", array("jquery", "jquery-ui-core"), $this->o["version"], true);
+            wp_enqueue_style('gdsr-jquery-ui-theme', $this->plugin_url."css/jquery/ui.17.css");
         }
 
         if(!empty($this->l)) {
             $jsFile = $this->plugin_path.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js';
             if (@file_exists($jsFile) && is_readable($jsFile))
-                wp_enqueue_script('gdsr-jquery-datepicker-translation', $jsFile, array(gdsr-jquery-datepicker), $this->o["version"], true);
+                wp_enqueue_script('gdsr-jquery-datepicker-translation', $jsFile, array("gdsr-jquery-datepicker"), $this->o["version"], true);
         }
     }
 
     function load_corrections() {
-        wp_enqueue_script('gdsr-js-corrections', STARRATING_URL."js/rating/rating-corrections.js", array(), $this->o["version"], true);
+        wp_enqueue_script('gdsr-js-corrections', $this->plugin_url."js/rating/rating-corrections.js", array(), $this->o["version"], true);
     }
 
     /**
@@ -748,49 +720,66 @@ class GDStarRating {
      */
     function admin_head() {
         global $parent_file;
-        $datepicker_date = date("Y, n, j");
         $this->admin_page = $parent_file;
+        $datepicker_date = date("Y, n, j");
+        $tabs_extras = "";
 
-        $tabs_extras = $datepicker_date = "";
+        if ($this->admin_plugin_page == "ips" && isset($_GET["gdsr"]) && $_GET["gdsr"] == "iplist") {
+            $tabs_extras = ", selected: 1";
+        }
 
-        if ($this->admin_plugin_page == "ips" && isset($_GET["gdsr"]) && $_GET["gdsr"] == "iplist") $tabs_extras = ", selected: 1";
         if ($this->admin_plugin) {
             wp_admin_css('css/dashboard');
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_main.css" type="text/css" media="screen" />');
-            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-admin.js"></script>');
-            if ($this->wp_version == 27) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />');
-            if ($this->wp_version >= 28) echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp28.css" type="text/css" media="screen" />');
+            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_main.css" type="text/css" media="screen" />'.STARRATING_EOL);
+            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-admin.js"></script>'.STARRATING_EOL);
+            if ($this->wp_version < 28) {
+                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp27.css" type="text/css" media="screen" />'.STARRATING_EOL);
+            } else {
+                echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp28.css" type="text/css" media="screen" />'.STARRATING_EOL);
+            }
         }
 
         if ($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php") {
-            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-editors.js"></script>');
+            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-editors.js"></script>'.STARRATING_EOL);
         }
-        echo("\r\n");
-        echo('<script type="text/javascript">jQuery(document).ready(function() {');
+
+        echo('<script type="text/javascript">jQuery(document).ready(function() {'.STARRATING_EOL);
             if ($this->admin_plugin) {
-                if ($this->wp_version >= 28) echo('jQuery(".clrboxed").colorbox({width:800, height:470, iframe:true});');
-                echo('jQuery("#gdsr_tabs'.($this->wp_version < 28 ? ' > ul' : '').'").tabs({fx: {height: "toggle"}'.$tabs_extras.' });');
+                if ($this->wp_version >= 28) {
+                    echo('jQuery(".clrboxed").colorbox({width:800, height:470, iframe:true});'.STARRATING_EOL);
+                }
+                echo('jQuery("#gdsr_tabs'.($this->wp_version < 28 ? ' > ul' : '').'").tabs({fx: {height: "toggle"}'.$tabs_extras.' });'.STARRATING_EOL);
             }
-            if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") echo('jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});');
-            if ($this->admin_plugin_page == "tools") echo('jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});');
-            if ($this->admin_plugin_page == "settings") include(STARRATING_PATH."code/js/loaders.php");
-        echo("});</script>\r\n");
-        if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") &&
-            $this->o["integrate_post_edit_mur"] == 1) {
+            if ($this->admin_plugin || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php" || $this->admin_page == "themes.php") {
+                echo('if (jQuery().datepicker) jQuery("#gdsr_timer_date_value").datepicker({duration: "fast", minDate: new Date('.$datepicker_date.'), dateFormat: "yy-mm-dd"});'.STARRATING_EOL);
+            }
+            if ($this->admin_plugin_page == "tools") {
+                echo('if (jQuery().datepicker) jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});'.STARRATING_EOL);
+            }
+            if ($this->admin_plugin_page == "settings") {
+                include(STARRATING_PATH."code/js/loaders.php");
+            }
+        echo("});</script>".STARRATING_EOL);
+
+        if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") && $this->o["integrate_post_edit_mur"] == 1) {
             $this->include_rating_css_admin();
         }
         if ($this->admin_page == "widgets.php" || $this->admin_page == "themes.php") {
-            if ($this->wp_version < 28) echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets.js"></script>');
-            else echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets-28.js"></script>');
-            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />');
+            if ($this->wp_version < 28) {
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets.js"></script>'.STARRATING_EOL);
+            } else {
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets-28.js"></script>'.STARRATING_EOL);
+            }
+            echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />'.STARRATING_EOL);
         }
 
         $this->custom_actions('admin_head');
 
-        if ($this->admin_plugin_page == "builder")
-            echo('<script type="text/javascript" src="'.$this->plugin_url.'tinymce3/tinymce.js"></script>');
+        if ($this->admin_plugin_page == "builder") {
+            echo('<script type="text/javascript" src="'.$this->plugin_url.'tinymce3/tinymce.js"></script>'.STARRATING_EOL);
+        }
 
-        echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_post.css" type="text/css" media="screen" />');
+        echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_post.css" type="text/css" media="screen" />'.STARRATING_EOL);
     }
 
     /**
@@ -1359,6 +1348,9 @@ class GDStarRating {
         $this->custom_actions('init');
     }
 
+    /**
+     * Initialization of plugin panels
+     */
     function init_specific_pages() {
         if ($this->admin_plugin_page == "settings") {
             $gdsr_options = $this->o;
@@ -1448,13 +1440,14 @@ class GDStarRating {
         if (isset($_POST["gdsr_multi_review_form"]) && $_POST["gdsr_multi_review_form"] == "review") {
             $mur_all = $_POST['gdsrmulti'];
             foreach ($mur_all as $post_id => $data) {
-                foreach ($data as $set_id => $mur) {
-                    $set = gd_get_multi_set($set_id);
-                    $values = explode("X", $mur);
-                    wp_gdsr_dump("MUR", $values);
-                    $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
-                    GDSRDBMulti::save_review($record_id, $values);
-                    GDSRDBMulti::recalculate_multi_review($record_id, $values, $set);
+                if ($post_id > 0) {
+                    foreach ($data as $set_id => $mur) {
+                        $set = gd_get_multi_set($set_id);
+                        $values = explode("X", $mur);
+                        $record_id = GDSRDBMulti::get_vote($post_id, $set_id, count($set->object));
+                        GDSRDBMulti::save_review($record_id, $values);
+                        GDSRDBMulti::recalculate_multi_review($record_id, $values, $set);
+                    }
                 }
             }
             $this->custom_actions('init_save_review');
