@@ -12,7 +12,7 @@
         var size = el[5];
         var new_width = vote * size;
         var current_id = '#gdsr_murvw_stars_current_' + el[1] + '_' + el[2] + '_' + el[3];
-        var input_id = '#gdsr_int_multi_' + el[1] + '_' + el[2];
+        var input_id = '.gdsr_int_multi_' + el[1] + '_' + el[2];
         jQuery(current_id).css("width", new_width + "px");
         var rating_values = jQuery(input_id).val().split("X");
         rating_values[el[3]] = vote;
