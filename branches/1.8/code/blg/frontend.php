@@ -165,16 +165,18 @@ class gdsrFront {
 
     function render_gsr_standard_rating($post) {
         $post_data = wp_gdget_post($post->ID);
-        $voters = $post_data->visitor_voters + $post_data->user_voters;
-        if (!is_object($this->g->rSnippets) || $voters == 0) return "";
-        $votes = $post_data->visitor_votes + $post_data->user_votes;
-        $rating = number_format($votes / $voters, 1);
-        return $this->g->rSnippets->snippet_stars_rating(array(
-            "title" => $post->post_title,
-            "rating" => $rating,
-            "max_rating" => $this->g->o["stars"],
-            "votes" => $voters
-        ));
+        if (is_object($post_data)) {
+            $voters = $post_data->visitor_voters + $post_data->user_voters;
+            if (!is_object($this->g->rSnippets) || $voters == 0) return "";
+            $votes = $post_data->visitor_votes + $post_data->user_votes;
+            $rating = number_format($votes / $voters, 1);
+            return $this->g->rSnippets->snippet_stars_rating(array(
+                "title" => $post->post_title,
+                "rating" => $rating,
+                "max_rating" => $this->g->o["stars"],
+                "votes" => $voters
+            ));
+        }
     }
 
     function render_gsr_standard_review($post) {

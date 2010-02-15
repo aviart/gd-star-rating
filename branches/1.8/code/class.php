@@ -1709,7 +1709,8 @@ class GDStarRating {
         $elements[] = "t1pstarrating";
         $q = join("#", $elements);
         $t = $this->o["css_cache_active"] == 1 ? $this->o["css_last_changed"] : 0;
-        $url = $this->plugin_url.'css/gdsr.css.php?t='.urlencode($t).'&amp;s='.urlencode($q);
+        $opacity = $this->o["include_opacity"] == 1 ? "on" : "off";
+        $url = $this->plugin_url.'css/gdsr.css.php?t='.urlencode($t).'&amp;s='.urlencode($q).'&amp;o='.urlencode($opacity);
         echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
     }
 
@@ -1761,8 +1762,9 @@ class GDStarRating {
 
         $q = join("#", $elements);
         $t = $this->o["css_cache_active"] == 1 ? $this->o["css_last_changed"] : 0;
+        $opacity = $this->o["include_opacity"] == 1 ? "on" : "off";
         if ($external) {
-            $url = $this->plugin_url.'css/gdsr.css.php?t='.urlencode($t).'&amp;s='.urlencode($q);
+            $url = $this->plugin_url.'css/gdsr.css.php?t='.urlencode($t).'&amp;s='.urlencode($q).'&amp;o='.urlencode($opacity);
             if ($return) return $url;
             else echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
         } else {

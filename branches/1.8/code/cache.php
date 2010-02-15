@@ -100,7 +100,7 @@ function wp_gdget_integration_mur($comment_id, $multi_set_id) {
 
 function wp_gdget_post($post_id) {
     global $gdsr_cache_posts_std_data;
-
+    
     $post = $gdsr_cache_posts_std_data->get($post_id);
     if (!is_null($post) && is_object($post)) return $post;
     else {

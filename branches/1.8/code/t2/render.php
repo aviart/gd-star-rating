@@ -576,7 +576,7 @@ class GDSRRenderT2 {
         }
 
         $rating = @number_format($weighted, 1);
-        $total_votes = @number_format($total_votes / $i, 0);
+        $total_votes = $i == 0 ? 0 : @number_format($total_votes / $i, 0);
         if (in_array("%MUR_RATING_TEXT%", $template->tag["normal"])) {
             $rating_text = GDSRRenderT2::render_mrt($template->dep["MRT"], array("rating" => $rating, "unit_count" => $set->stars, "votes" => $total_votes, "id" => $post_id, "time_restirctions" => $time_restirctions, "time_remaining" => $time_remaining, "time_date" => $time_date));
             $rating_wait = $allow_vote ? GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", "", $wait_msg) : "";
