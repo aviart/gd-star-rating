@@ -23,6 +23,11 @@ define('STARRATING_LEGACY_FUNCTIONS', true);
 define('STARRATING_DEBUG', true);
 
 /**
+ * Activate debug version of JS code.
+ */
+define('STARRATING_JAVASCRIPT_DEBUG', false);
+
+/**
  * Minimal user level required to access some of the plugins panels.
  */
 define('STARRATING_ACCESS_LEVEL_FRONT', 1);

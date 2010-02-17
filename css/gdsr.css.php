@@ -34,9 +34,10 @@ if (!isset($inclusion)) {
     $base_url_local = "../";
     $base_url_extra = "../../../gd-star-rating/";
     $t = isset($_GET["t"]) ? urldecode($_GET["t"]) : 0;
+    $opacity = isset($_GET["o"]) ? urldecode($_GET["o"]) : "off";
     $q = urldecode($_GET["s"]);
     @ob_start ("ob_gzhandler");
-    header("Content-Type: text/css; charset: UTF-8");
+    header("Content-Type: text/css");
 
     if ($t > 0) {
         $gmt_mtime = gmdate('D, d M Y H:i:s', $t).' GMT';
@@ -205,11 +206,10 @@ if (count($thumb_sets) > 0 && count($thumb_sizes)) {
 .rtexthumb .gdthumbtext { float: none; }
 .gdthumbtext { float: left; font-size: 12px; }
 .gdthumb { position: relative; float: left; }
-.gdthumb div { opacity: 0.7; }
 .gdthumb.gdup a { background-position:  0px 0px; }
 .thumblock .ratingloader { float: left; }
 
-.ratemulti .starsbar .gdcurrent { width: 0; top: 0; position: absolute; opacity: 0.7; }
+.ratemulti .starsbar .gdcurrent { width: 0; top: 0; position: absolute; }
 .starsbar .gdinner { padding: 0; }
 .ratingblock td { vertical-align: middle; }
 .raterclear { clear: both; }
@@ -296,3 +296,8 @@ foreach ($loaders as $l) {
 .gdsrclsmall em { font-size: 11px; }
 .gdsrclbig strong { font-size: 17px; }
 .gdsrclbig em { font-size: 14px; }
+
+<?php if ($opacity == "on") { ?>
+.gdthumb div { opacity: 0.7; }
+.ratemulti .starsbar .gdcurrent { opacity: 0.7; }
+<?php } ?>

@@ -21,6 +21,11 @@ if (!defined('STARRATING_LEGACY_FUNCTIONS')) define('STARRATING_LEGACY_FUNCTIONS
 if (!defined('STARRATING_DEBUG')) define('STARRATING_DEBUG', true);
 
 /**
+ * Activate debug version of JS code.
+ */
+if (!defined('STARRATING_JAVASCRIPT_DEBUG')) define('STARRATING_JAVASCRIPT_DEBUG', false);
+
+/**
  * GD Star Rating is working in AJAX mode or not.
  */
 if (!defined('STARRATING_AJAX')) define('STARRATING_AJAX', false);

@@ -49,6 +49,8 @@
         <br />
         <input type="checkbox" name="gdsr_external_css" id="gdsr_external_css"<?php if ($gdsr_options["external_css"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_css"><?php _e("Link additional CSS file", "gd-star-rating"); ?>: <strong>'wp-content/gd-star-rating/css/rating.css'</strong></label>
         <div class="gdsr-table-split"></div>
+        <input type="checkbox" name="gdsr_include_opacity" id="gdsr_include_opacity"<?php if ($gdsr_options["include_opacity"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_include_opacity"><?php _e("Include opacity for some styles. If activated, it will break CSS 2.1 validation.", "gd-star-rating"); ?></label>
+        <div class="gdsr-table-split"></div>
         <input type="checkbox" name="gdsr_css_cache_active" id="gdsr_css_cache_active"<?php if ($gdsr_options["css_cache_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_css_cache_active"><?php _e("Auto cache of the main CSS file enabled.", "gd-star-rating"); ?></label>
     </td>
 </tr>
