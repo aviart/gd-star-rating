@@ -1,9 +1,9 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.8.2
+Version: 1.8.3
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
-Tested up to: 2.9.1
+Tested up to: 3.0
 Stable tag: trunk
 
 GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
@@ -173,8 +173,12 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.8.3 =
+* New and improved main JS ratings file
+
 = 1.8.2 =
 * Few new functions and updates to comment integration
+* Improvements in main CSS file
 * Several fixes and changes
 
 = 1.8.1 =
