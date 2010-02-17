@@ -756,11 +756,11 @@ class GDStarRating {
             if ($this->admin_plugin_page == "tools") {
                 echo('if (jQuery().datepicker) jQuery("#gdsr_lock_date").datepicker({duration: "fast", dateFormat: "yy-mm-dd"});'.STARRATING_EOL);
             }
-            if ($this->admin_plugin_page == "settings") {
-                include(STARRATING_PATH."code/js/loaders.php");
-            }
         echo("});</script>".STARRATING_EOL);
 
+        if ($this->admin_plugin_page == "settings") {
+            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-loaders.js"></script>'.STARRATING_EOL);
+        }
         if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") && $this->o["integrate_post_edit_mur"] == 1) {
             $this->include_rating_css_admin();
         }
@@ -1016,6 +1016,7 @@ class GDStarRating {
         global $userdata;
         $user_id = is_object($userdata) ? $userdata->ID : 0;
         $user = intval($user_id);
+        $ip = $_SERVER["REMOTE_ADDR"];
 
         if ($this->post_comment["review"] > -1) {
             $comment_data = GDSRDatabase::get_comment_data($comment_id);
@@ -1029,7 +1030,6 @@ class GDStarRating {
 
         if ($this->post_comment["standard_rating"] > $std_minimum) {
             $votes = $this->post_comment["standard_rating"];
-            $ip = $_SERVER["REMOTE_ADDR"];
             $ua = $this->o["save_user_agent"] == 1 ? $_SERVER["HTTP_USER_AGENT"] : "";
             $allow_vote = true;
             if ($this->o["cmm_integration_prevent_duplicates"] == 1) {
@@ -1311,9 +1311,8 @@ class GDStarRating {
                 $this->f->render_wait_comment_thumb();
             }
 
-            if ($this->o["external_javascript"] == 1) {
-                wp_enqueue_script("gdsr_script", plugins_url('gd-star-rating/script.js.php'), array(), $this->o["version"]);
-            }
+            $js_name = STARRATING_JAVASCRIPT_DEBUG ? 'gd-star-rating/js/gdsr.debug.js' : 'gd-star-rating/js/gdsr.js';
+            wp_enqueue_script("gdsr_script", plugins_url($js_name), array(), $this->o["version"]);
             if ($this->o["external_rating_css"] == 1) {
                 wp_enqueue_style("gdsr_style_main", $this->include_rating_css(true, true), array(), $this->o["version"]);
             }
@@ -1398,24 +1397,22 @@ class GDStarRating {
     function wp_head() {
         if (is_feed()) return;
 
+        echo '<script type="text/javascript">'.STARRATING_EOL;
+        echo '//<![CDATA['.STARRATING_EOL;
+        echo 'var gdsr_cnst_nonce = "'.wp_create_nonce('gdsr_ajax_r8').'";'.STARRATING_EOL;
+        echo 'var gdsr_cnst_ajax = "'.STARRATING_AJAX_URL.'";'.STARRATING_EOL;
+        echo 'var gdsr_cnst_button = '.$this->o["mur_button_active"].';'.STARRATING_EOL;
+        echo 'var gdsr_cnst_cache = '.$this->o["cached_loading"].';'.STARRATING_EOL;
+        if ($this->o["cmm_integration_replay_hide_review"]) {
+            echo 'jQuery(document).ready(function() { jQuery(".comment-reply-link").click(function() { hideshowCmmInt(); }); });'.STARRATING_EOL;
+        }
+        echo '// ]]>'.STARRATING_EOL;
+        echo '</script>'.STARRATING_EOL;
+
         $include_cmm_review = $this->o["comments_review_active"] == 1;
         $include_mur_rating = $this->o["multis_active"] == 1;
 
         if ($this->o["external_rating_css"] == 0) $this->include_rating_css(false);
-
-        if ($this->o["external_javascript"] == 0) {
-            echo("\r\n");
-            echo('<script type="text/javascript">');
-            $nonce = $this->use_nonce ? wp_create_nonce('gdsr_ajax_r8') : "";
-            $button_active = $this->o["mur_button_active"] == 1;
-            echo('//<![CDATA[');
-            include ($this->plugin_path."code/js/main.php");
-            if ($this->o["cmm_integration_replay_hide_review"] == 1)
-                include ($gdsr->plugin_path."code/js/comments.php");
-            echo('// ]]>');
-            echo('</script>');
-            echo("\r\n");
-        }
 
         if ($this->o["debug_wpquery"] == 1) {
             global $wp_query;
