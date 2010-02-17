@@ -2,13 +2,13 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.8.2",
+        "version" => "1.8.3",
         "revision" => 0,
         "code_name" => "MMX",
-        "date" => "2010.02.15.",
+        "date" => "2010.02.23.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 1040,
+        "build" => 1044,
         "admin_views" => 0,
         "bot_message" => "promourl",
         "google_rich_snippets_format" => "microformat",
@@ -47,6 +47,7 @@ class GDSRDefaults {
         "database_cleanup_msg" => "",
         "mass_lock" => "",
         "thumbs_active" => 1,
+        "include_opacity" => 0,
         "ie_opacity_fix" => 1,
         "ip_filtering" => 1,
         "ip_filtering_restrictive" => 0,

@@ -165,16 +165,18 @@ class gdsrFront {
 
     function render_gsr_standard_rating($post) {
         $post_data = wp_gdget_post($post->ID);
-        $voters = $post_data->visitor_voters + $post_data->user_voters;
-        if (!is_object($this->g->rSnippets) || $voters == 0) return "";
-        $votes = $post_data->visitor_votes + $post_data->user_votes;
-        $rating = number_format($votes / $voters, 1);
-        return $this->g->rSnippets->snippet_stars_rating(array(
-            "title" => $post->post_title,
-            "rating" => $rating,
-            "max_rating" => $this->g->o["stars"],
-            "votes" => $voters
-        ));
+        if (is_object($post_data)) {
+            $voters = $post_data->visitor_voters + $post_data->user_voters;
+            if (!is_object($this->g->rSnippets) || $voters == 0) return "";
+            $votes = $post_data->visitor_votes + $post_data->user_votes;
+            $rating = number_format($votes / $voters, 1);
+            return $this->g->rSnippets->snippet_stars_rating(array(
+                "title" => $post->post_title,
+                "rating" => $rating,
+                "max_rating" => $this->g->o["stars"],
+                "votes" => $voters
+            ));
+        }
     }
 
     function render_gsr_standard_review($post) {
@@ -409,7 +411,9 @@ class gdsrFront {
             }
             $avg_rating = @number_format($avg_rating, 1);
             if ($avg_rating > 0) {
-                return GDSRRenderT2::render_rmb($template_id, array("votes" => $votes, "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "style" => $this->g->is_ie6 ? $stars_set_ie6 : $stars_set, "size" => $stars_size, "avg_style" => $this->g->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, "avg_size" => $avg_stars_size));
+                $style = $stars_set == "" ? $this->g->o["mur_style"] : $stars_set;
+                $style = $this->g->is_ie6 ? ($stars_set_ie6 == "" ? $this->g->o["mur_style_ie6"] : $stars_set_ie6) : $style;
+                return GDSRRenderT2::render_rmb($template_id, array("votes" => $votes, "post_id" => $post_id, "set" => $set, "avg_rating" => $avg_rating, "style" => $style, "size" => $stars_size, "avg_style" => $this->g->is_ie6 ? $avg_stars_set_ie6 : $avg_stars_set, "avg_size" => $avg_stars_size));
             } else return "";
         } else return "";
     }
@@ -466,7 +470,9 @@ class gdsrFront {
             $single_vote["rating"] = 0;
             $votes[] = $single_vote;
         }
-        return GDSRRenderT2::render_mri($template_id, array("post_id" => $post_id, "style" => $this->g->is_ie6 ? $stars_set_ie6 : $stars_set, "set" => $set, "height" => $stars_size));
+        $style = $stars_set == "" ? $this->g->o["mur_style"] : $stars_set;
+        $style = $this->g->is_ie6 ? ($stars_set_ie6 == "" ? $this->g->o["mur_style_ie6"] : $stars_set_ie6) : $style;
+        return GDSRRenderT2::render_mri($template_id, array("post_id" => $post_id, "style" => $style, "set" => $set, "height" => $stars_size));
     }
     // comment integration rating
 
