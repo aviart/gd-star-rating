@@ -2,7 +2,7 @@
 Contributors: gdragon
 Version: 1.8.2
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
-Requires at least: 2.8
+Requires at least: 2.7
 Tested up to: 2.9.1
 Stable tag: trunk
 
@@ -174,6 +174,8 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Changelog ==
 = 1.8.2 =
+* Few new functions and updates to comment integration
+* Several fixes and changes
 
 = 1.8.1 =
 * Updated several translations
