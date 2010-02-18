@@ -200,7 +200,7 @@ class GDSRRenderT2 {
                 if ($a_link || $a_name && intval($row->author) > 0) {
                     $user = get_userdata($row->author);
                     $row->author_name = $user->display_name;
-                    $row->author_url = get_author_link(intval($row->author));
+                    $row->author_url = get_author_posts_url(intval($row->author));
                 } else {
                     $row->author_name = "";
                     $row->author_url = "";
@@ -299,7 +299,7 @@ class GDSRRenderT2 {
                         $row->permalink = get_category_link($row->term_id);
                         break;
                     case "user":
-                        $row->permalink = get_author_link(intval($row->id));
+                        $row->permalink = get_author_posts_url(intval($row->id));
                         break;
                 }
 

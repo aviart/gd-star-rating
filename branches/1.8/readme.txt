@@ -177,6 +177,8 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 == Changelog ==
 = 1.8.3 =
 * New and improved main JS ratings file
+* Several more php notices fixed
+* Replaced noticed wordpress depracted functions
 
 = 1.8.2 =
 * Few new functions and updates to comment integration
