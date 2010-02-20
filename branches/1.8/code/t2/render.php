@@ -456,7 +456,7 @@ class GDSRRenderT2 {
         foreach($votes as $vote) $original_value.= number_format($vote["rating"], 0)."X";
         $original_value = substr($original_value, 0, strlen($original_value) - 1);
         $rater.= '<input type="hidden" id="gdsr_mur_review_'.$post_id.'_'.$set->multi_id.'" name="gdsrmurreview['.$post_id.']['.$set->multi_id.']" value="'.$original_value.'" />';
-        if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_int_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->multi_id.']" value="'.$original_value.'" />';
+        if ($allow_vote) $rater.= '<input type="hidden" class="gdsr_int_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->multi_id.']" value="'.$original_value.'" />';
 
         $i = 0;
         $weighted = 0;
