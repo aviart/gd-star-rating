@@ -1776,7 +1776,7 @@ class GDStarRating {
 
     function multi_rating_header($external_css = true) {
         $this->include_rating_css($external_css);
-        echo('<script type="text/javascript" src="'.$this->plugin_url.'script.js.php"></script>');
+        echo('<script type="text/javascript" src="'.$this->plugin_url.'js/gdsr.js"></script>');
     }
 
     /**

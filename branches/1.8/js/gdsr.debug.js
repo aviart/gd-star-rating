@@ -159,6 +159,10 @@ function value_cmm_rated_review() {
     return jQuery(".gdsr-cmm-cls-rt").val();
 }
 
+function gdsr_ie() {
+    return jQuery.browser.msie && jQuery.browser.version < '8.0';
+}
+
 jQuery(document).ready(function() {
     if (gdsr_cnst_cache == 1) {
         var ela = "";
@@ -213,13 +217,13 @@ jQuery(document).ready(function() {
         }
     }
 
-    if (jQuery.browser.msie) jQuery(".gdsr_rating_as > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdsr_rating_as > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_rating_as > a").click(function() { gdsr_rating_standard(this); });
 
-    if (jQuery.browser.msie) jQuery(".gdthumb > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdthumb > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdthumb > a").click(function() { gdsr_rating_thumb(this); });
 
-    if (jQuery.browser.msie) jQuery(".gdsr_integration > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdsr_integration > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_integration > a").click(function() {
         var el = jQuery(this).attr("id").split("X");
         var pid = "#" + jQuery(this).parent().attr("id");
@@ -228,13 +232,13 @@ jQuery(document).ready(function() {
         jQuery(pid + "_value").val(el[1]);
     });
 
-    if (jQuery.browser.msie) jQuery(".gdsr_multisbutton_as > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdsr_multisbutton_as > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_multisbutton_as > a").click(function() { gdsr_rating_multi_button(this); });
 
-    if (jQuery.browser.msie) jQuery(".gdsr_multis_as > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdsr_multis_as > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_multis_as > a").click(function() { gdsr_rating_multi_stars(this); });
 
-    if (jQuery.browser.msie) jQuery(".gdsr_mur_static > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdsr_mur_static > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_mur_static > a").click(function() {
         var el = jQuery(this).attr("id").split("X");
         var vote = el[4];
