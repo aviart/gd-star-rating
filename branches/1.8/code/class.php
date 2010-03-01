@@ -77,6 +77,7 @@ class GDStarRating {
     var $shortcodes;
     var $stars_sizes;
     var $thumb_sizes;
+    var $function_restrict;
     var $default_shortcode_starrating;
     var $default_shortcode_starratingmulti;
     var $default_shortcode_starreviewmulti;
@@ -121,6 +122,7 @@ class GDStarRating {
         $this->default_shortcode_starrater = $gdd->default_shortcode_starrater;
         $this->default_shortcode_starthumbsblock = $gdd->default_shortcode_starthumbsblock;
         $this->default_shortcode_starreview = $gdd->default_shortcode_starreview;
+        $this->function_restrict = $gdd->function_restrict;
 
         define("STARRATING_INSTALLED", $this->default_options["version"]." ".$this->default_options["status"]);
         define("STARRATING_EOL", "\r\n");
@@ -1830,10 +1832,16 @@ class GDStarRating {
         return $content;
     }
 
-    function display_article($content) {
-        if (is_admin()) return $content;
+    function check_backtrace_access() {
         $back_trace = gdFunctionsGDSR::get_caller_backtrace();
-        if (in_array("get_the_excerpt", $back_trace)) return $content;
+        foreach($this->function_restrict as $fr) {
+            if (in_array($fr, $back_trace)) return true;
+        }
+        return false;
+    }
+
+    function display_article($content) {
+        if (is_admin() || $this->check_backtrace_access()) return $content;
 
         global $post, $userdata;
         $post_id = is_object($post) ? $post->ID : 0;
