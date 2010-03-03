@@ -511,9 +511,9 @@ class GDSRRenderT2 {
             $rater_stars = '<img src="'.STARRATING_URL.sprintf("gfx.php?value=%s", $rating).'" />';
         }
 
-        $rt = str_replace('%RATING%', $rating, $tpl_render);
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $rating, "SSB", "%RATING%"), $tpl_render);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "SSB", "%VOTES%"), $rt);
         $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
         $rt = str_replace('%RATING_STARS%', $rater_stars, $rt);
         $rt = str_replace('%ID%', $post_id, $rt);
 
@@ -593,7 +593,7 @@ class GDSRRenderT2 {
         }
 
         $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
-        $tpl_render = str_replace("%AVG_RATING%", $rating, $tpl_render);
+        $tpl_render = str_replace("%AVG_RATING%", apply_filters('gdsr_t2_tag_value', $rating, "MRB", "%AVG_RATING%"), $tpl_render);
         if (in_array("%AVG_RATING_STARS%", $template->tag["normal"])) {
             $avg_id = "gdsr_mur_avgstars_".$post_id."_".$set->multi_id;
             $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars * $star_factor, $rating * $star_factor, $avg_id, "", $star_factor), $tpl_render);
@@ -630,11 +630,11 @@ class GDSRRenderT2 {
 
         if (in_array("%POST_TITLE%", $template->tag["normal"])) {
             $act_post = get_post($post_id);
-            $tpl_render = str_replace("%POST_TITLE%", $act_post->post_title, $tpl_render);
+            $tpl_render = str_replace("%POST_TITLE%", apply_filters('gdsr_t2_tag_value', $act_post->post_title, "SRB", "%POST_TITLE%"), $tpl_render);
         }
 
         if (in_array("%POST_PERMALINK%", $template->tag["normal"])) {
-            $tpl_render = str_replace("%POST_PERMALINK%", get_permalink($post_id), $tpl_render);
+            $tpl_render = str_replace("%POST_PERMALINK%", apply_filters('gdsr_t2_tag_value', get_permalink($post_id), "SRB", "%POST_PERMALINK%"), $tpl_render);
         }
 
         if (in_array("%RATING_STARS%", $template->tag["normal"])) {
@@ -823,7 +823,7 @@ class GDSRRenderT2 {
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
         $tpl_render = str_replace("%CSS_BLOCK%", $css, $tpl_render);
         $tpl_render = str_replace("%MAX_RATING%", $star_max, $tpl_render);
-        $tpl_render = str_replace("%RATING%", $rating, $tpl_render);
+        $tpl_render = str_replace("%RATING%", apply_filters('gdsr_t2_tag_value', $rating, "RSB", "%RATING%"), $tpl_render);
 
         $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
         $tpl_render = str_replace("%RATING_STARS%", $rating_stars, $tpl_render);
@@ -843,7 +843,7 @@ class GDSRRenderT2 {
         $tpl_render = apply_filters('gdsr_t2render_rcb_normal', $tpl_render, $template, $rpar, "normal");
 
         $tpl_render = str_replace("%MAX_MM_RATING%", $star_max, $tpl_render);
-        $tpl_render = str_replace("%CMM_RATING%", $rating, $tpl_render);
+        $tpl_render = str_replace("%CMM_RATING%", apply_filters('gdsr_t2_tag_value', $rating, "RCB", "%CMM_RATING%"), $tpl_render);
 
         $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
         $tpl_render = str_replace("%CMM_RATING_STARS%", $rating_stars, $tpl_render);
@@ -863,7 +863,7 @@ class GDSRRenderT2 {
         $tpl_render = apply_filters('gdsr_t2render_mcr_normal', $tpl_render, $template, $rpar, "normal");
 
         $rt = str_replace('%ID%', $post_id, $rt);
-        $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
+        $tpl_render = str_replace("%AVG_RATING%", apply_filters('gdsr_t2_tag_value', $avg_rating, "MCR", "%AVG_RATING%"), $tpl_render);
         $tpl_render = str_replace("%MAX_RATING%", $set->stars, $tpl_render);
 
         if (in_array("%AVG_RATING_STARS%", $template->tag["normal"]))
@@ -907,7 +907,7 @@ class GDSRRenderT2 {
         }
 
         $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
-        $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
+        $tpl_render = str_replace("%AVG_RATING%", apply_filters('gdsr_t2_tag_value', $avg_rating, "RMB", "%AVG_RATING%"), $tpl_render);
         $tpl_render = str_replace("%MAX_RATING%", $set->stars, $tpl_render);
 
         if (in_array("%AVG_RATING_STARS%", $template->tag["normal"]))
@@ -929,10 +929,10 @@ class GDSRRenderT2 {
         $tpl_render = html_entity_decode($tpl_render);
         $tpl_render = apply_filters('gdsr_t2render_car_normal', $tpl_render, $template, $rpar, "normal");
 
-        $tpl_render = str_replace("%CMM_COUNT%", $comments, $tpl_render);
-        $tpl_render = str_replace("%CMM_VOTES%", $votes, $tpl_render);
+        $tpl_render = str_replace("%CMM_COUNT%", apply_filters('gdsr_t2_tag_value', $$comments, "CAR", "%CMM_COUNT%"), $tpl_render);
+        $tpl_render = str_replace("%CMM_VOTES%", apply_filters('gdsr_t2_tag_value', $votes, "CAR", "%CMM_VOTES%"), $tpl_render);
+        $tpl_render = str_replace("%CMM_RATING%", apply_filters('gdsr_t2_tag_value', $rating, "CAR", "%CMM_RATING%"), $tpl_render);
         $tpl_render = str_replace("%MAX_CMM_RATING%", $star_max, $tpl_render);
-        $tpl_render = str_replace("%CMM_RATING%", $rating, $tpl_render);
 
         $word_votes = $template->dep["EWV"];
         $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
@@ -979,11 +979,12 @@ class GDSRRenderT2 {
         $percent = number_format($percent, 0);
         if ($percent == 0) $percent = gdsr_zero_percentage();
 
-        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
-        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
-        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
-        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
+        $score = $score > 0 ? "+".$score : $score;
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $score, "TAT", "%RATING%"), $rt);
+        $rt = str_replace('%PERCENTAGE%', apply_filters('gdsr_t2_tag_value', $percent, "TAT", "%PERCENTAGE%"), $rt);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "TAT", "%VOTES%"), $rt);
+        $rt = str_replace('%VOTES_UP%', apply_filters('gdsr_t2_tag_value', $votes_plus, "TAT", "%VOTES_UP%"), $rt);
+        $rt = str_replace('%VOTES_DOWN%', apply_filters('gdsr_t2_tag_value', $votes_minus, "TAT", "%VOTES_DOWN%"), $rt);
         $rt = str_replace('%ID%', $id, $rt);
 
         $word_votes = $template->dep["EWV"];
@@ -1007,13 +1008,14 @@ class GDSRRenderT2 {
         $percent = number_format($percent, 0);
         if ($percent == 0) $percent = gdsr_zero_percentage();
 
-        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
-        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
-        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
-        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
-        $rt = str_replace('%ID%', $id, $rt);
+        $score = $score > 0 ? "+".$score : $score;
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $score, "TCT", "%RATING%"), $rt);
+        $rt = str_replace('%PERCENTAGE%', apply_filters('gdsr_t2_tag_value', $percent, "TCT", "%PERCENTAGE%"), $rt);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "TCT", "%VOTES%"), $rt);
+        $rt = str_replace('%VOTES_UP%', apply_filters('gdsr_t2_tag_value', $votes_plus, "TCT", "%VOTES_UP%"), $rt);
+        $rt = str_replace('%VOTES_DOWN%', apply_filters('gdsr_t2_tag_value', $votes_minus, "TCT", "%VOTES_DOWN%"), $rt);
         $rt = str_replace('%VOTE_VALUE%', $vote_value, $rt);
+        $rt = str_replace('%ID%', $id, $rt);
 
         $word_votes = $template->dep["EWV"];
         $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
@@ -1042,9 +1044,9 @@ class GDSRRenderT2 {
         $rt = html_entity_decode($tpl);
         $rt = apply_filters('gdsr_t2render_crt_'.($vote_value > -1 ? "vote_saved" : "normal"), $rt, $template, $rpar, $vote_value > -1 ? "vote_saved" : "normal");
 
-        $rt = str_replace('%CMM_RATING%', $rating, $rt);
+        $rt = str_replace('%CMM_RATING%', apply_filters('gdsr_t2_tag_value', $rating, "CRT", "%CMM_RATING%"), $rt);
         $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
-        $rt = str_replace('%CMM_VOTES%', $votes, $rt);
+        $rt = str_replace('%CMM_VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "CRT", "%CMM_VOTES%"), $rt);
         if ($vote_value > -1) $rt = str_replace('%CMM_VOTE_VALUE%', $vote_value, $rt);
 
         $word_votes = $template->dep["EWV"];
@@ -1083,9 +1085,9 @@ class GDSRRenderT2 {
                 $tpl = $template->elm["normal"];
             $rt = html_entity_decode($tpl);
         }
-        $rt = str_replace('%RATING%', $rating, $rt);
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $rating, "SRT", "%RATING%"), $rt);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "SRT", "%VOTES%"), $rt);
         $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
         $rt = str_replace('%ID%', $id, $rt);
 
         $word_votes = $template->dep["EWV"];
@@ -1109,11 +1111,12 @@ class GDSRRenderT2 {
         $percent = number_format($percent, 0);
         if ($percent == 0) $percent = gdsr_zero_percentage();
 
-        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
-        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
-        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
-        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
+        $score = $score > 0 ? "+".$score : $score;
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $score, "TAT", "%RATING%"), $rt);
+        $rt = str_replace('%PERCENTAGE%', apply_filters('gdsr_t2_tag_value', $percent, "TAT", "%PERCENTAGE%"), $rt);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "TAT", "%VOTES%"), $rt);
+        $rt = str_replace('%VOTES_UP%', apply_filters('gdsr_t2_tag_value', $votes_plus, "TAT", "%VOTES_UP%"), $rt);
+        $rt = str_replace('%VOTES_DOWN%', apply_filters('gdsr_t2_tag_value', $votes_minus, "TAT", "%VOTES_DOWN%"), $rt);
         $rt = str_replace('%ID%', $id, $rt);
         $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
 
@@ -1134,9 +1137,9 @@ class GDSRRenderT2 {
         $rt = html_entity_decode($tpl);
         $rt = apply_filters('gdsr_t2render_srt_vote_saved', $rt, $template, $rpar, "vote_saved");
 
-        $rt = str_replace('%RATING%', $rating, $rt);
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $rating, "SRT", "%RATING%"), $rt);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "SRT", "%VOTES%"), $rt);
         $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
         $rt = str_replace('%ID%', $id, $rt);
         $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
 
