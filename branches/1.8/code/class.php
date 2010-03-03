@@ -722,6 +722,8 @@ class GDStarRating {
      */
     function admin_head() {
         global $parent_file;
+        $this->wp_head_javascript();
+
         $this->admin_page = $parent_file;
         $datepicker_date = date("Y, n, j");
         $tabs_extras = "";
@@ -1393,12 +1395,7 @@ class GDStarRating {
         }
     }
 
-    /**
-     * WordPress action for adding blog header contents
-     */
-    function wp_head() {
-        if (is_feed()) return;
-
+    function wp_head_javascript() {
         echo '<script type="text/javascript">'.STARRATING_EOL;
         echo '//<![CDATA['.STARRATING_EOL;
         echo 'var gdsr_cnst_nonce = "'.wp_create_nonce('gdsr_ajax_r8').'";'.STARRATING_EOL;
@@ -1410,6 +1407,14 @@ class GDStarRating {
         }
         echo '// ]]>'.STARRATING_EOL;
         echo '</script>'.STARRATING_EOL;
+    }
+
+    /**
+     * WordPress action for adding blog header contents
+     */
+    function wp_head() {
+        if (is_feed()) return;
+        $this->wp_head_javascript();
 
         $include_cmm_review = $this->o["comments_review_active"] == 1;
         $include_mur_rating = $this->o["multis_active"] == 1;
