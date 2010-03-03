@@ -175,8 +175,13 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.8.4 =
+* Global rules tool changed and improved
+* Fixed some integration problems
+* Cache cleanup can fail in some cases
+
 = 1.8.3 =
-* New, improved and packed main JS ratings file
+* New improved and packed main JS ratings file
 * Replaced noticed wordpress depracted functions
 * Several more php notices fixed
 

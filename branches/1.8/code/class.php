@@ -1569,7 +1569,11 @@ class GDStarRating {
         }
 
         if (isset($_POST['gdsr_rules_set'])) {
-            gdsrAdmDB::update_settings_full($_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"]);
+            wp_gdsr_dump("POST", $_POST);
+            gdsrAdmDB::update_settings_full($_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], 
+                    $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"],
+                    $_POST["gdsr_artthumb_moderation"], $_POST["gdsr_artthumb_voterules"],
+                    $_POST["gdsr_cmmthumbs_moderation"], $_POST["gdsr_cmmthumbs_voterules"]);
             wp_redirect_self();
             exit;
         }
