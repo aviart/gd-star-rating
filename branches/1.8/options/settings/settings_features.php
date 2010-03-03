@@ -43,8 +43,6 @@
 </tr>
 <tr><th scope="row"><?php _e("JS and CSS files", "gd-star-rating"); ?></th>
     <td>
-        <input type="checkbox" name="gdsr_external_javascript" id="gdsr_external_javascript"<?php if ($gdsr_options["external_javascript"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_javascript"><?php _e("Link external javascript rating code, instead of embeding it into the page.", "gd-star-rating"); ?></label>
-        <br />
         <input type="checkbox" name="gdsr_external_rating_css" id="gdsr_external_rating_css"<?php if ($gdsr_options["external_rating_css"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_rating_css"><?php _e("Link external CSS rating code, uncheck to embed all the CSS into the page.", "gd-star-rating"); ?></label>
         <br />
         <input type="checkbox" name="gdsr_external_css" id="gdsr_external_css"<?php if ($gdsr_options["external_css"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_external_css"><?php _e("Link additional CSS file", "gd-star-rating"); ?>: <strong>'wp-content/gd-star-rating/css/rating.css'</strong></label>

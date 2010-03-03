@@ -108,6 +108,7 @@ class GDStarRating {
         $this->stars_sizes = $gdd->stars_sizes;
         $this->thumb_sizes = $gdd->thumb_sizes;
         $this->tables_list = $gdd->tables_list;
+        $this->function_restrict = $gdd->function_restrict;
         $this->default_spider_bots = $gdd->default_spider_bots;
         $this->default_wpr8 = $gdd->default_wpr8;
         $this->default_user_ratings_filter = $gdd->default_user_ratings_filter;

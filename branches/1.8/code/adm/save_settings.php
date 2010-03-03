@@ -18,7 +18,6 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["admin_rows"] = $_POST['gdsr_admin_rows'];
     $gdsr_options["gfx_generator_auto"] = isset($_POST['gdsr_gfx_generator_auto']) ? 1 : 0;
     $gdsr_options["gfx_prevent_leeching"] = isset($_POST['gdsr_gfx_prevent_leeching']) ? 1 : 0;
-    $gdsr_options["external_javascript"] = isset($_POST['gdsr_external_javascript']) ? 1 : 0;
     $gdsr_options["external_rating_css"] = isset($_POST['gdsr_external_rating_css']) ? 1 : 0;
     $gdsr_options["css_cache_active"] = isset($_POST['gdsr_css_cache_active']) ? 1 : 0;
     $gdsr_options["external_css"] = isset($_POST['gdsr_external_css']) ? 1 : 0;

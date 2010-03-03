@@ -20,7 +20,6 @@ class GDSRDefaults {
         "wp_query_handler" => 1,
         "cached_loading" => 0,
         "prefetch_data" => 1,
-        "external_javascript" => 1,
         "external_rating_css" => 1,
         "external_css" => 1,
         "css_last_changed" => 0,
@@ -220,6 +219,11 @@ class GDSRDefaults {
         "wait_text_multis" => "please wait...",
         "wait_show_multis" => 0,
         "wait_class_multis" => ""
+    );
+
+    var $function_restrict = array(
+        "get_the_excerpt",
+        "HS_InlineTags->get_excerpt"
     );
 
     var $stars_sizes = array("12" => 1, "16" => 1, "20" => 1, "24" => 1, "30" => 1, "46" => 1);
