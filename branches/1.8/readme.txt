@@ -175,6 +175,12 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.8.5 =
+* Added some new tags for T2 thumbs
+* Some functions improved
+* Proper use of thumbs voting rules
+* Few minor bugs fixes
+
 = 1.8.4 =
 * Global rules tool changed and improved
 * Fixed some integration problems

@@ -538,7 +538,7 @@ class gdsrFront {
             $this->g->c[$rd_post_id] = 1;
         }
 
-        $rules_comments = $post_data->rules_comments != "I" ? $post_data->rules_comments : $this->g->get_post_rule_value($rd_post_id, "rules_comments", "default_voterules_comments");
+        $rules_comments = $post_data->recc_rules_comments != "I" ? $post_data->recc_rules_comments : $this->g->get_post_rule_value($rd_post_id, "recc_rules_comments", "recc_default_voterules_comments");
 
         if ($rules_comments == "H") return "";
         $comment_data = wp_gdget_comment($rd_comment_id);
@@ -819,7 +819,7 @@ class gdsrFront {
             $this->g->c[$rd_post_id] = 1;
         }
 
-        $rules_articles = $post_data->rules_articles != "I" ? $post_data->rules_articles : $this->g->get_post_rule_value($rd_post_id, "rules_articles", "default_voterules_articles");
+        $rules_articles = $post_data->recc_rules_articles != "I" ? $post_data->recc_rules_articles : $this->g->get_post_rule_value($rd_post_id, "recc_rules_articles", "recc_default_voterules_articles");
 
         if ($rules_articles == "H") return "";
         if ($allow_vote) {
@@ -904,7 +904,7 @@ class gdsrFront {
         );
 
         $template_id = $override["tpl"];
-        $rating_block = GDSRRenderT2::render_tab($template_id, array("post_id" => $rd_post_id, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "tags_css" => $tags_css, "header_text" => $this->g->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_article_thumb, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline));
+        $rating_block = GDSRRenderT2::render_tab($template_id, array("post_id" => $rd_post_id, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "tags_css" => $tags_css, "header_text" => $this->g->o["thumb_header_text"], "debug" => $debug, "wait_msg" => $this->loader_article_thumb, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline));
         return $rating_block;
     }
 

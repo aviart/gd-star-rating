@@ -79,4 +79,32 @@ function wp_gdsr_rating_comment($comment_id = 0) {
     return new GDSRCommentRating($comment_data);
 }
 
+function gdsr_rating_data($type = "article", $field = "rating", $id = 0, $multi_set_id = 0) {
+    if ($id == 0) {
+        if ($type == "article" || $type == "multi") {
+            global $post;
+            $id = $post->ID;
+        } else {
+            global $comment;
+            $id = $comment->comment_ID;
+        }
+    }
+
+    $results = null;
+    switch ($type) {
+        case "article":
+            $results = wp_gdsr_rating_article($id);
+            break;
+        case "multi":
+            $results = wp_gdsr_rating_multi($multi_set_id, $id);
+            break;
+        case "comment":
+            $results = wp_gdsr_rating_comment($id);
+            break;
+    }
+
+    if (is_null($results)) return null;
+    else return $results->$field;
+}
+
 ?>

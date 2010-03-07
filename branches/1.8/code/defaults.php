@@ -2,13 +2,13 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.8.4",
+        "version" => "1.8.5",
         "revision" => 0,
         "code_name" => "MMX",
-        "date" => "2010.03.03.",
+        "date" => "2010.03.08.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 1055,
+        "build" => 1056,
         "admin_views" => 0,
         "bot_message" => "normal",
         "google_rich_snippets_format" => "microformat",
@@ -188,6 +188,10 @@ class GDSRDefaults {
         "default_voterules_multis" => "A",
         "default_voterules_articles" => "A",
         "default_voterules_comments" => "A",
+        "recc_default_moderation_articles" => "N",
+        "recc_default_moderation_comments" => "N",
+        "recc_default_voterules_articles" => "A",
+        "recc_default_voterules_comments" => "A",
         "default_timer_type" => "N",
         "default_timer_countdown_value" => 30,
         "default_timer_countdown_type" => "D",

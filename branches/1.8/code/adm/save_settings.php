@@ -195,12 +195,18 @@ if (isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
     $gdsr_options["cmm_review_style_ie6"] = isset($_POST['gdsr_cmm_review_style_ie6']) ? $_POST['gdsr_cmm_review_style_ie6'] : "oxyen_gif";
     $gdsr_options["cmm_review_size"] = isset($_POST['gdsr_cmm_review_size']) ? $_POST['gdsr_cmm_review_size'] : 20;
 
+
     $gdsr_options["default_voterules_multis"] = $_POST['gdsr_default_vote_multis'];
     $gdsr_options["default_voterules_articles"] = $_POST['gdsr_default_vote_articles'];
     $gdsr_options["default_voterules_comments"] = $_POST['gdsr_default_vote_comments'];
+    $gdsr_options["recc_default_voterules_articles"] = $_POST['gdsr_recc_default_vote_articles'];
+    $gdsr_options["recc_default_voterules_comments"] = $_POST['gdsr_recc_default_vote_comments'];
+
     $gdsr_options["default_moderation_multis"] = isset($_POST['gdsr_default_mod_multis']) ? $_POST['gdsr_default_mod_multis'] : "";
     $gdsr_options["default_moderation_articles"] = isset($_POST['gdsr_default_mod_articles']) ? $_POST['gdsr_default_mod_articles'] : "";
     $gdsr_options["default_moderation_comments"] = isset($_POST['gdsr_default_mod_comments']) ? $_POST['gdsr_default_mod_comments'] : "";
+    $gdsr_options["recc_default_moderation_articles"] = isset($_POST['gdsr_recc_default_mod_articles']) ? $_POST['gdsr_recc_default_mod_articles'] : "";
+    $gdsr_options["recc_default_moderation_comments"] = isset($_POST['gdsr_recc_default_mod_comments']) ? $_POST['gdsr_recc_default_mod_comments'] : "";
 
     $gdsr_options["thumb_display_pages"] = isset($_POST['gdsr_thumb_pages']) ? 1 : 0;
     $gdsr_options["thumb_display_posts"] = isset($_POST['gdsr_thumb_posts']) ? 1 : 0;
