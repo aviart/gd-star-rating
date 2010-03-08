@@ -8,7 +8,7 @@ class GDSRDefaults {
         "date" => "2010.03.08.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 1056,
+        "build" => 1059,
         "admin_views" => 0,
         "bot_message" => "normal",
         "google_rich_snippets_format" => "microformat",
