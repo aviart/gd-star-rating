@@ -25,7 +25,7 @@ function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
  *
  * @global object $post post data
  * @global GDStarRating $gdsr main rating class instance
- * @param int $set_id id of the multi rating set
+ * @param int $multi_set_id id of the multi rating set
  * @param int $post_id post to get rating for, leave 0 to get post from loop
  * @return object rating post properties
  */
@@ -36,9 +36,9 @@ function wp_gdsr_rating_multi($multi_set_id = 0, $post_id = 0) {
     }
 
     $multi_set_id = $multi_set_id == 0 ? gdsr_get_multi_set($post_id) : $multi_set_id;
-    $multis_data = GDSRDBMulti::get_multi_rating_data($set_id, $post_id);
+    $multis_data = GDSRDBMulti::get_multi_rating_data($multi_set_id, $post_id);
     if (count($multis_data) == 0) return null;
-    return new GDSRArticleMultiRating($multis_data, $set_id);
+    return new GDSRArticleMultiRating($multis_data, $multi_set_id);
 }
 
 /**

@@ -176,7 +176,8 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Changelog ==
 = 1.8.5 =
-* Added some new tags for T2 thumbs
+* Added some new tags for T2 rating blocks
+* Additional CSS classes for rating blocks
 * Some functions improved
 * Proper use of thumbs voting rules
 * Few minor bugs fixes
