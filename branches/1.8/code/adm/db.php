@@ -220,7 +220,6 @@ class gdsrAdmDB {
         if (count($update) > 0) {
             $updstring = join(", ", $update);
             $sql = sprintf("update %s set %s", $dbt_data_article, $updstring);
-            wp_gdsr_dump("POST", $sql);
             $wpdb->query($sql);
         }
     }

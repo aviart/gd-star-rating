@@ -180,7 +180,6 @@ class GDSRRenderT2 {
                 $new_rows[] = $row;
             }
 
-            $tr_class = "odd";
             $set_rating = $set_voting = null;
             if ($trends_calculated) {
                 $set_rating = $gdsr->g->find_trend($widget["trends_rating_set"]);
@@ -189,7 +188,6 @@ class GDSRRenderT2 {
 
             $all_rows = array();
             foreach ($new_rows as $row) {
-                $row->table_row_class = $tr_class;
                 $row->rating_stars = $row->bayesian_stars = $row->rating_thumb = $row->review_stars = "";
                 $row->excerpt = GDSRRenderT2::prepare_excerpt($widget["excerpt_words"], $row);
                 $row->excerpt = apply_filters('gdsr_widget_post_excerpt', $row->excerpt);
@@ -311,9 +309,6 @@ class GDSRRenderT2 {
                 }
                 if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = GDSRRender::render_static_stars($widget['review_stars'], $widget['review_size'], $review_stars, $row->review);
 
-                if ($tr_class == "odd") $tr_class = "even";
-                else $tr_class = "odd";
-
                 $all_rows[] = $row;
             }
         }
@@ -329,7 +324,16 @@ class GDSRRenderT2 {
         if ($widget["column"] == "rating")
             $properties[] = array("property" => "voters", "order" => $widget["order"]);
         $sort = new gdSortObjectsArrayGDSR($all_rows, $properties);
-        $all_rows = apply_filters("gdsr_widget_data_prepare", $sort->sorted);
+
+        $tr_class = "odd";
+        $all_rows = array();
+        foreach ($sort->sorted as $row) {
+            $row->table_row_class = $tr_class;
+            $tr_class = $tr_class == "odd" ? "even" : "odd";
+            $all_rows[] = $row;
+        }
+
+        $all_rows = apply_filters("gdsr_widget_data_prepare", $all_rows);
 
         return $all_rows;
     }
@@ -361,11 +365,9 @@ class GDSRRenderT2 {
                 $new_rows[] = $row;
             }
 
-            $tr_class = "odd";
             $all_rows = array();
             $pl = get_permalink($post_id);
             foreach ($new_rows as $row) {
-                $row->table_row_class = $tr_class;
                 $row->comment_content = strip_tags($row->comment_content);
                 if (strlen($row->comment_content) > $widget["text_max"] - 3 && $widget["text_max"] > 0)
                     $row->comment_content = substr($row->comment_content, 0, $widget["text_max"] - 3)." ...";
@@ -375,9 +377,6 @@ class GDSRRenderT2 {
 
                 if (!(strpos($template, "%CMM_STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["cmm_stars"], $row->rating);
                 $row->permalink = $pl."#comment-".$row->comment_id;
-
-                if ($tr_class == "odd") $tr_class = "even";
-                else $tr_class = "odd";
 
                 $all_rows[] = $row;
             }
@@ -391,7 +390,14 @@ class GDSRRenderT2 {
         if ($widget["column"] == "rating") $properties[] = array("property" => "voters", "order" => $widget["order"]);
 
         $sort = new gdSortObjectsArrayGDSR($all_rows, $properties);
-        $all_rows = $sort->sorted;
+
+        $tr_class = "odd";
+        $all_rows = array();
+        foreach ($sort->sorted as $row) {
+            $row->table_row_class = $tr_class;
+            $tr_class = $tr_class == "odd" ? "even" : "odd";
+            $all_rows[] = $row;
+        }
 
         $all_rows = apply_filters('gdsr_comments_widget_data_prepare', $all_rows);
         return $all_rows;

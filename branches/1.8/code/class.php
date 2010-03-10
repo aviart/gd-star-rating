@@ -1570,7 +1570,6 @@ class GDStarRating {
         }
 
         if (isset($_POST['gdsr_rules_set'])) {
-            wp_gdsr_dump("POST", $_POST);
             gdsrAdmDB::update_settings_full($_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], 
                     $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"],
                     $_POST["gdsr_artthumb_moderation"], $_POST["gdsr_artthumb_voterules"],
@@ -1957,6 +1956,7 @@ class GDStarRating {
         foreach ($this->c as $id => $value) {
             if ($value == 0) $to_get[] = $id;
         }
+
         if (count($to_get) > 0) {
             global $gdsr_cache_posts_std_data, $gdsr_cache_posts_std_log, $gdsr_cache_posts_std_thumbs_log;
 
