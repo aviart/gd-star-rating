@@ -3,12 +3,12 @@
 class GDSRDefaults {
     var $default_options = array(
         "version" => "1.8.5",
-        "revision" => 3,
+        "revision" => 0,
         "code_name" => "MMX",
-        "date" => "2010.03.08.",
+        "date" => "2010.03.11.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 1060,
+        "build" => 1061,
         "admin_views" => 0,
         "bot_message" => "normal",
         "google_rich_snippets_format" => "microformat",
