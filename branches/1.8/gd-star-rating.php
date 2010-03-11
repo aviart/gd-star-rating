@@ -83,6 +83,9 @@ if (!class_exists('GDStarRating')) {
 
     if (STARRATING_LEGACY_FUNCTIONS)
         include(STARRATING_PATH."code/fn/legacy.php");
+
+    $gdsr_load_extra = dirname(dirname(__FILE__))."/gdsr-extra.php";
+    if (file_exists($gdsr_load_extra)) require_once($gdsr_load_extra);
 }
 
 ?>

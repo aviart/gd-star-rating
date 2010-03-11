@@ -567,9 +567,9 @@ class gdsrFront {
             }
         }
 
-        $already_voted = wp_gdget_thumb_commentlog($rd_comment_id);
+        $already_voted = !wp_gdget_thumb_commentlog($rd_comment_id);
         if ($allow_vote) {
-            $allow_vote = $already_voted;
+            $allow_vote = !$already_voted;
             if (!$allow_vote) $dbg_allow = "D";
         }
 
@@ -697,9 +697,9 @@ class gdsrFront {
             }
         }
 
-        $already_voted = wp_gdget_commentlog($rd_comment_id);
+        $already_voted = !wp_gdget_commentlog($rd_comment_id);
         if ($allow_vote) {
-            $allow_vote = $already_voted;
+            $allow_vote = !$already_voted;
             if (!$allow_vote) $dbg_allow = "D";
         }
 
@@ -869,9 +869,9 @@ class gdsrFront {
             }
         }
 
-        $already_voted = wp_gdget_thumb_postlog($rd_post_id);
+        $already_voted = !wp_gdget_thumb_postlog($rd_post_id);
         if ($allow_vote) {
-            $allow_vote = $already_voted;
+            $allow_vote = !$already_voted;
             if (!$allow_vote) $dbg_allow = "D";
         }
 
@@ -1018,9 +1018,9 @@ class gdsrFront {
             }
         }
 
-        $already_voted = wp_gdget_postlog($rd_post_id);
+        $already_voted = !wp_gdget_postlog($rd_post_id);
         if ($allow_vote) {
-            $allow_vote = $already_voted;
+            $allow_vote = !$already_voted;
             if (!$allow_vote) $dbg_allow = "D";
         }
 
@@ -1174,9 +1174,9 @@ class gdsrFront {
             }
         }
 
-        $already_voted = GDSRDBMulti::check_vote($rd_post_id, $rd_user_id, $set->multi_id, 'multis', $_SERVER["REMOTE_ADDR"], $this->g->o["logged"] != 1, $this->g->o["mur_allow_mixed_ip_votes"] == 1);
+        $already_voted = !GDSRDBMulti::check_vote($rd_post_id, $rd_user_id, $set->multi_id, 'multis', $_SERVER["REMOTE_ADDR"], $this->g->o["logged"] != 1, $this->g->o["mur_allow_mixed_ip_votes"] == 1);
         if ($allow_vote) {
-            $allow_vote = $already_voted;
+            $allow_vote = !$already_voted;
             if (!$allow_vote) $dbg_allow = "D";
         }
 
