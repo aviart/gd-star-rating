@@ -60,7 +60,7 @@ function gdsr_rating_standard(elm) {
         gdsrWait(el[6], el[5]);
         if (json.status == 'ok') {
             jQuery("#gdr_stars_" + el[4] + el[1]).html("");
-            jQuery("#gdr_vote_" + el[4] + el[1]).css("width", json.value);
+            jQuery("#gdr_vote_" + el[4] + el[1]).css("width", parseInt(json.value));
             jQuery("#gdr_text_" + el[4] + el[1]).addClass("voted");
             jQuery("#gdr_text_" + el[4] + el[1]).html(json.rater);
         }
@@ -99,7 +99,7 @@ function multi_rating_vote(block) {
         if (height > 0)
             jQuery("#gdsr_mur_avgstars_" + post_id + "_" + set_id + " div").css("width", json.average * height.substring(0, 2));
         for (var i = 0; i < json.values.length; i++)
-            jQuery("#gdsr_mur_stars_rated_" + post_id + "_" + set_id + "_" + i).css("width", json.values[i]);
+            jQuery("#gdsr_mur_stars_rated_" + post_id + "_" + set_id + "_" + i).css("width", parseInt(json.values[i]));
         jQuery("#gdsr_mur_text_" + post_id + "_" + set_id).html(json.rater).addClass("voted");
         gdsrWait("gdsr_mur_loader_" + post_id + "_" + set_id, "gdsr_mur_text_" + post_id + "_" + set_id);
     });

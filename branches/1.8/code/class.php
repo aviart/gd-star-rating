@@ -1168,7 +1168,7 @@ class GDStarRating {
         $this->bots = get_option('gd-star-rating-bots');
 
         if (!STARRATING_AJAX && GDSR_WP_ADMIN) {
-            if ($this->o["build"] < $this->default_options["build"] || !is_array($this->o)) {
+            if ($this->o["build"] != $this->default_options["build"] || !is_array($this->o)) {
                 if (is_object($this->g)) {
                     $this->g = gdsrAdmFunc::gfx_scan();
                     update_option('gd-star-rating-gfx', $this->g);
