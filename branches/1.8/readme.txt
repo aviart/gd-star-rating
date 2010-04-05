@@ -176,7 +176,8 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Changelog ==
 = 1.8.7 =
-* Comment text fails validation due to filter order
+* Fixed comment text fails validation due to filter order
+* Fixed URL to the datepicker translation file
 
 = 1.8.6 =
 * Changed JSON response for votes to be jquery 1.4 compatible

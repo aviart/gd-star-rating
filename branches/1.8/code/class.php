@@ -1334,6 +1334,8 @@ class GDStarRating {
                 if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
                     $this->admin_plugin = true;
                     $this->admin_plugin_page = substr($_GET["page"], 15);
+                } else {
+                    $this->admin_plugin = false;
                 }
             }
             $this->cache_cleanup();
