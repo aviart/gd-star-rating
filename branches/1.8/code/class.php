@@ -710,7 +710,8 @@ class GDStarRating {
         if(!empty($this->l)) {
             $jsFile = $this->plugin_path.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js';
             if (@file_exists($jsFile) && is_readable($jsFile))
-                wp_enqueue_script('gdsr-jquery-datepicker-translation', $jsFile, array("gdsr-jquery-datepicker"), $this->o["version"], true);
+                $jsUrl = $this->plugin_url.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js';
+                wp_enqueue_script('gdsr-jquery-datepicker-translation', $jsUrl, array("gdsr-jquery-datepicker"), $this->o["version"], true);
         }
     }
 
