@@ -176,8 +176,9 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Changelog ==
 = 1.8.8 =
-* Fixed minor problem with loading js datepicker translation
+* Fixed invalid header order for export data to csv
 * Fixed invalid default rules for post meta box thumbs
+* Fixed minor problem with loading js datepicker translation
 
 = 1.8.7 =
 * Fixed comment text fails validation due to filter order

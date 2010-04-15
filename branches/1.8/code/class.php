@@ -1083,9 +1083,7 @@ class GDStarRating {
         GDSRDBMulti::delete_by_comment($comment_id);
     }
 
-    function post_delete($post_id) {
-
-    }
+    function post_delete($post_id) { }
 
     /**
      * Triggers saving GD Star Rating data for post.
