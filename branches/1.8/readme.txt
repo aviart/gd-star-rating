@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.8.7
+Version: 1.8.8
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
 Tested up to: 3.0
@@ -175,6 +175,10 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.8.8 =
+* Fixed minor problem with loading js datepicker translation
+* Fixed invalid default rules for post meta box thumbs
+
 = 1.8.7 =
 * Fixed comment text fails validation due to filter order
 * Fixed URL to the datepicker translation file

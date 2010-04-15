@@ -598,11 +598,11 @@ class GDStarRating {
         if ($default) {
             $rating_decimal = $rating = -1;
 
-            $recc_vote_rules = $gdsr_options["default_voterules_articles"];
-            $recc_moderation_rules = $gdsr_options["default_moderation_articles"];
-            $recc_cmm_vote_rules = $gdsr_options["default_voterules_comments"];
-            $recc_cmm_moderation_rules = $gdsr_options["default_moderation_comments"];
-            $recc_timer_restrictions = $gdsr_options["default_timer_type"];
+            $recc_vote_rules = $gdsr_options["recc_default_voterules_articles"];
+            $recc_moderation_rules = $gdsr_options["recc_default_moderation_articles"];
+            $recc_cmm_vote_rules = $gdsr_options["recc_default_voterules_comments"];
+            $recc_cmm_moderation_rules = $gdsr_options["recc_default_moderation_comments"];
+            $recc_timer_restrictions = $gdsr_options["recc_default_timer_type"];
 
             $vote_rules = $gdsr_options["default_voterules_articles"];
             $moderation_rules = $gdsr_options["default_moderation_articles"];
@@ -709,9 +709,10 @@ class GDStarRating {
 
         if(!empty($this->l)) {
             $jsFile = $this->plugin_path.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js';
-            if (@file_exists($jsFile) && is_readable($jsFile))
+            if (@file_exists($jsFile) && is_readable($jsFile)) {
                 $jsUrl = $this->plugin_url.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js';
                 wp_enqueue_script('gdsr-jquery-datepicker-translation', $jsUrl, array("gdsr-jquery-datepicker"), $this->o["version"], true);
+            }
         }
     }
 
