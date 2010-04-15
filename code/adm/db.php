@@ -204,7 +204,7 @@ class gdsrAdmDB {
         $wpdb->query(sprintf("update %s set review = %s where post_id in %s", $dbt_data_article, $review, $ids));
     }
 
-    function update_settings_full($upd_am, $upd_ar, $upd_cm, $upd_cr) {
+    function update_settings_full($upd_am, $upd_ar, $upd_cm, $upd_cr, $upd_atm, $upd_atr, $upd_ctm, $upd_ctr) {
         global $wpdb, $table_prefix;
         $dbt_data_article = $table_prefix.'gdsr_data_article';
 
@@ -213,9 +213,14 @@ class gdsrAdmDB {
         if ($upd_cm != '') $update[] = "moderate_comments = '".$upd_cm."'";
         if ($upd_ar != '') $update[] = "rules_articles = '".$upd_ar."'";
         if ($upd_cr != '') $update[] = "rules_comments = '".$upd_cr."'";
+        if ($upd_atm != '') $update[] = "recc_moderate_articles = '".$upd_am."'";
+        if ($upd_ctm != '') $update[] = "recc_moderate_comments = '".$upd_cm."'";
+        if ($upd_atr != '') $update[] = "recc_rules_articles = '".$upd_ar."'";
+        if ($upd_ctr != '') $update[] = "recc_rules_comments = '".$upd_cr."'";
         if (count($update) > 0) {
             $updstring = join(", ", $update);
-            $wpdb->query(sprintf("update %s set %s", $dbt_data_article, $updstring));
+            $sql = sprintf("update %s set %s", $dbt_data_article, $updstring);
+            $wpdb->query($sql);
         }
     }
 

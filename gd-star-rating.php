@@ -4,7 +4,7 @@
 Plugin Name: GD Star Rating
 Plugin URI: http://www.gdstarrating.com/
 Description: GD Star Rating plugin allows you to set up advanced rating and review system for posts, pages and comments in your blog using single, multi and thumbs ratings.
-Version: 1.8.2
+Version: 1.8.8
 Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
@@ -83,6 +83,9 @@ if (!class_exists('GDStarRating')) {
 
     if (STARRATING_LEGACY_FUNCTIONS)
         include(STARRATING_PATH."code/fn/legacy.php");
+
+    $gdsr_load_extra = dirname(dirname(__FILE__))."/gdsr-extra.php";
+    if (file_exists($gdsr_load_extra)) require_once($gdsr_load_extra);
 }
 
 ?>

@@ -2,15 +2,15 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.8.3",
+        "version" => "1.8.8",
         "revision" => 0,
         "code_name" => "MMX",
-        "date" => "2010.02.23.",
+        "date" => "2010.04.15.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 1044,
+        "build" => 1072,
         "admin_views" => 0,
-        "bot_message" => "promourl",
+        "bot_message" => "normal",
         "google_rich_snippets_format" => "microformat",
         "google_rich_snippets_active" => 1,
         "google_rich_snippets_datasource" => "standard_rating",
@@ -20,7 +20,6 @@ class GDSRDefaults {
         "wp_query_handler" => 1,
         "cached_loading" => 0,
         "prefetch_data" => 1,
-        "external_javascript" => 1,
         "external_rating_css" => 1,
         "external_css" => 1,
         "css_last_changed" => 0,
@@ -189,6 +188,10 @@ class GDSRDefaults {
         "default_voterules_multis" => "A",
         "default_voterules_articles" => "A",
         "default_voterules_comments" => "A",
+        "recc_default_moderation_articles" => "N",
+        "recc_default_moderation_comments" => "N",
+        "recc_default_voterules_articles" => "A",
+        "recc_default_voterules_comments" => "A",
         "default_timer_type" => "N",
         "default_timer_countdown_value" => 30,
         "default_timer_countdown_type" => "D",
@@ -220,6 +223,11 @@ class GDSRDefaults {
         "wait_text_multis" => "please wait...",
         "wait_show_multis" => 0,
         "wait_class_multis" => ""
+    );
+
+    var $function_restrict = array(
+        "get_the_excerpt",
+        "HS_InlineTags->get_excerpt"
     );
 
     var $stars_sizes = array("12" => 1, "16" => 1, "20" => 1, "24" => 1, "30" => 1, "46" => 1);

@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.8.3
+Version: 1.8.8
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
 Tested up to: 3.0
@@ -82,7 +82,7 @@ Plugin administration consist of 17 main panels:
 = Minimal Requirements =
 * PHP: 5.x.x
 * mySQL: 4.0, 4.1 or 5.x
-* WordPress: 2.8 or newer
+* WordPress: 2.7 or newer
 
 = Recommended Requirements =
 * PHP: 5.2.x or newer
@@ -99,8 +99,10 @@ Plugin administration consist of 17 main panels:
 * if you don't change location of `wp-content` folder, then you don't need to make any more changes.
 * if your `wp-content` folder is moved out of default WordPress location, then you must edit plugins `config.php` file and set value with exact location of `wp-load.php` file for global constant `STARRATING_WPLOAD` in line 8. Without this most of the features, including saving votes, will not work.
 
-= WordPress MU =
-* Minimal version supported: 2.8.6
+= WordPress MU & BuddyPress =
+* Minimal version supported: 2.8.1
+* Support for WPMU is only partial, not everything works as it should be.
+* Plugin is not working with some BuddyPress specific features.
 
 = Browser Notice =
 * Multi review feature on administration Post Edit page will not work properly with IE6 browsers.
@@ -173,8 +175,34 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.8.8 =
+* Fixed invalid header order for export data to csv
+* Fixed invalid default rules for post meta box thumbs
+* Fixed minor problem with loading js datepicker translation
+
+= 1.8.7 =
+* Fixed comment text fails validation due to filter order
+* Fixed URL to the datepicker translation file
+
+= 1.8.6 =
+* Changed JSON response for votes to be jquery 1.4 compatible
+
+= 1.8.5 =
+* Added some new tags for T2 rating blocks
+* Additional CSS classes for rating blocks
+* Several functions improved
+* Proper use of thumbs voting rules
+* Few minor bugs fixes
+
+= 1.8.4 =
+* Global rules tool changed and improved
+* Fixed some integration problems
+* Cache cleanup can fail in some cases
+
 = 1.8.3 =
-* New and improved main JS ratings file
+* New improved and packed main JS ratings file
+* Replaced noticed wordpress depracted functions
+* Several more php notices fixed
 
 = 1.8.2 =
 * Few new functions and updates to comment integration
