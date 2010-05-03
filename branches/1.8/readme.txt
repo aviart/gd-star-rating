@@ -15,6 +15,7 @@ Supported languages: english, serbian, spanish, german, italian, french, ukraini
 
 = About Plugin Support =
 Plugin is provided for free, and that is not going to change. But support is not free anymore. Currently available tutorials on official website will remain there, but all new tutorials and much more are available only through premium support on Dev4Press website.
+
 [Reasons for Premium Support](http://www.gdstarrating.com/2009/12/17/why-premium-support/) |
 [Support on Dev4Press](http://www.dev4press.com/plugins/gd-star-rating/editions/) |
 [Support Policy](http://www.dev4press.com/support-policy/)
@@ -118,6 +119,12 @@ Plugin administration consist of 17 main panels:
 = How to check if there is a sample and already explained solution to my problem? =
 Check the post in the following category: http://www.gdstarrating.com/category/tutorials/solving-problems/.
 
+= I have trouble saving plugin settings? =
+This happens only with PHP4. That's why minimal plugin requirements is now PHP5. Upgrade your servers, PHP4 is no longer supported, it's outdated and full of security holes.
+
+= After upgrade some admin panels are not working? =
+Most likely problem is with cached javascript files in the browsers. Clear cache, and everything should be ok.
+
 = How to change visibility of plugin menus to different user levels? =
 This is controlled by the constants defined in the config files. Detailed info on setting them is here: http://www.gdstarrating.com/2009/08/12/using-config-files/.
 
@@ -165,9 +172,6 @@ There could be two causes for this:
 = Rating is not working in Firefox, but is working in other browsers. =
 There are many extensions for Firefox that modify the page, and are known to cause many JavaScript problems. Plugin works with all major browsers, and all JavaScript is developed using Firefox and Firebug. But I am not using (nor will test) Firefox with extensions (I use only Firebug).
 
-= I have trouble saving plugin settings? =
-This happens only with PHP4. That's why minimal plugin requirements is now PHP5. Upgrade your servers, PHP4 is no longer supported, it's outdated and full of security holes.
-
 = I tried everything (I really tried), and many things are still not working. =
 I can't guarantee that plugin will work on every WordPress setup. In 99.9% of the cases there are no problems, but some plugin, theme and server combinations can cause problems that can't be anticipated. But this is very rare, and in most cases that can be corrected by tracking down the problem. And usually only some plugins features will fail. Do not simply give up, find the problem, find the PHP error that can cause problem that will most likely point to some other plugin causing problems.
 
@@ -186,6 +190,7 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 * Added robots nofollow/noindex for plugin ajax handler
 * Added info on using the gdsr-config.php file
 * Fixed enqueue of js and css for non plugin admin pages
+* Some minor problems with js on admin pages
 
 = 1.8.8 =
 * Fixed invalid header order for export data to csv

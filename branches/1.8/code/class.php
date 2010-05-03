@@ -725,7 +725,7 @@ class GDStarRating {
      */
     function admin_head() {
         global $parent_file;
-        $this->wp_head_javascript();
+        //$this->wp_head_javascript();
 
         $this->admin_page = $parent_file;
         $datepicker_date = date("Y, n, j");
