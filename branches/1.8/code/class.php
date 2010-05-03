@@ -1325,10 +1325,6 @@ class GDStarRating {
                 wp_enqueue_style("gdsr_style_xtra", $this->plugin_xtra_url."css/rating.css", array(), $this->o["version"]);
             }
         } else {
-            if ($this->wp_version >= 28) {
-                wp_enqueue_script('jquery-ui-core');
-                wp_enqueue_script('jquery-ui-tabs');
-            }
             if (isset($_GET["page"])) {
                 if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
                     $this->admin_plugin = true;
@@ -1337,9 +1333,17 @@ class GDStarRating {
                     $this->admin_plugin = false;
                 }
             }
+
+            if ($this->admin_plugin) {
+                if ($this->wp_version >= 28) {
+                    wp_enqueue_script('jquery-ui-core');
+                    wp_enqueue_script('jquery-ui-tabs');
+                }
+                $this->load_datepicker();
+            }
+
             $this->cache_cleanup();
             $this->init_specific_pages();
-            $this->load_datepicker();
         }
 
         if (is_admin() && $this->o["mur_review_set"] == 0) {
@@ -1908,8 +1912,8 @@ class GDStarRating {
         }
 
         $rich_snippet = ((is_single() || is_page()) && !is_admin() && !is_feed()) ? $this->f->render_google_rich_snippet($post) : "";
-
-        return $content.$rich_snippet;
+        if ($this->o["google_rich_snippets_location"] == "top") return $rich_snippet.$content;
+        else return $content.$rich_snippet;
     }
 
     function display_multi_rating($location, $post, $user) {

@@ -1,5 +1,11 @@
 <?php
 
+// HOW TO USE THIS FILE:
+// 
+// To use this file and settings in it, you must move this file from 
+// `gd-star-rating` folder, one level up to `plugins` folder.
+// All changes should go into moved file.
+
 /**
  * Full path to wp-load file. Use only if the location of wp-content folder is changed.
  *

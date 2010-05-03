@@ -41,6 +41,7 @@ require_once($gdsr_dirname_basic."/code/cls/shared.php");
 require_once($gdsr_dirname_basic."/code/gfx/gfx_lib.php");
 require_once($gdsr_dirname_basic."/gdt2/classes.php");
 require_once($gdsr_dirname_basic."/code/t2/render.php");
+require_once($gdsr_dirname_basic."/code/db/widgetizer.php");
 
 if (STARRATING_DEBUG) {
     require_once($gdsr_dirname_basic."/gdragon/gd_debug.php");
@@ -55,7 +56,6 @@ if (!defined("WP_ADMIN") || (defined("WP_ADMIN") && !WP_ADMIN)) {
 
     if (!STARRATING_AJAX) {
         require_once($gdsr_dirname_basic."/gdragon/gd_google.php");
-        require_once($gdsr_dirname_basic."/code/db/widgetizer.php");
         require_once($gdsr_dirname_basic."/code/blg/query.php");
     } else {
         require_once($gdsr_dirname_basic."/code/blg/votes.php");

@@ -2,18 +2,20 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.8.8",
+        "version" => "1.8.9",
         "revision" => 1,
         "code_name" => "MMX",
-        "date" => "2010.04.15.",
+        "date" => "2010.05.03.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 1073,
+        "build" => 1075,
         "admin_views" => 0,
         "bot_message" => "normal",
         "google_rich_snippets_format" => "microformat",
         "google_rich_snippets_active" => 1,
         "google_rich_snippets_datasource" => "standard_rating",
+        "google_rich_snippets_hidden" => 1,
+        "google_rich_snippets_location" => "bottom",
         "no_votes_percentage" => 100,
         "update_report_usage" => 1,
         "ajax_jsonp" => 0,

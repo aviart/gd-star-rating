@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.8.8
+Version: 1.8.9
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
 Tested up to: 3.0
@@ -20,10 +20,10 @@ Plugin is provided for free, and that is not going to change. But support is not
 [Support Policy](http://www.dev4press.com/support-policy/)
 
 = Basic Information =
-[Plugin Home](http://www.gdstarrating.com/) |
-[Features](http://www.dev4press.com/plugins/gd-star-rating/features/) |
-[FAQ](http://www.gdstarrating.com/faq/) |
 [Premium Support](http://www.gdstarrating.com/premium/) |
+[Plugin Home](http://www.gdstarrating.com/) |
+[FAQ](http://www.gdstarrating.com/faq/) |
+[Features](http://www.dev4press.com/plugins/gd-star-rating/features/) |
 [Twitter](http://twitter.com/milangd)
 
 = Plugin Reference =
@@ -98,6 +98,12 @@ Plugin administration consist of 17 main panels:
 = Advanced Installation =
 * if you don't change location of `wp-content` folder, then you don't need to make any more changes.
 * if your `wp-content` folder is moved out of default WordPress location, then you must edit plugins `config.php` file and set value with exact location of `wp-load.php` file for global constant `STARRATING_WPLOAD` in line 8. Without this most of the features, including saving votes, will not work.
+
+= Using gdsr-config.php file =
+* this file is used to set some of the constants plugin uses.
+* to use this file, you must move it file from `gd-star-rating` folder, one level up to `plugins` folder.
+* once you have moved it, make changes to it and it wll be loaded from the wordpress plugins root.
+* all settings in it can be added to wp-config.php. if you do that, you must not move the file from `gd-star-rating`.
 
 = WordPress MU & BuddyPress =
 * Minimal version supported: 2.8.1
@@ -175,6 +181,12 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.8.9 =
+* More options for google rich snippet
+* Added robots nofollow/noindex for plugin ajax handler
+* Added info on using the gdsr-config.php file
+* Fixed enqueue of js and css for non plugin admin pages
+
 = 1.8.8 =
 * Fixed invalid header order for export data to csv
 * Fixed invalid default rules for post meta box thumbs

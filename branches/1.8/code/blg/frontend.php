@@ -129,7 +129,8 @@ class gdsrFront {
         return $this->g->rSnippets->snippet_stars_percentage(array(
             "title" => $post->post_title,
             "rating" => $rating,
-            "votes" => $votes
+            "votes" => $votes,
+            "hidden" => $this->g->o["google_rich_snippets_hidden"] == 1
         ));
     }
 
@@ -144,7 +145,8 @@ class gdsrFront {
             "title" => $post->post_title,
             "rating" => $rating,
             "max_rating" => $set->stars,
-            "votes" => $votes
+            "votes" => $votes,
+            "hidden" => $this->g->o["google_rich_snippets_hidden"] == 1
         ));
     }
 
@@ -159,7 +161,8 @@ class gdsrFront {
             "rating" => $review,
             "max_rating" => $set->stars,
             "review_date" => mysql2date("c", $post->post_date),
-            "reviewer" => $author->display_name
+            "reviewer" => $author->display_name,
+            "hidden" => $this->g->o["google_rich_snippets_hidden"] == 1
         ));
     }
 
@@ -174,7 +177,8 @@ class gdsrFront {
                 "title" => $post->post_title,
                 "rating" => $rating,
                 "max_rating" => $this->g->o["stars"],
-                "votes" => $voters
+                "votes" => $voters,
+                "hidden" => $this->g->o["google_rich_snippets_hidden"] == 1
             ));
         }
     }
@@ -189,7 +193,8 @@ class gdsrFront {
             "rating" => $review,
             "max_rating" => $this->g->o["review_stars"],
             "review_date" => mysql2date("c", $post->post_date),
-            "reviewer" => $author->display_name
+            "reviewer" => $author->display_name,
+            "hidden" => $this->g->o["google_rich_snippets_hidden"] == 1
         ));
     }
 

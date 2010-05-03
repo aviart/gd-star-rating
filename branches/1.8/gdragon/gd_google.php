@@ -49,12 +49,12 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
          * @return string rendered snippet code
          */
         function snippet_stars_percentage($options = array()) {
-            $default = array("title" => "", "rating" => 0, "votes" => "", "review_excerpt" => "");
+            $default = array("title" => "", "rating" => 0, "votes" => "", "review_excerpt" => "", "hidden" => true);
             $options = wp_parse_args($options, $default);
 
             $tpl = '';
             if ($this->snippet_type == "microformat") {
-                $tpl.= '<span class="hreview-aggregate" style="display: none !important;"><span class="item"><span class="fn">%TITLE%</span></span>';
+                $tpl.= '<span class="hreview-aggregate"'.($options["hidden"] ? ' style="display: none !important;"' : '').'><span class="item"><span class="fn">%TITLE%</span></span>';
                 $tpl.= '<span class="rating"><span class="rating">%RATING%%</span>';
                 $tpl.= '<span class="count">%VOTES%</span>';
                 $tpl.= '<span class="summary">%REVIEW_EXCERPT%</span>';
@@ -62,6 +62,8 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
             } else if ($this->snippet_type == "rdf") {
 
             }
+
+            $tpl = apply_filters("gdsr_snippet_template_stars_percentage", $tpl);
 
             $tpl = str_replace("%TITLE%", $options["title"], $tpl);
             $tpl = str_replace("%RATING%", $options["rating"], $tpl);
@@ -78,12 +80,12 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
          * @return string rendered snippet code
          */
         function snippet_stars_rating($options = array()) {
-            $default = array("title" => "", "rating" => 0, "max_rating" => 5, "votes" => "", "review_excerpt" => "");
+            $default = array("title" => "", "rating" => 0, "max_rating" => 5, "votes" => "", "review_excerpt" => "", "hidden" => true);
             $options = wp_parse_args($options, $default);
 
             $tpl = '';
             if ($this->snippet_type == "microformat") {
-                $tpl.= '<span class="hreview-aggregate" style="display: none !important;"><span class="item"><span class="fn">%TITLE%</span></span>';
+                $tpl.= '<span class="hreview-aggregate"'.($options["hidden"] ? ' style="display: none !important;"' : '').'><span class="item"><span class="fn">%TITLE%</span></span>';
                 $tpl.= '<span class="rating"><span class="average">%RATING%</span><span class="best">%MAX_RATING%</span>';
                 $tpl.= '<span class="count">%VOTES%</span>';
                 $tpl.= '<span class="summary">%REVIEW_EXCERPT%</span>';
@@ -91,6 +93,8 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
             } else if ($this->snippet_type == "rdf") {
 
             }
+
+            $tpl = apply_filters("gdsr_snippet_template_stars_rating", $tpl);
 
             $tpl = str_replace("%TITLE%", $options["title"], $tpl);
             $tpl = str_replace("%RATING%", $options["rating"], $tpl);
@@ -108,12 +112,12 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
          * @return string rendered snippet code
          */
         function snippet_stars_review($options = array()) {
-            $default = array("title" => "", "rating" => 0, "max_rating" => 5, "reviewer" => "", "review_date" => "", "review_excerpt" => "");
+            $default = array("title" => "", "rating" => 0, "max_rating" => 5, "reviewer" => "", "review_date" => "", "review_excerpt" => "", "hidden" => true);
             $options = wp_parse_args($options, $default);
 
             $tpl = '';
             if ($this->snippet_type == "microformat") {
-                $tpl.= '<span class="hreview" style="display: none !important;"><span class="item"><span class="fn">%TITLE%</span></span>';
+                $tpl.= '<span class="hreview"'.($options["hidden"] ? ' style="display: none !important;"' : '').'><span class="item"><span class="fn">%TITLE%</span></span>';
                 $tpl.= '<span class="rating"><span class="value">%RATING%</span><span class="best">%MAX_RATING%</span>';
                 $tpl.= '<span class="dtreviewed">%REVIEW_DATE%</span>';
                 $tpl.= '<span class="reviewer">%REVIEWER%</span>';
@@ -121,6 +125,8 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
                 $tpl.= '</span></span>';
             } else if ($this->snippet_type == "rdf") {
             }
+
+            $tpl = apply_filters("gdsr_snippet_template_stars_review", $tpl);
 
             $tpl = str_replace("%TITLE%", $options["title"], $tpl);
             $tpl = str_replace("%RATING%", $options["rating"], $tpl);

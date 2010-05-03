@@ -1,7 +1,9 @@
 <table class="form-table"><tbody>
 <tr><th scope="row"><?php _e("Google Rich Snippets", "gd-star-rating"); ?></th>
     <td>
-        <input type="checkbox" name="gdsr_grs" id="gdsr_grs"<?php if ($gdsr_options["google_rich_snippets_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_grs"><?php _e("Embed Google Rich Snippets.", "gd-star-rating"); ?></label>
+        <input type="checkbox" name="gdsr_grs" id="gdsr_grs"<?php if ($gdsr_options["google_rich_snippets_active"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_grs"><?php _e("Automatically Embed Google Rich Snippets.", "gd-star-rating"); ?></label>
+        <br/>
+        <input type="checkbox" name="gdsr_grs_hidden" id="gdsr_grs_hidden"<?php if ($gdsr_options["google_rich_snippets_hidden"] == 1) echo " checked"; ?> /><label style="margin-left: 5px;" for="gdsr_grs_hidden"><?php _e("Snippet will be renedered hidden on the page (style display set to none).", "gd-star-rating"); ?></label>
         <div class="gdsr-table-split"></div>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
@@ -25,10 +27,20 @@
                 </select>
                 </td>
             </tr>
+            <tr>
+                <td width="150"><?php _e("Location", "gd-star-rating"); ?>:</td>
+                <td align="left">
+                <select style="width: 180px;" name="gdsr_grs_location" id="gdsr_grs_location">
+                    <option value="top"<?php echo $gdsr_options['google_rich_snippets_location'] == 'top' ? ' selected="selected"' : ''; ?>><?php _e("Post content top", "gd-star-rating"); ?></option>
+                    <option value="bottom"<?php echo $gdsr_options['google_rich_snippets_location'] == 'bottom' ? ' selected="selected"' : ''; ?>><?php _e("Post content bottom", "gd-star-rating"); ?></option>
+                </select>
+                </td>
+            </tr>
         </table>
         <div class="gdsr-table-split"></div>
         <?php _e("Thumbs ratings will be embeded as percentage ratings.", "gd-star-rating"); ?><br />
-        <?php _e("If the post or page has no valid rating set, snippet code will not be embeded for that post or page.", "gd-star-rating"); ?>
+        <?php _e("If the post or page has no valid rating set, snippet code will not be embeded for that post or page.", "gd-star-rating"); ?><br />
+        <?php _e("To test snippet use Google testing tool", "gd-star-rating"); ?>: <a target="_blank" href="http://www.google.com/webmasters/tools/richsnippets">Rich Snippets Testing Tool</a>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("RSS Feeds", "gd-star-rating"); ?></th>
