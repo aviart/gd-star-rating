@@ -2,6 +2,7 @@
 
 class gdsrFront {
     var $g;
+    var $gsr;
 
     var $loader_article_thumb = "";
     var $loader_comment_thumb = "";
@@ -94,33 +95,44 @@ class gdsrFront {
         else return $new_results;
     }
 
+    function init_google_rich_snippet() {
+        $active = $this->g->o["google_rich_snippets_active"] == 1;
+        if ($active && !is_admin() && (is_single() || is_page()) && !is_feed()) {
+            global $post;
+            $this->gsr = $this->render_google_rich_snippet($post);
+        }
+    }
+
+    function insert_google_rich_snippet() {
+        echo $this->gsr;
+    }
+
     function render_google_rich_snippet($post, $settings = array()) {
-        $active = isset($settings["active"]) ? true : $this->g->o["google_rich_snippets_active"] == 1;
+        $hidden = isset($settings["hidden"]) ? $settings["hidden"] : $this->g->o["google_rich_snippets_hidden"] == 1;
+
         $datasource = isset($settings["source"]) ? $settings["source"] : $this->g->o["google_rich_snippets_datasource"];
         if (isset($settings["format"]) && is_object($this->g->rSnippets)) $this->g->rSnippets->snippet_type = $settings["format"];
 
-        if ($active) {
-            switch ($datasource) {
-                case "standard_rating":
-                    return $this->render_gsr_standard_rating($post);
-                    break;
-                case "standard_review":
-                    return $this->render_gsr_standard_review($post);
-                    break;
-                case "multis_rating":
-                    return $this->render_gsr_multis_rating($post);
-                    break;
-                case "multis_review":
-                    return $this->render_gsr_multis_review($post);
-                    break;
-                case "thumbs":
-                    return $this->render_gsr_thumbs($post);
-                    break;
-            }
-        } else return "";
+        switch ($datasource) {
+            case "standard_rating":
+                return $this->render_gsr_standard_rating($post, $hidden);
+                break;
+            case "standard_review":
+                return $this->render_gsr_standard_review($post, $hidden);
+                break;
+            case "multis_rating":
+                return $this->render_gsr_multis_rating($post, $hidden);
+                break;
+            case "multis_review":
+                return $this->render_gsr_multis_review($post, $hidden);
+                break;
+            case "thumbs":
+                return $this->render_gsr_thumbs($post, $hidden);
+                break;
+        }
     }
 
-    function render_gsr_thumbs($post) {
+    function render_gsr_thumbs($post, $hidden = true) {
         $post_data = wp_gdget_post($post->ID);
         $votes = $post_data->user_recc_plus + $post_data->user_recc_minus + $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
         if (!is_object($this->g->rSnippets) || $votes == 0) return "";
@@ -130,11 +142,11 @@ class gdsrFront {
             "title" => $post->post_title,
             "rating" => $rating,
             "votes" => $votes,
-            "hidden" => $this->g->o["google_rich_snippets_hidden"] == 1
+            "hidden" => $hidden
         ));
     }
 
-    function render_gsr_multis_rating($post) {
+    function render_gsr_multis_rating($post, $hidden = true) {
         $data = gdsrBlgDB::get_rss_multi_data($post->ID);
         $votes = $data->total_votes_visitors + $data->total_votes_users;
         if (!is_object($this->g->rSnippets) || $votes == 0) return "";
@@ -146,11 +158,11 @@ class gdsrFront {
             "rating" => $rating,
             "max_rating" => $set->stars,
             "votes" => $votes,
-            "hidden" => $this->g->o["google_rich_snippets_hidden"] == 1
+            "hidden" => $hidden
         ));
     }
 
-    function render_gsr_multis_review($post) {
+    function render_gsr_multis_review($post, $hidden = true) {
         $data = gdsrBlgDB::get_rss_multi_data_review($post->ID);
         $review = is_object($data) ? $data->average_review : 0;
         if (!is_object($this->g->rSnippets) || $review <= 0) return "";
@@ -162,11 +174,11 @@ class gdsrFront {
             "max_rating" => $set->stars,
             "review_date" => mysql2date("c", $post->post_date),
             "reviewer" => $author->display_name,
-            "hidden" => $this->g->o["google_rich_snippets_hidden"] == 1
+            "hidden" => $hidden
         ));
     }
 
-    function render_gsr_standard_rating($post) {
+    function render_gsr_standard_rating($post, $hidden = true) {
         $post_data = wp_gdget_post($post->ID);
         if (is_object($post_data)) {
             $voters = $post_data->visitor_voters + $post_data->user_voters;
@@ -178,12 +190,12 @@ class gdsrFront {
                 "rating" => $rating,
                 "max_rating" => $this->g->o["stars"],
                 "votes" => $voters,
-                "hidden" => $this->g->o["google_rich_snippets_hidden"] == 1
+                "hidden" => $hidden
             ));
         }
     }
 
-    function render_gsr_standard_review($post) {
+    function render_gsr_standard_review($post, $hidden = true) {
         $post_data = wp_gdget_post($post->ID);
         $review = is_object($post_data) ? $post_data->review : 0;
         if (!is_object($this->g->rSnippets) || $review <= 0) return "";
@@ -194,7 +206,7 @@ class gdsrFront {
             "max_rating" => $this->g->o["review_stars"],
             "review_date" => mysql2date("c", $post->post_date),
             "reviewer" => $author->display_name,
-            "hidden" => $this->g->o["google_rich_snippets_hidden"] == 1
+            "hidden" => $hidden
         ));
     }
 

@@ -847,6 +847,7 @@ class GDStarRating {
             }
         } else {
             add_action('wp_head', array(&$this, 'wp_head'));
+            add_action('gdsr_gsr_insert_snippet', array(&$this->f, 'insert_google_rich_snippet'));
             add_filter('query_vars', array($this->q, 'query_vars'));
             add_action('pre_get_posts', array($this->q, 'pre_get_posts'));
             add_filter('comment_text', array(&$this, 'display_comment'), 10000);
@@ -1420,6 +1421,8 @@ class GDStarRating {
      * WordPress action for adding blog header contents
      */
     function wp_head() {
+        $this->f->init_google_rich_snippet();
+
         if (is_feed()) return;
         $this->wp_head_javascript();
 
@@ -1911,9 +1914,10 @@ class GDStarRating {
             }
         }
 
-        $rich_snippet = ((is_single() || is_page()) && !is_admin() && !is_feed()) ? $this->f->render_google_rich_snippet($post) : "";
+        $rich_snippet = $this->f->gsr;
         if ($this->o["google_rich_snippets_location"] == "top") return $rich_snippet.$content;
-        else return $content.$rich_snippet;
+        else if ($this->o["google_rich_snippets_location"] == "bottom") return $content.$rich_snippet;
+        else return $content;
     }
 
     function display_multi_rating($location, $post, $user) {

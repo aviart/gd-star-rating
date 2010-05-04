@@ -107,7 +107,7 @@ Plugin administration consist of 17 main panels:
 * all settings in it can be added to wp-config.php. if you do that, you must not move the file from `gd-star-rating`.
 
 = WordPress MU & BuddyPress =
-* Minimal version supported: 2.8.1
+* Minimal version supported: 2.9
 * Support for WPMU is only partial, not everything works as it should be.
 * Plugin is not working with some BuddyPress specific features.
 

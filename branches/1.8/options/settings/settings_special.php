@@ -23,16 +23,8 @@
                 <td align="left">
                 <select style="width: 180px;" name="gdsr_grs_format" id="gdsr_grs_format">
                     <option value="microformat"<?php echo $gdsr_options['google_rich_snippets_format'] == 'microformat' ? ' selected="selected"' : ''; ?>><?php _e("Microformat", "gd-star-rating"); ?></option>
-                    <!--<option value="rdf"<?php echo $gdsr_options['google_rich_snippets_format'] == 'rdf' ? ' selected="selected"' : ''; ?>><?php _e("RDF", "gd-star-rating"); ?></option>-->
-                </select>
-                </td>
-            </tr>
-            <tr>
-                <td width="150"><?php _e("Location", "gd-star-rating"); ?>:</td>
-                <td align="left">
-                <select style="width: 180px;" name="gdsr_grs_location" id="gdsr_grs_location">
-                    <option value="top"<?php echo $gdsr_options['google_rich_snippets_location'] == 'top' ? ' selected="selected"' : ''; ?>><?php _e("Post content top", "gd-star-rating"); ?></option>
-                    <option value="bottom"<?php echo $gdsr_options['google_rich_snippets_location'] == 'bottom' ? ' selected="selected"' : ''; ?>><?php _e("Post content bottom", "gd-star-rating"); ?></option>
+                    <option value="microdata"<?php echo $gdsr_options['google_rich_snippets_format'] == 'microdata' ? ' selected="selected"' : ''; ?>><?php _e("Microdata", "gd-star-rating"); ?></option>
+                    <option value="rdf"<?php echo $gdsr_options['google_rich_snippets_format'] == 'rdf' ? ' selected="selected"' : ''; ?>><?php _e("RDF", "gd-star-rating"); ?></option>
                 </select>
                 </td>
             </tr>
@@ -40,7 +32,27 @@
         <div class="gdsr-table-split"></div>
         <?php _e("Thumbs ratings will be embeded as percentage ratings.", "gd-star-rating"); ?><br />
         <?php _e("If the post or page has no valid rating set, snippet code will not be embeded for that post or page.", "gd-star-rating"); ?><br />
-        <?php _e("To test snippet use Google testing tool", "gd-star-rating"); ?>: <a target="_blank" href="http://www.google.com/webmasters/tools/richsnippets">Rich Snippets Testing Tool</a>
+        <?php _e("To test snippet use Google testing tool", "gd-star-rating"); ?>: <strong><a target="_blank" href="http://www.google.com/webmasters/tools/richsnippets"><?php _e("Rich Snippets Testing Tool", "gd-star-rating"); ?></a></strong>
+    </td>
+</tr>
+<tr><th scope="row"><?php _e("Inserting", "gd-star-rating"); ?></th>
+    <td>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
+                <td width="150"><?php _e("Location", "gd-star-rating"); ?>:</td>
+                <td align="left">
+                <select style="width: 180px;" name="gdsr_grs_location" id="gdsr_grs_location">
+                    <option value="top"<?php echo $gdsr_options['google_rich_snippets_location'] == 'top' ? ' selected="selected"' : ''; ?>><?php _e("Post content top", "gd-star-rating"); ?></option>
+                    <option value="bottom"<?php echo $gdsr_options['google_rich_snippets_location'] == 'bottom' ? ' selected="selected"' : ''; ?>><?php _e("Post content bottom", "gd-star-rating"); ?></option>
+                    <option value="action"<?php echo $gdsr_options['google_rich_snippets_location'] == 'action' ? ' selected="selected"' : ''; ?>><?php _e("On Snippet action", "gd-star-rating"); ?></option>
+                </select>
+                </td>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <?php _e("If you select third option, Google Rich Snippet will be added using this action", "gd-star-rating"); ?>: <strong>gdsr_gsr_insert_snippet</strong><br/>
+        <?php _e("Action will be added on single post or page only. Do action call must be within template body.", "gd-star-rating"); ?><br/>
+        <?php _e("This method is supported by all premium xScape Theme Framework based themed", "gd-star-rating"); ?>: <strong><a target="_blank" href="http://www.dev4press.com/themes/"><?php _e("xScape themes on Dev4Press", "gd-star-rating"); ?></a></strong>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("RSS Feeds", "gd-star-rating"); ?></th>
