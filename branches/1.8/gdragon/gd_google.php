@@ -55,7 +55,7 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
             $tpl = '';
             if ($this->snippet_type == "microformat") {
                 $tpl.= '<span class="hreview-aggregate"%HIDDEN%>';
-                    $tpl.= '<span class="item"><span class="fn">%TITLE%</span></span>';
+                    $tpl.= '<span class="item"><span class="fn">%TITLE%</span></span>, ';
                     $tpl.= '<span class="rating">';
                         $tpl.= '<span class="rating">%RATING%%</span>';
                         $tpl.= ' %WORD_BASEDON% <span class="count">%VOTES%</span> %WORD_VOTES% ';
@@ -64,7 +64,7 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
                 $tpl.= '</span>';
             } else if ($this->snippet_type == "microdata") {
                 $tpl.= '<span itemscope itemtype="http://data-vocabulary.org/Review-aggregate"%HIDDEN%>';
-                    $tpl.= '<span itemprop="itemreviewed"><span class="fn">%TITLE%</span></span>';
+                    $tpl.= '<span itemprop="itemreviewed"><span class="fn">%TITLE%</span></span>, ';
                     $tpl.= '<span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating">';
                         $tpl.= '<span itemprop="rating">%RATING%%</span>';
                         $tpl.= ' %WORD_BASEDON% <span itemprop="count">%VOTES%</span> %WORD_VOTES% ';
@@ -72,7 +72,7 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
                 $tpl.= '</span>';
             } else if ($this->snippet_type == "rdf") {
                 $tpl.= '<div xmlns:v="http://rdf.data-vocabulary.org/#" typeof="v:Review-aggregate"%HIDDEN%>';
-                    $tpl.= '<span property="v:itemreviewed">%TITLE%</span>';
+                    $tpl.= '<span property="v:itemreviewed">%TITLE%</span>, ';
                     $tpl.= '<span rel="v:rating">';
                         $tpl.= '<span typeof="v:Rating">';
                             $tpl.= '<span property="v:rating">%RATING%%</span>';
@@ -112,7 +112,7 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
             $tpl = '';
             if ($this->snippet_type == "microformat") {
                 $tpl.= '<span class="hreview-aggregate"%HIDDEN%>';
-                    $tpl.= '<span class="item"><span class="fn">%TITLE%</span></span>';
+                    $tpl.= '<span class="item"><span class="fn">%TITLE%</span></span>, ';
                     $tpl.= '<span class="rating">';
                         $tpl.= '<span class="average">%RATING%</span> %WORD_OUTOF% ';
                         $tpl.= '<span class="best">%MAX_RATING%</span>';
@@ -122,7 +122,7 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
                 $tpl.= '</span>';
             } else if ($this->snippet_type == "microdata") {
                 $tpl.= '<span itemscope itemtype="http://data-vocabulary.org/Review-aggregate"%HIDDEN%>';
-                    $tpl.= '<span itemprop="itemreviewed"><span class="fn">%TITLE%</span></span>';
+                    $tpl.= '<span itemprop="itemreviewed"><span class="fn">%TITLE%</span></span>, ';
                     $tpl.= '<span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating">';
                         $tpl.= '<span itemprop="average">%RATING%</span> %WORD_OUTOF% ';
                         $tpl.= '<span itemprop="best">%MAX_RATING%</span>';
@@ -131,7 +131,7 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
                 $tpl.= '</span>';
             } else if ($this->snippet_type == "rdf") {
                 $tpl.= '<div xmlns:v="http://rdf.data-vocabulary.org/#" typeof="v:Review-aggregate"%HIDDEN%>';
-                    $tpl.= '<span property="v:itemreviewed">%TITLE%</span>';
+                    $tpl.= '<span property="v:itemreviewed">%TITLE%</span>, ';
                     $tpl.= '<span rel="v:rating">';
                         $tpl.= '<span typeof="v:Rating">';
                             $tpl.= '<span property="v:average">%RATING%</span> %WORD_OUTOF% ';
@@ -174,7 +174,7 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
             $tpl = '';
             if ($this->snippet_type == "microformat") {
                 $tpl.= '<span class="hreview"%HIDDEN%>';
-                    $tpl.= '<span class="item"><span class="fn">%TITLE%</span></span>';
+                    $tpl.= '<span class="item"><span class="fn">%TITLE%</span></span>, ';
                     $tpl.= '<span class="rating">';
                         $tpl.= '%WORD_REVIEWEDBY% <span class="reviewer">%REVIEWER%</span>';
                         $tpl.= ' %WORD_ON% <span class="dtreviewed">%REVIEW_DATE%</span>';
@@ -185,7 +185,7 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
                 $tpl.= '</span>';
             } else if ($this->snippet_type == "microdata") {
                 $tpl.= '<span itemscope itemtype="http://data-vocabulary.org/Review"%HIDDEN%>';
-                    $tpl.= '<span itemprop="itemreviewed">%TITLE%</span>';
+                    $tpl.= '<span itemprop="itemreviewed">%TITLE%</span>, ';
                     $tpl.= '%WORD_REVIEWEDBY% <span itemprop="reviewer">%REVIEWER%</span>';
                     $tpl.= ' %WORD_ON% <time itemprop="dtreviewed" datetime="%REVIEW_DATE%">%REVIEW_DATE%</time>';
                     $tpl.= '<span itemprop="summary">%REVIEW_EXCERPT%</span>';
@@ -194,7 +194,7 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
                 $tpl.= '</span>';
             } else if ($this->snippet_type == "rdf") {
                 $tpl.= '<div xmlns:v="http://rdf.data-vocabulary.org/#" typeof="v:Review"%HIDDEN%>';
-                    $tpl.= '<span property="v:itemreviewed">%TITLE%</span>';
+                    $tpl.= '<span property="v:itemreviewed">%TITLE%</span>, ';
                     $tpl.= '%WORD_REVIEWEDBY% <span property="v:reviewer">%REVIEWER%</span>';
                     $tpl.= ' %WORD_ON% <span property="v:dtreviewed" content="%REVIEW_DATE%">%REVIEW_DATE%</span>';
                     $tpl.= '<span property="v:summary">%REVIEW_EXCERPT%</span>';

@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.8.9
+Version: 1.9.0
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
 Tested up to: 3.0
@@ -125,6 +125,9 @@ This happens only with PHP4. That's why minimal plugin requirements is now PHP5.
 = After upgrade some admin panels are not working? =
 Most likely problem is with cached javascript files in the browsers. Clear cache, and everything should be ok.
 
+= I want to translate the plugin to my language, or to improve existing translations? =
+You only need POEdit program that works on Windows, Linux and MacOS. Instructions on how to make or update translations are here: http://dv4p.com/wa.
+
 = How to change visibility of plugin menus to different user levels? =
 This is controlled by the constants defined in the config files. Detailed info on setting them is here: http://www.gdstarrating.com/2009/08/12/using-config-files/.
 
@@ -185,6 +188,9 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.9.0 =
+* Google Rich Snippets support for RDF and Microdata formats and improved templates
+
 = 1.8.9 =
 * More options for google rich snippet
 * Added robots nofollow/noindex for plugin ajax handler

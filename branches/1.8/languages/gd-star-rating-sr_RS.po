@@ -1,13 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: GD Star Rating\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
-"Language-Team: \n"
+"Language-Team:  <milan@gdragon.info>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Serbian\n"
+"X-Poedit-Country: SERBIA\n"
 
 #: gdragon/gd_google.php:92
 #: gdragon/gd_google.php:153
@@ -20,7 +23,6 @@ msgstr ""
 #: options/multis/results_post.php:147
 #: options/multis/results_post.php:146
 #: gdragon/gd_google.php:209
-#, fuzzy
 msgid "rating"
 msgid_plural "ratings"
 msgstr[0] "oцена"
@@ -1627,18 +1629,16 @@ msgid "Multi Rating"
 msgstr "Мулти Рејтинг"
 
 #: options/settings/settings_special.php:37
-#, fuzzy
 msgid "Inserting"
 msgstr "Интеграција"
 
 #: options/settings/settings_special.php:34
 msgid "Rich Snippets Testing Tool"
-msgstr ""
+msgstr "Rich Snippets тест алат"
 
 #: options/settings/settings_special.php:44
-#, fuzzy
 msgid "Post content top"
-msgstr "Садржај чланака"
+msgstr "Врх садржаја чланка"
 
 #: options/settings/settings_special.php:41
 #: options/multis/editor.php:64
@@ -1694,9 +1694,8 @@ msgid "Required to show the dashboard widgets"
 msgstr "Потребно да би се приказао дашбоард виџет"
 
 #: options/settings/settings_special.php:3
-#, fuzzy
 msgid "Automatically Embed Google Rich Snippets."
-msgstr "Убаци Google Rich Snippets."
+msgstr "Аутоматски убаци Google Rich Snippets."
 
 #: options/settings/settings_special.php:1
 msgid "Google Rich Snippets"
@@ -1754,7 +1753,7 @@ msgstr "За чланке приказане на Главној страни."
 
 #: options/settings/settings_special.php:54
 msgid "xScape themes on Dev4Press"
-msgstr ""
+msgstr "xScape tеме на Dev4Press"
 
 #: options/settings/settings_special.php:54
 msgid "This method is supported by all premium xScape Theme Framework based themed"
@@ -1773,9 +1772,8 @@ msgid "On Snippet action"
 msgstr ""
 
 #: options/settings/settings_special.php:45
-#, fuzzy
 msgid "Post content bottom"
-msgstr "Садржај чланака"
+msgstr "Дно садржаја чланка"
 
 #: options/settings/settings_special.php:53
 msgid "Action will be added on single post or page only. Do action call must be within template body."
@@ -4317,7 +4315,7 @@ msgstr "мртвих чланака из мулти рејтинг табела"
 #: gdragon/gd_google.php:151
 #: gdragon/gd_google.php:91
 msgid "based on"
-msgstr ""
+msgstr "на бази"
 
 #: code/class.php:1551
 msgid "dead articles records from articles table."
@@ -4384,7 +4382,7 @@ msgstr "Све Секције"
 #: gdragon/gd_google.php:210
 #: gdragon/gd_google.php:152
 msgid "out of"
-msgstr ""
+msgstr "од"
 
 #: gdt2/form_defaults.php:5
 #: gdt2/form_list.php:45
@@ -4392,9 +4390,8 @@ msgid "Section / Type"
 msgstr "Секција / Тип"
 
 #: gdragon/gd_google.php:207
-#, fuzzy
 msgid "reviewed by"
-msgstr "опис"
+msgstr "описао"
 
 #: gdt2/form_dependencies.php:47
 #: gdt2/form_defaults.php:37
@@ -4655,12 +4652,16 @@ msgstr "Рејтинг Тамб Чланака"
 #~ "Link external javascript rating code, instead of embeding it into the "
 #~ "page."
 #~ msgstr "Линкуј екстерни јавасцрипт фајл, уместо да се уграђује у страну."
+
 #~ msgid "Chart with votes distribution"
 #~ msgstr "Графикон са дистрибуцијом гласова"
+
 #~ msgid "Wizard"
 #~ msgstr "Чаробњак"
+
 #~ msgid "Quick Rating Facts"
 #~ msgstr "Рејтин чињенице"
+
 #~ msgid ""
 #~ "Registered users rated %s articles with average rating of %s and %s "
 #~ "comments with average rating of %s. Visitors rated %s articles with "
@@ -4670,28 +4671,38 @@ msgstr "Рејтинг Тамб Чланака"
 #~ "%s и %s коментара са просечним рејтингом од %s. Посетиоци су гласали за %"
 #~ "s чланака са просечним рејтингом oд %s и %s коментара са просечним "
 #~ "рејтингом од %s."
+
 #~ msgid ""
 #~ " There are %s article and %s comments ratings waiting in moderation queue."
 #~ msgstr ""
 #~ " Укупно је %s чланака и %s коментара рејтинга у листи за модерацију."
+
 #~ msgid "Extra"
 #~ msgstr "Екстра"
+
 #~ msgid "Donate"
 #~ msgstr "Данације"
+
 #~ msgid "help further development"
 #~ msgstr "помозите даљи развој"
+
 #~ msgid "wordpress development"
 #~ msgstr "wordpress развој"
+
 #~ msgid "development discussion forum"
 #~ msgstr "форум за дискусију о разбоју"
+
 #~ msgid "Cache Activation"
 #~ msgstr "Кеш Активација"
+
 #~ msgid "Cache Cleanup"
 #~ msgstr "Очисти Кеш"
+
 #~ msgid "Auto cleanup cache"
 #~ msgstr "Аутоматско брисање кеша"
+
 #~ msgid "Enabled."
 #~ msgstr "Уклјучено."
+
 #~ msgid "Add chart summary rating widget."
 #~ msgstr "Додај виџет са сумарним гласовима."
-
