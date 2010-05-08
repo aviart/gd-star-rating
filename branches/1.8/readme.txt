@@ -189,7 +189,8 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Changelog ==
 = 1.9.0 =
-* Google Rich Snippets support for RDF and Microdata formats and improved templates
+* Google Rich Snippets support for RDF and Microdata formats
+* Improved templates for Google Rich Snippets
 
 = 1.8.9 =
 * More options for google rich snippet

@@ -4,15 +4,17 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Gianni Diurno (aka gidibao) <gidibao[at]gmail[dot]com>\n"
 "Language-Team: Gianni Diurno | http://gidibao.net/ <gidibao@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
-"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: C:\\Documents and Settings\\Gianni\\Desktop\\gd-star-rating\\gd-star-rating\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: C:\\Documents and Settings\\Gianni\\Desktop\\gd-star-rating\\gd-star-rating\n"
 
 #: gdragon/gd_google.php:92
 #: gdragon/gd_google.php:153
@@ -27,8 +29,8 @@ msgstr ""
 #: gdragon/gd_google.php:209
 msgid "rating"
 msgid_plural "ratings"
-msgstr[0] "votazione"
-msgstr[1] "votaziones"
+msgstr[0] "valutazione"
+msgstr[1] "valutazioni"
 
 #: options/categories.php:208
 #: options/categories.php:218
