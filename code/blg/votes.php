@@ -52,7 +52,7 @@ wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_wi
         $template = new gdTemplateRender($tpl_id, "TAB");
         $rt = GDSRRenderT2::render_tat_voted($template->dep["TAT"], array("votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $id, "vote" => $vote_value));
 
-        return "{ status: 'ok', value: ".$score.", rater: '".$rt."' }";
+        return '{ "status": "ok", "value": "'.$score.'", "rater": "'.str_replace('"', '\"', $rt).'" }';
     }
 
     function vote_thumbs_comment($vote, $id, $tpl_id, $unit_width) {
@@ -102,7 +102,7 @@ wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_wid
         $template = new gdTemplateRender($tpl_id, "TCB");
         $rt = GDSRRenderT2::render_tct($template->dep["TCT"], array("votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $id, "vote_value" => $vote_value));
 
-        return "{ status: 'ok', value: ".$score.", rater: '".$rt."' }";
+        return '{ "status": "ok", "value": "'.$score.'", "rater": "'.str_replace('"', '\"', $rt).'" }';
     }
 
     function vote_multis($votes, $post_id, $set_id, $tpl_id, $size) {
@@ -152,7 +152,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
         $json = apply_filters("gdsr_vote_rating_multis_return", $json, $summary, $values);
         $enc_values = "[".join(",", $json)."]";
 
-        return "{ status: 'ok', values: ".$enc_values.", rater: '".$rt."', average: '".$rating."' }";
+        return '{ "status": "ok", "values": '.$enc_values.', "rater": "'.str_replace('"', '\"', $rt).'", "average": "'.$rating.'" }';
     }
 
     function vote_article($votes, $id, $tpl_id, $unit_width) {
@@ -201,7 +201,8 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
         $rt = GDSRRenderT2::render_srt_voted($template->dep["SRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "id" => $id, "vote" => $vote_value));
 
         $rating_width = apply_filters("gdsr_vote_rating_article_return", $rating_width, $unit_width, $rating1, $vote_value);
-        return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
+
+        return '{ "status": "ok", "value": "'.$rating_width.'", "rater": "'.str_replace('"', '\"', $rt).'" }';
     }
 
     function vote_comment($votes, $id, $tpl_id, $unit_width) {
@@ -253,7 +254,8 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         $rt = GDSRRenderT2::render_crt($template->dep["CRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "vote_value" => $vote_value));
 
         $rating_width = apply_filters("gdsr_vote_rating_comment_return", $rating_width, $unit_width, $rating1, $vote_value);
-        return "{ status: 'ok', value: ".$rating_width.", rater: '".$rt."' }";
+
+        return '{ "status": "ok", "value": "'.$rating_width.'", "rater": "'.str_replace('"', '\"', $rt).'" }';
     }
 }
 

@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.8.3
+Version: 1.9.0
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
 Tested up to: 3.0
@@ -15,15 +15,16 @@ Supported languages: english, serbian, spanish, german, italian, french, ukraini
 
 = About Plugin Support =
 Plugin is provided for free, and that is not going to change. But support is not free anymore. Currently available tutorials on official website will remain there, but all new tutorials and much more are available only through premium support on Dev4Press website.
+
 [Reasons for Premium Support](http://www.gdstarrating.com/2009/12/17/why-premium-support/) |
 [Support on Dev4Press](http://www.dev4press.com/plugins/gd-star-rating/editions/) |
 [Support Policy](http://www.dev4press.com/support-policy/)
 
 = Basic Information =
-[Plugin Home](http://www.gdstarrating.com/) |
-[Features](http://www.dev4press.com/plugins/gd-star-rating/features/) |
-[FAQ](http://www.gdstarrating.com/faq/) |
 [Premium Support](http://www.gdstarrating.com/premium/) |
+[Plugin Home](http://www.gdstarrating.com/) |
+[FAQ](http://www.gdstarrating.com/faq/) |
+[Features](http://www.dev4press.com/plugins/gd-star-rating/features/) |
 [Twitter](http://twitter.com/milangd)
 
 = Plugin Reference =
@@ -82,7 +83,7 @@ Plugin administration consist of 17 main panels:
 = Minimal Requirements =
 * PHP: 5.x.x
 * mySQL: 4.0, 4.1 or 5.x
-* WordPress: 2.8 or newer
+* WordPress: 2.7 or newer
 
 = Recommended Requirements =
 * PHP: 5.2.x or newer
@@ -99,8 +100,16 @@ Plugin administration consist of 17 main panels:
 * if you don't change location of `wp-content` folder, then you don't need to make any more changes.
 * if your `wp-content` folder is moved out of default WordPress location, then you must edit plugins `config.php` file and set value with exact location of `wp-load.php` file for global constant `STARRATING_WPLOAD` in line 8. Without this most of the features, including saving votes, will not work.
 
-= WordPress MU =
-* Minimal version supported: 2.8.6
+= Using gdsr-config.php file =
+* this file is used to set some of the constants plugin uses.
+* to use this file, you must move it file from `gd-star-rating` folder, one level up to `plugins` folder.
+* once you have moved it, make changes to it and it wll be loaded from the wordpress plugins root.
+* all settings in it can be added to wp-config.php. if you do that, you must not move the file from `gd-star-rating`.
+
+= WordPress MU & BuddyPress =
+* Minimal version supported: 2.9
+* Support for WPMU is only partial, not everything works as it should be.
+* Plugin is not working with some BuddyPress specific features.
 
 = Browser Notice =
 * Multi review feature on administration Post Edit page will not work properly with IE6 browsers.
@@ -109,6 +118,15 @@ Plugin administration consist of 17 main panels:
 
 = How to check if there is a sample and already explained solution to my problem? =
 Check the post in the following category: http://www.gdstarrating.com/category/tutorials/solving-problems/.
+
+= I have trouble saving plugin settings? =
+This happens only with PHP4. That's why minimal plugin requirements is now PHP5. Upgrade your servers, PHP4 is no longer supported, it's outdated and full of security holes.
+
+= After upgrade some admin panels are not working? =
+Most likely problem is with cached javascript files in the browsers. Clear cache, and everything should be ok.
+
+= I want to translate the plugin to my language, or to improve existing translations? =
+You only need POEdit program that works on Windows, Linux and MacOS. Instructions on how to make or update translations are here: http://dv4p.com/wa.
 
 = How to change visibility of plugin menus to different user levels? =
 This is controlled by the constants defined in the config files. Detailed info on setting them is here: http://www.gdstarrating.com/2009/08/12/using-config-files/.
@@ -157,9 +175,6 @@ There could be two causes for this:
 = Rating is not working in Firefox, but is working in other browsers. =
 There are many extensions for Firefox that modify the page, and are known to cause many JavaScript problems. Plugin works with all major browsers, and all JavaScript is developed using Firefox and Firebug. But I am not using (nor will test) Firefox with extensions (I use only Firebug).
 
-= I have trouble saving plugin settings? =
-This happens only with PHP4. That's why minimal plugin requirements is now PHP5. Upgrade your servers, PHP4 is no longer supported, it's outdated and full of security holes.
-
 = I tried everything (I really tried), and many things are still not working. =
 I can't guarantee that plugin will work on every WordPress setup. In 99.9% of the cases there are no problems, but some plugin, theme and server combinations can cause problems that can't be anticipated. But this is very rare, and in most cases that can be corrected by tracking down the problem. And usually only some plugins features will fail. Do not simply give up, find the problem, find the PHP error that can cause problem that will most likely point to some other plugin causing problems.
 
@@ -173,8 +188,45 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.9.0 =
+* Google Rich Snippets support for RDF and Microdata formats
+* Improved templates for Google Rich Snippets
+
+= 1.8.9 =
+* More options for google rich snippet
+* Added robots nofollow/noindex for plugin ajax handler
+* Added info on using the gdsr-config.php file
+* Fixed enqueue of js and css for non plugin admin pages
+* Some minor problems with js on admin pages
+
+= 1.8.8 =
+* Fixed invalid header order for export data to csv
+* Fixed invalid default rules for post meta box thumbs
+* Fixed minor problem with loading js datepicker translation
+
+= 1.8.7 =
+* Fixed comment text fails validation due to filter order
+* Fixed URL to the datepicker translation file
+
+= 1.8.6 =
+* Changed JSON response for votes to be jquery 1.4 compatible
+
+= 1.8.5 =
+* Added some new tags for T2 rating blocks
+* Additional CSS classes for rating blocks
+* Several functions improved
+* Proper use of thumbs voting rules
+* Few minor bugs fixes
+
+= 1.8.4 =
+* Global rules tool changed and improved
+* Fixed some integration problems
+* Cache cleanup can fail in some cases
+
 = 1.8.3 =
-* New and improved main JS ratings file
+* New improved and packed main JS ratings file
+* Replaced noticed wordpress depracted functions
+* Several more php notices fixed
 
 = 1.8.2 =
 * Few new functions and updates to comment integration

@@ -2,6 +2,7 @@
 
 class gdsrFront {
     var $g;
+    var $gsr;
 
     var $loader_article_thumb = "";
     var $loader_comment_thumb = "";
@@ -94,33 +95,44 @@ class gdsrFront {
         else return $new_results;
     }
 
+    function init_google_rich_snippet() {
+        $active = $this->g->o["google_rich_snippets_active"] == 1;
+        if ($active && !is_admin() && (is_single() || is_page()) && !is_feed()) {
+            global $post;
+            $this->gsr = $this->render_google_rich_snippet($post);
+        }
+    }
+
+    function insert_google_rich_snippet() {
+        echo $this->gsr;
+    }
+
     function render_google_rich_snippet($post, $settings = array()) {
-        $active = isset($settings["active"]) ? true : $this->g->o["google_rich_snippets_active"] == 1;
+        $hidden = isset($settings["hidden"]) ? $settings["hidden"] : $this->g->o["google_rich_snippets_hidden"] == 1;
+
         $datasource = isset($settings["source"]) ? $settings["source"] : $this->g->o["google_rich_snippets_datasource"];
         if (isset($settings["format"]) && is_object($this->g->rSnippets)) $this->g->rSnippets->snippet_type = $settings["format"];
 
-        if ($active) {
-            switch ($datasource) {
-                case "standard_rating":
-                    return $this->render_gsr_standard_rating($post);
-                    break;
-                case "standard_review":
-                    return $this->render_gsr_standard_review($post);
-                    break;
-                case "multis_rating":
-                    return $this->render_gsr_multis_rating($post);
-                    break;
-                case "multis_review":
-                    return $this->render_gsr_multis_review($post);
-                    break;
-                case "thumbs":
-                    return $this->render_gsr_thumbs($post);
-                    break;
-            }
-        } else return "";
+        switch ($datasource) {
+            case "standard_rating":
+                return $this->render_gsr_standard_rating($post, $hidden);
+                break;
+            case "standard_review":
+                return $this->render_gsr_standard_review($post, $hidden);
+                break;
+            case "multis_rating":
+                return $this->render_gsr_multis_rating($post, $hidden);
+                break;
+            case "multis_review":
+                return $this->render_gsr_multis_review($post, $hidden);
+                break;
+            case "thumbs":
+                return $this->render_gsr_thumbs($post, $hidden);
+                break;
+        }
     }
 
-    function render_gsr_thumbs($post) {
+    function render_gsr_thumbs($post, $hidden = true) {
         $post_data = wp_gdget_post($post->ID);
         $votes = $post_data->user_recc_plus + $post_data->user_recc_minus + $post_data->visitor_recc_plus + $post_data->visitor_recc_minus;
         if (!is_object($this->g->rSnippets) || $votes == 0) return "";
@@ -129,11 +141,12 @@ class gdsrFront {
         return $this->g->rSnippets->snippet_stars_percentage(array(
             "title" => $post->post_title,
             "rating" => $rating,
-            "votes" => $votes
+            "votes" => $votes,
+            "hidden" => $hidden
         ));
     }
 
-    function render_gsr_multis_rating($post) {
+    function render_gsr_multis_rating($post, $hidden = true) {
         $data = gdsrBlgDB::get_rss_multi_data($post->ID);
         $votes = $data->total_votes_visitors + $data->total_votes_users;
         if (!is_object($this->g->rSnippets) || $votes == 0) return "";
@@ -144,11 +157,12 @@ class gdsrFront {
             "title" => $post->post_title,
             "rating" => $rating,
             "max_rating" => $set->stars,
-            "votes" => $votes
+            "votes" => $votes,
+            "hidden" => $hidden
         ));
     }
 
-    function render_gsr_multis_review($post) {
+    function render_gsr_multis_review($post, $hidden = true) {
         $data = gdsrBlgDB::get_rss_multi_data_review($post->ID);
         $review = is_object($data) ? $data->average_review : 0;
         if (!is_object($this->g->rSnippets) || $review <= 0) return "";
@@ -159,11 +173,12 @@ class gdsrFront {
             "rating" => $review,
             "max_rating" => $set->stars,
             "review_date" => mysql2date("c", $post->post_date),
-            "reviewer" => $author->display_name
+            "reviewer" => $author->display_name,
+            "hidden" => $hidden
         ));
     }
 
-    function render_gsr_standard_rating($post) {
+    function render_gsr_standard_rating($post, $hidden = true) {
         $post_data = wp_gdget_post($post->ID);
         if (is_object($post_data)) {
             $voters = $post_data->visitor_voters + $post_data->user_voters;
@@ -174,12 +189,13 @@ class gdsrFront {
                 "title" => $post->post_title,
                 "rating" => $rating,
                 "max_rating" => $this->g->o["stars"],
-                "votes" => $voters
+                "votes" => $voters,
+                "hidden" => $hidden
             ));
         }
     }
 
-    function render_gsr_standard_review($post) {
+    function render_gsr_standard_review($post, $hidden = true) {
         $post_data = wp_gdget_post($post->ID);
         $review = is_object($post_data) ? $post_data->review : 0;
         if (!is_object($this->g->rSnippets) || $review <= 0) return "";
@@ -189,7 +205,8 @@ class gdsrFront {
             "rating" => $review,
             "max_rating" => $this->g->o["review_stars"],
             "review_date" => mysql2date("c", $post->post_date),
-            "reviewer" => $author->display_name
+            "reviewer" => $author->display_name,
+            "hidden" => $hidden
         ));
     }
 
@@ -518,6 +535,7 @@ class gdsrFront {
         $override["style_ie6"] = $this->g->g->thumbs[$settings[11]]->folder;
 
         $dbg_allow = "F";
+        $already_voted = false;
         $allow_vote = $override["read_only"] == 0;
         if ($this->g->is_ban && $this->g->o["ip_filtering"] == 1) {
             if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
@@ -538,7 +556,7 @@ class gdsrFront {
             $this->g->c[$rd_post_id] = 1;
         }
 
-        $rules_comments = $post_data->rules_comments != "I" ? $post_data->rules_comments : $this->g->get_post_rule_value($rd_post_id, "rules_comments", "default_voterules_comments");
+        $rules_comments = $post_data->recc_rules_comments != "I" ? $post_data->recc_rules_comments : $this->g->get_post_rule_value($rd_post_id, "recc_rules_comments", "recc_default_voterules_comments");
 
         if ($rules_comments == "H") return "";
         $comment_data = wp_gdget_comment($rd_comment_id);
@@ -566,10 +584,12 @@ class gdsrFront {
             }
         }
 
+        $already_voted = !wp_gdget_thumb_commentlog($rd_comment_id);
         if ($allow_vote) {
-            $allow_vote = wp_gdget_thumb_commentlog($rd_comment_id);
+            $allow_vote = !$already_voted;
             if (!$allow_vote) $dbg_allow = "D";
         }
+
         if ($allow_vote) {
             $allow_vote = gdsrFrontHelp::check_cookie($rd_comment_id, "cmmthumb");
             if (!$allow_vote) $dbg_allow = "C";
@@ -605,7 +625,7 @@ class gdsrFront {
         $tags_css["CMM_CSS_TEXT"] = $this->g->o["cmm_class_text"];
 
         $template_id = $override["tpl"];
-        $rating_block = GDSRRenderT2::render_tcb($template_id, array("comment_id" => $rd_comment_id, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "tags_css" => $tags_css, "header_text" => $this->g->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_comment_thumb));
+        $rating_block = GDSRRenderT2::render_tcb($template_id, array("already_voted" => $already_voted, "comment_id" => $rd_comment_id, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "tags_css" => $tags_css, "header_text" => $this->g->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_comment_thumb));
         return $rating_block;
     }
 
@@ -644,6 +664,7 @@ class gdsrFront {
         $override["style_ie6"] = $this->g->g->stars[$settings[11]]->folder;
 
         $dbg_allow = "F";
+        $already_voted = false;
         $allow_vote = $override["read_only"] == 0;
         if ($this->g->is_ban && $this->g->o["ip_filtering"] == 1) {
             if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
@@ -693,8 +714,9 @@ class gdsrFront {
             }
         }
 
+        $already_voted = !wp_gdget_commentlog($rd_comment_id);
         if ($allow_vote) {
-            $allow_vote = wp_gdget_commentlog($rd_comment_id);
+            $allow_vote = !$already_voted;
             if (!$allow_vote) $dbg_allow = "D";
         }
 
@@ -729,7 +751,7 @@ class gdsrFront {
         );
 
         $template_id = $override["tpl"];
-        $rating_block = GDSRRenderT2::render_crb($template_id, array("cmm_id" => $rd_comment_id, "class" => "ratecmm", "type" => "c", "votes" => $votes, "score" => $score, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "unit_count" => $rd_unit_count, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "typecls" => "comment", "tags_css" => $tags_css, "header_text" => $this->g->o["cmm_header_text"], "debug" => $debug, "wait_msg" => $this->loader_comment));
+        $rating_block = GDSRRenderT2::render_crb($template_id, array("already_voted" => $already_voted, "cmm_id" => $rd_comment_id, "class" => "ratecmm", "type" => "c", "votes" => $votes, "score" => $score, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "unit_count" => $rd_unit_count, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "typecls" => "comment", "tags_css" => $tags_css, "header_text" => $this->g->o["cmm_header_text"], "debug" => $debug, "wait_msg" => $this->loader_comment));
         return $rating_block;
     }
 
@@ -804,6 +826,7 @@ class gdsrFront {
         $rd_unit_style = $this->g->is_ie6 ? $override["style_ie6"] : $override["style"];
 
         $dbg_allow = "F";
+        $already_voted = false;
         $allow_vote = $override["read_only"] == 0;
         if ($this->g->is_ban && $this->g->o["ip_filtering"] == 1) {
             if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
@@ -819,7 +842,7 @@ class gdsrFront {
             $this->g->c[$rd_post_id] = 1;
         }
 
-        $rules_articles = $post_data->rules_articles != "I" ? $post_data->rules_articles : $this->g->get_post_rule_value($rd_post_id, "rules_articles", "default_voterules_articles");
+        $rules_articles = $post_data->recc_rules_articles != "I" ? $post_data->recc_rules_articles : $this->g->get_post_rule_value($rd_post_id, "recc_rules_articles", "recc_default_voterules_articles");
 
         if ($rules_articles == "H") return "";
         if ($allow_vote) {
@@ -863,8 +886,9 @@ class gdsrFront {
             }
         }
 
+        $already_voted = !wp_gdget_thumb_postlog($rd_post_id);
         if ($allow_vote) {
-            $allow_vote = wp_gdget_thumb_postlog($rd_post_id);
+            $allow_vote = !$already_voted;
             if (!$allow_vote) $dbg_allow = "D";
         }
 
@@ -904,7 +928,7 @@ class gdsrFront {
         );
 
         $template_id = $override["tpl"];
-        $rating_block = GDSRRenderT2::render_tab($template_id, array("post_id" => $rd_post_id, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "tags_css" => $tags_css, "header_text" => $this->g->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_article_thumb, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline));
+        $rating_block = GDSRRenderT2::render_tab($template_id, array("already_voted" => $already_voted, "post_id" => $rd_post_id, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "tags_css" => $tags_css, "header_text" => $this->g->o["thumb_header_text"], "debug" => $debug, "wait_msg" => $this->loader_article_thumb, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline));
         return $rating_block;
     }
 
@@ -941,6 +965,7 @@ class gdsrFront {
         $override["style_ie6"] = $this->g->g->stars[$settings[9]]->folder;
 
         $dbg_allow = "F";
+        $already_voted = false;
         $allow_vote = $override["read_only"] == 0;
         if ($this->g->override_readonly_standard) {
             $allow_vote = false;
@@ -1010,8 +1035,9 @@ class gdsrFront {
             }
         }
 
+        $already_voted = !wp_gdget_postlog($rd_post_id);
         if ($allow_vote) {
-            $allow_vote = wp_gdget_postlog($rd_post_id);
+            $allow_vote = !$already_voted;
             if (!$allow_vote) $dbg_allow = "D";
         }
 
@@ -1045,7 +1071,7 @@ class gdsrFront {
         );
 
         $template_id = $override["tpl"];
-        $rating_block = GDSRRenderT2::render_srb($template_id, array("post_id" => $rd_post_id, "class" => "ratepost", "type" => "a", "votes" => $votes, "score" => $score, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "unit_count" => $rd_unit_count, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "typecls" => "article", "tags_css" => $tags_css, "header_text" => $this->g->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_article, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline));
+        $rating_block = GDSRRenderT2::render_srb($template_id, array("already_voted" => $already_voted, "post_id" => $rd_post_id, "class" => "ratepost", "type" => "a", "votes" => $votes, "score" => $score, "style" => $rd_unit_style, "unit_width" => $rd_unit_width, "unit_count" => $rd_unit_count, "allow_vote" => $allow_vote, "user_id" => $rd_user_id, "typecls" => "article", "tags_css" => $tags_css, "header_text" => $this->g->o["header_text"], "debug" => $debug, "wait_msg" => $this->loader_article, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline));
         return $rating_block;
     }
 
@@ -1096,6 +1122,7 @@ class gdsrFront {
         $rd_unit_style_avg = $this->g->is_ie6 ? $override["average_stars_ie6"] : $override["average_stars"];
 
         $dbg_allow = "F";
+        $already_voted = false;
         $allow_vote = $override["read_only"] == 0;
         if ($this->g->override_readonly_multis) {
             $allow_vote = false;
@@ -1164,8 +1191,9 @@ class gdsrFront {
             }
         }
 
+        $already_voted = !GDSRDBMulti::check_vote($rd_post_id, $rd_user_id, $set->multi_id, 'multis', $_SERVER["REMOTE_ADDR"], $this->g->o["logged"] != 1, $this->g->o["mur_allow_mixed_ip_votes"] == 1);
         if ($allow_vote) {
-            $allow_vote = GDSRDBMulti::check_vote($rd_post_id, $rd_user_id, $set->multi_id, 'multis', $_SERVER["REMOTE_ADDR"], $this->g->o["logged"] != 1, $this->g->o["mur_allow_mixed_ip_votes"] == 1);
+            $allow_vote = !$already_voted;
             if (!$allow_vote) $dbg_allow = "D";
         }
 
@@ -1217,7 +1245,7 @@ class gdsrFront {
         if (!$allow_vote) $mur_button = false;
 
         $template_id = $override["tpl"];
-        return GDSRRenderT2::render_mrb($template_id, array("style" => $rd_unit_style, "allow_vote" => $allow_vote, "votes" => $votes, "post_id" => $rd_post_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $this->g->o["mur_header_text"], "tags_css" => $tags_css, "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => 1, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline, "button_active" => $mur_button, "button_text" => $this->g->o["mur_button_text"], "debug" => $debug, "wait_msg" => $this->loader_multis));
+        return GDSRRenderT2::render_mrb($template_id, array("already_voted" => $already_voted, "style" => $rd_unit_style, "allow_vote" => $allow_vote, "votes" => $votes, "post_id" => $rd_post_id, "set" => $set, "height" => $rd_unit_width, "header_text" => $this->g->o["mur_header_text"], "tags_css" => $tags_css, "avg_style" => $rd_unit_style_avg, "avg_size" => $rd_unit_width_avg, "star_factor" => 1, "time_restirctions" => $expiry_type, "time_remaining" => $remaining, "time_date" => $deadline, "button_active" => $mur_button, "button_text" => $this->g->o["mur_button_text"], "debug" => $debug, "wait_msg" => $this->loader_multis));
     }
 
     function render_multi_rating($post, $user, $override = array()) {

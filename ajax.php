@@ -1,5 +1,7 @@
 <?php
 
+header("X-Robots-Tag: noindex, nofollow", true);
+
 define('STARRATING_AJAX', true);
 $types = array("a", "c", "m", "ra", "rc");
 

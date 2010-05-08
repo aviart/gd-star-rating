@@ -33,14 +33,16 @@ class GDSRHelper {
      * @param string $path Path to the cache folder
      */
     function clean_cache($path) {
-        if (!file_exists($path))
-            return;
+        if (!file_exists($path)) return;
         if (is_file($path)) {
             unlink ($path);
             return;
         }
-        foreach(glob($path."/*") as $fn)
-            GDSRHelper::clean_cache($fn);
+
+        $res = glob($path."/*");
+        if (is_array($res) && count($res) > 0) {
+            foreach ($res as $fn) GDSRHelper::clean_cache($fn);
+        }
     }
 
     /**

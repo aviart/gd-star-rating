@@ -180,7 +180,6 @@ class GDSRRenderT2 {
                 $new_rows[] = $row;
             }
 
-            $tr_class = "odd";
             $set_rating = $set_voting = null;
             if ($trends_calculated) {
                 $set_rating = $gdsr->g->find_trend($widget["trends_rating_set"]);
@@ -189,7 +188,6 @@ class GDSRRenderT2 {
 
             $all_rows = array();
             foreach ($new_rows as $row) {
-                $row->table_row_class = $tr_class;
                 $row->rating_stars = $row->bayesian_stars = $row->rating_thumb = $row->review_stars = "";
                 $row->excerpt = GDSRRenderT2::prepare_excerpt($widget["excerpt_words"], $row);
                 $row->excerpt = apply_filters('gdsr_widget_post_excerpt', $row->excerpt);
@@ -200,7 +198,7 @@ class GDSRRenderT2 {
                 if ($a_link || $a_name && intval($row->author) > 0) {
                     $user = get_userdata($row->author);
                     $row->author_name = $user->display_name;
-                    $row->author_url = get_author_link(intval($row->author));
+                    $row->author_url = get_author_posts_url(intval($row->author));
                 } else {
                     $row->author_name = "";
                     $row->author_url = "";
@@ -299,7 +297,7 @@ class GDSRRenderT2 {
                         $row->permalink = get_category_link($row->term_id);
                         break;
                     case "user":
-                        $row->permalink = get_author_link(intval($row->id));
+                        $row->permalink = get_author_posts_url(intval($row->id));
                         break;
                 }
 
@@ -310,9 +308,6 @@ class GDSRRenderT2 {
                     if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = GDSRRender::render_static_stars($widget['rating_stars'], $stars, $stars, $row->bayesian);
                 }
                 if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = GDSRRender::render_static_stars($widget['review_stars'], $widget['review_size'], $review_stars, $row->review);
-
-                if ($tr_class == "odd") $tr_class = "even";
-                else $tr_class = "odd";
 
                 $all_rows[] = $row;
             }
@@ -329,7 +324,16 @@ class GDSRRenderT2 {
         if ($widget["column"] == "rating")
             $properties[] = array("property" => "voters", "order" => $widget["order"]);
         $sort = new gdSortObjectsArrayGDSR($all_rows, $properties);
-        $all_rows = apply_filters("gdsr_widget_data_prepare", $sort->sorted);
+
+        $tr_class = "odd";
+        $all_rows = array();
+        foreach ($sort->sorted as $row) {
+            $row->table_row_class = $tr_class;
+            $tr_class = $tr_class == "odd" ? "even" : "odd";
+            $all_rows[] = $row;
+        }
+
+        $all_rows = apply_filters("gdsr_widget_data_prepare", $all_rows);
 
         return $all_rows;
     }
@@ -361,11 +365,9 @@ class GDSRRenderT2 {
                 $new_rows[] = $row;
             }
 
-            $tr_class = "odd";
             $all_rows = array();
             $pl = get_permalink($post_id);
             foreach ($new_rows as $row) {
-                $row->table_row_class = $tr_class;
                 $row->comment_content = strip_tags($row->comment_content);
                 if (strlen($row->comment_content) > $widget["text_max"] - 3 && $widget["text_max"] > 0)
                     $row->comment_content = substr($row->comment_content, 0, $widget["text_max"] - 3)." ...";
@@ -375,9 +377,6 @@ class GDSRRenderT2 {
 
                 if (!(strpos($template, "%CMM_STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $gdsr->o["cmm_stars"], $row->rating);
                 $row->permalink = $pl."#comment-".$row->comment_id;
-
-                if ($tr_class == "odd") $tr_class = "even";
-                else $tr_class = "odd";
 
                 $all_rows[] = $row;
             }
@@ -391,7 +390,14 @@ class GDSRRenderT2 {
         if ($widget["column"] == "rating") $properties[] = array("property" => "voters", "order" => $widget["order"]);
 
         $sort = new gdSortObjectsArrayGDSR($all_rows, $properties);
-        $all_rows = $sort->sorted;
+
+        $tr_class = "odd";
+        $all_rows = array();
+        foreach ($sort->sorted as $row) {
+            $row->table_row_class = $tr_class;
+            $tr_class = $tr_class == "odd" ? "even" : "odd";
+            $all_rows[] = $row;
+        }
 
         $all_rows = apply_filters('gdsr_comments_widget_data_prepare', $all_rows);
         return $all_rows;
@@ -456,7 +462,7 @@ class GDSRRenderT2 {
         foreach($votes as $vote) $original_value.= number_format($vote["rating"], 0)."X";
         $original_value = substr($original_value, 0, strlen($original_value) - 1);
         $rater.= '<input type="hidden" id="gdsr_mur_review_'.$post_id.'_'.$set->multi_id.'" name="gdsrmurreview['.$post_id.']['.$set->multi_id.']" value="'.$original_value.'" />';
-        if ($allow_vote) $rater.= '<input type="hidden" id="gdsr_int_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->multi_id.']" value="'.$original_value.'" />';
+        if ($allow_vote) $rater.= '<input type="hidden" class="gdsr_int_multi_'.$post_id.'_'.$set->multi_id.'" name="gdsrmulti['.$post_id.']['.$set->multi_id.']" value="'.$original_value.'" />';
 
         $i = 0;
         $weighted = 0;
@@ -495,7 +501,7 @@ class GDSRRenderT2 {
         $tpl_render = html_entity_decode($tpl_render);
         $tpl_render = apply_filters('gdsr_t2render_ssb_normal', $tpl_render, $template, $rpar, "normal");
 
-        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode(__($header_text)), $tpl_render);
         $rater_stars = "";
 
         if ($type == "thumbs") {
@@ -511,9 +517,9 @@ class GDSRRenderT2 {
             $rater_stars = '<img src="'.STARRATING_URL.sprintf("gfx.php?value=%s", $rating).'" />';
         }
 
-        $rt = str_replace('%RATING%', $rating, $tpl_render);
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $rating, "SSB", "%RATING%"), $tpl_render);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "SSB", "%VOTES%"), $rt);
         $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
         $rt = str_replace('%RATING_STARS%', $rater_stars, $rt);
         $rt = str_replace('%ID%', $post_id, $rt);
 
@@ -525,9 +531,9 @@ class GDSRRenderT2 {
     }
 
     function render_mrb($template_id, $rpar = array()) {
-        $rdef = array("style" => "oxygen", "allow_vote" => true, "votes" => 0, "post_id" => 0, "set" => "", "height" => "", "header_text" => "",
+        $rdef = array("style" => "oxygen", "already_voted" => false, "allow_vote" => true, "votes" => 0, "post_id" => 0, "set" => "", "height" => "",
             "tags_css" => array(), "avg_style" => "oxygen", "avg_size" => 20, "star_factor" => 1, "time_restirctions" => "N", "time_remaining" => 0,
-            "time_date" => "", "button_active" => true, "button_text" => "Submit", "debug" => "", "wait_msg" => "");
+            "time_date" => "", "button_active" => true, "button_text" => "Submit", "debug" => "", "wait_msg" => "", "header_text" => "");
         $rpar = wp_parse_args($rpar, $rdef);
         $rpar = apply_filters('gdsr_t2parameters_mrb', $rpar);
         extract($rpar, EXTR_SKIP);
@@ -538,7 +544,7 @@ class GDSRRenderT2 {
         $tpl_render = apply_filters('gdsr_t2render_mrb_normal', $tpl_render, $template, $rpar, "normal");
 
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
-        $tpl_render = str_replace("%MUR_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+        $tpl_render = str_replace("%MUR_HEADER_TEXT%", html_entity_decode(__($header_text)), $tpl_render);
         $rater = '<div id="gdsr_mur_block_'.$post_id.'_'.$set->multi_id.'" class="ratingmulti '.$tags_css["MUR_CSS_BLOCK"].'">';;
 
         $empty_value = str_repeat("0X", count($set->object));
@@ -577,10 +583,14 @@ class GDSRRenderT2 {
 
         $rating = @number_format($weighted, 1);
         $total_votes = $i == 0 ? 0 : @number_format($total_votes / $i, 0);
+        $css = "";
+        if ($already_voted) $css.= " voted";
+        if (!$allow_vote) $css.= " inactive";
+
         if (in_array("%MUR_RATING_TEXT%", $template->tag["normal"])) {
             $rating_text = GDSRRenderT2::render_mrt($template->dep["MRT"], array("rating" => $rating, "unit_count" => $set->stars, "votes" => $total_votes, "id" => $post_id, "time_restirctions" => $time_restirctions, "time_remaining" => $time_remaining, "time_date" => $time_date));
             $rating_wait = $allow_vote ? GDSRRender::rating_wait("gdsr_mur_loader_".$post_id."_".$set->multi_id, "100%", "", $wait_msg) : "";
-            $voted = $allow_vote ? '' : ' class="voted"';
+            $voted = $css == "" ? '' : ' class="'.trim($css).'"';
             $rating_text = $rating_wait.'<div'.$voted.' id="gdsr_mur_text_'.$post_id.'_'.$set->multi_id.'">'.$rating_text.'</div>';
             $tpl_render = str_replace("%MUR_RATING_TEXT%", $rating_text, $tpl_render);
         }
@@ -592,8 +602,13 @@ class GDSRRenderT2 {
             $tpl_render = str_replace("%BUTTON%", $rating_button, $tpl_render);
         }
 
+        $tpl_render = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $rating, "MRB", "%RATING%"), $tpl_render);
+        $tpl_render = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $total_votes, "MRB", "%VOTES%"), $tpl_render);
+        $tpl_render = str_replace('%CSS_AUTO%', apply_filters('gdsr_t2_tag_value', $css, "MRB", "%CSS_AUTO%"), $tpl_render);
+        $tpl_render = str_replace('%ID%', $post_id, $tpl_render);
+
         $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
-        $tpl_render = str_replace("%AVG_RATING%", $rating, $tpl_render);
+        $tpl_render = str_replace("%AVG_RATING%", apply_filters('gdsr_t2_tag_value', $rating, "MRB", "%AVG_RATING%"), $tpl_render);
         if (in_array("%AVG_RATING_STARS%", $template->tag["normal"])) {
             $avg_id = "gdsr_mur_avgstars_".$post_id."_".$set->multi_id;
             $tpl_render = str_replace("%AVG_RATING_STARS%", GDSRRender::render_static_stars($avg_style, $avg_size, $set->stars * $star_factor, $rating * $star_factor, $avg_id, "", $star_factor), $tpl_render);
@@ -605,8 +620,9 @@ class GDSRRenderT2 {
 
     function render_srb($template_id, $rpar = array()) {
         $rdef = array("post_id" => 0, "class" => "", "type" => "", "votes" => 0, "score" => 0, "style" => "oxygen",
-            "unit_width" => 20, "unit_count" => 10, "allow_vote" => true, "user_id" => 0, "typecls" => "", "tags_css" => array(),
-            "header_text" => "", "debug" => "", "wait_msg" => "", "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
+            "unit_width" => 20, "unit_count" => 10, "already_voted" => false, "allow_vote" => true, "user_id" => 0,
+            "header_text" => "", "debug" => "", "wait_msg" => "", "time_restirctions" => "N", "time_remaining" => 0,
+            "typecls" => "", "tags_css" => array(), "time_date" => "");
         $rpar = wp_parse_args($rpar, $rdef);
         $rpar = apply_filters('gdsr_t2parameters_srb', $rpar);
         extract($rpar, EXTR_SKIP);
@@ -617,24 +633,32 @@ class GDSRRenderT2 {
         $tpl_render = apply_filters('gdsr_t2render_srb_normal', $tpl_render, $template, $rpar, "normal");
 
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
-        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode(__($header_text)), $tpl_render);
 
         $rating2 = $votes > 0 ? $score / $votes : 0;
         if ($rating2 > $unit_count) $rating2 = $unit_count;
         $rating = @number_format($rating2, 1);
+        $css = "";
+        if ($already_voted) $css.= " voted";
+        if (!$allow_vote) $css.= " inactive";
 
         $rating_width = $rating2 * $unit_width;
         $rater_length = $unit_width * $unit_count;
         $rater_id = $typecls."_rater_".$post_id;
         $loader_id = $typecls."_loader_".$post_id;
 
+        $tpl_render = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $rating, "SRB", "%RATING%"), $tpl_render);
+        $tpl_render = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "SRB", "%VOTES%"), $tpl_render);
+        $tpl_render = str_replace('%CSS_AUTO%', apply_filters('gdsr_t2_tag_value', $css, "SRB", "%CSS_AUTO%"), $tpl_render);
+        $tpl_render = str_replace('%ID%', $post_id, $tpl_render);
+
         if (in_array("%POST_TITLE%", $template->tag["normal"])) {
             $act_post = get_post($post_id);
-            $tpl_render = str_replace("%POST_TITLE%", $act_post->post_title, $tpl_render);
+            $tpl_render = str_replace("%POST_TITLE%", apply_filters('gdsr_t2_tag_value', $act_post->post_title, "SRB", "%POST_TITLE%"), $tpl_render);
         }
 
         if (in_array("%POST_PERMALINK%", $template->tag["normal"])) {
-            $tpl_render = str_replace("%POST_PERMALINK%", get_permalink($post_id), $tpl_render);
+            $tpl_render = str_replace("%POST_PERMALINK%", apply_filters('gdsr_t2_tag_value', get_permalink($post_id), "SRB", "%POST_PERMALINK%"), $tpl_render);
         }
 
         if (in_array("%RATING_STARS%", $template->tag["normal"])) {
@@ -644,7 +668,7 @@ class GDSRRenderT2 {
 
         if (in_array("%RATING_TEXT%", $template->tag["normal"])) {
             $rating_text = GDSRRenderT2::render_srt($template->dep["SRT"], array("rating" => $rating, "unit_count" => $unit_count, "votes" => $votes, "id" => $post_id, "time_restirctions" => $time_restirctions, "time_remaining" => $time_remaining, "time_date" => $time_date));
-            $voted = $allow_vote ? '' : ' class="voted"';
+            $voted = $css == "" ? '' : ' class="'.trim($css).'"';
             $rating_text = '<div id="gdr_text_'.$type.$post_id.'"'.$voted.'>'.$rating_text.'</div>';
             $tpl_render = str_replace("%RATING_TEXT%", $rating_text, $tpl_render);
         }
@@ -656,7 +680,7 @@ class GDSRRenderT2 {
 
     function render_tab($template_id, $rpar = array()) {
         $rdef = array("post_id" => 0, "votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "style" => "starrating",
-            "unit_width" => 20, "allow_vote" => true, "user_id" => 0, "tags_css" => array(), "header_text" => "", 
+            "unit_width" => 20, "already_voted" => false, "allow_vote" => true, "user_id" => 0, "tags_css" => array(), "header_text" => "",
             "debug" => "", "wait_msg" => "", "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
         $rpar = wp_parse_args($rpar, $rdef);
         $rpar = apply_filters('gdsr_t2parameters_tab', $rpar);
@@ -668,11 +692,28 @@ class GDSRRenderT2 {
         $tpl_render = apply_filters('gdsr_t2render_tab_'.($allow_vote ? "active" : "inactive"), $tpl_render, $template, $rpar, $allow_vote ? "active" : "inactive");
 
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
-        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+        $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode(__($header_text)), $tpl_render);
+
+        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
+        $percent = number_format($percent, 0);
+        if ($percent == 0) $percent = gdsr_zero_percentage();
+        $score_number = $score;
+        $score = $score > 0 ? "+".$score : $score;
+        $css = intval($score_number) == 0 ? "zero" : (intval($score_number) > 0 ? "positive" : "negative");
+        if ($already_voted) $css.= " voted";
+        if (!$allow_vote) $css.= " inactive";
+
+        $tpl_render = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $score, "TAB", "%RATING%"), $tpl_render);
+        $tpl_render = str_replace('%PERCENTAGE%', apply_filters('gdsr_t2_tag_value', $percent, "TAB", "%PERCENTAGE%"), $tpl_render);
+        $tpl_render = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "TAB", "%VOTES%"), $tpl_render);
+        $tpl_render = str_replace('%VOTES_UP%', apply_filters('gdsr_t2_tag_value', $votes_plus, "TAB", "%VOTES_UP%"), $tpl_render);
+        $tpl_render = str_replace('%VOTES_DOWN%', apply_filters('gdsr_t2_tag_value', $votes_minus, "TAB", "%VOTES_DOWN%"), $tpl_render);
+        $tpl_render = str_replace('%CSS_AUTO%', apply_filters('gdsr_t2_tag_value', $css, "TAB", "%CSS_AUTO%"), $tpl_render);
+        $tpl_render = str_replace('%ID%', $post_id, $tpl_render);
 
         if (in_array("%THUMBS_TEXT%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
-            $rating_text = GDSRRenderT2::render_tat($template->dep["TAT"], array("votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $post_id, "time_restirctions" => $time_restirctions, "time_remaining" => $time_remaining, "time_date" => $time_date));
-            $rating_text = '<div id="gdsr_thumb_text_'.$post_id.'_a" class="gdt-size-'.$unit_width.($allow_vote ? "" : " voted").' gdthumbtext">'.$rating_text.'</div>';
+            $rating_text = GDSRRenderT2::render_tat($template->dep["TAT"], array("score_number" => $score_number, "percent" => $percent, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $post_id, "time_restirctions" => $time_restirctions, "time_remaining" => $time_remaining, "time_date" => $time_date));
+            $rating_text = '<div id="gdsr_thumb_text_'.$post_id.'_a" class="gdt-size-'.$unit_width.($already_voted ? " voted" : "").($allow_vote ? "" : " inactive").' gdthumbtext">'.$rating_text.'</div>';
             $tpl_render = str_replace("%THUMBS_TEXT%", $rating_text, $tpl_render);
         }
 
@@ -712,8 +753,8 @@ class GDSRRenderT2 {
 
     function render_tcb($template_id, $rpar = array()) {
         $rdef = array("comment_id" => 0, "votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0,
-            "style" => "starrating", "unit_width" => 20, "allow_vote" => true, "user_id" => 0, "tags_css" => array(),
-            "header_text" => "", "debug" => "", "wait_msg" => "");
+            "style" => "starrating", "unit_width" => 20, "already_voted" => false, "allow_vote" => true,
+            "header_text" => "", "debug" => "", "wait_msg" => "", "tags_css" => array(), "user_id" => 0);
         $rpar = wp_parse_args($rpar, $rdef);
         $rpar = apply_filters('gdsr_t2parameters_tcb', $rpar);
         extract($rpar, EXTR_SKIP);
@@ -724,11 +765,28 @@ class GDSRRenderT2 {
         $tpl_render = apply_filters('gdsr_t2render_tcb_'.($allow_vote ? "active" : "inactive"), $tpl_render, $template, $rpar, $allow_vote ? "active" : "inactive");
 
         foreach ($tags_css as $tag => $value) $tpl_render = str_replace('%'.$tag.'%', $value, $tpl_render);
-        $tpl_render = str_replace("%CMM_HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
+        $tpl_render = str_replace("%CMM_HEADER_TEXT%", html_entity_decode(__($header_text)), $tpl_render);
+
+        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
+        $percent = number_format($percent, 0);
+        if ($percent == 0) $percent = gdsr_zero_percentage();
+        $score_number = $score;
+        $score = $score > 0 ? "+".$score : $score;
+        $css = intval($score_number) == 0 ? "zero" : (intval($score_number) > 0 ? "positive" : "negative");
+        if ($already_voted) $css.= " voted";
+        if (!$allow_vote) $css.= " inactive";
+
+        $tpl_render = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $score, "TCT", "%RATING%"), $tpl_render);
+        $tpl_render = str_replace('%PERCENTAGE%', apply_filters('gdsr_t2_tag_value', $percent, "TCT", "%PERCENTAGE%"), $tpl_render);
+        $tpl_render = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "TCT", "%VOTES%"), $tpl_render);
+        $tpl_render = str_replace('%VOTES_UP%', apply_filters('gdsr_t2_tag_value', $votes_plus, "TCT", "%VOTES_UP%"), $tpl_render);
+        $tpl_render = str_replace('%VOTES_DOWN%', apply_filters('gdsr_t2_tag_value', $votes_minus, "TCT", "%VOTES_DOWN%"), $tpl_render);
+        $tpl_render = str_replace('%CSS_AUTO%', apply_filters('gdsr_t2_tag_value', $css, "TAB", "%CSS_AUTO%"), $tpl_render);
+        $tpl_render = str_replace('%ID%', $comment_id, $tpl_render);
 
         if (in_array("%CMM_THUMBS_TEXT%", $allow_vote ? $template->tag["active"] : $template->tag["inactive"])) {
-            $rating_text = GDSRRenderT2::render_tct($template->dep["TCT"], array("votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $comment_id));
-            $rating_text = '<div id="gdsr_thumb_text_'.$comment_id.'_c" class="gdt-size-'.$unit_width.($allow_vote ? "" : " voted").' gdthumbtext">'.$rating_text.'</div>';
+            $rating_text = GDSRRenderT2::render_tct($template->dep["TCT"], array("score_number" => $score_number, "percent" => $percent, "votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $comment_id));
+            $rating_text = '<div id="gdsr_thumb_text_'.$comment_id.'_c" class="gdt-size-'.$unit_width.($already_voted ? " voted" : "").($allow_vote ? "" : " inactive").' gdthumbtext">'.$rating_text.'</div>';
             $tpl_render = str_replace("%CMM_THUMBS_TEXT%", $rating_text, $tpl_render);
         }
 
@@ -737,7 +795,7 @@ class GDSRRenderT2 {
                 $rater = sprintf('<div id="gdsr_thumb_%s_c_up" class="gdt-size-%s gdthumb gdup"><a id="gdsrX%sXupXcX%sX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
                     $comment_id, $unit_width, $comment_id, $template_id, $unit_width, $wait_msg == '' ? "N" : "Y", $style);
                 if ($wait_msg != '') {
-                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_c_loader_up", $comment_id), $unit_width."px", 'loadup', $wait_msg);
+                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_c_loader_up", $comment_id), $unit_width."px", ' loadup', $wait_msg);
                     $rater.= sprintf($rater_wait, sprintf("width: %spx; height: %spx;", $unit_width, $unit_width));
                 }
             } else {
@@ -752,7 +810,7 @@ class GDSRRenderT2 {
                 $rater = sprintf('<div id="gdsr_thumb_%s_c_dw" class="gdt-size-%s gdthumb gddw"><a id="gdsrX%sXdwXcX%sX%sX%s" class="gdt-%s" rel="nofollow"></a></div>',
                     $comment_id, $unit_width, $comment_id, $template_id, $unit_width, $wait_msg == '' ? "N" : "Y", $style);
                 if ($wait_msg != '') {
-                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_c_loader_dw", $comment_id), $unit_width."px", 'loaddw', $wait_msg);
+                    $rater_wait = GDSRRender::rating_wait(sprintf("gdsr_thumb_%s_c_loader_dw", $comment_id), $unit_width."px", ' loaddw', $wait_msg);
                     $rater.= sprintf($rater_wait, sprintf("width: %spx; height: %spx;", $unit_width, $unit_width));
                 }
             } else {
@@ -768,8 +826,9 @@ class GDSRRenderT2 {
 
     function render_crb($template_id, $rpar = array()) {
         $rdef = array("cmm_id" => 0, "class" => "", "type" => "", "votes" => 0, "score" => 20,
-            "style" => "oxygen", "unit_width" => 20, "unit_count" => 10, "allow_vote" => true, "user_id" => 0, 
-            "typecls" => "", "tags_css" => array(), "header_text" => "", "debug" => "", "wait_msg" => "");
+            "style" => "oxygen", "unit_width" => 20, "unit_count" => 10, "already_voted" => false,
+            "allow_vote" => true, "user_id" => 0, "typecls" => "", "tags_css" => array(),
+            "header_text" => "", "debug" => "", "wait_msg" => "");
         $rpar = wp_parse_args($rpar, $rdef);
         $rpar = apply_filters('gdsr_t2parameters_crb', $rpar);
         extract($rpar, EXTR_SKIP);
@@ -785,11 +844,18 @@ class GDSRRenderT2 {
         $rating2 = $votes > 0 ? $score / $votes : 0;
         if ($rating2 > $unit_count) $rating2 = $unit_count;
         $rating = @number_format($rating2, 1);
+        $css = "";
+        if ($already_voted) $css.= " voted";
+        if (!$allow_vote) $css.= " inactive";
 
         $rating_width = $rating2 * $unit_width;
         $rater_length = $unit_width * $unit_count;
         $rater_id = $typecls."_rater_".$cmm_id;
         $loader_id = $typecls."_loader_".$cmm_id;
+
+        $tpl_render = str_replace('%CMM_RATING%', apply_filters('gdsr_t2_tag_value', $rating, "CRB", "%RATING%"), $tpl_render);
+        $tpl_render = str_replace('%CMM_VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "CRB", "%VOTES%"), $tpl_render);
+        $tpl_render = str_replace('%CSS_AUTO%', apply_filters('gdsr_t2_tag_value', $css, "CRB", "%CSS_AUTO%"), $tpl_render);
 
         if (in_array("%CMM_RATING_STARS%", $template->tag["normal"])) {
             $rating_stars = GDSRRender::rating_stars($style, $unit_width, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $cmm_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
@@ -798,7 +864,7 @@ class GDSRRenderT2 {
 
         if (in_array("%CMM_RATING_TEXT%", $template->tag["normal"])) {
             $rating_text = GDSRRenderT2::render_crt($template->dep["CRT"], array("rating" => $rating, "unit_count" => $unit_count, "votes" => $votes));
-            $voted = $allow_vote ? '' : ' class="voted"';
+            $voted = $css == "" ? '' : ' class="'.trim($css).'"';
             $rating_text = '<div id="gdr_text_'.$type.$cmm_id.'"'.$voted.'>'.$rating_text.'</div>';
             $tpl_render = str_replace("%CMM_RATING_TEXT%", $rating_text, $tpl_render);
         }
@@ -823,7 +889,7 @@ class GDSRRenderT2 {
         $tpl_render = str_replace("%HEADER_TEXT%", html_entity_decode($header_text), $tpl_render);
         $tpl_render = str_replace("%CSS_BLOCK%", $css, $tpl_render);
         $tpl_render = str_replace("%MAX_RATING%", $star_max, $tpl_render);
-        $tpl_render = str_replace("%RATING%", $rating, $tpl_render);
+        $tpl_render = str_replace("%RATING%", apply_filters('gdsr_t2_tag_value', $rating, "RSB", "%RATING%"), $tpl_render);
 
         $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
         $tpl_render = str_replace("%RATING_STARS%", $rating_stars, $tpl_render);
@@ -843,7 +909,7 @@ class GDSRRenderT2 {
         $tpl_render = apply_filters('gdsr_t2render_rcb_normal', $tpl_render, $template, $rpar, "normal");
 
         $tpl_render = str_replace("%MAX_MM_RATING%", $star_max, $tpl_render);
-        $tpl_render = str_replace("%CMM_RATING%", $rating, $tpl_render);
+        $tpl_render = str_replace("%CMM_RATING%", apply_filters('gdsr_t2_tag_value', $rating, "RCB", "%CMM_RATING%"), $tpl_render);
 
         $rating_stars = GDSRRender::render_static_stars($star_style, $star_size, $star_max, $rating);
         $tpl_render = str_replace("%CMM_RATING_STARS%", $rating_stars, $tpl_render);
@@ -863,7 +929,7 @@ class GDSRRenderT2 {
         $tpl_render = apply_filters('gdsr_t2render_mcr_normal', $tpl_render, $template, $rpar, "normal");
 
         $rt = str_replace('%ID%', $post_id, $rt);
-        $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
+        $tpl_render = str_replace("%AVG_RATING%", apply_filters('gdsr_t2_tag_value', $avg_rating, "MCR", "%AVG_RATING%"), $tpl_render);
         $tpl_render = str_replace("%MAX_RATING%", $set->stars, $tpl_render);
 
         if (in_array("%AVG_RATING_STARS%", $template->tag["normal"]))
@@ -907,7 +973,7 @@ class GDSRRenderT2 {
         }
 
         $tpl_render = str_replace("%MUR_RATING_STARS%", $rating_stars, $tpl_render);
-        $tpl_render = str_replace("%AVG_RATING%", $avg_rating, $tpl_render);
+        $tpl_render = str_replace("%AVG_RATING%", apply_filters('gdsr_t2_tag_value', $avg_rating, "RMB", "%AVG_RATING%"), $tpl_render);
         $tpl_render = str_replace("%MAX_RATING%", $set->stars, $tpl_render);
 
         if (in_array("%AVG_RATING_STARS%", $template->tag["normal"]))
@@ -929,10 +995,10 @@ class GDSRRenderT2 {
         $tpl_render = html_entity_decode($tpl_render);
         $tpl_render = apply_filters('gdsr_t2render_car_normal', $tpl_render, $template, $rpar, "normal");
 
-        $tpl_render = str_replace("%CMM_COUNT%", $comments, $tpl_render);
-        $tpl_render = str_replace("%CMM_VOTES%", $votes, $tpl_render);
+        $tpl_render = str_replace("%CMM_COUNT%", apply_filters('gdsr_t2_tag_value', $$comments, "CAR", "%CMM_COUNT%"), $tpl_render);
+        $tpl_render = str_replace("%CMM_VOTES%", apply_filters('gdsr_t2_tag_value', $votes, "CAR", "%CMM_VOTES%"), $tpl_render);
+        $tpl_render = str_replace("%CMM_RATING%", apply_filters('gdsr_t2_tag_value', $rating, "CAR", "%CMM_RATING%"), $tpl_render);
         $tpl_render = str_replace("%MAX_CMM_RATING%", $star_max, $tpl_render);
-        $tpl_render = str_replace("%CMM_RATING%", $rating, $tpl_render);
 
         $word_votes = $template->dep["EWV"];
         $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
@@ -946,8 +1012,8 @@ class GDSRRenderT2 {
 
     // extras rendering data
     function render_tat($template, $rpar = array()) {
-        $rdef = array("votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "id" => 0,
-            "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "");
+        $rdef = array("percent" => 0, "votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "id" => 0,
+            "time_restirctions" => "N", "time_remaining" => 0, "time_date" => "", "score_number" => 0);
         $rpar = wp_parse_args($rpar, $rdef);
         $rpar = apply_filters('gdsr_t2parameters_tat', $rpar);
         extract($rpar, EXTR_SKIP);
@@ -975,15 +1041,14 @@ class GDSRRenderT2 {
             $rt = html_entity_decode($tpl);
         }
 
-        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
-        $percent = number_format($percent, 0);
-        if ($percent == 0) $percent = gdsr_zero_percentage();
+        $css = intval($score_number) == 0 ? "zero" : (intval($score_number) > 0 ? "positive" : "negative");
 
-        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
-        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
-        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
-        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $score, "TAT", "%RATING%"), $rt);
+        $rt = str_replace('%PERCENTAGE%', apply_filters('gdsr_t2_tag_value', $percent, "TAT", "%PERCENTAGE%"), $rt);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "TAT", "%VOTES%"), $rt);
+        $rt = str_replace('%VOTES_UP%', apply_filters('gdsr_t2_tag_value', $votes_plus, "TAT", "%VOTES_UP%"), $rt);
+        $rt = str_replace('%VOTES_DOWN%', apply_filters('gdsr_t2_tag_value', $votes_minus, "TAT", "%VOTES_DOWN%"), $rt);
+        $rt = str_replace('%CSS_AUTO%', apply_filters('gdsr_t2_tag_value', $css, "TAT", "%CSS_AUTO%"), $rt);
         $rt = str_replace('%ID%', $id, $rt);
 
         $word_votes = $template->dep["EWV"];
@@ -994,7 +1059,7 @@ class GDSRRenderT2 {
     }
 
     function render_tct($template, $rpar = array()) {
-        $rdef = array("votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "id" => 0, "vote_value" => 0);
+        $rdef = array("percent" => 0, "votes" => 0, "score" => 0, "votes_plus" => 0, "votes_minus" => 0, "id" => 0, "vote_value" => 0, "score_number" => 0);
         $rpar = wp_parse_args($rpar, $rdef);
         $rpar = apply_filters('gdsr_t2parameters_tct', $rpar);
         extract($rpar, EXTR_SKIP);
@@ -1003,15 +1068,14 @@ class GDSRRenderT2 {
         $rt = html_entity_decode($tpl);
         $rt = apply_filters('gdsr_t2render_tct_'.($vote_value != 0 ? "vote_saved" : "normal"), $rt, $template, $rpar, $vote_value != 0 ? "vote_saved" : "normal");
 
-        $percent = $votes_plus + $votes_minus == 0 ? 0 : ($votes_plus * 100) / ($votes_plus + $votes_minus);
-        $percent = number_format($percent, 0);
-        if ($percent == 0) $percent = gdsr_zero_percentage();
+        $css = intval($score_number) == 0 ? "zero" : (intval($score_number) > 0 ? "positive" : "negative");
 
-        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
-        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
-        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
-        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $score, "TCT", "%RATING%"), $rt);
+        $rt = str_replace('%PERCENTAGE%', apply_filters('gdsr_t2_tag_value', $percent, "TCT", "%PERCENTAGE%"), $rt);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "TCT", "%VOTES%"), $rt);
+        $rt = str_replace('%VOTES_UP%', apply_filters('gdsr_t2_tag_value', $votes_plus, "TCT", "%VOTES_UP%"), $rt);
+        $rt = str_replace('%VOTES_DOWN%', apply_filters('gdsr_t2_tag_value', $votes_minus, "TCT", "%VOTES_DOWN%"), $rt);
+        $rt = str_replace('%CSS_AUTO%', apply_filters('gdsr_t2_tag_value', $css, "TCT", "%CSS_AUTO%"), $rt);
         $rt = str_replace('%ID%', $id, $rt);
         $rt = str_replace('%VOTE_VALUE%', $vote_value, $rt);
 
@@ -1042,9 +1106,9 @@ class GDSRRenderT2 {
         $rt = html_entity_decode($tpl);
         $rt = apply_filters('gdsr_t2render_crt_'.($vote_value > -1 ? "vote_saved" : "normal"), $rt, $template, $rpar, $vote_value > -1 ? "vote_saved" : "normal");
 
-        $rt = str_replace('%CMM_RATING%', $rating, $rt);
+        $rt = str_replace('%CMM_RATING%', apply_filters('gdsr_t2_tag_value', $rating, "CRT", "%CMM_RATING%"), $rt);
         $rt = str_replace('%MAX_CMM_RATING%', $unit_count, $rt);
-        $rt = str_replace('%CMM_VOTES%', $votes, $rt);
+        $rt = str_replace('%CMM_VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "CRT", "%CMM_VOTES%"), $rt);
         if ($vote_value > -1) $rt = str_replace('%CMM_VOTE_VALUE%', $vote_value, $rt);
 
         $word_votes = $template->dep["EWV"];
@@ -1083,10 +1147,10 @@ class GDSRRenderT2 {
                 $tpl = $template->elm["normal"];
             $rt = html_entity_decode($tpl);
         }
-        $rt = str_replace('%RATING%', $rating, $rt);
-        $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $rating, "SRT", "%RATING%"), $rt);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "SRT", "%VOTES%"), $rt);
         $rt = str_replace('%ID%', $id, $rt);
+        $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
 
         $word_votes = $template->dep["EWV"];
         $tense = $votes == 1 ? $word_votes->elm["singular"] : $word_votes->elm["plural"];
@@ -1109,11 +1173,12 @@ class GDSRRenderT2 {
         $percent = number_format($percent, 0);
         if ($percent == 0) $percent = gdsr_zero_percentage();
 
-        $rt = str_replace('%RATING%', $score > 0 ? "+".$score : $score, $rt);
-        $rt = str_replace('%PERCENTAGE%', $percent, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
-        $rt = str_replace('%VOTES_UP%', $votes_plus, $rt);
-        $rt = str_replace('%VOTES_DOWN%', $votes_minus, $rt);
+        $score = $score > 0 ? "+".$score : $score;
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $score, "TAT", "%RATING%"), $rt);
+        $rt = str_replace('%PERCENTAGE%', apply_filters('gdsr_t2_tag_value', $percent, "TAT", "%PERCENTAGE%"), $rt);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "TAT", "%VOTES%"), $rt);
+        $rt = str_replace('%VOTES_UP%', apply_filters('gdsr_t2_tag_value', $votes_plus, "TAT", "%VOTES_UP%"), $rt);
+        $rt = str_replace('%VOTES_DOWN%', apply_filters('gdsr_t2_tag_value', $votes_minus, "TAT", "%VOTES_DOWN%"), $rt);
         $rt = str_replace('%ID%', $id, $rt);
         $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
 
@@ -1134,9 +1199,9 @@ class GDSRRenderT2 {
         $rt = html_entity_decode($tpl);
         $rt = apply_filters('gdsr_t2render_srt_vote_saved', $rt, $template, $rpar, "vote_saved");
 
-        $rt = str_replace('%RATING%', $rating, $rt);
+        $rt = str_replace('%RATING%', apply_filters('gdsr_t2_tag_value', $rating, "SRT", "%RATING%"), $rt);
+        $rt = str_replace('%VOTES%', apply_filters('gdsr_t2_tag_value', $votes, "SRT", "%VOTES%"), $rt);
         $rt = str_replace('%MAX_RATING%', $unit_count, $rt);
-        $rt = str_replace('%VOTES%', $votes, $rt);
         $rt = str_replace('%ID%', $id, $rt);
         $rt = str_replace('%VOTE_VALUE%', $vote, $rt);
 
