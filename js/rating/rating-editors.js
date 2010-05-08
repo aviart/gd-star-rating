@@ -23,14 +23,14 @@ function gdsrMultiRevert(sid, pid, slc) {
         var val = jQuery('#gdsr_mur_stars_rated_' + pid + '_' + sid + '_' + i).css("width");
         jQuery('#gdsr_murvw_stars_current_' + pid + '_' + sid + '_' + i).css("width", val);
     }
-    jQuery('#gdsr_int_multi_' + pid + '_' + sid).val(jQuery('#gdsr_mur_review_' + pid + '_' + sid).val());
+    jQuery('.gdsr_int_multi_' + pid + '_' + sid).val(jQuery('#gdsr_mur_review_' + pid + '_' + sid).val());
 }
 
 function gdsrMultiClear(sid, pid, slc) {
     jQuery(".gdcurrent").css("width", "0px");
     var empty = gdsrRepeat("0X", slc);
     empty = empty.substr(empty, empty.length - 1);
-    jQuery('#gdsr_int_multi_' + pid + '_' + sid).val(empty);
+    jQuery('.gdsr_int_multi_' + pid + '_' + sid).val(empty);
 }
 
 jQuery(document).ready(function() {
@@ -41,7 +41,7 @@ jQuery(document).ready(function() {
         var size = el[5];
         var new_width = vote * size;
         var current_id = '#gdsr_murvw_stars_current_' + el[1] + '_' + el[2] + '_' + el[3];
-        var input_id = '#gdsr_int_multi_' + el[1] + '_' + el[2];
+        var input_id = '.gdsr_int_multi_' + el[1] + '_' + el[2];
         jQuery(current_id).css("width", new_width + "px");
         var rating_values = jQuery(input_id).val().split("X");
         rating_values[el[3]] = vote;

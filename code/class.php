@@ -77,6 +77,7 @@ class GDStarRating {
     var $shortcodes;
     var $stars_sizes;
     var $thumb_sizes;
+    var $function_restrict;
     var $default_shortcode_starrating;
     var $default_shortcode_starratingmulti;
     var $default_shortcode_starreviewmulti;
@@ -107,6 +108,7 @@ class GDStarRating {
         $this->stars_sizes = $gdd->stars_sizes;
         $this->thumb_sizes = $gdd->thumb_sizes;
         $this->tables_list = $gdd->tables_list;
+        $this->function_restrict = $gdd->function_restrict;
         $this->default_spider_bots = $gdd->default_spider_bots;
         $this->default_wpr8 = $gdd->default_wpr8;
         $this->default_user_ratings_filter = $gdd->default_user_ratings_filter;
@@ -121,6 +123,7 @@ class GDStarRating {
         $this->default_shortcode_starrater = $gdd->default_shortcode_starrater;
         $this->default_shortcode_starthumbsblock = $gdd->default_shortcode_starthumbsblock;
         $this->default_shortcode_starreview = $gdd->default_shortcode_starreview;
+        $this->function_restrict = $gdd->function_restrict;
 
         define("STARRATING_INSTALLED", $this->default_options["version"]." ".$this->default_options["status"]);
         define("STARRATING_EOL", "\r\n");
@@ -595,11 +598,11 @@ class GDStarRating {
         if ($default) {
             $rating_decimal = $rating = -1;
 
-            $recc_vote_rules = $gdsr_options["default_voterules_articles"];
-            $recc_moderation_rules = $gdsr_options["default_moderation_articles"];
-            $recc_cmm_vote_rules = $gdsr_options["default_voterules_comments"];
-            $recc_cmm_moderation_rules = $gdsr_options["default_moderation_comments"];
-            $recc_timer_restrictions = $gdsr_options["default_timer_type"];
+            $recc_vote_rules = $gdsr_options["recc_default_voterules_articles"];
+            $recc_moderation_rules = $gdsr_options["recc_default_moderation_articles"];
+            $recc_cmm_vote_rules = $gdsr_options["recc_default_voterules_comments"];
+            $recc_cmm_moderation_rules = $gdsr_options["recc_default_moderation_comments"];
+            $recc_timer_restrictions = $gdsr_options["recc_default_timer_type"];
 
             $vote_rules = $gdsr_options["default_voterules_articles"];
             $moderation_rules = $gdsr_options["default_moderation_articles"];
@@ -706,8 +709,10 @@ class GDStarRating {
 
         if(!empty($this->l)) {
             $jsFile = $this->plugin_path.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js';
-            if (@file_exists($jsFile) && is_readable($jsFile))
-                wp_enqueue_script('gdsr-jquery-datepicker-translation', $jsFile, array("gdsr-jquery-datepicker"), $this->o["version"], true);
+            if (@file_exists($jsFile) && is_readable($jsFile)) {
+                $jsUrl = $this->plugin_url.'js/i18n'.($this->wp_version < 28 ? '' : '-17').'/jquery-ui-datepicker-'.$this->l.'.js';
+                wp_enqueue_script('gdsr-jquery-datepicker-translation', $jsUrl, array("gdsr-jquery-datepicker"), $this->o["version"], true);
+            }
         }
     }
 
@@ -720,6 +725,8 @@ class GDStarRating {
      */
     function admin_head() {
         global $parent_file;
+        //$this->wp_head_javascript();
+
         $this->admin_page = $parent_file;
         $datepicker_date = date("Y, n, j");
         $tabs_extras = "";
@@ -840,9 +847,10 @@ class GDStarRating {
             }
         } else {
             add_action('wp_head', array(&$this, 'wp_head'));
+            add_action('gdsr_gsr_insert_snippet', array(&$this->f, 'insert_google_rich_snippet'));
             add_filter('query_vars', array($this->q, 'query_vars'));
             add_action('pre_get_posts', array($this->q, 'pre_get_posts'));
-            add_filter('comment_text', array(&$this, 'display_comment'));
+            add_filter('comment_text', array(&$this, 'display_comment'), 10000);
             add_filter('the_content', array(&$this, 'display_article'));
             add_action('loop_start', array(&$this, 'loop_start'));
             add_filter('preprocess_comment', array(&$this, 'comment_read_post'));
@@ -1076,9 +1084,7 @@ class GDStarRating {
         GDSRDBMulti::delete_by_comment($comment_id);
     }
 
-    function post_delete($post_id) {
-
-    }
+    function post_delete($post_id) { }
 
     /**
      * Triggers saving GD Star Rating data for post.
@@ -1163,7 +1169,7 @@ class GDStarRating {
         $this->bots = get_option('gd-star-rating-bots');
 
         if (!STARRATING_AJAX && GDSR_WP_ADMIN) {
-            if ($this->o["build"] < $this->default_options["build"] || !is_array($this->o)) {
+            if ($this->o["build"] != $this->default_options["build"] || !is_array($this->o)) {
                 if (is_object($this->g)) {
                     $this->g = gdsrAdmFunc::gfx_scan();
                     update_option('gd-star-rating-gfx', $this->g);
@@ -1320,19 +1326,25 @@ class GDStarRating {
                 wp_enqueue_style("gdsr_style_xtra", $this->plugin_xtra_url."css/rating.css", array(), $this->o["version"]);
             }
         } else {
-            if ($this->wp_version >= 28) {
-                wp_enqueue_script('jquery-ui-core');
-                wp_enqueue_script('jquery-ui-tabs');
-            }
             if (isset($_GET["page"])) {
                 if (substr($_GET["page"], 0, 14) == "gd-star-rating") {
                     $this->admin_plugin = true;
                     $this->admin_plugin_page = substr($_GET["page"], 15);
+                } else {
+                    $this->admin_plugin = false;
                 }
             }
+
+            if ($this->admin_plugin) {
+                if ($this->wp_version >= 28) {
+                    wp_enqueue_script('jquery-ui-core');
+                    wp_enqueue_script('jquery-ui-tabs');
+                }
+                $this->load_datepicker();
+            }
+
             $this->cache_cleanup();
             $this->init_specific_pages();
-            $this->load_datepicker();
         }
 
         if (is_admin() && $this->o["mur_review_set"] == 0) {
@@ -1391,12 +1403,7 @@ class GDStarRating {
         }
     }
 
-    /**
-     * WordPress action for adding blog header contents
-     */
-    function wp_head() {
-        if (is_feed()) return;
-
+    function wp_head_javascript() {
         echo '<script type="text/javascript">'.STARRATING_EOL;
         echo '//<![CDATA['.STARRATING_EOL;
         echo 'var gdsr_cnst_nonce = "'.wp_create_nonce('gdsr_ajax_r8').'";'.STARRATING_EOL;
@@ -1408,6 +1415,16 @@ class GDStarRating {
         }
         echo '// ]]>'.STARRATING_EOL;
         echo '</script>'.STARRATING_EOL;
+    }
+
+    /**
+     * WordPress action for adding blog header contents
+     */
+    function wp_head() {
+        $this->f->init_google_rich_snippet();
+
+        if (is_feed()) return;
+        $this->wp_head_javascript();
 
         $include_cmm_review = $this->o["comments_review_active"] == 1;
         $include_mur_rating = $this->o["multis_active"] == 1;
@@ -1562,7 +1579,10 @@ class GDStarRating {
         }
 
         if (isset($_POST['gdsr_rules_set'])) {
-            gdsrAdmDB::update_settings_full($_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"]);
+            gdsrAdmDB::update_settings_full($_POST["gdsr_article_moderation"], $_POST["gdsr_article_voterules"], 
+                    $_POST["gdsr_comments_moderation"], $_POST["gdsr_comments_voterules"],
+                    $_POST["gdsr_artthumb_moderation"], $_POST["gdsr_artthumb_voterules"],
+                    $_POST["gdsr_cmmthumbs_moderation"], $_POST["gdsr_cmmthumbs_voterules"]);
             wp_redirect_self();
             exit;
         }
@@ -1776,7 +1796,7 @@ class GDStarRating {
 
     function multi_rating_header($external_css = true) {
         $this->include_rating_css($external_css);
-        echo('<script type="text/javascript" src="'.$this->plugin_url.'script.js.php"></script>');
+        echo('<script type="text/javascript" src="'.$this->plugin_url.'js/gdsr.js"></script>');
     }
 
     /**
@@ -1830,10 +1850,16 @@ class GDStarRating {
         return $content;
     }
 
-    function display_article($content) {
-        if (is_admin()) return $content;
+    function check_backtrace_access() {
         $back_trace = gdFunctionsGDSR::get_caller_backtrace();
-        if (in_array("get_the_excerpt", $back_trace)) return $content;
+        foreach($this->function_restrict as $fr) {
+            if (in_array($fr, $back_trace)) return true;
+        }
+        return false;
+    }
+
+    function display_article($content) {
+        if (is_admin() || $this->check_backtrace_access()) return $content;
 
         global $post, $userdata;
         $post_id = is_object($post) ? $post->ID : 0;
@@ -1888,9 +1914,10 @@ class GDStarRating {
             }
         }
 
-        $rich_snippet = ((is_single() || is_page()) && !is_admin() && !is_feed()) ? $this->f->render_google_rich_snippet($post) : "";
-
-        return $content.$rich_snippet;
+        $rich_snippet = $this->f->gsr;
+        if ($this->o["google_rich_snippets_location"] == "top") return $rich_snippet.$content;
+        else if ($this->o["google_rich_snippets_location"] == "bottom") return $content.$rich_snippet;
+        else return $content;
     }
 
     function display_multi_rating($location, $post, $user) {
@@ -1939,6 +1966,7 @@ class GDStarRating {
         foreach ($this->c as $id => $value) {
             if ($value == 0) $to_get[] = $id;
         }
+
         if (count($to_get) > 0) {
             global $gdsr_cache_posts_std_data, $gdsr_cache_posts_std_log, $gdsr_cache_posts_std_thumbs_log;
 

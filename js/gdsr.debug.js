@@ -60,7 +60,7 @@ function gdsr_rating_standard(elm) {
         gdsrWait(el[6], el[5]);
         if (json.status == 'ok') {
             jQuery("#gdr_stars_" + el[4] + el[1]).html("");
-            jQuery("#gdr_vote_" + el[4] + el[1]).css("width", json.value);
+            jQuery("#gdr_vote_" + el[4] + el[1]).css("width", parseInt(json.value));
             jQuery("#gdr_text_" + el[4] + el[1]).addClass("voted");
             jQuery("#gdr_text_" + el[4] + el[1]).html(json.rater);
         }
@@ -99,7 +99,7 @@ function multi_rating_vote(block) {
         if (height > 0)
             jQuery("#gdsr_mur_avgstars_" + post_id + "_" + set_id + " div").css("width", json.average * height.substring(0, 2));
         for (var i = 0; i < json.values.length; i++)
-            jQuery("#gdsr_mur_stars_rated_" + post_id + "_" + set_id + "_" + i).css("width", json.values[i]);
+            jQuery("#gdsr_mur_stars_rated_" + post_id + "_" + set_id + "_" + i).css("width", parseInt(json.values[i]));
         jQuery("#gdsr_mur_text_" + post_id + "_" + set_id).html(json.rater).addClass("voted");
         gdsrWait("gdsr_mur_loader_" + post_id + "_" + set_id, "gdsr_mur_text_" + post_id + "_" + set_id);
     });
@@ -159,6 +159,10 @@ function value_cmm_rated_review() {
     return jQuery(".gdsr-cmm-cls-rt").val();
 }
 
+function gdsr_ie() {
+    return jQuery.browser.msie && jQuery.browser.version < '8.0';
+}
+
 jQuery(document).ready(function() {
     if (gdsr_cnst_cache == 1) {
         var ela = "";
@@ -213,13 +217,13 @@ jQuery(document).ready(function() {
         }
     }
 
-    if (jQuery.browser.msie) jQuery(".gdsr_rating_as > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdsr_rating_as > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_rating_as > a").click(function() { gdsr_rating_standard(this); });
 
-    if (jQuery.browser.msie) jQuery(".gdthumb > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdthumb > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdthumb > a").click(function() { gdsr_rating_thumb(this); });
 
-    if (jQuery.browser.msie) jQuery(".gdsr_integration > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdsr_integration > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_integration > a").click(function() {
         var el = jQuery(this).attr("id").split("X");
         var pid = "#" + jQuery(this).parent().attr("id");
@@ -228,13 +232,13 @@ jQuery(document).ready(function() {
         jQuery(pid + "_value").val(el[1]);
     });
 
-    if (jQuery.browser.msie) jQuery(".gdsr_multisbutton_as > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdsr_multisbutton_as > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_multisbutton_as > a").click(function() { gdsr_rating_multi_button(this); });
 
-    if (jQuery.browser.msie) jQuery(".gdsr_multis_as > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdsr_multis_as > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_multis_as > a").click(function() { gdsr_rating_multi_stars(this); });
 
-    if (jQuery.browser.msie) jQuery(".gdsr_mur_static > a").attr("href", "javascript:gdsrEmpty()");
+    if (gdsr_ie()) jQuery(".gdsr_mur_static > a").attr("href", "javascript:gdsrEmpty()");
     jQuery(".gdsr_mur_static > a").click(function() {
         var el = jQuery(this).attr("id").split("X");
         var vote = el[4];

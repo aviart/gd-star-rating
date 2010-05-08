@@ -11,3 +11,7 @@
 	margin-top: 3px;
 	padding-top: 3px;
 }
+
+.gdsr-widget-controls select {
+    width: 180px;
+}

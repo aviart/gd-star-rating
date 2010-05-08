@@ -3,7 +3,7 @@ function gdsrGetExportUser() {
     <?php if ($wpv < 28) { ?>
     var us = jQuery("input[@name='gdsr_export_user']:checked").val();
     var de = jQuery("input[@name='gdsr_export_data']:checked").val();
-    var url = "<?php echo STARRATING_URL; ?>/export.php?ex=user&us=" + us + "&de=" + de;
+    var url = "<?php echo STARRATING_URL; ?>export.php?ex=user&us=" + us + "&de=" + de;
     if (jQuery("input[@name='gdsr_export_ip']:checked").val() == "on") url = url + "&ip=on";
     if (jQuery("input[@name='gdsr_export_agent']:checked").val() == "on") url = url + "&ua=on";
     if (jQuery("input[@name='gdsr_export_post_title']:checked").val() == "on") url = url + "&pt=on";
@@ -14,7 +14,7 @@ function gdsrGetExportUser() {
     <?php } else { ?>
     var us = jQuery("input[name='gdsr_export_user']:checked").val();
     var de = jQuery("input[name='gdsr_export_data']:checked").val();
-    var url = "<?php echo STARRATING_URL; ?>/export.php?ex=user&us=" + us + "&de=" + de;
+    var url = "<?php echo STARRATING_URL; ?>export.php?ex=user&us=" + us + "&de=" + de;
     if (jQuery("input[name='gdsr_export_ip']:checked").val() == "on") url = url + "&ip=on";
     if (jQuery("input[name='gdsr_export_agent']:checked").val() == "on") url = url + "&ua=on";
     if (jQuery("input[name='gdsr_export_post_title']:checked").val() == "on") url = url + "&pt=on";

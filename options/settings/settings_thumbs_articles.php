@@ -60,6 +60,22 @@
     <td>
         <table cellpadding="0" cellspacing="0" class="previewtable">
             <tr>
+                <td width="150"><?php _e("Vote rule", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <?php GDSRHelper::render_rules_combo("gdsr_recc_default_vote_articles", $gdsr_options["recc_default_voterules_articles"]); ?>
+                </td>
+                <td width="10"></td>
+            <?php if ($gdsr_options["moderation_active"] == 1) { ?>
+                <td width="150"><?php _e("Moderation rule", "gd-star-rating"); ?>:</td>
+                <td width="200" align="left">
+                <?php GDSRHelper::render_moderation_combo("gdsr_recc_default_mod_articles", $gdsr_options["recc_default_moderation_articles"]); ?>
+                </td>
+            <?php } ?>
+            </tr>
+        </table>
+        <div class="gdsr-table-split"></div>
+        <table cellpadding="0" cellspacing="0" class="previewtable">
+            <tr>
                 <td width="150"><?php _e("Rating Template", "gd-star-rating"); ?>:</td>
                 <td align="left"><?php gdTemplateHelper::render_templates_section("TAB", "gdsr_default_tab_template", $gdsr_options["default_tab_template"], 350); ?></td>
             </tr>

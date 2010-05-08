@@ -217,8 +217,10 @@ class GDSRDatabase {
 
         $vote_timer_value = $options["default_timer_type"] == "T" || $options["default_timer_type"] == "D" ? $options["default_timer_value"] : "";
         $dbt_data_article = $table_prefix.'gdsr_data_article';
-        $sql = sprintf("INSERT INTO %s (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (%s, '%s', '%s', '%s', '%s', '%s', 0, 0, 0, 0, %s, '%s', '%s')",
-                $dbt_data_article, $post_id, $options["default_voterules_articles"], $options["default_voterules_comments"], $options["default_moderation_articles"], $options["default_moderation_comments"], $is_page, $review, $options["default_timer_type"], $vote_timer_value);
+        $sql = sprintf("INSERT INTO %s (post_id, rules_articles, rules_comments, moderate_articles, moderate_comments, recc_rules_articles, recc_rules_comments, recc_moderate_articles, recc_moderate_comments, is_page, user_voters, user_votes, visitor_voters, visitor_votes, review, expiry_type, expiry_value) VALUES (%s, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', 0, 0, 0, 0, %s, '%s', '%s')",
+                $dbt_data_article, $post_id, $options["default_voterules_articles"], $options["default_voterules_comments"], 
+                $options["default_moderation_articles"], $options["default_moderation_comments"], $options["recc_default_voterules_articles"], $options["recc_default_voterules_comments"],
+                $options["recc_default_moderation_articles"], $options["recc_default_moderation_comments"], $is_page, $review, $options["default_timer_type"], $vote_timer_value);
         $wpdb->query($sql);
     }
 

@@ -216,6 +216,7 @@ if (count($thumb_sets) > 0 && count($thumb_sizes)) {
 .raterleft { float: left; }
 .raterright { float: right; }
 .voted {color: #999;}
+.inactive {color: #999;}
 .thanks {color: #36AA3D;}
 .static {color: #5D3126;}
 .rater { top: 0; }

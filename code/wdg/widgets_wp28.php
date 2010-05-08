@@ -95,11 +95,13 @@ if (class_exists("WP_Widget")) {
             $wptt = $gdsr->g->thumbs;
             $wpml = GDSRDBMulti::get_multis_tinymce();
 
+            echo '<div class="gdsr-widget-controls">';
             include(STARRATING_PATH.'widgets/rating_28/part_basic.php');
             include(STARRATING_PATH.'widgets/rating_28/part_trend.php');
             include(STARRATING_PATH.'widgets/rating_28/part_filter.php');
             include(STARRATING_PATH.'widgets/rating_28/part_image.php');
             include(STARRATING_PATH.'widgets/rating_28/part_stars.php');
+            echo '</div>';
         }
     }
 
@@ -140,8 +142,10 @@ if (class_exists("WP_Widget")) {
             global $gdsr;
             $instance = wp_parse_args((array)$instance, $gdsr->default_widget_top);
 
+            echo '<div class="gdsr-widget-controls">';
             include(STARRATING_PATH.'widgets/top_28/part_basic.php');
             include(STARRATING_PATH.'widgets/top_28/part_filter.php');
+            echo '</div>';
         }
     }
 
@@ -202,10 +206,12 @@ if (class_exists("WP_Widget")) {
             $wptr = $gdsr->g->trend;
             $wpst = $gdsr->g->stars;
 
+            echo '<div class="gdsr-widget-controls">';
             include(STARRATING_PATH.'widgets/comments_28/part_basic.php');
             include(STARRATING_PATH.'widgets/comments_28/part_filter.php');
             include(STARRATING_PATH.'widgets/comments_28/part_image.php');
             include(STARRATING_PATH.'widgets/comments_28/part_stars.php');
+            echo '</div>';
         }
     }
 }

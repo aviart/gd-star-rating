@@ -25,10 +25,10 @@ if (isset($_GET["ex"])) {
 
     switch($export_type) {
         case "user":
-            $sql = GDSRExport::export_users($_GET["us"], $_GET["de"], $get_data);
-            $rows = $wpdb->get_results($sql, ARRAY_N);
             header('Content-type: text/csv');
             header('Content-Disposition: attachment; filename="gdsr_export_'.$export_name.'.csv"');
+            $sql = GDSRExport::export_users($_GET["us"], $_GET["de"], $get_data);
+            $rows = $wpdb->get_results($sql, ARRAY_N);
             if (count($rows) > 0) {
                 foreach ($rows as $row) {
                     echo '"'.join('", "', $row).'"';
@@ -37,10 +37,10 @@ if (isset($_GET["ex"])) {
             }
             break;
         case "t2":
-            $sql = GDSRExport::export_t2();
-            $rows = $wpdb->get_results($sql, ARRAY_N);
             header('Content-type: text/plain');
             header('Content-Disposition: attachment; filename="gdsr_export_'.$export_name.'.txt"');
+            $sql = GDSRExport::export_t2();
+            $rows = $wpdb->get_results($sql, ARRAY_N);
             if (count($rows) > 0) {
                 foreach ($rows as $row) {
                     echo $row[0]."|";
@@ -55,9 +55,9 @@ if (isset($_GET["ex"])) {
             }
             break;
         case "t2full":
-            $lines = GDSRExport::export_t2_full();
             header('Content-type: text/plain');
             header('Content-Disposition: attachment; filename="gdsr_export_'.$export_name.'.txt"');
+            $lines = GDSRExport::export_t2_full();
             foreach ($lines as $l) echo $l;
             break;
     }

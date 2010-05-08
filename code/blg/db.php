@@ -141,7 +141,7 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
         $sql = sprintf("SELECT * FROM %sgdsr_data_article WHERE post_id = %s", $table_prefix, $post_id);
         $post_data = $wpdb->get_row($sql);
 
-        if ($post_data->moderate_comments == "" || $post_data->moderate_comments == "N" || ($post_data->moderate_comments == "V" && $user > 0) || ($post_data->moderate_comments == "U" && $user == 0)) {
+        if ($post_data->recc_moderate_comments == "" || $post_data->recc_moderate_comments == "N" || ($post_data->recc_moderate_comments == "V" && $user > 0) || ($post_data->recc_moderate_comments == "U" && $user == 0)) {
             gdsrBlgDB::add_vote_comment_thumb($id, $user, $ip, $ua, $vote);
         } else {
             $modsql = sprintf("INSERT INTO %sgdsr_moderate (id, vote_type, user_id, vote, voted, ip, user_agent) VALUES (%s, 'cmmthumb', %s, %s, '%s', '%s', '%s')",
@@ -162,7 +162,7 @@ wp_gdsr_dump("CHECK_VOTE_MIX", $votes_sql);
             $post_data = $wpdb->get_row($sql);
         }
 
-        if ($post_data->moderate_articles == "" || $post_data->moderate_articles == "N" || ($post_data->moderate_articles == "V" && $user > 0) || ($post_data->moderate_articles == "U" && $user == 0)) {
+        if ($post_data->recc_moderate_articles == "" || $post_data->recc_moderate_articles == "N" || ($post_data->recc_moderate_articles == "V" && $user > 0) || ($post_data->recc_moderate_articles == "U" && $user == 0)) {
             gdsrBlgDB::add_vote_thumb($id, $user, $ip, $ua, $vote, $comment_id);
         } else {
             $modsql = sprintf("INSERT INTO %sgdsr_moderate (id, vote_type, user_id, vote, voted, ip, user_agent, comment_id) VALUES (%s, 'artthumb', %s, %s, '%s', '%s', '%s', %s)",
