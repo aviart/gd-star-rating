@@ -204,7 +204,9 @@ if (!class_exists('gdGoogleRichSnippetsGDSR')) {
             }
 
             $tpl = apply_filters("gdsr_snippet_template_stars_review", $tpl, $this->snippet_type);
+            $hidden = $options["hidden"] ? ' style="display: none !important;"' : '';
 
+            $tpl = str_replace("%HIDDEN%", $hidden, $tpl);
             $tpl = str_replace("%WORD_REVIEWEDBY%", __("reviewed by", "gd-star-rating"), $tpl);
             $tpl = str_replace("%WORD_ON%", __("on", "gd-star-rating"), $tpl);
             $tpl = str_replace("%WORD_RATING%", __("rating", "gd-star-rating"), $tpl);
