@@ -1238,6 +1238,7 @@ class GDSRRenderT2 {
                 if ($widget["source"] == "thumbs" && $row->rating > 0) $row->rating = "+".$row->rating;
 
                 $auto_css = " t2-row-".$rank_id;
+                $row_id = isset($row->post_id) ? $row->post_id : (isset($row->term_id) ? $row->term_id : $row->id);
                 if ($rank_id == 1) $auto_css.= " t2-first";
                 if ($rank_id == $total_rows) $auto_css.= " t2-last";
 
@@ -1254,7 +1255,7 @@ class GDSRRenderT2 {
                 $rt = str_replace('%TAXONOMY%', $widget["taxonomy"], $rt);
                 $rt = str_replace('%PERMALINK%', $row->permalink, $rt);
                 $rt = str_replace('%RANK_ID%', $rank_id, $rt);
-                $rt = str_replace('%ID%', $row->post_id, $rt);
+                $rt = str_replace('%ID%', $row_id, $rt);
                 $rt = str_replace('%COUNT%', $row->counter, $rt);
                 $rt = str_replace('%BAYES_RATING%', $row->bayesian, $rt);
                 $rt = str_replace('%BAYES_STARS%', $row->bayesian_stars, $rt);
