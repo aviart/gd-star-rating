@@ -469,7 +469,7 @@ class GDSRX {
     }
 
     function get_widget_standard($widget, $min = 0) {
-        global $table_prefix;
+        global $wpdb, $table_prefix;
 
         $grouping = $widget["grouping"];
         $cats = $widget["category"];

@@ -119,6 +119,9 @@ Plugin administration consist of 17 main panels:
 = How to check if there is a sample and already explained solution to my problem? =
 Check the post in the following category: http://www.gdstarrating.com/category/tutorials/solving-problems/.
 
+= I need support for using this plugin and some of it's features? =
+GD Star Rating is a free plugin. But, beyond bug fixing, support for this plugin is not free. If you need support, check out more on Dev4Press: http://dv4p.com/et.
+
 = I have trouble saving plugin settings? =
 This happens only with PHP4. That's why minimal plugin requirements is now PHP5. Upgrade your servers, PHP4 is no longer supported, it's outdated and full of security holes.
 
@@ -136,6 +139,9 @@ All plugins functions for inserting wherever you want can be found in the info f
 
 = Both stars and thumbs rating block are showing on pages. =
 You need to disable auto insertion of the rating type you don't want to use. Both are controlled by the options on the Settings panel. For post/page stars use Posts & Pages tab and 5 auto insert checkboxes, for comments use Comments tab and 3 auto insert checkboxes. To control thumb ratings auto insertion, use Thumbs Up/Down tab, and you save auto insert options for posts and pages, and at the bottom for comments. Disable what you don't want to use.
+
+= Plugin displays in the post content weird string that includes post title and rating. What is that? =
+Most likely it is Google Rich Snippet. More info on that: http://dv4p.com/wh. To disable it, hide it or set it differently use tab Special on the Settings panel.
 
 = How to change the elements displayed by the plugin in widget, rating blocks and other rendering elements? =
 All rendering is controlled by the T2 templates system. To change the rendering output you need to make your own templates and change what they display.
@@ -188,6 +194,9 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Changelog ==
+= 1.9.1 =
+* Fixed grouping problems with rating widget
+
 = 1.9.0 =
 * Google Rich Snippets support for RDF and Microdata formats
 * Improved templates for Google Rich Snippets
