@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.9.0
+Version: 1.9.1
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
 Tested up to: 3.0
@@ -195,6 +195,8 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Changelog ==
 = 1.9.1 =
+* Added filters to WP Query expansion
+* Changes in some actions used for saving votes
 * Fixed grouping problems with rating widget
 
 = 1.9.0 =
