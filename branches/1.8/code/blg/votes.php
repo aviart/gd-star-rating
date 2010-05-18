@@ -141,7 +141,7 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
             $total_votes = $summary["total"]["votes"];
             $json = $summary["json"];
 
-            do_action("gdsr_vote_rating_multis", $post_id, $user, $set_id, $values);
+            do_action("gdsr_vote_rating_multis", $post_id, $user, $set_id, $values, $rating);
         }
 
         include(STARRATING_PATH.'code/t2/templates.php');

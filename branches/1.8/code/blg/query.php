@@ -44,27 +44,30 @@ class gdsrQuery {
 
     function standard_fields($c) {
         global $table_prefix;
-        $c.= ", (gdsra.user_votes + gdsra.visitor_votes)/(gdsra.user_voters + gdsra.visitor_voters) as gdsr_rating";
-        $c.= ", (gdsra.user_recc_plus - gdsra.user_recc_minus + gdsra.visitor_recc_plus - gdsra.visitor_recc_minus) as gdsr_thumb_score";
-        $c.= ", (gdsra.user_voters + gdsra.visitor_voters) as gdsr_votes";
-        $c.= ", (gdsra.user_recc_plus + gdsra.user_recc_minus + gdsra.visitor_recc_plus + gdsra.visitor_recc_minus) as gdsr_thumb_votes";
-        $c.= ", gdsra.review as gdsr_review";
-        $c.= ", gdsra.last_voted as gdsr_last_voted";
-        return $c;
+        $x = ", (gdsra.user_votes + gdsra.visitor_votes)/(gdsra.user_voters + gdsra.visitor_voters) as gdsr_rating";
+        $x.= ", (gdsra.user_recc_plus - gdsra.user_recc_minus + gdsra.visitor_recc_plus - gdsra.visitor_recc_minus) as gdsr_thumb_score";
+        $x.= ", (gdsra.user_voters + gdsra.visitor_voters) as gdsr_votes";
+        $x.= ", (gdsra.user_recc_plus + gdsra.user_recc_minus + gdsra.visitor_recc_plus + gdsra.visitor_recc_minus) as gdsr_thumb_votes";
+        $x.= ", gdsra.review as gdsr_review, gdsra.last_voted as gdsr_last_voted";
+        $x = apply_filters("gdsr_wpquery_standard_fields", $x);
+        return $c.$x;
     }
 
     function standard_join($c) {
         global $table_prefix;
-        $c.= sprintf(" LEFT JOIN %sgdsr_data_article gdsra ON gdsra.post_id = %sposts.ID", $table_prefix, $table_prefix);
-        return $c;
+        $x = sprintf(" LEFT JOIN %sgdsr_data_article gdsra ON gdsra.post_id = %sposts.ID", $table_prefix, $table_prefix);
+        $x = apply_filters("gdsr_wpquery_standard_join", $x);
+        return $c.$x;
     }
 
     function standard_where($c) {
+        $x = "";
         $filter_min_votes = intval(trim(addslashes(get_query_var('gdsr_fsvmin'))));
         $filter_min_votes_thumbs = intval(trim(addslashes(get_query_var('gdsr_ftvmin'))));
-        if ($filter_min_votes > 0) $c.= " AND (gdsra.user_voters + gdsra.visitor_voters) > ".$filter_min_votes;
-        if ($filter_min_votes_thumbs > 0) $c.= " AND (gdsra.user_recc_plus + gdsra.user_recc_minus + gdsra.visitor_recc_plus + gdsra.visitor_recc_minus) > ".$filter_min_votes_thumbs;
-        return $c;
+        if ($filter_min_votes > 0) $x.= " AND (gdsra.user_voters + gdsra.visitor_voters) > ".$filter_min_votes;
+        if ($filter_min_votes_thumbs > 0) $x.= " AND (gdsra.user_recc_plus + gdsra.user_recc_minus + gdsra.visitor_recc_plus + gdsra.visitor_recc_minus) > ".$filter_min_votes_thumbs;
+        $x = apply_filters("gdsr_wpquery_standard_where", $x);
+        return $c.$x;
     }
 
     function standard_orderby($default) {
@@ -99,30 +102,33 @@ class gdsrQuery {
         }
 
         if ($c != "") $c.= sprintf(", %sposts.post_date desc", $table_prefix);
+        $c = apply_filters("gdsr_wpquery_standard_orderby", $c, $default);
         return $c != "" ? $c : $default;
     }
 
     function multis_fields($c) {
         global $table_prefix;
-        $c.= ", (gdsrm.average_rating_users * gdsrm.total_votes_users + gdsrm.average_rating_visitors * gdsrm.total_votes_visitors)/(gdsrm.total_votes_users + gdsrm.total_votes_visitors) as gdsr_rating";
-        $c.= ", (gdsrm.total_votes_users + gdsrm.total_votes_visitors) as gdsr_votes";
-        $c.= ", gdsrm.average_review as gdsr_review";
-        $c.= ", gdsrm.last_voted as gdsr_last_voted";
-        return $c;
+        $x = ", (gdsrm.average_rating_users * gdsrm.total_votes_users + gdsrm.average_rating_visitors * gdsrm.total_votes_visitors)/(gdsrm.total_votes_users + gdsrm.total_votes_visitors) as gdsr_rating";
+        $x.= ", (gdsrm.total_votes_users + gdsrm.total_votes_visitors) as gdsr_votes";
+        $x.= ", gdsrm.average_review as gdsr_review, gdsrm.last_voted as gdsr_last_voted";
+        $x = apply_filters("gdsr_wpquery_multis_fields", $x);
+        return $c.$x;
     }
 
     function multis_join($c) {
         global $table_prefix;
-        $c.= sprintf(" LEFT JOIN %sgdsr_multis_data gdsrm ON gdsrm.post_id = %sposts.ID", $table_prefix, $table_prefix);
-        return $c;
+        $x = sprintf(" LEFT JOIN %sgdsr_multis_data gdsrm ON gdsrm.post_id = %sposts.ID", $table_prefix, $table_prefix);
+        $x = apply_filters("gdsr_wpquery_multis_join", $x);
+        return $c.$x;
     }
 
     function multis_where($c) {
         $set = intval(trim(addslashes(get_query_var('gdsr_multi'))));
-        $c.= " AND gdsrm.multi_id = ".$set;
+        $x = " AND gdsrm.multi_id = ".$set;
         $filter_min_votes = intval(trim(addslashes(get_query_var('gdsr_fsvmin'))));
-        if ($filter_min_votes > 0) $c.= " AND (gdsrm.total_votes_users + gdsrm.total_votes_visitors) > ".$filter_min_votes;
-        return $c;
+        if ($filter_min_votes > 0) $x.= " AND (gdsrm.total_votes_users + gdsrm.total_votes_visitors) > ".$filter_min_votes;
+        $x = apply_filters("gdsr_wpquery_multis_where", $x);
+        return $c.$x;
     }
 
     function multis_orderby($default) {
@@ -150,6 +156,7 @@ class gdsrQuery {
         }
 
         if ($c != "") $c.= sprintf(", %sposts.post_date desc", $table_prefix);
+        $c = apply_filters("gdsr_wpquery_multis_orderby", $c, $default);
         return $c != "" ? $c : $default;
     }
 }
