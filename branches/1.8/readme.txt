@@ -196,6 +196,7 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 == Changelog ==
 = 1.9.1 =
 * Added filters to WP Query expansion
+* Added new filters to T2 rendering engine
 * Changes in some actions used for saving votes
 * Fixed grouping problems with rating widget
 

@@ -137,7 +137,7 @@ else
     </thead>
     <tbody>
 <?php
-       
+
     $tr_class = "";
     foreach ($rows as $row) {
         if ($row->user_id == 0) $tr_class.= " visitor";
@@ -155,10 +155,7 @@ else
         echo '<td>'.$row->user_agent.'</td>';
 
         echo '</tr>';
-        if ($tr_class == "")
-            $tr_class = "alternate ";
-        else
-            $tr_class = "";
+        $tr_class = $tr_class == "" ? "alternate " : "";
     }
     
 ?>

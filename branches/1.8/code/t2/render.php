@@ -642,8 +642,6 @@ class GDSRRenderT2 {
         if ($already_voted) $css.= " voted";
         if (!$allow_vote) $css.= " inactive";
 
-        $rating_width = $rating2 * $unit_width;
-        $rater_length = $unit_width * $unit_count;
         $rater_id = $typecls."_rater_".$post_id;
         $loader_id = $typecls."_loader_".$post_id;
 
@@ -662,6 +660,9 @@ class GDSRRenderT2 {
         }
 
         if (in_array("%RATING_STARS%", $template->tag["normal"])) {
+            $rating2 = apply_filters('gdsr_t2rating_srb_stars_display', $rating2);
+            $rating_width = $rating2 * $unit_width;
+            $rater_length = $unit_width * $unit_count;
             $rating_stars = GDSRRender::rating_stars($style, $unit_width, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $post_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
             $tpl_render = str_replace("%RATING_STARS%", $rating_stars, $tpl_render);
         }
@@ -848,8 +849,6 @@ class GDSRRenderT2 {
         if ($already_voted) $css.= " voted";
         if (!$allow_vote) $css.= " inactive";
 
-        $rating_width = $rating2 * $unit_width;
-        $rater_length = $unit_width * $unit_count;
         $rater_id = $typecls."_rater_".$cmm_id;
         $loader_id = $typecls."_loader_".$cmm_id;
 
@@ -858,6 +857,9 @@ class GDSRRenderT2 {
         $tpl_render = str_replace('%CSS_AUTO%', apply_filters('gdsr_t2_tag_value', $css, "CRB", "%CSS_AUTO%"), $tpl_render);
 
         if (in_array("%CMM_RATING_STARS%", $template->tag["normal"])) {
+            $rating2 = apply_filters('gdsr_t2rating_crb_stars_display', $rating2);
+            $rating_width = $rating2 * $unit_width;
+            $rater_length = $unit_width * $unit_count;
             $rating_stars = GDSRRender::rating_stars($style, $unit_width, $rater_id, $class, $rating_width, $allow_vote, $unit_count, $type, $cmm_id, $user_id, $loader_id, $rater_length, $typecls, $wait_msg, $template_id);
             $tpl_render = str_replace("%CMM_RATING_STARS%", $rating_stars, $tpl_render);
         }
