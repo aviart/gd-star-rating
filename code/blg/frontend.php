@@ -524,9 +524,9 @@ class gdsrFront {
         $post_id = $settings[1];
         $comment_id = $settings[2];
         $comment_author = $settings[3];
-        $user_id = $settings[5];
-        $post_author = $settings[6];
         $rd_is_page = $settings[4];
+        $post_author = $settings[5];
+        $user_id = $settings[6];
 
         $override["tpl"] = $settings[7];
         $override["read_only"] = $settings[8];
@@ -653,9 +653,9 @@ class gdsrFront {
         $post_id = $settings[1];
         $comment_id = $settings[2];
         $comment_author = $settings[3];
-        $user_id = $settings[5];
-        $post_author = $settings[6];
         $rd_is_page = $settings[4];
+        $post_author = $settings[5];
+        $user_id = $settings[6];
 
         $override["tpl"] = $settings[7];
         $override["read_only"] = $settings[8];
@@ -696,7 +696,7 @@ class gdsrFront {
         }
 
         if ($allow_vote) {
-            if ($this->g->o["cmm_author_vote"] == 1 && $rd_user_id == $comment->user_id && $rd_user_id > 0) {
+            if ($this->g->o["cmm_author_vote"] == 1 && $rd_user_id == $comment_author && $rd_user_id > 0) {
                 $allow_vote = false;
                 $dbg_allow = "A";
             }
@@ -813,10 +813,9 @@ class gdsrFront {
 
     function render_thumb_article_actual($settings) {
         $rd_post_id = intval($settings[1]);
-        $rd_user_id = intval($settings[10]);
-        $post_date = $settings[3];
-        $post_author = $settings[4];
         $rd_is_page = $settings[2];
+        $post_author = $settings[3];
+        $post_date = $settings[4];
 
         $rd_unit_width = $settings[7];
         $override["tpl"] = $settings[5];
@@ -824,6 +823,8 @@ class gdsrFront {
         $override["style"] = $this->g->g->thumbs[$settings[8]]->folder;
         $override["style_ie6"] = $this->g->g->thumbs[$settings[9]]->folder;
         $rd_unit_style = $this->g->is_ie6 ? $override["style_ie6"] : $override["style"];
+
+        $rd_user_id = intval($settings[10]);
 
         $dbg_allow = "F";
         $already_voted = false;
@@ -953,16 +954,17 @@ class gdsrFront {
 
     function render_article_actual($settings) {
         $rd_post_id = intval($settings[1]);
-        $rd_user_id = intval($settings[10]);
-        $post_date = $settings[3];
-        $post_author = $settings[4];
         $rd_is_page = $settings[2];
+        $post_author = $settings[3];
+        $post_date = $settings[4];
 
         $override["tpl"] = $settings[5];
         $override["read_only"] = $settings[6];
         $override["size"] = $settings[7];
         $override["style"] = $this->g->g->stars[$settings[8]]->folder;
         $override["style_ie6"] = $this->g->g->stars[$settings[9]]->folder;
+
+        $rd_user_id = intval($settings[10]);
 
         $dbg_allow = "F";
         $already_voted = false;
@@ -1005,6 +1007,8 @@ class gdsrFront {
             }
         }
 
+        echo("PA".$post_author);
+        echo("US".$rd_user_id);
         if ($allow_vote) {
             if ($this->g->o["author_vote"] == 1 && $rd_user_id == $post_author) {
                 $allow_vote = false;
@@ -1098,10 +1102,9 @@ class gdsrFront {
         if ($this->g->is_bot && $this->g->o["bot_message"] != "normal") return GDSRRender::render_locked_response($this->g->o["bot_message"]);
 
         $rd_post_id = intval($settings[1]);
-        $rd_user_id = intval($settings[10]);
-        $post_date = $settings[3];
-        $post_author = $settings[4];
         $rd_is_page = $settings[2];
+        $post_author = $settings[3];
+        $post_date = $settings[4];
 
         $override["id"] = intval($settings[11]);
         $override["tpl"] = $settings[5];
@@ -1109,6 +1112,9 @@ class gdsrFront {
         $override["size"] = $settings[7];
         $override["style"] = $this->g->g->stars[$settings[8]]->folder;
         $override["style_ie6"] = $this->g->g->stars[$settings[9]]->folder;
+
+        $rd_user_id = intval($settings[10]);
+
         $override["average_size"] = $settings[12];
         $override["average_stars"] = $this->g->g->stars[$settings[13]]->folder;
         $override["average_stars_ie6"] = $this->g->g->stars[$settings[14]]->folder;
