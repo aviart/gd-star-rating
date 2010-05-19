@@ -199,6 +199,7 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 * Added new filters to T2 rendering engine
 * Changes in some actions used for saving votes
 * Fixed grouping problems with rating widget
+* Fixed preventing authors to vote for own comments and posts
 
 = 1.9.0 =
 * Google Rich Snippets support for RDF and Microdata formats
