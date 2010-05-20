@@ -1007,8 +1007,6 @@ class gdsrFront {
             }
         }
 
-        echo("PA".$post_author);
-        echo("US".$rd_user_id);
         if ($allow_vote) {
             if ($this->g->o["author_vote"] == 1 && $rd_user_id == $post_author) {
                 $allow_vote = false;
