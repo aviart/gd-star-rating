@@ -2,13 +2,13 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.9.1",
+        "version" => "1.9.2",
         "revision" => 1,
         "code_name" => "Prelude",
-        "date" => "2010.05.20.",
+        "date" => "2010.06.27.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 1087,
+        "build" => 1090,
         "admin_views" => 0,
         "bot_message" => "normal",
         "google_rich_snippets_format" => "microformat",

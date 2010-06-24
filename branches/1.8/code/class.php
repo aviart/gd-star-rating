@@ -34,6 +34,7 @@ class GDStarRating {
     var $admin_plugin = false;
     var $admin_plugin_page = '';
     var $admin_page;
+    var $script;
     var $widgets;
 
     var $active_wp_page;
@@ -634,13 +635,20 @@ class GDStarRating {
         }
     }
 
-    /**
-     * WordPress action for adding administration menu items
-     */
-    function admin_menu() {
-        $this->check_user_access();
+    function meta_boxes_30() {
+        global $wp_meta_boxes;
+        $post_types = get_post_types(array(), "objects");
+        foreach ($post_types as $name => $data) {
+            if ($this->o["integrate_post_edit"] == 1) {
+                add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), $name, "side", "high");
+            }
+            if ($this->o["integrate_post_edit_mur"] == 1) {
+                add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), $name, "advanced", "high");
+            }
+        }
+    }
 
-        add_menu_page('GD Star Rating', 'GD Star Rating', $this->security_level_front, $this->plugin_base, array(&$this->m, "star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
+    function meta_boxes_pre30() {
         if ($this->o["integrate_post_edit"] == 1) {
             add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "post", "side", "high");
             add_meta_box("gdsr-meta-box", "GD Star Rating", array(&$this, 'editbox_post'), "page", "side", "high");
@@ -649,7 +657,18 @@ class GDStarRating {
             add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "post", "advanced", "high");
             add_meta_box("gdsr-meta-box-mur", "GD Star Rating: ".__("Multi Ratings Review", "gd-star-rating"), array(&$this, 'editbox_post_mur'), "page", "advanced", "high");
         }
+    }
 
+    /**
+     * WordPress action for adding administration menu items
+     */
+    function admin_menu() {
+        $this->check_user_access();
+
+        if ($this->wp_version < 30) $this->meta_boxes_pre30();
+        if ($this->wp_version > 29) $this->meta_boxes_30();
+
+        add_menu_page('GD Star Rating', 'GD Star Rating', $this->security_level_front, $this->plugin_base, array(&$this->m, "star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), $this->security_level_front, $this->plugin_base, array(&$this->m, "star_menu_front"));
         if ($this->security_my_ratings) {
             add_submenu_page('index.php', 'GD Star Rating: '.__("My Ratings", "gd-star-rating"), __("My Ratings", "gd-star-rating"), $this->security_my_ratings_level, "gd-star-rating-my", array(&$this->m, "star_menu_my"));
@@ -735,6 +754,11 @@ class GDStarRating {
             $tabs_extras = ", selected: 1";
         }
 
+        if ($this->script == "post.php") {
+            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-editors.js"></script>'.STARRATING_EOL);
+            $this->include_rating_css_admin();
+        }
+
         if ($this->admin_plugin) {
             wp_admin_css('css/dashboard');
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_main.css" type="text/css" media="screen" />'.STARRATING_EOL);
@@ -744,10 +768,6 @@ class GDStarRating {
             } else {
                 echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_wp28.css" type="text/css" media="screen" />'.STARRATING_EOL);
             }
-        }
-
-        if ($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php" || $this->admin_page == "post-new.php") {
-            echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-editors.js"></script>'.STARRATING_EOL);
         }
 
         echo('<script type="text/javascript">jQuery(document).ready(function() {'.STARRATING_EOL);
@@ -768,9 +788,7 @@ class GDStarRating {
         if ($this->admin_plugin_page == "settings") {
             echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-loaders.js"></script>'.STARRATING_EOL);
         }
-        if (($this->admin_page == "edit-pages.php" || $this->admin_page == "edit.php") && $this->o["integrate_post_edit_mur"] == 1) {
-            $this->include_rating_css_admin();
-        }
+
         if ($this->admin_page == "widgets.php" || $this->admin_page == "themes.php") {
             if ($this->wp_version < 28) {
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets.js"></script>'.STARRATING_EOL);
@@ -1250,6 +1268,8 @@ class GDStarRating {
                 update_option('gd-star-rating-inc', $this->ginc);
             }
         }
+
+        $this->script = basename($_SERVER["PHP_SELF"]);
     }
 
     /**
