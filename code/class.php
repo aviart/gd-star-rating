@@ -757,7 +757,7 @@ class GDStarRating {
             $tabs_extras = ", selected: 1";
         }
 
-        if ($this->script == "post.php") {
+        if ($this->script == "post.php" || $this->script == "page.php") {
             echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-editors.js"></script>'.STARRATING_EOL);
             $this->include_rating_css_admin();
         }
@@ -795,6 +795,8 @@ class GDStarRating {
         if ($this->admin_page == "widgets.php" || $this->admin_page == "themes.php") {
             if ($this->wp_version < 28) {
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets.js"></script>'.STARRATING_EOL);
+            } else if ($this->wp_version > 29) {
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets-30.js"></script>'.STARRATING_EOL);
             } else {
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets-28.js"></script>'.STARRATING_EOL);
             }

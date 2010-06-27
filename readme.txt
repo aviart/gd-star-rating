@@ -1,7 +1,7 @@
 === GD Star Rating ===
 Contributors: gdragon
 Version: 1.9.2
-Donate link: http://www.gdstarrating.com/
+Donate link: http://www.dev4press.com/plugins/gd-star-rating/
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
 Tested up to: 3.0
@@ -76,11 +76,8 @@ Plugin administration consist of 17 main panels:
   Export rating data and templates to CSV format
 * Setup:
   Upgrade and setup options
-* Security:
-  Access levels and rights used mainly for WPMU
 
 == Installation ==
-
 = Minimal Requirements =
 * PHP: 5.x.x
 * mySQL: 4.0, 4.1 or 5.x
@@ -90,6 +87,9 @@ Plugin administration consist of 17 main panels:
 * PHP: 5.2.x or newer
 * mySQL: 5.x
 * WordPress: 2.8 or newer
+
+= Upgrade Notice =
+* When you upgrade to new version of the plugin, check widget settings and all the plugin settings.
 
 = Basic Installation =
 * Plugin folder in the WordPress plugins folder must be `gd-star-rating`.
@@ -104,7 +104,7 @@ Plugin administration consist of 17 main panels:
 = Using gdsr-config.php file =
 * this file is used to set some of the constants plugin uses.
 * to use this file, you must move it file from `gd-star-rating` folder, one level up to `plugins` folder.
-* once you have moved it, make changes to it and it wll be loaded from the wordpress plugins root.
+* once you have moved it, make changes to it and it wll be loaded from the WordPress plugins root.
 * all settings in it can be added to wp-config.php. if you do that, you must not move the file from `gd-star-rating`.
 
 = WordPress MU & BuddyPress =
@@ -116,7 +116,6 @@ Plugin administration consist of 17 main panels:
 * Multi review feature on administration Post Edit page will not work properly with IE6 browsers.
 
 == Frequently Asked Questions ==
-
 = How to check if there is a sample and already explained solution to my problem? =
 Check the post in the following category: http://www.gdstarrating.com/category/tutorials/solving-problems/.
 
@@ -130,7 +129,7 @@ This happens only with PHP4. That's why minimal plugin requirements is now PHP5.
 If you use PHP5 and still can't save settings, problem is with some of PHP security extensions like Suhosin that is not configured properly, and POST request gets filtered or shortened by the extension.
 
 = After upgrade some admin panels are not working? =
-Most likely problem is with cached javascript files in the browsers. Clear cache, and everything should be ok.
+Most likely problem is with cached javascript files in the browsers. Clear cache, and everything should be OK.
 
 = I want to translate the plugin to my language, or to improve existing translations? =
 You only need POEdit program that works on Windows, Linux and MacOS. Instructions on how to make or update translations are here: http://dv4p.com/wa.
@@ -252,7 +251,7 @@ Improvements and fixes of some WordPress 3.0 specific bugs. Rating widget suppor
 
 = 1.8.3 =
 * New improved and packed main JS ratings file
-* Replaced noticed wordpress depracted functions
+* Replaced noticed WordPress depracted functions
 * Several more php notices fixed
 
 = 1.8.2 =
@@ -318,7 +317,7 @@ Improvements and fixes of some WordPress 3.0 specific bugs. Rating widget suppor
 * Several more problems and notices solved
 
 = 1.7.0 =
-* Removed support for wordpress 2.6.x
+* Removed support for WordPress 2.6.x
 * Many more new filters for results and rendering
 * Cache plugins support for multis ratings
 * Improved category based comment integration
