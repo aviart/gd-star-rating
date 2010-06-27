@@ -13,6 +13,7 @@
     <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('<?php echo $this->get_field_id('div_filter'); ?>')"><?php _e("Filter", "gd-star-rating"); ?></a></strong></td>
     <td width="150" nowrap="nowrap"><?php _e("Include post types", "gd-star-rating"); ?>:</td>
     <td align="right">
+        <?php if ($wpvr > 29) { ?>
         <select multiple class="widefat drop-sel-checks" name="<?php echo $this->get_field_name('select'); ?>[]" id="<?php echo $this->get_field_id('select'); ?>">
             <option value="(all)"><?php _e("(all)", "gd-star-rating"); ?></option>
             <?php foreach ($custom_post_types as $cp_name => $cp_label) {
@@ -20,6 +21,13 @@
                 echo '<option value="'.$cp_name.'"'.$selected.'>'.$cp_label.'</option>';
             } ?>
         </select>
+        <?php } else { ?>
+        <select class="widefat" name="<?php echo $this->get_field_name('select'); ?>" id="<?php echo $this->get_field_id('select'); ?>" style="width: 110px">
+            <option value="postpage"<?php echo $instance['select'] == 'postpage' ? ' selected="selected"' : ''; ?>><?php _e("Posts & Pages", "gd-star-rating"); ?></option>
+            <option value="post"<?php echo $instance['select'] == 'post' ? ' selected="selected"' : ''; ?>><?php _e("Posts Only", "gd-star-rating"); ?></option>
+            <option value="page"<?php echo $instance['select'] == 'page' ? ' selected="selected"' : ''; ?>><?php _e("Pages Only", "gd-star-rating"); ?></option>
+        </select>
+        <?php } ?>
     </td>
   </tr>
   <tr>

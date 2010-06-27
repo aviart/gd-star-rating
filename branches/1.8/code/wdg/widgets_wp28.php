@@ -109,6 +109,7 @@ if (class_exists("WP_Widget")) {
             $wptr = $gdsr->g->trend;
             $wpst = $gdsr->g->stars;
             $wptt = $gdsr->g->thumbs;
+            $wpvr = $gdsr->wp_version;
             $wpml = GDSRDBMulti::get_multis_tinymce();
 
             echo '<div class="gdsr-widget-controls">';
