@@ -126,6 +126,9 @@ GD Star Rating is a free plugin. But, beyond bug fixing, support for this plugin
 = I have trouble saving plugin settings? =
 This happens only with PHP4. That's why minimal plugin requirements is now PHP5. Upgrade your servers, PHP4 is no longer supported, it's outdated and full of security holes.
 
+= I have trouble saving plugin settings even with PHP5? =
+If you use PHP5 and still can't save settings, problem is with some of PHP security extensions like Suhosin that is not configured properly, and POST request gets filtered or shortened by the extension.
+
 = After upgrade some admin panels are not working? =
 Most likely problem is with cached javascript files in the browsers. Clear cache, and everything should be ok.
 
@@ -196,12 +199,14 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Upgrade Notice ==
 = 1.9.2 =
-Improvements and fixes of some WordPress 3.0 specific bugs.
+Improvements and fixes of some WordPress 3.0 specific bugs. Rating widget supports custom post types in WordPress 3.0. Several minor rendering improvements.
 
 == Changelog ==
 = 1.9.2 =
+* Rating widget supports custom post types in WordPress 3.0
 * Loading styles and stars for post editor panels
 * Meta boxes missing for custom post types editors
+* Several minor rendering improvements
 
 = 1.9.1 =
 * Added filters to WP Query expansion

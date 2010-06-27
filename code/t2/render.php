@@ -1218,6 +1218,7 @@ class GDSRRenderT2 {
     function render_wsr($widget, $section = "WSR") {
         global $gdsr;
 
+        $widget['select'] = gdsr_widget_convert_select($widget);
         $widget = apply_filters('gdsr_widget_parameters_wsr', $widget);
 
         $template = GDSRRenderT2::get_template($widget["template_id"], $section);
@@ -1244,7 +1245,7 @@ class GDSRRenderT2 {
                 if ($rank_id == 1) $auto_css.= " t2-first";
                 if ($rank_id == $total_rows) $auto_css.= " t2-last";
 
-                $rt = str_replace('%AUTO_ROW_CLASS%', $auto_css, $rt);
+                $rt = str_replace('%AUTO_ROW_CLASS%', trim($auto_css), $rt);
                 $rt = str_replace('%THUMB%', $row->rating_thumb, $rt);
                 $rt = str_replace('%RATING%', $row->rating, $rt);
                 $rt = str_replace('%MAX_RATING%', $gdsr->o["stars"], $rt);

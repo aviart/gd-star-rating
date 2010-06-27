@@ -1,5 +1,25 @@
 <?php
 
+function gdsr_widget_convert_select($instance) {
+    $select_post_types = array();
+    if ($instance['select'] == "postpage") $select_post_types = array("post", "page");
+    else $select_post_types = explode ("|", $instance['select']);
+    return $select_post_types;
+}
+
+function gdsr_get_public_post_types() {
+    global $gdsr;
+    $post_types = array();
+    if ($gdsr->wp_version > 29) {
+        $options = array("public" => true);
+        $types = get_post_types($options, "objects");
+        foreach ($types as $id => $p) $post_types[$p->name] = $p->labels->name;
+    } else {
+        $post_types = array("post" => "Posts", "page" => "Pages");
+    }
+    return $post_types;
+}
+
 class GDSRX {
     function compile_query($query) {
         $sql = "select ".$query["select"]." from ".$query["from"];
@@ -187,7 +207,7 @@ class GDSRX {
             $where[] = "d.user_voters > ".$min;
         }
 
-        if ($widget["select"] != "" && $widget["select"] != "postpage") 
+        if ($widget["select"] != "" && $widget["select"] != "postpage")
             $where[] = "p.post_type = '".$widget["select"]."'";
 
         $query = array(
@@ -278,8 +298,12 @@ class GDSRX {
         if ($grouping != 'post' && $widget["min_count"] > 0)
             $group.= " having count(*) >= ".$widget["min_count"];
 
-        if ($widget["select"] != "" && $widget["select"] != "postpage")
-            $where[] = "p.post_type = '".$widget["select"]."'";
+        if (is_array($widget["select"])) {
+            $where[] = "p.post_type in ('".join("', '", $widget["select"])."')";
+        } else {
+            if ($widget["select"] != "" && $widget["select"] != "postpage")
+                $where[] = "p.post_type = '".$widget["select"]."'";
+        }
 
         if ($min > 0) {
             if ($widget["show"] == "total") $where[] = "(d.total_votes_users + d.total_votes_visitors) >= ".$min;
@@ -408,8 +432,12 @@ class GDSRX {
         if ($grouping != 'post' && $widget["min_count"] > 0)
             $group.= " having count(*) >= ".$widget["min_count"];
 
-        if ($widget["select"] != "" && $widget["select"] != "postpage")
-            $where[] = "p.post_type = '".$widget["select"]."'";
+        if (is_array($widget["select"])) {
+            $where[] = "p.post_type in ('".join("', '", $widget["select"])."')";
+        } else {
+            if ($widget["select"] != "" && $widget["select"] != "postpage")
+                $where[] = "p.post_type = '".$widget["select"]."'";
+        }
 
         if ($min > 0) {
             if ($widget["show"] == "total") $where[] = "(d.user_recc_plus + d.user_recc_minus + d.visitor_recc_plus + d.visitor_recc_minus) >= ".$min;
@@ -538,8 +566,12 @@ class GDSRX {
         if ($grouping != 'post' && $widget["min_count"] > 0)
             $group.= " having count(*) >= ".$widget["min_count"];
 
-        if ($widget["select"] != "" && $widget["select"] != "postpage") 
-            $where[] = "p.post_type = '".$widget["select"]."'";
+        if (is_array($widget["select"])) {
+            $where[] = "p.post_type in ('".join("', '", $widget["select"])."')";
+        } else {
+            if ($widget["select"] != "" && $widget["select"] != "postpage")
+                $where[] = "p.post_type = '".$widget["select"]."'";
+        }
 
         if ($min > 0) {
             if ($widget["show"] == "total") $where[] = "(d.user_voters + d.visitor_voters) >= ".$min;

@@ -7,8 +7,7 @@ function gdsrShowHidePreview(gdid, index) {
         preview.style.display = "none";
         message.style.display = "block";
         hidden.value = "0";
-    }
-    else {
+    } else {
         preview.style.display = "block";
         message.style.display = "none";
         hidden.value = "1";

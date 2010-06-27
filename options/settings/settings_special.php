@@ -52,7 +52,7 @@
         <div class="gdsr-table-split"></div>
         <?php _e("If you select third option, Google Rich Snippet will be added using this action", "gd-star-rating"); ?>: <strong>gdsr_gsr_insert_snippet</strong><br/>
         <?php _e("Action will be added on single post or page only. Do action call must be within template body.", "gd-star-rating"); ?><br/>
-        <?php _e("This method is supported by all premium xScape Theme Framework based themed", "gd-star-rating"); ?>: <strong><a target="_blank" href="http://www.dev4press.com/themes/"><?php _e("xScape themes on Dev4Press", "gd-star-rating"); ?></a></strong>
+        <?php _e("This method is supported by all premium xScape Theme Framework based themes", "gd-star-rating"); ?>: <strong><a target="_blank" href="http://www.dev4press.com/themes/"><?php _e("xScape themes on Dev4Press", "gd-star-rating"); ?></a></strong>
     </td>
 </tr>
 <tr><th scope="row"><?php _e("RSS Feeds", "gd-star-rating"); ?></th>

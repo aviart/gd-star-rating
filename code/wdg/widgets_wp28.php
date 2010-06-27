@@ -20,8 +20,22 @@ if (class_exists("WP_Widget")) {
         }
 
         function update($new_instance, $old_instance) {
+            global $gdsr;
+
             $instance = $old_instance;
 
+            $select_post_types = $new_instance['select'];
+            if ($gdsr->wp_version > 29) {
+                if (is_array($select_post_types)) {
+                    if (empty($select_post_types)) {
+                        $select_post_types = "post";
+                    } else {
+                        $select_post_types = join("|", $select_post_types);
+                    }
+                }
+            }
+
+            $instance['select'] = $select_post_types;
             $instance['title'] = strip_tags(stripslashes($new_instance['title']));
 
             $instance['template_id'] = $new_instance['template_id'];
@@ -33,7 +47,6 @@ if (class_exists("WP_Widget")) {
             $instance['rows'] = intval($new_instance['rows']);
             $instance['min_votes'] = $new_instance['min_votes'];
             $instance['min_count'] = $new_instance['min_count'];
-            $instance['select'] = $new_instance['select'];
             $instance['taxonomy'] = $new_instance['taxonomy'];
             $instance['grouping'] = $new_instance['grouping'];
             $instance['column'] = $new_instance['column'];
@@ -89,6 +102,9 @@ if (class_exists("WP_Widget")) {
         function form($instance) {
             global $gdsr;
             $instance = wp_parse_args((array)$instance, $gdsr->default_widget);
+
+            $custom_post_types = gdsr_get_public_post_types();
+            $select_post_types = gdsr_widget_convert_select($instance);
 
             $wptr = $gdsr->g->trend;
             $wpst = $gdsr->g->stars;
