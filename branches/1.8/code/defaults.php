@@ -3,7 +3,7 @@
 class GDSRDefaults {
     var $default_options = array(
         "version" => "1.9.2",
-        "revision" => 1,
+        "revision" => 0,
         "code_name" => "Prelude",
         "date" => "2010.06.27.",
         "status" => "Stable",

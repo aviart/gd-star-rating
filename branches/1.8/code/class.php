@@ -132,6 +132,9 @@ class GDStarRating {
         $this->c = array();
 
         $this->plugin_path_url();
+        if ($this->wp_version > 29) {
+            $this->default_widget["select"] = "post";
+        }
         $this->install_plugin();
 
         if (!GDSR_WP_ADMIN) {
