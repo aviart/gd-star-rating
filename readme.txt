@@ -43,40 +43,6 @@ Plugin is provided for free, and that is not going to change. But support is not
 [Forum](http://forum.gdragon.info/viewforum.php?f=9) |
 [Source](http://code.google.com/p/gd-star-rating/)
 
-== Configuration ==
-Plugin administration consist of 17 main panels:
-
-* Front Page:
-  General info about the plugin and links
-* My Ratings:
-  Current logged user ratings statistics
-* Builder:
-  Building shortcodes and integration functions
-* Articles:
-  Votes and ratings for each post and page
-* Categories:
-  Category based voting rules
-* Users:
-  Votes organized on user base with IP lookup for each vote
-* Multi Sets:
-  Main panel for multiple ratings feature
-* Settings:
-  All options for this plugin are here
-* Graphics:
-  Settings and preview images for stars, thumbs and trends
-* Tools:
-  Various tools for cleanup and global updates
-* IP:
-  Banning IP addresses
-* T2 Templates:
-  Advanced templates system
-* Import:
-  Import voting data from other rating plugins
-* Export:
-  Export rating data and templates to CSV format
-* Setup:
-  Upgrade and setup options
-
 == Installation ==
 = Minimal Requirements =
 * PHP: 5.x.x
@@ -118,6 +84,9 @@ Plugin administration consist of 17 main panels:
 == Frequently Asked Questions ==
 = How to check if there is a sample and already explained solution to my problem? =
 Check the post in the following category: http://www.gdstarrating.com/category/tutorials/solving-problems/.
+
+= How to make sure that problem is actually caused by the GD Star Rating?
+Well, it's simple. Disable all other plugins and try GD Star Rating only. If the problem you had before is gone, than you know that it's caused by some of the plugin(s) you use. If not, bug is in GDSR.
 
 = I need support for using this plugin and some of it's features? =
 GD Star Rating is a free plugin. But, beyond bug fixing, support for this plugin is not free. If you need support, check out more on Dev4Press: http://dv4p.com/et.
