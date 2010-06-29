@@ -37,7 +37,11 @@
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="140" nowrap="nowrap"><?php _e("Taxonomy", "gd-star-rating"); ?>:</td>
-    <td align="right"><select name="<?php echo $this->get_field_name('taxonomy'); ?>" id="<?php echo $this->get_field_id('taxonomy'); ?>" style="width: 130px"><?php GDSRHelper::render_taxonomy_select($instance['taxonomy']); ?></select></td>
+    <td align="right">
+        <select name="<?php echo $this->get_field_name('taxonomy'); ?>" id="<?php echo $this->get_field_id('taxonomy'); ?>" style="width: 130px">
+            <?php GDSRHelper::render_taxonomy_select($instance['taxonomy']); ?>
+        </select>
+    </td>
   </tr>
 </table>
 </div>

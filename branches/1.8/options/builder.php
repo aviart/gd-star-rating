@@ -1,3 +1,4 @@
+<?php global $gdsr; $wpv = $gdsr->wp_version; $gdsr_tinymce = false; ?>
 <div class="gdsr">
 <div class="wrap">
     <h2 class="gdptlogopage">GD Star Rating: <?php _e("Builder", "gd-star-rating"); ?></h2>

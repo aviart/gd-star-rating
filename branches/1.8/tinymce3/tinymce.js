@@ -241,9 +241,22 @@ function insertStarRatingCode() {
             tagtext = tagtext + " rows=" + document.getElementById('srRows').value;
             funa.push("'rows' => " + document.getElementById('srRows').value);
         }
-        if (document.getElementById('srSelect').value != 'postpage') {
-            tagtext = tagtext + " select='" + document.getElementById('srSelect').value + "'";
-            funa.push("'select' => '" + document.getElementById('srSelect').value + "'");
+        if (document.getElementById('srSelect').multiple) {
+            var ptypes = "";
+            var poptns = document.getElementById('srSelect').options;
+            for (var xi = 0; xi < poptns.length; xi++) {
+                if (poptns[xi].selected && poptns[xi].value != '(all)') {
+                    if (ptypes.length == 0) ptypes = poptns[xi].value;
+                    else ptypes+= "|" + poptns[xi].value;
+                }
+            }
+            tagtext = tagtext + " select='" + ptypes + "'";
+            funa.push("'select' => '" + ptypes + "'");
+        } else {
+            if (document.getElementById('srSelect').value != 'postpage') {
+                tagtext = tagtext + " select='" + document.getElementById('srSelect').value + "'";
+                funa.push("'select' => '" + document.getElementById('srSelect').value + "'");
+            }
         }
         if (document.getElementById('srColumn').value != 'rating') {
             tagtext = tagtext + " column='" + document.getElementById('srColumn').value + "'";

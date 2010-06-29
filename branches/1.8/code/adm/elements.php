@@ -86,9 +86,16 @@ class GDSRHelper {
     }
 
     function render_taxonomy_select($tax = "") {
-        global $wp_taxonomies;
+        global $wp_taxonomies, $gdsr;
         foreach ($wp_taxonomies as $taxonomy => $cnt) {
-            if ($taxonomy != "category" && $cnt->object_type == "post") {
+            $valid = false;
+            if ($gdsr->wp_version < 30) {
+                if ($taxonomy != "category" && $cnt->object_type == "post") $valid = true;
+            } else {
+                if ($taxonomy != "category" && $cnt->public) $valid = true;
+            }
+
+            if ($valid) {
                 $current = $tax == $taxonomy ? ' selected="selected"' : $current = '';
                 echo "\t<option value='".$taxonomy."'".$current.">".$cnt->label."</option>\r\n";
             }

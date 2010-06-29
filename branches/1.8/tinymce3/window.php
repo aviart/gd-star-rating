@@ -13,19 +13,20 @@
     $gdst_multis = GDSRDBMulti::get_multis_tinymce();
     $wpv = $gdsr->wp_version;
     $gdsr->load_translation();
+    $gdsr_tinymce = true;
 
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>StarRating</title>
-	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php echo get_option('blog_charset'); ?>" />
-	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
+    <title>StarRating</title>
+    <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php echo get_option('blog_charset'); ?>" />
+    <script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
     <script language="javascript" type="text/javascript" src="<?php echo STARRATING_URL ?>tinymce3/tinymce.js"></script>
     <link rel="stylesheet" href="<?php echo STARRATING_URL ?>tinymce3/tinymce.css" type="text/css" media="screen" />
-	<base target="_self" />
+    <base target="_self" />
 </head>
 <body onload="tinyMCEPopup.executeOnLoad('init();');document.body.style.display=''" style="display: none">
 <form name="StarRating" action="#">

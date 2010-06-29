@@ -807,6 +807,9 @@ class GDStarRating {
 
         if ($this->admin_plugin_page == "builder") {
             echo('<script type="text/javascript" src="'.$this->plugin_url.'tinymce3/tinymce.js"></script>'.STARRATING_EOL);
+            if ($this->wp_version > 29) {
+                echo('<script type="text/javascript" src="'.$this->plugin_url.'tinymce3/tinymce-30.js"></script>'.STARRATING_EOL);
+            }
         }
 
         echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_post.css" type="text/css" media="screen" />'.STARRATING_EOL);
