@@ -97,6 +97,9 @@ This happens only with PHP4. That's why minimal plugin requirements is now PHP5.
 = I have trouble saving plugin settings even with PHP5? =
 If you use PHP5 and still can't save settings, problem is with some of PHP security extensions like Suhosin that is not configured properly, and POST request gets filtered or shortened by the extension.
 
+= Multi review on the post edit page is not saving reviews?
+For multi review meta box to work, other standard rating GD Star Rating meta box for post edit page must be also enabled from the Settings->Integration->Post Edit.
+
 = After upgrade some admin panels are not working? =
 Most likely problem is with cached javascript files in the browsers. Clear cache, and everything should be OK.
 

@@ -80,6 +80,21 @@ function wp_gdsr_comment_integrate_standard_result($comment_id, $stars_set = "",
 }
 
 /**
+ * Get integrate standard rating result into the comment. Must be within valid comments loop.
+ *
+ * @global GDStarRating $gdsr main rating class instance
+ * @param int $comment_id id of the comment
+ * @param bool $echo echo results or return it as a string
+ * @return string rating value
+ */
+function wp_gdsr_get_comment_integrate_standard_result($comment_id, $echo = true) {
+    global $gdsr, $post;
+
+    if ($echo) echo $gdsr->f->get_comment_integrate_standard_result($comment_id, $post->ID);
+    else $gdsr->f->get_comment_integrate_standard_result($comment_id, $post->ID);
+}
+
+/**
  * Integrate multi set post rating into the comment form.
  *
  * @global GDStarRating $gdsr main rating class instance

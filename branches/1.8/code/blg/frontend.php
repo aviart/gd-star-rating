@@ -341,15 +341,7 @@ class gdsrFront {
         return GDSRRender::rating_stars_local($style, $size, $stars, $allow_vote, $value * $size);
     }
 
-    /**
-    * Renders result of comment integration of standard rating for specific comment
-    *
-    * @param int $comment_id initial rating value
-    * @param string $stars_set set to use for rendering
-    * @param int $stars_size set size to use for rendering
-    * @param string $stars_set_ie6 set to use for rendering in ie6
-    */
-    function comment_integrate_standard_result($comment_id, $post_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
+    function get_comment_integrate_standard_result($comment_id, $post_id) {
         if (!$this->g->is_cached_integration_std) {
             global $gdsr_cache_integation_std;
             $data = GDSRDBCache::get_integration($post_id);
@@ -361,7 +353,19 @@ class gdsrFront {
             $this->g->is_cached_integration_std = true;
         }
 
-        $value = intval(wp_gdget_integration_std($comment_id));
+        return intval(wp_gdget_integration_std($comment_id));
+    }
+
+    /**
+    * Renders result of comment integration of standard rating for specific comment
+    *
+    * @param int $comment_id initial rating value
+    * @param string $stars_set set to use for rendering
+    * @param int $stars_size set size to use for rendering
+    * @param string $stars_set_ie6 set to use for rendering in ie6
+    */
+    function comment_integrate_standard_result($comment_id, $post_id, $stars_set = "oxygen", $stars_size = 20, $stars_set_ie6 = "oxygen_gif") {
+        $value = $this->get_comment_integrate_standard_result($comment_id, $post_id);
         if ($value > 0 || $this->g->o["int_comment_std_zero"] == 1) {
             $style = $stars_set == "" ? $this->g->o["style"] : $stars_set;
             $style = $this->g->is_ie6 ? ($stars_set_ie6 == "" ? $this->g->o["style_ie6"] : $stars_set_ie6) : $style;
