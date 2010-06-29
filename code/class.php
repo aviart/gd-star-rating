@@ -1217,6 +1217,7 @@ class GDStarRating {
 
                 $this->o["css_last_changed"] = time();
                 $this->o["version"] = $this->default_options["version"];
+                $this->o["code_name"] = $this->default_options["code_name"];
                 $this->o["date"] = $this->default_options["date"];
                 $this->o["status"] = $this->default_options["status"];
                 $this->o["build"] = $this->default_options["build"];
