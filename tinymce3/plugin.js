@@ -7,7 +7,7 @@
                 ed.windowManager.open({
                     file : url + '/window.php',
                     width : 350 + ed.getLang('StarRating.delta_width', 0),
-                    height : 440 + ed.getLang('StarRating.delta_height', 0),
+                    height : 460 + ed.getLang('StarRating.delta_height', 0),
                     inline : 1
                 }, {
                     plugin_url : url

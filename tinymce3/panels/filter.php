@@ -4,10 +4,17 @@
       <tr>
         <td class="gdsrleft"><?php _e("Include articles", "gd-star-rating"); ?>:</td>
         <td class="gdsrright">
-            <select id="srSelect" name="srSelect" style="width: 130px">
+            <select id="srSelect" name="srSelect" style="width: 130px;<?php if ($gdsr_tinymce) echo ' height: 40px'; ?>"<?php if ($wpv > 29) echo ' multiple class="drop-sel-checks"'; ?>>
+                <?php if ($wpv > 29) { $custom_post_types = gdsr_get_public_post_types(); ?>
+                <?php if (!$gdsr_tinymce) { ?><option value="(all)"><?php _e("(all)", "gd-star-rating"); ?></option><?php } ?>
+                <?php foreach ($custom_post_types as $cp_name => $cp_label) {
+                    echo '<option value="'.$cp_name.'">'.$cp_label.'</option>';
+                } ?>
+                <?php } else { ?>
                 <option value="postpage"><?php _e("Posts And Pages", "gd-star-rating"); ?></option>
                 <option value="post"><?php _e("Posts Only", "gd-star-rating"); ?></option>
                 <option value="page"><?php _e("Pages Only", "gd-star-rating"); ?></option>
+                <?php } ?>
             </select>
         </td>
       </tr>

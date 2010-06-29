@@ -170,9 +170,15 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Upgrade Notice ==
 = 1.9.2 =
-Improvements and fixes of some WordPress 3.0 specific bugs. Rating widget supports custom post types in WordPress 3.0. Several minor rendering improvements.
+More improvements and fixes of some WordPress 3.0 specific bugs. Builder and TinyMCE3 control fixes for WordPress 3.0. Few integration functions improvements. Updated readme file with new FAQ entries.
 
 == Changelog ==
+= 1.9.3 =
+* Few integration functions improvements
+* Updated readme file with new FAQ entries
+* Builder and TinyMCE3 control fixes for WordPress 3.0
+* Fixed taxonomies in widget in WordPress 3.0
+
 = 1.9.2 =
 * Rating widget supports custom post types in WordPress 3.0
 * Loading styles and stars for post editor panels
