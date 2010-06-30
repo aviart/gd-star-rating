@@ -91,7 +91,7 @@ function wp_gdsr_get_comment_integrate_standard_result($comment_id, $echo = true
     global $gdsr, $post;
 
     if ($echo) echo $gdsr->f->get_comment_integrate_standard_result($comment_id, $post->ID);
-    else $gdsr->f->get_comment_integrate_standard_result($comment_id, $post->ID);
+    else return $gdsr->f->get_comment_integrate_standard_result($comment_id, $post->ID);
 }
 
 /**
