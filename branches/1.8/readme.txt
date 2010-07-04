@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.9.2
+Version: 1.9.3
 Donate link: http://www.dev4press.com/plugins/gd-star-rating/
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
@@ -169,15 +169,17 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Upgrade Notice ==
-= 1.9.2 =
-More improvements and fixes of some WordPress 3.0 specific bugs. Builder and TinyMCE3 control fixes for WordPress 3.0. Few integration functions improvements. Updated readme file with new FAQ entries.
+= 1.9.3 =
+More improvements and fixes of some WordPress 3.0 specific bugs. Builder and TinyMCE3 control fixes for WordPress 3.0. Articles panel supports custom post types. Few integration functions improvements. Updated readme file with new FAQ entries.
 
 == Changelog ==
 = 1.9.3 =
+* Articles panel supports custom post types
 * Few integration functions improvements
 * Updated readme file with new FAQ entries
 * Builder and TinyMCE3 control fixes for WordPress 3.0
 * Fixed taxonomies in widget in WordPress 3.0
+* Fixed rating integration missing on the new post editor
 
 = 1.9.2 =
 * Rating widget supports custom post types in WordPress 3.0

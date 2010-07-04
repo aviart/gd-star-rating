@@ -17,7 +17,7 @@
             ed.addButton('StarRating', {
                 title : 'StarRating.desc',
                 cmd : 'mceStarRating',
-                image : url + '/starr.gif'
+                image : url + '/star.png'
             });
 
             ed.onNodeChange.add(function(ed, cm, n) {
