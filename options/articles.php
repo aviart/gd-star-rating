@@ -11,17 +11,19 @@ if (!($url_pos === false))
 
 $url.= "&amp;gdsr=articles";
 
-$select = $search = "";
+$search = "";
 $page_id = 1;
+$filter_select = "";
 $filter_date = "";
 $filter_cats = "";
-if (isset($_GET["select"])) $select = $_GET["select"];
+if (isset($_GET["select"])) $filter_select = $_GET["select"];
 if (isset($_GET["pg"])) $page_id = $_GET["pg"];
 if (isset($_GET["date"])) $filter_date = $_GET["date"];
 if (isset($_GET["cat"])) $filter_cats = $_GET["cat"];
 if (isset($_GET["s"])) $search = $_GET["s"];
 
 if (isset($_POST["gdsr_filter"]) && $_POST["gdsr_filter"] == __("Filter", "gd-star-rating")) {
+    $filter_select = $_POST["gdsr_postype"];
     $filter_date = $_POST["gdsr_dates"];
     $filter_cats = $_POST["gdsr_categories"];
     $page_id = 1;
@@ -75,23 +77,11 @@ if (isset($_POST["gdsr_update"]) && $_POST["gdsr_update"] == __("Update", "gd-st
 
 if ($filter_cats != '' || $filter_cats != '0') $url.= "&amp;cat=".$filter_cats;
 if ($filter_date != '' || $filter_date != '0') $url.= "&amp;date=".$filter_date;
+if ($filter_select != '') $url.= "&amp;select=".$filter_select;
 if ($search != '') $url.= "&amp;s=".$search;
-if ($select != '') $url.= "&amp;select=".$select;
 
-$sql_count = gdsrAdmDB::get_stats_count($filter_date, $filter_cats, $search);
-$np = $wpdb->get_results($sql_count);
-$number_posts_page = 0;
-$number_posts_post = 0;
-if (count($np) > 0) {
-    foreach ($np as $n) {
-        if ($n->post_type == "page") $number_posts_page = $n->count;
-        else $number_posts_post = $n->count;
-    }
-}
-$number_posts_all = $number_posts_post + $number_posts_page;
-if ($select == "post") $number_posts = $number_posts_post;
-else if ($select == "page") $number_posts = $number_posts_page;
-else $number_posts = $number_posts_all;
+$sql_count = gdsrAdmDB::get_stats_count($filter_select, $filter_date, $filter_cats, $search);
+$number_posts = $wpdb->get_var($sql_count);
 
 $max_page = floor($number_posts / $posts_per_page);
 if ($max_page * $posts_per_page != $number_posts) $max_page++;
@@ -103,14 +93,6 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
 <div class="wrap">
 <form id="gdsr-articles" method="post" action="">
 <h2 class="gdptlogopage">GD Star Rating: <?php _e("Articles", "gd-star-rating"); ?></h2>
-<ul class="subsubsub">
-    <li><a<?php echo $select == "" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>">All Articles (<?php echo $number_posts_all; ?>)</a> |</li>
-    <li><a<?php echo $select == "post" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&amp;select=post">Posts (<?php echo $number_posts_post; ?>)</a> |</li>
-    <li><a<?php echo $select == "page" ? ' class="current"' : ''; ?> href="<?php echo $url; ?>&amp;select=page">Pages (<?php echo $number_posts_page; ?>)</a></li>
-</ul>
-<?php
-    if ($select != '') $url.= "&select=".$select;
-?>
 <p id="post-search">
     <label class="hidden" for="post-search-input"><?php _e("Search Posts", "gd-star-rating"); ?>:</label>
     <input class="search-input" id="post-search-input" type="text" value="<?php echo $search; ?>" name="s"/>
@@ -118,6 +100,7 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
 </p>
 <div class="tablenav">
     <div class="alignleft">
+<?php gdsrAdmDB::get_combo_post_types($filter_select); ?>
 <?php gdsrAdmDB::get_combo_months($filter_date); ?>
 <?php gdsrAdmDB::get_combo_categories($filter_cats); ?>
         <input class="button-secondary delete" type="submit" name="gdsr_filter" value="<?php _e("Filter", "gd-star-rating"); ?>" />
@@ -129,9 +112,9 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
 <br class="clear"/>
 <?php
 
-    $sql = gdsrAdmDB::get_stats($select, ($page_id - 1) * $posts_per_page, $posts_per_page, $filter_date, $filter_cats, $search);
+    $sql = gdsrAdmDB::get_stats($filter_select, ($page_id - 1) * $posts_per_page, $posts_per_page, $filter_date, $filter_cats, $search);
     $rows = $wpdb->get_results($sql, OBJECT);
-    
+
 ?>
 <table class="widefat">
     <thead>
@@ -160,6 +143,7 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
 
     $tr_class = "";
     $multi_sets = GDSRDBMulti::get_multis_tinymce();
+    $post_types = gdsr_get_public_post_types();
     $multis = array();
     foreach ($multi_sets as $ms) $multis[$ms->folder] = $ms->name;
 
@@ -241,8 +225,9 @@ $pager = $max_page > 1 ? gdFunctionsGDSR::draw_pager($max_page, $page_id, $url, 
             echo '<a title="'.__("View", "gd-star-rating").'" href="'.get_permalink($row->pid).'" target="_blank"><img alt="'.__("View", "gd-star-rating").'" src="'.STARRATING_URL.'gfx/view.png" border="0" /></a>';
         echo '</td>';
             echo '<td><div class="gdsr-td-title">'.$row->title.'</div><div class="gdsr-td-condensed">';
-            if ($row->post_type == "post") echo '<span style="color: #c00">'.__("Post", "gd-star-rating").'</span>: '.gdsrAdmDB::get_categories($row->pid);
-            else echo '<span style="color: #c00">'.__("Page", "gd-star-rating").'</span>';
+            echo '<span style="color: #c00">'.$post_types[$row->post_type].'</span>';
+            $catss = gdsrAdmDB::get_categories($row->pid);
+            if ($catss != "/") echo ": ".$catss;
             echo ' | <span style="color: #c00">'.__("Views", "gd-star-rating").'</span>: '.$row->views.'</div>';
         echo '</td>';
         echo '<td nowrap="nowrap" class="gdsr-td-condensed">';

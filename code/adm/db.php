@@ -103,7 +103,7 @@ class gdsrAdmDB {
         return $sql;
     }
 
-    function get_stats_count($dates = "0", $cats = "0", $search = "") {
+    function get_stats_count($select = "", $dates = "0", $cats = "0", $search = "") {
         global $table_prefix;
         $where = "";
         if ($dates != "" && $dates != "0") {
@@ -112,15 +112,16 @@ class gdsrAdmDB {
         }
         if ($search != "")
             $where.= " and p.post_title like '%".$search."%'";
+        if ($select != "")
+            $where.= " and p.post_type = '".$select."'";
 
-        if ($cats != "" && $cats != "0")
-            $sql = sprintf("SELECT p.post_type, count(*) as count FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p WHERE t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.ID AND t.term_id = %s AND p.post_status = 'publish'%s GROUP BY p.post_type",
-                $table_prefix, $table_prefix, $table_prefix, $cats, $where
-            );
-        else
-            $sql = sprintf("select p.post_type, count(*) as count from %sposts p where p.post_status = 'publish'%s group by post_type",
-                $table_prefix, $where
-            );
+        if ($cats != "" && $cats != "0") {
+            $sql = sprintf("SELECT count(*) as count FROM %sterm_taxonomy t, %sterm_relationships r, %sposts p WHERE t.term_taxonomy_id = r.term_taxonomy_id AND r.object_id = p.ID AND t.term_id = %s AND p.post_status = 'publish'%s",
+                $table_prefix, $table_prefix, $table_prefix, $cats, $where);
+        } else {
+            $sql = sprintf("select count(*) as count from %sposts p where p.post_status = 'publish'%s",
+                $table_prefix, $where);
+        }
         return $sql;
     }
 
@@ -1183,6 +1184,18 @@ class gdsrAdmDB {
     // moderation
 
     // combox
+    function get_combo_post_types($selected = "0", $name = "gdsr_postype") {
+        $ptypes = gdsr_get_public_post_types(); ?>
+        <select name="<?php echo $name; ?>">
+            <option <?php if ($selected == "0") echo ' selected="selected"'; ?> value='0'><?php _e("Show all post types", "gd-star-rating"); ?></option>
+        <?php
+        foreach ($ptypes as $t => $p) {
+            $default = $t == $selected ? ' selected="selected"' : '';
+            echo "<option$default value='$t'>$p</option>\n";
+        }
+        ?></select><?php
+    }
+
     function get_combo_months($selected = "0", $name = "gdsr_dates") {
         global $wpdb, $wp_locale;
         $arc_query = "SELECT DISTINCT YEAR(post_date) AS yyear, MONTH(post_date) AS mmonth FROM $wpdb->posts WHERE post_type = 'post' ORDER BY post_date DESC";
@@ -1190,17 +1203,14 @@ class gdsrAdmDB {
         $month_count = count($arc_result);
         if ($month_count && !(1 == $month_count && 0 == $arc_result[0]->mmonth)) { ?>
         <select name="<?php echo $name; ?>">
-        <option <?php if ($selected == "0") echo ' selected="selected"'; ?> value='0'><?php _e("Show all dates", "gd-star-rating"); ?></option>
+            <option <?php if ($selected == "0") echo ' selected="selected"'; ?> value='0'><?php _e("Show all dates", "gd-star-rating"); ?></option>
         <?php
         foreach ($arc_result as $arc_row) {
             if ($arc_row->yyear == 0)
                 continue;
             $arc_row->mmonth = zeroise( $arc_row->mmonth, 2 );
 
-            if ($arc_row->yyear.$arc_row->mmonth == $selected)
-                $default = ' selected="selected"';
-            else
-                $default = '';
+            $default = $arc_row->yyear.$arc_row->mmonth == $selected ? ' selected="selected"' : '';
 
             echo "<option$default value='$arc_row->yyear$arc_row->mmonth'>";
             echo $wp_locale->get_month($arc_row->mmonth)." $arc_row->yyear";

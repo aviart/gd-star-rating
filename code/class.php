@@ -757,7 +757,7 @@ class GDStarRating {
             $tabs_extras = ", selected: 1";
         }
 
-        if ($this->script == "post.php" || $this->script == "page.php") {
+        if ($this->script == "post.php" || $this->script == "post-new.php" || $this->script == "page.php") {
             echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-editors.js"></script>'.STARRATING_EOL);
             $this->include_rating_css_admin();
         }
