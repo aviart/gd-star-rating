@@ -1,6 +1,19 @@
 <?php
 
 class gdsrAdmDBMulti {
+    function reset_db_tool() {
+        global $wpdb;
+
+        $sql = sprintf("truncate table %sgdsr_multis_data", $wpdb->prefix);
+        $wpdb->query($sql);
+
+        $sql = sprintf("truncate table %sgdsr_multis_values", $wpdb->prefix);
+        $wpdb->query($sql);
+
+        $sql = sprintf("truncate table %sgdsr_multis_trend", $wpdb->prefix);
+        $wpdb->query($sql);
+    }
+
     function get_stats_count($set_id, $dates = "0", $cats = "0", $search = "") {
         global $table_prefix;
         $where = " and ms.multi_id = ".$set_id;
@@ -55,6 +68,33 @@ class gdsrAdmDBMulti {
 }
 
 class gdsrAdmDB {
+    function reset_db_tool() {
+        global $wpdb;
+
+        $sql = sprintf("update %sgdsr_data_article set
+            views = 0, review = 0, user_voters = 0, user_votes = 0,
+            visitor_voters = 0, visitor_votes = 0,
+            user_recc_plus = 0, user_recc_minus = 0,
+            visitor_recc_plus = 0, visitor_recc_minus = 0", $wpdb->prefix);
+        $wpdb->query($sql);
+
+        $sql = sprintf("update %sgdsr_data_comment set
+            review = 0, user_voters = 0, user_votes = 0,
+            visitor_voters = 0, visitor_votes = 0,
+            user_recc_plus = 0, user_recc_minus = 0,
+            visitor_recc_plus = 0, visitor_recc_minus = 0", $wpdb->prefix);
+        $wpdb->query($sql);
+
+        $sql = sprintf("truncate table %sgdsr_votes_log", $wpdb->prefix);
+        $wpdb->query($sql);
+
+        $sql = sprintf("truncate table %sgdsr_votes_trend", $wpdb->prefix);
+        $wpdb->query($sql);
+
+        $sql = sprintf("truncate table %sgdsr_moderate", $wpdb->prefix);
+        $wpdb->query($sql);
+    }
+
     function get_voters_count($post_id, $dates = "", $vote_type = "article", $vote_value = 0) {
         global $table_prefix;
         $where = " where vote_type = '".$vote_type."'";

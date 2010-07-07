@@ -27,4 +27,14 @@
         </form>
     </td>
 </tr>
+<tr><th scope="row"><?php _e("Reset", "gd-star-rating"); ?></th>
+    <td>
+        <form method="post">
+        <?php _e("Remove all saved rating data including logs and all values regardless of the rating type. All rating rules will remain intact.", "gd-star-rating"); ?><br />
+        <input type="submit" class="inputbutton" value="<?php _e("Delete", "gd-star-rating"); ?>" name="gdsr_reset_db_tool" id="gdsr_reset_db_tool" />
+        <div class="gdsr-table-split"></div>
+        <?php _e("Be very careful with this option, operation is not reversible. Backup your rating tables data before you proceed.", "gd-star-rating"); ?>
+        </form>
+    </td>
+</tr>
 </tbody></table>

@@ -9,11 +9,11 @@
     <li><a href="#fragment-4"><span><?php _e("Edit CSS", "gd-star-rating"); ?></span></a></li>
 </ul>
 <div style="clear: both"></div>
-<div id="fragment-2">
-<?php include STARRATING_PATH."options/tools/tools_db.php"; ?>
-</div>
 <div id="fragment-1">
 <?php include STARRATING_PATH."options/tools/tools_bulk.php"; ?>
+</div>
+<div id="fragment-2">
+<?php include STARRATING_PATH."options/tools/tools_db.php"; ?>
 </div>
 <div id="fragment-3">
 <?php include STARRATING_PATH."options/tools/tools_cleanup.php"; ?>
