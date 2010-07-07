@@ -170,16 +170,18 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Upgrade Notice ==
 = 1.9.3 =
-More improvements and fixes of some WordPress 3.0 specific bugs. Builder and TinyMCE3 control fixes for WordPress 3.0. Articles panel supports custom post types. Few integration functions improvements. Updated readme file with new FAQ entries.
+Tool to remove all and only rating data from database. More improvements and fixes of some WordPress 3.0 specific bugs. Builder and TinyMCE3 control fixes for WordPress 3.0. Articles panel supports custom post types. Few integration functions improvements. Updated readme file with new FAQ entries.
 
 == Changelog ==
 = 1.9.3 =
+* Tool to remove all and only rating data from database
 * Articles panel supports custom post types
 * Few integration functions improvements
 * Updated readme file with new FAQ entries
 * Builder and TinyMCE3 control fixes for WordPress 3.0
 * Fixed taxonomies in widget in WordPress 3.0
 * Fixed rating integration missing on the new post editor
+* Fixed several minor interface problem
 
 = 1.9.2 =
 * Rating widget supports custom post types in WordPress 3.0

@@ -1536,6 +1536,13 @@ class GDStarRating {
             exit;
         }
 
+        if (isset($_POST['gdsr_reset_db_tool'])) {
+            gdsrAdmDB::reset_db_tool();
+            gdsrAdmDBMulti::reset_db_tool();
+            wp_redirect_self();
+            exit;
+        }
+
         if (isset($_POST['gdsr_upgrade_tool'])) {
             require_once(STARRATING_PATH."/gdragon/gd_db_install.php");
 
