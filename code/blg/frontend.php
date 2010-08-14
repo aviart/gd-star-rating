@@ -1277,7 +1277,7 @@ class gdsrFront {
 
     function render_stars_custom_value($settings = array()) {
         $style = $this->g->is_ie6 ? $settings["style_ie6"] : $settings["style"];
-        $value = isset($settings["vote"]) ? intval($settings["vote"]) : 0;
+        $value = isset($settings["vote"]) ? floatval($settings["vote"]) : 0;
         $star_factor = $settings["star_factor"];
         $stars = $settings["max_value"];
         $size = $settings["size"];
