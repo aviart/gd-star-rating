@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class with agregated review rsults for a single post with multi rating data.
+ * Class with agregated review results for a single post with multi rating data.
  */
 class GDSRArticleMultiReview {
     var $post_id;
