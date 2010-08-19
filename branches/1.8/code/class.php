@@ -715,7 +715,7 @@ class GDStarRating {
         if ($this->wp_version < 28) {
             wp_enqueue_script('gdsr-jquery-ui', $this->plugin_url."js/jquery/jquery-ui.js", array("jquery"), $this->o["version"], true);
             wp_enqueue_script('gdsr-jquery-ui-tabs', $this->plugin_url."js/jquery/jquery-ui-tabs.js", array("jquery", "gdsr-jquery-ui"), $this->o["version"], true);
-            wp_enqueue_style('gdsr-jquery-ui-tabs', $this->plugin_url."css/jquery/ui.tabs.js");
+            wp_enqueue_style('gdsr-jquery-ui-tabs', $this->plugin_url."css/jquery/ui.tabs.css");
         }
     }
 
