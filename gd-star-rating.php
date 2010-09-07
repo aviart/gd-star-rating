@@ -9,7 +9,6 @@ Author: Milan Petrovic
 Author URI: http://www.dev4press.com/
 
 == Copyright ==
-
 Copyright 2008-2010 Milan Petrovic (email: milan@gdragon.info)
 
 This program is free software: you can redistribute it and/or modify
