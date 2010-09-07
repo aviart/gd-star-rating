@@ -59,7 +59,7 @@
             <table><tbody>
                 <tr class="first">
                     <td class="first b"><span style="color: blue"><?php _e("Premium Support", "gd-star-rating"); ?></span></td>
-                    <td class="t"><?php _e("special plugin customizations", "gd-star-rating"); ?></td>
+                    <td class="t"><?php _e("no free support is available", "gd-star-rating"); ?></td>
                     <td class="t options"><a href="http://www.dev4press.com/plugins/gd-star-rating/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
             </tbody></table>
@@ -67,34 +67,50 @@
     </div>
 </div>
 <div class="postbox gdrgrid frontright">
-    <h3 class="hndle"><span><?php _e("GD WordPress Plugins", "gd-star-rating"); ?></span></h3>
+    <h3 class="hndle"><span><?php _e("Dev4Press Premium WordPress", "gd-star-rating"); ?></span></h3>
     <div class="inside">
+        <p class="sub"><?php _e("Plugins", "gd-star-rating"); ?></p>
         <div class="table">
             <table><tbody>
                 <tr class="first">
                     <td class="first b">GD Press Tools</td>
                     <td class="t"><?php _e("official plugin page", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://www.dev4press.com/plugins/gd-press-tools" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
+                    <td class="t options"><a href="http://www.dev4press.com/gd-press-tools/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
                 <tr>
-                    <td class="first b">GD Taxonomies Tools</td>
-                    <td class="t"><?php _e("custom taxonomies managment", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://www.dev4press.com/plugins/gd-taxonomies-tools" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
+                    <td class="first b">GD CPT Tools</td>
+                    <td class="t"><?php _e("custom posts and taxonomies enhancement", "gd-star-rating"); ?></td>
+                    <td class="t options"><a href="http://www.dev4press.com/gd-taxonomies-tools/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
+                </tr>
+                <tr>
+                    <td class="first b">GD aZon FUSION</td>
+                    <td class="t"><?php _e("amazon products integration", "gd-star-rating"); ?></td>
+                    <td class="t options"><a href="http://www.dev4press.com/plugins/gd-azon-fusion/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
+                </tr>
+                <tr>
+                    <td class="first b">GD Affiliate Center</td>
+                    <td class="t"><?php _e("advanced pages widget", "gd-star-rating"); ?></td>
+                    <td class="t options"><a href="http://www.dev4press.com/plugins/gd-affiliate-center/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
                 <tr>
                     <td class="first b">GD Simple Widgets</td>
                     <td class="t"><?php _e("collection of widgets", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://www.dev4press.com/plugins/gd-simple-widgets" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
-                </tr>
-                <tr>
-                    <td class="first b">GD Pages Navigator</td>
-                    <td class="t"><?php _e("advanced pages widget", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://www.dev4press.com/plugins/gd-pages-navigator" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
+                    <td class="t options"><a href="http://www.dev4press.com/plugins/gd-simple-widgets/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
                 <tr>
                     <td class="first b">GD LinkedIn Badge</td>
                     <td class="t"><?php _e("widget to add linkedin badge", "gd-star-rating"); ?></td>
                     <td class="t options"><a href="http://www.dev4press.com/plugins/gd-linkedin-badge" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
+                </tr>
+            </tbody></table>
+        </div>
+        <p class="sub"><?php _e("Themes", "gd-star-rating"); ?></p>
+        <div class="table">
+            <table><tbody>
+                <tr class="first">
+                    <td class="first b">xScape Themes</td>
+                    <td class="t"><?php _e("advanced theme framework", "gd-star-rating"); ?></td>
+                    <td class="t options"><a href="http://www.dev4press.com/themes/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
             </tbody></table>
         </div>
@@ -114,11 +130,6 @@
                     <td class="first b" style="color: navy;">TVScape</td>
                     <td class="t"><?php _e("tv shows reviews and news", "gd-star-rating"); ?></td>
                     <td class="t options"><a href="http://www.tvscape.net/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
-                </tr>
-                <tr>
-                    <td class="first b">Starscape Theme</td>
-                    <td class="t"><?php _e("announcements and theme demo", "gd-star-rating"); ?></td>
-                    <td class="t options"><a href="http://blog.starscapetheme.com/" target="_blank"><?php _e("visit", "gd-star-rating"); ?></a></td>
                 </tr>
                 <tr>
                     <td class="first b"><?php _e("Official Website", "gd-star-rating"); ?></td>
