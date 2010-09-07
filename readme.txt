@@ -175,6 +175,7 @@ Added Hindi translation. Number of bugs fixed.
 == Changelog ==
 = 1.9.4 =
 * Added Hindi translation
+* Fixed problems with including js/css files
 * Fixed several rendering functions
 * Fixed some interface problems
 
