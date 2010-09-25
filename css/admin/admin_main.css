@@ -748,15 +748,3 @@ td.gdrinner {
     padding-left: 24px !important;
     margin-left:3px;
 }
-
-.ui-dropdownchecklist { height: 16px; -moz-border-radius: 4px; border-radius: 4px; border: 1px solid #ddd; color: #000; margin: 1px; padding: 2px 0 2px 4px; background: #fff url(../../gfx/dropdown.png) no-repeat center right; }
-.ui-dropdownchecklist-hover, .ui-dropdownchecklist-active { background: #fff url(../../gfx/dropdown_hover.png) no-repeat center right !important; }
-.ui-dropdownchecklist-text { text-align: left; font-size: 11px; height: 15px;line-height: 15px; margin-right: 17px; }
-.ui-dropdownchecklist-dropcontainer { background-color: #fff; border: 1px solid #ddd; }
-.ui-dropdownchecklist-item { padding: 2px; }
-.ui-dropdownchecklist-item-hover { background-color: #39f; }
-.ui-dropdownchecklist-item-disabled label { color: #ccc; }
-.ui-dropdownchecklist-item-hover .ui-dropdownchecklist-text { color: #fff; }
-.ui-dropdownchecklist-group { font-weight: bold; font-style: italic; }
-.ui-dropdownchecklist-indent { padding-left: 20px; }
-.drop-sel-checks { text-align: left;}
