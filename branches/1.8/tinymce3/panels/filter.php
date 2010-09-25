@@ -2,11 +2,13 @@
 <legend><?php _e("Basic", "gd-star-rating"); ?></legend>
     <table border="0" cellpadding="3" cellspacing="0" width="100%">
       <tr>
-        <td class="gdsrleft"><?php _e("Include articles", "gd-star-rating"); ?>:</td>
+        <td class="gdsrleft" valign="top">
+            <?php _e("Include post types", "gd-star-rating"); ?>:<br/>
+            <em><small><?php _e("Select one or more.", "gd-star-rating"); ?></small></em>
+        </td>
         <td class="gdsrright">
-            <select id="srSelect" name="srSelect" style="width: 130px;<?php if ($gdsr_tinymce) echo ' height: 40px'; ?>"<?php if ($wpv > 29) echo ' multiple class="drop-sel-checks"'; ?>>
+            <select id="srSelect" name="srSelect" style="width: 130px;<?php echo $gdsr_tinymce ? ' height: 40px' : 'height: 64px'; ?>"<?php if ($wpv > 29) echo ' multiple'; ?>>
                 <?php if ($wpv > 29) { $custom_post_types = gdsr_get_public_post_types(); ?>
-                <?php if (!$gdsr_tinymce) { ?><option value="(all)"><?php _e("(all)", "gd-star-rating"); ?></option><?php } ?>
                 <?php foreach ($custom_post_types as $cp_name => $cp_label) {
                     echo '<option value="'.$cp_name.'">'.$cp_label.'</option>';
                 } ?>

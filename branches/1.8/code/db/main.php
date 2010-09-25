@@ -519,7 +519,9 @@ class GDSRDBMulti {
         $weight_norm = array_sum($set->weight);
         $overall = 0;
         for ($i = 0; $i < count($values); $i++) {
-            $overall += ($values[$i] * $set->weight[$i]) / $weight_norm;
+            if ($weight_norm > 0) {
+                $overall += ($values[$i] * $set->weight[$i]) / $weight_norm;
+            }
         }
         $overall = @number_format($overall, 1);
 

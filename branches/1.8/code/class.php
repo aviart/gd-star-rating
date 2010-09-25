@@ -794,7 +794,7 @@ class GDStarRating {
         if ($this->script == "widgets.php") {
             if ($this->wp_version < 28) {
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets.js"></script>'.STARRATING_EOL);
-            } else if ($this->wp_version > 27 && $this->wp_version < 30) {
+            } else if ($this->wp_version > 27) {
                 echo('<script type="text/javascript" src="'.$this->plugin_url.'js/rating/rating-widgets-28.js"></script>'.STARRATING_EOL);
             }
             echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_widgets.css" type="text/css" media="screen" />'.STARRATING_EOL);
@@ -804,9 +804,6 @@ class GDStarRating {
 
         if ($this->admin_plugin_page == "builder") {
             echo('<script type="text/javascript" src="'.$this->plugin_url.'tinymce3/tinymce.js"></script>'.STARRATING_EOL);
-            if ($this->wp_version > 29) {
-                echo('<script type="text/javascript" src="'.$this->plugin_url.'tinymce3/tinymce-30.js"></script>'.STARRATING_EOL);
-            }
         }
 
         echo('<link rel="stylesheet" href="'.$this->plugin_url.'css/admin/admin_post.css" type="text/css" media="screen" />'.STARRATING_EOL);
@@ -1367,10 +1364,6 @@ class GDStarRating {
                     wp_enqueue_script('jquery-ui-tabs');
                 }
                 $this->load_datepicker();
-            }
-            if ($this->script == "widgets.php" && $this->wp_version > 29) {
-                wp_enqueue_script("jquery-ui-core");
-                wp_enqueue_script("gdsr_script", plugins_url('gd-star-rating/js/rating/rating-widgets-30.js'), array("jquery-ui-core"), $this->o["version"]);
             }
 
             $this->cache_cleanup();

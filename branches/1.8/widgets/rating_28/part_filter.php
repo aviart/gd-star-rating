@@ -11,11 +11,13 @@
 <table border="0" cellpadding="2" cellspacing="0" width="100%">
   <tr>
     <td width="100" valign="top"><strong><a style="text-decoration: none" href="javascript:gdsrShowHidePreview('<?php echo $this->get_field_id('div_filter'); ?>')"><?php _e("Filter", "gd-star-rating"); ?></a></strong></td>
-    <td width="150" nowrap="nowrap"><?php _e("Include post types", "gd-star-rating"); ?>:</td>
+    <td width="150" nowrap="nowrap" valign="top">
+        <?php _e("Include post types", "gd-star-rating"); ?>:<br/>
+        <em><small><?php _e("Select one or more.", "gd-star-rating"); ?></small></em>
+    </td>
     <td align="right">
         <?php if ($wpvr > 29) { ?>
-        <select multiple class="widefat drop-sel-checks" name="<?php echo $this->get_field_name('select'); ?>[]" id="<?php echo $this->get_field_id('select'); ?>">
-            <option value="(all)"><?php _e("(all)", "gd-star-rating"); ?></option>
+        <select multiple class="widefat" name="<?php echo $this->get_field_name('select'); ?>[]" id="<?php echo $this->get_field_id('select'); ?>" style="height: 66px;">
             <?php foreach ($custom_post_types as $cp_name => $cp_label) {
                 $selected = in_array($cp_name, $select_post_types) ? ' selected="selected"' : ' ';
                 echo '<option value="'.$cp_name.'"'.$selected.'>'.$cp_label.'</option>';
