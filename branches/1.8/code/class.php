@@ -1815,7 +1815,7 @@ class GDStarRating {
             if ($return) return $url;
             else echo('<link rel="stylesheet" href="'.$url.'" type="text/css" media="screen" />');
         } else {
-            echo('<style type="text/css" media=screen>');
+            echo('<style type="text/css" media="screen">');
             $inclusion = "internal";
             $base_url_local = $this->plugin_url;
             $base_url_extra = $this->plugin_xtra_url;

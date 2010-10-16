@@ -54,7 +54,7 @@ function gdsr_rating_multi_stars(elm) {
     rating_values[el[3]] = vote;
     var active = true;
     for (var i = 0; i < rating_values.length; i++) {
-        if (rating_values[i] === 0) {
+        if (parseInt(rating_values[i]) === 0) {
             active = false;
             break;
         }
@@ -116,7 +116,7 @@ function gdsr_rating_thumb(elm) {
 var gdsrCanceled = false;
 function hideshowCmmInt() {
     var value = jQuery("#comment_parent").val();
-    if (value === 0) {
+    if (parseInt(value) === 0) {
         jQuery("#gdsr-cmm-integration-block-review").removeClass("cmminthide");
         jQuery("#gdsr-cmm-integration-block-standard").removeClass("cmminthide");
         jQuery("#gdsr-cmm-integration-block-multis").removeClass("cmminthide");
@@ -146,7 +146,7 @@ function is_cmm_rated_multis() {
     var value = value_cmm_rated_multis();
     var rated = true;
     for (var i = 0; i < value.length; i++) {
-        if (value[i] === 0) {
+        if (parseInt(value[i]) === 0) {
             rated = false;
         }
     }
@@ -268,7 +268,7 @@ jQuery(document).ready(function() {
         jQuery(current_id).css("width", new_width + "px");
         var rating_values = jQuery(input_id).val().split("X");
         rating_values[el[3]] = vote;
-        for (var i = 0; i < rating_values.length; i++) { if (rating_values[i] === 0) { break; } }
+        for (var i = 0; i < rating_values.length; i++) { if (parseInt(rating_values[i]) === 0) { break; } }
         jQuery(input_id).val(rating_values.join("X"));
     });
 });

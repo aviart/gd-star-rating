@@ -13,7 +13,7 @@ msgstr ""
 #: code/adm/db.php:1271
 #: tinymce3/panels/blograting.php:22
 #: tinymce3/panels/commentsaggr.php:17
-#: tinymce3/panels/filter.php:24
+#: tinymce3/panels/filter.php:26
 #: widgets/comments/part_basic.php:17
 #: widgets/comments/part_filter.php:17
 #: widgets/comments_28/part_basic.php:17
@@ -21,7 +21,7 @@ msgstr ""
 #: widgets/rating/part_basic.php:16
 #: widgets/rating/part_filter.php:28
 #: widgets/rating_28/part_basic.php:17
-#: widgets/rating_28/part_filter.php:38
+#: widgets/rating_28/part_filter.php:40
 #: widgets/top/part_basic.php:17
 #: widgets/top/part_filter.php:28
 #: widgets/top_28/part_basic.php:17
@@ -1277,7 +1277,7 @@ msgstr ""
 
 #: code/class.php:689
 #: code/class.php:689
-#: code/class.php:926
+#: code/class.php:920
 #: options/builder.php:8
 #: options/settings.php:37
 #: tinymce3/panels/articlesrater.php:11
@@ -1345,44 +1345,44 @@ msgstr ""
 msgid "Setup"
 msgstr ""
 
-#: code/class.php:998
-#: code/class.php:1001
+#: code/class.php:992
+#: code/class.php:995
 msgid "Latest"
 msgstr ""
 
-#: code/class.php:1576
+#: code/class.php:1570
 msgid "articles records from log table removed."
 msgstr ""
 
-#: code/class.php:1578
+#: code/class.php:1572
 msgid "comments records from log table removed."
 msgstr ""
 
-#: code/class.php:1582
+#: code/class.php:1576
 msgid "articles records from trends log table removed."
 msgstr ""
 
-#: code/class.php:1584
+#: code/class.php:1578
 msgid "comments records from trends log table removed."
 msgstr ""
 
-#: code/class.php:1588
+#: code/class.php:1582
 msgid "dead articles records from articles table."
 msgstr ""
 
-#: code/class.php:1590
+#: code/class.php:1584
 msgid "post revisions records from articles table."
 msgstr ""
 
-#: code/class.php:1592
+#: code/class.php:1586
 msgid "dead comments records from comments table."
 msgstr ""
 
-#: code/class.php:1596
+#: code/class.php:1590
 msgid "dead articles records from multi ratings tables."
 msgstr ""
 
-#: code/class.php:1598
+#: code/class.php:1592
 msgid "post revisions records from multi ratings tables."
 msgstr ""
 
@@ -1411,9 +1411,9 @@ msgstr ""
 #: options/articles.php:122
 #: options/users.php:59
 #: options/voters.php:129
-#: tinymce3/panels/filter.php:62
+#: tinymce3/panels/filter.php:64
 #: widgets/rating/part_filter.php:87
-#: widgets/rating_28/part_filter.php:97
+#: widgets/rating_28/part_filter.php:99
 msgid "ID"
 msgstr ""
 
@@ -1693,7 +1693,7 @@ msgstr ""
 #: options/elements/articles_options.php:131
 #: options/multis/results_post.php:223
 #: options/categories.php:186
-#: tinymce3/panels/filter.php:94
+#: tinymce3/panels/filter.php:96
 msgid "Date"
 msgstr ""
 
@@ -1885,11 +1885,11 @@ msgstr ""
 #: options/settings/settings_multis.php:10
 #: options/settings/settings_thumbs_articles.php:1
 #: options/settings/settings_thumbs_comments.php:1
-#: tinymce3/panels/filter.php:60
+#: tinymce3/panels/filter.php:62
 #: widgets/comments/part_filter.php:46
 #: widgets/comments_28/part_filter.php:46
 #: widgets/rating/part_filter.php:85
-#: widgets/rating_28/part_filter.php:95
+#: widgets/rating_28/part_filter.php:97
 msgid "Rating"
 msgstr ""
 
@@ -1952,9 +1952,9 @@ msgstr ""
 #: options/settings/settings_articles.php:184
 #: options/settings/settings_comments.php:198
 #: options/comments.php:82
-#: tinymce3/panels/filter.php:64
+#: tinymce3/panels/filter.php:66
 #: widgets/rating/part_filter.php:89
-#: widgets/rating_28/part_filter.php:99
+#: widgets/rating_28/part_filter.php:101
 msgid "Review"
 msgstr ""
 
@@ -2516,13 +2516,13 @@ msgid "Search Posts"
 msgstr ""
 
 #: options/multis/results_post.php:114
-#: tinymce3/panels/filter.php:63
+#: tinymce3/panels/filter.php:65
 #: widgets/comments/part_basic.php:2
 #: widgets/comments_28/part_basic.php:2
 #: widgets/rating/part_basic.php:2
 #: widgets/rating/part_filter.php:88
 #: widgets/rating_28/part_basic.php:2
-#: widgets/rating_28/part_filter.php:98
+#: widgets/rating_28/part_filter.php:100
 #: widgets/top/part_basic.php:2
 #: widgets/top_28/part_basic.php:2
 msgid "Title"
@@ -3652,7 +3652,7 @@ msgid "Shortcode/Functions"
 msgstr ""
 
 #: options/categories.php:62
-#: tinymce3/panels/filter.php:29
+#: tinymce3/panels/filter.php:31
 msgid "Category"
 msgstr ""
 
@@ -4030,23 +4030,23 @@ msgid "Include Articles"
 msgstr ""
 
 #: tinymce3/panels/blograting.php:12
-#: tinymce3/panels/filter.php:13
+#: tinymce3/panels/filter.php:15
 msgid "Posts And Pages"
 msgstr ""
 
 #: tinymce3/panels/blograting.php:13
-#: tinymce3/panels/filter.php:14
+#: tinymce3/panels/filter.php:16
 #: widgets/rating/part_filter.php:17
-#: widgets/rating_28/part_filter.php:26
+#: widgets/rating_28/part_filter.php:28
 #: widgets/top/part_filter.php:17
 #: widgets/top_28/part_filter.php:17
 msgid "Posts Only"
 msgstr ""
 
 #: tinymce3/panels/blograting.php:14
-#: tinymce3/panels/filter.php:15
+#: tinymce3/panels/filter.php:17
 #: widgets/rating/part_filter.php:18
-#: widgets/rating_28/part_filter.php:27
+#: widgets/rating_28/part_filter.php:29
 #: widgets/top/part_filter.php:18
 #: widgets/top_28/part_filter.php:18
 msgid "Pages Only"
@@ -4062,7 +4062,7 @@ msgstr ""
 
 #: tinymce3/panels/blograting.php:21
 #: tinymce3/panels/commentsaggr.php:16
-#: tinymce3/panels/filter.php:23
+#: tinymce3/panels/filter.php:25
 #: widgets/comments/part_basic.php:16
 #: widgets/comments/part_filter.php:16
 #: widgets/comments_28/part_basic.php:16
@@ -4070,7 +4070,7 @@ msgstr ""
 #: widgets/rating/part_basic.php:15
 #: widgets/rating/part_filter.php:27
 #: widgets/rating_28/part_basic.php:16
-#: widgets/rating_28/part_filter.php:37
+#: widgets/rating_28/part_filter.php:39
 #: widgets/top/part_basic.php:16
 #: widgets/top/part_filter.php:27
 #: widgets/top_28/part_basic.php:16
@@ -4080,7 +4080,7 @@ msgstr ""
 
 #: tinymce3/panels/blograting.php:23
 #: tinymce3/panels/commentsaggr.php:18
-#: tinymce3/panels/filter.php:25
+#: tinymce3/panels/filter.php:27
 #: widgets/comments/part_basic.php:18
 #: widgets/comments/part_filter.php:18
 #: widgets/comments_28/part_basic.php:18
@@ -4088,7 +4088,7 @@ msgstr ""
 #: widgets/rating/part_basic.php:17
 #: widgets/rating/part_filter.php:29
 #: widgets/rating_28/part_basic.php:18
-#: widgets/rating_28/part_filter.php:39
+#: widgets/rating_28/part_filter.php:41
 #: widgets/top/part_basic.php:18
 #: widgets/top/part_filter.php:29
 #: widgets/top_28/part_basic.php:18
@@ -4112,145 +4112,145 @@ msgstr ""
 msgid "Basic"
 msgstr ""
 
-#: tinymce3/panels/filter.php:4
-#: widgets/rating/part_filter.php:13
-msgid "Include articles"
+#: tinymce3/panels/filter.php:5
+#: widgets/rating_28/part_filter.php:14
+msgid "Include post types"
 msgstr ""
 
-#: tinymce3/panels/filter.php:8
-#: widgets/rating_28/part_filter.php:17
-msgid "(all)"
+#: tinymce3/panels/filter.php:6
+#: widgets/rating_28/part_filter.php:15
+msgid "Select one or more."
 msgstr ""
 
-#: tinymce3/panels/filter.php:21
+#: tinymce3/panels/filter.php:23
 #: widgets/rating/part_filter.php:24
-#: widgets/rating_28/part_filter.php:34
+#: widgets/rating_28/part_filter.php:36
 msgid "Display votes from"
 msgstr ""
 
-#: tinymce3/panels/filter.php:33
+#: tinymce3/panels/filter.php:35
 #: widgets/rating/part_filter.php:52
-#: widgets/rating_28/part_filter.php:62
+#: widgets/rating_28/part_filter.php:64
 msgid "Minimum votes"
 msgstr ""
 
-#: tinymce3/panels/filter.php:37
+#: tinymce3/panels/filter.php:39
 msgid "Excerpt words"
 msgstr ""
 
-#: tinymce3/panels/filter.php:44
+#: tinymce3/panels/filter.php:46
 msgid "Grouping Specific"
 msgstr ""
 
-#: tinymce3/panels/filter.php:47
+#: tinymce3/panels/filter.php:49
 #: widgets/rating/part_filter.php:65
-#: widgets/rating_28/part_filter.php:75
+#: widgets/rating_28/part_filter.php:77
 msgid "Minimum posts count"
 msgstr ""
 
-#: tinymce3/panels/filter.php:54
+#: tinymce3/panels/filter.php:56
 msgid "Sorting"
 msgstr ""
 
-#: tinymce3/panels/filter.php:57
+#: tinymce3/panels/filter.php:59
 msgid "Column"
 msgstr ""
 
-#: tinymce3/panels/filter.php:61
+#: tinymce3/panels/filter.php:63
 #: widgets/comments/part_filter.php:47
 #: widgets/comments_28/part_filter.php:47
 #: widgets/rating/part_filter.php:86
-#: widgets/rating_28/part_filter.php:96
+#: widgets/rating_28/part_filter.php:98
 msgid "Total Votes"
 msgstr ""
 
-#: tinymce3/panels/filter.php:65
+#: tinymce3/panels/filter.php:67
 #: widgets/rating/part_filter.php:90
-#: widgets/rating_28/part_filter.php:100
+#: widgets/rating_28/part_filter.php:102
 msgid "Count"
 msgstr ""
 
-#: tinymce3/panels/filter.php:66
+#: tinymce3/panels/filter.php:68
 #: widgets/rating/part_filter.php:91
-#: widgets/rating_28/part_filter.php:101
+#: widgets/rating_28/part_filter.php:103
 msgid "Bayesian Rating"
 msgstr ""
 
-#: tinymce3/panels/filter.php:71
+#: tinymce3/panels/filter.php:73
 msgid "Order"
 msgstr ""
 
-#: tinymce3/panels/filter.php:74
+#: tinymce3/panels/filter.php:76
 #: widgets/comments/part_filter.php:57
 #: widgets/comments_28/part_filter.php:57
 #: widgets/rating/part_filter.php:100
-#: widgets/rating_28/part_filter.php:110
+#: widgets/rating_28/part_filter.php:112
 msgid "Descending"
 msgstr ""
 
-#: tinymce3/panels/filter.php:75
+#: tinymce3/panels/filter.php:77
 #: widgets/comments/part_filter.php:58
 #: widgets/comments_28/part_filter.php:58
 #: widgets/rating/part_filter.php:101
-#: widgets/rating_28/part_filter.php:111
+#: widgets/rating_28/part_filter.php:113
 msgid "Ascending"
 msgstr ""
 
-#: tinymce3/panels/filter.php:83
+#: tinymce3/panels/filter.php:85
 msgid "Last Voted"
 msgstr ""
 
-#: tinymce3/panels/filter.php:84
+#: tinymce3/panels/filter.php:86
 #: widgets/rating/part_filter.php:146
-#: widgets/rating_28/part_filter.php:156
+#: widgets/rating_28/part_filter.php:158
 msgid "Use only articles voted for in last # days."
 msgstr ""
 
-#: tinymce3/panels/filter.php:87
+#: tinymce3/panels/filter.php:89
 #: widgets/comments/part_filter.php:77
 #: widgets/comments_28/part_filter.php:77
 #: widgets/rating/part_filter.php:151
-#: widgets/rating_28/part_filter.php:161
+#: widgets/rating_28/part_filter.php:163
 msgid "Enter 0 for all"
 msgstr ""
 
-#: tinymce3/panels/filter.php:97
+#: tinymce3/panels/filter.php:99
 msgid "Publish Date"
 msgstr ""
 
-#: tinymce3/panels/filter.php:100
+#: tinymce3/panels/filter.php:102
 #: widgets/rating/part_filter.php:168
-#: widgets/rating_28/part_filter.php:178
+#: widgets/rating_28/part_filter.php:180
 msgid "Last # days"
 msgstr ""
 
-#: tinymce3/panels/filter.php:101
+#: tinymce3/panels/filter.php:103
 #: widgets/rating/part_filter.php:169
-#: widgets/rating_28/part_filter.php:179
+#: widgets/rating_28/part_filter.php:181
 msgid "Exact month"
 msgstr ""
 
-#: tinymce3/panels/filter.php:102
+#: tinymce3/panels/filter.php:104
 #: widgets/rating/part_filter.php:170
-#: widgets/rating_28/part_filter.php:180
+#: widgets/rating_28/part_filter.php:182
 msgid "Date range"
 msgstr ""
 
-#: tinymce3/panels/filter.php:110
+#: tinymce3/panels/filter.php:112
 #: widgets/rating/part_filter.php:179
-#: widgets/rating_28/part_filter.php:189
+#: widgets/rating_28/part_filter.php:191
 msgid "Number Of Days"
 msgstr ""
 
-#: tinymce3/panels/filter.php:120
+#: tinymce3/panels/filter.php:122
 #: widgets/rating/part_filter.php:190
-#: widgets/rating_28/part_filter.php:200
+#: widgets/rating_28/part_filter.php:202
 msgid "Month"
 msgstr ""
 
-#: tinymce3/panels/filter.php:130
+#: tinymce3/panels/filter.php:132
 #: widgets/rating/part_filter.php:201
-#: widgets/rating_28/part_filter.php:211
+#: widgets/rating_28/part_filter.php:213
 msgid "Range"
 msgstr ""
 
@@ -4390,20 +4390,20 @@ msgstr ""
 
 #: tinymce3/panels/general.php:133
 #: widgets/rating/part_filter.php:108
-#: widgets/rating_28/part_filter.php:118
+#: widgets/rating_28/part_filter.php:120
 msgid "Bayesian minumum votes required."
 msgstr ""
 
 #: tinymce3/panels/general.php:134
 #: widgets/comments_28/part_filter.php:65
 #: widgets/rating/part_filter.php:114
-#: widgets/rating_28/part_filter.php:124
+#: widgets/rating_28/part_filter.php:126
 msgid "Hide articles with no recorded votes."
 msgstr ""
 
 #: tinymce3/panels/general.php:135
 #: widgets/rating/part_filter.php:120
-#: widgets/rating_28/part_filter.php:130
+#: widgets/rating_28/part_filter.php:132
 msgid "Hide articles with no review values."
 msgstr ""
 
@@ -4593,60 +4593,64 @@ msgstr ""
 msgid "Avatar"
 msgstr ""
 
+#: widgets/rating/part_filter.php:13
+msgid "Include articles"
+msgstr ""
+
 #: widgets/rating/part_filter.php:16
-#: widgets/rating_28/part_filter.php:25
+#: widgets/rating_28/part_filter.php:27
 #: widgets/top/part_filter.php:16
 #: widgets/top_28/part_filter.php:16
 msgid "Posts & Pages"
 msgstr ""
 
 #: widgets/rating/part_filter.php:35
-#: widgets/rating_28/part_filter.php:45
+#: widgets/rating_28/part_filter.php:47
 msgid "Number of posts"
 msgstr ""
 
 #: widgets/rating/part_filter.php:42
-#: widgets/rating_28/part_filter.php:52
+#: widgets/rating_28/part_filter.php:54
 msgid "Maximal character length for title"
 msgstr ""
 
 #: widgets/rating/part_filter.php:47
-#: widgets/rating_28/part_filter.php:57
+#: widgets/rating_28/part_filter.php:59
 msgid "Number of words for excerpt"
 msgstr ""
 
 #: widgets/rating/part_filter.php:72
-#: widgets/rating_28/part_filter.php:82
+#: widgets/rating_28/part_filter.php:84
 msgid "This filter will be used only with grouping options."
 msgstr ""
 
 #: widgets/rating/part_filter.php:82
-#: widgets/rating_28/part_filter.php:92
+#: widgets/rating_28/part_filter.php:94
 msgid "Sorting column"
 msgstr ""
 
 #: widgets/rating/part_filter.php:97
-#: widgets/rating_28/part_filter.php:107
+#: widgets/rating_28/part_filter.php:109
 msgid "Sorting order"
 msgstr ""
 
 #: widgets/rating/part_filter.php:131
-#: widgets/rating_28/part_filter.php:141
+#: widgets/rating_28/part_filter.php:143
 msgid "Article Category"
 msgstr ""
 
 #: widgets/rating/part_filter.php:139
-#: widgets/rating_28/part_filter.php:149
+#: widgets/rating_28/part_filter.php:151
 msgid "Only selected category, no subcategories."
 msgstr ""
 
 #: widgets/rating/part_filter.php:164
-#: widgets/rating_28/part_filter.php:174
+#: widgets/rating_28/part_filter.php:176
 msgid "Article Publish Date"
 msgstr ""
 
 #: widgets/rating/part_filter.php:167
-#: widgets/rating_28/part_filter.php:177
+#: widgets/rating_28/part_filter.php:179
 msgid "Any date"
 msgstr ""
 
@@ -4678,9 +4682,5 @@ msgstr ""
 #: widgets/rating/part_stars.php:38
 #: widgets/rating_28/part_stars.php:38
 msgid "Thumbs Size"
-msgstr ""
-
-#: widgets/rating_28/part_filter.php:13
-msgid "Include post types"
 msgstr ""
 

@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.9.5
+Version: 1.9.6
 Donate link: http://www.dev4press.com/plugins/gd-star-rating/
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
@@ -136,6 +136,9 @@ This is not a bug, but a well-known excerpt problem More details on that and the
 = Can I use this plugin in combination with cache plugins like WP Super Cache? =
 Yes. Plugin supports all cache plugins and can load ratings using ajax to keep them current and to avoid ratings to be cached. To enable this feature, you need to activate it on the plugins Settings panel, tab Features, and option Cache Support. You can use this option even if you don't use cache plugins. Instead of showing ratings with the page, plugin will render loading message that will be replaced with rating block once the page is fully loaded.
 
+= Which cache plugin is recommended? =
+I recommend using W3 Total Cache plugin: http://wordpress.org/extend/plugins/w3-total-cache/. It's already set to work with GD Star Rating.
+
 = After upgrade plugin is not rendering stars, and only a loading message appears. =
 This is caused by the cache plugins support enabled that causes rating block to be loaded after the page is ready. To disable this feature, you need to deactivate it on the plugins Settings panel, tab Features, option Cache Support.
 
@@ -153,6 +156,9 @@ There could be two causes for this:
 * Plugins CSS and JavaScript files are not loaded: Check the previous FAQ answer.
 * There are no stars or thumbs set selected for the plugin to use. To check this, go to Graphics panel and you will see if there are any sets there, and if any of them is selected. If there are no sets displayed, you need to rescan for them: panel Tools, tab Graphics, and button Rescan. Once the sets are back, you need to select on the Graphics panel sets and sizes you want to use in the active rating blocks: http://www.gdstarrating.com/2009/05/20/settings-explained-part-5/.
 
+= With cache support mode active, ratings are stuck in the loading state. =
+Most likely problem is with the cache plugin you are using, and that plugin is adding some HTML code to the end of AJAX response, making it impossible for plugin to decode the JSON received from the server to display stars. This is usually the case with WP Super Cache plugin.
+
 = Rating is not working in Firefox, but is working in other browsers. =
 There are many extensions for Firefox that modify the page, and are known to cause many JavaScript problems. Plugin works with all major browsers, and all JavaScript is developed using Firefox and Firebug. But I am not using (nor will test) Firefox with extensions (I use only Firebug).
 
@@ -169,10 +175,15 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Upgrade Notice ==
-= 1.9.5 =
-Removed dropdown checkbox control for causing too much problems. Improvements in rating javascript code.
+= 1.9.6 =
+Added several new entries in FAQ. Fixed multi rating javascript voting problem. Fixed small noticed validation issues.
 
 == Changelog ==
+= 1.9.6 =
+* Added several new entries in FAQ
+* Fixed multi rating javascript voting problem
+* Fixed small noticed validation issues
+
 = 1.9.5 =
 * Removed dropdown checkbox control for causing too much problems
 * Improvements in rating javascript code
