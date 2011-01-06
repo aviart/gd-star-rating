@@ -213,6 +213,8 @@ $t->add_element("%RATE_TREND%", __("article rating trend", "gd-star-rating"));
 $t->add_element("%VOTE_TREND%", __("article voting trend", "gd-star-rating"));
 $t->add_element("%REVIEW_STARS%", __("article review stars", "gd-star-rating"));
 $t->add_element("%COUNT%", __("number of posts/pages", "gd-star-rating"));
+$t->add_element("%VOTES_UP%", __("total up votes for article", "gd-star-rating"));
+$t->add_element("%VOTES_DOWN%", __("total down votes for article", "gd-star-rating"));
 $t->add_element("%RANK_ID%", __("results rank id", "gd-star-rating"));
 $t->add_element("%ID%", __("post/page id", "gd-star-rating"));
 $t->add_element("%IMAGE%", __("image for the post/page", "gd-star-rating"));

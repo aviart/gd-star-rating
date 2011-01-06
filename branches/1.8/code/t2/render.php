@@ -144,18 +144,26 @@ class GDSRRenderT2 {
                     $row->image = GDSRRenderT2::prepare_image($row->image, $widget["image_resize_x"], $widget["image_resize_y"]);
                 }
 
+                $row->votes_plus = 0;
+                $row->votes_minus = 0;
                 if ($widget['source'] == "thumbs") {
                     if ($widget['show'] == "total") {
                         $row->votes = $row->rating = $row->user_recc_plus - $row->user_recc_minus + $row->visitor_recc_plus - $row->visitor_recc_minus;
                         $row->voters = $row->user_recc_plus + $row->user_recc_minus + $row->visitor_recc_plus + $row->visitor_recc_minus;
+                        $row->votes_plus = $row->user_recc_plus + $row->visitor_recc_plus;
+                        $row->votes_minus = $row->user_recc_minus + $row->visitor_recc_minus;
                     }
                     if ($widget['show'] == "visitors") {
                         $row->votes = $row->rating = $row->visitor_recc_plus - $row->visitor_recc_minus;
                         $row->voters = $row->visitor_recc_plus + $row->visitor_recc_minus;
+                        $row->votes_plus = $row->visitor_recc_plus;
+                        $row->votes_minus = $row->visitor_recc_minus;
                     }
                     if ($widget['show'] == "users") {
                         $row->votes = $row->rating = $row->user_recc_plus - $row->user_recc_minus;
                         $row->voters = $row->user_recc_plus + $row->user_recc_minus;
+                        $row->votes_plus = $row->user_recc_plus;
+                        $row->votes_minus = $row->user_recc_minus;
                     }
 
                     $row->bayesian = -1;
@@ -1260,6 +1268,8 @@ class GDSRRenderT2 {
                 $rt = str_replace('%RANK_ID%', $rank_id, $rt);
                 $rt = str_replace('%ID%', $row_id, $rt);
                 $rt = str_replace('%COUNT%', $row->counter, $rt);
+                $rt = str_replace('%VOTES_UP%', $row->votes_plus, $rt);
+                $rt = str_replace('%VOTES_DOWN%', $row->votes_minus, $rt);
                 $rt = str_replace('%BAYES_RATING%', $row->bayesian, $rt);
                 $rt = str_replace('%BAYES_STARS%', $row->bayesian_stars, $rt);
                 $rt = str_replace('%STARS%', $row->rating_stars, $rt);
