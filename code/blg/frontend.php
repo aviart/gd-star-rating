@@ -541,6 +541,7 @@ class gdsrFront {
         $dbg_allow = "F";
         $already_voted = false;
         $allow_vote = $override["read_only"] == 0;
+        $allow_vote = apply_filters("gdsr_allow_vote_thumb_comment", $allow_vote, $post_id);
         if ($this->g->is_ban && $this->g->o["ip_filtering"] == 1) {
             if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
             else $allow_vote = false;
@@ -670,6 +671,7 @@ class gdsrFront {
         $dbg_allow = "F";
         $already_voted = false;
         $allow_vote = $override["read_only"] == 0;
+        $allow_vote = apply_filters("gdsr_allow_vote_stars_comment", $allow_vote, $post_id);
         if ($this->g->is_ban && $this->g->o["ip_filtering"] == 1) {
             if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
             else $allow_vote = false;
@@ -833,6 +835,7 @@ class gdsrFront {
         $dbg_allow = "F";
         $already_voted = false;
         $allow_vote = $override["read_only"] == 0;
+        $allow_vote = apply_filters("gdsr_allow_vote_thumb_article", $allow_vote, $rd_post_id);
         if ($this->g->is_ban && $this->g->o["ip_filtering"] == 1) {
             if ($this->g->o["ip_filtering_restrictive"] == 1) return "";
             else $allow_vote = false;
@@ -973,6 +976,7 @@ class gdsrFront {
         $dbg_allow = "F";
         $already_voted = false;
         $allow_vote = $override["read_only"] == 0;
+        $allow_vote = apply_filters("gdsr_allow_vote_stars_article", $allow_vote, $rd_post_id);
         if ($this->g->override_readonly_standard) {
             $allow_vote = false;
             $dbg_allow = "RTO";
@@ -1132,6 +1136,7 @@ class gdsrFront {
         $dbg_allow = "F";
         $already_voted = false;
         $allow_vote = $override["read_only"] == 0;
+        $allow_vote = apply_filters("gdsr_allow_vote_stars_article", $allow_vote, $rd_post_id, $override["id"]);
         if ($this->g->override_readonly_multis) {
             $allow_vote = false;
             $dbg_allow = "RTO";

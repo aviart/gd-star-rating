@@ -214,7 +214,7 @@
     <td nowrap="nowrap"><?php _e("Range", "gd-star-rating"); ?>:</td>
     <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="<?php echo $this->get_field_name('publish_range_from'); ?>" id="<?php echo $this->get_field_id('publish_range_from'); ?>" value="<?php echo $instance["publish_range_from"]; ?>" /></td>
     <td align="center" width="10">-</td>
-    <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="<?php echo $this->get_field_name('publish_range_o'); ?>" id="<?php echo $this->get_field_id('publish_range_to'); ?>" value="<?php echo $instance["publish_range_to"]; ?>" /></td>
+    <td align="right" width="85"><input class="widefat" style="text-align: right; width: 85px" type="text" name="<?php echo $this->get_field_name('publish_range_to'); ?>" id="<?php echo $this->get_field_id('publish_range_to'); ?>" value="<?php echo $instance["publish_range_to"]; ?>" /></td>
   </tr>
 </table>
 </div>

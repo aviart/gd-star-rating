@@ -853,7 +853,6 @@ class GDStarRating {
             add_action('admin_menu', array(&$this, 'admin_menu'));
             add_action('admin_head', array(&$this, 'admin_head'));
             add_filter('plugin_action_links', array(&$this, 'plugin_links'), 10, 2 );
-            add_action('after_plugin_row', array(&$this,'plugin_check_version'), 10, 2);
             if ($this->o["integrate_post_edit_mur"] == 1 || $this->o["integrate_post_edit"] == 1) {
                 add_action('save_post', array(&$this, 'saveedit_post'));
             }
@@ -922,32 +921,6 @@ class GDStarRating {
             array_unshift($links, $settings_link);
         }
         return $links;
-    }
-
-    /**
-     * Render update info on the plugins panel if the update is available.
-     *
-     * @param string $file name of the plugin file
-     * @param array $plugin_data plugin info
-     * @return bool false if no update available
-     */
-    function plugin_check_version($file, $plugin_data) {
-        static $this_plugin;
-        if (!$this_plugin) $this_plugin = plugin_basename($this->plugin_base);
-
-        if ($file == $this_plugin){
-            $current = $this->wp_version < 28 ? get_option('update_plugins') : get_transient('update_plugins');
-            if (!isset($current->response[$file])) return false;
-
-            $columns = $this->wp_version < 28 ? 5 : 3;
-            $url = gdFunctionsGDSR::get_update_url($this->o, get_option('home'));
-            $update = wp_remote_fopen($url);
-            if ($update != "") {
-                echo '<td colspan="'.$columns.'" class="gdr-plugin-update"><div class="gdr-plugin-update-message">';
-                echo $update;
-                echo '</div></td>';
-            }
-        }
     }
 
     /**
