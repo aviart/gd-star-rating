@@ -62,7 +62,7 @@ function gdsr_rating_multi_stars(elm) {
 
     jQuery(input_id).val(rating_values.join("X"));
     var button_block = el[1] + '_' + el[2] + '_' + el[6] + '_' + size;
-    if (gdsr_cnst_button == 1) {
+    if (typeof(gdsr_cnst_button) !== 'undefined' && gdsr_cnst_button == 1) {
         var button_id = '#gdsr_button_' + button_block;
         if (active) {
             jQuery(button_id).removeClass('gdinactive');
@@ -180,7 +180,7 @@ function gdsr_random_seed() {
 }
 
 jQuery(document).ready(function() {
-    if (gdsr_cnst_cache == 1) {
+    if (typeof(gdsr_cnst_cache) !== 'undefined' && gdsr_cnst_cache == 1) {
         var ela = "";
         var elc = "";
         jQuery(".gdsrcacheloader").each(function(i) {

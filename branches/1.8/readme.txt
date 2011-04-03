@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.9.7
+Version: 1.9.8
 Donate link: http://www.dev4press.com/plugins/gd-star-rating/
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.7
@@ -180,9 +180,15 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Upgrade Notice ==
 = 1.9.7 =
-Added Persian translation. JavaScript compressed using YUI Compressor. Improved widget results templates rendering. Some minor fixes and changes.
+Added filters for checking the voting rules for rating blocks. Fixed Problem with range settings for rating widget. Fixed Minor JavaScript issue with missing variables. Removed outdated check for update changelog code
 
 == Changelog ==
+= 1.9.8 =
+* Added filters for checking the voting rules for rating blocks
+* Removed outdated check for update changelog code
+* Fixed Problem with range settings for rating widget
+* Fixed Minor JavaScript issue with missing variables
+
 = 1.9.7 =
 * Added Persian translation
 * JavaScript compressed using YUI Compressor
