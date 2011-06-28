@@ -47,8 +47,6 @@ wp_gdsr_dump("VOTE_THUMB", "[POST: ".$id."] --".$vote."-- [".$user."] ".$unit_wi
             $votes_minus = $data->user_recc_minus;
         }
 
-        include(STARRATING_PATH.'code/t2/templates.php');
-
         $template = new gdTemplateRender($tpl_id, "TAB");
         $rt = GDSRRenderT2::render_tat_voted($template->dep["TAT"], array("votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $id, "vote" => $vote_value));
 
@@ -97,8 +95,6 @@ wp_gdsr_dump("VOTE THUMB", "[CMM: ".$id."] --".$vote."-- [".$user."] ".$unit_wid
             $votes_minus = $data->user_recc_minus;
         }
 
-        include(STARRATING_PATH.'code/t2/templates.php');
-
         $template = new gdTemplateRender($tpl_id, "TCB");
         $rt = GDSRRenderT2::render_tct($template->dep["TCT"], array("votes" => $votes, "score" => $score, "votes_plus" => $votes_plus, "votes_minus" => $votes_minus, "id" => $id, "vote_value" => $vote_value));
 
@@ -143,8 +139,6 @@ wp_gdsr_dump("VOTE_MUR", "[POST: ".$post_id."|SET: ".$set_id."] --".$votes."-- [
 
             do_action("gdsr_vote_rating_multis", $post_id, $user, $set_id, $values, $rating);
         }
-
-        include(STARRATING_PATH.'code/t2/templates.php');
 
         $template = new gdTemplateRender($tpl_id, "MRB");
         $rt = GDSRRenderT2::render_srt_voted($template->dep["MRT"], array("rating" => $rating, "unit_count" => $set->stars, "votes" => $total_votes, "id" => $post_id, "vote" => $vote_value));
@@ -194,8 +188,6 @@ wp_gdsr_dump("VOTE", "[POST: ".$id."] --".$votes."-- [".$user."] ".$unit_width."
         else $rating2 = 0;
         $rating1 = @number_format($rating2, 1);
         $rating_width = @number_format($rating2 * $unit_width, 0);
-
-        include(STARRATING_PATH.'code/t2/templates.php');
 
         $template = new gdTemplateRender($tpl_id, "SRB");
         $rt = GDSRRenderT2::render_srt_voted($template->dep["SRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "id" => $id, "vote" => $vote_value));
@@ -247,8 +239,6 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."] ".$unit_widt
         else $rating2 = 0;
         $rating1 = @number_format($rating2, 1);
         $rating_width = number_format($rating2 * $unit_width, 0);
-
-        include(STARRATING_PATH.'code/t2/templates.php');
 
         $template = new gdTemplateRender($tpl_id, "CRB");
         $rt = GDSRRenderT2::render_crt($template->dep["CRT"], array("rating" => $rating1, "unit_count" => $unit_count, "votes" => $votes, "vote_value" => $vote_value));

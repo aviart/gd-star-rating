@@ -10,10 +10,8 @@ $wpload = get_gdsr_wpload_path();
 require($wpload);
 global $gdsr;
 
-if ($gdsr->use_nonce) {
-    require_once(ABSPATH.WPINC."/pluggable.php");
-    check_ajax_referer('gdsr_ajax_r8');
-}
+require_once(ABSPATH.WPINC."/pluggable.php");
+check_ajax_referer('gdsr_ajax_r8');
 
 $vote_type = $_GET["vote_type"];
 
