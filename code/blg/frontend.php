@@ -525,16 +525,16 @@ class gdsrFront {
     function render_thumb_comment_actual($settings) {
         if ($this->g->o["comments_active"] != 1) return "";
 
-        $post_id = $settings[1];
-        $comment_id = $settings[2];
-        $comment_author = $settings[3];
-        $rd_is_page = $settings[4];
-        $post_author = $settings[5];
-        $user_id = $settings[6];
+        $post_id = intval($settings[1]);
+        $comment_id = intval($settings[2]);
+        $comment_author = intval($settings[3]);
+        $rd_is_page = intval($settings[4]);
+        $post_author = intval($settings[5]);
+        $user_id = intval($settings[6]);
 
-        $override["tpl"] = $settings[7];
-        $override["read_only"] = $settings[8];
-        $override["size"] = $settings[9];
+        $override["tpl"] = intval($settings[7]);
+        $override["read_only"] = intval($settings[8]);
+        $override["size"] = intval($settings[9]);
         $override["style"] = $this->g->g->thumbs[$settings[10]]->folder;
         $override["style_ie6"] = $this->g->g->thumbs[$settings[11]]->folder;
 
@@ -655,16 +655,16 @@ class gdsrFront {
     function render_comment_actual($settings) {
         if ($this->g->o["comments_active"] != 1) return "";
 
-        $post_id = $settings[1];
-        $comment_id = $settings[2];
-        $comment_author = $settings[3];
-        $rd_is_page = $settings[4];
-        $post_author = $settings[5];
-        $user_id = $settings[6];
+        $post_id = intval($settings[1]);
+        $comment_id = intval($settings[2]);
+        $comment_author = intval($settings[3]);
+        $rd_is_page = intval($settings[4]);
+        $post_author = intval($settings[5]);
+        $user_id = intval($settings[6]);
 
-        $override["tpl"] = $settings[7];
-        $override["read_only"] = $settings[8];
-        $override["size"] = $settings[9];
+        $override["tpl"] = intval($settings[7]);
+        $override["read_only"] = intval($settings[8]);
+        $override["size"] = intval($settings[9]);
         $override["style"] = $this->g->g->stars[$settings[10]]->folder;
         $override["style_ie6"] = $this->g->g->stars[$settings[11]]->folder;
 
@@ -819,13 +819,13 @@ class gdsrFront {
 
     function render_thumb_article_actual($settings) {
         $rd_post_id = intval($settings[1]);
-        $rd_is_page = $settings[2];
-        $post_author = $settings[3];
-        $post_date = $settings[4];
+        $rd_is_page = intval($settings[2]);
+        $post_author = intval($settings[3]);
+        $post_date = intval($settings[4]);
 
         $rd_unit_width = $settings[7];
-        $override["tpl"] = $settings[5];
-        $override["read_only"] = $settings[6];
+        $override["tpl"] = intval($settings[5]);
+        $override["read_only"] = intval($settings[6]);
         $override["style"] = $this->g->g->thumbs[$settings[8]]->folder;
         $override["style_ie6"] = $this->g->g->thumbs[$settings[9]]->folder;
         $rd_unit_style = $this->g->is_ie6 ? $override["style_ie6"] : $override["style"];
@@ -961,13 +961,13 @@ class gdsrFront {
 
     function render_article_actual($settings) {
         $rd_post_id = intval($settings[1]);
-        $rd_is_page = $settings[2];
-        $post_author = $settings[3];
-        $post_date = $settings[4];
+        $rd_is_page = intval($settings[2]);
+        $post_author = intval($settings[3]);
+        $post_date = intval($settings[4]);
 
-        $override["tpl"] = $settings[5];
-        $override["read_only"] = $settings[6];
-        $override["size"] = $settings[7];
+        $override["tpl"] = intval($settings[5]);
+        $override["read_only"] = intval($settings[6]);
+        $override["size"] = intval($settings[7]);
         $override["style"] = $this->g->g->stars[$settings[8]]->folder;
         $override["style_ie6"] = $this->g->g->stars[$settings[9]]->folder;
 
@@ -1108,20 +1108,20 @@ class gdsrFront {
         if ($this->g->is_bot && $this->g->o["bot_message"] != "normal") return GDSRRender::render_locked_response($this->g->o["bot_message"]);
 
         $rd_post_id = intval($settings[1]);
-        $rd_is_page = $settings[2];
-        $post_author = $settings[3];
-        $post_date = $settings[4];
+        $rd_is_page = intval($settings[2]);
+        $post_author = intval($settings[3]);
+        $post_date = intval($settings[4]);
 
         $override["id"] = intval($settings[11]);
-        $override["tpl"] = $settings[5];
-        $override["read_only"] = $settings[6];
-        $override["size"] = $settings[7];
+        $override["tpl"] = intval($settings[5]);
+        $override["read_only"] = intval($settings[6]);
+        $override["size"] = intval($settings[7]);
         $override["style"] = $this->g->g->stars[$settings[8]]->folder;
         $override["style_ie6"] = $this->g->g->stars[$settings[9]]->folder;
 
         $rd_user_id = intval($settings[10]);
 
-        $override["average_size"] = $settings[12];
+        $override["average_size"] = intval($settings[12]);
         $override["average_stars"] = $this->g->g->stars[$settings[13]]->folder;
         $override["average_stars_ie6"] = $this->g->g->stars[$settings[14]]->folder;
 

@@ -33,10 +33,10 @@ function get_class_head($head, $element) {
 if (!isset($inclusion)) {
     $base_url_local = "../";
     $base_url_extra = "../../../gd-star-rating/";
-    $t = isset($_GET["t"]) ? urldecode($_GET["t"]) : 0;
-    $opacity = isset($_GET["o"]) ? urldecode($_GET["o"]) : "off";
-    $q = urldecode($_GET["s"]);
-    @ob_start ("ob_gzhandler");
+    $t = isset($_GET["t"]) && !empty($_GET["t"]) && is_string($_GET["t"]) ? urldecode($_GET["t"]) : 0;
+    $q = isset($_GET["s"]) && !empty($_GET["t"]) && is_string($_GET["s"]) ? urldecode($_GET["s"]) : "";
+    $opacity = isset($_GET["o"]) && !empty($_GET["o"]) && is_string($_GET["o"]) ? urldecode($_GET["o"]) : "off";
+    @ob_start("ob_gzhandler");
     header("Content-Type: text/css");
 
     if ($t > 0) {

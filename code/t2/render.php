@@ -3,8 +3,6 @@
 class GDSRRenderT2 {
     // get template
     function get_template($template_id, $section) {
-        include(STARRATING_PATH.'code/t2/templates.php');
-
         if (intval($template_id) == 0) {
             $t = gdTemplateDB::get_templates($section, true, true);
             $template_id = $t->template_id;
@@ -313,7 +311,7 @@ class GDSRRenderT2 {
                     if (!(strpos($template, "%THUMB%") === false)) $row->rating_thumb = GDSRRender::render_static_thumb($widget['rating_thumb'], $widget['rating_thumb_size'], $row->rating);
                 } else {
                     if (!(strpos($template, "%STARS%") === false)) $row->rating_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $stars, $row->rating);
-                    if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = GDSRRender::render_static_stars($widget['rating_stars'], $stars, $stars, $row->bayesian);
+                    if (!(strpos($template, "%BAYES_STARS%") === false) && $row->bayesian > -1) $row->bayesian_stars = GDSRRender::render_static_stars($widget['rating_stars'], $widget['rating_size'], $stars, $row->bayesian);
                 }
                 if (!(strpos($template, "%REVIEW_STARS%") === false) && $row->review > -1) $row->review_stars = GDSRRender::render_static_stars($widget['review_stars'], $widget['review_size'], $review_stars, $row->review);
 

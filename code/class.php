@@ -109,7 +109,6 @@ class GDStarRating {
         $this->stars_sizes = $gdd->stars_sizes;
         $this->thumb_sizes = $gdd->thumb_sizes;
         $this->tables_list = $gdd->tables_list;
-        $this->function_restrict = $gdd->function_restrict;
         $this->default_spider_bots = $gdd->default_spider_bots;
         $this->default_wpr8 = $gdd->default_wpr8;
         $this->default_user_ratings_filter = $gdd->default_user_ratings_filter;
@@ -2020,15 +2019,29 @@ class GDStarRating {
         }
     }
 
+    function check_ajax_votes_string($vote) {
+        $vote = strtolower($vote);
+        $restrict = array("+union+", "+select+", "+limit+", "+order+", " union ", " select ", " limit ", " order ");
+        foreach ($restrict as $key) {
+            if (strpos($vote, $key) !== false) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     function cached_posts($votes) {
         global $userdata;
         $user_id = is_object($userdata) ? $userdata->ID : 0;
 
         $rendered = $alls = array();
         foreach ($votes as $vote) {
-            $settings = explode(".", $vote);
-            $alls[$vote] = $settings;
-            $this->c[$settings[1]] = 0;
+            $valid = $this->check_ajax_votes_string($vote);
+            if ($valid) {
+                $settings = explode(".", $vote);
+                $alls[$vote] = $settings;
+                $this->c[$settings[1]] = 0;
+            }
         }
 
         $this->f->render_wait_article();
@@ -2060,9 +2073,12 @@ class GDStarRating {
         $rendered = $alls = $postids = array();
 
         foreach ($votes as $vote) {
-            $settings = explode(".", $vote);
-            $alls[$vote] = $settings;
-            if (!in_array($settings[1], $postids)) $postids[] = $settings[1];
+            $valid = $this->check_ajax_votes_string($vote);
+            if ($valid) {
+                $settings = explode(".", $vote);
+                $alls[$vote] = $settings;
+                if (!in_array($settings[1], $postids)) $postids[] = $settings[1];
+            }
         }
 
         $this->f->render_wait_comment();
