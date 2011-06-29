@@ -333,7 +333,7 @@ class GDSRX {
             if ($widget["publish_days"] > 0)
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
-        $select = "p.post_content, p.post_excerpt, '' as excerpt, ".$select;
+        $select = "p.post_content, p.post_excerpt, '' as content, '' as excerpt, ".$select;
 
         $col = $widget["column"];
         if ($col == "title") $col = $col_title;
@@ -465,7 +465,7 @@ class GDSRX {
             if ($widget["publish_days"] > 0)
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
-        $select = "p.post_content, p.post_excerpt, '' as excerpt, ".$select;
+        $select = "p.post_content, p.post_excerpt, '' as content, '' as excerpt, ".$select;
 
         $col = $widget["column"];
         if ($col == "title") $col = $col_title;
@@ -599,7 +599,7 @@ class GDSRX {
             if ($widget["publish_days"] > 0)
                 $where[] = "TO_DAYS(CURDATE()) - ".$widget["publish_days"]." <= TO_DAYS(p.post_date)";
         }
-        $select = "p.post_content, p.post_excerpt, '' as excerpt, ".$select;
+        $select = "p.post_content, p.post_excerpt, '' as content, '' as excerpt, ".$select;
 
         $col = $widget["column"];
         if ($col == "title") $col = $col_title;

@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.9.9
+Version: 1.9.10
 Donate link: http://www.dev4press.com/plugins/gd-star-rating/
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.8
@@ -180,9 +180,15 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Upgrade Notice ==
 = 1.9.9 =
-Additional cleanup of AJAX received data before processing. Nonce AJAX protection is now always active and used. Fixed bayesian stars invalid rendering in the rating widget. Fixed rare SQL injection exploit through cached AJAX requests.
+Minor changes and improvements to the templates system. Fixed missing default parameters for rating shortcode. Fixed JSONP callback function printed without checking for validity (thanks to Julio from www.boiteaweb.fr). Fixed very rare memory leak caused by loading of templates definitions.
 
 == Changelog ==
+= 1.9.10 =
+* Minor changes and improvements to the templates system
+* Fixed missing default parameters for rating shortcode
+* Fixed JSONP callback function printed without checking for validity (thanks to Julio from www.boiteaweb.fr)
+* Fixed very rare memory leak caused by loading of templates definitions
+
 = 1.9.9 =
 * Additional cleanup of AJAX received data before processing
 * Nonce AJAX protection is now always active and used

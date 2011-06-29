@@ -2,13 +2,13 @@
 
 class GDSRDefaults {
     var $default_options = array(
-        "version" => "1.9.9",
+        "version" => "1.9.10",
         "revision" => 0,
         "code_name" => "Prelude",
-        "date" => "2011.06.10.",
+        "date" => "2011.06.29.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
-        "build" => 1125,
+        "build" => 1130,
         "admin_views" => 0,
         "bot_message" => "normal",
         "google_rich_snippets_format" => "microformat",
@@ -444,6 +444,7 @@ class GDSRDefaults {
         "show" => "total",
         "hide_empty" => 1,
         "hide_noreview" => 0,
+        "tpl_title_length" => 0,
         "bayesian_calculation" => "0",
         "publish_date" => "lastd",
         "publish_days" => 0,

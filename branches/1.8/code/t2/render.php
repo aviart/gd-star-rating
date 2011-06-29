@@ -75,6 +75,12 @@ class GDSRRenderT2 {
         }
     }
 
+    function prepare_content($r) {
+        $content = apply_filters('the_content', $r->post_content);
+        $content = str_replace(']]>', ']]>', $content);
+        return $content;
+    }
+
     function prepare_excerpt($length, $r) {
         $text = trim($r->post_excerpt);
         if ($text == "") {
@@ -195,12 +201,17 @@ class GDSRRenderT2 {
             $all_rows = array();
             foreach ($new_rows as $row) {
                 $row->rating_stars = $row->bayesian_stars = $row->rating_thumb = $row->review_stars = "";
-                $row->excerpt = GDSRRenderT2::prepare_excerpt($widget["excerpt_words"], $row);
-                $row->excerpt = apply_filters('gdsr_widget_post_excerpt', $row->excerpt);
-                if (strlen($row->title) > $widget["tpl_title_length"] - 3 && $widget["tpl_title_length"] > 0)
-                    $row->title = substr($row->title, 0, $widget["tpl_title_length"] - 3)." ...";
 
-                $row->title = apply_filters('gdsr_widget_post_title', $row->title);
+                if (strlen($row->title) > $widget["tpl_title_length"] - 3 && $widget["tpl_title_length"] > 0) {
+                    $row->title = substr($row->title, 0, $widget["tpl_title_length"] - 3)." ...";
+                }
+                $row->content = GDSRRenderT2::prepare_content($row);
+                $row->excerpt = GDSRRenderT2::prepare_excerpt($widget["excerpt_words"], $row);
+
+                $row->content = apply_filters('gdsr_widget_post_content', $row->content, $row, $widget);
+                $row->excerpt = apply_filters('gdsr_widget_post_excerpt', $row->excerpt, $row, $widget);
+                $row->title =   apply_filters('gdsr_widget_post_title',   $row->title,   $row, $widget);
+
                 if ($a_link || $a_name && intval($row->author) > 0) {
                     $user = get_userdata($row->author);
                     $row->author_name = $user->display_name;
@@ -1256,6 +1267,7 @@ class GDSRRenderT2 {
                 $rt = str_replace('%RATING%', $row->rating, $rt);
                 $rt = str_replace('%MAX_RATING%', $gdsr->o["stars"], $rt);
                 $rt = str_replace('%EXCERPT%', $row->excerpt, $rt);
+                $rt = str_replace('%CONTENT%', $row->content, $rt);
                 $rt = str_replace('%VOTES%', $row->voters, $rt);
                 $rt = str_replace('%REVIEW%', $row->review, $rt);
                 $rt = str_replace('%MAX_REVIEW%', $gdsr->o["review_stars"], $rt);
