@@ -61,7 +61,13 @@ if ($vote_type == "cache") {
 
 if (isset($_GET["callback"])) {
     $callback = $_GET["callback"];
-    echo $callback.'('.$result.');';
-} else echo $result;
+    if (substr($callback, 0, 5) == "jsonp" && is_numeric(substr($callback, 5))) {
+        echo $callback.'('.$result.');';
+    } else {
+        echo $result;
+    }
+} else {
+    echo $result;
+}
 
 ?>
