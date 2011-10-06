@@ -1,10 +1,10 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.9.10
+Version: 1.9.11
 Donate link: http://www.dev4press.com/plugins/gd-star-rating/
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.8
-Tested up to: 3.2.0
+Tested up to: 3.2
 Stable tag: trunk
 
 Plugin allows you to set up advanced rating and review system for post types and comments in your blog using single, multi and thumbs ratings.
@@ -179,10 +179,14 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Upgrade Notice ==
-= 1.9.9 =
-Minor changes and improvements to the templates system. Fixed missing default parameters for rating shortcode. Fixed JSONP callback function printed without checking for validity (thanks to Julio from www.boiteaweb.fr). Fixed very rare memory leak caused by loading of templates definitions.
+= 1.9.11 =
+Minor changes to filters attached to posts. Fixed export script SQL injection exploit.
 
 == Changelog ==
+= 1.9.11 =
+* Minor changes to filters attached to posts
+* Fixed export script SQL injection exploit (thanks to Miroslav Stampar for reporting, http://about.me/stamparm)
+
 = 1.9.10 =
 * Minor changes and improvements to the templates system
 * Fixed missing default parameters for rating shortcode
