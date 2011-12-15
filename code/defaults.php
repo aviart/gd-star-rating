@@ -5,7 +5,7 @@ class GDSRDefaults {
         "version" => "1.9.12",
         "revision" => 0,
         "code_name" => "Prelude",
-        "date" => "2011.12.16.",
+        "date" => "2011.12.15.",
         "status" => "Stable",
         "product_id" => "gd-star-rating",
         "build" => 1141,

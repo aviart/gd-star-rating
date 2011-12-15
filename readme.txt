@@ -171,11 +171,13 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Upgrade Notice ==
 = 1.9.12 =
-Removed some obsolte website links from info files. Fixed validity data check could generate warnings in the gdsr.css.php.
+Plugin is tested with wordpress 3.3, no problems were found. Removed some obsolte website links from info files. Several minor changes and cleanup of the public functions. Fixed validity data check could generate warnings in the gdsr.css.php.
 
 == Changelog ==
 = 1.9.12 =
+* Plugin is tested with wordpress 3.3, no problems were found
 * Removed some obsolte website links from info files
+* Several minor changes and cleanup of the public functions
 * Fixed validity data check could generate warnings in the gdsr.css.php
 
 = 1.9.11 =
