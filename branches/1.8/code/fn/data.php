@@ -10,7 +10,6 @@ function gdsr_get_multi_sets() {
 /**
  * Returns calculated data for average blog rating including bayesian estimate mean.
  *
- * @global class $gdsr
  * @param string $select articles to select postpage|post|page
  * @param string $show votes to use: total|users|visitors
  * @return object with average blog rating values
@@ -23,8 +22,6 @@ function wp_gdsr_blog_rating($select = "postpage", $show = "total") {
 /**
  * Returns object with all needed multi rating properties for post or page.
  *
- * @global object $post post data
- * @global GDStarRating $gdsr main rating class instance
  * @param int $multi_set_id id of the multi rating set
  * @param int $post_id post to get rating for, leave 0 to get post from loop
  * @return object rating post properties
@@ -44,8 +41,6 @@ function wp_gdsr_rating_multi($multi_set_id = 0, $post_id = 0) {
 /**
  * Returns object with all needed rating properties for post or page.
  *
- * @global object $post post data
- * @global GDStarRating $gdsr main rating class instance
  * @param int $post_id post to get rating for, leave 0 to get post from loop
  * @return object rating post properties
  */
@@ -63,8 +58,6 @@ function wp_gdsr_rating_article($post_id = 0) {
 /**
  * Returns object with all needed rating properties for comment.
  *
- * @global object $comment comment data
- * @global GDStarRating $gdsr main rating class instance
  * @param int $post_id post to get rating for, leave 0 to get post from loop
  * @return object rating post properties
  */
