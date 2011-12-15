@@ -61,6 +61,8 @@ if (!isset($inclusion)) {
 }
 
 $raw = explode("#", $q);
+if (!is_array($raw) || count($raw) < 3) exit;
+
 $raw_blocks = split_by_length($raw[0], 3);
 $sizes = split_by_length($raw[1], 2);
 $thumb_sizes = split_by_length($raw[2], 2);
