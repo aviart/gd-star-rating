@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.9.12
+Version: 1.9.13
 Donate link: http://www.dev4press.com/plugins/gd-star-rating/
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.8
@@ -170,10 +170,13 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Upgrade Notice ==
-= 1.9.12 =
-Plugin is tested with wordpress 3.3, no problems were found. Removed some obsolete website links from info files. Several minor changes and cleanup of the public functions. Fixed validity data check could generate warnings in the gdsr.css.php.
+= 1.9.13 =
+Changes to some of the rendering functions.
 
 == Changelog ==
+= 1.9.13 =
+* Changes to some of the rendering functions
+
 = 1.9.12 =
 * Plugin is tested with wordpress 3.3, no problems were found
 * Removed some obsolete website links from info files

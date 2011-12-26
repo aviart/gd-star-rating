@@ -507,11 +507,21 @@ class GDStarRating {
      */
     function get_multi_average_rendered($post_id, $settings = array()) {
         $sum = $votes = $rating = 0;
-        if ($settings["id"] == "") $multi_id = $this->o["mur_review_set"];
-        else $multi_id = $settings["id"];
+
+        if ($settings["id"] == "") {
+            $multi_id = $this->o["mur_review_set"];
+        } else {
+            $multi_id = $settings["id"];
+        }
+
+        $style = isset($settings["style"]) && $settings["style"] != "" ? $settings["style"] : $this->o["mur_style"];
+        $style_ie6 = isset($settings["style_ie6"]) && $settings["style_ie6"] != "" ? $settings["style_ie6"] : $this->o["mur_style_ie6"];
+        $size = isset($settings["size"]) && $settings["size"] != 0 ? $settings["size"] : $this->o["mur_size"];
+
         if ($multi_id > 0 && $post_id > 0) {
             $set = gd_get_multi_set($multi_id);
             $data = GDSRDBMulti::get_averages($post_id, $multi_id);
+
             if ($set != null && is_object($data)) {
                 if ($settings["render"] == "review") {
                     $review = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $data->average_review);
@@ -530,13 +540,16 @@ class GDStarRating {
                             $rating = number_format($votes == 0 ? 0 : $sum / $votes, 1);
                             break;
                     }
-                    $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $set->stars, $rating);
+
+                    $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $style_ie6 : $style), $size, $set->stars, $rating);
                     return $rating;
                 }
             }
         }
+
         $max = is_null($set) ? 10 : $set->stars;
-        $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $this->o["mur_style_ie6"] : $this->o["mur_style"]), $this->o['mur_size'], $max, 0);
+        $rating = GDSRRender::render_static_stars(($this->is_ie6 ? $style_ie6 : $style), $size, $max, 0);
+
         return $rating;
     }
     // various rendering

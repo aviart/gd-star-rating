@@ -1,9 +1,16 @@
 <?php
 
+/**
+ * Get list of all multi sets in the associated array.
+ *
+ * @return array list of multi sets 
+ */
 function gdsr_get_multi_sets() {
     $sets = array();
     $wpml = GDSRDBMulti::get_multis_tinymce();
-    foreach ($wpml as $set) $sets[$set->folder] = $set->name;
+    foreach ($wpml as $set) {
+        $sets[$set->folder] = $set->name;
+    }
     return $sets;
 }
 
