@@ -138,15 +138,13 @@ class GDStarRating {
 
         if (!GDSR_WP_ADMIN) {
             if (!STARRATING_AJAX) {
-                $google_rspf = isset($this->o["google_rich_snippets_format"]) ? $this->o["google_rich_snippets_format"] : "microformat";
+                //$google_rspf = isset($this->o["google_rich_snippets_format"]) ? $this->o["google_rich_snippets_format"] : "microformat";
                 $this->q = new gdsrQuery();
-                $this->rSnippets = new gdGoogleRichSnippetsGDSR($google_rspf);
+                $this->rSnippets = new gdGoogleRichSnippetsGDSR("microformat");
             } else {
                 $this->v = new gdsrVotes($this);
             }
             $this->f = new gdsrFront($this);
-        } else {
-            $this->m = new gdsrMenus($this);
         }
 
         $this->s = new gdsrShared($this);
@@ -156,8 +154,10 @@ class GDStarRating {
         }
 
         if ($this->o["ajax_jsonp"] == 1) $this->plugin_ajax.= "?callback=?";
+
         $this->is_cached = $this->o["cache_active"];
         $this->use_nonce = $this->o["use_nonce"] == 1;
+
         define("STARRATING_VERSION", $this->o["version"].'_'.$this->o["build"]);
         define("STARRATING_DEBUG_ACTIVE", $this->o["debug_active"]);
         define("STARRATING_STARS_GENERATOR", $this->o["gfx_generator_auto"] == 0 ? "DIV" : "GFX");
@@ -682,6 +682,8 @@ class GDStarRating {
 
         if ($this->wp_version < 30) $this->meta_boxes_pre30();
         if ($this->wp_version > 29) $this->meta_boxes_30();
+
+        $this->m = new gdsrMenus($this);
 
         add_menu_page('GD Star Rating', 'GD Star Rating', $this->security_level_front, $this->plugin_base, array(&$this->m, "star_menu_front"), plugins_url('gd-star-rating/gfx/menu.png'));
         add_submenu_page($this->plugin_base, 'GD Star Rating: '.__("Front Page", "gd-star-rating"), __("Front Page", "gd-star-rating"), $this->security_level_front, $this->plugin_base, array(&$this->m, "star_menu_front"));
@@ -1370,7 +1372,7 @@ class GDStarRating {
      * Initialization of plugin panels
      */
     function init_specific_pages() {
-        if ($this->admin_plugin_page == "settings") {
+        if ($this->admin_plugin_page == "settings" && isset($_POST['gdsr_action']) && $_POST['gdsr_action'] == 'save') {
             $gdsr_options = $this->o;
             include ($this->plugin_path."code/adm/save_settings.php");
             $this->o = $gdsr_options;
