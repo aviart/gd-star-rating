@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: gdragon
-Version: 1.9.13
+Version: 1.9.14
 Donate link: http://www.dev4press.com/plugins/gd-star-rating/
 Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
 Requires at least: 2.8
@@ -132,7 +132,7 @@ This is not a bug, but a well-known excerpt problem More details on that and the
 Yes. Plugin supports all cache plugins and can load ratings using ajax to keep them current and to avoid ratings to be cached. To enable this feature, you need to activate it on the plugins Settings panel, tab Features, and option Cache Support. You can use this option even if you don't use cache plugins. Instead of showing ratings with the page, plugin will render loading message that will be replaced with rating block once the page is fully loaded.
 
 = Which cache plugin is recommended? =
-I recommend using W3 Total Cache plugin: http://wordpress.org/extend/plugins/w3-total-cache/. It's already set to work with GD Star Rating.
+I recommend using W3 Total Cache plugin: http://WordPress.org/extend/plugins/w3-total-cache/. It's already set to work with GD Star Rating.
 
 = After upgrade plugin is not rendering stars, and only a loading message appears. =
 This is caused by the cache plugins support enabled that causes rating block to be loaded after the page is ready. To disable this feature, you need to deactivate it on the plugins Settings panel, tab Features, option Cache Support.
@@ -170,15 +170,19 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Upgrade Notice ==
-= 1.9.13 =
-Changes to some of the rendering functions.
+= 1.9.14 =
+Added filters for rating values before saving to database. Fixed votes keyword used for Google rich snippets integration.
 
 == Changelog ==
+= 1.9.14 =
+Added filters for rating values before saving to database
+Fixed votes keyword used for Google rich snippets integration
+
 = 1.9.13 =
 * Changes to some of the rendering functions
 
 = 1.9.12 =
-* Plugin is tested with wordpress 3.3, no problems were found
+* Plugin is tested with WordPress 3.3, no problems were found
 * Removed some obsolete website links from info files
 * Several minor changes and cleanup of the public functions
 * Fixed validity data check could generate warnings in the gdsr.css.php
