@@ -1823,7 +1823,9 @@ class GDStarRating {
 
     function multi_rating_header($external_css = true) {
         $this->include_rating_css($external_css);
-        echo('<script type="text/javascript" src="'.$this->plugin_url.'js/gdsr.js"></script>');
+
+        $js_name = STARRATING_JAVASCRIPT_DEBUG ? 'js/gdsr.debug.js' : 'js/gdsr.js';
+        echo('<script type="text/javascript" src="'.$this->plugin_url.$js_name.'"></script>');
     }
 
     /**
