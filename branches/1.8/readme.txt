@@ -171,13 +171,12 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Upgrade Notice ==
 = 1.9.16 =
-Additional arguments for some of the rendering functions. Disabled caching for JSON responses. Several new actions and filters for ajax and rendering. Static directive added to functions in some classes. Conditional load of debug version of gdsr.js. Fixed several potential undefined warnings. Fixed replaced deprecated wp_specialchars function. Fixed replaced deprecated fetch_rss function.
+Additional arguments for some of the rendering functions. Several new actions and filters for ajax and rendering. Static directive added to functions in some classes. Conditional load of debug version of gdsr.js. Fixed several potential undefined warnings. Fixed replaced deprecated wp_specialchars function. Fixed replaced deprecated fetch_rss function.
 
 == Changelog ==
 = 1.9.16 =
 * Additional arguments for some of the rendering functions
-* Disabled caching for JSON responses ( thanks to Galen Wright-Watson: http://sublimitywebdesign.com/ )
-* Several new actions and filters for ajax and rendering ( thanks to Galen Wright-Watson )
+* Several new actions and filters for ajax and rendering ( thanks to Galen Wright-Watson: http://sublimitywebdesign.com/ )
 * Static directive added to functions in some classes ( thanks to Galen Wright-Watson )
 * Conditional load of debug version of gdsr.js ( thanks to Galen Wright-Watson )
 * Fixed several potential undefined warnings ( thanks to Galen Wright-Watson )
