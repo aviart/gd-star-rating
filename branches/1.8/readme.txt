@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Version: 1.9.17
 Donate link: http://www.dev4press.com/plugins/gd-star-rating/
-Tags: vote, ratings, cache, integration, post, page, widget, thumb, rating, star, gdragon, ajax, templates, trends, comments, review, multi, wpmu
+Tags: vote, ratings, post, page, widget, thumb, rating, star, gdragon, ajax, cache, integration, templates, trends, comments, review, multi, wpmu, network
 Requires at least: 2.8
 Tested up to: 3.4
 Stable tag: trunk
