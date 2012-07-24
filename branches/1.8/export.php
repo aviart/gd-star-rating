@@ -5,6 +5,10 @@ require_once("./config.php");
 $wpload = get_gdsr_wpload_path();
 require($wpload);
 
+if (!is_user_logged_in() && !is_admin()) {
+    wp_die(__("Only administrators can use export features.", "gd-star-rating"));
+}
+
 global $wpdb;
 
 if (isset($_GET["ex"])) {
