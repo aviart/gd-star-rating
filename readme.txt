@@ -1,6 +1,6 @@
 === GD Star Rating ===
 Contributors: GDragoN
-Version: 1.9.20
+Version: 1.9.21
 Donate link: http://www.dev4press.com/plugins/gd-star-rating/
 Tags: vote, ratings, post, page, widget, thumb, rating, star, gdragon, ajax, cache, integration, templates, trends, comments, review, multi, wpmu, network
 Requires at least: 2.8
