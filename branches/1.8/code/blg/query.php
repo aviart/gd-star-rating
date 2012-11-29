@@ -3,6 +3,8 @@
 class gdsrQuery {
     var $sort = '';
     var $type = '';
+    var $order = '';
+    var $set_id = 0;
 
     var $keys_sort = array(
         "rating",
@@ -33,7 +35,8 @@ class gdsrQuery {
     function pre_get_posts($wpq) {
         $this->sort = $wpq->get("gdsr_sort");
         $this->order = $wpq->get("gdsr_order");
-        $this->type = intval($wpq->get("gdsr_multi")) > 0 ? "multis" : "standard";
+        $this->set_id = intval($wpq->get("gdsr_multi"));
+        $this->type = $this->set_id > 0 ? "multis" : "standard";
  
         if (in_array(strtolower($this->sort), $this->keys_sort)) {
             add_filter('posts_fields', array(&$this, $this->type."_fields"));
@@ -64,6 +67,7 @@ class gdsrQuery {
         global $table_prefix;
 
         $x = sprintf(" LEFT JOIN %sgdsr_data_article gdsra ON gdsra.post_id = %sposts.ID", $table_prefix, $table_prefix);
+
         $x = apply_filters("gdsr_wpquery_standard_join", $x);
 
         return $c.$x;
@@ -141,8 +145,7 @@ class gdsrQuery {
     }
 
     function multis_where($c) {
-        $set = intval(trim(addslashes(get_query_var('gdsr_multi'))));
-        $x = " AND gdsrm.multi_id = ".$set;
+        $x = " AND (gdsrm.multi_id = ".$this->set_id.' OR gdsrm.multi_id is NULL)';
         $filter_min_votes = intval(trim(addslashes(get_query_var('gdsr_fsvmin'))));
         if ($filter_min_votes > 0) $x.= " AND (gdsrm.total_votes_users + gdsrm.total_votes_visitors) > ".$filter_min_votes;
         $x = apply_filters("gdsr_wpquery_multis_where", $x);
@@ -152,7 +155,7 @@ class gdsrQuery {
     function multis_orderby($default) {
         global $table_prefix;
 
-        $order = in_array($this->order, $this->keys_order) ? $order : "desc";
+        $order = in_array($this->order, $this->keys_order) ? $this->order : "desc";
 
         $c = '';
         switch ($this->sort) {
