@@ -14,7 +14,7 @@ class GDSRDefaults {
         "google_rich_snippets_format" => "microformat",
         "google_rich_snippets_active" => 1,
         "google_rich_snippets_datasource" => "standard_rating",
-        "google_rich_snippets_hidden" => 1,
+        "google_rich_snippets_hidden" => 0,
         "google_rich_snippets_location" => "bottom",
         "no_votes_percentage" => 100,
         "update_report_usage" => 1,

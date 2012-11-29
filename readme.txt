@@ -171,11 +171,12 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Upgrade Notice ==
 = 1.9.21 =
-Improvements to the query sorting with multi ratings. Few minor templates and rendering changes.
+Improvements to the query sorting with multi ratings. Removed option for hidden Google Rich Snippets. Few minor templates and rendering changes.
 
 == Changelog ==
 = 1.9.21 =
 * Improvements to the query sorting with multi ratings
+* Removed option for hidden Google Rich Snippets
 * Few minor templates and rendering changes
 
 = 1.9.19 - 1.9.20 =

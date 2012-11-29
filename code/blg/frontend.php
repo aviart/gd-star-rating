@@ -108,7 +108,7 @@ class gdsrFront {
     }
 
     function render_google_rich_snippet($post, $settings = array()) {
-        $hidden = isset($settings["hidden"]) ? $settings["hidden"] : $this->g->o["google_rich_snippets_hidden"] == 1;
+        $hidden = false;
 
         $datasource = isset($settings["source"]) ? $settings["source"] : $this->g->o["google_rich_snippets_datasource"];
         if (isset($settings["format"]) && is_object($this->g->rSnippets)) $this->g->rSnippets->snippet_type = $settings["format"];
