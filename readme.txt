@@ -170,10 +170,14 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 7. Example multi rating block
 
 == Upgrade Notice ==
-= 1.9.20 =
-Fixed potential security issue with plugin export features.
+= 1.9.21 =
+Improvements to the query sorting with multi ratings. Few minor templates and rendering changes.
 
 == Changelog ==
+= 1.9.21 =
+* Improvements to the query sorting with multi ratings
+* Few minor templates and rendering changes
+
 = 1.9.19 - 1.9.20 =
 * Fixed potential security issue with plugin export features
 
