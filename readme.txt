@@ -171,7 +171,7 @@ I can't guarantee that plugin will work on every WordPress setup. In 99.9% of th
 
 == Upgrade Notice ==
 = 1.9.22 =
-* Fixed potential SQL injection vulnerability ( thanks to Jacek Sowinski )
+* Fixed potential SQL injection vulnerability ( thanks to Jacek Sowinski: https://twitter.com/theDzaku )
 
 = 1.9.21 =
 Improvements to the query sorting with multi ratings. Removed option for hidden Google Rich Snippets. Few minor templates and rendering changes.
