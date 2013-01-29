@@ -1,0 +1,4068 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Serg\n"
+"Language-Team: k|torz <vlag@free.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Language: fr_FR\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: charts/chart_pie_votes_summary.php:35
+msgid "Chart with votes distribution"
+msgstr "Graf s rozdelenie hlasov"
+
+#: code/db/main.php:1215
+msgid "Show all dates"
+msgstr "Zobraziť všetky dátumy"
+
+#: code/db/main.php:1243
+msgid "All users and visitors"
+msgstr "Všetkých používateľov a návštevníkov"
+
+#: code/db/main.php:1244 tinymce3/panels/blograting.php:22
+#: tinymce3/panels/commentsaggr.php:17 tinymce3/panels/filter.php:17
+#: widgets/comments/part_basic.php:17 widgets/comments/part_filter.php:17
+#: widgets/comments_28/part_basic.php:17
+#: widgets/comments_28/part_filter.php:17 widgets/rating/part_basic.php:17
+#: widgets/rating/part_filter.php:28 widgets/rating_28/part_basic.php:17
+#: widgets/rating_28/part_filter.php:28 widgets/top/part_basic.php:17
+#: widgets/top/part_filter.php:28 widgets/top_28/part_basic.php:17
+#: widgets/top_28/part_filter.php:28
+msgid "Visitors Only"
+msgstr "Len ich návštevníci"
+
+#: code/db/main.php:1245
+msgid "All Users"
+msgstr "Všetkých používateľov"
+
+#: code/db/main.php:1259
+msgid "All categories"
+msgstr "Všetky kategórie"
+
+#: code/db/operations.php:132 code/db/operations.php:135
+#: code/db/operations.php:138 code/db/operations.php:141
+#: code/db/operations.php:145 code/db/operations.php:168
+#: code/db/operations.php:171 code/db/operations.php:174
+#: code/db/operations.php:177 code/db/operations.php:180
+#: code/db/operations.php:183 code/db/operations.php:275
+#: code/db/operations.php:278 code/db/operations.php:281
+#: code/db/operations.php:284 code/db/operations.php:288
+#: code/db/operations.php:311 code/db/operations.php:314
+#: code/db/operations.php:317 code/db/operations.php:320
+#: code/db/operations.php:323 code/db/operations.php:327
+msgid "articles"
+msgstr "články"
+
+#: code/db/operations.php:132 code/db/operations.php:150
+#: code/db/operations.php:168 code/db/operations.php:188
+msgid "inherited"
+msgstr "zdedené"
+
+#: code/db/operations.php:135 code/db/operations.php:153
+#: code/db/operations.php:278 code/db/operations.php:296
+msgid "all"
+msgstr "všetky"
+
+#: code/db/operations.php:138 code/db/operations.php:156
+#: code/db/operations.php:177 code/db/operations.php:197
+#: code/db/operations.php:264 code/db/operations.php:265
+#: code/db/operations.php:281 code/db/operations.php:299
+#: code/db/operations.php:320 code/db/operations.php:341
+#: code/db/operations.php:418 code/db/operations.php:419
+#: integrate/dash_latest.php:41 options/multis/results_post.php:168
+#: options/multis/results_post.php:169
+msgid "visitors"
+msgstr "návštevníkov"
+
+#: code/db/operations.php:141 code/db/operations.php:159
+#: code/db/operations.php:180 code/db/operations.php:200
+#: code/db/operations.php:264 code/db/operations.php:265
+#: code/db/operations.php:284 code/db/operations.php:302
+#: code/db/operations.php:323 code/db/operations.php:344
+#: code/db/operations.php:418 code/db/operations.php:419
+#: options/multis/results_post.php:170 options/multis/results_post.php:171
+msgid "users"
+msgstr "užívatelia"
+
+#: code/db/operations.php:145 code/db/operations.php:163
+#: code/db/operations.php:288 code/db/operations.php:306
+msgid "free"
+msgstr "zadarmo"
+
+#: code/db/operations.php:150 code/db/operations.php:153
+#: code/db/operations.php:156 code/db/operations.php:159
+#: code/db/operations.php:163 code/db/operations.php:188
+#: code/db/operations.php:191 code/db/operations.php:194
+#: code/db/operations.php:197 code/db/operations.php:200
+#: code/db/operations.php:203 code/db/operations.php:293
+#: code/db/operations.php:296 code/db/operations.php:299
+#: code/db/operations.php:302 code/db/operations.php:306
+#: code/db/operations.php:332 code/db/operations.php:335
+#: code/db/operations.php:338 code/db/operations.php:341
+#: code/db/operations.php:344 code/db/operations.php:348
+msgid "comments"
+msgstr "Komentáre"
+
+#: code/db/operations.php:171 code/db/operations.php:191
+#: code/db/operations.php:314 code/db/operations.php:335
+msgid "hidden"
+msgstr "skryté"
+
+#: code/db/operations.php:174 code/db/operations.php:194
+#: code/db/operations.php:317 code/db/operations.php:338
+msgid "locked"
+msgstr "zamknuté"
+
+#: code/db/operations.php:183 code/db/operations.php:203
+#: code/db/operations.php:327 code/db/operations.php:348
+msgid "everyone"
+msgstr "všetci"
+
+#: code/db/operations.php:263 options/multis/results_post.php:174
+#: options/multis/results_post.php:175 options/users.php:110
+#: options/users.php:115 options/users.php:120 options/users.php:125
+msgid "rating"
+msgstr "rating"
+
+#: code/db/operations.php:263 code/db/operations.php:417
+msgid "thumbs"
+msgstr "palce"
+
+#: code/db/operations.php:275 code/db/operations.php:293
+#: code/db/operations.php:311 code/db/operations.php:332
+msgid "parent"
+msgstr "rodič"
+
+#: code/db/operations.php:417 options/users.php:109 options/users.php:114
+#: options/users.php:119 options/users.php:124
+msgid "votes"
+msgstr "hlasov"
+
+#: code/t2/render.php:891
+msgid "(no title)"
+msgstr "(bez názvu)"
+
+#: code/t2/templates.php:4
+msgid "Element Word Votes"
+msgstr "Prvok slovo hlasov"
+
+#: code/t2/templates.php:5
+msgid "Singular"
+msgstr "Singulární"
+
+#: code/t2/templates.php:6
+msgid "Plural"
+msgstr "Množné číslo"
+
+#: code/t2/templates.php:9
+msgid "Element For Alternating Table Rows"
+msgstr "Prvok pre striedavý riadky tabuľky"
+
+#: code/t2/templates.php:10
+msgid "Odd"
+msgstr "Nepárne"
+
+#: code/t2/templates.php:11
+msgid "Even"
+msgstr "Dokonca"
+
+#: code/t2/templates.php:14
+msgid "Standard Ratings Text"
+msgstr "Štandardné Ratings Text"
+
+#: code/t2/templates.php:16 code/t2/templates.php:41 code/t2/templates.php:86
+#: code/t2/templates.php:108 code/t2/templates.php:183
+#: code/t2/templates.php:216 code/t2/templates.php:309
+#: code/t2/templates.php:348
+msgid "article rating"
+msgstr "Hodnotenie článku"
+
+#: code/t2/templates.php:17 code/t2/templates.php:42 code/t2/templates.php:87
+#: code/t2/templates.php:109 code/t2/templates.php:184
+#: code/t2/templates.php:217 code/t2/templates.php:230
+#: code/t2/templates.php:300
+msgid "maximum rating value"
+msgstr "maximálne Hodnotenie hodnota"
+
+#: code/t2/templates.php:18 code/t2/templates.php:45 code/t2/templates.php:88
+#: code/t2/templates.php:110 code/t2/templates.php:187
+#: code/t2/templates.php:219 code/t2/templates.php:310
+#: code/t2/templates.php:349
+msgid "total votes for article"
+msgstr "celkový počet hlasov pre článok"
+
+#: code/t2/templates.php:19 code/t2/templates.php:59 code/t2/templates.php:89
+#: code/t2/templates.php:111 code/t2/templates.php:201
+#: code/t2/templates.php:299 code/t2/templates.php:308
+#: code/t2/templates.php:347
+msgid "post/page id"
+msgstr "post/page id"
+
+#: code/t2/templates.php:20 code/t2/templates.php:64 code/t2/templates.php:77
+#: code/t2/templates.php:91 code/t2/templates.php:102
+#: code/t2/templates.php:112 code/t2/templates.php:206
+#: code/t2/templates.php:222 code/t2/templates.php:241
+#: code/t2/templates.php:280 code/t2/templates.php:313
+#: code/t2/templates.php:352
+msgid "singular/plural word votes"
+msgstr "jednotnom/množnom čísle slovo hlasov"
+
+#: code/t2/templates.php:21 code/t2/templates.php:113
+#: code/t2/templates.php:314
+msgid "remaining years"
+msgstr "zostávajúce roky"
+
+#: code/t2/templates.php:22 code/t2/templates.php:114
+#: code/t2/templates.php:315
+msgid "remaining months"
+msgstr "zostávajúce mesiace"
+
+#: code/t2/templates.php:23 code/t2/templates.php:115
+#: code/t2/templates.php:316
+msgid "remaining days"
+msgstr "zostávajúci počet dní"
+
+#: code/t2/templates.php:24 code/t2/templates.php:116
+#: code/t2/templates.php:317
+msgid "remaining hours"
+msgstr "zvyšné hodiny"
+
+#: code/t2/templates.php:25 code/t2/templates.php:117
+#: code/t2/templates.php:318
+msgid "remaining minutes"
+msgstr "zostávajúcich minút"
+
+#: code/t2/templates.php:26 code/t2/templates.php:118
+#: code/t2/templates.php:319
+msgid "remaining seconds"
+msgstr "zostávajúce sekundy"
+
+#: code/t2/templates.php:27 code/t2/templates.php:119
+#: code/t2/templates.php:320
+msgid "end voting date"
+msgstr "koniec hlasovania dátum"
+
+#: code/t2/templates.php:28 code/t2/templates.php:120
+#: code/t2/templates.php:321
+msgid "total remaining days"
+msgstr "celkový zostávajúci počet dní"
+
+#: code/t2/templates.php:29 code/t2/templates.php:121
+#: code/t2/templates.php:322
+msgid "total remaining hours"
+msgstr "celková zvyšné hodiny"
+
+#: code/t2/templates.php:30 code/t2/templates.php:122
+#: code/t2/templates.php:323
+msgid "total remaining minutes"
+msgstr "celkom zostávajúcich minút"
+
+#: code/t2/templates.php:31 code/t2/templates.php:78 code/t2/templates.php:123
+#: code/t2/templates.php:324 code/t2/templates.php:353
+msgid "saved vote value"
+msgstr "hodnota uložených hlasovanie"
+
+#: code/t2/templates.php:32 code/t2/templates.php:79 code/t2/templates.php:92
+#: code/t2/templates.php:103 code/t2/templates.php:124
+#: code/t2/templates.php:153 code/t2/templates.php:165
+#: code/t2/templates.php:177 code/t2/templates.php:223
+#: code/t2/templates.php:255 code/t2/templates.php:262
+#: code/t2/templates.php:271 code/t2/templates.php:281
+#: code/t2/templates.php:288 code/t2/templates.php:295
+#: code/t2/templates.php:303 code/t2/templates.php:325
+#: code/t2/templates.php:354
+msgid "Normal"
+msgstr "Normálne"
+
+#: code/t2/templates.php:33 code/t2/templates.php:125
+#: code/t2/templates.php:326
+msgid "Time Restricted Active"
+msgstr "Čas obmedzený aktívny"
+
+#: code/t2/templates.php:34 code/t2/templates.php:126
+#: code/t2/templates.php:327
+msgid "Time Restricted Closed"
+msgstr "Obmedzený čas zatvorené"
+
+#: code/t2/templates.php:35 code/t2/templates.php:80 code/t2/templates.php:127
+#: code/t2/templates.php:328 code/t2/templates.php:355
+msgid "Vote Saved"
+msgstr "Hlasovanie uložené"
+
+#: code/t2/templates.php:38
+msgid "Standard Ratings Results"
+msgstr "Štandardné Hodnotenie výsledkov"
+
+#: code/t2/templates.php:43 code/t2/templates.php:185
+msgid "article review"
+msgstr "článok Recenzie"
+
+#: code/t2/templates.php:44 code/t2/templates.php:186
+msgid "maximum review value"
+msgstr "Maximálna ďalšiu hodnotu"
+
+#: code/t2/templates.php:46 code/t2/templates.php:188
+msgid "title"
+msgstr "názov"
+
+#: code/t2/templates.php:47 code/t2/templates.php:189
+msgid "clean name"
+msgstr "čisté názov"
+
+#: code/t2/templates.php:48 code/t2/templates.php:190
+msgid "taxonomy"
+msgstr "taxonómie"
+
+#: code/t2/templates.php:49 code/t2/templates.php:191
+msgid "url to post/page"
+msgstr "URL na post/stránku"
+
+#: code/t2/templates.php:50 code/t2/templates.php:85 code/t2/templates.php:159
+#: code/t2/templates.php:171 code/t2/templates.php:192
+#: code/t2/templates.php:234 code/t2/templates.php:252
+#: code/t2/templates.php:253 code/t2/templates.php:254
+msgid "rating stars"
+msgstr "Hodnotenie hviezdy"
+
+#: code/t2/templates.php:51 code/t2/templates.php:193
+msgid "rating thumb"
+msgstr "rating palec"
+
+#: code/t2/templates.php:52 code/t2/templates.php:194
+#: code/t2/templates.php:218
+msgid "bayesian estimate mean rating"
+msgstr "bayesovský odhad mysli rating"
+
+#: code/t2/templates.php:53 code/t2/templates.php:195
+msgid "bayesian estimate mean rating stars"
+msgstr "bayesovský odhad priemerný rating hviezdy"
+
+#: code/t2/templates.php:54 code/t2/templates.php:196
+msgid "article rating trend"
+msgstr "článok rating trend"
+
+#: code/t2/templates.php:55 code/t2/templates.php:197
+msgid "article voting trend"
+msgstr "článok hlasovacích trend"
+
+#: code/t2/templates.php:56 code/t2/templates.php:198
+msgid "article review stars"
+msgstr "článok preskúmanie hviezdy"
+
+#: code/t2/templates.php:57 code/t2/templates.php:199
+#: code/t2/templates.php:220
+msgid "number of posts/pages"
+msgstr "počet pracovných miest/pages"
+
+#: code/t2/templates.php:58 code/t2/templates.php:200
+#: code/t2/templates.php:236
+msgid "results rank id"
+msgstr "Výsledky kategórie id"
+
+#: code/t2/templates.php:60 code/t2/templates.php:202
+msgid "image for the post/page"
+msgstr "obrázok na post/stránku"
+
+#: code/t2/templates.php:61 code/t2/templates.php:203
+msgid "short post/page excerpt"
+msgstr "krátky post/page výpis"
+
+#: code/t2/templates.php:62 code/t2/templates.php:204
+msgid "name of the post/page author"
+msgstr "meno autora post/stránku"
+
+#: code/t2/templates.php:63 code/t2/templates.php:205
+msgid "url to authors archive"
+msgstr "URL autorov Archív"
+
+#: code/t2/templates.php:65 code/t2/templates.php:136
+#: code/t2/templates.php:207 code/t2/templates.php:242
+msgid "class for alternating row class"
+msgstr "triedy pre striedavý riadok triedy"
+
+#: code/t2/templates.php:66 code/t2/templates.php:208
+#: code/t2/templates.php:243
+msgid "auto generated row classes"
+msgstr "auto generované riadok tried"
+
+#: code/t2/templates.php:67 code/t2/templates.php:209
+#: code/t2/templates.php:244
+msgid "Header"
+msgstr "Hlavička"
+
+#: code/t2/templates.php:68 code/t2/templates.php:137
+#: code/t2/templates.php:210 code/t2/templates.php:245
+msgid "Item"
+msgstr "Položka"
+
+#: code/t2/templates.php:69 code/t2/templates.php:211
+#: code/t2/templates.php:246
+msgid "Footer"
+msgstr "Päta"
+
+#: code/t2/templates.php:72
+msgid "Comments Ratings Text"
+msgstr "Komentáre Ratings Text"
+
+#: code/t2/templates.php:74 code/t2/templates.php:97 code/t2/templates.php:229
+#: code/t2/templates.php:260 code/t2/templates.php:276
+msgid "comment rating"
+msgstr "ratingu komentár"
+
+#: code/t2/templates.php:75 code/t2/templates.php:98 code/t2/templates.php:261
+#: code/t2/templates.php:268 code/t2/templates.php:277
+msgid "maximum comment rating value"
+msgstr "hodnota maximálnej komentár rating"
+
+#: code/t2/templates.php:76 code/t2/templates.php:231
+msgid "total votes for comment"
+msgstr "celkový počet hlasov pre komentár"
+
+#: code/t2/templates.php:83
+msgid "Standard RSS Rating Block"
+msgstr "Štandardný blok RSS Rating"
+
+#: code/t2/templates.php:90 code/t2/templates.php:158
+#: code/t2/templates.php:170 code/t2/templates.php:250
+#: code/t2/templates.php:251 code/t2/templates.php:335
+#: code/t2/templates.php:363
+msgid "rating header text"
+msgstr "text hlavičky rating"
+
+#: code/t2/templates.php:95
+msgid "Comments Aggregated Rating"
+msgstr "Komentáre súhrnné hodnotenie"
+
+#: code/t2/templates.php:99
+msgid "total comments"
+msgstr "celkom komentárov"
+
+#: code/t2/templates.php:100 code/t2/templates.php:278
+msgid "total votes for all comment"
+msgstr "celkový počet hlasov pre všetky komentár"
+
+#: code/t2/templates.php:101 code/t2/templates.php:259
+#: code/t2/templates.php:279
+msgid "comment rating stars"
+msgstr "komentár Hodnotenie hviezdy"
+
+#: code/t2/templates.php:106
+msgid "Multi Ratings Text"
+msgstr "Multi Ratings Text"
+
+#: code/t2/templates.php:130
+msgid "Multi Ratings Stars"
+msgstr "Multi ratingy hviezdy"
+
+#: code/t2/templates.php:132
+msgid "single element name"
+msgstr "jediný prvok názov"
+
+#: code/t2/templates.php:133
+msgid "single element id"
+msgstr "jediný prvok id"
+
+#: code/t2/templates.php:134
+msgid "single element stars"
+msgstr "jediný prvok hviezdy"
+
+#: code/t2/templates.php:135
+msgid "single element value"
+msgstr "hodnota jedného prvku"
+
+#: code/t2/templates.php:140
+msgid "Multi Ratings Block"
+msgstr "Multi ratingy blok"
+
+#: code/t2/templates.php:143
+msgid "mulit rating header text"
+msgstr "text hlavičky Mulit rating"
+
+#: code/t2/templates.php:144
+msgid "multi rating text"
+msgstr "multi rating text"
+
+#: code/t2/templates.php:145 code/t2/templates.php:267
+#: code/t2/templates.php:286 code/t2/templates.php:293
+msgid "multi rating stars"
+msgstr "multi Hodnotenie hviezdy"
+
+#: code/t2/templates.php:146 code/t2/templates.php:161
+#: code/t2/templates.php:173 code/t2/templates.php:287
+#: code/t2/templates.php:294 code/t2/templates.php:337
+#: code/t2/templates.php:364
+msgid "css class for whole block"
+msgstr "CSS triedy pre celý blok"
+
+#: code/t2/templates.php:147 code/t2/templates.php:162
+#: code/t2/templates.php:174 code/t2/templates.php:338
+#: code/t2/templates.php:365
+msgid "css class for header"
+msgstr "CSS triedy pre hlavičku"
+
+#: code/t2/templates.php:148 code/t2/templates.php:149
+#: code/t2/templates.php:164 code/t2/templates.php:176
+#: code/t2/templates.php:340 code/t2/templates.php:367
+msgid "css class for rating text"
+msgstr "CSS triedy pre rating text"
+
+#: code/t2/templates.php:150
+msgid "rating button"
+msgstr "tlačidlo Hodnotenie"
+
+#: code/t2/templates.php:151 code/t2/templates.php:269
+#: code/t2/templates.php:301
+msgid "average rating"
+msgstr "priemerné hodnotenie"
+
+#: code/t2/templates.php:152 code/t2/templates.php:270
+#: code/t2/templates.php:302
+msgid "average rating stars"
+msgstr "priemerné hodnotenie hviezdy"
+
+#: code/t2/templates.php:156
+msgid "Standard Ratings Block"
+msgstr "Štandardný blok ratingov"
+
+#: code/t2/templates.php:160 code/t2/templates.php:172
+#: code/t2/templates.php:336 code/t2/templates.php:362
+msgid "rating text"
+msgstr "rating text"
+
+#: code/t2/templates.php:163 code/t2/templates.php:175
+#: code/t2/templates.php:339 code/t2/templates.php:366
+msgid "css class for stars"
+msgstr "CSS triedy pre hviezdy"
+
+#: code/t2/templates.php:168
+msgid "Comments Ratings Block"
+msgstr "Komentáre ratingy blok"
+
+#: code/t2/templates.php:180
+msgid "Widget Star Rating"
+msgstr "Widget Star Rating"
+
+#: code/t2/templates.php:214
+msgid "Widget Blog Rating"
+msgstr "Widget Blog Rating"
+
+#: code/t2/templates.php:221
+msgid "article percentage rating"
+msgstr "článok percentuálne Hodnotenie"
+
+#: code/t2/templates.php:226
+msgid "Widget Comments Rating"
+msgstr "Widget komentáre Rating"
+
+#: code/t2/templates.php:232
+msgid "comment contents"
+msgstr "komentár obsah"
+
+#: code/t2/templates.php:233
+msgid "url to comment"
+msgstr "URL komentár"
+
+#: code/t2/templates.php:235
+msgid "post id"
+msgstr "post id"
+
+#: code/t2/templates.php:237
+msgid "comment id"
+msgstr "komentár id"
+
+#: code/t2/templates.php:238
+msgid "name of the comments author"
+msgstr "meno autora komentárov"
+
+#: code/t2/templates.php:239
+msgid "authors url"
+msgstr "Autori url"
+
+#: code/t2/templates.php:240
+msgid "authors avatar"
+msgstr "Autori avatar"
+
+#: code/t2/templates.php:249
+msgid "Standard Review Rating Block"
+msgstr "Štandardný blok preskúmanie ratingu"
+
+#: code/t2/templates.php:258
+msgid "Comments Review Rating Block"
+msgstr "Komentáre preskúmanie ratingu blok"
+
+#: code/t2/templates.php:265
+msgid "Multi Review Rating Block"
+msgstr "Multi preskúmanie ratingu blok"
+
+#: code/t2/templates.php:274
+msgid "Aggregated Comments Review Rating"
+msgstr "Súhrnné poznámky revízia Hodnotenie"
+
+#: code/t2/templates.php:284
+msgid "Multi Review Editor"
+msgstr "Multi Recenzie Editor"
+
+#: code/t2/templates.php:291
+msgid "Multi Rating Comment Integration"
+msgstr "Multi ratingu komentár integrácie"
+
+#: code/t2/templates.php:298
+msgid "Multi Rating Comment Integration Result"
+msgstr "Multi ratingu komentár integrácie výsledok"
+
+#: code/t2/templates.php:306
+msgid "Thumbs Article Ratings Text"
+msgstr "Palce článku Ratings Text"
+
+#: code/t2/templates.php:311 code/t2/templates.php:350
+msgid "total up votes for article"
+msgstr "celkom up hlasy za článok"
+
+#: code/t2/templates.php:312 code/t2/templates.php:351
+msgid "total down votes for article"
+msgstr "celkom dole hlasov za článok"
+
+#: code/t2/templates.php:331
+msgid "Thumbs Article Rating Block"
+msgstr "Palce článku Rating blok"
+
+#: code/t2/templates.php:333 code/t2/templates.php:360
+msgid "thumb down image style"
+msgstr "palec dole obrázok štýl"
+
+#: code/t2/templates.php:334 code/t2/templates.php:361
+msgid "thumb up image style"
+msgstr "palec hore obrázok štýl"
+
+#: code/t2/templates.php:341 code/t2/templates.php:368
+msgid "Inactive"
+msgstr "Neaktívne"
+
+#: code/t2/templates.php:342 code/t2/templates.php:369
+msgid "Active"
+msgstr "Aktívne"
+
+#: code/t2/templates.php:345
+msgid "Thumbs Comment Ratings Text"
+msgstr "Palce Ratings Text komentára"
+
+#: code/t2/templates.php:358
+msgid "Thumbs Comment Rating Block"
+msgstr "Palce Rating komentovať blok"
+
+#: code/helpers.php:237
+msgid "No moderation"
+msgstr "Žiadne moderovanie"
+
+#: code/helpers.php:238
+msgid "Moderate visitors"
+msgstr "Mierny návštevníkov"
+
+#: code/helpers.php:239
+msgid "Moderate users"
+msgstr "Mierny užívateľov"
+
+#: code/helpers.php:240
+msgid "Moderate all"
+msgstr "Mierny all"
+
+#: code/helpers.php:241 code/helpers.php:256 code/helpers.php:270
+#: code/helpers.php:293
+msgid "Inherit from Category"
+msgstr "Zdediť z kategórie"
+
+#: code/helpers.php:242 code/helpers.php:257 code/helpers.php:271
+#: options/categories.php:209
+msgid "Inherit from Parent"
+msgstr "Od nadradených objektov Zdediť"
+
+#: code/helpers.php:251
+msgid "Everyone can vote"
+msgstr "Každý môže hlasovať"
+
+#: code/helpers.php:252
+msgid "Only visitors"
+msgstr "Iba návštevníci"
+
+#: code/helpers.php:253
+msgid "Only users"
+msgstr "Len používatelia"
+
+#: code/helpers.php:254
+msgid "Locked"
+msgstr "Zamknuté"
+
+#: code/helpers.php:255
+msgid "Locked and hidden"
+msgstr "Zamknuté a skryté"
+
+#: code/helpers.php:267
+msgid "No timer"
+msgstr "Bez časovača"
+
+#: code/helpers.php:268
+msgid "Countdown timer"
+msgstr "Časovač odpočítavania"
+
+#: code/helpers.php:269
+msgid "Date limited"
+msgstr "Dátum obmedzené"
+
+#: code/helpers.php:279 code/helpers.php:381 options/multis/editor.php:67
+#: options/multis/sets.php:109
+msgid "Bottom"
+msgstr "Dno"
+
+#: code/helpers.php:280 code/helpers.php:379 options/multis/editor.php:68
+#: options/multis/sets.php:106
+msgid "Top"
+msgstr "Top"
+
+#: code/helpers.php:281
+msgid "Top and Bottom"
+msgstr "Hornej a dolnej"
+
+#: code/helpers.php:290 options/articles.php:204 options/categories.php:123
+msgid "Hours"
+msgstr "Hodín"
+
+#: code/helpers.php:291 options/articles.php:207 options/categories.php:126
+msgid "Days"
+msgstr "Dní"
+
+#: code/helpers.php:292 options/articles.php:210 options/categories.php:129
+msgid "Months"
+msgstr "Mesiacov"
+
+#: code/helpers.php:301 code/helpers.php:314
+msgid "Mini"
+msgstr "Mini"
+
+#: code/helpers.php:302 code/helpers.php:315
+msgid "Icon"
+msgstr "Ikona"
+
+#: code/helpers.php:303 code/helpers.php:316
+msgid "Small"
+msgstr "Malé"
+
+#: code/helpers.php:304 code/helpers.php:317 options/tools/tools_bulk.php:22
+msgid "Standard"
+msgstr "Štandard"
+
+#: code/helpers.php:305 code/helpers.php:318
+msgid "Medium"
+msgstr "Médium"
+
+#: code/helpers.php:306 code/helpers.php:319
+msgid "Big"
+msgstr "Veľký"
+
+#: code/helpers.php:335
+msgid "Stars and text"
+msgstr "Hviezdami a texte"
+
+#: code/helpers.php:336
+msgid "Stars only"
+msgstr "Iba hviezdy"
+
+#: code/helpers.php:337
+msgid "Text only"
+msgstr "Iba text"
+
+#: code/helpers.php:345
+msgid "No alignment"
+msgstr "Žiadne zarovnanie"
+
+#: code/helpers.php:346 code/helpers.php:383
+msgid "Left"
+msgstr "Doľava"
+
+#: code/helpers.php:347
+msgid "Center"
+msgstr "Centrum"
+
+#: code/helpers.php:348 code/helpers.php:385
+msgid "Right"
+msgstr "Právo"
+
+#: code/helpers.php:356
+msgid "No Animation"
+msgstr "Bez animácie"
+
+#: code/helpers.php:378
+msgid "Always hide"
+msgstr "Vždy skryť"
+
+#: code/helpers.php:380
+msgid "Top (hide if empty)"
+msgstr "Top (skryť, ak je prázdne)"
+
+#: code/helpers.php:382
+msgid "Bottom (hide if empty)"
+msgstr "Dno (skryť, ak je prázdne)"
+
+#: code/helpers.php:384
+msgid "Left (hide if empty)"
+msgstr "Vľavo (skryť, ak je prázdne)"
+
+#: code/helpers.php:386
+msgid "Right (hide if empty)"
+msgstr "Právo (skryť, ak je prázdne)"
+
+#: code/import.php:5
+msgid "Data not imported."
+msgstr "Nie naimportovaných údajov."
+
+#: code/import.php:9
+msgid "Plugin not available for import."
+msgstr "Plugin nie je k dispozícii pre import."
+
+#: code/import.php:55 code/import.php:74 code/import.php:134
+msgid "Data imported."
+msgstr "Naimportovaných údajov."
+
+#: code/widgets_wp28.php:5
+msgid "Customized rating results list."
+msgstr "Zoznam prispôsobených Hodnotenie výsledkov."
+
+#: code/widgets_wp28.php:106
+msgid "Overall blog rating results."
+msgstr "Celkové výsledky blog rating."
+
+#: code/widgets_wp28.php:148
+msgid "Current post comments rating."
+msgstr "Aktuálne komentáre post hodnotenie."
+
+#: gdt2/form_defaults.php:0
+msgid "Default Templates"
+msgstr "Predvolené šablóny"
+
+#: gdt2/form_defaults.php:7 gdt2/form_list.php:46 options/multis/sets.php:61
+#: options/articles.php:149 options/users.php:61 options/voters.php:144
+#: tinymce3/panels/filter.php:45 widgets/rating/part_filter.php:64
+#: widgets/rating_28/part_filter.php:64
+msgid "ID"
+msgstr "ID"
+
+#: gdt2/form_defaults.php:8 gdt2/form_list.php:48
+msgid "Section / Type"
+msgstr "Oddiel / typ"
+
+#: gdt2/form_defaults.php:9 gdt2/form_editor.php:51
+#: tinymce3/panels/articlesrater.php:6 tinymce3/panels/articlesreview.php:6
+#: tinymce3/panels/blograting.php:1 tinymce3/panels/commentsaggr.php:6
+#: tinymce3/panels/multis.php:1 tinymce3/panels/multisreview.php:1
+#: tinymce3/panels/styles.php:1 tinymce3/panels/thumbsrating.php:6
+#: widgets/comments/part_basic.php:8 widgets/comments_28/part_basic.php:8
+#: widgets/rating/part_basic.php:9 widgets/rating_28/part_basic.php:8
+#: widgets/top/part_basic.php:8 widgets/top_28/part_basic.php:8
+msgid "Template"
+msgstr "Šablóna"
+
+#: gdt2/form_defaults.php:10 gdt2/form_list.php:50
+msgid "Options"
+msgstr "Možnosti"
+
+#: gdt2/form_defaults.php:40
+msgid "Save Changes"
+msgstr "Uložiť zmeny"
+
+#: gdt2/form_editor.php:21
+msgid "Template Editor"
+msgstr "Šablónu Editor"
+
+#: gdt2/form_editor.php:29
+msgid "Editor"
+msgstr "Editor"
+
+#: gdt2/form_editor.php:31 options/multis/editor.php:87
+msgid "Elements"
+msgstr "Prvky"
+
+#: gdt2/form_editor.php:36 options/front/front_right.php:4
+msgid "Info"
+msgstr "Info"
+
+#: gdt2/form_editor.php:43 options/builder/settings.php:2
+#: tinymce3/window.php:32
+msgid "General"
+msgstr "Všeobecné"
+
+#: gdt2/form_editor.php:45 gdt2/form_list.php:47 options/multis/editor.php:27
+#: options/multis/editor.php:93 options/multis/sets.php:62
+#: options/users.php:60 options/voters.php:145
+msgid "Name"
+msgstr "meno"
+
+#: gdt2/form_editor.php:47 gdt2/form_editor.php:60
+#: options/multis/editor.php:32
+msgid "Description"
+msgstr "Popis"
+
+#: gdt2/form_editor.php:69
+msgid "All tag elements"
+msgstr "Všetkých značiek prvkov"
+
+#: gdt2/form_editor.php:70
+msgid "No tag elements allowed"
+msgstr "Žiadne značiek prvkov povolené"
+
+#: gdt2/form_editor.php:82
+msgid "Save Template"
+msgstr "Uložiť šablónu"
+
+#: gdt2/form_editor.php:92
+msgid "Select template to use for this element:"
+msgstr "Vyberte šablónu chcete použiť pre tento prvok:"
+
+#: gdt2/form_editor.php:40
+msgid "Creating new template"
+msgstr "Vytvorenie novej šablóny"
+
+#: gdt2/form_editor.php:61
+msgid "Allowed elements"
+msgstr "Povolené prvky"
+
+#: gdt2/form_list.php:29
+msgid "Templates"
+msgstr "Šablóny"
+
+#: gdt2/form_list.php:36 gdt2/form_list.php:15
+#: options/multis/results_post.php:124 options/multis/results_post.php:26
+#: options/multis/results_set.php:22 options/articles.php:132
+#: options/articles.php:23 options/users_log.php:112 options/users_log.php:23
+#: options/voters.php:119 options/voters.php:32
+#: tinymce3/panels/blograting.php:6 tinymce3/panels/commentsaggr.php:11
+#: tinymce3/window.php:33 widgets/comments/part_filter.php:4
+#: widgets/comments/part_filter.php:12 widgets/comments_28/part_filter.php:4
+#: widgets/comments_28/part_filter.php:12 widgets/rating/part_filter.php:4
+#: widgets/rating/part_filter.php:12 widgets/rating_28/part_filter.php:4
+#: widgets/rating_28/part_filter.php:12 widgets/top/part_filter.php:4
+#: widgets/top/part_filter.php:12 widgets/top_28/part_filter.php:4
+#: widgets/top_28/part_filter.php:12
+msgid "Filter"
+msgstr "Filter"
+
+#: gdt2/form_list.php:49
+msgid "Tag"
+msgstr "Tag"
+
+#: gdt2/form_list.php:90
+msgid "Set Default Templates"
+msgstr "Nastaviť predvolené šablóny"
+
+#: gdt2/form_list.php:96
+msgid "New template for:"
+msgstr "Novú šablónu pre:"
+
+#: gdt2/form_list.php:98
+msgid "Create"
+msgstr "Vytvoriť"
+
+#: gdt2/form_list.php:107
+msgid ""
+"Click to open post with T2 templates map with dependencies for templates"
+msgstr ""
+"Kliknutím sem otvorte príspevok s T2 šablóny mapu s závislostí pre šablóny"
+
+#: gdt2/form_list.php:108
+msgid "T2 Templates Map"
+msgstr "T2 Šablóny mapa"
+
+#: gdt2/form_list.php:70
+msgid "delete"
+msgstr "odstrániť"
+
+#: gdt2/form_list.php:71
+msgid "edit"
+msgstr "upraviť"
+
+#: gdt2/form_list.php:73
+msgid "duplicate"
+msgstr "duplikát"
+
+#: integrate/dash_latest.php:51
+msgid "from"
+msgstr "od"
+
+#: integrate/dash_latest.php:51
+msgid "on"
+msgstr "na"
+
+#: integrate/dash_latest.php:53
+msgid "ip"
+msgstr "IP"
+
+#: integrate/dash_latest.php:53
+msgid "log"
+msgstr "Denník"
+
+#: integrate/dash_latest.php:65
+msgid "Articles Log"
+msgstr "Články denníka"
+
+#: integrate/dash_latest.php:66
+msgid "Users Log"
+msgstr "Používateľovi prihlásenie"
+
+#: integrate/dash_latest.php:7
+msgid "visitor"
+msgstr "návštevník"
+
+#: integrate/dash_latest.php:11
+msgid "Thumb"
+msgstr "Palec"
+
+#: integrate/dash_latest.php:18
+msgid "Multi Vote"
+msgstr "Multi hlasovanie"
+
+#: integrate/dash_latest.php:20 options/moderation.php:116
+#: options/users_log.php:126 options/users_log.php:110 options/voters.php:146
+#: options/voters.php:117
+msgid "Vote"
+msgstr "Hlasovanie"
+
+#: integrate/dash_latest.php:27 integrate/dash_latest.php:36
+msgid "post"
+msgstr "príspevok"
+
+#: integrate/dash_latest.php:31 integrate/dash_latest.php:33
+msgid "comment"
+msgstr "komentár"
+
+#: integrate/dash_latest.php:31
+msgid "for"
+msgstr "pre"
+
+#: integrate/dash_latest.php:44
+msgid "user"
+msgstr "používateľ"
+
+#: integrate/edit.php:1
+msgid "Post Review"
+msgstr "Post preskúmanie"
+
+#: integrate/edit.php:3
+msgid "Value"
+msgstr "Hodnota"
+
+#: integrate/edit.php:15
+msgid "Post Rating"
+msgstr "Post Hodnotenie"
+
+#: integrate/edit.php:17 integrate/edit.php:33
+msgid "Vote Rule"
+msgstr "Pravidlo hlasovania"
+
+#: integrate/edit.php:23 integrate/edit.php:39
+msgid "Moderate"
+msgstr "Stredne"
+
+#: integrate/edit.php:31
+msgid "Comments Rating"
+msgstr "Komentáre, Hodnotenie"
+
+#: integrate/edit.php:48
+msgid "Time Restriction"
+msgstr "Časové obmedzenie"
+
+#: integrate/edit.php:50 options/multis/results_post.php:244
+#: options/articles.php:309 options/categories.php:219
+msgid "Restriction"
+msgstr "Obmedzenie"
+
+#: integrate/edit.php:57 options/multis/results_post.php:251
+#: options/articles.php:316 options/categories.php:226
+#: tinymce3/panels/filter.php:77
+msgid "Date"
+msgstr "Dátum"
+
+#: integrate/edit.php:65 options/multis/results_post.php:250
+#: options/articles.php:315 options/categories.php:225
+msgid "Countdown"
+msgstr "Odpočítavanie"
+
+#: integrate/edit_multi.php:1
+msgid "You don't have any multi rating sets defined. Create at least one set."
+msgstr ""
+"Nemáte žiadne multi rating súpravy definované. Vytvoriť aspoň jeden súbor."
+
+#: integrate/edit_multi.php:10 options/tools/tools_bulk.php:77
+#: tinymce3/panels/multis.php:9 tinymce3/panels/multis.php:28
+#: tinymce3/panels/multis.php:48 tinymce3/panels/multisreview.php:9
+#: tinymce3/panels/multisreview.php:24 tinymce3/panels/multisreview.php:44
+#: tinymce3/panels/styles.php:60 tinymce3/panels/styles.php:80
+#: tinymce3/panels/styles.php:100 widgets/comments/part_stars.php:13
+#: widgets/comments_28/part_stars.php:13
+msgid "Set"
+msgstr "Set"
+
+#: integrate/edit_multi.php:17
+msgid ""
+"To change the active set, you need to select the set you want from the list "
+"on the left, and save this article to accept the change."
+msgstr ""
+"Zmeniť aktívneho súboru, musíte vybrať súbor, ktorý chcete zo zoznamu na "
+"ľavej strane, a zachrániť tento článok prijať zmeny."
+
+#: integrate/edit_multi.php:19
+msgid ""
+"All values for all sets will be saved in the database. This allows different "
+"multi rating sets reviews."
+msgstr ""
+"Všetky hodnoty pre všetky súbory budú uložené v databáze. To umožňuje rôzne "
+"multi rating nastaví hostí."
+
+#: integrate/edit_multi.php:30
+msgid "Clear"
+msgstr "Jasné"
+
+#: integrate/edit_multi.php:31
+msgid "Revert"
+msgstr "Vrátiť"
+
+#: integrate/edit_multi.php:26
+msgid "Set ID"
+msgstr "Set ID"
+
+#: integrate/edit_multi.php:27 options/multis/results_post.php:106
+msgid "Set Name"
+msgstr "Názov množiny"
+
+#: options/builder/settings.php:3
+msgid "Filter    "
+msgstr "Filter    "
+
+#: options/builder/settings.php:4 options/gfx.php:57 options/tools.php:9
+#: tinymce3/window.php:34 widgets/rating/part_stars.php:4
+#: widgets/rating/part_stars.php:12 widgets/rating_28/part_stars.php:4
+#: widgets/rating_28/part_stars.php:12 gd-star-rating.php:650
+msgid "Graphics"
+msgstr "Grafika"
+
+#: options/builder/settings.php:5 options/settings/settings_integration.php:91
+#: tinymce3/panels/general.php:37 tinymce3/window.php:35
+#: widgets/rating/part_basic.php:50 widgets/rating_28/part_basic.php:49
+msgid "Multi Rating"
+msgstr "Multi Rating"
+
+#: options/builder/settings.php:6 tinymce3/window.php:36
+msgid "Multi Review"
+msgstr "Multi recenzia"
+
+#: options/builder/settings.php:7 tinymce3/window.php:37
+msgid "Articles Review"
+msgstr "Recenzie články"
+
+#: options/builder/settings.php:8 tinymce3/panels/articlesrater.php:1
+#: tinymce3/window.php:38
+msgid "Articles Rating Block"
+msgstr "Články Rating blok"
+
+#: options/builder/settings.php:9 tinymce3/window.php:39
+msgid "Aggregated Comments"
+msgstr "Súhrnné poznámky"
+
+#: options/builder/settings.php:10 tinymce3/window.php:40
+msgid "Blog Rating"
+msgstr "Hodnotenie blogu"
+
+#: options/builder/settings.php:11
+#: options/settings/settings_integration.php:92 tinymce3/panels/general.php:38
+#: tinymce3/window.php:41 widgets/rating/part_basic.php:52
+#: widgets/rating_28/part_basic.php:50 widgets/top/part_basic.php:28
+#: widgets/top_28/part_basic.php:28
+msgid "Thumbs Rating"
+msgstr "Palce Rating"
+
+#: options/builder/shortcode.php:2
+msgid "Select code:"
+msgstr "Vyberte kód:"
+
+#: options/builder/shortcode.php:5 options/builder/shortcode.php:6
+#: tinymce3/window.php:55 tinymce3/window.php:56
+msgid "Results"
+msgstr "Výsledky"
+
+#: options/builder/shortcode.php:8 options/builder/shortcode.php:9
+#: tinymce3/window.php:58 tinymce3/window.php:59
+msgid "Multi"
+msgstr "Multi"
+
+#: options/builder/shortcode.php:11 options/builder/shortcode.php:12
+#: options/builder/shortcode.php:13 options/multis/results_post.php:203
+#: options/articles.php:114 options/articles.php:260
+#: options/categories.php:173 tinymce3/window.php:61 tinymce3/window.php:62
+#: tinymce3/window.php:63 gd-star-rating.php:643
+msgid "Articles"
+msgstr "Články"
+
+#: options/builder/shortcode.php:15 options/settings/settings_thumbs.php:69
+#: options/tools/tools_bulk.php:60 options/articles.php:330
+#: options/categories.php:241 options/charts.php:7 options/comments.php:44
+#: options/settings.php:47 tinymce3/window.php:65
+msgid "Comments"
+msgstr "Komentáre"
+
+#: options/builder/shortcode.php:23
+msgid "Shortcode:"
+msgstr "Krátky:"
+
+#: options/builder/shortcode.php:32
+msgid "Function:"
+msgstr "Funkcia:"
+
+#: options/builder/shortcode.php:38
+msgid "Rebuild"
+msgstr "Prestavať"
+
+#: options/builder/shortcode.php:40
+msgid "List of all functions with additional parameters"
+msgstr "Zoznam všetkých funkcií s ďalšie parametre"
+
+#: options/builder/shortcode.php:41
+msgid "Functions"
+msgstr "Funkcie"
+
+#: options/export/export_t2.php:1
+msgid "Export Templates"
+msgstr "Export šablóny"
+
+#: options/export/export_t2.php:3
+msgid "This will export all templates you created into a file."
+msgstr ""
+"Takto sa budú exportovať všetky šablóny, ktoré ste vytvorili do súboru."
+
+#: options/export/export_t2.php:4 options/export/export_users.php:53
+#: options/export/export_users.php:56 gd-star-rating.php:657
+msgid "Export"
+msgstr "Export"
+
+#: options/export/export_t2.php:6
+msgid ""
+"Exported file will contain names, descriptions and contents of templates. "
+"File will be in CSV format."
+msgstr ""
+"Exportovaný súbor bude obsahovať názvy, opisy a obsahu šablóny. Súbor bude "
+"vo formáte CSV."
+
+#: options/export/export_users.php:29
+msgid "User Info"
+msgstr "Informácie používateľovi"
+
+#: options/export/export_users.php:31
+msgid "Minimal: only user id is exported"
+msgstr "Minimálne: len id užívateľa vyváža"
+
+#: options/export/export_users.php:32
+msgid "Normal: user id, name and email are exported"
+msgstr "Normal: id užívateľa, názov a e-mail sú vyvážané"
+
+#: options/export/export_users.php:35
+msgid "Data"
+msgstr "Údaje"
+
+#: options/export/export_users.php:37
+msgid "Post / Page votes"
+msgstr "Post / stránka hlasov"
+
+#: options/export/export_users.php:38
+msgid "Comments votes"
+msgstr "Komentáre hlasov"
+
+#: options/export/export_users.php:41
+msgid "Additional Columns"
+msgstr "Dodatočné stĺpce"
+
+#: options/export/export_users.php:43 options/ips/ips_list.php:55
+#: options/moderation.php:117 options/users_log.php:123 options/voters.php:148
+msgid "IP"
+msgstr "IP"
+
+#: options/export/export_users.php:44 options/moderation.php:118
+#: options/voters.php:149
+msgid "User Agent"
+msgstr "User Agent"
+
+#: options/export/export_users.php:46
+msgid "Post/Page title"
+msgstr "Post/Page hlave"
+
+#: options/export/export_users.php:47
+msgid "Post/Page date"
+msgstr "Post/stránku dátum"
+
+#: options/export/export_users.php:49
+msgid "Comment author"
+msgstr "Komentár autora"
+
+#: options/export/export_users.php:50
+msgid "Comment date"
+msgstr "Dátum komentára"
+
+#: options/export/export_users.php:55
+msgid "This will export voters data file."
+msgstr "Takto sa budú exportovať súbor údajov voličov."
+
+#: options/export/export_users.php:58
+msgid ""
+"Exported file will contain all the users ratings. File will be in CSV format."
+msgstr ""
+"Exportovaný súbor bude obsahovať všetky ívatežov. Súbor bude vo formáte CSV."
+
+#: options/front/front_left.php:20
+msgid "Quick Rating Facts"
+msgstr "Rýchla fakty Rating"
+
+#: options/front/front_left.php:45
+msgid "See All"
+msgstr "Zobraziť všetky"
+
+#: options/front/front_left.php:47
+msgid "Latest News"
+msgstr "Najnovšie správy"
+
+#: options/front/front_left.php:81
+msgid "Newsfeed update is disabled. You can enable it on settings page."
+msgstr "Newsfeed update vypnutá. Môžete ju povoliť na stránke nastavenia."
+
+#: options/front/front_left.php:24
+msgid ""
+"Registered users rated %s articles with average rating of %s and %s comments "
+"with average rating of %s. Visitors rated %s articles with average rating of "
+"%s and %s comments with average rating of %s."
+msgstr ""
+"Registrovaní užívatelia hodnotené %s články s priemerné hodnotenie %s a %s "
+"komentáre s priemerné hodnotenie % s. návštevníkov hodnotené %s články s "
+"priemerné hodnotenie %s a %s komentáre s priemerné hodnotenie z % s."
+
+#: options/front/front_left.php:35
+msgid ""
+" There are %s article and %s comments ratings waiting in moderation queue."
+msgstr ""
+" Existuje článok %s a %s komentáre hodnotenia čaká v umiernenosť fronta."
+
+#: options/front/front_left.php:75
+msgid ""
+"An error occured while loading newsfeed. Go to the %sfront page%s to check "
+"for updates."
+msgstr ""
+"Počas načítavania newsfeed sa vyskytla chyba. Prejdite na stránku sfront % "
+"%s chcete vyhľadať aktualizácie."
+
+#: options/front/front_right.php:8
+msgid "Version"
+msgstr "Verzia"
+
+#: options/front/front_right.php:9
+msgid "release date"
+msgstr "dátum vydania"
+
+#: options/front/front_right.php:14
+msgid "Change Log"
+msgstr "Denník zmien"
+
+#: options/front/front_right.php:15
+msgid "detailed list of changes"
+msgstr "podrobný zoznam zmien"
+
+#: options/front/front_right.php:16
+msgid "show"
+msgstr "Zobraziť"
+
+#: options/front/front_right.php:21
+msgid "Links"
+msgstr "Odkazy"
+
+#: options/front/front_right.php:26 options/front/front_right.php:75
+msgid "official plugin page"
+msgstr "stránky oficiálnych plugin"
+
+#: options/front/front_right.php:27 options/front/front_right.php:32
+#: options/front/front_right.php:37 options/front/front_right.php:42
+#: options/front/front_right.php:57 options/front/front_right.php:62
+#: options/front/front_right.php:76 options/front/front_right.php:81
+#: options/front/front_right.php:86 options/front/front_right.php:91
+#: options/front/front_right.php:105 options/front/front_right.php:110
+#: options/front/front_right.php:115 options/front/front_right.php:120
+msgid "visit"
+msgstr "Navštívte"
+
+#: options/front/front_right.php:31
+msgid "development home with svn"
+msgstr "vývoj doma s svn"
+
+#: options/front/front_right.php:36
+msgid "discussions group"
+msgstr "diskusie skupiny"
+
+#: options/front/front_right.php:41
+msgid "wordpress plugin page"
+msgstr "WordPress plugin stránku"
+
+#: options/front/front_right.php:46
+msgid "development progress"
+msgstr "pokrok v rozvoji"
+
+#: options/front/front_right.php:47
+msgid "follow"
+msgstr "Postupujte podľa"
+
+#: options/front/front_right.php:51
+msgid "Extra"
+msgstr "Extra"
+
+#: options/front/front_right.php:55
+msgid "Premium Support"
+msgstr "Premium podpora"
+
+#: options/front/front_right.php:56
+msgid "special plugin customizations"
+msgstr "špeciálny plugin prispôsobenia"
+
+#: options/front/front_right.php:60
+msgid "Donate"
+msgstr "Darovať"
+
+#: options/front/front_right.php:61
+msgid "help further development"
+msgstr "ďalej napomáha rozvoju"
+
+#: options/front/front_right.php:69
+msgid "GD WordPress Plugins"
+msgstr "GD WordPress Plugins"
+
+#: options/front/front_right.php:80
+msgid "collection of widgets"
+msgstr "zbierka widgety"
+
+#: options/front/front_right.php:85
+msgid "advanced pages widget"
+msgstr "Pokročilé stránky widget"
+
+#: options/front/front_right.php:90
+msgid "widget to add linkedin badge"
+msgstr "widget pridať odznak linkedin"
+
+#: options/front/front_right.php:103
+msgid "Official Website"
+msgstr "Oficiálne stránky"
+
+#: options/front/front_right.php:104
+msgid "golden dragon official web portal"
+msgstr "Golden dragon oficiálne webový portál"
+
+#: options/front/front_right.php:108
+msgid "Support Forum"
+msgstr "Diskusné fórum"
+
+#: options/front/front_right.php:109
+msgid "development discussion forum"
+msgstr "rozvoj diskusné fórum"
+
+#: options/front/front_right.php:114
+msgid "wordpress development"
+msgstr "rozvoj WordPress"
+
+#: options/front/front_right.php:119
+msgid "announcements and theme demo"
+msgstr "oznamy a tému demo"
+
+#: options/gfx/gfx_preview.php:1
+msgid "Stars Preview"
+msgstr "Hviezdy náhľad"
+
+#: options/gfx/gfx_preview.php:5 options/multis/sets.php:65
+#: options/settings/settings_articles.php:14
+#: options/settings/settings_articles.php:188
+#: options/settings/settings_comments.php:14
+#: options/settings/settings_comments.php:133
+#: options/settings/settings_comments.php:202
+#: options/settings/settings_integration.php:100
+#: options/settings/settings_multis.php:14 options/gfx.php:61
+#: widgets/comments/part_stars.php:4 widgets/comments/part_stars.php:12
+#: widgets/comments_28/part_stars.php:4 widgets/comments_28/part_stars.php:12
+msgid "Stars"
+msgstr "Hviezdy"
+
+#: options/gfx/gfx_preview.php:35 options/gfx/gfx_preview.php:85
+#: tinymce3/panels/multis.php:36 tinymce3/panels/multis.php:56
+#: tinymce3/panels/multisreview.php:32 tinymce3/panels/multisreview.php:52
+#: tinymce3/panels/styles.php:68 tinymce3/panels/styles.php:88
+#: tinymce3/panels/styles.php:108 widgets/comments/part_image.php:13
+#: widgets/comments/part_stars.php:18 widgets/comments_28/part_image.php:13
+#: widgets/comments_28/part_stars.php:18
+msgid "Size"
+msgstr "Veľkosť"
+
+#: options/gfx/gfx_preview.php:41 options/gfx/gfx_preview.php:91
+msgid "Author"
+msgstr "Autor"
+
+#: options/gfx/gfx_preview.php:51
+msgid "Thumbs Preview"
+msgstr "Palec náhľad"
+
+#: options/gfx/gfx_preview.php:55
+#: options/settings/settings_integration.php:112 options/articles.php:160
+#: options/comments.php:94 options/gfx.php:62 tinymce3/panels/styles.php:97
+msgid "Thumbs"
+msgstr "Palce"
+
+#: options/gfx/gfx_preview.php:101
+msgid "Trends Preview"
+msgstr "Trendy náhľad"
+
+#: options/gfx/gfx_preview.php:105
+msgid "Trends"
+msgstr "Trendy"
+
+#: options/gfx/gfx_stars.php:1
+msgid "Stars Sizes"
+msgstr "Hviezdy veľkostí"
+
+#: options/gfx/gfx_stars.php:24 options/gfx/gfx_thumbs.php:24
+msgid ""
+"Only sizes checked here will be included in the css file for the active "
+"rating blocks."
+msgstr ""
+"Len veľkosti skontrolovať tu budú zahrnuté v súbore css pre aktívny rating "
+"bloky."
+
+#: options/gfx/gfx_stars.php:27 options/gfx/gfx_thumbs.php:27
+msgid "Stars Sets"
+msgstr "Hviezdy sety"
+
+#: options/gfx/gfx_stars.php:54
+msgid ""
+"Only stars set checked here will be included in the css file for the active "
+"rating blocks."
+msgstr ""
+"Iba hviezdy nastaviť skontrolovať tu budú zahrnuté v súbore css pre aktívny "
+"rating bloky."
+
+#: options/gfx/gfx_thumbs.php:1
+msgid "Thumbs Sizes"
+msgstr "Veľkosti palca"
+
+#: options/gfx/gfx_thumbs.php:54
+msgid ""
+"Only thumbs set checked here will be included in the css file for the active "
+"rating blocks."
+msgstr ""
+"Len palce nastaviť skontrolovať tu budú zahrnuté v súbore css pre aktívny "
+"rating bloky."
+
+#: options/ips/ips_list.php:53
+msgid "Record Id"
+msgstr "Identifikácia záznamu"
+
+#: options/ips/ips_list.php:54
+msgid "Type"
+msgstr "Typ"
+
+#: options/ips/ips_list.php:95
+msgid "Unban Selected"
+msgstr "Unban vybraných"
+
+#: options/ips/ips_options.php:1
+msgid "Ban Single IP's"
+msgstr "Zákaz jednu IP"
+
+#: options/ips/ips_options.php:8
+msgid "Add IP addresses"
+msgstr "Pridať IP adresy"
+
+#: options/ips/ips_options.php:9
+msgid "One IP address per line."
+msgstr "Jedna IP adresa na riadok."
+
+#: options/ips/ips_options.php:15 options/ips/ips_options.php:41
+#: options/ips/ips_options.php:57
+msgid "Add"
+msgstr "Pridať"
+
+#: options/ips/ips_options.php:19
+msgid "Ban IP Range"
+msgstr "Zákaz IP rozsahu"
+
+#: options/ips/ips_options.php:25
+msgid "From"
+msgstr "Od"
+
+#: options/ips/ips_options.php:35
+msgid "To"
+msgstr "Na"
+
+#: options/ips/ips_options.php:45
+msgid "Ban IP Masked"
+msgstr "Zákaz IP maskovaný"
+
+#: options/ips/ips_options.php:51
+msgid "Mask"
+msgstr "Maska"
+
+#: options/ips/ips_options.php:55
+msgid "Use XXX as a part of IP or leave empty to mask."
+msgstr "Použite XXX ako súčasť IP alebo masku nechajte prázdne."
+
+#: options/multis/editor.php:24
+msgid "Multi Sets Editor"
+msgstr "Multi sety Editor"
+
+#: options/multis/editor.php:37
+msgid "Number Of Stars"
+msgstr "Počet hviezdičiek"
+
+#: options/multis/editor.php:44 options/multis/sets.php:64
+#: options/settings/settings_articles.php:74
+#: options/settings/settings_comments.php:78
+#: options/settings/settings_multis.php:39
+msgid "Defaults"
+msgstr "Predvolené"
+
+#: options/multis/editor.php:48
+msgid "Auto Insertion"
+msgstr "Automatické vloženie"
+
+#: options/multis/editor.php:52
+msgid "Insertion"
+msgstr "Vloženie"
+
+#: options/multis/editor.php:55 options/multis/sets.php:87
+msgid "No"
+msgstr "nie"
+
+#: options/multis/editor.php:56 options/multis/sets.php:90
+msgid "Category Based"
+msgstr "Kategórie založené"
+
+#: options/multis/editor.php:57 options/multis/sets.php:93
+msgid "All Posts"
+msgstr "Všetky príspevky"
+
+#: options/multis/editor.php:58 options/multis/sets.php:96
+msgid "All Pages"
+msgstr "Všetky stránky"
+
+#: options/multis/editor.php:59 options/multis/sets.php:99
+msgid "All Posts &amp; Pages"
+msgstr "Všetky miesta &amp;amp; stránok"
+
+#: options/multis/editor.php:64
+msgid "Location"
+msgstr "Umiestnenie"
+
+#: options/multis/editor.php:77 options/multis/results_post.php:144
+#: options/categories.php:79 gd-star-rating.php:644
+msgid "Categories"
+msgstr "Kategórie"
+
+#: options/multis/editor.php:96
+msgid "Weight"
+msgstr "Hmotnosť"
+
+#: options/multis/editor.php:103
+msgid "Important Notice"
+msgstr "Dôležité upozornenie"
+
+#: options/multis/editor.php:105
+msgid ""
+"Once the set is created, you can't change number of elements in the set or "
+"number of stars! You can edit names and weight of the elements, name and "
+"description of the set."
+msgstr ""
+"Po vytvorení súboru nie je možné meniť počet prvkov v súbore alebo počet "
+"hviezdičiek! Môžete upraviť názvy a hmotnosť prvkov, názov a popis množiny."
+
+#: options/multis/editor.php:110
+msgid "Save Multi Set"
+msgstr "Uložiť Multi Set"
+
+#: options/multis/results_post.php:105 options/multis/results_set.php:17
+msgid "Multi Set Results"
+msgstr "Multi množinu výsledkov"
+
+#: options/multis/results_post.php:116 options/multis/results_post.php:118
+#: options/multis/results_post.php:31 options/articles.php:124
+#: options/articles.php:126 options/articles.php:29
+msgid "Search Posts"
+msgstr "Hľadať príspevky"
+
+#: options/multis/results_post.php:142 options/articles.php:150
+#: tinymce3/panels/filter.php:46 widgets/comments/part_basic.php:2
+#: widgets/comments_28/part_basic.php:2 widgets/rating/part_basic.php:2
+#: widgets/rating/part_filter.php:65 widgets/rating_28/part_basic.php:2
+#: widgets/rating_28/part_filter.php:65 widgets/top/part_basic.php:2
+#: widgets/top_28/part_basic.php:2
+msgid "Title"
+msgstr "Názov"
+
+#: options/multis/results_post.php:143 options/articles.php:151
+msgid "View"
+msgstr "Zobrazenie"
+
+#: options/multis/results_post.php:145 options/multis/sets.php:66
+#: options/articles.php:161
+msgid "Ratings"
+msgstr "Hodnotenie"
+
+#: options/multis/results_post.php:146 options/articles.php:162
+#: options/comments.php:96
+msgid "Total"
+msgstr "Celkom"
+
+#: options/multis/results_post.php:148 options/multis/sets.php:67
+#: options/settings/settings_articles.php:184
+#: options/settings/settings_comments.php:198 options/articles.php:167
+#: options/articles.php:295 options/comments.php:97
+#: tinymce3/panels/filter.php:47 widgets/rating/part_filter.php:66
+#: widgets/rating_28/part_filter.php:66
+msgid "Review"
+msgstr "Preskúmanie"
+
+#: options/multis/results_post.php:206 options/articles.php:263
+#: options/articles.php:333 options/categories.php:176
+#: options/categories.php:244 options/comments.php:138
+#: options/moderation.php:151 options/users_log.php:209 options/voters.php:189
+msgid "Delete"
+msgstr "Odstrániť"
+
+#: options/multis/results_post.php:211 options/articles.php:268
+#: options/articles.php:338 options/categories.php:181
+#: options/categories.php:249 options/comments.php:141
+msgid "Visitors"
+msgstr "Návštevníkov"
+
+#: options/multis/results_post.php:212
+#: options/settings/settings_administration.php:37 options/articles.php:269
+#: options/articles.php:339 options/categories.php:182
+#: options/categories.php:250 options/comments.php:142 options/users.php:47
+#: gd-star-rating.php:646
+msgid "Users"
+msgstr "Užívatelia"
+
+#: options/multis/results_post.php:213 options/articles.php:270
+#: options/articles.php:340 options/categories.php:183
+#: options/categories.php:251 options/comments.php:143
+msgid "All"
+msgstr "Všetky"
+
+#: options/multis/results_post.php:218 options/tools/tools_bulk.php:25
+#: options/tools/tools_bulk.php:44 options/tools/tools_bulk.php:63
+#: options/articles.php:154 options/articles.php:275 options/articles.php:345
+#: options/categories.php:95 options/categories.php:188
+#: options/categories.php:256 options/moderation.php:34
+msgid "Moderation"
+msgstr "Moderovanie"
+
+#: options/multis/results_post.php:225 options/tools/tools_bulk.php:32
+#: options/tools/tools_bulk.php:51 options/tools/tools_bulk.php:70
+#: options/articles.php:159 options/articles.php:282 options/articles.php:352
+#: options/categories.php:100 options/categories.php:195
+#: options/categories.php:263
+msgid "Vote Rules"
+msgstr "Pravidlá hlasovania"
+
+#: options/multis/results_post.php:235 options/multis/results_post.php:35
+#: options/tools/tools_bulk.php:109 options/articles.php:363
+#: options/articles.php:34 options/categories.php:273
+#: options/categories.php:14 options/comments.php:147 options/comments.php:17
+#: options/users_log.php:224 options/users_log.php:30 options/voters.php:197
+#: options/voters.php:40
+msgid "Update"
+msgstr "Aktualizácia"
+
+#: options/multis/results_set.php:17 options/multis/sets.php:144
+msgid "Voters"
+msgstr "Voliči"
+
+#: options/multis/sets.php:45 gd-star-rating.php:648
+msgid "Multi Sets"
+msgstr "Multi sety"
+
+#: options/multis/sets.php:49
+msgid "Add New Multi Rating Set"
+msgstr "Pridať nový Multi Rating Set"
+
+#: options/multis/sets.php:63
+msgid "Auto Insert"
+msgstr "Auto vložiť"
+
+#: options/multis/sets.php:68 options/settings.php:50
+msgid "Statistics"
+msgstr "Štatistiky"
+
+#: options/multis/sets.php:162 options/multis/sets.php:4
+msgid "Delete Selected"
+msgstr "Zmazať vybrané"
+
+#: options/multis/sets.php:134 options/multis/sets.php:143
+#: options/categories.php:102
+msgid "Posts"
+msgstr "Príspevky"
+
+#: options/settings/settings_administration.php:0
+msgid "Admin Display"
+msgstr "Admin displej"
+
+#: options/settings/settings_administration.php:4
+msgid "Maximum screen width"
+msgstr "Šírka maximálne obrazovky"
+
+#: options/settings/settings_administration.php:15
+msgid "Rows for display"
+msgstr "Riadky na zobrazenie"
+
+#: options/settings/settings_administration.php:27
+msgid "Show column with number of views on the plugins articles panel."
+msgstr "Zobraziť stĺpec s počtom názorov na paneli články pluginy."
+
+#: options/settings/settings_administration.php:29
+msgid "Maximum screen width is used only on WP version older than 2.7."
+msgstr "Šírka maximálne obrazovky slúži len na WP verzia staršia ako 2.7."
+
+#: options/settings/settings_administration.php:32
+msgid "Plugin Panels"
+msgstr "Plugin panely"
+
+#: options/settings/settings_administration.php:37
+msgid "Users rating managment."
+msgstr "Užívateľské Hodnotenie managment."
+
+#: options/settings/settings_administration.php:39 options/setup.php:42
+#: gd-star-rating.php:660
+msgid "Setup"
+msgstr "Nastavenie"
+
+#: options/settings/settings_administration.php:39
+msgid "Uninstall and maintenance."
+msgstr "Odinštalovať a údržbu."
+
+#: options/settings/settings_administration.php:43
+#: options/tools/tools_t2.php:6 gd-star-rating.php:656
+msgid "Import"
+msgstr "Import"
+
+#: options/settings/settings_administration.php:43
+msgid "Importing data for other rating plugins."
+msgstr "Importovanie údajov pre ostatné pluginy rating."
+
+#: options/settings/settings_administration.php:45 options/ips.php:67
+#: options/users_log.php:198 gd-star-rating.php:654
+msgid "IP's"
+msgstr "IP je"
+
+#: options/settings/settings_administration.php:45
+msgid "IP addresses managment."
+msgstr "IP adresy managment."
+
+#: options/settings/settings_administration.php:51
+msgid "Other Settings"
+msgstr "Ďalšie nastavenia"
+
+#: options/settings/settings_administration.php:53
+msgid "Update front page latest news feed."
+msgstr "Aktualizovať predná strana Novinky krmivo."
+
+#: options/settings/settings_advanced.php:3
+msgid ""
+"PHP is working in the safe mode. Plugin can't create folders for caching. "
+"You need to do it manually if you want to use cache."
+msgstr ""
+"PHP pracuje v núdzovom režime. Plugin nemožno vytvárať priečinky pre "
+"vyrovnávaciu pamäť. Musíte to urobiť manuálne, ak chcete použiť cache."
+
+#: options/settings/settings_advanced.php:4
+msgid ""
+"For cache to work, plugin must be able to access cache folder. Plugin has "
+"tried to create folders needed and failed. Until you resolved this issue "
+"cache feature can't be used."
+msgstr ""
+"Cache do práce, musí byť schopný prístup k priečinku cache plugin. Plugin sa "
+"snažila vytvoriť priečinky potrebné a zlyhala. Kým vám vyriešiť tento "
+"problém cache funkciu nemožno používať."
+
+#: options/settings/settings_advanced.php:5
+msgid ""
+"Either make <strong>wp-content</strong> folder writeable or create "
+"<strong>gd-star-rating</strong> folder in <strong>wp-content</strong> and "
+"make it writeable. Use 0755 chmod setting."
+msgstr ""
+"Buď robiť <strong>wp-obsahu</strong> zložky zapisovať alebo vytvoriť "
+"priečinok <strong>gd-star-rating</strong> v <strong>wp-obsah</strong> a "
+"urobiť z neho zapisovateľný. Použite 0755 chmod nastavenia."
+
+#: options/settings/settings_advanced.php:10
+msgid "Cache Activation"
+msgstr "Cache aktivácie"
+
+#: options/settings/settings_advanced.php:12
+msgid "Cache enabled."
+msgstr "Cache povolené."
+
+#: options/settings/settings_advanced.php:14
+msgid ""
+"Force using of cache. This is usefull in some rare cases when PHP can't "
+"report writeability correct."
+msgstr ""
+"Vynútiť pomocou cache. To je užitočné v niektorých zriedkavých prípadoch, "
+"keď PHP nemôže podať správu writeability správne."
+
+#: options/settings/settings_advanced.php:17
+msgid "Cache Cleanup"
+msgstr "Vymazanie vyrovnávacej pamäte"
+
+#: options/settings/settings_advanced.php:21
+msgid "Auto cleanup cache"
+msgstr "Automatické čistenie cache"
+
+#: options/settings/settings_advanced.php:22
+msgid "Enabled."
+msgstr "Povolené."
+
+#: options/settings/settings_advanced.php:25
+msgid "Cleanup cache every"
+msgstr "Vyčistenie vyrovnávacej pamäte každý"
+
+#: options/settings/settings_advanced.php:31
+msgid "Inline Debug Info"
+msgstr "Informácie o ladení inline"
+
+#: options/settings/settings_advanced.php:33
+msgid "Add small block with essential debug info into each rating block."
+msgstr "Malý blok s základné ladenie info pridať do každého bloku rating."
+
+#: options/settings/settings_advanced.php:35
+#: options/settings/settings_advanced.php:44
+msgid "Important"
+msgstr "Dôležité"
+
+#: options/settings/settings_advanced.php:38
+msgid "Log Into File"
+msgstr "Log do súboru"
+
+#: options/settings/settings_advanced.php:40
+msgid "Log into file various debug information."
+msgstr "Log do súboru rôzne informácie o ladení."
+
+#: options/settings/settings_advanced.php:42
+msgid "Save into debug file each WP Query executed."
+msgstr "Uložiť do súboru ladenia každý WP dotazov popravený."
+
+#: options/settings/settings_articles.php:10
+#: options/settings/settings_comments.php:10
+#: options/settings/settings_multis.php:10 tinymce3/panels/filter.php:43
+#: widgets/comments/part_filter.php:46 widgets/comments_28/part_filter.php:46
+#: widgets/rating/part_filter.php:62 widgets/rating_28/part_filter.php:62
+msgid "Rating"
+msgstr "Rating"
+
+#: options/settings/settings_articles.php:25
+#: options/settings/settings_articles.php:199
+#: options/settings/settings_comments.php:25
+#: options/settings/settings_comments.php:213
+msgid "Number of stars"
+msgstr "Počet hviezdičiek"
+
+#: options/settings/settings_articles.php:42
+#: options/settings/settings_articles.php:218
+#: options/settings/settings_comments.php:42
+#: options/settings/settings_multis.php:33
+#: options/settings/settings_thumbs.php:26
+#: options/settings/settings_thumbs.php:94
+msgid "Rating header"
+msgstr "Rating hlavičky"
+
+#: options/settings/settings_articles.php:49
+#: options/settings/settings_comments.php:49
+#: options/settings/settings_thumbs.php:33
+#: options/settings/settings_thumbs.php:101
+msgid "Auto insert rating code"
+msgstr "Auto vložiť rating kód"
+
+#: options/settings/settings_articles.php:51
+#: options/settings/settings_thumbs.php:35
+msgid "For individual posts."
+msgstr "Pre jednotlivé príspevky."
+
+#: options/settings/settings_articles.php:53
+#: options/settings/settings_thumbs.php:37
+msgid "For individual pages."
+msgstr "Pre jednotlivé stránky."
+
+#: options/settings/settings_articles.php:57
+#: options/settings/settings_thumbs.php:41
+msgid "For posts displayed in Archives."
+msgstr "Pre príspevky zobrazené v archívoch."
+
+#: options/settings/settings_articles.php:59
+#: options/settings/settings_thumbs.php:43
+msgid "For posts displayed on Front Page."
+msgstr "Pre príspevky zobrazené na titulnej strane."
+
+#: options/settings/settings_articles.php:61
+#: options/settings/settings_thumbs.php:45
+msgid "For posts displayed on Search results."
+msgstr "Pre príspevky zobrazené na výsledky hľadania."
+
+#: options/settings/settings_articles.php:68
+#: options/settings/settings_comments.php:69
+#: options/settings/settings_thumbs.php:52
+#: options/settings/settings_thumbs.php:121
+msgid "Auto insert location"
+msgstr "Auto vložiť umiestnenie"
+
+#: options/settings/settings_articles.php:78
+#: options/settings/settings_comments.php:82
+#: options/settings/settings_multis.php:43
+msgid "Vote rule"
+msgstr "Pravidlo hlasovania"
+
+#: options/settings/settings_articles.php:84
+#: options/settings/settings_comments.php:88
+#: options/settings/settings_multis.php:49
+msgid "Moderation rule"
+msgstr "Moderovanie pravidlo"
+
+#: options/settings/settings_articles.php:94
+#: options/settings/settings_multis.php:59
+msgid "Time restriction"
+msgstr "Časové obmedzenie"
+
+#: options/settings/settings_articles.php:99
+#: options/settings/settings_multis.php:64
+msgid "Countdown value"
+msgstr "Odpočítavanie hodnotu"
+
+#: options/settings/settings_articles.php:110
+#: options/settings/settings_articles.php:223
+#: options/settings/settings_comments.php:72
+#: options/settings/settings_comments.php:98
+#: options/settings/settings_multis.php:75
+msgid "Rating block CSS class"
+msgstr "Rating blok CSS triedy"
+
+#: options/settings/settings_articles.php:115
+#: options/settings/settings_comments.php:103
+#: options/settings/settings_multis.php:80
+msgid "Rating text CSS class"
+msgstr "Rating text CSS triedy"
+
+#: options/settings/settings_articles.php:121
+#: options/settings/settings_comments.php:109
+#: options/settings/settings_multis.php:86
+msgid "Rating header CSS class"
+msgstr "Rating hlavičky CSS triedy"
+
+#: options/settings/settings_articles.php:126
+#: options/settings/settings_comments.php:114
+msgid "Rating stars CSS class"
+msgstr "Rating hviezdy CSS triedy"
+
+#: options/settings/settings_articles.php:135
+#: options/settings/settings_comments.php:123
+#: options/settings/settings_integration.php:131
+#: options/settings/settings_multis.php:100
+#: options/settings/settings_thumbs.php:59
+#: options/settings/settings_thumbs.php:128
+msgid "Rating Template"
+msgstr "Rating šablóny"
+
+#: options/settings/settings_articles.php:141
+#: options/settings/settings_comments.php:155
+msgid "Restrict"
+msgstr "Obmedziť"
+
+#: options/settings/settings_articles.php:143
+msgid "Prevent article author to vote."
+msgstr "Zabrániť článku autor hlasovať."
+
+#: options/settings/settings_articles.php:143
+msgid "This is only for registered users."
+msgstr "To je iba pre registrovaných užívateľov."
+
+#: options/settings/settings_articles.php:145
+#: options/settings/settings_comments.php:159
+msgid "Use logged data (IP) to prevent duplicate voting."
+msgstr "Použite prihlásený údaje (IP) zabrániť duplicitné hlasovania."
+
+#: options/settings/settings_articles.php:147
+#: options/settings/settings_comments.php:161
+msgid "Use cookies to prevent duplicate voting."
+msgstr "Pomocou cookies môžete zabrániť duplicitné hlasovania."
+
+#: options/settings/settings_articles.php:149
+#: options/settings/settings_comments.php:163
+msgid "Allow votes from user and visitor coming from same IP address."
+msgstr ""
+"Povoliť hlasov od používateľ a návštevník prichádza z rovnakej IP adresy."
+
+#: options/settings/settings_articles.php:152
+#: options/settings/settings_comments.php:166
+#: options/settings/settings_multis.php:120
+msgid "Vote Waiting Message"
+msgstr "Hlasovanie čaká správu"
+
+#: options/settings/settings_articles.php:156
+#: options/settings/settings_comments.php:170
+#: options/settings/settings_multis.php:124
+#: options/settings/settings_thumbs.php:63
+#: options/settings/settings_thumbs.php:132
+msgid "Animation indicator"
+msgstr "Animácie indikátor"
+
+#: options/settings/settings_articles.php:159
+#: options/settings/settings_comments.php:173
+#: options/settings/settings_multis.php:127 options/gfx.php:63
+msgid "Preview"
+msgstr "Náhľad"
+
+#: options/settings/settings_articles.php:169
+#: options/settings/settings_comments.php:183
+#: options/settings/settings_multis.php:137
+msgid "Text to display"
+msgstr "Text zobrazíte"
+
+#: options/settings/settings_articles.php:174
+#: options/settings/settings_comments.php:188
+#: options/settings/settings_multis.php:142
+msgid "Additional CSS class"
+msgstr "Ďalšie CSS triedy"
+
+#: options/settings/settings_articles.php:180
+#: options/settings/settings_comments.php:194
+#: options/settings/settings_multis.php:148
+msgid "Hide text and show only animation image."
+msgstr "Skryť text a zobraziť iba animácie obrázok."
+
+#: options/settings/settings_bots.php:0
+msgid "Spider BOT's"
+msgstr "Spider TOPÁNOK"
+
+#: options/settings/settings_bots.php:8
+msgid ""
+"Each line must contain only one BOT name to ensure proper detection of "
+"search engines."
+msgstr ""
+"Každý riadok musí obsahovať iba jeden TOPÁNOK meno na zabezpečenie správneho "
+"rozoznania vyhľadávačov."
+
+#: options/settings/settings_comments.php:51
+#: options/settings/settings_thumbs.php:103
+msgid "For comments for posts."
+msgstr "Za komentáre pre príspevky."
+
+#: options/settings/settings_comments.php:55
+#: options/settings/settings_thumbs.php:107
+msgid "For comments for pages."
+msgstr "Za komentáre na stránkach."
+
+#: options/settings/settings_comments.php:62
+#: options/settings/settings_thumbs.php:114
+msgid "Enable auto insert regardless of the single page or post."
+msgstr "Povoliť auto vložiť bez ohľadu na jednej stránke, alebo poštou."
+
+#: options/settings/settings_comments.php:129
+msgid "Aggregated Rating"
+msgstr "Súhrnné hodnotenie"
+
+#: options/settings/settings_comments.php:157
+msgid "Prevent comment author to vote."
+msgstr "Zabrániť komentár autora hlasovať."
+
+#: options/settings/settings_features.php:1
+msgid "Voting"
+msgstr "Hlasovanie"
+
+#: options/settings/settings_features.php:3
+msgid "Use Nonce with AJAX for improved security."
+msgstr "Jednorazový kód pomocou AJAX pre lepšie zabezpečenie."
+
+#: options/settings/settings_features.php:5
+msgid ""
+"Use AJAX cross-domain calls. Enable only if your website URL is different "
+"from actual URL."
+msgstr ""
+"Pomocou AJAX volania medzi doménami. Povoliť len vtedy, ak vaše webové "
+"stránky URL je odlišná od skutočnej URL."
+
+#: options/settings/settings_features.php:7
+msgid "Use banned IP's lists to filter out visitors."
+msgstr "Pomocou zoznamov zakázaných IP odfiltrovať návštevníkov."
+
+#: options/settings/settings_features.php:9
+msgid "Don't even show rating stars to visitors comming from banned IP's."
+msgstr ""
+"Dokonca nevykazujú Hodnotenie hviezdy pre návštevníkov prichádza z "
+"zakázaných IP."
+
+#: options/settings/settings_features.php:12
+msgid "Plugin Features"
+msgstr "Plugin funkcie"
+
+#: options/settings/settings_features.php:17
+msgid "Time restriction for rating."
+msgstr "Odšťavovania pre hodnotenie."
+
+#: options/settings/settings_features.php:19
+msgid "Moderation options and handling."
+msgstr "Moderovanie možnosti a manipuláciu."
+
+#: options/settings/settings_features.php:21
+msgid "Multiple rating support."
+msgstr "Podpora viacerých rating."
+
+#: options/settings/settings_features.php:23
+msgid "Thumbs up/down rating support."
+msgstr "Thumbs up/down rating podporu."
+
+#: options/settings/settings_features.php:27
+msgid "Post And Page Review Rating."
+msgstr "Post a stránky revízia hodnotenie."
+
+#: options/settings/settings_features.php:29
+msgid "Comments Rating."
+msgstr "Komentáre, hodnotenie."
+
+#: options/settings/settings_features.php:31
+msgid "Comments Review Rating."
+msgstr "Komentáre revízia hodnotenie."
+
+#: options/settings/settings_features.php:36
+msgid "Use graphics generator to generate and display static stars images."
+msgstr ""
+"Použiť grafiku generátor na generovanie a zobrazovanie obrázkov statické "
+"hviezdy."
+
+#: options/settings/settings_features.php:38
+msgid ""
+"Prevent outside access to graphics generator. Graphics integrated into RSS "
+"is not affected."
+msgstr ""
+"Zabránenie mimo prístup grafika generátor. Grafika integrované do RSS nie je "
+"dotknutá."
+
+#: options/settings/settings_features.php:40
+msgid ""
+"This leeching prevention will only work if a referer is sent and your server "
+"is set up correctly with proper server name variable."
+msgstr ""
+"Tento leeching prevencia bude fungovať iba ak referer odosiela a váš server "
+"správne nastavený správny server meno premennej."
+
+#: options/settings/settings_features.php:43
+msgid "JS and CSS files"
+msgstr "JS a CSS súborov"
+
+#: options/settings/settings_features.php:45
+msgid ""
+"Link external javascript rating code, instead of embeding it into the page."
+msgstr ""
+"Prepojenie externých javascript rating kód, namiesto embeding ho do stránky."
+
+#: options/settings/settings_features.php:47
+msgid ""
+"Link external CSS rating code, uncheck to embed all the CSS into the page."
+msgstr ""
+"Odkaz externý rating CSS kódu, zrušte začiarknutie políčka vložiť všetky CSS "
+"na stránku."
+
+#: options/settings/settings_features.php:49
+msgid "Link additional CSS file"
+msgstr "Ďalší odkaz CSS súbor"
+
+#: options/settings/settings_features.php:51
+msgid "Auto cache of the main CSS file enabled."
+msgstr "Auto vyrovnávacej pamäte hlavné CSS súboru povolené."
+
+#: options/settings/settings_features.php:54
+msgid "Charset"
+msgstr "Charset"
+
+#: options/settings/settings_features.php:58
+msgid "Character encoding"
+msgstr "Kódovanie znakov"
+
+#: options/settings/settings_features.php:62
+msgid "For list of supported charsets visit: "
+msgstr "Zoznam podporovaných s├íd návšteva: "
+
+#: options/settings/settings_features.php:65
+msgid "Rating Log"
+msgstr "Rating Log"
+
+#: options/settings/settings_features.php:67
+msgid "Log user agent (browser) information."
+msgstr "Informácie denníka user agent (prehliadač)."
+
+#: options/settings/settings_features.php:69
+msgid "Save cookies with ratings."
+msgstr "Uložiť cookies s ratingom."
+
+#: options/settings/settings_features.php:72
+msgid "Internet Explorer"
+msgstr "Internet Explorer"
+
+#: options/settings/settings_features.php:74
+msgid "Use IE opacity fix for multi ratings."
+msgstr "Používať IE opacity fix pre viacročných mužstva."
+
+#: options/settings/settings_features.php:76
+msgid "Disable checking for IE6 and IE6 specific settings."
+msgstr "Zakázať kontrolu pre IE6 a IE6 špecifické nastavenia."
+
+#: options/settings/settings_integration.php:1
+msgid "WP Query Object"
+msgstr "WP dotaz objekte"
+
+#: options/settings/settings_integration.php:3
+msgid "Expand WP Query with new rating specific sorting and filtering."
+msgstr "Rozbaľte WP dotaz dimenzovanú nové špecifické triedenie a filtrovanie."
+
+#: options/settings/settings_integration.php:6
+msgid "Comment Integration"
+msgstr "Komentár integrácie"
+
+#: options/settings/settings_integration.php:8
+msgid ""
+"Hide comment integrated rating block if the comment is in reply mode (WP 2.7 "
+"or newer only)."
+msgstr ""
+"Skryť komentár integrované hodnotenie blok, ak komentár je v odpovedi režime "
+"(WP 2.7 alebo novšie len)."
+
+#: options/settings/settings_integration.php:10
+msgid "Prevent saving more than one rating per user or visitor."
+msgstr "Zabránilo ukladanie viacerých rating na užívateľa alebo návštevníka."
+
+#: options/settings/settings_integration.php:12
+msgid "Allow rating zero for standard rating vote from comment integration."
+msgstr ""
+"Umožňujú hodnotenie nula pre štandardné rating hlasovanie od komentár "
+"integrácie."
+
+#: options/settings/settings_integration.php:14
+msgid "Allow rating zero for multis ratings vote from comment integration."
+msgstr ""
+"Umožňujú hodnotenie nula multis ratingy hlasovania od komentár integrácie."
+
+#: options/settings/settings_integration.php:16
+msgid ""
+"Be careful with zero's settings. This can break some other things, and is "
+"not recommended or supported."
+msgstr ""
+"Buďte opatrní s zero je nastavenie. To môže zlomiť niektoré ďalšie veci, a "
+"je doporučené ani podporované."
+
+#: options/settings/settings_integration.php:19
+msgid "Dashboard"
+msgstr "Tabuľa (dashboard)"
+
+#: options/settings/settings_integration.php:21
+msgid "Add widgets to the administration dashboard."
+msgstr "Pridať widgety na tabuľu správy."
+
+#: options/settings/settings_integration.php:23
+msgid "Add chart summary rating widget."
+msgstr "Pridať graf súhrnné rating widget."
+
+#: options/settings/settings_integration.php:28
+msgid "Add widget with list of latest votes."
+msgstr "Pridať widget s zoznam najnovších hlasov."
+
+#: options/settings/settings_integration.php:31
+msgid "Votes to display:"
+msgstr "Hlasov na zobrazenie:"
+
+#: options/settings/settings_integration.php:39
+msgid "Show thumbs for posts."
+msgstr "Zobraziť palci príspevkov."
+
+#: options/settings/settings_integration.php:41
+msgid "Show stars for posts."
+msgstr "Zobraziť hviezdy pre príspevky."
+
+#: options/settings/settings_integration.php:43
+msgid "Show multis for posts."
+msgstr "Zobraziť multis pre príspevky."
+
+#: options/settings/settings_integration.php:46
+msgid "Show thumbs for comments."
+msgstr "Zobraziť palce pre komentáre."
+
+#: options/settings/settings_integration.php:48
+msgid "Show stars for comments."
+msgstr "Zobraziť hviezdy pre komentáre."
+
+#: options/settings/settings_integration.php:54
+msgid "Widgets"
+msgstr "Widgety"
+
+#: options/settings/settings_integration.php:56
+msgid "GD Star Rating: Post/Page rating widget."
+msgstr "GD Star Rating: Post/stránka rating widget."
+
+#: options/settings/settings_integration.php:58
+msgid "GD Blog Rating: Blog average rating."
+msgstr "GD Blog Hodnotenie: Priemerné hodnotenie blogu."
+
+#: options/settings/settings_integration.php:60
+msgid "GD Comments Rating: Per post comments rating."
+msgstr "GD komentáre Hodnotenie: Za post komentáre rating."
+
+#: options/settings/settings_integration.php:62
+msgid "Don't render the widget if there are no results to display."
+msgstr "Neznemožňujú widget, ak neexistujú žiadne výsledky zobrazíte."
+
+#: options/settings/settings_integration.php:65
+msgid "Post Edit"
+msgstr "Príspevok editovať"
+
+#: options/settings/settings_integration.php:67
+msgid "Add standard rating box in the post/page edit sidebar area."
+msgstr "Pridať štandardný rating pole v oblasti sidebar edit post/page."
+
+#: options/settings/settings_integration.php:69
+msgid "Add multi ratings box in the post/page edit."
+msgstr "Pridať multi ratingy box v edit post/page."
+
+#: options/settings/settings_integration.php:71
+msgid "Add rating shortcode plugin into tinyMCE visual editor."
+msgstr "Pridať Hodnotenie krátky plugin do vizuálneho editora tinyMCE."
+
+#: options/settings/settings_integration.php:74
+msgid "Comment Edit"
+msgstr "Upraviť komentár"
+
+#: options/settings/settings_integration.php:76
+msgid "Add rating box on the comment edit page."
+msgstr "Pridať Hodnotenie box na stránku upraviť komentár."
+
+#: options/settings/settings_integration.php:79
+msgid "RSS Feeds"
+msgstr "RSS kanály"
+
+#: options/settings/settings_integration.php:81
+msgid "Add small 80x15 badge to posts in RSS feed."
+msgstr "Pridať malé 80 x 15 odznak na príspevky v RSS feed."
+
+#: options/settings/settings_integration.php:83
+msgid "Add ratings to posts in RSS feeds."
+msgstr "Pridať Hodnotenie príspevkov v RSS kanály."
+
+#: options/settings/settings_integration.php:87
+msgid "Data source"
+msgstr "Zdroj údajov"
+
+#: options/settings/settings_integration.php:90 tinymce3/panels/general.php:36
+#: widgets/rating/part_basic.php:48 widgets/rating_28/part_basic.php:48
+#: widgets/top/part_basic.php:27 widgets/top_28/part_basic.php:27
+msgid "Standard Rating"
+msgstr "Štandardné Rating"
+
+#: options/settings/settings_integration.php:127
+msgid "Rating Header"
+msgstr "Rating hlavičky"
+
+#: options/settings/settings_multis.php:91
+msgid "Rating button CSS class"
+msgstr "Tlačidlo Hodnotenie CSS triedy"
+
+#: options/settings/settings_multis.php:106
+msgid "Submit Button"
+msgstr "Tlačidlo Odoslať"
+
+#: options/settings/settings_multis.php:110
+msgid "Button text"
+msgstr "Tlačidlo text"
+
+#: options/settings/settings_multis.php:117
+msgid ""
+"Use submit button to send votes. If disabled, votes will be send once all "
+"block elements are rated."
+msgstr ""
+"Používať tlačidlo Odoslať Odoslať hlasov. Ak je zakázaná, hlasov bude "
+"posielať raz blokovať všetky prvky sú hodnotené."
+
+#: options/settings/settings_statistics.php:1
+msgid "Trend Calculations"
+msgstr "Trend výpočty"
+
+#: options/settings/settings_statistics.php:5
+msgid "Calculate for last number of days"
+msgstr "Vypočítať za posledných niekoľko dní"
+
+#: options/settings/settings_statistics.php:9
+msgid "Calculate over how many days before"
+msgstr "Vypočítať za koľko dní pred"
+
+#: options/settings/settings_statistics.php:15
+msgid "Bayesian Estimate Mean"
+msgstr "Bayesovský odhad priemer"
+
+#: options/settings/settings_statistics.php:19
+msgid "Minimum votes required"
+msgstr "Minimum potrebn├╜ch hlasov"
+
+#: options/settings/settings_statistics.php:23
+msgid "Mean vote rating across the whole report"
+msgstr "Znamená hlas rating cez celá správa"
+
+#: options/settings/settings_thumbs.php:1
+msgid "Posts &amp; Pages"
+msgstr "Miesta &amp;amp; stránok"
+
+#: options/settings/settings_thumbs.php:5
+#: options/settings/settings_thumbs.php:73 widgets/rating/part_stars.php:33
+#: widgets/rating_28/part_stars.php:33
+msgid "Thumbs Set"
+msgstr "Palce súboru"
+
+#: options/setup/setup_database.php:1 options/setup/setup_database.php:5
+#: options/setup/setup_database.php:15 options/setup.php:2 options/setup.php:8
+msgid "Reinstall"
+msgstr "Preinštalovať"
+
+#: options/setup/setup_database.php:4
+msgid "All database tables will be deleted, and installed again."
+msgstr "Všetky databázové tabuľky odstránia, a znova nainštalovať."
+
+#: options/setup/setup_database.php:7 options/setup/setup_database.php:17
+#: options/setup/setup_database.php:27 options/setup/setup_global.php:7
+#: options/setup/setup_uninstall.php:7
+msgid ""
+"This operation is not reversable. Backup your data if you want to be able to "
+"restore it later."
+msgstr ""
+"Táto operácia nie je reverzibilné. Zálohovať vaše dáta, ak chcete byť "
+"schopní obnoviť neskôr."
+
+#: options/setup/setup_database.php:11
+msgid "Reinstall Multi Ratings"
+msgstr "Preinštalovať viacročných mužstva"
+
+#: options/setup/setup_database.php:14
+msgid "Only multi ratings tables will be deleted, and installed again."
+msgstr "Len multi ratingy tabuľky odstránia, a znova nainštalovať."
+
+#: options/setup/setup_database.php:21 options/setup/setup_database.php:25
+#: options/setup.php:23
+msgid "Reinstall Templates"
+msgstr "Preinštalovať šablóny"
+
+#: options/setup/setup_database.php:24
+msgid ""
+"This will remove all saved templates for the plugin. Templates will be "
+"reseted to their default values."
+msgstr ""
+"Týmto sa odstránia všetky uložené šablóny pre plugin. Šablóny bude reseted "
+"predvolené hodnoty."
+
+#: options/setup/setup_global.php:1 options/setup/setup_global.php:5
+#: options/setup.php:17
+msgid "Remove Settings"
+msgstr "Odstrániť nastavenia"
+
+#: options/setup/setup_global.php:4
+msgid "This will remove all plugin settings and all the saved widgets."
+msgstr "Táto akcia odstráni všetky plugin nastavenia a všetky uložené widgety."
+
+#: options/setup/setup_global.php:11 options/setup/setup_global.php:15
+#: options/setup.php:30
+msgid "Reset Imports"
+msgstr "Obnovenie dovozov"
+
+#: options/setup/setup_global.php:14
+msgid ""
+"This will reset all import flags for import data modules and will allow you "
+"to import again allready imported data."
+msgstr ""
+"To bude resetovať všetky príznaky importu pre import údajov moduly a vám "
+"umožní importovať znova allready importované údaje."
+
+#: options/setup/setup_uninstall.php:1
+msgid "Uninstall"
+msgstr "Odinštalovať"
+
+#: options/setup/setup_uninstall.php:4
+msgid ""
+"After removal, plugin will be disabled. All data recorded by the plugin will "
+"be lost"
+msgstr ""
+"Po odstránení bude vypnutý plugin. Všetky údaje zaznamenané plugin sa stratia"
+
+#: options/setup/setup_uninstall.php:5 gd-star-rating.php:1476
+msgid "UNINSTALL"
+msgstr "ODINŠTALOVAŤ"
+
+#: options/tools/tools_bulk.php:2
+msgid "Date Based Post Locking"
+msgstr "Dátum založené Post zamykanie"
+
+#: options/tools/tools_bulk.php:7
+msgid "Lock posts older than"
+msgstr "Zámok príspevky starší ako"
+
+#: options/tools/tools_bulk.php:11
+msgid "Lock"
+msgstr "Zámok"
+
+#: options/tools/tools_bulk.php:13
+msgid "Previous Lock Date"
+msgstr "Predchádzajúci dátum uzamknutia"
+
+#: options/tools/tools_bulk.php:17
+msgid "Global Voting Rules Update"
+msgstr "Globálna aktualizácia hlasovacích pravidiel"
+
+#: options/tools/tools_bulk.php:41 options/settings.php:48
+msgid "Multis"
+msgstr "Multis"
+
+#: options/tools/tools_bulk.php:79
+msgid "This will update all posts and comments with previously saved ratings."
+msgstr "Tým sa aktualizuje všetky príspevky a komentáre s uloženú mužstva."
+
+#: options/tools/tools_bulk.php:83
+msgid "Recalculate Multi Ratings Averages"
+msgstr "Prepočítať Multi ratingy priemery"
+
+#: options/tools/tools_bulk.php:86
+msgid ""
+"If you change multi rating sets weight for the elements you can execute "
+"recaluculation of all average ratings saved. Select the set you want to "
+"recalculate for, or select all sets."
+msgstr ""
+"Ak zmeníte multi rating hmotnosť súpravy pre prvky môže vykonávať "
+"recaluculation všetky priemerné hodnotenie uložené. Vyberte súbor, ktorý "
+"chcete prepočítať pre, alebo vyberte všetky súbory."
+
+#: options/tools/tools_bulk.php:87
+msgid ""
+"Use this also if you update from versions before 1.2.0 and you had problems "
+"with saving multi rating results."
+msgstr ""
+"Použiť aj ak aktualizujete z verzie pred 1.2.0 a ste mali problémy s "
+"ukladaním multi Hodnotenie výsledkov."
+
+#: options/tools/tools_bulk.php:90
+msgid "Select multi set"
+msgstr "Vyberte multi set"
+
+#: options/tools/tools_bulk.php:93
+msgid "All Sets"
+msgstr "Všetky sety"
+
+#: options/tools/tools_bulk.php:99
+msgid "Recalculate"
+msgstr "Prepočítať"
+
+#: options/tools/tools_bulk.php:101
+msgid ""
+"Depending on the number of posts, this operation can take a while to "
+"complete. Be patient."
+msgstr ""
+"V závislosti od počtu pracovných miest, táto operácia môže trvať dlho, ako "
+"kompletnú. Buďte trpezliví."
+
+#: options/tools/tools_bulk.php:105
+msgid "Update Multi Rating Votes Log"
+msgstr "Aktualizovať Multi Rating hlasov Log"
+
+#: options/tools/tools_bulk.php:108
+msgid ""
+"This tool will update votes log and recalculate average value for each multi "
+"ratings votes."
+msgstr ""
+"Tento nástroj bude aktualizovať hlasov log a prepočítať priemerné hodnoty "
+"pre každý multi ratingy hlasov."
+
+#: options/tools/tools_bulk.php:111
+msgid "You need to do only once."
+msgstr "Musíte urobiť len raz."
+
+#: options/tools/tools_cleanup.php:1
+msgid "Cache"
+msgstr "Vyrovnávacia pamäť"
+
+#: options/tools/tools_cleanup.php:4
+msgid "Delete all cached files from folder"
+msgstr "Odstrániť všetky cache súbory z priečinka"
+
+#: options/tools/tools_cleanup.php:5 options/tools/tools_cleanup.php:18
+#: options/tools/tools_db.php:22
+msgid "Clean"
+msgstr "Čistenie"
+
+#: options/tools/tools_cleanup.php:7 options/tools/tools_db.php:7
+#: options/tools/tools_db.php:24
+msgid "Last cleanup was executed on"
+msgstr "Posledný vyčistenie bol popravený"
+
+#: options/tools/tools_cleanup.php:9
+msgid "Total files cached"
+msgstr "Celkový počet súborov vo vyrovnávacej pamäti"
+
+#: options/tools/tools_cleanup.php:11
+msgid "Total size of cached files"
+msgstr "Celková veľkosť vyrovnávacej pamäte súborov"
+
+#: options/tools/tools_cleanup.php:14
+msgid "Debug"
+msgstr "Debug"
+
+#: options/tools/tools_cleanup.php:17
+msgid "Empty the debug file"
+msgstr "Prázdny súbor ladenia"
+
+#: options/tools/tools_cleanup.php:21
+msgid "Total size of debug file"
+msgstr "Celková veľkosť súboru ladenia"
+
+#: options/tools/tools_db.php:1 options/tools/tools_db.php:5
+msgid "Upgrade"
+msgstr "Upgrade"
+
+#: options/tools/tools_db.php:4
+msgid ""
+"Try to upgrade plugin tables. This is performed automatically after each "
+"plugin upgrade, but you can use this tool also."
+msgstr ""
+"Try na upgrade plugin tabuliek. To sa vykonáva automaticky po každom plugin "
+"upgrade, ale môžete tiež použiť tento nástroj."
+
+#: options/tools/tools_db.php:11 options/tools.php:7
+msgid "Cleanup"
+msgstr "Vyčistenie"
+
+#: options/tools/tools_db.php:14
+msgid "Remove all invalid votes from votes log."
+msgstr "Odstrániť všetky neplatné hlasy z denníka hlasov."
+
+#: options/tools/tools_db.php:16
+msgid "Remove all invalid votes from trends log."
+msgstr "Odstrániť všetky neplatné hlasy z trendy log."
+
+#: options/tools/tools_db.php:18
+msgid "Remove data for old and deleted posts and comments."
+msgstr "Odstrániť údaje pre staré a zmazané príspevky a komentáre."
+
+#: options/tools/tools_db.php:20
+msgid "Remove data for old and deleted multi ratings."
+msgstr "Odstrániť údaje pre staré a odstránené viacročných mužstva."
+
+#: options/tools/tools_db.php:25
+msgid "Cleanup summary"
+msgstr "Čistenie Zhrnutie"
+
+#: options/tools/tools_editcss.php:21
+msgid "Save"
+msgstr "Uložiť"
+
+#: options/tools/tools_editcss.php:6
+msgid "File is not writeable and can't be saved through this form."
+msgstr "Súbor sa nedá zapisovať a cez tento formulár sa nedá uložiť."
+
+#: options/tools/tools_editcss.php:11
+msgid "Additional CSS file not found"
+msgstr "Ďalšie CSS súbor nebol nájdený"
+
+#: options/tools/tools_gfx.php:1
+msgid "Stars and Trends Graphics"
+msgstr "Hviezdy a trendy grafiky"
+
+#: options/tools/tools_gfx.php:4
+msgid "Rescan graphics folders for new stars and trends images."
+msgstr "Preskenovať priečinok grafiky pre nové hviezdy a trendy obrázky."
+
+#: options/tools/tools_gfx.php:5
+msgid "Rescan"
+msgstr "Znova prehľadať"
+
+#: options/tools/tools_gfx.php:7
+msgid "Last scan was executed on."
+msgstr "Poslednom teste bol popravený."
+
+#: options/tools/tools_t2.php:1
+msgid "Import Templates"
+msgstr "Import šablóny"
+
+#: options/tools/tools_t2.php:4
+msgid "This will import templates from alternative location:"
+msgstr "Týmto sa importuje šablóny z alternatívneho umiestnenia:"
+
+#: options/tools/tools_t2.php:8
+msgid ""
+"Templates with same name as the templates already in database will be "
+"skipped."
+msgstr "Šablóny s rovnakým názvom ako šablóny už v databáze sa vynechá."
+
+#: options/articles.php:157
+msgid "Time"
+msgstr "Čas"
+
+#: options/articles.php:164
+msgid "Views"
+msgstr "Názory"
+
+#: options/articles.php:197 options/categories.php:115
+msgid "date limit"
+msgstr "dátum obmedzenia"
+
+#: options/articles.php:200 options/categories.php:119
+msgid "countdown"
+msgstr "odpočítavanie"
+
+#: options/articles.php:213 options/categories.php:133
+msgid "no limit"
+msgstr "žiadny limit"
+
+#: options/articles.php:226 options/charts.php:1
+msgid "Charts"
+msgstr "Grafy"
+
+#: options/builder.php:2 gd-star-rating.php:640
+msgid "Builder"
+msgstr "Staviteľ"
+
+#: options/builder.php:6
+msgid "Shortcode/Functions"
+msgstr "Krátky/funkcie"
+
+#: options/builder.php:7 options/settings.php:39
+#: tinymce3/panels/articlesrater.php:11 tinymce3/panels/multis.php:20
+#: tinymce3/panels/thumbsrating.php:11 gd-star-rating.php:649
+#: gd-star-rating.php:882
+msgid "Settings"
+msgstr "Nastavenia"
+
+#: options/categories.php:92 tinymce3/panels/filter.php:22
+msgid "Category"
+msgstr "Kategória"
+
+#: options/categories.php:98
+msgid "Time Restrictions"
+msgstr "Časové obmedzenia"
+
+#: options/categories.php:101 options/settings.php:45
+msgid "Integration"
+msgstr "Integrácia"
+
+#: options/categories.php:204 tinymce3/panels/general.php:46
+#: widgets/rating/part_basic.php:60 widgets/rating_28/part_basic.php:58
+msgid "Multi Set"
+msgstr "Multi Set"
+
+#: options/categories.php:214
+msgid "(this multi set is used for comment integration)"
+msgstr "(tento multi súbor sa používa pre integráciu komentár)"
+
+#: options/categories.php:148
+msgid "multi set"
+msgstr "multi set"
+
+#: options/categories.php:149
+msgid "inhert from parent"
+msgstr "inhert z materskej"
+
+#: options/charts.php:6
+msgid "Articles (Posts And Pages)"
+msgstr "Články (príspevky a stránky)"
+
+#: options/comments.php:46
+msgid "Comments for post"
+msgstr "Komentáre k post"
+
+#: options/comments.php:91
+msgid "Comment"
+msgstr "Komentár"
+
+#: options/comments.php:92 options/moderation.php:115
+msgid "User"
+msgstr "Používateľ"
+
+#: options/comments.php:93 options/moderation.php:114
+msgid "Date And Time"
+msgstr "Dátum a čas"
+
+#: options/comments.php:95 options/users_log.php:206
+msgid "Votes"
+msgstr "Hlasov"
+
+#: options/comments.php:135 options/voters.php:186
+msgid "With selected"
+msgstr "S vybraných"
+
+#: options/export.php:1
+msgid "Export Data"
+msgstr "Export údajov"
+
+#: options/export.php:6
+msgid "Users Data"
+msgstr "Užívatelia Data"
+
+#: options/export.php:7 options/tools.php:8 gd-star-rating.php:652
+msgid "T2 Templates"
+msgstr "T2 šablóny"
+
+#: options/gfx.php:1 options/settings.php:30
+msgid "Settings saved."
+msgstr "Nastavenia uložené."
+
+#: options/gfx.php:77 options/settings.php:81
+msgid "Save Settings"
+msgstr "Uložiť nastavenia"
+
+#: options/import.php:28 options/import.php:60 options/import.php:85
+#: options/import.php:144 options/import.php:4 options/import.php:11
+#: options/import.php:18
+msgid "Import Data"
+msgstr "Import údajov"
+
+#: options/import.php:43 options/import.php:68 options/import.php:93
+#: options/import.php:151
+msgid "Plugin URL"
+msgstr "Plugin URL"
+
+#: options/import.php:48 options/import.php:73 options/import.php:98
+#: options/import.php:156
+msgid "Author URL"
+msgstr "Autor URL"
+
+#: options/import.php:53 options/import.php:78 options/import.php:137
+#: options/users_log.php:124
+msgid "Status"
+msgstr "Stav"
+
+#: options/import.php:103
+msgid "Instructions"
+msgstr "Pokyny"
+
+#: options/import.php:106
+msgid ""
+"For each value you have a name of the variable from plugin file in square "
+"brackets."
+msgstr ""
+"Pre každú hodnotu máte názov premennej z plugin súbor v hranatých zátvorkách."
+
+#: options/import.php:107
+msgid ""
+"Plugin could save data in post meta table or only in the post using "
+"shortcodes. Import can try both, but if you are usre that ratings are stored "
+"in post meta table, use that option."
+msgstr ""
+"Plugin by mohol uložiť údaje v poštou meta tabuľky alebo len v post pomocou "
+"shortcodes. Importovať môžete skúste obe, ale ak ste usre, ktoré hodnotenia "
+"sú uložené v post meta tabuľky, použite túto možnosť."
+
+#: options/import.php:110
+msgid "Import Settings"
+msgstr "Nastavenie importu"
+
+#: options/import.php:114
+msgid "Maximum review value"
+msgstr "Maximálna ďalšiu hodnotu"
+
+#: options/import.php:120
+msgid "Meta Key"
+msgstr "Meta kľúča"
+
+#: options/import.php:126
+msgid "Try Importing from"
+msgstr "Skúste importovať z"
+
+#: options/import.php:129
+msgid "Posts meta table"
+msgstr "Príspevky meta tabuľky"
+
+#: options/import.php:130
+msgid "Posts contents only"
+msgstr "Obsah príspevkov iba"
+
+#: options/import.php:131
+msgid "Both contents and meta"
+msgstr "Obsahu a meta"
+
+#: options/import.php:166
+msgid ""
+"To avoid rating data import problems, please don't use GD Star Rating in the "
+"same time as the plugins above, to avoid potential import problems and false "
+"data. I can't guarantee that data will be transfered without problems."
+msgstr ""
+"Aby sa zabránilo rating problémy importu údajov, prosím, nepoužívajte GD "
+"Star Rating v rovnakom čase ako plugins vyššie, aby sa zabránilo prípadnému "
+"dovozné problémy a nepravdivé údaje. Nemôže zaručiť, že údaje budú prevedené "
+"bez problémov."
+
+#: options/import.php:105
+msgid ""
+"You need to enter few settings for this plugin. This can be found in the "
+"plugin's main and only PHP file: %s"
+msgstr ""
+"Musíte zadať niektoré nastavenia pre tento plugin. To možno nájsť v pluginu "
+"je hlavným a jediným PHP file: %s"
+
+#: options/ips.php:71
+msgid "Ban New"
+msgstr "Zákaz nových"
+
+#: options/ips.php:72
+msgid "Banned"
+msgstr "Zakázané"
+
+#: options/moderation.php:147
+msgid "With Selected"
+msgstr "S vybraných"
+
+#: options/moderation.php:150
+msgid "Approve"
+msgstr "Schváliť"
+
+#: options/settings.php:43
+msgid "Features"
+msgstr "Funkcie"
+
+#: options/settings.php:44
+msgid "Advanced"
+msgstr "Pokročilé"
+
+#: options/settings.php:46 tinymce3/panels/blograting.php:12
+#: tinymce3/panels/filter.php:7
+msgid "Posts And Pages"
+msgstr "Príspevky a stránky"
+
+#: options/settings.php:49
+msgid "Thumbs Up/Down"
+msgstr "Palce hore/dole"
+
+#: options/setup.php:6
+msgid "Database tables reinstalled."
+msgstr "Databázové tabuľky preinštalovať."
+
+#: options/setup.php:15
+msgid "Multi rating tables reinstalled."
+msgstr "Multi rating tabuľky preinštalovať."
+
+#: options/setup.php:21
+msgid "Settings are removed from WordPress installation."
+msgstr "Nastavenia sú odstránené z WordPress inštalácie."
+
+#: options/setup.php:28
+msgid "Plugins default templates are reinstalled."
+msgstr "Opätovne inštalovať pluginy predvolené šablóny."
+
+#: options/setup.php:32
+msgid "Import Information is reseted."
+msgstr "Import informácií je reseted."
+
+#: options/setup.php:38
+msgid "Are you sure? Operation is not reversible."
+msgstr "si si istý? Operácia sa nedá vrátiť."
+
+#: options/setup.php:45
+msgid "Database Maintenance"
+msgstr "Údržba databázy"
+
+#: options/setup.php:46
+msgid "Global Maintenance"
+msgstr "Globálne údržby"
+
+#: options/setup.php:47
+msgid "Full Uninstall"
+msgstr "Úplné odinštalovanie"
+
+#: options/tools.php:0 gd-star-rating.php:651
+msgid "Tools"
+msgstr "Nástroje"
+
+#: options/tools.php:5
+msgid "Bulk"
+msgstr "Hromadné"
+
+#: options/tools.php:6
+msgid "Database"
+msgstr "Databáza"
+
+#: options/tools.php:10
+msgid "Edit CSS"
+msgstr "Upraviť CSS"
+
+#: options/users.php:62
+msgid "Email"
+msgstr "Email"
+
+#: options/users.php:63
+msgid "Thumbs Articles"
+msgstr "Palce články"
+
+#: options/users.php:64
+msgid "Thumbs Comments"
+msgstr "Palce komentáre"
+
+#: options/users.php:65
+msgid "Ratings Articles"
+msgstr "Hodnotenie článkov"
+
+#: options/users.php:66
+msgid "Ratings Comments"
+msgstr "Hodnotenie komentárov"
+
+#: options/users.php:33
+msgid "Visitor"
+msgstr "Návštevník"
+
+#: options/users.php:111 options/users.php:116 options/users.php:121
+#: options/users.php:126
+msgid "unique ip's"
+msgstr "unikátne ip"
+
+#: options/users_log.php:97
+msgid "User Vote Log"
+msgstr "Užívateľ hlasovania Log"
+
+#: options/users_log.php:100
+msgid "Votes log for user"
+msgstr "Hlasov log pre používateľa"
+
+#: options/users_log.php:103
+msgid "Votes log for visitors"
+msgstr "Hlasov log pre návštevníkov"
+
+#: options/users_log.php:109 options/voters.php:116
+msgid "All Votes"
+msgstr "Všetkých hlasov"
+
+#: options/users_log.php:125 options/voters.php:147
+msgid "Vote Date"
+msgstr "Hlasovanie dátum"
+
+#: options/users_log.php:127
+msgid "Post"
+msgstr "Príspevok"
+
+#: options/users_log.php:129
+msgid "Comment Author"
+msgstr "Komentár autora"
+
+#: options/users_log.php:130
+msgid "Comment Excerpt"
+msgstr "Komentár výňatok"
+
+#: options/users_log.php:201
+msgid "Add selected IP's to ban IP's list."
+msgstr "Pridať zvolené ov je zakázať IP je zoznam."
+
+#: options/users_log.php:214
+msgid "Only Invalid"
+msgstr "Len neplatné"
+
+#: options/users_log.php:215 options/voters.php:193
+msgid "From Log Only"
+msgstr "Z denníka len"
+
+#: options/users_log.php:216 options/voters.php:192
+msgid "Full Delete"
+msgstr "Úplné odstránenie"
+
+#: options/voters.php:101
+msgid "Vote log for post"
+msgstr "Hlasovanie v denníku post"
+
+#: tinymce3/panels/articlesrater.php:2 tinymce3/panels/thumbsrating.php:2
+msgid ""
+"StarRater will render actual rating block if you choose not to have it "
+"automatically inserted. This way you can position it wherever you want in "
+"the contnents."
+msgstr ""
+"StarRater odplatí skutočný rating blok, ak sa rozhodnete, aby sa to "
+"automaticky vložený. Týmto spôsobom môžete umiestniť ho kamkoľvek budete "
+"chcieť v contnents."
+
+#: tinymce3/panels/articlesrater.php:12 tinymce3/panels/multis.php:21
+#: tinymce3/panels/thumbsrating.php:12
+msgid "Display rating block as read only."
+msgstr "Displej rating bloku ako read only."
+
+#: tinymce3/panels/articlesreview.php:1
+msgid "Articles Review Rating"
+msgstr "Články revízia Hodnotenie"
+
+#: tinymce3/panels/articlesreview.php:2
+msgid ""
+"StarReview will render stars representing review value assigned to the post "
+"or page."
+msgstr ""
+"StarReview odplatí hviezdičiek, reprezentujúcich preskúmanie hodnota "
+"priradená k príspevku alebo stránky."
+
+#: tinymce3/panels/blograting.php:9 tinymce3/panels/filter.php:4
+#: widgets/rating/part_filter.php:13 widgets/rating_28/part_filter.php:13
+#: widgets/top/part_filter.php:13 widgets/top_28/part_filter.php:13
+msgid "Include Articles"
+msgstr "Zahŕňajú články"
+
+#: tinymce3/panels/blograting.php:13 tinymce3/panels/filter.php:8
+#: widgets/rating/part_filter.php:17 widgets/rating_28/part_filter.php:17
+#: widgets/top/part_filter.php:17 widgets/top_28/part_filter.php:17
+msgid "Posts Only"
+msgstr "Príspevkov iba"
+
+#: tinymce3/panels/blograting.php:14 tinymce3/panels/filter.php:9
+#: widgets/rating/part_filter.php:18 widgets/rating_28/part_filter.php:18
+#: widgets/top/part_filter.php:18 widgets/top_28/part_filter.php:18
+msgid "Pages Only"
+msgstr "Iba strany"
+
+#: tinymce3/panels/blograting.php:19 tinymce3/panels/filter.php:14
+#: widgets/comments/part_filter.php:13 widgets/comments_28/part_filter.php:13
+#: widgets/rating/part_filter.php:24 widgets/rating_28/part_filter.php:24
+#: widgets/top/part_filter.php:24 widgets/top_28/part_filter.php:24
+msgid "Display Votes From"
+msgstr "Hlasovalo displej"
+
+#: tinymce3/panels/blograting.php:21 tinymce3/panels/commentsaggr.php:16
+#: tinymce3/panels/filter.php:16 widgets/comments/part_basic.php:16
+#: widgets/comments/part_filter.php:16 widgets/comments_28/part_basic.php:16
+#: widgets/comments_28/part_filter.php:16 widgets/rating/part_basic.php:16
+#: widgets/rating/part_filter.php:27 widgets/rating_28/part_basic.php:16
+#: widgets/rating_28/part_filter.php:27 widgets/top/part_basic.php:16
+#: widgets/top/part_filter.php:27 widgets/top_28/part_basic.php:16
+#: widgets/top_28/part_filter.php:27
+msgid "Everyone"
+msgstr "Všetci"
+
+#: tinymce3/panels/blograting.php:23 tinymce3/panels/commentsaggr.php:18
+#: tinymce3/panels/filter.php:18 widgets/comments/part_basic.php:18
+#: widgets/comments/part_filter.php:18 widgets/comments_28/part_basic.php:18
+#: widgets/comments_28/part_filter.php:18 widgets/rating/part_basic.php:18
+#: widgets/rating/part_filter.php:29 widgets/rating_28/part_basic.php:18
+#: widgets/rating_28/part_filter.php:29 widgets/top/part_basic.php:18
+#: widgets/top/part_filter.php:29 widgets/top_28/part_basic.php:18
+#: widgets/top_28/part_filter.php:29
+msgid "Users Only"
+msgstr "Len pre používateľov"
+
+#: tinymce3/panels/commentsaggr.php:1
+msgid "Aggregated Comments Ratings"
+msgstr "Súhrnné hodnotenie komentáre"
+
+#: tinymce3/panels/commentsaggr.php:2
+msgid "This will render aggregated comments rating for the post."
+msgstr "To bude poskytovať súhrnné poznámky rating pre post."
+
+#: tinymce3/panels/commentsaggr.php:14
+msgid "Calculate Votes From"
+msgstr "Výpočet hlasovalo"
+
+#: tinymce3/panels/filter.php:1
+msgid "Basic"
+msgstr "Základné"
+
+#: tinymce3/panels/filter.php:26 widgets/comments/part_filter.php:36
+#: widgets/comments_28/part_filter.php:36 widgets/rating/part_filter.php:52
+#: widgets/rating_28/part_filter.php:52
+msgid "Minimum Votes"
+msgstr "Minimálny počet hlasov"
+
+#: tinymce3/panels/filter.php:30
+msgid "Excerpt words"
+msgstr "Výpis slov"
+
+#: tinymce3/panels/filter.php:37
+msgid "Sorting"
+msgstr "Triedenie"
+
+#: tinymce3/panels/filter.php:40
+msgid "Column"
+msgstr "Stĺpec"
+
+#: tinymce3/panels/filter.php:44 widgets/comments/part_filter.php:47
+#: widgets/comments_28/part_filter.php:47 widgets/rating/part_filter.php:63
+#: widgets/rating_28/part_filter.php:63
+msgid "Total Votes"
+msgstr "Celkový počet hlasov"
+
+#: tinymce3/panels/filter.php:48 widgets/rating/part_filter.php:67
+#: widgets/rating_28/part_filter.php:67
+msgid "Count"
+msgstr "Počet"
+
+#: tinymce3/panels/filter.php:49 widgets/rating/part_filter.php:68
+#: widgets/rating_28/part_filter.php:68
+msgid "Bayesian Rating"
+msgstr "Bayesovský Rating"
+
+#: tinymce3/panels/filter.php:54
+msgid "Order"
+msgstr "Objednávky"
+
+#: tinymce3/panels/filter.php:57 widgets/comments/part_filter.php:57
+#: widgets/comments_28/part_filter.php:57 widgets/rating/part_filter.php:77
+#: widgets/rating_28/part_filter.php:77
+msgid "Descending"
+msgstr "Zostupne"
+
+#: tinymce3/panels/filter.php:58 widgets/comments/part_filter.php:58
+#: widgets/comments_28/part_filter.php:58 widgets/rating/part_filter.php:78
+#: widgets/rating_28/part_filter.php:78
+msgid "Ascending"
+msgstr "Vzostupne"
+
+#: tinymce3/panels/filter.php:66
+msgid "Last Voted"
+msgstr "Naposledy zvolený"
+
+#: tinymce3/panels/filter.php:67 widgets/rating/part_filter.php:123
+#: widgets/rating_28/part_filter.php:123
+msgid "Use only articles voted for in last # days."
+msgstr "Používať iba články volili v posledných dňoch #."
+
+#: tinymce3/panels/filter.php:70 widgets/comments/part_filter.php:77
+#: widgets/comments_28/part_filter.php:77 widgets/rating/part_filter.php:128
+#: widgets/rating_28/part_filter.php:128
+msgid "Enter 0 for all"
+msgstr "Ak zadáte hodnotu 0 pre všetky"
+
+#: tinymce3/panels/filter.php:80
+msgid "Publish Date"
+msgstr "Publikovať dátum"
+
+#: tinymce3/panels/filter.php:83 widgets/rating/part_filter.php:145
+#: widgets/rating_28/part_filter.php:145
+msgid "Last # days"
+msgstr "Posledné dni #"
+
+#: tinymce3/panels/filter.php:84 widgets/rating/part_filter.php:146
+#: widgets/rating_28/part_filter.php:146
+msgid "Exact month"
+msgstr "Presne mesiac"
+
+#: tinymce3/panels/filter.php:85 widgets/rating/part_filter.php:147
+#: widgets/rating_28/part_filter.php:147
+msgid "Date range"
+msgstr "Rozsah dátumov"
+
+#: tinymce3/panels/filter.php:93 widgets/rating/part_filter.php:156
+#: widgets/rating_28/part_filter.php:156
+msgid "Number Of Days"
+msgstr "Počet dní"
+
+#: tinymce3/panels/filter.php:103 widgets/rating/part_filter.php:167
+#: widgets/rating_28/part_filter.php:167
+msgid "Month"
+msgstr "Mesiac"
+
+#: tinymce3/panels/filter.php:113 widgets/rating/part_filter.php:178
+#: widgets/rating_28/part_filter.php:178
+msgid "Range"
+msgstr "Rozsah"
+
+#: tinymce3/panels/general.php:1
+msgid "Display"
+msgstr "Displej"
+
+#: tinymce3/panels/general.php:4 widgets/rating/part_filter.php:35
+#: widgets/rating_28/part_filter.php:35
+msgid "Number Of Posts"
+msgstr "Počet pracovných miest"
+
+#: tinymce3/panels/general.php:8 widgets/rating/part_basic.php:24
+#: widgets/rating_28/part_basic.php:24
+msgid "Items Grouping"
+msgstr "Zoskupovanie položiek"
+
+#: tinymce3/panels/general.php:11 widgets/rating/part_basic.php:27
+#: widgets/rating_28/part_basic.php:27
+msgid "No grouping"
+msgstr "Žiadne zoskupenie"
+
+#: tinymce3/panels/general.php:12 widgets/rating/part_basic.php:28
+#: widgets/rating_28/part_basic.php:28
+msgid "User based"
+msgstr "Užívateľských"
+
+#: tinymce3/panels/general.php:13 widgets/rating/part_basic.php:29
+#: widgets/rating_28/part_basic.php:29
+msgid "Category based"
+msgstr "Kategórie založené"
+
+#: tinymce3/panels/general.php:14 widgets/rating/part_basic.php:30
+#: widgets/rating_28/part_basic.php:30
+msgid "Taxonomy based"
+msgstr "Taxonómia založené"
+
+#: tinymce3/panels/general.php:22 widgets/rating/part_basic.php:38
+#: widgets/rating_28/part_basic.php:38
+msgid "Taxonomy"
+msgstr "Taxonómie"
+
+#: tinymce3/panels/general.php:30
+msgid "Source"
+msgstr "Zdroj"
+
+#: tinymce3/panels/general.php:33 widgets/rating/part_basic.php:45
+#: widgets/rating_28/part_basic.php:45 widgets/top/part_basic.php:24
+#: widgets/top_28/part_basic.php:24
+msgid "Data Source"
+msgstr "Zdroj údajov"
+
+#: tinymce3/panels/general.php:54 widgets/rating/part_trend.php:4
+#: widgets/rating/part_trend.php:12 widgets/rating_28/part_trend.php:4
+#: widgets/rating_28/part_trend.php:12
+msgid "Trend"
+msgstr "Trend"
+
+#: tinymce3/panels/general.php:57 widgets/rating/part_trend.php:13
+#: widgets/rating_28/part_trend.php:13
+msgid "Rating trend display as"
+msgstr "Zobrazovaný názov trend rating"
+
+#: tinymce3/panels/general.php:60 tinymce3/panels/general.php:97
+#: widgets/rating/part_trend.php:16 widgets/rating/part_trend.php:54
+#: widgets/rating_28/part_trend.php:16 widgets/rating_28/part_trend.php:54
+msgid "Text"
+msgstr "Text"
+
+#: tinymce3/panels/general.php:61 tinymce3/panels/general.php:98
+#: widgets/rating/part_image.php:4 widgets/rating/part_image.php:12
+#: widgets/rating/part_trend.php:17 widgets/rating/part_trend.php:55
+#: widgets/rating_28/part_image.php:4 widgets/rating_28/part_image.php:12
+#: widgets/rating_28/part_trend.php:17 widgets/rating_28/part_trend.php:55
+msgid "Image"
+msgstr "Obrázok"
+
+#: tinymce3/panels/general.php:69 tinymce3/panels/general.php:106
+#: widgets/rating/part_trend.php:26 widgets/rating/part_trend.php:64
+#: widgets/rating_28/part_trend.php:26 widgets/rating_28/part_trend.php:64
+msgid "Up"
+msgstr "Hore"
+
+#: tinymce3/panels/general.php:72 tinymce3/panels/general.php:109
+#: widgets/rating/part_trend.php:28 widgets/rating/part_trend.php:66
+#: widgets/rating_28/part_trend.php:28 widgets/rating_28/part_trend.php:66
+msgid "Equal"
+msgstr "Rovnosť"
+
+#: tinymce3/panels/general.php:75 tinymce3/panels/general.php:112
+#: widgets/rating/part_trend.php:30 widgets/rating/part_trend.php:68
+#: widgets/rating_28/part_trend.php:30 widgets/rating_28/part_trend.php:68
+msgid "Down"
+msgstr "Nadol"
+
+#: tinymce3/panels/general.php:83 tinymce3/panels/general.php:120
+#: widgets/rating/part_trend.php:39 widgets/rating/part_trend.php:77
+#: widgets/rating_28/part_trend.php:39 widgets/rating_28/part_trend.php:77
+msgid "Image set"
+msgstr "Image súbor"
+
+#: tinymce3/panels/general.php:94 widgets/rating/part_trend.php:51
+#: widgets/rating_28/part_trend.php:51
+msgid "Voting trend display as"
+msgstr "Hlasovacie trend Zobraziť ako"
+
+#: tinymce3/panels/general.php:132
+msgid "Hiding"
+msgstr "Skrytie"
+
+#: tinymce3/panels/general.php:133 widgets/rating/part_filter.php:85
+#: widgets/rating_28/part_filter.php:85
+msgid "Bayesian minumum votes required."
+msgstr "Bayesovský minimálne požadovaných hlasov."
+
+#: tinymce3/panels/general.php:134 widgets/comments_28/part_filter.php:65
+#: widgets/rating/part_filter.php:91 widgets/rating_28/part_filter.php:91
+msgid "Hide articles with no recorded votes."
+msgstr "Skryť články nevyskytli hlasy zaznamenané."
+
+#: tinymce3/panels/general.php:135 widgets/rating/part_filter.php:97
+#: widgets/rating_28/part_filter.php:97
+msgid "Hide articles with no review values."
+msgstr "Skryť články bez preskúmania hodnôt."
+
+#: tinymce3/panels/multis.php:6
+msgid "Multi Ratings"
+msgstr "Viacročných mužstva"
+
+#: tinymce3/panels/multis.php:25 tinymce3/panels/multisreview.php:21
+msgid "Elements Stars"
+msgstr "Prvky hviezdy"
+
+#: tinymce3/panels/multis.php:45 tinymce3/panels/multisreview.php:41
+msgid "Average Stars"
+msgstr "Priemerná hviezdy"
+
+#: tinymce3/panels/multisreview.php:6
+msgid "Multi Reviews"
+msgstr "Multi Recenzie"
+
+#: tinymce3/panels/multisreview.php:12
+msgid "Default"
+msgstr "Predvolené"
+
+#: tinymce3/panels/styles.php:6
+msgid "Post Image"
+msgstr "Post obrázok"
+
+#: tinymce3/panels/styles.php:9
+msgid "Resize Width x Height"
+msgstr "Veľkosť šírka x výška"
+
+#: tinymce3/panels/styles.php:13 widgets/rating/part_image.php:21
+#: widgets/rating_28/part_image.php:21
+msgid "This will work only if image is stored on the server."
+msgstr "To bude fungovať iba v prípade, že obrázok je uložený na serveri."
+
+#: tinymce3/panels/styles.php:16 widgets/rating/part_image.php:25
+#: widgets/rating_28/part_image.php:25
+msgid "Get Image From"
+msgstr "Dostať obraz z"
+
+#: tinymce3/panels/styles.php:19 widgets/rating/part_image.php:28
+#: widgets/rating_28/part_image.php:28
+msgid "No image"
+msgstr "Žiadny obrázok"
+
+#: tinymce3/panels/styles.php:20 widgets/rating/part_image.php:29
+#: widgets/rating_28/part_image.php:29
+msgid "Custom field"
+msgstr "Vlastné pole"
+
+#: tinymce3/panels/styles.php:21 widgets/rating/part_image.php:30
+#: widgets/rating_28/part_image.php:30
+msgid "Post content"
+msgstr "Post obsah"
+
+#: tinymce3/panels/styles.php:30 widgets/rating/part_image.php:39
+#: widgets/rating_28/part_image.php:39
+msgid ""
+"If you use %IMAGE% tag in template and this option is selected, image will "
+"not be rendered."
+msgstr ""
+"Ak použijete % IMAGE % značky šablóny a táto voľba vybratá, nebolo možné "
+"vykresliť obraz."
+
+#: tinymce3/panels/styles.php:38 widgets/rating/part_image.php:47
+#: widgets/rating_28/part_image.php:47
+msgid "Custom Field"
+msgstr "Vlastné pole"
+
+#: tinymce3/panels/styles.php:49 widgets/rating/part_image.php:56
+#: widgets/rating_28/part_image.php:56
+msgid "First image from post content will be used for %IMAGE% tag."
+msgstr "Prvý obrázok z post obsah budú použité pre % IMAGE značky %."
+
+#: tinymce3/panels/styles.php:57
+msgid "Rating Stars"
+msgstr "Hodnotenie hviezdy"
+
+#: tinymce3/panels/styles.php:77
+msgid "Review Stars"
+msgstr "Preskúmanie hviezdy"
+
+#: tinymce3/panels/thumbsrating.php:1
+msgid "Thumbs Rating Block"
+msgstr "Palce Rating blok"
+
+#: tinymce3/window.php:31 tinymce3/window.php:122
+msgid "Insert"
+msgstr "Vložiť"
+
+#: tinymce3/window.php:49
+msgid "Shortcode"
+msgstr "Krátky"
+
+#: tinymce3/window.php:73
+msgid "Shortcode Info"
+msgstr "Krátky Info"
+
+#: tinymce3/window.php:74
+msgid "Change shortcode to see additional options you can set."
+msgstr "Zmeniť krátky vidieť ďalšie možnosti, môžete nastaviť."
+
+#: tinymce3/window.php:118
+msgid "Cancel"
+msgstr "Zrušiť"
+
+#: widgets/comments/part_basic.php:13 widgets/comments_28/part_basic.php:13
+#: widgets/rating/part_basic.php:13 widgets/rating_28/part_basic.php:13
+#: widgets/top/part_basic.php:13 widgets/top_28/part_basic.php:13
+msgid "Show Widget To"
+msgstr "Zobraziť Widget"
+
+#: widgets/comments/part_basic.php:19 widgets/comments_28/part_basic.php:19
+#: widgets/rating/part_basic.php:19 widgets/rating_28/part_basic.php:19
+#: widgets/top/part_basic.php:19 widgets/top_28/part_basic.php:19
+msgid "Hide Widget"
+msgstr "Skryť Widget"
+
+#: widgets/comments/part_filter.php:5 widgets/comments/part_image.php:5
+#: widgets/comments/part_stars.php:5 widgets/comments_28/part_filter.php:5
+#: widgets/comments_28/part_image.php:5 widgets/comments_28/part_stars.php:5
+#: widgets/rating/part_filter.php:5 widgets/rating/part_image.php:5
+#: widgets/rating/part_stars.php:5 widgets/rating/part_trend.php:5
+#: widgets/rating_28/part_filter.php:5 widgets/rating_28/part_image.php:5
+#: widgets/rating_28/part_stars.php:5 widgets/rating_28/part_trend.php:5
+#: widgets/top/part_filter.php:5 widgets/top_28/part_filter.php:5
+msgid "Click on the header title to display the options."
+msgstr "Kliknutím na hlavičky názov zobrazte možnosti."
+
+#: widgets/comments/part_filter.php:24 widgets/comments_28/part_filter.php:24
+msgid "Number Of Comments"
+msgstr "Počet komentárov"
+
+#: widgets/comments/part_filter.php:31 widgets/comments_28/part_filter.php:31
+msgid "Maximal length of comment text"
+msgstr "Maximálna dĺžka text komentára"
+
+#: widgets/comments/part_filter.php:43 widgets/comments_28/part_filter.php:43
+#: widgets/rating/part_filter.php:59 widgets/rating_28/part_filter.php:59
+msgid "Sorting Column"
+msgstr "Triedenie stĺpcov"
+
+#: widgets/comments/part_filter.php:48 widgets/comments_28/part_filter.php:48
+msgid "Comment ID"
+msgstr "Komentár ID"
+
+#: widgets/comments/part_filter.php:54 widgets/comments_28/part_filter.php:54
+#: widgets/rating/part_filter.php:74 widgets/rating_28/part_filter.php:74
+msgid "Sorting Order"
+msgstr "Poradie zoradenia"
+
+#: widgets/comments/part_filter.php:65
+msgid "Hide comments with no recorded votes."
+msgstr "Skryť komentáre nevyskytli hlasy zaznamenané."
+
+#: widgets/comments/part_filter.php:72 widgets/comments_28/part_filter.php:72
+msgid "Use only comments voted for in last # days."
+msgstr "Používať len komentáre volili v posledných dňoch #."
+
+#: widgets/comments/part_image.php:4 widgets/comments/part_image.php:12
+#: widgets/comments_28/part_image.php:4 widgets/comments_28/part_image.php:12
+msgid "Avatar"
+msgstr "Avatar"
+
+#: widgets/rating/part_filter.php:16 widgets/rating_28/part_filter.php:16
+#: widgets/top/part_filter.php:16 widgets/top_28/part_filter.php:16
+msgid "Posts & Pages"
+msgstr "Príspevky &amp; stránok"
+
+#: widgets/rating/part_filter.php:42 widgets/rating_28/part_filter.php:42
+msgid "Maximal character length for title"
+msgstr "Dĺžka maximálna znaku pre nadpis"
+
+#: widgets/rating/part_filter.php:47 widgets/rating_28/part_filter.php:47
+msgid "Number of words for excerpt"
+msgstr "Počet slov pre výpis"
+
+#: widgets/rating/part_filter.php:108 widgets/rating_28/part_filter.php:108
+msgid "Article Category"
+msgstr "Článok Kategória"
+
+#: widgets/rating/part_filter.php:116 widgets/rating_28/part_filter.php:116
+msgid "Only selected category, no subcategories."
+msgstr "Iba vybraté kategórie, žiadne podkategórií."
+
+#: widgets/rating/part_filter.php:141 widgets/rating_28/part_filter.php:141
+msgid "Article Publish Date"
+msgstr "Článok publikovať dátum"
+
+#: widgets/rating/part_filter.php:144 widgets/rating_28/part_filter.php:144
+msgid "Any date"
+msgstr "Ľubovoľný dátum"
+
+#: widgets/rating/part_image.php:13 widgets/rating_28/part_image.php:13
+msgid "Resize Image"
+msgstr "Veľkosť obrázka"
+
+#: widgets/rating/part_stars.php:13 widgets/rating_28/part_stars.php:13
+msgid "Stars Set"
+msgstr "Hviezdy Set"
+
+#: widgets/rating/part_stars.php:18 widgets/rating_28/part_stars.php:18
+msgid "Stars Size"
+msgstr "Veľkosť hviezdy"
+
+#: widgets/rating/part_stars.php:23 widgets/rating_28/part_stars.php:23
+msgid "Review Set"
+msgstr "Ďalšiu sadu"
+
+#: widgets/rating/part_stars.php:28 widgets/rating_28/part_stars.php:28
+msgid "Review Size"
+msgstr "Preskúmanie veľkosť"
+
+#: widgets/rating/part_stars.php:38 widgets/rating_28/part_stars.php:38
+msgid "Thumbs Size"
+msgstr "Veľkosti palca"
+
+#: gd-star-rating.php:621 gd-star-rating.php:622 gd-star-rating.php:631
+#: gd-star-rating.php:632
+msgid "Multi Ratings Review"
+msgstr "Multi ratingy recenzia"
+
+#: gd-star-rating.php:639
+msgid "Front Page"
+msgstr "Predná strana"
+
+#: gd-star-rating.php:937 gd-star-rating.php:940
+msgid "Latest"
+msgstr "Najnovšie"
+
+#: gd-star-rating.php:938 gd-star-rating.php:941
+msgid "Chart"
+msgstr "Graf"
+
+#: gd-star-rating.php:1577
+msgid "articles records from log table removed."
+msgstr "články záznamy z tabuľky denník odstránený."
+
+#: gd-star-rating.php:1579
+msgid "comments records from log table removed."
+msgstr "Komentáre záznamy z tabuľky denník odstránený."
+
+#: gd-star-rating.php:1583
+msgid "articles records from trends log table removed."
+msgstr "záznamy článkov z trendy prihlásiť tabuľka odstránený."
+
+#: gd-star-rating.php:1585
+msgid "comments records from trends log table removed."
+msgstr "Komentáre záznamy z trendy prihlásiť tabuľka odstránený."
+
+#: gd-star-rating.php:1589
+msgid "dead articles records from articles table."
+msgstr "mŕtvy články záznamy z tabuľky články."
+
+#: gd-star-rating.php:1591
+msgid "post revisions records from articles table."
+msgstr "poštou revízie záznamy z tabuľky články."
+
+#: gd-star-rating.php:1593
+msgid "dead comments records from comments table."
+msgstr "mŕtvy komentáre záznamy z tabuľky komentáre."
+
+#: gd-star-rating.php:1597
+msgid "dead articles records from multi ratings tables."
+msgstr "mŕtvy články záznamy z multi ratingy tabuliek."
+
+#: gd-star-rating.php:1599
+msgid "post revisions records from multi ratings tables."
+msgstr "poštou revízie záznamy z multi tabuľky hodnotenia."
+
+#~ msgid "post/page title"
+#~ msgstr "post/page hlave"
+
+#~ msgid "Rating Set"
+#~ msgstr "Rating Set"
+
+#~ msgid "Rating Size"
+#~ msgstr "Rating veľkosť"
+
+#~ msgid "views"
+#~ msgstr "názory"
+
+#~ msgid "thumb down text style"
+#~ msgstr "palec nadol štýl textu"
+
+#~ msgid "thumb up text style"
+#~ msgstr "palec hore štýl textu"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "Panels"
+#~ msgstr "Panely"
+
+#~ msgid "Administration"
+#~ msgstr "Administratíva"
+
+#~ msgid "Fixing"
+#~ msgstr "Stanovenie"
+
+#~ msgid "Web Key"
+#~ msgstr "Web kľúč"
+
+#~ msgid "Managment for default settings."
+#~ msgstr "Managment pre predvolené nastavenia."
+
+#~ msgid "Plugin Info"
+#~ msgstr "Plugin Info"
+
+#~ msgid "wordpress ratings system"
+#~ msgstr "Klasifikačný systém WordPress"
+
+#~ msgid "basic plugin class and wizard"
+#~ msgstr "základné plugin triedy a sprievodca"
+
+#~ msgid "Delete Selected Sets"
+#~ msgstr "Odstrániť vybraté súbory"
+
+#~ msgid "BOT List"
+#~ msgstr "Zoznam TOPÁNOK"
+
+#~ msgid "Exporting rating data."
+#~ msgstr "Exportovanie údajov rating."
+
+#~ msgid "Posts Data"
+#~ msgstr "Príspevky údajov"
+
+#~ msgid "Comments Data"
+#~ msgstr "Komentáre údajov"
+
+#~ msgid "Display custom rating CSS settings."
+#~ msgstr "Vlastné hodnotenie CSS nastavenia displeja."
+
+#~ msgid "Display rating placement settings."
+#~ msgstr "Rating umiestnenie nastavení zobrazenia."
+
+#~ msgid "Display rating defaults settings."
+#~ msgstr "Displej rating predvolené nastavenia."
+
+#~ msgid "Rating alignment"
+#~ msgstr "Rating zarovnanie"
+
+#~ msgid "Rating text placement"
+#~ msgstr "Umiestnenie textu rating"
+
+#~ msgid "Display header text."
+#~ msgstr "Zobraziť text v hlavičke."
+
+#~ msgid "Render"
+#~ msgstr "Render"
+
+#~ msgid "Important Links"
+#~ msgstr "Dôležité Odkazy"
+
+#~ msgid "various administration tools"
+#~ msgstr "rôzne nástroje na správu"
+
+#~ msgid "RSS"
+#~ msgstr "RSS"
+
+#~ msgid "Standard Elements"
+#~ msgstr "Štandardné prvky"
+
+#~ msgid "Custom Elements"
+#~ msgstr "Vlastné prvky"
+
+#~ msgid "Rating Text For Time Restricted Voting"
+#~ msgstr "Rating Text pre obmedzený čas hlasovania"
+
+#~ msgid "and time restriction elements"
+#~ msgstr "a časové obmedzenie prvky"
+
+#~ msgid "Voting Closed"
+#~ msgstr "Hlasovanie uzavretý"
+
+#~ msgid "no template elements allowed"
+#~ msgstr "žiadne šablóny prvky povolené"
+
+#~ msgid "all articles and custom templates elements"
+#~ msgstr "všetky články a vlastné šablóny prvky"
+
+#~ msgid "Words"
+#~ msgstr "Slová"
+
+#~ msgid "singular"
+#~ msgstr "singulární"
+
+#~ msgid "plural"
+#~ msgstr "množné číslo"
+
+#~ msgid ""
+#~ "this can be used to replace word 'votes', and you need to set both "
+#~ "singular and plural form of this word"
+#~ msgstr ""
+#~ "ceci peut être utilisé pour remplacer le mot 'votes', et vous devez "
+#~ "ajouter un mot pour le singulier et un autre pour le pluriel"
+
+#~ msgid "CSS Classes"
+#~ msgstr "CSS triedy"
+
+#~ msgid "even row"
+#~ msgstr "dokonca riadok"
+
+#~ msgid "odd row"
+#~ msgstr "nepárnych riadkov"
+
+#~ msgid ""
+#~ "this can be used to render table rows used in templates with different "
+#~ "classes"
+#~ msgstr ""
+#~ "ceci peut être employé pour rendre des rangées de tables utilisées dans "
+#~ "les templates avec différentes classes"
+
+#~ msgid "Post Rating Text"
+#~ msgstr "Post hodnotenie Text"
+
+#~ msgid "item id"
+#~ msgstr "Identifikácia položky"
+
+#~ msgid "comment rating trend"
+#~ msgstr "komentár rating trend"
+
+#~ msgid "comment voting trend"
+#~ msgstr "komentár hlasovacích trend"
+
+#~ msgid "Standard RSS Text"
+#~ msgstr "Štandardný Text RSS"
+
+#~ msgid "Additional Style"
+#~ msgstr "Ďalšie štýl"
+
+#~ msgid "Style Class"
+#~ msgstr "Štýl triedy"
+
+#~ msgid "Don't Add"
+#~ msgstr "Nepridávať"
+
+#~ msgid "Built In"
+#~ msgstr "Postavený v"
+
+#~ msgid "Built In Class"
+#~ msgstr "Postavený v triede"
+
+#~ msgid "External Class"
+#~ msgstr "Externé triedy"
+
+#~ msgid ""
+#~ "There are no settings for this shortcode yet. This will be updated soon."
+#~ msgstr ""
+#~ "Il n'y a pas encore de configuration pour ce shortcode. Celui-ci sera mis "
+#~ "à jour prochainement."
+
+#~ msgid "bayesian article rating"
+#~ msgstr "Hodnotenie článku Bayesian"
+
+#~ msgid "item title"
+#~ msgstr "názov položky"
+
+#~ msgid "rating trend"
+#~ msgstr "Hodnotenie trend"
+
+#~ msgid "voting trend"
+#~ msgstr "hlasovacie trend"
+
+#~ msgid "item url"
+#~ msgstr "adresu url položky"
+
+#~ msgid "singular/plural word vote"
+#~ msgstr "jednotnom/množnom čísle slovo hlasovanie"
+
+#~ msgid "T2"
+#~ msgstr "T2"
+
+#~ msgid ""
+#~ "You first need to select which multi set you want to use for review "
+#~ "rating."
+#~ msgstr ""
+#~ "Vous devez tout d'abord sélectionner quelle configuration multiple vous "
+#~ "souhaitez utiliser pour les résumés d'évaluations."
+
+#~ msgid ""
+#~ "Use this set for post/page review. Only one set at the time can be used "
+#~ "for review feature."
+#~ msgstr ""
+#~ "Utilisez cette configuration pour le résumé article/page. Seulement une "
+#~ "configuration à la fois peut être utilisée pour la fonction résumé."
+
+#~ msgid "AJAX enabled rating."
+#~ msgstr "AJAX enabled rating."
+
+#~ msgid "Use IE6 PNG transparency fix."
+#~ msgstr "Pomocou IE6 PNG transparentnosť fix."
+
+#~ msgid "T2 / Alpha"
+#~ msgstr "T2 / alfa"
+
+#~ msgid "Submit"
+#~ msgstr "Predložiť"
+
+#~ msgid ""
+#~ "Use this options to reinstall or uninstall the plugin. This will remove "
+#~ "all existing data recorded by the plugin."
+#~ msgstr ""
+#~ "Utiliser cette option pour réinstaller le plugin. Ceci va supprimer toute "
+#~ "donnée existante enregistrée par le plugin."
+
+#~ msgid "REINSTALL"
+#~ msgstr "PREINŠTALOVAŤ"
+
+#~ msgid "These are various maintenace options."
+#~ msgstr "Toto sú rôzne možnosti maintenace."
+
+#~ msgid "REMOVE SETTINGS"
+#~ msgstr "ODSTRÁNIŤ NASTAVENIA"
+
+#~ msgid "REMOVE TEMPLATES"
+#~ msgstr "ODOBRATIE ŠABLÓN"
+
+#~ msgid "RESET IMPORTS"
+#~ msgstr "OBNOVENIE DOVOZOV"
+
+#~ msgid ""
+#~ "This will remove all database tables created by plugin, all settings, "
+#~ "templates and import settings."
+#~ msgstr ""
+#~ "Ceci va supprimer toutes les tables de la base de donnée du plugin, toute "
+#~ "la configuration, les templates ainsi que les changements importés."
+
+#~ msgid "FULL UNINSTALL"
+#~ msgstr "ÚPLNÉ ODINŠTALOVANIE"
+
+#~ msgid "Simple"
+#~ msgstr "Jednoduché"
+
+#~ msgid "plugins, user guides and more"
+#~ msgstr "pluginy, používateľské príručky a ďalšie"
+
+#~ msgid "different versions and user guide"
+#~ msgstr "rôzne verzie a užívateľská príručka"
+
+#~ msgid "Administration Settings"
+#~ msgstr "Správa nastavenia"
+
+#~ msgid "Template Elements"
+#~ msgstr "Šablóna prvky"
+
+#~ msgid "Default Vote Rule"
+#~ msgstr "Predvolené pravidlo hlasovania"
+
+#~ msgid "Default Moderation Rule"
+#~ msgstr "Predvolené pravidlo moderovanie"
+
+#~ msgid "Default time restriction"
+#~ msgstr "Predvolené časové obmedzenie"
+
+#~ msgid "Default countdown value"
+#~ msgstr "Predvolená hodnota odpočítavanie"
+
+#~ msgid ""
+#~ "All the options in this options panel are for the StarRating panel. "
+#~ "StarReview and StarRater don't have any options."
+#~ msgstr ""
+#~ "Toutes les options de ce panel d'options sont réservées au panel "
+#~ "StarRating. StarReview et StarRater n'ont pas d'options."
+
+#~ msgid "Database Cleanup"
+#~ msgstr "Vyčistenia databázy"
+
+#~ msgid "Click on this section header title to show preview panel."
+#~ msgstr ""
+#~ "Kliknutím na názov tejto sekcie hlavičky Zobraziť náhľad panel.Cliquez "
+#~ "sur le titre de cet entête de section pour visualiser le panel."
+
+#~ msgid "Insert Shortcode"
+#~ msgstr "Vložiť krátky"
+
+#~ msgid "IP Status"
+#~ msgstr "IP stav"
+
+#~ msgid "User ID"
+#~ msgstr "Identifikácia používateľa"
